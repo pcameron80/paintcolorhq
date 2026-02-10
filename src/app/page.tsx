@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { HeroSearch } from "@/components/hero-search";
@@ -38,26 +37,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      <section className="relative h-[480px] w-full overflow-hidden">
-        <Image
-          src="/hero.webp"
-          alt="Beautifully painted room interior"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Find Your Perfect Paint Color Match
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90">
-            Browse 25,000+ paint colors across top brands. Find the closest
-            equivalent in Sherwin-Williams, Benjamin Moore, Behr, and more.
-          </p>
-          <HeroSearch />
-        </div>
-      </section>
+      <HeroSearch />
 
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center">
