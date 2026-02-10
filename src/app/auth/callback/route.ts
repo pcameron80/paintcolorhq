@@ -30,7 +30,12 @@ export async function GET(request: NextRequest) {
     if (!error) {
       return response;
     }
+
+    // Redirect with error details for debugging
+    return NextResponse.redirect(
+      `${origin}/?auth_error=${encodeURIComponent(error.message)}`
+    );
   }
 
-  return NextResponse.redirect(`${origin}/?auth_error=true`);
+  return NextResponse.redirect(`${origin}/?auth_error=no_code`);
 }
