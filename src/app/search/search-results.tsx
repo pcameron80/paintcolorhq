@@ -41,7 +41,7 @@ export function SearchResults() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Try 'Agreeable Gray', 'SW 7029', or '#D6D0C4'..."
-        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-lg shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-lg text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
         autoFocus
       />
 
