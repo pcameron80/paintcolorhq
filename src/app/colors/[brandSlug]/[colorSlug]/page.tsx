@@ -8,6 +8,7 @@ import { ComplementaryColors } from "@/components/complementary-colors";
 import { CuratedPalettes } from "@/components/curated-palettes";
 import { SaveToProject } from "@/components/save-to-project";
 import { getColorBySlug, getCrossBrandMatches, findClosestColor } from "@/lib/queries";
+import { generateColorDescription, generateMetaDescription } from "@/lib/color-description";
 
 export const revalidate = 3600;
 
@@ -127,7 +128,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const url = `https://paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   return {
     title: `${color.name} by ${color.brand.name} | ${color.hex.toUpperCase()}`,
-    description: `${color.name} (${color.color_number ?? color.hex.toUpperCase()}) by ${color.brand.name}. Hex ${color.hex.toUpperCase()}, RGB(${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b})${color.lrv ? `, LRV ${color.lrv.toFixed(1)}` : ""}. Find closest matches from other brands.`,
+    description: generateMetaDescription(color),
     alternates: { canonical: url },
     openGraph: {
       title: `${color.name} by ${color.brand.name}`,
@@ -143,6 +144,7 @@ export default async function ColorPage({ params }: PageProps) {
   if (!color) notFound();
 
   const matches = await getCrossBrandMatches(color.id);
+  const description = generateColorDescription(color, matches);
 
   // Resolve color harmonies to real paint colors
   const harmonies = await resolveHarmonies(color.hex);
@@ -244,6 +246,11 @@ export default async function ColorPage({ params }: PageProps) {
           </div>
         </div>
 
+        {/* Color Description */}
+        <p className="mt-8 text-base leading-relaxed text-gray-700">
+          {description}
+        </p>
+
         {/* Complementary Colors */}
         <ComplementaryColors hex={color.hex} harmonies={harmonies} />
 
@@ -313,7 +320,7 @@ export default async function ColorPage({ params }: PageProps) {
                 name: color.brand.name,
               },
               color: color.hex,
-              description: `${color.name} paint color by ${color.brand.name}. Hex: ${color.hex.toUpperCase()}, RGB: ${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}`,
+              description,
               sku: color.color_number ?? undefined,
               url: `https://paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
             }),
