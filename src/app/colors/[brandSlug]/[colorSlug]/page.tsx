@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorSwatch } from "@/components/color-swatch";
 import { ComplementaryColors } from "@/components/complementary-colors";
+import { CuratedPalettes } from "@/components/curated-palettes";
 import { getColorBySlug, getCrossBrandMatches } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
@@ -121,6 +122,12 @@ export default async function ColorPage({ params }: PageProps) {
           </div>
         </div>
 
+        {/* Complementary Colors */}
+        <ComplementaryColors hex={color.hex} searchBaseUrl="/search" />
+
+        {/* Curated Room Palettes */}
+        <CuratedPalettes hex={color.hex} />
+
         {/* Cross-Brand Matches */}
         {Object.keys(matchesByBrand).length > 0 && (
           <section className="mt-16">
@@ -170,9 +177,6 @@ export default async function ColorPage({ params }: PageProps) {
             </div>
           </section>
         )}
-
-        {/* Complementary Colors */}
-        <ComplementaryColors hex={color.hex} searchBaseUrl="/search" />
 
         {/* JSON-LD Structured Data */}
         <script
