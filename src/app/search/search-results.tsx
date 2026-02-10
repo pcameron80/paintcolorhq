@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 import { ColorCard } from "@/components/color-card";
 import type { ColorWithBrand } from "@/lib/types";
 
 export function SearchResults() {
-  const [query, setQuery] = useState("");
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
   const [results, setResults] = useState<ColorWithBrand[]>([]);
   const [loading, setLoading] = useState(false);
 
