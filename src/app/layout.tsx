@@ -15,13 +15,6 @@ export const metadata: Metadata = {
   description:
     "Find equivalent paint colors across brands. Match Sherwin-Williams, Benjamin Moore, Behr, and more. Browse 25,000+ colors with hex codes, RGB, and LRV values.",
   metadataBase: new URL("https://paintcolorhq.com"),
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.png", type: "image/png" },
-    ],
-    apple: "/apple-touch-icon.png",
-  },
   openGraph: {
     type: "website",
     siteName: "Paint Color HQ",
