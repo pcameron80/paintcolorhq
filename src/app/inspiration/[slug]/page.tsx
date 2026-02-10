@@ -9,7 +9,7 @@ import { getPaletteBySlug, assignPaletteRoles } from "@/lib/palettes";
 import { getAllBrands, findClosestColor, getBrandBySlug } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -21,9 +21,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const palette = getPaletteBySlug(slug);
   if (!palette) return { title: "Palette Not Found" };
 
+  const url = `https://paintcolorhq.com/inspiration/${slug}`;
   return {
     title: `${palette.name} Color Palette | Paint Color HQ`,
     description: palette.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${palette.name} Color Palette`,
+      description: palette.description,
+      url,
+    },
   };
 }
 

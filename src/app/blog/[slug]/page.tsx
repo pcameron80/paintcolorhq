@@ -18,15 +18,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
 
+  const url = `https://paintcolorhq.com/blog/${post.slug}`;
   return {
     title: `${post.title} | Paint Color HQ`,
     description: post.excerpt,
+    alternates: { canonical: url },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: "article",
       publishedTime: post.date,
-      url: `https://paintcolorhq.com/blog/${post.slug}`,
+      url,
       tags: post.tags,
     },
   };
@@ -58,6 +60,11 @@ export default async function BlogPostPage({ params }: PageProps) {
     description: post.excerpt,
     url: `https://paintcolorhq.com/blog/${post.slug}`,
     keywords: post.tags.join(", "),
+    author: {
+      "@type": "Organization",
+      name: "Paint Color HQ",
+      url: "https://paintcolorhq.com",
+    },
     publisher: {
       "@type": "Organization",
       name: "Paint Color HQ",

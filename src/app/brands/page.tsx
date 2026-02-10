@@ -4,12 +4,19 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllBrands } from "@/lib/queries";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Paint Brands",
   description:
     "Browse paint colors from top brands including Sherwin-Williams, Benjamin Moore, Behr, PPG, and more.",
+  alternates: { canonical: "https://paintcolorhq.com/brands" },
+  openGraph: {
+    title: "Paint Brands",
+    description:
+      "Browse paint colors from top brands including Sherwin-Williams, Benjamin Moore, Behr, PPG, and more.",
+    url: "https://paintcolorhq.com/brands",
+  },
 };
 
 export default async function BrandsPage() {

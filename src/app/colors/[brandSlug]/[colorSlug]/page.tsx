@@ -9,7 +9,7 @@ import { CuratedPalettes } from "@/components/curated-palettes";
 import { SaveToProject } from "@/components/save-to-project";
 import { getColorBySlug, getCrossBrandMatches, findClosestColor } from "@/lib/queries";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 function hexToHsl(hex: string): [number, number, number] {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -124,9 +124,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const color = await getColorBySlug(brandSlug, colorSlug);
   if (!color) return { title: "Color Not Found" };
 
+  const url = `https://paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   return {
     title: `${color.name} by ${color.brand.name} | ${color.hex.toUpperCase()}`,
     description: `${color.name} (${color.color_number ?? color.hex.toUpperCase()}) by ${color.brand.name}. Hex ${color.hex.toUpperCase()}, RGB(${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b})${color.lrv ? `, LRV ${color.lrv.toFixed(1)}` : ""}. Find closest matches from other brands.`,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${color.name} by ${color.brand.name}`,
+      description: `${color.name} (${color.hex.toUpperCase()}) by ${color.brand.name}. Find closest matches from other brands.`,
+      url,
+    },
   };
 }
 
@@ -308,6 +315,7 @@ export default async function ColorPage({ params }: PageProps) {
               color: color.hex,
               description: `${color.name} paint color by ${color.brand.name}. Hex: ${color.hex.toUpperCase()}, RGB: ${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}`,
               sku: color.color_number ?? undefined,
+              url: `https://paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
             }),
           }}
         />

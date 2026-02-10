@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Blog | Paint Color HQ",
   description:
     "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips. Learn how to choose the perfect paint color for every room.",
+  alternates: { canonical: "https://paintcolorhq.com/blog" },
   openGraph: {
     title: "Blog | Paint Color HQ",
     description:
@@ -35,6 +36,11 @@ export default function BlogIndex() {
     description:
       "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips.",
     url: "https://paintcolorhq.com/blog",
+    publisher: {
+      "@type": "Organization",
+      name: "Paint Color HQ",
+      url: "https://paintcolorhq.com",
+    },
     blogPost: posts.map((post) => ({
       "@type": "BlogPosting",
       headline: post.title,

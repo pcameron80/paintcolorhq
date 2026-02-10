@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { getColorsByFamily, getAllColorFamilies, getAllBrands } from "@/lib/queries";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 const validFamilies = [
   "red", "orange", "yellow", "green", "blue", "purple", "pink",
@@ -26,9 +26,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { familySlug } = await params;
   const name = familySlug.replace(/-/g, " ");
 
+  const url = `https://paintcolorhq.com/colors/family/${familySlug}`;
   return {
     title: `${capitalize(name)} Paint Colors - All Brands`,
     description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Compare colors with hex codes and LRV values.`,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${capitalize(name)} Paint Colors`,
+      description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more.`,
+      url,
+    },
   };
 }
 

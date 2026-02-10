@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { getBrandBySlug, getColorsByBrand, getAllBrands } from "@/lib/queries";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ brandSlug: string }>;
@@ -18,9 +18,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) return { title: "Brand Not Found" };
 
+  const url = `https://paintcolorhq.com/brands/${brandSlug}`;
   return {
     title: `${brand.name} Paint Colors - Browse All ${brand.color_count.toLocaleString()} Colors`,
     description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with hex codes, RGB values, and cross-brand matches.`,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${brand.name} Paint Colors`,
+      description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with hex codes, RGB values, and cross-brand matches.`,
+      url,
+    },
   };
 }
 

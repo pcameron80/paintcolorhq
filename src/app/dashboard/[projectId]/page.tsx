@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { projectId } = await params;
   const supabase = await createSupabaseServerClient();
   const project = await getProjectById(supabase, projectId);
-  return { title: project?.name ?? "Project" };
+  return { title: project?.name ?? "Project", robots: { index: false, follow: false } };
 }
 
 export const dynamic = "force-dynamic";

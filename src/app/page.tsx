@@ -33,7 +33,7 @@ const colorFamilies = [
   { name: "Black", slug: "black", color: "#1F2937" },
 ];
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function Home() {
   return (
@@ -43,6 +43,7 @@ export default async function Home() {
       <HeroSearch />
 
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h1 className="sr-only">Paint Color HQ - Cross-Brand Paint Color Matching</h1>
         <div className="text-center">
           <InspirationSection />
 
@@ -85,6 +86,30 @@ export default async function Home() {
           </section>
         </div>
       </main>
+
+      {/* JSON-LD WebSite + SearchAction */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Paint Color HQ",
+            url: "https://paintcolorhq.com",
+            description:
+              "Explore 25,000+ paint colors, discover curated palettes, and find the perfect color scheme for your next project.",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate:
+                  "https://paintcolorhq.com/search?q={search_term_string}",
+              },
+              "query-input": "required name=search_term_string",
+            },
+          }),
+        }}
+      />
 
       <Footer />
     </div>

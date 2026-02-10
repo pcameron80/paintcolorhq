@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /dashboard
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /api/
 
 Sitemap: https://paintcolorhq.com/sitemap.xml

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAllColorSlugs, getAllBrands, getAllColorFamilies } from "@/lib/queries";
-import { getAllBlogSlugs } from "@/lib/blog-posts";
+import { getAllBlogSlugs, getPostBySlug } from "@/lib/blog-posts";
+import { inspirationPalettes } from "@/lib/palettes";
 
 const BASE_URL = "https://paintcolorhq.com";
 const URLS_PER_SITEMAP = 5000;
@@ -20,39 +21,51 @@ export async function GET(
     ]);
 
     const staticPages = [
-      { url: "/", priority: "1.0", changefreq: "weekly" },
-      { url: "/brands", priority: "0.8", changefreq: "weekly" },
-      { url: "/colors", priority: "0.8", changefreq: "weekly" },
-      { url: "/search", priority: "0.7", changefreq: "monthly" },
-      { url: "/compare", priority: "0.6", changefreq: "monthly" },
-      { url: "/blog", priority: "0.7", changefreq: "weekly" },
+      { url: "/", priority: "1.0", changefreq: "weekly", lastmod: "" },
+      { url: "/brands", priority: "0.8", changefreq: "weekly", lastmod: "" },
+      { url: "/colors", priority: "0.8", changefreq: "weekly", lastmod: "" },
+      { url: "/search", priority: "0.7", changefreq: "monthly", lastmod: "" },
+      { url: "/compare", priority: "0.6", changefreq: "monthly", lastmod: "" },
+      { url: "/blog", priority: "0.7", changefreq: "weekly", lastmod: "" },
+      { url: "/inspiration", priority: "0.7", changefreq: "weekly", lastmod: "" },
     ];
 
     const brandPages = brands.map((b) => ({
       url: `/brands/${b.slug}`,
       priority: "0.8",
       changefreq: "weekly",
+      lastmod: "",
     }));
 
     const familyPages = families.map((f) => ({
       url: `/colors/family/${f.slug}`,
       priority: "0.7",
       changefreq: "weekly",
+      lastmod: "",
     }));
 
     const colorPages = colorSlugs.map((c) => ({
       url: `/colors/${c.brandSlug}/${c.colorSlug}`,
       priority: "0.6",
       changefreq: "monthly",
+      lastmod: "",
     }));
 
     const blogPages = getAllBlogSlugs().map((s) => ({
       url: `/blog/${s}`,
       priority: "0.7",
       changefreq: "monthly",
+      lastmod: getPostBySlug(s)?.date ?? "",
     }));
 
-    const allUrls = [...staticPages, ...brandPages, ...familyPages, ...colorPages, ...blogPages];
+    const inspirationPages = inspirationPalettes.map((p) => ({
+      url: `/inspiration/${p.slug}`,
+      priority: "0.6",
+      changefreq: "weekly",
+      lastmod: "",
+    }));
+
+    const allUrls = [...staticPages, ...brandPages, ...familyPages, ...colorPages, ...blogPages, ...inspirationPages];
     const start = id * URLS_PER_SITEMAP;
     const pageUrls = allUrls.slice(start, start + URLS_PER_SITEMAP);
 
@@ -65,7 +78,7 @@ export async function GET(
 ${pageUrls
   .map(
     (entry) => `  <url>
-    <loc>${BASE_URL}${entry.url}</loc>
+    <loc>${BASE_URL}${entry.url}</loc>${entry.lastmod ? `\n    <lastmod>${entry.lastmod}</lastmod>` : ""}
     <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority}</priority>
   </url>`

@@ -4,12 +4,19 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllColorFamilies } from "@/lib/queries";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Browse Paint Colors by Color Family",
   description:
     "Browse paint colors organized by color family - whites, grays, blues, greens, and more from all major brands.",
+  alternates: { canonical: "https://paintcolorhq.com/colors" },
+  openGraph: {
+    title: "Browse Paint Colors by Color Family",
+    description:
+      "Browse paint colors organized by color family - whites, grays, blues, greens, and more from all major brands.",
+    url: "https://paintcolorhq.com/colors",
+  },
 };
 
 const familyColors: Record<string, string> = {

@@ -10,6 +10,7 @@ import { CreateProjectForm } from "@/components/create-project-form";
 
 export const metadata: Metadata = {
   title: "My Projects",
+  robots: { index: false, follow: false },
 };
 
 export const dynamic = "force-dynamic";
