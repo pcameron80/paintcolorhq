@@ -19,18 +19,36 @@ export interface BlogPost {
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
 
+function toSlug(str: string) {
+  return str.toLowerCase().replace(/['']/g, "").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+}
+
 function Swatch({ hex, name, brand }: { hex: string; name: string; brand?: string }) {
-  return (
-    <span className="my-1 inline-flex items-center gap-2">
+  const inner = (
+    <>
       <span
         className="inline-block h-5 w-5 rounded border border-gray-200"
         style={{ backgroundColor: hex }}
         aria-hidden="true"
       />
-      <span className="text-sm font-medium text-gray-800">{name}</span>
+      <span className="text-sm font-medium text-gray-800 group-hover:text-blue-600">{name}</span>
       {brand && <span className="text-sm text-gray-500">({brand})</span>}
-    </span>
+    </>
   );
+
+  if (brand) {
+    return (
+      <Link
+        href={`/colors/${toSlug(brand)}/${toSlug(name)}`}
+        target="_blank"
+        className="group my-1 inline-flex items-center gap-2 hover:underline"
+      >
+        {inner}
+      </Link>
+    );
+  }
+
+  return <span className="my-1 inline-flex items-center gap-2">{inner}</span>;
 }
 
 /* ------------------------------------------------------------------ */
