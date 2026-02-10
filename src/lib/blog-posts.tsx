@@ -19,10 +19,6 @@ export interface BlogPost {
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
 
-function toSlug(str: string) {
-  return str.toLowerCase().replace(/['']/g, "").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
-}
-
 function Swatch({ hex, name, brand }: { hex: string; name: string; brand?: string }) {
   const inner = (
     <>
@@ -39,7 +35,7 @@ function Swatch({ hex, name, brand }: { hex: string; name: string; brand?: strin
   if (brand) {
     return (
       <Link
-        href={`/colors/${toSlug(brand)}/${toSlug(name)}`}
+        href={`/search?q=${encodeURIComponent(name + " " + brand)}`}
         target="_blank"
         className="group my-1 inline-flex items-center gap-2 hover:underline"
       >
