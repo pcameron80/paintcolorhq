@@ -135,7 +135,7 @@ function generatePalettes(hex: string) {
   }));
 }
 
-export async function CuratedPalettes({ hex }: { hex: string }) {
+export async function CuratedPalettes({ hex, brandId }: { hex: string; brandId: string }) {
   const palettes = generatePalettes(hex);
 
   // Collect all unique hex values that need resolving (skip the viewed color)
@@ -146,12 +146,12 @@ export async function CuratedPalettes({ hex }: { hex: string }) {
     }
   }
 
-  // Resolve all companion colors + the viewed color in parallel
+  // Resolve all companion colors within the same brand, plus the viewed color
   const resolveMap = new Map<string, ColorWithBrand | null>();
   const entries = [...hexesToResolve];
   const [viewedMatch, ...companionMatches] = await Promise.all([
-    findClosestColor(hex),
-    ...entries.map((h) => findClosestColor(h)),
+    findClosestColor(hex, brandId),
+    ...entries.map((h) => findClosestColor(h, brandId)),
   ]);
   resolveMap.set(hex, viewedMatch);
   entries.forEach((h, i) => resolveMap.set(h, companionMatches[i]));

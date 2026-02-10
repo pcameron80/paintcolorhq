@@ -167,14 +167,14 @@ export async function getColorById(id: string): Promise<ColorWithBrand | null> {
   return data as unknown as ColorWithBrand;
 }
 
-export async function findClosestColor(hex: string): Promise<ColorWithBrand | null> {
+export async function findClosestColor(hex: string, brandId?: string): Promise<ColorWithBrand | null> {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
 
   // Narrow candidates by approximate RGB range, then pick closest
   const range = 30;
-  const { data, error } = await supabase
+  let query = supabase
     .from("colors")
     .select("*, brand:brand_id (*)")
     .gte("rgb_r", Math.max(0, r - range))
@@ -182,8 +182,9 @@ export async function findClosestColor(hex: string): Promise<ColorWithBrand | nu
     .gte("rgb_g", Math.max(0, g - range))
     .lte("rgb_g", Math.min(255, g + range))
     .gte("rgb_b", Math.max(0, b - range))
-    .lte("rgb_b", Math.min(255, b + range))
-    .limit(200);
+    .lte("rgb_b", Math.min(255, b + range));
+  if (brandId) query = query.eq("brand_id", brandId);
+  const { data, error } = await query.limit(200);
 
   if (error) throw error;
 
@@ -192,7 +193,7 @@ export async function findClosestColor(hex: string): Promise<ColorWithBrand | nu
   // If no candidates in tight range, widen
   if (candidates.length === 0) {
     const wide = 60;
-    const { data: wideData } = await supabase
+    let wideQuery = supabase
       .from("colors")
       .select("*, brand:brand_id (*)")
       .gte("rgb_r", Math.max(0, r - wide))
@@ -200,8 +201,9 @@ export async function findClosestColor(hex: string): Promise<ColorWithBrand | nu
       .gte("rgb_g", Math.max(0, g - wide))
       .lte("rgb_g", Math.min(255, g + wide))
       .gte("rgb_b", Math.max(0, b - wide))
-      .lte("rgb_b", Math.min(255, b + wide))
-      .limit(200);
+      .lte("rgb_b", Math.min(255, b + wide));
+    if (brandId) wideQuery = wideQuery.eq("brand_id", brandId);
+    const { data: wideData } = await wideQuery.limit(200);
     candidates = (wideData ?? []) as unknown as ColorWithBrand[];
   }
 

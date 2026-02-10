@@ -241,7 +241,7 @@ export default async function ColorPage({ params }: PageProps) {
         <ComplementaryColors hex={color.hex} harmonies={harmonies} />
 
         {/* Curated Room Palettes */}
-        <CuratedPalettes hex={color.hex} />
+        <CuratedPalettes hex={color.hex} brandId={color.brand_id} />
 
         {/* Cross-Brand Matches */}
         {Object.keys(matchesByBrand).length > 0 && (
