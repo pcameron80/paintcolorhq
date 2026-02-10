@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -22,7 +23,9 @@ export default function SearchPage() {
           Find colors by name, number, or hex code.
         </p>
 
-        <SearchResults />
+        <Suspense>
+          <SearchResults />
+        </Suspense>
       </main>
 
       <Footer />
