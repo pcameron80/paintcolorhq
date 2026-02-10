@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { HeroSearch } from "@/components/hero-search";
 
 const brands = [
   { name: "Sherwin-Williams", slug: "sherwin-williams" },
@@ -54,14 +55,7 @@ export default function Home() {
             Browse 25,000+ paint colors across top brands. Find the closest
             equivalent in Sherwin-Williams, Benjamin Moore, Behr, and more.
           </p>
-          <div className="mx-auto mt-10 w-full max-w-xl">
-            <Link
-              href="/search"
-              className="block w-full rounded-lg border border-white/30 bg-white/95 px-4 py-3 text-left text-lg text-gray-400 shadow-lg backdrop-blur hover:bg-white"
-            >
-              Search by color name, number, or hex code...
-            </Link>
-          </div>
+          <HeroSearch />
         </div>
       </section>
 
