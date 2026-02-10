@@ -2,7 +2,7 @@
 
 ## Overview
 
-Paint Color HQ is a cross-brand paint color matching website. Users can browse 22,807+ paint colors from 14 brands, find equivalent colors across brands using the CIEDE2000 Delta E algorithm, and compare colors side by side.
+Paint Color HQ is a cross-brand paint color matching website. Users can browse 25,000+ paint colors from 14 brands, find equivalent colors across brands using the CIEDE2000 Delta E algorithm, compare colors side by side, explore curated inspiration palettes, read blog content about paint colors, and save colors to projects.
 
 **Live site:** https://www.paintcolorhq.com
 
@@ -15,15 +15,27 @@ Paint Color HQ is a cross-brand paint color matching website. Users can browse 2
 | [Data Pipeline](./data-pipeline.md) | Color import, processing, and seeding scripts |
 | [Color Matching](./color-matching.md) | CIEDE2000 Delta E algorithm and cross-brand matching |
 | [Routes & Pages](./routes.md) | All page types, URLs, and their functionality |
-| [SEO](./seo.md) | Sitemaps, meta tags, structured data, robots.txt |
+| [SEO](./seo.md) | Sitemaps, meta tags, structured data, canonical URLs, robots.txt |
 | [Deployment](./deployment.md) | Vercel setup, environment variables, deploy workflow |
-| [Monetization](./monetization.md) | Google AdSense integration and ad placement strategy |
+| [Monetization](./monetization.md) | Google AdSense, Google Analytics integration |
 | [Development Guide](./development.md) | Local setup, running scripts, common tasks |
 
 ## Key Stats
 
-- **22,807 colors** across 14 paint brands
+- **25,000+ colors** across 14 paint brands
 - **1,482,455 cross-brand matches** pre-computed
 - **Top 5 matches per brand** for every color using CIEDE2000
 - **14 brands**: Behr, Benjamin Moore, Sherwin-Williams, PPG, Dunn-Edwards, Valspar, Farrow & Ball, and more
 - **15 color families**: Red, Orange, Yellow, Green, Blue, Purple, Pink, White, Off-White, Black, Gray, Brown, Beige, Tan, Neutral
+- **18 curated inspiration palettes** mapped to real paint colors
+- **10 SEO blog posts** covering color trends, brand comparisons, and guides
+
+## Features
+
+- **Cross-brand matching**: Find equivalent colors across brands using Delta E 2000
+- **Color detail pages**: Hex, RGB, LRV, color family, complementary/analogous/triadic harmonies
+- **Inspiration palettes**: 18 curated palettes (Modern Farmhouse, Coastal Retreat, etc.) with brand filtering
+- **Blog**: 10 articles on paint color topics with inline swatches and internal links
+- **Projects (auth)**: Save colors to named projects, organized by role (Walls/Trim/Accent/Pop)
+- **Search**: Find colors by name, number, or hex code
+- **Compare**: Side-by-side color comparison with Delta E score

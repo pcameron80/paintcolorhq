@@ -1,17 +1,25 @@
-# Monetization
+# Monetization & Analytics
+
+## Google Analytics
+
+Google Analytics 4 is installed via gtag.js in the root layout (`src/app/layout.tsx`).
+
+- **Measurement ID**: `G-056NR93JLK`
+- **Script**: Loaded via `<script>` tag in `<head>`
+- **Scope**: All pages (site-wide)
 
 ## Google AdSense
 
 ### Setup
 
-AdSense publisher ID: `ca-pub-1310166469057795`
+AdSense publisher ID: `ca-pub-6269963973031881`
 
 The AdSense script is loaded globally via a raw `<script>` tag in `src/app/layout.tsx`:
 
 ```html
 <script
   async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1310166469057795"
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6269963973031881"
   crossOrigin="anonymous"
 />
 ```
@@ -68,7 +76,7 @@ export function AdUnit({ slot, format = "auto" }: { slot: string; format?: strin
     <ins
       className="adsbygoogle"
       style={{ display: "block" }}
-      data-ad-client="ca-pub-1310166469057795"
+      data-ad-client="ca-pub-6269963973031881"
       data-ad-slot={slot}
       data-ad-format={format}
       data-full-width-responsive="true"

@@ -7,6 +7,7 @@
 | Framework | Next.js (App Router) | 16.1.6 |
 | Runtime | React | 19.2.3 |
 | Database | Supabase (PostgreSQL) | - |
+| Auth | Supabase Auth (Google OAuth) | - |
 | Styling | Tailwind CSS | 4 |
 | Language | TypeScript | 5 |
 | Hosting | Vercel | - |
@@ -18,14 +19,22 @@
 paintcolorhq/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
-│   │   ├── layout.tsx          # Root layout (metadata, fonts, AdSense)
+│   │   ├── layout.tsx          # Root layout (metadata, fonts, GA, AdSense)
 │   │   ├── page.tsx            # Homepage
 │   │   ├── globals.css         # Tailwind global styles
+│   │   ├── not-found.tsx       # Custom 404 page
 │   │   ├── api/
 │   │   │   ├── search/route.ts       # GET /api/search?q=...
-│   │   │   └── sitemap/
-│   │   │       ├── route.ts          # Sitemap index XML
-│   │   │       └── [id]/route.ts     # Sitemap pages XML
+│   │   │   ├── sitemap/
+│   │   │   │   ├── route.ts          # Sitemap index XML
+│   │   │   │   └── [id]/route.ts     # Sitemap pages XML
+│   │   │   └── projects/             # Project CRUD API routes
+│   │   │       └── [projectId]/
+│   │   │           ├── route.ts      # Project operations
+│   │   │           └── colors/route.ts # Add/remove project colors
+│   │   ├── auth/
+│   │   │   ├── login/page.tsx        # Login page
+│   │   │   └── callback/route.ts     # OAuth callback
 │   │   ├── brands/
 │   │   │   ├── page.tsx              # All brands listing
 │   │   │   └── [brandSlug]/page.tsx  # Brand detail
@@ -39,18 +48,44 @@ paintcolorhq/
 │   │   │   ├── page.tsx              # Search page
 │   │   │   └── search-results.tsx    # Client component
 │   │   ├── compare/page.tsx          # Color comparison
-│   │   └── match/
-│   │       └── [sourceBrandSlug]/
-│   │           └── [colorSlug]-to-[targetBrandSlug]/page.tsx
+│   │   ├── match/
+│   │   │   └── [sourceBrandSlug]/
+│   │   │       └── [colorSlug]-to-[targetBrandSlug]/page.tsx
+│   │   ├── blog/
+│   │   │   ├── page.tsx              # Blog index
+│   │   │   └── [slug]/page.tsx       # Blog post
+│   │   ├── inspiration/
+│   │   │   ├── page.tsx              # Inspiration gallery
+│   │   │   └── [slug]/page.tsx       # Palette detail
+│   │   └── dashboard/
+│   │       ├── page.tsx              # User's projects
+│   │       └── [projectId]/page.tsx  # Project detail
 │   ├── components/
-│   │   ├── header.tsx          # Navigation header
+│   │   ├── header.tsx          # Sticky nav with auth state
 │   │   ├── footer.tsx          # Footer with links
+│   │   ├── mobile-nav.tsx      # Mobile slide-out nav
 │   │   ├── color-card.tsx      # Color grid card
-│   │   └── color-swatch.tsx    # Color swatch display
+│   │   ├── color-swatch.tsx    # Color swatch display
+│   │   ├── hero-search.tsx     # Homepage hero section
+│   │   ├── inspiration-section.tsx # Homepage featured palettes
+│   │   ├── complementary-colors.tsx # Color harmonies
+│   │   ├── curated-palettes.tsx # Room palette suggestions
+│   │   ├── save-to-project.tsx # Save color to project
+│   │   ├── brand-picker.tsx    # Brand filter dropdown
+│   │   ├── user-menu.tsx       # Auth user dropdown
+│   │   ├── add-palette-to-project.tsx # Save palette to project
+│   │   ├── rename-project.tsx  # Inline project rename
+│   │   ├── create-project-form.tsx # New project form
+│   │   ├── delete-project-button.tsx # Delete project
+│   │   └── remove-color-button.tsx # Remove color from project
 │   └── lib/
 │       ├── types.ts            # TypeScript interfaces
-│       ├── supabase.ts         # Supabase client
-│       └── queries.ts          # Database query functions
+│       ├── supabase.ts         # Supabase client (public, ISR-compatible)
+│       ├── supabase-server.ts  # Supabase server client (auth, cookies)
+│       ├── queries.ts          # Database query functions
+│       ├── project-queries.ts  # Project-specific queries
+│       ├── blog-posts.tsx      # Blog post data + JSX content
+│       └── palettes.ts         # Curated inspiration palette data
 ├── scripts/                    # Data pipeline scripts
 │   ├── import-colors.ts        # Parse ColorNerd JSON
 │   ├── seed-database.ts        # Upload colors to Supabase
@@ -66,30 +101,56 @@ paintcolorhq/
 │   ├── colors-processed.json   # Processed color output
 │   └── cross-brand-matches.json # Computed matches (222MB)
 ├── public/
-│   └── robots.txt              # SEO robots file
-├── next.config.ts              # Sitemap rewrite
+│   ├── robots.txt              # SEO robots file
+│   ├── og-image.webp           # OpenGraph default image
+│   └── logo.png                # Site logo
+├── docs/                       # Project documentation
+├── next.config.ts              # Sitemap rewrite, middleware config
 ├── package.json
 └── .vercelignore               # Excludes data/ and scripts/ from deploy
 ```
 
 ## Design Decisions
 
-### Server-Side Rendering
-All data-driven pages use `dynamic = "force-dynamic"` for real-time Supabase queries. This avoids stale ISR cache issues and ensures fresh data.
+### ISR (Incremental Static Regeneration)
 
-### No-Cache Fetch Workaround
-Next.js intercepts `fetch()` and caches responses, which breaks Supabase pagination (returns duplicate results). The Supabase client is created with a custom fetch that sets `cache: 'no-store'`:
+Public pages use `revalidate = 3600` (1 hour) for ISR instead of `force-dynamic`. This allows Vercel to cache rendered HTML at the edge and only re-render when stale.
+
+The Supabase client's fetch is configured with `next: { revalidate: 3600 }` to match:
 
 ```typescript
 export const supabase = createClient(url, key, {
   global: {
-    fetch: (url, init) => fetch(url, { ...init, cache: "no-store" }),
+    fetch: (url, init) =>
+      fetch(url, { ...init, next: { revalidate: 3600 } }),
   },
 });
 ```
+
+**Note**: Pages that use the Header component (which calls `cookies()` for auth state) fall back to dynamic rendering on-demand but are still cached for the revalidation period. This is expected behavior.
+
+### Two Supabase Clients
+
+1. **`supabase.ts`** — Public client for read-only queries. Uses ISR-compatible fetch config. Used by `queries.ts` for all public data fetching.
+2. **`supabase-server.ts`** — Auth-aware server client using `cookies()`. Used for auth checks in the Header and for dashboard/project operations.
+
+### Blog as TSX Functions
+
+Blog posts are stored in `src/lib/blog-posts.tsx` as metadata + JSX content functions (not MDX or a CMS). This allows:
+- Inline color swatches as React components
+- Internal `<Link>` components to color/brand pages
+- Tailwind styling with full control
+- Static generation via `generateStaticParams()`
+- No external dependencies
 
 ### Route Structure
 Color family pages are at `/colors/family/[familySlug]` instead of `/colors/[familySlug]` to avoid a Next.js route conflict with `/colors/[brandSlug]/[colorSlug]`. Dynamic segments at the same path level must share parameter names.
 
 ### Data Pipeline Separation
 Color data processing (import, matching) runs locally via `tsx` scripts, not in the web application. The 222MB match data file is generated locally and seeded to Supabase. This keeps the deployment small and fast.
+
+### Inspiration Palettes
+Curated palettes are defined in `src/lib/palettes.ts` as arrays of hex values. At render time, each hex is resolved to the closest real paint color using `findClosestColor()`. Brand filtering lets users see matches from a specific brand.
+
+### Project Color Roles
+When saving colors to projects, users assign roles (Walls, Trim, Accent, Pop). Colors are grouped by role in the project view, providing a structured palette planning experience.

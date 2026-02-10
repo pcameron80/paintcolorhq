@@ -25,9 +25,11 @@ Vercel auto-deploys on every push to `main`:
 ```bash
 git add <files>
 git commit -m "message"
-git push
+git push origin main
 # Vercel automatically builds and deploys
 ```
+
+SSH key (ed25519) is configured for pushes to `git@github.com:pcameron80/paintcolorhq.git`.
 
 ### Manual Deploy via CLI
 
@@ -50,25 +52,32 @@ The `data/` directory contains a 222MB match data file that would exceed Vercel'
 
 ```
 Route (app)
-├ ○ /                           # Static
-├ ○ /_not-found                 # Static
-├ ƒ /api/search                 # Dynamic
-├ ƒ /api/sitemap                # Dynamic
-├ ƒ /api/sitemap/[id]           # Dynamic
-├ ƒ /brands                     # Dynamic
-├ ƒ /brands/[brandSlug]         # Dynamic
-├ ƒ /colors                     # Dynamic
-├ ƒ /colors/[brandSlug]/[colorSlug]  # Dynamic
-├ ƒ /colors/family/[familySlug]      # Dynamic
-├ ƒ /compare                    # Dynamic
-├ ƒ /match/[...]/[...]-to-[...]      # Dynamic
-└ ○ /search                     # Static
+├ ○ /                                    # ISR (revalidate: 3600)
+├ ○ /_not-found                          # Static
+├ ƒ /api/search                          # Dynamic
+├ ƒ /api/sitemap                         # Dynamic
+├ ƒ /api/sitemap/[id]                    # Dynamic
+├ ƒ /api/projects/[projectId]            # Dynamic
+├ ƒ /api/projects/[projectId]/colors     # Dynamic
+├ ○ /auth/login                          # Static
+├ ƒ /auth/callback                       # Dynamic
+├ ○ /blog                                # Static
+├ ○ /blog/[slug]                         # SSG (10 posts)
+├ ○ /brands                              # ISR (revalidate: 3600)
+├ ○ /brands/[brandSlug]                  # ISR (revalidate: 3600)
+├ ○ /colors                              # ISR (revalidate: 3600)
+├ ○ /colors/[brandSlug]/[colorSlug]      # ISR (revalidate: 3600)
+├ ○ /colors/family/[familySlug]          # ISR (revalidate: 3600)
+├ ○ /compare                             # Static
+├ ƒ /dashboard                           # Dynamic (auth required)
+├ ƒ /dashboard/[projectId]               # Dynamic (auth required)
+├ ○ /inspiration                         # ISR (revalidate: 3600)
+├ ○ /inspiration/[slug]                  # ISR (revalidate: 3600)
+├ ○ /match/[...]/[...]-to-[...]         # ISR (revalidate: 3600)
+└ ○ /search                              # Static
 
-○ = Static (prerendered)
-ƒ = Dynamic (server-rendered on demand)
+○ = Static / ISR    ƒ = Dynamic (server-rendered on demand)
 ```
-
-Build time: ~25 seconds on Vercel.
 
 ## GitHub Repository
 
@@ -81,3 +90,8 @@ Build time: ~25 seconds on Vercel.
 - **Project**: `dziefzmkcbpeorjawsgg.supabase.co`
 - **Region**: (set during project creation)
 - **RLS**: Enabled on all tables with public read access
+
+## Analytics & Monetization
+
+- **Google Analytics 4**: Measurement ID `G-056NR93JLK` (loaded in root layout)
+- **Google AdSense**: Publisher ID `ca-pub-6269963973031881` (loaded in root layout)
