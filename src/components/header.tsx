@@ -46,12 +46,12 @@ export async function Header() {
               avatarUrl={user.user_metadata?.avatar_url ?? null}
             />
           ) : (
-            <Link
+            <a
               href="/auth/login"
               className="rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
             >
               Sign in
-            </Link>
+            </a>
           )}
         </nav>
       </div>
