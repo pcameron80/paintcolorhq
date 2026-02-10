@@ -58,6 +58,22 @@ export async function createProject(
   return data;
 }
 
+export async function updateProject(
+  supabase: SupabaseClient,
+  projectId: string,
+  fields: { name?: string; description?: string | null }
+): Promise<Project> {
+  const { data, error } = await supabase
+    .from("projects")
+    .update(fields)
+    .eq("id", projectId)
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
 export async function deleteProject(
   supabase: SupabaseClient,
   projectId: string

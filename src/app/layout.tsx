@@ -18,6 +18,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Paint Color HQ",
+    title: "Paint Color HQ - Paint Color Inspiration & Palettes",
+    description:
+      "Explore 25,000+ paint colors, discover curated palettes, and find the perfect color scheme for your next project.",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 

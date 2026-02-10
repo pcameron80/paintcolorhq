@@ -7,6 +7,7 @@ import { ColorSwatch } from "@/components/color-swatch";
 import { createSupabaseServerClient } from "@/lib/supabase-server";
 import { getProjectById } from "@/lib/project-queries";
 import { RemoveColorButton } from "@/components/remove-color-button";
+import { RenameProject } from "@/components/rename-project";
 
 interface PageProps {
   params: Promise<{ projectId: string }>;
@@ -60,7 +61,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <span className="text-gray-900">{project.name}</span>
         </nav>
 
-        <h1 className="text-3xl font-bold text-gray-900">{project.name}</h1>
+        <RenameProject projectId={project.id} currentName={project.name} />
         {project.description && (
           <p className="mt-2 text-gray-600">{project.description}</p>
         )}

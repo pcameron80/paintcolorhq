@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { createSupabaseServerClient } from "@/lib/supabase-server";
 import { UserMenu } from "./user-menu";
+import { MobileNav } from "./mobile-nav";
 
 export async function Header() {
   const supabase = await createSupabaseServerClient();
@@ -21,6 +22,8 @@ export async function Header() {
             priority
           />
         </Link>
+
+        {/* Desktop nav */}
         <nav className="hidden items-center gap-6 sm:flex">
           <Link
             href="/brands"
@@ -60,6 +63,13 @@ export async function Header() {
             </a>
           )}
         </nav>
+
+        {/* Mobile nav */}
+        <MobileNav
+          isLoggedIn={!!user}
+          email={user?.email ?? null}
+          avatarUrl={user?.user_metadata?.avatar_url ?? null}
+        />
       </div>
     </header>
   );
