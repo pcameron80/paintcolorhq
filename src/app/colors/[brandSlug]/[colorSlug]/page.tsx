@@ -6,9 +6,113 @@ import { Footer } from "@/components/footer";
 import { ColorSwatch } from "@/components/color-swatch";
 import { ComplementaryColors } from "@/components/complementary-colors";
 import { CuratedPalettes } from "@/components/curated-palettes";
-import { getColorBySlug, getCrossBrandMatches } from "@/lib/queries";
+import { getColorBySlug, getCrossBrandMatches, findClosestColor } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
+
+function hexToHsl(hex: string): [number, number, number] {
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const l = (max + min) / 2;
+  if (max === min) return [0, 0, l * 100];
+  const d = max - min;
+  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  let h = 0;
+  if (max === r) h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
+  else if (max === g) h = ((b - r) / d + 2) / 6;
+  else h = ((r - g) / d + 4) / 6;
+  return [h * 360, s * 100, l * 100];
+}
+
+function hslToHex(h: number, s: number, l: number): string {
+  h = ((h % 360) + 360) % 360;
+  s = s / 100;
+  l = l / 100;
+  const a = s * Math.min(l, 1 - l);
+  const f = (n: number) => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, "0");
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+async function resolveHarmonies(hex: string) {
+  const [h, s, l] = hexToHsl(hex);
+
+  const rawHarmonies = [
+    {
+      name: "Complementary",
+      description: "Opposite on the color wheel — creates vibrant contrast",
+      colors: [
+        { hex, label: "Base" },
+        { hex: hslToHex(h + 180, s, l), label: "Complement" },
+      ],
+    },
+    {
+      name: "Analogous",
+      description: "Adjacent colors — creates a harmonious, cohesive feel",
+      colors: [
+        { hex: hslToHex(h - 30, s, l), label: "Adjacent" },
+        { hex, label: "Base" },
+        { hex: hslToHex(h + 30, s, l), label: "Adjacent" },
+      ],
+    },
+    {
+      name: "Triadic",
+      description: "Evenly spaced — balanced and colorful",
+      colors: [
+        { hex, label: "Base" },
+        { hex: hslToHex(h + 120, s, l), label: "Triad" },
+        { hex: hslToHex(h + 240, s, l), label: "Triad" },
+      ],
+    },
+    {
+      name: "Split Complementary",
+      description: "Softer alternative to complementary — less tension, still dynamic",
+      colors: [
+        { hex, label: "Base" },
+        { hex: hslToHex(h + 150, s, l), label: "Split" },
+        { hex: hslToHex(h + 210, s, l), label: "Split" },
+      ],
+    },
+  ];
+
+  // Collect all unique hex values to resolve
+  const allHexes = new Set<string>();
+  for (const harmony of rawHarmonies) {
+    for (const c of harmony.colors) {
+      allHexes.add(c.hex);
+    }
+  }
+
+  // Resolve all at once
+  const resolved = new Map<string, Awaited<ReturnType<typeof findClosestColor>>>();
+  await Promise.all(
+    [...allHexes].map(async (h) => {
+      resolved.set(h, await findClosestColor(h));
+    })
+  );
+
+  return rawHarmonies.map((harmony) => ({
+    name: harmony.name,
+    description: harmony.description,
+    colors: harmony.colors.map((c) => {
+      const match = resolved.get(c.hex);
+      return {
+        label: c.label,
+        paletteHex: c.hex,
+        matchHex: match?.hex ?? c.hex,
+        matchName: match?.name ?? null,
+        matchBrandSlug: match?.brand.slug ?? null,
+        matchColorSlug: match?.slug ?? null,
+      };
+    }),
+  }));
+}
 
 interface PageProps {
   params: Promise<{ brandSlug: string; colorSlug: string }>;
@@ -31,6 +135,9 @@ export default async function ColorPage({ params }: PageProps) {
   if (!color) notFound();
 
   const matches = await getCrossBrandMatches(color.id);
+
+  // Resolve color harmonies to real paint colors
+  const harmonies = await resolveHarmonies(color.hex);
 
   // Group matches by brand
   const matchesByBrand = matches.reduce(
@@ -123,7 +230,7 @@ export default async function ColorPage({ params }: PageProps) {
         </div>
 
         {/* Complementary Colors */}
-        <ComplementaryColors hex={color.hex} searchBaseUrl="/search" />
+        <ComplementaryColors hex={color.hex} harmonies={harmonies} />
 
         {/* Curated Room Palettes */}
         <CuratedPalettes hex={color.hex} />

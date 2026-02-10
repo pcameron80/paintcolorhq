@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { findClosestColor } from "@/lib/queries";
+import type { ColorWithBrand } from "@/lib/types";
 
 interface Palette {
   name: string;
@@ -146,39 +148,69 @@ function findRelevantPalettes(hex: string): Palette[] {
   return scored.slice(0, 3).map((s) => s.palette);
 }
 
-export function CuratedPalettes({ hex }: { hex: string }) {
+interface ResolvedColor {
+  role: string;
+  paletteHex: string;
+  match: ColorWithBrand | null;
+}
+
+interface ResolvedPalette {
+  name: string;
+  description: string;
+  colors: ResolvedColor[];
+}
+
+async function resolvePalette(palette: Palette): Promise<ResolvedPalette> {
+  const colors = await Promise.all(
+    palette.colors.map(async (c) => ({
+      role: c.role,
+      paletteHex: c.hex,
+      match: await findClosestColor(c.hex),
+    }))
+  );
+  return { name: palette.name, description: palette.description, colors };
+}
+
+export async function CuratedPalettes({ hex }: { hex: string }) {
   const relevant = findRelevantPalettes(hex);
+  const resolved = await Promise.all(relevant.map(resolvePalette));
 
   return (
     <section className="mt-16">
       <h2 className="text-2xl font-bold text-gray-900">Room Palettes</h2>
       <p className="mt-2 text-sm text-gray-500">
-        Curated color schemes that work with this color — click any swatch to
-        find matching paints.
+        Curated color schemes that work with this color — each swatch links to
+        the closest matching paint.
       </p>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {relevant.map((palette) => (
+        {resolved.map((palette) => (
           <div
             key={palette.name}
             className="rounded-xl border border-gray-200 p-5"
           >
             <div className="flex gap-2">
-              {palette.colors.map((color, i) => (
-                <Link
-                  key={i}
-                  href={`/search?q=${encodeURIComponent(color.hex)}`}
-                  className="group flex-1"
-                >
-                  <div
-                    className="aspect-square w-full rounded-lg border border-gray-200 transition-shadow group-hover:shadow-md"
-                    style={{ backgroundColor: color.hex }}
-                  />
-                  <p className="mt-1.5 text-center text-[10px] font-medium text-gray-400">
-                    {color.role}
-                  </p>
-                </Link>
-              ))}
+              {palette.colors.map((color, i) => {
+                const href = color.match
+                  ? `/colors/${color.match.brand.slug}/${color.match.slug}`
+                  : `/search?q=${encodeURIComponent(color.paletteHex)}`;
+                return (
+                  <Link key={i} href={href} className="group flex-1">
+                    <div
+                      className="aspect-square w-full rounded-lg border border-gray-200 transition-shadow group-hover:shadow-md"
+                      style={{ backgroundColor: color.match?.hex ?? color.paletteHex }}
+                    />
+                    <p className="mt-1.5 text-center text-[10px] font-medium text-gray-400">
+                      {color.role}
+                    </p>
+                    {color.match && (
+                      <p className="truncate text-center text-[10px] text-gray-500">
+                        {color.match.name}
+                      </p>
+                    )}
+                  </Link>
+                );
+              })}
             </div>
             <h3 className="mt-4 font-semibold text-gray-900">
               {palette.name}

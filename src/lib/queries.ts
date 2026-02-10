@@ -167,6 +167,62 @@ export async function getColorById(id: string): Promise<ColorWithBrand | null> {
   return data as unknown as ColorWithBrand;
 }
 
+export async function findClosestColor(hex: string): Promise<ColorWithBrand | null> {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+
+  // Narrow candidates by approximate RGB range, then pick closest
+  const range = 30;
+  const { data, error } = await supabase
+    .from("colors")
+    .select("*, brand:brand_id (*)")
+    .gte("rgb_r", Math.max(0, r - range))
+    .lte("rgb_r", Math.min(255, r + range))
+    .gte("rgb_g", Math.max(0, g - range))
+    .lte("rgb_g", Math.min(255, g + range))
+    .gte("rgb_b", Math.max(0, b - range))
+    .lte("rgb_b", Math.min(255, b + range))
+    .limit(200);
+
+  if (error) throw error;
+
+  let candidates = (data ?? []) as unknown as ColorWithBrand[];
+
+  // If no candidates in tight range, widen
+  if (candidates.length === 0) {
+    const wide = 60;
+    const { data: wideData } = await supabase
+      .from("colors")
+      .select("*, brand:brand_id (*)")
+      .gte("rgb_r", Math.max(0, r - wide))
+      .lte("rgb_r", Math.min(255, r + wide))
+      .gte("rgb_g", Math.max(0, g - wide))
+      .lte("rgb_g", Math.min(255, g + wide))
+      .gte("rgb_b", Math.max(0, b - wide))
+      .lte("rgb_b", Math.min(255, b + wide))
+      .limit(200);
+    candidates = (wideData ?? []) as unknown as ColorWithBrand[];
+  }
+
+  if (candidates.length === 0) return null;
+
+  let best = candidates[0];
+  let bestDist = Infinity;
+  for (const c of candidates) {
+    const dr = c.rgb_r - r;
+    const dg = c.rgb_g - g;
+    const db = c.rgb_b - b;
+    const dist = dr * dr + dg * dg + db * db;
+    if (dist < bestDist) {
+      bestDist = dist;
+      best = c;
+    }
+  }
+
+  return best;
+}
+
 // Paginated fetch for sitemaps - handles Supabase 1000-row limit
 export async function getAllColorSlugs(): Promise<
   { brandSlug: string; colorSlug: string }[]
