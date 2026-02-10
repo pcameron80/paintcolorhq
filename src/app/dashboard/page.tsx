@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { createSupabaseServerClient } from "@/lib/supabase-server";
 import { getUserProjects } from "@/lib/project-queries";
 import { DeleteProjectButton } from "@/components/delete-project-button";
+import { CreateProjectForm } from "@/components/create-project-form";
 
 export const metadata: Metadata = {
   title: "My Projects",
@@ -30,11 +31,14 @@ export default async function DashboardPage() {
       <Header />
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">My Projects</h1>
-          <p className="mt-2 text-gray-600">
-            Your saved color palettes for rooms and projects.
-          </p>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">My Projects</h1>
+            <p className="mt-2 text-gray-600">
+              Your saved color palettes for rooms and projects.
+            </p>
+          </div>
+          <CreateProjectForm />
         </div>
 
         {projects.length === 0 ? (

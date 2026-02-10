@@ -98,6 +98,26 @@ export async function removeColorFromProject(
   if (error) throw error;
 }
 
+export async function addColorsToProjectBatch(
+  supabase: SupabaseClient,
+  projectId: string,
+  colors: { colorId: string; role: string }[]
+): Promise<ProjectColor[]> {
+  const rows = colors.map((c) => ({
+    project_id: projectId,
+    color_id: c.colorId,
+    role: c.role,
+  }));
+
+  const { data, error } = await supabase
+    .from("project_colors")
+    .upsert(rows, { onConflict: "project_id,color_id", ignoreDuplicates: true })
+    .select();
+
+  if (error) throw error;
+  return data ?? [];
+}
+
 export async function getProjectsForColor(
   supabase: SupabaseClient,
   colorId: string

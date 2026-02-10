@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { findClosestColor } from "@/lib/queries";
+import { AddPaletteToProject } from "@/components/add-palette-to-project";
 import type { ColorWithBrand } from "@/lib/types";
 
 type PaletteRole = "Walls" | "Trim" | "Accent" | "Pop";
@@ -135,7 +136,15 @@ function generatePalettes(hex: string) {
   }));
 }
 
-export async function CuratedPalettes({ hex, brandId }: { hex: string; brandId: string }) {
+export async function CuratedPalettes({
+  hex,
+  brandId,
+  currentPath,
+}: {
+  hex: string;
+  brandId: string;
+  currentPath: string;
+}) {
   const palettes = generatePalettes(hex);
 
   // Collect all unique hex values that need resolving (skip the viewed color)
@@ -230,6 +239,17 @@ export async function CuratedPalettes({ hex, brandId }: { hex: string; brandId: 
               {palette.name}
             </h3>
             <p className="mt-1 text-xs text-gray-500">{palette.description}</p>
+            <div className="mt-3">
+              <AddPaletteToProject
+                colors={palette.colors
+                  .filter((c) => c.match)
+                  .map((c) => ({
+                    colorId: c.match!.id,
+                    role: c.role.toLowerCase(),
+                  }))}
+                currentPath={currentPath}
+              />
+            </div>
           </div>
         ))}
       </div>

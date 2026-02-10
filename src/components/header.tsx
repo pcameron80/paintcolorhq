@@ -35,6 +35,12 @@ export async function Header() {
             Colors
           </Link>
           <Link
+            href="/inspiration"
+            className="text-sm font-medium text-gray-600 hover:text-gray-900"
+          >
+            Inspiration
+          </Link>
+          <Link
             href="/search"
             className="text-sm font-medium text-gray-600 hover:text-gray-900"
           >
