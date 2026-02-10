@@ -53,3 +53,29 @@ export interface ColorFamily {
   description: string | null;
   display_order: number | null;
 }
+
+export interface Project {
+  id: string;
+  user_id: string;
+  name: string;
+  description: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProjectColor {
+  id: string;
+  project_id: string;
+  color_id: string;
+  role: string;
+  notes: string | null;
+  created_at: string;
+}
+
+export interface ProjectColorWithDetails extends ProjectColor {
+  color: ColorWithBrand;
+}
+
+export interface ProjectWithColors extends Project {
+  project_colors: ProjectColorWithDetails[];
+}

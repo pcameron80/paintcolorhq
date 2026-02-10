@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { ColorSwatch } from "@/components/color-swatch";
 import { ComplementaryColors } from "@/components/complementary-colors";
 import { CuratedPalettes } from "@/components/curated-palettes";
+import { SaveToProject } from "@/components/save-to-project";
 import { getColorBySlug, getCrossBrandMatches, findClosestColor } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
@@ -184,6 +185,13 @@ export default async function ColorPage({ params }: PageProps) {
             {color.color_number && (
               <p className="mt-1 text-sm text-gray-500">{color.color_number}</p>
             )}
+
+            <div className="mt-4">
+              <SaveToProject
+                colorId={color.id}
+                currentPath={`/colors/${brandSlug}/${colorSlug}`}
+              />
+            </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div className="rounded-lg bg-gray-50 p-4">

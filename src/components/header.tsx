@@ -1,7 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
+import { createSupabaseServerClient } from "@/lib/supabase-server";
+import { UserMenu } from "./user-menu";
 
-export function Header() {
+export async function Header() {
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -33,6 +40,19 @@ export function Header() {
           >
             Search
           </Link>
+          {user ? (
+            <UserMenu
+              email={user.email ?? ""}
+              avatarUrl={user.user_metadata?.avatar_url ?? null}
+            />
+          ) : (
+            <Link
+              href="/auth/login"
+              className="rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+            >
+              Sign in
+            </Link>
+          )}
         </nav>
       </div>
     </header>

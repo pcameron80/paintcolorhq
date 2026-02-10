@@ -13,6 +13,7 @@
     "seed-matches": "tsx scripts/seed-matches.ts"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.95.3",
     "next": "16.1.6",
     "react": "19.2.3",
