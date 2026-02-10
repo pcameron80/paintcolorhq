@@ -5,7 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BrandPicker } from "@/components/brand-picker";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
-import { getPaletteBySlug, determineRole } from "@/lib/palettes";
+import { getPaletteBySlug, assignPaletteRoles } from "@/lib/palettes";
 import { getAllBrands, findClosestColor, getBrandBySlug } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
 
@@ -65,11 +65,12 @@ export default async function InspirationDetailPage({
     );
   }
 
-  // Build display data
+  // Build display data — assign roles ensuring all 4 are represented
+  const roles = assignPaletteRoles(palette.colors);
   const swatches = palette.colors.map((hex, i) => ({
     paletteHex: hex,
     match: resolved[i],
-    role: determineRole(hex),
+    role: roles[i],
   }));
 
   // Determine which brand was auto-selected (most frequent brand in results)

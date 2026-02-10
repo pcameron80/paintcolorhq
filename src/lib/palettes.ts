@@ -146,3 +146,57 @@ export function determineRole(hex: string): PaletteRole {
   if (s > 50 && l >= 30 && l <= 70) return "Pop";
   return "Accent";
 }
+
+/**
+ * Assign roles to a palette of 5 colors ensuring all 4 roles
+ * (Trim, Pop, Walls, Accent) are represented. The 5th color
+ * gets whichever role fits it best as a duplicate.
+ */
+export function assignPaletteRoles(hexes: string[]): PaletteRole[] {
+  const hsls = hexes.map(hexToHsl);
+  const roles: (PaletteRole | null)[] = new Array(hexes.length).fill(null);
+  const used = new Set<number>();
+
+  function pickBest(scorer: (i: number) => number): number {
+    let bestIdx = -1;
+    let bestScore = -Infinity;
+    for (let i = 0; i < hexes.length; i++) {
+      if (used.has(i)) continue;
+      const score = scorer(i);
+      if (score > bestScore) {
+        bestScore = score;
+        bestIdx = i;
+      }
+    }
+    return bestIdx;
+  }
+
+  // Trim: lightest color
+  const trimIdx = pickBest((i) => hsls[i][2]);
+  roles[trimIdx] = "Trim";
+  used.add(trimIdx);
+
+  // Pop: most saturated of remaining
+  const popIdx = pickBest((i) => hsls[i][1]);
+  roles[popIdx] = "Pop";
+  used.add(popIdx);
+
+  // Walls: lightest of remaining
+  const wallsIdx = pickBest((i) => hsls[i][2]);
+  roles[wallsIdx] = "Walls";
+  used.add(wallsIdx);
+
+  // Accent: darkest of remaining
+  const accentIdx = pickBest((i) => 100 - hsls[i][2]);
+  roles[accentIdx] = "Accent";
+  used.add(accentIdx);
+
+  // 5th color: best individual fit
+  for (let i = 0; i < hexes.length; i++) {
+    if (!roles[i]) {
+      roles[i] = determineRole(hexes[i]);
+    }
+  }
+
+  return roles as PaletteRole[];
+}
