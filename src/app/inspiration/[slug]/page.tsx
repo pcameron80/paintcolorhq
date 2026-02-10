@@ -69,7 +69,7 @@ export default async function InspirationDetailPage({
   const swatches = palette.colors.map((hex, i) => ({
     paletteHex: hex,
     match: resolved[i],
-    role: determineRole(resolved[i]?.hex ?? hex),
+    role: determineRole(hex),
   }));
 
   // Determine which brand was auto-selected (most frequent brand in results)
