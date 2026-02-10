@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorSwatch } from "@/components/color-swatch";
+import { ComplementaryColors } from "@/components/complementary-colors";
 import { getColorBySlug, getCrossBrandMatches } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
@@ -169,6 +170,9 @@ export default async function ColorPage({ params }: PageProps) {
             </div>
           </section>
         )}
+
+        {/* Complementary Colors */}
+        <ComplementaryColors hex={color.hex} searchBaseUrl="/search" />
 
         {/* JSON-LD Structured Data */}
         <script
