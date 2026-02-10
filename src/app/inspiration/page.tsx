@@ -6,6 +6,8 @@ import { inspirationPalettes } from "@/lib/palettes";
 import { findClosestColor } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Color Inspiration | Paint Color HQ",
   description:
