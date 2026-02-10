@@ -23,6 +23,8 @@ export async function GET() {
       "/compare",
       "/blog",
       "/inspiration",
+      "/privacy",
+      "/terms",
     ];
 
     const brandPages = brands.map((b) => `/brands/${b.slug}`);
