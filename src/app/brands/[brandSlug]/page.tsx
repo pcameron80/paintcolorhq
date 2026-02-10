@@ -10,7 +10,7 @@ export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ brandSlug: string }>;
-  searchParams: Promise<{ family?: string; page?: string }>;
+  searchParams: Promise<{ family?: string; undertone?: string; page?: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -33,12 +33,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BrandPage({ params, searchParams }: PageProps) {
   const { brandSlug } = await params;
-  const { family } = await searchParams;
+  const { family, undertone: undertoneFilter } = await searchParams;
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) notFound();
 
   const colors = await getColorsByBrand(brand.id, {
     family: family ?? undefined,
+    undertone: undertoneFilter ?? undefined,
     limit: 200,
   });
 
@@ -70,7 +71,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         {/* Color family filter */}
         <div className="mt-6 flex flex-wrap gap-2">
           <Link
-            href={`/brands/${brandSlug}`}
+            href={`/brands/${brandSlug}${undertoneFilter ? `?undertone=${undertoneFilter}` : ""}`}
             className={`rounded-full px-3 py-1 text-sm ${
               !family
                 ? "bg-blue-100 text-blue-700 font-medium"
@@ -79,19 +80,56 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
           >
             All
           </Link>
-          {families.map((f) => (
-            <Link
-              key={f}
-              href={`/brands/${brandSlug}?family=${f}`}
-              className={`rounded-full px-3 py-1 text-sm capitalize ${
-                family === f
-                  ? "bg-blue-100 text-blue-700 font-medium"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              {f}
-            </Link>
-          ))}
+          {families.map((f) => {
+            const params = new URLSearchParams();
+            params.set("family", f);
+            if (undertoneFilter) params.set("undertone", undertoneFilter);
+            return (
+              <Link
+                key={f}
+                href={`/brands/${brandSlug}?${params.toString()}`}
+                className={`rounded-full px-3 py-1 text-sm capitalize ${
+                  family === f
+                    ? "bg-blue-100 text-blue-700 font-medium"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {f}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Undertone filter */}
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Link
+            href={`/brands/${brandSlug}${family ? `?family=${family}` : ""}`}
+            className={`rounded-full px-3 py-1 text-sm ${
+              !undertoneFilter
+                ? "bg-purple-100 text-purple-700 font-medium"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+            }`}
+          >
+            All Undertones
+          </Link>
+          {(["warm", "cool", "neutral"] as const).map((tone) => {
+            const params = new URLSearchParams();
+            if (family) params.set("family", family);
+            params.set("undertone", tone);
+            return (
+              <Link
+                key={tone}
+                href={`/brands/${brandSlug}?${params.toString()}`}
+                className={`rounded-full px-3 py-1 text-sm capitalize ${
+                  undertoneFilter === tone
+                    ? "bg-purple-100 text-purple-700 font-medium"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {tone}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Color grid */}

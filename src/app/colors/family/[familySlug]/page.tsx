@@ -15,7 +15,7 @@ const validFamilies = [
 
 interface PageProps {
   params: Promise<{ familySlug: string }>;
-  searchParams: Promise<{ brand?: string }>;
+  searchParams: Promise<{ brand?: string; undertone?: string }>;
 }
 
 export async function generateStaticParams() {
@@ -45,13 +45,14 @@ function capitalize(s: string): string {
 
 export default async function ColorFamilyPage({ params, searchParams }: PageProps) {
   const { familySlug } = await params;
-  const { brand: brandFilter } = await searchParams;
+  const { brand: brandFilter, undertone: undertoneFilter } = await searchParams;
 
   if (!validFamilies.includes(familySlug)) notFound();
 
   const [colors, brands] = await Promise.all([
     getColorsByFamily(familySlug, {
       brandSlug: brandFilter ?? undefined,
+      undertone: undertoneFilter ?? undefined,
       limit: 200,
     }),
     getAllBrands(),
@@ -83,7 +84,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
         {/* Brand filter */}
         <div className="mt-6 flex flex-wrap gap-2">
           <Link
-            href={`/colors/family/${familySlug}`}
+            href={`/colors/family/${familySlug}${undertoneFilter ? `?undertone=${undertoneFilter}` : ""}`}
             className={`rounded-full px-3 py-1 text-sm ${
               !brandFilter
                 ? "bg-blue-100 text-blue-700 font-medium"
@@ -92,19 +93,56 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
           >
             All Brands
           </Link>
-          {brands.map((b) => (
-            <Link
-              key={b.slug}
-              href={`/colors/family/${familySlug}?brand=${b.slug}`}
-              className={`rounded-full px-3 py-1 text-sm ${
-                brandFilter === b.slug
-                  ? "bg-blue-100 text-blue-700 font-medium"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              {b.name}
-            </Link>
-          ))}
+          {brands.map((b) => {
+            const params = new URLSearchParams();
+            params.set("brand", b.slug);
+            if (undertoneFilter) params.set("undertone", undertoneFilter);
+            return (
+              <Link
+                key={b.slug}
+                href={`/colors/family/${familySlug}?${params.toString()}`}
+                className={`rounded-full px-3 py-1 text-sm ${
+                  brandFilter === b.slug
+                    ? "bg-blue-100 text-blue-700 font-medium"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {b.name}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Undertone filter */}
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Link
+            href={`/colors/family/${familySlug}${brandFilter ? `?brand=${brandFilter}` : ""}`}
+            className={`rounded-full px-3 py-1 text-sm ${
+              !undertoneFilter
+                ? "bg-purple-100 text-purple-700 font-medium"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+            }`}
+          >
+            All Undertones
+          </Link>
+          {(["warm", "cool", "neutral"] as const).map((tone) => {
+            const params = new URLSearchParams();
+            if (brandFilter) params.set("brand", brandFilter);
+            params.set("undertone", tone);
+            return (
+              <Link
+                key={tone}
+                href={`/colors/family/${familySlug}?${params.toString()}`}
+                className={`rounded-full px-3 py-1 text-sm capitalize ${
+                  undertoneFilter === tone
+                    ? "bg-purple-100 text-purple-700 font-medium"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {tone}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

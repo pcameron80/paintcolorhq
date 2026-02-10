@@ -9,6 +9,7 @@ import { CuratedPalettes } from "@/components/curated-palettes";
 import { SaveToProject } from "@/components/save-to-project";
 import { getColorBySlug, getCrossBrandMatches, findClosestColor } from "@/lib/queries";
 import { generateColorDescription, generateMetaDescription } from "@/lib/color-description";
+import { getUndertoneDotClass } from "@/lib/undertone-utils";
 
 export const revalidate = 3600;
 
@@ -240,6 +241,19 @@ export default async function ColorPage({ params }: PageProps) {
                   >
                     {color.color_family}
                   </Link>
+                </div>
+              )}
+              {color.undertone && (
+                <div className="rounded-lg bg-gray-50 p-4">
+                  <p className="text-xs font-medium uppercase text-gray-500">
+                    Undertone
+                  </p>
+                  <p className="mt-1 flex items-center gap-2 text-lg font-semibold text-gray-900">
+                    <span
+                      className={`inline-block h-3 w-3 rounded-full ${getUndertoneDotClass(color.undertone)}`}
+                    />
+                    {color.undertone}
+                  </p>
                 </div>
               )}
             </div>

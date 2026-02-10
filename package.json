@@ -10,7 +10,8 @@
     "import-colors": "tsx scripts/import-colors.ts",
     "seed-db": "tsx scripts/seed-database.ts",
     "compute-matches": "tsx scripts/compute-matches.ts",
-    "seed-matches": "tsx scripts/seed-matches.ts"
+    "seed-matches": "tsx scripts/seed-matches.ts",
+    "populate-undertones": "tsx scripts/populate-undertones.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",

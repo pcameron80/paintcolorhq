@@ -1,5 +1,6 @@
 import { supabase } from "./supabase";
 import type { Brand, Color, ColorWithBrand, CrossBrandMatchWithColor, ColorFamily } from "./types";
+import { expandUndertoneFilter, UNDERTONE_CATEGORIES } from "./undertone-utils";
 
 export async function getAllBrands(): Promise<Brand[]> {
   const { data, error } = await supabase
@@ -24,7 +25,7 @@ export async function getBrandBySlug(slug: string): Promise<Brand | null> {
 
 export async function getColorsByBrand(
   brandId: string,
-  options?: { family?: string; limit?: number; offset?: number }
+  options?: { family?: string; undertone?: string; limit?: number; offset?: number }
 ): Promise<Color[]> {
   let query = supabase
     .from("colors")
@@ -34,6 +35,14 @@ export async function getColorsByBrand(
 
   if (options?.family) {
     query = query.eq("color_family", options.family);
+  }
+  if (options?.undertone) {
+    const labels = expandUndertoneFilter(options.undertone);
+    if (labels.length === 1) {
+      query = query.eq("undertone", labels[0]);
+    } else if (labels.length > 1) {
+      query = query.in("undertone", labels);
+    }
   }
   if (options?.limit) {
     query = query.limit(options.limit);
@@ -109,6 +118,46 @@ export async function searchColors(
     }
   }
 
+  // Check for undertone keywords: "warm gray", "cool white", "neutral beige"
+  const lower = query.toLowerCase().trim();
+  const undertoneKeywords: Record<string, string[]> = {
+    warm: UNDERTONE_CATEGORIES.warm,
+    cool: UNDERTONE_CATEGORIES.cool,
+    neutral: UNDERTONE_CATEGORIES.neutral,
+  };
+
+  for (const [keyword, labels] of Object.entries(undertoneKeywords)) {
+    if (lower.startsWith(keyword + " ")) {
+      const colorPart = lower.slice(keyword.length + 1).trim();
+      if (colorPart) {
+        let q = supabase
+          .from("colors")
+          .select("*, brand:brand_id (*)")
+          .in("undertone", labels);
+
+        // Try matching as color_family first
+        q = q.eq("color_family", colorPart);
+
+        const { data, error } = await q.limit(limit);
+        if (!error && data && data.length > 0) {
+          return data as unknown as ColorWithBrand[];
+        }
+
+        // Fall back to name search with undertone filter
+        const { data: nameData, error: nameError } = await supabase
+          .from("colors")
+          .select("*, brand:brand_id (*)")
+          .in("undertone", labels)
+          .ilike("name", `%${colorPart}%`)
+          .limit(limit);
+
+        if (!nameError && nameData && nameData.length > 0) {
+          return nameData as unknown as ColorWithBrand[];
+        }
+      }
+    }
+  }
+
   // Full-text search on name
   const { data, error } = await supabase
     .from("colors")
@@ -122,7 +171,7 @@ export async function searchColors(
 
 export async function getColorsByFamily(
   familySlug: string,
-  options?: { brandSlug?: string; limit?: number; offset?: number }
+  options?: { brandSlug?: string; undertone?: string; limit?: number; offset?: number }
 ): Promise<ColorWithBrand[]> {
   let query = supabase
     .from("colors")
@@ -131,10 +180,17 @@ export async function getColorsByFamily(
     .order("lrv", { ascending: false });
 
   if (options?.brandSlug) {
-    // Need to get brand ID first
     const brand = await getBrandBySlug(options.brandSlug);
     if (brand) {
       query = query.eq("brand_id", brand.id);
+    }
+  }
+  if (options?.undertone) {
+    const labels = expandUndertoneFilter(options.undertone);
+    if (labels.length === 1) {
+      query = query.eq("undertone", labels[0]);
+    } else if (labels.length > 1) {
+      query = query.in("undertone", labels);
     }
   }
   if (options?.limit) {

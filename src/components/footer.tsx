@@ -64,6 +64,22 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/tools/paint-calculator"
+                  className="text-sm text-gray-500 hover:text-gray-900"
+                >
+                  Paint Calculator
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tools/color-identifier"
+                  className="text-sm text-gray-500 hover:text-gray-900"
+                >
+                  Photo Color Identifier
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/blog"
                   className="text-sm text-gray-500 hover:text-gray-900"
                 >
