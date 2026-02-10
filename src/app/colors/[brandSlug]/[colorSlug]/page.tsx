@@ -313,20 +313,28 @@ export default async function ColorPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Product",
+              "@type": "WebPage",
               name: `${color.name} Paint Color`,
-              brand: {
-                "@type": "Brand",
-                name: color.brand.name,
-              },
-              color: color.hex,
               description,
-              sku: color.color_number ?? undefined,
               url: `https://paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
-              offers: {
-                "@type": "Offer",
-                availability: "https://schema.org/InStock",
-                ...(color.brand.website_url ? { url: color.brand.website_url } : {}),
+              breadcrumb: {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://paintcolorhq.com" },
+                  { "@type": "ListItem", position: 2, name: color.brand.name, item: `https://paintcolorhq.com/brands/${brandSlug}` },
+                  { "@type": "ListItem", position: 3, name: color.name },
+                ],
+              },
+              about: {
+                "@type": "Thing",
+                name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
+                description,
+                brand: {
+                  "@type": "Brand",
+                  name: color.brand.name,
+                },
+                identifier: color.color_number ?? undefined,
+                color: color.hex,
               },
             }),
           }}
