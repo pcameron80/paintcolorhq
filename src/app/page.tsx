@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { HeroSearch } from "@/components/hero-search";
+import { InspirationSection } from "@/components/inspiration-section";
 
 const brands = [
   { name: "Sherwin-Williams", slug: "sherwin-williams" },
@@ -32,7 +33,9 @@ const colorFamilies = [
   { name: "Black", slug: "black", color: "#1F2937" },
 ];
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -41,7 +44,9 @@ export default function Home() {
 
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center">
-          <section>
+          <InspirationSection />
+
+          <section className="mt-16">
             <h2 className="text-lg font-semibold text-gray-900">
               Browse by Brand
             </h2>
