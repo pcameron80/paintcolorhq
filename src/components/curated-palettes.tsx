@@ -195,7 +195,7 @@ export async function CuratedPalettes({ hex }: { hex: string }) {
                   ? `/colors/${color.match.brand.slug}/${color.match.slug}`
                   : `/search?q=${encodeURIComponent(color.paletteHex)}`;
                 return (
-                  <Link key={i} href={href} className="group flex-1">
+                  <Link key={i} href={href} className="group min-w-0 flex-1">
                     <div
                       className="aspect-square w-full rounded-lg border border-gray-200 transition-shadow group-hover:shadow-md"
                       style={{ backgroundColor: color.match?.hex ?? color.paletteHex }}
