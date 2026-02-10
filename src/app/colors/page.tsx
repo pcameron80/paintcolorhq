@@ -53,7 +53,7 @@ export default async function ColorsPage() {
             return (
               <Link
                 key={family.id}
-                href={`/colors/${family.slug}`}
+                href={`/colors/family/${family.slug}`}
                 className="group overflow-hidden rounded-xl border border-gray-200 transition-shadow hover:shadow-lg"
               >
                 <div

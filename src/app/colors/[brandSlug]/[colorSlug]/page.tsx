@@ -109,7 +109,7 @@ export default async function ColorPage({ params }: PageProps) {
                     Color Family
                   </p>
                   <Link
-                    href={`/colors/${color.color_family}`}
+                    href={`/colors/family/${color.color_family}`}
                     className="mt-1 block text-lg font-semibold capitalize text-blue-600 hover:underline"
                   >
                     {color.color_family}

@@ -22,7 +22,7 @@ export async function GET() {
     ];
 
     const brandPages = brands.map((b) => `/brands/${b.slug}`);
-    const familyPages = families.map((f) => `/colors/${f.slug}`);
+    const familyPages = families.map((f) => `/colors/family/${f.slug}`);
     const colorPages = colorSlugs.map(
       (c) => `/colors/${c.brandSlug}/${c.colorSlug}`
     );

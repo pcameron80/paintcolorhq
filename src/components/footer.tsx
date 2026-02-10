@@ -34,7 +34,7 @@ export function Footer() {
               {["White", "Gray", "Blue", "Green", "Beige"].map((family) => (
                 <li key={family}>
                   <Link
-                    href={`/colors/${family.toLowerCase()}`}
+                    href={`/colors/family/${family.toLowerCase()}`}
                     className="text-sm text-gray-500 hover:text-gray-900"
                   >
                     {family} Paint Colors

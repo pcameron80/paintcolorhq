@@ -33,7 +33,7 @@ export async function GET(
     }));
 
     const familyPages = families.map((f) => ({
-      url: `/colors/${f.slug}`,
+      url: `/colors/family/${f.slug}`,
       priority: "0.7",
       changefreq: "weekly",
     }));

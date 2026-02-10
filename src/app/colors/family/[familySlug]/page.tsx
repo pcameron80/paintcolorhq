@@ -76,7 +76,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
         {/* Brand filter */}
         <div className="mt-6 flex flex-wrap gap-2">
           <Link
-            href={`/colors/${familySlug}`}
+            href={`/colors/family/${familySlug}`}
             className={`rounded-full px-3 py-1 text-sm ${
               !brandFilter
                 ? "bg-blue-100 text-blue-700 font-medium"
@@ -88,7 +88,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
           {brands.map((b) => (
             <Link
               key={b.slug}
-              href={`/colors/${familySlug}?brand=${b.slug}`}
+              href={`/colors/family/${familySlug}?brand=${b.slug}`}
               className={`rounded-full px-3 py-1 text-sm ${
                 brandFilter === b.slug
                   ? "bg-blue-100 text-blue-700 font-medium"

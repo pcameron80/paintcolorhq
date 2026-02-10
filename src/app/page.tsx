@@ -80,7 +80,7 @@ export default function Home() {
               {colorFamilies.map((family) => (
                 <Link
                   key={family.slug}
-                  href={`/colors/${family.slug}`}
+                  href={`/colors/family/${family.slug}`}
                   className="flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-blue-300"
                 >
                   <span
