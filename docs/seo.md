@@ -73,7 +73,7 @@ Each page type has dynamic metadata via `generateMetadata()`:
 | Page | Title Pattern | Description |
 |------|--------------|-------------|
 | Homepage | "Paint Color HQ - Paint Color Inspiration & Palettes" | Explore 25,000+ colors... |
-| Color detail | "[Name] by [Brand] \| #[Hex]" | [Name] ([Number]) by [Brand]. Hex, RGB, LRV... |
+| Color detail | "[Name] by [Brand] \| #[Hex]" | Algorithmic description (see below) |
 | Brand | "[Brand] Paint Colors - Browse All [Count] Colors" | Browse all [count] [brand] paint colors... |
 | Color family | "[Family] Paint Colors - All Brands" | Browse [family] paint colors from Sherwin-Williams... |
 | Blog index | "Blog \| Paint Color HQ" | Expert guides on paint colors... |
@@ -100,6 +100,32 @@ Blog posts additionally set:
 
 Set via root layout: `twitter:card` = "summary_large_image"
 
+## Algorithmic Color Descriptions
+
+Each of the 25,000+ color pages gets a unique 2-4 sentence description generated at render time by `src/lib/color-description.ts`. Since pages use ISR, the description is computed once and cached for an hour. No database column or batch script is needed.
+
+### How It Works
+
+- **Deterministic hash**: `hashHex(hex)` produces a 32-bit integer (djb2). A `pick(items, hash, salt)` helper selects from template arrays — same hex always produces the same description (ISR-safe).
+- **Derived properties**: Temperature (warm/cool/neutral), lightness (very light → dark), saturation (muted → vibrant), and undertone (golden/pink/green/blue/violet/balanced) are computed from LAB, HSL, and LRV data.
+- **Achromatic handling**: When saturation < 8% (whites, grays, blacks), hue language is skipped and separate templates emphasize warmth/coolness, LRV, and versatility.
+
+### Sentence Generators
+
+1. **Character statement** (always) — What the color looks/feels like. 15 template frames with synonym pools.
+2. **Room/usage suggestion** (always) — Contextual recommendation branching on lightness + saturation + temperature. Includes LRV data.
+3. **Cross-brand match** (when matches with delta_e < 5 exist) — Mentions 1-2 closest matches. Inherently unique per color.
+4. **Optional extra detail** (~40% of colors) — Extreme LRV commentary, coordination tips.
+
+### Exports
+
+- `generateColorDescription(color, matches)` — 2-4 sentences for the page body (rendered as a `<p>` between the color hero and ComplementaryColors)
+- `generateMetaDescription(color)` — Single sentence, max 160 chars, for the `<meta name="description">` tag
+
+### Example Output
+
+> Agreeable Gray is a light, warm gray with subtle violet-brown undertones that give it a soft, approachable quality. With an LRV of 60, it reflects a comfortable amount of light, making it a versatile whole-home neutral for living rooms, bedrooms, and hallways. The closest match from Benjamin Moore is Revere Pewter, with only a slight difference visible side by side.
+
 ## Structured Data (JSON-LD)
 
 ### Homepage - WebSite + SearchAction
@@ -122,17 +148,32 @@ Set via root layout: `twitter:card` = "summary_large_image"
 
 Enables the Google sitelinks search box.
 
-### Color Detail - Product
+### Color Detail - WebPage + BreadcrumbList
+
+Previously used `Product` schema, but Google requires `offers` (with pricing) or `review`/`aggregateRating` for Product — none of which apply to a reference site. Switched to `WebPage` with `BreadcrumbList` (which Google renders in search results) and an `about` block carrying the color data.
 
 ```json
 {
-  "@type": "Product",
+  "@type": "WebPage",
   "name": "[Color Name] Paint Color",
-  "brand": { "@type": "Brand", "name": "[Brand Name]" },
-  "color": "#hex",
-  "description": "...",
-  "sku": "[color_number]",
-  "url": "https://paintcolorhq.com/colors/[brand]/[color]"
+  "description": "[algorithmic description]",
+  "url": "https://paintcolorhq.com/colors/[brand]/[color]",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://paintcolorhq.com" },
+      { "@type": "ListItem", "position": 2, "name": "[Brand Name]", "item": "https://paintcolorhq.com/brands/[brand]" },
+      { "@type": "ListItem", "position": 3, "name": "[Color Name]" }
+    ]
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "[Color Name] ([Color Number])",
+    "description": "[algorithmic description]",
+    "brand": { "@type": "Brand", "name": "[Brand Name]" },
+    "identifier": "[color_number]",
+    "color": "#hex"
+  }
 }
 ```
 

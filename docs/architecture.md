@@ -85,7 +85,8 @@ paintcolorhq/
 │       ├── queries.ts          # Database query functions
 │       ├── project-queries.ts  # Project-specific queries
 │       ├── blog-posts.tsx      # Blog post data + JSX content
-│       └── palettes.ts         # Curated inspiration palette data
+│       ├── palettes.ts         # Curated inspiration palette data
+│       └── color-description.ts # Algorithmic SEO descriptions for color pages
 ├── scripts/                    # Data pipeline scripts
 │   ├── import-colors.ts        # Parse ColorNerd JSON
 │   ├── seed-database.ts        # Upload colors to Supabase
