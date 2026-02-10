@@ -323,6 +323,11 @@ export default async function ColorPage({ params }: PageProps) {
               description,
               sku: color.color_number ?? undefined,
               url: `https://paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
+              offers: {
+                "@type": "Offer",
+                availability: "https://schema.org/InStock",
+                ...(color.brand.website_url ? { url: color.brand.website_url } : {}),
+              },
             }),
           }}
         />
