@@ -44,6 +44,55 @@ export default async function Home() {
 
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <h1 className="sr-only">Paint Color HQ - Cross-Brand Paint Color Matching</h1>
+
+        {/* What is Paint Color HQ */}
+        <section className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+            Cross-Brand Paint Color Matching
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-600">
+            Love a Sherwin-Williams color but need it in Benjamin Moore? Paint Color HQ
+            makes it easy. We use the{" "}
+            <span className="font-medium text-gray-800">CIEDE2000 color science algorithm</span>{" "}
+            to find the closest perceptual match across 14 major paint brands, so you
+            can compare colors with confidence.
+          </p>
+        </section>
+
+        {/* How it works */}
+        <section className="mt-12 grid gap-8 sm:grid-cols-3">
+          <div className="text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-xl font-bold text-blue-600">
+              1
+            </div>
+            <h3 className="mt-4 font-semibold text-gray-900">Search Any Color</h3>
+            <p className="mt-2 text-sm leading-relaxed text-gray-500">
+              Find a color by name, number, or hex code from over 25,000 paint colors
+              across Sherwin-Williams, Benjamin Moore, Behr, PPG, and more.
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-xl font-bold text-blue-600">
+              2
+            </div>
+            <h3 className="mt-4 font-semibold text-gray-900">See Matches Across Brands</h3>
+            <p className="mt-2 text-sm leading-relaxed text-gray-500">
+              Every color page shows the closest equivalents from each other brand,
+              ranked by Delta E score so you know exactly how close the match is.
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-xl font-bold text-blue-600">
+              3
+            </div>
+            <h3 className="mt-4 font-semibold text-gray-900">Build Your Palette</h3>
+            <p className="mt-2 text-sm leading-relaxed text-gray-500">
+              Explore curated inspiration palettes, compare colors side by side, and
+              save your favorites to a project for easy reference when you&apos;re ready to buy.
+            </p>
+          </div>
+        </section>
+
         <div className="text-center">
           <InspirationSection />
 
@@ -85,6 +134,79 @@ export default async function Home() {
             </div>
           </section>
         </div>
+
+        {/* About section */}
+        <section className="mt-20 border-t border-gray-100 pt-16">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+              Why Use Paint Color HQ?
+            </h2>
+
+            <div className="mt-8 space-y-8">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Find Equivalent Colors Across Any Brand
+                </h3>
+                <p className="mt-2 leading-relaxed text-gray-600">
+                  Paint brands don&apos;t make it easy to cross-reference their colors.
+                  If your designer specifies a Sherwin-Williams color but your local store
+                  only carries Benjamin Moore, you&apos;re stuck guessing. Paint Color HQ
+                  solves this by computing the closest perceptual match from every other brand
+                  in our database. Each match includes a Delta E score that tells you exactly
+                  how close the match is, from imperceptible to noticeably different.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  25,000+ Colors from 14 Brands
+                </h3>
+                <p className="mt-2 leading-relaxed text-gray-600">
+                  Our database covers colors from Sherwin-Williams, Benjamin Moore, Behr,
+                  PPG, Dunn-Edwards, Valspar, Farrow &amp; Ball, Kilz, Vista Paint,
+                  Hirshfield&apos;s, Colorhouse, Dutch Boy, RAL, and MPC. Every color
+                  page shows the hex code, RGB values, LRV (Light Reflectance Value),
+                  color family, complementary color harmonies, and the top matches from
+                  every other brand.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Powered by Real Color Science
+                </h3>
+                <p className="mt-2 leading-relaxed text-gray-600">
+                  We don&apos;t just compare hex codes. Paint Color HQ converts every
+                  color to the CIELAB color space and uses the{" "}
+                  <strong>CIEDE2000 (Delta E 2000)</strong> formula, the same industry-standard
+                  algorithm used by paint manufacturers, textile companies, and printing
+                  professionals. This means our matches reflect how humans actually perceive
+                  color differences, not just mathematical RGB distance.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Curated Inspiration &amp; Project Planning
+                </h3>
+                <p className="mt-2 leading-relaxed text-gray-600">
+                  Not sure where to start? Browse our curated inspiration palettes for
+                  styles like Modern Farmhouse, Coastal Retreat, and Scandinavian Minimal.
+                  Each palette maps to real paint colors you can actually buy. Create an
+                  account to save colors to projects, organize them by room role (walls,
+                  trim, accent, pop), and keep your selections in one place for when
+                  you&apos;re ready to visit the store.
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-8 text-sm text-gray-400">
+              Color data is approximate and based on digital values. Pigments, finishes,
+              and lighting conditions vary between brands. Always verify with physical
+              paint samples before purchasing.
+            </p>
+          </div>
+        </section>
       </main>
 
       {/* JSON-LD WebSite + SearchAction */}
