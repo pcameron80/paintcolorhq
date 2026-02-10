@@ -2,114 +2,21 @@ import Link from "next/link";
 import { findClosestColor } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
 
-interface Palette {
-  name: string;
-  description: string;
-  colors: { hex: string; role: string }[];
+type PaletteRole = "Walls" | "Trim" | "Accent" | "Pop";
+const ROLES: PaletteRole[] = ["Walls", "Trim", "Accent", "Pop"];
+
+interface ResolvedColor {
+  role: string;
+  paletteHex: string;
+  match: ColorWithBrand | null;
+  isViewedColor: boolean;
 }
 
-const palettes: Palette[] = [
-  {
-    name: "Modern Farmhouse",
-    description: "Warm neutrals with earthy contrast — timeless and inviting",
-    colors: [
-      { hex: "#d6d0c4", role: "Walls" },
-      { hex: "#f0ece2", role: "Trim" },
-      { hex: "#4a4a48", role: "Accent" },
-      { hex: "#7a8c6e", role: "Pop" },
-    ],
-  },
-  {
-    name: "Coastal Retreat",
-    description: "Soft blues and sandy tones — calm and airy",
-    colors: [
-      { hex: "#d5e1df", role: "Walls" },
-      { hex: "#f5f0e8", role: "Trim" },
-      { hex: "#2b4c6f", role: "Accent" },
-      { hex: "#c4a87c", role: "Pop" },
-    ],
-  },
-  {
-    name: "Moody Library",
-    description: "Rich, saturated tones — dramatic and sophisticated",
-    colors: [
-      { hex: "#2f4538", role: "Walls" },
-      { hex: "#f2ead3", role: "Trim" },
-      { hex: "#6b2737", role: "Accent" },
-      { hex: "#b8963e", role: "Pop" },
-    ],
-  },
-  {
-    name: "Scandinavian Minimal",
-    description: "Clean whites with muted pastels — bright and serene",
-    colors: [
-      { hex: "#f4f1ec", role: "Walls" },
-      { hex: "#ffffff", role: "Trim" },
-      { hex: "#b0b8b4", role: "Accent" },
-      { hex: "#d4c1a8", role: "Pop" },
-    ],
-  },
-  {
-    name: "Bold & Eclectic",
-    description: "Unexpected pairings — playful and expressive",
-    colors: [
-      { hex: "#e8c547", role: "Walls" },
-      { hex: "#f7f3ea", role: "Trim" },
-      { hex: "#2d5a7b", role: "Accent" },
-      { hex: "#c1533c", role: "Pop" },
-    ],
-  },
-  {
-    name: "Earthy Organic",
-    description: "Grounded natural tones — warm and restorative",
-    colors: [
-      { hex: "#c4a882", role: "Walls" },
-      { hex: "#efe8dd", role: "Trim" },
-      { hex: "#6b4e37", role: "Accent" },
-      { hex: "#8a9a5b", role: "Pop" },
-    ],
-  },
-  {
-    name: "Soft Romantic",
-    description: "Blush and dusty tones — elegant and gentle",
-    colors: [
-      { hex: "#e8d5d0", role: "Walls" },
-      { hex: "#faf6f3", role: "Trim" },
-      { hex: "#9b7e8a", role: "Accent" },
-      { hex: "#c4956a", role: "Pop" },
-    ],
-  },
-  {
-    name: "Urban Industrial",
-    description: "Grays and charcoals with warmth — edgy and modern",
-    colors: [
-      { hex: "#6d6e70", role: "Walls" },
-      { hex: "#e8e4de", role: "Trim" },
-      { hex: "#3c3c3c", role: "Accent" },
-      { hex: "#b87333", role: "Pop" },
-    ],
-  },
-  {
-    name: "Mediterranean Sun",
-    description: "Warm terracotta and ocean blues — vibrant and welcoming",
-    colors: [
-      { hex: "#f5e6d3", role: "Walls" },
-      { hex: "#fefcf7", role: "Trim" },
-      { hex: "#c75c2a", role: "Accent" },
-      { hex: "#2e6b8a", role: "Pop" },
-    ],
-  },
-  {
-    name: "Classic Traditional",
-    description: "Navy and cream with heritage feel — refined and stately",
-    colors: [
-      { hex: "#2b3a52", role: "Walls" },
-      { hex: "#f2ece0", role: "Trim" },
-      { hex: "#8b2232", role: "Accent" },
-      { hex: "#c5a55a", role: "Pop" },
-    ],
-  },
-];
+interface ResolvedPalette {
+  name: string;
+  description: string;
+  colors: ResolvedColor[];
+}
 
 function hexToHsl(hex: string): [number, number, number] {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -128,59 +35,144 @@ function hexToHsl(hex: string): [number, number, number] {
   return [h * 360, s * 100, l * 100];
 }
 
-function colorDistance(hex1: string, hex2: string): number {
-  const [h1, s1, l1] = hexToHsl(hex1);
-  const [h2, s2, l2] = hexToHsl(hex2);
-  const dh = Math.min(Math.abs(h1 - h2), 360 - Math.abs(h1 - h2)) / 180;
-  const ds = (s1 - s2) / 100;
-  const dl = (l1 - l2) / 100;
-  return Math.sqrt(dh * dh + ds * ds + dl * dl);
+function hslToHex(h: number, s: number, l: number): string {
+  h = ((h % 360) + 360) % 360;
+  s = s / 100;
+  l = l / 100;
+  const a = s * Math.min(l, 1 - l);
+  const f = (n: number) => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, "0");
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
 }
 
-function findRelevantPalettes(hex: string): Palette[] {
-  const scored = palettes.map((palette) => {
-    const minDist = Math.min(
-      ...palette.colors.map((c) => colorDistance(hex, c.hex))
-    );
-    return { palette, score: minDist };
-  });
-  scored.sort((a, b) => a.score - b.score);
-  return scored.slice(0, 3).map((s) => s.palette);
+function clamp(v: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, v));
 }
 
-interface ResolvedColor {
-  role: string;
-  paletteHex: string;
-  match: ColorWithBrand | null;
+function determineRole(hex: string): PaletteRole {
+  const [, s, l] = hexToHsl(hex);
+  if (l > 92) return "Trim";
+  if (l > 65) return "Walls";
+  if (s > 50 && l >= 30 && l <= 70) return "Pop";
+  return "Accent";
 }
 
-interface ResolvedPalette {
+interface PaletteTemplate {
   name: string;
   description: string;
-  colors: ResolvedColor[];
+  generate: (h: number, s: number, l: number, role: PaletteRole) => string;
 }
 
-async function resolvePalette(palette: Palette): Promise<ResolvedPalette> {
-  const colors = await Promise.all(
-    palette.colors.map(async (c) => ({
-      role: c.role,
-      paletteHex: c.hex,
-      match: await findClosestColor(c.hex),
-    }))
-  );
-  return { name: palette.name, description: palette.description, colors };
+const templates: PaletteTemplate[] = [
+  {
+    name: "Warm & Inviting",
+    description: "Warm tones with cozy appeal — welcoming and comfortable",
+    generate: (h, s, _l, role) => {
+      const warmHue = h + (((30 - h + 540) % 360) - 180) * 0.4;
+      switch (role) {
+        case "Walls":
+          return hslToHex(warmHue, clamp(s * 0.3, 8, 20), 83);
+        case "Trim":
+          return hslToHex(warmHue, clamp(s * 0.1, 3, 10), 96);
+        case "Accent":
+          return hslToHex(warmHue + 15, clamp(s * 0.5, 15, 35), 37);
+        case "Pop":
+          return hslToHex(warmHue - 10, clamp(s * 0.8 + 20, 40, 65), 52);
+      }
+    },
+  },
+  {
+    name: "Cool & Calm",
+    description: "Cool hues with soft contrast — serene and restful",
+    generate: (h, s, _l, role) => {
+      const coolHue = h + (((210 - h + 540) % 360) - 180) * 0.4;
+      switch (role) {
+        case "Walls":
+          return hslToHex(coolHue, clamp(s * 0.25, 8, 18), 85);
+        case "Trim":
+          return hslToHex(coolHue, clamp(s * 0.08, 2, 8), 97);
+        case "Accent":
+          return hslToHex(coolHue + 20, clamp(s * 0.5, 15, 30), 40);
+        case "Pop":
+          return hslToHex(coolHue + 150, clamp(s * 0.6 + 15, 35, 55), 55);
+      }
+    },
+  },
+  {
+    name: "Bold Contrast",
+    description: "Complementary hues with punch — dynamic and striking",
+    generate: (h, s, _l, role) => {
+      const compHue = h + 180;
+      switch (role) {
+        case "Walls":
+          return hslToHex(h, clamp(s * 0.2, 5, 15), 86);
+        case "Trim":
+          return hslToHex(h, clamp(s * 0.05, 2, 6), 97);
+        case "Accent":
+          return hslToHex(compHue - 30, clamp(s * 0.7, 25, 50), 36);
+        case "Pop":
+          return hslToHex(compHue, clamp(s * 0.9 + 20, 50, 75), 50);
+      }
+    },
+  },
+];
+
+function generatePalettes(hex: string) {
+  const [h, s, l] = hexToHsl(hex);
+  const viewedRole = determineRole(hex);
+
+  return templates.map((t) => ({
+    name: t.name,
+    description: t.description,
+    colors: ROLES.map((role) =>
+      role === viewedRole
+        ? { hex, role, isViewedColor: true }
+        : { hex: t.generate(h, s, l, role), role, isViewedColor: false }
+    ),
+  }));
 }
 
 export async function CuratedPalettes({ hex }: { hex: string }) {
-  const relevant = findRelevantPalettes(hex);
-  const resolved = await Promise.all(relevant.map(resolvePalette));
+  const palettes = generatePalettes(hex);
+
+  // Collect all unique hex values that need resolving (skip the viewed color)
+  const hexesToResolve = new Set<string>();
+  for (const p of palettes) {
+    for (const c of p.colors) {
+      if (!c.isViewedColor) hexesToResolve.add(c.hex);
+    }
+  }
+
+  // Resolve all companion colors + the viewed color in parallel
+  const resolveMap = new Map<string, ColorWithBrand | null>();
+  const entries = [...hexesToResolve];
+  const [viewedMatch, ...companionMatches] = await Promise.all([
+    findClosestColor(hex),
+    ...entries.map((h) => findClosestColor(h)),
+  ]);
+  resolveMap.set(hex, viewedMatch);
+  entries.forEach((h, i) => resolveMap.set(h, companionMatches[i]));
+
+  const resolved: ResolvedPalette[] = palettes.map((p) => ({
+    name: p.name,
+    description: p.description,
+    colors: p.colors.map((c) => ({
+      role: c.role,
+      paletteHex: c.hex,
+      match: resolveMap.get(c.hex) ?? null,
+      isViewedColor: c.isViewedColor,
+    })),
+  }));
 
   return (
     <section className="mt-16">
       <h2 className="text-2xl font-bold text-gray-900">Room Palettes</h2>
       <p className="mt-2 text-sm text-gray-500">
-        Curated color schemes that work with this color — each swatch links to
-        the closest matching paint.
+        Color schemes built around this color — each swatch links to the
+        closest matching paint.
       </p>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -191,6 +183,25 @@ export async function CuratedPalettes({ hex }: { hex: string }) {
           >
             <div className="flex gap-2">
               {palette.colors.map((color, i) => {
+                if (color.isViewedColor) {
+                  return (
+                    <div key={i} className="min-w-0 flex-1">
+                      <div
+                        className="aspect-square w-full rounded-lg border-2 border-gray-900 ring-2 ring-gray-900/10"
+                        style={{
+                          backgroundColor:
+                            color.match?.hex ?? color.paletteHex,
+                        }}
+                      />
+                      <p className="mt-1.5 text-center text-[10px] font-bold text-gray-900">
+                        {color.role}
+                      </p>
+                      <p className="truncate text-center text-[10px] font-medium text-gray-700">
+                        This Color
+                      </p>
+                    </div>
+                  );
+                }
                 const href = color.match
                   ? `/colors/${color.match.brand.slug}/${color.match.slug}`
                   : `/search?q=${encodeURIComponent(color.paletteHex)}`;
@@ -198,7 +209,10 @@ export async function CuratedPalettes({ hex }: { hex: string }) {
                   <Link key={i} href={href} className="group min-w-0 flex-1">
                     <div
                       className="aspect-square w-full rounded-lg border border-gray-200 transition-shadow group-hover:shadow-md"
-                      style={{ backgroundColor: color.match?.hex ?? color.paletteHex }}
+                      style={{
+                        backgroundColor:
+                          color.match?.hex ?? color.paletteHex,
+                      }}
                     />
                     <p className="mt-1.5 text-center text-[10px] font-medium text-gray-400">
                       {color.role}
