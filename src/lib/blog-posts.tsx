@@ -20,31 +20,17 @@ export interface BlogPost {
 /* ------------------------------------------------------------------ */
 
 function Swatch({ hex, name, brand }: { hex: string; name: string; brand?: string }) {
-  const inner = (
-    <>
+  return (
+    <span className="my-1 inline-flex items-center gap-2">
       <span
         className="inline-block h-5 w-5 rounded border border-gray-200"
         style={{ backgroundColor: hex }}
         aria-hidden="true"
       />
-      <span className="text-sm font-medium text-gray-800 group-hover:text-blue-600">{name}</span>
+      <span className="text-sm font-medium text-gray-800">{name}</span>
       {brand && <span className="text-sm text-gray-500">({brand})</span>}
-    </>
+    </span>
   );
-
-  if (brand) {
-    return (
-      <Link
-        href={`/search?q=${encodeURIComponent(name + " " + brand)}`}
-        target="_blank"
-        className="group my-1 inline-flex items-center gap-2 hover:underline"
-      >
-        {inner}
-      </Link>
-    );
-  }
-
-  return <span className="my-1 inline-flex items-center gap-2">{inner}</span>;
 }
 
 /* ------------------------------------------------------------------ */
