@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     title: "Paint Color HQ - Paint Color Inspiration & Palettes",
     description:
       "Explore 25,000+ paint colors, discover curated palettes, and find the perfect color scheme for your next project.",
+    images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
