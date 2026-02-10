@@ -9,11 +9,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Paint Color HQ - Cross-Brand Paint Color Matching",
+    default: "Paint Color HQ - Paint Color Inspiration & Palettes",
     template: "%s | Paint Color HQ",
   },
   description:
-    "Find equivalent paint colors across brands. Match Sherwin-Williams, Benjamin Moore, Behr, and more. Browse 25,000+ colors with hex codes, RGB, and LRV values.",
+    "Explore 25,000+ paint colors, discover curated palettes, and find the perfect color scheme for your next project. Browse Sherwin-Williams, Benjamin Moore, Behr, and more.",
   metadataBase: new URL("https://paintcolorhq.com"),
   openGraph: {
     type: "website",

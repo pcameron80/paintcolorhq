@@ -48,11 +48,11 @@ export function HeroSearch() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Find Your Perfect Paint Color Match
+            Your Paint Color Inspiration Starts Here
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90">
-            Browse 25,000+ paint colors across top brands. Find the closest
-            equivalent in Sherwin-Williams, Benjamin Moore, Behr, and more.
+            Explore 25,000+ colors, discover curated palettes, and find the
+            perfect color scheme for your next project.
           </p>
           <div className="mx-auto mt-10 w-full max-w-xl">
             <input
