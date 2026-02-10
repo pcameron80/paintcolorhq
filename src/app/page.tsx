@@ -1,65 +1,101 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+
+const brands = [
+  { name: "Sherwin-Williams", slug: "sherwin-williams" },
+  { name: "Benjamin Moore", slug: "benjamin-moore" },
+  { name: "Behr", slug: "behr" },
+  { name: "PPG", slug: "ppg" },
+  { name: "Dunn-Edwards", slug: "dunn-edwards" },
+  { name: "Valspar", slug: "valspar" },
+  { name: "Pratt & Lambert", slug: "pratt-lambert" },
+  { name: "California Paints", slug: "california-paints" },
+  { name: "Farrow & Ball", slug: "farrow-ball" },
+  { name: "Dulux", slug: "dulux" },
+];
+
+const colorFamilies = [
+  { name: "White", slug: "white", color: "#FFFFFF", border: true },
+  { name: "Off-White", slug: "off-white", color: "#F5F0E8", border: true },
+  { name: "Gray", slug: "gray", color: "#9CA3AF" },
+  { name: "Beige", slug: "beige", color: "#D4C5A9" },
+  { name: "Brown", slug: "brown", color: "#8B6914" },
+  { name: "Red", slug: "red", color: "#DC2626" },
+  { name: "Orange", slug: "orange", color: "#EA580C" },
+  { name: "Yellow", slug: "yellow", color: "#EAB308" },
+  { name: "Green", slug: "green", color: "#16A34A" },
+  { name: "Blue", slug: "blue", color: "#2563EB" },
+  { name: "Purple", slug: "purple", color: "#9333EA" },
+  { name: "Pink", slug: "pink", color: "#EC4899" },
+  { name: "Black", slug: "black", color: "#1F2937" },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-white">
+      <Header />
+
+      <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            Find Your Perfect Paint Color Match
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
+            Browse 25,000+ paint colors across top brands. Find the closest
+            equivalent in Sherwin-Williams, Benjamin Moore, Behr, and more.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+          <div className="mx-auto mt-10 max-w-xl">
+            <Link
+              href="/search"
+              className="block w-full rounded-lg border border-gray-300 px-4 py-3 text-left text-lg text-gray-400 shadow-sm hover:border-blue-400"
+            >
+              Search by color name, number, or hex code...
+            </Link>
+          </div>
+
+          <section className="mt-16">
+            <h2 className="text-lg font-semibold text-gray-900">
+              Browse by Brand
+            </h2>
+            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {brands.map((brand) => (
+                <Link
+                  key={brand.slug}
+                  href={`/brands/${brand.slug}`}
+                  className="rounded-lg border border-gray-200 px-4 py-3 text-center text-sm font-medium text-gray-700 transition-colors hover:border-blue-300 hover:bg-blue-50"
+                >
+                  {brand.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-16">
+            <h2 className="text-lg font-semibold text-gray-900">
+              Browse by Color Family
+            </h2>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              {colorFamilies.map((family) => (
+                <Link
+                  key={family.slug}
+                  href={`/colors/${family.slug}`}
+                  className="flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-blue-300"
+                >
+                  <span
+                    className={`inline-block h-4 w-4 rounded-full ${family.border ? "border border-gray-300" : ""}`}
+                    style={{ backgroundColor: family.color }}
+                  />
+                  {family.name}
+                </Link>
+              ))}
+            </div>
+          </section>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
