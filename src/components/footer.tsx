@@ -62,6 +62,14 @@ export function Footer() {
                   Compare Colors
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-sm text-gray-500 hover:text-gray-900"
+                >
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

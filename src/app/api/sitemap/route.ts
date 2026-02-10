@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAllColorSlugs, getAllBrands, getAllColorFamilies } from "@/lib/queries";
+import { getAllBlogSlugs } from "@/lib/blog-posts";
 
 const BASE_URL = "https://paintcolorhq.com";
 const URLS_PER_SITEMAP = 5000;
@@ -19,6 +20,7 @@ export async function GET() {
       "/colors",
       "/search",
       "/compare",
+      "/blog",
     ];
 
     const brandPages = brands.map((b) => `/brands/${b.slug}`);
@@ -26,8 +28,9 @@ export async function GET() {
     const colorPages = colorSlugs.map(
       (c) => `/colors/${c.brandSlug}/${c.colorSlug}`
     );
+    const blogPages = getAllBlogSlugs().map((s) => `/blog/${s}`);
 
-    const allUrls = [...staticPages, ...brandPages, ...familyPages, ...colorPages];
+    const allUrls = [...staticPages, ...brandPages, ...familyPages, ...colorPages, ...blogPages];
     const totalSitemaps = Math.ceil(allUrls.length / URLS_PER_SITEMAP);
 
     // Generate sitemap index

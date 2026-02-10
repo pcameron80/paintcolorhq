@@ -13,6 +13,29 @@ export async function getUserProjects(
   return data ?? [];
 }
 
+export async function getUserProjectsWithColors(
+  supabase: SupabaseClient
+): Promise<ProjectWithColors[]> {
+  const { data, error } = await supabase
+    .from("projects")
+    .select(
+      `
+      *,
+      project_colors (
+        *,
+        color:color_id (
+          *,
+          brand:brand_id (*)
+        )
+      )
+    `
+    )
+    .order("updated_at", { ascending: false });
+
+  if (error) throw error;
+  return (data ?? []) as unknown as ProjectWithColors[];
+}
+
 export async function getProjectById(
   supabase: SupabaseClient,
   projectId: string

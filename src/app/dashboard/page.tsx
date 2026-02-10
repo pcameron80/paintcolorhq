@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { createSupabaseServerClient } from "@/lib/supabase-server";
-import { getUserProjects } from "@/lib/project-queries";
+import { getUserProjectsWithColors } from "@/lib/project-queries";
 import { DeleteProjectButton } from "@/components/delete-project-button";
 import { CreateProjectForm } from "@/components/create-project-form";
 
@@ -24,7 +24,7 @@ export default async function DashboardPage() {
     redirect("/auth/login?next=/dashboard");
   }
 
-  const projects = await getUserProjects(supabase);
+  const projects = await getUserProjectsWithColors(supabase);
 
   return (
     <div className="min-h-screen bg-white">
@@ -53,28 +53,72 @@ export default async function DashboardPage() {
           </div>
         ) : (
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="rounded-xl border border-gray-200 p-5 transition-shadow hover:shadow-md"
-              >
-                <Link href={`/dashboard/${project.id}`}>
-                  <h2 className="text-lg font-semibold text-gray-900 hover:text-blue-600">
-                    {project.name}
-                  </h2>
-                  {project.description && (
-                    <p className="mt-1 text-sm text-gray-500">
-                      {project.description}
-                    </p>
+            {projects.map((project) => {
+              const colors = project.project_colors ?? [];
+              return (
+                <div
+                  key={project.id}
+                  className="rounded-xl border border-gray-200 transition-shadow hover:shadow-md"
+                >
+                  {/* Color strip */}
+                  {colors.length > 0 ? (
+                    <div className="flex h-16 overflow-hidden rounded-t-xl">
+                      {colors.map((pc) => (
+                        <div
+                          key={pc.id}
+                          className="flex-1"
+                          style={{ backgroundColor: pc.color.hex }}
+                          title={`${pc.color.name} (${pc.role})`}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="flex h-16 items-center justify-center rounded-t-xl bg-gray-50 text-xs text-gray-400">
+                      No colors yet
+                    </div>
                   )}
-                  <p className="mt-3 text-xs text-gray-400">
-                    Updated{" "}
-                    {new Date(project.updated_at).toLocaleDateString()}
-                  </p>
-                </Link>
-                <DeleteProjectButton projectId={project.id} />
-              </div>
-            ))}
+
+                  <div className="p-5">
+                    <Link href={`/dashboard/${project.id}`}>
+                      <h2 className="text-lg font-semibold text-gray-900 hover:text-blue-600">
+                        {project.name}
+                      </h2>
+                      {project.description && (
+                        <p className="mt-1 text-sm text-gray-500">
+                          {project.description}
+                        </p>
+                      )}
+                    </Link>
+
+                    {/* Color labels */}
+                    {colors.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
+                        {colors.map((pc) => (
+                          <span
+                            key={pc.id}
+                            className="inline-flex items-center gap-1.5 text-xs text-gray-500"
+                          >
+                            <span
+                              className="inline-block h-3 w-3 rounded-sm border border-gray-200"
+                              style={{ backgroundColor: pc.color.hex }}
+                            />
+                            {pc.color.name}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="mt-3 flex items-center justify-between">
+                      <p className="text-xs text-gray-400">
+                        Updated{" "}
+                        {new Date(project.updated_at).toLocaleDateString()}
+                      </p>
+                      <DeleteProjectButton projectId={project.id} />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </main>

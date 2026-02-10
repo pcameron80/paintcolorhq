@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAllColorSlugs, getAllBrands, getAllColorFamilies } from "@/lib/queries";
+import { getAllBlogSlugs } from "@/lib/blog-posts";
 
 const BASE_URL = "https://paintcolorhq.com";
 const URLS_PER_SITEMAP = 5000;
@@ -24,6 +25,7 @@ export async function GET(
       { url: "/colors", priority: "0.8", changefreq: "weekly" },
       { url: "/search", priority: "0.7", changefreq: "monthly" },
       { url: "/compare", priority: "0.6", changefreq: "monthly" },
+      { url: "/blog", priority: "0.7", changefreq: "weekly" },
     ];
 
     const brandPages = brands.map((b) => ({
@@ -44,7 +46,13 @@ export async function GET(
       changefreq: "monthly",
     }));
 
-    const allUrls = [...staticPages, ...brandPages, ...familyPages, ...colorPages];
+    const blogPages = getAllBlogSlugs().map((s) => ({
+      url: `/blog/${s}`,
+      priority: "0.7",
+      changefreq: "monthly",
+    }));
+
+    const allUrls = [...staticPages, ...brandPages, ...familyPages, ...colorPages, ...blogPages];
     const start = id * URLS_PER_SITEMAP;
     const pageUrls = allUrls.slice(start, start + URLS_PER_SITEMAP);
 

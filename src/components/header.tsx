@@ -44,6 +44,12 @@ export async function Header() {
             Inspiration
           </Link>
           <Link
+            href="/blog"
+            className="text-sm font-medium text-gray-600 hover:text-gray-900"
+          >
+            Blog
+          </Link>
+          <Link
             href="/search"
             className="text-sm font-medium text-gray-600 hover:text-gray-900"
           >
