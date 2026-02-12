@@ -20,21 +20,33 @@ interface PageProps {
 export default async function RoomVisualizerPage({ searchParams }: PageProps) {
   const sp = await searchParams;
 
-  // Build initial colors from URL params (e.g. ?walls=D6D0C4&trim=FFFFFF&accent=5B7FA5)
+  // Build initial colors from URL params (e.g. ?walls=D6D0C4,E5DDD0&trim=FFFFFF&accent=5B7FA5)
   const paramMap: Record<string, string> = {
     walls: "walls",
-    ceiling: "ceiling",
     trim: "trim",
     accent: "accentWall",
     floor: "floor",
   };
+  const hexRe = /^[0-9a-fA-F]{6}$/;
   const initialColors: Record<string, string> = {};
+  const colorOptions: Record<string, string[]> = {};
   for (const [param, region] of Object.entries(paramMap)) {
     const val = sp[param];
-    if (typeof val === "string" && /^[0-9a-fA-F]{6}$/.test(val)) {
-      initialColors[region] = `#${val}`;
+    if (typeof val !== "string") continue;
+    const parts = val.split(",").filter((h) => hexRe.test(h));
+    if (parts.length > 0) {
+      initialColors[region] = `#${parts[0]}`;
+    }
+    if (parts.length > 1) {
+      colorOptions[region] = parts.map((h) => `#${h}`);
     }
   }
+  // Parse pop colors separately (shown on walls + accent wall)
+  const popRaw = sp.pop;
+  const popColors =
+    typeof popRaw === "string"
+      ? popRaw.split(",").filter((h) => hexRe.test(h)).map((h) => `#${h}`)
+      : [];
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -64,6 +76,10 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
           initialColors={
             Object.keys(initialColors).length > 0 ? initialColors : undefined
           }
+          colorOptions={
+            Object.keys(colorOptions).length > 0 ? colorOptions : undefined
+          }
+          popColors={popColors.length > 0 ? popColors : undefined}
         />
 
         <section className="mt-16 max-w-3xl">

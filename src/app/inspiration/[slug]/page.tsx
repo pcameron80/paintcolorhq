@@ -135,7 +135,7 @@ export default async function InspirationDetailPage({
             <h1 className="text-3xl font-bold text-gray-900">{palette.name}</h1>
             <p className="mt-2 text-gray-600">{palette.description}</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <BrandPicker
               brands={brands.map((b) => ({ slug: b.slug, name: b.name }))}
               currentBrand={brandSlug ?? null}
@@ -147,6 +147,48 @@ export default async function InspirationDetailPage({
                 currentPath={currentPath}
               />
             )}
+            {(() => {
+              const roleToParam: Record<string, string> = {
+                walls: "walls",
+                trim: "trim",
+                accent: "accent",
+              };
+              const collected: Record<string, string[]> = {};
+              const popHexes: string[] = [];
+              for (const s of swatches) {
+                if (!s.match) continue;
+                const hex = s.match.hex.replace("#", "");
+                const role = s.role.toLowerCase();
+                if (role === "pop") {
+                  popHexes.push(hex);
+                  continue;
+                }
+                const param = roleToParam[role];
+                if (param) {
+                  if (!collected[param]) collected[param] = [];
+                  collected[param].push(hex);
+                }
+              }
+              if (Object.keys(collected).length === 0) return null;
+              const vizParams = new URLSearchParams();
+              for (const [param, hexes] of Object.entries(collected)) {
+                vizParams.set(param, hexes.join(","));
+              }
+              if (popHexes.length > 0) {
+                vizParams.set("pop", popHexes.join(","));
+              }
+              return (
+                <Link
+                  href={`/tools/room-visualizer?${vizParams.toString()}`}
+                  className="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium text-gray-700 hover:border-gray-300 hover:bg-gray-50"
+                >
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" />
+                  </svg>
+                  Visualize in Room
+                </Link>
+              );
+            })()}
           </div>
         </div>
 

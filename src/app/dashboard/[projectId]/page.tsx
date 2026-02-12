@@ -86,12 +86,25 @@ export default async function ProjectPage({ params }: PageProps) {
             trim: "trim",
             accent: "accent",
           };
-          const params = new URLSearchParams();
+          const collected: Record<string, string[]> = {};
+          const popHexes: string[] = [];
           for (const [role, pcs] of Object.entries(colorsByRole)) {
-            const param = roleToParam[role];
-            if (param && pcs[0]) {
-              params.set(param, pcs[0].color.hex.replace("#", ""));
+            const hexes = pcs.map((pc) => pc.color.hex.replace("#", ""));
+            if (role === "pop") {
+              popHexes.push(...hexes);
+              continue;
             }
+            const param = roleToParam[role];
+            if (param && hexes.length > 0) {
+              collected[param] = hexes;
+            }
+          }
+          const params = new URLSearchParams();
+          for (const [param, hexes] of Object.entries(collected)) {
+            params.set(param, hexes.join(","));
+          }
+          if (popHexes.length > 0) {
+            params.set("pop", popHexes.join(","));
           }
           const url = `/tools/room-visualizer?${params.toString()}`;
           return (

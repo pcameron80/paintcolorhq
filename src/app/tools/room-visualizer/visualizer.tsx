@@ -7,7 +7,7 @@ import Link from "next/link";
 // Types
 // ---------------------------------------------------------------------------
 
-type RegionId = "ceiling" | "walls" | "accentWall" | "trim" | "floor";
+type RegionId = "walls" | "accentWall" | "trim" | "floor";
 
 interface PaintMatch {
   id: string;
@@ -25,7 +25,6 @@ interface PaintMatch {
 // ---------------------------------------------------------------------------
 
 const REGIONS: { id: RegionId; label: string }[] = [
-  { id: "ceiling", label: "Ceiling" },
   { id: "walls", label: "Walls" },
   { id: "accentWall", label: "Accent Wall" },
   { id: "trim", label: "Trim" },
@@ -33,7 +32,6 @@ const REGIONS: { id: RegionId; label: string }[] = [
 ];
 
 const DEFAULT_COLORS: Record<RegionId, string> = {
-  ceiling: "#FFFFFF",
   walls: "#D6D0C4",
   accentWall: "#5B7FA5",
   trim: "#FFFFFF",
@@ -118,11 +116,18 @@ const STOP_OFFSETS = [0, 0.2, 0.4, 0.7, 1];
 // Component
 // ---------------------------------------------------------------------------
 
+/** Regions where pop colors can be tried */
+const POP_REGIONS: RegionId[] = ["walls", "accentWall"];
+
 interface RoomVisualizerProps {
   initialColors?: Partial<Record<RegionId, string>>;
+  /** Extra color options per region (for toggling between alternatives) */
+  colorOptions?: Partial<Record<RegionId, string[]>>;
+  /** Pop colors shown as a separate section on walls/accent wall */
+  popColors?: string[];
 }
 
-export function RoomVisualizer({ initialColors }: RoomVisualizerProps) {
+export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomVisualizerProps) {
   const merged = initialColors
     ? { ...DEFAULT_COLORS, ...initialColors }
     : DEFAULT_COLORS;
@@ -234,9 +239,9 @@ export function RoomVisualizer({ initialColors }: RoomVisualizerProps) {
 
           {/* Outer room clip */}
           <g clipPath="url(#rv-clip-outer)">
-            {/* ---- Ceiling ---- */}
+            {/* ---- Ceiling (always white) ---- */}
             <g style={{ isolation: "isolate" }}>
-              <path d={CEILING_PATH} fill={colors.ceiling} />
+              <path d={CEILING_PATH} fill="#FFFFFF" />
               <g
                 clipPath="url(#rv-clip-ceiling)"
                 filter="url(#rv-grayscale)"
@@ -391,12 +396,6 @@ export function RoomVisualizer({ initialColors }: RoomVisualizerProps) {
               onClick={() => selectRegion("floor")}
             />
             <path
-              d={CEILING_PATH}
-              fill="transparent"
-              style={{ cursor: "pointer" }}
-              onClick={() => selectRegion("ceiling")}
-            />
-            <path
               d={WALLS_PATH}
               fill="transparent"
               style={{ cursor: "pointer" }}
@@ -452,6 +451,74 @@ export function RoomVisualizer({ initialColors }: RoomVisualizerProps) {
             Reset All
           </button>
         </div>
+
+        {/* Palette options + Pop swatches */}
+        {(() => {
+          const hasPopForRegion = popColors && popColors.length > 0 && POP_REGIONS.includes(selected);
+          const paletteOpts = colorOptions?.[selected] && colorOptions[selected].length > 1
+            ? colorOptions[selected]
+            : hasPopForRegion
+              ? [merged[selected]]
+              : null;
+          if (!paletteOpts && !hasPopForRegion) return null;
+          return (
+          <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+            {/* Color alternatives toggle */}
+            {paletteOpts && (
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-medium text-gray-500">
+                  Palette options:
+                </span>
+                {paletteOpts.map((hex) => {
+                  const normalized = hex.startsWith("#") ? hex : `#${hex}`;
+                  const isActive =
+                    colors[selected].toUpperCase() === normalized.toUpperCase();
+                  return (
+                    <button
+                      key={hex}
+                      onClick={() => applyColor(normalized)}
+                      className={`h-8 w-8 rounded-lg border-2 transition-transform ${
+                        isActive
+                          ? "scale-110 border-blue-500 ring-2 ring-blue-200"
+                          : "border-gray-300 hover:scale-105 hover:border-gray-400"
+                      }`}
+                      style={{ backgroundColor: normalized }}
+                      title={normalized.toUpperCase()}
+                    />
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Pop color options (shown on walls/accent wall) */}
+            {popColors && popColors.length > 0 && POP_REGIONS.includes(selected) && (
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-medium text-amber-600">
+                  Pop:
+                </span>
+                {popColors.map((hex) => {
+                  const normalized = hex.startsWith("#") ? hex : `#${hex}`;
+                  const isActive =
+                    colors[selected].toUpperCase() === normalized.toUpperCase();
+                  return (
+                    <button
+                      key={hex}
+                      onClick={() => applyColor(normalized)}
+                      className={`h-8 w-8 rounded-lg border-2 transition-transform ${
+                        isActive
+                          ? "scale-110 border-amber-500 ring-2 ring-amber-200"
+                          : "border-gray-300 hover:scale-105 hover:border-gray-400"
+                      }`}
+                      style={{ backgroundColor: normalized }}
+                      title={`Pop: ${normalized.toUpperCase()}`}
+                    />
+                  );
+                })}
+              </div>
+            )}
+          </div>
+          );
+        })()}
 
         {/* Color picker */}
         <div className="mt-4 flex flex-wrap items-center gap-3">
