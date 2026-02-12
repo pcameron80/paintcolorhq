@@ -80,6 +80,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/tools/room-visualizer"
+                  className="text-sm text-gray-500 hover:text-gray-900"
+                >
+                  Room Visualizer
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/blog"
                   className="text-sm text-gray-500 hover:text-gray-900"
                 >

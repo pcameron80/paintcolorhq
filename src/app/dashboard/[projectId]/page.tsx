@@ -79,6 +79,36 @@ export default async function ProjectPage({ params }: PageProps) {
           </div>
         )}
 
+        {/* Visualize in Room button */}
+        {project.project_colors.length > 0 && (() => {
+          const roleToParam: Record<string, string> = {
+            walls: "walls",
+            trim: "trim",
+            accent: "accent",
+          };
+          const params = new URLSearchParams();
+          for (const [role, pcs] of Object.entries(colorsByRole)) {
+            const param = roleToParam[role];
+            if (param && pcs[0]) {
+              params.set(param, pcs[0].color.hex.replace("#", ""));
+            }
+          }
+          const url = `/tools/room-visualizer?${params.toString()}`;
+          return (
+            <div className="mt-4">
+              <Link
+                href={url}
+                className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-gray-800"
+              >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" />
+                </svg>
+                Visualize in Room
+              </Link>
+            </div>
+          );
+        })()}
+
         {project.project_colors.length === 0 ? (
           <div className="mt-16 text-center">
             <p className="text-gray-500">
