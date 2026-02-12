@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   title: "Privacy Policy | Paint Color HQ",
   description:
     "Privacy Policy for Paint Color HQ. Learn how we collect, use, and protect your information when you use our paint color matching service.",
-  alternates: { canonical: "https://paintcolorhq.com/privacy" },
+  alternates: { canonical: "https://www.paintcolorhq.com/privacy" },
   openGraph: {
     title: "Privacy Policy | Paint Color HQ",
     description:
       "Privacy Policy for Paint Color HQ. Learn how we collect, use, and protect your information.",
     type: "website",
-    url: "https://paintcolorhq.com/privacy",
+    url: "https://www.paintcolorhq.com/privacy",
   },
 };
 

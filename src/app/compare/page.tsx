@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: "Compare Paint Colors Side by Side",
   description:
     "Compare any two paint colors side by side with hex codes, RGB values, LRV, and visual swatches.",
-  alternates: { canonical: "https://paintcolorhq.com/compare" },
+  alternates: { canonical: "https://www.paintcolorhq.com/compare" },
   openGraph: {
     title: "Compare Paint Colors Side by Side",
     description:
       "Compare any two paint colors side by side with hex codes, RGB values, LRV, and visual swatches.",
-    url: "https://paintcolorhq.com/compare",
+    url: "https://www.paintcolorhq.com/compare",
   },
 };
 

@@ -120,7 +120,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-gray-200 pt-8">
           <p className="text-center text-xs text-gray-400">
-            Paint Color HQ - Cross-brand paint color matching. Color data is
+            Paint Color HQ - Your complete paint color toolkit. Color data is
             approximate. Always verify with physical samples before purchasing.
           </p>
         </div>

@@ -43,53 +43,92 @@ export default async function Home() {
       <HeroSearch />
 
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h1 className="sr-only">Paint Color HQ - Cross-Brand Paint Color Matching</h1>
+        <h1 className="sr-only">Paint Color HQ - Your Complete Paint Color Toolkit</h1>
 
-        {/* What is Paint Color HQ */}
-        <section className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-            Cross-Brand Paint Color Matching
+        {/* Feature Grid */}
+        <section>
+          <h2 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl">
+            Everything You Need to Choose the Perfect Color
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-gray-600">
-            Love a Sherwin-Williams color but need it in Benjamin Moore? Paint Color HQ
-            makes it easy. We use the{" "}
-            <span className="font-medium text-gray-800">CIEDE2000 color science algorithm</span>{" "}
-            to find the closest perceptual match across 14 major paint brands, so you
-            can compare colors with confidence.
-          </p>
-        </section>
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
+            <Link
+              href="/search"
+              className="group rounded-xl border border-gray-200 p-6 transition hover:shadow-md"
+            >
+              <svg className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+              </svg>
+              <h3 className="mt-4 font-semibold text-gray-900">Cross-Brand Color Matching</h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                Find equivalent colors across 14 major paint brands using CIEDE2000 color science.
+              </p>
+            </Link>
 
-        {/* How it works */}
-        <section className="mt-12 grid gap-8 sm:grid-cols-3">
-          <div className="text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-xl font-bold text-blue-600">
-              1
-            </div>
-            <h3 className="mt-4 font-semibold text-gray-900">Search Any Color</h3>
-            <p className="mt-2 text-sm leading-relaxed text-gray-500">
-              Find a color by name, number, or hex code from over 25,000 paint colors
-              across Sherwin-Williams, Benjamin Moore, Behr, PPG, and more.
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-xl font-bold text-blue-600">
-              2
-            </div>
-            <h3 className="mt-4 font-semibold text-gray-900">See Matches Across Brands</h3>
-            <p className="mt-2 text-sm leading-relaxed text-gray-500">
-              Every color page shows the closest equivalents from each other brand,
-              ranked by Delta E score so you know exactly how close the match is.
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-xl font-bold text-blue-600">
-              3
-            </div>
-            <h3 className="mt-4 font-semibold text-gray-900">Build Your Palette</h3>
-            <p className="mt-2 text-sm leading-relaxed text-gray-500">
-              Explore curated inspiration palettes, compare colors side by side, and
-              save your favorites to a project for easy reference when you&apos;re ready to buy.
-            </p>
+            <Link
+              href="/tools/room-visualizer"
+              className="group rounded-xl border border-gray-200 p-6 transition hover:shadow-md"
+            >
+              <svg className="h-8 w-8 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955a1.126 1.126 0 0 1 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+              </svg>
+              <h3 className="mt-4 font-semibold text-gray-900">Room Color Visualizer</h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                Preview paint colors on walls, accent wall, trim, and floor in a realistic room scene.
+              </p>
+            </Link>
+
+            <Link
+              href="/tools/color-identifier"
+              className="group rounded-xl border border-gray-200 p-6 transition hover:shadow-md"
+            >
+              <svg className="h-8 w-8 text-violet-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+              </svg>
+              <h3 className="mt-4 font-semibold text-gray-900">Photo Color Identifier</h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                Upload a photo, click any spot, and instantly find matching paint colors from every brand.
+              </p>
+            </Link>
+
+            <Link
+              href="/tools/paint-calculator"
+              className="group rounded-xl border border-gray-200 p-6 transition hover:shadow-md"
+            >
+              <svg className="h-8 w-8 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z" />
+              </svg>
+              <h3 className="mt-4 font-semibold text-gray-900">Paint Calculator</h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                Enter your room dimensions to find out exactly how many gallons you need.
+              </p>
+            </Link>
+
+            <Link
+              href="/colors"
+              className="group rounded-xl border border-gray-200 p-6 transition hover:shadow-md"
+            >
+              <svg className="h-8 w-8 text-rose-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+              </svg>
+              <h3 className="mt-4 font-semibold text-gray-900">Undertone Analysis</h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                Every color is tagged warm, cool, or neutral — filter and search by undertone.
+              </p>
+            </Link>
+
+            <Link
+              href="/inspiration"
+              className="group rounded-xl border border-gray-200 p-6 transition hover:shadow-md"
+            >
+              <svg className="h-8 w-8 text-teal-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
+              </svg>
+              <h3 className="mt-4 font-semibold text-gray-900">Inspiration Palettes</h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                Curated color schemes mapped to real paint colors. Save them to a project.
+              </p>
+            </Link>
           </div>
         </section>
 
@@ -159,43 +198,49 @@ export default async function Home() {
 
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  25,000+ Colors from 14 Brands
+                  See Colors in Your Room Before You Buy
                 </h3>
                 <p className="mt-2 leading-relaxed text-gray-600">
-                  Our database covers colors from Sherwin-Williams, Benjamin Moore, Behr,
-                  PPG, Dunn-Edwards, Valspar, Farrow &amp; Ball, Kilz, Vista Paint,
-                  Hirshfield&apos;s, Colorhouse, Dutch Boy, RAL, and MPC. Every color
-                  page shows the hex code, RGB values, LRV (Light Reflectance Value),
-                  color family, complementary color harmonies, and the top matches from
-                  every other brand.
+                  Our Room Visualizer lets you preview any paint color on walls, an accent wall,
+                  trim, and floor in a realistic room scene. Swap colors in real time and compare
+                  combinations before committing to a gallon — no sample pots required.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Powered by Real Color Science
+                  Identify Paint Colors from Any Photo
                 </h3>
                 <p className="mt-2 leading-relaxed text-gray-600">
-                  We don&apos;t just compare hex codes. Paint Color HQ converts every
-                  color to the CIELAB color space and uses the{" "}
-                  <strong>CIEDE2000 (Delta E 2000)</strong> formula, the same industry-standard
-                  algorithm used by paint manufacturers, textile companies, and printing
-                  professionals. This means our matches reflect how humans actually perceive
-                  color differences, not just mathematical RGB distance.
+                  Spotted a color you love in the wild? Upload a photo to the Photo Color Identifier,
+                  click any spot, and instantly see the closest matching paint colors from every brand
+                  in our database. It works with interior shots, exterior photos, or anything with
+                  a color that catches your eye.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Curated Inspiration &amp; Project Planning
+                  Understand Undertones
                 </h3>
                 <p className="mt-2 leading-relaxed text-gray-600">
-                  Not sure where to start? Browse our curated inspiration palettes for
-                  styles like Modern Farmhouse, Coastal Retreat, and Scandinavian Minimal.
-                  Each palette maps to real paint colors you can actually buy. Create an
-                  account to save colors to projects, organize them by room role (walls,
-                  trim, accent, pop), and keep your selections in one place for when
-                  you&apos;re ready to visit the store.
+                  Choosing between two whites that look the same on a screen? Every color in our
+                  database is tagged warm, cool, or neutral so you can filter by undertone and
+                  avoid surprises on your walls. Understanding undertones is the difference between
+                  a color that feels right and one that clashes with your trim or flooring.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Plan Your Project from Start to Finish
+                </h3>
+                <p className="mt-2 leading-relaxed text-gray-600">
+                  Use the Paint Calculator to figure out exactly how many gallons you need for
+                  any room. Browse curated inspiration palettes mapped to real paint colors.
+                  Save your favorites to a project, organize them by room role (walls, trim,
+                  accent, pop), and keep everything in one place for when you&apos;re ready
+                  to visit the store.
                 </p>
               </div>
             </div>
@@ -217,7 +262,7 @@ export default async function Home() {
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: "Paint Color HQ",
-            url: "https://paintcolorhq.com",
+            url: "https://www.paintcolorhq.com",
             description:
               "Explore 25,000+ paint colors, discover curated palettes, and find the perfect color scheme for your next project.",
             potentialAction: {
@@ -225,7 +270,7 @@ export default async function Home() {
               target: {
                 "@type": "EntryPoint",
                 urlTemplate:
-                  "https://paintcolorhq.com/search?q={search_term_string}",
+                  "https://www.paintcolorhq.com/search?q={search_term_string}",
               },
               "query-input": "required name=search_term_string",
             },

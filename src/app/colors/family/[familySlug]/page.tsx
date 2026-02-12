@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { familySlug } = await params;
   const name = familySlug.replace(/-/g, " ");
 
-  const url = `https://paintcolorhq.com/colors/family/${familySlug}`;
+  const url = `https://www.paintcolorhq.com/colors/family/${familySlug}`;
   return {
     title: `${capitalize(name)} Paint Colors - All Brands`,
     description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Compare colors with hex codes and LRV values.`,

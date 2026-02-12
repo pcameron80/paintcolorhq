@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!sourceColor || !targetBrand) return { title: "Match Not Found" };
 
-  const url = `https://paintcolorhq.com/match/${sourceBrandSlug}/${parsed.colorSlug}-to-${parsed.targetBrandSlug}`;
+  const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/${parsed.colorSlug}-to-${parsed.targetBrandSlug}`;
   return {
     title: `${sourceColor.brand.name} ${sourceColor.name} in ${targetBrand.name}`,
     description: `Find the closest ${targetBrand.name} equivalent to ${sourceColor.brand.name} ${sourceColor.name} (${sourceColor.hex.toUpperCase()}). Cross-brand paint color matching.`,

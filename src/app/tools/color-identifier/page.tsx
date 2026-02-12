@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Upload a photo and click any spot to find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Free, instant, cross-brand results.",
   alternates: {
-    canonical: "https://paintcolorhq.com/tools/color-identifier",
+    canonical: "https://www.paintcolorhq.com/tools/color-identifier",
   },
 };
 
@@ -67,6 +67,36 @@ export default function ColorIdentifierPage() {
           </div>
         </section>
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name: "Find Paint Colors from a Photo",
+            description:
+              "Upload a photo, click any spot, and instantly find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more.",
+            step: [
+              {
+                "@type": "HowToStep",
+                name: "Upload a photo",
+                text: "Upload a photo from your device or snap one with your camera. Any image format works.",
+              },
+              {
+                "@type": "HowToStep",
+                name: "Click a spot",
+                text: "Click a spot on the image to sample the color. The tool reads the exact pixel color at that point.",
+              },
+              {
+                "@type": "HowToStep",
+                name: "Get matches",
+                text: "Instantly see the closest matching paint colors from 25,000+ colors across 14 major brands, matched using the Delta E 2000 formula.",
+              },
+            ],
+          }),
+        }}
+      />
 
       <Footer />
     </div>

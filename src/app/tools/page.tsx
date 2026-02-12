@@ -6,8 +6,8 @@ import { Footer } from "@/components/footer";
 export const metadata: Metadata = {
   title: "Paint Tools | Paint Color HQ",
   description:
-    "Free paint tools: calculate how much paint you need and identify paint colors from photos. Works with all major brands.",
-  alternates: { canonical: "https://paintcolorhq.com/tools" },
+    "Free paint tools: room color visualizer, photo color identifier, and paint calculator. Preview colors in a room, match colors from photos, and estimate coverage. Works with all major brands.",
+  alternates: { canonical: "https://www.paintcolorhq.com/tools" },
 };
 
 const tools = [

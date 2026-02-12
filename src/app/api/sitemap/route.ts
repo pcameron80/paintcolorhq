@@ -3,7 +3,7 @@ import { getAllColorSlugs, getAllBrands, getAllColorFamilies } from "@/lib/queri
 import { getAllBlogSlugs } from "@/lib/blog-posts";
 import { inspirationPalettes } from "@/lib/palettes";
 
-const BASE_URL = "https://paintcolorhq.com";
+const BASE_URL = "https://www.paintcolorhq.com";
 const URLS_PER_SITEMAP = 5000;
 
 export async function GET() {
@@ -43,7 +43,7 @@ export async function GET() {
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${Array.from({ length: totalSitemaps }, (_, i) =>
   `  <sitemap>
-    <loc>${BASE_URL}/api/sitemap/${i}</loc>
+    <loc>${BASE_URL}/sitemap/${i}.xml</loc>
   </sitemap>`
 ).join("\n")}
 </sitemapindex>`;
@@ -59,7 +59,7 @@ ${Array.from({ length: totalSitemaps }, (_, i) =>
     const fallback = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>${BASE_URL}/api/sitemap/0</loc>
+    <loc>${BASE_URL}/sitemap/0.xml</loc>
   </sitemap>
 </sitemapindex>`;
 

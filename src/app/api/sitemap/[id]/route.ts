@@ -3,7 +3,7 @@ import { getAllColorSlugs, getAllBrands, getAllColorFamilies } from "@/lib/queri
 import { getAllBlogSlugs, getPostBySlug } from "@/lib/blog-posts";
 import { inspirationPalettes } from "@/lib/palettes";
 
-const BASE_URL = "https://paintcolorhq.com";
+const BASE_URL = "https://www.paintcolorhq.com";
 const URLS_PER_SITEMAP = 5000;
 
 export async function GET(
@@ -28,6 +28,10 @@ export async function GET(
       { url: "/compare", priority: "0.6", changefreq: "monthly", lastmod: "" },
       { url: "/blog", priority: "0.7", changefreq: "weekly", lastmod: "" },
       { url: "/inspiration", priority: "0.7", changefreq: "weekly", lastmod: "" },
+      { url: "/tools", priority: "0.7", changefreq: "monthly", lastmod: "" },
+      { url: "/tools/paint-calculator", priority: "0.7", changefreq: "monthly", lastmod: "" },
+      { url: "/tools/color-identifier", priority: "0.7", changefreq: "monthly", lastmod: "" },
+      { url: "/tools/room-visualizer", priority: "0.7", changefreq: "monthly", lastmod: "" },
     ];
 
     const brandPages = brands.map((b) => ({

@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   title: "Paint Brands",
   description:
     "Browse paint colors from top brands including Sherwin-Williams, Benjamin Moore, Behr, PPG, and more.",
-  alternates: { canonical: "https://paintcolorhq.com/brands" },
+  alternates: { canonical: "https://www.paintcolorhq.com/brands" },
   openGraph: {
     title: "Paint Brands",
     description:
       "Browse paint colors from top brands including Sherwin-Williams, Benjamin Moore, Behr, PPG, and more.",
-    url: "https://paintcolorhq.com/brands",
+    url: "https://www.paintcolorhq.com/brands",
   },
 };
 

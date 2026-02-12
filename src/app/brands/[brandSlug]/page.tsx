@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) return { title: "Brand Not Found" };
 
-  const url = `https://paintcolorhq.com/brands/${brandSlug}`;
+  const url = `https://www.paintcolorhq.com/brands/${brandSlug}`;
   return {
     title: `${brand.name} Paint Colors - Browse All ${brand.color_count.toLocaleString()} Colors`,
     description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with hex codes, RGB values, and cross-brand matches.`,

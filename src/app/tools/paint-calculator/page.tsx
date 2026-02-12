@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Calculate exactly how many gallons of paint you need. Enter your room dimensions, doors, and windows for a free instant estimate.",
   alternates: {
-    canonical: "https://paintcolorhq.com/tools/paint-calculator",
+    canonical: "https://www.paintcolorhq.com/tools/paint-calculator",
   },
 };
 

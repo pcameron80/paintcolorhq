@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   title: "Browse Paint Colors by Color Family",
   description:
     "Browse paint colors organized by color family - whites, grays, blues, greens, and more from all major brands.",
-  alternates: { canonical: "https://paintcolorhq.com/colors" },
+  alternates: { canonical: "https://www.paintcolorhq.com/colors" },
   openGraph: {
     title: "Browse Paint Colors by Color Family",
     description:
       "Browse paint colors organized by color family - whites, grays, blues, greens, and more from all major brands.",
-    url: "https://paintcolorhq.com/colors",
+    url: "https://www.paintcolorhq.com/colors",
   },
 };
 

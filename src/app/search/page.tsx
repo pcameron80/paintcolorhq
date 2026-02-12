@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: "Search Paint Colors",
   description:
     "Search 25,000+ paint colors by name, number, or hex code across all major brands.",
-  alternates: { canonical: "https://paintcolorhq.com/search" },
+  alternates: { canonical: "https://www.paintcolorhq.com/search" },
   openGraph: {
     title: "Search Paint Colors",
     description:
       "Search 25,000+ paint colors by name, number, or hex code across all major brands.",
-    url: "https://paintcolorhq.com/search",
+    url: "https://www.paintcolorhq.com/search",
   },
 };
 

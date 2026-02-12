@@ -126,7 +126,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const color = await getColorBySlug(brandSlug, colorSlug);
   if (!color) return { title: "Color Not Found" };
 
-  const url = `https://paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
+  const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   return {
     title: `${color.name} by ${color.brand.name} | ${color.hex.toUpperCase()}`,
     description: generateMetaDescription(color),
@@ -330,12 +330,12 @@ export default async function ColorPage({ params }: PageProps) {
               "@type": "WebPage",
               name: `${color.name} Paint Color`,
               description,
-              url: `https://paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
+              url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
               breadcrumb: {
                 "@type": "BreadcrumbList",
                 itemListElement: [
-                  { "@type": "ListItem", position: 1, name: "Home", item: "https://paintcolorhq.com" },
-                  { "@type": "ListItem", position: 2, name: color.brand.name, item: `https://paintcolorhq.com/brands/${brandSlug}` },
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+                  { "@type": "ListItem", position: 2, name: color.brand.name, item: `https://www.paintcolorhq.com/brands/${brandSlug}` },
                   { "@type": "ListItem", position: 3, name: color.name },
                 ],
               },

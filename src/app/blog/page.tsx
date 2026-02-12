@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   title: "Blog | Paint Color HQ",
   description:
     "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips. Learn how to choose the perfect paint color for every room.",
-  alternates: { canonical: "https://paintcolorhq.com/blog" },
+  alternates: { canonical: "https://www.paintcolorhq.com/blog" },
   openGraph: {
     title: "Blog | Paint Color HQ",
     description:
       "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips.",
     type: "website",
-    url: "https://paintcolorhq.com/blog",
+    url: "https://www.paintcolorhq.com/blog",
   },
 };
 
@@ -35,17 +35,17 @@ export default function BlogIndex() {
     name: "Paint Color HQ Blog",
     description:
       "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips.",
-    url: "https://paintcolorhq.com/blog",
+    url: "https://www.paintcolorhq.com/blog",
     publisher: {
       "@type": "Organization",
       name: "Paint Color HQ",
-      url: "https://paintcolorhq.com",
+      url: "https://www.paintcolorhq.com",
     },
     blogPost: posts.map((post) => ({
       "@type": "BlogPosting",
       headline: post.title,
       datePublished: post.date,
-      url: `https://paintcolorhq.com/blog/${post.slug}`,
+      url: `https://www.paintcolorhq.com/blog/${post.slug}`,
     })),
   };
 

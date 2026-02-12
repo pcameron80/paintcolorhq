@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   title: "Terms of Service | Paint Color HQ",
   description:
     "Terms of Service for Paint Color HQ. Read the terms and conditions governing the use of our paint color matching and comparison service.",
-  alternates: { canonical: "https://paintcolorhq.com/terms" },
+  alternates: { canonical: "https://www.paintcolorhq.com/terms" },
   openGraph: {
     title: "Terms of Service | Paint Color HQ",
     description:
       "Terms of Service for Paint Color HQ. Read the terms governing our paint color matching service.",
     type: "website",
-    url: "https://paintcolorhq.com/terms",
+    url: "https://www.paintcolorhq.com/terms",
   },
 };
 
