@@ -14,16 +14,21 @@ Dashboard pages use `force-dynamic` and are excluded from search indexing.
 
 Next.js's built-in `generateSitemaps()` has a known bug where it doesn't produce a sitemap index at `/sitemap.xml` (see [vercel/next.js#77304](https://github.com/vercel/next.js/issues/77304)). We use an API route workaround:
 
-1. **Sitemap index**: `GET /api/sitemap` generates `<sitemapindex>` XML
+1. **Sitemap index**: `GET /api/sitemap` generates `<sitemapindex>` XML with child sitemap refs at `/sitemap/{id}.xml`
 2. **Sitemap pages**: `GET /api/sitemap/[id]` generates `<urlset>` XML with up to 5000 URLs each
-3. **Rewrite**: `next.config.ts` rewrites `/sitemap.xml` to `/api/sitemap`
+3. **Rewrites**: `next.config.ts` rewrites both the index and child sitemaps to avoid `/api/` paths (which are blocked by robots.txt)
 
 ```typescript
 // next.config.ts
 async rewrites() {
-  return [{ source: "/sitemap.xml", destination: "/api/sitemap" }];
+  return [
+    { source: "/sitemap.xml", destination: "/api/sitemap" },
+    { source: "/sitemap/:id.xml", destination: "/api/sitemap/:id" },
+  ];
 }
 ```
+
+**Important**: Child sitemaps are served at `/sitemap/0.xml`, `/sitemap/1.xml`, etc. — NOT at `/api/sitemap/0`. This avoids the `Disallow: /api/` rule in robots.txt blocking Google from reading them.
 
 ### URL Coverage
 
@@ -42,6 +47,10 @@ The sitemap includes all public page types:
 | `/inspiration` | 0.7 | weekly | - |
 | `/inspiration/[slug]` | 0.6 | weekly | - |
 | `/compare` | 0.6 | monthly | - |
+| `/tools` | 0.7 | monthly | - |
+| `/tools/paint-calculator` | 0.7 | monthly | - |
+| `/tools/color-identifier` | 0.7 | monthly | - |
+| `/tools/room-visualizer` | 0.7 | monthly | - |
 | `/colors/[brand]/[color]` | 0.6 | monthly | - |
 
 ### Pagination
@@ -56,10 +65,10 @@ Every public page has a canonical URL set via `alternates.canonical` in `generat
 
 ```typescript
 // Dynamic pages
-alternates: { canonical: `https://paintcolorhq.com/colors/${brandSlug}/${colorSlug}` }
+alternates: { canonical: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}` }
 
 // Static pages
-alternates: { canonical: "https://paintcolorhq.com/brands" }
+alternates: { canonical: "https://www.paintcolorhq.com/brands" }
 ```
 
 This prevents duplicate content issues from query parameters (e.g., `?brand=` filters on family pages).
@@ -72,7 +81,7 @@ Each page type has dynamic metadata via `generateMetadata()`:
 
 | Page | Title Pattern | Description |
 |------|--------------|-------------|
-| Homepage | "Paint Color HQ - Paint Color Inspiration & Palettes" | Explore 25,000+ colors... |
+| Homepage | "Paint Color HQ - Paint Color Inspiration & Palettes" | Explore 25,000+ colors, match across brands, visualize in a room... |
 | Color detail | "[Name] by [Brand] \| #[Hex]" | Algorithmic description (see below) |
 | Brand | "[Brand] Paint Colors - Browse All [Count] Colors" | Browse all [count] [brand] paint colors... |
 | Color family | "[Family] Paint Colors - All Brands" | Browse [family] paint colors from Sherwin-Williams... |
@@ -81,6 +90,10 @@ Each page type has dynamic metadata via `generateMetadata()`:
 | Inspiration index | "Color Inspiration \| Paint Color HQ" | Browse curated color palettes... |
 | Inspiration detail | "[Palette] Color Palette \| Paint Color HQ" | Palette description |
 | Match | "[Brand] [Color] in [TargetBrand]" | Find the closest equivalent... |
+| Tools hub | "Paint Tools \| Paint Color HQ" | Free paint tools: room visualizer, photo identifier, calculator... |
+| Paint Calculator | "Paint Calculator - How Much Paint Do I Need?" | Calculate exactly how many gallons... |
+| Color Identifier | "Photo Color Identifier - Find Paint Colors from Photos" | Upload a photo and click any spot... |
+| Room Visualizer | "Room Color Visualizer - Preview Paint Colors in a Room" | See how paint colors look in a room... |
 
 ### Open Graph
 
@@ -89,7 +102,7 @@ Every public page has OpenGraph metadata with `title`, `description`, and `url`.
 - `og:type`: "website"
 - `og:site_name`: "Paint Color HQ"
 - `og:image`: `/og-image.webp` (1200x630)
-- `metadataBase`: `https://paintcolorhq.com`
+- `metadataBase`: `https://www.paintcolorhq.com`
 
 Blog posts additionally set:
 - `og:type`: "article"
@@ -134,12 +147,12 @@ Each of the 25,000+ color pages gets a unique 2-4 sentence description generated
 {
   "@type": "WebSite",
   "name": "Paint Color HQ",
-  "url": "https://paintcolorhq.com",
+  "url": "https://www.paintcolorhq.com",
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://paintcolorhq.com/search?q={search_term_string}"
+      "urlTemplate": "https://www.paintcolorhq.com/search?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   }
@@ -157,12 +170,12 @@ Previously used `Product` schema, but Google requires `offers` (with pricing) or
   "@type": "WebPage",
   "name": "[Color Name] Paint Color",
   "description": "[algorithmic description]",
-  "url": "https://paintcolorhq.com/colors/[brand]/[color]",
+  "url": "https://www.paintcolorhq.com/colors/[brand]/[color]",
   "breadcrumb": {
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://paintcolorhq.com" },
-      { "@type": "ListItem", "position": 2, "name": "[Brand Name]", "item": "https://paintcolorhq.com/brands/[brand]" },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.paintcolorhq.com" },
+      { "@type": "ListItem", "position": 2, "name": "[Brand Name]", "item": "https://www.paintcolorhq.com/brands/[brand]" },
       { "@type": "ListItem", "position": 3, "name": "[Color Name]" }
     ]
   },
@@ -193,7 +206,7 @@ Previously used `Product` schema, but Google requires `offers` (with pricing) or
 {
   "@type": "Blog",
   "name": "Paint Color HQ Blog",
-  "url": "https://paintcolorhq.com/blog",
+  "url": "https://www.paintcolorhq.com/blog",
   "publisher": { "@type": "Organization", "name": "Paint Color HQ" },
   "blogPost": [{ "@type": "BlogPosting", "headline": "...", "datePublished": "..." }]
 }
@@ -206,10 +219,54 @@ Previously used `Product` schema, but Google requires `offers` (with pricing) or
   "@type": "BlogPosting",
   "headline": "[title]",
   "datePublished": "[date]",
-  "url": "https://paintcolorhq.com/blog/[slug]",
+  "url": "https://www.paintcolorhq.com/blog/[slug]",
   "keywords": "[tags]",
   "author": { "@type": "Organization", "name": "Paint Color HQ" },
   "publisher": { "@type": "Organization", "name": "Paint Color HQ" }
+}
+```
+
+### Paint Calculator - HowTo
+
+```json
+{
+  "@type": "HowTo",
+  "name": "Calculate How Much Paint You Need",
+  "step": [
+    { "@type": "HowToStep", "name": "Measure your room" },
+    { "@type": "HowToStep", "name": "Calculate wall area" },
+    { "@type": "HowToStep", "name": "Subtract doors and windows" },
+    { "@type": "HowToStep", "name": "Account for coats" },
+    { "@type": "HowToStep", "name": "Calculate gallons" }
+  ]
+}
+```
+
+### Photo Color Identifier - HowTo
+
+```json
+{
+  "@type": "HowTo",
+  "name": "Find Paint Colors from a Photo",
+  "step": [
+    { "@type": "HowToStep", "name": "Upload a photo" },
+    { "@type": "HowToStep", "name": "Click a spot" },
+    { "@type": "HowToStep", "name": "Get matches" }
+  ]
+}
+```
+
+### Room Visualizer - HowTo
+
+```json
+{
+  "@type": "HowTo",
+  "name": "Preview Paint Colors in a Room",
+  "step": [
+    { "@type": "HowToStep", "name": "Select a region" },
+    { "@type": "HowToStep", "name": "Pick a color" },
+    { "@type": "HowToStep", "name": "Find paint matches" }
+  ]
 }
 ```
 
@@ -225,10 +282,10 @@ Disallow: /dashboard/
 Disallow: /auth/
 Disallow: /api/
 
-Sitemap: https://paintcolorhq.com/sitemap.xml
+Sitemap: https://www.paintcolorhq.com/sitemap.xml
 ```
 
-Private routes (`/dashboard`, `/auth`) and API routes are blocked from crawlers.
+Private routes (`/dashboard`, `/auth`) and API routes are blocked from crawlers. Sitemaps are served at `/sitemap.xml` and `/sitemap/{id}.xml` via rewrites, not at `/api/` paths, so they are accessible to crawlers.
 
 ### noindex on Private Pages
 
@@ -248,9 +305,11 @@ Dashboard pages set `robots: { index: false, follow: false }` in their metadata 
 
 ## Google Search Console
 
-Submit the sitemap at: `https://paintcolorhq.com/sitemap.xml`
+- **Property**: `https://www.paintcolorhq.com/` (www is the canonical domain; non-www redirects via Vercel)
+- **Sitemap**: `https://www.paintcolorhq.com/sitemap.xml`
+- All canonical URLs, OG URLs, JSON-LD URLs, and sitemap URLs use `www.paintcolorhq.com` to match the GSC property
 
-This will index all ~25,100 URLs across the paginated sitemaps.
+This will index all ~25,100 URLs across the paginated sitemaps (~5 child sitemaps at `/sitemap/0.xml` through `/sitemap/4.xml`).
 
 ## Google Analytics
 

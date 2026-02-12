@@ -2,7 +2,7 @@
 
 ## Overview
 
-Paint Color HQ is a cross-brand paint color matching website. Users can browse 25,000+ paint colors from 14 brands, find equivalent colors across brands using the CIEDE2000 Delta E algorithm, compare colors side by side, explore curated inspiration palettes, read blog content about paint colors, and save colors to projects.
+Paint Color HQ is a complete paint color toolkit. Users can browse 25,000+ paint colors from 14 brands, find equivalent colors across brands using the CIEDE2000 Delta E algorithm, visualize colors in a room scene, identify paint colors from photos, calculate paint coverage, compare colors side by side, explore curated inspiration palettes, filter by undertone, read blog content about paint colors, and save colors to projects.
 
 **Live site:** https://www.paintcolorhq.com
 
@@ -33,6 +33,10 @@ Paint Color HQ is a cross-brand paint color matching website. Users can browse 2
 ## Features
 
 - **Cross-brand matching**: Find equivalent colors across brands using Delta E 2000
+- **Room Color Visualizer**: Preview paint colors on walls, accent wall, trim, and floor in a realistic room scene
+- **Photo Color Identifier**: Upload a photo, click any spot, and find matching paint colors from every brand
+- **Paint Calculator**: Enter room dimensions, doors, and windows to calculate gallons needed
+- **Undertone Analysis**: Every color tagged warm, cool, or neutral with filter support
 - **Color detail pages**: Hex, RGB, LRV, color family, complementary/analogous/triadic harmonies
 - **Inspiration palettes**: 18 curated palettes (Modern Farmhouse, Coastal Retreat, etc.) with brand filtering
 - **Blog**: 10 articles on paint color topics with inline swatches and internal links

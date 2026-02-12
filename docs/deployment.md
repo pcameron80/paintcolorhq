@@ -57,6 +57,7 @@ Route (app)
 ├ ƒ /api/search                          # Dynamic
 ├ ƒ /api/sitemap                         # Dynamic
 ├ ƒ /api/sitemap/[id]                    # Dynamic
+├ ƒ /api/color-match                     # Dynamic
 ├ ƒ /api/projects/[projectId]            # Dynamic
 ├ ƒ /api/projects/[projectId]/colors     # Dynamic
 ├ ○ /auth/login                          # Static
@@ -69,6 +70,10 @@ Route (app)
 ├ ○ /colors/[brandSlug]/[colorSlug]      # ISR (revalidate: 3600)
 ├ ○ /colors/family/[familySlug]          # ISR (revalidate: 3600)
 ├ ○ /compare                             # Static
+├ ○ /tools                               # Static
+├ ○ /tools/paint-calculator              # Static
+├ ○ /tools/color-identifier              # Static
+├ ƒ /tools/room-visualizer              # Dynamic (uses searchParams)
 ├ ƒ /dashboard                           # Dynamic (auth required)
 ├ ƒ /dashboard/[projectId]               # Dynamic (auth required)
 ├ ○ /inspiration                         # ISR (revalidate: 3600)

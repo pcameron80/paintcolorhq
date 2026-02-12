@@ -20,7 +20,7 @@ paintcolorhq/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── layout.tsx          # Root layout (metadata, fonts, GA, AdSense)
-│   │   ├── page.tsx            # Homepage
+│   │   ├── page.tsx            # Homepage (feature grid, SEO section)
 │   │   ├── globals.css         # Tailwind global styles
 │   │   ├── not-found.tsx       # Custom 404 page
 │   │   ├── api/
@@ -28,6 +28,7 @@ paintcolorhq/
 │   │   │   ├── sitemap/
 │   │   │   │   ├── route.ts          # Sitemap index XML
 │   │   │   │   └── [id]/route.ts     # Sitemap pages XML
+│   │   │   ├── color-match/route.ts  # GET /api/color-match?hex=...
 │   │   │   └── projects/             # Project CRUD API routes
 │   │   │       └── [projectId]/
 │   │   │           ├── route.ts      # Project operations
@@ -44,6 +45,15 @@ paintcolorhq/
 │   │   │   │   └── [colorSlug]/page.tsx  # Color detail + matches
 │   │   │   └── family/
 │   │   │       └── [familySlug]/page.tsx # Colors by family
+│   │   ├── tools/
+│   │   │   ├── page.tsx              # Tools hub
+│   │   │   ├── paint-calculator/page.tsx  # Paint coverage calculator
+│   │   │   ├── color-identifier/
+│   │   │   │   ├── page.tsx          # Photo color identifier
+│   │   │   │   └── identifier.tsx    # Client component
+│   │   │   └── room-visualizer/
+│   │   │       ├── page.tsx          # Room color visualizer
+│   │   │       └── visualizer.tsx    # Client component
 │   │   ├── search/
 │   │   │   ├── page.tsx              # Search page
 │   │   │   └── search-results.tsx    # Client component
@@ -106,7 +116,7 @@ paintcolorhq/
 │   ├── og-image.webp           # OpenGraph default image
 │   └── logo.png                # Site logo
 ├── docs/                       # Project documentation
-├── next.config.ts              # Sitemap rewrite, middleware config
+├── next.config.ts              # Sitemap rewrites (/sitemap.xml, /sitemap/:id.xml)
 ├── package.json
 └── .vercelignore               # Excludes data/ and scripts/ from deploy
 ```

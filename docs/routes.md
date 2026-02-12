@@ -4,7 +4,7 @@
 
 | Route | Type | Rendering | Description |
 |-------|------|-----------|-------------|
-| `/` | Page | ISR (1h) | Homepage with hero search, inspiration, brand/family browse |
+| `/` | Page | ISR (1h) | Homepage with hero search, 6-card feature grid, inspiration, brand/family browse |
 | `/brands` | Page | ISR (1h) | All brands listing with color counts |
 | `/brands/[brandSlug]` | Page | ISR (1h) | Brand detail with all colors in a grid |
 | `/colors` | Page | ISR (1h) | Color families index |
@@ -20,8 +20,13 @@
 | `/dashboard` | Page | Dynamic | User's projects list (auth required) |
 | `/dashboard/[projectId]` | Page | Dynamic | Project detail with saved colors (auth required) |
 | `/auth/login` | Page | Static | Login page |
+| `/tools` | Page | Static | Tools hub listing all 3 tools |
+| `/tools/paint-calculator` | Page | Static | Paint coverage calculator with HowTo JSON-LD |
+| `/tools/color-identifier` | Page | Static | Photo-based color identification with HowTo JSON-LD |
+| `/tools/room-visualizer` | Page | Dynamic | Interactive room color preview with HowTo JSON-LD |
 | `/auth/callback` | Route | Dynamic | OAuth callback handler |
 | `/api/search` | API | Dynamic | Search endpoint: `GET /api/search?q=query` |
+| `/api/color-match` | API | Dynamic | Color matching endpoint: `GET /api/color-match?hex=...` |
 | `/api/sitemap` | API | Dynamic | Sitemap index XML |
 | `/api/sitemap/[id]` | API | Dynamic | Individual sitemap pages (5000 URLs each) |
 | `/api/projects/[projectId]` | API | Dynamic | Project CRUD operations |
@@ -31,9 +36,11 @@
 
 ### Homepage (`/`)
 - Hero section with tagline and search bar
+- 6-card feature grid: Cross-Brand Matching, Room Visualizer, Photo Identifier, Paint Calculator, Undertone Analysis, Inspiration Palettes
 - Curated inspiration palette section
 - "Browse by Brand" section with top 10 brand cards
 - "Browse by Color Family" with colored chips for all 15 families
+- "Why Use Paint Color HQ?" SEO section covering all 5 major capabilities
 - WebSite JSON-LD schema with SearchAction
 
 ### Brand Detail (`/brands/[brandSlug]`)
@@ -105,6 +112,33 @@
 - "Save to Project" integration
 - Palette roles: Walls / Trim / Accent / Pop / Feature
 
+### Tools Hub (`/tools`)
+- Grid of 3 tool cards: Paint Calculator, Photo Color Identifier, Room Color Visualizer
+- Each card links to the tool page
+
+### Paint Calculator (`/tools/paint-calculator`)
+- Room dimension inputs (length, width, height)
+- Door and window deductions
+- Instant gallon estimate with coat multiplier
+- "How We Calculate Paint Coverage" explainer
+- HowTo JSON-LD schema (5 steps)
+
+### Photo Color Identifier (`/tools/color-identifier`)
+- Upload a photo from device or camera
+- Click any spot to sample the pixel color
+- Matches against 25,000+ colors using Delta E 2000
+- "How It Works" section (3 steps)
+- HowTo JSON-LD schema (3 steps)
+
+### Room Color Visualizer (`/tools/room-visualizer`)
+- Interactive room scene with clickable regions (walls, accent wall, trim, floor)
+- Color picker with hex input
+- "Find paint matches" links to closest real paint colors
+- URL parameter support for sharing color combinations (e.g. `?walls=D6D0C4&trim=FFFFFF&accent=5B7FA5`)
+- Used by inspiration palette pages via "Visualize in Room" links
+- "How to Use" section (3 steps)
+- HowTo JSON-LD schema (3 steps)
+
 ### Dashboard (`/dashboard`)
 - Requires authentication (redirects to login)
 - List of user's projects with color strip previews
@@ -126,7 +160,7 @@
 | Component | File | Description |
 |-----------|------|-------------|
 | Header | `components/header.tsx` | Sticky nav with brand/colors/inspiration/blog/search links, auth state |
-| Footer | `components/footer.tsx` | Brand links, family links, resources (blog, inspiration) |
+| Footer | `components/footer.tsx` | Brand links, family links, resources (tools, blog, inspiration), "Your complete paint color toolkit" tagline |
 | MobileNav | `components/mobile-nav.tsx` | Slide-out mobile navigation |
 | ColorCard | `components/color-card.tsx` | Color grid card with swatch, name, hex |
 | ColorSwatch | `components/color-swatch.tsx` | Color swatch circle (sm/md/lg/xl) |
