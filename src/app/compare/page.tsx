@@ -53,7 +53,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
                 <div className="mt-4">
                   <Link
                     href={`/colors/${color1.brand.slug}/${color1.slug}`}
-                    className="text-xl font-semibold text-gray-900 hover:text-blue-600"
+                    className="text-xl font-semibold text-gray-900 hover:text-brand-blue"
                   >
                     {color1.name}
                   </Link>
@@ -90,7 +90,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
                 <div className="mt-4">
                   <Link
                     href={`/colors/${color2.brand.slug}/${color2.slug}`}
-                    className="text-xl font-semibold text-gray-900 hover:text-blue-600"
+                    className="text-xl font-semibold text-gray-900 hover:text-brand-blue"
                   >
                     {color2.name}
                   </Link>
@@ -123,7 +123,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
           <div className="mt-12 text-center">
             <p className="text-gray-500">
               Use the{" "}
-              <Link href="/search" className="text-blue-600 hover:underline">
+              <Link href="/search" className="text-brand-blue hover:underline">
                 search
               </Link>{" "}
               to find colors, then compare them here.

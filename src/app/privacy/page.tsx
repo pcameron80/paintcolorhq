@@ -90,7 +90,7 @@ export default function PrivacyPolicyPage() {
                   the{" "}
                   <a
                     href="https://tools.google.com/dlpage/gaoptout"
-                    className="text-blue-600 underline hover:text-blue-800"
+                    className="text-brand-blue underline hover:text-brand-blue-dark"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -106,7 +106,7 @@ export default function PrivacyPolicyPage() {
                   visiting{" "}
                   <a
                     href="https://www.google.com/settings/ads"
-                    className="text-blue-600 underline hover:text-blue-800"
+                    className="text-brand-blue underline hover:text-brand-blue-dark"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -213,7 +213,7 @@ export default function PrivacyPolicyPage() {
                 please contact us at{" "}
                 <a
                   href="mailto:privacy@paintcolorhq.com"
-                  className="text-blue-600 underline hover:text-blue-800"
+                  className="text-brand-blue underline hover:text-brand-blue-dark"
                 >
                   privacy@paintcolorhq.com
                 </a>

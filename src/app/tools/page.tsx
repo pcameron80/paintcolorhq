@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer";
 export const metadata: Metadata = {
   title: "Paint Tools | Paint Color HQ",
   description:
-    "Free paint tools: room color visualizer, photo color identifier, and paint calculator. Preview colors in a room, match colors from photos, and estimate coverage. Works with all major brands.",
+    "Free paint tools: palette generator, room color visualizer, photo color identifier, and paint calculator. Build coordinated color schemes, preview colors in a room, match colors from photos, and estimate coverage. Works with all major brands.",
   alternates: { canonical: "https://www.paintcolorhq.com/tools" },
 };
 
@@ -18,7 +18,7 @@ const tools = [
     href: "/tools/paint-calculator",
     icon: (
       <svg
-        className="h-8 w-8 text-blue-600"
+        className="h-8 w-8 text-brand-blue"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
@@ -39,7 +39,7 @@ const tools = [
     href: "/tools/color-identifier",
     icon: (
       <svg
-        className="h-8 w-8 text-blue-600"
+        className="h-8 w-8 text-brand-blue"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
@@ -60,7 +60,7 @@ const tools = [
     href: "/tools/room-visualizer",
     icon: (
       <svg
-        className="h-8 w-8 text-blue-600"
+        className="h-8 w-8 text-brand-blue"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
@@ -70,6 +70,27 @@ const tools = [
           strokeLinecap="round"
           strokeLinejoin="round"
           d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Palette Generator",
+    description:
+      "Pick a starting color and generate coordinated paint palettes with walls, trim, accent, and pop roles.",
+    href: "/tools/palette-generator",
+    icon: (
+      <svg
+        className="h-8 w-8 text-brand-blue"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z"
         />
       </svg>
     ),
@@ -103,7 +124,7 @@ export default function ToolsPage() {
               className="group rounded-xl border border-gray-200 p-6 transition-shadow hover:shadow-lg"
             >
               <div className="mb-4">{tool.icon}</div>
-              <h2 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600">
+              <h2 className="text-xl font-semibold text-gray-900 group-hover:text-brand-blue">
                 {tool.title}
               </h2>
               <p className="mt-2 text-sm text-gray-600">{tool.description}</p>

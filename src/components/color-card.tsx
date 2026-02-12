@@ -28,7 +28,7 @@ export function ColorCard({
         style={{ backgroundColor: hex }}
       />
       <div className="p-3">
-        <p className="font-medium text-gray-900 group-hover:text-blue-600">
+        <p className="font-medium text-gray-900 group-hover:text-brand-blue">
           {name}
         </p>
         <p className="mt-0.5 text-sm text-gray-500">

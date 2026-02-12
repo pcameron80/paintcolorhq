@@ -28,7 +28,7 @@ export function BrandPicker({
           : `/inspiration/${slug}`;
         router.push(url);
       }}
-      className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-blue-500 focus:outline-none"
+      className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-brand-blue focus:outline-none"
     >
       <option value="">Best Match</option>
       {brands.map((brand) => (

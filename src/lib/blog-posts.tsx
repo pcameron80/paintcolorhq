@@ -58,7 +58,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" /> is a warm, earthy terracotta that evokes clay pots, sun-dried landscapes, and handmade ceramics. Sherwin-Williams describes it as a color that &ldquo;grounds your space and nourishes the soul.&rdquo; It sits squarely in the brown family with noticeable orange undertones.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Looking for this shade from another brand? Check out <Link href="/colors/benjamin-moore/mesa-rust" className="text-blue-600 hover:underline">Benjamin Moore Mesa Rust</Link> or <Link href="/colors/behr/canyon-dusk" className="text-blue-600 hover:underline">Behr Canyon Dusk</Link> for similar warm clay tones. Use our <Link href="/search" className="text-blue-600 hover:underline">color search</Link> to find the closest Delta E match from any brand.
+          Looking for this shade from another brand? Check out <Link href="/colors/benjamin-moore/mesa-rust" className="text-brand-blue hover:underline">Benjamin Moore Mesa Rust</Link> or <Link href="/colors/behr/canyon-dusk" className="text-brand-blue hover:underline">Behr Canyon Dusk</Link> for similar warm clay tones. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match from any brand.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Benjamin Moore: Cinnamon Slate</h2>
@@ -66,7 +66,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" /> is a muted, sophisticated brown with violet-gray undertones. It&apos;s darker and cooler than Sherwin-Williams&apos; pick, landing in a space between chocolate and plum. This is a color that works beautifully on accent walls, cabinetry, and exterior doors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Browse all <Link href="/brands/benjamin-moore" className="text-blue-600 hover:underline">Benjamin Moore colors</Link> to find complementary shades for a full palette.
+          Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> to find complementary shades for a full palette.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Behr: Rumors</h2>
@@ -74,7 +74,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#7D6B5D" name="Rumors" brand="Behr" /> is a muted mushroom-brown with gray undertones. It&apos;s the most neutral of the 2025 picks — versatile enough for whole-home use. Behr positions it as a &ldquo;modern neutral that replaces gray.&rdquo;
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Compare it against the full <Link href="/colors/family/brown" className="text-blue-600 hover:underline">brown color family</Link> to see how it stacks up against thousands of similar shades.
+          Compare it against the full <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> to see how it stacks up against thousands of similar shades.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Cracked Pepper</h2>
@@ -92,7 +92,7 @@ const blogPosts: BlogPost[] = [
           Four out of five brands chose a shade in the brown-to-terracotta spectrum. The era of cool grays is officially over. If you&apos;re planning a 2025 refresh, start with warm earth tones and build outward.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-blue-600 hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades.
+          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades.
         </p>
       </>
     ),
@@ -115,7 +115,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How We Match Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          We use the <strong>Delta E 2000</strong> formula, which measures the perceptible difference between two colors in a way that aligns with human vision. A Delta E under 1.0 is virtually indistinguishable; under 2.0 is a very close match that most people won&apos;t notice. Our database covers <Link href="/brands" className="text-blue-600 hover:underline">14 major paint brands</Link> with over 25,000 colors.
+          We use the <strong>Delta E 2000</strong> formula, which measures the perceptible difference between two colors in a way that aligns with human vision. A Delta E under 1.0 is virtually indistinguishable; under 2.0 is a very close match that most people won&apos;t notice. Our database covers <Link href="/brands" className="text-brand-blue hover:underline">14 major paint brands</Link> with over 25,000 colors.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Revere Pewter → Accessible Beige</h2>
@@ -125,7 +125,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Simply White → Extra White</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" /> is a clean, warm white that avoids going yellow. Sherwin-Williams&apos; <Swatch hex="#F1E9D8" name="Extra White" brand="Sherwin-Williams" /> is the closest match, though <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" /> is also worth sampling. Browse our <Link href="/colors/family/white" className="text-blue-600 hover:underline">white paint colors</Link> guide for the full rundown.
+          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" /> is a clean, warm white that avoids going yellow. Sherwin-Williams&apos; <Swatch hex="#F1E9D8" name="Extra White" brand="Sherwin-Williams" /> is the closest match, though <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" /> is also worth sampling. Browse our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link> guide for the full rundown.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Hale Navy → Naval</h2>
@@ -135,7 +135,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Edgecomb Gray → Agreeable Gray</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" /> is a warm gray-beige that has been the go-to neutral for transitional interiors. <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" /> is remarkably similar and consistently ranks as SW&apos;s best-selling color. View the full <Link href="/colors/family/gray" className="text-blue-600 hover:underline">gray family</Link> to explore alternatives.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" /> is a warm gray-beige that has been the go-to neutral for transitional interiors. <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" /> is remarkably similar and consistently ranks as SW&apos;s best-selling color. View the full <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> to explore alternatives.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Chantilly Lace → High Reflective White</h2>
@@ -145,7 +145,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Your Own Matches</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Don&apos;t see your color here? Every color page on Paint Color HQ shows the <strong>closest matches from every other brand</strong> automatically. Just search for your Benjamin Moore color in our <Link href="/search" className="text-blue-600 hover:underline">color search</Link> and scroll to the cross-brand matches section.
+          Don&apos;t see your color here? Every color page on Paint Color HQ shows the <strong>closest matches from every other brand</strong> automatically. Just search for your Benjamin Moore color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> and scroll to the cross-brand matches section.
         </p>
       </>
     ),
@@ -203,10 +203,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Choosing Safe Neutrals</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          If you want a gray that truly reads as gray in most lighting conditions, look for colors that designers call &ldquo;balanced grays&rdquo; — shades where no single undertone dominates. Browse our <Link href="/colors/family/gray" className="text-blue-600 hover:underline">gray color family</Link> to compare hundreds of grays side by side and spot their undertones before you buy.
+          If you want a gray that truly reads as gray in most lighting conditions, look for colors that designers call &ldquo;balanced grays&rdquo; — shades where no single undertone dominates. Browse our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> to compare hundreds of grays side by side and spot their undertones before you buy.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          You can also use our <Link href="/compare" className="text-blue-600 hover:underline">color compare tool</Link> to put two grays next to each other and see the exact Delta E difference — if two grays have a Delta E under 2.0, most people can&apos;t tell them apart.
+          You can also use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to put two grays next to each other and see the exact Delta E difference — if two grays have a Delta E under 2.0, most people can&apos;t tell them apart.
         </p>
       </>
     ),
@@ -238,7 +238,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" /> — a slightly warmer alternative that pairs beautifully with butcher block countertops and brass hardware.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" /> — for kitchens that want warmth without crossing into cream territory. Explore more in our <Link href="/colors/family/white" className="text-blue-600 hover:underline">white paint guide</Link>.
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" /> — for kitchens that want warmth without crossing into cream territory. Explore more in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint guide</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens</h2>
@@ -252,7 +252,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#6B7C6E" name="Pewter Green" brand="Sherwin-Williams" /> — a softer sage-forest hybrid that&apos;s forgiving in both warm and cool light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#52625B" name="Tarrytown Green" brand="Benjamin Moore" /> — a mid-tone green with blue undertones for a more modern feel. Browse the full <Link href="/colors/family/green" className="text-blue-600 hover:underline">green family</Link>.
+          <Swatch hex="#52625B" name="Tarrytown Green" brand="Benjamin Moore" /> — a mid-tone green with blue undertones for a more modern feel. Browse the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals</h2>
@@ -280,7 +280,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" /> — a soft black that reads as a very deep charcoal, perfect for modern kitchen cabinets.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" /> — the 2025 Color of the Year works as a surprising kitchen accent. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-blue-600 hover:underline">Color of the Year breakdown</Link>.
+          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" /> — the 2025 Color of the Year works as a surprising kitchen accent. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year breakdown</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues</h2>
@@ -291,7 +291,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#C3D1D6" name="Boothbay Gray" brand="Benjamin Moore" /> — a blue-gray that feels coastal without being literal about it.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" /> — a muted powder blue that&apos;s calming and clean for kitchen walls. See more options in the <Link href="/colors/family/blue" className="text-blue-600 hover:underline">blue color family</Link>.
+          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" /> — a muted powder blue that&apos;s calming and clean for kitchen walls. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
       </>
     ),
@@ -319,12 +319,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Where to Buy</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Link href="/brands/behr" className="text-blue-600 hover:underline">Behr</Link> is a Home Depot exclusive — you won&apos;t find it anywhere else. <Link href="/brands/sherwin-williams" className="text-blue-600 hover:underline">Sherwin-Williams</Link> sells through their own 4,000+ stores, plus Lowe&apos;s carries their HGTV line. <Link href="/brands/benjamin-moore" className="text-blue-600 hover:underline">Benjamin Moore</Link> sells only through independent paint stores and hardware stores.
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> is a Home Depot exclusive — you won&apos;t find it anywhere else. <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> sells through their own 4,000+ stores, plus Lowe&apos;s carries their HGTV line. <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> sells only through independent paint stores and hardware stores.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Color Selection</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          All three brands offer extensive palettes. Benjamin Moore has roughly 3,500 colors, Sherwin-Williams has over 1,700, and Behr has approximately 3,000+. But numbers don&apos;t tell the whole story — what matters is whether the specific shade you want exists in each brand&apos;s deck. That&apos;s where <Link href="/search" className="text-blue-600 hover:underline">cross-brand color matching</Link> comes in.
+          All three brands offer extensive palettes. Benjamin Moore has roughly 3,500 colors, Sherwin-Williams has over 1,700, and Behr has approximately 3,000+. But numbers don&apos;t tell the whole story — what matters is whether the specific shade you want exists in each brand&apos;s deck. That&apos;s where <Link href="/search" className="text-brand-blue hover:underline">cross-brand color matching</Link> comes in.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           On Paint Color HQ, every color page shows the closest equivalents from all other brands, so you&apos;re never locked into a single brand&apos;s ecosystem.
@@ -354,7 +354,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Can You Mix Brands?</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Absolutely. Many designers specify Benjamin Moore colors but have them mixed in Sherwin-Williams paint (or vice versa) to get the best of both worlds. Just bring the color formula or hex code to any paint store and they can custom-match it. You can also use our <Link href="/compare" className="text-blue-600 hover:underline">color compare tool</Link> to verify how close the match is before committing.
+          Absolutely. Many designers specify Benjamin Moore colors but have them mixed in Sherwin-Williams paint (or vice versa) to get the best of both worlds. Just bring the color formula or hex code to any paint store and they can custom-match it. You can also use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to verify how close the match is before committing.
         </p>
       </>
     ),
@@ -383,7 +383,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" /> — a blue-green-gray that shifts beautifully with light throughout the day. It&apos;s calm without being cold.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" /> — a silvery blue-gray that feels like morning fog. Browse more in the <Link href="/colors/family/blue" className="text-blue-600 hover:underline">blue family</Link>.
+          <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" /> — a silvery blue-gray that feels like morning fog. Browse more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" /> — the name says it all. A powder blue with gray undertones that&apos;s genuinely soothing.
@@ -397,7 +397,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" /> — a warm, dusty sage that&apos;s serene without feeling sterile.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" /> — an incredibly gentle green-gray that reads almost neutral. See the full <Link href="/colors/family/green" className="text-blue-600 hover:underline">green color family</Link>.
+          <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" /> — an incredibly gentle green-gray that reads almost neutral. See the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals</h2>
@@ -424,7 +424,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Tips for Bedroom Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Keep the ceiling white or very light to maintain a sense of openness. Paint your largest wall as a test before committing to the whole room. And consider the color of your bedding — a soft blue wall with warm white linens is a classic combination that never fails. Read our guide on <Link href="/blog/understanding-paint-color-undertones" className="text-blue-600 hover:underline">understanding undertones</Link> to avoid surprises.
+          Keep the ceiling white or very light to maintain a sense of openness. Paint your largest wall as a test before committing to the whole room. And consider the color of your bedding — a soft blue wall with warm white linens is a classic combination that never fails. Read our guide on <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding undertones</Link> to avoid surprises.
         </p>
       </>
     ),
@@ -463,16 +463,16 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Step-by-Step: Finding Your Match</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Step 1: Identify the original color.</strong> Find the exact name, number, and brand. If you only have a photo, our <Link href="/search" className="text-blue-600 hover:underline">color search</Link> lets you search by hex code.
+          <strong>Step 1: Identify the original color.</strong> Find the exact name, number, and brand. If you only have a photo, our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> lets you search by hex code.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Step 2: Look up the color on Paint Color HQ.</strong> Search for it by name or browse the <Link href="/brands" className="text-blue-600 hover:underline">brand page</Link>. Every color page automatically shows the closest matches from all 14 brands in our database.
+          <strong>Step 2: Look up the color on Paint Color HQ.</strong> Search for it by name or browse the <Link href="/brands" className="text-brand-blue hover:underline">brand page</Link>. Every color page automatically shows the closest matches from all 14 brands in our database.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Step 3: Check the Delta E score.</strong> We show the ΔE 2000 value for every match. Aim for under 2.0 for a nearly invisible difference. Under 3.0 is acceptable for most residential projects.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Step 4: Always sample.</strong> Even with a low Delta E, always paint a physical sample. Digital screens can&apos;t perfectly represent paint colors, and your specific lighting conditions matter enormously. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-blue-600 hover:underline">undertones guide</Link> for more on why lighting matters.
+          <strong>Step 4: Always sample.</strong> Even with a low Delta E, always paint a physical sample. Digital screens can&apos;t perfectly represent paint colors, and your specific lighting conditions matter enormously. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for more on why lighting matters.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cross-Brand Matching in Action</h2>
@@ -480,7 +480,7 @@ const blogPosts: BlogPost[] = [
           Let&apos;s say you love <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" /> but your painter stocks Sherwin-Williams. Head to the Edgecomb Gray page and you&apos;ll see the closest SW matches ranked by Delta E. For this popular color, <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" /> is typically the top match.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          You can also use the <Link href="/compare" className="text-blue-600 hover:underline">compare tool</Link> to put any two colors side by side and see the exact ΔE score, RGB values, and visual difference.
+          You can also use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to put any two colors side by side and see the exact ΔE score, RGB values, and visual difference.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When a Perfect Match Doesn&apos;t Exist</h2>
@@ -508,7 +508,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Three Categories of White</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>True whites</strong> have minimal undertones and read as clean, bright white in most lighting. <strong>Warm whites</strong> lean cream, yellow, or pink and feel cozy. <strong>Cool whites</strong> lean blue or gray and feel crisp and modern. Understanding which category you need is the first decision. Browse all options in our <Link href="/colors/family/white" className="text-blue-600 hover:underline">white color family</Link>.
+          <strong>True whites</strong> have minimal undertones and read as clean, bright white in most lighting. <strong>Warm whites</strong> lean cream, yellow, or pink and feel cozy. <strong>Cool whites</strong> lean blue or gray and feel crisp and modern. Understanding which category you need is the first decision. Browse all options in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best True Whites</h2>
@@ -549,7 +549,7 @@ const blogPosts: BlogPost[] = [
           <strong>Consider your trim.</strong> Your wall white and trim white should come from the same temperature family. Warm wall + cool trim creates a jarring disconnect.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Test multiple samples.</strong> Buy at least three whites and paint large swatches. What looks identical in the can often looks wildly different on the wall. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-blue-600 hover:underline">undertones guide</Link> for the full explanation.
+          <strong>Test multiple samples.</strong> Buy at least three whites and paint large swatches. What looks identical in the can often looks wildly different on the wall. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for the full explanation.
         </p>
       </>
     ),
@@ -591,7 +591,7 @@ const blogPosts: BlogPost[] = [
           The most important rule: <strong>stay in the same temperature family</strong> for connected spaces. If your living room is a warm greige, your adjoining kitchen should also use warm tones. Jumping from warm to cool across an open floor plan creates visual tension.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          This doesn&apos;t mean every room must be the same color — just the same temperature. <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" /> in the living room flows naturally into <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" /> in the dining room because both are warm. Visit our <Link href="/inspiration" className="text-blue-600 hover:underline">inspiration gallery</Link> for curated palette ideas.
+          This doesn&apos;t mean every room must be the same color — just the same temperature. <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" /> in the living room flows naturally into <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" /> in the dining room because both are warm. Visit our <Link href="/inspiration" className="text-brand-blue hover:underline">inspiration gallery</Link> for curated palette ideas.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Colors for Your Home</h2>
@@ -601,12 +601,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cool Colors for Your Home</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Cool tones create a sense of openness and calm. They work well in bathrooms, home offices, and spaces where you want focus and clarity. Try <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" /> for walls with <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" /> for trim. Explore more in the <Link href="/colors/family/blue" className="text-blue-600 hover:underline">blue</Link> and <Link href="/colors/family/green" className="text-blue-600 hover:underline">green</Link> color families.
+          Cool tones create a sense of openness and calm. They work well in bathrooms, home offices, and spaces where you want focus and clarity. Try <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" /> for walls with <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" /> for trim. Explore more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> color families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When to Break the Rules</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Closed-off rooms — powder rooms, bedrooms with doors, home offices — can be any temperature. The warm/cool consistency rule primarily applies to open, connected spaces. A cool-toned powder room off a warm-toned hallway is perfectly fine. Use our <Link href="/compare" className="text-blue-600 hover:underline">compare tool</Link> to see how colors from different temperature families look next to each other.
+          Closed-off rooms — powder rooms, bedrooms with doors, home offices — can be any temperature. The warm/cool consistency rule primarily applies to open, connected spaces. A cool-toned powder room off a warm-toned hallway is perfectly fine. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how colors from different temperature families look next to each other.
         </p>
       </>
     ),
@@ -632,7 +632,7 @@ const blogPosts: BlogPost[] = [
           <strong>1.</strong> <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" /> — For the fifth year running, this warm greige remains the single most popular paint color in America. It works in virtually every room and lighting condition.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>2.</strong> <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" /> — The warm white that designers can&apos;t stop specifying. See our <Link href="/blog/best-white-paint-colors-guide" className="text-blue-600 hover:underline">white paint guide</Link> for the full breakdown.
+          <strong>2.</strong> <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" /> — The warm white that designers can&apos;t stop specifying. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>3.</strong> <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" /> — A warm greige that holds its ground in the age of beige-is-back.
@@ -646,18 +646,18 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Biggest Trend: Green Everything</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          2025 was the year green went mainstream. From sage kitchens to forest-green front doors, every shade of <Link href="/colors/family/green" className="text-blue-600 hover:underline">green</Link> saw massive growth. The trend was driven by biophilic design — the idea that incorporating nature into interiors improves well-being.
+          2025 was the year green went mainstream. From sage kitchens to forest-green front doors, every shade of <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> saw massive growth. The trend was driven by biophilic design — the idea that incorporating nature into interiors improves well-being.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Standout greens include <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" />, <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" />, and <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" />. We covered the kitchen-specific options in our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-blue-600 hover:underline">kitchen colors guide</Link>.
+          Standout greens include <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" />, <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" />, and <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" />. We covered the kitchen-specific options in our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen colors guide</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Warm Neutral Takeover</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Cool gray ruled the 2010s, but 2025 confirmed its replacement: warm greige, beige, and cream tones are the new default. The <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-blue-600 hover:underline">Colors of the Year</Link> reflect this — four out of five brands chose warm earth tones.
+          Cool gray ruled the 2010s, but 2025 confirmed its replacement: warm greige, beige, and cream tones are the new default. The <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Colors of the Year</Link> reflect this — four out of five brands chose warm earth tones.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For homeowners looking to transition from gray to warm, the easiest path is a greige like Agreeable Gray or Edgecomb Gray. These colors bridge the gap and work with both cool-toned and warm-toned furnishings. Check out our <Link href="/blog/warm-vs-cool-paint-colors" className="text-blue-600 hover:underline">warm vs cool guide</Link> for more on making the transition.
+          For homeowners looking to transition from gray to warm, the easiest path is a greige like Agreeable Gray or Edgecomb Gray. These colors bridge the gap and work with both cool-toned and warm-toned furnishings. Check out our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link> for more on making the transition.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Navy Holds Strong</h2>
@@ -670,7 +670,7 @@ const blogPosts: BlogPost[] = [
           Early signals suggest 2026 will continue the warm trend while introducing more saturated colors — think terracotta, olive, and warm plum. The pendulum is swinging from the ultra-neutral 2020s toward more expressive color choices.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Whatever direction you choose, use our <Link href="/search" className="text-blue-600 hover:underline">color search</Link> to explore 25,000+ colors across 14 brands, and find the perfect match for your next project.
+          Whatever direction you choose, use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to explore 25,000+ colors across 14 brands, and find the perfect match for your next project.
         </p>
       </>
     ),

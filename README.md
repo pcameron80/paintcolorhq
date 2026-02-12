@@ -1,6 +1,6 @@
 # Paint Color HQ
 
-Cross-brand paint color matching and tools. Explore 25,000+ paint colors from 14 brands, match colors across brands, visualize them in a room, identify colors from photos, and calculate coverage.
+Cross-brand paint color matching and tools. Explore 25,000+ paint colors from 14 brands, match colors across brands, visualize them in a room, identify colors from photos, generate coordinated palettes, and calculate coverage.
 
 **Live:** [www.paintcolorhq.com](https://www.paintcolorhq.com)
 
@@ -9,6 +9,7 @@ Cross-brand paint color matching and tools. Explore 25,000+ paint colors from 14
 - **Cross-Brand Color Matching** — Find equivalent colors across 14 major paint brands using the CIEDE2000 (Delta E 2000) color science algorithm
 - **Room Color Visualizer** — Preview paint colors on walls, accent wall, trim, and floor in a realistic room scene
 - **Photo Color Identifier** — Upload a photo, click any spot, and instantly find matching paint colors from every brand
+- **Palette Generator** — Pick any starting color and generate 5 coordinated palette schemes (Walls/Trim/Accent/Pop) matched to real paint colors, with brand filtering
 - **Paint Calculator** — Enter room dimensions, doors, and windows to calculate exactly how many gallons you need
 - **Undertone Analysis** — Every color tagged warm, cool, or neutral with filtering support
 - **Inspiration Palettes** — Curated color schemes (Modern Farmhouse, Coastal Retreat, etc.) mapped to real paint colors
@@ -49,6 +50,7 @@ src/
       paint-calculator/         # Paint coverage calculator
       color-identifier/         # Photo-based color identification
       room-visualizer/          # Interactive room color preview
+      palette-generator/        # Coordinated palette builder
     inspiration/                # Curated palette browsing
     match/                      # Cross-brand match pages (SEO)
     blog/                       # Blog posts

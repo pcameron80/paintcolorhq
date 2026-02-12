@@ -126,14 +126,14 @@ export function SaveToProject({
     <div className="relative" ref={menuRef}>
       <button
         onClick={handleClick}
-        className={`flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium transition-colors ${
+        className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold shadow-sm transition-colors ${
           isSaved
-            ? "border-blue-300 bg-blue-50 text-blue-700"
-            : "border-gray-300 text-gray-700 hover:bg-gray-50"
+            ? "bg-brand-blue text-white hover:bg-brand-blue-dark"
+            : "bg-brand-blue text-white hover:bg-brand-blue-dark"
         }`}
       >
         <svg
-          className={`h-5 w-5 ${isSaved ? "fill-blue-600" : "fill-none stroke-current"}`}
+          className={`h-5 w-5 ${isSaved ? "fill-white" : "fill-none stroke-current"}`}
           viewBox="0 0 24 24"
           strokeWidth={isSaved ? 0 : 1.5}
         >
@@ -214,7 +214,7 @@ export function SaveToProject({
                   value={newProjectName}
                   onChange={(e) => setNewProjectName(e.target.value)}
                   placeholder="New project name..."
-                  className="flex-1 rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none"
+                  className="flex-1 rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:border-brand-blue focus:outline-none"
                   onKeyDown={(e) => e.key === "Enter" && handleCreateProject()}
                 />
                 <button

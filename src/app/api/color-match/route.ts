@@ -5,6 +5,7 @@ import type { Lab } from "@/lib/color-utils";
 
 export async function GET(request: NextRequest) {
   const hex = request.nextUrl.searchParams.get("hex");
+  const brand = request.nextUrl.searchParams.get("brand");
 
   if (!hex || !/^#?[0-9a-fA-F]{6}$/.test(hex)) {
     return NextResponse.json(
@@ -19,12 +20,12 @@ export async function GET(request: NextRequest) {
 
   // Fetch candidates within RGB range
   let range = 40;
-  let candidates = await fetchCandidates(r, g, b, range);
+  let candidates = await fetchCandidates(r, g, b, range, brand);
 
   // Widen search if too few results
   if (candidates.length < 10) {
     range = 80;
-    candidates = await fetchCandidates(r, g, b, range);
+    candidates = await fetchCandidates(r, g, b, range, brand);
   }
 
   // Score each candidate using Delta E 2000
@@ -58,17 +59,26 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({ matches: scored.slice(0, 10) });
 }
 
-async function fetchCandidates(r: number, g: number, b: number, range: number) {
-  const { data, error } = await supabase
+async function fetchCandidates(r: number, g: number, b: number, range: number, brand?: string | null) {
+  const brandJoin = brand
+    ? "brand:brand_id!inner (name, slug)"
+    : "brand:brand_id (name, slug)";
+
+  let query = supabase
     .from("colors")
-    .select("id, name, hex, slug, color_number, rgb_r, rgb_g, rgb_b, lab_l, lab_a, lab_b_val, brand:brand_id (name, slug)")
+    .select(`id, name, hex, slug, color_number, rgb_r, rgb_g, rgb_b, lab_l, lab_a, lab_b_val, ${brandJoin}`)
     .gte("rgb_r", Math.max(0, r - range))
     .lte("rgb_r", Math.min(255, r + range))
     .gte("rgb_g", Math.max(0, g - range))
     .lte("rgb_g", Math.min(255, g + range))
     .gte("rgb_b", Math.max(0, b - range))
-    .lte("rgb_b", Math.min(255, b + range))
-    .limit(500);
+    .lte("rgb_b", Math.min(255, b + range));
+
+  if (brand) {
+    query = query.eq("brand.slug", brand);
+  }
+
+  const { data, error } = await query.limit(500);
 
   if (error) throw error;
 

@@ -52,7 +52,7 @@ export async function InspirationSection() {
         </div>
         <Link
           href="/inspiration"
-          className="text-sm font-medium text-blue-600 hover:text-blue-700"
+          className="text-sm font-medium text-brand-blue hover:text-brand-blue-dark"
         >
           View all
         </Link>

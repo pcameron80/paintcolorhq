@@ -103,7 +103,7 @@ export function AddPaletteToProject({
     <div className="relative" ref={menuRef}>
       <button
         onClick={handleClick}
-        className="flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+        className="flex items-center gap-2 rounded-lg bg-brand-blue px-3 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-blue-dark"
       >
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
@@ -162,7 +162,7 @@ export function AddPaletteToProject({
                   value={newProjectName}
                   onChange={(e) => setNewProjectName(e.target.value)}
                   placeholder="New project name..."
-                  className="flex-1 rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:border-blue-500 focus:outline-none"
+                  className="flex-1 rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:border-brand-blue focus:outline-none"
                   onKeyDown={(e) => e.key === "Enter" && handleCreateProject()}
                 />
                 <button

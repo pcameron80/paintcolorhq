@@ -89,7 +89,7 @@ export default function BlogIndex() {
                   >
                     {formatDate(post.date)}
                   </time>
-                  <h2 className="mt-1 text-lg font-semibold text-gray-900 group-hover:text-blue-600">
+                  <h2 className="mt-1 text-lg font-semibold text-gray-900 group-hover:text-brand-blue">
                     {post.title}
                   </h2>
                   <p className="mt-2 text-sm leading-relaxed text-gray-600">

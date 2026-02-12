@@ -87,7 +87,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
             href={`/colors/family/${familySlug}${undertoneFilter ? `?undertone=${undertoneFilter}` : ""}`}
             className={`rounded-full px-3 py-1 text-sm ${
               !brandFilter
-                ? "bg-blue-100 text-blue-700 font-medium"
+                ? "bg-blue-100 text-brand-blue-dark font-medium"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
           >
@@ -103,7 +103,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
                 href={`/colors/family/${familySlug}?${params.toString()}`}
                 className={`rounded-full px-3 py-1 text-sm ${
                   brandFilter === b.slug
-                    ? "bg-blue-100 text-blue-700 font-medium"
+                    ? "bg-blue-100 text-brand-blue-dark font-medium"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >

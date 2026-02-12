@@ -10,6 +10,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-brand-blue: #3D6F8E;
+  --color-brand-blue-dark: #335F7A;
+  --color-brand-terra: #BF6840;
+  --color-brand-terra-dark: #A85A37;
+  --color-brand-sage: #8EA68B;
+  --color-brand-warm-gray: #C7C1B7;
 }
 
 

@@ -158,7 +158,7 @@ export default function TermsOfServicePage() {
                 contact us at{" "}
                 <a
                   href="mailto:info@paintcolorhq.com"
-                  className="text-blue-600 underline hover:text-blue-800"
+                  className="text-brand-blue underline hover:text-brand-blue-dark"
                 >
                   info@paintcolorhq.com
                 </a>

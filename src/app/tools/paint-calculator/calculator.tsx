@@ -49,7 +49,7 @@ export function PaintCalculator() {
               value={length}
               onChange={(e) => setLength(e.target.value)}
               placeholder="12"
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue"
             />
           </div>
           <div>
@@ -67,7 +67,7 @@ export function PaintCalculator() {
               value={width}
               onChange={(e) => setWidth(e.target.value)}
               placeholder="14"
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue"
             />
           </div>
           <div>
@@ -84,7 +84,7 @@ export function PaintCalculator() {
               step="0.5"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue"
             />
           </div>
           <div>
@@ -98,7 +98,7 @@ export function PaintCalculator() {
               id="coats"
               value={coats}
               onChange={(e) => setCoats(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue"
             >
               <option value="1">1</option>
               <option value="2">2</option>
@@ -118,7 +118,7 @@ export function PaintCalculator() {
               min="0"
               value={doors}
               onChange={(e) => setDoors(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue"
             />
           </div>
           <div>
@@ -134,7 +134,7 @@ export function PaintCalculator() {
               min="0"
               value={windows}
               onChange={(e) => setWindows(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-brand-blue focus:outline-none focus:ring-1 focus:ring-brand-blue"
             />
           </div>
         </div>
@@ -145,7 +145,7 @@ export function PaintCalculator() {
           <h2 className="text-lg font-semibold text-gray-900">
             You Need
           </h2>
-          <p className="mt-2 text-5xl font-bold text-blue-600">
+          <p className="mt-2 text-5xl font-bold text-brand-blue">
             {gallons} {gallons === 1 ? "gallon" : "gallons"}
           </p>
           <p className="mt-1 text-sm text-gray-500">

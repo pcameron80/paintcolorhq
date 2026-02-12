@@ -76,11 +76,11 @@ export function ComplementaryColors({
                   {color.label}
                 </p>
                 {color.matchName ? (
-                  <p className="truncate text-center text-xs text-gray-400 group-hover:text-blue-600">
+                  <p className="truncate text-center text-xs text-gray-400 group-hover:text-brand-blue">
                     {color.matchName}
                   </p>
                 ) : (
-                  <p className="text-center font-mono text-xs text-gray-400 group-hover:text-blue-600">
+                  <p className="text-center font-mono text-xs text-gray-400 group-hover:text-brand-blue">
                     {color.matchHex.toUpperCase()}
                   </p>
                 )}

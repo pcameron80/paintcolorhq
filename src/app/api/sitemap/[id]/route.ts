@@ -32,6 +32,7 @@ export async function GET(
       { url: "/tools/paint-calculator", priority: "0.7", changefreq: "monthly", lastmod: "" },
       { url: "/tools/color-identifier", priority: "0.7", changefreq: "monthly", lastmod: "" },
       { url: "/tools/room-visualizer", priority: "0.7", changefreq: "monthly", lastmod: "" },
+      { url: "/tools/palette-generator", priority: "0.7", changefreq: "monthly", lastmod: "" },
     ];
 
     const brandPages = brands.map((b) => ({

@@ -80,7 +80,7 @@ export default function PaintCalculatorPage() {
         <div className="mt-8">
           <Link
             href="/search"
-            className="text-sm font-medium text-blue-600 hover:underline"
+            className="text-sm font-medium text-brand-blue hover:underline"
           >
             Now find the perfect color &rarr;
           </Link>

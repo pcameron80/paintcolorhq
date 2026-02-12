@@ -74,7 +74,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             href={`/brands/${brandSlug}${undertoneFilter ? `?undertone=${undertoneFilter}` : ""}`}
             className={`rounded-full px-3 py-1 text-sm ${
               !family
-                ? "bg-blue-100 text-blue-700 font-medium"
+                ? "bg-blue-100 text-brand-blue-dark font-medium"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
           >
@@ -90,7 +90,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
                 href={`/brands/${brandSlug}?${params.toString()}`}
                 className={`rounded-full px-3 py-1 text-sm capitalize ${
                   family === f
-                    ? "bg-blue-100 text-blue-700 font-medium"
+                    ? "bg-blue-100 text-brand-blue-dark font-medium"
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >

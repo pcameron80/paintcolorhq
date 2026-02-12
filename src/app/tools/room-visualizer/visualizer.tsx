@@ -433,7 +433,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
               onClick={() => selectRegion(r.id)}
               className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
                 selected === r.id
-                  ? "border-blue-500 bg-blue-50 text-blue-700"
+                  ? "border-brand-blue bg-blue-50 text-brand-blue-dark"
                   : "border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50"
               }`}
             >
@@ -479,7 +479,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
                       onClick={() => applyColor(normalized)}
                       className={`h-8 w-8 rounded-lg border-2 transition-transform ${
                         isActive
-                          ? "scale-110 border-blue-500 ring-2 ring-blue-200"
+                          ? "scale-110 border-brand-blue ring-2 ring-blue-200"
                           : "border-gray-300 hover:scale-105 hover:border-gray-400"
                       }`}
                       style={{ backgroundColor: normalized }}
@@ -580,7 +580,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
                   <div className="p-2">
                     <Link
                       href={`/colors/${m.brandSlug}/${m.colorSlug}`}
-                      className="block text-xs font-medium text-gray-900 hover:text-blue-600"
+                      className="block text-xs font-medium text-gray-900 hover:text-brand-blue"
                     >
                       {m.name}
                     </Link>

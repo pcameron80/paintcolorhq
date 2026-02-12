@@ -129,7 +129,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <span className="text-xs font-medium text-gray-500">
                   &larr; Previous
                 </span>
-                <span className="mt-1 block text-sm font-semibold text-gray-900 group-hover:text-blue-600">
+                <span className="mt-1 block text-sm font-semibold text-gray-900 group-hover:text-brand-blue">
                   {prevPost.title}
                 </span>
               </Link>
@@ -144,7 +144,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <span className="text-xs font-medium text-gray-500">
                   Next &rarr;
                 </span>
-                <span className="mt-1 block text-sm font-semibold text-gray-900 group-hover:text-blue-600">
+                <span className="mt-1 block text-sm font-semibold text-gray-900 group-hover:text-brand-blue">
                   {nextPost.title}
                 </span>
               </Link>

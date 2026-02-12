@@ -196,11 +196,20 @@ export default async function ColorPage({ params }: PageProps) {
               <p className="mt-1 text-sm text-gray-500">{color.color_number}</p>
             )}
 
-            <div className="mt-4">
+            <div className="mt-4 flex flex-wrap items-center gap-3">
               <SaveToProject
                 colorId={color.id}
                 currentPath={`/colors/${brandSlug}/${colorSlug}`}
               />
+              <Link
+                href={`/tools/palette-generator?hex=${encodeURIComponent(color.hex)}`}
+                className="flex items-center gap-2 rounded-lg bg-brand-terra px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-terra-dark"
+              >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
+                </svg>
+                Generate Palette
+              </Link>
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4">
@@ -228,19 +237,9 @@ export default async function ColorPage({ params }: PageProps) {
                   <p className="mt-1 text-lg font-semibold text-gray-900">
                     {Number(color.lrv).toFixed(1)}
                   </p>
-                </div>
-              )}
-              {color.color_family && (
-                <div className="rounded-lg bg-gray-50 p-4">
-                  <p className="text-xs font-medium uppercase text-gray-500">
-                    Color Family
+                  <p className="mt-1 text-[11px] leading-snug text-gray-400">
+                    Light Reflectance Value — how much light a color reflects. 0 is pure black, 100 is pure white.
                   </p>
-                  <Link
-                    href={`/colors/family/${color.color_family}`}
-                    className="mt-1 block text-lg font-semibold capitalize text-blue-600 hover:underline"
-                  >
-                    {color.color_family}
-                  </Link>
                 </div>
               )}
               {color.undertone && (
@@ -254,6 +253,22 @@ export default async function ColorPage({ params }: PageProps) {
                     />
                     {color.undertone}
                   </p>
+                  <p className="mt-1 text-[11px] leading-snug text-gray-400">
+                    The subtle base hue beneath the surface color. Affects how it pairs with trim, flooring, and other colors.
+                  </p>
+                </div>
+              )}
+              {color.color_family && (
+                <div className="rounded-lg bg-gray-50 p-4">
+                  <p className="text-xs font-medium uppercase text-gray-500">
+                    Color Family
+                  </p>
+                  <Link
+                    href={`/colors/family/${color.color_family}`}
+                    className="mt-1 block text-lg font-semibold capitalize text-brand-blue hover:underline"
+                  >
+                    {color.color_family}
+                  </Link>
                 </div>
               )}
             </div>

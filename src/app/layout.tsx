@@ -13,14 +13,14 @@ export const metadata: Metadata = {
     template: "%s | Paint Color HQ",
   },
   description:
-    "Explore 25,000+ paint colors, match colors across brands, visualize them in a room, identify colors from photos, and calculate how much paint you need. Free tools for Sherwin-Williams, Benjamin Moore, Behr, and more.",
+    "Explore 25,000+ paint colors, match colors across brands, visualize them in a room, identify colors from photos, generate coordinated palettes, and calculate how much paint you need. Free tools for Sherwin-Williams, Benjamin Moore, Behr, and more.",
   metadataBase: new URL("https://www.paintcolorhq.com"),
   openGraph: {
     type: "website",
     siteName: "Paint Color HQ",
     title: "Paint Color HQ - Paint Color Inspiration & Palettes",
     description:
-      "Explore 25,000+ paint colors, match colors across brands, visualize them in a room, and identify colors from photos. Free tools for every paint project.",
+      "Explore 25,000+ paint colors, match colors across brands, visualize them in a room, identify colors from photos, and generate coordinated palettes. Free tools for every paint project.",
     images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
   },
   twitter: {

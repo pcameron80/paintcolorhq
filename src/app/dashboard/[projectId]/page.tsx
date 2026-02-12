@@ -126,7 +126,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <div className="mt-16 text-center">
             <p className="text-gray-500">
               No colors saved yet. Browse{" "}
-              <Link href="/colors" className="text-blue-600 hover:underline">
+              <Link href="/colors" className="text-brand-blue hover:underline">
                 colors
               </Link>{" "}
               and save them to this project.
@@ -154,7 +154,7 @@ export default async function ProjectPage({ params }: PageProps) {
                       <div className="min-w-0 flex-1">
                         <Link
                           href={`/colors/${pc.color.brand.slug}/${pc.color.slug}`}
-                          className="font-medium text-gray-900 hover:text-blue-600"
+                          className="font-medium text-gray-900 hover:text-brand-blue"
                         >
                           {pc.color.name}
                         </Link>

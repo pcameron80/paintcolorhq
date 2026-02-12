@@ -46,7 +46,7 @@ export default async function DashboardPage() {
           <div className="mt-16 text-center">
             <p className="text-gray-500">
               No projects yet. Browse{" "}
-              <Link href="/colors" className="text-blue-600 hover:underline">
+              <Link href="/colors" className="text-brand-blue hover:underline">
                 colors
               </Link>{" "}
               and save them to a project.
@@ -81,7 +81,7 @@ export default async function DashboardPage() {
 
                   <div className="p-5">
                     <Link href={`/dashboard/${project.id}`}>
-                      <h2 className="text-lg font-semibold text-gray-900 hover:text-blue-600">
+                      <h2 className="text-lg font-semibold text-gray-900 hover:text-brand-blue">
                         {project.name}
                       </h2>
                       {project.description && (

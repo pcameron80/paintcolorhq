@@ -88,6 +88,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/tools/palette-generator"
+                  className="text-sm text-gray-500 hover:text-gray-900"
+                >
+                  Palette Generator
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/blog"
                   className="text-sm text-gray-500 hover:text-gray-900"
                 >
