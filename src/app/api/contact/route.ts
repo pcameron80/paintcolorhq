@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
       : `[Paint Color HQ] Contact: ${name}`;
 
     await resend.emails.send({
-      from: "Paint Color HQ <noreply@paintcolorhq.com>",
+      from: "Paint Color HQ <delivered@resend.dev>",
       to,
       replyTo: email,
       subject,
