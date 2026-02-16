@@ -15,8 +15,10 @@ const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
 declare global {
   interface Window {
     grecaptcha: {
-      ready: (cb: () => void) => void;
-      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+      enterprise: {
+        ready: (cb: () => void) => void;
+        execute: (siteKey: string, options: { action: string }) => Promise<string>;
+      };
     };
   }
 }
@@ -27,12 +29,12 @@ export function ContactForm() {
   const [recaptchaReady, setRecaptchaReady] = useState(false);
 
   const onRecaptchaLoad = useCallback(() => {
-    window.grecaptcha.ready(() => setRecaptchaReady(true));
+    window.grecaptcha.enterprise.ready(() => setRecaptchaReady(true));
   }, []);
 
   useEffect(() => {
-    if (window.grecaptcha) {
-      window.grecaptcha.ready(() => setRecaptchaReady(true));
+    if (window.grecaptcha?.enterprise) {
+      window.grecaptcha.enterprise.ready(() => setRecaptchaReady(true));
     }
   }, []);
 
@@ -46,7 +48,7 @@ export function ContactForm() {
     let token = "";
     if (recaptchaReady && RECAPTCHA_SITE_KEY) {
       try {
-        token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: "contact" });
+        token = await window.grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, { action: "contact" });
       } catch {
         setErrorMsg("reCAPTCHA verification failed. Please try again.");
         setStatus("error");
@@ -104,7 +106,7 @@ export function ContactForm() {
     <>
       {RECAPTCHA_SITE_KEY && (
         <Script
-          src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+          src={`https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`}
           onLoad={onRecaptchaLoad}
         />
       )}

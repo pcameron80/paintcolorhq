@@ -5,17 +5,33 @@ export const dynamic = "force-dynamic";
 const RECAPTCHA_THRESHOLD = 0.5;
 
 async function verifyRecaptcha(token: string): Promise<boolean> {
-  const secret = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secret) return true; // Skip if not configured
+  const apiKey = process.env.GOOGLE_CLOUD_API_KEY;
+  const projectId = process.env.RECAPTCHA_PROJECT_ID;
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
-  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `secret=${encodeURIComponent(secret)}&response=${encodeURIComponent(token)}`,
-  });
+  if (!apiKey || !projectId) return true; // Skip if not configured
+
+  const res = await fetch(
+    `https://recaptchaenterprise.googleapis.com/v1/projects/${projectId}/assessments?key=${apiKey}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event: {
+          token,
+          siteKey,
+          expectedAction: "contact",
+        },
+      }),
+    }
+  );
 
   const data = await res.json();
-  return data.success && data.score >= RECAPTCHA_THRESHOLD;
+  return (
+    data.tokenProperties?.valid === true &&
+    data.tokenProperties?.action === "contact" &&
+    (data.riskAnalysis?.score ?? 0) >= RECAPTCHA_THRESHOLD
+  );
 }
 
 export async function POST(request: NextRequest) {
@@ -38,8 +54,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verify reCAPTCHA
-    if (process.env.RECAPTCHA_SECRET_KEY) {
+    // Verify reCAPTCHA Enterprise
+    if (process.env.GOOGLE_CLOUD_API_KEY && process.env.RECAPTCHA_PROJECT_ID) {
       if (!recaptchaToken) {
         return NextResponse.json(
           { error: "reCAPTCHA verification required." },
