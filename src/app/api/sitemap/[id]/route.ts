@@ -33,6 +33,9 @@ export async function GET(
       { url: "/tools/color-identifier", priority: "0.7", changefreq: "monthly", lastmod: "" },
       { url: "/tools/room-visualizer", priority: "0.7", changefreq: "monthly", lastmod: "" },
       { url: "/tools/palette-generator", priority: "0.7", changefreq: "monthly", lastmod: "" },
+      { url: "/about", priority: "0.5", changefreq: "monthly", lastmod: "" },
+      { url: "/contact", priority: "0.5", changefreq: "monthly", lastmod: "" },
+      { url: "/faq", priority: "0.7", changefreq: "monthly", lastmod: "" },
     ];
 
     const brandPages = brands.map((b) => ({

@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="border-t border-gray-200 bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           <div>
             <h3 className="text-sm font-semibold text-gray-900">Brands</h3>
             <ul className="mt-3 space-y-2">
@@ -13,7 +13,12 @@ export function Footer() {
                 { name: "Benjamin Moore", slug: "benjamin-moore" },
                 { name: "Behr", slug: "behr" },
                 { name: "PPG", slug: "ppg" },
+                { name: "Valspar", slug: "valspar" },
                 { name: "Dunn-Edwards", slug: "dunn-edwards" },
+                { name: "Farrow & Ball", slug: "farrow-ball" },
+                { name: "Pratt & Lambert", slug: "pratt-lambert" },
+                { name: "California Paints", slug: "california-paints" },
+                { name: "Dulux", slug: "dulux" },
               ].map((brand) => (
                 <li key={brand.slug}>
                   <Link
@@ -31,7 +36,21 @@ export function Footer() {
               Color Families
             </h3>
             <ul className="mt-3 space-y-2">
-              {["White", "Gray", "Blue", "Green", "Beige"].map((family) => (
+              {[
+                "White",
+                "Off-White",
+                "Gray",
+                "Beige",
+                "Brown",
+                "Blue",
+                "Green",
+                "Red",
+                "Yellow",
+                "Orange",
+                "Purple",
+                "Pink",
+                "Black",
+              ].map((family) => (
                 <li key={family}>
                   <Link
                     href={`/colors/family/${family.toLowerCase()}`}
@@ -44,7 +63,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">Resources</h3>
+            <h3 className="text-sm font-semibold text-gray-900">Tools</h3>
             <ul className="mt-3 space-y-2">
               <li>
                 <Link
@@ -64,10 +83,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/tools/paint-calculator"
+                  href="/tools/room-visualizer"
                   className="text-sm text-gray-500 hover:text-gray-900"
                 >
-                  Paint Calculator
+                  Room Visualizer
                 </Link>
               </li>
               <li>
@@ -80,14 +99,6 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/tools/room-visualizer"
-                  className="text-sm text-gray-500 hover:text-gray-900"
-                >
-                  Room Visualizer
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/tools/palette-generator"
                   className="text-sm text-gray-500 hover:text-gray-900"
                 >
@@ -96,17 +107,62 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/tools/paint-calculator"
+                  className="text-sm text-gray-500 hover:text-gray-900"
+                >
+                  Paint Calculator
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gray-900">Resources</h3>
+            <ul className="mt-3 space-y-2">
+              <li>
+                <Link
                   href="/blog"
                   className="text-sm text-gray-500 hover:text-gray-900"
                 >
                   Blog
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/inspiration"
+                  className="text-sm text-gray-500 hover:text-gray-900"
+                >
+                  Inspiration Palettes
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-sm text-gray-500 hover:text-gray-900"
+                >
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">Legal</h3>
+            <h3 className="text-sm font-semibold text-gray-900">Company</h3>
             <ul className="mt-3 space-y-2">
+              <li>
+                <Link
+                  href="/about"
+                  className="text-sm text-gray-500 hover:text-gray-900"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-sm text-gray-500 hover:text-gray-900"
+                >
+                  Contact
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/privacy"
@@ -128,7 +184,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-gray-200 pt-8">
           <p className="text-center text-xs text-gray-400">
-            Paint Color HQ - Your complete paint color toolkit. Color data is
+            &copy; {new Date().getFullYear()} Paint Color HQ. Color data is
             approximate. Always verify with physical samples before purchasing.
           </p>
         </div>
