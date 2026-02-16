@@ -11,6 +11,7 @@ export interface BlogPost {
   date: string; // "YYYY-MM-DD"
   excerpt: string;
   coverColor: string; // hex for card accent
+  coverImage?: string; // path to cover image, e.g. "/blog/my-post.webp"
   tags: string[];
   content: () => ReactNode;
 }

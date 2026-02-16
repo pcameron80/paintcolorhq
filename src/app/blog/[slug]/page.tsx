@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/header";
@@ -30,6 +31,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: post.date,
       url,
       tags: post.tags,
+      ...(post.coverImage && {
+        images: [{ url: `https://www.paintcolorhq.com${post.coverImage}`, width: 1200, height: 630 }],
+      }),
     },
   };
 }
@@ -60,6 +64,9 @@ export default async function BlogPostPage({ params }: PageProps) {
     description: post.excerpt,
     url: `https://www.paintcolorhq.com/blog/${post.slug}`,
     keywords: post.tags.join(", "),
+    ...(post.coverImage && {
+      image: `https://www.paintcolorhq.com${post.coverImage}`,
+    }),
     author: {
       "@type": "Organization",
       name: "Paint Color HQ",
@@ -76,8 +83,21 @@ export default async function BlogPostPage({ params }: PageProps) {
     <div className="flex min-h-screen flex-col bg-white">
       <Header />
       <main className="flex-1">
-        {/* Hero color bar */}
-        <div className="h-20 sm:h-28" style={{ backgroundColor: post.coverColor }} />
+        {/* Hero image or color bar */}
+        {post.coverImage ? (
+          <div className="relative h-48 sm:h-64 md:h-80">
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+        ) : (
+          <div className="h-20 sm:h-28" style={{ backgroundColor: post.coverColor }} />
+        )}
 
         <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
           {/* Breadcrumb */}

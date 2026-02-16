@@ -311,6 +311,100 @@ Dashboard pages set `robots: { index: false, follow: false }` in their metadata 
 
 This will index all ~25,100 URLs across the paginated sitemaps (~5 child sitemaps at `/sitemap/0.xml` through `/sitemap/4.xml`).
 
+## Blog Cover Images
+
+Blog posts support optional cover images that replace the solid color bar on both the listing page and individual post pages.
+
+### How It Works
+
+The `BlogPost` interface in `src/lib/blog-posts.tsx` has an optional `coverImage` field:
+
+```typescript
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  coverColor: string;    // hex — always required as fallback
+  coverImage?: string;   // optional path, e.g. "/blog/my-post.webp"
+  tags: string[];
+  content: () => ReactNode;
+}
+```
+
+When `coverImage` is set:
+- **Blog listing** (`/blog`): Shows the image (h-40/h-48) instead of the solid color bar
+- **Post page** (`/blog/[slug]`): Shows a full-width hero image (h-48/h-64/h-80) instead of the color bar
+- **OpenGraph**: `og:image` is set to the full URL for social sharing previews
+- **JSON-LD**: `image` field is added to the `BlogPosting` schema for Google rich results
+
+When `coverImage` is not set, everything falls back to `coverColor` — no changes needed for existing posts.
+
+### Adding Images to Posts
+
+1. **Create/source the image**
+   - Use Canva Pro or Adobe Stock
+   - **Dimensions**: 1200x630px (standard OG size — works for both hero and social)
+   - **Format**: WebP for best compression
+   - Name the file after the post slug: `{slug}.webp`
+
+2. **Save to `public/blog/`**
+   ```
+   public/blog/best-kitchen-paint-colors-2025.webp
+   public/blog/calming-bedroom-paint-colors.webp
+   ```
+
+3. **Add the field to the post** in `src/lib/blog-posts.tsx`:
+   ```typescript
+   {
+     slug: "best-kitchen-paint-colors-2025",
+     title: "The 10 Best Kitchen Paint Colors for 2025",
+     date: "2025-06-10",
+     coverColor: "#5B8C5A",
+     coverImage: "/blog/best-kitchen-paint-colors-2025.webp",  // ← add this
+     // ...
+   }
+   ```
+
+4. **Deploy** — the image is served by Next.js `<Image>` with automatic optimization
+
+### All 24 Post Slugs (for image filenames)
+
+| # | Filename |
+|---|----------|
+| 1 | `2025-colors-of-the-year-every-brand-compared.webp` |
+| 2 | `best-sherwin-williams-alternatives-to-benjamin-moore.webp` |
+| 3 | `understanding-paint-color-undertones.webp` |
+| 4 | `best-kitchen-paint-colors-2025.webp` |
+| 5 | `behr-vs-sherwin-williams-vs-benjamin-moore.webp` |
+| 6 | `calming-bedroom-paint-colors.webp` |
+| 7 | `how-to-find-perfect-color-match-across-brands.webp` |
+| 8 | `best-white-paint-colors-guide.webp` |
+| 9 | `warm-vs-cool-paint-colors.webp` |
+| 10 | `most-popular-paint-colors-2025.webp` |
+| 11 | `best-bathroom-paint-colors.webp` |
+| 12 | `best-living-room-paint-colors.webp` |
+| 13 | `best-home-office-paint-colors.webp` |
+| 14 | `best-exterior-paint-colors.webp` |
+| 15 | `best-nursery-paint-colors.webp` |
+| 16 | `best-dining-room-paint-colors.webp` |
+| 17 | `best-sherwin-williams-kitchen-colors.webp` |
+| 18 | `benjamin-moore-most-popular-whites.webp` |
+| 19 | `best-behr-colors-for-bedrooms.webp` |
+| 20 | `paint-color-trends-2026.webp` |
+| 21 | `sherwin-williams-vs-benjamin-moore.webp` |
+| 22 | `paint-sheen-guide.webp` |
+| 23 | `how-to-test-paint-samples.webp` |
+| 24 | `color-theory-for-home-decorators.webp` |
+
+### Image Tips
+
+- **Canva Pro**: Search for relevant room/paint photos, resize to 1200x630, export as WebP
+- **Adobe Stock**: Download, crop to 1200x630 in Canva or any editor, export as WebP
+- **File size**: Aim for under 200KB per image — WebP at 80% quality is usually sufficient
+- **Alt text**: Automatically set to the post title via Next.js `<Image alt={post.title}>`
+- You can add images incrementally — posts without `coverImage` keep working with color bars
+
 ## Google Analytics
 
 Google Analytics 4 (gtag.js) is installed in the root layout with measurement ID `G-056NR93JLK`. It loads on every page via a `<script>` tag in `<head>`.

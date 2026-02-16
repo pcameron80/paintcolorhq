@@ -123,16 +123,16 @@ async function main() {
         color_family: c.color_family,
       }));
 
-    const { error, count } = await supabase
+    const { error, data } = await supabase
       .from('colors')
       .upsert(rows, { onConflict: 'brand_id,slug', ignoreDuplicates: true })
-      .select('id', { count: 'exact', head: true });
+      .select('id');
 
     if (error) {
       console.error(`Batch ${Math.floor(i / BATCH_SIZE) + 1} error:`, error.message);
       skipped += rows.length;
     } else {
-      inserted += count ?? rows.length;
+      inserted += data?.length ?? rows.length;
       console.log(`  Batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(allColors.length / BATCH_SIZE)}: ${rows.length} rows`);
     }
   }

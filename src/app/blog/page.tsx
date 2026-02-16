@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -46,6 +47,9 @@ export default function BlogIndex() {
       headline: post.title,
       datePublished: post.date,
       url: `https://www.paintcolorhq.com/blog/${post.slug}`,
+      ...(post.coverImage && {
+        image: `https://www.paintcolorhq.com${post.coverImage}`,
+      }),
     })),
   };
 
@@ -77,11 +81,23 @@ export default function BlogIndex() {
                 href={`/blog/${post.slug}`}
                 className="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md"
               >
-                {/* Color accent bar */}
-                <div
-                  className="h-32"
-                  style={{ backgroundColor: post.coverColor }}
-                />
+                {/* Cover image or color accent bar */}
+                {post.coverImage ? (
+                  <div className="relative h-40 sm:h-48">
+                    <Image
+                      src={post.coverImage}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="h-32"
+                    style={{ backgroundColor: post.coverColor }}
+                  />
+                )}
                 <div className="p-5">
                   <time
                     dateTime={post.date}
