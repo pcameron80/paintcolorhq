@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -38,81 +39,39 @@ export default function ContactPage() {
             feature? We&apos;d love to hear from you.
           </p>
 
-          <div className="mt-10 space-y-8">
-            <section className="rounded-lg border border-gray-200 p-6">
-              <h2 className="text-lg font-semibold text-gray-900">
-                General Inquiries
-              </h2>
-              <p className="mt-2 leading-relaxed text-gray-600">
-                For questions about our tools, color data, or anything else:
-              </p>
-              <a
-                href="mailto:hello@paintcolorhq.com"
-                className="mt-3 inline-block text-brand-blue font-medium hover:underline"
-              >
-                hello@paintcolorhq.com
-              </a>
-            </section>
+          <div className="mt-10 rounded-lg border border-gray-200 p-6">
+            <ContactForm />
+          </div>
 
-            <section className="rounded-lg border border-gray-200 p-6">
-              <h2 className="text-lg font-semibold text-gray-900">
-                Report a Color Data Issue
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="rounded-lg border border-gray-200 p-5">
+              <h2 className="text-sm font-semibold text-gray-900">
+                Color Data Issues
               </h2>
-              <p className="mt-2 leading-relaxed text-gray-600">
-                Noticed a color that looks wrong, a missing color number, or an
-                incorrect brand attribution? Let us know and we&apos;ll fix it.
-                Please include the color name, brand, and what looks incorrect.
+              <p className="mt-2 text-sm text-gray-600">
+                Noticed a color that looks wrong or a missing color number?
+                Select &ldquo;Color Data Issue&rdquo; in the form above and
+                include the color name, brand, and what looks incorrect.
               </p>
-              <a
-                href="mailto:data@paintcolorhq.com"
-                className="mt-3 inline-block text-brand-blue font-medium hover:underline"
-              >
-                data@paintcolorhq.com
-              </a>
-            </section>
-
-            <section className="rounded-lg border border-gray-200 p-6">
-              <h2 className="text-lg font-semibold text-gray-900">
-                Feature Requests
-              </h2>
-              <p className="mt-2 leading-relaxed text-gray-600">
-                Have an idea for a tool or feature that would help with your
-                paint projects? We build based on what users actually need, so
-                your feedback shapes what we work on next.
-              </p>
-              <a
-                href="mailto:hello@paintcolorhq.com?subject=Feature%20Request"
-                className="mt-3 inline-block text-brand-blue font-medium hover:underline"
-              >
-                hello@paintcolorhq.com
-              </a>
-            </section>
-
-            <section className="rounded-lg border border-gray-200 p-6">
-              <h2 className="text-lg font-semibold text-gray-900">
+            </div>
+            <div className="rounded-lg border border-gray-200 p-5">
+              <h2 className="text-sm font-semibold text-gray-900">
                 Privacy & Data Requests
               </h2>
-              <p className="mt-2 leading-relaxed text-gray-600">
-                For questions about your account data, deletion requests, or
-                privacy concerns, see our{" "}
+              <p className="mt-2 text-sm text-gray-600">
+                For account data or deletion requests, see our{" "}
                 <Link
                   href="/privacy"
                   className="text-brand-blue underline hover:text-brand-blue-dark"
                 >
                   Privacy Policy
                 </Link>{" "}
-                or contact:
+                or select &ldquo;Privacy & Data Request&rdquo; above.
               </p>
-              <a
-                href="mailto:privacy@paintcolorhq.com"
-                className="mt-3 inline-block text-brand-blue font-medium hover:underline"
-              >
-                privacy@paintcolorhq.com
-              </a>
-            </section>
+            </div>
           </div>
 
-          <p className="mt-10 text-sm text-gray-400">
+          <p className="mt-8 text-sm text-gray-400">
             We typically respond within 1–2 business days.
           </p>
         </div>
