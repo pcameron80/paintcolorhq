@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { getBrandBySlug, getColorsByBrand, getAllBrands } from "@/lib/queries";
+import { getBrandContent } from "@/lib/brand-content";
 
 export const revalidate = 3600;
 
@@ -67,6 +68,8 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         <p className="mt-1 text-gray-600">
           {brand.color_count.toLocaleString()} colors
         </p>
+
+        {getBrandContent(brand.slug)?.intro}
 
         {/* Color family filter */}
         <div className="mt-6 flex flex-wrap gap-2">
@@ -131,6 +134,8 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             );
           })}
         </div>
+
+        {getBrandContent(brand.slug)?.details}
 
         {/* Color grid */}
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
