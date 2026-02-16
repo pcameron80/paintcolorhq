@@ -43,6 +43,8 @@ export function HeroSearch() {
           alt="Beautifully painted room interior"
           fill
           priority
+          fetchPriority="high"
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/40" />

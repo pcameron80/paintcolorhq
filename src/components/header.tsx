@@ -15,7 +15,7 @@ export async function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt="Paint Color HQ"
             width={140}
             height={33}
