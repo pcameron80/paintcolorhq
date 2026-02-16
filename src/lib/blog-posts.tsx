@@ -1223,6 +1223,619 @@ const blogPosts: BlogPost[] = [
       </>
     ),
   },
+  /* ──────────────── Post 17 (Tier 3 — Brand-Specific) ──────────────── */
+  {
+    slug: "best-sherwin-williams-kitchen-colors",
+    title: "The 12 Best Sherwin-Williams Colors for Kitchens",
+    date: "2026-02-17",
+    excerpt:
+      "From Agreeable Gray cabinets to Naval islands, these are the most popular Sherwin-Williams colors for kitchens — with designer tips for every style.",
+    coverColor: "#6B7C6E",
+    tags: ["Sherwin-Williams", "Kitchen", "Design"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Sherwin-Williams is the paint brand most specified by kitchen designers and contractors in the US. With over 1,700 colors and a store within 20 minutes of most Americans, it&apos;s the go-to for kitchen renovations. Here are the 12 SW colors that dominate kitchen projects right now — and how to use each one.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Whites for Cabinets</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          White cabinets remain the top choice, and the specific white matters enormously. The wrong white clashes with countertops and makes the whole kitchen feel off.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F3EEE0" name="Pure White" brand="SW 7005" /> — the most popular SW cabinet white. It&apos;s warm enough to avoid sterile vibes but clean enough for modern kitchens. Pairs beautifully with quartz and marble countertops.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0EAD6" name="Alabaster" brand="SW 7008" /> — a creamier option with warm yellow undertones. Best for kitchens with warm-toned flooring and brass hardware.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F6F0E4" name="High Reflective White" brand="SW 7757" /> — the whitest white in the SW deck. Use for trim and ceilings when you want maximum brightness. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Greens for Cabinets</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Green kitchens are the biggest trend of 2025–2026. These SW greens work on lower cabinets with white uppers, or as a full cabinet color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6B7C6E" name="Pewter Green" brand="SW 6208" /> — the kitchen green of the decade. A muted sage-forest that reads sophisticated in every lighting condition.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6B8F71" name="Restful" brand="SW 6458" /> — a brighter, more saturated sage for kitchens with lots of natural light. Browse all options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Neutrals for Walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If your cabinets are the star, the wall color should support them without competing.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="SW 7029" /> — America&apos;s #1 paint color works in kitchens as well as anywhere. Its warm greige tone complements white cabinets, wood cabinets, and painted cabinets alike.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C2B59B" name="Accessible Beige" brand="SW 7036" /> — warmer and richer than Agreeable Gray. Best for kitchens with honey oak floors or warm-toned stone countertops.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D5C8B5" name="Shoji White" brand="SW 7042" /> — a warm off-white that keeps walls bright without the stark feel of true white. Explore the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Bold Accent Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For kitchen islands, accent walls, or statement cabinetry, these bold SW colors are designer-approved.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#34405A" name="Naval" brand="SW 6244" /> — the #1 bold kitchen color. Navy islands with white countertops and gold hardware are a timeless combination.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3B3B3B" name="Iron Ore" brand="SW 7069" /> — a charcoal-black for modern kitchen cabinets. Less stark than true black, more dramatic than dark gray.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A4785F" name="Wholesome" brand="SW 6980" /> — the 2025 Color of the Year adds warmth as a kitchen accent. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">SW Kitchen Tips</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Use Emerald for cabinets.</strong> SW Emerald is self-leveling and provides the smoothest finish for cabinetry. Satin sheen is standard for kitchen cabinets — it&apos;s durable and easy to clean.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Wait for the sales.</strong> Sherwin-Williams runs 30–40% off sales several times a year. Kitchen projects use a lot of paint — the savings are significant. For more kitchen ideas, see our full <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen color guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Need a Benjamin Moore equivalent for any of these colors? Click any <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color</Link> to see the closest match from all 14 brands in our database.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 18 (Tier 3 — Brand-Specific) ──────────────── */
+  {
+    slug: "benjamin-moore-most-popular-whites",
+    title: "Benjamin Moore's Most Popular White Paint Colors Ranked",
+    date: "2026-02-18",
+    excerpt:
+      "White Dove, Chantilly Lace, Simply White, Decorator's White — ranked and compared with undertone analysis, best uses, and SW/Behr equivalents.",
+    coverColor: "#F0EBE0",
+    tags: ["Benjamin Moore", "White", "Guide"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Benjamin Moore makes some of the most beloved white paints in the industry, but with dozens of whites in their deck, choosing the right one is overwhelming. This guide ranks BM&apos;s most popular whites from warmest to coolest, explains their undertones, and shows you the best use for each.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">1. White Dove (OC-17)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" /> is the most popular white paint in America. It&apos;s a warm, creamy white with soft yellow undertones that never looks yellow on the wall. Designers use it for everything: cabinets, trim, walls, ceilings, and entire homes. It&apos;s the safe choice that always looks good.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best for:</strong> Cabinets, trim, whole-house color, farmhouse style.
+          <strong> Undertone:</strong> Warm (soft cream).
+          <strong> SW equivalent:</strong> Pure White (SW 7005).
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">2. Chantilly Lace (OC-65)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" /> is BM&apos;s cleanest, truest white — virtually no undertone. When you want white that reads as pure white in any light, this is the one. It&apos;s the go-to for modern and contemporary interiors where warmth is provided by other elements.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best for:</strong> Modern interiors, trim against colored walls, ceilings, exteriors.
+          <strong> Undertone:</strong> True/neutral.
+          <strong> SW equivalent:</strong> High Reflective White (SW 7757).
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">3. Simply White (OC-117)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" /> sits between White Dove and Chantilly Lace — it&apos;s warmer than a true white but not as creamy as White Dove. It was BM&apos;s 2016 Color of the Year and remains a top seller. Ideal when you want just a hint of warmth.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best for:</strong> Kitchens, bathrooms, transitional style.
+          <strong> Undertone:</strong> Slightly warm.
+          <strong> SW equivalent:</strong> Extra White (SW 7006).
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">4. Decorator&apos;s White (OC-149)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EEF0EC" name="Decorator's White" brand="Benjamin Moore" /> is a cool white with a subtle blue-gray undertone. It reads as fresh, modern, and slightly crisp. Popular in Scandinavian-style homes and contemporary bathrooms.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best for:</strong> Modern/Scandinavian style, bathrooms, rooms with cool-toned elements.
+          <strong> Undertone:</strong> Cool (blue-gray).
+          <strong> SW equivalent:</strong> Snowbound (SW 7004).
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">5. Pale Oak (OC-20)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" /> is a warm off-white with a whisper of pink-beige undertone. It&apos;s technically a neutral but reads as a warm, cozy white on walls. Extremely popular for nurseries and bedrooms where you want warmth without color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best for:</strong> Bedrooms, nurseries, living rooms, whole-house neutral.
+          <strong> Undertone:</strong> Warm (pink-beige). Explore all BM whites on our <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore page</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose Between Them</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Start with your fixed elements.</strong> Warm countertops and wood tones → White Dove or Pale Oak. Cool tile and gray accents → Decorator&apos;s White or Chantilly Lace. Mixed elements → Simply White as the universal bridge.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Wall white vs trim white.</strong> Many designers use one white for walls and a crisper white for trim to create subtle dimension. Classic combo: White Dove walls + Chantilly Lace trim.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For the full breakdown of whites across all brands, read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">definitive white paint guide</Link>. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to put any two whites side by side and see if the Delta E difference is perceptible.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 19 (Tier 3 — Brand-Specific) ──────────────── */
+  {
+    slug: "best-behr-colors-for-bedrooms",
+    title: "The Best Behr Colors for Bedrooms (Budget-Friendly Picks)",
+    date: "2026-02-19",
+    excerpt:
+      "Create a calming, stylish bedroom without overspending. These Behr colors deliver designer looks at Home Depot prices.",
+    coverColor: "#B5C4CB",
+    tags: ["Behr", "Bedroom", "Budget"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Behr delivers some of the best paint value in the market — Consumer Reports has ranked Behr Marquee and Dynasty at or near the top in blind tests, and you can buy it at any Home Depot without waiting for a specialty store to open. Here are the best Behr colors for creating a calming bedroom retreat without the premium price tag.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Calming Blues</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B5C4CB" name="Light French Gray" brand="Behr" /> — don&apos;t let the name fool you, this is actually a beautiful blue-gray that&apos;s one of Behr&apos;s all-time best sellers. It&apos;s calming, sophisticated, and works in both warm and cool light.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A8BFC8" name="Watery" brand="Behr" /> — a soft aqua-blue that creates instant coastal calm. Light enough for small bedrooms, interesting enough to stand alone. Browse more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C0C5B1" name="Sage Green" brand="Behr" /> — a true sage that pairs with natural wood furniture and linen textiles. It&apos;s calming without being cold.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8BFA8" name="Botanical Green" brand="Behr" /> — a slightly warmer, dustier sage that reads almost neutral. Perfect for bedrooms that need a hint of color. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D2CBBD" name="Silver Drop" brand="Behr" /> — Behr&apos;s answer to Agreeable Gray. A warm gray-beige that&apos;s been a top-5 Behr seller for years. It creates a cozy, enveloping bedroom without feeling dark.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D8CFC0" name="Dolphin Fin" brand="Behr" /> — a slightly cooler greige that works beautifully in bedrooms with mixed warm and cool elements. Compare them with our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0E8D8" name="Cameo White" brand="Behr" /> — a warm white with subtle cream undertones. It&apos;s bright and open without feeling sterile — the Behr equivalent of White Dove.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F2ECE0" name="Ultra Pure White" brand="Behr" /> — Behr&apos;s cleanest white. Use for trim and ceilings to keep the bedroom feeling airy. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Behr for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Price:</strong> Behr Dynasty (their premium line) runs $40–50/gallon — roughly $20–30 less per gallon than Benjamin Moore Aura or SW Emerald. For a bedroom needing 2 gallons, that&apos;s $40–60 saved.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Convenience:</strong> Home Depot is open evenings and weekends. No waiting for a specialty paint store.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>DIY-friendly:</strong> Behr&apos;s thick formula is forgiving for non-professional painters. Dynasty and Marquee offer excellent one-coat coverage. Read our <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">full brand comparison</Link> for more.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Want to see the BM or SW equivalent of any Behr color? Click any color on our <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr page</Link> to find the closest match from all 14 brands.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 20 (Tier 3 — Trends) ──────────────── */
+  {
+    slug: "paint-color-trends-2026",
+    title: "Paint Color Trends 2026: What Designers Are Predicting",
+    date: "2026-02-20",
+    excerpt:
+      "From rich terracotta to earthy olive green, here are the paint color trends that will define 2026 — based on early brand announcements, designer surveys, and search data.",
+    coverColor: "#8B6F47",
+    tags: ["Trends", "2026", "Design"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The warm-toned revolution that began in 2024 is accelerating. After a decade of cool grays, homeowners are embracing richer, more expressive colors — and 2026 will push that even further. Based on early brand announcements, design week previews, and search trend analysis, here are the colors and themes that will define home interiors this year.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 1: Rich Earth Tones Go Mainstream</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Terracotta, rust, and warm clay tones moved from accent pieces to full walls in 2025 (four out of five Color of the Year picks were in this family). In 2026, expect to see these earth tones in kitchens, dining rooms, and even exteriors.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" /> and <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" /> — the 2025 COTYs — paved the way. Look for similar warm clay tones to appear in 2026 selections. Browse our <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> for the full range.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 2: Olive & Earthy Greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sage green dominated 2025. For 2026, the green trend is deepening toward olive, moss, and army green — warmer, yellower greens that feel more grounded and less minty.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These earthy greens pair naturally with the terracotta trend, creating warm, organic palettes inspired by Mediterranean and desert landscapes. Explore options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 3: Warm Plum & Berry</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Purple is making a comeback — not bright violet, but warm, muted plums and berry tones. These colors add richness and sophistication, especially in dining rooms, bedrooms, and powder rooms. They&apos;re the natural evolution for homeowners who&apos;ve already embraced deep navy and dark green.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          See the <Link href="/colors/family/purple" className="text-brand-blue hover:underline">purple family</Link> for options across all 14 brands.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 4: Butter Yellow Returns</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          After years of being considered dated, warm yellow is having a renaissance. Soft, buttery yellows are appearing in kitchens, breakfast nooks, and entryways — spaces where warmth and energy are welcome. The key is choosing muted, sophisticated yellows rather than bright primary ones.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Browse the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link> to find soft, warm options from every brand.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 5: The Death of "Safe Neutral"</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The biggest shift of 2026 isn&apos;t a specific color — it&apos;s a mindset change. Homeowners are moving away from playing it safe with builder-grade greige and instead choosing colors that reflect their personality. Even neutrals are getting more interesting: warm mushroom tones, sandy taupes, and rosy beiges are replacing the ubiquitous Agreeable Gray.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This doesn&apos;t mean bold color everywhere — it means intentional color choices even in neutral rooms. Read our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link> for help making intentional neutral choices.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What&apos;s Fading Out</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Cool gray:</strong> The 2015–2020 darling continues to decline. Warm grays and greiges have fully replaced it.
+          <strong> All-white everything:</strong> The sterile all-white interior is giving way to warm whites paired with color. Rooms need at least some warmth and personality.
+          <strong> Navy overload:</strong> Navy remains popular but is plateauing after peaking in 2023.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Try the 2026 Trends</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Start small: a front door, a powder room, or an accent wall. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any color on your walls before committing. Our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> can help you build a cohesive scheme around a trending color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a look back at what dominated last year, read our <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">most popular colors of 2025</Link> roundup.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 21 (Tier 3 — Comparison) ──────────────── */
+  {
+    slug: "sherwin-williams-vs-benjamin-moore",
+    title: "Sherwin-Williams vs Benjamin Moore: The Complete Comparison",
+    date: "2026-02-21",
+    excerpt:
+      "A detailed head-to-head comparison of America's two most popular premium paint brands — covering quality, price, color matching, availability, and which to choose.",
+    coverColor: "#C4B8A2",
+    tags: ["Brands", "Comparison", "Buying Guide"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Sherwin-Williams and Benjamin Moore are the two most specified paint brands among designers and contractors. Both make excellent paint, but they differ in meaningful ways that affect your wallet, your schedule, and your final result. This guide breaks down every factor so you can choose with confidence.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Price: Advantage SW (With Sales)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Benjamin Moore Regal Select:</strong> $65–$75/gallon. <strong>Aura:</strong> $80–$90/gallon.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sherwin-Williams SuperPaint:</strong> $60–$70/gallon. <strong>Emerald:</strong> $75–$85/gallon. But SW runs 30–40% off sales 4–6 times per year, dropping Emerald to $50–$60. BM rarely discounts.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Verdict:</strong> At full price, they&apos;re comparable. With SW sales, you can get premium paint for mid-tier prices.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Quality: Advantage BM (Slightly)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Both brands make outstanding paint. BM Aura has a slight edge in color depth, richness, and true one-coat coverage. SW Emerald excels in self-leveling and workability — painters love how it flows off the brush.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For cabinets and trim (where finish quality matters most), many pros prefer BM Advance (a waterborne alkyd). For wall paint, it&apos;s nearly a toss-up at the premium tier.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Color Selection</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Benjamin Moore: ~3,500 colors.</strong> The largest palette, with an especially deep range of whites, neutrals, and historically-inspired shades.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sherwin-Williams: ~1,700 colors.</strong> A more curated selection that covers every need. SW also offers custom matching of any BM color code.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          On Paint Color HQ, every color page shows the closest matches from both brands automatically. Our <Link href="/blog/best-sherwin-williams-alternatives-to-benjamin-moore" className="text-brand-blue hover:underline">SW alternatives to BM&apos;s top sellers</Link> covers the most popular crossovers.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Availability</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>SW wins here.</strong> Over 4,000 company-owned stores plus Lowe&apos;s locations. Open weekends and evenings. BM sells exclusively through independent dealers — selection is great, but hours are often limited and locations fewer.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Color Matching Question</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Can you take a BM color to an SW store (or vice versa)? Yes — both stores can spectrophotometer-match any physical chip. But a custom-matched color isn&apos;t the same as a formulated color. For the best result, find the brand&apos;s closest existing color using our <Link href="/search" className="text-brand-blue hover:underline">cross-brand search</Link>, then sample both the original and the match.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Who Should Choose SW</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          You value convenience (more stores, better hours), you want to wait for sales, your contractor already has an SW account, or you prefer their curated palette. Explore all <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Who Should Choose BM</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          You want the absolute richest color depth, you&apos;re painting cabinets (BM Advance is hard to beat), your designer specced BM colors, or you prefer working with an independent paint store for expert advice. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best of Both Worlds</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Many homeowners use both brands. A common approach: BM Advance for cabinets and trim (superior finish), SW Emerald for walls (more accessible, great with sales). Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to make sure your BM trim white matches your SW wall color.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 22 (Tier 3 — Educational) ──────────────── */
+  {
+    slug: "paint-sheen-guide",
+    title: "Paint Sheen Guide: Flat vs Eggshell vs Satin vs Semi-Gloss",
+    date: "2026-02-22",
+    excerpt:
+      "Choosing the right sheen is just as important as choosing the right color. This guide explains every finish level and which rooms need which sheen.",
+    coverColor: "#C8C0B4",
+    tags: ["Guide", "Tips", "Beginner"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          You&apos;ve spent hours picking the perfect color, but if you choose the wrong sheen, the whole room will feel off. Sheen affects how a color looks, how durable the paint is, and how easy it is to clean. Here&apos;s every finish level explained — from flattest to shiniest — with room-by-room recommendations.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Flat / Matte</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sheen level:</strong> 0–5% gloss. <strong>Look:</strong> Completely non-reflective. Absorbs light and hides surface imperfections like bumps, patches, and uneven drywall.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Pros:</strong> Best for hiding wall imperfections. Provides the richest, deepest color appearance. No glare from lighting.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Cons:</strong> Difficult to clean — marks and scuffs can be permanent. Not moisture resistant. Shows touch-ups easily.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best for:</strong> Ceilings, adult bedrooms, formal dining rooms, low-traffic rooms. Also the standard for exterior siding.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Eggshell</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sheen level:</strong> 10–25% gloss. <strong>Look:</strong> A soft, velvety finish with just a hint of luster — like the surface of an egg.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Pros:</strong> Easy to wipe clean. More durable than flat. Still hides minor imperfections. The most popular residential wall finish.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Cons:</strong> Shows touch-ups slightly more than flat. Not ideal for very high-moisture areas.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best for:</strong> Living rooms, bedrooms, hallways, dining rooms, home offices — basically most walls in your home. This is the default choice.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Satin</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sheen level:</strong> 25–35% gloss. <strong>Look:</strong> A noticeable soft sheen that catches light gently.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Pros:</strong> Very easy to clean (most stains wipe off). More moisture resistant than eggshell. Durable in high-traffic areas.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Cons:</strong> Shows wall imperfections more than eggshell. Can create glare in rooms with lots of direct light.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best for:</strong> Kitchens, bathrooms, kids rooms, laundry rooms, high-traffic hallways. Also excellent for exterior trim.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Semi-Gloss</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sheen level:</strong> 35–70% gloss. <strong>Look:</strong> Noticeably shiny, reflective.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Pros:</strong> Extremely durable and easy to clean. Highly moisture resistant. Creates visual definition between trim and walls.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Cons:</strong> Shows every imperfection — bumps, brush strokes, roller marks. Requires careful surface prep and application.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best for:</strong> Trim, baseboards, door frames, cabinets, bathroom walls above tile, kitchen backsplash areas.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">High-Gloss</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sheen level:</strong> 70%+ gloss. <strong>Look:</strong> Mirror-like, extremely reflective.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Pros:</strong> The most durable and cleanable finish. Striking, lacquer-like appearance.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Cons:</strong> Shows every imperfection dramatically. Requires professional-level prep and application. Rarely used on full walls.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best for:</strong> Front doors, accent furniture, built-in shelving, statement pieces.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Simple Room-by-Room Rule</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Ceilings:</strong> Flat. <strong>Most walls:</strong> Eggshell. <strong>Kitchens & bathrooms:</strong> Satin. <strong>Trim & cabinets:</strong> Semi-gloss. <strong>Front door:</strong> Semi-gloss or high-gloss. This is the formula most painters follow, and it works for 95% of homes.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For more help choosing colors for each room, check our guides for <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchens</Link>, <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">bedrooms</Link>, <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">bathrooms</Link>, and <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">living rooms</Link>.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 23 (Tier 3 — Educational) ──────────────── */
+  {
+    slug: "how-to-test-paint-samples",
+    title: "How to Test Paint Samples the Right Way",
+    date: "2026-02-23",
+    excerpt:
+      "Stop making color decisions from tiny paint chips. Learn the right way to test paint samples so you choose a color you'll love for years.",
+    coverColor: "#C2B8A8",
+    tags: ["Tips", "How-To", "Beginner"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          A 1-inch paint chip cannot tell you what a color will look like on your walls. Colors shift dramatically based on the size of the surface, your room&apos;s lighting, adjacent colors, and the time of day. Here&apos;s the right way to sample paint so you avoid expensive regrets.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Paint Chips Lie</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          When you look at a tiny paint chip, your brain interprets the color differently than when that same color covers an entire wall. Small samples appear darker and more saturated than they will on a large surface. A medium gray on a chip can look like a light gray on a wall. A subtle blue undertone that&apos;s invisible on a chip becomes unmistakable at room scale.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This is why the #1 paint complaint is &ldquo;it looked different on the chip.&rdquo; It always will.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Option 1: Peel-and-Stick Samples</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Both Sherwin-Williams and Benjamin Moore offer large peel-and-stick color samples (approximately 8×8 inches). At $5–8 each, they&apos;re the cheapest way to test multiple colors. Move them around the room, hold them next to your trim and countertops, and observe them at different times of day.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Tip:</strong> Don&apos;t press them flat against the wall. Hold the sample about an inch away so you see the color without being influenced by the current wall color underneath.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Option 2: Paint Sample Boards</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Buy a quart sample ($8–15) and paint a large piece of white poster board — at least 2 feet square. Apply two coats and let it dry fully. This gives you a portable sample you can move to different walls and compare against other colors.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Why poster board and not the wall?</strong> Painting directly on the wall means the existing color bleeds through and distorts your sample. A white board gives you the true color.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Option 3: Paint Directly on the Wall</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you prefer painting directly on the wall, follow these rules: Paint at least a 2×2 foot square. Apply two full coats. Paint samples on at least two different walls — one that gets direct light and one that doesn&apos;t. Don&apos;t sample in a corner (corners are always darker). And paint over a white-primed area if possible.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The 24-Hour Rule</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Never judge a paint sample immediately.</strong> Wet paint looks different from dry paint (usually darker when wet). And colors shift dramatically with different light throughout the day:
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Morning light</strong> is warm and golden (east-facing rooms). <strong>Midday light</strong> is the most neutral. <strong>Afternoon light</strong> is warm and orange (west-facing rooms). <strong>Evening</strong> (artificial light) is where most bad color decisions reveal themselves — cool LED bulbs amplify blue undertones, warm incandescent bulbs amplify yellow.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Live with your sample for a full day-night cycle before deciding. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for more on how lighting transforms color.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How Many Colors to Sample</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Three is the sweet spot.</strong> Fewer than three and you might miss a better option. More than five and you&apos;ll create decision paralysis — all the colors will start looking the same. Pick your top three using our <Link href="/search" className="text-brand-blue hover:underline">color search</Link>, then sample all three.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Digital Preview First</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Before spending money on physical samples, narrow your options digitally. Our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> lets you preview colors on room photos, and the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> can extract paint colors from any photo you love. These tools won&apos;t replace physical samples, but they&apos;ll help you go from 50 options to 3.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out how much paint you&apos;ll need once you&apos;ve made your final choice.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 24 (Tier 3 — Educational) ──────────────── */
+  {
+    slug: "color-theory-for-home-decorators",
+    title: "Color Theory for Home Decorators: A Practical Guide",
+    date: "2026-02-24",
+    excerpt:
+      "Skip the art school jargon. This practical color theory guide teaches you how to use the color wheel, build palettes, and combine colors like a designer.",
+    coverColor: "#7A8B6E",
+    tags: ["Color Theory", "Guide", "Design"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          You don&apos;t need an art degree to understand color — you just need a few practical principles. This guide translates color theory into actionable advice for painting your home and choosing decor. No jargon, no memorizing — just the rules that professional designers actually use.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Color Wheel (Simplified)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The color wheel arranges colors by their relationship: <strong>primary</strong> colors (red, blue, yellow) combine to make <strong>secondary</strong> colors (orange, green, purple). That&apos;s it — that&apos;s the foundation. What matters for decorating is the relationships between colors on the wheel.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Complementary Colors: Bold Contrast</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Colors directly opposite each other on the wheel are complementary: blue and orange, red and green, yellow and purple. Used together, they create vibrant, energetic contrast. In home decor, this works best when one color dominates and the other accents.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Example:</strong> <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" /> (blue) walls with <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" /> (orange-brown) leather furniture and throw pillows. The contrast is dynamic without being chaotic. Every color page on Paint Color HQ shows you <Link href="/search" className="text-brand-blue hover:underline">complementary paint matches</Link> automatically.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Analogous Colors: Easy Harmony</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Colors next to each other on the wheel are analogous: blue, blue-green, and green. These combinations are inherently harmonious and hard to mess up. Most &ldquo;professional-looking&rdquo; rooms use an analogous scheme, often without the homeowner realizing it.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Example:</strong> <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" /> (green) walls, <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" /> (blue-green) bathroom, <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" /> (blue) bedroom. All adjacent on the wheel. All harmonious. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The 60-30-10 Rule</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This is the single most useful decorating formula: <strong>60%</strong> of the room should be one dominant color (usually walls), <strong>30%</strong> should be a secondary color (furniture, rugs), and <strong>10%</strong> should be an accent (throw pillows, art, accessories).
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The dominant color sets the mood, the secondary color adds depth, and the accent provides interest. Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a 3-color scheme based on any starting color.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm vs Cool: The Temperature Rule</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Colors are divided into warm (red, orange, yellow) and cool (blue, green, purple). The single most important design principle: <strong>connected spaces should share the same temperature</strong>. A warm living room flowing into a cool kitchen feels disjointed. A warm living room flowing into a warm kitchen feels intentional.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Closed rooms (powder rooms, bedrooms, home offices) can break this rule freely. For the full explanation, read our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Saturation and Value: The Secret to Sophistication</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Saturation</strong> is how vivid a color is. <strong>Value</strong> is how light or dark. The key insight: <em>designer rooms almost always use low-saturation colors</em>. Bright, vivid colors (high saturation) feel juvenile or dated. Muted, grayed-out versions of the same hue feel sophisticated and timeless.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Compare <Swatch hex="#0000FF" name="Bright Blue" /> (high saturation) vs <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" /> (low saturation). Same color family, completely different feeling. When in doubt, go more muted.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Putting It Together</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Step 1:</strong> Identify your fixed elements (flooring, countertops, large furniture) and note whether they&apos;re warm or cool.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Step 2:</strong> Choose a wall color in the same temperature family, at a low saturation. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> and filter by undertone.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Step 3:</strong> Apply 60-30-10. Wall color is your 60%. Pick a secondary and accent using analogous or complementary relationships.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Step 4:</strong> Sample before committing. Our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> gives a digital preview; physical samples give you the final answer.
+        </p>
+      </>
+    ),
+  },
 ];
 
 /* ------------------------------------------------------------------ */
