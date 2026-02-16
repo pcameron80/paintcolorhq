@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { getColorsByFamily, getAllColorFamilies, getAllBrands } from "@/lib/queries";
+import { getFamilyContent } from "@/lib/family-content";
 
 export const revalidate = 3600;
 
@@ -59,6 +60,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
   ]);
 
   const familyName = capitalize(familySlug.replace(/-/g, " "));
+  const familyContent = getFamilyContent(familySlug);
 
   return (
     <div className="min-h-screen bg-white">
@@ -80,6 +82,8 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
           {colors.length} {familyName.toLowerCase()} colors from all brands,
           sorted by lightness.
         </p>
+
+        {familyContent && familyContent.intro}
 
         {/* Brand filter */}
         <div className="mt-6 flex flex-wrap gap-2">
@@ -144,6 +148,8 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
             );
           })}
         </div>
+
+        {familyContent && familyContent.guide}
 
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {colors.map((color) => (
