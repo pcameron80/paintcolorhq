@@ -675,6 +675,370 @@ const blogPosts: BlogPost[] = [
       </>
     ),
   },
+  /* ──────────────── Post 11 ──────────────── */
+  {
+    slug: "best-bathroom-paint-colors",
+    title: "The Best Bathroom Paint Colors That Handle Humidity",
+    date: "2026-02-04",
+    excerpt:
+      "From spa-inspired blues to timeless whites, these bathroom paint colors look beautiful and stand up to steam, moisture, and daily use.",
+    coverColor: "#7BAFB4",
+    tags: ["Bathroom", "Design", "Tips"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Bathrooms present a unique painting challenge: high humidity, frequent temperature swings, and constant moisture exposure. The right color transforms a utilitarian space into a spa-like retreat — but you also need the right paint formulation. Here are the best bathroom colors for 2025–2026, plus tips for making them last.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Bathroom Paint Is Different</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Before choosing a color, know this: bathrooms require paint that resists moisture and mildew. Use a <strong>satin or semi-gloss finish</strong> — both are easier to clean and more moisture-resistant than flat or eggshell. Most premium paint lines (Benjamin Moore Aura Bath & Spa, Sherwin-Williams Emerald, Behr Marquee) include mildew-resistant additives in their higher-sheen formulas.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Spa-Inspired Blues</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blue is the most natural choice for a bathroom. It evokes water, sky, and calm — everything a bathroom should feel like. The key is choosing muted, slightly grayed-out blues that feel sophisticated rather than childish.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7BAFB4" name="Aegean Teal" brand="Benjamin Moore" /> — BM&apos;s 2021 Color of the Year remains one of the best bathroom blues ever created. It&apos;s a blue-green-gray that feels coastal and serene without being literal.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" /> — a softer, lighter option that reads as a silvery blue-green. Perfect for smaller bathrooms where you want color without weight.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A8C4CA" name="Raindrop" brand="Sherwin-Williams" /> — a cool, airy blue that pairs beautifully with white marble and chrome fixtures. Browse more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Whites & Creams</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          White bathrooms never go out of style, but the right white matters enormously. A bright white against white tile and white fixtures can feel sterile and clinical. A warm white adds softness.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" /> — the most forgiving white for bathrooms. Its warm cream undertone prevents the &ldquo;hospital&rdquo; look while still feeling clean.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" /> — slightly warmer than a true white, it works beautifully with both chrome and brass fixtures. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for more options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Sage & Muted Greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Green has surged in bathroom design, especially soft sage tones that create an organic, nature-inspired feel. They pair exceptionally well with wood vanities, stone countertops, and brass hardware.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" /> — a dusty, warm sage that reads as neutral in bathroom lighting. It&apos;s sophisticated without trying too hard.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" /> — barely-there green that adds a whisper of color. Perfect if you want to move beyond white without committing to bold color. Explore the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody & Dramatic</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Powder rooms and half baths are the perfect place for dark, dramatic colors. Since these rooms are small and windowless, lean into the moodiness rather than fighting it.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" /> — a rich, saturated navy that makes a powder room feel like a jewel box. Pair with a gold mirror and brass sconces.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" /> — a deep forest green for a bathroom that feels lush and enveloping. See how it compares to similar shades with our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Tips for Painting Bathrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Always use satin or semi-gloss.</strong> Flat and matte finishes absorb moisture and are harder to wipe clean. Semi-gloss is ideal for high-moisture areas like shower surrounds.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Run the exhaust fan.</strong> Proper ventilation is the single best thing you can do to preserve your paint job. Run the fan for at least 20 minutes after every shower.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Consider your lighting.</strong> Many bathrooms rely on artificial light, which affects how colors appear. LED vanity lights have a cool cast; incandescent bulbs run warm. Sample your paint in the room&apos;s actual lighting before committing. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> to understand why this matters.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate exactly how much paint you need — bathrooms are small rooms where buying the right amount saves money.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 12 ──────────────── */
+  {
+    slug: "best-living-room-paint-colors",
+    title: "The Best Living Room Paint Colors for Every Style",
+    date: "2026-02-10",
+    excerpt:
+      "Whether your style is modern, traditional, or farmhouse — these living room paint colors create the perfect backdrop for your most-used room.",
+    coverColor: "#C2B59B",
+    tags: ["Living Room", "Design", "2025"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The living room is where your color choice matters most. It&apos;s the room guests see first, where your family spends the most time, and often the largest continuous wall space in the house. The right color sets the tone for your entire home. Here are the best options for every design style.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Modern & Minimalist</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Modern living rooms thrive on clean lines and restrained color. The walls should recede, letting furniture and art take center stage.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" /> — a clean, true white that&apos;s the gold standard for modern interiors. No yellow, no gray — just pure white that photographs beautifully.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EEF0EC" name="Decorator's White" brand="Benjamin Moore" /> — a white with a subtle blue-gray undertone that gives modern rooms a crisp, Scandinavian feel.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" /> — a cool white with a barely-there gray cast that prevents walls from looking flat. Explore more in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Traditional & Transitional</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Traditional living rooms call for warm, enveloping tones — colors that make a room feel like a warm embrace rather than a gallery.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" /> — the quintessential transitional neutral. This warm greige works with virtually any furnishing style and feels equally at home in a 1920s colonial and a 2024 new build.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" /> — America&apos;s most popular paint color for a reason. It&apos;s a warm gray-beige that adapts to every lighting condition and pairs with everything from traditional hardwood floors to modern tile.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" /> — a slightly lighter greige option that opens up smaller living rooms while maintaining warmth. Check our <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for more warm neutrals.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse & Cottage</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Farmhouse style has evolved beyond stark white shiplap. Today&apos;s farmhouse living rooms use creamy whites and soft earth tones that feel collected and lived-in.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" /> — the warm white that launched a thousand farmhouse kitchens. It&apos;s creamy without being yellow and works perfectly with natural wood beams and vintage textiles.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" /> — a warm, slightly sandy off-white that gives walls a hand-plastered, old-world quality. It glows beautifully in candlelight.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody & Cozy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          More homeowners are embracing rich, enveloping colors for living rooms — especially in homes with open floor plans where the living room can be defined by a bold color change.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" /> — a deep forest green that creates a dramatic, library-like atmosphere. Pair with cognac leather and brass accents.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3E4450" name="Hale Navy" brand="Benjamin Moore" /> — a rich navy that adds sophistication without feeling dark. Works especially well in rooms with large windows.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" /> — the 2025 Color of the Year is a warm, muted brown that creates incredible coziness. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year guide</Link> for more on this shade.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Coastal & Airy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Coastal living rooms use soft blues, greens, and sandy neutrals to bring the outdoors in — but the best coastal rooms avoid being too literal or themed.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C3D1D6" name="Boothbay Gray" brand="Benjamin Moore" /> — a blue-gray that feels like sea mist. It reads as a sophisticated neutral rather than a &ldquo;beach house&rdquo; blue.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A28974" name="Encore" brand="Valspar" /> — a warm sandy beige that brings the warmth of driftwood into your space. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Choosing Your Living Room Color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Start with your floor.</strong> Your flooring is the largest fixed element in the room. Cool gray tile calls for a different palette than warm oak hardwood. Match your wall color temperature to your floor temperature.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Consider adjacent rooms.</strong> If your living room flows into the kitchen or dining room, the colors need to complement each other. Read our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link> for tips on building a cohesive whole-home palette.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Test at scale.</strong> A 2-inch paint chip will deceive you. Paint at least a 2×2 foot sample on two different walls and observe it in morning light, afternoon light, and under your evening lighting. Colors shift dramatically. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> for a digital preview before buying samples.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 13 ──────────────── */
+  {
+    slug: "best-home-office-paint-colors",
+    title: "The Best Home Office Paint Colors for Focus & Productivity",
+    date: "2026-02-12",
+    excerpt:
+      "Boost concentration and reduce fatigue with these home office paint colors — chosen for their proven effects on focus, mood, and video call appearance.",
+    coverColor: "#5B7A6E",
+    tags: ["Home Office", "Productivity", "Design"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Remote work has made the home office a permanent fixture — and the color of your workspace affects your focus, energy, and even how you look on video calls. Color psychology research shows specific hues promote concentration and reduce mental fatigue. Here are the best paint colors for a productive home office.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Office Color Matters</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Studies from the University of Texas found that white, beige, and gray offices increase feelings of sadness and depression — yet they&apos;re the most common office colors. Meanwhile, low-saturation blues and greens have been shown to boost focus and reduce stress. The ideal home office color is one that&apos;s calming without being sleepy, stimulating without being distracting.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Blues for Focus</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blue is the gold standard for productivity spaces. It lowers heart rate, reduces anxiety, and helps you concentrate on detail-oriented work.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" /> — a muted blue-green that&apos;s calming without being cold. It reads as sophisticated in person and looks fantastic on camera.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" /> — a silvery blue-gray that creates a professional, focused atmosphere. Light enough for small home offices. Browse the full <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" /> — technically a gray, but its blue undertones give it the focus-enhancing properties of blue while maintaining a neutral, professional look.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Greens for Creativity</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Green is associated with creativity and innovation. If your work involves brainstorming, writing, or design, a muted green may be the better choice over blue.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#5B7A6E" name="Pewter Green" brand="Sherwin-Williams" /> — a sophisticated sage-forest green that feels grounded and creative. It photographs well and works with both light and dark wood desks.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" /> — a lighter, dusty sage that keeps the room feeling open and airy while still providing the calming benefits of green.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" /> — the gentlest green option, almost neutral. Perfect for video calls where you want a warm, professional backdrop. See all options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals That Actually Work</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you prefer neutrals, choose warm tones over cool ones. Cool grays and whites have been shown to increase fatigue, while warm neutrals feel more energizing.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" /> — a warm greige that avoids the &ldquo;sad beige office&rdquo; problem. It has enough depth to feel intentional without being distracting.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" /> — a warm, creamy off-white that keeps the room bright and open while avoiding the sterile feel of true white.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Video Call Factor</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you spend hours on Zoom, Teams, or Google Meet, your wall color becomes your backdrop. Colors that look great in person can wash you out or cast unflattering reflections on camera. Here&apos;s what works:
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best on camera:</strong> Muted sage greens, warm grays, and soft blue-greens. They provide visual interest without competing with your face and they complement most skin tones.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Avoid on camera:</strong> Bright white (causes blown-out exposure), bright yellow (casts a sickly reflection), and dark colors in rooms without good lighting (makes you look like a floating head).
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Accent Wall Strategy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          An accent wall behind your desk (visible on camera) is a smart approach if you want color without painting the entire room. Try <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" /> or <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" /> for a dramatic, professional backdrop. Keep the remaining walls in a complementary neutral.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Office Painting Tips</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Use eggshell or satin finish.</strong> Flat paint shows scuff marks from desk chairs; semi-gloss creates distracting glare on video calls. Eggshell is the sweet spot.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Paint a sample behind your monitor.</strong> Observe the color while working — not just when you walk in. A color that looks great from the doorway might be fatiguing after 8 hours at your desk. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> to avoid surprises with lighting.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Estimate how much paint you need with our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> — home offices are typically small rooms where a single gallon may be enough.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 14 ──────────────── */
+  {
+    slug: "best-exterior-paint-colors",
+    title: "The Best Exterior Paint Colors to Boost Curb Appeal",
+    date: "2026-02-14",
+    excerpt:
+      "From classic white farmhouses to moody dark siding, these exterior paint colors maximize curb appeal and complement every architectural style.",
+    coverColor: "#4B5E52",
+    tags: ["Exterior", "Curb Appeal", "Design"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Your exterior color scheme is the first impression your home makes. Unlike interior paint, exterior colors must work with fixed elements you can&apos;t change — your roof, stone or brick accents, landscaping, and even your neighbors&apos; houses. Here are the best exterior paint colors for every style, plus the strategies designers use to create standout curb appeal.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Classic White Exteriors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A white house is timeless for a reason: it works with every architectural style, every roof color, and every landscape. But exterior whites behave differently from interior whites — bright sun washes them out, so you often need a white with more body than you&apos;d choose indoors.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" /> — the most specified exterior white. Its warm cream undertone prevents it from looking stark or cold in full sun.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" /> — for homeowners who want a true white with no yellow cast. Best on modern and contemporary homes.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" /> — a warm white that&apos;s the most popular SW exterior color. It glows golden at sunset. Browse our full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark & Dramatic Siding</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Dark exteriors have exploded in popularity. Charcoal, navy, and deep green siding creates a striking, modern look that makes white trim pop and landscaping stand out.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" /> — a soft black that reads as deep charcoal in sunlight. The most popular dark exterior color. It&apos;s sophisticated without being as stark as true black.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#4B5E52" name="Essex Green" brand="Benjamin Moore" /> — a deep forest green that&apos;s having a massive moment on exteriors. It blends with the landscape while standing out from the neighborhood.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" /> — a rich navy for front doors, shutters, or full siding. It pairs beautifully with both warm and cool-toned roofs.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Gray & Greige</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Gray siding defined the 2010s, but today&apos;s grays are warmer — leaning into greige and taupe territory. These colors work with both traditional and modern architecture.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" /> — the most popular interior color works just as well outside. It&apos;s a warm greige that complements brown, gray, and black roofing.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8E8579" name="Mega Greige" brand="Sherwin-Williams" /> — a deeper greige for a more substantial exterior color. It reads as a warm, sophisticated gray that avoids looking cold.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7D6B5D" name="Rumors" brand="Behr" /> — the 2025 Color of the Year is a muted mushroom brown that works surprisingly well on craftsman and cottage-style exteriors. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year comparison</Link>. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> for more options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Three-Color Rule</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every great exterior color scheme has three elements: <strong>body color</strong> (siding), <strong>trim color</strong> (windows, fascia, corners), and <strong>accent color</strong> (front door, shutters). The body color covers the most area, the trim frames everything, and the accent provides personality.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Classic combinations that always work: white body + black trim + colored door. Dark body + white trim + brass hardware. Greige body + cream trim + navy door. Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a coordinated three-color scheme.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Front Door Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The front door is where you can take a risk. It&apos;s a small surface area with an outsized impact on curb appeal.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" /> — navy is the most popular front door color. It conveys trust, stability, and sophistication.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" /> — a soft black door works on every house style and makes hardware stand out.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" /> — the 2025 Color of the Year makes a warm, unexpected front door that stands out on white and gray homes.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Exterior Painting Tips</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Always sample in direct sunlight.</strong> Exterior colors look 2–3 shades lighter in full sun than they do on an indoor paint chip. If you want a medium gray, you may need to choose what looks dark on the swatch.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Consider your roof color.</strong> Your roof is the largest fixed element. Brown and warm-toned roofs call for warm body colors. Gray and black roofs give you more flexibility. Avoid clashing undertones between roof and siding.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Check HOA rules first.</strong> Many homeowner associations restrict exterior colors. Get approval before buying 10 gallons of paint.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Use flat or matte for siding.</strong> Unlike interiors, flat finish is the standard for exterior siding — it hides surface imperfections. Use satin or semi-gloss only for trim and doors. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to get an accurate gallon estimate for your exterior — it&apos;s typically 8–15 gallons for a full house.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Need to match a specific color from another brand? Search for it in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest equivalent across all 14 brands in our database.
+        </p>
+      </>
+    ),
+  },
 ];
 
 /* ------------------------------------------------------------------ */
