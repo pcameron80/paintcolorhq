@@ -1039,6 +1039,190 @@ const blogPosts: BlogPost[] = [
       </>
     ),
   },
+  /* ──────────────── Post 15 ──────────────── */
+  {
+    slug: "best-nursery-paint-colors",
+    title: "The Best Nursery & Kids Room Paint Colors That Grow With Them",
+    date: "2026-02-15",
+    excerpt:
+      "Skip the stereotypes — these nursery and kids room paint colors are stylish, calming, and versatile enough to last from infant through elementary school.",
+    coverColor: "#B2BAA4",
+    tags: ["Nursery", "Kids Room", "Design"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The nursery is one of the most exciting rooms to paint — and one of the easiest to get wrong. Trends come and go, but your kid&apos;s room needs to last. The best nursery colors are ones that work for a newborn, still look great for a toddler, and transition easily into a &ldquo;big kid&rdquo; room without repainting. Here are colors that grow with your child.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Skip the Baby Pastels</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Pastel pink and baby blue have their place, but they&apos;re the colors most parents regret within two years. They feel dated quickly and don&apos;t transition well as kids develop their own preferences. Instead, choose sophisticated, muted tones that happen to be kid-friendly — colors that would look equally at home in a guest room.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Green is the most versatile nursery color. It&apos;s gender-neutral, calming, and connects the room to nature. Muted sage tones are the top choice among nursery designers right now.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" /> — a warm, dusty sage that&apos;s serene for an infant and cool enough for a 10-year-old. It pairs beautifully with natural wood cribs and white furniture.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" /> — barely there. This whisper of green reads almost neutral, making it the safest choice if you&apos;re unsure about committing to color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" /> — a deeper sage for an accent wall. It adds personality without overwhelming a small room. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for more options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Calming Blues</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blue promotes calm and better sleep — research shows it lowers heart rate and reduces anxiety. For a nursery, choose dusty, muted blues rather than bright or primary blues.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" /> — a blue-green-gray that shifts beautifully throughout the day. Calming at naptime, cheerful in morning light.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" /> — the name was made for nurseries. A gentle powder blue with gray undertones that never feels babyish.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" /> — a silvery blue that works for any age. It transitions from nursery to tween room seamlessly. See more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Warm whites and creams create a bright, airy nursery that serves as a blank canvas for colorful bedding, art, and toys. They&apos;re the easiest colors to accessorize and redecorate around as your child grows.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" /> — the warm white that works everywhere. In a nursery, it creates a bright, peaceful space that lets colorful decor pop.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" /> — a creamy, sandy white that adds warmth to rooms with north-facing windows. It makes the room feel like a warm hug.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" /> — a warm gray-beige for parents who want something beyond white. It&apos;s cozy without being dark. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Pink & Lavender (Done Right)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Pink and lavender can work beautifully in nurseries — the key is choosing muted, sophisticated versions rather than bubblegum or cotton candy.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C7BFC3" name="Silver Peony" brand="Benjamin Moore" /> — a barely-there mauve-gray that reads as sophisticated pink in warm light and neutral gray in cool light. It grows up beautifully.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" /> — a warm blush-beige that adds the softest hint of pink without being identifiably pink. It&apos;s one of BM&apos;s most popular nursery colors. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Nursery Painting Tips</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Use zero-VOC or low-VOC paint.</strong> Babies spend 12–16 hours a day in the nursery. All major brands now offer zero-VOC lines — Benjamin Moore Natura, Sherwin-Williams Harmony, and Behr Premium Plus are popular options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Paint early.</strong> Finish painting at least 2–3 weeks before baby arrives. Even low-VOC paint needs time to fully off-gas and cure.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Use eggshell or satin finish.</strong> Kids rooms need washable walls. Flat paint shows every fingerprint and scuff mark. Eggshell is easy to clean while still looking soft.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Think accent wall.</strong> Paint one wall in a deeper tone and keep the rest neutral. This lets you easily update the room&apos;s personality by repainting just one wall as your child grows. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview the look before you commit.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post 16 ──────────────── */
+  {
+    slug: "best-dining-room-paint-colors",
+    title: "The Best Dining Room Paint Colors for Memorable Meals",
+    date: "2026-02-16",
+    excerpt:
+      "From intimate jewel tones to airy neutrals, these dining room paint colors set the mood for everything from weeknight dinners to holiday gatherings.",
+    coverColor: "#5A4A5E",
+    tags: ["Dining Room", "Design", "Entertaining"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The dining room is one of the few spaces where bold color choices almost always pay off. Unlike a bedroom or home office where you spend hours staring at the walls, the dining room is experienced in shorter bursts — which means you can go darker, warmer, and more dramatic than anywhere else in the house. Here are the best dining room colors for every mood.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Dining Rooms Can Handle Bold Color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Color psychology matters here: warm, saturated tones are proven to stimulate appetite and conversation. There&apos;s a reason the best restaurants avoid white walls. Dining rooms are also typically lit by warm, low lighting in the evening — candles, dimmers, pendants — which makes rich colors glow rather than feel heavy.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Rich Jewel Tones</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Jewel tones create drama, intimacy, and a sense of occasion. These are the colors that make a Tuesday dinner feel like a dinner party.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#5A4A5E" name="Shadow" brand="Benjamin Moore" /> — a moody, sophisticated plum-gray that&apos;s dramatic without being overwhelming. It looks stunning by candlelight and pairs with both gold and silver accents.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" /> — navy is the most popular bold dining room color. It conveys elegance, works with every wood tone, and makes white trim and china pop.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" /> — a deep forest green that creates a rich, library-like dining room. Pair with brass light fixtures and a wood table for old-world sophistication.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" /> — the 2025 Color of the Year is a warm plum-brown that was practically made for dining rooms. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year breakdown</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Earth Tones</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a dining room that feels warm and inviting without the commitment of a dark jewel tone, earthy mid-tones strike the perfect balance.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" /> — a warm terracotta that brings Mediterranean warmth to any dining space. It glows beautifully under pendant lighting.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A28974" name="Encore" brand="Valspar" /> — a sandy, warm beige-brown that creates an organic, earthy dining room. It pairs naturally with ceramic tableware and woven placemats.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B5A898" name="Shiitake" brand="Sherwin-Williams" /> — a mushroom tone that&apos;s having a moment. It&apos;s warm, grounding, and sophisticated without being dark. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Elegant Neutrals</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If your dining room is open to the kitchen or living room, you may want a color that creates subtle distinction without a jarring change. Warm neutrals that are one shade deeper than your adjacent rooms do this beautifully.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" /> — a warm greige that&apos;s elegant enough for a formal dining room but casual enough for everyday use. It works as a standalone or as a complement to a bolder accent wall.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" /> — slightly warmer and richer than Agreeable Gray. It creates a cozy, golden atmosphere under warm lighting. Compare them with our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft & Formal</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a dining room that feels refined and classic rather than dramatic, muted blues and greens offer timeless elegance.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" /> — a soft blue-green that adds color without intensity. It&apos;s serene and pairs perfectly with white wainscoting and crystal chandeliers.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6B7C6E" name="Pewter Green" brand="Sherwin-Williams" /> — a muted sage-forest that feels both modern and traditional. It&apos;s one of the most versatile dining room greens available. See more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Accent Wall Approach</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If painting an entire dining room in a dark color feels risky, try a single accent wall. The wall your eye hits first when entering the room is the best candidate. Paint it in a bold color and keep the remaining three walls in a complementary neutral. This gives you 80% of the drama with 20% of the commitment.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dining Room Painting Tips</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Choose eggshell or satin finish.</strong> Dining room walls see splashes, fingerprints, and the occasional thrown pea. Eggshell cleans easily while still looking elegant. Semi-gloss works for chair rail trim and wainscoting.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Test colors at night.</strong> Dining rooms are primarily used in evening light. Sample your color and observe it under your actual dining room lighting — pendant, chandelier, or candles. A color that looks perfect at noon may look completely different at 7 PM. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for more on how lighting affects color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Coordinate with your table.</strong> Dark walls with a light table create contrast and drama. Dark walls with a dark table create a moody, enveloping cocoon. Both work — just be intentional about the effect you want.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a wall + trim + accent scheme, and our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out exactly how many gallons you need.
+        </p>
+      </>
+    ),
+  },
 ];
 
 /* ------------------------------------------------------------------ */
