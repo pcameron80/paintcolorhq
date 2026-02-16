@@ -280,6 +280,47 @@ export default async function ColorPage({ params }: PageProps) {
           {description}
         </p>
 
+        {/* Tool CTAs */}
+        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <Link
+            href={`/tools/room-visualizer?hex=${encodeURIComponent(color.hex)}`}
+            className="flex items-center gap-3 rounded-lg border border-gray-200 p-4 transition-shadow hover:shadow-md"
+          >
+            <svg className="h-6 w-6 shrink-0 text-brand-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+            <div>
+              <p className="text-sm font-semibold text-gray-900">Visualize on Walls</p>
+              <p className="text-xs text-gray-500">Preview this color in a room</p>
+            </div>
+          </Link>
+          <Link
+            href="/tools/color-identifier"
+            className="flex items-center gap-3 rounded-lg border border-gray-200 p-4 transition-shadow hover:shadow-md"
+          >
+            <svg className="h-6 w-6 shrink-0 text-brand-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+            </svg>
+            <div>
+              <p className="text-sm font-semibold text-gray-900">Identify from Photo</p>
+              <p className="text-xs text-gray-500">Find this color in any image</p>
+            </div>
+          </Link>
+          <Link
+            href={`/compare?color1=${encodeURIComponent(color.hex)}`}
+            className="flex items-center gap-3 rounded-lg border border-gray-200 p-4 transition-shadow hover:shadow-md"
+          >
+            <svg className="h-6 w-6 shrink-0 text-brand-blue" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+            </svg>
+            <div>
+              <p className="text-sm font-semibold text-gray-900">Compare Colors</p>
+              <p className="text-xs text-gray-500">See Delta E difference side by side</p>
+            </div>
+          </Link>
+        </div>
+
         {/* Complementary Colors */}
         <ComplementaryColors hex={color.hex} harmonies={harmonies} />
 
