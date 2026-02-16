@@ -43,7 +43,7 @@ export default async function Home() {
       <HeroSearch />
 
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h1 className="sr-only">Paint Color HQ - Your Complete Paint Color Toolkit</h1>
+        <h1 className="sr-only">Match Paint Colors Across 14 Brands - Free Room Visualizer, Color Identifier & Palette Tools</h1>
 
         {/* Feature Grid */}
         <section>
@@ -264,7 +264,7 @@ export default async function Home() {
             name: "Paint Color HQ",
             url: "https://www.paintcolorhq.com",
             description:
-              "Explore 25,000+ paint colors, discover curated palettes, and find the perfect color scheme for your next project.",
+              "Match paint colors across Sherwin-Williams, Benjamin Moore, Behr and 11 more brands. Free room visualizer, photo color identifier, palette generator, and paint calculator.",
             potentialAction: {
               "@type": "SearchAction",
               target: {
