@@ -160,7 +160,7 @@ export default async function ColorPage({ params }: PageProps) {
     getSimilarColorsFromSameBrand(color),
   ]);
   const description = generateColorDescription(color, matches);
-  const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name);
+  const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined);
 
   // Resolve color harmonies to real paint colors
   const harmonies = await resolveHarmonies(color.hex);
