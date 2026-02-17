@@ -49,6 +49,14 @@ const SW_FAMILY_MAP: Record<string, string> = {
   white: "white-and-pastel", "off-white": "white-and-pastel", black: "neutral",
 };
 
+// Map our color families to Dutch Boy's website categories
+const DUTCH_BOY_FAMILY_MAP: Record<string, string> = {
+  red: "red", orange: "orange", yellow: "yellow", green: "green",
+  blue: "blue", purple: "purple", pink: "red",
+  beige: "neutral", brown: "neutral", gray: "gray", neutral: "neutral",
+  white: "white", "off-white": "white", black: "neutral", tan: "neutral",
+};
+
 const BRAND_LINKS: Record<string, RetailerConfig[]> = {
   behr: [
     { name: "Behr", url: (i) =>
@@ -101,7 +109,53 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
     { name: "Farrow & Ball", url: () => "https://www.farrow-ball.com" },
   ],
   "dunn-edwards": [
-    { name: "Dunn-Edwards", url: () => "https://www.dunnedwards.com/colors" },
+    { name: "Dunn-Edwards", url: (i) => {
+      const num = (i.colorNumber ?? "").toLowerCase();
+      if (!num) return "https://www.dunnedwards.com/colors";
+      return `https://www.dunnedwards.com/colors/browser/${num}/`;
+    }},
+  ],
+  kilz: [
+    { name: "Kilz", url: (i) => {
+      const num = i.colorNumber ?? "";
+      if (!num) return "https://www.kilz.com/color";
+      const slug = slugify(i.colorName);
+      return `https://www.kilz.com/color/${slug}-${num}`;
+    }},
+    { name: "Home Depot", url: (i) =>
+      `https://www.homedepot.com/s/${encodeURIComponent(`Kilz ${i.colorName} paint`)}` },
+  ],
+  colorhouse: [
+    { name: "Colorhouse", url: (i) => {
+      // "Stone .07" -> "stone-07"
+      const slug = i.colorName.toLowerCase().replace(/\s*\./g, "-").replace(/\s+/g, "-");
+      return `https://www.colorhousepaint.store/colors/${slug}/`;
+    }},
+  ],
+  "dutch-boy": [
+    { name: "Dutch Boy", url: (i) => {
+      const num = i.colorNumber ?? "";
+      if (!num) return "https://www.dutchboy.com/en/colors/color-library/paint";
+      const family = DUTCH_BOY_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutral";
+      const slug = slugify(i.colorName);
+      return `https://www.dutchboy.com/en/colors/color-library/paint/${family}/${slug}-${num.toLowerCase()}`;
+    }},
+    { name: "Menards", url: (i) =>
+      `https://www.menards.com/main/search.html?search=${encodeURIComponent(`Dutch Boy ${i.colorName} paint`)}` },
+  ],
+  "vista-paint": [
+    { name: "Vista Paint", url: () => "https://www.vistapaint.com/colors/" },
+  ],
+  hirshfields: [
+    { name: "Hirshfield's", url: () => "https://www.hirshfields.com/color/" },
+  ],
+  ral: [
+    { name: "RAL Color Chart", url: (i) => {
+      const num = i.colorNumber ?? "";
+      if (!num) return "https://www.ralcolorchart.com/ral-classic";
+      const slug = slugify(i.colorName);
+      return `https://www.ralcolorchart.com/ral-classic/ral-${num}-${slug}`;
+    }},
   ],
 };
 

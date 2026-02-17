@@ -228,6 +228,233 @@ const content: Record<string, BrandContent> = {
     ),
   },
 
+  kilz: {
+    intro: (
+      <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
+        <p>
+          Kilz is best known as America&apos;s #1 primer brand, but they also offer a full line of
+          interior paints. Founded in 1954 and now a sister company to Behr under the Masco
+          Corporation, Kilz brings decades of stain-blocking and adhesion expertise to their paint
+          formulas. Kilz products are sold at Home Depot and Walmart.
+        </p>
+        <p>
+          Their flagship paint line is <strong>Kilz Tribute</strong> — a premium interior paint +
+          primer with excellent stain-blocking and coverage (up to 400 sq ft per gallon), available in
+          Matte, Eggshell, Satin, and Semi-Gloss. They also make specialty paints including{" "}
+          <strong>Porch & Patio</strong> floor paint and <strong>Cabinet & Trim</strong>. Price
+          range: $30–$40 per gallon.
+        </p>
+      </div>
+    ),
+    details: (
+      <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
+        <h2 className="text-lg font-semibold text-gray-900">Kilz Cross-Brand Matching</h2>
+        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+          Click any Kilz color below to find the closest matches from{" "}
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>,{" "}
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
+          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>,
+          and all other brands in our database — ranked by{" "}
+          <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
+            Delta E accuracy
+          </Link>.
+        </p>
+      </div>
+    ),
+  },
+
+  "vista-paint": {
+    intro: (
+      <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
+        <p>
+          Vista Paint is a family-owned paint manufacturer founded in 1956 in Southern California.
+          With over 65 years in business, Vista Paint operates 50+ company-owned retail stores across
+          California and Southern Nevada. Their manufacturing facility runs on 100% solar energy,
+          and the brand is known for quality contractor-grade paints at competitive prices.
+        </p>
+        <p>
+          Top product lines include <strong>V-PRO 5000</strong> (premium professional-grade),{" "}
+          <strong>Scuff-Tec</strong> (durable, scuff-resistant for high-traffic areas), and{" "}
+          <strong>Carefree</strong> (mid-range interior/exterior). Price range: $25–$50 per gallon
+          depending on the line.
+        </p>
+      </div>
+    ),
+    details: (
+      <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
+        <h2 className="text-lg font-semibold text-gray-900">Find Vista Paint Matches Nationwide</h2>
+        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+          Love a Vista Paint color but live outside California or Nevada? Click any color below to
+          find the closest match from nationally available brands like{" "}
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
+          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and{" "}
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>.
+        </p>
+      </div>
+    ),
+  },
+
+  hirshfields: {
+    intro: (
+      <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
+        <p>
+          Hirshfield&apos;s is a fourth-generation, family-owned paint and decorating company based in
+          Minneapolis, Minnesota, with over 130 years of history. They are the largest manufacturer of
+          trade sales paint in Minnesota, producing over 5,000 gallons daily at their Minneapolis
+          facility. Hirshfield&apos;s operates 30+ decorating centers across Minnesota, North Dakota,
+          South Dakota, and Wisconsin.
+        </p>
+        <p>
+          Top product lines include <strong>Platinum Ceramic</strong> (premium interior),{" "}
+          <strong>Reserve</strong> (mid-premium interior), and <strong>Wash & Wear</strong> (solid
+          everyday flat). They also make <strong>Housecoat</strong> and <strong>House & Trim</strong>{" "}
+          for exteriors. Price range: $47–$69 per gallon.
+        </p>
+      </div>
+    ),
+    details: (
+      <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
+        <h2 className="text-lg font-semibold text-gray-900">Hirshfield&apos;s Cross-Brand Matching</h2>
+        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+          Live outside the Upper Midwest? Click any Hirshfield&apos;s color below to find the closest
+          equivalent from nationally available brands like{" "}
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
+          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and{" "}
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>. Use our{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check the
+          exact Delta E difference between any two colors.
+        </p>
+      </div>
+    ),
+  },
+
+  colorhouse: {
+    intro: (
+      <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
+        <p>
+          Colorhouse is a woman-owned, eco-friendly paint company founded in 2005 in Portland, Oregon.
+          Their paints are zero-VOC, low-odor, and free of reproductive toxins and chemical solvents —
+          making them an excellent choice for nurseries, bedrooms, and homes with children or pets.
+          Colorhouse paints are sold online and through select retailers.
+        </p>
+        <p>
+          Their artist-crafted palette is organized into unique thematic families like Air, Stone,
+          Clay, Leaf, Water, and Petal. Available in Flat, Eggshell, and Semi-Gloss sheens. Price
+          range: $36–$50 per gallon.
+        </p>
+      </div>
+    ),
+    details: (
+      <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
+        <h2 className="text-lg font-semibold text-gray-900">Colorhouse Cross-Brand Matching</h2>
+        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+          Love a Colorhouse shade but want to compare options? Click any color below to see the
+          closest matches from all 14 brands in our database. For nursery-safe color ideas, see our{" "}
+          <Link href="/blog/best-nursery-paint-colors" className="text-brand-blue hover:underline">
+            nursery paint colors guide
+          </Link>.
+        </p>
+      </div>
+    ),
+  },
+
+  "dutch-boy": {
+    intro: (
+      <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
+        <p>
+          Dutch Boy is a heritage paint brand founded in 1907, now a subsidiary of Sherwin-Williams.
+          Known for its iconic Dutch boy mascot and innovations like the Twist & Pour paint can,
+          Dutch Boy is primarily sold at Menards stores and is positioned as a value-to-mid-tier
+          paint brand with solid performance.
+        </p>
+        <p>
+          Top product lines include <strong>Platinum Plus</strong> (premium, with water-based alkyd
+          technology for cabinets and trim), <strong>Dura Clean</strong> (dirt-resistant formula with
+          Kitchen & Bath variants), and <strong>Forever</strong> (interior/exterior with Arm & Hammer
+          odor-eliminating technology). Price range: $25–$45 per gallon at Menards.
+        </p>
+      </div>
+    ),
+    details: (
+      <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
+        <h2 className="text-lg font-semibold text-gray-900">Dutch Boy Cross-Brand Matching</h2>
+        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+          Don&apos;t have a Menards nearby? Click any Dutch Boy color below to find the closest match
+          from nationally available brands like{" "}
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>, and{" "}
+          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> —
+          ranked by{" "}
+          <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
+            Delta E accuracy
+          </Link>.
+        </p>
+      </div>
+    ),
+  },
+
+  ral: {
+    intro: (
+      <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
+        <p>
+          RAL is the European standard color matching system, originating in Germany in 1927. Unlike
+          paint brands, RAL defines standardized color codes used globally across industries —
+          architecture, automotive, industrial coatings, powder coating, and manufacturing. When you
+          specify a RAL color, any manufacturer can produce an exact match.
+        </p>
+        <p>
+          The <strong>RAL Classic</strong> collection contains 216 colors, each identified by a 4-digit
+          code. The system also includes <strong>RAL Design System Plus</strong> (1,825 colors) and{" "}
+          <strong>RAL Effect</strong> (490 colors including metallics). RAL colors are the go-to
+          standard for European architecture, windows, doors, facades, and industrial applications.
+        </p>
+      </div>
+    ),
+    details: (
+      <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
+        <h2 className="text-lg font-semibold text-gray-900">Match RAL Colors to Paint Brands</h2>
+        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+          Need to match a RAL specification to a retail paint brand? Click any RAL color below to find
+          the closest available paint from{" "}
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
+          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>,{" "}
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>, and 11 other
+          brands — ranked by Delta E accuracy.
+        </p>
+      </div>
+    ),
+  },
+
+  mpc: {
+    intro: (
+      <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
+        <p>
+          MPC (Master Paint Colors) is a paint color system offering a wide selection of architectural
+          colors. Their palette provides a comprehensive range of shades organized across every color
+          family, from neutrals and whites to bold accent colors.
+        </p>
+        <p>
+          MPC colors are commonly used as reference standards in the coatings industry, making them
+          useful for color matching and specification. Their systematic naming convention makes it
+          easy to identify colors by family and tone.
+        </p>
+      </div>
+    ),
+    details: (
+      <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
+        <h2 className="text-lg font-semibold text-gray-900">Match MPC Colors to Retail Brands</h2>
+        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+          Click any MPC color below to find the closest available paint from retail brands like{" "}
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
+          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and{" "}
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>. Use our{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check the
+          exact Delta E difference between any two colors.
+        </p>
+      </div>
+    ),
+  },
+
 };
 
 export function getBrandContent(slug: string): BrandContent | undefined {

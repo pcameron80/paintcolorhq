@@ -16,6 +16,13 @@ export function Footer() {
                 { name: "Valspar", slug: "valspar" },
                 { name: "Dunn-Edwards", slug: "dunn-edwards" },
                 { name: "Farrow & Ball", slug: "farrow-ball" },
+                { name: "Kilz", slug: "kilz" },
+                { name: "Vista Paint", slug: "vista-paint" },
+                { name: "Hirshfield's", slug: "hirshfields" },
+                { name: "Colorhouse", slug: "colorhouse" },
+                { name: "Dutch Boy", slug: "dutch-boy" },
+                { name: "RAL", slug: "ral" },
+                { name: "MPC", slug: "mpc" },
               ].map((brand) => (
                 <li key={brand.slug}>
                   <Link
