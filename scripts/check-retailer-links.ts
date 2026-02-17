@@ -32,6 +32,13 @@ const BRAND_FAMILIES: Record<string, string[]> = {
     "pinks", "browns", "neutrals", "whites", "blacks",
     "grays", "beiges", "aquas", "metallics",
   ],
+  "dutch-boy": [
+    "red", "orange", "yellow", "green", "blue", "purple", "gray", "neutral", "white",
+  ],
+  "dunn-edwards": ["_none_"],  // No family segment needed — just color number
+  kilz: ["_none_"],            // No family segment needed — just color number + name
+  colorhouse: ["_none_"],      // No family segment needed — just color name
+  ral: ["_none_"],             // No family segment needed — just color number + name
 };
 
 // Our color family -> best guess for each brand's website family
@@ -54,6 +61,16 @@ const FAMILY_GUESSES: Record<string, Record<string, string>> = {
     gray: "grays", beige: "beiges", neutral: "neutrals",
     white: "whites", "off-white": "whites", black: "blacks",
   },
+  "dutch-boy": {
+    red: "red", orange: "orange", yellow: "yellow", green: "green",
+    blue: "blue", purple: "purple", pink: "red",
+    beige: "neutral", brown: "neutral", gray: "gray", neutral: "neutral",
+    white: "white", "off-white": "white", black: "neutral", tan: "neutral",
+  },
+  "dunn-edwards": { _: "_none_" },  // Single URL pattern, no family needed
+  kilz: { _: "_none_" },            // Single URL pattern, no family needed
+  colorhouse: { _: "_none_" },
+  ral: { _: "_none_" },
 };
 
 type ColorRow = {
@@ -77,6 +94,21 @@ function buildUrl(brandSlug: string, color: ColorRow, family: string): string {
       const slug = `${slugify(name)}-${num.toLowerCase()}`;
       return `https://www.valspar.com/en/colors/browse-colors/lowes/${family}/${slug}`;
     }
+    case "dutch-boy": {
+      const slug = slugify(name);
+      return `https://www.dutchboy.com/en/colors/color-library/paint/${family}/${slug}-${num.toLowerCase()}`;
+    }
+    case "dunn-edwards":
+      return `https://www.dunnedwards.com/colors/browser/${num.toLowerCase()}/`;
+    case "kilz":
+      return `https://www.kilz.com/color/${slugify(name)}-${num}`;
+    case "colorhouse": {
+      // "Air .01" -> "air-01"
+      const slug = name.toLowerCase().replace(/\s*\./g, "-").replace(/\s+/g, "-");
+      return `https://www.colorhousepaint.store/colors/${slug}/`;
+    }
+    case "ral":
+      return `https://www.ralcolorchart.com/ral-classic/ral-${num}-${slugify(name)}`;
     default:
       return "";
   }
@@ -153,9 +185,11 @@ async function main() {
   const families = BRAND_FAMILIES[brandSlug];
   const guesses = FAMILY_GUESSES[brandSlug];
   if (!families || !guesses) {
-    console.log(`Brand "${brandSlug}" not configured. Use: sherwin-williams, ppg, or valspar`);
+    console.log(`Brand "${brandSlug}" not configured. Use: sherwin-williams, ppg, valspar, dutch-boy, dunn-edwards, or kilz`);
     return;
   }
+
+  const noFamilyBrand = families.length === 1 && families[0] === "_none_";
 
   console.log(`\nChecking ${brandSlug} (delay: ${delayMs}ms)`);
   console.log(`Website families: ${families.join(", ")}\n`);
@@ -183,41 +217,57 @@ async function main() {
 
   for (const color of colors) {
     const ourFamily = color.color_family ?? "neutral";
-    const guessedFamily = guesses[ourFamily] ?? families[0];
 
-    // Step 1: Try our best guess
-    const guessUrl = buildUrl(brandSlug, color, guessedFamily);
-    const guessOk = await checkUrl(guessUrl);
-    await sleep(delayMs);
+    if (noFamilyBrand) {
+      // Simple check — no family segment to guess
+      const url = buildUrl(brandSlug, color, "_none_");
+      const ok = await checkUrl(url);
+      await sleep(delayMs);
 
-    if (guessOk) {
-      passed++;
-      process.stdout.write(".");
-    } else {
-      // Step 2: Try all other families
-      let found: string | null = null;
-      for (const tryFamily of families) {
-        if (tryFamily === guessedFamily) continue;
-        const tryUrl = buildUrl(brandSlug, color, tryFamily);
-        const tryOk = await checkUrl(tryUrl);
-        await sleep(delayMs);
-        if (tryOk) {
-          found = tryFamily;
-          break;
-        }
-      }
-
-      if (found) {
-        overrides.push({
-          slug: color.slug,
-          colorNumber: color.color_number ?? "",
-          ourFamily,
-          correctFamily: found,
-        });
-        process.stdout.write("F");
+      if (ok) {
+        passed++;
+        process.stdout.write(".");
       } else {
         notFound.push(`${color.name} (${color.color_number}) [${ourFamily}]`);
         process.stdout.write("X");
+      }
+    } else {
+      const guessedFamily = guesses[ourFamily] ?? families[0];
+
+      // Step 1: Try our best guess
+      const guessUrl = buildUrl(brandSlug, color, guessedFamily);
+      const guessOk = await checkUrl(guessUrl);
+      await sleep(delayMs);
+
+      if (guessOk) {
+        passed++;
+        process.stdout.write(".");
+      } else {
+        // Step 2: Try all other families
+        let found: string | null = null;
+        for (const tryFamily of families) {
+          if (tryFamily === guessedFamily) continue;
+          const tryUrl = buildUrl(brandSlug, color, tryFamily);
+          const tryOk = await checkUrl(tryUrl);
+          await sleep(delayMs);
+          if (tryOk) {
+            found = tryFamily;
+            break;
+          }
+        }
+
+        if (found) {
+          overrides.push({
+            slug: color.slug,
+            colorNumber: color.color_number ?? "",
+            ourFamily,
+            correctFamily: found,
+          });
+          process.stdout.write("F");
+        } else {
+          notFound.push(`${color.name} (${color.color_number}) [${ourFamily}]`);
+          process.stdout.write("X");
+        }
       }
     }
 

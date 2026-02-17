@@ -2,6 +2,9 @@ import {
   VALSPAR_OVERRIDES, VALSPAR_NOT_FOUND,
   PPG_OVERRIDES, PPG_NOT_FOUND,
   SHERWIN_WILLIAMS_OVERRIDES, SHERWIN_WILLIAMS_NOT_FOUND,
+  DUNN_EDWARDS_NOT_FOUND,
+  KILZ_NOT_FOUND,
+  RAL_NOT_FOUND,
 } from "./retailer-overrides";
 
 export interface RetailerLink {
@@ -47,14 +50,6 @@ const SW_FAMILY_MAP: Record<string, string> = {
   blue: "blue", purple: "purple", pink: "red",
   beige: "yellow", brown: "orange", gray: "neutral", neutral: "neutral",
   white: "white-and-pastel", "off-white": "white-and-pastel", black: "neutral",
-};
-
-// Map our color families to Dutch Boy's website categories
-const DUTCH_BOY_FAMILY_MAP: Record<string, string> = {
-  red: "red", orange: "orange", yellow: "yellow", green: "green",
-  blue: "blue", purple: "purple", pink: "red",
-  beige: "neutral", brown: "neutral", gray: "gray", neutral: "neutral",
-  white: "white", "off-white": "white", black: "neutral", tan: "neutral",
 };
 
 const BRAND_LINKS: Record<string, RetailerConfig[]> = {
@@ -110,15 +105,15 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
   ],
   "dunn-edwards": [
     { name: "Dunn-Edwards", url: (i) => {
-      const num = (i.colorNumber ?? "").toLowerCase();
-      if (!num) return "https://www.dunnedwards.com/colors";
-      return `https://www.dunnedwards.com/colors/browser/${num}/`;
+      const num = i.colorNumber ?? "";
+      if (!num || DUNN_EDWARDS_NOT_FOUND.has(num)) return "";
+      return `https://www.dunnedwards.com/colors/browser/${num.toLowerCase()}/`;
     }},
   ],
   kilz: [
     { name: "Kilz", url: (i) => {
       const num = i.colorNumber ?? "";
-      if (!num) return "https://www.kilz.com/color";
+      if (!num || KILZ_NOT_FOUND.has(num)) return "";
       const slug = slugify(i.colorName);
       return `https://www.kilz.com/color/${slug}-${num}`;
     }},
@@ -133,13 +128,7 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
     }},
   ],
   "dutch-boy": [
-    { name: "Dutch Boy", url: (i) => {
-      const num = i.colorNumber ?? "";
-      if (!num) return "https://www.dutchboy.com/en/colors/color-library/paint";
-      const family = DUTCH_BOY_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutral";
-      const slug = slugify(i.colorName);
-      return `https://www.dutchboy.com/en/colors/color-library/paint/${family}/${slug}-${num.toLowerCase()}`;
-    }},
+    { name: "Dutch Boy", url: () => "https://www.dutchboy.com/en/colors/color-library/paint" },
     { name: "Menards", url: (i) =>
       `https://www.menards.com/main/search.html?search=${encodeURIComponent(`Dutch Boy ${i.colorName} paint`)}` },
   ],
@@ -152,7 +141,7 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
   ral: [
     { name: "RAL Color Chart", url: (i) => {
       const num = i.colorNumber ?? "";
-      if (!num) return "https://www.ralcolorchart.com/ral-classic";
+      if (!num || RAL_NOT_FOUND.has(num)) return "";
       const slug = slugify(i.colorName);
       return `https://www.ralcolorchart.com/ral-classic/ral-${num}-${slug}`;
     }},

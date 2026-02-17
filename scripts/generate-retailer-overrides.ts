@@ -25,7 +25,7 @@ interface CheckResult {
   passed: number;
 }
 
-const brands = ["valspar", "ppg", "sherwin-williams"] as const;
+const brands = ["valspar", "ppg", "sherwin-williams", "dunn-edwards", "kilz", "colorhouse", "ral"] as const;
 
 function loadResults(brand: string): CheckResult | null {
   const file = path.resolve(__dirname, `retailer-links-${brand}.json`);

@@ -2305,3 +2305,33 @@ export const SHERWIN_WILLIAMS_NOT_FOUND = new Set([
   "10",
 ]);
 
+export const DUNN_EDWARDS_OVERRIDES: Record<string, string> = {
+};
+
+export const DUNN_EDWARDS_NOT_FOUND = new Set([
+  "DEA187",
+]);
+
+export const KILZ_OVERRIDES: Record<string, string> = {
+};
+
+export const KILZ_NOT_FOUND = new Set([
+  "TB-91",
+]);
+
+export const COLORHOUSE_OVERRIDES: Record<string, string> = {
+};
+
+export const COLORHOUSE_NOT_FOUND = new Set([
+]);
+
+export const RAL_OVERRIDES: Record<string, string> = {
+};
+
+export const RAL_NOT_FOUND = new Set([
+  "3026",
+  "4012",
+  "2012",
+  "5003",
+]);
+
