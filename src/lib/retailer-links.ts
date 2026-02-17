@@ -19,20 +19,47 @@ function slugify(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
+// Map our color families to PPG's plural URL segments
+const PPG_FAMILY_MAP: Record<string, string> = {
+  red: "reds", orange: "oranges", yellow: "yellows", green: "greens",
+  blue: "blues", purple: "purples", pink: "pinks", brown: "browns",
+  gray: "neutrals", beige: "neutrals", neutral: "neutrals",
+  white: "whites", "off-white": "whites", black: "neutrals",
+};
+
+// Map our color families to SW's 8 website categories
+const SW_FAMILY_MAP: Record<string, string> = {
+  red: "red", orange: "orange", yellow: "yellow", green: "green",
+  blue: "blue", purple: "purple", pink: "red",
+  beige: "yellow", brown: "orange", gray: "neutral", neutral: "neutral",
+  white: "white-and-pastel", "off-white": "white-and-pastel", black: "neutral",
+};
+
 const BRAND_LINKS: Record<string, RetailerConfig[]> = {
   behr: [
+    { name: "Behr", url: (i) =>
+      `https://www.behr.com/consumer/ColorDetailView/${i.colorNumber ?? ""}` },
     { name: "Home Depot", url: (i) =>
-      `https://www.homedepot.com/s/${encodeURIComponent(`${i.brandName} ${i.colorName} paint`)}` },
+      `https://www.homedepot.com/s/${encodeURIComponent(`Behr ${i.colorName} paint`)}` },
   ],
   ppg: [
+    { name: "PPG Paints", url: (i) => {
+      const family = PPG_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutrals";
+      return `https://www.ppgpaints.com/color/color-families/${family}/${slugify(i.colorName)}`;
+    }},
     { name: "Home Depot", url: (i) =>
-      `https://www.homedepot.com/s/${encodeURIComponent(`${i.brandName} ${i.colorName} paint`)}` },
+      `https://www.homedepot.com/s/${encodeURIComponent(`PPG ${i.colorName} paint`)}` },
   ],
   glidden: [
     { name: "Home Depot", url: (i) =>
-      `https://www.homedepot.com/s/${encodeURIComponent(`${i.brandName} ${i.colorName} paint`)}` },
+      `https://www.homedepot.com/s/${encodeURIComponent(`Glidden ${i.colorName} paint`)}` },
   ],
   valspar: [
+    { name: "Valspar", url: (i) => {
+      const family = i.colorFamily ?? "neutral";
+      const slug = `${slugify(i.colorName)}-${(i.colorNumber ?? "").toLowerCase()}`;
+      return `https://www.valspar.com/en/colors/browse-colors/lowes/${family}/${slug}`;
+    }},
     { name: "Lowe's", url: (i) =>
       `https://www.lowes.com/search?searchTerm=${encodeURIComponent(`Valspar ${i.colorName} paint`)}` },
   ],
@@ -40,7 +67,7 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
     { name: "Sherwin-Williams", url: (i) => {
       const num = i.colorNumber ?? "";
       const slug = slugify(i.colorName);
-      const family = (i.colorFamily ?? "neutral") + "-paint-colors";
+      const family = (SW_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutral") + "-paint-colors";
       return `https://www.sherwin-williams.com/en-us/color/color-family/${family}/SW${num}-${slug}`;
     }},
     { name: "Lowe's", url: (i) =>
