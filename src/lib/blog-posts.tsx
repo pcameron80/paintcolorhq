@@ -50,26 +50,26 @@ const blogPosts: BlogPost[] = [
     date: "2025-04-15",
     excerpt:
       "See every major paint brand's 2025 Color of the Year side by side — from Sherwin-Williams to Benjamin Moore to Behr — with closest cross-brand matches.",
-    coverColor: "#A4785F",
+    coverColor: "#785b47",
     coverImage: "/blog/2025-colors-of-the-year-every-brand-compared.webp",
     tags: ["Trends", "Color of the Year", "2025"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Every year, the biggest paint brands announce their Color of the Year — a single shade they believe captures the cultural mood. For 2025, the picks reveal a clear trend: warm, grounding tones inspired by nature. Let&apos;s break down every major selection and find the closest matches across brands.
+          Every year, the biggest paint brands announce their Color of the Year — a single shade they believe captures the cultural mood. For 2025, the picks range from warm earth tones and rich browns to bold reds and deep blues. Let&apos;s break down every major selection and find the closest matches across brands.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Sherwin-Williams: Wholesome</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Sherwin-Williams: Grounded</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> is a warm, earthy terracotta that evokes clay pots, sun-dried landscapes, and handmade ceramics. Sherwin-Williams describes it as a color that &ldquo;grounds your space and nourishes the soul.&rdquo; It sits squarely in the brown family with noticeable orange undertones.
+          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> is a warm, earthy brown that evokes natural clay and weathered wood. Sherwin-Williams chose this rich, grounding shade to anchor their 2025 palette — reflecting a broader cultural shift toward organic, nature-inspired tones. It works beautifully on accent walls, cabinetry, and exterior trim.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Looking for this shade from another brand? Check out <Link href="/colors/behr/canyon-dusk-s210-4" className="text-brand-blue hover:underline">Behr Canyon Dusk</Link> for a similar warm clay tone, or use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match from any brand.
+          Looking for this shade from another brand? Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match from any brand.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Benjamin Moore: Cinnamon Slate</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> is a muted, sophisticated brown with violet-gray undertones. It&apos;s darker and cooler than Sherwin-Williams&apos; pick, landing in a space between chocolate and plum. This is a color that works beautifully on accent walls, cabinetry, and exterior doors.
+          <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> is a delicate mix of heathered plum and velvety brown. It&apos;s warm and sophisticated, landing in a space between chocolate and plum. This is a color that works beautifully on accent walls, cabinetry, and exterior doors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> to find complementary shades for a full palette.
@@ -77,10 +77,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Behr: Rumors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7D6B5D" name="Rumors" brand="Behr" href="/colors/behr/rumors-mq1-15" /> is a muted mushroom-brown with gray undertones. It&apos;s the most neutral of the 2025 picks — versatile enough for whole-home use. Behr positions it as a &ldquo;modern neutral that replaces gray.&rdquo;
+          <Swatch hex="#744347" name="Rumors" brand="Behr" href="/colors/behr/rumors-mq1-15" /> is a dynamic ruby red that makes a bold statement. Behr&apos;s pick is warm and alluring — think accent walls, front doors, kitchen cabinetry, and dining rooms. Three quarters of Americans would consider painting a room red, and Rumors delivers drama without being overwhelming.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Compare it against the full <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> to see how it stacks up against thousands of similar shades.
+          Compare it against the full <Link href="/colors/family/red" className="text-brand-blue hover:underline">red color family</Link> to see how it stacks up against thousands of similar shades.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Purple Basil</h2>
@@ -95,7 +95,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Three of the five brands chose warm earth tones in the brown-to-terracotta spectrum, while PPG and Valspar went bolder with deep purple and navy. The era of cool grays is officially over. If you&apos;re planning a 2025 refresh, warm earth tones are the safe bet — but don&apos;t be afraid to go dramatic with a deep accent color.
+          The 2025 picks are remarkably unified — warm earth tones and rich, grounded hues dominate. From Sherwin-Williams&apos; warm brown to Benjamin Moore&apos;s heathered plum to Behr&apos;s bold ruby red, the era of cool grays is officially over. Whether you go subtle or dramatic, 2025 is the year to embrace warmth and depth.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
@@ -289,7 +289,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as a very deep charcoal, perfect for modern kitchen cabinets.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> — the 2025 Color of the Year works as a surprising kitchen accent. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year breakdown</Link>.
+          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> — the 2025 Color of the Year brings a warm, earthy brown to kitchen cabinets or an island. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year breakdown</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues</h2>
@@ -1042,7 +1042,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black door works on every house style and makes hardware stand out.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> — the 2025 Color of the Year makes a warm, unexpected front door that stands out on white and gray homes.
+          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> — the 2025 Color of the Year makes a warm, inviting front door color that pairs beautifully with white trim and stone accents.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Exterior Painting Tips</h2>
@@ -1316,7 +1316,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#3B3B3B" name="Iron Ore" brand="Sherwin-Williams" href="/colors/sherwin-williams/iron-ore-7069" /> — a charcoal-black for modern kitchen cabinets. Less stark than true black, more dramatic than dark gray.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> — the 2025 Color of the Year adds warmth as a kitchen accent. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year guide</Link>.
+          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> — the 2025 Color of the Year adds a warm, earthy tone to kitchen cabinetry. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year guide</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">SW Kitchen Tips</h2>
@@ -1495,10 +1495,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 1: Rich Earth Tones Go Mainstream</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Terracotta, rust, and warm clay tones moved from accent pieces to full walls in 2025 (three of the five Color of the Year picks were warm earth tones). In 2026, expect to see these earth tones in kitchens, dining rooms, and even exteriors.
+          Terracotta, rust, and warm clay tones moved from accent pieces to full walls in 2025 — Benjamin Moore&apos;s Cinnamon Slate and PPG&apos;s Purple Basil led the charge. In 2026, expect to see these earth tones in kitchens, dining rooms, and even exteriors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> and <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — the 2025 COTYs — paved the way. Look for similar warm clay tones to appear in 2026 selections. Browse our <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> for the full range.
+          <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> and <Swatch hex="#5c4450" name="Purple Basil" brand="PPG" href="/colors/ppg/purple-basil-1046-7" /> — two of the 2025 COTYs — led the way with rich, warm tones. Look for similar earthy hues to continue in 2026 selections. Browse our <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> for the full range.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 2: Olive & Earthy Greens</h2>
