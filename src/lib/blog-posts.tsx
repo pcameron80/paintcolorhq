@@ -83,19 +83,19 @@ const blogPosts: BlogPost[] = [
           Compare it against the full <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> to see how it stacks up against thousands of similar shades.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Cracked Pepper</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Purple Basil</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4B4A4E" name="Cracked Pepper" brand="PPG" href="/colors/ppg/cracked-pepper-ppg1001-7" /> breaks from the warm trend with a deep charcoal that has the faintest purple undertone. It&apos;s dramatic, modern, and perfect for creating contrast. Think statement kitchen islands, front doors, and accent walls.
+          <Swatch hex="#5c4450" name="Purple Basil" brand="PPG" href="/colors/ppg/purple-basil-1046-7" /> is a deep, moody purple-brown that straddles the line between plum and chocolate. It&apos;s rich and dramatic — perfect for accent walls, front doors, and cabinetry. PPG&apos;s pick adds depth and sophistication to any space.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Encore</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A28974" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" /> is a warm sandy beige that bridges the gap between tan and terracotta. It&apos;s the lightest of this year&apos;s picks and the easiest to use in large doses.
+          <Swatch hex="#0f456e" name="Encore" brand="Valspar" /> is a deep, saturated navy blue with an LRV of just 6.0 — one of the boldest Color of the Year picks in recent memory. It&apos;s a statement-making shade that works on accent walls, front doors, and cabinetry where you want drama and depth.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Four out of five brands chose a shade in the brown-to-terracotta spectrum. The era of cool grays is officially over. If you&apos;re planning a 2025 refresh, start with warm earth tones and build outward.
+          Three of the five brands chose warm earth tones in the brown-to-terracotta spectrum, while PPG and Valspar went bolder with deep purple and navy. The era of cool grays is officially over. If you&apos;re planning a 2025 refresh, warm earth tones are the safe bet — but don&apos;t be afraid to go dramatic with a deep accent color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
@@ -858,7 +858,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#C3D1D6" name="Boothbay Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/boothbay-gray-hc-165" /> — a blue-gray that feels like sea mist. It reads as a sophisticated neutral rather than a &ldquo;beach house&rdquo; blue.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A28974" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" /> — a warm sandy beige that brings the warmth of driftwood into your space. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families.
+          <Swatch hex="#8a7e70" name="Safari Beige" brand="Valspar" href="/colors/valspar/safari-beige-6006-2b" /> — a warm sandy beige that brings the warmth of driftwood into your space. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Choosing Your Living Room Color</h2>
@@ -1201,7 +1201,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> — a warm terracotta that brings Mediterranean warmth to any dining space. It glows beautifully under pendant lighting.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A28974" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" /> — a sandy, warm beige-brown that creates an organic, earthy dining room. It pairs naturally with ceramic tableware and woven placemats.
+          <Swatch hex="#8a7e70" name="Safari Beige" brand="Valspar" href="/colors/valspar/safari-beige-6006-2b" /> — a sandy, warm beige-brown that creates an organic, earthy dining room. It pairs naturally with ceramic tableware and woven placemats.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#B5A898" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — a mushroom tone that&apos;s having a moment. It&apos;s warm, grounding, and sophisticated without being dark. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more.
@@ -1495,7 +1495,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 1: Rich Earth Tones Go Mainstream</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Terracotta, rust, and warm clay tones moved from accent pieces to full walls in 2025 (four out of five Color of the Year picks were in this family). In 2026, expect to see these earth tones in kitchens, dining rooms, and even exteriors.
+          Terracotta, rust, and warm clay tones moved from accent pieces to full walls in 2025 (three of the five Color of the Year picks were warm earth tones). In 2026, expect to see these earth tones in kitchens, dining rooms, and even exteriors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> and <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — the 2025 COTYs — paved the way. Look for similar warm clay tones to appear in 2026 selections. Browse our <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> for the full range.
