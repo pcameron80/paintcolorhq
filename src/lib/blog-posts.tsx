@@ -64,7 +64,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> is a warm, earthy terracotta that evokes clay pots, sun-dried landscapes, and handmade ceramics. Sherwin-Williams describes it as a color that &ldquo;grounds your space and nourishes the soul.&rdquo; It sits squarely in the brown family with noticeable orange undertones.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Looking for this shade from another brand? Check out <Link href="/colors/benjamin-moore/mesa-rust" className="text-brand-blue hover:underline">Benjamin Moore Mesa Rust</Link> or <Link href="/colors/behr/canyon-dusk" className="text-brand-blue hover:underline">Behr Canyon Dusk</Link> for similar warm clay tones. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match from any brand.
+          Looking for this shade from another brand? Check out <Link href="/colors/behr/canyon-dusk-s210-4" className="text-brand-blue hover:underline">Behr Canyon Dusk</Link> for a similar warm clay tone, or use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match from any brand.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Benjamin Moore: Cinnamon Slate</h2>
@@ -127,27 +127,27 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Revere Pewter → Accessible Beige</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C2B9A7" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-hc-172" /> is one of the most specced neutral colors in residential design. Its warm greige tone has dominated builder-grade homes for a decade. The closest Sherwin-Williams match is <Swatch hex="#D1C4A9" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" />, which leans slightly warmer and lighter but reads nearly identical on walls.
+          <Swatch hex="#C2B9A7" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> is one of the most specced neutral colors in residential design. Its warm greige tone has dominated builder-grade homes for a decade. The closest Sherwin-Williams match is <Swatch hex="#D1C4A9" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" />, which leans slightly warmer and lighter but reads nearly identical on walls.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Simply White → Extra White</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-2143-70" /> is a clean, warm white that avoids going yellow. Sherwin-Williams&apos; <Swatch hex="#F1E9D8" name="Extra White" brand="Sherwin-Williams" href="/colors/sherwin-williams/extra-white-7006" /> is the closest match, though <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> is also worth sampling. Browse our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link> guide for the full rundown.
+          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a clean, warm white that avoids going yellow. Sherwin-Williams&apos; <Swatch hex="#F1E9D8" name="Extra White" brand="Sherwin-Williams" href="/colors/sherwin-williams/extra-white-7006" /> is the closest match, though <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> is also worth sampling. Browse our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link> guide for the full rundown.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Hale Navy → Naval</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3E4450" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-hc-154" /> is a rich, sophisticated navy that works on cabinets, accent walls, and front doors. Sherwin-Williams&apos; <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> is deeper and slightly more saturated but occupies the same design niche. For a closer lightness match, also consider <Swatch hex="#454C5E" name="Charcoal Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/charcoal-blue-2739" />.
+          <Swatch hex="#3E4450" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> is a rich, sophisticated navy that works on cabinets, accent walls, and front doors. Sherwin-Williams&apos; <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> is deeper and slightly more saturated but occupies the same design niche. For a closer lightness match, also consider <Swatch hex="#454C5E" name="Charcoal Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/charcoal-blue-2739" />.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Edgecomb Gray → Agreeable Gray</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-hc-173" /> is a warm gray-beige that has been the go-to neutral for transitional interiors. <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> is remarkably similar and consistently ranks as SW&apos;s best-selling color. View the full <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> to explore alternatives.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> is a warm gray-beige that has been the go-to neutral for transitional interiors. <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> is remarkably similar and consistently ranks as SW&apos;s best-selling color. View the full <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> to explore alternatives.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Chantilly Lace → High Reflective White</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-2121-70" /> is BM&apos;s crispest, most popular true white. The SW equivalent is <Swatch hex="#F6F0E4" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" />, which is also the whitest shade in their deck. Both have minimal undertones and photograph cleanly.
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s crispest, most popular true white. The SW equivalent is <Swatch hex="#F6F0E4" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" />, which is also the whitest shade in their deck. Both have minimal undertones and photograph cleanly.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Your Own Matches</h2>
@@ -181,10 +181,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Most Common Gray Undertones</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Blue undertone:</strong> <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-hc-170" /> — looks cool and airy in north-facing light, but can feel cold in rooms without much natural light.
+          <strong>Blue undertone:</strong> <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> — looks cool and airy in north-facing light, but can feel cold in rooms without much natural light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Green undertone:</strong> <Swatch hex="#B5B8AC" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-hc-172" /> — in certain lighting, warm grays with green undertones can look almost sage-like. This is especially common with greige colors.
+          <strong>Green undertone:</strong> <Swatch hex="#B5B8AC" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> — in certain lighting, warm grays with green undertones can look almost sage-like. This is especially common with greige colors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Purple undertone:</strong> <Swatch hex="#ACA4A0" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — some warm grays carry a slight violet cast, especially under LED lighting.
@@ -241,13 +241,13 @@ const blogPosts: BlogPost[] = [
           White kitchens aren&apos;t going anywhere, but the specific whites are evolving. The trend is away from stark, blue-white tones toward warmer whites that feel lived-in.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-2121-70" /> — the gold standard for a clean, true white with no yellow cast. Perfect for modern kitchens with lots of stainless steel.
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — the gold standard for a clean, true white with no yellow cast. Perfect for modern kitchens with lots of stainless steel.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — a slightly warmer alternative that pairs beautifully with butcher block countertops and brass hardware.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/dove-960" /> — for kitchens that want warmth without crossing into cream territory. Explore more in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint guide</Link>.
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — for kitchens that want warmth without crossing into cream territory. Explore more in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint guide</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens</h2>
@@ -255,13 +255,13 @@ const blogPosts: BlogPost[] = [
           Green is the biggest color story in kitchens right now. Dark, forest-inspired greens on cabinetry create a grounding, organic feel that plays beautifully with natural materials.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-hc-188" /> — deep, dramatic, and incredibly sophisticated on lower cabinets with white uppers.
+          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — deep, dramatic, and incredibly sophisticated on lower cabinets with white uppers.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#6B7C6E" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — a softer sage-forest hybrid that&apos;s forgiving in both warm and cool light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#52625B" name="Tarrytown Green" brand="Benjamin Moore" href="/colors/benjamin-moore/tarrytown-hc-134" /> — a mid-tone green with blue undertones for a more modern feel. Browse the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
+          <Swatch hex="#52625B" name="Tarrytown Green" brand="Benjamin Moore" href="/colors/benjamin-moore/tarrytown-green-hc-134" /> — a mid-tone green with blue undertones for a more modern feel. Browse the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals</h2>
@@ -269,7 +269,7 @@ const blogPosts: BlogPost[] = [
           The gray kitchen era has given way to warm neutrals — creams, tans, and mushroom tones that add personality without being loud.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-hc-173" /> — a warm greige that&apos;s become the default cabinet color for transitional kitchens.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that&apos;s become the default cabinet color for transitional kitchens.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — slightly warmer and works beautifully with oak flooring and stone countertops.
@@ -286,7 +286,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a rich navy for island cabinetry that pairs with white countertops and gold hardware.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-2124-10" /> — a soft black that reads as a very deep charcoal, perfect for modern kitchen cabinets.
+          <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as a very deep charcoal, perfect for modern kitchen cabinets.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> — the 2025 Color of the Year works as a surprising kitchen accent. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year breakdown</Link>.
@@ -297,7 +297,7 @@ const blogPosts: BlogPost[] = [
           Light, airy blues offer a fresh alternative to all-white kitchens without the commitment of a dark color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C3D1D6" name="Boothbay Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/boothbay-hc-165" /> — a blue-gray that feels coastal without being literal about it.
+          <Swatch hex="#C3D1D6" name="Boothbay Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/boothbay-gray-hc-165" /> — a blue-gray that feels coastal without being literal about it.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — a muted powder blue that&apos;s calming and clean for kitchen walls. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
@@ -391,7 +391,7 @@ const blogPosts: BlogPost[] = [
           Blue is the most universally calming color. Studies show people in blue rooms fall asleep faster and report feeling more rested. The key is choosing muted, desaturated blues rather than bright or electric ones.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-1563" /> — a blue-green-gray that shifts beautifully with light throughout the day. It&apos;s calm without being cold.
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a blue-green-gray that shifts beautifully with light throughout the day. It&apos;s calm without being cold.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> — a silvery blue-gray that feels like morning fog. Browse more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link>.
@@ -405,7 +405,7 @@ const blogPosts: BlogPost[] = [
           Green connects us to nature, and muted sage tones have become incredibly popular for bedrooms. They pair beautifully with natural wood furniture and linen textiles.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-hc-114" /> — a warm, dusty sage that&apos;s serene without feeling sterile.
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a warm, dusty sage that&apos;s serene without feeling sterile.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — an incredibly gentle green-gray that reads almost neutral. See the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
@@ -416,13 +416,13 @@ const blogPosts: BlogPost[] = [
           If you prefer neutrals but want to avoid the &ldquo;cold gray bedroom&rdquo; trap, warm undertones are essential. These colors create a cocoon-like feeling.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-hc-173" /> — a warm greige that feels like cashmere. One of the most popular bedroom neutrals.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that feels like cashmere. One of the most popular bedroom neutrals.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a warm, creamy white with yellow-beige undertones that glows in evening light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-oc-27" /> — another BM best-seller that splits the difference between gray and beige.
+          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — another BM best-seller that splits the difference between gray and beige.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Lavender</h2>
@@ -489,7 +489,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cross-Brand Matching in Action</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Let&apos;s say you love <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-hc-173" /> but your painter stocks Sherwin-Williams. Head to the Edgecomb Gray page and you&apos;ll see the closest SW matches ranked by Delta E. For this popular color, <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> is typically the top match.
+          Let&apos;s say you love <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> but your painter stocks Sherwin-Williams. Head to the Edgecomb Gray page and you&apos;ll see the closest SW matches ranked by Delta E. For this popular color, <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> is typically the top match.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           You can also use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to put any two colors side by side and see the exact ΔE score, RGB values, and visual difference.
@@ -526,7 +526,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best True Whites</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-2121-70" /> — BM&apos;s cleanest white. Virtually no undertone. The go-to for trim, ceilings, and modern all-white rooms.
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — BM&apos;s cleanest white. Virtually no undertone. The go-to for trim, ceilings, and modern all-white rooms.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F6F0E4" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" /> — SW&apos;s equivalent. The whitest white in their deck. Perfect for trim that won&apos;t compete with wall colors.
@@ -537,13 +537,13 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Warm Whites</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/dove-960" /> — the most popular warm white in America. A soft, creamy white that never looks yellow. Designers use it for everything from cabinets to whole-house color.
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the most popular warm white in America. A soft, creamy white that never looks yellow. Designers use it for everything from cabinets to whole-house color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — despite the name, this is actually a warm white with a slight cream undertone. It&apos;s one of SW&apos;s all-time best sellers.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-2143-70" /> — sits between true white and warm white. A versatile choice when you want warmth without obvious cream tones.
+          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> — sits between true white and warm white. A versatile choice when you want warmth without obvious cream tones.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Cool Whites</h2>
@@ -589,7 +589,7 @@ const blogPosts: BlogPost[] = [
           The color wheel is divided into two halves. <strong>Warm colors</strong> — reds, oranges, yellows, and their derivatives — evoke sunlight, earth, and fire. <strong>Cool colors</strong> — blues, greens, purples — evoke water, sky, and shadow. But here&apos;s the nuance: every color exists on a warm-to-cool spectrum.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          A <em>warm gray</em> like <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-hc-173" /> has yellow-brown undertones. A <em>cool gray</em> like <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-hc-170" /> has blue undertones. Both are &ldquo;gray,&rdquo; but they create completely different moods.
+          A <em>warm gray</em> like <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> has yellow-brown undertones. A <em>cool gray</em> like <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> has blue undertones. Both are &ldquo;gray,&rdquo; but they create completely different moods.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How Lighting Shifts Temperature</h2>
@@ -610,12 +610,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Colors for Your Home</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Warm tones create intimacy and coziness. They work beautifully in bedrooms, dining rooms, and any space where you want people to linger. Good examples include <Swatch hex="#C4A882" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> for walls and <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/dove-960" /> for trim.
+          Warm tones create intimacy and coziness. They work beautifully in bedrooms, dining rooms, and any space where you want people to linger. Good examples include <Swatch hex="#C4A882" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> for walls and <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> for trim.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cool Colors for Your Home</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Cool tones create a sense of openness and calm. They work well in bathrooms, home offices, and spaces where you want focus and clarity. Try <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-1563" /> for walls with <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> for trim. Explore more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> color families.
+          Cool tones create a sense of openness and calm. They work well in bathrooms, home offices, and spaces where you want focus and clarity. Try <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> for walls with <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> for trim. Explore more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> color families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When to Break the Rules</h2>
@@ -647,10 +647,10 @@ const blogPosts: BlogPost[] = [
           <strong>1.</strong> <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — For the fifth year running, this warm greige remains the single most popular paint color in America. It works in virtually every room and lighting condition.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>2.</strong> <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/dove-960" /> — The warm white that designers can&apos;t stop specifying. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
+          <strong>2.</strong> <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — The warm white that designers can&apos;t stop specifying. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>3.</strong> <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-hc-173" /> — A warm greige that holds its ground in the age of beige-is-back.
+          <strong>3.</strong> <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — A warm greige that holds its ground in the age of beige-is-back.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>4.</strong> <Swatch hex="#6E7E6A" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — The green that launched a thousand kitchen renovations. A soft sage-forest tone that represents 2025&apos;s biggest color trend.
@@ -664,7 +664,7 @@ const blogPosts: BlogPost[] = [
           2025 was the year green went mainstream. From sage kitchens to forest-green front doors, every shade of <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> saw massive growth. The trend was driven by biophilic design — the idea that incorporating nature into interiors improves well-being.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Standout greens include <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-hc-114" />, <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-hc-188" />, and <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" />. We covered the kitchen-specific options in our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen colors guide</Link>.
+          Standout greens include <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" />, <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" />, and <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" />. We covered the kitchen-specific options in our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen colors guide</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Warm Neutral Takeover</h2>
@@ -677,7 +677,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Navy Holds Strong</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> and <Swatch hex="#3E4450" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-hc-154" /> continued to dominate as accent colors — kitchen islands, front doors, accent walls, and cabinetry. Navy offers drama without the commitment of true black.
+          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> and <Swatch hex="#3E4450" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> continued to dominate as accent colors — kitchen islands, front doors, accent walls, and cabinetry. Navy offers drama without the commitment of true black.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Looking Ahead to 2026</h2>
@@ -719,7 +719,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#7BAFB4" name="Aegean Teal" brand="Benjamin Moore" href="/colors/benjamin-moore/aegean-teal-2136-40" /> — BM&apos;s 2021 Color of the Year remains one of the best bathroom blues ever created. It&apos;s a blue-green-gray that feels coastal and serene without being literal.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-1563" /> — a softer, lighter option that reads as a silvery blue-green. Perfect for smaller bathrooms where you want color without weight.
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a softer, lighter option that reads as a silvery blue-green. Perfect for smaller bathrooms where you want color without weight.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#A8C4CA" name="Raindrop" brand="Sherwin-Williams" href="/colors/sherwin-williams/raindrop-6485" /> — a cool, airy blue that pairs beautifully with white marble and chrome fixtures. Browse more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
@@ -730,7 +730,7 @@ const blogPosts: BlogPost[] = [
           White bathrooms never go out of style, but the right white matters enormously. A bright white against white tile and white fixtures can feel sterile and clinical. A warm white adds softness.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/dove-960" /> — the most forgiving white for bathrooms. Its warm cream undertone prevents the &ldquo;hospital&rdquo; look while still feeling clean.
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the most forgiving white for bathrooms. Its warm cream undertone prevents the &ldquo;hospital&rdquo; look while still feeling clean.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — slightly warmer than a true white, it works beautifully with both chrome and brass fixtures. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for more options.
@@ -741,7 +741,7 @@ const blogPosts: BlogPost[] = [
           Green has surged in bathroom design, especially soft sage tones that create an organic, nature-inspired feel. They pair exceptionally well with wood vanities, stone countertops, and brass hardware.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-hc-114" /> — a dusty, warm sage that reads as neutral in bathroom lighting. It&apos;s sophisticated without trying too hard.
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a dusty, warm sage that reads as neutral in bathroom lighting. It&apos;s sophisticated without trying too hard.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — barely-there green that adds a whisper of color. Perfect if you want to move beyond white without committing to bold color. Explore the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link> for more.
@@ -755,7 +755,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a rich, saturated navy that makes a powder room feel like a jewel box. Pair with a gold mirror and brass sconces.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-hc-188" /> — a deep forest green for a bathroom that feels lush and enveloping. See how it compares to similar shades with our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link>.
+          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green for a bathroom that feels lush and enveloping. See how it compares to similar shades with our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Tips for Painting Bathrooms</h2>
@@ -796,7 +796,7 @@ const blogPosts: BlogPost[] = [
           Modern living rooms thrive on clean lines and restrained color. The walls should recede, letting furniture and art take center stage.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-2121-70" /> — a clean, true white that&apos;s the gold standard for modern interiors. No yellow, no gray — just pure white that photographs beautifully.
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — a clean, true white that&apos;s the gold standard for modern interiors. No yellow, no gray — just pure white that photographs beautifully.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EEF0EC" name="Decorator's White" brand="Benjamin Moore" href="/colors/benjamin-moore/decorators-white-oc-149" /> — a white with a subtle blue-gray undertone that gives modern rooms a crisp, Scandinavian feel.
@@ -810,13 +810,13 @@ const blogPosts: BlogPost[] = [
           Traditional living rooms call for warm, enveloping tones — colors that make a room feel like a warm embrace rather than a gallery.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-hc-173" /> — the quintessential transitional neutral. This warm greige works with virtually any furnishing style and feels equally at home in a 1920s colonial and a 2024 new build.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — the quintessential transitional neutral. This warm greige works with virtually any furnishing style and feels equally at home in a 1920s colonial and a 2024 new build.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — America&apos;s most popular paint color for a reason. It&apos;s a warm gray-beige that adapts to every lighting condition and pairs with everything from traditional hardwood floors to modern tile.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-oc-27" /> — a slightly lighter greige option that opens up smaller living rooms while maintaining warmth. Check our <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for more warm neutrals.
+          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — a slightly lighter greige option that opens up smaller living rooms while maintaining warmth. Check our <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for more warm neutrals.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse & Cottage</h2>
@@ -824,7 +824,7 @@ const blogPosts: BlogPost[] = [
           Farmhouse style has evolved beyond stark white shiplap. Today&apos;s farmhouse living rooms use creamy whites and soft earth tones that feel collected and lived-in.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/dove-960" /> — the warm white that launched a thousand farmhouse kitchens. It&apos;s creamy without being yellow and works perfectly with natural wood beams and vintage textiles.
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the warm white that launched a thousand farmhouse kitchens. It&apos;s creamy without being yellow and works perfectly with natural wood beams and vintage textiles.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a warm, slightly sandy off-white that gives walls a hand-plastered, old-world quality. It glows beautifully in candlelight.
@@ -835,10 +835,10 @@ const blogPosts: BlogPost[] = [
           More homeowners are embracing rich, enveloping colors for living rooms — especially in homes with open floor plans where the living room can be defined by a bold color change.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-hc-188" /> — a deep forest green that creates a dramatic, library-like atmosphere. Pair with cognac leather and brass accents.
+          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that creates a dramatic, library-like atmosphere. Pair with cognac leather and brass accents.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3E4450" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-hc-154" /> — a rich navy that adds sophistication without feeling dark. Works especially well in rooms with large windows.
+          <Swatch hex="#3E4450" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — a rich navy that adds sophistication without feeling dark. Works especially well in rooms with large windows.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — the 2025 Color of the Year is a warm, muted brown that creates incredible coziness. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year guide</Link> for more on this shade.
@@ -849,7 +849,7 @@ const blogPosts: BlogPost[] = [
           Coastal living rooms use soft blues, greens, and sandy neutrals to bring the outdoors in — but the best coastal rooms avoid being too literal or themed.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C3D1D6" name="Boothbay Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/boothbay-hc-165" /> — a blue-gray that feels like sea mist. It reads as a sophisticated neutral rather than a &ldquo;beach house&rdquo; blue.
+          <Swatch hex="#C3D1D6" name="Boothbay Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/boothbay-gray-hc-165" /> — a blue-gray that feels like sea mist. It reads as a sophisticated neutral rather than a &ldquo;beach house&rdquo; blue.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#A28974" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" /> — a warm sandy beige that brings the warmth of driftwood into your space. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families.
@@ -895,13 +895,13 @@ const blogPosts: BlogPost[] = [
           Blue is the gold standard for productivity spaces. It lowers heart rate, reduces anxiety, and helps you concentrate on detail-oriented work.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-1563" /> — a muted blue-green that&apos;s calming without being cold. It reads as sophisticated in person and looks fantastic on camera.
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a muted blue-green that&apos;s calming without being cold. It reads as sophisticated in person and looks fantastic on camera.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> — a silvery blue-gray that creates a professional, focused atmosphere. Light enough for small home offices. Browse the full <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-hc-170" /> — technically a gray, but its blue undertones give it the focus-enhancing properties of blue while maintaining a neutral, professional look.
+          <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> — technically a gray, but its blue undertones give it the focus-enhancing properties of blue while maintaining a neutral, professional look.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Greens for Creativity</h2>
@@ -912,7 +912,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#5B7A6E" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — a sophisticated sage-forest green that feels grounded and creative. It photographs well and works with both light and dark wood desks.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-hc-114" /> — a lighter, dusty sage that keeps the room feeling open and airy while still providing the calming benefits of green.
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a lighter, dusty sage that keeps the room feeling open and airy while still providing the calming benefits of green.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — the gentlest green option, almost neutral. Perfect for video calls where you want a warm, professional backdrop. See all options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
@@ -923,7 +923,7 @@ const blogPosts: BlogPost[] = [
           If you prefer neutrals, choose warm tones over cool ones. Cool grays and whites have been shown to increase fatigue, while warm neutrals feel more energizing.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-hc-173" /> — a warm greige that avoids the &ldquo;sad beige office&rdquo; problem. It has enough depth to feel intentional without being distracting.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that avoids the &ldquo;sad beige office&rdquo; problem. It has enough depth to feel intentional without being distracting.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a warm, creamy off-white that keeps the room bright and open while avoiding the sterile feel of true white.
@@ -942,7 +942,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Accent Wall Strategy</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          An accent wall behind your desk (visible on camera) is a smart approach if you want color without painting the entire room. Try <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> or <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-hc-188" /> for a dramatic, professional backdrop. Keep the remaining walls in a complementary neutral.
+          An accent wall behind your desk (visible on camera) is a smart approach if you want color without painting the entire room. Try <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> or <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> for a dramatic, professional backdrop. Keep the remaining walls in a complementary neutral.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Office Painting Tips</h2>
@@ -980,10 +980,10 @@ const blogPosts: BlogPost[] = [
           A white house is timeless for a reason: it works with every architectural style, every roof color, and every landscape. But exterior whites behave differently from interior whites — bright sun washes them out, so you often need a white with more body than you&apos;d choose indoors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/dove-960" /> — the most specified exterior white. Its warm cream undertone prevents it from looking stark or cold in full sun.
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the most specified exterior white. Its warm cream undertone prevents it from looking stark or cold in full sun.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-2121-70" /> — for homeowners who want a true white with no yellow cast. Best on modern and contemporary homes.
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — for homeowners who want a true white with no yellow cast. Best on modern and contemporary homes.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — a warm white that&apos;s the most popular SW exterior color. It glows golden at sunset. Browse our full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
@@ -994,10 +994,10 @@ const blogPosts: BlogPost[] = [
           Dark exteriors have exploded in popularity. Charcoal, navy, and deep green siding creates a striking, modern look that makes white trim pop and landscaping stand out.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-2124-10" /> — a soft black that reads as deep charcoal in sunlight. The most popular dark exterior color. It&apos;s sophisticated without being as stark as true black.
+          <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as deep charcoal in sunlight. The most popular dark exterior color. It&apos;s sophisticated without being as stark as true black.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4B5E52" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-hc-188" /> — a deep forest green that&apos;s having a massive moment on exteriors. It blends with the landscape while standing out from the neighborhood.
+          <Swatch hex="#4B5E52" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that&apos;s having a massive moment on exteriors. It blends with the landscape while standing out from the neighborhood.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a rich navy for front doors, shutters, or full siding. It pairs beautifully with both warm and cool-toned roofs.
@@ -1033,7 +1033,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — navy is the most popular front door color. It conveys trust, stability, and sophistication.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-2124-10" /> — a soft black door works on every house style and makes hardware stand out.
+          <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black door works on every house style and makes hardware stand out.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> — the 2025 Color of the Year makes a warm, unexpected front door that stands out on white and gray homes.
@@ -1084,7 +1084,7 @@ const blogPosts: BlogPost[] = [
           Green is the most versatile nursery color. It&apos;s gender-neutral, calming, and connects the room to nature. Muted sage tones are the top choice among nursery designers right now.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-hc-114" /> — a warm, dusty sage that&apos;s serene for an infant and cool enough for a 10-year-old. It pairs beautifully with natural wood cribs and white furniture.
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a warm, dusty sage that&apos;s serene for an infant and cool enough for a 10-year-old. It pairs beautifully with natural wood cribs and white furniture.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — barely there. This whisper of green reads almost neutral, making it the safest choice if you&apos;re unsure about committing to color.
@@ -1098,7 +1098,7 @@ const blogPosts: BlogPost[] = [
           Blue promotes calm and better sleep — research shows it lowers heart rate and reduces anxiety. For a nursery, choose dusty, muted blues rather than bright or primary blues.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-1563" /> — a blue-green-gray that shifts beautifully throughout the day. Calming at naptime, cheerful in morning light.
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a blue-green-gray that shifts beautifully throughout the day. Calming at naptime, cheerful in morning light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — the name was made for nurseries. A gentle powder blue with gray undertones that never feels babyish.
@@ -1112,13 +1112,13 @@ const blogPosts: BlogPost[] = [
           Warm whites and creams create a bright, airy nursery that serves as a blank canvas for colorful bedding, art, and toys. They&apos;re the easiest colors to accessorize and redecorate around as your child grows.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/dove-960" /> — the warm white that works everywhere. In a nursery, it creates a bright, peaceful space that lets colorful decor pop.
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the warm white that works everywhere. In a nursery, it creates a bright, peaceful space that lets colorful decor pop.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a creamy, sandy white that adds warmth to rooms with north-facing windows. It makes the room feel like a warm hug.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-oc-27" /> — a warm gray-beige for parents who want something beyond white. It&apos;s cozy without being dark. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families.
+          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — a warm gray-beige for parents who want something beyond white. It&apos;s cozy without being dark. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Pink & Lavender (Done Right)</h2>
@@ -1181,7 +1181,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — navy is the most popular bold dining room color. It conveys elegance, works with every wood tone, and makes white trim and china pop.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-hc-188" /> — a deep forest green that creates a rich, library-like dining room. Pair with brass light fixtures and a wood table for old-world sophistication.
+          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that creates a rich, library-like dining room. Pair with brass light fixtures and a wood table for old-world sophistication.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — the 2025 Color of the Year is a warm plum-brown that was practically made for dining rooms. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year breakdown</Link>.
@@ -1206,7 +1206,7 @@ const blogPosts: BlogPost[] = [
           If your dining room is open to the kitchen or living room, you may want a color that creates subtle distinction without a jarring change. Warm neutrals that are one shade deeper than your adjacent rooms do this beautifully.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-hc-173" /> — a warm greige that&apos;s elegant enough for a formal dining room but casual enough for everyday use. It works as a standalone or as a complement to a bolder accent wall.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that&apos;s elegant enough for a formal dining room but casual enough for everyday use. It works as a standalone or as a complement to a bolder accent wall.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — slightly warmer and richer than Agreeable Gray. It creates a cozy, golden atmosphere under warm lighting. Compare them with our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link>.
@@ -1217,7 +1217,7 @@ const blogPosts: BlogPost[] = [
           For a dining room that feels refined and classic rather than dramatic, muted blues and greens offer timeless elegance.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-1563" /> — a soft blue-green that adds color without intensity. It&apos;s serene and pairs perfectly with white wainscoting and crystal chandeliers.
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a soft blue-green that adds color without intensity. It&apos;s serene and pairs perfectly with white wainscoting and crystal chandeliers.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#6B7C6E" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — a muted sage-forest that feels both modern and traditional. It&apos;s one of the most versatile dining room greens available. See more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
@@ -1345,7 +1345,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">1. White Dove (OC-17)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/dove-960" /> is the most popular white paint in America. It&apos;s a warm, creamy white with soft yellow undertones that never looks yellow on the wall. Designers use it for everything: cabinets, trim, walls, ceilings, and entire homes. It&apos;s the safe choice that always looks good.
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is the most popular white paint in America. It&apos;s a warm, creamy white with soft yellow undertones that never looks yellow on the wall. Designers use it for everything: cabinets, trim, walls, ceilings, and entire homes. It&apos;s the safe choice that always looks good.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Cabinets, trim, whole-house color, farmhouse style.
@@ -1355,7 +1355,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">2. Chantilly Lace (OC-65)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-2121-70" /> is BM&apos;s cleanest, truest white — virtually no undertone. When you want white that reads as pure white in any light, this is the one. It&apos;s the go-to for modern and contemporary interiors where warmth is provided by other elements.
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s cleanest, truest white — virtually no undertone. When you want white that reads as pure white in any light, this is the one. It&apos;s the go-to for modern and contemporary interiors where warmth is provided by other elements.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Modern interiors, trim against colored walls, ceilings, exteriors.
@@ -1365,7 +1365,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">3. Simply White (OC-117)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-2143-70" /> sits between White Dove and Chantilly Lace — it&apos;s warmer than a true white but not as creamy as White Dove. It was BM&apos;s 2016 Color of the Year and remains a top seller. Ideal when you want just a hint of warmth.
+          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> sits between White Dove and Chantilly Lace — it&apos;s warmer than a true white but not as creamy as White Dove. It was BM&apos;s 2016 Color of the Year and remains a top seller. Ideal when you want just a hint of warmth.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Kitchens, bathrooms, transitional style.
@@ -1822,7 +1822,7 @@ const blogPosts: BlogPost[] = [
           Colors next to each other on the wheel are analogous: blue, blue-green, and green. These combinations are inherently harmonious and hard to mess up. Most &ldquo;professional-looking&rdquo; rooms use an analogous scheme, often without the homeowner realizing it.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Example:</strong> <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-hc-114" /> (green) walls, <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-1563" /> (blue-green) bathroom, <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> (blue) bedroom. All adjacent on the wheel. All harmonious. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
+          <strong>Example:</strong> <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (green) walls, <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (blue-green) bathroom, <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> (blue) bedroom. All adjacent on the wheel. All harmonious. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The 60-30-10 Rule</h2>
@@ -1846,7 +1846,7 @@ const blogPosts: BlogPost[] = [
           <strong>Saturation</strong> is how vivid a color is. <strong>Value</strong> is how light or dark. The key insight: <em>designer rooms almost always use low-saturation colors</em>. Bright, vivid colors (high saturation) feel juvenile or dated. Muted, grayed-out versions of the same hue feel sophisticated and timeless.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Compare <Swatch hex="#0000FF" name="Bright Blue" /> (high saturation) vs <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-1563" /> (low saturation). Same color family, completely different feeling. When in doubt, go more muted.
+          Compare <Swatch hex="#0000FF" name="Bright Blue" /> (high saturation) vs <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (low saturation). Same color family, completely different feeling. When in doubt, go more muted.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Putting It Together</h2>
