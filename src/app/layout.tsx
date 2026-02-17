@@ -45,6 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="impact-site-verification" content="dc26e305-732b-490f-9212-85e5f25c94b7" />
         <link
           rel="preload"
           as="image"
