@@ -90,7 +90,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Encore</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#0f456e" name="Encore" brand="Valspar" /> is a deep, saturated navy blue with an LRV of just 6.0 — one of the boldest Color of the Year picks in recent memory. It&apos;s a statement-making shade that works on accent walls, front doors, and cabinetry where you want drama and depth.
+          <Swatch hex="#0f456e" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" /> is a deep, saturated navy blue with an LRV of just 6.0 — one of the boldest Color of the Year picks in recent memory. It&apos;s a statement-making shade that works on accent walls, front doors, and cabinetry where you want drama and depth.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
