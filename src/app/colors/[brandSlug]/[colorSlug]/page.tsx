@@ -7,6 +7,7 @@ import { ColorSwatch } from "@/components/color-swatch";
 import { ComplementaryColors } from "@/components/complementary-colors";
 import { CuratedPalettes } from "@/components/curated-palettes";
 import { SaveToProject } from "@/components/save-to-project";
+import { ShareButton } from "@/components/share-button";
 import { getColorBySlug, getCrossBrandMatches, findClosestColor } from "@/lib/queries";
 import { generateColorDescription, generateMetaDescription } from "@/lib/color-description";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
@@ -135,6 +136,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${color.name} by ${color.brand.name}`,
       description: `${color.name} (${color.hex.toUpperCase()}) by ${color.brand.name}. Find closest matches from other brands.`,
       url,
+      images: [
+        {
+          url: `/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`,
+          width: 1200,
+          height: 630,
+          alt: `${color.name} paint color swatch`,
+        },
+      ],
     },
   };
 }
@@ -210,6 +219,10 @@ export default async function ColorPage({ params }: PageProps) {
                 </svg>
                 Generate Palette
               </Link>
+              <ShareButton
+                title={`${color.name} by ${color.brand.name}`}
+                url={`/colors/${brandSlug}/${colorSlug}`}
+              />
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4">

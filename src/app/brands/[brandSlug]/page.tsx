@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${brand.name} Paint Colors`,
       description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with hex codes, RGB values, and cross-brand matches.`,
       url,
+      images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
     },
   };
 }

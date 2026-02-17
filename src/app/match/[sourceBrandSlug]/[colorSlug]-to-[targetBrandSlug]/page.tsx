@@ -43,6 +43,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${sourceColor.brand.name} ${sourceColor.name} in ${targetBrand.name}`,
       description: `Find the closest ${targetBrand.name} equivalent to ${sourceColor.brand.name} ${sourceColor.name}.`,
       url,
+      images: [
+        {
+          url: `/api/og?hex=${encodeURIComponent(sourceColor.hex)}&name=${encodeURIComponent(sourceColor.name)}&brand=${encodeURIComponent(`${sourceColor.brand.name} → ${targetBrand.name}`)}`,
+          width: 1200,
+          height: 630,
+          alt: `${sourceColor.name} paint color match`,
+        },
+      ],
     },
   };
 }
