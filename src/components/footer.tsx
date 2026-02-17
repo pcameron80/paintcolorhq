@@ -16,9 +16,6 @@ export function Footer() {
                 { name: "Valspar", slug: "valspar" },
                 { name: "Dunn-Edwards", slug: "dunn-edwards" },
                 { name: "Farrow & Ball", slug: "farrow-ball" },
-                { name: "Pratt & Lambert", slug: "pratt-lambert" },
-                { name: "California Paints", slug: "california-paints" },
-                { name: "Dulux", slug: "dulux" },
               ].map((brand) => (
                 <li key={brand.slug}>
                   <Link

@@ -11,10 +11,7 @@ const brands = [
   { name: "PPG", slug: "ppg" },
   { name: "Dunn-Edwards", slug: "dunn-edwards" },
   { name: "Valspar", slug: "valspar" },
-  { name: "Pratt & Lambert", slug: "pratt-lambert" },
-  { name: "California Paints", slug: "california-paints" },
   { name: "Farrow & Ball", slug: "farrow-ball" },
-  { name: "Dulux", slug: "dulux" },
 ];
 
 const colorFamilies = [

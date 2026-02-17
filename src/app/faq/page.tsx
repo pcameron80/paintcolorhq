@@ -61,7 +61,7 @@ const faqs = [
   {
     question: "What paint brands does Paint Color HQ cover?",
     answer:
-      "We currently cover 14 major paint brands: Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, Dunn-Edwards, Pratt & Lambert, California Paints, Farrow & Ball, Dulux, Clark+Kensington, Glidden, Olympic, and Dutch Boy. Our database includes over 25,000 individual colors across all brands, and we add new colors regularly.",
+      "We currently cover 11 major paint brands: Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, Dunn-Edwards, Farrow & Ball, Colorhouse, Hirshfield's, Kilz, and more. Our database includes over 25,000 individual colors across all brands, and we add new colors regularly.",
   },
   {
     question: "How do I choose a paint color for my room?",
