@@ -9,17 +9,12 @@ import { ComplementaryColors } from "@/components/complementary-colors";
 import { CuratedPalettes } from "@/components/curated-palettes";
 import { SaveToProject } from "@/components/save-to-project";
 import { ShareButton } from "@/components/share-button";
-import { getColorBySlug, getCrossBrandMatches, findClosestColor, getAllColorSlugs, getSimilarColorsFromSameBrand } from "@/lib/queries";
+import { getColorBySlug, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand } from "@/lib/queries";
 import { generateColorDescription, generateMetaDescription } from "@/lib/color-description";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
 
 export const revalidate = 3600;
-
-export async function generateStaticParams() {
-  const slugs = await getAllColorSlugs();
-  return slugs.map(({ brandSlug, colorSlug }) => ({ brandSlug, colorSlug }));
-}
 
 function hexToHsl(hex: string): [number, number, number] {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
