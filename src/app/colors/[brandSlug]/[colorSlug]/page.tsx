@@ -3,16 +3,23 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { ColorCard } from "@/components/color-card";
 import { ColorSwatch } from "@/components/color-swatch";
 import { ComplementaryColors } from "@/components/complementary-colors";
 import { CuratedPalettes } from "@/components/curated-palettes";
 import { SaveToProject } from "@/components/save-to-project";
 import { ShareButton } from "@/components/share-button";
-import { getColorBySlug, getCrossBrandMatches, findClosestColor } from "@/lib/queries";
+import { getColorBySlug, getCrossBrandMatches, findClosestColor, getAllColorSlugs, getSimilarColorsFromSameBrand } from "@/lib/queries";
 import { generateColorDescription, generateMetaDescription } from "@/lib/color-description";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
+import { getRetailerLinks } from "@/lib/retailer-links";
 
 export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const slugs = await getAllColorSlugs();
+  return slugs.map(({ brandSlug, colorSlug }) => ({ brandSlug, colorSlug }));
+}
 
 function hexToHsl(hex: string): [number, number, number] {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -153,8 +160,12 @@ export default async function ColorPage({ params }: PageProps) {
   const color = await getColorBySlug(brandSlug, colorSlug);
   if (!color) notFound();
 
-  const matches = await getCrossBrandMatches(color.id);
+  const [matches, similarColors] = await Promise.all([
+    getCrossBrandMatches(color.id),
+    getSimilarColorsFromSameBrand(color),
+  ]);
   const description = generateColorDescription(color, matches);
+  const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name);
 
   // Resolve color harmonies to real paint colors
   const harmonies = await resolveHarmonies(color.hex);
@@ -223,6 +234,20 @@ export default async function ColorPage({ params }: PageProps) {
                 title={`${color.name} by ${color.brand.name}`}
                 url={`/colors/${brandSlug}/${colorSlug}`}
               />
+              {retailerLinks.map((link) => (
+                <a
+                  key={link.retailerName}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-colors hover:bg-gray-50"
+                >
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                  </svg>
+                  Buy at {link.retailerName}
+                </a>
+              ))}
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4">
@@ -385,6 +410,31 @@ export default async function ColorPage({ params }: PageProps) {
                     ))}
                   </div>
                 </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Similar Colors from Same Brand */}
+        {similarColors.length > 0 && (
+          <section className="mt-16">
+            <h2 className="text-2xl font-bold text-gray-900">
+              Similar {color.brand.name} Colors
+            </h2>
+            <p className="mt-2 text-sm text-gray-500">
+              Other {color.brand.name} colors close to {color.name}.
+            </p>
+            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+              {similarColors.map((similar) => (
+                <ColorCard
+                  key={similar.id}
+                  name={similar.name}
+                  hex={similar.hex}
+                  brandName={color.brand.name}
+                  brandSlug={brandSlug}
+                  colorSlug={similar.slug}
+                  colorNumber={similar.color_number}
+                />
               ))}
             </div>
           </section>

@@ -9,6 +9,11 @@ import { getBrandContent } from "@/lib/brand-content";
 
 export const revalidate = 3600;
 
+export async function generateStaticParams() {
+  const brands = await getAllBrands();
+  return brands.map((b) => ({ brandSlug: b.slug }));
+}
+
 interface PageProps {
   params: Promise<{ brandSlug: string }>;
   searchParams: Promise<{ family?: string; undertone?: string; page?: string }>;

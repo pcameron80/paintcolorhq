@@ -281,6 +281,43 @@ export async function findClosestColor(hex: string, brandId?: string): Promise<C
   return best;
 }
 
+export async function getSimilarColorsFromSameBrand(
+  color: { id: string; hex: string; brand_id: string },
+  limit = 6
+): Promise<Color[]> {
+  const r = parseInt(color.hex.slice(1, 3), 16);
+  const g = parseInt(color.hex.slice(3, 5), 16);
+  const b = parseInt(color.hex.slice(5, 7), 16);
+
+  const range = 25;
+  const { data, error } = await supabase
+    .from("colors")
+    .select("*")
+    .eq("brand_id", color.brand_id)
+    .neq("id", color.id)
+    .gte("rgb_r", Math.max(0, r - range))
+    .lte("rgb_r", Math.min(255, r + range))
+    .gte("rgb_g", Math.max(0, g - range))
+    .lte("rgb_g", Math.min(255, g + range))
+    .gte("rgb_b", Math.max(0, b - range))
+    .lte("rgb_b", Math.min(255, b + range))
+    .limit(50);
+
+  if (error) throw error;
+
+  const candidates = data ?? [];
+  // Sort by Euclidean distance and return top N
+  return candidates
+    .map((c) => {
+      const dr = c.rgb_r - r;
+      const dg = c.rgb_g - g;
+      const db = c.rgb_b - b;
+      return { ...c, dist: dr * dr + dg * dg + db * db };
+    })
+    .sort((a, b) => a.dist - b.dist)
+    .slice(0, limit);
+}
+
 // Paginated fetch for sitemaps - handles Supabase 1000-row limit
 export async function getAllColorSlugs(): Promise<
   { brandSlug: string; colorSlug: string }[]

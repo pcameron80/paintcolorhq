@@ -98,7 +98,7 @@ const blogPosts: BlogPost[] = [
           Four out of five brands chose a shade in the brown-to-terracotta spectrum. The era of cool grays is officially over. If you&apos;re planning a 2025 refresh, start with warm earth tones and build outward.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades.
+          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
         </p>
       </>
     ),
@@ -152,7 +152,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Your Own Matches</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Don&apos;t see your color here? Every color page on Paint Color HQ shows the <strong>closest matches from every other brand</strong> automatically. Just search for your Benjamin Moore color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> and scroll to the cross-brand matches section.
+          Don&apos;t see your color here? Every color page on Paint Color HQ shows the <strong>closest matches from every other brand</strong> automatically. Just search for your Benjamin Moore color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> and scroll to the cross-brand matches section. You can also use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any match on your walls before committing.
         </p>
       </>
     ),
@@ -214,7 +214,7 @@ const blogPosts: BlogPost[] = [
           If you want a gray that truly reads as gray in most lighting conditions, look for colors that designers call &ldquo;balanced grays&rdquo; — shades where no single undertone dominates. Browse our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> to compare hundreds of grays side by side and spot their undertones before you buy.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          You can also use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to put two grays next to each other and see the exact Delta E difference — if two grays have a Delta E under 2.0, most people can&apos;t tell them apart.
+          You can also use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to put two grays next to each other and see the exact Delta E difference — if two grays have a Delta E under 2.0, most people can&apos;t tell them apart. Our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> can extract the exact paint color from any room photo — great for figuring out what gray is already on your walls.
         </p>
       </>
     ),
@@ -302,6 +302,9 @@ const blogPosts: BlogPost[] = [
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — a muted powder blue that&apos;s calming and clean for kitchen walls. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these colors in a kitchen setting, and our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint your kitchen project will need.
+        </p>
       </>
     ),
   },
@@ -364,7 +367,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Can You Mix Brands?</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Absolutely. Many designers specify Benjamin Moore colors but have them mixed in Sherwin-Williams paint (or vice versa) to get the best of both worlds. Just bring the color formula or hex code to any paint store and they can custom-match it. You can also use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to verify how close the match is before committing.
+          Absolutely. Many designers specify Benjamin Moore colors but have them mixed in Sherwin-Williams paint (or vice versa) to get the best of both worlds. Just bring the color formula or hex code to any paint store and they can custom-match it. You can also use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to verify how close the match is before committing. Try our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a wall + trim + accent scheme from any brand.
         </p>
       </>
     ),
@@ -435,7 +438,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Tips for Bedroom Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Keep the ceiling white or very light to maintain a sense of openness. Paint your largest wall as a test before committing to the whole room. And consider the color of your bedding — a soft blue wall with warm white linens is a classic combination that never fails. Read our guide on <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding undertones</Link> to avoid surprises.
+          Keep the ceiling white or very light to maintain a sense of openness. Paint your largest wall as a test before committing to the whole room. And consider the color of your bedding — a soft blue wall with warm white linens is a classic combination that never fails. Read our guide on <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding undertones</Link> to avoid surprises. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these calming shades on bedroom walls before buying samples.
         </p>
       </>
     ),
@@ -497,7 +500,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When a Perfect Match Doesn&apos;t Exist</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Sometimes the closest match from another brand has a ΔE above 3.0. In those cases, you have two options: ask the paint store to custom-match using the original brand&apos;s formula, or explore adjacent colors that might work even better for your space. Often, the &ldquo;imperfect&rdquo; match ends up being the better choice once you see it in context.
+          Sometimes the closest match from another brand has a ΔE above 3.0. In those cases, you have two options: ask the paint store to custom-match using the original brand&apos;s formula, or explore adjacent colors that might work even better for your space. Often, the &ldquo;imperfect&rdquo; match ends up being the better choice once you see it in context. Our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> can help if you&apos;re starting from a photo — snap a picture of the color you love and we&apos;ll find the closest paint match.
         </p>
       </>
     ),
@@ -564,6 +567,9 @@ const blogPosts: BlogPost[] = [
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Test multiple samples.</strong> Buy at least three whites and paint large swatches. What looks identical in the can often looks wildly different on the wall. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for the full explanation.
         </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Before buying samples, narrow your options with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> — preview any white on your walls to see how it reads in different lighting conditions.
+        </p>
       </>
     ),
   },
@@ -605,7 +611,7 @@ const blogPosts: BlogPost[] = [
           The most important rule: <strong>stay in the same temperature family</strong> for connected spaces. If your living room is a warm greige, your adjoining kitchen should also use warm tones. Jumping from warm to cool across an open floor plan creates visual tension.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          This doesn&apos;t mean every room must be the same color — just the same temperature. <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> in the living room flows naturally into <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> in the dining room because both are warm. Visit our <Link href="/inspiration" className="text-brand-blue hover:underline">inspiration gallery</Link> for curated palette ideas.
+          This doesn&apos;t mean every room must be the same color — just the same temperature. <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> in the living room flows naturally into <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> in the dining room because both are warm. Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a cohesive warm or cool scheme, or visit our <Link href="/inspiration" className="text-brand-blue hover:underline">inspiration gallery</Link> for curated palette ideas.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Colors for Your Home</h2>
@@ -685,7 +691,7 @@ const blogPosts: BlogPost[] = [
           Early signals suggest 2026 will continue the warm trend while introducing more saturated colors — think terracotta, olive, and warm plum. The pendulum is swinging from the ultra-neutral 2020s toward more expressive color choices.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Whatever direction you choose, use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to explore 25,000+ colors across 14 brands, and find the perfect match for your next project.
+          Whatever direction you choose, use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to explore 25,000+ colors across 14 brands, and find the perfect match for your next project. Preview any of these popular shades with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> or build a full palette with our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
         </p>
       </>
     ),
@@ -1321,7 +1327,7 @@ const blogPosts: BlogPost[] = [
           <strong>Wait for the sales.</strong> Sherwin-Williams runs 30–40% off sales several times a year. Kitchen projects use a lot of paint — the savings are significant. For more kitchen ideas, see our full <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen color guide</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Need a Benjamin Moore equivalent for any of these colors? Click any <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color</Link> to see the closest match from all 14 brands in our database.
+          Need a Benjamin Moore equivalent for any of these colors? Click any <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color</Link> to see the closest match from all 14 brands in our database. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate exactly how much paint your kitchen needs.
         </p>
       </>
     ),
@@ -1400,7 +1406,7 @@ const blogPosts: BlogPost[] = [
           <strong>Wall white vs trim white.</strong> Many designers use one white for walls and a crisper white for trim to create subtle dimension. Classic combo: White Dove walls + Chantilly Lace trim.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For the full breakdown of whites across all brands, read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">definitive white paint guide</Link>. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to put any two whites side by side and see if the Delta E difference is perceptible.
+          For the full breakdown of whites across all brands, read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">definitive white paint guide</Link>. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to put any two whites side by side and see if the Delta E difference is perceptible. Preview any of these whites on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
         </p>
       </>
     ),
@@ -1465,7 +1471,7 @@ const blogPosts: BlogPost[] = [
           <strong>DIY-friendly:</strong> Behr&apos;s thick formula is forgiving for non-professional painters. Dynasty and Marquee offer excellent one-coat coverage. Read our <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">full brand comparison</Link> for more.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Want to see the BM or SW equivalent of any Behr color? Click any color on our <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr page</Link> to find the closest match from all 14 brands.
+          Want to see the BM or SW equivalent of any Behr color? Click any color on our <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr page</Link> to find the closest match from all 14 brands. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any Behr color on bedroom walls before heading to Home Depot.
         </p>
       </>
     ),
@@ -1613,7 +1619,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best of Both Worlds</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Many homeowners use both brands. A common approach: BM Advance for cabinets and trim (superior finish), SW Emerald for walls (more accessible, great with sales). Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to make sure your BM trim white matches your SW wall color.
+          Many homeowners use both brands. A common approach: BM Advance for cabinets and trim (superior finish), SW Emerald for walls (more accessible, great with sales). Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to make sure your BM trim white matches your SW wall color. Our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> can help you build a cohesive scheme mixing colors from either brand.
         </p>
       </>
     ),
@@ -1710,7 +1716,7 @@ const blogPosts: BlogPost[] = [
           <strong>Ceilings:</strong> Flat. <strong>Most walls:</strong> Eggshell. <strong>Kitchens & bathrooms:</strong> Satin. <strong>Trim & cabinets:</strong> Semi-gloss. <strong>Front door:</strong> Semi-gloss or high-gloss. This is the formula most painters follow, and it works for 95% of homes.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For more help choosing colors for each room, check our guides for <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchens</Link>, <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">bedrooms</Link>, <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">bathrooms</Link>, and <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">living rooms</Link>.
+          For more help choosing colors for each room, check our guides for <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchens</Link>, <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">bedrooms</Link>, <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">bathrooms</Link>, and <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">living rooms</Link>. Once you&apos;ve chosen your color and sheen, use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out exactly how many gallons you need.
         </p>
       </>
     ),
