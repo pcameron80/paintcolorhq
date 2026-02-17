@@ -44,11 +44,10 @@ export async function getColorsByBrand(
       query = query.in("undertone", labels);
     }
   }
-  if (options?.limit) {
+  if (options?.offset && options?.limit) {
+    query = query.range(options.offset, options.offset + options.limit - 1);
+  } else if (options?.limit) {
     query = query.limit(options.limit);
-  }
-  if (options?.offset) {
-    query = query.range(options.offset, options.offset + (options.limit ?? 50) - 1);
   }
 
   const { data, error } = await query;
@@ -193,13 +192,70 @@ export async function getColorsByFamily(
       query = query.in("undertone", labels);
     }
   }
-  if (options?.limit) {
+  if (options?.offset && options?.limit) {
+    query = query.range(options.offset, options.offset + options.limit - 1);
+  } else if (options?.limit) {
     query = query.limit(options.limit);
   }
 
   const { data, error } = await query;
   if (error) throw error;
   return (data ?? []) as unknown as ColorWithBrand[];
+}
+
+export async function getColorsByFamilyCount(
+  familySlug: string,
+  options?: { brandSlug?: string; undertone?: string }
+): Promise<number> {
+  let query = supabase
+    .from("colors")
+    .select("id", { count: "exact", head: true })
+    .eq("color_family", familySlug);
+
+  if (options?.brandSlug) {
+    const brand = await getBrandBySlug(options.brandSlug);
+    if (brand) {
+      query = query.eq("brand_id", brand.id);
+    }
+  }
+  if (options?.undertone) {
+    const labels = expandUndertoneFilter(options.undertone);
+    if (labels.length === 1) {
+      query = query.eq("undertone", labels[0]);
+    } else if (labels.length > 1) {
+      query = query.in("undertone", labels);
+    }
+  }
+
+  const { count, error } = await query;
+  if (error) throw error;
+  return count ?? 0;
+}
+
+export async function getColorsByBrandCount(
+  brandId: string,
+  options?: { family?: string; undertone?: string }
+): Promise<number> {
+  let query = supabase
+    .from("colors")
+    .select("id", { count: "exact", head: true })
+    .eq("brand_id", brandId);
+
+  if (options?.family) {
+    query = query.eq("color_family", options.family);
+  }
+  if (options?.undertone) {
+    const labels = expandUndertoneFilter(options.undertone);
+    if (labels.length === 1) {
+      query = query.eq("undertone", labels[0]);
+    } else if (labels.length > 1) {
+      query = query.in("undertone", labels);
+    }
+  }
+
+  const { count, error } = await query;
+  if (error) throw error;
+  return count ?? 0;
 }
 
 export async function getAllColorFamilies(): Promise<ColorFamily[]> {

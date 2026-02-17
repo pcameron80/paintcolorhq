@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
-import { getBrandBySlug, getColorsByBrand, getAllBrands } from "@/lib/queries";
+import { getBrandBySlug, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
 import { getBrandContent } from "@/lib/brand-content";
 
 export const revalidate = 3600;
@@ -40,15 +40,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BrandPage({ params, searchParams }: PageProps) {
   const { brandSlug } = await params;
-  const { family, undertone: undertoneFilter } = await searchParams;
+  const { family, undertone: undertoneFilter, page: pageParam } = await searchParams;
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) notFound();
 
-  const colors = await getColorsByBrand(brand.id, {
-    family: family ?? undefined,
-    undertone: undertoneFilter ?? undefined,
-    limit: 200,
-  });
+  const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
+  const perPage = 200;
+
+  const [colors, totalCount] = await Promise.all([
+    getColorsByBrand(brand.id, {
+      family: family ?? undefined,
+      undertone: undertoneFilter ?? undefined,
+      limit: perPage,
+      offset: (currentPage - 1) * perPage,
+    }),
+    getColorsByBrandCount(brand.id, {
+      family: family ?? undefined,
+      undertone: undertoneFilter ?? undefined,
+    }),
+  ]);
+  const totalPages = Math.ceil(totalCount / perPage);
 
   const families = [
     "white", "off-white", "gray", "beige", "neutral", "brown", "tan",
@@ -162,6 +173,61 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
           <p className="mt-12 text-center text-gray-500">
             No colors found{family ? ` in the ${family} family` : ""}.
           </p>
+        )}
+
+        {totalPages > 1 && (
+          <nav className="mt-10 flex items-center justify-center gap-2">
+            {currentPage > 1 && (
+              <Link
+                href={(() => {
+                  const p = new URLSearchParams();
+                  if (family) p.set("family", family);
+                  if (undertoneFilter) p.set("undertone", undertoneFilter);
+                  if (currentPage > 2) p.set("page", String(currentPage - 1));
+                  const qs = p.toString();
+                  return `/brands/${brandSlug}${qs ? `?${qs}` : ""}`;
+                })()}
+                className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              >
+                Previous
+              </Link>
+            )}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+              const p = new URLSearchParams();
+              if (family) p.set("family", family);
+              if (undertoneFilter) p.set("undertone", undertoneFilter);
+              if (page > 1) p.set("page", String(page));
+              const qs = p.toString();
+              return (
+                <Link
+                  key={page}
+                  href={`/brands/${brandSlug}${qs ? `?${qs}` : ""}`}
+                  className={`rounded-lg px-4 py-2 text-sm font-medium ${
+                    page === currentPage
+                      ? "bg-brand-blue text-white"
+                      : "border border-gray-200 text-gray-700 hover:bg-gray-50"
+                  }`}
+                >
+                  {page}
+                </Link>
+              );
+            })}
+            {currentPage < totalPages && (
+              <Link
+                href={(() => {
+                  const p = new URLSearchParams();
+                  if (family) p.set("family", family);
+                  if (undertoneFilter) p.set("undertone", undertoneFilter);
+                  p.set("page", String(currentPage + 1));
+                  const qs = p.toString();
+                  return `/brands/${brandSlug}${qs ? `?${qs}` : ""}`;
+                })()}
+                className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              >
+                Next
+              </Link>
+            )}
+          </nav>
         )}
 
         {/* JSON-LD */}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
-import { getColorsByFamily, getAllColorFamilies, getAllBrands } from "@/lib/queries";
+import { getColorsByFamily, getColorsByFamilyCount, getAllColorFamilies, getAllBrands } from "@/lib/queries";
 import { getFamilyContent } from "@/lib/family-content";
 
 export const revalidate = 3600;
@@ -16,7 +16,7 @@ const validFamilies = [
 
 interface PageProps {
   params: Promise<{ familySlug: string }>;
-  searchParams: Promise<{ brand?: string; undertone?: string }>;
+  searchParams: Promise<{ brand?: string; undertone?: string; page?: string }>;
 }
 
 export async function generateStaticParams() {
@@ -46,18 +46,27 @@ function capitalize(s: string): string {
 
 export default async function ColorFamilyPage({ params, searchParams }: PageProps) {
   const { familySlug } = await params;
-  const { brand: brandFilter, undertone: undertoneFilter } = await searchParams;
+  const { brand: brandFilter, undertone: undertoneFilter, page: pageParam } = await searchParams;
 
   if (!validFamilies.includes(familySlug)) notFound();
 
-  const [colors, brands] = await Promise.all([
+  const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
+  const perPage = 200;
+
+  const [colors, brands, totalCount] = await Promise.all([
     getColorsByFamily(familySlug, {
       brandSlug: brandFilter ?? undefined,
       undertone: undertoneFilter ?? undefined,
-      limit: 200,
+      limit: perPage,
+      offset: (currentPage - 1) * perPage,
     }),
     getAllBrands(),
+    getColorsByFamilyCount(familySlug, {
+      brandSlug: brandFilter ?? undefined,
+      undertone: undertoneFilter ?? undefined,
+    }),
   ]);
+  const totalPages = Math.ceil(totalCount / perPage);
 
   const familyName = capitalize(familySlug.replace(/-/g, " "));
   const familyContent = getFamilyContent(familySlug);
@@ -79,7 +88,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
           {familyName} Paint Colors
         </h1>
         <p className="mt-2 text-gray-600">
-          {colors.length} {familyName.toLowerCase()} colors from all brands.
+          {totalCount} {familyName.toLowerCase()} colors{brandFilter ? "" : " from all brands"}.
         </p>
 
         {familyContent && familyContent.intro}
@@ -169,6 +178,61 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
             No {familyName.toLowerCase()} colors found
             {brandFilter ? ` from this brand` : ""}.
           </p>
+        )}
+
+        {totalPages > 1 && (
+          <nav className="mt-10 flex items-center justify-center gap-2">
+            {currentPage > 1 && (
+              <Link
+                href={(() => {
+                  const p = new URLSearchParams();
+                  if (brandFilter) p.set("brand", brandFilter);
+                  if (undertoneFilter) p.set("undertone", undertoneFilter);
+                  if (currentPage > 2) p.set("page", String(currentPage - 1));
+                  const qs = p.toString();
+                  return `/colors/family/${familySlug}${qs ? `?${qs}` : ""}`;
+                })()}
+                className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              >
+                Previous
+              </Link>
+            )}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+              const p = new URLSearchParams();
+              if (brandFilter) p.set("brand", brandFilter);
+              if (undertoneFilter) p.set("undertone", undertoneFilter);
+              if (page > 1) p.set("page", String(page));
+              const qs = p.toString();
+              return (
+                <Link
+                  key={page}
+                  href={`/colors/family/${familySlug}${qs ? `?${qs}` : ""}`}
+                  className={`rounded-lg px-4 py-2 text-sm font-medium ${
+                    page === currentPage
+                      ? "bg-brand-blue text-white"
+                      : "border border-gray-200 text-gray-700 hover:bg-gray-50"
+                  }`}
+                >
+                  {page}
+                </Link>
+              );
+            })}
+            {currentPage < totalPages && (
+              <Link
+                href={(() => {
+                  const p = new URLSearchParams();
+                  if (brandFilter) p.set("brand", brandFilter);
+                  if (undertoneFilter) p.set("undertone", undertoneFilter);
+                  p.set("page", String(currentPage + 1));
+                  const qs = p.toString();
+                  return `/colors/family/${familySlug}${qs ? `?${qs}` : ""}`;
+                })()}
+                className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              >
+                Next
+              </Link>
+            )}
+          </nav>
         )}
       </main>
 
