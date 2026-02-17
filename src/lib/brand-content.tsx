@@ -99,7 +99,7 @@ const content: Record<string, BrandContent> = {
         <h2 className="text-lg font-semibold text-gray-900">Popular Behr Colors</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
           Best sellers include Silver Drop, Ultra Pure White, Cameo White, Dolphin Fin, and Whisper
-          White. Behr&apos;s 2025 Color of the Year — Rumors — is a warm mushroom brown. For a full
+          White. For a full
           comparison of the big three brands, read our{" "}
           <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">
             Behr vs SW vs BM guide
@@ -121,8 +121,7 @@ const content: Record<string, BrandContent> = {
         </p>
         <p>
           Top product lines include <strong>PPG Timeless</strong> (premium, one-coat guarantee) and{" "}
-          <strong>PPG Diamond</strong> (durable mid-range). PPG&apos;s 2025 Color of the Year —
-          Cracked Pepper — is a dramatic charcoal that broke from the warm earth tone trend.
+          <strong>PPG Diamond</strong> (durable mid-range).
         </p>
       </div>
     ),
@@ -145,8 +144,7 @@ const content: Record<string, BrandContent> = {
         <p>
           Valspar is a major paint brand now owned by Sherwin-Williams, sold exclusively at Lowe&apos;s.
           Their palette offers a wide range of colors at competitive prices, making them a popular
-          choice for budget-conscious DIYers. Valspar&apos;s 2025 Color of the Year — Encore — is a
-          warm sandy beige that reflects the broader shift toward earth tones.
+          choice for budget-conscious DIYers.
         </p>
         <p>
           Top product lines include <strong>Valspar Reserve</strong> (premium) and{" "}
