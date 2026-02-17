@@ -89,7 +89,7 @@ An open-source dataset of paint color swatches in JSON/CSV format. Cloned to `da
 
 | Brand | Colors |
 |-------|--------|
-| Behr | 4,699 |
+| Behr | 4,535 |
 | Benjamin Moore | 3,919 |
 | Vista Paint | 2,785 |
 | PPG | 2,088 |

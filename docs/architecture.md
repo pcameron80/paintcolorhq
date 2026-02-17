@@ -24,6 +24,7 @@ paintcolorhq/
 │   │   ├── globals.css         # Tailwind global styles
 │   │   ├── not-found.tsx       # Custom 404 page
 │   │   ├── api/
+│   │   │   ├── og/route.tsx           # Dynamic OG image generation (edge)
 │   │   │   ├── search/route.ts       # GET /api/search?q=...
 │   │   │   ├── sitemap/
 │   │   │   │   ├── route.ts          # Sitemap index XML
@@ -81,6 +82,7 @@ paintcolorhq/
 │   │   ├── complementary-colors.tsx # Color harmonies
 │   │   ├── curated-palettes.tsx # Room palette suggestions
 │   │   ├── save-to-project.tsx # Save color to project
+│   │   ├── share-button.tsx   # Share via Web Share API / clipboard
 │   │   ├── brand-picker.tsx    # Brand filter dropdown
 │   │   ├── user-menu.tsx       # Auth user dropdown
 │   │   ├── add-palette-to-project.tsx # Save palette to project
@@ -94,9 +96,10 @@ paintcolorhq/
 │       ├── supabase-server.ts  # Supabase server client (auth, cookies)
 │       ├── queries.ts          # Database query functions
 │       ├── project-queries.ts  # Project-specific queries
-│       ├── blog-posts.tsx      # Blog post data + JSX content
+│       ├── blog-posts.tsx      # Blog post data + JSX content (24 posts)
 │       ├── palettes.ts         # Curated inspiration palette data
-│       └── color-description.ts # Algorithmic SEO descriptions for color pages
+│       ├── color-description.ts # Algorithmic SEO descriptions for color pages
+│       └── retailer-links.ts   # Brand-to-retailer URL mapping
 ├── scripts/                    # Data pipeline scripts
 │   ├── import-colors.ts        # Parse ColorNerd JSON
 │   ├── seed-database.ts        # Upload colors to Supabase

@@ -14,7 +14,7 @@
 | `/compare` | Page | Static | Side-by-side color comparison (query params) |
 | `/match/[src]/[color]-to-[target]` | Page | ISR (1h) | Cross-brand match detail page |
 | `/blog` | Page | Static | Blog index with post cards |
-| `/blog/[slug]` | Page | SSG | Individual blog post |
+| `/blog/[slug]` | Page | SSG | Individual blog post (24 posts) |
 | `/inspiration` | Page | ISR (1h) | Curated palette gallery |
 | `/inspiration/[slug]` | Page | ISR (1h) | Palette detail with brand filtering |
 | `/dashboard` | Page | Dynamic | User's projects list (auth required) |
@@ -25,6 +25,7 @@
 | `/tools/color-identifier` | Page | Static | Photo-based color identification with HowTo JSON-LD |
 | `/tools/room-visualizer` | Page | Dynamic | Interactive room color preview with HowTo JSON-LD |
 | `/auth/callback` | Route | Dynamic | OAuth callback handler |
+| `/api/og` | API | Edge | Dynamic OG image generation (1200x630 PNG) |
 | `/api/search` | API | Dynamic | Search endpoint: `GET /api/search?q=query` |
 | `/api/color-match` | API | Dynamic | Color matching endpoint: `GET /api/color-match?hex=...` |
 | `/api/sitemap` | API | Dynamic | Sitemap index XML |
@@ -43,33 +44,42 @@
 - "Why Use Paint Color HQ?" SEO section covering all 5 major capabilities
 - WebSite JSON-LD schema with SearchAction
 
-### Brand Detail (`/brands/[brandSlug]`)
-- Brand name, color count
-- Color family filter chips
-- Grid of all colors with swatches, names, and hex codes
-- Each card links to the individual color page
-- Organization JSON-LD schema
-
 ### Color Detail (`/colors/[brandSlug]/[colorSlug]`)
 **The most important page for SEO and user value.**
 - Large color swatch
-- Color specs: hex, RGB, LRV, color family
-- "Save to Project" button (auth required)
+- Color specs: hex, RGB, LRV, undertone, color family
+- Action buttons: "Save to Project" (auth required), "Generate Palette" (links to palette tool with hex pre-filled), "Share" (Web Share API with clipboard fallback)
+- Retailer "Buy at" links (Home Depot for Behr/PPG/Glidden, Lowe's for Sherwin-Williams/Valspar, brand websites for Benjamin Moore/Farrow & Ball/Dunn-Edwards)
 - Breadcrumb navigation
-- Complementary, analogous, and triadic color harmonies (resolved to real paint colors)
+- Algorithmic color description (2-4 sentences)
+- Complementary, analogous, triadic, and split-complementary color harmonies (resolved to real paint colors)
 - Curated room palettes based on the color
 - "Closest Matches from Other Brands" section:
   - Grouped by brand
   - Top 3 matches per brand shown
   - Each match shows swatch, name, hex, Delta E score with label
   - Links to the matched color's own page
-- Product JSON-LD schema
+- "Similar [Brand] Colors" section: 6 visually similar colors from the same brand using RGB proximity matching
+- Dynamic OG image via `/api/og` endpoint showing color swatch, name, and brand
+- WebPage + BreadcrumbList JSON-LD schema
+
+### Brand Detail (`/brands/[brandSlug]`)
+- Brand name, color count
+- Color family filter chips
+- Undertone filter chips (warm/cool/neutral)
+- Paginated grid of colors (200 per page) sorted alphabetically
+- Each card links to the individual color page
+- Previous/Next and numbered page navigation
+- `generateStaticParams` pre-renders all 14 brand pages
+- Organization JSON-LD schema
 
 ### Color Family (`/colors/family/[familySlug]`)
 - All colors from all brands in that family
-- Sorted by LRV (lightness, descending)
+- Sorted alphabetically by name
 - Brand filter chips to narrow by brand
-- 200 color limit per page
+- Undertone filter chips (warm/cool/neutral)
+- Paginated at 200 colors per page with Previous/Next and numbered page navigation
+- `generateStaticParams` pre-renders all 15 family pages
 
 ### Search (`/search`)
 - Client-side search component (`search-results.tsx`)
@@ -95,9 +105,9 @@
 - Blog JSON-LD schema
 
 ### Blog Post (`/blog/[slug]`)
-- Statically generated via `generateStaticParams()`
-- Cover color hero bar
-- Article content with inline color swatches, internal links
+- 24 posts statically generated via `generateStaticParams()`
+- Cover color hero bar (or optional cover image)
+- Article content with inline color swatches, internal links to color pages, brand pages, and tool pages
 - Prev/Next post navigation
 - BlogPosting JSON-LD schema
 
@@ -175,6 +185,7 @@
 | CreateProjectForm | `components/create-project-form.tsx` | New project creation |
 | DeleteProjectButton | `components/delete-project-button.tsx` | Project deletion with confirmation |
 | RemoveColorButton | `components/remove-color-button.tsx` | Remove color from project |
+| ShareButton | `components/share-button.tsx` | Share via Web Share API or copy link to clipboard |
 | AddPaletteToProject | `components/add-palette-to-project.tsx` | Save entire palette to project |
 
 ## TypeScript Types

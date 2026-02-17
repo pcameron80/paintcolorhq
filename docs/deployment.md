@@ -54,6 +54,7 @@ The `data/` directory contains a 222MB match data file that would exceed Vercel'
 Route (app)
 ├ ○ /                                    # ISR (revalidate: 3600)
 ├ ○ /_not-found                          # Static
+├ ℇ /api/og                              # Edge (dynamic OG images)
 ├ ƒ /api/search                          # Dynamic
 ├ ƒ /api/sitemap                         # Dynamic
 ├ ƒ /api/sitemap/[id]                    # Dynamic
@@ -63,7 +64,7 @@ Route (app)
 ├ ○ /auth/login                          # Static
 ├ ƒ /auth/callback                       # Dynamic
 ├ ○ /blog                                # Static
-├ ○ /blog/[slug]                         # SSG (10 posts)
+├ ○ /blog/[slug]                         # SSG (24 posts)
 ├ ○ /brands                              # ISR (revalidate: 3600)
 ├ ○ /brands/[brandSlug]                  # ISR (revalidate: 3600)
 ├ ○ /colors                              # ISR (revalidate: 3600)

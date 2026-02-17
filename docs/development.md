@@ -131,6 +131,7 @@ lsof -i :3000  # Check what's using port 3000
 | `src/lib/project-queries.ts` | Auth-gated project queries |
 | `src/lib/blog-posts.tsx` | Blog post data + JSX content functions |
 | `src/lib/palettes.ts` | Curated inspiration palette definitions |
+| `src/lib/retailer-links.ts` | Brand-to-retailer URL mapping (Home Depot, Lowe's, brand sites) |
 | `src/lib/types.ts` | TypeScript interfaces for all data models |
 
 ## Known Gotchas
@@ -150,6 +151,10 @@ lsof -i :3000  # Check what's using port 3000
 7. **Color slugs include numbers**: The import script generates slugs like `edgecomb-gray-hc-173` (includes color number), not just `edgecomb-gray`. Don't try to construct color URLs from just the color name.
 
 8. **Dark mode CSS**: The default Next.js template includes a `prefers-color-scheme: dark` media query in `globals.css`. This was removed because the site is light-only. If regenerating styles, make sure dark mode CSS is not reintroduced.
+
+9. **generateStaticParams and Supabase**: Do NOT add `generateStaticParams` to pages with thousands of entries (e.g., color detail pages with 25K+ URLs). The concurrent requests overwhelm Supabase during Vercel builds, causing 500 errors. Only use it for small page sets (brands: 14 pages, families: 15 pages, blog posts: 24 pages). ISR handles on-demand generation fine for high-volume routes.
+
+10. **Behr duplicate colors**: The source data contained duplicates from zero-padded vs non-padded color numbers (e.g., PPU14-05 vs PPU14-5). These were cleaned via `scripts/fix-behr-dupes.ts`. If re-seeding, duplicates may recur.
 
 ## Project Dependencies
 

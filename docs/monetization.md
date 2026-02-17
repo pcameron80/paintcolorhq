@@ -98,8 +98,32 @@ Home improvement display ad RPMs are typically $15-25+. Based on competitor data
 | 100,000 | $1,500-2,500 |
 | 500,000 | $7,500-12,500 |
 
+## Retailer Links
+
+Color detail pages show "Buy at" links that take users to retailer search pages for the paint color. Currently these are standard links (not affiliate links); affiliate tracking parameters can be added later.
+
+### Brand-to-Retailer Mapping
+
+| Retailer | Brands |
+|----------|--------|
+| Home Depot | Behr, PPG, Glidden |
+| Lowe's | Sherwin-Williams, Valspar |
+| Brand website | Benjamin Moore, Farrow & Ball, Dunn-Edwards |
+
+Implementation: `src/lib/retailer-links.ts`
+
+- Home Depot URLs: `homedepot.com/s/{brand} {color} paint`
+- Lowe's URLs: `lowes.com/search?searchTerm={brand} {color} paint`
+- Brand sites link to their official website
+
+### Adding Affiliate Tracking
+
+When affiliate programs are set up (e.g., Home Depot via Impact), update the URL templates in `src/lib/retailer-links.ts` to include tracking parameters. It's a single-file change.
+
+**Note**: Lowe's affiliate program is currently creator/social-media focused and not a good fit for a website-only model.
+
 ### Future Monetization
 
 1. **Raptive** (formerly AdThrive): Apply at 25K pageviews/month for higher RPMs
-2. **Affiliate links**: Home Depot, Lowe's, direct brand sites for paint purchases
+2. **Affiliate links**: Home Depot affiliate program via Impact is the best fit
 3. **Premium features**: If traffic warrants (color palette builder, room visualizer)

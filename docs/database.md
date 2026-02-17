@@ -110,11 +110,14 @@ All queries are in `src/lib/queries.ts`:
 |----------|-------------|
 | `getAllBrands()` | All brands sorted by color count |
 | `getBrandBySlug(slug)` | Single brand by URL slug |
-| `getColorsByBrand(brandId, opts?)` | Colors for a brand, filterable by family |
+| `getColorsByBrand(brandId, opts?)` | Colors for a brand, filterable by family/undertone, supports pagination via limit/offset |
+| `getColorsByBrandCount(brandId, opts?)` | Count of colors for a brand (for pagination) |
 | `getColorBySlug(brandSlug, colorSlug)` | Single color with brand data |
 | `getCrossBrandMatches(colorId)` | All matches for a color, sorted by Delta E |
 | `searchColors(query, limit?)` | Search by name, number, or hex code |
-| `getColorsByFamily(familySlug, opts?)` | Colors in a family, sorted by LRV |
+| `getColorsByFamily(familySlug, opts?)` | Colors in a family, sorted alphabetically, supports pagination via limit/offset |
+| `getColorsByFamilyCount(familySlug, opts?)` | Count of colors in a family (for pagination) |
+| `getSimilarColorsFromSameBrand(color, limit?)` | Find visually similar colors from the same brand using RGB proximity (±25 range, Euclidean distance sort) |
 | `getAllColorFamilies()` | All families sorted by display order |
 | `getColorById(id)` | Single color by UUID |
 | `getAllColorSlugs()` | All brand/color slug pairs (for sitemaps, paginated) |
