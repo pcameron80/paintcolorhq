@@ -33,7 +33,7 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
     { name: "Lowe's", url: lowesSearch },
   ],
   "benjamin-moore": [
-    { name: "Benjamin Moore", url: () => "https://www.benjaminmoore.com/en-us/paint-colors/color-a-room" },
+    { name: "Benjamin Moore", url: () => "https://www.benjaminmoore.com/en-us/store-locator" },
   ],
   "farrow-ball": [
     { name: "Farrow & Ball", url: () => "https://www.farrow-ball.com" },
