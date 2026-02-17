@@ -99,12 +99,15 @@ paintcolorhq/
 │       ├── blog-posts.tsx      # Blog post data + JSX content (24 posts)
 │       ├── palettes.ts         # Curated inspiration palette data
 │       ├── color-description.ts # Algorithmic SEO descriptions for color pages
-│       └── retailer-links.ts   # Brand-to-retailer URL mapping
+│       ├── retailer-links.ts   # Brand-to-retailer URL mapping with override lookups
+│       └── retailer-overrides.ts # Auto-generated verified family overrides (1,960 entries)
 ├── scripts/                    # Data pipeline scripts
 │   ├── import-colors.ts        # Parse ColorNerd JSON
 │   ├── seed-database.ts        # Upload colors to Supabase
 │   ├── compute-matches.ts      # Calculate Delta E matches
 │   ├── seed-matches.ts         # Upload matches to Supabase
+│   ├── check-retailer-links.ts # Verify retailer URLs against brand websites
+│   ├── generate-retailer-overrides.ts # Generate retailer-overrides.ts from check results
 │   └── lib/
 │       └── color-utils.ts      # Color math (RGB, Lab, Delta E)
 ├── supabase/

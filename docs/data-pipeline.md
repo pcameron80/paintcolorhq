@@ -93,9 +93,9 @@ An open-source dataset of paint color swatches in JSON/CSV format. Cloned to `da
 | Benjamin Moore | 3,919 |
 | Vista Paint | 2,785 |
 | PPG | 2,088 |
-| Valspar | 1,764 |
+| Valspar | 1,766 |
 | Dunn-Edwards | 1,696 |
-| Sherwin-Williams | 1,526 |
+| Sherwin-Williams | 1,527 |
 | Hirshfield's | 1,469 |
 | MPC | 1,419 |
 | Kilz | 868 |
@@ -137,3 +137,44 @@ npm run seed-matches
 ```
 
 All scripts use `dotenv` to load `.env.local` for Supabase credentials.
+
+## Retailer Link Verification
+
+After the main pipeline, retailer links can be verified against brand websites. This is a separate process because it depends on external website availability and doesn't affect the core color data.
+
+```
+Step 5: check-retailer-links     Probe brand URLs for each color -> retailer-links-{brand}.json
+Step 6: generate-retailer-overrides  Convert JSON results -> src/lib/retailer-overrides.ts
+```
+
+### Step 5: Check Retailer Links
+
+**Script:** `scripts/check-retailer-links.ts`
+
+**Usage:** `npx tsx scripts/check-retailer-links.ts <brand-slug> <delay-ms>`
+
+Fetches all colors for a brand from Supabase (with pagination for >1000 rows), builds the expected URL using our family guess mapping, then sends a HEAD request. If the guess fails (non-200), it probes all other family categories for that brand's website.
+
+**Output:** `scripts/retailer-links-{brand}.json` containing:
+- `overrides[]` — Colors where a different family was found (`slug`, `colorNumber`, `ourFamily`, `correctFamily`)
+- `notFound[]` — Colors not found under any family on the brand's website
+- `checked` / `passed` — Summary counts
+
+**Supported brands:** `valspar`, `ppg`, `sherwin-williams`
+
+**Brand website family categories:**
+- **Valspar** (13): pink, red, orange, yellow, green, teal, blue, white, gray, black, brown, neutral, purple
+- **PPG** (15): reds, oranges, yellows, greens, blues, purples, pinks, browns, neutrals, whites, blacks, grays, beiges, aquas, metallics
+- **Sherwin-Williams** (8): red, orange, yellow, green, blue, purple, neutral, white-and-pastel
+
+### Step 6: Generate Retailer Overrides
+
+**Script:** `scripts/generate-retailer-overrides.ts`
+
+**Usage:** `npx tsx scripts/generate-retailer-overrides.ts`
+
+Reads all `retailer-links-{brand}.json` files and generates `src/lib/retailer-overrides.ts` with:
+- `{BRAND}_OVERRIDES: Record<string, string>` — Maps color number to correct website family
+- `{BRAND}_NOT_FOUND: Set<string>` — Color numbers not found on the website (direct link is skipped)
+
+These are imported by `src/lib/retailer-links.ts` and checked before falling back to the default family guess.

@@ -386,34 +386,35 @@ When `coverImage` is not set, everything falls back to `coverColor` — no chang
 
 4. **Deploy** — the image is served by Next.js `<Image>` with automatic optimization
 
-### All 24 Post Slugs (for image filenames)
+### All 25 Post Slugs (for image filenames)
 
 | # | Filename |
 |---|----------|
-| 1 | `2025-colors-of-the-year-every-brand-compared.webp` |
-| 2 | `best-sherwin-williams-alternatives-to-benjamin-moore.webp` |
-| 3 | `understanding-paint-color-undertones.webp` |
-| 4 | `best-kitchen-paint-colors-2025.webp` |
-| 5 | `behr-vs-sherwin-williams-vs-benjamin-moore.webp` |
-| 6 | `calming-bedroom-paint-colors.webp` |
-| 7 | `how-to-find-perfect-color-match-across-brands.webp` |
-| 8 | `best-white-paint-colors-guide.webp` |
-| 9 | `warm-vs-cool-paint-colors.webp` |
-| 10 | `most-popular-paint-colors-2025.webp` |
-| 11 | `best-bathroom-paint-colors.webp` |
-| 12 | `best-living-room-paint-colors.webp` |
-| 13 | `best-home-office-paint-colors.webp` |
-| 14 | `best-exterior-paint-colors.webp` |
-| 15 | `best-nursery-paint-colors.webp` |
-| 16 | `best-dining-room-paint-colors.webp` |
-| 17 | `best-sherwin-williams-kitchen-colors.webp` |
-| 18 | `benjamin-moore-most-popular-whites.webp` |
-| 19 | `best-behr-colors-for-bedrooms.webp` |
-| 20 | `paint-color-trends-2026.webp` |
-| 21 | `sherwin-williams-vs-benjamin-moore.webp` |
-| 22 | `paint-sheen-guide.webp` |
-| 23 | `how-to-test-paint-samples.webp` |
-| 24 | `color-theory-for-home-decorators.webp` |
+| 1 | `2026-colors-of-the-year-every-brand-compared.webp` |
+| 2 | `2025-colors-of-the-year-every-brand-compared.webp` |
+| 3 | `best-sherwin-williams-alternatives-to-benjamin-moore.webp` |
+| 4 | `understanding-paint-color-undertones.webp` |
+| 5 | `best-kitchen-paint-colors-2025.webp` |
+| 6 | `behr-vs-sherwin-williams-vs-benjamin-moore.webp` |
+| 7 | `calming-bedroom-paint-colors.webp` |
+| 8 | `how-to-find-perfect-color-match-across-brands.webp` |
+| 9 | `best-white-paint-colors-guide.webp` |
+| 10 | `warm-vs-cool-paint-colors.webp` |
+| 11 | `most-popular-paint-colors-2025.webp` |
+| 12 | `best-bathroom-paint-colors.webp` |
+| 13 | `best-living-room-paint-colors.webp` |
+| 14 | `best-home-office-paint-colors.webp` |
+| 15 | `best-exterior-paint-colors.webp` |
+| 16 | `best-nursery-paint-colors.webp` |
+| 17 | `best-dining-room-paint-colors.webp` |
+| 18 | `best-sherwin-williams-kitchen-colors.webp` |
+| 19 | `benjamin-moore-most-popular-whites.webp` |
+| 20 | `best-behr-colors-for-bedrooms.webp` |
+| 21 | `paint-color-trends-2026.webp` |
+| 22 | `sherwin-williams-vs-benjamin-moore.webp` |
+| 23 | `paint-sheen-guide.webp` |
+| 24 | `how-to-test-paint-samples.webp` |
+| 25 | `color-theory-for-home-decorators.webp` |
 
 ### Image Tips
 

@@ -104,6 +104,33 @@ npm run seed-matches
 2. Add a new palette with name, slug, description, and 5 hex colors
 3. Colors are automatically resolved to the closest real paint colors at render time
 
+### Verifying / Refreshing Retailer Links
+
+Each brand's website uses different color family categories in their URLs. The override system ensures our links point to the correct pages. To re-verify:
+
+```bash
+# 1. Check all colors for a brand (probes each URL, tries all families on failure)
+npx tsx scripts/check-retailer-links.ts valspar 150
+npx tsx scripts/check-retailer-links.ts ppg 150
+npx tsx scripts/check-retailer-links.ts sherwin-williams 150
+
+# 2. Generate the TypeScript override file from all JSON results
+npx tsx scripts/generate-retailer-overrides.ts
+```
+
+**How it works:**
+- `check-retailer-links.ts` fetches every color from Supabase, builds a URL using our best-guess family mapping, then sends a HEAD request. If the guess fails (non-200), it tries all other families for that brand. Results are saved to `scripts/retailer-links-{brand}.json`.
+- `generate-retailer-overrides.ts` reads those JSON files and generates `src/lib/retailer-overrides.ts` with `Record<string, string>` maps keyed by color number.
+- Colors not found on any family are added to a `NOT_FOUND` set so the direct link is skipped (fallback to retailer search where available).
+
+**Current coverage (Feb 2026):**
+
+| Brand | Colors | Passed | Overrides | Not Found |
+|-------|--------|--------|-----------|-----------|
+| Valspar | 1,766 | 756 | 820 | 190 |
+| PPG | 2,088 | 933 | 1,100 | 55 |
+| Sherwin-Williams | 1,527 | 1,406 | 40 | 81 |
+
 ### Clearing the Build Cache
 
 If pages show stale data after changes:
@@ -131,7 +158,8 @@ lsof -i :3000  # Check what's using port 3000
 | `src/lib/project-queries.ts` | Auth-gated project queries |
 | `src/lib/blog-posts.tsx` | Blog post data + JSX content functions |
 | `src/lib/palettes.ts` | Curated inspiration palette definitions |
-| `src/lib/retailer-links.ts` | Brand-to-retailer URL mapping (Home Depot, Lowe's, brand sites) |
+| `src/lib/retailer-links.ts` | Brand-to-retailer URL mapping with verified override lookups |
+| `src/lib/retailer-overrides.ts` | Auto-generated color family overrides for 1,960 colors (do not edit manually) |
 | `src/lib/types.ts` | TypeScript interfaces for all data models |
 
 ## Known Gotchas

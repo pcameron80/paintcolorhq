@@ -28,7 +28,8 @@ Paint Color HQ is a complete paint color toolkit. Users can browse 25,000+ paint
 - **14 brands**: Behr, Benjamin Moore, Sherwin-Williams, PPG, Dunn-Edwards, Valspar, Farrow & Ball, and more
 - **15 color families**: Red, Orange, Yellow, Green, Blue, Purple, Pink, White, Off-White, Black, Gray, Brown, Beige, Tan, Neutral
 - **18 curated inspiration palettes** mapped to real paint colors
-- **24 SEO blog posts** covering color trends, brand comparisons, and guides
+- **25 SEO blog posts** covering color trends, brand comparisons, and guides
+- **Verified retailer links** for 5,381 colors across Valspar, PPG, and Sherwin-Williams
 
 ## Features
 
@@ -37,10 +38,10 @@ Paint Color HQ is a complete paint color toolkit. Users can browse 25,000+ paint
 - **Photo Color Identifier**: Upload a photo, click any spot, and find matching paint colors from every brand
 - **Paint Calculator**: Enter room dimensions, doors, and windows to calculate gallons needed
 - **Undertone Analysis**: Every color tagged warm, cool, or neutral with filter support
-- **Color detail pages**: Hex, RGB, LRV, color family, complementary/analogous/triadic harmonies, similar colors from the same brand, retailer purchase links
+- **Color detail pages**: Hex, RGB, LRV, color family, complementary/analogous/triadic harmonies, similar colors from the same brand, verified retailer purchase links (direct product pages where possible)
 - **Dynamic OG images**: Auto-generated social sharing images for each color page showing the color swatch, name, and brand
 - **Inspiration palettes**: 18 curated palettes (Modern Farmhouse, Coastal Retreat, etc.) with brand filtering
-- **Blog**: 24 articles on paint color topics with inline swatches and internal links to tools
+- **Blog**: 25 articles on paint color topics with inline swatches and internal links to tools
 - **Projects (auth)**: Save colors to named projects, organized by role (Walls/Trim/Accent/Pop)
 - **Search**: Find colors by name, number, or hex code
 - **Compare**: Side-by-side color comparison with Delta E score

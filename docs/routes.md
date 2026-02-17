@@ -14,7 +14,7 @@
 | `/compare` | Page | Static | Side-by-side color comparison (query params) |
 | `/match/[src]/[color]-to-[target]` | Page | ISR (1h) | Cross-brand match detail page |
 | `/blog` | Page | Static | Blog index with post cards |
-| `/blog/[slug]` | Page | SSG | Individual blog post (24 posts) |
+| `/blog/[slug]` | Page | SSG | Individual blog post (25 posts) |
 | `/inspiration` | Page | ISR (1h) | Curated palette gallery |
 | `/inspiration/[slug]` | Page | ISR (1h) | Palette detail with brand filtering |
 | `/dashboard` | Page | Dynamic | User's projects list (auth required) |
@@ -49,7 +49,14 @@
 - Large color swatch
 - Color specs: hex, RGB, LRV, undertone, color family
 - Action buttons: "Save to Project" (auth required), "Generate Palette" (links to palette tool with hex pre-filled), "Share" (Web Share API with clipboard fallback)
-- Retailer "Buy at" links (Home Depot for Behr/PPG/Glidden, Lowe's for Sherwin-Williams/Valspar, brand websites for Benjamin Moore/Farrow & Ball/Dunn-Edwards)
+- Retailer "Buy at" links with verified direct product page URLs:
+  - **Behr**: Direct Behr.com color page + Home Depot search
+  - **PPG**: Direct PPGPaints.com color page + Home Depot search
+  - **Valspar**: Direct Valspar.com color page + Lowe's search
+  - **Sherwin-Williams**: Direct SherwinWilliams.com color page
+  - **Benjamin Moore**: Direct BenjaminMoore.com color page
+  - **Glidden**: Home Depot search
+  - **Farrow & Ball / Dunn-Edwards**: Brand website homepage
 - Breadcrumb navigation
 - Algorithmic color description (2-4 sentences)
 - Complementary, analogous, triadic, and split-complementary color harmonies (resolved to real paint colors)
@@ -105,7 +112,7 @@
 - Blog JSON-LD schema
 
 ### Blog Post (`/blog/[slug]`)
-- 24 posts statically generated via `generateStaticParams()`
+- 25 posts statically generated via `generateStaticParams()`
 - Cover color hero bar (or optional cover image)
 - Article content with inline color swatches, internal links to color pages, brand pages, and tool pages
 - Prev/Next post navigation
