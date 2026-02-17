@@ -79,8 +79,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
           {familyName} Paint Colors
         </h1>
         <p className="mt-2 text-gray-600">
-          {colors.length} {familyName.toLowerCase()} colors from all brands,
-          sorted by lightness.
+          {colors.length} {familyName.toLowerCase()} colors from all brands.
         </p>
 
         {familyContent && familyContent.intro}

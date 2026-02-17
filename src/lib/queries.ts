@@ -177,7 +177,7 @@ export async function getColorsByFamily(
     .from("colors")
     .select("*, brand:brand_id (*)")
     .eq("color_family", familySlug)
-    .order("lrv", { ascending: false });
+    .order("name");
 
   if (options?.brandSlug) {
     const brand = await getBrandBySlug(options.brandSlug);
