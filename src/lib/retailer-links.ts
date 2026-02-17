@@ -19,12 +19,12 @@ const BRAND_RETAILERS: Record<string, Retailer[]> = {
   behr: [HOME_DEPOT],
   ppg: [HOME_DEPOT],
   glidden: [HOME_DEPOT],
-  "sherwin-williams": [LOWES],
   valspar: [LOWES],
 };
 
 // Brands with their own retail/dealer sites
 const BRAND_WEBSITES: Record<string, { name: string; url: string }> = {
+  "sherwin-williams": { name: "Sherwin-Williams", url: "https://www.sherwin-williams.com/store-locator" },
   "benjamin-moore": { name: "Benjamin Moore", url: "https://www.benjaminmoore.com/en-us/paint-colors/color-a-room" },
   "farrow-ball": { name: "Farrow & Ball", url: "https://www.farrow-ball.com" },
   "dunn-edwards": { name: "Dunn-Edwards", url: "https://www.dunnedwards.com/colors" },
