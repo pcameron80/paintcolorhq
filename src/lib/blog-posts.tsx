@@ -43,6 +43,67 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Post 0 ──────────────── */
+  {
+    slug: "2026-colors-of-the-year-every-brand-compared",
+    title: "2026 Colors of the Year: Every Major Brand Compared",
+    date: "2026-02-15",
+    excerpt:
+      "See every major paint brand's 2026 Color of the Year side by side — from earthy greens to warm neutrals — with closest cross-brand matches.",
+    coverColor: "#596D69",
+    coverImage: "/blog/2026-colors-of-the-year-every-brand-compared.webp",
+    tags: ["Trends", "Color of the Year", "2026"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Every year, the biggest paint brands announce their Color of the Year — a single shade they believe captures the cultural mood. For 2026, the picks are strikingly aligned: earthy greens, warm neutrals, and nature-inspired tones dominate. Let&apos;s break down every major selection and find the closest matches across brands.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Sherwin-Williams: Universal Khaki</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> is a warm, sandy neutral with golden undertones. Sherwin-Williams chose this versatile shade as their 2026 pick — it bridges the gap between beige and gray, making it one of the most livable neutrals in their palette. With an LRV of 42, it works as a whole-house color in both traditional and modern settings.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Looking for this shade from another brand? Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match from any brand.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Benjamin Moore: Silhouette</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /> is a sophisticated dark gray-brown from the Affinity collection. It&apos;s warm enough to feel inviting but deep enough to add drama — think moody bedrooms, library walls, and bold exterior trim. Benjamin Moore&apos;s pick signals that dark, cocooning spaces are a major design force in 2026.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> to find complementary shades for a full palette.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Behr: Hidden Gem</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> is a smoky jade green that embodies understated elegance. Behr describes it as an artful blend of blue and green that brings grounded serenity and vibrant depth to any space. It&apos;s dark and moody but not overwhelming — perfect for accent walls, color-drenching, and exterior palettes.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Compare it against the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> to see how it stacks up against thousands of similar shades.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Warm Mahogany</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is a rich, warm brown-red that evokes natural wood and aged leather. PPG&apos;s pick is the deepest, most saturated of the 2026 selections — a confident choice for accent walls, front doors, and cabinetry where you want warmth and permanence.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Warm Eucalyptus</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> is a grounded gray-green that Valspar calls a &ldquo;new neutral.&rdquo; Inspired by vintage design palettes, it&apos;s naturally restorative and serene — reflecting a desire for calm, grounding spaces. Available exclusively at Lowe&apos;s, it pairs beautifully with warm wood tones and natural stone.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The 2026 picks tell a clear story: nature is the dominant inspiration. Three of the five selections are green-influenced (Hidden Gem, Warm Eucalyptus, and Silhouette&apos;s earthy undertone), while the remaining picks lean into warm earth tones. After 2025&apos;s bold reds and deep navies, the industry is pivoting toward quieter, more organic hues. For a look back at last year&apos;s selections, see our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2025 Colors of the Year comparison</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Post 1 ──────────────── */
   {
     slug: "2025-colors-of-the-year-every-brand-compared",
@@ -1490,23 +1551,23 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The warm-toned revolution that began in 2024 is accelerating. After a decade of cool grays, homeowners are embracing richer, more expressive colors — and 2026 will push that even further. Based on early brand announcements, design week previews, and search trend analysis, here are the colors and themes that will define home interiors this year.
+          The warm-toned revolution that began in 2024 is accelerating. After a decade of cool grays, homeowners are embracing richer, more expressive colors — and the 2026 Colors of the Year confirm it. Based on official brand announcements, designer surveys, and search trend analysis, here are the colors and themes defining home interiors this year. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">full 2026 COTY comparison</Link> for the complete breakdown.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 1: Rich Earth Tones Go Mainstream</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 1: Earthy Greens Dominate</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Terracotta, rust, and warm clay tones moved from accent pieces to full walls in 2025 — Benjamin Moore&apos;s Cinnamon Slate and PPG&apos;s Purple Basil led the charge. In 2026, expect to see these earth tones in kitchens, dining rooms, and even exteriors.
+          The biggest trend of 2026 is confirmed by the Color of the Year picks themselves: earthy, muted greens are everywhere. Behr&apos;s <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> is a smoky jade, while Valspar&apos;s <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> is a grounded gray-green. Two of five major brands chose green — that&apos;s not a coincidence.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> and <Swatch hex="#5c4450" name="Purple Basil" brand="PPG" href="/colors/ppg/purple-basil-1046-7" /> — two of the 2025 COTYs — led the way with rich, warm tones. Look for similar earthy hues to continue in 2026 selections. Browse our <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> for the full range.
+          These aren&apos;t the bright sages of 2024. The 2026 greens are moodier, warmer, and more olive-influenced — closer to eucalyptus and jade than mint or Kelly green. Explore the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 2: Olive & Earthy Greens</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 2: Warm Neutrals Get Richer</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Sage green dominated 2025. For 2026, the green trend is deepening toward olive, moss, and army green — warmer, yellower greens that feel more grounded and less minty.
+          Sherwin-Williams&apos; <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> captures the new neutral perfectly — warm, sandy, and golden rather than the cool grays of the 2010s. Meanwhile, Benjamin Moore&apos;s <Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /> shows that even dark neutrals are getting warmer.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          These earthy greens pair naturally with the terracotta trend, creating warm, organic palettes inspired by Mediterranean and desert landscapes. Explore options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
+          PPG&apos;s <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> pushes this further into rich brown-red territory. Browse our <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for the full range.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 3: Warm Plum & Berry</h2>
@@ -1545,7 +1606,7 @@ const blogPosts: BlogPost[] = [
           Start small: a front door, a powder room, or an accent wall. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any color on your walls before committing. Our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> can help you build a cohesive scheme around a trending color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For a look back at what dominated last year, read our <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">most popular colors of 2025</Link> roundup.
+          For a look back at what dominated last year, read our <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">most popular colors of 2025</Link> roundup and our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2025 Colors of the Year comparison</Link>.
         </p>
       </>
     ),
