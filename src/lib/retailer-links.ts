@@ -70,8 +70,6 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
       const family = (SW_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutral") + "-paint-colors";
       return `https://www.sherwin-williams.com/en-us/color/color-family/${family}/SW${num}-${slug}`;
     }},
-    { name: "Lowe's", url: (i) =>
-      `https://www.lowes.com/search?searchTerm=${encodeURIComponent(`HGTV Sherwin Williams ${i.colorName} paint`)}` },
   ],
   "benjamin-moore": [
     { name: "Benjamin Moore", url: (i) => {
