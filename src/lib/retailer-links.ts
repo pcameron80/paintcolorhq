@@ -1,3 +1,9 @@
+import {
+  VALSPAR_OVERRIDES, VALSPAR_NOT_FOUND,
+  PPG_OVERRIDES, PPG_NOT_FOUND,
+  SHERWIN_WILLIAMS_OVERRIDES, SHERWIN_WILLIAMS_NOT_FOUND,
+} from "./retailer-overrides";
+
 export interface RetailerLink {
   retailerName: string;
   url: string;
@@ -19,15 +25,23 @@ function slugify(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
-// Map our color families to PPG's plural URL segments
+// Map our color families to PPG's plural URL segments (default guesses)
 const PPG_FAMILY_MAP: Record<string, string> = {
   red: "reds", orange: "oranges", yellow: "yellows", green: "greens",
   blue: "blues", purple: "purples", pink: "pinks", brown: "browns",
-  gray: "neutrals", beige: "neutrals", neutral: "neutrals",
-  white: "whites", "off-white": "whites", black: "neutrals",
+  gray: "grays", beige: "beiges", neutral: "neutrals",
+  white: "whites", "off-white": "whites", black: "blacks",
 };
 
-// Map our color families to SW's 8 website categories
+// Map our color families to Valspar's website categories (default guesses)
+const VALSPAR_FAMILY_MAP: Record<string, string> = {
+  red: "red", orange: "orange", yellow: "yellow", green: "green",
+  blue: "blue", purple: "purple", pink: "pink",
+  beige: "brown", brown: "brown", gray: "gray", neutral: "neutral",
+  white: "white", "off-white": "white", black: "black",
+};
+
+// Map our color families to SW's 8 website categories (default guesses)
 const SW_FAMILY_MAP: Record<string, string> = {
   red: "red", orange: "orange", yellow: "yellow", green: "green",
   blue: "blue", purple: "purple", pink: "red",
@@ -44,7 +58,9 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
   ],
   ppg: [
     { name: "PPG Paints", url: (i) => {
-      const family = PPG_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutrals";
+      const num = i.colorNumber ?? "";
+      if (PPG_NOT_FOUND.has(num)) return "";
+      const family = PPG_OVERRIDES[num] ?? PPG_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutrals";
       return `https://www.ppgpaints.com/color/color-families/${family}/${slugify(i.colorName)}`;
     }},
     { name: "Home Depot", url: (i) =>
@@ -56,8 +72,10 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
   ],
   valspar: [
     { name: "Valspar", url: (i) => {
-      const family = i.colorFamily ?? "neutral";
-      const slug = `${slugify(i.colorName)}-${(i.colorNumber ?? "").toLowerCase()}`;
+      const num = i.colorNumber ?? "";
+      if (VALSPAR_NOT_FOUND.has(num)) return "";
+      const family = VALSPAR_OVERRIDES[num] ?? VALSPAR_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutral";
+      const slug = `${slugify(i.colorName)}-${num.toLowerCase()}`;
       return `https://www.valspar.com/en/colors/browse-colors/lowes/${family}/${slug}`;
     }},
     { name: "Lowe's", url: (i) =>
@@ -66,9 +84,10 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
   "sherwin-williams": [
     { name: "Sherwin-Williams", url: (i) => {
       const num = i.colorNumber ?? "";
+      if (SHERWIN_WILLIAMS_NOT_FOUND.has(num)) return "";
+      const family = SHERWIN_WILLIAMS_OVERRIDES[num] ?? SW_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutral";
       const slug = slugify(i.colorName);
-      const family = (SW_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutral") + "-paint-colors";
-      return `https://www.sherwin-williams.com/en-us/color/color-family/${family}/SW${num}-${slug}`;
+      return `https://www.sherwin-williams.com/en-us/color/color-family/${family}-paint-colors/SW${num}-${slug}`;
     }},
   ],
   "benjamin-moore": [
@@ -97,8 +116,10 @@ export function getRetailerLinks(
   if (!configs) return [];
 
   const info: ColorInfo = { brandName, colorName, colorNumber, colorFamily };
-  return configs.map((c) => ({
-    retailerName: c.name,
-    url: c.url(info),
-  }));
+  return configs
+    .map((c) => ({
+      retailerName: c.name,
+      url: c.url(info),
+    }))
+    .filter((link) => link.url !== "");
 }
