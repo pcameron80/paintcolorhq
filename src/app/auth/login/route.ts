@@ -3,7 +3,6 @@ import { createServerClient } from "@supabase/ssr";
 
 export async function GET(request: NextRequest) {
   const next = request.nextUrl.searchParams.get("next") ?? "/dashboard";
-
   const pendingCookies: { name: string; value: string; options?: Record<string, unknown> }[] = [];
 
   const supabase = createServerClient(
@@ -24,7 +23,7 @@ export async function GET(request: NextRequest) {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${request.nextUrl.origin}/auth/callback`,
+      redirectTo: `${request.nextUrl.origin}/auth/callback?next=${encodeURIComponent(next)}`,
     },
   });
 

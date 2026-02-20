@@ -51,25 +51,26 @@ export function SaveToProject({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    if (!open || !user) return;
+  async function loadProjects() {
     setLoading(true);
-    Promise.all([
+    const [projectsData, statusData] = await Promise.all([
       fetch("/api/projects").then((r) => r.json()),
       fetch(`/api/projects/color-status?colorId=${colorId}`).then((r) =>
         r.json()
       ),
-    ]).then(([projectsData, statusData]) => {
-      setProjects(projectsData.projects ?? []);
-      setSavedIn(statusData.savedIn ?? []);
-      setLoading(false);
-    });
-  }, [open, user, colorId]);
+    ]);
+    setProjects(projectsData.projects ?? []);
+    setSavedIn(statusData.savedIn ?? []);
+    setLoading(false);
+  }
 
   function handleClick() {
     if (!user) {
       window.location.href = `/auth/login?next=${encodeURIComponent(currentPath)}`;
       return;
+    }
+    if (!open) {
+      loadProjects();
     }
     setOpen(!open);
   }

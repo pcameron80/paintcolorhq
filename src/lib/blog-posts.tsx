@@ -1586,7 +1586,7 @@ const blogPosts: BlogPost[] = [
           Browse the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link> to find soft, warm options from every brand.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 5: The Death of "Safe Neutral"</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 5: The Death of &ldquo;Safe Neutral&rdquo;</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           The biggest shift of 2026 isn&apos;t a specific color — it&apos;s a mindset change. Homeowners are moving away from playing it safe with builder-grade greige and instead choosing colors that reflect their personality. Even neutrals are getting more interesting: warm mushroom tones, sandy taupes, and rosy beiges are replacing the ubiquitous Agreeable Gray.
         </p>

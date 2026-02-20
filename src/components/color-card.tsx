@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ColorSwatch } from "./color-swatch";
 
 interface ColorCardProps {
   name: string;

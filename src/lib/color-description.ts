@@ -440,9 +440,7 @@ function getLightingBehavior(props: DerivedProps, hash: number): string {
 
 // ---------- Coordination / pairing tips ----------
 
-function getCoordinationTip(color: ColorWithBrand, props: DerivedProps, hash: number): string {
-  const family = color.color_family || getHueName(props.hue);
-
+function getCoordinationTip(_color: ColorWithBrand, props: DerivedProps, hash: number): string {
   if (props.isAchromatic) {
     if (props.lightness === "very light" || props.lightness === "light") {
       return pick([

@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 const NAV_LINKS = [
   { href: "/brands", label: "Brands" },
@@ -14,20 +16,34 @@ const NAV_LINKS = [
   { href: "/dashboard", label: "My Projects" },
 ];
 
-export function MobileNav({
-  isLoggedIn,
-  email,
-  avatarUrl,
-}: {
-  isLoggedIn: boolean;
-  email: string | null;
-  avatarUrl: string | null;
-}) {
+export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState<{
+    email: string;
+    avatarUrl: string | null;
+  } | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const supabase = createSupabaseBrowserClient();
+    supabase.auth
+      .getUser()
+      .then(({ data: { user } }) => {
+        if (user) {
+          setUser({
+            email: user.email ?? "",
+            avatarUrl: user.user_metadata?.avatar_url ?? null,
+          });
+        }
+      })
+      .catch(() => {})
+      .finally(() => setAuthLoading(false));
+  }, []);
 
   // Close on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- valid pattern: sync UI state with navigation
     setOpen(false);
   }, [pathname]);
 
@@ -72,7 +88,7 @@ export function MobileNav({
           <div className="fixed inset-x-0 top-[57px] z-50 border-b border-gray-200 bg-white px-4 pb-6 pt-4 shadow-lg">
             <nav className="flex flex-col gap-1">
               {NAV_LINKS.map((link) => {
-                if (link.href === "/dashboard" && !isLoggedIn) return null;
+                if (link.href === "/dashboard" && (!user || authLoading)) return null;
                 return (
                   <Link
                     key={link.href}
@@ -91,17 +107,17 @@ export function MobileNav({
 
             <hr className="my-4 border-gray-100" />
 
-            {isLoggedIn ? (
+            {authLoading ? null : user ? (
               <div className="flex items-center justify-between px-3">
                 <div className="flex items-center gap-3">
                   <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-200 text-sm font-medium text-gray-700">
-                    {avatarUrl ? (
-                      <img src={avatarUrl} alt="" className="h-full w-full object-cover" />
+                    {user.avatarUrl ? (
+                      <Image src={user.avatarUrl} alt="" width={32} height={32} className="h-full w-full object-cover" />
                     ) : (
-                      email?.charAt(0).toUpperCase()
+                      user.email.charAt(0).toUpperCase()
                     )}
                   </div>
-                  <span className="truncate text-sm text-gray-600">{email}</span>
+                  <span className="truncate text-sm text-gray-600">{user.email}</span>
                 </div>
                 <a
                   href="/auth/logout"

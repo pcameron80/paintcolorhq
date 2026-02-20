@@ -46,21 +46,21 @@ export function AddPaletteToProject({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    if (!open || !user) return;
+  async function loadProjects() {
     setLoading(true);
-    fetch("/api/projects")
-      .then((r) => r.json())
-      .then((data) => {
-        setProjects(data.projects ?? []);
-        setLoading(false);
-      });
-  }, [open, user]);
+    const r = await fetch("/api/projects");
+    const data = await r.json();
+    setProjects(data.projects ?? []);
+    setLoading(false);
+  }
 
   function handleClick() {
     if (!user) {
       window.location.href = `/auth/login?next=${encodeURIComponent(currentPath)}`;
       return;
+    }
+    if (!open) {
+      loadProjects();
     }
     setOpen(!open);
   }

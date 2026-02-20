@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface UserMenuProps {
   email: string;
@@ -31,7 +32,7 @@ export function UserMenu({ email, avatarUrl }: UserMenuProps) {
         className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-300"
       >
         {avatarUrl ? (
-          <img src={avatarUrl} alt="" className="h-full w-full object-cover" />
+          <Image src={avatarUrl} alt="" width={32} height={32} className="h-full w-full object-cover" />
         ) : (
           initial
         )}

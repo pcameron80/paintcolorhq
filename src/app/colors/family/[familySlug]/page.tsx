@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
-import { getColorsByFamily, getColorsByFamilyCount, getAllColorFamilies, getAllBrands } from "@/lib/queries";
+import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/queries";
 import { getFamilyContent } from "@/lib/family-content";
 
 export const revalidate = 3600;

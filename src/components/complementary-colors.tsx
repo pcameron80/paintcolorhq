@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 interface ResolvedHarmonyColor {
@@ -26,11 +26,11 @@ export function ComplementaryColors({
   harmonies: ResolvedHarmony[];
 }) {
   const [active, setActive] = useState(0);
-
-  // Reset active tab when hex changes
-  useEffect(() => {
+  const [prevHex, setPrevHex] = useState(hex);
+  if (hex !== prevHex) {
+    setPrevHex(hex);
     setActive(0);
-  }, [hex]);
+  }
 
   return (
     <section className="mt-16">
