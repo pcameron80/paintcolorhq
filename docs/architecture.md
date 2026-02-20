@@ -72,9 +72,10 @@ paintcolorhq/
 │   │       ├── page.tsx              # User's projects
 │   │       └── [projectId]/page.tsx  # Project detail
 │   ├── components/
-│   │   ├── header.tsx          # Sticky nav with auth state
+│   │   ├── header.tsx          # Sticky nav (static server component)
+│   │   ├── auth-button.tsx     # Client-side auth display (Sign in / UserMenu)
 │   │   ├── footer.tsx          # Footer with links
-│   │   ├── mobile-nav.tsx      # Mobile slide-out nav
+│   │   ├── mobile-nav.tsx      # Mobile slide-out nav (client, self-manages auth)
 │   │   ├── color-card.tsx      # Color grid card
 │   │   ├── color-swatch.tsx    # Color swatch display
 │   │   ├── hero-search.tsx     # Homepage hero section
@@ -144,12 +145,13 @@ export const supabase = createClient(url, key, {
 });
 ```
 
-**Note**: Pages that use the Header component (which calls `cookies()` for auth state) fall back to dynamic rendering on-demand but are still cached for the revalidation period. This is expected behavior.
+The Header component is a static server component — it does **not** call `cookies()` or use any dynamic APIs. Auth state is handled client-side by `AuthButton` and `MobileNav` using `createSupabaseBrowserClient()`. This ensures the Header never forces pages into dynamic rendering.
 
-### Two Supabase Clients
+### Three Supabase Clients
 
 1. **`supabase.ts`** — Public client for read-only queries. Uses ISR-compatible fetch config. Used by `queries.ts` for all public data fetching.
-2. **`supabase-server.ts`** — Auth-aware server client using `cookies()`. Used for auth checks in the Header and for dashboard/project operations.
+2. **`supabase-server.ts`** — Auth-aware server client using `cookies()`. Used for dashboard/project operations and auth routes (login, callback, logout).
+3. **`supabase-browser.ts`** — Browser client for client-side auth checks. Used by `AuthButton` and `MobileNav` to display auth state without forcing server-side dynamic rendering.
 
 ### Blog as TSX Functions
 

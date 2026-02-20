@@ -4,7 +4,7 @@
 
 Public pages use ISR (Incremental Static Regeneration) with `revalidate = 3600` (1 hour). The Supabase client uses `next: { revalidate: 3600 }` in its fetch config to match.
 
-Pages that use the Header component (which calls `cookies()` for auth state) fall back to dynamic rendering on-demand but are still cached for the revalidation period.
+The Header is a static server component that delegates auth display to client-side components (`AuthButton`, `MobileNav`). This means the Header does **not** call `cookies()` and does not force pages into dynamic rendering. All public pages benefit from full ISR caching.
 
 Dashboard pages use `force-dynamic` and are excluded from search indexing.
 
