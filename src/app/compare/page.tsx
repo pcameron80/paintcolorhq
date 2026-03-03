@@ -118,16 +118,94 @@ export default async function ComparePage({ searchParams }: PageProps) {
                 </dl>
               </div>
             </div>
+
+            {/* Dynamic comparison */}
+            <div className="mt-8 rounded-lg bg-gray-50 p-6">
+              <p className="text-base leading-relaxed text-gray-700">
+                {color1.name} ({color1.hex.toUpperCase()}) by{" "}
+                {color1.brand.name}
+                {color1.lrv != null && color2.lrv != null ? (
+                  <>
+                    {" "}has an LRV of {Number(color1.lrv).toFixed(1)},{" "}
+                    {Number(color1.lrv) > Number(color2.lrv)
+                      ? "higher"
+                      : Number(color1.lrv) < Number(color2.lrv)
+                        ? "lower"
+                        : "identical"}{" "}
+                    than {color2.name}&apos;s{" "}
+                    {Number(color2.lrv).toFixed(1)}
+                    {Math.abs(Number(color1.lrv) - Number(color2.lrv)) > 10
+                      ? ". This is a significant difference that will be clearly visible on a wall"
+                      : Math.abs(
+                            Number(color1.lrv) - Number(color2.lrv)
+                          ) > 3
+                        ? ". This difference is noticeable, especially in side-by-side samples"
+                        : ". These colors reflect a similar amount of light and will read close in brightness"}
+                    .
+                  </>
+                ) : (
+                  <> and {color2.name} ({color2.hex.toUpperCase()}) by{" "}
+                    {color2.brand.name} are shown above with their technical
+                    values for easy comparison.</>
+                )}{" "}
+                Always compare with physical paint samples under the
+                lighting conditions in your actual room before making a
+                final decision.
+              </p>
+            </div>
           </div>
         ) : (
-          <div className="mt-12 text-center">
-            <p className="text-gray-500">
-              Use the{" "}
-              <Link href="/search" className="text-brand-blue hover:underline">
-                search
-              </Link>{" "}
-              to find colors, then compare them here.
-            </p>
+          <div className="mt-12">
+            <div className="mx-auto max-w-2xl space-y-6 text-base leading-relaxed text-gray-700">
+              <p>
+                Comparing paint colors side by side is one of the most
+                effective ways to spot subtle differences that are invisible
+                on their own. Even colors that look identical in a fan deck
+                can reveal different undertones, brightness levels, and
+                warmth when placed next to each other.
+              </p>
+              <h2 className="text-xl font-bold text-gray-900">
+                What to Look For When Comparing
+              </h2>
+              <ul className="list-disc space-y-3 pl-5 text-sm text-gray-600">
+                <li>
+                  <strong>LRV (Light Reflectance Value)</strong> — ranges
+                  from 0 (pure black) to 100 (pure white). A difference of
+                  5 or more is noticeable on a wall. Higher LRV colors make
+                  rooms feel larger and brighter.
+                </li>
+                <li>
+                  <strong>Undertone</strong> — two grays can look completely
+                  different if one leans blue and the other leans green.
+                  Comparing reveals these hidden tones.
+                </li>
+                <li>
+                  <strong>Hex and RGB values</strong> — the digital
+                  fingerprint of each color. Small differences in these
+                  numbers can translate to visible differences on a painted
+                  surface.
+                </li>
+              </ul>
+              <p className="text-sm text-gray-600">
+                To get started,{" "}
+                <Link
+                  href="/search"
+                  className="text-brand-blue hover:underline"
+                >
+                  search for a color
+                </Link>{" "}
+                and use the compare button on any color page. You can also
+                upload a photo with the{" "}
+                <Link
+                  href="/tools/color-identifier"
+                  className="text-brand-blue hover:underline"
+                >
+                  Color Identifier
+                </Link>{" "}
+                to find the closest paint match, then compare it against
+                alternatives.
+              </p>
+            </div>
           </div>
         )}
       </main>
