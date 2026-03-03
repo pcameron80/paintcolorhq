@@ -3,7 +3,7 @@ import { hexToHsl } from "./palettes";
 
 // ---------- Deterministic hash helpers ----------
 
-function hashStr(str: string): number {
+export function hashStr(str: string): number {
   let hash = 5381;
   for (let i = 0; i < str.length; i++) {
     hash = ((hash << 5) + hash + str.charCodeAt(i)) | 0;
@@ -11,7 +11,7 @@ function hashStr(str: string): number {
   return hash >>> 0; // unsigned 32-bit
 }
 
-function pick<T>(items: T[], hash: number, salt: number): T {
+export function pick<T>(items: T[], hash: number, salt: number): T {
   const index = ((hash ^ (salt * 2654435761)) >>> 0) % items.length;
   return items[index];
 }
