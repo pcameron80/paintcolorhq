@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorSwatch } from "@/components/color-swatch";
 import { getColorBySlug, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
+import { generateMatchDescription } from "@/lib/match-description";
 
 export const revalidate = 3600;
 
@@ -34,10 +35,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!sourceColor || !targetBrand) return { title: "Match Not Found" };
 
+  const allMatches = await getCrossBrandMatches(sourceColor.id);
+  const bestMatchForMeta = allMatches.find(
+    (m) => m.match_color.brand.slug === parsed.targetBrandSlug
+  );
+  const deltaENote = bestMatchForMeta
+    ? Number(bestMatchForMeta.delta_e_score) < 2
+      ? "near-identical match"
+      : Number(bestMatchForMeta.delta_e_score) < 5
+        ? "close match"
+        : "closest available match"
+    : "match";
+
   const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/${parsed.colorSlug}-to-${parsed.targetBrandSlug}`;
   return {
     title: `${sourceColor.brand.name} ${sourceColor.name} in ${targetBrand.name}`,
-    description: `Find the closest ${targetBrand.name} equivalent to ${sourceColor.brand.name} ${sourceColor.name} (${sourceColor.hex.toUpperCase()}). Cross-brand paint color matching.`,
+    description: `${sourceColor.brand.name} ${sourceColor.name} (${sourceColor.hex.toUpperCase()}) to ${targetBrand.name}: ${deltaENote}. Compare hex, undertone, and LRV. Always verify with physical samples.`,
     alternates: { canonical: url },
     openGraph: {
       title: `${sourceColor.brand.name} ${sourceColor.name} in ${targetBrand.name}`,
@@ -74,6 +87,10 @@ export default async function MatchPage({ params }: PageProps) {
   );
 
   const bestMatch = targetMatches[0];
+
+  const matchDescription = bestMatch
+    ? generateMatchDescription(sourceColor, targetBrand.name, bestMatch)
+    : null;
 
   return (
     <div className="min-h-screen bg-white">
@@ -139,6 +156,14 @@ export default async function MatchPage({ params }: PageProps) {
                     : " — Noticeable difference"}
               </p>
             </div>
+
+            {matchDescription && (
+              <div className="mt-8">
+                <p className="text-base leading-relaxed text-gray-700">
+                  {matchDescription}
+                </p>
+              </div>
+            )}
 
             <p className="mt-4 text-center text-xs text-gray-500">
               This is the closest digital match based on color values. Actual
