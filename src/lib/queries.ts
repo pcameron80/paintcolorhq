@@ -73,6 +73,24 @@ export async function getColorBySlug(
   return { ...data, brand };
 }
 
+export async function getColorSlugByNumber(
+  brandSlug: string,
+  colorNumber: string
+): Promise<string | null> {
+  const brand = await getBrandBySlug(brandSlug);
+  if (!brand) return null;
+
+  const { data, error } = await supabase
+    .from("colors")
+    .select("slug")
+    .eq("brand_id", brand.id)
+    .eq("color_number", colorNumber)
+    .single();
+
+  if (error || !data) return null;
+  return data.slug;
+}
+
 export async function getCrossBrandMatches(
   colorId: string
 ): Promise<CrossBrandMatchWithColor[]> {

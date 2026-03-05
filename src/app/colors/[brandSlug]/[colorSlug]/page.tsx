@@ -9,7 +9,8 @@ import { ComplementaryColors } from "@/components/complementary-colors";
 import { CuratedPalettes } from "@/components/curated-palettes";
 import { SaveToProject } from "@/components/save-to-project";
 import { ShareButton } from "@/components/share-button";
-import { getColorBySlug, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand } from "@/lib/queries";
+import { redirect } from "next/navigation";
+import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand } from "@/lib/queries";
 import { generateColorDescription, generateMetaDescription } from "@/lib/color-description";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
@@ -150,10 +151,34 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+function extractColorNumber(slug: string): string | null {
+  const patterns = [
+    /-([a-z]{1,4}\d+-\d+[a-z]*)$/i,  // ppu1-4a, s420-3
+    /-([a-z]{1,4}-\d+[a-z]*)$/i,      // af-25, csp-560, hc-15, cc-38
+    /-(\d+-\d+)$/i,                    // 2035-30
+    /-(\d+)$/i,                        // 022, 50
+  ];
+  for (const p of patterns) {
+    const m = slug.match(p);
+    if (m) return m[1].toUpperCase();
+  }
+  return null;
+}
+
 export default async function ColorPage({ params }: PageProps) {
   const { brandSlug, colorSlug } = await params;
   const color = await getColorBySlug(brandSlug, colorSlug);
-  if (!color) notFound();
+
+  if (!color) {
+    const colorNumber = extractColorNumber(colorSlug);
+    if (colorNumber) {
+      const correctSlug = await getColorSlugByNumber(brandSlug, colorNumber);
+      if (correctSlug && correctSlug !== colorSlug) {
+        redirect(`/colors/${brandSlug}/${correctSlug}`);
+      }
+    }
+    notFound();
+  }
 
   const [matches, similarColors] = await Promise.all([
     getCrossBrandMatches(color.id),
