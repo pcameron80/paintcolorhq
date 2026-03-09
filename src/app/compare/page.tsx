@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getColorById } from "@/lib/queries";
+import { CompareClient } from "./compare-client";
 
 export const metadata: Metadata = {
   title: "Compare Paint Colors Side by Side",
@@ -38,95 +38,10 @@ export default async function ComparePage({ searchParams }: PageProps) {
           Compare Paint Colors
         </h1>
         <p className="mt-2 text-gray-600">
-          Compare two paint colors side by side.
+          Search for two paint colors to compare them side by side.
         </p>
 
-        {color1 && color2 ? (
-          <div className="mt-8">
-            <div className="grid grid-cols-2 gap-8">
-              {/* Color 1 */}
-              <div>
-                <div
-                  className="aspect-square w-full rounded-2xl border border-gray-200"
-                  style={{ backgroundColor: color1.hex }}
-                />
-                <div className="mt-4">
-                  <Link
-                    href={`/colors/${color1.brand.slug}/${color1.slug}`}
-                    className="text-xl font-semibold text-gray-900 hover:text-brand-blue"
-                  >
-                    {color1.name}
-                  </Link>
-                  <p className="text-gray-600">{color1.brand.name}</p>
-                </div>
-                <dl className="mt-4 space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <dt className="text-gray-500">Hex</dt>
-                    <dd className="font-mono font-medium">
-                      {color1.hex.toUpperCase()}
-                    </dd>
-                  </div>
-                  <div className="flex justify-between">
-                    <dt className="text-gray-500">RGB</dt>
-                    <dd className="font-mono">
-                      {color1.rgb_r}, {color1.rgb_g}, {color1.rgb_b}
-                    </dd>
-                  </div>
-                  {color1.lrv != null && (
-                    <div className="flex justify-between">
-                      <dt className="text-gray-500">LRV</dt>
-                      <dd>{Number(color1.lrv).toFixed(1)}</dd>
-                    </div>
-                  )}
-                </dl>
-              </div>
-
-              {/* Color 2 */}
-              <div>
-                <div
-                  className="aspect-square w-full rounded-2xl border border-gray-200"
-                  style={{ backgroundColor: color2.hex }}
-                />
-                <div className="mt-4">
-                  <Link
-                    href={`/colors/${color2.brand.slug}/${color2.slug}`}
-                    className="text-xl font-semibold text-gray-900 hover:text-brand-blue"
-                  >
-                    {color2.name}
-                  </Link>
-                  <p className="text-gray-600">{color2.brand.name}</p>
-                </div>
-                <dl className="mt-4 space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <dt className="text-gray-500">Hex</dt>
-                    <dd className="font-mono font-medium">
-                      {color2.hex.toUpperCase()}
-                    </dd>
-                  </div>
-                  <div className="flex justify-between">
-                    <dt className="text-gray-500">RGB</dt>
-                    <dd className="font-mono">
-                      {color2.rgb_r}, {color2.rgb_g}, {color2.rgb_b}
-                    </dd>
-                  </div>
-                  {color2.lrv != null && (
-                    <div className="flex justify-between">
-                      <dt className="text-gray-500">LRV</dt>
-                      <dd>{Number(color2.lrv).toFixed(1)}</dd>
-                    </div>
-                  )}
-                </dl>
-              </div>
-            </div>
-
-          </div>
-        ) : (
-          <div className="mt-12">
-            <p className="text-center text-gray-500">
-              Search for two colors to compare them side by side.
-            </p>
-          </div>
-        )}
+        <CompareClient initialColor1={color1} initialColor2={color2} />
       </main>
 
       <Footer />
