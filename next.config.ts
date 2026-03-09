@@ -34,6 +34,16 @@ const nextConfig: NextConfig = {
       { hostname: "avatars.githubusercontent.com" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "paintcolorhq.com" }],
+        destination: "https://www.paintcolorhq.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
