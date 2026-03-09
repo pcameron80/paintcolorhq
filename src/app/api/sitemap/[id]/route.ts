@@ -5,7 +5,7 @@ import { inspirationPalettes } from "@/lib/palettes";
 
 const BASE_URL = "https://www.paintcolorhq.com";
 const URLS_PER_SITEMAP = 5000;
-const COLORS_PER_BRAND = 100;
+const COLORS_PER_BRAND = 400;
 
 export async function GET(
   _request: NextRequest,
