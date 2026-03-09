@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import type { ColorWithBrand } from "@/lib/types";
 
@@ -150,20 +149,16 @@ function ColorSearchInput({
 }
 
 export function CompareClient({ initialColor1, initialColor2 }: CompareClientProps) {
-  const router = useRouter();
   const [color1, setColor1] = useState<ColorWithBrand | null>(initialColor1);
   const [color2, setColor2] = useState<ColorWithBrand | null>(initialColor2);
 
-  const updateUrl = useCallback(
-    (c1: ColorWithBrand | null, c2: ColorWithBrand | null) => {
-      const params = new URLSearchParams();
-      if (c1) params.set("color1", c1.id);
-      if (c2) params.set("color2", c2.id);
-      const qs = params.toString();
-      router.push(qs ? `/compare?${qs}` : "/compare", { scroll: false });
-    },
-    [router]
-  );
+  function updateUrl(c1: ColorWithBrand | null, c2: ColorWithBrand | null) {
+    const params = new URLSearchParams();
+    if (c1) params.set("color1", c1.id);
+    if (c2) params.set("color2", c2.id);
+    const qs = params.toString();
+    window.history.replaceState(null, "", qs ? `/compare?${qs}` : "/compare");
+  }
 
   function selectColor1(color: ColorWithBrand) {
     setColor1(color);
@@ -204,7 +199,7 @@ export function CompareClient({ initialColor1, initialColor2 }: CompareClientPro
 
       {color1 && color2 && (
         <div className="mt-10">
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <ColorDetail color={color1} />
             <ColorDetail color={color2} />
           </div>
