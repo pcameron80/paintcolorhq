@@ -5,7 +5,13 @@ import { inspirationPalettes } from "@/lib/palettes";
 
 const BASE_URL = "https://www.paintcolorhq.com";
 const URLS_PER_SITEMAP = 5000;
-const COLORS_PER_BRAND = 550;
+const SITEMAP_BRANDS = [
+  "sherwin-williams",
+  "benjamin-moore",
+  "behr",
+  "valspar",
+  "ppg",
+];
 
 export async function GET(
   _request: NextRequest,
@@ -16,7 +22,7 @@ export async function GET(
 
   try {
     const [colorSlugs, brands, families] = await Promise.all([
-      getAllColorSlugs({ perBrand: COLORS_PER_BRAND }),
+      getAllColorSlugs({ brandSlugs: SITEMAP_BRANDS }),
       getAllBrands(),
       getAllColorFamilies(),
     ]);

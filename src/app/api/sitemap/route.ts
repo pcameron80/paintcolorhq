@@ -5,15 +5,20 @@ import { inspirationPalettes } from "@/lib/palettes";
 
 const BASE_URL = "https://www.paintcolorhq.com";
 const URLS_PER_SITEMAP = 5000;
-// Limit color pages in sitemap for crawl budget management.
-// ~7,000 pages already indexed — cover those plus growth room.
-// Increase gradually as domain authority grows.
-const COLORS_PER_BRAND = 550;
+// Only include major retail brands in sitemap for crawl budget management.
+// Add more brands as domain authority grows and these get fully indexed.
+const SITEMAP_BRANDS = [
+  "sherwin-williams",
+  "benjamin-moore",
+  "behr",
+  "valspar",
+  "ppg",
+];
 
 export async function GET() {
   try {
     const [colorSlugs, brands, families] = await Promise.all([
-      getAllColorSlugs({ perBrand: COLORS_PER_BRAND }),
+      getAllColorSlugs({ brandSlugs: SITEMAP_BRANDS }),
       getAllBrands(),
       getAllColorFamilies(),
     ]);

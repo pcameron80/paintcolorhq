@@ -395,21 +395,31 @@ export async function getSimilarColorsFromSameBrand(
 // Paginated fetch for sitemaps - handles Supabase 1000-row limit
 export async function getAllColorSlugs(options?: {
   perBrand?: number;
+  brandSlugs?: string[];
 }): Promise<{ brandSlug: string; colorSlug: string }[]> {
   const perBrand = options?.perBrand;
+  const brandSlugs = options?.brandSlugs;
 
-  if (perBrand) {
-    // Fetch limited colors per brand for sitemap prioritization
-    const brands = await getAllBrands();
+  if (perBrand || brandSlugs) {
+    // Fetch limited/filtered colors per brand for sitemap prioritization
+    const allBrands = await getAllBrands();
+    const brands = brandSlugs
+      ? allBrands.filter((b) => brandSlugs.includes(b.slug))
+      : allBrands;
     const results: { brandSlug: string; colorSlug: string }[] = [];
 
     for (const brand of brands) {
-      const { data, error } = await supabase
+      let query = supabase
         .from("colors")
         .select("slug, brand:brand_id (slug)")
         .eq("brand_id", brand.id)
-        .order("name")
-        .limit(perBrand);
+        .order("name");
+
+      if (perBrand) {
+        query = query.limit(perBrand);
+      }
+
+      const { data, error } = await query;
 
       if (error) throw error;
       if (data) {
