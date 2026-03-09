@@ -254,6 +254,15 @@ export default async function ColorPage({ params }: PageProps) {
                 title={`${color.name} by ${color.brand.name}`}
                 url={`/colors/${brandSlug}/${colorSlug}`}
               />
+              <Link
+                href={`/compare?color1=${color.id}`}
+                className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-colors hover:bg-gray-50"
+              >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                </svg>
+                Compare
+              </Link>
               {retailerLinks.map((link) => (
                 <a
                   key={link.retailerName}
