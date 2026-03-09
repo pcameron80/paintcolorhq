@@ -5,7 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorSwatch } from "@/components/color-swatch";
 import { getColorBySlug, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
-import { generateMatchDescription } from "@/lib/match-description";
+
 
 export const revalidate = 3600;
 
@@ -88,10 +88,6 @@ export default async function MatchPage({ params }: PageProps) {
 
   const bestMatch = targetMatches[0];
 
-  const matchDescription = bestMatch
-    ? generateMatchDescription(sourceColor, targetBrand.name, bestMatch)
-    : null;
-
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -156,14 +152,6 @@ export default async function MatchPage({ params }: PageProps) {
                     : " — Noticeable difference"}
               </p>
             </div>
-
-            {matchDescription && (
-              <div className="mt-8">
-                <p className="text-base leading-relaxed text-gray-700">
-                  {matchDescription}
-                </p>
-              </div>
-            )}
 
             <p className="mt-4 text-center text-xs text-gray-500">
               This is the closest digital match based on color values. Actual

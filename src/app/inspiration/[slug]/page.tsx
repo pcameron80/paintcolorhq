@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer";
 import { BrandPicker } from "@/components/brand-picker";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
 import { getPaletteBySlug, assignPaletteRoles } from "@/lib/palettes";
-import { generatePaletteDescription } from "@/lib/palette-description";
+
 import { getAllBrands, findClosestColor, getBrandBySlug } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
 
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!palette) return { title: "Palette Not Found" };
 
   const url = `https://www.paintcolorhq.com/inspiration/${slug}`;
-  const richDescription = `${palette.description} ${generatePaletteDescription(palette).slice(0, 120)}...`;
+  const richDescription = palette.description;
   return {
     title: `${palette.name} Color Palette | Paint Color HQ`,
     description: richDescription,
@@ -51,8 +51,6 @@ export default async function InspirationDetailPage({
   const { brand: brandSlug } = await searchParams;
   const palette = getPaletteBySlug(slug);
   if (!palette) notFound();
-
-  const paletteDescription = generatePaletteDescription(palette);
 
   const brands = await getAllBrands();
 
@@ -138,9 +136,6 @@ export default async function InspirationDetailPage({
           <div>
             <h1 className="text-3xl font-bold text-gray-900">{palette.name}</h1>
             <p className="mt-2 text-gray-600">{palette.description}</p>
-            <p className="mt-3 text-sm leading-relaxed text-gray-600">
-              {paletteDescription}
-            </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <BrandPicker
