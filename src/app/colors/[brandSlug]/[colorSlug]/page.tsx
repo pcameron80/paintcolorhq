@@ -224,10 +224,16 @@ export default async function ColorPage({ params }: PageProps) {
 
         {/* Color Hero */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div
-            className="aspect-square w-full rounded-2xl border border-gray-200"
-            style={{ backgroundColor: color.hex }}
-          />
+          <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-gray-200" style={{ backgroundColor: color.hex }}>
+            <img
+              src={`/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`}
+              alt={`${color.name}${color.color_number ? ` ${color.color_number}` : ""} by ${color.brand.name} paint color swatch`}
+              width={1200}
+              height={630}
+              loading="eager"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
 
           <div>
             <h1 className="text-3xl font-bold text-gray-900">{color.name}</h1>
@@ -446,6 +452,7 @@ export default async function ColorPage({ params }: PageProps) {
                   { "@type": "ListItem", position: 3, name: color.name },
                 ],
               },
+              image: `https://www.paintcolorhq.com/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`,
               about: {
                 "@type": "Thing",
                 name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
