@@ -1,8 +1,13 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { HeroSearch } from "@/components/hero-search";
 import { InspirationSection } from "@/components/inspiration-section";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "https://www.paintcolorhq.com" },
+};
 
 const brands = [
   { name: "Sherwin-Williams", slug: "sherwin-williams" },
@@ -40,8 +45,6 @@ export default async function Home() {
       <HeroSearch />
 
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h1 className="sr-only">Match Paint Colors Across 14 Brands - Free Room Visualizer, Color Identifier & Palette Tools</h1>
-
         {/* Feature Grid */}
         <section>
           <h2 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl">
