@@ -5,11 +5,14 @@ import { inspirationPalettes } from "@/lib/palettes";
 
 const BASE_URL = "https://www.paintcolorhq.com";
 const URLS_PER_SITEMAP = 5000;
+// Limit color pages in sitemap for new site crawl budget management.
+// Increase gradually as domain authority grows and pages get indexed.
+const COLORS_PER_BRAND = 100;
 
 export async function GET() {
   try {
     const [colorSlugs, brands, families] = await Promise.all([
-      getAllColorSlugs(),
+      getAllColorSlugs({ perBrand: COLORS_PER_BRAND }),
       getAllBrands(),
       getAllColorFamilies(),
     ]);
