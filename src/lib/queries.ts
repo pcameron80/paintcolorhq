@@ -392,6 +392,53 @@ export async function getSimilarColorsFromSameBrand(
     .slice(0, limit);
 }
 
+export async function getGuideColors(options: {
+  lrvMin?: number;
+  lrvMax?: number;
+  undertones?: string[];
+  colorFamilies?: string[];
+  brandSlugs?: string[];
+  limit?: number;
+}): Promise<ColorWithBrand[]> {
+  const { lrvMin, lrvMax, undertones, colorFamilies, brandSlugs, limit = 20 } = options;
+
+  let query = supabase
+    .from("colors")
+    .select("*, brand:brand_id (*)")
+    .eq("is_discontinued", false);
+
+  if (lrvMin != null) query = query.gte("lrv", lrvMin);
+  if (lrvMax != null) query = query.lte("lrv", lrvMax);
+  if (undertones && undertones.length > 0) query = query.in("undertone", undertones);
+  if (colorFamilies && colorFamilies.length > 0) query = query.in("color_family", colorFamilies);
+
+  query = query.order("lrv", { ascending: false }).limit(limit * 5);
+
+  const { data, error } = await query;
+  if (error || !data) return [];
+
+  let results = data as unknown as ColorWithBrand[];
+
+  if (brandSlugs && brandSlugs.length > 0) {
+    results = results.filter((c) => brandSlugs.includes(c.brand.slug));
+  }
+
+  // Deduplicate by picking one per brand per color family for variety
+  const seen = new Map<string, number>();
+  const diverse: ColorWithBrand[] = [];
+  for (const color of results) {
+    const key = `${color.brand.slug}-${color.color_family}`;
+    const count = seen.get(key) ?? 0;
+    if (count < 2) {
+      diverse.push(color);
+      seen.set(key, count + 1);
+      if (diverse.length >= limit) break;
+    }
+  }
+
+  return diverse;
+}
+
 export async function getTopCrossBrandMatches(
   sourceBrandSlug: string,
   targetBrandSlug: string,

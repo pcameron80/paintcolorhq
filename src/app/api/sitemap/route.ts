@@ -25,6 +25,7 @@ export async function GET() {
       "brands",
       "matches",
       ...Array.from({ length: totalColorSitemaps }, (_, i) => `colors-${i}`),
+      "guides",
       "blog",
       "families",
       "inspiration",

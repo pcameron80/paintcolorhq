@@ -27,6 +27,13 @@ Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Vista Paint,
 - /tools/paint-calculator — Calculate how much paint you need
 - /faq — Frequently asked questions about paint colors
 - /blog — Articles about paint colors, trends, and guides
+- /guides — Data-driven paint guides with real color recommendations
+- /guides/best-paint-colors-north-facing-rooms — Colors for north-facing rooms (warm undertones, high LRV)
+- /guides/best-paint-colors-east-facing-rooms — Colors for east-facing rooms (balance morning/afternoon light)
+- /guides/best-nursery-paint-colors — Safe, calming nursery colors by category
+- /guides/best-bedroom-paint-colors — Restful bedroom colors backed by color psychology
+- /guides/best-home-office-paint-colors — Focus and productivity colors, video call tips
+- /guides/paint-sheen-guide — Flat vs eggshell vs satin vs semi-gloss comparison
 
 ## Common Questions This Site Answers
 
