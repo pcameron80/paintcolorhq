@@ -131,12 +131,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!color) return { title: "Color Not Found" };
 
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
+  const colorNum = color.color_number ? ` ${color.color_number}` : "";
+  const undertoneTitle = color.undertone ? ` | ${color.undertone} Undertone` : "";
+  const title = `${color.name}${colorNum} by ${color.brand.name} | ${color.hex.toUpperCase()}${undertoneTitle}`;
   return {
-    title: `${color.name} by ${color.brand.name} | ${color.hex.toUpperCase()}`,
+    title,
     description: generateMetaDescription(color),
     alternates: { canonical: url },
     openGraph: {
-      title: `${color.name} by ${color.brand.name}`,
+      title: `${color.name}${colorNum} by ${color.brand.name}`,
       description: `${color.name} (${color.hex.toUpperCase()}) by ${color.brand.name}. Find closest matches from other brands.`,
       url,
       images: [

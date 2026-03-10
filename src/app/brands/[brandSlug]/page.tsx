@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const url = `https://www.paintcolorhq.com/brands/${brandSlug}`;
   return {
-    title: `${brand.name} Paint Colors - Browse All ${brand.color_count.toLocaleString()} Colors`,
-    description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with hex codes, RGB values, and cross-brand matches.`,
+    title: `${brand.name} Paint Colors - All ${brand.color_count.toLocaleString()} Colors with Hex Codes & Matches`,
+    description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors. See hex codes, RGB values, undertones, LRV, and find matching colors from Sherwin-Williams, Benjamin Moore, Behr & more.`,
     alternates: { canonical: url },
     openGraph: {
       title: `${brand.name} Paint Colors`,
