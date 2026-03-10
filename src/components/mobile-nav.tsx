@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { href: "/colors", label: "Colors" },
   { href: "/inspiration", label: "Inspiration" },
   { href: "/blog", label: "Blog" },
-  { href: "/guides", label: "Guides" },
   { href: "/tools", label: "Tools" },
   { href: "/search", label: "Search" },
   { href: "/dashboard", label: "My Projects" },

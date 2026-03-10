@@ -53,7 +53,6 @@ export async function GET(
         { url: "/compare", priority: "0.6", changefreq: "monthly", lastmod: "" },
         { url: "/blog", priority: "0.7", changefreq: "weekly", lastmod: "" },
         { url: "/inspiration", priority: "0.7", changefreq: "weekly", lastmod: "" },
-        { url: "/guides", priority: "0.8", changefreq: "weekly", lastmod: "" },
         { url: "/tools", priority: "0.7", changefreq: "monthly", lastmod: "" },
         { url: "/tools/paint-calculator", priority: "0.7", changefreq: "monthly", lastmod: "" },
         { url: "/tools/color-identifier", priority: "0.7", changefreq: "monthly", lastmod: "" },
@@ -105,23 +104,6 @@ export async function GET(
           }
         }
       }
-    } else if (id === "guides") {
-      const guideSlugs = [
-        "best-paint-colors-north-facing-rooms",
-        "best-paint-colors-east-facing-rooms",
-        "best-nursery-paint-colors",
-        "best-bedroom-paint-colors",
-        "best-home-office-paint-colors",
-        "paint-sheen-guide",
-      ];
-      entries = [
-        ...guideSlugs.map((s) => ({
-          url: `/guides/${s}`,
-          priority: "0.8",
-          changefreq: "monthly",
-          lastmod: "",
-        })),
-      ];
     } else if (id === "blog") {
       entries = getAllBlogSlugs().map((s) => ({
         url: `/blog/${s}`,

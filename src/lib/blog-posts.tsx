@@ -1932,6 +1932,180 @@ const blogPosts: BlogPost[] = [
       </>
     ),
   },
+
+  /* ──────────────── Post: North-Facing Rooms ──────────────── */
+  {
+    slug: "best-paint-colors-north-facing-rooms",
+    title: "The Best Paint Colors for North-Facing Rooms",
+    date: "2026-03-10",
+    excerpt:
+      "North-facing rooms get cool, indirect light all day. These warm-toned, high-LRV colors counteract the gray cast and make the space feel bright and inviting.",
+    coverColor: "#D5C8B5",
+    coverImage: "/blog/best-paint-colors-north-facing-rooms.webp",
+    tags: ["North-Facing", "Lighting", "Design"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          North-facing rooms receive no direct sunlight — only cool, diffused light that gives everything a slightly blue-gray cast. Colors that look warm and inviting in a south-facing showroom can read flat, cold, or muddy on a north wall. The fix is simple: choose colors with warm undertones and a high LRV (Light Reflectance Value) so they bounce back as much light as possible.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why LRV Matters in North-Facing Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          LRV measures how much light a color reflects on a scale of 0 (pure black) to 100 (pure white). In north-facing rooms, aim for LRV 55 or higher — anything lower risks making the room feel like a cave. You can check the LRV of any color on its <Link href="/search" className="text-brand-blue hover:underline">color page</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Whites & Creams</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The safest and most effective choice for north-facing rooms. Cool whites will look icy and sterile — you need whites with yellow, pink, or peach undertones.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the go-to warm white for north-facing rooms. Its yellow undertone counteracts blue light perfectly. LRV 85.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — slightly warmer than a true white, with just enough cream to prevent the cold, clinical look. LRV 84.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0EBE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> — a soft, buttery white that reads warm in any light. One of the most popular whites for north-facing rooms. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Beiges & Greiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you want more color than white but still need to keep the room bright, warm beiges and greiges are ideal. Avoid cool grays — they&apos;ll amplify the blue cast.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige with sandy undertones. It reads as a sophisticated neutral in north light rather than turning cold. LRV 63.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C4A882" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — a true warm beige that holds its warmth even in the coolest light. A top-5 seller for a reason. LRV 58.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a creamy, sandy neutral that splits the difference between white and beige. Browse the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for similar options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Yellows & Golds</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Yellow is the most effective color for fighting the gray cast in north-facing rooms. Soft, muted yellows add warmth without looking dated.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8DCC8" name="Hawthorne Yellow" brand="Benjamin Moore" href="/colors/benjamin-moore/hawthorne-yellow-hc-4" /> — a muted, historical gold that adds warmth without screaming yellow. It looks especially beautiful in north-facing living rooms and dining rooms. LRV 67.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0E4CC" name="Ivoire" brand="Sherwin-Williams" href="/colors/sherwin-williams/ivoire-6127" /> — a soft golden cream that brings instant sunshine to dim rooms. Pairs beautifully with white trim. Explore the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Pinks & Blush</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This might surprise you — warm pinks and blush tones work wonderfully in north-facing rooms because their red and pink undertones counterbalance the cool blue light.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> — reads as a warm blush-beige in north light. One of BM&apos;s bestsellers for this exact situation. LRV 70.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D5C4BB" name="Dimity" brand="Farrow & Ball" href="/colors/farrow-ball/dimity-2008" /> — a soft, warm pink-white that glows in indirect light. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors to Avoid</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Cool grays</strong> (Repose Gray, Stonington Gray) will look even colder. <strong>Pure whites</strong> (Chantilly Lace, Extra White) will feel stark and institutional. <strong>Cool blues and greens</strong> amplify the existing blue cast. If you love gray, choose one with strong warm undertones — use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see warm vs cool grays side by side.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Testing Tips</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sample in the actual room.</strong> Colors shift dramatically between north and south light. Paint a large swatch (at least 2&apos; x 2&apos;) and observe it at noon and 4 PM — north-facing rooms change less throughout the day, but afternoon is when they&apos;re dimmest.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Check the undertone.</strong> Every color on Paint Color HQ shows its undertone. For north-facing rooms, look for yellow, peach, pink, or golden undertones. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> for a quick digital preview before buying samples.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Post: East-Facing Rooms ──────────────── */
+  {
+    slug: "best-paint-colors-east-facing-rooms",
+    title: "The Best Paint Colors for East-Facing Rooms",
+    date: "2026-03-10",
+    excerpt:
+      "East-facing rooms get warm morning sun and cool afternoon shade. These colors look great in both conditions — no more paint that only works half the day.",
+    coverColor: "#C8BFB0",
+    coverImage: "/blog/best-paint-colors-east-facing-rooms.webp",
+    tags: ["East-Facing", "Lighting", "Design"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          East-facing rooms are the trickiest to paint because the light changes dramatically throughout the day. Morning brings warm, golden sunlight that makes everything glow. By afternoon, that warmth disappears and the room shifts to cool, shadowy light similar to a north-facing room. The best colors for east-facing rooms look good in both conditions.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The East-Facing Challenge</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A color that looks perfect at 9 AM can look completely different at 3 PM. Warm colors get extra warm in morning sun (sometimes too warm), while cool colors look great in the morning but can feel cold by afternoon. The sweet spot is colors with balanced or slightly warm undertones and moderate-to-high LRV (50–75).
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Balanced Neutrals</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Colors that sit right between warm and cool — greiges and balanced beiges — handle the east-facing light shift best because they don&apos;t lean too far in either direction.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — a warm gray-beige that reads as a cozy neutral in morning light and a sophisticated gray in afternoon shade. LRV 67. One of the most reliable east-facing room picks.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D2CBBD" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — the best-selling paint color in America, and for good reason. Its balanced warm-cool undertone makes it a chameleon that works in any light condition. LRV 60.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warmer greige that leans slightly sandy. It catches the morning sun beautifully without going cold in the afternoon. Browse the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for similar shades.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Muted greens are naturally balanced between warm and cool, making them ideal for east-facing rooms. They look fresh and alive in morning sun, and calming in afternoon shade.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a dusty sage that glows golden in morning light and settles into a serene green by afternoon. Works in bedrooms, living rooms, and home offices.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — barely green, almost gray. This whisper of color adapts to changing light without ever looking wrong. LRV 55.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A8B5A0" name="Crystalline" brand="Sherwin-Williams" href="/colors/sherwin-williams/crystalline-6642" /> — a slightly cooler sage that stays crisp in morning sun and turns moody-sophisticated in the afternoon. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you want to keep things light, warm whites handle the east-facing shift gracefully. They glow in the morning without turning cold in the afternoon.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the warm white standard. In east-facing rooms, it looks creamy and luminous all day long. LRV 85.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0EBE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> — a buttery white that holds its warmth even as the afternoon shade rolls in. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues (With Caution)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blues can work in east-facing rooms, but stick to warm-leaning blues with gray or green undertones. Pure cool blues will look great in the morning and depressing by 3 PM.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a blue-green-gray that shifts beautifully with the light. It reads blue in the morning and gray-green in the afternoon — both flattering.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — a dusty powder blue with enough gray to prevent it from going cold. Great for east-facing bedrooms. See the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors to Avoid</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Bright or saturated yellows</strong> — morning sun will make them overwhelming. <strong>Cool grays without warm undertones</strong> — they&apos;ll look fine in the morning and depressing by afternoon. <strong>Very dark colors</strong> below LRV 30 — the afternoon shade will make the room feel dim. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check undertones before deciding.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Test for East-Facing Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Test at both extremes.</strong> Paint your sample swatch and check it at 9 AM (peak warmth) and 3 PM (peak cool). If you like it at both times, it&apos;s the right color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Don&apos;t pick colors in morning light only.</strong> This is the most common mistake — a color chosen at 10 AM in an east-facing room can be a completely different color by dinnertime. Our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> can help you preview before you invest in samples.
+        </p>
+      </>
+    ),
+  },
 ];
 
 /* ------------------------------------------------------------------ */
