@@ -1,0 +1,78 @@
+# Paint Color HQ — Full Reference
+
+> Paint Color HQ is a free tool for matching paint colors across 14 major brands. It helps homeowners, interior designers, and contractors find equivalent colors between brands, build palettes, and visualize colors in rooms.
+
+## Cross-Brand Color Matching
+
+Paint Color HQ calculates cross-brand matches using the CIEDE2000 (Delta E 2000) formula, which is the industry standard for measuring perceptual color difference. A Delta E score indicates how different two colors appear to the human eye:
+
+- Delta E < 1: Virtually identical — most people cannot tell the difference
+- Delta E 1-2: Very close match — only noticeable under ideal viewing conditions
+- Delta E 2-3: Close match — a slight difference is noticeable but acceptable for most purposes
+- Delta E 3-5: Near match — a noticeable difference but still in the same color family
+- Delta E > 5: Approximate match — clearly different colors, may not be a suitable substitute
+
+Important: Digital color matching is approximate. Actual pigments, binders, and finishes differ between brands. Always verify with physical paint samples before purchasing.
+
+## Color Data Available Per Color
+
+Each of the 25,000+ colors includes:
+- **Name and color number** (e.g., "Agreeable Gray SW 7029")
+- **Hex code** (e.g., #D0C8B8)
+- **RGB values** (e.g., 208, 200, 184)
+- **LRV (Light Reflectance Value)** — measures how much light a color reflects on a scale of 0 (pure black) to 100 (pure white). Higher LRV = lighter color. LRV affects how a room feels: colors with LRV > 50 make rooms feel open, LRV < 30 creates cozier spaces.
+- **Undertone** — the subtle base hue beneath the surface color (warm, cool, or neutral). Undertones affect how colors pair with trim, flooring, and other colors.
+- **Color family** — the broad color category (red, blue, green, neutral, etc.)
+- **Cross-brand matches** — the closest equivalent colors from all other 13 brands, ranked by Delta E score
+- **Complementary colors** — harmonious color combinations (complementary, analogous, triadic, split-complementary)
+
+## Brand-to-Brand Match Pages
+
+For the 5 most popular US paint brands, we provide dedicated match pages showing the top 50 closest cross-brand matches:
+
+- Sherwin-Williams to Benjamin Moore (and reverse)
+- Sherwin-Williams to Behr (and reverse)
+- Sherwin-Williams to Valspar (and reverse)
+- Sherwin-Williams to PPG (and reverse)
+- Benjamin Moore to Behr (and reverse)
+- Benjamin Moore to Valspar (and reverse)
+- Benjamin Moore to PPG (and reverse)
+- Behr to Valspar (and reverse)
+- Behr to PPG (and reverse)
+- Valspar to PPG (and reverse)
+
+URL pattern: /match/{source-brand-slug}/to/{target-brand-slug}
+
+## Tools
+
+### Room Color Visualizer
+Upload a photo or use preset rooms to preview how paint colors look on walls, ceilings, trim, accent walls, and floors. Supports all 14 brands.
+
+### Photo Color Identifier
+Upload any photo, click a spot, and find the closest matching paint colors from all brands. Uses RGB distance calculation to match pixel colors to the paint database.
+
+### Palette Generator
+Pick a starting color and generate coordinated palettes with Wall, Trim, Accent, and Pop color roles. Multiple harmony types: complementary, analogous, triadic, split-complementary.
+
+### Paint Calculator
+Enter room dimensions (length, width, height), number of doors and windows, and number of coats to calculate exactly how many gallons of paint you need. Based on the industry standard coverage rate of 350 sq ft per gallon.
+
+## Frequently Asked Questions
+
+Q: How do I match a paint color from one brand to another?
+A: Enter a color name, number, or hex code in the search bar. Each color page shows the closest matches from all other brands, ranked by Delta E 2000 score.
+
+Q: What is Delta E and what do the numbers mean?
+A: Delta E (ΔE) measures the perceptual difference between two colors. Under 2 is a very close match, 2-5 is noticeable but acceptable, and over 5 means clearly different colors.
+
+Q: Can I match Sherwin-Williams colors to Benjamin Moore?
+A: Yes. Every color page shows cross-brand matches. You can also visit /match/sherwin-williams/to/benjamin-moore for the top 50 closest matches between these brands.
+
+Q: Are the colors on screen accurate to real paint?
+A: Screen colors are approximate due to monitor calibration differences. Always order physical paint samples to verify colors before purchasing. The hex codes and Delta E scores are accurate digital representations.
+
+Q: What paint brands does Paint Color HQ cover?
+A: 14 brands: Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Vista Paint, Hirshfields, MPC, KILZ, RAL, Farrow & Ball, Colorhouse, and Dutch Boy.
+
+Q: Is Paint Color HQ free to use?
+A: Yes, all tools and color data are completely free with no account required.

@@ -1,0 +1,44 @@
+# Paint Color HQ
+
+> Paint Color HQ is a free tool for matching paint colors across 14 major brands including Sherwin-Williams, Benjamin Moore, Behr, Valspar, and PPG. It provides cross-brand color matching using Delta E 2000, a room visualizer, photo color identifier, palette generator, and paint calculator.
+
+## Key Data
+
+- 25,000+ paint colors from 14 brands
+- Cross-brand matches calculated using CIEDE2000 (Delta E 2000)
+- Each color includes: hex code, RGB values, LRV (Light Reflectance Value), undertone, and color family
+- Match quality: Delta E < 1 = exact match, < 2 = very close, < 3 = close, < 5 = near match
+
+## Brands Covered
+
+Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Vista Paint, Hirshfields, MPC, KILZ, RAL, Farrow & Ball, Colorhouse, Dutch Boy
+
+## Useful Pages
+
+- /brands — Browse all 14 paint brands
+- /brands/{brand-slug} — Browse all colors for a specific brand
+- /colors/{brand-slug}/{color-slug} — Individual color page with hex, RGB, LRV, undertone, cross-brand matches, complementary colors, and palettes
+- /match/{source-brand}/to/{target-brand} — Top 50 cross-brand color matches between two brands
+- /search — Search colors by name, number, or hex code
+- /compare — Side-by-side color comparison tool
+- /tools/room-visualizer — Preview paint colors in a room
+- /tools/color-identifier — Upload a photo and identify paint colors
+- /tools/palette-generator — Generate coordinated color palettes
+- /tools/paint-calculator — Calculate how much paint you need
+- /faq — Frequently asked questions about paint colors
+- /blog — Articles about paint colors, trends, and guides
+
+## Common Questions This Site Answers
+
+- What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray?
+- What undertone does [color name] have?
+- How much paint do I need for a room?
+- What are the best paint colors for kitchens/bedrooms/bathrooms?
+- What is the hex code for [color name]?
+- What is the closest Behr match to [any color]?
+- What does LRV mean and why does it matter?
+- What is the difference between paint sheens?
+
+## API Note
+
+This site does not offer a public API. All color data is available through the website pages listed above.

@@ -52,6 +52,7 @@ export default function RootLayout({
           href="/hero.webp"
           fetchPriority="high"
         />
+        <link rel="help" type="text/plain" href="/llms.txt" />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
