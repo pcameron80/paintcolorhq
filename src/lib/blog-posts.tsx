@@ -9,6 +9,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   date: string; // "YYYY-MM-DD"
+  author: string;
   excerpt: string;
   coverColor: string; // hex for card accent
   coverImage?: string; // path to cover image, e.g. "/blog/my-post.webp"
@@ -48,6 +49,7 @@ const blogPosts: BlogPost[] = [
     slug: "2026-colors-of-the-year-every-brand-compared",
     title: "2026 Colors of the Year: Every Major Brand Compared",
     date: "2026-02-15",
+    author: "Paint Color HQ Staff",
     excerpt:
       "See every major paint brand's 2026 Color of the Year side by side — from earthy greens to warm neutrals — with closest cross-brand matches.",
     coverColor: "#596D69",
@@ -109,6 +111,7 @@ const blogPosts: BlogPost[] = [
     slug: "2025-colors-of-the-year-every-brand-compared",
     title: "2025 Colors of the Year: Every Major Brand Compared",
     date: "2025-04-15",
+    author: "Paint Color HQ Staff",
     excerpt:
       "See every major paint brand's 2025 Color of the Year side by side — from Sherwin-Williams to Benjamin Moore to Behr — with closest cross-brand matches.",
     coverColor: "#785b47",
@@ -170,6 +173,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-alternatives-to-benjamin-moore",
     title: "Best Sherwin-Williams Alternatives to Benjamin Moore's Most Popular Colors",
     date: "2025-05-20",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Found the perfect Benjamin Moore shade but prefer Sherwin-Williams? Here are the closest SW matches for BM's top sellers, verified by Delta E 2000.",
     coverColor: "#D4C5A9",
@@ -224,6 +228,7 @@ const blogPosts: BlogPost[] = [
     slug: "understanding-paint-color-undertones",
     title: "Understanding Undertones: Why Your Gray Looks Blue",
     date: "2025-06-18",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Learn what undertones are, why they matter, and how to identify them before you commit to a paint color. Avoid the most common color selection mistake.",
     coverColor: "#B0B7BB",
@@ -286,6 +291,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-kitchen-paint-colors-2025",
     title: "The 15 Best Kitchen Paint Colors for 2025",
     date: "2025-07-22",
+    author: "Paint Color HQ Staff",
     excerpt:
       "From crisp whites for a clean look to moody greens for drama, these are the 15 kitchen paint colors designers are reaching for in 2025.",
     coverColor: "#4A5D4F",
@@ -375,6 +381,7 @@ const blogPosts: BlogPost[] = [
     slug: "behr-vs-sherwin-williams-vs-benjamin-moore",
     title: "Behr vs Sherwin-Williams vs Benjamin Moore: Which Paint Brand Is Best?",
     date: "2025-08-19",
+    author: "Paint Color HQ Staff",
     excerpt:
       "An honest comparison of the three biggest paint brands in America — covering quality, price, color selection, availability, and who each brand is best for.",
     coverColor: "#5B7A6E",
@@ -439,6 +446,7 @@ const blogPosts: BlogPost[] = [
     slug: "calming-bedroom-paint-colors",
     title: "10 Calming Bedroom Colors Designers Love",
     date: "2025-09-16",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Create a serene retreat with these designer-approved bedroom paint colors — soft blues, warm neutrals, and muted greens that promote relaxation.",
     coverColor: "#8BA7B0",
@@ -510,6 +518,7 @@ const blogPosts: BlogPost[] = [
     slug: "how-to-find-perfect-color-match-across-brands",
     title: "How to Find Your Perfect Color Match Across Brands",
     date: "2025-10-14",
+    author: "Paint Color HQ Staff",
     excerpt:
       "A step-by-step guide to matching paint colors across brands using Delta E 2000 color science — no more guessing at paint store equivalents.",
     coverColor: "#6B8F71",
@@ -572,6 +581,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-white-paint-colors-guide",
     title: "The Best White Paint Colors: A Definitive Guide",
     date: "2025-11-18",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Choosing white paint is deceptively hard. This guide covers warm whites, cool whites, and true whites from every major brand — plus how to pick the right one.",
     coverColor: "#F0EBE0",
@@ -640,6 +650,7 @@ const blogPosts: BlogPost[] = [
     slug: "warm-vs-cool-paint-colors",
     title: "Warm vs Cool Paint Colors: How to Choose",
     date: "2025-12-10",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Learn the difference between warm and cool paint colors, how lighting affects temperature, and how to build a cohesive palette that flows room to room.",
     coverColor: "#C4A882",
@@ -698,6 +709,7 @@ const blogPosts: BlogPost[] = [
     slug: "most-popular-paint-colors-2025",
     title: "The Most Popular Paint Colors of 2025",
     date: "2026-01-21",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Based on search trends, designer picks, and real project data — these are the paint colors that defined 2025 across every major brand.",
     coverColor: "#6E7E6A",
@@ -762,6 +774,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-bathroom-paint-colors",
     title: "The Best Bathroom Paint Colors That Handle Humidity",
     date: "2026-02-04",
+    author: "Paint Color HQ Staff",
     excerpt:
       "From spa-inspired blues to timeless whites, these bathroom paint colors look beautiful and stand up to steam, moisture, and daily use.",
     coverColor: "#7BAFB4",
@@ -847,6 +860,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-living-room-paint-colors",
     title: "The Best Living Room Paint Colors for Every Style",
     date: "2026-02-10",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Whether your style is modern, traditional, or farmhouse — these living room paint colors create the perfect backdrop for your most-used room.",
     coverColor: "#C2B59B",
@@ -941,6 +955,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-home-office-paint-colors",
     title: "The Best Home Office Paint Colors for Focus & Productivity",
     date: "2026-02-12",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Boost concentration and reduce fatigue with these home office paint colors — chosen for their proven effects on focus, mood, and video call appearance.",
     coverColor: "#5B7A6E",
@@ -1031,6 +1046,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-exterior-paint-colors",
     title: "The Best Exterior Paint Colors to Boost Curb Appeal",
     date: "2026-02-14",
+    author: "Paint Color HQ Staff",
     excerpt:
       "From classic white farmhouses to moody dark siding, these exterior paint colors maximize curb appeal and complement every architectural style.",
     coverColor: "#4B5E52",
@@ -1130,6 +1146,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-nursery-paint-colors",
     title: "The Best Nursery & Kids Room Paint Colors That Grow With Them",
     date: "2026-02-15",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Skip the stereotypes — these nursery and kids room paint colors are stylish, calming, and versatile enough to last from infant through elementary school.",
     coverColor: "#B2BAA4",
@@ -1221,6 +1238,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dining-room-paint-colors",
     title: "The Best Dining Room Paint Colors for Memorable Meals",
     date: "2026-02-16",
+    author: "Paint Color HQ Staff",
     excerpt:
       "From intimate jewel tones to airy neutrals, these dining room paint colors set the mood for everything from weeknight dinners to holiday gatherings.",
     coverColor: "#5A4A5E",
@@ -1316,6 +1334,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-kitchen-colors",
     title: "The 12 Best Sherwin-Williams Colors for Kitchens",
     date: "2026-02-17",
+    author: "Paint Color HQ Staff",
     excerpt:
       "From Agreeable Gray cabinets to Naval islands, these are the most popular Sherwin-Williams colors for kitchens — with designer tips for every style.",
     coverColor: "#6B7C6E",
@@ -1399,6 +1418,7 @@ const blogPosts: BlogPost[] = [
     slug: "benjamin-moore-most-popular-whites",
     title: "Benjamin Moore's Most Popular White Paint Colors Ranked",
     date: "2026-02-18",
+    author: "Paint Color HQ Staff",
     excerpt:
       "White Dove, Chantilly Lace, Simply White, Decorator's White — ranked and compared with undertone analysis, best uses, and SW/Behr equivalents.",
     coverColor: "#F0EBE0",
@@ -1478,6 +1498,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-behr-colors-for-bedrooms",
     title: "The Best Behr Colors for Bedrooms (Budget-Friendly Picks)",
     date: "2026-02-19",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Create a calming, stylish bedroom without overspending. These Behr colors deliver designer looks at Home Depot prices.",
     coverColor: "#B5C4CB",
@@ -1543,6 +1564,7 @@ const blogPosts: BlogPost[] = [
     slug: "paint-color-trends-2026",
     title: "Paint Color Trends 2026: What Designers Are Predicting",
     date: "2026-02-20",
+    author: "Paint Color HQ Staff",
     excerpt:
       "From rich terracotta to earthy olive green, here are the paint color trends that will define 2026 — based on early brand announcements, designer surveys, and search data.",
     coverColor: "#8B6F47",
@@ -1617,6 +1639,7 @@ const blogPosts: BlogPost[] = [
     slug: "sherwin-williams-vs-benjamin-moore",
     title: "Sherwin-Williams vs Benjamin Moore: The Complete Comparison",
     date: "2026-02-21",
+    author: "Paint Color HQ Staff",
     excerpt:
       "A detailed head-to-head comparison of America's two most popular premium paint brands — covering quality, price, color matching, availability, and which to choose.",
     coverColor: "#C4B8A2",
@@ -1691,6 +1714,7 @@ const blogPosts: BlogPost[] = [
     slug: "paint-sheen-guide",
     title: "Paint Sheen Guide: Flat vs Eggshell vs Satin vs Semi-Gloss",
     date: "2026-02-22",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Choosing the right sheen is just as important as choosing the right color. This guide explains every finish level and which rooms need which sheen.",
     coverColor: "#C8C0B4",
@@ -1788,6 +1812,7 @@ const blogPosts: BlogPost[] = [
     slug: "how-to-test-paint-samples",
     title: "How to Test Paint Samples the Right Way",
     date: "2026-02-23",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Stop making color decisions from tiny paint chips. Learn the right way to test paint samples so you choose a color you'll love for years.",
     coverColor: "#C2B8A8",
@@ -1860,6 +1885,7 @@ const blogPosts: BlogPost[] = [
     slug: "color-theory-for-home-decorators",
     title: "Color Theory for Home Decorators: A Practical Guide",
     date: "2026-02-24",
+    author: "Paint Color HQ Staff",
     excerpt:
       "Skip the art school jargon. This practical color theory guide teaches you how to use the color wheel, build palettes, and combine colors like a designer.",
     coverColor: "#7A8B6E",
@@ -1938,6 +1964,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-paint-colors-north-facing-rooms",
     title: "The Best Paint Colors for North-Facing Rooms",
     date: "2026-03-10",
+    author: "Paint Color HQ Staff",
     excerpt:
       "North-facing rooms get cool, indirect light all day. These warm-toned, high-LRV colors counteract the gray cast and make the space feel bright and inviting.",
     coverColor: "#D5C8B5",
@@ -2024,7 +2051,8 @@ const blogPosts: BlogPost[] = [
   {
     slug: "best-paint-colors-east-facing-rooms",
     title: "The Best Paint Colors for East-Facing Rooms",
-    date: "2026-03-10",
+    date: "2026-03-11",
+    author: "Paint Color HQ Staff",
     excerpt:
       "East-facing rooms get warm morning sun and cool afternoon shade. These colors look great in both conditions — no more paint that only works half the day.",
     coverColor: "#C8BFB0",

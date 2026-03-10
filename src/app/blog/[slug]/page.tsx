@@ -69,7 +69,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     }),
     author: {
       "@type": "Organization",
-      name: "Paint Color HQ",
+      name: post.author,
       url: "https://www.paintcolorhq.com",
     },
     publisher: {
@@ -128,12 +128,11 @@ export default async function BlogPostPage({ params }: PageProps) {
             <h1 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               {post.title}
             </h1>
-            <time
-              dateTime={post.date}
-              className="mt-3 block text-sm text-gray-500"
-            >
-              {formatDate(post.date)}
-            </time>
+            <div className="mt-3 flex items-center gap-2 text-sm text-gray-500">
+              <time dateTime={post.date}>{formatDate(post.date)}</time>
+              <span>·</span>
+              <span>{post.author}</span>
+            </div>
 
             {/* Article body */}
             <div className="mt-8">{post.content()}</div>
