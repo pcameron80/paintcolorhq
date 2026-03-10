@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
-import { getAllColorSlugs, getAllBrands, getAllColorFamilies } from "@/lib/queries";
+import { getAllColorSlugs } from "@/lib/queries";
 import { getAllBlogSlugs } from "@/lib/blog-posts";
-import { inspirationPalettes } from "@/lib/palettes";
 
 const BASE_URL = "https://www.paintcolorhq.com";
-const URLS_PER_SITEMAP = 5000;
+const COLORS_PER_SITEMAP = 5000;
 // Only include major retail brands in sitemap for crawl budget management.
 // Add more brands as domain authority grows and these get fully indexed.
 const SITEMAP_BRANDS = [
@@ -17,52 +16,36 @@ const SITEMAP_BRANDS = [
 
 export async function GET() {
   try {
-    const [colorSlugs, brands, families] = await Promise.all([
-      getAllColorSlugs({ brandSlugs: SITEMAP_BRANDS }),
-      getAllBrands(),
-      getAllColorFamilies(),
-    ]);
+    const colorSlugs = await getAllColorSlugs({ brandSlugs: SITEMAP_BRANDS });
+    const totalColorSitemaps = Math.ceil(colorSlugs.length / COLORS_PER_SITEMAP);
 
-    // Count total URLs
-    const staticPages = [
-      "/",
-      "/brands",
-      "/colors",
-      "/search",
-      "/compare",
-      "/blog",
-      "/inspiration",
-      "/tools",
-      "/tools/room-visualizer",
-      "/tools/color-identifier",
-      "/tools/palette-generator",
-      "/tools/paint-calculator",
-      "/about",
-      "/contact",
-      "/faq",
-      "/privacy",
-      "/terms",
+    // Build list of named sub-sitemaps
+    const sitemapNames: string[] = [
+      "pages",
+      "brands",
+      "matches",
+      ...Array.from({ length: totalColorSitemaps }, (_, i) => `colors-${i}`),
+      "blog",
+      "families",
+      "inspiration",
     ];
 
-    const brandPages = brands.map((b) => `/brands/${b.slug}`);
-    const familyPages = families.map((f) => `/colors/family/${f.slug}`);
-    const colorPages = colorSlugs.map(
-      (c) => `/colors/${c.brandSlug}/${c.colorSlug}`
-    );
-    const blogPages = getAllBlogSlugs().map((s) => `/blog/${s}`);
-    const inspirationPages = inspirationPalettes.map((p) => `/inspiration/${p.slug}`);
+    // Only include blog sitemap if there are blog posts
+    const blogSlugs = getAllBlogSlugs();
+    if (blogSlugs.length === 0) {
+      const idx = sitemapNames.indexOf("blog");
+      if (idx !== -1) sitemapNames.splice(idx, 1);
+    }
 
-    const allUrls = [...staticPages, ...brandPages, ...familyPages, ...colorPages, ...blogPages, ...inspirationPages];
-    const totalSitemaps = Math.ceil(allUrls.length / URLS_PER_SITEMAP);
-
-    // Generate sitemap index
     const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${Array.from({ length: totalSitemaps }, (_, i) =>
-  `  <sitemap>
-    <loc>${BASE_URL}/sitemap/${i}.xml</loc>
+${sitemapNames
+  .map(
+    (name) => `  <sitemap>
+    <loc>${BASE_URL}/sitemap/${name}.xml</loc>
   </sitemap>`
-).join("\n")}
+  )
+  .join("\n")}
 </sitemapindex>`;
 
     return new NextResponse(sitemapIndex, {
@@ -76,7 +59,7 @@ ${Array.from({ length: totalSitemaps }, (_, i) =>
     const fallback = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>${BASE_URL}/sitemap/0.xml</loc>
+    <loc>${BASE_URL}/sitemap/pages.xml</loc>
   </sitemap>
 </sitemapindex>`;
 

@@ -392,6 +392,77 @@ export async function getSimilarColorsFromSameBrand(
     .slice(0, limit);
 }
 
+export async function getTopCrossBrandMatches(
+  sourceBrandSlug: string,
+  targetBrandSlug: string,
+  limit = 50
+): Promise<{
+  source: ColorWithBrand;
+  match: ColorWithBrand;
+  deltaE: number;
+}[]> {
+  const [sourceBrand, targetBrand] = await Promise.all([
+    getBrandBySlug(sourceBrandSlug),
+    getBrandBySlug(targetBrandSlug),
+  ]);
+
+  if (!sourceBrand || !targetBrand) return [];
+
+  // Step 1: Get source brand color IDs
+  const { data: sourceColors, error: srcErr } = await supabase
+    .from("colors")
+    .select("id")
+    .eq("brand_id", sourceBrand.id);
+
+  if (srcErr || !sourceColors || sourceColors.length === 0) return [];
+
+  const sourceColorIds = sourceColors.map((c) => c.id);
+
+  // Step 2: Query cross_brand_matches for these source colors, joining both colors
+  // Supabase .in() has a URL length limit, so batch if needed
+  const batchSize = 200;
+  const allMatches: {
+    source: ColorWithBrand;
+    match: ColorWithBrand;
+    deltaE: number;
+  }[] = [];
+
+  for (let i = 0; i < sourceColorIds.length; i += batchSize) {
+    const batch = sourceColorIds.slice(i, i + batchSize);
+    const { data, error } = await supabase
+      .from("cross_brand_matches")
+      .select(`
+        delta_e_score,
+        rank,
+        source_color:source_color_id (*, brand:brand_id (*)),
+        match_color:match_color_id (*, brand:brand_id (*))
+      `)
+      .in("source_color_id", batch)
+      .eq("rank", 1)
+      .order("delta_e_score", { ascending: true })
+      .limit(limit);
+
+    if (error || !data) continue;
+
+    for (const row of data) {
+      const matchColor = row.match_color as unknown as ColorWithBrand;
+      const sourceColor = row.source_color as unknown as ColorWithBrand;
+      if (!matchColor?.brand || !sourceColor?.brand) continue;
+      if (matchColor.brand.id !== targetBrand.id) continue;
+
+      allMatches.push({
+        source: sourceColor,
+        match: matchColor,
+        deltaE: Number(row.delta_e_score),
+      });
+    }
+  }
+
+  // Sort by deltaE and return top N
+  allMatches.sort((a, b) => a.deltaE - b.deltaE);
+  return allMatches.slice(0, limit);
+}
+
 // Paginated fetch for sitemaps - handles Supabase 1000-row limit
 export async function getAllColorSlugs(options?: {
   perBrand?: number;

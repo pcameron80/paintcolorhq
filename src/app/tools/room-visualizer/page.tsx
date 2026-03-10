@@ -135,6 +135,26 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
           }),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "Room Color Visualizer",
+            applicationCategory: "DesignApplication",
+            operatingSystem: "Web",
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "USD",
+            },
+            description:
+              "See how paint colors look in a room before you buy. Pick colors for walls, ceiling, accent wall, trim, and floor. Works with all major paint brands.",
+            url: "https://www.paintcolorhq.com/tools/room-visualizer",
+          }),
+        }}
+      />
 
       <Footer />
     </div>

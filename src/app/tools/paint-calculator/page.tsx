@@ -125,6 +125,26 @@ export default function PaintCalculatorPage() {
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Paint Calculator",
+              applicationCategory: "UtilitiesApplication",
+              operatingSystem: "Web",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+              },
+              description:
+                "Calculate exactly how many gallons of paint you need. Enter your room dimensions, doors, and windows for a free instant estimate.",
+              url: "https://www.paintcolorhq.com/tools/paint-calculator",
+            }),
+          }}
+        />
       </main>
 
       <Footer />

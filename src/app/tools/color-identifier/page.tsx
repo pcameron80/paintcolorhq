@@ -97,6 +97,26 @@ export default function ColorIdentifierPage() {
           }),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "Photo Color Identifier",
+            applicationCategory: "DesignApplication",
+            operatingSystem: "Web",
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "USD",
+            },
+            description:
+              "Upload a photo and click any spot to find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Free, instant, cross-brand results.",
+            url: "https://www.paintcolorhq.com/tools/color-identifier",
+          }),
+        }}
+      />
 
       <Footer />
     </div>
