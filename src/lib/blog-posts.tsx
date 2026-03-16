@@ -907,7 +907,7 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 11 ──────────────── */
   {
     slug: "best-bathroom-paint-colors",
-    title: "15 Best Bathroom Paint Colors for 2026 (Moisture-Resistant Picks)",
+    title: "15 Best Bathroom Paint Colors That Handle Humidity (2026)",
     date: "2026-03-16",
     author: "Paint Color HQ Staff",
     excerpt:
