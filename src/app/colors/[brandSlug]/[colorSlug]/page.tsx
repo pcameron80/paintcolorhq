@@ -471,6 +471,117 @@ export default async function ColorPage({ params }: PageProps) {
             }),
           }}
         />
+
+        {/* FAQ JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: (() => {
+              const faqEntries: Array<{ "@type": string; name: string; acceptedAnswer: { "@type": string; text: string } }> = [];
+              const lrv = color.lrv != null ? Number(color.lrv) : null;
+              const undertone = color.undertone ?? "";
+              const undertoneLower = undertone.toLowerCase();
+
+              // Q1: Undertone
+              if (color.undertone) {
+                const undertoneDetail = undertoneLower === "warm"
+                  ? "Warm undertones bring a cozy, inviting feel to a space and pair beautifully with earth tones, creamy whites, and natural wood finishes."
+                  : undertoneLower === "cool"
+                    ? "Cool undertones create a crisp, refreshing atmosphere and pair well with grays, blues, and bright white trim."
+                    : "Neutral undertones offer exceptional versatility, working well with both warm and cool accents, making it an excellent choice for open floor plans and transitional spaces.";
+                faqEntries.push({
+                  "@type": "Question",
+                  name: `What undertone does ${color.name} have?`,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and belongs to the ${color.color_family} color family` : ""}. ${undertoneDetail}`,
+                  },
+                });
+              }
+
+              // Q2: Cross-brand matches
+              if (matches.length > 0) {
+                const topMatches = matches.slice(0, 3).map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (Delta E: ${Number(m.delta_e_score).toFixed(1)})`).join(", ");
+                const closeness = Number(matches[0].delta_e_score) < 2
+                  ? "The top match is virtually indistinguishable to the human eye, making it an excellent substitute."
+                  : Number(matches[0].delta_e_score) < 5
+                    ? "The top match is very close in appearance, though slight differences may be visible side by side."
+                    : "These matches are the closest available, but noticeable differences may exist — always compare physical swatches before committing.";
+                faqEntries.push({
+                  "@type": "Question",
+                  name: `What colors match ${color.name} from other brands?`,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: `The closest cross-brand matches for ${color.name} by ${color.brand.name} include ${topMatches}. ${closeness} Keep in mind that pigments and finishes vary between manufacturers, so always verify with real paint samples.`,
+                  },
+                });
+              }
+
+              // Q3: LRV
+              if (lrv != null) {
+                let lrvDetail: string;
+                if (lrv >= 65) {
+                  lrvDetail = `With a high LRV, ${color.name} reflects a significant amount of light, making it an excellent choice for smaller rooms, north-facing spaces, or areas with limited natural light where you want to maximize brightness.`;
+                } else if (lrv >= 40) {
+                  lrvDetail = `With a moderate LRV, ${color.name} strikes a balance between light and depth. It works well in living rooms, bedrooms, and dining areas where you want a color that feels present without overwhelming the space.`;
+                } else if (lrv >= 15) {
+                  lrvDetail = `With a lower LRV, ${color.name} absorbs more light than it reflects, creating a sense of depth and intimacy. It works well as an accent wall or in larger rooms with plenty of natural light to prevent the space from feeling too enclosed.`;
+                } else {
+                  lrvDetail = `With a very low LRV, ${color.name} absorbs most light and creates a bold, dramatic statement. It is best suited for accent walls, feature spaces, or rooms where you intentionally want a moody, cocooning effect — pair it with lighter trim and ample lighting.`;
+                }
+                faqEntries.push({
+                  "@type": "Question",
+                  name: `What is the LRV of ${color.name}?`,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, where 0 is absolute black and 100 is pure white. ${lrvDetail}`,
+                  },
+                });
+              }
+
+              // Q4: Room recommendation
+              const effectiveLrv = lrv ?? 50;
+              let roomType: string;
+              let roomAnswer: string;
+              if (undertoneLower === "warm" && effectiveLrv >= 40) {
+                roomType = "living rooms";
+                roomAnswer = `Yes, ${color.name} by ${color.brand.name} is an excellent choice for living rooms. Its warm undertone creates a welcoming, comfortable atmosphere that encourages relaxation and conversation. With an LRV of ${effectiveLrv.toFixed(1)}, it reflects enough light to keep the room feeling open while still providing warmth and character. Pair it with natural wood furniture and soft textiles for a cohesive, inviting living space.`;
+              } else if (undertoneLower === "cool" && effectiveLrv >= 55) {
+                roomType = "bathrooms";
+                roomAnswer = `Yes, ${color.name} by ${color.brand.name} works beautifully in bathrooms. Its cool undertone evokes a clean, spa-like atmosphere, and with an LRV of ${effectiveLrv.toFixed(1)}, it reflects plenty of light to keep the room feeling fresh and airy. Cool-toned colors in bathrooms pair well with chrome or brushed nickel fixtures and white tile, creating a serene retreat.`;
+              } else if (effectiveLrv >= 65) {
+                roomType = "small rooms";
+                roomAnswer = `Yes, ${color.name} by ${color.brand.name} is ideal for small rooms. With a high LRV of ${effectiveLrv.toFixed(1)}, it reflects a significant amount of light, which visually expands the space and prevents it from feeling cramped. This makes it a smart pick for powder rooms, hallways, entryways, or any area where you want to maximize the sense of openness. Pair it with mirrors and good lighting for the best effect.`;
+              } else if (effectiveLrv < 25) {
+                roomType = "accent walls";
+                roomAnswer = `${color.name} by ${color.brand.name} is a bold choice that works best as an accent wall rather than for an entire room. With a lower LRV of ${effectiveLrv.toFixed(1)}, it absorbs light and creates dramatic focal points. Use it on a single statement wall in a living room, dining room, or bedroom, and balance it with lighter surrounding walls, ample lighting, and reflective decor to keep the space from feeling too dark.`;
+              } else if (undertoneLower === "warm") {
+                roomType = "bedrooms";
+                roomAnswer = `Yes, ${color.name} by ${color.brand.name} is a wonderful option for bedrooms. Its warm undertone fosters a cozy, restful environment that promotes relaxation and sleep. With an LRV of ${effectiveLrv.toFixed(1)}, it provides enough depth to feel enveloping without making the room feel small. Pair it with soft bedding, warm-toned lighting, and natural textures for a tranquil retreat.`;
+              } else {
+                roomType = "kitchens";
+                const toneDetail = undertoneLower === "cool"
+                  ? "Its cool undertone keeps the space feeling clean and fresh, which complements stainless steel appliances and modern cabinetry."
+                  : "Its neutral undertone offers flexibility, pairing well with a wide range of cabinet colors, countertop materials, and hardware finishes.";
+                roomAnswer = `Yes, ${color.name} by ${color.brand.name} is a great fit for kitchens. ${toneDetail} With an LRV of ${effectiveLrv.toFixed(1)}, it balances brightness and character, ensuring the kitchen feels lively without being stark. Good lighting — both natural and task — will bring out the best in this color.`;
+              }
+              faqEntries.push({
+                "@type": "Question",
+                name: `Is ${color.name} good for ${roomType}?`,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: roomAnswer,
+                },
+              });
+
+              return JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: faqEntries,
+              });
+            })(),
+          }}
+        />
       </main>
 
       <Footer />
