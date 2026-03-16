@@ -1160,23 +1160,26 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 13 ──────────────── */
   {
     slug: "best-home-office-paint-colors",
-    title: "The Best Home Office Paint Colors for Focus & Productivity",
-    date: "2026-02-12",
+    title: "Best Home Office Paint Colors for Productivity in 2026",
+    date: "2026-03-16",
     author: "Paint Color HQ Staff",
     excerpt:
-      "Boost concentration and reduce fatigue with these home office paint colors — chosen for their proven effects on focus, mood, and video call appearance.",
+      "The best paint colors for home office productivity — from calming blues and greens to 2026 trending shades — picked for focus, mood, and video call appearance.",
     coverColor: "#5B7A6E",
     coverImage: "/blog/best-home-office-paint-colors.webp",
-    tags: ["Home Office", "Productivity", "Design"],
+    tags: ["Home Office", "Productivity", "Design", "2026 Trends"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Remote work has made the home office a permanent fixture — and the color of your workspace affects your focus, energy, and even how you look on video calls. Color psychology research shows specific hues promote concentration and reduce mental fatigue. Here are the best paint colors for a productive home office.
+          Choosing the best paint colors for home office productivity is one of the highest-impact changes you can make to your workspace. Color psychology research confirms that specific hues promote concentration, reduce mental fatigue, and even affect how you look on video calls. Below you&apos;ll find 13 colors across four major brands — including 2026 trending shades — organized by the type of work they support best.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Office Color Matters</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Office Paint Color Matters for Productivity</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Studies from the University of Texas found that white, beige, and gray offices increase feelings of sadness and depression — yet they&apos;re the most common office colors. Meanwhile, low-saturation blues and greens have been shown to boost focus and reduce stress. The ideal home office color is one that&apos;s calming without being sleepy, stimulating without being distracting.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The right wall color can also reduce digital eye strain during long screen sessions. Muted greens and blue-greens provide a natural resting point for your eyes when you glance away from a monitor, which is why these hues dominate the best home office paint color recommendations from designers and color consultants.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Blues for Focus</h2>
@@ -1190,7 +1193,10 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> — a silvery blue-gray that creates a professional, focused atmosphere. Light enough for small home offices. Browse the full <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> — technically a gray, but its blue undertones give it the focus-enhancing properties of blue while maintaining a neutral, professional look.
+          <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> — technically a gray, but its blue undertones give it the focus-enhancing properties of blue while maintaining a neutral, professional look. Compare it against other options with our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7A9BA8" name="Dustblu" brand="Sherwin-Williams" href="/colors/sherwin-williams/dustblu-9161" /> — a 2026 trending muted blue that balances sophistication with calm. It reads as deeply professional without being cold, and it flatters most skin tones on video calls. Browse all options from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Greens for Creativity</h2>
@@ -1206,6 +1212,9 @@ const blogPosts: BlogPost[] = [
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — the gentlest green option, almost neutral. Perfect for video calls where you want a warm, professional backdrop. See all options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
         </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6B8068" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n420-6" /> — <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr&apos;s</Link> 2026 Color of the Year. This smoky jade green-gray was specifically cited for reducing digital eye strain during long screen sessions. It works beautifully as a full-room color or an accent wall behind your desk.
+        </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals That Actually Work</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
@@ -1215,7 +1224,21 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that avoids the &ldquo;sad beige office&rdquo; problem. It has enough depth to feel intentional without being distracting.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a warm, creamy off-white that keeps the room bright and open while avoiding the sterile feel of true white.
+          <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a warm, creamy off-white that keeps the room bright and open while avoiding the sterile feel of true white. Learn more about choosing between warm and cool tones in our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs. cool paint colors guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How Lighting Affects Your Home Office Color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The direction your office window faces changes how every paint color behaves. Getting this wrong is the number one reason people repaint within a year.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>North-facing offices</strong> receive cool, indirect light all day. Colors appear slightly blue and muted. Warm tones — soft yellows, warm whites like Shoji White, and warm greens like Saybrook Sage — counterbalance the coolness and keep the room from feeling dreary. See our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing room guide</Link> for detailed picks.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>South-facing offices</strong> get warm, intense sunlight. Cool tones like Quiet Moments or Dustblu prevent the room from feeling overly warm. Colors will look 1-2 shades lighter in direct afternoon sun, so choose slightly deeper than your target.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>East-facing offices</strong> are bright in the morning and dim in the afternoon. Warm neutrals maintain consistency throughout the day. <strong>West-facing offices</strong> flip this pattern — they&apos;re dim in the morning and get intense golden light after lunch. Cool blues and greens balance the late-day warmth. Preview how any color looks in your specific lighting with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Video Call Factor</h2>
@@ -1236,13 +1259,36 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Office Painting Tips</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Use eggshell or satin finish.</strong> Flat paint shows scuff marks from desk chairs; semi-gloss creates distracting glare on video calls. Eggshell is the sweet spot.
+          <strong>Use eggshell or matte finish.</strong> Flat paint shows scuff marks from desk chairs; semi-gloss creates distracting glare on video calls and screens. Eggshell or matte is the sweet spot — it reduces glare while still being wipeable. Read our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">complete paint sheen guide</Link> to compare all finish options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Paint a sample behind your monitor.</strong> Observe the color while working — not just when you walk in. A color that looks great from the doorway might be fatiguing after 8 hours at your desk. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> to avoid surprises with lighting.
+          <strong>Paint a sample behind your monitor.</strong> Observe the color while working — not just when you walk in. A color that looks great from the doorway might be fatiguing after 8 hours at your desk. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> to avoid surprises with lighting, and our <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">paint sampling guide</Link> for the right technique.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Estimate how much paint you need with our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> — home offices are typically small rooms where a single gallon may be enough.
+          Estimate how much paint you need with our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> — home offices are typically small rooms where a single gallon may be enough. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find any of these colors across all 14 brands in our database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What is the best paint color for home office productivity?</h3>
+        <p className="mt-3 text-gray-700 leading-relaxed">
+          Muted blues and greens consistently perform best for productivity. Quiet Moments (Benjamin Moore 1563) and Pewter Green (Sherwin-Williams 6208) top most designer recommendations because they lower heart rate, reduce anxiety, and provide a natural resting point for eyes fatigued by screens. For 2026, Hidden Gem by Behr offers a fresh take on the productive green.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What colors should you avoid in a home office?</h3>
+        <p className="mt-3 text-gray-700 leading-relaxed">
+          Avoid bright white, cool gray, and beige — research from the University of Texas links these common office colors to increased feelings of sadness and fatigue. Bright red and orange can spike stress hormones, making them poor choices for spaces where you need sustained concentration. If you love neutrals, choose warm-toned options like Edgecomb Gray or Shoji White instead.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What home office colors increase focus?</h3>
+        <p className="mt-3 text-gray-700 leading-relaxed">
+          Low-saturation blues are the strongest focus enhancers. Blue reduces heart rate and anxiety while sharpening attention to detail. Silver Mist and Stonington Gray are excellent choices for analytical or numbers-heavy work. Greens promote creative focus — better for writing, design, or brainstorming roles.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">Does paint finish matter in a home office?</h3>
+        <p className="mt-3 text-gray-700 leading-relaxed">
+          Yes. Matte or eggshell finishes reduce screen glare and prevent eye strain during long work sessions. Avoid semi-gloss on walls — it reflects overhead lighting and monitor light back at you. Save semi-gloss for trim only.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Your Perfect Home Office Color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The best home office paint color for productivity depends on your work type, lighting conditions, and personal style. Start with blues if your work is analytical, greens if it&apos;s creative, and warm neutrals if you need maximum flexibility. Factor in your window direction, test samples at your desk (not the doorway), and always check how the color looks on camera if you take video calls. Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a coordinated scheme for your entire office, including accent walls and trim.
         </p>
       </>
     ),
@@ -1443,95 +1489,138 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 16 ──────────────── */
   {
     slug: "best-dining-room-paint-colors",
-    title: "The Best Dining Room Paint Colors for Memorable Meals",
-    date: "2026-02-16",
+    title: "15 Best Dining Room Paint Colors for Every Style (2026)",
+    date: "2026-03-16",
     author: "Paint Color HQ Staff",
     excerpt:
-      "From intimate jewel tones to airy neutrals, these dining room paint colors set the mood for everything from weeknight dinners to holiday gatherings.",
+      "The best dining room paint colors for 2026 — from bold jewel tones to warm earth tones and elegant neutrals. Includes specific colors from Sherwin-Williams, Benjamin Moore, Behr, and Valspar with hex codes and pairing tips.",
     coverColor: "#5A4A5E",
     coverImage: "/blog/best-dining-room-paint-colors.webp",
-    tags: ["Dining Room", "Design", "Entertaining"],
+    tags: ["Dining Room", "Design", "Entertaining", "2026"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The dining room is one of the few spaces where bold color choices almost always pay off. Unlike a bedroom or home office where you spend hours staring at the walls, the dining room is experienced in shorter bursts — which means you can go darker, warmer, and more dramatic than anywhere else in the house. Here are the best dining room colors for every mood.
+          The best dining room paint colors share one thing: they make the room feel intentional. Whether you want a moody navy that turns Tuesday pasta into a dinner party or a warm neutral that flows into an open kitchen, the right dining room color transforms how meals feel. These 15 colors cover every style — from dramatic jewel tones to trending 2026 earth tones — with specific brand names, hex codes, and pairing advice so you can choose with confidence.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Dining Rooms Can Handle Bold Color</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Color psychology matters here: warm, saturated tones are proven to stimulate appetite and conversation. There&apos;s a reason the best restaurants avoid white walls. Dining rooms are also typically lit by warm, low lighting in the evening — candles, dimmers, pendants — which makes rich colors glow rather than feel heavy.
+          Color psychology matters here: warm, saturated tones stimulate appetite and conversation. There&apos;s a reason the best restaurants avoid white walls. Dining rooms are also experienced in shorter bursts than bedrooms or offices, which means you can go darker and more dramatic without fatigue.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Evening lighting is the other factor. Dining rooms are primarily used under warm, low light — candles, dimmers, pendants — which makes rich colors glow rather than feel heavy. A color that seems intense under noon sunlight often looks perfect at 7 PM under a chandelier.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Rich Jewel Tones</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Rich Jewel Tones for Drama</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Jewel tones create drama, intimacy, and a sense of occasion. These are the colors that make a Tuesday dinner feel like a dinner party.
+          Jewel tones create intimacy and a sense of occasion. If you entertain frequently or want your dining room to feel like a destination rather than a passthrough, these are the colors to consider.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#5A4A5E" name="Shadow" brand="Benjamin Moore" href="/colors/benjamin-moore/shadow-2117-30" /> — a moody, sophisticated plum-gray that&apos;s dramatic without being overwhelming. It looks stunning by candlelight and pairs with both gold and silver accents.
+          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — navy is the single most popular bold dining room color in America. It conveys elegance, works with every wood tone from oak to walnut, and makes white trim and china pop. It looks equally stunning in traditional homes with wainscoting and in modern spaces with clean lines. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for lighter navy alternatives.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — navy is the most popular bold dining room color. It conveys elegance, works with every wood tone, and makes white trim and china pop.
+          <Swatch hex="#5A4A5E" name="Shadow" brand="Benjamin Moore" href="/colors/benjamin-moore/shadow-2117-30" /> — a moody, sophisticated plum-gray that&apos;s dramatic without being overwhelming. It looks stunning by candlelight and pairs with both gold and silver accents. Shadow works especially well in dining rooms with high ceilings where you want the walls to feel enveloping.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that creates a rich, library-like dining room. Pair with brass light fixtures and a wood table for old-world sophistication.
+          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that creates a rich, library-like dining room. Pair with brass light fixtures and a wood table for old-world sophistication. Essex Green is one of Benjamin Moore&apos;s Historical Collection colors, which means it has been used in American homes for centuries. See more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7B5B4C" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — the 2025 Color of the Year is a warm plum-brown that was practically made for dining rooms. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year breakdown</Link>.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Earth Tones</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          For a dining room that feels warm and inviting without the commitment of a dark jewel tone, earthy mid-tones strike the perfect balance.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> — a warm terracotta that brings Mediterranean warmth to any dining space. It glows beautifully under pendant lighting.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8a7e70" name="Safari Beige" brand="Valspar" href="/colors/valspar/safari-beige-6006-2b" /> — a sandy, warm beige-brown that creates an organic, earthy dining room. It pairs naturally with ceramic tableware and woven placemats.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B5A898" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — a mushroom tone that&apos;s having a moment. It&apos;s warm, grounding, and sophisticated without being dark. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more.
+          <Swatch hex="#6B3A3A" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1013-1" /> — a sumptuous red-brown with earthy undertones that PPG highlighted as a 2026 trend color. It brings warmth and depth to formal dining rooms without the intensity of a pure red. Pair with cream linens and natural wood for a grounded, inviting feel.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Elegant Neutrals</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Earth Tones (The 2026 Trend)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          If your dining room is open to the kitchen or living room, you may want a color that creates subtle distinction without a jarring change. Warm neutrals that are one shade deeper than your adjacent rooms do this beautifully.
+          The biggest dining room color trend in 2026 is the shift from cool grays toward warm earth tones — taupes, terracottas, khakis, and mushroom shades. These colors feel organic, grounding, and naturally cozy under warm dining room lighting. Read our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link> for more on this shift.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that&apos;s elegant enough for a formal dining room but casual enough for everyday use. It works as a standalone or as a complement to a bolder accent wall.
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral that represents the definitive move away from cool grays. It works beautifully in dining rooms because it flatters skin tones under warm lighting and pairs with virtually any wood table or chair.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — slightly warmer and richer than Agreeable Gray. It creates a cozy, golden atmosphere under warm lighting. Compare them with our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link>.
+          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> — a warm terracotta that brings Mediterranean warmth to any dining space. It glows beautifully under pendant lighting and pairs with white dishes, terracotta serveware, and linen table runners.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B5A898" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — a mushroom tone that&apos;s having a moment in dining rooms. It&apos;s warm, grounding, and sophisticated without being dark — the dining room equivalent of a cashmere sweater. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more earthy options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8a7e70" name="Safari Beige" brand="Valspar" href="/colors/valspar/safari-beige-6006-2b" /> — a sandy, warm beige-brown that creates an organic, earthy dining room. It pairs naturally with ceramic tableware, woven placemats, and natural wood tones. Explore <Link href="/brands/valspar" className="text-brand-blue hover:underline">all Valspar colors</Link> on our site.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft & Formal</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Elegant Neutrals for Open Floor Plans</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For a dining room that feels refined and classic rather than dramatic, muted blues and greens offer timeless elegance.
+          If your dining room is open to the kitchen or living room — as most modern floor plans are — you need a color that creates subtle distinction without a jarring change. Warm neutrals that are one or two shades deeper than your adjacent rooms define the dining space while maintaining flow.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a soft blue-green that adds color without intensity. It&apos;s serene and pairs perfectly with white wainscoting and crystal chandeliers.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that&apos;s elegant enough for a formal dining room but casual enough for everyday use. It works as a standalone or as a complement to a bolder accent wall. Compare it against other greiges using our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6B7C6E" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — a muted sage-forest that feels both modern and traditional. It&apos;s one of the most versatile dining room greens available. See more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
+          <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — slightly warmer and richer than Agreeable Gray. It creates a cozy, golden atmosphere under warm lighting that makes dining rooms feel especially inviting on winter evenings. Browse the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for similar tones.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — America&apos;s most popular paint color works in dining rooms that need to blend seamlessly with adjacent spaces. It&apos;s the safe choice when you want warmth without committing to a specific color direction. See our <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">living room color guide</Link> for complementary options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft & Formal Dining Room Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a dining room that feels refined and classic rather than dramatic, muted blues and greens offer timeless elegance. These work especially well in traditional homes, dining rooms with crown molding, and spaces with crystal chandeliers or silver accents.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a soft blue-green that adds color without intensity. It&apos;s serene and pairs perfectly with white wainscoting and crystal chandeliers. This is one of Benjamin Moore&apos;s most popular colors for formal dining rooms.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6B7C6E" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — a muted sage-forest that feels both modern and traditional. It&apos;s one of the most versatile dining room greens available and looks particularly elegant with white trim and warm brass hardware.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose the Right Dining Room Color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Consider your dining style.</strong> If you host formal dinner parties, lean toward jewel tones or soft formal shades that create atmosphere. If your dining room is where kids eat cereal and you work on your laptop, a warm neutral or earth tone handles daily life better.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Match your room&apos;s exposure.</strong> North-facing dining rooms get cool, bluish light — choose warmer colors like Wholesome, Universal Khaki, or Accessible Beige to counteract it. South-facing rooms can handle cooler tones like Quiet Moments or Pewter Green without feeling cold. Read our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link> for more.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Coordinate with your table and chairs.</strong> Dark walls with a light table create contrast and drama. Dark walls with a dark table create a moody, enveloping cocoon. Both work — just be intentional about the effect you want.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these colors in a dining room setting before buying samples. Then use the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out exactly how many gallons you need.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Accent Wall Approach</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          If painting an entire dining room in a dark color feels risky, try a single accent wall. The wall your eye hits first when entering the room is the best candidate. Paint it in a bold color and keep the remaining three walls in a complementary neutral. This gives you 80% of the drama with 20% of the commitment.
+          If painting an entire dining room in a bold color feels risky, try a single accent wall. The wall your eye hits first when entering the room is the best candidate. Paint it in a bold color like Naval or Essex Green and keep the remaining three walls in a complementary neutral like Edgecomb Gray or Accessible Beige. This gives you 80% of the drama with 20% of the commitment.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a wall + trim + accent scheme that works together. If you want to see two specific colors side by side, the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> shows them at full scale.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dining Room Painting Tips</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dining Room Paint Finish Guide</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Choose eggshell or satin finish.</strong> Dining room walls see splashes, fingerprints, and the occasional thrown pea. Eggshell cleans easily while still looking elegant. Semi-gloss works for chair rail trim and wainscoting.
+          <strong>Walls: eggshell or satin.</strong> Dining room walls see splashes, fingerprints, and the occasional thrown pea. Eggshell cleans easily while still looking elegant. Satin offers slightly more sheen and durability if you have young children.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Trim and wainscoting: semi-gloss.</strong> Chair rail trim, wainscoting, and crown molding look best in semi-gloss. The contrast between a matte-ish wall and glossy trim adds depth and architectural interest to any dining room.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Test colors at night.</strong> Dining rooms are primarily used in evening light. Sample your color and observe it under your actual dining room lighting — pendant, chandelier, or candles. A color that looks perfect at noon may look completely different at 7 PM. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for more on how lighting affects color.
         </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Coordinate with your table.</strong> Dark walls with a light table create contrast and drama. Dark walls with a dark table create a moody, enveloping cocoon. Both work — just be intentional about the effect you want.
+          <strong>What is the most popular dining room paint color?</strong> Navy blue (like <Link href="/colors/sherwin-williams/naval-6244" className="text-brand-blue hover:underline">Sherwin-Williams Naval</Link>) and warm greige (like <Link href="/colors/benjamin-moore/edgecomb-gray-hc-173" className="text-brand-blue hover:underline">Edgecomb Gray</Link>) are consistently the two most popular dining room paint colors. Navy dominates in formal dining rooms while greige leads in open-concept homes.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a wall + trim + accent scheme, and our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out exactly how many gallons you need.
+          <strong>What dining room colors are trending in 2026?</strong> Warm earth tones are the biggest 2026 dining room trend — sandy khakis, terracottas, and mushroom shades are replacing the cool grays of recent years. Deep, botanical greens and warm mahogany reds are also gaining popularity for statement dining rooms.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Should I paint my dining room a dark color?</strong> Yes, if you want drama and intimacy. Dining rooms are one of the best spaces for dark colors because they&apos;re used in short bursts under warm evening light. Dark colors like navy, forest green, and deep plum look better at night than they do on a daytime paint chip.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>What color makes a small dining room look bigger?</strong> Light, warm neutrals like <Link href="/colors/benjamin-moore/edgecomb-gray-hc-173" className="text-brand-blue hover:underline">Edgecomb Gray</Link> or <Link href="/colors/sherwin-williams/accessible-beige-7036" className="text-brand-blue hover:underline">Accessible Beige</Link> open up small dining rooms. Painting the ceiling the same color as the walls — or one shade lighter — also creates the illusion of height. Use our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier tool</Link> to match your existing adjacent room colors and find a complementary dining room shade.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>What paint finish is best for a dining room?</strong> Eggshell or satin for walls, semi-gloss for trim and wainscoting. Flat/matte finishes show every scuff and are hard to clean — avoid them in a room where food and drink are served.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Find any color mentioned here by name or code using our <Link href="/search" className="text-brand-blue hover:underline">color search</Link>, or visit the <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> brand pages to explore their full palettes.
         </p>
       </>
     ),
