@@ -252,6 +252,15 @@ export default async function Home() {
             </p>
           </div>
         </section>
+
+        <section className="mt-16 text-center">
+          <p className="text-sm text-gray-500">
+            Powered by CIEDE2000 color science. 25,000+ colors across 14 brands.{" "}
+            <Link href="/about" className="text-brand-blue hover:underline">
+              Learn about our methodology
+            </Link>.
+          </p>
+        </section>
       </main>
 
       {/* JSON-LD WebSite + SearchAction */}
@@ -273,6 +282,27 @@ export default async function Home() {
                   "https://www.paintcolorhq.com/search?q={search_term_string}",
               },
               "query-input": "required name=search_term_string",
+            },
+          }),
+        }}
+      />
+
+      {/* JSON-LD Organization */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Paint Color HQ",
+            url: "https://www.paintcolorhq.com",
+            logo: "https://www.paintcolorhq.com/logo.webp",
+            description:
+              "Match paint colors across 14 brands using CIEDE2000 color science. Free tools include a room visualizer, photo color identifier, palette generator, and paint calculator.",
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "customer support",
+              url: "https://www.paintcolorhq.com/contact",
             },
           }),
         }}

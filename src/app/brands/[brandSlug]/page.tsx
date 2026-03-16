@@ -261,6 +261,19 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "CollectionPage",
+              name: `${brand.name} Paint Colors`,
+              description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with cross-brand matching, undertone tags, and LRV values.`,
+              url: `https://www.paintcolorhq.com/brands/${brandSlug}`,
+              numberOfItems: brand.color_count,
+            }),
+          }}
+        />
       </main>
 
       <Footer />

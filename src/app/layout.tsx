@@ -10,16 +10,16 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Paint Color HQ - Match Colors Across 14 Paint Brands | Free Tools",
+    default: "Match Paint Colors Across 14 Brands | Paint Color HQ",
     template: "%s | Paint Color HQ",
   },
   description:
-    "Match paint colors across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. Free room visualizer, photo color identifier, palette generator & paint calculator. 25,000+ colors.",
+    "Match paint colors across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. Free room visualizer, color identifier & 25,000+ colors.",
   metadataBase: new URL("https://www.paintcolorhq.com"),
   openGraph: {
     type: "website",
     siteName: "Paint Color HQ",
-    title: "Paint Color HQ - Match Colors Across 14 Paint Brands | Free Tools",
+    title: "Match Paint Colors Across 14 Brands | Paint Color HQ",
     description:
       "Match paint colors across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. Free room visualizer, photo color identifier, palette generator & paint calculator.",
     images: [{ url: "/og-image.webp", width: 1200, height: 630 }],

@@ -111,6 +111,27 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "Room Color Visualizer",
+            description:
+              "Preview paint colors on walls, ceiling, trim, and more in a realistic room scene. Free tool from Paint Color HQ.",
+            url: "https://www.paintcolorhq.com/tools/room-visualizer",
+            applicationCategory: "DesignApplication",
+            operatingSystem: "Any",
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "USD",
+            },
+          }),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
             "@type": "HowTo",
             name: "Preview Paint Colors in a Room",
             description:

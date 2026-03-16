@@ -61,8 +61,13 @@ export default async function BlogPostPage({ params }: PageProps) {
     "@type": "BlogPosting",
     headline: post.title,
     datePublished: post.date,
+    dateModified: post.date,
     description: post.excerpt,
     url: `https://www.paintcolorhq.com/blog/${post.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.paintcolorhq.com/blog/${post.slug}`,
+    },
     keywords: post.tags.join(", "),
     ...(post.coverImage && {
       image: `https://www.paintcolorhq.com${post.coverImage}`,
@@ -71,12 +76,30 @@ export default async function BlogPostPage({ params }: PageProps) {
       "@type": "Organization",
       name: post.author,
       url: "https://www.paintcolorhq.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.paintcolorhq.com/og-image.webp",
+      },
     },
     publisher: {
       "@type": "Organization",
       name: "Paint Color HQ",
       url: "https://www.paintcolorhq.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.paintcolorhq.com/og-image.webp",
+      },
     },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.paintcolorhq.com/blog" },
+      { "@type": "ListItem", position: 3, name: post.title },
+    ],
   };
 
   return (
@@ -177,6 +200,10 @@ export default async function BlogPostPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
     </div>
   );
