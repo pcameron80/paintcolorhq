@@ -1397,31 +1397,34 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 15 ──────────────── */
   {
     slug: "best-nursery-paint-colors",
-    title: "The Best Nursery & Kids Room Paint Colors That Grow With Them",
-    date: "2026-02-15",
+    title: "15 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last)",
+    date: "2026-03-16",
     author: "Paint Color HQ Staff",
     excerpt:
-      "Skip the stereotypes — these nursery and kids room paint colors are stylish, calming, and versatile enough to last from infant through elementary school.",
+      "The best nursery paint colors for 2026 — gender-neutral picks from Sherwin-Williams, Benjamin Moore, and Behr that grow with your child from infant through elementary school.",
     coverColor: "#B2BAA4",
     coverImage: "/blog/best-nursery-paint-colors.webp",
-    tags: ["Nursery", "Kids Room", "Design"],
+    tags: ["Nursery", "Kids Room", "Design", "Gender-Neutral", "Baby Room"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The nursery is one of the most exciting rooms to paint — and one of the easiest to get wrong. Trends come and go, but your kid&apos;s room needs to last. The best nursery colors are ones that work for a newborn, still look great for a toddler, and transition easily into a &ldquo;big kid&rdquo; room without repainting. Here are colors that grow with your child.
+          Choosing the best nursery paint colors is one of the first big decisions expecting parents make — and one of the easiest to overthink. The 2026 nursery color trend has shifted toward earthy, gender-neutral tones that feel calming for a newborn and still look stylish when your child is ten. These 15 nursery paint colors from <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> are the ones designers and parents keep coming back to.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Skip the Baby Pastels</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Baby Pastels Are Out in 2026</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Pastel pink and baby blue have their place, but they&apos;re the colors most parents regret within two years. They feel dated quickly and don&apos;t transition well as kids develop their own preferences. Instead, choose sophisticated, muted tones that happen to be kid-friendly — colors that would look equally at home in a guest room.
+          Pastel pink and baby blue have their place, but they&apos;re the nursery paint colors most parents regret within two years. They feel dated quickly and don&apos;t transition well as kids develop their own preferences.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The 2026 trend in baby room colors leans into mushroom taupes, smoky sages, warm clay tones, and creamy whites. These are sophisticated, muted shades that happen to be kid-friendly — colors that would look equally at home in a guest room. The goal: paint once, enjoy for a decade.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Soft Green Nursery Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green is the most versatile nursery color. It&apos;s gender-neutral, calming, and connects the room to nature. Muted sage tones are the top choice among nursery designers right now.
+          Green is the most versatile nursery color and the top choice among nursery designers in 2026. It&apos;s gender-neutral, calming, and connects the room to nature — exactly what sleep experts recommend for a baby&apos;s environment.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a warm, dusty sage that&apos;s serene for an infant and cool enough for a 10-year-old. It pairs beautifully with natural wood cribs and white furniture.
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a warm, dusty sage that&apos;s serene for an infant and cool enough for a 10-year-old. It pairs beautifully with natural wood cribs and white furniture. This is one of the most requested nursery colors on social media right now.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — barely there. This whisper of green reads almost neutral, making it the safest choice if you&apos;re unsure about committing to color.
