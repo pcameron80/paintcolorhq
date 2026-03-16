@@ -12,15 +12,30 @@ const content: Record<string, BrandContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Sherwin-Williams is America&apos;s largest paint company, with over 4,000 retail locations
-          and a palette of 1,700+ colors. Their most popular color — Agreeable Gray (SW 7029) — has
-          been the best-selling paint color in the country for five consecutive years. The brand is
-          known for excellent contractor-grade formulas and frequent 30–40% off sales.
+          and a palette of 1,700+ colors. Founded in 1866 in Cleveland, Ohio, Sherwin-Williams has
+          grown into a global coatings leader trusted by homeowners, contractors, and architects alike.
+          Their most popular color —{" "}
+          <Link href="/colors/sherwin-williams/agreeable-gray-sw-7029" className="text-brand-blue hover:underline">
+            Agreeable Gray SW 7029
+          </Link>{" "}
+          — has been the best-selling paint color in the country for five consecutive years. The brand
+          is known for excellent contractor-grade formulas and frequent 30–40% off sales.
+        </p>
+        <p>
+          Other top Sherwin-Williams colors include{" "}
+          <Link href="/colors/sherwin-williams/pure-white-sw-7005" className="text-brand-blue hover:underline">Pure White SW 7005</Link>,{" "}
+          <Link href="/colors/sherwin-williams/alabaster-sw-7008" className="text-brand-blue hover:underline">Alabaster SW 7008</Link>,{" "}
+          <Link href="/colors/sherwin-williams/repose-gray-sw-7015" className="text-brand-blue hover:underline">Repose Gray SW 7015</Link>, and{" "}
+          <Link href="/colors/sherwin-williams/naval-sw-6244" className="text-brand-blue hover:underline">Naval SW 6244</Link>.
+          These colors span warm whites, versatile grays, and bold accent shades that work in any home.
         </p>
         <p>
           Top product lines include <strong>Emerald</strong> (premium, self-leveling),{" "}
-          <strong>Duration</strong> (extreme durability), and <strong>SuperPaint</strong> (solid
-          mid-range). Sherwin-Williams paint is sold through their own stores and Lowe&apos;s (HGTV
-          Home line). Price range: $55–$80+ per gallon depending on the line.
+          <strong>Duration</strong> (extreme durability for exteriors and high-traffic interiors),{" "}
+          <strong>SuperPaint</strong> (solid mid-range), and <strong>Cashmere</strong> (smooth,
+          buttery application). Sherwin-Williams paint is sold through their own stores and Lowe&apos;s
+          (HGTV Home line). Price range: $55–$80+ per gallon depending on the line. Pro tip: sign up
+          for their PaintPerks program to get notified of sales events.
         </p>
       </div>
     ),
@@ -28,15 +43,20 @@ const content: Record<string, BrandContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Popular Sherwin-Williams Colors</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Best sellers include Agreeable Gray, Pure White, Alabaster, Repose Gray, and Naval. For
-          kitchen-specific picks, see our{" "}
+          Explore Sherwin-Williams&apos; best-selling{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>,{" "}
+          <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, and{" "}
+          <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutrals</Link>.
+          For kitchen-specific picks, see our{" "}
           <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">
             kitchen colors guide
           </Link>. Looking for a specific Benjamin Moore shade in SW? Our cross-brand matching shows
           the closest{" "}
           <Link href="/blog/best-sherwin-williams-alternatives-to-benjamin-moore" className="text-brand-blue hover:underline">
             SW alternatives to BM&apos;s top sellers
-          </Link>. Click any color below to see matches from all 14 brands.
+          </Link>. Preview any color with our{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
+          or click any color below to see matches from all 14 brands.
         </p>
       </div>
     ),
@@ -47,15 +67,31 @@ const content: Record<string, BrandContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Benjamin Moore is the premium paint brand preferred by interior designers and professional
-          painters. Their Gennex color system produces exceptionally accurate, consistent color, and
-          their 3,500+ color palette is the largest among major brands. Benjamin Moore is sold
-          exclusively through independent paint stores and hardware stores — not big-box retailers.
+          painters. Founded in 1883 in Brooklyn, New York, Benjamin Moore has built a reputation for
+          rich, true-to-swatch color over more than 140 years. Their proprietary Gennex color system
+          produces exceptionally accurate, consistent color with every can, and their 3,500+ color
+          palette is the largest among major paint brands. Benjamin Moore is sold exclusively through
+          independent paint stores and hardware stores — you won&apos;t find it at Home Depot or
+          Lowe&apos;s.
+        </p>
+        <p>
+          The most popular Benjamin Moore colors consistently include{" "}
+          <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove OC-17</Link>,{" "}
+          <Link href="/colors/benjamin-moore/edgecomb-gray-hc-173" className="text-brand-blue hover:underline">Edgecomb Gray HC-173</Link>,{" "}
+          <Link href="/colors/benjamin-moore/revere-pewter-hc-172" className="text-brand-blue hover:underline">Revere Pewter HC-172</Link>,{" "}
+          <Link href="/colors/benjamin-moore/chantilly-lace-oc-65" className="text-brand-blue hover:underline">Chantilly Lace OC-65</Link>,{" "}
+          <Link href="/colors/benjamin-moore/hale-navy-hc-154" className="text-brand-blue hover:underline">Hale Navy HC-154</Link>, and{" "}
+          <Link href="/colors/benjamin-moore/simply-white-oc-117" className="text-brand-blue hover:underline">Simply White OC-117</Link>.
+          These colors have become staples in both residential and commercial design projects.
         </p>
         <p>
           Top product lines include <strong>Aura</strong> (the premium flagship — true one-coat
-          coverage), <strong>Regal Select</strong> (excellent all-around performance), and{" "}
+          coverage with Color Lock technology), <strong>Regal Select</strong> (excellent all-around
+          performance for any room), <strong>Ben</strong> (budget-friendly entry point), and{" "}
           <strong>Natura</strong> (zero-VOC for nurseries and bedrooms). Price range: $60–$85+ per
-          gallon. The higher price buys you richer color depth and superior coverage.
+          gallon. The higher price buys you richer color depth, superior coverage, and exceptional
+          durability. To find a dealer, visit your local independent paint store or use Benjamin
+          Moore&apos;s store locator on their website.
         </p>
       </div>
     ),
@@ -63,15 +99,21 @@ const content: Record<string, BrandContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Popular Benjamin Moore Colors</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Designer favorites include White Dove, Edgecomb Gray, Revere Pewter, Chantilly Lace, Hale
-          Navy, and Simply White. See our{" "}
+          Benjamin Moore&apos;s most loved colors span every style. For warm neutrals, explore their{" "}
+          <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> and{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link>.
+          See our{" "}
           <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">
             white paint guide
           </Link>{" "}
           for BM&apos;s best whites compared side by side. For a full brand showdown, read{" "}
           <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">
             Behr vs SW vs BM
-          </Link>. Click any color below to see Delta E matches from all 14 brands.
+          </Link>. Use our{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>{" "}
+          to preview any color in your space, or try the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see
+          Delta E matches from all 14 brands.
         </p>
       </div>
     ),
@@ -81,16 +123,30 @@ const content: Record<string, BrandContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Behr is the most accessible major paint brand, sold exclusively at Home Depot with a palette
-          of 3,000+ colors. Consumer Reports has consistently ranked Behr Marquee at or near the top
-          in blind coverage and durability tests. For DIY painters, Behr&apos;s thick consistency and
-          one-coat formulas are especially forgiving.
+          Behr is the most accessible major paint brand in the United States, sold exclusively at
+          Home Depot with a palette of 3,000+ colors. As the go-to paint for DIY homeowners, Behr
+          has earned top marks from Consumer Reports, which has consistently ranked Behr Marquee at
+          or near the top in blind coverage and durability tests. Behr&apos;s thick consistency and
+          one-coat formulas are especially forgiving for first-time painters.
         </p>
         <p>
-          Top product lines include <strong>Dynasty</strong> (premium, one-coat, scuff-resistant),{" "}
-          <strong>Marquee</strong> (excellent coverage, stain-blocking), and{" "}
-          <strong>Premium Plus</strong> (solid budget option). Price range: $35–$55 per gallon — the
-          most affordable of the big three brands.
+          The most popular Behr paint colors include{" "}
+          <Link href="/colors/behr/silver-drop-790c-2" className="text-brand-blue hover:underline">Silver Drop 790C-2</Link>,{" "}
+          <Link href="/colors/behr/ultra-pure-white-1850" className="text-brand-blue hover:underline">Ultra Pure White 1850</Link>,{" "}
+          <Link href="/colors/behr/cameo-white-w-d-200" className="text-brand-blue hover:underline">Cameo White W-D-200</Link>,{" "}
+          <Link href="/colors/behr/dolphin-fin-790c-3" className="text-brand-blue hover:underline">Dolphin Fin 790C-3</Link>, and{" "}
+          <Link href="/colors/behr/whisper-white-w-d-300" className="text-brand-blue hover:underline">Whisper White W-D-300</Link>.
+          These top sellers are overwhelmingly neutrals — reflecting the trend toward warm grays,
+          soft whites, and greiges that dominate modern interior design.
+        </p>
+        <p>
+          Top product lines include <strong>Dynasty</strong> (premium, one-coat, scuff-resistant — ideal
+          for high-traffic areas), <strong>Marquee</strong> (excellent coverage with stain-blocking
+          technology), <strong>Ultra</strong> (solid mid-range performer), and{" "}
+          <strong>Premium Plus</strong> (the budget-friendly option that still delivers). Price range:
+          $35–$55 per gallon — making Behr the most affordable of the big three brands. All Behr paints
+          are available in-store at Home Depot or online at homedepot.com with free delivery on qualifying
+          orders.
         </p>
       </div>
     ),
@@ -98,13 +154,18 @@ const content: Record<string, BrandContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Popular Behr Colors</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Best sellers include Silver Drop, Ultra Pure White, Cameo White, Dolphin Fin, and Whisper
-          White. For a full
-          comparison of the big three brands, read our{" "}
+          Explore Behr&apos;s most loved color families:{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>,{" "}
+          <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, and{" "}
+          <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link> are
+          the top sellers. For a full comparison of the big three brands, read our{" "}
           <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">
             Behr vs SW vs BM guide
-          </Link>. Click any color below to find the closest match from Sherwin-Williams, Benjamin
-          Moore, and 11 other brands.
+          </Link>. Preview any Behr color in your room with our{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
+          or use the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to find the
+          closest match from Sherwin-Williams, Benjamin Moore, and 11 other brands.
         </p>
       </div>
     ),

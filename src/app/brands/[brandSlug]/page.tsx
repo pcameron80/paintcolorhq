@@ -24,14 +24,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) return { title: "Brand Not Found" };
 
+  const count = brand.color_count.toLocaleString();
   const url = `https://www.paintcolorhq.com/brands/${brandSlug}`;
+  const title = `All ${count} ${brand.name} Paint Colors | Paint Color HQ`;
+  const description = `Browse all ${count} ${brand.name} paint colors with cross-brand matching, undertone filters, and LRV values. Find your perfect color.`;
   return {
-    title: `${brand.name} Paint Colors - All ${brand.color_count.toLocaleString()} Colors with Hex Codes & Matches`,
-    description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors. See hex codes, RGB values, undertones, LRV, and find matching colors from Sherwin-Williams, Benjamin Moore, Behr & more.`,
+    title,
+    description,
     alternates: { canonical: url },
     openGraph: {
-      title: `${brand.name} Paint Colors`,
-      description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with hex codes, RGB values, and cross-brand matches.`,
+      title,
+      description,
       url,
       images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
     },
@@ -80,10 +83,10 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         </nav>
 
         <h1 className="text-3xl font-bold text-gray-900">
-          {brand.name} Paint Colors
+          All {brand.color_count.toLocaleString()} {brand.name} Paint Colors
         </h1>
         <p className="mt-1 text-gray-600">
-          {brand.color_count.toLocaleString()} colors
+          Browse every {brand.name} color with undertone tags, LRV values, and cross-brand matches
         </p>
 
         {getBrandContent(brand.slug)?.intro}
@@ -268,7 +271,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
               "@context": "https://schema.org",
               "@type": "CollectionPage",
               name: `${brand.name} Paint Colors`,
-              description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with cross-brand matching, undertone tags, and LRV values.`,
+              description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with cross-brand matching, undertone filters, and LRV values. Find your perfect color.`,
               url: `https://www.paintcolorhq.com/brands/${brandSlug}`,
               numberOfItems: brand.color_count,
             }),

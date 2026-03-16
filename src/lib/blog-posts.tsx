@@ -525,61 +525,137 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 7 ──────────────── */
   {
     slug: "how-to-find-perfect-color-match-across-brands",
-    title: "How to Find Your Perfect Color Match Across Brands",
+    title: "How to Match Paint Colors Across Brands",
     date: "2025-10-14",
     author: "Paint Color HQ Staff",
     excerpt:
-      "A step-by-step guide to matching paint colors across brands using Delta E 2000 color science — no more guessing at paint store equivalents.",
+      "The definitive guide to cross-brand paint color matching. Learn how CIEDE2000 color science, Delta E scores, and a 25,000+ color database make finding exact equivalents easy.",
     coverColor: "#6B8F71",
     coverImage: "/blog/how-to-find-perfect-color-match-across-brands.webp",
     tags: ["How-To", "Cross-Brand Matching", "Color Science"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          You found the perfect color in a magazine, on Pinterest, or at a friend&apos;s house — but it&apos;s from a brand your painter doesn&apos;t carry. Or maybe you&apos;re getting quotes from multiple painters who each stock different brands. Here&apos;s how to find an accurate match across any paint brand.
+          You found the perfect paint color in a magazine, on Pinterest, or at a friend&apos;s house — but it&apos;s from a brand your local store doesn&apos;t carry. Maybe your interior designer specified <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> but the best painter in your area stocks <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>. Or you love a <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> shade but can&apos;t justify the price. Whatever the reason, you need an accurate equivalent from a different brand — and guessing isn&apos;t good enough.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Paint Color HQ was built to solve exactly this problem. Our database of over 25,000 colors from 14 major paint brands uses CIEDE2000 color science to calculate precise perceptual matches between any two colors. This guide walks you through the entire process — from understanding the science behind color matching to using our tools to find your perfect equivalent.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Paint Store Matching Falls Short</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why You Need Cross-Brand Paint Matching</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Paint stores can scan a chip and mix a custom color, but the result is only as good as the scan. Spectrophotometers in stores vary in quality and calibration, and even a good scan can produce a noticeable mismatch. A better approach: find the manufacturer&apos;s closest existing color, which was specifically formulated for their paint base.
+          There are several common scenarios where cross-brand matching becomes essential. A designer or architect specifies a color from one brand, but your contractor prefers to work with another. You&apos;re moving to a new area where your favorite brand isn&apos;t available. A premium brand color is outside your budget, and you want to find a similar shade from a more affordable line like <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> or <Link href="/brands/valspar" className="text-brand-blue hover:underline">Valspar</Link>. Or you&apos;re matching existing paint in your home but the original color has been discontinued.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          In all of these cases, you need more than an eyeball guess. You need science-backed color matching — and that&apos;s where Delta E comes in.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Understanding Delta E 2000</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Paint Store Color Matching Falls Short</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Delta E (ΔE) measures the perceptual difference between two colors. The 2000 revision of the formula — which we use on Paint Color HQ — accounts for the fact that human eyes are more sensitive to some color differences than others.
+          Paint stores can scan a chip and mix a custom color, but the result is only as good as the scan. In-store spectrophotometers vary widely in quality and calibration, and even a good scan can produce a noticeable mismatch. Custom-mixed colors also have a hidden risk: if you need a touch-up in two years, getting the same custom mix again is nearly impossible. The batch-to-batch variation in custom colors is much higher than in standard catalog colors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>ΔE {"<"} 1.0:</strong> Imperceptible to most people.<br />
-          <strong>ΔE 1.0–2.0:</strong> Perceptible through close observation but very close.<br />
-          <strong>ΔE 2.0–3.5:</strong> Perceptible at a glance — most people would say these are different colors.<br />
-          <strong>ΔE {">"} 5.0:</strong> Clearly different colors.
+          A better approach is to find the manufacturer&apos;s closest existing catalog color, which was specifically formulated and tested for their paint base. That&apos;s what Paint Color HQ helps you do — find the best standard color match, not a custom approximation.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step-by-Step: Finding Your Match</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Understanding Delta E and CIEDE2000 Color Science</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Step 1: Identify the original color.</strong> Find the exact name, number, and brand. If you only have a photo, our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> lets you search by hex code.
+          Delta E (ΔE) measures the perceptual difference between two colors. The CIEDE2000 revision of the formula — which Paint Color HQ uses for every match calculation — is the gold standard in color science. Unlike simpler formulas that just compare RGB values, CIEDE2000 accounts for the fact that human eyes are more sensitive to some color differences than others. For example, we&apos;re more sensitive to differences in neutral tones (grays, beiges) than in saturated colors, and CIEDE2000 weights its calculations accordingly.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Step 2: Look up the color on Paint Color HQ.</strong> Search for it by name or browse the <Link href="/brands" className="text-brand-blue hover:underline">brand page</Link>. Every color page automatically shows the closest matches from all 14 brands in our database.
+          Here&apos;s what Delta E scores mean in practice:
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Step 3: Check the Delta E score.</strong> We show the ΔE 2000 value for every match. Aim for under 2.0 for a nearly invisible difference. Under 3.0 is acceptable for most residential projects.
+          <strong>ΔE {"<"} 1.0 — Virtually identical.</strong> Imperceptible to most people, even side by side. This is a near-perfect match.<br />
+          <strong>ΔE 1.0–2.0 — Very close.</strong> Only perceptible through close, deliberate observation. Most homeowners would consider this an excellent match.<br />
+          <strong>ΔE 2.0–3.0 — Close but noticeable.</strong> Perceptible at a glance. Acceptable for rooms that won&apos;t be seen side by side with the original.<br />
+          <strong>ΔE 3.0–5.0 — Noticeably different.</strong> Most people would say these are different colors. Proceed with caution.<br />
+          <strong>ΔE {">"} 5.0 — Clearly different colors.</strong> Not recommended as a match.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Step 4: Always sample.</strong> Even with a low Delta E, always paint a physical sample. Digital screens can&apos;t perfectly represent paint colors, and your specific lighting conditions matter enormously. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for more on why lighting matters.
+          Our database shows that the vast majority of popular colors from major brands have at least one cross-brand match within ΔE 2.0 — meaning you can almost always find an excellent equivalent. Browse our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color families</Link> to see how closely the top neutrals from different brands align.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cross-Brand Matching in Action</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step-by-Step: How to Match Paint Colors on Paint Color HQ</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Let&apos;s say you love <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> but your painter stocks Sherwin-Williams. Head to the Edgecomb Gray page and you&apos;ll see the closest SW matches ranked by Delta E. For this popular color, <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> is typically the top match.
+          <strong>Step 1: Identify your original color.</strong> Find the exact name, color code, and brand. Check the lid of the paint can, the receipt, or the designer&apos;s specification sheet. If you only have a photo or a physical sample, use our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier tool</Link> — upload an image and we&apos;ll identify the closest paint color in our database.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          You can also use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to put any two colors side by side and see the exact ΔE score, RGB values, and visual difference.
+          <strong>Step 2: Look up the color on Paint Color HQ.</strong> Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find it by name, color code, or hex value. You can also browse by brand — for example, the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams catalog</Link> or <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore catalog</Link>. Every color page automatically displays the closest matches from all 14 brands in our 25,000+ color database, ranked by Delta E score.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Step 3: Review the Delta E scores.</strong> We display the CIEDE2000 ΔE value for every suggested match. Look for matches under 2.0 for a nearly invisible difference. Under 3.0 is acceptable for most residential projects where the original and the match won&apos;t be seen in the same room.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Step 4: Compare side by side.</strong> Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to place your original color next to its closest match. You&apos;ll see the exact ΔE score, RGB values, undertone analysis, and a large visual comparison swatch — far more useful than squinting at tiny paint chips.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Step 5: Visualize it in your room.</strong> Before committing, preview the match in context with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. Upload a photo of your space and see how the matched color actually looks on your walls, accounting for your room&apos;s specific lighting and furnishings.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Step 6: Always sample.</strong> Even with a low Delta E score, always paint a physical sample on your wall. Digital screens cannot perfectly represent paint colors, and factors like sheen, texture, and your room&apos;s lighting conditions affect the final result. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link> for a deeper explanation of why colors shift in different lighting.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Real Examples: Popular Cross-Brand Matches</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Let&apos;s walk through some of the most common cross-brand matching scenarios using real colors from our database.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Finding the Behr equivalent of Agreeable Gray.</strong>{" "}
+          <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> is one of the most popular paint colors in America. If your painter stocks Behr, look for <Swatch hex="#D4CCBB" name="Wheat Bread" brand="Behr" href="/colors/behr/wheat-bread-n300-3" /> — it&apos;s a warm greige with very similar undertones and a low Delta E score. Both share that warm, versatile quality that makes them work in nearly any room.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Matching Edgecomb Gray across brands.</strong>{" "}
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> is a designer favorite. The closest Sherwin-Williams match is often <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" />, which shares its warm greige character. Head to the Edgecomb Gray page to see all cross-brand matches ranked by ΔE.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Budget-friendly alternative to Farrow &amp; Ball.</strong> Love <Swatch hex="#D5D0C6" name="Cornforth White" brand="Farrow & Ball" href="/colors/farrow-ball/cornforth-white-228" /> but not the price tag? Check its color page for matches from more accessible brands. You may find options from Sherwin-Williams or Behr that fall within ΔE 2.0, giving you a nearly identical look at a fraction of the cost.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Matching a classic white.</strong>{" "}
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is the most popular warm white in the country. The Sherwin-Williams equivalent is often <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" />, though the undertones are slightly different — White Dove leans a touch more yellow while Pure White is a bit creamier. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see the exact difference. For more on choosing whites, read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Navy blues across brands.</strong>{" "}
+          <Swatch hex="#2E3B4E" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> is a classic navy that designers love for accent walls and cabinetry. If you need a Sherwin-Williams alternative, search for Hale Navy on our site and you&apos;ll find the closest SW navy ranked by Delta E. Explore more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When a Perfect Match Doesn&apos;t Exist</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Sometimes the closest match from another brand has a ΔE above 3.0. In those cases, you have two options: ask the paint store to custom-match using the original brand&apos;s formula, or explore adjacent colors that might work even better for your space. Often, the &ldquo;imperfect&rdquo; match ends up being the better choice once you see it in context. Our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> can help if you&apos;re starting from a photo — snap a picture of the color you love and we&apos;ll find the closest paint match.
+          Sometimes the closest match from another brand has a ΔE above 3.0. This is more common with highly saturated or unusual colors than with popular neutrals. When this happens, you have a few options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          First, ask the paint store to custom-match using the original brand&apos;s color chip. This gives you the closest possible match in your preferred brand&apos;s paint base. Second, explore adjacent colors on Paint Color HQ — sometimes a slightly different shade actually works even better for your space. Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to see how related colors work together in a full room scheme. Third, consider whether the original color is truly irreplaceable, or if the &ldquo;imperfect&rdquo; match might actually be the better choice once you see it on your walls.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Common Mistakes When Matching Paint Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Matching by name alone.</strong> Color names are marketing, not science. &ldquo;Agreeable Gray&rdquo; and &ldquo;Repose Gray&rdquo; are both Sherwin-Williams grays, but they look noticeably different. Always match by Delta E, not by name. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find exact matches based on the actual color values.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Ignoring undertones.</strong> Two colors can look similar on a screen but have completely different undertones — one might lean pink while the other leans green. This becomes obvious on a large wall. Our color pages show undertone analysis for every color, and our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> explains why this matters.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Skipping the physical sample.</strong> No matter how low the Delta E score, always buy a sample pot and paint a 12-by-12-inch swatch on your actual wall. View it at different times of day — morning light, afternoon light, and artificial light at night. Colors shift dramatically based on lighting conditions. Read our <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">guide to testing paint samples</Link> for the full process.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Forgetting about sheen.</strong> The same color in flat, eggshell, satin, and semi-gloss finishes will look different. Higher sheens reflect more light and tend to make colors look slightly lighter and more saturated. When comparing a match from another brand, make sure you&apos;re comparing the same sheen level.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Matching from a photo.</strong> Phone cameras and monitors distort color. If you&apos;re starting from a photo, use our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> as a starting point, but treat the result as a suggestion, not gospel. Confirm with a physical chip whenever possible.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Tips for Verifying Your Match with Physical Samples</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Once you&apos;ve identified a cross-brand match on Paint Color HQ, here&apos;s how to verify it in the real world. Buy sample pots of both your original color and the proposed match. Paint two large swatches (at least 12 by 12 inches) on the same wall, side by side. View them at four different times: early morning, midday with direct sun, late afternoon, and nighttime under your artificial lights. Pay attention to how the undertones shift — a color that looks identical at noon might diverge at sunset.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you&apos;re matching across rooms (not placing the colors side by side), you have more flexibility. A ΔE of 2.0–3.0 is usually acceptable when the colors will be in separate spaces. Use the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview the matched color in context before buying samples.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Start Matching Colors Now</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Cross-brand paint color matching doesn&apos;t have to be guesswork. With Paint Color HQ&apos;s 25,000+ color database, CIEDE2000 color science, and tools built specifically for this purpose, you can find accurate equivalents in seconds. Start by searching for your color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link>, or use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to evaluate any two colors side by side. If you&apos;re starting from a photo, try the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> — and use the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out how much paint you&apos;ll need once you&apos;ve found your match.
         </p>
       </>
     ),
