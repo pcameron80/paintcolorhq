@@ -249,6 +249,7 @@ const blogPosts: BlogPost[] = [
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Most Common Gray Undertones</h2>
+        <img src="/blog/understanding-paint-color-undertones-gray-comparison.webp" alt="Side-by-side comparison of five gray paint colors showing blue, green, purple, brown, and neutral undertones from Benjamin Moore and Sherwin-Williams" width={1200} height={450} className="mt-6 w-full rounded-lg" />
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Blue undertone:</strong> <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> — looks cool and airy in north-facing light, but can feel cold in rooms without much natural light.
         </p>
@@ -304,6 +305,7 @@ const blogPosts: BlogPost[] = [
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Undertones in White Paint</h2>
+        <img src="/blog/understanding-paint-color-undertones-warm-cool-whites.webp" alt="Comparison of warm white paint colors (White Dove, Simply White) versus cool white paint colors (Decorator's White, Chantilly Lace) from Benjamin Moore" width={1200} height={400} className="mt-6 w-full rounded-lg" />
         <p className="mt-4 text-gray-700 leading-relaxed">
           White is the single most popular paint color in the world — and ironically, it&apos;s where undertones cause the most grief. There is no such thing as a &ldquo;plain white&rdquo; paint. Every white on the market carries an undertone, and on a large wall that undertone becomes the dominant visual characteristic. What looked like a clean white in the store can read as pink, yellow, green, or blue once it covers 200 square feet of drywall. Our analysis of over 800 white paint colors using CIEDE2000 color science confirms this: even whites with nearly identical lightness values can differ dramatically in undertone.
         </p>
@@ -606,6 +608,7 @@ const blogPosts: BlogPost[] = [
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Understanding Delta E and CIEDE2000 Color Science</h2>
+        <img src="/blog/understanding-paint-color-undertones-delta-e-guide.webp" alt="Visual guide showing Delta E color difference levels: virtually identical (under 1.0), very close (1-2), close match (2-3), and noticeable difference (3-5)" width={1200} height={350} className="mt-6 w-full rounded-lg" />
         <p className="mt-4 text-gray-700 leading-relaxed">
           Delta E (ΔE) measures the perceptual difference between two colors. The CIEDE2000 revision of the formula — which Paint Color HQ uses for every match calculation — is the gold standard in color science. Unlike simpler formulas that just compare RGB values, CIEDE2000 accounts for the fact that human eyes are more sensitive to some color differences than others. For example, we&apos;re more sensitive to differences in neutral tones (grays, beiges) than in saturated colors, and CIEDE2000 weights its calculations accordingly.
         </p>
