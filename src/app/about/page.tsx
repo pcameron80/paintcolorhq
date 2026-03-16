@@ -4,14 +4,14 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "About Paint Color HQ - How We Match Colors Across Brands",
+  title: "About Paint Color HQ | Our Color Science Methodology",
   description:
-    "Paint Color HQ helps you find, match, and compare paint colors across 14 major brands. Learn how our CIEDE2000 color matching works and why 25,000+ colors are at your fingertips.",
+    "Learn how Paint Color HQ uses CIEDE2000 color science to match 25,000+ colors across 14 brands. Independent, data-driven paint color tools.",
   alternates: { canonical: "https://www.paintcolorhq.com/about" },
   openGraph: {
-    title: "About Paint Color HQ - How We Match Colors Across Brands",
+    title: "About Paint Color HQ | Our Color Science Methodology",
     description:
-      "Paint Color HQ helps you find, match, and compare paint colors across 14 major brands using CIEDE2000 perceptual color science.",
+      "Learn how Paint Color HQ uses CIEDE2000 color science to match 25,000+ colors across 14 brands. Independent, data-driven paint color tools.",
     type: "website",
     url: "https://www.paintcolorhq.com/about",
   },
@@ -21,6 +21,56 @@ export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white">
       <Header />
+
+      {/* Organization JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Paint Color HQ",
+            url: "https://www.paintcolorhq.com",
+            logo: "https://www.paintcolorhq.com/logo.webp",
+            description:
+              "Paint Color HQ is an independent paint color discovery and cross-brand matching platform. We use CIEDE2000 color science to help homeowners and professionals choose paint colors with confidence.",
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "customer support",
+              url: "https://www.paintcolorhq.com/contact",
+            },
+            sameAs: [],
+            knowsAbout: [
+              "Paint color matching",
+              "CIEDE2000 color difference",
+              "Cross-brand paint color comparison",
+              "Color science",
+              "Interior paint selection",
+            ],
+          }),
+        }}
+      />
+
+      {/* AboutPage WebPage JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            name: "About Paint Color HQ",
+            description:
+              "Learn how Paint Color HQ uses CIEDE2000 color science to match 25,000+ paint colors across 14 brands.",
+            url: "https://www.paintcolorhq.com/about",
+            mainEntity: {
+              "@type": "Organization",
+              name: "Paint Color HQ",
+              url: "https://www.paintcolorhq.com",
+            },
+          }),
+        }}
+      />
+
       <main className="flex-1">
         <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
@@ -36,50 +86,309 @@ export default function AboutPage() {
             About Paint Color HQ
           </h1>
 
-          <div className="mt-8 space-y-8 text-gray-700">
+          <div className="mt-8 space-y-10 text-gray-700">
+            {/* Section 1: What is Paint Color HQ? */}
             <section>
-              <h2 className="text-lg font-semibold text-gray-900">
-                What We Do
+              <h2 className="text-xl font-semibold text-gray-900">
+                What is Paint Color HQ?
               </h2>
               <p className="mt-3 leading-relaxed">
-                Paint Color HQ is a free toolkit that helps homeowners,
-                designers, and contractors find the right paint color for any
-                project. We catalog over 25,000 colors from 14 major paint
-                brands and let you search, compare, match, and visualize them
-                all in one place.
+                Paint Color HQ is a paint color discovery and cross-brand
+                matching platform. We catalog{" "}
+                <strong>over 25,000 colors across 14 major paint brands</strong>{" "}
+                and provide free tools that help homeowners, interior designers,
+                and painting professionals choose paint colors with confidence.
               </p>
               <p className="mt-3 leading-relaxed">
-                Whether you need to match a Sherwin-Williams color to Benjamin
-                Moore, preview a shade on your walls before buying, or figure
-                out exactly how many gallons you need, our tools are built to
-                save you time and guesswork.
+                Our mission is straightforward: eliminate the guesswork from
+                choosing paint colors. Instead of buying dozens of sample pots or
+                wondering whether a Sherwin-Williams shade has a Benjamin Moore
+                equivalent, you can find answers instantly with data you can
+                trust.
               </p>
+
+              <div className="mt-5">
+                <h3 className="text-base font-medium text-gray-900">
+                  Free Tools
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                  Every tool on Paint Color HQ is free to use, with no account
+                  required.
+                </p>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  <Link
+                    href="/tools/room-visualizer"
+                    className="group rounded-lg border border-gray-200 p-3 transition hover:border-brand-blue hover:shadow-sm"
+                  >
+                    <span className="font-medium text-gray-900 group-hover:text-brand-blue">
+                      Room Visualizer
+                    </span>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Preview colors on walls, trim, and floors in a realistic
+                      room scene.
+                    </p>
+                  </Link>
+                  <Link
+                    href="/tools/color-identifier"
+                    className="group rounded-lg border border-gray-200 p-3 transition hover:border-brand-blue hover:shadow-sm"
+                  >
+                    <span className="font-medium text-gray-900 group-hover:text-brand-blue">
+                      Color Identifier
+                    </span>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Upload a photo, click any spot, and find matching paint
+                      colors.
+                    </p>
+                  </Link>
+                  <Link
+                    href="/tools/palette-generator"
+                    className="group rounded-lg border border-gray-200 p-3 transition hover:border-brand-blue hover:shadow-sm"
+                  >
+                    <span className="font-medium text-gray-900 group-hover:text-brand-blue">
+                      Palette Generator
+                    </span>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Build coordinated palettes using color harmony rules mapped
+                      to real paints.
+                    </p>
+                  </Link>
+                  <Link
+                    href="/tools/paint-calculator"
+                    className="group rounded-lg border border-gray-200 p-3 transition hover:border-brand-blue hover:shadow-sm"
+                  >
+                    <span className="font-medium text-gray-900 group-hover:text-brand-blue">
+                      Paint Calculator
+                    </span>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Estimate gallons needed based on room dimensions, doors,
+                      and windows.
+                    </p>
+                  </Link>
+                  <Link
+                    href="/compare"
+                    className="group rounded-lg border border-gray-200 p-3 transition hover:border-brand-blue hover:shadow-sm"
+                  >
+                    <span className="font-medium text-gray-900 group-hover:text-brand-blue">
+                      Compare Tool
+                    </span>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Place two or more colors side by side with Delta E scores.
+                    </p>
+                  </Link>
+                  <Link
+                    href="/search"
+                    className="group rounded-lg border border-gray-200 p-3 transition hover:border-brand-blue hover:shadow-sm"
+                  >
+                    <span className="font-medium text-gray-900 group-hover:text-brand-blue">
+                      Color Search
+                    </span>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Search by name, code, hex value, or browse by color family
+                      and brand.
+                    </p>
+                  </Link>
+                </div>
+              </div>
             </section>
 
+            {/* Section 2: Our Color Science Methodology */}
             <section>
-              <h2 className="text-lg font-semibold text-gray-900">
-                How Our Color Matching Works
+              <h2 className="text-xl font-semibold text-gray-900">
+                Our Color Science Methodology
               </h2>
               <p className="mt-3 leading-relaxed">
-                Paint brands don&apos;t publish cross-references to each
-                other&apos;s colors. We solve that problem using{" "}
-                <strong>CIEDE2000</strong>, the industry-standard formula for
-                measuring how different two colors appear to the human eye. For
-                every color in our database, we compute the perceptual distance
-                (called <em>Delta&nbsp;E</em>) to every color from every other
-                brand and surface the closest matches.
+                Color matching on Paint Color HQ is powered by{" "}
+                <strong>CIEDE2000</strong>, the latest international standard for
+                measuring perceptual color difference. Unlike older formulas
+                (CIE76, CIE94), CIEDE2000 accounts for how the human eye
+                actually perceives differences in lightness, chroma, and hue,
+                making it the most accurate method available for comparing paint
+                colors digitally.
               </p>
               <p className="mt-3 leading-relaxed">
-                A Delta&nbsp;E below 1.0 means the difference is imperceptible
-                to most people. Between 1.0 and 3.0, trained eyes might notice.
-                Above 3.0, the difference is clearly visible. Every match we
-                show includes its Delta&nbsp;E score so you can judge for
-                yourself how close it really is.
+                For every color in our database, we compute the perceptual
+                distance — called <strong>Delta E</strong> — to every color from
+                every other brand. This score tells you exactly how close two
+                colors are to the human eye:
               </p>
+
+              <div className="mt-4 overflow-hidden rounded-lg border border-gray-200">
+                <table className="w-full text-sm">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-4 py-2.5 text-left font-semibold text-gray-900">
+                        Delta E Range
+                      </th>
+                      <th className="px-4 py-2.5 text-left font-semibold text-gray-900">
+                        What It Means
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    <tr>
+                      <td className="px-4 py-2.5 font-medium text-gray-900">
+                        &lt; 1.0
+                      </td>
+                      <td className="px-4 py-2.5 text-gray-600">
+                        Virtually identical — the difference is imperceptible to
+                        most people
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2.5 font-medium text-gray-900">
+                        1.0 &ndash; 2.0
+                      </td>
+                      <td className="px-4 py-2.5 text-gray-600">
+                        Very close — most people cannot tell them apart
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2.5 font-medium text-gray-900">
+                        2.0 &ndash; 3.0
+                      </td>
+                      <td className="px-4 py-2.5 text-gray-600">
+                        Close — a slight difference may be visible when placed
+                        side by side
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-2.5 font-medium text-gray-900">
+                        3.0 &ndash; 5.0
+                      </td>
+                      <td className="px-4 py-2.5 text-gray-600">
+                        Noticeable difference — clearly distinguishable to most
+                        observers
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 className="mt-6 text-base font-medium text-gray-900">
+                Color Data We Provide
+              </h3>
+              <p className="mt-2 leading-relaxed">
+                Every color page on Paint Color HQ includes:
+              </p>
+              <ul className="mt-2 space-y-1.5 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-blue" />
+                  <span>
+                    <strong>Hex and RGB values</strong> — the exact digital color
+                    representation
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-blue" />
+                  <span>
+                    <strong>LRV (Light Reflectance Value)</strong> — how much
+                    light a color reflects, useful for choosing colors for
+                    different room sizes and lighting conditions
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-blue" />
+                  <span>
+                    <strong>Undertone classification</strong> — whether a color
+                    reads warm, cool, or neutral, which affects how it pairs with
+                    other elements in your space
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-blue" />
+                  <span>
+                    <strong>Cross-brand matches</strong> — the closest equivalent
+                    colors from every other brand, ranked by Delta E accuracy
+                  </span>
+                </li>
+              </ul>
             </section>
 
+            {/* Section 3: How We're Different */}
             <section>
-              <h2 className="text-lg font-semibold text-gray-900">
+              <h2 className="text-xl font-semibold text-gray-900">
+                How We&apos;re Different
+              </h2>
+              <p className="mt-3 leading-relaxed">
+                Paint Color HQ is not a paint store. We don&apos;t sell paint,
+                and we&apos;re not affiliated with any paint manufacturer.
+                We&apos;re an{" "}
+                <strong>independent reference tool</strong> built to help you
+                make informed decisions about paint colors before you visit the
+                store.
+              </p>
+
+              <div className="mt-5 space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-sm font-bold text-brand-blue">
+                    1
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-gray-900">
+                      Cross-Brand Matching
+                    </h3>
+                    <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                      Paint brands don&apos;t publish cross-references to each
+                      other&apos;s colors. We compute matches across all 14
+                      brands using CIEDE2000, so you can find an equivalent color
+                      no matter which brand your local store carries.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-sm font-bold text-brand-blue">
+                    2
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-gray-900">
+                      Data-Driven, Not Opinion-Based
+                    </h3>
+                    <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                      Every color recommendation on this site is backed by color
+                      science. When we say two colors are close, we show you the
+                      Delta E score to prove it. No subjective &ldquo;these look
+                      similar&rdquo; guesses.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-sm font-bold text-brand-blue">
+                    3
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-gray-900">
+                      Completely Free
+                    </h3>
+                    <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                      All tools, color data, and matching results are free to use
+                      with no account or sign-up required. We believe paint color
+                      information should be accessible to everyone.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-sm font-bold text-brand-blue">
+                    4
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-gray-900">
+                      Accuracy Transparency
+                    </h3>
+                    <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                      All color data is based on digital hex and RGB values
+                      published by each manufacturer. We update our database
+                      regularly and always recommend verifying with physical
+                      paint samples, because real paint looks different depending
+                      on finish, lighting, coats, and primer.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 4: Brands We Cover */}
+            <section>
+              <h2 className="text-xl font-semibold text-gray-900">
                 Brands We Cover
               </h2>
               <p className="mt-3 leading-relaxed">
@@ -106,7 +415,7 @@ export default function AboutPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 leading-relaxed">
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">
                 We add new brands and update existing color data regularly. If
                 you notice a missing color or incorrect data, please{" "}
                 <Link
@@ -119,121 +428,24 @@ export default function AboutPage() {
               </p>
             </section>
 
+            {/* Section 5: Contact */}
             <section>
-              <h2 className="text-lg font-semibold text-gray-900">
-                Our Tools
-              </h2>
-              <div className="mt-3 space-y-4">
-                <div>
-                  <h3 className="font-medium text-gray-900">
-                    <Link
-                      href="/search"
-                      className="text-brand-blue hover:underline"
-                    >
-                      Cross-Brand Color Matching
-                    </Link>
-                  </h3>
-                  <p className="mt-1 leading-relaxed">
-                    Search for any color and instantly see the closest matches
-                    from every other brand, ranked by Delta&nbsp;E accuracy.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-gray-900">
-                    <Link
-                      href="/tools/room-visualizer"
-                      className="text-brand-blue hover:underline"
-                    >
-                      Room Color Visualizer
-                    </Link>
-                  </h3>
-                  <p className="mt-1 leading-relaxed">
-                    Preview paint colors on walls, accent walls, trim, and
-                    floors in a realistic room scene before buying a single
-                    sample pot.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-gray-900">
-                    <Link
-                      href="/tools/color-identifier"
-                      className="text-brand-blue hover:underline"
-                    >
-                      Photo Color Identifier
-                    </Link>
-                  </h3>
-                  <p className="mt-1 leading-relaxed">
-                    Upload any photo, click a spot, and find the closest
-                    matching paint colors from every brand in our database.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-gray-900">
-                    <Link
-                      href="/tools/palette-generator"
-                      className="text-brand-blue hover:underline"
-                    >
-                      Palette Generator
-                    </Link>
-                  </h3>
-                  <p className="mt-1 leading-relaxed">
-                    Pick a starting color and generate coordinated palettes
-                    using complementary, analogous, triadic, and split
-                    complementary color harmonies — mapped to real paint colors.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-gray-900">
-                    <Link
-                      href="/tools/paint-calculator"
-                      className="text-brand-blue hover:underline"
-                    >
-                      Paint Calculator
-                    </Link>
-                  </h3>
-                  <p className="mt-1 leading-relaxed">
-                    Enter your room dimensions and get an accurate estimate of
-                    how many gallons of paint you need, with adjustments for
-                    doors, windows, and coats.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <section>
-              <h2 className="text-lg font-semibold text-gray-900">
-                Color Data Accuracy
+              <h2 className="text-xl font-semibold text-gray-900">
+                Contact Us
               </h2>
               <p className="mt-3 leading-relaxed">
-                All color data on Paint Color HQ is based on the digital hex and
-                RGB values published by each brand. We source this data directly
-                from manufacturer color libraries and update it regularly.
+                Have a question, found inaccurate data, or want to suggest a
+                feature? We&apos;d like to hear from you.
               </p>
               <p className="mt-3 leading-relaxed">
-                That said, digital color representations are approximations.
-                Real paint looks different depending on the finish (matte,
-                eggshell, satin, semi-gloss), the lighting in your room, the
-                number of coats, and even the color of your primer. We always
-                recommend verifying with physical paint samples before making a
-                final purchase.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-lg font-semibold text-gray-900">
-                Questions or Feedback?
-              </h2>
-              <p className="mt-3 leading-relaxed">
-                We&apos;re always looking to improve. If you have a question,
-                found an issue, or want to suggest a feature, reach out on
-                our{" "}
+                Visit our{" "}
                 <Link
                   href="/contact"
                   className="text-brand-blue underline hover:text-brand-blue-dark"
                 >
                   contact page
-                </Link>
-                .
+                </Link>{" "}
+                for general inquiries, corrections, and feedback.
               </p>
             </section>
           </div>

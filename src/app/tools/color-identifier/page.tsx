@@ -102,18 +102,18 @@ export default function ColorIdentifierPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
+            "@type": "WebApplication",
             name: "Photo Color Identifier",
+            description:
+              "Upload a photo, click any spot, and instantly find the closest matching paint colors from 14 major brands.",
+            url: "https://www.paintcolorhq.com/tools/color-identifier",
             applicationCategory: "DesignApplication",
-            operatingSystem: "Web",
+            operatingSystem: "Any",
             offers: {
               "@type": "Offer",
               price: "0",
               priceCurrency: "USD",
             },
-            description:
-              "Upload a photo and click any spot to find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Free, instant, cross-brand results.",
-            url: "https://www.paintcolorhq.com/tools/color-identifier",
           }),
         }}
       />

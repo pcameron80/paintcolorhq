@@ -291,6 +291,53 @@ const blogPosts: BlogPost[] = [
         <p className="mt-4 text-gray-700 leading-relaxed">
           Both <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> offer extensive gray palettes with varying undertones. If you&apos;re also debating whether to go warm or cool overall, read our guide on <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs. cool paint colors</Link> for a deeper comparison.
         </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm vs. Cool Undertones: The Basics</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Before diving deeper into specific colors, it helps to understand the fundamental division in color theory: warm vs. cool. Every paint color — no matter how neutral it appears — leans toward one side of this spectrum. Warm undertones include yellow, red, and orange pigments. Cool undertones include blue, green, and purple pigments. This isn&apos;t just abstract theory — it directly affects how a room feels when you walk in.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Colors with warm undertones tend to make a space feel cozy, inviting, and smaller. Think of a living room painted in a creamy beige with yellow undertones — it wraps around you. Colors with cool undertones create the opposite effect: they feel crisp, airy, and expansive. A pale gray with blue undertones can make a small bathroom feel more spacious.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The important thing to understand is that warm and cool exist on a continuum, not as a binary switch. A color like <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Agreeable Gray</Link> sits almost dead center — warm enough to avoid feeling cold, cool enough to avoid feeling yellow. Colors closer to the extremes are easier to identify, but the most popular neutrals live in that subtle middle ground where undertones are barely perceptible until they&apos;re on a large wall. For a full breakdown of how warm and cool tones affect every room in your home, read our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs. cool paint colors guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Undertones in White Paint</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          White is the single most popular paint color in the world — and ironically, it&apos;s where undertones cause the most grief. There is no such thing as a &ldquo;plain white&rdquo; paint. Every white on the market carries an undertone, and on a large wall that undertone becomes the dominant visual characteristic. What looked like a clean white in the store can read as pink, yellow, green, or blue once it covers 200 square feet of drywall. Our analysis of over 800 white paint colors using CIEDE2000 color science confirms this: even whites with nearly identical lightness values can differ dramatically in undertone.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Pink undertones</strong> are common in warm whites. Colors like <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>&apos;s Swiss Coffee carry a faint rosy warmth that feels soft and traditional. <strong>Yellow undertones</strong> are the hallmark of creamy whites — think of White Dove, which has a buttery quality that pairs beautifully with wood tones and earth-toned furnishings. <strong>Blue undertones</strong> appear in cool whites and make a space feel modern and clinical. <Swatch hex="#F1EDE4" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a popular choice that sits close to true white with just the faintest warm cast — it works in nearly any room because its undertone is so restrained. On the cooler side, <Swatch hex="#E8E6DF" name="Decorator's White" brand="Benjamin Moore" href="/colors/benjamin-moore/decorators-white-cc-20" /> carries a subtle blue-gray undertone that reads as bright and contemporary.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Green undertones</strong> in whites are the sneakiest — many off-whites that appear neutral under store fluorescents reveal a greenish cast in rooms with north-facing windows. This is why sampling whites on your actual walls is absolutely critical. Browse our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> to compare hundreds of whites side by side, or read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> for curated picks organized by undertone.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Undertones in Beige and Greige Paint</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Beige has been a staple neutral for decades, but it&apos;s far from simple. The undertone of a beige paint determines whether your room feels like a sun-drenched Mediterranean villa or a dated 1990s builder-grade home. The three most common beige undertones are pink/peach, yellow, and green. Pink-undertone beiges feel rosy and pair well with cool-toned furniture. Yellow-undertone beiges feel warm and golden — they&apos;re the classic &ldquo;builder beige&rdquo; that dominated homes for years. Green-undertone beiges are the trickiest; they can look muddy or olive in the wrong light, but in warm south-facing rooms, they feel organic and earthy.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Then there&apos;s greige — the gray-beige hybrid that has dominated interior design for the past decade. Greige colors blend the warmth of beige with the sophistication of gray, but the undertone is what makes or breaks them. A greige with a strong purple undertone can look lavender in cool light. A greige with a green undertone might read as khaki. The most versatile greiges, like <Swatch hex="#D2C8B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" />, succeed because their undertones are so balanced that they shift gracefully with changing light rather than locking into a single unexpected hue.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          When choosing beige or greige, always compare at least three options from the same brand&apos;s strip card. The darker shades on the card will reveal the undertone. You can also use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to filter by family and compare swatches digitally before heading to the store. Explore our <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for a comprehensive look at every beige available across major brands.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Fix It When Undertones Go Wrong</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          You painted the room, stepped back, and the color is wrong. Maybe your gray looks purple under the recessed LEDs, or your white is reading pink next to the oak floors. Before you panic and repaint, there are a few strategies that can save you time and money.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Option 1: Change the lighting.</strong> This is the cheapest fix. Swap your bulb color temperature — if a cool white (5000K) LED is making your warm gray look purple, try a soft white (2700K) bulb instead. Lighting has an enormous effect on perceived undertones, and sometimes a $5 bulb swap fixes what looks like a $500 repainting problem.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Option 2: Add complementary accents.</strong> If your wall color leans too cool, warm it up with throw pillows, curtains, rugs, and artwork in warm tones — terracotta, mustard, wood, and warm metallics like brass. If the color runs too warm, balance it with cool-toned textiles and silver or chrome hardware. The surrounding decor shifts the eye&apos;s perception of the wall color more than most people realize.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Option 3: Repaint with a cousin color.</strong> If lighting and accessories can&apos;t fix it, you likely need a different shade — but not a completely different color. Stay within the same color family and choose a shade with the opposite undertone. If your gray went too blue, move toward a greige with brown undertones. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview the replacement color on your actual walls before buying another gallon. You can also use the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to find colors that share the same family but have different undertone profiles — this makes it easy to find the right &ldquo;cousin&rdquo; shade on the first try.
+        </p>
       </>
     ),
   },

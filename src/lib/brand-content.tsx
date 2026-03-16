@@ -175,25 +175,55 @@ const content: Record<string, BrandContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          PPG (Pittsburgh Paints & Stains) is one of the world&apos;s largest coatings companies,
-          offering a diverse palette through multiple retail channels. PPG paints are available at PPG
-          Paints stores, independent dealers, and Home Depot (under the PPG Diamond and Glidden brands).
-          Their color expertise spans automotive, industrial, and residential markets.
+          PPG is one of the world&apos;s largest paint and coatings manufacturers, with roots going
+          back to 1883 when Pittsburgh Plate Glass Company was founded in Pittsburgh, Pennsylvania.
+          Today PPG operates in more than 70 countries and brings that global coatings expertise to its
+          residential paint lines. PPG paints are available at Home Depot (under the PPG Timeless and
+          PPG Diamond labels), PPG Paints stores, and independent dealers nationwide — giving homeowners
+          and contractors multiple convenient purchasing options.
         </p>
         <p>
-          Top product lines include <strong>PPG Timeless</strong> (premium, one-coat guarantee) and{" "}
-          <strong>PPG Diamond</strong> (durable mid-range).
+          Popular PPG colors include{" "}
+          <Link href="/colors/ppg/delicate-white-1001-1" className="text-brand-blue hover:underline">Delicate White 1001-1</Link>,{" "}
+          <Link href="/colors/ppg/gypsum-1006-1" className="text-brand-blue hover:underline">Gypsum 1006-1</Link>,{" "}
+          <Link href="/colors/ppg/swirling-smoke-1007-2" className="text-brand-blue hover:underline">Swirling Smoke 1007-2</Link>,{" "}
+          <Link href="/colors/ppg/stonehenge-greige-1024-5" className="text-brand-blue hover:underline">Stonehenge Greige 1024-5</Link>, and{" "}
+          <Link href="/colors/ppg/olive-sprig-1125-4" className="text-brand-blue hover:underline">Olive Sprig 1125-4</Link>.
+          These top sellers reflect the brand&apos;s strength in versatile neutrals, warm greiges, and
+          nature-inspired accent colors.
+        </p>
+        <p>
+          Top product lines include <strong>PPG Timeless</strong> (premium interior/exterior with a
+          one-coat color guarantee and paint-and-primer-in-one formula), <strong>PPG Diamond</strong>{" "}
+          (durable mid-range with excellent scuff and stain resistance), and the classic{" "}
+          <strong>Pittsburgh Paints</strong> line sold through PPG Paints stores. PPG also owns the{" "}
+          <strong>Glidden</strong> and <strong>Olympic</strong> brands for budget-friendly options.
+          Price range: $35&ndash;$70 per gallon depending on the line. Preview any PPG color in your
+          room with our{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
+          or use the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to
+          find the closest match from other brands.
         </p>
       </div>
     ),
     details: (
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
-        <h2 className="text-lg font-semibold text-gray-900">Finding PPG Equivalents</h2>
+        <h2 className="text-lg font-semibold text-gray-900">Popular PPG Colors</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Click any PPG color below to see the closest matches from Sherwin-Williams, Benjamin Moore,
-          and all other brands in our database. Use our{" "}
+          Explore PPG&apos;s best-selling{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>,{" "}
+          <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, and{" "}
+          <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link>.
+          PPG&apos;s palette covers over 2,000 colors across every family, from soft neutrals to bold
+          accents. Click any PPG color below to see the closest matches from Sherwin-Williams, Benjamin
+          Moore, and all other brands in our database — ranked by{" "}
+          <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
+            Delta E accuracy
+          </Link>. Use our{" "}
           <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to
-          check the exact Delta E difference between any two colors.
+          check the exact difference between any two colors, or preview shades with the{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
         </p>
       </div>
     ),
@@ -203,27 +233,54 @@ const content: Record<string, BrandContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Valspar is a major paint brand now owned by Sherwin-Williams, sold exclusively at Lowe&apos;s.
-          Their palette offers a wide range of colors at competitive prices, making them a popular
-          choice for budget-conscious DIYers.
+          Valspar is one of the most popular paint brands in America, available exclusively at
+          Lowe&apos;s stores nationwide. Now owned by Sherwin-Williams (acquired in 2017), Valspar
+          benefits from the parent company&apos;s color science while maintaining its own distinct
+          palette of 2,000+ colors and competitive pricing. Valspar is a go-to choice for
+          budget-conscious DIYers who want broad color selection without the premium price tag — and
+          the convenience of picking up paint at any Lowe&apos;s location.
         </p>
         <p>
-          Top product lines include <strong>Valspar Reserve</strong> (premium) and{" "}
-          <strong>Valspar Signature</strong> (one-coat, ScuffShield technology). Price range: $30–$50
-          per gallon at Lowe&apos;s.
+          Popular Valspar colors include{" "}
+          <Link href="/colors/valspar/warm-eucalyptus-8004-28f" className="text-brand-blue hover:underline">Warm Eucalyptus 8004-28F</Link>{" "}
+          (their 2026 Color of the Year),{" "}
+          <Link href="/colors/valspar/safari-beige-6006-2b" className="text-brand-blue hover:underline">Safari Beige 6006-2B</Link>,{" "}
+          <Link href="/colors/valspar/notre-dame-5006-1b" className="text-brand-blue hover:underline">Notre Dame 5006-1B</Link>,{" "}
+          <Link href="/colors/valspar/gray-silt-6002-1c" className="text-brand-blue hover:underline">Gray Silt 6002-1C</Link>, and{" "}
+          <Link href="/colors/valspar/gravity-4005-1b" className="text-brand-blue hover:underline">Gravity 4005-1B</Link>.
+          These top sellers lean heavily toward warm neutrals, earthy tones, and calming greens —
+          reflecting current design trends.
+        </p>
+        <p>
+          Top product lines include <strong>Valspar Signature</strong> (premium one-coat coverage with
+          ScuffShield technology for high-traffic areas), <strong>Valspar Reserve</strong> (the
+          ultra-premium line with stain- and scuff-resistant finishes), and <strong>Valspar Ultra</strong>{" "}
+          (a solid mid-range paint-and-primer-in-one). All Valspar paints are available in a full range
+          of sheens from flat to high-gloss. Price range: $30&ndash;$55 per gallon — making Valspar one
+          of the most affordable quality options on the market. Preview any Valspar color with our{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
+          or use the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to
+          find equivalent shades from other brands.
         </p>
       </div>
     ),
     details: (
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
-        <h2 className="text-lg font-semibold text-gray-900">Cross-Brand Matching</h2>
+        <h2 className="text-lg font-semibold text-gray-900">Popular Valspar Colors</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Found a color from another brand you love? Click any Valspar color below to see the closest
-          equivalents from all 14 brands, ranked by{" "}
+          Explore Valspar&apos;s trending{" "}
+          <Link href="/colors/family/green" className="text-brand-blue hover:underline">greens</Link>,{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>, and{" "}
+          <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link> —
+          their most popular color families. Found a color from another brand you love? Click any Valspar
+          color below to see the closest equivalents from all 14 brands, ranked by{" "}
           <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
             Delta E accuracy
           </Link>. You can also search by hex code in our{" "}
-          <Link href="/search" className="text-brand-blue hover:underline">color search</Link>.
+          <Link href="/search" className="text-brand-blue hover:underline">color search</Link>, or
+          preview colors in your space with the{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
         </p>
       </div>
     ),
@@ -233,15 +290,33 @@ const content: Record<string, BrandContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Dunn-Edwards is a premium regional brand based in California, known for high-quality
-          formulations engineered for Western climates — including intense sun, dry heat, and coastal
-          salt air. Their paints are favored by West Coast architects and designers for exceptional
-          durability and color accuracy.
+          Dunn-Edwards is a premium West Coast paint brand founded in 1925 in Los Angeles, California.
+          With over 150 company-owned stores across California, Arizona, Nevada, New Mexico, and Texas,
+          Dunn-Edwards has built a loyal following among contractors, architects, and designers who
+          demand exceptional quality. The brand is particularly known for its zero-VOC and low-VOC
+          formulas — their <strong>SUPREMA</strong> line earned GreenWise certification — making them an
+          excellent choice for environmentally conscious homeowners and projects where air quality matters.
         </p>
         <p>
-          Top product lines include <strong>Suprema</strong> (premium interior) and{" "}
-          <strong>Evershield</strong> (exterior). Dunn-Edwards is sold through their own stores
-          primarily in California, Arizona, Nevada, New Mexico, and Texas.
+          Popular Dunn-Edwards colors include{" "}
+          <Link href="/colors/dunn-edwards/swiss-coffee-dew341" className="text-brand-blue hover:underline">Swiss Coffee DEW341</Link>,{" "}
+          <Link href="/colors/dunn-edwards/bone-china-dew339" className="text-brand-blue hover:underline">Bone China DEW339</Link>,{" "}
+          <Link href="/colors/dunn-edwards/cottage-white-dew318" className="text-brand-blue hover:underline">Cottage White DEW318</Link>,{" "}
+          <Link href="/colors/dunn-edwards/foggy-day-de6226" className="text-brand-blue hover:underline">Foggy Day DE6226</Link>, and{" "}
+          <Link href="/colors/dunn-edwards/cold-water-de6316" className="text-brand-blue hover:underline">Cold Water DE6316</Link>.
+          Their best sellers lean toward warm whites and soft neutrals that complement the sun-drenched
+          interiors of Western homes.
+        </p>
+        <p>
+          Top product lines include <strong>SUPREMA</strong> (premium interior with exceptional hide and
+          coverage), <strong>Evershield</strong> (exterior formulated to resist cracking, peeling, and
+          UV fade in harsh Western climates), and <strong>Aristoshield</strong> (interior/exterior with
+          advanced stain and scuff resistance). Dunn-Edwards paints are contractor-grade quality with
+          excellent color accuracy batch to batch. Price range: $45&ndash;$65 per gallon. While
+          availability is limited to the Western US, you can use our{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>{" "}
+          to preview any Dunn-Edwards color, or find a nationally available match using our{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>.
         </p>
       </div>
     ),
@@ -249,11 +324,18 @@ const content: Record<string, BrandContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Find Dunn-Edwards Matches Nationwide</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Love a Dunn-Edwards color but live outside their retail area? Click any color below to find
+          Love a Dunn-Edwards color but live outside the Western US? Click any color below to find
           the closest match from nationally available brands like{" "}
           <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
           <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and{" "}
-          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>.
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>. Explore
+          Dunn-Edwards&apos;{" "}
+          <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>,{" "}
+          <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link>, and{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link> —
+          their most popular families. Use our{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>{" "}
+          to preview any shade in your space.
         </p>
       </div>
     ),
@@ -263,27 +345,59 @@ const content: Record<string, BrandContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Farrow & Ball is a British luxury paint brand renowned for its deeply pigmented, richly
-          textured finishes. Each color is handcrafted in Dorset, England, using high concentrations of
-          pigment that create an extraordinary depth of color — especially visible as light changes
-          throughout the day. Farrow & Ball paints have a cult following among interior designers.
+          Farrow &amp; Ball is a British luxury paint brand founded in 1946 in Dorset, England, renowned
+          for its deeply pigmented, richly textured finishes. Each color is handcrafted using
+          exceptionally high concentrations of pigment that create an extraordinary depth and complexity
+          of color — especially visible as natural light changes throughout the day. The brand has a
+          cult following among interior designers, architects, and homeowners who want paint that looks
+          and feels fundamentally different from mass-market alternatives. Farrow &amp; Ball paints are
+          available through their own showrooms, select design retailers, and online.
         </p>
         <p>
-          Their palette is deliberately curated at approximately 150 colors rather than thousands.
-          Price range: $100–$115+ per gallon — the most expensive major brand, reflecting the
-          artisanal manufacturing process and pigment concentration.
+          The most iconic Farrow &amp; Ball colors include{" "}
+          <Link href="/colors/farrow-ball/hague-blue-30" className="text-brand-blue hover:underline">Hague Blue No.30</Link>,{" "}
+          <Link href="/colors/farrow-ball/elephants-breath-229" className="text-brand-blue hover:underline">Elephant&apos;s Breath No.229</Link>,{" "}
+          <Link href="/colors/farrow-ball/cornforth-white-228" className="text-brand-blue hover:underline">Cornforth White No.228</Link>,{" "}
+          <Link href="/colors/farrow-ball/ammonite-274" className="text-brand-blue hover:underline">Ammonite No.274</Link>, and{" "}
+          <Link href="/colors/farrow-ball/stiffkey-blue-281" className="text-brand-blue hover:underline">Stiffkey Blue No.281</Link>.
+          These colors have become design world staples — Elephant&apos;s Breath is one of the most
+          searched paint colors in the world, and Hague Blue has defined the moody blue trend for a decade.
+        </p>
+        <p>
+          Their palette is deliberately curated at approximately 150 colors rather than thousands — each
+          one carefully developed and given an evocative name drawn from British history and landscape.
+          Farrow &amp; Ball is known for unique finish names: <strong>Modern Emulsion</strong> (a durable,
+          wipeable matte for most rooms), <strong>Estate Emulsion</strong> (a chalky, ultra-matte finish
+          for ceilings and low-traffic rooms), <strong>Full Gloss</strong> (for woodwork and trim), and{" "}
+          <strong>Modern Eggshell</strong> (a mid-sheen for kitchens and bathrooms). Price range:
+          $100&ndash;$120 per gallon — the most expensive major brand, reflecting artisanal manufacturing,
+          premium pigment concentration, and water-based formulas. Preview any Farrow &amp; Ball color with
+          our{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
+          or use the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to find a
+          budget-friendly alternative from other brands.
         </p>
       </div>
     ),
     details: (
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
-        <h2 className="text-lg font-semibold text-gray-900">Budget Alternatives to Farrow & Ball</h2>
+        <h2 className="text-lg font-semibold text-gray-900">Budget Alternatives to Farrow &amp; Ball</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Love a Farrow & Ball color but not the price? Click any color below to see the closest
-          matches from more affordable brands. Our Delta E matching finds near-identical shades from{" "}
+          Love a Farrow &amp; Ball color but not the $100+ price tag? Click any color below to see the
+          closest matches from more affordable brands. Our Delta E matching finds near-identical shades
+          from{" "}
           <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>,{" "}
           <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,
-          and others — often at half the price per gallon.
+          and{" "}
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> — often at
+          a third of the price per gallon. Explore Farrow &amp; Ball&apos;s most loved{" "}
+          <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blues</Link>,{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>, and{" "}
+          <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, or
+          use our{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check
+          the exact Delta E difference between any two colors.
         </p>
       </div>
     ),

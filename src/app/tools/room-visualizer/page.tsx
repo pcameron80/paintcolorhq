@@ -104,6 +104,113 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             </p>
           </div>
         </section>
+
+        <section className="mt-12 max-w-3xl">
+          <h2 className="text-2xl font-bold text-gray-900">
+            What the Room Visualizer Does
+          </h2>
+          <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
+            <p>
+              The Paint Color HQ Room Visualizer lets you preview paint colors on
+              every surface in a room before you commit to a single can of paint.
+              Click on any region — walls, ceiling, trim, accent wall, or floor —
+              to select it, then choose a color from the picker or type in a
+              specific hex code. The room updates instantly so you can experiment
+              freely without any waiting.
+            </p>
+            <p>
+              Once you find a color you love, use the &quot;Find Paint
+              Match&quot; feature to see which real-world paints from 14 major
+              brands — including Sherwin-Williams, Benjamin Moore, Behr, Valspar,
+              PPG, Dunn-Edwards, and Farrow &amp; Ball — are the closest match.
+              Every suggestion links to its full color detail page so you can
+              explore undertones, coordinating colors, and cross-brand
+              alternatives.
+            </p>
+          </div>
+        </section>
+
+        <section className="mt-12 max-w-3xl">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Why Preview Before You Paint
+          </h2>
+          <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
+            <p>
+              Paint always looks different on a full wall than it does on a tiny
+              swatch card at the store. Lighting conditions, room dimensions, and
+              the colors surrounding a surface all change how a shade is
+              perceived. A warm beige can read pink under cool fluorescent light,
+              and a soft gray can shift blue next to certain wood tones.
+              Previewing colors in a room context helps you catch these surprises
+              before they become expensive mistakes.
+            </p>
+            <p>
+              Testing digitally also saves real money. Instead of buying three or
+              four sample pots at $5 to $8 each, you can narrow your choices down
+              to a single front-runner in minutes. This is especially valuable
+              when you are planning a whole-room color scheme with coordinated
+              walls, trim, and an accent wall — getting that balance right on
+              screen first means fewer trips back to the paint counter.
+            </p>
+          </div>
+        </section>
+
+        <section className="mt-12 max-w-3xl">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Tips for Getting the Most Out of the Visualizer
+          </h2>
+          <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
+            <p>
+              <strong>Start with the wall color.</strong> Walls cover the most
+              surface area, so they set the overall tone for the room. Pick your
+              wall shade first, then build the rest of the palette around it.
+            </p>
+            <p>
+              <strong>Use contrasting trim.</strong> White or off-white trim
+              against colored walls is a timeless combination that makes
+              architectural details pop. Try it in the visualizer to see how much
+              definition trim color adds.
+            </p>
+            <p>
+              <strong>Experiment with the accent wall.</strong> A single bold wall
+              can anchor a space without overwhelming it. The accent wall region
+              lets you test dramatic colors in a contained way before committing
+              to an entire room.
+            </p>
+            <p>
+              <strong>Convert custom colors to real paint.</strong> Any color you
+              pick — even a custom hex — can be matched to a real product from
+              major brands using the &quot;Find Paint Match&quot; button. This
+              bridges the gap between inspiration and a trip to the store.
+            </p>
+            <p>
+              <strong>Use our other tools alongside the visualizer.</strong> Once
+              you have colors you like, open the{" "}
+              <Link
+                href="/compare"
+                className="text-blue-700 underline hover:text-blue-900"
+              >
+                Color Comparison tool
+              </Link>{" "}
+              to see them side by side, or try the{" "}
+              <Link
+                href="/tools/palette-generator"
+                className="text-blue-700 underline hover:text-blue-900"
+              >
+                Palette Generator
+              </Link>{" "}
+              to build a fully coordinated scheme. If you are unsure whether a
+              color runs warm or cool, our guide on{" "}
+              <Link
+                href="/blog/understanding-paint-color-undertones"
+                className="text-blue-700 underline hover:text-blue-900"
+              >
+                understanding paint color undertones
+              </Link>{" "}
+              breaks down what to look for.
+            </p>
+          </div>
+        </section>
       </main>
 
       <script

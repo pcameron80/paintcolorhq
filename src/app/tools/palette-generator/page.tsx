@@ -109,18 +109,18 @@ export default function PaletteGeneratorPage() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
+              "@type": "WebApplication",
               name: "Paint Palette Generator",
+              description:
+                "Build coordinated paint palettes from any starting color. Generates complementary, analogous, and triadic schemes matched to real paint colors.",
+              url: "https://www.paintcolorhq.com/tools/palette-generator",
               applicationCategory: "DesignApplication",
-              operatingSystem: "Web",
+              operatingSystem: "Any",
               offers: {
                 "@type": "Offer",
                 price: "0",
                 priceCurrency: "USD",
               },
-              description:
-                "Pick a starting color and instantly generate coordinated paint palettes with Walls, Trim, Accent, and Pop roles. Matched to real colors from 14 brands.",
-              url: "https://www.paintcolorhq.com/tools/palette-generator",
             }),
           }}
         />
