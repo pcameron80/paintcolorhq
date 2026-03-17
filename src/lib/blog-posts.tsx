@@ -725,56 +725,256 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          White is the most popular paint color category by far — and the most difficult to get right. There are hundreds of &ldquo;white&rdquo; paints across major brands, and each one has different undertones that can make or break a room. This guide breaks down the best whites and helps you pick the right one.
+          White is the most popular paint color category by a wide margin — and the most difficult to get right. There are hundreds of &ldquo;white&rdquo; paints across major brands, and each one carries different undertones that can make or break a room. A warm white that looks creamy and inviting in one space can look dingy yellow in another. This guide ranks the 15 best white paint colors across every major brand, explains their undertones, and tells you exactly which rooms they work in.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Three Categories of White</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Choosing White Paint Is So Hard</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>True whites</strong> have minimal undertones and read as clean, bright white in most lighting. <strong>Warm whites</strong> lean cream, yellow, or pink and feel cozy. <strong>Cool whites</strong> lean blue or gray and feel crisp and modern. Understanding which category you need is the first decision. Browse all options in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+          Every white paint has an undertone — a hidden hue that emerges depending on lighting, surrounding colors, and the finish you choose. A white that reads clean under LED bulbs can flash pink in afternoon sunlight. The trick is matching the white&apos;s undertone to your room&apos;s fixed elements: countertops, flooring, tile, and cabinetry.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          White paints fall into three categories: <strong>true whites</strong> with minimal undertones, <strong>warm whites</strong> that lean cream, yellow, or pink, and <strong>cool whites</strong> that lean blue or gray. Understanding which category you need is the first decision. Browse all options in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> or jump to our <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white family</Link> for creamier options.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best True Whites</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Warm White Paint Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — BM&apos;s cleanest white. Virtually no undertone. The go-to for trim, ceilings, and modern all-white rooms.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F6F0E4" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" /> — SW&apos;s equivalent. The whitest white in their deck. Perfect for trim that won&apos;t compete with wall colors.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F2ECE0" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-50" /> — Behr&apos;s standard base white. Clean and affordable.
+          Warm whites are the most popular category in 2026. They feel cozy without looking yellow, and they pair naturally with wood tones, brass hardware, and warm-toned countertops. If you want your home to feel inviting and lived-in, start here.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Warm Whites</h2>
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">1. White Dove (OC-17) — Benjamin Moore</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the most popular warm white in America. A soft, creamy white that never looks yellow. Designers use it for everything from cabinets to whole-house color.
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is the most popular warm white paint in America. It has soft cream undertones that read as warm and welcoming without ever tipping into yellow territory. Designers reach for it as a whole-house color, cabinet white, and trim color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — despite the name, this is actually a warm white with a slight cream undertone. It&apos;s one of SW&apos;s all-time best sellers.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> — sits between true white and warm white. A versatile choice when you want warmth without obvious cream tones.
+          <strong>Undertone:</strong> Warm cream. <strong>LRV:</strong> 85. <strong>Best for:</strong> Cabinets, trim, whole-house color, farmhouse and transitional style. <strong>Pair with:</strong> Chantilly Lace on trim for subtle contrast. See more in our <Link href="/blog/benjamin-moore-most-popular-whites" className="text-brand-blue hover:underline">BM whites ranking</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Cool Whites</h2>
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">2. Alabaster (SW 7008) — Sherwin-Williams</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EEF0EC" name="Decorator's White" brand="Benjamin Moore" href="/colors/benjamin-moore/decorators-white-oc-149" /> — a white with a faint blue-gray undertone that reads as fresh and modern. Popular in contemporary and Scandinavian-style spaces.
+          <Swatch hex="#F0EAD6" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> sits right between white and off-white — a soft, creamy shade with just enough warmth to feel organic without reading as beige. It was SW&apos;s 2016 Color of the Year and remains one of their best sellers nearly a decade later.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> — a cool white with a barely-there gray cast. Excellent for trim in rooms with warm wall colors.
+          <strong>Undertone:</strong> Warm cream-yellow. <strong>LRV:</strong> 82. <strong>Best for:</strong> Living rooms, bedrooms, exteriors, open floor plans. <strong>Pair with:</strong> Iron Ore (SW 7069) for cabinets or accent walls.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose</h2>
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">3. Pure White (SW 7005) — Sherwin-Williams</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Match your fixed elements.</strong> If your countertops, tile, or flooring have warm tones (yellow, orange, brown), choose a warm white. If they have cool tones (gray, blue), choose a cool white. True whites work as a neutral bridge.
+          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> is one of SW&apos;s all-time best sellers. Despite the name, it&apos;s a warm white with a slight cream undertone — not a true white. It works beautifully with both chrome and brass fixtures, making it the rare white that adapts to almost any hardware.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Consider your trim.</strong> Your wall white and trim white should come from the same temperature family. Warm wall + cool trim creates a jarring disconnect.
+          <strong>Undertone:</strong> Warm (slight cream). <strong>LRV:</strong> 84. <strong>Best for:</strong> Trim, cabinets, kitchens, bathrooms. <strong>Pair with:</strong> Agreeable Gray (SW 7029) on walls.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">4. Swiss Coffee (OC-45) — Benjamin Moore</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EFE4CE" name="Swiss Coffee" brand="Benjamin Moore" href="/colors/benjamin-moore/swiss-coffee-oc-45" /> is a rich, warm off-white with noticeable cream-yellow undertones. It&apos;s warmer and deeper than White Dove, making it an excellent choice when you want walls that feel soft and enveloping rather than bright. Studio McGee helped popularize it as a whole-house neutral.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Test multiple samples.</strong> Buy at least three whites and paint large swatches. What looks identical in the can often looks wildly different on the wall. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for the full explanation.
+          <strong>Undertone:</strong> Warm cream-yellow. <strong>LRV:</strong> 84. <strong>Best for:</strong> Living rooms, bedrooms, Mediterranean and California-casual style. <strong>Pair with:</strong> White Dove on trim for a layered warm palette.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">5. Greek Villa (SW 7551) — Sherwin-Williams</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0E6D4" name="Greek Villa" brand="Sherwin-Williams" href="/colors/sherwin-williams/greek-villa-7551" /> is lighter than Alabaster but maintains a welcoming warmth. It reads as a bright, airy white with a subtle golden undertone — never cold, never heavy. An excellent option for homeowners who want bright spaces without harshness.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Before buying samples, narrow your options with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> — preview any white on your walls to see how it reads in different lighting conditions.
+          <strong>Undertone:</strong> Warm (soft golden). <strong>LRV:</strong> 84. <strong>Best for:</strong> Open floor plans, kitchens, nurseries. <strong>Pair with:</strong> Urbane Bronze (SW 7048) for dramatic contrast.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">6. Simply White (OC-117) — Benjamin Moore</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> sits between true white and warm white — it has just a whisper of warmth without obvious cream tones. It was BM&apos;s 2016 Color of the Year and remains the go-to bridge color when you want warmth without commitment.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone:</strong> Slightly warm. <strong>LRV:</strong> 91. <strong>Best for:</strong> Kitchens, bathrooms, transitional style, trim. <strong>Pair with:</strong> Hale Navy (HC-154) for a classic contrast. Explore the full <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> collection.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best True White Paint Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          True whites have minimal undertones and read as clean, bright white in most lighting conditions. They work best in modern, minimalist, and contemporary spaces where you want the architecture and furnishings to do the talking.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">7. Chantilly Lace (OC-65) — Benjamin Moore</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s cleanest white — virtually no undertone in any lighting condition. When you need white that reads as pure, bright white every time, this is the one. It&apos;s the go-to for trim, ceilings, and modern all-white rooms.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone:</strong> True neutral. <strong>LRV:</strong> 92. <strong>Best for:</strong> Trim, ceilings, modern interiors, exteriors. <strong>Pair with:</strong> Any wall color — it works as a universal trim white.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">8. High Reflective White (SW 7757) — Sherwin-Williams</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F6F0E4" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" /> is the whitest white in the Sherwin-Williams deck. It reflects the most light of any SW color, making it the default for ceilings and trim in designer projects. It can feel clinical on walls, so most designers reserve it for architectural details. Explore all SW whites on the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> page.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone:</strong> True neutral. <strong>LRV:</strong> 93. <strong>Best for:</strong> Trim, ceilings, crown molding. <strong>Pair with:</strong> Any wall color — its neutrality makes it versatile.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">9. Ultra Pure White — Behr</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F2ECE0" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-50" /> is Behr&apos;s standard base white — clean, bright, and affordable. It&apos;s available at every Home Depot and serves as the default ceiling white for budget-conscious projects. No hidden undertones to worry about. See more from <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone:</strong> True neutral. <strong>LRV:</strong> 94. <strong>Best for:</strong> Ceilings, trim, rentals, budget projects.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Cool White Paint Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Cool whites lean blue or gray and create a crisp, modern feel. They work well in contemporary spaces, Scandinavian-inspired rooms, and bathrooms where you want a fresh, spa-like atmosphere. Cool whites pair naturally with cool-toned tile, gray countertops, and chrome hardware.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">10. Decorator&apos;s White (OC-149) — Benjamin Moore</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EEF0EC" name="Decorator's White" brand="Benjamin Moore" href="/colors/benjamin-moore/decorators-white-oc-149" /> has a faint blue-gray undertone that reads as fresh and modern. It&apos;s the white of choice for contemporary and Scandinavian-style interiors where warmth comes from textiles and wood accents rather than wall color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone:</strong> Cool (blue-gray). <strong>LRV:</strong> 87. <strong>Best for:</strong> Modern interiors, bathrooms, rooms with cool-toned elements. <strong>Pair with:</strong> Stonington Gray (HC-170) for a monochromatic cool palette.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">11. Snowbound (SW 7004) — Sherwin-Williams</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> is a cool white with a barely-there gray cast. It reads as soft and clean without feeling icy — the cool-white equivalent of Alabaster&apos;s warmth. It&apos;s excellent for trim in rooms with warm wall colors, because the subtle contrast creates depth.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone:</strong> Cool (soft gray). <strong>LRV:</strong> 87. <strong>Best for:</strong> Trim, bathrooms, Scandinavian style. <strong>Pair with:</strong> Repose Gray (SW 7015) for a cohesive cool scheme.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">12. Paper White (OC-55) — Benjamin Moore</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8E8E0" name="Paper White" brand="Benjamin Moore" href="/colors/benjamin-moore/paper-white-oc-55" /> is a cool white with a green-gray undertone. In bright light it reads as a crisp neutral white; in low light, the green whispers through. It&apos;s a sophisticated choice for dining rooms and hallways where you want white with quiet complexity.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone:</strong> Cool (green-gray). <strong>LRV:</strong> 83. <strong>Best for:</strong> Dining rooms, hallways, offices.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Off-White Paint Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Off-whites bridge the gap between white and color. They have more visible undertones than the whites above, giving rooms a softer, more layered look. Off-whites are having a major moment in 2026 as homeowners move away from stark bright white toward warmer, more organic finishes.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">13. Pale Oak (OC-20) — Benjamin Moore</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> is a warm off-white with a whisper of pink-beige undertone. It reads as a cozy, soft neutral on walls — more color than White Dove but still firmly in white territory. Extremely popular for nurseries and bedrooms. Read more in our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom colors guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone:</strong> Warm (pink-beige). <strong>LRV:</strong> 70. <strong>Best for:</strong> Bedrooms, nurseries, living rooms, whole-house neutral.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">14. Creamy (SW 7012) — Sherwin-Williams</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0E1C8" name="Creamy" brand="Sherwin-Williams" href="/colors/sherwin-williams/creamy-7012" /> lives up to its name — a warm off-white with noticeable yellow-cream undertones. It&apos;s richer and more saturated than Alabaster, making it a bold choice for homeowners who want unmistakable warmth. It works beautifully in south-facing rooms where natural light amplifies its golden character.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone:</strong> Warm (yellow-cream). <strong>LRV:</strong> 81. <strong>Best for:</strong> South-facing rooms, dining rooms, traditional style.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">15. Cloud White (OC-130) — Benjamin Moore</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDE7D5" name="Cloud White" brand="Benjamin Moore" href="/colors/benjamin-moore/cloud-white-oc-130" /> is a warm off-white with a balanced cream-yellow undertone — warmer than Simply White but cooler than Swiss Coffee. It&apos;s a true middle-ground off-white that works in almost any room without committing to strong warmth or coolness.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone:</strong> Warm (cream-yellow). <strong>LRV:</strong> 87. <strong>Best for:</strong> Whole-house color, kitchens, living rooms, exteriors.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best White Paint Colors by Room</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Different rooms have different lighting, different fixed elements, and different moods. Here&apos;s how to match white paint to specific spaces.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Best White for Bedrooms</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Bedrooms need warmth. Stark whites feel institutional in a space meant for rest. <strong>White Dove</strong>, <strong>Pale Oak</strong>, and <strong>Alabaster</strong> are the top three picks — all warm enough to feel cozy under lamplight without looking yellow during the day. For a deeper dive, see our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom paint colors guide</Link>.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Best White for Kitchens</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Kitchens demand a white that works with both countertops and cabinetry. <strong>Simply White</strong> and <strong>Pure White</strong> are the safest picks because their slight warmth flatters both warm and cool countertops. For true white cabinets, <strong>Chantilly Lace</strong> delivers the crispest result. Read our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen colors guide</Link> for more options.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Best White for Bathrooms</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Bathrooms with gray or white tile pair best with cool whites like <strong>Decorator&apos;s White</strong> or <strong>Snowbound</strong>. If your bathroom has warm wood vanities or brass fixtures, lean toward <strong>White Dove</strong> or <strong>Swiss Coffee</strong>. Always choose a satin or semi-gloss finish for moisture resistance. More picks in our <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">bathroom colors guide</Link>.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Best White for Living Rooms</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Living rooms benefit from whites that feel inviting rather than sterile. <strong>Alabaster</strong>, <strong>Cloud White</strong>, and <strong>Greek Villa</strong> all deliver warmth that makes large open spaces feel comfortable. If your living room is open to the kitchen, use the same white throughout for a seamless flow. See our <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">living room paint colors guide</Link> for more.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Best White for Trim and Ceilings</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Trim white should be slightly crisper than your wall white to create subtle dimension. <strong>Chantilly Lace</strong> and <strong>High Reflective White</strong> are the industry standards. For ceilings, <strong>Ultra Pure White</strong> from Behr is the budget champion. The classic designer trick: use White Dove on walls and Chantilly Lace on trim — the contrast is barely visible but gives the room depth.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose the Right White Paint</h2>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Step 1: Identify Your Undertone Need</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Match your fixed elements.</strong> Look at your countertops, tile, flooring, and any stone or wood that is not changing. If these elements have warm tones (honey oak, cream tile, brass hardware), you need a warm white. If they have cool tones (gray quartz, chrome fixtures, blue-gray tile), you need a cool white. True whites work as a neutral bridge when your fixed elements are mixed. Read our full <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for more.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Step 2: Consider Your Lighting</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>North-facing rooms</strong> receive cool, blue-tinted light that makes warm whites look less warm and cool whites look colder. Compensate by going one step warmer than you think you need. <strong>South-facing rooms</strong> get warm, golden light that amplifies warm undertones — a white that looks perfect in the store can read yellow here. For a deeper explanation, see our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link>.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Step 3: Test Before You Commit</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Buy sample pots of your top three whites and paint large swatches (at least 12 inches square) on the actual wall. Observe them at different times of day — morning, noon, evening, and under artificial light. What looks identical in the can often looks wildly different on the wall. Our <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">paint sample testing guide</Link> walks through the full process.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Step 4: Match Your Trim</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Your wall white and trim white should come from the same temperature family. Warm wall + cool trim creates a jarring disconnect where the trim looks dirty against the warm wall. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how your wall and trim whites look side by side.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">White Paint Finish Guide</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The sheen you choose affects how your white reads. <strong>Flat/matte</strong> finishes absorb light and hide imperfections — best for ceilings and low-traffic walls. <strong>Eggshell</strong> adds a subtle glow and is the most popular choice for walls. <strong>Satin</strong> is more durable and works for kitchens, bathrooms, and trim. <strong>Semi-gloss</strong> reflects the most light and is the standard for trim, doors, and cabinets. Higher sheens make whites look brighter and can amplify undertones. See our complete <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cross-Brand White Equivalents</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Found a white you love from one brand but need to buy from another? Here are the closest cross-brand matches. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find matches across 25,000+ colors from 14 brands, or try the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see the Delta E difference between any two whites.
+        </p>
+        <ul className="mt-4 space-y-2 text-gray-700 leading-relaxed">
+          <li><strong>White Dove (BM)</strong> &#8776; Pure White (SW) &#8776; Cameo White (Behr)</li>
+          <li><strong>Chantilly Lace (BM)</strong> &#8776; High Reflective White (SW) &#8776; Ultra Pure White (Behr)</li>
+          <li><strong>Alabaster (SW)</strong> &#8776; Swiss Coffee (BM) &#8776; Cottage White (Behr)</li>
+          <li><strong>Decorator&apos;s White (BM)</strong> &#8776; Snowbound (SW)</li>
+          <li><strong>Simply White (BM)</strong> &#8776; Extra White (SW)</li>
+        </ul>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">White Paint FAQ</h2>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">What is the most popular white paint color?</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore White Dove (OC-17) is the most popular white paint overall. For Sherwin-Williams, it&apos;s a tie between Alabaster (SW 7008) and Pure White (SW 7005). These warm whites dominate because they work in the widest range of lighting conditions and pair with the most common fixed elements.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">What is the best white paint that is not too warm and not too cool?</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Simply White (BM OC-117) and Cloud White (BM OC-130) sit right in the middle — warm enough to feel inviting but not so warm that they read as cream. For Sherwin-Williams, Greek Villa (SW 7551) offers a similar balanced warmth. Learn more about the warm-cool spectrum in our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool colors guide</Link>.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Is white a warm or cool color?</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Pure white (like fresh snow) is technically neutral — neither warm nor cool. But almost every white paint leans one direction. White Dove and Alabaster are warm whites. Decorator&apos;s White and Snowbound are cool whites. Chantilly Lace and High Reflective White are the closest to truly neutral.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">How many shades of white paint are there?</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Major paint brands each offer between 100 and 200 distinct white and off-white shades. Benjamin Moore alone has over 150 whites in their color deck. The differences between adjacent whites can be subtle — often just a shift in LRV or a barely perceptible undertone change. That&apos;s why testing samples on your actual walls is essential. Preview options with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> before buying samples.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Should I use the same white throughout my house?</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Using one white for all walls creates a seamless, cohesive flow — especially important in open floor plans. Alabaster and White Dove are the most popular whole-house whites because they adapt well to different lighting conditions. However, most designers use a second, crisper white for trim and ceilings to create subtle dimension. Build your whole-house palette with our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">What is the best white for painting over dark colors?</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          High-LRV true whites like Chantilly Lace (LRV 92) and High Reflective White (LRV 93) provide the best coverage over dark colors. Use a high-quality primer first, then apply two coats. Warm whites with lower LRVs may need three coats to fully cover a dark base. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint and primer you need.
         </p>
       </>
     ),
