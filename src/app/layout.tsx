@@ -68,11 +68,9 @@ export default function RootLayout({
             gtag('config', 'G-056NR93JLK');
           `}
         </Script>
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6269963973031881"
-          strategy="afterInteractive"
-          crossOrigin="anonymous"
-        />
+        {/* AdSense script moved to per-page inclusion via <AdSenseScript /> component.
+            Only loaded on high-content pages (blog, brands, tools, homepage).
+            Excluded from color pages until content is enriched. */}
       </body>
     </html>
   );

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { RoomVisualizer } from "./visualizer";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const metadata: Metadata = {
   title: "Room Color Visualizer - Preview Paint Colors in a Room",
@@ -284,6 +285,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
         }}
       />
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

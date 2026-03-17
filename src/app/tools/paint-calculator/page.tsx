@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PaintCalculator } from "./calculator";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const metadata: Metadata = {
   title: "Paint Calculator - How Much Paint Do I Need?",
@@ -260,6 +261,7 @@ export default function PaintCalculatorPage() {
         />
       </main>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

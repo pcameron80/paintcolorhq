@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const metadata: Metadata = {
   title: "About Paint Color HQ | Our Color Science Methodology",
@@ -451,6 +452,7 @@ export default function AboutPage() {
           </div>
         </div>
       </main>
+      <AdSenseScript />
       <Footer />
     </div>
   );

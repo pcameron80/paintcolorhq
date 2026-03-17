@@ -4,6 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { HeroSearch } from "@/components/hero-search";
 import { InspirationSection } from "@/components/inspiration-section";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://www.paintcolorhq.com" },
@@ -308,6 +309,7 @@ export default async function Home() {
         }}
       />
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

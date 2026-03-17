@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { getBrandBySlug, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
 import { getBrandContent } from "@/lib/brand-content";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const revalidate = 3600;
 
@@ -279,6 +280,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         />
       </main>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

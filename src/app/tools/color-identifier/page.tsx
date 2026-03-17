@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorIdentifier } from "./identifier";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const metadata: Metadata = {
   title: "Photo Color Identifier - Find Paint Colors from Photos",
@@ -227,6 +228,7 @@ export default function ColorIdentifierPage() {
         }}
       />
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

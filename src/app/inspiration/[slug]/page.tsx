@@ -9,6 +9,7 @@ import { getPaletteBySlug, assignPaletteRoles } from "@/lib/palettes";
 
 import { getAllBrands, findClosestColor, getBrandBySlug } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const revalidate = 3600;
 
@@ -260,6 +261,7 @@ export default async function InspirationDetailPage({
         </div>
       </main>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

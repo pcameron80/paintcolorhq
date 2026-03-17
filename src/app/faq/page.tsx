@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions About Paint Colors",
@@ -166,6 +167,7 @@ export default function FAQPage() {
           </div>
         </div>
       </main>
+      <AdSenseScript />
       <Footer />
     </div>
   );

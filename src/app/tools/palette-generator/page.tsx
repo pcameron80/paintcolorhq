@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PaletteGenerator } from "./generator";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const metadata: Metadata = {
   title: "Palette Generator - Build a Paint Color Scheme",
@@ -248,6 +249,7 @@ export default function PaletteGeneratorPage() {
         />
       </main>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

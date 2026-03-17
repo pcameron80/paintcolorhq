@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllPosts, getPostBySlug, getAllBlogSlugs } from "@/lib/blog-posts";
+import { AdSenseScript } from "@/components/adsense-script";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -196,6 +197,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </nav>
         </div>
       </main>
+      <AdSenseScript />
       <Footer />
       <script
         type="application/ld+json"
