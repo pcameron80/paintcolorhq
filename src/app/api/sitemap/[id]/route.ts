@@ -5,13 +5,7 @@ import { inspirationPalettes } from "@/lib/palettes";
 
 const BASE_URL = "https://www.paintcolorhq.com";
 const COLORS_PER_SITEMAP = 5000;
-const SITEMAP_BRANDS = [
-  "sherwin-williams",
-  "benjamin-moore",
-  "behr",
-  "valspar",
-  "ppg",
-];
+// All brands included — no filter. See route.ts for rationale.
 
 interface SitemapEntry {
   url: string;
@@ -77,7 +71,7 @@ export async function GET(
       if (isNaN(pageNum) || pageNum < 0) {
         return new NextResponse("Not found", { status: 404 });
       }
-      const colorSlugs = await getAllColorSlugs({ brandSlugs: SITEMAP_BRANDS });
+      const colorSlugs = await getAllColorSlugs();
       const start = pageNum * COLORS_PER_SITEMAP;
       const pageColors = colorSlugs.slice(start, start + COLORS_PER_SITEMAP);
       if (pageColors.length === 0) {
@@ -90,13 +84,14 @@ export async function GET(
         lastmod: "",
       }));
     } else if (id === "matches") {
-      // Brand-to-brand match landing pages (20 combinations of 5 major brands)
+      // Brand-to-brand match landing pages — all brand combinations
+      const allBrands = await getAllBrands();
       entries = [];
-      for (const source of SITEMAP_BRANDS) {
-        for (const target of SITEMAP_BRANDS) {
-          if (source !== target) {
+      for (const source of allBrands) {
+        for (const target of allBrands) {
+          if (source.slug !== target.slug) {
             entries.push({
-              url: `/match/${source}/to/${target}`,
+              url: `/match/${source.slug}/to/${target.slug}`,
               priority: "0.8",
               changefreq: "weekly",
               lastmod: "",
