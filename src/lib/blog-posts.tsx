@@ -87,7 +87,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Warm Mahogany</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is a rich, warm brown-red that evokes natural wood and aged leather. PPG&apos;s pick is the deepest, most saturated of the 2026 selections — a confident choice for accent walls, front doors, and cabinetry where you want warmth and permanence.
+          <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is a rich, warm brown-red that evokes natural wood and aged leather. PPG&apos;s pick is the deepest, most saturated of the 2026 selections — a confident choice for accent walls, front doors, and cabinetry where you want warmth and permanence. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> to find similar earth-toned shades across every brand.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Warm Eucalyptus</h2>
@@ -100,7 +100,7 @@ const blogPosts: BlogPost[] = [
           The 2026 picks tell a clear story: nature is the dominant inspiration. Three of the five selections are green-influenced (Hidden Gem, Warm Eucalyptus, and Silhouette&apos;s earthy undertone), while the remaining picks lean into warm earth tones. After 2025&apos;s bold reds and deep navies, the industry is pivoting toward quieter, more organic hues. For a look back at last year&apos;s selections, see our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2025 Colors of the Year comparison</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
+          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. For a deeper look at what&apos;s trending beyond the official picks, read our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> roundup.
         </p>
       </>
     ),
@@ -125,10 +125,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Sherwin-Williams: Grounded</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> is a warm, earthy brown that evokes natural clay and weathered wood. Sherwin-Williams chose this rich, grounding shade to anchor their 2025 palette — reflecting a broader cultural shift toward organic, nature-inspired tones. It works beautifully on accent walls, cabinetry, and exterior trim.
+          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> is a warm, earthy brown that evokes natural clay and weathered wood. <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> chose this rich, grounding shade to anchor their 2025 palette — reflecting a broader cultural shift toward organic, nature-inspired tones. It works beautifully on accent walls, cabinetry, and exterior trim.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Looking for this shade from another brand? Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match from any brand.
+          Looking for this shade from another brand? Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match from any brand. Explore the full <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more warm earth tones like Grounded.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Benjamin Moore: Cinnamon Slate</h2>
@@ -154,7 +154,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Encore</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#0f456e" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" /> is a deep, saturated navy blue with an LRV of just 6.0 — one of the boldest Color of the Year picks in recent memory. It&apos;s a statement-making shade that works on accent walls, front doors, and cabinetry where you want drama and depth.
+          <Swatch hex="#0f456e" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" /> is a deep, saturated navy blue with an LRV of just 6.0 — one of the boldest Color of the Year picks in recent memory. It&apos;s a statement-making shade that works on accent walls, front doors, and cabinetry where you want drama and depth. See the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for the full range of navy and blue options.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
@@ -162,7 +162,7 @@ const blogPosts: BlogPost[] = [
           The 2025 picks are remarkably unified — warm earth tones and rich, grounded hues dominate. From Sherwin-Williams&apos; warm brown to Benjamin Moore&apos;s heathered plum to Behr&apos;s bold ruby red, the era of cool grays is officially over. Whether you go subtle or dramatic, 2025 is the year to embrace warmth and depth.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
+          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to calculate the exact Delta E 2000 difference between any two shades. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. For a broader look at which colors dominated 2025 beyond the official picks, see our <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">most popular paint colors of 2025</Link> roundup.
         </p>
       </>
     ),
@@ -217,7 +217,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Your Own Matches</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Don&apos;t see your color here? Every color page on Paint Color HQ shows the <strong>closest matches from every other brand</strong> automatically. Just search for your Benjamin Moore color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> and scroll to the cross-brand matches section. You can also use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any match on your walls before committing.
+          Don&apos;t see your color here? Every color page on Paint Color HQ shows the <strong>closest matches from every other brand</strong> automatically. Just search for your Benjamin Moore color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> and scroll to the cross-brand matches section. You can also use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any match on your walls before committing. For a detailed comparison of the brands themselves, read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore</Link> breakdown.
         </p>
       </>
     ),
@@ -363,7 +363,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Crisp Whites</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White kitchens aren&apos;t going anywhere, but the specific whites are evolving. The trend is away from stark, blue-white tones toward warmer whites that feel lived-in.
+          White kitchens aren&apos;t going anywhere, but the specific whites are evolving. The trend is away from stark, blue-white tones toward warmer whites that feel lived-in — and both <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and Sherwin-Williams offer excellent options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — the gold standard for a clean, true white with no yellow cast. Perfect for modern kitchens with lots of stainless steel.
@@ -428,7 +428,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — a muted powder blue that&apos;s calming and clean for kitchen walls. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these colors in a kitchen setting, and our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint your kitchen project will need.
+          Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these colors in a kitchen setting, and our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint your kitchen project will need. For help choosing between warm and cool whites, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link>.
         </p>
       </>
     ),
@@ -518,7 +518,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Blue is the most universally calming color. Studies show people in blue rooms fall asleep faster and report feeling more rested. The key is choosing muted, desaturated blues rather than bright or electric ones.
+          Blue is the most universally calming color. Studies show people in blue rooms fall asleep faster and report feeling more rested. The key is choosing muted, desaturated blues rather than bright or electric ones. <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore both offer excellent muted blue options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a blue-green-gray that shifts beautifully with light throughout the day. It&apos;s calm without being cold.
@@ -565,7 +565,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Tips for Bedroom Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Keep the ceiling white or very light to maintain a sense of openness. Paint your largest wall as a test before committing to the whole room. And consider the color of your bedding — a soft blue wall with warm white linens is a classic combination that never fails. Read our guide on <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding undertones</Link> to avoid surprises. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these calming shades on bedroom walls before buying samples.
+          Keep the ceiling white or very light to maintain a sense of openness. Paint your largest wall as a test before committing to the whole room. And consider the color of your bedding — a soft blue wall with warm white linens is a classic combination that never fails. Read our guide on <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding undertones</Link> to avoid surprises, and see our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs. cool paint colors guide</Link> for more on choosing the right temperature. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these calming shades on bedroom walls before buying samples.
         </p>
       </>
     ),
@@ -1053,7 +1053,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          We analyzed search data, designer recommendations, and trending projects to identify the most popular paint colors of 2025. No surprise: warm neutrals dominated, green had a breakout year, and the era of cool gray is definitively over.
+          We analyzed search data, designer recommendations, and trending projects to identify the most popular paint colors of 2025. No surprise: warm neutrals dominated, green had a breakout year, and the era of cool gray is definitively over. <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore colors led the way.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Top 5 Overall</h2>
@@ -1091,7 +1091,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Navy Holds Strong</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> and <Swatch hex="#3E4450" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> continued to dominate as accent colors — kitchen islands, front doors, accent walls, and cabinetry. Navy offers drama without the commitment of true black.
+          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> and <Swatch hex="#3E4450" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> continued to dominate as accent colors — kitchen islands, front doors, accent walls, and cabinetry. Navy offers drama without the commitment of true black. Explore more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Looking Ahead to 2026</h2>
@@ -1276,7 +1276,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The living room is where your color choice matters most. It&apos;s the room guests see first, where your family spends the most time, and often the largest continuous wall space in the house. The right color sets the tone for your entire home. Here are the best options for every design style.
+          The living room is where your color choice matters most. It&apos;s the room guests see first, where your family spends the most time, and often the largest continuous wall space in the house. The right color sets the tone for your entire home — and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> remains the top choice among living room designers. Here are the best options for every design style.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Modern & Minimalist</h2>
@@ -1351,7 +1351,7 @@ const blogPosts: BlogPost[] = [
           <strong>Consider adjacent rooms.</strong> If your living room flows into the kitchen or dining room, the colors need to complement each other. Read our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link> for tips on building a cohesive whole-home palette.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Test at scale.</strong> A 2-inch paint chip will deceive you. Paint at least a 2×2 foot sample on two different walls and observe it in morning light, afternoon light, and under your evening lighting. Colors shift dramatically. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> for a digital preview before buying samples.
+          <strong>Test at scale.</strong> A 2-inch paint chip will deceive you. Paint at least a 2×2 foot sample on two different walls and observe it in morning light, afternoon light, and under your evening lighting. Colors shift dramatically. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> for a digital preview before buying samples, and our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint your living room will need.
         </p>
       </>
     ),
@@ -1508,7 +1508,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Your exterior color scheme is the first impression your home makes. Unlike interior paint, exterior colors must work with fixed elements you can&apos;t change — your roof, stone or brick accents, landscaping, and even your neighbors&apos; houses. Here are the best exterior paint colors for every style, plus the strategies designers use to create standout curb appeal.
+          Your exterior color scheme is the first impression your home makes. Unlike interior paint, exterior colors must work with fixed elements you can&apos;t change — your roof, stone or brick accents, landscaping, and even your neighbors&apos; houses. Brands like <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore offer exterior-specific formulations designed for durability and UV resistance. Here are the best exterior paint colors for every style, plus the strategies designers use to create standout curb appeal.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Classic White Exteriors</h2>
@@ -1589,7 +1589,7 @@ const blogPosts: BlogPost[] = [
           <strong>Use flat or matte for siding.</strong> Unlike interiors, flat finish is the standard for exterior siding — it hides surface imperfections. Use satin or semi-gloss only for trim and doors. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to get an accurate gallon estimate for your exterior — it&apos;s typically 8–15 gallons for a full house.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Need to match a specific color from another brand? Search for it in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest equivalent across all 14 brands in our database.
+          Need to match a specific color from another brand? Search for it in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest equivalent across all 14 brands in our database. Preview any of these exterior colors with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, and for more on choosing the right finish, see our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link>.
         </p>
       </>
     ),
@@ -2253,7 +2253,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The warm-toned revolution that began in 2024 is accelerating. After a decade of cool grays, homeowners are embracing richer, more expressive colors — and the 2026 Colors of the Year confirm it. Based on official brand announcements, designer surveys, and search trend analysis, here are the colors and themes defining home interiors this year. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">full 2026 COTY comparison</Link> for the complete breakdown.
+          The warm-toned revolution that began in 2024 is accelerating. After a decade of cool grays, homeowners are embracing richer, more expressive colors — and the 2026 Colors of the Year from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, Benjamin Moore, and Behr confirm it. Based on official brand announcements, designer surveys, and search trend analysis, here are the colors and themes defining home interiors this year. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">full 2026 COTY comparison</Link> for the complete breakdown.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 1: Earthy Greens Dominate</h2>
@@ -2403,7 +2403,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          You&apos;ve spent hours picking the perfect color, but if you choose the wrong sheen, the whole room will feel off. Sheen affects how a color looks, how durable the paint is, and how easy it is to clean. Here&apos;s every finish level explained — from flattest to shiniest — with room-by-room recommendations.
+          You&apos;ve spent hours picking the perfect color, but if you choose the wrong sheen, the whole room will feel off. Sheen affects how a color looks, how durable the paint is, and how easy it is to clean. Major brands like <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and Sherwin-Williams offer each sheen level across their premium lines. Here&apos;s every finish level explained — from flattest to shiniest — with room-by-room recommendations.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Flat / Matte</h2>
@@ -2481,7 +2481,7 @@ const blogPosts: BlogPost[] = [
           <strong>Ceilings:</strong> Flat. <strong>Most walls:</strong> Eggshell. <strong>Kitchens & bathrooms:</strong> Satin. <strong>Trim & cabinets:</strong> Semi-gloss. <strong>Front door:</strong> Semi-gloss or high-gloss. This is the formula most painters follow, and it works for 95% of homes.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For more help choosing colors for each room, check our guides for <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchens</Link>, <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">bedrooms</Link>, <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">bathrooms</Link>, and <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">living rooms</Link>. Once you&apos;ve chosen your color and sheen, use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out exactly how many gallons you need.
+          For more help choosing colors for each room, check our guides for <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchens</Link>, <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">bedrooms</Link>, <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">bathrooms</Link>, and <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">living rooms</Link>. Preview how different sheens look on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, and use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out exactly how many gallons you need.
         </p>
       </>
     ),
@@ -2653,7 +2653,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          North-facing rooms receive no direct sunlight — only cool, diffused light that gives everything a slightly blue-gray cast. Colors that look warm and inviting in a south-facing showroom can read flat, cold, or muddy on a north wall. The fix is simple: choose colors with warm undertones and a high LRV (Light Reflectance Value) so they bounce back as much light as possible.
+          North-facing rooms receive no direct sunlight — only cool, diffused light that gives everything a slightly blue-gray cast. Colors that look warm and inviting in a south-facing showroom can read flat, cold, or muddy on a north wall. The fix is simple: choose colors with warm undertones and a high LRV (Light Reflectance Value) so they bounce back as much light as possible. Both <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and Sherwin-Williams have excellent options for these challenging spaces.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why LRV Matters in North-Facing Rooms</h2>
@@ -2721,7 +2721,7 @@ const blogPosts: BlogPost[] = [
           <strong>Sample in the actual room.</strong> Colors shift dramatically between north and south light. Paint a large swatch (at least 2&apos; x 2&apos;) and observe it at noon and 4 PM — north-facing rooms change less throughout the day, but afternoon is when they&apos;re dimmest.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Check the undertone.</strong> Every color on Paint Color HQ shows its undertone. For north-facing rooms, look for yellow, peach, pink, or golden undertones. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> for a quick digital preview before buying samples.
+          <strong>Check the undertone.</strong> Every color on Paint Color HQ shows its undertone. For north-facing rooms, look for yellow, peach, pink, or golden undertones. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> for a quick digital preview before buying samples. For a deeper dive into warm vs. cool undertones, see our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs. cool paint colors guide</Link>.
         </p>
       </>
     ),
@@ -2741,7 +2741,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          East-facing rooms are the trickiest to paint because the light changes dramatically throughout the day. Morning brings warm, golden sunlight that makes everything glow. By afternoon, that warmth disappears and the room shifts to cool, shadowy light similar to a north-facing room. The best colors for east-facing rooms look good in both conditions.
+          East-facing rooms are the trickiest to paint because the light changes dramatically throughout the day. Morning brings warm, golden sunlight that makes everything glow. By afternoon, that warmth disappears and the room shifts to cool, shadowy light similar to a north-facing room. The best colors for east-facing rooms — from brands like <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore — look good in both conditions.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The East-Facing Challenge</h2>
@@ -2809,7 +2809,7 @@ const blogPosts: BlogPost[] = [
           <strong>Test at both extremes.</strong> Paint your sample swatch and check it at 9 AM (peak warmth) and 3 PM (peak cool). If you like it at both times, it&apos;s the right color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Don&apos;t pick colors in morning light only.</strong> This is the most common mistake — a color chosen at 10 AM in an east-facing room can be a completely different color by dinnertime. Our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> can help you preview before you invest in samples.
+          <strong>Don&apos;t pick colors in morning light only.</strong> This is the most common mistake — a color chosen at 10 AM in an east-facing room can be a completely different color by dinnertime. Our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> can help you preview before you invest in samples. For more on how undertones shift with lighting, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link>.
         </p>
       </>
     ),
