@@ -469,6 +469,20 @@ const blogPosts: BlogPost[] = [
           On Paint Color HQ, every color page shows the closest equivalents from all other brands, so you&apos;re never locked into a single brand&apos;s ecosystem.
         </p>
 
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Popular Colors Compared Across Brands</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The best way to compare brands is to look at their most popular colors side by side. Here are some of the best-sellers from each brand and their closest cross-brand equivalents:
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best-selling gray:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> — all warm greiges with Delta E under 2.0 between them. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Best-selling white:</strong> <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#F5F2ED" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-ul170-13" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to check the exact Delta E between any two colors, and read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore deep dive</Link> for a more detailed head-to-head.
+        </p>
+
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Paint Quality</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Benjamin Moore Regal Select and Aura</strong> are widely considered the best consumer paints available. They offer exceptional coverage (often true one-coat), rich color depth, and durability. Professional painters consistently rank BM at the top.
@@ -1034,6 +1048,9 @@ const blogPosts: BlogPost[] = [
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When to Break the Rules</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Closed-off rooms — powder rooms, bedrooms with doors, home offices — can be any temperature. The warm/cool consistency rule primarily applies to open, connected spaces. A cool-toned powder room off a warm-toned hallway is perfectly fine. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how colors from different temperature families look next to each other.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Understanding warm vs. cool is especially important when choosing neutrals. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> to see how undertones shift between warm and cool within the same color family. For a deeper look at how secondary pigments create these temperature differences, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link>.
         </p>
       </>
     ),
@@ -2095,6 +2112,9 @@ const blogPosts: BlogPost[] = [
         <p className="mt-4 text-gray-700 leading-relaxed">
           For the full breakdown of whites across all brands, read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">definitive white paint guide</Link>. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to put any two whites side by side and see if the Delta E difference is perceptible. Preview any of these whites on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
         </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white color family</Link> to see every white from all 14 brands in our database. Understanding <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link> is essential when choosing between whites — it&apos;s the difference between a white that feels right and one that clashes with your trim.
+        </p>
       </>
     ),
   },
@@ -2340,6 +2360,23 @@ const blogPosts: BlogPost[] = [
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Verdict:</strong> At full price, they&apos;re comparable. With SW sales, you can get premium paint for mid-tier prices.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Popular Colors Head-to-Head</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The best way to compare these two brands is through their flagship colors. Here are the most popular shades and their closest cross-brand match:
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> ↔ <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> — America&apos;s two most popular grays. Delta E: 2.4 (close but noticeably different in person). Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> ↔ <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — Both warm whites, but White Dove is slightly creamier. See the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> ↔ <Swatch hex="#F1ECE0" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> — Warm whites for whole-house color. Nearly identical in person.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to check the exact Delta E between any SW and BM colors. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> to understand why similar-looking colors can feel different on your walls.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Quality: Advantage BM (Slightly)</h2>
