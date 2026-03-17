@@ -2514,7 +2514,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Option 1: Peel-and-Stick Samples</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Both Sherwin-Williams and Benjamin Moore offer large peel-and-stick color samples (approximately 8×8 inches). At $5–8 each, they&apos;re the cheapest way to test multiple colors. Move them around the room, hold them next to your trim and countertops, and observe them at different times of day.
+          Both <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore offer large peel-and-stick color samples (approximately 8×8 inches). At $5–8 each, they&apos;re the cheapest way to test multiple colors. Move them around the room, hold them next to your trim and countertops, and observe them at different times of day.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Tip:</strong> Don&apos;t press them flat against the wall. Hold the sample about an inch away so you see the color without being influenced by the current wall color underneath.
@@ -2554,7 +2554,7 @@ const blogPosts: BlogPost[] = [
           Before spending money on physical samples, narrow your options digitally. Our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> lets you preview colors on room photos, and the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> can extract paint colors from any photo you love. These tools won&apos;t replace physical samples, but they&apos;ll help you go from 50 options to 3.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out how much paint you&apos;ll need once you&apos;ve made your final choice.
+          Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out how much paint you&apos;ll need once you&apos;ve made your final choice. And if you&apos;re still narrowing down your options, our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool paint colors guide</Link> will help you understand how temperature affects your final decision.
         </p>
       </>
     ),
@@ -2595,7 +2595,7 @@ const blogPosts: BlogPost[] = [
           Colors next to each other on the wheel are analogous: blue, blue-green, and green. These combinations are inherently harmonious and hard to mess up. Most &ldquo;professional-looking&rdquo; rooms use an analogous scheme, often without the homeowner realizing it.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Example:</strong> <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (green) walls, <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (blue-green) bathroom, <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> (blue) bedroom. All adjacent on the wheel. All harmonious. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
+          <strong>Example:</strong> <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (green) walls, <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (blue-green) bathroom, <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> (blue) bedroom. All adjacent on the wheel. All harmonious. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> or see the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The 60-30-10 Rule</h2>
