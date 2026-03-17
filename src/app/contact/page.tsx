@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
@@ -76,6 +77,7 @@ export default function ContactPage() {
           </p>
         </div>
       </main>
+      <AdSenseScript />
       <Footer />
     </div>
   );

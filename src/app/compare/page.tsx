@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 import { getColorById } from "@/lib/queries";
 import { CompareClient } from "./compare-client";
 
@@ -44,6 +45,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
         <CompareClient initialColor1={color1} initialColor2={color2} />
       </main>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

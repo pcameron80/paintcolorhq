@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 import { getAllPosts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
@@ -127,6 +128,7 @@ export default function BlogIndex() {
           </div>
         </div>
       </main>
+      <AdSenseScript />
       <Footer />
       <script
         type="application/ld+json"

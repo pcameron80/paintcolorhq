@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 import { inspirationPalettes } from "@/lib/palettes";
 import { findClosestColor } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
@@ -114,6 +115,7 @@ export default async function InspirationPage() {
         </div>
       </main>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

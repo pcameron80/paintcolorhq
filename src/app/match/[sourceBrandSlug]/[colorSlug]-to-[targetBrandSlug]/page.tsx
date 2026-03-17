@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 import { ColorSwatch } from "@/components/color-swatch";
 import { getColorBySlug, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
 
@@ -192,6 +193,7 @@ export default async function MatchPage({ params }: PageProps) {
         )}
       </main>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

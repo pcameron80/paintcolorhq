@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 import { getAllBrands } from "@/lib/queries";
 
 export const revalidate = 3600;
@@ -55,6 +56,7 @@ export default async function BrandsPage() {
         </div>
       </main>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

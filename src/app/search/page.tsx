@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 import { SearchResults } from "./search-results";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function SearchPage() {
 
       </main>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

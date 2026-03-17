@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const metadata: Metadata = {
   title: "Paint Tools | Paint Color HQ",
@@ -133,6 +134,7 @@ export default function ToolsPage() {
         </div>
       </main>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );
