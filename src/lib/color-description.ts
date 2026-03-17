@@ -874,21 +874,16 @@ export function generateColorDescription(
 
   const paragraph1 = p1Sentences.join(" ");
 
-  // === PARAGRAPH 2: Best Rooms & Practical Tips ===
-  const practicalTips = getPracticalTips(props, lrv, hash);
-  const paragraph2 = practicalTips;
-
-  // === PARAGRAPH 3: Coordination & Styling ===
-  const trimPairing = getTrimPairing(props, hash);
-  const floorCountertop = getFloorCountertopTip(props, hash);
-  const fixtureSuggestion = getFixtureSuggestion(props, hash);
-  const paragraph3 = `${trimPairing} ${floorCountertop} ${fixtureSuggestion}`;
-
-  // === PARAGRAPH 4: SEO Query Targeting ===
+  // === PARAGRAPH 2: SEO Query Targeting (uses specific per-color data) ===
   const queryTargeting = getQueryTargetingSentences(color, matches, props);
-  const paragraph4 = queryTargeting;
+  const paragraph2 = queryTargeting;
 
-  return [paragraph1, paragraph2, paragraph3, paragraph4].join("\n\n");
+  // NOTE: getPracticalTips, getTrimPairing, getFloorCountertopTip, getFixtureSuggestion
+  // are defined but not included — their content is too generic/templated across 25k pages
+  // and risks triggering a Helpful Content flag. Can be re-enabled once domain authority
+  // is strong enough to absorb the risk.
+
+  return [paragraph1, paragraph2].join("\n\n");
 }
 
 export function generateMetaDescription(color: ColorWithBrand): string {
