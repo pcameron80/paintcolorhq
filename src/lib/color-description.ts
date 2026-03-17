@@ -629,6 +629,205 @@ function getColorNumberIntro(color: ColorWithBrand, hash: number): string | null
   ], hash, 800);
 }
 
+// ---------- Practical tips ----------
+
+function getPracticalTips(props: DerivedProps, lrv: number | null, hash: number): string {
+  // Coverage tips based on lightness
+  const coverageTips: string[] = [];
+  if (props.lightness === "dark" || props.lightness === "deep") {
+    coverageTips.push(
+      "Darker colors like this typically require two to three coats for even, streak-free coverage — budget extra paint accordingly.",
+      "Expect to apply at least two coats for full opacity; darker shades can be unforgiving with thin or uneven application.",
+      "Plan for two to three coats when working with this depth of color, and keep a wet edge to avoid lap marks.",
+      "Rich, deep shades like this benefit from a tinted primer to reduce the number of topcoats needed for full coverage.",
+    );
+  } else if (props.lightness === "very light") {
+    coverageTips.push(
+      "Very light colors tend to cover well in one to two coats, especially over a white or light-tinted primer.",
+      "This shade offers good single-coat coverage over similarly light surfaces, though a second coat ensures uniformity.",
+      "Light colors like this go on smoothly and typically need just one to two coats over a properly primed surface.",
+      "For the cleanest finish, apply two thin coats rather than one thick one — light colors show roller marks more easily.",
+    );
+  } else {
+    coverageTips.push(
+      "A mid-range color like this usually covers well in two coats over a primed surface.",
+      "Two coats over primer is the standard for this depth — it builds nicely without excess product.",
+      "This color strikes a practical balance: it covers evenly in two coats and hides minor surface imperfections well.",
+      "For the most even finish, use a quality roller and apply two coats, allowing proper dry time between each.",
+    );
+  }
+  const coverageSentence = pick(coverageTips, hash, 900);
+
+  // Finish recommendations based on room type and properties
+  const finishTips: string[] = [];
+  if (props.lightness === "dark" || props.lightness === "deep") {
+    finishTips.push(
+      "A matte or flat finish minimizes light reflection on dark walls, creating the smoothest visual effect.",
+      "Consider a matte finish to let the depth of color speak for itself — glossier sheens can highlight wall imperfections on dark surfaces.",
+      "Flat or matte finishes work best with deep tones, reducing glare and giving the wall a velvety appearance.",
+    );
+  } else if (props.temperature === "cool" && (props.lightness === "very light" || props.lightness === "light")) {
+    finishTips.push(
+      "A satin or semi-gloss finish works well in bathrooms and kitchens, where moisture resistance matters as much as appearance.",
+      "For bathrooms or kitchens, choose semi-gloss for easy cleaning; for bedrooms, an eggshell finish gives a softer look.",
+      "Semi-gloss is the practical choice for high-moisture areas; eggshell or satin suits bedrooms and living spaces.",
+    );
+  } else {
+    finishTips.push(
+      "An eggshell finish is the most versatile choice for this color — easy to clean, with just enough sheen to enhance depth.",
+      "Satin finish strikes the right balance of washability and elegance for living spaces and bedrooms.",
+      "For a lived-in look, eggshell provides subtle luster; for higher-traffic areas, step up to satin for durability.",
+    );
+  }
+  const finishSentence = pick(finishTips, hash, 901);
+
+  // Primer advice
+  const primerTips: string[] = [];
+  if (props.lightness === "dark" || props.lightness === "deep") {
+    primerTips.push(
+      "Use a gray-tinted primer when applying this color over a light base — it reduces the number of topcoats and prevents the old color from bleeding through.",
+      "A tinted primer close to the final color saves time and paint; going dark over a white base without primer often takes three or more coats.",
+      "Prime with a deep-tinted base coat first, especially when covering light walls — it builds a foundation that lets the topcoat read true.",
+    );
+  } else if (props.lightness === "very light") {
+    primerTips.push(
+      "When covering a darker surface with this light shade, use a white-tinted primer to block the old color and keep the new shade clean and true.",
+      "A high-hide white primer is essential when going from dark to light — without it, the old color can ghost through even after multiple coats.",
+      "Start with a quality white primer, especially over bold or dark existing colors, to ensure this light shade looks consistent and pure.",
+    );
+  } else {
+    primerTips.push(
+      "A standard white or light-gray primer works well under this shade, especially on new drywall or patched surfaces.",
+      "Prime bare surfaces and repairs before painting; for previously painted walls in good condition, this color covers well with minimal prep.",
+      "A bonding primer is only necessary on glossy or slick surfaces — for standard drywall, a basic primer-sealer is sufficient.",
+    );
+  }
+  const primerSentence = pick(primerTips, hash, 902);
+
+  return `${coverageSentence} ${finishSentence} ${primerSentence}`;
+}
+
+// ---------- Trim pairing ----------
+
+function getTrimPairing(props: DerivedProps, hash: number): string {
+  if (props.temperature === "warm") {
+    return pick([
+      "For trim, choose a warm white like Benjamin Moore's White Dove or Sherwin-Williams Alabaster — a stark, cool white will clash with the warm wall color.",
+      "Pair this with a creamy off-white trim such as Sherwin-Williams Dover White or Benjamin Moore's Simply White to keep the warmth consistent throughout the room.",
+      "Warm whites like Swiss Coffee or Navajo White make the best trim companions here — avoid blue-white trim, which creates an uneasy contrast.",
+      "Select a trim color with a slight yellow or cream cast; Sherwin-Williams Creamy or Benjamin Moore's Cloud White complement warm walls without competing.",
+      "A warm ivory or cream trim ties the room together; stark cool whites next to warm wall colors can make the trim look harsh and disconnected.",
+    ], hash, 910);
+  }
+  if (props.temperature === "cool") {
+    return pick([
+      "A crisp, clean white trim like Benjamin Moore's Chantilly Lace or Sherwin-Williams Extra White pairs naturally with this cool-toned wall color.",
+      "For a polished look, use a bright white trim such as Sherwin-Williams High Reflective White — it echoes the cool undertone without adding warmth.",
+      "Cool wall colors pair best with blue-white or neutral-white trim; avoid creamy or yellow-toned whites that will fight the wall's temperature.",
+      "Sherwin-Williams Pure White or Benjamin Moore's Decorator's White are ideal trim choices here — they keep the crisp, clean aesthetic intact.",
+      "Choose a clean, cool-leaning white for trim and doors; a warm cream trim next to these cool walls creates a noticeable temperature clash.",
+    ], hash, 910);
+  }
+  // neutral
+  return pick([
+    "Neutral wall colors give you the most flexibility with trim — both warm whites like Swiss Coffee and cool whites like Chantilly Lace work well here.",
+    "You have broad trim options with a neutral wall color; match the white temperature to your flooring and furniture rather than worrying about the walls.",
+    "Any well-balanced white trim works here — Benjamin Moore's Simply White or Sherwin-Williams Pure White are both safe, versatile picks.",
+    "Because this is a true neutral, your trim choice should be guided by the rest of the room's finishes rather than the wall color alone.",
+    "Neutral walls are forgiving with trim selection — focus on matching your trim white to the dominant undertone in your flooring and countertops.",
+  ], hash, 910);
+}
+
+// ---------- Fixture suggestion ----------
+
+function getFixtureSuggestion(props: DerivedProps, hash: number): string {
+  if (props.temperature === "warm") {
+    return pick([
+      "Brass, antique gold, or copper hardware and fixtures complement warm wall colors beautifully, reinforcing the inviting atmosphere.",
+      "Warm-toned metals like brushed brass, aged copper, or champagne gold feel most cohesive against this wall color.",
+      "Consider brushed gold or unlacquered brass for cabinet pulls, light fixtures, and faucets — they echo the wall's warmth and age gracefully.",
+      "Warm metallics are the natural choice here: think satin brass drawer pulls, a copper pendant light, or antique gold mirror frames.",
+      "Oil-rubbed bronze and warm brass both work well with this palette — they add depth without introducing a conflicting temperature.",
+    ], hash, 920);
+  }
+  if (props.temperature === "cool") {
+    return pick([
+      "Chrome, polished nickel, or brushed stainless steel fixtures pair seamlessly with cool wall tones, keeping the palette crisp and modern.",
+      "Cool metals like polished chrome, brushed nickel, or even pewter feel most at home against this wall color.",
+      "Choose brushed nickel or polished chrome for hardware and light fixtures — warm metals like brass can feel out of place against cool walls.",
+      "Stainless steel appliances, chrome faucets, and polished nickel cabinet pulls reinforce the clean, cool character of this color.",
+      "Silver-toned fixtures — chrome, nickel, or stainless — maintain the cool harmony; for a modern twist, matte black hardware also works well.",
+    ], hash, 920);
+  }
+  // neutral
+  return pick([
+    "Neutral walls are the most versatile backdrop for hardware — matte black, brushed nickel, and satin brass all work depending on your style preference.",
+    "Matte black fixtures add a contemporary edge against neutral walls, while mixed metals (brass and black, for instance) create a curated, layered look.",
+    "With a neutral wall color, you can confidently mix metal finishes — try matte black light fixtures paired with brass cabinet hardware for depth.",
+    "Any metal finish complements a true neutral: chrome for modern spaces, brass for warmth, or matte black for a bold, contemporary statement.",
+    "Neutral walls free you to choose hardware by style rather than color match — industrial iron, sleek chrome, or warm brass all find their place here.",
+  ], hash, 920);
+}
+
+// ---------- Floor/countertop compatibility ----------
+
+function getFloorCountertopTip(props: DerivedProps, hash: number): string {
+  if (props.temperature === "warm") {
+    return pick([
+      "Warm-toned flooring — honey oak, walnut, or warm-stained hardwood — creates a seamless flow, while cool gray tile can provide a striking, intentional contrast.",
+      "Natural wood floors with amber or golden tones pair effortlessly here; for countertops, warm-veined quartz or butcher block reinforces the palette.",
+      "This wall color sings against warm hardwood floors and natural stone countertops with golden or beige veining.",
+      "Pair with oak or hickory flooring and a countertop in warm marble, soapstone, or a quartz with taupe veining for a cohesive, grounded look.",
+    ], hash, 930);
+  }
+  if (props.temperature === "cool") {
+    return pick([
+      "Cool-toned flooring — gray-washed oak, slate tile, or light ash — maintains the crisp feel, while white marble or quartz countertops complete the look.",
+      "Gray-toned hardwood or cool porcelain tile pairs naturally here; for countertops, white quartz or Carrara marble keeps the palette harmonious.",
+      "This color complements cool-toned floors like gray oak or polished concrete and looks sharp against white or gray-veined countertops.",
+      "Pair with light maple, ash, or gray tile flooring; cool-veined quartz or concrete countertops echo the wall's clean temperature.",
+    ], hash, 930);
+  }
+  return pick([
+    "Neutral walls work with virtually any flooring — from warm walnut to cool gray tile — so let your floors and countertops drive the room's temperature.",
+    "This color bridges warm and cool, making it compatible with both honey-toned hardwood and gray-washed oak flooring.",
+    "Pair with a countertop that matches your floor's temperature: warm granite with warm wood, or cool quartz with gray tile, and the walls will tie it all together.",
+    "A true neutral like this lets other surfaces take the lead — choose flooring and countertops as a pair, and the wall color will harmonize with both.",
+  ], hash, 930);
+}
+
+// ---------- SEO query-targeting sentences ----------
+
+function getQueryTargetingSentences(
+  color: ColorWithBrand,
+  matches: CrossBrandMatchWithColor[],
+  props: DerivedProps
+): string {
+  const family = color.color_family || getHueName(props.hue);
+  const hex = color.hex.toUpperCase();
+  const tempWord = props.temperature === "neutral" ? "neutral" : props.temperature;
+
+  // "What color is X" — directly answers the most common query pattern
+  const whatColorIs = `What color is ${color.name}? It's a ${props.lightness} ${tempWord} ${family} with the hex code ${hex}.`;
+
+  // "Colors similar to X" — answers "colors similar to" / "colors close to" queries
+  const closeMatches = matches.filter((m) => Number(m.delta_e_score) < 3).slice(0, 3);
+  let similarColors = "";
+  if (closeMatches.length >= 2) {
+    const names = closeMatches.map(
+      (m) => `${m.match_color.brand.name} ${m.match_color.name}`
+    );
+    similarColors = `Colors similar to ${color.name} include ${names.join(", ")}.`;
+  }
+
+  // Undertone callout for "{color} undertones" queries
+  const undertoneCallout = color.undertone
+    ? `${color.name} has a ${color.undertone.toLowerCase()} undertone, which affects how it pairs with trim, flooring, and adjacent wall colors.`
+    : "";
+
+  return [whatColorIs, similarColors, undertoneCallout].filter(Boolean).join(" ");
+}
+
 // ---------- Public API ----------
 
 export function generateColorDescription(
@@ -639,6 +838,8 @@ export function generateColorDescription(
   const hash = hashStr(color.hex + color.name + color.brand.slug);
   const props = deriveProps(color);
   const lrv = color.lrv != null ? Number(color.lrv) : null;
+
+  // === PARAGRAPH 1: Character & Context ===
 
   // 1. Character statement (always included)
   const lightDesc = getLightDescription(color, props);
@@ -661,20 +862,33 @@ export function generateColorDescription(
   // 4. Cross-brand match (when available)
   const matchSentence = getMatchSentence(matches, hash);
 
-  // 5. Design, lighting, coordination — pick 2 of 3 for variety
+  // 5. Design, lighting, coordination — include ALL three
   const designStyle = getDesignStyle(props, hash);
   const lighting = getLightingBehavior(props, hash);
   const coordination = getCoordinationTip(color, props, hash);
-  const optionalPool = [designStyle, lighting, coordination];
-  const optSkip = hash % 3;
-  const selectedOptional = optionalPool.filter((_, i) => i !== optSkip);
 
-  const sentences = [characterSentence, roomSentence];
-  if (colorNumSentence) sentences.push(colorNumSentence);
-  if (matchSentence) sentences.push(matchSentence);
-  sentences.push(...selectedOptional);
+  const p1Sentences = [characterSentence, roomSentence];
+  if (colorNumSentence) p1Sentences.push(colorNumSentence);
+  if (matchSentence) p1Sentences.push(matchSentence);
+  p1Sentences.push(designStyle, lighting, coordination);
 
-  return sentences.join(" ");
+  const paragraph1 = p1Sentences.join(" ");
+
+  // === PARAGRAPH 2: Best Rooms & Practical Tips ===
+  const practicalTips = getPracticalTips(props, lrv, hash);
+  const paragraph2 = practicalTips;
+
+  // === PARAGRAPH 3: Coordination & Styling ===
+  const trimPairing = getTrimPairing(props, hash);
+  const floorCountertop = getFloorCountertopTip(props, hash);
+  const fixtureSuggestion = getFixtureSuggestion(props, hash);
+  const paragraph3 = `${trimPairing} ${floorCountertop} ${fixtureSuggestion}`;
+
+  // === PARAGRAPH 4: SEO Query Targeting ===
+  const queryTargeting = getQueryTargetingSentences(color, matches, props);
+  const paragraph4 = queryTargeting;
+
+  return [paragraph1, paragraph2, paragraph3, paragraph4].join("\n\n");
 }
 
 export function generateMetaDescription(color: ColorWithBrand): string {

@@ -188,6 +188,7 @@ export default async function ColorPage({ params }: PageProps) {
     getSimilarColorsFromSameBrand(color),
   ]);
   const description = generateColorDescription(color, matches);
+  const descriptionFirstParagraph = description.split("\n\n")[0];
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
 
   // Resolve color harmonies to real paint colors
@@ -353,9 +354,13 @@ export default async function ColorPage({ params }: PageProps) {
         </div>
 
         {/* Color Description */}
-        <p className="mt-8 text-base leading-relaxed text-gray-700">
-          {description}
-        </p>
+        <div className="mt-8 space-y-4">
+          {description.split("\n\n").map((paragraph, i) => (
+            <p key={i} className="text-base leading-relaxed text-gray-700">
+              {paragraph}
+            </p>
+          ))}
+        </div>
 
         {/* Complementary Colors */}
         <ComplementaryColors hex={color.hex} harmonies={harmonies} />
@@ -446,7 +451,7 @@ export default async function ColorPage({ params }: PageProps) {
               "@context": "https://schema.org",
               "@type": "WebPage",
               name: `${color.name} Paint Color`,
-              description,
+              description: descriptionFirstParagraph,
               url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
               breadcrumb: {
                 "@type": "BreadcrumbList",
@@ -460,7 +465,7 @@ export default async function ColorPage({ params }: PageProps) {
               about: {
                 "@type": "Thing",
                 name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
-                description,
+                description: descriptionFirstParagraph,
                 brand: {
                   "@type": "Brand",
                   name: color.brand.name,
