@@ -77,6 +77,119 @@ export default function PaintCalculatorPage() {
           </div>
         </section>
 
+        <section className="mt-12 max-w-3xl">
+          <h2 className="text-2xl font-bold text-gray-900">
+            How the Paint Calculator Works
+          </h2>
+          <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
+            <p>
+              Our paint calculator takes the guesswork out of buying the right
+              amount of paint. Start by entering your room dimensions — length,
+              width, and ceiling height — to calculate the total wall area. Then
+              subtract the areas you will not be painting by entering the number
+              of doors and windows in the room. The calculator automatically
+              deducts approximately 21 square feet per standard door and 15
+              square feet per average window, giving you the true paintable
+              surface area.
+            </p>
+            <p>
+              Next, select how many coats you plan to apply. Two coats is the
+              standard recommendation for most interior projects, but a single
+              coat may be enough if you are refreshing with the same color. The
+              calculator multiplies your paintable area by the number of coats,
+              divides by the industry-standard coverage rate of 350 square feet
+              per gallon, and rounds up to the nearest whole gallon so you always
+              have enough on hand.
+            </p>
+          </div>
+        </section>
+
+        <section className="mt-12 max-w-3xl">
+          <h2 className="text-2xl font-bold text-gray-900">
+            How Much Paint Do I Need?
+          </h2>
+          <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
+            <p>
+              As a general rule of thumb, one gallon of interior latex paint
+              covers roughly 350 to 400 square feet on a smooth, primed surface
+              in a single coat. For a typical 12-by-12-foot bedroom with 8-foot
+              ceilings, that works out to about 384 square feet of wall space
+              before subtracting openings — so one gallon will handle the first
+              coat, and you will need a second gallon for coat number two.
+            </p>
+            <p>
+              Most paint projects require two coats for even, consistent
+              coverage. If you are making a dramatic color change — going from
+              dark to light or light to dark — you may need a tinted primer plus
+              two topcoats. Ceilings typically need just one gallon for an
+              average room since the coverage rate is similar but the area is
+              smaller than the combined wall space. For trim and doors, a quart
+              usually covers one to two standard doors or 50 to 75 linear feet
+              of baseboard.
+            </p>
+          </div>
+        </section>
+
+        <section className="mt-12 max-w-3xl">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Tips for Accurate Paint Estimates
+          </h2>
+          <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
+            <p>
+              <strong>Measure twice.</strong> Even small measurement errors
+              compound quickly across four walls. Use a tape measure rather than
+              estimating, and double-check your numbers before entering them into
+              the calculator.
+            </p>
+            <p>
+              <strong>Account for wall texture.</strong> Textured surfaces like
+              knockdown, orange peel, or brick absorb significantly more paint
+              than smooth drywall. If your walls have heavy texture, increase
+              your estimate by 15 to 20 percent.
+            </p>
+            <p>
+              <strong>Buy 10 percent extra for touch-ups.</strong> You will
+              almost always need to touch up scuffs, nail holes, or missed spots
+              after the main job is done. Having leftover paint from the same
+              batch ensures a perfect color match — paint can vary slightly
+              between batches even with the same formula.
+            </p>
+            <p>
+              <strong>Primer needs a separate calculation.</strong> If you are
+              applying primer before your topcoat, calculate primer coverage
+              separately. Primer typically covers 200 to 300 square feet per
+              gallon depending on the surface porosity, which is less than
+              standard paint.
+            </p>
+            <p>
+              Once you know how much paint you need, use our{" "}
+              <Link
+                href="/tools/room-visualizer"
+                className="text-blue-700 underline hover:text-blue-900"
+              >
+                Room Visualizer
+              </Link>{" "}
+              to preview your chosen color on walls before you buy. If you are
+              still deciding between shades, the{" "}
+              <Link
+                href="/compare"
+                className="text-blue-700 underline hover:text-blue-900"
+              >
+                Color Comparison tool
+              </Link>{" "}
+              lets you see them side by side. And for guidance on choosing the
+              right finish for each surface, check out our{" "}
+              <Link
+                href="/blog/paint-sheen-guide"
+                className="text-blue-700 underline hover:text-blue-900"
+              >
+                complete paint sheen guide
+              </Link>
+              .
+            </p>
+          </div>
+        </section>
+
         <div className="mt-8">
           <Link
             href="/search"
