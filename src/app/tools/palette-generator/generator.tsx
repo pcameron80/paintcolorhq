@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
+import { trackToolEngagement } from "@/lib/analytics";
 
 // --- Color utilities (copied from curated-palettes.tsx for client-side use) ---
 
@@ -266,6 +267,7 @@ export function PaletteGenerator() {
   }, []);
 
   function handleGenerate() {
+    trackToolEngagement("palette-generator", "complete", inputHex);
     const p = generatePalettes(inputHex);
     setPalettes(p);
     fetchMatches(p, brandFilter);

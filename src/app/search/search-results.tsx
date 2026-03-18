@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import { ColorCard } from "@/components/color-card";
 import type { ColorWithBrand } from "@/lib/types";
+import { trackColorSearch } from "@/lib/analytics";
 
 export function SearchResults() {
   const searchParams = useSearchParams();
@@ -23,7 +24,9 @@ export function SearchResults() {
         `/api/search?q=${encodeURIComponent(q)}`
       );
       const data = await res.json();
-      setResults(data.results ?? []);
+      const items = data.results ?? [];
+      setResults(items);
+      trackColorSearch(q, items.length);
     } catch {
       setResults([]);
     } finally {

@@ -14,6 +14,7 @@ import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosest
 import { generateColorDescription, generateMetaDescription } from "@/lib/color-description";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
+import { TrackPage } from "@/components/track-page";
 
 export const revalidate = 3600;
 
@@ -207,6 +208,10 @@ export default async function ColorPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-white">
+      <TrackPage
+        eventName="page_view_enriched"
+        params={{ page_type: "color", color_brand: color.brand.slug, color_family: color.color_family ?? undefined }}
+      />
       <Header />
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">

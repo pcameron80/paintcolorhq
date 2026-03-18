@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { trackToolEngagement } from "@/lib/analytics";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -149,6 +150,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
     const normalized = hex.startsWith("#") ? hex : `#${hex}`;
     setColors((prev) => ({ ...prev, [selected]: normalized }));
     setHexInput(normalized.replace("#", ""));
+    trackToolEngagement("room-visualizer", "use", normalized);
   };
 
   const handlePickerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -166,6 +168,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
   const findMatches = async () => {
     if (hexInput.length !== 6) return;
     setLoading(true);
+    trackToolEngagement("room-visualizer", "complete", hexInput);
     try {
       const res = await fetch(`/api/color-match?hex=${hexInput}`);
       const data = await res.json();

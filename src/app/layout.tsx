@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
+import { AnalyticsProvider } from "@/components/analytics-provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -56,6 +57,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
+        <AnalyticsProvider />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-056NR93JLK"
           strategy="afterInteractive"

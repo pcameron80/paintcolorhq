@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import type { ColorWithBrand } from "@/lib/types";
+import { trackCompare } from "@/lib/analytics";
 
 interface CompareClientProps {
   initialColor1: ColorWithBrand | null;
@@ -168,6 +169,9 @@ export function CompareClient({ initialColor1, initialColor2 }: CompareClientPro
   function selectColor2(color: ColorWithBrand) {
     setColor2(color);
     updateUrl(color1, color);
+    if (color1) {
+      trackCompare(color1.name, color.name, color1.brand.name, color.brand.name);
+    }
   }
 
   function clearColor1() {

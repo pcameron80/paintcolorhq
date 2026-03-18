@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { trackToolEngagement } from "@/lib/analytics";
 
 export function PaintCalculator() {
+  const tracked = useRef(false);
   const [length, setLength] = useState("");
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("8");
@@ -18,6 +20,11 @@ export function PaintCalculator() {
   const coatsNum = parseInt(coats) || 2;
 
   const canCalculate = lengthNum > 0 && widthNum > 0;
+
+  if (canCalculate && !tracked.current) {
+    tracked.current = true;
+    trackToolEngagement("paint-calculator", "complete");
+  }
 
   const wallArea = 2 * (lengthNum + widthNum) * heightNum;
   const doorArea = doorsNum * 21;

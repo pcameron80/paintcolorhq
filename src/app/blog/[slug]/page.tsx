@@ -6,6 +6,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllPosts, getPostBySlug, getAllBlogSlugs } from "@/lib/blog-posts";
 import { AdSenseScript } from "@/components/adsense-script";
+import { TrackPage } from "@/components/track-page";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -197,6 +198,10 @@ export default async function BlogPostPage({ params }: PageProps) {
           </nav>
         </div>
       </main>
+      <TrackPage
+        eventName="blog_read"
+        params={{ page_type: "blog", content_category: post.tags[0], blog_slug: slug }}
+      />
       <AdSenseScript />
       <Footer />
       <script

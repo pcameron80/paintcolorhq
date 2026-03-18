@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/queries";
 import { getFamilyContent } from "@/lib/family-content";
+import { TrackPage } from "@/components/track-page";
 
 export const revalidate = 3600;
 
@@ -73,6 +74,10 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
 
   return (
     <div className="min-h-screen bg-white">
+      <TrackPage
+        eventName="page_view_enriched"
+        params={{ page_type: "family", color_family: familySlug }}
+      />
       <Header />
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">

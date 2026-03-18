@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
+import { trackToolEngagement } from "@/lib/analytics";
 
 interface ColorMatch {
   id: string;
@@ -84,6 +85,7 @@ export function ColorIdentifier() {
 
       setPickedColor(hex);
       setLoading(true);
+      trackToolEngagement("color-identifier", "complete", hex);
 
       try {
         const res = await fetch(
