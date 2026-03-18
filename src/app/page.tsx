@@ -46,6 +46,20 @@ export default async function Home() {
       <HeroSearch />
 
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        {/* BLUF Section — GEO: citeable site definition for AI engines */}
+        <section className="mx-auto max-w-4xl pb-12">
+          <p className="text-lg leading-relaxed text-gray-700">
+            <strong>Paint Color HQ</strong> is a free paint color reference database containing{" "}
+            <strong>25,000+ colors from 14 major brands</strong> — including Sherwin-Williams,
+            Benjamin Moore, Behr, PPG, Valspar, Farrow &amp; Ball, and Dunn-Edwards. Every color
+            includes hex codes, RGB values, LRV (Light Reflectance Value), and undertone
+            classification. Cross-brand matching uses the{" "}
+            <strong>CIEDE2000 color difference formula</strong> — the perceptual accuracy standard
+            defined by the International Commission on Illumination (CIE) — to compute Delta E
+            scores that quantify exactly how close two colors are to the human eye.
+          </p>
+        </section>
+
         {/* Feature Grid */}
         <section>
           <h2 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -61,7 +75,7 @@ export default async function Home() {
               </svg>
               <h3 className="mt-4 font-semibold text-gray-900">Cross-Brand Color Matching</h3>
               <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                Find equivalent colors across 14 major paint brands using CIEDE2000 color science.
+                Find equivalent colors across 14 brands using CIEDE2000 Delta E scoring. Each match shows a perceptual distance score so you know if the difference is imperceptible (Delta E &lt; 1) or noticeable (Delta E &gt; 3).
               </p>
             </Link>
 
@@ -74,7 +88,7 @@ export default async function Home() {
               </svg>
               <h3 className="mt-4 font-semibold text-gray-900">Room Color Visualizer</h3>
               <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                Preview paint colors on walls, accent wall, trim, and floor in a realistic room scene.
+                Preview any of 25,000+ paint colors on walls, accent wall, trim, and floor in a realistic room scene. Swap colors in real time across all 14 brands.
               </p>
             </Link>
 
@@ -88,7 +102,7 @@ export default async function Home() {
               </svg>
               <h3 className="mt-4 font-semibold text-gray-900">Photo Color Identifier</h3>
               <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                Upload a photo, click any spot, and instantly find matching paint colors from every brand.
+                Upload any photo, click a pixel, and instantly identify the closest matching paint colors from all 14 brands ranked by Delta E accuracy.
               </p>
             </Link>
 
@@ -114,7 +128,7 @@ export default async function Home() {
               </svg>
               <h3 className="mt-4 font-semibold text-gray-900">Undertone Analysis</h3>
               <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                Every color is tagged warm, cool, or neutral — filter and search by undertone.
+                All 25,000+ colors are classified as warm, cool, or neutral undertone — filter and search by undertone to avoid clashing with existing trim, flooring, or cabinetry.
               </p>
             </Link>
 
@@ -127,7 +141,7 @@ export default async function Home() {
               </svg>
               <h3 className="mt-4 font-semibold text-gray-900">Palette Generator</h3>
               <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                Pick a color and build a coordinated paint palette. Matched to real colors from all 14 brands.
+                Select any color and generate a coordinated palette using complementary, analogous, and triadic color harmonies — mapped to real purchasable paint colors from all 14 brands.
               </p>
             </Link>
           </div>
@@ -185,78 +199,84 @@ export default async function Home() {
             <div className="mt-8 space-y-8">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Find Equivalent Colors Across Any Brand
+                  How Does Cross-Brand Color Matching Work?
                 </h3>
                 <p className="mt-2 leading-relaxed text-gray-600">
-                  Paint brands don&apos;t make it easy to cross-reference their colors.
-                  If your designer specifies a Sherwin-Williams color but your local store
-                  only carries Benjamin Moore, you&apos;re stuck guessing. Paint Color HQ
-                  solves this by computing the closest perceptual match from every other brand
-                  in our database. Each match includes a Delta E score that tells you exactly
-                  how close the match is, from imperceptible to noticeably different.
+                  Paint Color HQ computes cross-brand matches using the <strong>CIEDE2000</strong> color
+                  difference formula, the perceptual accuracy standard published by the International
+                  Commission on Illumination (CIE). Each match includes a <strong>Delta E score</strong>:
+                  a Delta E below 1.0 means the difference is imperceptible to the human eye, 1.0–2.0 is
+                  only perceptible upon close inspection, and above 3.0 is noticeable at a glance. When
+                  your designer specifies Sherwin-Williams Agreeable Gray (SW 7029) but your store
+                  carries only Benjamin Moore, Paint Color HQ shows the closest Benjamin Moore match
+                  with an exact Delta E score — no guessing required.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  See Colors in Your Room Before You Buy
+                  Can I Preview Paint Colors in My Room?
                 </h3>
                 <p className="mt-2 leading-relaxed text-gray-600">
-                  Our Room Visualizer lets you preview any paint color on walls, an accent wall,
-                  trim, and floor in a realistic room scene. Swap colors in real time and compare
-                  combinations before committing to a gallon — no sample pots required.
+                  The Room Visualizer renders any of 25,000+ colors from Sherwin-Williams, Benjamin Moore,
+                  Behr, PPG, Valspar, Dunn-Edwards, and Farrow &amp; Ball on walls, accent wall, trim,
+                  and floor in a realistic room scene. Swap colors in real time and compare combinations
+                  before purchasing — eliminating the need for sample pots.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Identify Paint Colors from Any Photo
+                  How Do I Identify a Paint Color from a Photo?
                 </h3>
                 <p className="mt-2 leading-relaxed text-gray-600">
-                  Spotted a color you love in the wild? Upload a photo to the Photo Color Identifier,
-                  click any spot, and instantly see the closest matching paint colors from every brand
-                  in our database. It works with interior shots, exterior photos, or anything with
-                  a color that catches your eye.
+                  Upload any photo to the Photo Color Identifier, click a pixel, and Paint Color HQ
+                  extracts the hex value and returns the closest matching paint colors from all 14 brands,
+                  ranked by Delta E accuracy. This works with interior photos, exterior shots, Pinterest
+                  screenshots, or any image containing a color you want to match.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Understand Undertones
+                  What Are Paint Color Undertones?
                 </h3>
                 <p className="mt-2 leading-relaxed text-gray-600">
-                  Choosing between two whites that look the same on a screen? Every color in our
-                  database is tagged warm, cool, or neutral so you can filter by undertone and
-                  avoid surprises on your walls. Understanding undertones is the difference between
-                  a color that feels right and one that clashes with your trim or flooring.
+                  Every color in the Paint Color HQ database is classified as <strong>warm</strong>,{" "}
+                  <strong>cool</strong>, or <strong>neutral</strong> undertone based on its RGB values.
+                  Undertone is the hidden hue that emerges under different lighting — a white paint with
+                  a warm undertone reads slightly yellow or pink in north-facing rooms, while a cool
+                  undertone reads blue or gray. Filtering by undertone prevents clashing with existing
+                  trim, flooring, and cabinetry.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Plan Your Project from Start to Finish
+                  How Much Paint Do I Need?
                 </h3>
                 <p className="mt-2 leading-relaxed text-gray-600">
-                  Use the Paint Calculator to figure out exactly how many gallons you need for
-                  any room. Browse curated inspiration palettes mapped to real paint colors.
-                  Save your favorites to a project, organize them by room role (walls, trim,
-                  accent, pop), and keep everything in one place for when you&apos;re ready
-                  to visit the store.
+                  The Paint Calculator computes the exact number of gallons needed based on your room
+                  dimensions, number of coats, and door/window cutouts. One gallon of paint covers
+                  approximately 350–400 square feet. Save your selections to a project, organize colors
+                  by room role (walls, trim, accent, pop), and take your complete paint list to the store.
                 </p>
               </div>
             </div>
 
             <p className="mt-8 text-sm text-gray-400">
-              Color data is approximate and based on digital values. Pigments, finishes,
-              and lighting conditions vary between brands. Always verify with physical
-              paint samples before purchasing.
+              Color data is based on manufacturer-published digital values (hex, RGB). Actual
+              pigments, finishes, and lighting conditions vary. Always verify with a physical
+              paint sample before purchasing.
             </p>
           </div>
         </section>
 
         <section className="mt-16 text-center">
           <p className="text-sm text-gray-500">
-            Powered by CIEDE2000 color science. 25,000+ colors across 14 brands.{" "}
+            Powered by the CIEDE2000 color difference formula (CIE standard for perceptual accuracy).
+            25,000+ colors across 14 brands including Sherwin-Williams, Benjamin Moore, Behr, PPG,
+            Valspar, Farrow &amp; Ball, and Dunn-Edwards.{" "}
             <Link href="/about" className="text-brand-blue hover:underline">
               Learn about our methodology
             </Link>.
@@ -274,7 +294,7 @@ export default async function Home() {
             name: "Paint Color HQ",
             url: "https://www.paintcolorhq.com",
             description:
-              "Match paint colors across Sherwin-Williams, Benjamin Moore, Behr and 11 more brands. Free room visualizer, photo color identifier, palette generator, and paint calculator.",
+              "Free paint color database with 25,000+ colors from 14 brands. Cross-brand matching uses CIEDE2000 Delta E scoring. Includes room visualizer, photo color identifier, palette generator, and paint calculator.",
             potentialAction: {
               "@type": "SearchAction",
               target: {
@@ -299,7 +319,7 @@ export default async function Home() {
             url: "https://www.paintcolorhq.com",
             logo: "https://www.paintcolorhq.com/logo.webp",
             description:
-              "Match paint colors across 14 brands using CIEDE2000 color science. Free tools include a room visualizer, photo color identifier, palette generator, and paint calculator.",
+              "Paint Color HQ is a free paint color reference database with 25,000+ colors from 14 brands. Uses the CIEDE2000 Delta E formula to compute perceptual cross-brand matches. Tools include a room visualizer, photo color identifier, palette generator, and paint calculator.",
             contactPoint: {
               "@type": "ContactPoint",
               contactType: "customer support",

@@ -11,15 +11,15 @@ const content: Record<string, BrandContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Sherwin-Williams is America&apos;s largest paint company, with over 4,000 retail locations
-          and a palette of 1,700+ colors. Founded in 1866 in Cleveland, Ohio, Sherwin-Williams has
-          grown into a global coatings leader trusted by homeowners, contractors, and architects alike.
-          Their most popular color —{" "}
+          Sherwin-Williams is America&apos;s largest paint company, operating over 4,000 company-owned
+          retail stores and offering a palette of 1,700+ colors. Their best-selling color —{" "}
           <Link href="/colors/sherwin-williams/agreeable-gray-sw-7029" className="text-brand-blue hover:underline">
             Agreeable Gray SW 7029
           </Link>{" "}
-          — has been the best-selling paint color in the country for five consecutive years. The brand
-          is known for excellent contractor-grade formulas and frequent 30–40% off sales.
+          (LRV 60, warm undertone, hex #D4CDC3) — has been the top-selling paint color in the United
+          States for five consecutive years. Founded in 1866 in Cleveland, Ohio, Sherwin-Williams is
+          trusted by contractors, architects, and homeowners for its professional-grade formulas and
+          frequent 30&ndash;40% off sales events.
         </p>
         <p>
           Other top Sherwin-Williams colors include{" "}
@@ -27,15 +27,16 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/sherwin-williams/alabaster-sw-7008" className="text-brand-blue hover:underline">Alabaster SW 7008</Link>,{" "}
           <Link href="/colors/sherwin-williams/repose-gray-sw-7015" className="text-brand-blue hover:underline">Repose Gray SW 7015</Link>, and{" "}
           <Link href="/colors/sherwin-williams/naval-sw-6244" className="text-brand-blue hover:underline">Naval SW 6244</Link>.
-          These colors span warm whites, versatile grays, and bold accent shades that work in any home.
+          Use Paint Color HQ&apos;s CIEDE2000-based matching to find the closest Benjamin Moore, Behr, or
+          PPG equivalent for any of these colors, with exact Delta E scores.
         </p>
         <p>
-          Top product lines include <strong>Emerald</strong> (premium, self-leveling),{" "}
-          <strong>Duration</strong> (extreme durability for exteriors and high-traffic interiors),{" "}
-          <strong>SuperPaint</strong> (solid mid-range), and <strong>Cashmere</strong> (smooth,
-          buttery application). Sherwin-Williams paint is sold through their own stores and Lowe&apos;s
-          (HGTV Home line). Price range: $55–$80+ per gallon depending on the line. Pro tip: sign up
-          for their PaintPerks program to get notified of sales events.
+          Top product lines include <strong>Emerald</strong> (premium, self-leveling, $75&ndash;$85/gallon),{" "}
+          <strong>Duration</strong> (extreme durability for exteriors and high-traffic interiors, $70&ndash;$80/gallon),{" "}
+          <strong>SuperPaint</strong> (solid mid-range, $55&ndash;$65/gallon), and <strong>Cashmere</strong>{" "}
+          (smooth, buttery application, $60&ndash;$70/gallon). Sherwin-Williams paint is sold through
+          their 4,000+ company-owned stores and at Lowe&apos;s (HGTV Home by Sherwin-Williams line).
+          Sign up for their PaintPerks program to get notified of 30&ndash;40% off sales events.
         </p>
       </div>
     ),
@@ -123,11 +124,13 @@ const content: Record<string, BrandContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Behr is the most accessible major paint brand in the United States, sold exclusively at
-          Home Depot with a palette of 3,000+ colors. As the go-to paint for DIY homeowners, Behr
-          has earned top marks from Consumer Reports, which has consistently ranked Behr Marquee at
-          or near the top in blind coverage and durability tests. Behr&apos;s thick consistency and
-          one-coat formulas are especially forgiving for first-time painters.
+          Behr is sold exclusively at Home Depot — the only place to buy it — and offers a palette
+          of 3,000+ colors, making it the largest color selection among the &quot;big three&quot;
+          consumer paint brands. Consumer Reports has consistently ranked <strong>Behr Marquee</strong>{" "}
+          at or near the top in blind coverage and durability tests, and Behr&apos;s thick, one-coat
+          formulas are specifically designed for DIY homeowners. Price range: $35&ndash;$55 per gallon,
+          making Behr the most affordable of the big three (vs. Sherwin-Williams at $55&ndash;$85 and
+          Benjamin Moore at $60&ndash;$85).
         </p>
         <p>
           The most popular Behr paint colors include{" "}
@@ -136,17 +139,17 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/behr/cameo-white-w-d-200" className="text-brand-blue hover:underline">Cameo White W-D-200</Link>,{" "}
           <Link href="/colors/behr/dolphin-fin-790c-3" className="text-brand-blue hover:underline">Dolphin Fin 790C-3</Link>, and{" "}
           <Link href="/colors/behr/whisper-white-w-d-300" className="text-brand-blue hover:underline">Whisper White W-D-300</Link>.
-          These top sellers are overwhelmingly neutrals — reflecting the trend toward warm grays,
-          soft whites, and greiges that dominate modern interior design.
+          These top sellers are overwhelmingly neutrals and greiges. Use Paint Color HQ&apos;s
+          CIEDE2000-based matching to find the closest Sherwin-Williams or Benjamin Moore equivalent
+          for any Behr color, with exact Delta E perceptual distance scores.
         </p>
         <p>
-          Top product lines include <strong>Dynasty</strong> (premium, one-coat, scuff-resistant — ideal
-          for high-traffic areas), <strong>Marquee</strong> (excellent coverage with stain-blocking
-          technology), <strong>Ultra</strong> (solid mid-range performer), and{" "}
-          <strong>Premium Plus</strong> (the budget-friendly option that still delivers). Price range:
-          $35–$55 per gallon — making Behr the most affordable of the big three brands. All Behr paints
-          are available in-store at Home Depot or online at homedepot.com with free delivery on qualifying
-          orders.
+          Top product lines include <strong>Dynasty</strong> (premium, one-coat, scuff-resistant —
+          $50&ndash;$55/gallon), <strong>Marquee</strong> (excellent coverage with stain-blocking
+          technology — $45&ndash;$50/gallon), <strong>Ultra</strong> (solid mid-range —
+          $38&ndash;$42/gallon), and <strong>Premium Plus</strong> (budget-friendly —
+          $35&ndash;$38/gallon). All Behr paints are available in-store at Home Depot&apos;s
+          2,300+ US locations or online at homedepot.com with free delivery on qualifying orders.
         </p>
       </div>
     ),
@@ -175,12 +178,12 @@ const content: Record<string, BrandContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          PPG is one of the world&apos;s largest paint and coatings manufacturers, with roots going
-          back to 1883 when Pittsburgh Plate Glass Company was founded in Pittsburgh, Pennsylvania.
-          Today PPG operates in more than 70 countries and brings that global coatings expertise to its
-          residential paint lines. PPG paints are available at Home Depot (under the PPG Timeless and
-          PPG Diamond labels), PPG Paints stores, and independent dealers nationwide — giving homeowners
-          and contractors multiple convenient purchasing options.
+          PPG paints are sold at Home Depot (under the PPG Timeless and PPG Diamond labels), through
+          PPG Paints stores, and at independent dealers nationwide — making PPG one of the most widely
+          distributed paint brands in the country. Founded in 1883 as Pittsburgh Plate Glass Company, PPG
+          now operates in more than 70 countries and is one of the world&apos;s largest coatings
+          manufacturers. PPG also owns the Glidden and Olympic brands, giving it coverage from budget
+          ($35/gallon) to premium ($70/gallon) price points.
         </p>
         <p>
           Popular PPG colors include{" "}
@@ -194,12 +197,11 @@ const content: Record<string, BrandContent> = {
         </p>
         <p>
           Top product lines include <strong>PPG Timeless</strong> (premium interior/exterior with a
-          one-coat color guarantee and paint-and-primer-in-one formula), <strong>PPG Diamond</strong>{" "}
-          (durable mid-range with excellent scuff and stain resistance), and the classic{" "}
-          <strong>Pittsburgh Paints</strong> line sold through PPG Paints stores. PPG also owns the{" "}
-          <strong>Glidden</strong> and <strong>Olympic</strong> brands for budget-friendly options.
-          Price range: $35&ndash;$70 per gallon depending on the line. Preview any PPG color in your
-          room with our{" "}
+          one-coat color guarantee and paint-and-primer-in-one formula, $55&ndash;$70/gallon at Home Depot),{" "}
+          <strong>PPG Diamond</strong> (durable mid-range with excellent scuff and stain resistance,
+          $40&ndash;$55/gallon), and the classic <strong>Pittsburgh Paints</strong> line sold through
+          PPG Paints stores. PPG&apos;s residential palette covers over 2,000 colors across every color
+          family. Preview any PPG color in your room with our{" "}
           <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
           or use the{" "}
           <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to
