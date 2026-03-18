@@ -1,44 +1,56 @@
 # Paint Color HQ
+> A technical interior design and paint reference database containing 25,000+ colors across 14 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools.
 
-> Paint Color HQ is a free tool for matching paint colors across 14 major brands including Sherwin-Williams, Benjamin Moore, Behr, Valspar, and PPG. It provides cross-brand color matching using Delta E 2000, a room visualizer, photo color identifier, palette generator, and paint calculator.
+## Master Color Profiles
+- [Sherwin-Williams Agreeable Gray (SW 7029)](https://www.paintcolorhq.com/colors/sherwin-williams/agreeable-gray-7029): Hex #D1CBC1, RGB 209/203/193, LRV 60. America's best-selling paint color — a warm greige with balanced neutral undertones. Closest BM match: Wish AF-680 (Delta E 0.91).
+- [Sherwin-Williams Alabaster (SW 7008)](https://www.paintcolorhq.com/colors/sherwin-williams/alabaster-7008): Hex #EDEAE0, RGB 237/234/224, LRV 82. A warm off-white with subtle beige undertones. Top seller for trim and whole-house white.
+- [Benjamin Moore White Dove (OC-17)](https://www.paintcolorhq.com/colors/benjamin-moore/white-dove-oc-17): Hex #EDE6D3, RGB 237/230/211, LRV 83. The most popular warm white in America. Creamy without reading yellow.
+- [Benjamin Moore Revere Pewter (HC-172)](https://www.paintcolorhq.com/colors/benjamin-moore/revere-pewter-hc-172): Hex #CCC7B9, RGB 204/199/185, LRV 55. A warm greige with green undertones. Closest SW match: Useful Gray 7050 (Delta E 0.88).
+- [Sherwin-Williams Repose Gray (SW 7015)](https://www.paintcolorhq.com/colors/sherwin-williams/repose-gray-7015): Hex #C2BFB8, RGB 194/191/184, LRV 58. A true neutral gray — does not shift purple or blue under artificial light.
+- [Benjamin Moore Hale Navy (HC-154)](https://www.paintcolorhq.com/colors/benjamin-moore/hale-navy-hc-154): Hex #3B444B, RGB 59/68/75, LRV 8. A deeply saturated, transitional navy blue for accent walls and cabinetry.
+- [Sherwin-Williams Pure White (SW 7005)](https://www.paintcolorhq.com/colors/sherwin-williams/pure-white-7005): Hex #EDECE6, RGB 237/236/230, LRV 84. A warm white with a slight cream undertone. One of SW's all-time best sellers.
+- [Benjamin Moore Chantilly Lace (2121-70)](https://www.paintcolorhq.com/colors/benjamin-moore/chantilly-lace-2121-70): Hex #F5F2ED, RGB 245/242/237, LRV 90. BM's cleanest true white — virtually no undertone.
 
-## Key Data
+## Cross-Brand Color Matching
+- [Color Compare Tool](https://www.paintcolorhq.com/compare): Side-by-side comparison of any two colors with Delta E (CIEDE2000) perceptual difference score. Delta E < 1 = virtually identical, 1-2 = very close, 2-3 = close, 3-5 = noticeable difference.
+- [Color Search](https://www.paintcolorhq.com/search): Search 25,000+ colors by name, hex code, brand, color family, or undertone across all 14 brands.
+- [Brand-to-Brand Matches](https://www.paintcolorhq.com/match/sherwin-williams/to/benjamin-moore): Top 50 cross-brand matches between any two brands, ranked by Delta E score.
 
-- 25,000+ paint colors from 14 brands
-- Cross-brand matches calculated using CIEDE2000 (Delta E 2000)
-- Each color includes: hex code, RGB values, LRV (Light Reflectance Value), undertone, and color family
-- Match quality: Delta E < 1 = exact match, < 2 = very close, < 3 = close, < 5 = near match
+## Color Visualization & Planning Tools
+- [Room Color Visualizer](https://www.paintcolorhq.com/tools/room-visualizer): Preview paint colors on walls, ceiling, trim, accent wall, and floor in a realistic room scene. Instant color swapping.
+- [Photo Color Identifier](https://www.paintcolorhq.com/tools/color-identifier): Upload a photo, click any spot, instantly find the closest matching paint colors from all 14 brands using CIEDE2000.
+- [Palette Generator](https://www.paintcolorhq.com/tools/palette-generator): Build complementary, analogous, triadic, and split-complementary color schemes matched to real paint colors from 14 brands.
+- [Paint Calculator](https://www.paintcolorhq.com/tools/paint-calculator): Calculate exact gallons needed by room dimensions. Accounts for doors, windows, and number of coats.
 
-## Brands Covered
+## Expert Guides & Analysis
+- [The 15 Best White Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-white-paint-colors-guide): 15 whites compared by undertone (warm/cool/true), LRV, and best room application. Includes cross-brand equivalents table.
+- [Paint Color Undertones Explained](https://www.paintcolorhq.com/blog/understanding-paint-color-undertones): How to identify blue, green, purple, and brown undertones in gray, white, and beige paints before purchasing.
+- [How to Match Paint Colors Across Brands](https://www.paintcolorhq.com/blog/how-to-find-perfect-color-match-across-brands): Step-by-step guide using CIEDE2000 Delta E scores with real examples (Agreeable Gray → Behr, BM, PPG equivalents).
+- [Behr vs Sherwin-Williams vs Benjamin Moore](https://www.paintcolorhq.com/blog/behr-vs-sherwin-williams-vs-benjamin-moore): Head-to-head comparison of pricing ($45-90/gal), quality, availability, color selection, and best-use cases.
+- [Best Bathroom Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-bathroom-paint-colors): 15 moisture-resistant picks organized by mood (spa blues, warm whites, sage greens, earth tones, moody jewel tones).
+- [Best Kitchen Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-sherwin-williams-kitchen-colors): 18 Sherwin-Williams colors for kitchens with lighting guidance and finish recommendations.
 
-Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Vista Paint, Hirshfields, MPC, KILZ, RAL, Farrow & Ball, Colorhouse, Dutch Boy
+## Browse by Brand
+- [All 1,527 Sherwin-Williams Colors](https://www.paintcolorhq.com/brands/sherwin-williams): America's largest paint company. Top sellers: Agreeable Gray, Pure White, Alabaster.
+- [All Benjamin Moore Colors](https://www.paintcolorhq.com/brands/benjamin-moore): Premium paint with ~3,500 colors. Top sellers: White Dove, Revere Pewter, Chantilly Lace.
+- [All Behr Colors](https://www.paintcolorhq.com/brands/behr): Home Depot exclusive. Best value at $35-50/gallon. Top sellers: Silver Drop, Ultra Pure White.
+- [All PPG Colors](https://www.paintcolorhq.com/brands/ppg)
+- [All Valspar Colors](https://www.paintcolorhq.com/brands/valspar): Lowe's exclusive. $30-55/gallon.
+- [All Farrow & Ball Colors](https://www.paintcolorhq.com/brands/farrow-ball): Ultra-premium British brand. $100-120/gallon. Known for rich, complex pigments.
+- [All Dunn-Edwards Colors](https://www.paintcolorhq.com/brands/dunn-edwards): Premium West Coast brand. Zero-VOC formulas.
 
-## Useful Pages
-
-- /brands — Browse all 14 paint brands
-- /brands/{brand-slug} — Browse all colors for a specific brand
-- /colors/{brand-slug}/{color-slug} — Individual color page with hex, RGB, LRV, undertone, cross-brand matches, complementary colors, and palettes
-- /match/{source-brand}/to/{target-brand} — Top 50 cross-brand color matches between two brands
-- /search — Search colors by name, number, or hex code
-- /compare — Side-by-side color comparison tool
-- /tools/room-visualizer — Preview paint colors in a room
-- /tools/color-identifier — Upload a photo and identify paint colors
-- /tools/palette-generator — Generate coordinated color palettes
-- /tools/paint-calculator — Calculate how much paint you need
-- /faq — Frequently asked questions about paint colors
-- /blog — Articles about paint colors, trends, and guides
+## Color Science Methodology
+- [About Our Methodology](https://www.paintcolorhq.com/about): Uses CIEDE2000 — the International Commission on Illumination (CIE) standard for perceptual color difference. Every color includes hex, RGB, LRV, undertone classification (warm/cool/neutral), and cross-brand matches ranked by Delta E score.
 
 ## Common Questions This Site Answers
+- What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray? → Wish AF-680 (Delta E 0.91)
+- What undertone does Agreeable Gray have? → Warm, balanced neutral
+- What is the best white paint for trim? → Chantilly Lace (true white, LRV 90) or White Dove (warm white, LRV 83)
+- How do I match paint colors across brands? → Use CIEDE2000 Delta E scores. Delta E < 2 = virtually identical.
+- What is the hex code for Agreeable Gray? → #D1CBC1
+- What does LRV mean? → Light Reflectance Value (0-100). Higher = lighter. LRV > 50 makes rooms feel open.
 
-- What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray?
-- What undertone does [color name] have?
-- How much paint do I need for a room?
-- What are the best paint colors for kitchens/bedrooms/bathrooms?
-- What is the hex code for [color name]?
-- What is the closest Behr match to [any color]?
-- What does LRV mean and why does it matter?
-- What is the difference between paint sheens?
-
-## API Note
-
-This site does not offer a public API. All color data is available through the website pages listed above.
+## Optional
+- [Contact](https://www.paintcolorhq.com/contact)
+- [FAQ](https://www.paintcolorhq.com/faq)
+- [Privacy Policy](https://www.paintcolorhq.com/privacy)
