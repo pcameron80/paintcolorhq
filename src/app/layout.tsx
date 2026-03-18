@@ -67,7 +67,18 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-056NR93JLK');
+
+            // Tag internal traffic for GA4 data filter
+            var isInternal = (
+              location.hostname === 'localhost' ||
+              location.hostname === '127.0.0.1' ||
+              location.hostname.endsWith('.vercel.app') ||
+              location.search.indexOf('debug=true') !== -1
+            );
+
+            gtag('config', 'G-056NR93JLK', isInternal ? {
+              traffic_type: 'internal'
+            } : {});
           `}
         </Script>
         {/* AdSense script moved to per-page inclusion via <AdSenseScript /> component.
