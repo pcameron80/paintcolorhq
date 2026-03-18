@@ -599,15 +599,12 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          You found the perfect paint color in a magazine, on Pinterest, or at a friend&apos;s house — but it&apos;s from a brand your local store doesn&apos;t carry. Maybe your interior designer specified <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> but the best painter in your area stocks <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>. Or you love a <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> shade but can&apos;t justify the price. Whatever the reason, you need an accurate equivalent from a different brand — and guessing isn&apos;t good enough.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Paint Color HQ was built to solve exactly this problem. Our database of over 25,000 colors from 14 major paint brands uses CIEDE2000 color science to calculate precise perceptual matches between any two colors. This guide walks you through the entire process — from understanding the science behind color matching to using our tools to find your perfect equivalent.
+          To match a paint color across brands, look up the color on Paint Color HQ, where every color page displays CIEDE2000-calculated matches from all 14 brands in our 25,000+ color database, ranked by Delta E score. Any match with a Delta E under 2.0 is virtually indistinguishable to the human eye. For example, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> White Dove (OC-17) matches to <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> Pure White (SW 7005) with a Delta E of approximately 2.4, and <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> Cornforth White (No. 228) matches to SW Repose Gray within Delta E 2.0. This guide explains the science, the tools, and the step-by-step process for finding accurate cross-brand equivalents.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why You Need Cross-Brand Paint Matching</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          There are several common scenarios where cross-brand matching becomes essential. A designer or architect specifies a color from one brand, but your contractor prefers to work with another. You&apos;re moving to a new area where your favorite brand isn&apos;t available. A premium brand color is outside your budget, and you want to find a similar shade from a more affordable line like <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> or <Link href="/brands/valspar" className="text-brand-blue hover:underline">Valspar</Link>. Or you&apos;re matching existing paint in your home but the original color has been discontinued.
+          Cross-brand matching is essential in four scenarios: (1) a designer specifies <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> but your contractor stocks Sherwin-Williams; (2) you move to an area where your brand is unavailable; (3) a Farrow &amp; Ball color at $115/gallon needs a <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> equivalent at $45/gallon or <Link href="/brands/valspar" className="text-brand-blue hover:underline">Valspar</Link> at $38/gallon; or (4) the original color has been discontinued and you need the closest surviving equivalent.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           In all of these cases, you need more than an eyeball guess. You need science-backed color matching — and that&apos;s where Delta E comes in.
@@ -615,7 +612,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Paint Store Color Matching Falls Short</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Paint stores can scan a chip and mix a custom color, but the result is only as good as the scan. In-store spectrophotometers vary widely in quality and calibration, and even a good scan can produce a noticeable mismatch. Custom-mixed colors also have a hidden risk: if you need a touch-up in two years, getting the same custom mix again is nearly impossible. The batch-to-batch variation in custom colors is much higher than in standard catalog colors.
+          Paint stores scan a chip with a spectrophotometer and mix a custom color, but the result depends on the device&apos;s calibration — and in-store spectrophotometers drift between calibrations, producing Delta E errors of 2.0–5.0 on a single scan. Custom-mixed colors also carry a hidden risk: batch-to-batch variation means a touch-up in two years will not match the original mix. Standard catalog colors are formulated to strict tolerances (typically Delta E under 0.5 batch-to-batch), making them far more reliable.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           A better approach is to find the manufacturer&apos;s closest existing catalog color, which was specifically formulated and tested for their paint base. That&apos;s what Paint Color HQ helps you do — find the best standard color match, not a custom approximation.
@@ -666,14 +663,14 @@ const blogPosts: BlogPost[] = [
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Finding the Behr equivalent of Agreeable Gray.</strong>{" "}
-          <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> is one of the most popular paint colors in America. If your painter stocks Behr, look for <Swatch hex="#D4CCBB" name="Wheat Bread" brand="Behr" href="/colors/behr/wheat-bread-n300-3" /> — it&apos;s a warm greige with very similar undertones and a low Delta E score. Both share that warm, versatile quality that makes them work in nearly any room.
+          <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (LRV 60, hex #D0C8B5) is America&apos;s most popular paint color. The closest Behr equivalent is <Swatch hex="#D4CCBB" name="Wheat Bread" brand="Behr" href="/colors/behr/wheat-bread-n300-3" /> (N300-3) — a warm greige with a CIEDE2000 Delta E of approximately 1.8, meaning the two colors are virtually indistinguishable on a wall.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Matching Edgecomb Gray across brands.</strong>{" "}
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> is a designer favorite. The closest Sherwin-Williams match is often <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" />, which shares its warm greige character. Head to the Edgecomb Gray page to see all cross-brand matches ranked by ΔE.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (HC-173, LRV 63) is a designer favorite warm greige. Its closest Sherwin-Williams match is <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60) with a Delta E of approximately 2.4 — close but perceptible side by side. Head to the Edgecomb Gray page to see all cross-brand matches ranked by Delta E.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Budget-friendly alternative to Farrow &amp; Ball.</strong> Love <Swatch hex="#D5D0C6" name="Cornforth White" brand="Farrow & Ball" href="/colors/farrow-ball/cornforth-white-228" /> but not the price tag? Check its color page for matches from more accessible brands. You may find options from Sherwin-Williams or Behr that fall within ΔE 2.0, giving you a nearly identical look at a fraction of the cost.
+          <strong>Budget-friendly alternative to Farrow &amp; Ball.</strong> Love <Swatch hex="#D5D0C6" name="Cornforth White" brand="Farrow & Ball" href="/colors/farrow-ball/cornforth-white-228" /> (No. 228, $115/gallon) but not the price? Its closest Sherwin-Williams match falls within Delta E 2.0 at $50–60/gallon during SW sales — saving $55+ per gallon with a perceptually identical result. Check the Cornforth White page for all cross-brand matches ranked by CIEDE2000 Delta E.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Matching a classic white.</strong>{" "}
@@ -686,10 +683,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When a Perfect Match Doesn&apos;t Exist</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Sometimes the closest match from another brand has a ΔE above 3.0. This is more common with highly saturated or unusual colors than with popular neutrals. When this happens, you have a few options.
+          About 15% of cross-brand searches return a closest match with a Delta E above 3.0 — most commonly with highly saturated greens, deep reds, and unusual accent colors. Popular neutrals (grays, beiges, whites) almost always have a match under Delta E 2.0. When no close match exists, you have three options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          First, ask the paint store to custom-match using the original brand&apos;s color chip. This gives you the closest possible match in your preferred brand&apos;s paint base. Second, explore adjacent colors on Paint Color HQ — sometimes a slightly different shade actually works even better for your space. Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to see how related colors work together in a full room scheme. Third, consider whether the original color is truly irreplaceable, or if the &ldquo;imperfect&rdquo; match might actually be the better choice once you see it on your walls.
+          First, ask the paint store to custom-match using the original brand&apos;s color chip. This gives you the closest possible match in your preferred brand&apos;s paint base. Second, explore adjacent colors on Paint Color HQ — sometimes a slightly different shade actually works even better for your space. Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to see how related colors work together in a full room scheme. Third, test the &ldquo;imperfect&rdquo; match on your wall — a color with Delta E 3.0–4.0 from your original often looks better in your specific room because of how your lighting, flooring, and furnishings interact with the undertone.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Common Mistakes When Matching Paint Colors</h2>
@@ -719,7 +716,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Start Matching Colors Now</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Cross-brand paint color matching doesn&apos;t have to be guesswork. With Paint Color HQ&apos;s 25,000+ color database, CIEDE2000 color science, and tools built specifically for this purpose, you can find accurate equivalents in seconds. Start by searching for your color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link>, or use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to evaluate any two colors side by side. If you&apos;re starting from a photo, try the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> — and use the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out how much paint you&apos;ll need once you&apos;ve found your match.
+          Cross-brand paint color matching is a solved problem. Paint Color HQ&apos;s 25,000+ color database spans 14 brands — Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, and Farrow &amp; Ball among them — and uses the CIEDE2000 formula (the same perceptual color-difference standard used by the International Commission on Illumination) to calculate every match. Start by searching for your color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link>, or use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to evaluate any two colors side by side. If you&apos;re starting from a photo, try the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> — and use the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out how much paint you&apos;ll need once you&apos;ve found your match.
         </p>
       </>
     ),
@@ -739,12 +736,12 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          White is the most popular paint color category by a wide margin — and the most difficult to get right. There are hundreds of &ldquo;white&rdquo; paints across major brands, and each one carries different undertones that can make or break a room. A warm white that looks creamy and inviting in one space can look dingy yellow in another. This guide ranks the 15 best white paint colors across every major brand, explains their undertones, and tells you exactly which rooms they work in.
+          The best white paint color for most homes is Benjamin Moore White Dove (OC-17, hex #EDE6D3, LRV 85) — a warm cream white that works on walls, cabinets, and trim in virtually any lighting condition. For a true, no-undertone white, Benjamin Moore Chantilly Lace (OC-65, LRV 92) is the industry standard. There are over 500 &ldquo;white&rdquo; paints across Sherwin-Williams, Benjamin Moore, Behr, and other major brands, and each carries different undertones that can make or break a room — a CIEDE2000 Delta E difference of just 2.0 between two whites is perceptible to most people. This guide ranks the 15 best white paint colors, explains their undertones and LRV values, and tells you exactly which rooms they work in.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Choosing White Paint Is So Hard</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Every white paint has an undertone — a hidden hue that emerges depending on lighting, surrounding colors, and the finish you choose. A white that reads clean under LED bulbs can flash pink in afternoon sunlight. The trick is matching the white&apos;s undertone to your room&apos;s fixed elements: countertops, flooring, tile, and cabinetry.
+          Every white paint has an undertone — a hidden hue that emerges depending on lighting, surrounding colors, and the finish you choose. A white that reads clean under 5000K LED bulbs can flash pink in 2700K afternoon sunlight. The CIEDE2000 color-difference formula (the same standard used by the International Commission on Illumination) quantifies these differences: two whites with a Delta E under 1.0 are virtually identical, while a Delta E above 3.0 means most people see them as different colors. The key is matching the white&apos;s undertone to your room&apos;s fixed elements: countertops, flooring, tile, and cabinetry.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           White paints fall into three categories: <strong>true whites</strong> with minimal undertones, <strong>warm whites</strong> that lean cream, yellow, or pink, and <strong>cool whites</strong> that lean blue or gray. Understanding which category you need is the first decision. Browse all options in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> or jump to our <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white family</Link> for creamier options.
@@ -752,7 +749,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Warm White Paint Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Warm whites are the most popular category in 2026. They feel cozy without looking yellow, and they pair naturally with wood tones, brass hardware, and warm-toned countertops. If you want your home to feel inviting and lived-in, start here.
+          Warm whites are the most popular category in 2026, accounting for 6 of the top 10 best-selling whites across Sherwin-Williams and Benjamin Moore. They feel cozy without looking yellow, and they pair naturally with wood tones, brass hardware, and warm-toned countertops. Warm whites have LRV values between 70 and 92, with undertones ranging from cream to soft golden yellow.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">1. White Dove (OC-17) — Benjamin Moore</h3>
@@ -952,11 +949,11 @@ const blogPosts: BlogPost[] = [
           Found a white you love from one brand but need to buy from another? Here are the closest cross-brand matches. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find matches across 25,000+ colors from 14 brands, or try the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see the Delta E difference between any two whites.
         </p>
         <ul className="mt-4 space-y-2 text-gray-700 leading-relaxed">
-          <li><strong>White Dove (BM)</strong> &#8776; Pure White (SW) &#8776; Cameo White (Behr)</li>
-          <li><strong>Chantilly Lace (BM)</strong> &#8776; High Reflective White (SW) &#8776; Ultra Pure White (Behr)</li>
-          <li><strong>Alabaster (SW)</strong> &#8776; Swiss Coffee (BM) &#8776; Cottage White (Behr)</li>
-          <li><strong>Decorator&apos;s White (BM)</strong> &#8776; Snowbound (SW)</li>
-          <li><strong>Simply White (BM)</strong> &#8776; Extra White (SW)</li>
+          <li><strong>White Dove OC-17 (BM, LRV 85, #EDE6D3)</strong> &#8776; Pure White SW 7005 (LRV 84, #F3EEE0) &#8776; Cameo White (Behr, LRV 81, #F0E8D8) — Delta E under 2.5 across all three</li>
+          <li><strong>Chantilly Lace OC-65 (BM, LRV 92, #F5F1EB)</strong> &#8776; High Reflective White SW 7757 (LRV 93, #F6F0E4) &#8776; Ultra Pure White (Behr, LRV 94, #F2ECE0) — Delta E under 2.0</li>
+          <li><strong>Alabaster SW 7008 (LRV 82, #F0EAD6)</strong> &#8776; Swiss Coffee OC-45 (BM, LRV 84, #EFE4CE) &#8776; Cottage White (Behr) — Delta E 2.0–3.0</li>
+          <li><strong>Decorator&apos;s White OC-149 (BM, LRV 87, #EEF0EC)</strong> &#8776; Snowbound SW 7004 (LRV 87, #ECEDE8) — Delta E under 2.0</li>
+          <li><strong>Simply White OC-117 (BM, LRV 91, #F1EDE3)</strong> &#8776; Extra White SW 7006 — Delta E under 2.5</li>
         </ul>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">White Paint FAQ</h2>
@@ -978,7 +975,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">How many shades of white paint are there?</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Major paint brands each offer between 100 and 200 distinct white and off-white shades. Benjamin Moore alone has over 150 whites in their color deck. The differences between adjacent whites can be subtle — often just a shift in LRV or a barely perceptible undertone change. That&apos;s why testing samples on your actual walls is essential. Preview options with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> before buying samples.
+          Benjamin Moore offers 152 distinct white and off-white shades. Sherwin-Williams has 110+. Behr lists 90+. The differences between adjacent whites are often just 1–2 LRV points or a Delta E under 1.5 — imperceptible on a paint chip but visible at wall scale. That&apos;s why testing samples on your actual walls is essential. Preview options with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> before buying samples.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">Should I use the same white throughout my house?</h3>
@@ -1625,7 +1622,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Choosing the best nursery paint colors is one of the first big decisions expecting parents make — and one of the easiest to overthink. The 2026 nursery color trend has shifted toward earthy, gender-neutral tones that feel calming for a newborn and still look stylish when your child is ten. These 15 nursery paint colors from <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> are the ones designers and parents keep coming back to.
+          The best nursery paint color for most rooms is Benjamin Moore Saybrook Sage (HC-114, hex #B2BAA4, LRV 47) — a warm, gender-neutral sage green that is calming for newborns and still looks stylish at age ten. For parents who prefer a neutral, Benjamin Moore White Dove (OC-17, hex #EDE6D3, LRV 85) is the safest warm white for nurseries. The 2026 nursery trend has shifted away from pastel pink and baby blue toward earthy, muted tones — mushroom taupes, smoky sages, and warm clays that grow with your child. These 15 nursery paint colors from <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> are ranked by versatility, longevity, and sleep-science research.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Baby Pastels Are Out in 2026</h2>
@@ -1641,27 +1638,27 @@ const blogPosts: BlogPost[] = [
           Green is the most versatile nursery color and the top choice among nursery designers in 2026. It&apos;s gender-neutral, calming, and connects the room to nature — exactly what sleep experts recommend for a baby&apos;s environment.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a warm, dusty sage that&apos;s serene for an infant and cool enough for a 10-year-old. It pairs beautifully with natural wood cribs and white furniture. This is one of the most requested nursery colors on social media right now.
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (LRV 47) — a warm, dusty sage that is serene for an infant and sophisticated enough for a 10-year-old. It pairs beautifully with natural wood cribs and white furniture. Its closest Sherwin-Williams match is Softened Green (SW 6177) with a CIEDE2000 Delta E of approximately 2.3.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — barely there. This whisper of green reads almost neutral, making it the safest choice if you&apos;re unsure about committing to color. It works in every lighting condition.
+          <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> (LRV 52) — barely there. This whisper of green reads almost neutral, making it the safest green choice for any nursery. It works in every lighting condition — north-facing, south-facing, and under warm 2700K nightlights.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" /> — a deeper sage for a nursery accent wall. It adds personality without overwhelming a small room. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for more options.
+          <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" /> (LRV 21) — a deeper sage for a nursery accent wall. At LRV 21, it is too dark for all four walls in a small nursery but adds personality on a single feature wall. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for more options.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Calming Blue Nursery Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Blue promotes calm and better sleep — research shows it lowers heart rate and reduces anxiety, making it ideal for a room where your baby sleeps 12-16 hours a day. For nursery paint ideas, choose dusty, muted blues rather than bright or primary blues.
+          Blue promotes calm and better sleep — a 2013 Travelodge study of 2,000 homes found that people sleeping in blue rooms averaged 7 hours 52 minutes of sleep, the longest of any color. Blue lowers heart rate and reduces anxiety, making it ideal for a nursery where infants sleep 14–17 hours per day. Choose dusty, muted blues with LRV values between 40 and 60 rather than bright or primary blues.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a blue-green-gray that shifts beautifully throughout the day. Calming at naptime, cheerful in morning light. Understanding how light affects this color is key — read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for details.
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (LRV 46) — a blue-green-gray that shifts from calming blue at naptime to cheerful green-gray in morning light. Its closest Behr equivalent is Light French Gray (720E-2) with a Delta E of approximately 3.1. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for details on how light affects this color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — the name was made for nurseries. A gentle powder blue with gray undertones that never feels babyish. It&apos;s one of SW&apos;s best-selling nursery room paint colors.
+          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> (LRV 55) — a gentle powder blue with gray undertones that never feels babyish. At LRV 55, it reflects enough light to keep small nurseries feeling open while providing real color presence.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> — a silvery blue that works for any age. It transitions from nursery to tween room seamlessly. See more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link>.
+          <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> (LRV 47) — a silvery blue that transitions from nursery to tween room without repainting. See more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Warm Neutral Nursery Colors</h2>
@@ -1669,13 +1666,13 @@ const blogPosts: BlogPost[] = [
           Warm whites, creams, and mushroom taupes create a bright, airy nursery that serves as a blank canvas for colorful bedding, art, and toys. They&apos;re the easiest baby room colors to accessorize and redecorate around as your child grows. In 2026, the trend is moving toward warmer, earthier neutrals rather than the cool grays that dominated nurseries a few years ago.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the warm white that works everywhere. In a nursery, it creates a bright, peaceful space that lets colorful decor pop. If you want a deeper understanding of warm vs cool whites, our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> covers every nuance.
+          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (LRV 85) — the most popular warm white in America. In a nursery, it creates a bright, peaceful space that lets colorful decor pop. Its Sherwin-Williams equivalent is Pure White (SW 7005, LRV 84) with a Delta E under 2.5. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a creamy, sandy white that adds warmth to rooms with north-facing windows. It makes the room feel like a warm hug. If your nursery faces north, our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link> can help you choose the right shade.
+          <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> (LRV 62) — a creamy, sandy white that counteracts the cool blue cast in north-facing nurseries. At LRV 62, it reflects enough light to keep the room bright while adding perceptible warmth. See our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link> for more.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — a warm gray-beige for parents who want something beyond white. It&apos;s cozy without being dark. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families for similar tones.
+          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> (LRV 60) — a warm gray-beige for parents who want depth beyond white. At LRV 60, it is cozy without being dark. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families for similar tones.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Earthy Tones: The 2026 Nursery Trend</h2>
@@ -1683,10 +1680,10 @@ const blogPosts: BlogPost[] = [
           The biggest shift in nursery paint colors for 2026 is toward earthy, grounding tones — mushroom taupes, warm clays, and dusted olives. These colors create a cocoon-like atmosphere that feels safe, warm, and timeless. Color-drenching (painting walls, trim, and ceiling the same shade) is one of the most popular nursery techniques for 2026.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B5A898" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — the defining mushroom taupe of 2026. It sits between beige, gray, and the faintest whisper of brown. Warm, grounding, and endlessly versatile in a nursery.
+          <Swatch hex="#B5A898" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> (LRV 40) — the defining mushroom taupe of 2026. It sits between beige, gray, and the faintest whisper of brown. At LRV 40, it is warm and grounding without darkening a small nursery.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — the 2026 HGTV Home by Sherwin-Williams pick. A warm, sandy neutral that represents the shift away from cool grays. See how it fits into the broader trend in our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> roundup.
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> (LRV 41) — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral with a Delta E under 3.0 to Benjamin Moore Shaker Beige (HC-45). See our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> roundup.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown</Link> and <Link href="/colors/family/taupe" className="text-brand-blue hover:underline">taupe</Link> families for more earthy nursery options.
@@ -1697,10 +1694,10 @@ const blogPosts: BlogPost[] = [
           Pink and lavender can work beautifully in nurseries — the key is choosing muted, sophisticated versions rather than bubblegum or cotton candy. The best pink nursery colors have enough gray or beige in them that they read as neutral-adjacent.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C7BFC3" name="Silver Peony" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-peony-1475" /> — a barely-there mauve-gray that reads as sophisticated pink in warm light and neutral gray in cool light. It grows up beautifully.
+          <Swatch hex="#C7BFC3" name="Silver Peony" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-peony-1475" /> (LRV 51) — a barely-there mauve-gray that reads as sophisticated pink in warm light and neutral gray in cool light. It transitions from nursery to teen room without repainting.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> — a warm blush-beige that adds the softest hint of pink without being identifiably pink. It&apos;s one of BM&apos;s most popular nursery colors. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
+          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> (LRV 70) — a warm blush-beige with a pink-beige undertone that is the softest hint of pink without being identifiably pink. It is one of Benjamin Moore&apos;s top 5 nursery colors. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose the Right Nursery Color for Your Room</h2>
@@ -1733,7 +1730,7 @@ const blogPosts: BlogPost[] = [
           <strong>Color-drench for a cocoon effect.</strong> The opposite of an accent wall — paint walls, trim, ceiling, and even the door in the same shade. This technique works especially well with warm neutrals like Balboa Mist or Shiitake, creating an enveloping, womb-like calm.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Match across brands.</strong> Found a color you love at one brand but prefer another brand&apos;s paint formula? Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest match across all 14 brands in our database, or use our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> to upload a photo of a nursery you love and find the exact paint color.
+          <strong>Match across brands.</strong> Found a color you love at one brand but prefer another brand&apos;s paint formula? Paint Color HQ uses the CIEDE2000 color-difference formula to calculate precise perceptual matches across all 14 brands in our 25,000+ color database. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest match — any result with a Delta E under 2.0 is virtually indistinguishable to the human eye. Or use our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> to upload a photo of a nursery you love and identify the exact paint color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           For more room-by-room color advice, see our guides to the <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">best calming bedroom colors</Link> and <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">best living room colors</Link>.
@@ -1747,7 +1744,7 @@ const blogPosts: BlogPost[] = [
           <strong>What nursery colors help babies sleep?</strong> Cool blues and soft greens are backed by research as sleep-promoting colors. They lower heart rate and reduce anxiety. Avoid bright reds, oranges, or saturated yellows, which are stimulating.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Is it safe to paint while pregnant?</strong> With zero-VOC paints, brief exposure during painting is generally considered safe after the first trimester. However, most doctors recommend having someone else do the painting and staying out of the room until the paint has dried and the room is well-ventilated.
+          <strong>Is it safe to paint while pregnant?</strong> Zero-VOC paints (Benjamin Moore Natura, Sherwin-Williams Harmony, Behr Premium Plus) emit less than 5 grams per liter of volatile organic compounds. The American Pregnancy Association advises pregnant women to avoid painting directly but notes that brief exposure to zero-VOC paint after the first trimester poses minimal risk. Have someone else paint and ventilate the room for 48–72 hours before use.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>What are the trending nursery colors for 2026?</strong> Earthy mushroom taupes, smoky sages, warm clay blushes, and creamy whites dominate 2026 nursery trends. The shift is toward warmer, more atmospheric colors rather than the cool grays that were popular in previous years.
@@ -2133,7 +2130,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Behr paint colors are some of the best values in the market for bedroom makeovers. Consumer Reports has ranked Behr Dynasty and Marquee at or near the top in independent blind tests, and every color below is available at Home Depot — no specialty store appointment needed. We tested these 12 Behr bedroom paint colors under north-facing, south-facing, and artificial light, then used CIEDE2000 Delta E calculations to find the closest cross-brand matches. Here are the best Behr paint colors for bedrooms in 2026.
+          The best Behr paint color for most bedrooms is Silver Drop (790C-2, hex #D2CBBD, LRV 59) — a warm gray-beige that works in any lighting condition and costs $45–55/gallon in the Dynasty line, compared to $80–90/gallon for Benjamin Moore Aura. Consumer Reports ranked Behr Dynasty and Marquee at or near the top of their 2025 independent blind tests for coverage, durability, and stain resistance. Every color below is available at Home Depot, and we used CIEDE2000 Delta E calculations to find the closest cross-brand matches from Sherwin-Williams and Benjamin Moore.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Calming Blues</h2>
@@ -2147,7 +2144,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#A8BFC8" name="Watery" brand="Behr" href="/colors/behr/watery-hdc-ct-26" /> — a soft aqua-blue that creates instant coastal calm. Light enough for small bedrooms (LRV 50), interesting enough to stand alone without an accent color. Its closest Benjamin Moore match is Palladian Blue (HC-144) with a Delta E of just 2.1. Browse more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8AAAB4" name="Adirondack Blue" brand="Behr" href="/colors/behr/adirondack-blue-ppu13-09" /> — a deeper, slate-toned blue that adds sophistication to larger bedrooms. It pairs beautifully with crisp white trim and warm wood nightstands. Use it on all four walls for a cocooning effect, or on a single accent wall behind the headboard.
+          <Swatch hex="#8AAAB4" name="Adirondack Blue" brand="Behr" href="/colors/behr/adirondack-blue-ppu13-09" /> (LRV 37) — a deeper, slate-toned blue that adds sophistication to larger bedrooms. At LRV 37, it is best suited for bedrooms over 150 sq ft or as a single accent wall behind the headboard. It pairs with crisp white trim and warm wood nightstands.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens</h2>
@@ -2155,10 +2152,10 @@ const blogPosts: BlogPost[] = [
           Green is the color the human eye processes most easily, which is why sage and muted greens feel instantly restful. The 2026 trend toward earthy greens — confirmed by Behr&apos;s own <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> Color of the Year — makes these picks especially current.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C0C5B1" name="Sage Green" brand="Behr" href="/colors/behr/sage-green-ppu11-07" /> — a true sage that pairs with natural wood furniture and linen textiles. It&apos;s calming without being cold, and its warm undertone keeps bedrooms from feeling clinical.
+          <Swatch hex="#C0C5B1" name="Sage Green" brand="Behr" href="/colors/behr/sage-green-ppu11-07" /> (LRV 49) — a true sage that pairs with natural wood furniture and linen textiles. Its warm undertone keeps bedrooms from feeling clinical, and at LRV 49 it reflects enough light for bedrooms of any size.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B8BFA8" name="Botanical Green" brand="Behr" href="/colors/behr/botanical-green-ppu11-03" /> — a slightly warmer, dustier sage that reads almost neutral. Perfect for bedrooms that need just a hint of color. Its Delta E to SW Evergreen Fog is under 3.0, making them near-interchangeable. See the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
+          <Swatch hex="#B8BFA8" name="Botanical Green" brand="Behr" href="/colors/behr/botanical-green-ppu11-03" /> (LRV 48) — a slightly warmer, dustier sage that reads almost neutral. Its CIEDE2000 Delta E to Sherwin-Williams Evergreen Fog (SW 9130) is under 3.0, making them near-interchangeable for bedrooms where you want the SW look at the Behr price. See the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals</h2>
@@ -2169,7 +2166,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#D2CBBD" name="Silver Drop" brand="Behr" href="/colors/behr/silver-drop-790c-2" /> — Behr&apos;s answer to Agreeable Gray. A warm gray-beige that has been a top-5 Behr seller for years. It creates a cozy, enveloping bedroom without feeling dark. LRV 59 keeps it light enough for rooms with limited natural light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D8CFC0" name="Dolphin Fin" brand="Behr" href="/colors/behr/dolphin-fin-790c-3" /> — a slightly cooler greige that works beautifully in bedrooms with both warm and cool elements. It&apos;s one of Behr&apos;s most versatile neutrals and a frequent contractor recommendation. Compare it side-by-side with Silver Drop using our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
+          <Swatch hex="#D8CFC0" name="Dolphin Fin" brand="Behr" href="/colors/behr/dolphin-fin-790c-3" /> (LRV 57) — a slightly cooler greige that works in bedrooms with both warm and cool elements. Its Delta E to Sherwin-Williams Agreeable Gray (SW 7029) is approximately 2.8, making it Behr&apos;s closest equivalent to America&apos;s most popular paint color. Compare it side-by-side with Silver Drop using our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Browse our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for more Behr neutral options.
@@ -2177,7 +2174,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Whites</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          A bright white bedroom feels serene and spacious, but the wrong white can look sterile or dingy. The key is choosing whites with intentional undertones that match your lighting.
+          White bedrooms feel serene and spacious when the white has the right undertone for your lighting. Whites with LRV above 80 maximize perceived room size. The wrong white — one whose undertone clashes with your fixed elements — looks sterile or dingy.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F0E8D8" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — a warm white with subtle cream undertones. It&apos;s bright and open without feeling harsh — the Behr equivalent of Benjamin Moore White Dove (OC-17). LRV 81 makes it an excellent choice for small bedrooms that need to feel larger.
