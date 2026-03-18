@@ -8,7 +8,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 export const metadata: Metadata = {
   title: "Paint Calculator - How Much Paint Do I Need?",
   description:
-    "Calculate exactly how many gallons of paint you need. Enter your room dimensions, doors, and windows for a free instant estimate.",
+    "Calculate exactly how many gallons of paint you need. Enter room dimensions, subtract doors and windows, and get coverage based on the 350 sq ft/gallon industry standard. Free calculator for Sherwin-Williams, Benjamin Moore, Behr, and all brands.",
   alternates: {
     canonical: "https://www.paintcolorhq.com/tools/paint-calculator",
   },
@@ -36,7 +36,12 @@ export default function PaintCalculatorPage() {
           Paint Calculator
         </h1>
         <p className="mt-2 text-gray-600">
-          Find out exactly how many gallons of paint you need for your room.
+          Calculate exactly how many gallons of paint you need. Enter room
+          dimensions (length, width, and ceiling height), subtract doors and
+          windows, and get coverage based on the industry-standard rate of{" "}
+          <strong>350 sq ft per gallon</strong> for interior latex paint.
+          Works for any brand — Sherwin-Williams, Benjamin Moore, Behr, and
+          more.
         </p>
 
         <PaintCalculator />
@@ -47,60 +52,77 @@ export default function PaintCalculatorPage() {
           </h2>
           <div className="mt-4 space-y-4 text-sm leading-relaxed text-gray-700">
             <p>
-              Our calculator uses the standard paint coverage rate of{" "}
-              <strong>350 square feet per gallon</strong>, which is the industry
-              average for a single coat of interior latex paint on a smooth
-              surface.
+              <strong>Coverage rate: 350 square feet per gallon</strong> — the
+              industry-standard rate published by Sherwin-Williams, Benjamin
+              Moore, and Behr for a single coat of interior latex paint on
+              smooth, primed drywall. This rate is consistent across major
+              brands and is based on ASTM D5150 spread rate testing.
             </p>
-            <p>The formula is straightforward:</p>
+            <p>
+              <strong>The formula in 4 steps:</strong>
+            </p>
             <ol className="list-inside list-decimal space-y-2 pl-2">
               <li>
-                <strong>Wall area</strong> = 2 &times; (length + width) &times;
-                height
+                <strong>Calculate wall area</strong> = 2 × (length + width) ×
+                ceiling height. Example: a 12 × 12 ft room with 8 ft ceilings =
+                384 sq ft of wall space.
               </li>
               <li>
-                <strong>Subtract openings</strong>: each standard door is ~21 sq
-                ft, each window is ~15 sq ft
+                <strong>Subtract openings</strong>: each standard door (3 × 7
+                ft) = 21 sq ft; each standard window (3 × 5 ft) = 15 sq ft.
               </li>
               <li>
-                <strong>Multiply by coats</strong>: most jobs need 2 coats for
-                even coverage
+                <strong>Multiply by coats</strong>: 2 coats is standard for
+                full, even coverage per manufacturer recommendations.
               </li>
               <li>
-                <strong>Divide by 350</strong> sq ft/gallon and round up
+                <strong>Divide by 350 sq ft/gallon</strong> and round up to the
+                nearest whole gallon.
               </li>
             </ol>
             <p>
-              <strong>Tips:</strong> Textured walls, porous surfaces, and dark-to-light
-              color changes may require extra paint. We recommend buying an extra
-              quart for touch-ups down the road.
+              <strong>Adjustment factors:</strong> Textured surfaces (knockdown,
+              orange peel) reduce coverage by 15–20%. Dark-to-light color
+              changes require a tinted primer coat first. Porous surfaces like
+              new drywall or bare wood may need 2 primer coats before topcoat.
             </p>
           </div>
         </section>
 
         <section className="mt-12 max-w-3xl">
           <h2 className="text-2xl font-bold text-gray-900">
-            How the Paint Calculator Works
+            How to Use the Paint Calculator
           </h2>
           <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
+            <ol className="list-inside list-decimal space-y-3 pl-2">
+              <li>
+                <strong>Enter room dimensions</strong> — length, width, and
+                ceiling height in feet. The calculator computes total wall area
+                using the formula: 2 × (length + width) × height.
+              </li>
+              <li>
+                <strong>Enter number of doors and windows</strong> — the
+                calculator subtracts 21 sq ft per standard door (3 × 7 ft) and
+                15 sq ft per standard window (3 × 5 ft) to get your true
+                paintable area.
+              </li>
+              <li>
+                <strong>Select number of coats</strong> — 2 coats is
+                recommended by Sherwin-Williams, Benjamin Moore, and Behr for
+                full, even coverage on most interior projects. Use 1 coat only
+                for same-color refreshes.
+              </li>
+              <li>
+                <strong>Get your result</strong> — the calculator divides your
+                total paintable area by 350 sq ft/gallon and rounds up to the
+                nearest whole gallon.
+              </li>
+            </ol>
             <p>
-              Our paint calculator takes the guesswork out of buying the right
-              amount of paint. Start by entering your room dimensions — length,
-              width, and ceiling height — to calculate the total wall area. Then
-              subtract the areas you will not be painting by entering the number
-              of doors and windows in the room. The calculator automatically
-              deducts approximately 21 square feet per standard door and 15
-              square feet per average window, giving you the true paintable
-              surface area.
-            </p>
-            <p>
-              Next, select how many coats you plan to apply. Two coats is the
-              standard recommendation for most interior projects, but a single
-              coat may be enough if you are refreshing with the same color. The
-              calculator multiplies your paintable area by the number of coats,
-              divides by the industry-standard coverage rate of 350 square feet
-              per gallon, and rounds up to the nearest whole gallon so you always
-              have enough on hand.
+              <strong>Example:</strong> A 12 × 14 ft bedroom with 8 ft
+              ceilings, 1 door, and 2 windows = 416 sq ft of walls − 21 − 30 =
+              365 sq ft of paintable area. At 2 coats, that is 730 sq ft ÷ 350
+              = 2.09 → <strong>3 gallons needed</strong>.
             </p>
           </div>
         </section>
@@ -111,22 +133,63 @@ export default function PaintCalculatorPage() {
           </h2>
           <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
             <p>
-              As a general rule of thumb, one gallon of interior latex paint
-              covers roughly 350 to 400 square feet on a smooth, primed surface
-              in a single coat. For a typical 12-by-12-foot bedroom with 8-foot
-              ceilings, that works out to about 384 square feet of wall space
-              before subtracting openings — so one gallon will handle the first
-              coat, and you will need a second gallon for coat number two.
+              <strong>One gallon of interior latex paint covers 350 sq ft</strong>{" "}
+              on smooth, primed drywall in a single coat. Here are common room
+              sizes and how much paint each requires (2 coats, 1 door, 2
+              windows):
             </p>
+            <div className="overflow-x-auto">
+              <table className="mt-2 w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-gray-200 text-gray-900">
+                    <th className="py-2 pr-4 font-semibold">Room Size</th>
+                    <th className="py-2 pr-4 font-semibold">Wall Area</th>
+                    <th className="py-2 pr-4 font-semibold">Paintable Area</th>
+                    <th className="py-2 pr-4 font-semibold">Gallons (2 coats)</th>
+                  </tr>
+                </thead>
+                <tbody className="text-gray-700">
+                  <tr className="border-b border-gray-100">
+                    <td className="py-2 pr-4">10 × 10 ft (8 ft ceiling)</td>
+                    <td className="py-2 pr-4">320 sq ft</td>
+                    <td className="py-2 pr-4">269 sq ft</td>
+                    <td className="py-2 pr-4 font-semibold">2 gallons</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-2 pr-4">12 × 12 ft (8 ft ceiling)</td>
+                    <td className="py-2 pr-4">384 sq ft</td>
+                    <td className="py-2 pr-4">333 sq ft</td>
+                    <td className="py-2 pr-4 font-semibold">2 gallons</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-2 pr-4">12 × 14 ft (8 ft ceiling)</td>
+                    <td className="py-2 pr-4">416 sq ft</td>
+                    <td className="py-2 pr-4">365 sq ft</td>
+                    <td className="py-2 pr-4 font-semibold">3 gallons</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-2 pr-4">14 × 16 ft (8 ft ceiling)</td>
+                    <td className="py-2 pr-4">480 sq ft</td>
+                    <td className="py-2 pr-4">429 sq ft</td>
+                    <td className="py-2 pr-4 font-semibold">3 gallons</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-4">16 × 20 ft (9 ft ceiling)</td>
+                    <td className="py-2 pr-4">648 sq ft</td>
+                    <td className="py-2 pr-4">597 sq ft</td>
+                    <td className="py-2 pr-4 font-semibold">4 gallons</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <p>
-              Most paint projects require two coats for even, consistent
-              coverage. If you are making a dramatic color change — going from
-              dark to light or light to dark — you may need a tinted primer plus
-              two topcoats. Ceilings typically need just one gallon for an
-              average room since the coverage rate is similar but the area is
-              smaller than the combined wall space. For trim and doors, a quart
-              usually covers one to two standard doors or 50 to 75 linear feet
-              of baseboard.
+              <strong>Trim and doors:</strong> 1 quart covers 1–2 standard
+              doors or approximately 75 linear feet of baseboard.{" "}
+              <strong>Ceilings:</strong> 1 gallon covers a ceiling up to 350 sq
+              ft (roughly an 18 × 19 ft room). For dramatic color changes
+              (dark-to-light or light-to-dark), add a tinted primer coat —
+              Sherwin-Williams, Benjamin Moore, and Behr all offer tintable
+              primers matched to their color systems.
             </p>
           </div>
         </section>
@@ -136,58 +199,94 @@ export default function PaintCalculatorPage() {
             Tips for Accurate Paint Estimates
           </h2>
           <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
+            <ol className="list-inside list-decimal space-y-3 pl-2">
+              <li>
+                <strong>Measure twice with a tape measure.</strong> Even a 6-inch
+                error on one wall compounds to 4 sq ft across a room. Use a
+                25-ft tape measure, not visual estimates.
+              </li>
+              <li>
+                <strong>Add 15–20% for textured walls.</strong> Knockdown,
+                orange peel, and skip-trowel textures increase paint absorption.
+                A 350 sq ft/gallon rate drops to roughly 280–300 sq ft/gallon on
+                heavy texture.
+              </li>
+              <li>
+                <strong>Buy 10% extra for touch-ups.</strong> Keep leftover paint
+                from the same batch — paint varies slightly between batches even
+                with the same formula code from Sherwin-Williams, Benjamin Moore,
+                or Behr.
+              </li>
+              <li>
+                <strong>Calculate primer separately.</strong> Primer covers
+                200–300 sq ft per gallon depending on surface porosity — 40% less
+                coverage than topcoat paint. New drywall and bare wood require 2
+                primer coats.
+              </li>
+              <li>
+                <strong>Factor in paint type.</strong> Flat/matte finishes spread
+                slightly farther than satin or semi-gloss. Sherwin-Williams
+                Duration covers up to 400 sq ft/gallon; Benjamin Moore Regal
+                Select covers 350–400 sq ft/gallon.
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section className="mt-12 max-w-3xl">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Next Steps After Calculating
+          </h2>
+          <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
             <p>
-              <strong>Measure twice.</strong> Even small measurement errors
-              compound quickly across four walls. Use a tape measure rather than
-              estimating, and double-check your numbers before entering them into
-              the calculator.
+              Once you know how much paint to buy, use these free Paint Color
+              HQ tools to finalize your project:
             </p>
-            <p>
-              <strong>Account for wall texture.</strong> Textured surfaces like
-              knockdown, orange peel, or brick absorb significantly more paint
-              than smooth drywall. If your walls have heavy texture, increase
-              your estimate by 15 to 20 percent.
-            </p>
-            <p>
-              <strong>Buy 10 percent extra for touch-ups.</strong> You will
-              almost always need to touch up scuffs, nail holes, or missed spots
-              after the main job is done. Having leftover paint from the same
-              batch ensures a perfect color match — paint can vary slightly
-              between batches even with the same formula.
-            </p>
-            <p>
-              <strong>Primer needs a separate calculation.</strong> If you are
-              applying primer before your topcoat, calculate primer coverage
-              separately. Primer typically covers 200 to 300 square feet per
-              gallon depending on the surface porosity, which is less than
-              standard paint.
-            </p>
-            <p>
-              Once you know how much paint you need, use our{" "}
-              <Link
-                href="/tools/room-visualizer"
-                className="text-blue-700 underline hover:text-blue-900"
-              >
-                Room Visualizer
-              </Link>{" "}
-              to preview your chosen color on walls before you buy. If you are
-              still deciding between shades, the{" "}
-              <Link
-                href="/compare"
-                className="text-blue-700 underline hover:text-blue-900"
-              >
-                Color Comparison tool
-              </Link>{" "}
-              lets you see them side by side. And for guidance on choosing the
-              right finish for each surface, check out our{" "}
-              <Link
-                href="/blog/paint-sheen-guide"
-                className="text-blue-700 underline hover:text-blue-900"
-              >
-                complete paint sheen guide
-              </Link>
-              .
-            </p>
+            <ol className="list-inside list-decimal space-y-3 pl-2">
+              <li>
+                <strong>Preview your color</strong> — open the{" "}
+                <Link
+                  href="/tools/room-visualizer"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  Room Visualizer
+                </Link>{" "}
+                to see your chosen shade on walls before purchasing.
+              </li>
+              <li>
+                <strong>Compare shades side by side</strong> — the{" "}
+                <Link
+                  href="/compare"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  Color Comparison tool
+                </Link>{" "}
+                shows colors from Sherwin-Williams, Benjamin Moore, Behr,
+                Valspar, PPG, Dunn-Edwards, and Farrow &amp; Ball next to each
+                other with Delta E difference scores.
+              </li>
+              <li>
+                <strong>Choose the right finish</strong> — read our{" "}
+                <Link
+                  href="/blog/paint-sheen-guide"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  paint sheen guide
+                </Link>{" "}
+                covering flat, eggshell, satin, semi-gloss, and high-gloss —
+                with recommendations by room type.
+              </li>
+              <li>
+                <strong>Build a full palette</strong> — use the{" "}
+                <Link
+                  href="/tools/palette-generator"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  Palette Generator
+                </Link>{" "}
+                to create coordinating color schemes for your entire home.
+              </li>
+            </ol>
           </div>
         </section>
 
@@ -245,9 +344,9 @@ export default function PaintCalculatorPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              name: "Paint Calculator",
+              name: "Paint Calculator — How Much Paint Do I Need?",
               description:
-                "Calculate exactly how many gallons of paint you need for any room. Enter dimensions and get accurate coverage estimates.",
+                "Calculate exactly how many gallons of paint you need. Enter room dimensions (length, width, height), subtract doors and windows, and get coverage based on the industry-standard rate of 350 sq ft per gallon for interior latex paint.",
               url: "https://www.paintcolorhq.com/tools/paint-calculator",
               applicationCategory: "DesignApplication",
               operatingSystem: "Any",

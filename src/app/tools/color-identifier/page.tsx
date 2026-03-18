@@ -36,94 +36,144 @@ export default function ColorIdentifierPage() {
           Photo Color Identifier
         </h1>
         <p className="mt-2 text-gray-600">
-          Upload a photo, click any spot, and instantly find the closest
-          matching paint colors from all major brands.
+          Upload any photo and click a pixel to find the closest matching paint
+          color from <strong>25,000+ colors across 14 brands</strong> —
+          including Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG,
+          Dunn-Edwards, and Farrow &amp; Ball. Matching uses the{" "}
+          <strong>CIEDE2000 (Delta E 2000) color difference formula</strong>,
+          the international standard for perceptual color accuracy defined by
+          the CIE (International Commission on Illumination).
         </p>
 
         <ColorIdentifier />
 
         <section className="mt-16 max-w-3xl">
           <h2 className="text-2xl font-bold text-gray-900">
-            How It Works
+            How It Works — 3 Steps
           </h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-gray-700">
+            <ol className="list-inside list-decimal space-y-3 pl-2">
+              <li>
+                <strong>Upload a photo</strong> — JPEG, PNG, WebP, or any
+                standard image format. Use your camera or select an existing
+                photo from your device.
+              </li>
+              <li>
+                <strong>Click any pixel</strong> — the tool reads the exact RGB
+                value at that point and converts it to CIELAB color space for
+                perceptual comparison.
+              </li>
+              <li>
+                <strong>Get ranked matches instantly</strong> — your sampled
+                color is compared against 25,000+ paint colors from 14 brands
+                using the CIEDE2000 Delta E formula. Results are ranked by
+                perceptual closeness: Delta E &lt; 1 = imperceptible difference;
+                Delta E 1–2 = only visible under close inspection; Delta E 2–5 =
+                noticeable at a glance.
+              </li>
+            </ol>
             <p>
-              <strong>1. Upload a photo</strong> from your device or snap one
-              with your camera. Any image format works.
-            </p>
-            <p>
-              <strong>2. Click a spot</strong> on the image to sample the color.
-              The tool reads the exact pixel color at that point.
-            </p>
-            <p>
-              <strong>3. Get matches</strong> instantly. We compare your sampled
-              color against 25,000+ paint colors from Sherwin-Williams, Benjamin
-              Moore, Behr, PPG, and more using the Delta E 2000 formula for
-              perceptually accurate matching.
-            </p>
-            <p>
-              Keep in mind that screen colors differ from physical paint. Always
-              verify with a swatch or sample before purchasing.
-            </p>
-          </div>
-        </section>
-
-        <section className="mt-12 max-w-3xl">
-          <h2 className="text-2xl font-bold text-gray-900">
-            How the Photo Color Identifier Works
-          </h2>
-          <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
-            <p>
-              The Photo Color Identifier lets you extract real paint color
-              matches from any image on your device. Upload a photo of a room,
-              a piece of furniture, a fabric swatch, or anything else that
-              caught your eye — then click on the exact spot you want to match.
-              The tool reads the precise pixel color at that point and compares
-              it against our database of over 25,000 paint colors from 14 major
-              brands, including Sherwin-Williams, Benjamin Moore, Behr, Valspar,
-              PPG, Dunn-Edwards, and Farrow &amp; Ball.
-            </p>
-            <p>
-              Matching is done using the Delta E 2000 color difference formula,
-              which measures how close two colors are the way the human eye
-              actually perceives them — not just by raw RGB values. This means
-              the top results are genuinely the closest visual matches you can
-              buy at the store. Each result links to the full color detail page
-              where you can explore undertones, coordinating colors, and
-              cross-brand alternatives.
+              <strong>Important:</strong> Screen colors differ from physical
+              paint due to display calibration and ambient lighting. Always
+              order a peel-and-stick swatch or brush-out sample before buying
+              full gallons.
             </p>
           </div>
         </section>
 
         <section className="mt-12 max-w-3xl">
           <h2 className="text-2xl font-bold text-gray-900">
-            Best Photos for Accurate Color Matching
+            The Color Matching Algorithm — CIEDE2000 Explained
           </h2>
           <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
             <p>
-              <strong>Use natural light.</strong> Colors shift dramatically
-              under artificial lighting. Photograph the surface during daytime
-              near a window or outdoors for the most accurate representation.
-              Avoid flash, which washes out colors and creates harsh highlights.
+              <strong>Paint Color HQ uses the CIEDE2000 (Delta E 2000) color
+              difference formula</strong> — the same standard adopted by the
+              International Commission on Illumination (CIE) and used in paint
+              manufacturing quality control by Sherwin-Williams, Benjamin Moore,
+              and Behr. Unlike simple RGB or hex comparison, CIEDE2000 converts
+              colors to CIELAB color space and measures perceptual difference
+              the way the human eye actually sees it.
             </p>
             <p>
-              <strong>Avoid shadows and glare.</strong> Shadows darken colors
-              and glossy reflections create bright spots that do not represent
-              the true shade. If the surface is shiny, angle your camera
-              slightly to eliminate glare while keeping the shot straight-on.
+              <strong>Why this matters:</strong> Two colors can have very
+              different RGB values but look nearly identical to the eye, and
+              vice versa. The CIEDE2000 formula accounts for non-linear
+              perception across hue, chroma, and lightness — producing Delta E
+              scores that directly correspond to visible difference:
             </p>
+            <div className="overflow-x-auto">
+              <table className="mt-2 w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-gray-200 text-gray-900">
+                    <th className="py-2 pr-4 font-semibold">Delta E Score</th>
+                    <th className="py-2 pr-4 font-semibold">What It Means</th>
+                  </tr>
+                </thead>
+                <tbody className="text-gray-700">
+                  <tr className="border-b border-gray-100">
+                    <td className="py-2 pr-4 font-semibold">&lt; 1.0</td>
+                    <td className="py-2 pr-4">Imperceptible — colors are visually identical</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-2 pr-4 font-semibold">1.0 – 2.0</td>
+                    <td className="py-2 pr-4">Barely perceptible — only visible under close inspection</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-2 pr-4 font-semibold">2.0 – 5.0</td>
+                    <td className="py-2 pr-4">Noticeable at a glance — still a close match</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-2 pr-4 font-semibold">5.0 – 10.0</td>
+                    <td className="py-2 pr-4">Clearly different — same color family but distinct shade</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-4 font-semibold">&gt; 10.0</td>
+                    <td className="py-2 pr-4">Different colors entirely</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <p>
-              <strong>Shoot straight-on at the actual surface.</strong> Take
-              photos of the real wall, fabric, or object — not a photo of a
-              screen showing the color. Screens add their own color profile and
-              backlight, which distorts the result. Get close enough that the
-              color fills a large portion of the frame.
+              Each match links to a full color detail page with hex code, RGB
+              values, LRV (Light Reflectance Value), undertone classification,
+              coordinating colors, and cross-brand alternatives with their own
+              Delta E scores.
             </p>
-            <p>
-              <strong>Click the most representative area.</strong> When sampling,
-              avoid edges, corners, or areas where two colors meet. Click in the
-              middle of a uniformly colored section for the most reliable match.
-            </p>
+          </div>
+        </section>
+
+        <section className="mt-12 max-w-3xl">
+          <h2 className="text-2xl font-bold text-gray-900">
+            How to Take Photos for Accurate Color Matching
+          </h2>
+          <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
+            <ol className="list-inside list-decimal space-y-3 pl-2">
+              <li>
+                <strong>Use natural daylight (5000–6500K).</strong> Incandescent
+                bulbs (2700K) add yellow; fluorescent lights (4000K) add green.
+                Photograph the surface during daytime near a north-facing window
+                for the most color-neutral illumination. Never use flash.
+              </li>
+              <li>
+                <strong>Eliminate shadows and glare.</strong> Shadows shift the
+                sampled pixel 2–3 shades darker. Glossy reflections create
+                white hotspots that read as near-white regardless of the actual
+                color. Angle your camera 5–10 degrees to avoid specular
+                reflection.
+              </li>
+              <li>
+                <strong>Photograph the actual surface, not a screen.</strong>{" "}
+                Screens add their own color profile (sRGB, P3, or Adobe RGB)
+                and backlight temperature, which distorts the captured color by
+                Delta E 5–15 or more.
+              </li>
+              <li>
+                <strong>Click the center of a uniform area.</strong> Avoid edges,
+                corners, or transitions between colors. Sample at least 50
+                pixels away from any color boundary for the most reliable match.
+              </li>
+            </ol>
           </div>
         </section>
 
@@ -133,47 +183,70 @@ export default function ColorIdentifierPage() {
           </h2>
           <div className="mt-4 space-y-4 text-base leading-relaxed text-gray-700">
             <p>
-              Once you have identified a paint color you love, the next step is
-              to see how it will actually look in your space. Open the{" "}
-              <Link
-                href="/tools/room-visualizer"
-                className="text-blue-700 underline hover:text-blue-900"
-              >
-                Room Visualizer
-              </Link>{" "}
-              to preview your matched color on walls, trim, and accent surfaces
-              in a realistic room scene. This helps you evaluate the color in
-              context before committing to a purchase.
+              After identifying a color, use these free Paint Color HQ tools to
+              confirm your choice before buying:
             </p>
-            <p>
-              If the identifier returned matches from multiple brands, use the{" "}
-              <Link
-                href="/compare"
-                className="text-blue-700 underline hover:text-blue-900"
-              >
-                Color Comparison tool
-              </Link>{" "}
-              to see those options side by side. Even colors that look identical
-              on screen can have different undertones — one may lean warm while
-              another skews cool. Comparing them together makes those
-              differences easier to spot.
-            </p>
-            <p>
-              Speaking of undertones, understanding them is key to making
-              confident color choices. A gray that looks perfectly neutral in
-              one room can read blue or purple in another depending on the
-              light. Our guide on{" "}
-              <Link
-                href="/blog/understanding-paint-color-undertones"
-                className="text-blue-700 underline hover:text-blue-900"
-              >
-                understanding paint color undertones
-              </Link>{" "}
-              explains how to identify and work with undertones so your final
-              pick looks right in every lighting condition. Always order a
-              physical sample or peel-and-stick swatch before buying full
-              gallons — screens can only get you so close.
-            </p>
+            <ol className="list-inside list-decimal space-y-3 pl-2">
+              <li>
+                <strong>Preview it on walls</strong> — open the{" "}
+                <Link
+                  href="/tools/room-visualizer"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  Room Visualizer
+                </Link>{" "}
+                to see your matched Sherwin-Williams, Benjamin Moore, or Behr
+                color on walls, trim, and accents in a realistic room scene.
+              </li>
+              <li>
+                <strong>Compare cross-brand matches</strong> — the{" "}
+                <Link
+                  href="/compare"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  Color Comparison tool
+                </Link>{" "}
+                displays colors side by side with hex codes, LRV values, and
+                Delta E difference scores so you can see exactly how close (or
+                far apart) two colors really are.
+              </li>
+              <li>
+                <strong>Calculate how much paint to buy</strong> — enter your
+                room dimensions in the{" "}
+                <Link
+                  href="/tools/paint-calculator"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  Paint Calculator
+                </Link>{" "}
+                to get an exact gallon count based on the industry-standard 350
+                sq ft/gallon coverage rate.
+              </li>
+              <li>
+                <strong>Understand undertones</strong> — a gray with a Delta E
+                of 2 from another gray can still have completely different
+                undertones (warm pink vs. cool blue). Our guide on{" "}
+                <Link
+                  href="/blog/understanding-paint-color-undertones"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  understanding paint color undertones
+                </Link>{" "}
+                explains how undertones shift under north-facing vs.
+                south-facing light and how to test with physical swatches.
+              </li>
+              <li>
+                <strong>Build a full palette</strong> — use the{" "}
+                <Link
+                  href="/tools/palette-generator"
+                  className="text-blue-700 underline hover:text-blue-900"
+                >
+                  Palette Generator
+                </Link>{" "}
+                to create coordinating schemes from your identified color
+                across all 14 supported brands.
+              </li>
+            </ol>
           </div>
         </section>
       </main>
@@ -213,9 +286,9 @@ export default function ColorIdentifierPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            name: "Photo Color Identifier",
+            name: "Photo Color Identifier — Find Paint Colors from Any Photo",
             description:
-              "Upload a photo, click any spot, and instantly find the closest matching paint colors from 14 major brands.",
+              "Upload any photo and click a pixel to match it against 25,000+ paint colors from 14 brands (Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Farrow & Ball) using the CIEDE2000 Delta E 2000 color difference formula.",
             url: "https://www.paintcolorhq.com/tools/color-identifier",
             applicationCategory: "DesignApplication",
             operatingSystem: "Any",
