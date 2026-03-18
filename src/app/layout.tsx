@@ -57,7 +57,6 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
-        <AnalyticsProvider />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-056NR93JLK"
           strategy="afterInteractive"
@@ -81,6 +80,7 @@ export default function RootLayout({
             } : {});
           `}
         </Script>
+        <AnalyticsProvider />
         {/* AdSense script moved to per-page inclusion via <AdSenseScript /> component.
             Only loaded on high-content pages (blog, brands, tools, homepage).
             Excluded from color pages until content is enriched. */}

@@ -9,8 +9,19 @@ declare global {
 }
 
 export function trackEvent(eventName: string, params?: GtagEvent) {
-  if (typeof window !== "undefined" && window.gtag) {
+  if (typeof window === "undefined") return;
+  if (window.gtag) {
     window.gtag("event", eventName, params);
+  } else {
+    // gtag not ready yet — queue and retry when it loads
+    const check = setInterval(() => {
+      if (window.gtag) {
+        clearInterval(check);
+        window.gtag("event", eventName, params);
+      }
+    }, 200);
+    // Give up after 5s
+    setTimeout(() => clearInterval(check), 5000);
   }
 }
 
