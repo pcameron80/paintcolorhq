@@ -13,6 +13,7 @@ export interface BlogPost {
   excerpt: string;
   coverColor: string; // hex for card accent
   coverImage?: string; // path to cover image, e.g. "/blog/my-post.webp"
+  modifiedDate?: string; // "YYYY-MM-DD" — omit if same as date
   tags: string[];
   content: () => ReactNode;
 }
@@ -2869,4 +2870,24 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 /** All slugs — for generateStaticParams and sitemap */
 export function getAllBlogSlugs(): string[] {
   return blogPosts.map((p) => p.slug);
+}
+
+/** Related posts: same-tag posts excluding the current one, newest first */
+export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
+  const current = blogPosts.find((p) => p.slug === slug);
+  if (!current) return [];
+
+  const currentTags = new Set(current.tags);
+
+  // Score each post by number of shared tags
+  const scored = blogPosts
+    .filter((p) => p.slug !== slug)
+    .map((p) => ({
+      post: p,
+      shared: p.tags.filter((t) => currentTags.has(t)).length,
+    }))
+    .filter((s) => s.shared > 0)
+    .sort((a, b) => b.shared - a.shared || new Date(b.post.date).getTime() - new Date(a.post.date).getTime());
+
+  return scored.slice(0, limit).map((s) => s.post);
 }

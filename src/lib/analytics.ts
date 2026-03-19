@@ -181,6 +181,7 @@ function detectPageType(): string {
   if (path.startsWith("/brands")) return "brand";
   if (path.startsWith("/colors/family")) return "family";
   if (path.startsWith("/colors")) return "color";
+  if (path.startsWith("/match")) return "match";
   if (path.startsWith("/compare")) return "compare";
   if (path.startsWith("/search")) return "search";
   if (path === "/") return "homepage";

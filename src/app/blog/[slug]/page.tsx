@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { getAllPosts, getPostBySlug, getAllBlogSlugs } from "@/lib/blog-posts";
+import { getAllPosts, getPostBySlug, getAllBlogSlugs, getRelatedPosts } from "@/lib/blog-posts";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 
@@ -31,11 +31,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: post.excerpt,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.modifiedDate ?? post.date,
       url,
       tags: post.tags,
       ...(post.coverImage && {
         images: [{ url: `https://www.paintcolorhq.com${post.coverImage}`, width: 1200, height: 630 }],
       }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      ...(post.coverImage && { images: [`https://www.paintcolorhq.com${post.coverImage}`] }),
     },
   };
 }
@@ -54,6 +61,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!post) notFound();
 
   const allPosts = getAllPosts(); // newest first
+  const relatedPosts = getRelatedPosts(slug, 3);
   const currentIndex = allPosts.findIndex((p) => p.slug === slug);
   const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
   const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
@@ -63,7 +71,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     "@type": "BlogPosting",
     headline: post.title,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.modifiedDate ?? post.date,
     description: post.excerpt,
     url: `https://www.paintcolorhq.com/blog/${post.slug}`,
     mainEntityOfPage: {
@@ -100,7 +108,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
       { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.paintcolorhq.com/blog" },
-      { "@type": "ListItem", position: 3, name: post.title },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://www.paintcolorhq.com/blog/${post.slug}` },
     ],
   };
 
@@ -160,7 +168,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
 
             {/* Article body */}
-            <div className="mt-8">{post.content()}</div>
+            <div className="prose prose-gray max-w-none mt-8">{post.content()}</div>
           </article>
 
           {/* Prev / Next navigation */}
@@ -196,6 +204,63 @@ export default async function BlogPostPage({ params }: PageProps) {
               <div />
             )}
           </nav>
+
+          {/* Related Posts */}
+          {relatedPosts.length > 0 && (
+            <section className="mt-12 border-t border-gray-200 pt-8">
+              <h2 className="text-xl font-bold text-gray-900">Related Posts</h2>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {relatedPosts.map((rp) => (
+                  <Link
+                    key={rp.slug}
+                    href={`/blog/${rp.slug}`}
+                    className="group rounded-lg border border-gray-200 p-4 transition hover:border-gray-300 hover:shadow-sm"
+                  >
+                    {rp.coverImage && (
+                      <div className="relative mb-3 h-32 overflow-hidden rounded">
+                        <Image src={rp.coverImage} alt={rp.title} fill className="object-cover" sizes="(max-width: 640px) 100vw, 33vw" />
+                      </div>
+                    )}
+                    <span className="text-xs text-gray-500">{formatDate(rp.date)}</span>
+                    <span className="mt-1 block text-sm font-semibold text-gray-900 group-hover:text-brand-blue">
+                      {rp.title}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Explore Our Tools */}
+          <section className="mt-12 border-t border-gray-200 pt-8">
+            <h2 className="text-xl font-bold text-gray-900">Explore Our Tools</h2>
+            <div className="mt-4 grid gap-4 sm:grid-cols-3">
+              <Link
+                href="/tools/room-visualizer"
+                className="rounded-lg border border-gray-200 p-5 text-center transition hover:border-gray-300 hover:shadow-sm"
+              >
+                <span className="text-2xl">🎨</span>
+                <span className="mt-2 block text-sm font-semibold text-gray-900">Room Visualizer</span>
+                <span className="mt-1 block text-xs text-gray-500">Preview colors in real rooms</span>
+              </Link>
+              <Link
+                href="/tools/palette-generator"
+                className="rounded-lg border border-gray-200 p-5 text-center transition hover:border-gray-300 hover:shadow-sm"
+              >
+                <span className="text-2xl">🪄</span>
+                <span className="mt-2 block text-sm font-semibold text-gray-900">Palette Generator</span>
+                <span className="mt-1 block text-xs text-gray-500">Build harmonious color schemes</span>
+              </Link>
+              <Link
+                href="/search"
+                className="rounded-lg border border-gray-200 p-5 text-center transition hover:border-gray-300 hover:shadow-sm"
+              >
+                <span className="text-2xl">🔍</span>
+                <span className="mt-2 block text-sm font-semibold text-gray-900">Color Search</span>
+                <span className="mt-1 block text-xs text-gray-500">Find any color across brands</span>
+              </Link>
+            </div>
+          </section>
         </div>
       </main>
       <TrackPage

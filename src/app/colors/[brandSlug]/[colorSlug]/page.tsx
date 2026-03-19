@@ -15,6 +15,7 @@ import { generateColorDescription, generateMetaDescription } from "@/lib/color-d
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
 import { TrackPage } from "@/components/track-page";
+import { TrackedLink } from "@/components/tracked-link";
 
 export const revalidate = 3600;
 
@@ -195,6 +196,88 @@ export default async function ColorPage({ params }: PageProps) {
   // Resolve color harmonies to real paint colors
   const harmonies = await resolveHarmonies(color.hex);
 
+  // Build FAQ items (used for both visible FAQ and JSON-LD)
+  const faqItems: Array<{ question: string; answer: string }> = [];
+  const lrv = color.lrv != null ? Number(color.lrv) : null;
+  const undertone = color.undertone ?? "";
+  const undertoneLower = undertone.toLowerCase();
+
+  // Q1: Undertone
+  if (color.undertone) {
+    const undertoneDetail = undertoneLower === "warm"
+      ? "Warm undertones bring a cozy, inviting feel to a space and pair beautifully with earth tones, creamy whites, and natural wood finishes."
+      : undertoneLower === "cool"
+        ? "Cool undertones create a crisp, refreshing atmosphere and pair well with grays, blues, and bright white trim."
+        : "Neutral undertones offer exceptional versatility, working well with both warm and cool accents, making it an excellent choice for open floor plans and transitional spaces.";
+    faqItems.push({
+      question: `What undertone does ${color.name} have?`,
+      answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and belongs to the ${color.color_family} color family` : ""}. ${undertoneDetail}`,
+    });
+  }
+
+  // Q2: Cross-brand matches
+  if (matches.length > 0) {
+    const topMatches = matches.slice(0, 3).map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (Delta E: ${Number(m.delta_e_score).toFixed(1)})`).join(", ");
+    const closeness = Number(matches[0].delta_e_score) < 2
+      ? "The top match is virtually indistinguishable to the human eye, making it an excellent substitute."
+      : Number(matches[0].delta_e_score) < 5
+        ? "The top match is very close in appearance, though slight differences may be visible side by side."
+        : "These matches are the closest available, but noticeable differences may exist — always compare physical swatches before committing.";
+    faqItems.push({
+      question: `What colors match ${color.name} from other brands?`,
+      answer: `The closest cross-brand matches for ${color.name} by ${color.brand.name} include ${topMatches}. ${closeness} Keep in mind that pigments and finishes vary between manufacturers, so always verify with real paint samples.`,
+    });
+  }
+
+  // Q3: LRV
+  if (lrv != null) {
+    let lrvDetail: string;
+    if (lrv >= 65) {
+      lrvDetail = `With a high LRV, ${color.name} reflects a significant amount of light, making it an excellent choice for smaller rooms, north-facing spaces, or areas with limited natural light where you want to maximize brightness.`;
+    } else if (lrv >= 40) {
+      lrvDetail = `With a moderate LRV, ${color.name} strikes a balance between light and depth. It works well in living rooms, bedrooms, and dining areas where you want a color that feels present without overwhelming the space.`;
+    } else if (lrv >= 15) {
+      lrvDetail = `With a lower LRV, ${color.name} absorbs more light than it reflects, creating a sense of depth and intimacy. It works well as an accent wall or in larger rooms with plenty of natural light to prevent the space from feeling too enclosed.`;
+    } else {
+      lrvDetail = `With a very low LRV, ${color.name} absorbs most light and creates a bold, dramatic statement. It is best suited for accent walls, feature spaces, or rooms where you intentionally want a moody, cocooning effect — pair it with lighter trim and ample lighting.`;
+    }
+    faqItems.push({
+      question: `What is the LRV of ${color.name}?`,
+      answer: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, where 0 is absolute black and 100 is pure white. ${lrvDetail}`,
+    });
+  }
+
+  // Q4: Room recommendation
+  const effectiveLrv = lrv ?? 50;
+  let roomType: string;
+  let roomAnswer: string;
+  if (undertoneLower === "warm" && effectiveLrv >= 40) {
+    roomType = "living rooms";
+    roomAnswer = `Yes, ${color.name} by ${color.brand.name} is an excellent choice for living rooms. Its warm undertone creates a welcoming, comfortable atmosphere that encourages relaxation and conversation. With an LRV of ${effectiveLrv.toFixed(1)}, it reflects enough light to keep the room feeling open while still providing warmth and character. Pair it with natural wood furniture and soft textiles for a cohesive, inviting living space.`;
+  } else if (undertoneLower === "cool" && effectiveLrv >= 55) {
+    roomType = "bathrooms";
+    roomAnswer = `Yes, ${color.name} by ${color.brand.name} works beautifully in bathrooms. Its cool undertone evokes a clean, spa-like atmosphere, and with an LRV of ${effectiveLrv.toFixed(1)}, it reflects plenty of light to keep the room feeling fresh and airy. Cool-toned colors in bathrooms pair well with chrome or brushed nickel fixtures and white tile, creating a serene retreat.`;
+  } else if (effectiveLrv >= 65) {
+    roomType = "small rooms";
+    roomAnswer = `Yes, ${color.name} by ${color.brand.name} is ideal for small rooms. With a high LRV of ${effectiveLrv.toFixed(1)}, it reflects a significant amount of light, which visually expands the space and prevents it from feeling cramped. This makes it a smart pick for powder rooms, hallways, entryways, or any area where you want to maximize the sense of openness. Pair it with mirrors and good lighting for the best effect.`;
+  } else if (effectiveLrv < 25) {
+    roomType = "accent walls";
+    roomAnswer = `${color.name} by ${color.brand.name} is a bold choice that works best as an accent wall rather than for an entire room. With a lower LRV of ${effectiveLrv.toFixed(1)}, it absorbs light and creates dramatic focal points. Use it on a single statement wall in a living room, dining room, or bedroom, and balance it with lighter surrounding walls, ample lighting, and reflective decor to keep the space from feeling too dark.`;
+  } else if (undertoneLower === "warm") {
+    roomType = "bedrooms";
+    roomAnswer = `Yes, ${color.name} by ${color.brand.name} is a wonderful option for bedrooms. Its warm undertone fosters a cozy, restful environment that promotes relaxation and sleep. With an LRV of ${effectiveLrv.toFixed(1)}, it provides enough depth to feel enveloping without making the room feel small. Pair it with soft bedding, warm-toned lighting, and natural textures for a tranquil retreat.`;
+  } else {
+    roomType = "kitchens";
+    const toneDetail = undertoneLower === "cool"
+      ? "Its cool undertone keeps the space feeling clean and fresh, which complements stainless steel appliances and modern cabinetry."
+      : "Its neutral undertone offers flexibility, pairing well with a wide range of cabinet colors, countertop materials, and hardware finishes.";
+    roomAnswer = `Yes, ${color.name} by ${color.brand.name} is a great fit for kitchens. ${toneDetail} With an LRV of ${effectiveLrv.toFixed(1)}, it balances brightness and character, ensuring the kitchen feels lively without being stark. Good lighting — both natural and task — will bring out the best in this color.`;
+  }
+  faqItems.push({
+    question: `Is ${color.name} good for ${roomType}?`,
+    answer: roomAnswer,
+  });
+
   // Group matches by brand
   const matchesByBrand = matches.reduce(
     (acc, match) => {
@@ -246,39 +329,45 @@ export default async function ColorPage({ params }: PageProps) {
           />
 
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">{color.name}</h1>
+            <h1 className="text-3xl font-bold text-gray-900">
+              {color.name} {color.color_number ? `(${color.color_number})` : ""} Paint Color
+            </h1>
             <p className="mt-1 text-lg text-gray-600">{color.brand.name}</p>
-            {color.color_number && (
-              <p className="mt-1 text-sm text-gray-500">{color.color_number}</p>
-            )}
+            <p className="mt-2 text-sm text-gray-500">
+              Find matching colors from other brands, build a palette, or preview it in your room.
+            </p>
 
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <SaveToProject
                 colorId={color.id}
                 currentPath={`/colors/${brandSlug}/${colorSlug}`}
               />
-              <Link
+              <TrackedLink
                 href={`/tools/palette-generator?hex=${encodeURIComponent(color.hex)}`}
                 className="flex items-center gap-2 rounded-lg bg-brand-terra px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-terra-dark"
+                eventName="cta_click"
+                eventParams={{ cta_label: "generate_palette", color_name: color.name, color_brand: color.brand.slug }}
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
                 </svg>
                 Generate Palette
-              </Link>
+              </TrackedLink>
               <ShareButton
                 title={`${color.name} by ${color.brand.name}`}
                 url={`/colors/${brandSlug}/${colorSlug}`}
               />
-              <Link
+              <TrackedLink
                 href={`/compare?color1=${color.id}`}
                 className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-colors hover:bg-gray-50"
+                eventName="cta_click"
+                eventParams={{ cta_label: "compare", color_name: color.name, color_brand: color.brand.slug }}
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
                 </svg>
                 Compare
-              </Link>
+              </TrackedLink>
               {retailerLinks.map((link) => (
                 <a
                   key={link.retailerName}
@@ -405,13 +494,15 @@ export default async function ColorPage({ params }: PageProps) {
                           <p className="text-sm text-gray-500">
                             {match.match_color.hex.toUpperCase()}
                           </p>
-                          <p className="mt-1 text-xs text-gray-400">
-                            Delta E: {Number(match.delta_e_score).toFixed(2)}
+                          <p
+                            className="mt-1 text-xs text-gray-400"
+                            title={`Delta E: ${Number(match.delta_e_score).toFixed(1)}`}
+                          >
                             {Number(match.delta_e_score) < 2
-                              ? " (very close)"
+                              ? "Nearly identical"
                               : Number(match.delta_e_score) < 5
-                                ? " (close)"
-                                : " (noticeable difference)"}
+                                ? "Very similar"
+                                : "Visible difference"}
                           </p>
                         </div>
                       </Link>
@@ -448,6 +539,78 @@ export default async function ColorPage({ params }: PageProps) {
           </section>
         )}
 
+        {/* Frequently Asked Questions */}
+        {faqItems.length > 0 && (
+          <section className="mt-16">
+            <h2 className="text-2xl font-bold text-gray-900">
+              Frequently Asked Questions
+            </h2>
+            <div className="mt-6 space-y-3">
+              {faqItems.map((item, i) => (
+                <details
+                  key={i}
+                  className="group rounded-lg border border-gray-200"
+                >
+                  <summary className="flex cursor-pointer items-center justify-between px-5 py-4 text-base font-medium text-gray-900 hover:bg-gray-50">
+                    {item.question}
+                    <svg
+                      className="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </summary>
+                  <div className="px-5 pb-4 text-sm leading-relaxed text-gray-600">
+                    {item.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Keep Exploring */}
+        <section className="mt-16">
+          <h2 className="text-2xl font-bold text-gray-900">Keep Exploring</h2>
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <Link
+              href={`/tools/room-visualizer?hex=${encodeURIComponent(color.hex)}`}
+              className="rounded-lg border border-gray-200 p-6 text-center transition-shadow hover:shadow-md"
+            >
+              <svg className="mx-auto h-8 w-8 text-brand-terra" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+              </svg>
+              <p className="mt-3 font-semibold text-gray-900">See It on a Wall</p>
+              <p className="mt-1 text-sm text-gray-500">Preview this color in a real room</p>
+            </Link>
+            <Link
+              href="/tools/paint-calculator"
+              className="rounded-lg border border-gray-200 p-6 text-center transition-shadow hover:shadow-md"
+            >
+              <svg className="mx-auto h-8 w-8 text-brand-terra" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z" />
+              </svg>
+              <p className="mt-3 font-semibold text-gray-900">How Much Paint?</p>
+              <p className="mt-1 text-sm text-gray-500">Calculate gallons for your project</p>
+            </Link>
+            {color.color_family && (
+              <Link
+                href={`/colors/family/${color.color_family}`}
+                className="rounded-lg border border-gray-200 p-6 text-center transition-shadow hover:shadow-md"
+              >
+                <svg className="mx-auto h-8 w-8 text-brand-terra" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
+                </svg>
+                <p className="mt-3 font-semibold text-gray-900">Browse {color.color_family} Colors</p>
+                <p className="mt-1 text-sm text-gray-500">Explore more shades in this family</p>
+              </Link>
+            )}
+          </div>
+        </section>
+
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
@@ -463,135 +626,60 @@ export default async function ColorPage({ params }: PageProps) {
                 itemListElement: [
                   { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
                   { "@type": "ListItem", position: 2, name: color.brand.name, item: `https://www.paintcolorhq.com/brands/${brandSlug}` },
-                  { "@type": "ListItem", position: 3, name: color.name },
+                  { "@type": "ListItem", position: 3, name: color.name, item: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}` },
                 ],
               },
               image: `https://www.paintcolorhq.com/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`,
               about: {
-                "@type": "Thing",
+                "@type": "Product",
                 name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
                 description: descriptionFirstParagraph,
                 brand: {
                   "@type": "Brand",
                   name: color.brand.name,
                 },
-                identifier: color.color_number ?? undefined,
-                color: color.hex,
+                sku: color.color_number ?? undefined,
+                additionalProperty: [
+                  { "@type": "PropertyValue", name: "Hex", value: color.hex.toUpperCase() },
+                  { "@type": "PropertyValue", name: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
+                  ...(color.lrv != null ? [{ "@type": "PropertyValue", name: "LRV", value: Number(color.lrv).toFixed(1) }] : []),
+                  ...(color.undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: color.undertone }] : []),
+                  ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
+                ],
+                ...(matches.length > 0 ? {
+                  isSimilarTo: matches.slice(0, 5).map((m) => ({
+                    "@type": "Product",
+                    name: m.match_color.name,
+                    brand: { "@type": "Brand", name: m.match_color.brand.name },
+                    sku: m.match_color.color_number ?? undefined,
+                    color: m.match_color.hex.toUpperCase(),
+                  })),
+                } : {}),
               },
             }),
           }}
         />
 
-        {/* FAQ JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: (() => {
-              const faqEntries: Array<{ "@type": string; name: string; acceptedAnswer: { "@type": string; text: string } }> = [];
-              const lrv = color.lrv != null ? Number(color.lrv) : null;
-              const undertone = color.undertone ?? "";
-              const undertoneLower = undertone.toLowerCase();
-
-              // Q1: Undertone
-              if (color.undertone) {
-                const undertoneDetail = undertoneLower === "warm"
-                  ? "Warm undertones bring a cozy, inviting feel to a space and pair beautifully with earth tones, creamy whites, and natural wood finishes."
-                  : undertoneLower === "cool"
-                    ? "Cool undertones create a crisp, refreshing atmosphere and pair well with grays, blues, and bright white trim."
-                    : "Neutral undertones offer exceptional versatility, working well with both warm and cool accents, making it an excellent choice for open floor plans and transitional spaces.";
-                faqEntries.push({
-                  "@type": "Question",
-                  name: `What undertone does ${color.name} have?`,
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and belongs to the ${color.color_family} color family` : ""}. ${undertoneDetail}`,
-                  },
-                });
-              }
-
-              // Q2: Cross-brand matches
-              if (matches.length > 0) {
-                const topMatches = matches.slice(0, 3).map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (Delta E: ${Number(m.delta_e_score).toFixed(1)})`).join(", ");
-                const closeness = Number(matches[0].delta_e_score) < 2
-                  ? "The top match is virtually indistinguishable to the human eye, making it an excellent substitute."
-                  : Number(matches[0].delta_e_score) < 5
-                    ? "The top match is very close in appearance, though slight differences may be visible side by side."
-                    : "These matches are the closest available, but noticeable differences may exist — always compare physical swatches before committing.";
-                faqEntries.push({
-                  "@type": "Question",
-                  name: `What colors match ${color.name} from other brands?`,
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: `The closest cross-brand matches for ${color.name} by ${color.brand.name} include ${topMatches}. ${closeness} Keep in mind that pigments and finishes vary between manufacturers, so always verify with real paint samples.`,
-                  },
-                });
-              }
-
-              // Q3: LRV
-              if (lrv != null) {
-                let lrvDetail: string;
-                if (lrv >= 65) {
-                  lrvDetail = `With a high LRV, ${color.name} reflects a significant amount of light, making it an excellent choice for smaller rooms, north-facing spaces, or areas with limited natural light where you want to maximize brightness.`;
-                } else if (lrv >= 40) {
-                  lrvDetail = `With a moderate LRV, ${color.name} strikes a balance between light and depth. It works well in living rooms, bedrooms, and dining areas where you want a color that feels present without overwhelming the space.`;
-                } else if (lrv >= 15) {
-                  lrvDetail = `With a lower LRV, ${color.name} absorbs more light than it reflects, creating a sense of depth and intimacy. It works well as an accent wall or in larger rooms with plenty of natural light to prevent the space from feeling too enclosed.`;
-                } else {
-                  lrvDetail = `With a very low LRV, ${color.name} absorbs most light and creates a bold, dramatic statement. It is best suited for accent walls, feature spaces, or rooms where you intentionally want a moody, cocooning effect — pair it with lighter trim and ample lighting.`;
-                }
-                faqEntries.push({
-                  "@type": "Question",
-                  name: `What is the LRV of ${color.name}?`,
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, where 0 is absolute black and 100 is pure white. ${lrvDetail}`,
-                  },
-                });
-              }
-
-              // Q4: Room recommendation
-              const effectiveLrv = lrv ?? 50;
-              let roomType: string;
-              let roomAnswer: string;
-              if (undertoneLower === "warm" && effectiveLrv >= 40) {
-                roomType = "living rooms";
-                roomAnswer = `Yes, ${color.name} by ${color.brand.name} is an excellent choice for living rooms. Its warm undertone creates a welcoming, comfortable atmosphere that encourages relaxation and conversation. With an LRV of ${effectiveLrv.toFixed(1)}, it reflects enough light to keep the room feeling open while still providing warmth and character. Pair it with natural wood furniture and soft textiles for a cohesive, inviting living space.`;
-              } else if (undertoneLower === "cool" && effectiveLrv >= 55) {
-                roomType = "bathrooms";
-                roomAnswer = `Yes, ${color.name} by ${color.brand.name} works beautifully in bathrooms. Its cool undertone evokes a clean, spa-like atmosphere, and with an LRV of ${effectiveLrv.toFixed(1)}, it reflects plenty of light to keep the room feeling fresh and airy. Cool-toned colors in bathrooms pair well with chrome or brushed nickel fixtures and white tile, creating a serene retreat.`;
-              } else if (effectiveLrv >= 65) {
-                roomType = "small rooms";
-                roomAnswer = `Yes, ${color.name} by ${color.brand.name} is ideal for small rooms. With a high LRV of ${effectiveLrv.toFixed(1)}, it reflects a significant amount of light, which visually expands the space and prevents it from feeling cramped. This makes it a smart pick for powder rooms, hallways, entryways, or any area where you want to maximize the sense of openness. Pair it with mirrors and good lighting for the best effect.`;
-              } else if (effectiveLrv < 25) {
-                roomType = "accent walls";
-                roomAnswer = `${color.name} by ${color.brand.name} is a bold choice that works best as an accent wall rather than for an entire room. With a lower LRV of ${effectiveLrv.toFixed(1)}, it absorbs light and creates dramatic focal points. Use it on a single statement wall in a living room, dining room, or bedroom, and balance it with lighter surrounding walls, ample lighting, and reflective decor to keep the space from feeling too dark.`;
-              } else if (undertoneLower === "warm") {
-                roomType = "bedrooms";
-                roomAnswer = `Yes, ${color.name} by ${color.brand.name} is a wonderful option for bedrooms. Its warm undertone fosters a cozy, restful environment that promotes relaxation and sleep. With an LRV of ${effectiveLrv.toFixed(1)}, it provides enough depth to feel enveloping without making the room feel small. Pair it with soft bedding, warm-toned lighting, and natural textures for a tranquil retreat.`;
-              } else {
-                roomType = "kitchens";
-                const toneDetail = undertoneLower === "cool"
-                  ? "Its cool undertone keeps the space feeling clean and fresh, which complements stainless steel appliances and modern cabinetry."
-                  : "Its neutral undertone offers flexibility, pairing well with a wide range of cabinet colors, countertop materials, and hardware finishes.";
-                roomAnswer = `Yes, ${color.name} by ${color.brand.name} is a great fit for kitchens. ${toneDetail} With an LRV of ${effectiveLrv.toFixed(1)}, it balances brightness and character, ensuring the kitchen feels lively without being stark. Good lighting — both natural and task — will bring out the best in this color.`;
-              }
-              faqEntries.push({
-                "@type": "Question",
-                name: `Is ${color.name} good for ${roomType}?`,
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: roomAnswer,
-                },
-              });
-
-              return JSON.stringify({
+        {/* FAQ JSON-LD Structured Data — content is server-generated from trusted database values */}
+        {faqItems.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "FAQPage",
-                mainEntity: faqEntries,
-              });
-            })(),
-          }}
-        />
+                mainEntity: faqItems.map((item) => ({
+                  "@type": "Question",
+                  name: item.question,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: item.answer,
+                  },
+                })),
+              }),
+            }}
+          />
+        )}
       </main>
 
       <Footer />
