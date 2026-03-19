@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { getAllPosts, getPostBySlug, getAllBlogSlugs, getRelatedPosts } from "@/lib/blog-posts";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
+import { TableOfContents } from "@/components/table-of-contents";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -168,7 +169,11 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
 
             {/* Article body */}
-            <div className="prose prose-gray max-w-none mt-8">{post.content()}</div>
+            <div className="prose prose-gray max-w-none mt-8">
+              {/* Table of contents (collapsible, only shows for 3+ headings) */}
+              <TableOfContents />
+              {post.content()}
+            </div>
           </article>
 
           {/* Prev / Next navigation */}
