@@ -14,7 +14,7 @@ export const revalidate = 3600;
 interface PageProps {
   params: Promise<{
     sourceBrandSlug: string;
-    "colorSlug]-to-[targetBrandSlug": string;
+    matchSlug: string;
   }>;
 }
 
@@ -33,7 +33,7 @@ function deltaELabel(score: number): string {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { sourceBrandSlug } = await params;
-  const rawSlug = (await params)["colorSlug]-to-[targetBrandSlug"];
+  const rawSlug = (await params).matchSlug;
   const parsed = parseParams(rawSlug);
   if (!parsed) return { title: "Match Not Found" };
 
@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function MatchPage({ params }: PageProps) {
   const { sourceBrandSlug } = await params;
-  const rawSlug = (await params)["colorSlug]-to-[targetBrandSlug"];
+  const rawSlug = (await params).matchSlug;
   const parsed = parseParams(rawSlug);
   if (!parsed) notFound();
 
