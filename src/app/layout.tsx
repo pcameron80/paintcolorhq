@@ -11,18 +11,18 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Match Paint Colors Across 14 Brands | Paint Color HQ",
+    default: "Match Any Paint Color Across 14 Brands | Paint Color HQ",
     template: "%s | Paint Color HQ",
   },
   description:
-    "Match paint colors across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. Free room visualizer, color identifier & 25,000+ colors.",
+    "Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. 25,000+ colors with room visualizer & photo color identifier.",
   metadataBase: new URL("https://www.paintcolorhq.com"),
   openGraph: {
     type: "website",
     siteName: "Paint Color HQ",
-    title: "Match Paint Colors Across 14 Brands | Paint Color HQ",
+    title: "Match Any Paint Color Across 14 Brands | Paint Color HQ",
     description:
-      "Match paint colors across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. Free room visualizer, photo color identifier, palette generator & paint calculator.",
+      "Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. 25,000+ colors with room visualizer, photo color identifier & paint calculator.",
     images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
   },
   twitter: {

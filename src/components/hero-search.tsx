@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import { ColorCard } from "@/components/color-card";
+import { trackEvent } from "@/lib/analytics";
 import type { ColorWithBrand } from "@/lib/types";
 
 export function HeroSearch() {
@@ -20,7 +20,15 @@ export function HeroSearch() {
     try {
       const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
       const data = await res.json();
-      setResults(data.results ?? []);
+      const searchResults = data.results ?? [];
+      setResults(searchResults);
+
+      // Track hero search
+      trackEvent("color_search", {
+        search_term: q,
+        result_count: String(searchResults.length),
+        source: "homepage_hero",
+      });
     } catch {
       setResults([]);
     } finally {
@@ -37,37 +45,18 @@ export function HeroSearch() {
 
   return (
     <>
-      <section className="relative h-[480px] w-full overflow-hidden">
-        <Image
-          src="/hero.webp"
-          alt="Beautifully painted room interior"
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          className="object-cover"
+      <div className="mx-auto mt-10 w-full max-w-xl">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search by color name, number, or hex code..."
+          className="w-full rounded-lg border border-white/30 bg-white/95 px-4 py-3 text-lg text-gray-900 shadow-lg backdrop-blur placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-white/50"
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Match Paint Colors Across 14 Brands
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90">
-            Search 25,000+ colors from Sherwin-Williams, Benjamin Moore, Behr,
-            and 11 more brands. Find cross-brand matches, build palettes, and
-            preview colors in your room.
-          </p>
-          <div className="mx-auto mt-10 w-full max-w-xl">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search by color name, number, or hex code..."
-              className="w-full rounded-lg border border-white/30 bg-white/95 px-4 py-3 text-lg text-gray-900 shadow-lg backdrop-blur placeholder:text-gray-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-white/50"
-            />
-          </div>
-        </div>
-      </section>
+        <p className="mt-3 text-sm text-white/70">
+          Try &quot;Agreeable Gray&quot;, &quot;SW 7029&quot;, or &quot;#D1CBC1&quot;
+        </p>
+      </div>
 
       {hasResults && (
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
