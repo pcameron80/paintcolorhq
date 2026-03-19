@@ -266,6 +266,45 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
           </nav>
         )}
 
+        {/* Cross-Brand Matching links */}
+        {(() => {
+          const majorBrands = [
+            { slug: "sherwin-williams", name: "Sherwin-Williams" },
+            { slug: "benjamin-moore", name: "Benjamin Moore" },
+            { slug: "behr", name: "Behr" },
+            { slug: "ppg", name: "PPG" },
+            { slug: "valspar", name: "Valspar" },
+          ];
+          const targets = majorBrands.filter((b) => b.slug !== brandSlug).slice(0, 5);
+          if (targets.length === 0) return null;
+          return (
+            <div className="mt-12">
+              <h2 className="text-lg font-semibold text-gray-900">
+                Cross-Brand Matching
+              </h2>
+              <p className="mt-1 text-sm text-gray-600">
+                Find equivalent colors from {brand.name} in other major paint brands.
+              </p>
+              <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {targets.map((target) => (
+                  <Link
+                    key={target.slug}
+                    href={`/match/${brandSlug}/to/${target.slug}`}
+                    className="rounded-lg border border-gray-200 p-4 text-center transition hover:shadow-md"
+                  >
+                    <p className="text-sm font-medium text-gray-900">
+                      {brand.name} to {target.name}
+                    </p>
+                    <p className="mt-1 text-xs text-gray-500">
+                      View equivalent colors
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
         {/* About brand - collapsible intro content below the grid */}
         {brandContent?.intro && (
           <details className="mt-10">

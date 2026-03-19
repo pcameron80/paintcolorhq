@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ColorSwatch } from "@/components/color-swatch";
+import { TrackPage } from "@/components/track-page";
 import { getBrandBySlug, getTopCrossBrandMatches } from "@/lib/queries";
 
 export const revalidate = 3600;
@@ -24,12 +25,12 @@ interface PageProps {
   }>;
 }
 
-function getDeltaELabel(deltaE: number): { label: string; className: string } {
-  if (deltaE < 1) return { label: "Exact Match", className: "text-green-700 bg-green-50" };
-  if (deltaE < 2) return { label: "Very Close", className: "text-green-600 bg-green-50" };
-  if (deltaE < 3) return { label: "Close Match", className: "text-blue-700 bg-blue-50" };
-  if (deltaE < 5) return { label: "Near Match", className: "text-yellow-700 bg-yellow-50" };
-  return { label: "Approximate", className: "text-orange-700 bg-orange-50" };
+function getDeltaELabel(deltaE: number): { label: string; shortLabel: string; className: string } {
+  if (deltaE < 1) return { label: "Exact Match", shortLabel: "Exact", className: "text-green-700 bg-green-50" };
+  if (deltaE < 2) return { label: "Nearly identical", shortLabel: "Nearly identical", className: "text-green-600 bg-green-50" };
+  if (deltaE < 3) return { label: "Very similar", shortLabel: "Very similar", className: "text-blue-700 bg-blue-50" };
+  if (deltaE < 5) return { label: "Same family", shortLabel: "Same family", className: "text-yellow-700 bg-yellow-50" };
+  return { label: "Test with sample", shortLabel: "Test first", className: "text-orange-700 bg-orange-50" };
 }
 
 function formatBrandName(brand: { name: string }): string {
@@ -58,8 +59,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!sourceBrand || !targetBrand) return { title: "Brand Match Not Found" };
 
-  const title = `${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)} Color Matches | Paint Color HQ`;
-  const description = `Find the closest ${formatBrandName(targetBrand)} equivalent for any ${formatBrandName(sourceBrand)} color. Top 50 matches ranked by color accuracy using Delta E 2000.`;
+  const title = `${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)} Equivalent Colors | Paint Color HQ`;
+  const description = `Switching from ${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)}? Find the closest matching colors between the two brands, ranked by visual similarity so you can confidently pick an alternative.`;
   const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/to/${targetBrandSlug}`;
 
   return {
@@ -86,10 +87,10 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
 
   const matches = await getTopCrossBrandMatches(sourceBrandSlug, targetBrandSlug, 50);
 
-  const jsonLd = {
+  const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: `${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)} Color Matches`,
+    name: `${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)} Equivalent Colors`,
     description: `Top cross-brand color matches from ${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)}`,
     numberOfItems: matches.length,
     itemListElement: matches.map((m, i) => ({
@@ -100,10 +101,27 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
     })),
   };
 
-  const jsonLdString = JSON.stringify(jsonLd);
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+      { "@type": "ListItem", position: 2, name: "Brands", item: "https://www.paintcolorhq.com/brands" },
+      { "@type": "ListItem", position: 3, name: formatBrandName(sourceBrand), item: `https://www.paintcolorhq.com/brands/${sourceBrandSlug}` },
+      { "@type": "ListItem", position: 4, name: `${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)}` },
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-white">
+      <TrackPage
+        eventName="page_view_enriched"
+        params={{
+          page_type: "match_listing",
+          source_brand: sourceBrandSlug,
+          target_brand: targetBrandSlug,
+        }}
+      />
       <Header />
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -121,28 +139,36 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
         {/* Page heading */}
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-            {formatBrandName(sourceBrand)} to {formatBrandName(targetBrand)} Color Matches
+            {formatBrandName(sourceBrand)} to {formatBrandName(targetBrand)} Equivalent Colors
           </h1>
-          <p className="mt-2 text-gray-600">
-            The top {matches.length} closest color matches from {formatBrandName(sourceBrand)} to{" "}
-            {formatBrandName(targetBrand)}, ranked by color accuracy using Delta E 2000.
-            Lower Delta E means a closer match.
+          <p className="mt-1 text-sm text-gray-500">
+            Looking for{" "}
+            <Link href={`/match/${targetBrandSlug}/to/${sourceBrandSlug}`} className="text-blue-600 hover:underline">
+              {formatBrandName(targetBrand)} to {formatBrandName(sourceBrand)}
+            </Link>{" "}
+            instead?
+          </p>
+          <p className="mt-3 text-gray-600">
+            Switching from {formatBrandName(sourceBrand)} to {formatBrandName(targetBrand)}?
+            Whether your preferred color isn&apos;t available locally or you&apos;re looking for a
+            more affordable alternative, these are the closest matches between the two brands
+            — ranked by how similar they actually look.
           </p>
         </div>
 
         {/* Match quality legend */}
         <div className="mb-6 flex flex-wrap gap-3 text-xs">
           <span className="rounded-full bg-green-50 px-3 py-1 text-green-700">
-            &lt; 2: Very Close
+            Nearly identical — most people can&apos;t tell these apart
           </span>
           <span className="rounded-full bg-blue-50 px-3 py-1 text-blue-700">
-            2-3: Close Match
+            Very similar — minor difference side-by-side
           </span>
           <span className="rounded-full bg-yellow-50 px-3 py-1 text-yellow-700">
-            3-5: Near Match
+            Noticeable difference — same color family
           </span>
           <span className="rounded-full bg-orange-50 px-3 py-1 text-orange-700">
-            5+: Approximate
+            Loosely similar — test with a sample
           </span>
         </div>
 
@@ -158,14 +184,14 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
                 {formatBrandName(targetBrand)}
               </span>
               <span className="text-right text-xs font-medium uppercase tracking-wider text-gray-500">
-                Delta E
+                Match Quality
               </span>
             </div>
 
             {/* Match rows */}
             <div className="divide-y divide-gray-100">
               {matches.map((m) => {
-                const { label, className } = getDeltaELabel(m.deltaE);
+                const { label, shortLabel, className } = getDeltaELabel(m.deltaE);
                 return (
                   <Link
                     key={`${m.source.id}-${m.match.id}`}
@@ -203,10 +229,10 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
                         </div>
                       </div>
 
-                      {/* Delta E */}
+                      {/* Match Quality */}
                       <div className="text-right">
                         <span className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${className}`}>
-                          {m.deltaE.toFixed(2)} - {label}
+                          {label}
                         </span>
                       </div>
                     </div>
@@ -229,7 +255,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
                         </p>
                       </div>
                       <span className={`flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${className}`}>
-                        {m.deltaE.toFixed(1)}
+                        {shortLabel}
                       </span>
                     </div>
                   </Link>
@@ -306,7 +332,11 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
       {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLdString }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
     </div>
   );
