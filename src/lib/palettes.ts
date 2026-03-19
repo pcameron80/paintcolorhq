@@ -122,6 +122,10 @@ export function getPaletteBySlug(slug: string): InspirationPalette | undefined {
   return inspirationPalettes.find((p) => p.slug === slug);
 }
 
+export function getAllPaletteSlugs(): string[] {
+  return inspirationPalettes.map((p) => p.slug);
+}
+
 export function hexToHsl(hex: string): [number, number, number] {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
   const g = parseInt(hex.slice(3, 5), 16) / 255;

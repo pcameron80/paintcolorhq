@@ -65,6 +65,27 @@ export default async function InspirationPage() {
     <div className="min-h-screen bg-white">
       <Header />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Paint Color Palettes & Inspiration",
+            description:
+              "Curated paint color palettes for every style — modern farmhouse, coastal retreat, moody library, and more.",
+            numberOfItems: palettes.length,
+            itemListElement: palettes.map((palette, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: palette.name,
+              description: palette.description,
+              url: `https://www.paintcolorhq.com/inspiration/${palette.slug}`,
+            })),
+          }),
+        }}
+      />
+
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <nav className="mb-6 text-sm text-gray-500">
           <Link href="/" className="hover:text-gray-900">
@@ -74,7 +95,7 @@ export default async function InspirationPage() {
           <span className="text-gray-900">Inspiration</span>
         </nav>
 
-        <h1 className="text-3xl font-bold text-gray-900">Color Inspiration</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Paint Color Palettes &amp; Inspiration</h1>
         <p className="mt-2 text-gray-600">
           Curated palettes to spark your next project — click any palette to explore and customize by brand.
         </p>

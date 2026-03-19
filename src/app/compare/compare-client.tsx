@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import type { ColorWithBrand } from "@/lib/types";
 import { trackCompare } from "@/lib/analytics";
+import { rgbToLab, deltaE2000 } from "@/lib/color-utils";
 
 interface CompareClientProps {
   initialColor1: ColorWithBrand | null;
@@ -203,13 +204,88 @@ export function CompareClient({ initialColor1, initialColor2 }: CompareClientPro
 
       {color1 && color2 && (
         <div className="mt-10">
+          {/* Delta E similarity verdict */}
+          <DeltaEVerdict color1={color1} color2={color2} />
+
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <ColorDetail color={color1} />
             <ColorDetail color={color2} />
           </div>
+
+          {/* Next-step CTAs */}
+          <div className="mt-10 rounded-xl border border-gray-200 bg-gray-50 p-6">
+            <h3 className="text-lg font-semibold text-gray-900">Next Steps</h3>
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <Link
+                href={`/colors/${color1.brand.slug}/${color1.slug}`}
+                className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue"
+              >
+                Find matches for {color1.name}
+              </Link>
+              <Link
+                href={`/colors/${color2.brand.slug}/${color2.slug}`}
+                className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue"
+              >
+                Find matches for {color2.name}
+              </Link>
+              <Link
+                href="/tools/room-visualizer"
+                className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue"
+              >
+                Try Room Visualizer
+              </Link>
+              <Link
+                href="/tools/palette-generator"
+                className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue"
+              >
+                Build a Palette
+              </Link>
+            </div>
+          </div>
         </div>
       )}
     </>
+  );
+}
+
+function computeDeltaE(c1: ColorWithBrand, c2: ColorWithBrand): number {
+  const lab1 =
+    c1.lab_l != null && c1.lab_a != null && c1.lab_b_val != null
+      ? { L: c1.lab_l, a: c1.lab_a, b: c1.lab_b_val }
+      : rgbToLab(c1.rgb_r, c1.rgb_g, c1.rgb_b);
+  const lab2 =
+    c2.lab_l != null && c2.lab_a != null && c2.lab_b_val != null
+      ? { L: c2.lab_l, a: c2.lab_a, b: c2.lab_b_val }
+      : rgbToLab(c2.rgb_r, c2.rgb_g, c2.rgb_b);
+  return deltaE2000(lab1, lab2);
+}
+
+function getDeltaEVerdict(de: number): string {
+  if (de < 1) return "These colors are virtually identical";
+  if (de < 2) return "Very close — barely distinguishable side by side";
+  if (de < 5)
+    return "Similar but you may notice a difference in certain lighting";
+  if (de < 10) return "Noticeably different — test with physical samples";
+  return "Very different colors";
+}
+
+function DeltaEVerdict({
+  color1,
+  color2,
+}: {
+  color1: ColorWithBrand;
+  color2: ColorWithBrand;
+}) {
+  const de = computeDeltaE(color1, color2);
+  const verdict = getDeltaEVerdict(de);
+
+  return (
+    <div className="mb-8 rounded-xl border border-gray-200 bg-gray-50 p-6 text-center">
+      <p className="text-lg font-medium text-gray-900">{verdict}</p>
+      <p className="mt-1 text-sm text-gray-500">
+        Delta E (CIE2000): {de.toFixed(2)}
+      </p>
+    </div>
   );
 }
 

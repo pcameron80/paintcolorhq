@@ -5,13 +5,17 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BrandPicker } from "@/components/brand-picker";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
-import { getPaletteBySlug, assignPaletteRoles } from "@/lib/palettes";
+import { getPaletteBySlug, assignPaletteRoles, inspirationPalettes } from "@/lib/palettes";
 
 import { getAllBrands, findClosestColor, getBrandBySlug } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
 import { AdSenseScript } from "@/components/adsense-script";
 
 export const revalidate = 3600;
+
+export function generateStaticParams() {
+  return inspirationPalettes.map((p) => ({ slug: p.slug }));
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -117,6 +121,33 @@ export default async function InspirationDetailPage({
   return (
     <div className="min-h-screen bg-white">
       <Header />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: `${palette.name} Color Palette`,
+            description: palette.description,
+            url: `https://www.paintcolorhq.com/inspiration/${slug}`,
+            author: {
+              "@type": "Organization",
+              name: "Paint Color HQ",
+              url: "https://www.paintcolorhq.com",
+            },
+            hasPart: swatches
+              .filter((s) => s.match)
+              .map((s) => ({
+                "@type": "Product",
+                name: s.match!.name,
+                brand: { "@type": "Brand", name: s.match!.brand.name },
+                color: s.match!.hex,
+                description: `${s.role} color — ${s.match!.name} by ${s.match!.brand.name} (${s.match!.hex.toUpperCase()})`,
+              })),
+          }),
+        }}
+      />
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
@@ -259,6 +290,69 @@ export default async function InspirationDetailPage({
             );
           })}
         </div>
+
+        {/* Related palettes */}
+        {(() => {
+          const currentIndex = inspirationPalettes.findIndex((p) => p.slug === slug);
+          const related = [1, 2, 3].map((offset) => {
+            const idx = (currentIndex + offset) % inspirationPalettes.length;
+            return inspirationPalettes[idx];
+          });
+          return (
+            <section className="mt-16">
+              <h2 className="text-xl font-bold text-gray-900">You Might Also Like</h2>
+              <div className="mt-4 grid gap-5 sm:grid-cols-3">
+                {related.map((rp) => (
+                  <Link
+                    key={rp.slug}
+                    href={`/inspiration/${rp.slug}`}
+                    className="rounded-xl border border-gray-200 p-4 transition-shadow hover:shadow-md"
+                  >
+                    <div className="flex gap-1.5">
+                      {rp.colors.map((hex, i) => (
+                        <div
+                          key={i}
+                          className="aspect-square flex-1 rounded-md border border-gray-200"
+                          style={{ backgroundColor: hex }}
+                        />
+                      ))}
+                    </div>
+                    <p className="mt-3 text-sm font-semibold text-gray-900">{rp.name}</p>
+                    <p className="mt-1 text-xs text-gray-500">{rp.description}</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          );
+        })()}
+
+        {/* Tool links */}
+        <section className="mt-12 rounded-xl border border-gray-200 bg-gray-50 p-6">
+          <h2 className="text-lg font-bold text-gray-900">Explore More Tools</h2>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <Link
+              href="/tools/palette-generator"
+              className="rounded-lg border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md"
+            >
+              <p className="font-semibold text-gray-900">Palette Generator</p>
+              <p className="mt-1 text-sm text-gray-500">Build your own custom color palette</p>
+            </Link>
+            <Link
+              href="/tools/paint-calculator"
+              className="rounded-lg border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md"
+            >
+              <p className="font-semibold text-gray-900">Paint Calculator</p>
+              <p className="mt-1 text-sm text-gray-500">Calculate how much paint you need</p>
+            </Link>
+            <Link
+              href="/tools/room-visualizer"
+              className="rounded-lg border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md"
+            >
+              <p className="font-semibold text-gray-900">Room Visualizer</p>
+              <p className="mt-1 text-sm text-gray-500">Preview colors in a virtual room</p>
+            </Link>
+          </div>
+        </section>
       </main>
 
       <AdSenseScript />

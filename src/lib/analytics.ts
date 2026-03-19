@@ -75,7 +75,7 @@ export function trackCompare(
   brand1: string,
   brand2: string,
 ) {
-  trackEvent("color_search", {
+  trackEvent("color_compare", {
     color_1: color1,
     color_2: color2,
     color_brand: `${brand1} vs ${brand2}`,
@@ -182,6 +182,7 @@ function detectPageType(): string {
   if (path.startsWith("/colors/family")) return "family";
   if (path.startsWith("/colors")) return "color";
   if (path.startsWith("/match")) return "match";
+  if (path.startsWith("/inspiration")) return "inspiration";
   if (path.startsWith("/compare")) return "compare";
   if (path.startsWith("/search")) return "search";
   if (path === "/") return "homepage";
