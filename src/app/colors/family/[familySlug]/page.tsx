@@ -15,6 +15,24 @@ const validFamilies = [
   "white", "off-white", "black", "gray", "brown", "beige", "tan", "neutral",
 ];
 
+const colorFamilies = [
+  { slug: "red", label: "Red" },
+  { slug: "orange", label: "Orange" },
+  { slug: "yellow", label: "Yellow" },
+  { slug: "green", label: "Green" },
+  { slug: "blue", label: "Blue" },
+  { slug: "purple", label: "Purple" },
+  { slug: "pink", label: "Pink" },
+  { slug: "white", label: "White" },
+  { slug: "off-white", label: "Off-White" },
+  { slug: "black", label: "Black" },
+  { slug: "gray", label: "Gray" },
+  { slug: "brown", label: "Brown" },
+  { slug: "beige", label: "Beige" },
+  { slug: "tan", label: "Tan" },
+  { slug: "neutral", label: "Neutral" },
+];
+
 interface PageProps {
   params: Promise<{ familySlug: string }>;
   searchParams: Promise<{ brand?: string; undertone?: string; page?: string }>;
@@ -52,7 +70,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
   if (!validFamilies.includes(familySlug)) notFound();
 
   const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
-  const perPage = 200;
+  const perPage = 60;
 
   const [colors, brands, totalCount] = await Promise.all([
     getColorsByFamily(familySlug, {
@@ -71,12 +89,62 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
 
   const familyName = capitalize(familySlug.replace(/-/g, " "));
   const familyContent = getFamilyContent(familySlug);
+  const brandCount = brands.length;
+  const baseUrl = `https://www.paintcolorhq.com/colors/family/${familySlug}`;
+
+  // JSON-LD structured data - built from trusted server-side data only
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        name: `${familyName} Paint Colors`,
+        description: `Browse ${totalCount} ${familyName.toLowerCase()} paint colors from ${brandCount} brands including Sherwin-Williams, Benjamin Moore, and Behr.`,
+        url: baseUrl,
+        numberOfItems: totalCount,
+        mainEntity: {
+          "@type": "ItemList",
+          numberOfItems: totalCount,
+          itemListElement: colors.slice(0, 20).map((color, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "Product",
+              name: color.name,
+              brand: { "@type": "Brand", name: color.brand.name },
+              color: color.hex,
+              url: `https://www.paintcolorhq.com/colors/${color.brand.slug}/${color.slug}`,
+            },
+          })),
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+          { "@type": "ListItem", position: 2, name: "Colors", item: "https://www.paintcolorhq.com/colors" },
+          { "@type": "ListItem", position: 3, name: `${familyName} Paint Colors`, item: baseUrl },
+        ],
+      },
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <TrackPage
         eventName="page_view_enriched"
-        params={{ page_type: "family", color_family: familySlug }}
+        params={{
+          page_type: "family",
+          color_family: familySlug,
+          brand_filter: brandFilter ?? "all",
+          undertone_filter: undertoneFilter ?? "all",
+          page_number: currentPage,
+          result_count: totalCount,
+        }}
       />
       <Header />
 
@@ -93,7 +161,9 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
           {familyName} Paint Colors
         </h1>
         <p className="mt-2 text-gray-600">
-          {totalCount} {familyName.toLowerCase()} colors{brandFilter ? "" : " from all brands"}.
+          There are {totalCount} {familyName.toLowerCase()} paint colors across {brandCount} brands
+          on PaintColorHQ, including Sherwin-Williams, Benjamin Moore, and Behr. Use the brand and
+          undertone filters below to narrow your search.
         </p>
 
         {familyContent && familyContent.intro}
@@ -239,6 +309,23 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
             )}
           </nav>
         )}
+        {/* Cross-family navigation */}
+        <section className="mt-16 border-t border-gray-200 pt-8">
+          <h2 className="text-xl font-semibold text-gray-900">Browse Other Color Families</h2>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {colorFamilies
+              .filter((f) => f.slug !== familySlug)
+              .map((f) => (
+                <Link
+                  key={f.slug}
+                  href={`/colors/family/${f.slug}`}
+                  className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+                >
+                  {f.label}
+                </Link>
+              ))}
+          </div>
+        </section>
       </main>
 
       <Footer />

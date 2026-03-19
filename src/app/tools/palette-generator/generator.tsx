@@ -258,8 +258,9 @@ export function PaletteGenerator() {
     []
   );
 
-  // Generate on mount
+  // Track open + generate on mount
   useEffect(() => {
+    trackToolEngagement("palette-generator", "open");
     const p = generatePalettes(inputHex);
     setPalettes(p);
     fetchMatches(p, brandFilter);

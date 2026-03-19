@@ -134,6 +134,69 @@ export default function ToolsPage() {
         </div>
       </main>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Paint Tools",
+            description:
+              "Free paint tools: palette generator, room color visualizer, photo color identifier, and paint calculator.",
+            numberOfItems: 4,
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Paint Calculator",
+                url: "https://www.paintcolorhq.com/tools/paint-calculator",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Photo Color Identifier",
+                url: "https://www.paintcolorhq.com/tools/color-identifier",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: "Room Color Visualizer",
+                url: "https://www.paintcolorhq.com/tools/room-visualizer",
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: "Paint Color Palette Generator",
+                url: "https://www.paintcolorhq.com/tools/palette-generator",
+              },
+            ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.paintcolorhq.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Tools",
+                item: "https://www.paintcolorhq.com/tools",
+              },
+            ],
+          }),
+        }}
+      />
+
       <AdSenseScript />
       <Footer />
     </div>

@@ -4,6 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorIdentifier } from "./identifier";
 import { AdSenseScript } from "@/components/adsense-script";
+import { ToolCrossSell } from "@/components/tool-cross-sell";
 
 export const metadata: Metadata = {
   title: "Photo Color Identifier - Find Paint Colors from Photos",
@@ -36,13 +37,12 @@ export default function ColorIdentifierPage() {
           Photo Color Identifier
         </h1>
         <p className="mt-2 text-gray-600">
-          Upload any photo and click a pixel to find the closest matching paint
+          Upload any photo and click a spot to find the closest matching paint
           color from <strong>25,000+ colors across 14 brands</strong> —
           including Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG,
-          Dunn-Edwards, and Farrow &amp; Ball. Matching uses the{" "}
-          <strong>CIEDE2000 (Delta E 2000) color difference formula</strong>,
-          the international standard for perceptual color accuracy defined by
-          the CIE (International Commission on Illumination).
+          Dunn-Edwards, and Farrow &amp; Ball. Results are ranked by how close
+          each match looks to the human eye, so the top suggestion is always
+          the most visually accurate option you can buy.
         </p>
 
         <ColorIdentifier />
@@ -249,6 +249,8 @@ export default function ColorIdentifierPage() {
             </ol>
           </div>
         </section>
+
+        <ToolCrossSell exclude="color-identifier" />
       </main>
 
       <script
@@ -297,6 +299,42 @@ export default function ColorIdentifierPage() {
               price: "0",
               priceCurrency: "USD",
             },
+          }),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How does photo color identification work?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Upload a photo, then click any spot on the image. The tool reads the exact pixel color at that point, converts it to CIELAB color space, and compares it against 25,000+ paint colors from 14 brands using the CIEDE2000 Delta E formula. Results are ranked by perceptual closeness so the top match is always the most visually accurate.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What is Delta E in paint matching?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Delta E is a measure of perceptual color difference. A Delta E below 1 means colors are visually identical; 1-2 is barely perceptible; 2-5 is noticeable at a glance but still a close match; above 5 means clearly different shades. Paint Color HQ uses the CIEDE2000 formula, the international standard used in paint manufacturing quality control.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What photo formats are supported?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "The Photo Color Identifier supports JPEG, PNG, WebP, and any standard image format your browser can display. You can upload a photo from your device or snap one with your camera. For the most accurate results, photograph the surface in natural daylight without flash.",
+                },
+              },
+            ],
           }),
         }}
       />

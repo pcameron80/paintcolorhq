@@ -4,6 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { RoomVisualizer } from "./visualizer";
 import { AdSenseScript } from "@/components/adsense-script";
+import { ToolCrossSell } from "@/components/tool-cross-sell";
 
 export const metadata: Metadata = {
   title: "Room Color Visualizer - Preview Paint Colors in a Room",
@@ -212,6 +213,8 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             </p>
           </div>
         </section>
+
+        <ToolCrossSell exclude="room-visualizer" />
       </main>
 
       <script
@@ -269,18 +272,33 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            name: "Room Color Visualizer",
-            applicationCategory: "DesignApplication",
-            operatingSystem: "Web",
-            offers: {
-              "@type": "Offer",
-              price: "0",
-              priceCurrency: "USD",
-            },
-            description:
-              "See how paint colors look in a room before you buy. Pick colors for walls, ceiling, accent wall, trim, and floor. Works with all major paint brands.",
-            url: "https://www.paintcolorhq.com/tools/room-visualizer",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What is a room color visualizer?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "A room color visualizer is a free online tool that lets you preview paint colors on walls, ceiling, trim, accent wall, and floor in a realistic room scene before you buy paint. Paint Color HQ's visualizer updates instantly as you pick colors and supports all major paint brands.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I match visualizer colors to real paint?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. After choosing a color in the visualizer, use the \"Find Paint Match\" feature to see which real-world paints from 14 major brands — including Sherwin-Williams, Benjamin Moore, Behr, Valspar, and PPG — are the closest match. Every suggestion links to its full color detail page.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Is the room visualizer free?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. The Paint Color HQ Room Visualizer is completely free with no sign-up required. You can preview unlimited color combinations on walls, trim, accent walls, and floors.",
+                },
+              },
+            ],
           }),
         }}
       />

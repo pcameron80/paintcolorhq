@@ -5,9 +5,10 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PaletteGenerator } from "./generator";
 import { AdSenseScript } from "@/components/adsense-script";
+import { ToolCrossSell } from "@/components/tool-cross-sell";
 
 export const metadata: Metadata = {
-  title: "Palette Generator - Build a Paint Color Scheme",
+  title: "Paint Color Palette Generator - Build a Coordinated Color Scheme",
   description:
     "Pick a starting color and instantly generate coordinated paint palettes with Walls, Trim, Accent, and Pop roles. Matched to real colors from 14 brands.",
   alternates: {
@@ -30,11 +31,11 @@ export default function PaletteGeneratorPage() {
             Tools
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-900">Palette Generator</span>
+          <span className="text-gray-900">Paint Color Palette Generator</span>
         </nav>
 
         <h1 className="text-3xl font-bold text-gray-900">
-          Palette Generator
+          Paint Color Palette Generator
         </h1>
         <p className="mt-2 text-gray-600">
           Pick a color and generate coordinated paint palettes matched to real
@@ -189,14 +190,7 @@ export default function PaletteGeneratorPage() {
           </div>
         </section>
 
-        <div className="mt-8">
-          <Link
-            href="/tools/room-visualizer"
-            className="text-sm font-medium text-brand-blue hover:underline"
-          >
-            Try the Room Visualizer &rarr;
-          </Link>
-        </div>
+        <ToolCrossSell exclude="palette-generator" />
 
         <script
           type="application/ld+json"
@@ -248,6 +242,42 @@ export default function PaletteGeneratorPage() {
           }}
         />
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What color harmony types does the palette generator use?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "The palette generator creates five schemes based on proven color harmony principles: complementary (opposite colors on the wheel), analogous (adjacent colors), triadic (three evenly spaced colors), split-complementary (base color plus two colors adjacent to its complement), and monochromatic (shades of a single hue).",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Are the palette colors matched to real paint?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Every color in every palette is matched to a real paint color you can buy from our database of over 25,000 colors across 14 major brands including Sherwin-Williams, Benjamin Moore, Behr, Valspar, and PPG. You can also filter results to a single brand.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What are the palette roles?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Each palette assigns colors to four room roles: Walls (the main color covering the most area), Trim (baseboards, crown molding, door frames), Accent (a feature wall or large furniture piece), and Pop (used sparingly on throw pillows, art, or statement pieces for energy).",
+                },
+              },
+            ],
+          }),
+        }}
+      />
 
       <AdSenseScript />
       <Footer />

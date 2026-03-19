@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { trackToolEngagement } from "@/lib/analytics";
 
@@ -25,6 +25,10 @@ export function ColorIdentifier() {
   const [loading, setLoading] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    trackToolEngagement("color-identifier", "open");
+  }, []);
 
   const handleFile = useCallback((file: File) => {
     const reader = new FileReader();

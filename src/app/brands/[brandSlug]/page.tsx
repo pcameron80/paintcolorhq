@@ -43,6 +43,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+/* Organization metadata for known brands */
+const brandOrgData: Record<string, { foundingDate?: string; headquarters?: string; url?: string }> = {
+  "sherwin-williams": { foundingDate: "1866", headquarters: "Cleveland, Ohio, USA", url: "https://www.sherwin-williams.com" },
+  "benjamin-moore": { foundingDate: "1883", headquarters: "Montvale, New Jersey, USA", url: "https://www.benjaminmoore.com" },
+  behr: { headquarters: "Santa Ana, California, USA", url: "https://www.behr.com" },
+  ppg: { foundingDate: "1883", headquarters: "Pittsburgh, Pennsylvania, USA", url: "https://www.ppgpaints.com" },
+  valspar: { headquarters: "Minneapolis, Minnesota, USA", url: "https://www.valspar.com" },
+  "dunn-edwards": { foundingDate: "1925", headquarters: "Los Angeles, California, USA", url: "https://www.dunnedwards.com" },
+  "farrow-ball": { foundingDate: "1946", headquarters: "Dorset, England, UK", url: "https://www.farrow-ball.com" },
+  kilz: { foundingDate: "1954", url: "https://www.kilz.com" },
+  "vista-paint": { foundingDate: "1956", headquarters: "Fullerton, California, USA", url: "https://www.vistapaint.com" },
+  hirshfields: { headquarters: "Minneapolis, Minnesota, USA", url: "https://www.hirshfields.com" },
+  colorhouse: { foundingDate: "2005", headquarters: "Portland, Oregon, USA", url: "https://www.colorhousepaint.com" },
+  "dutch-boy": { foundingDate: "1907", url: "https://www.dutchboy.com" },
+  ral: { foundingDate: "1927", headquarters: "Bonn, Germany", url: "https://www.ral-farben.de" },
+};
+
 export default async function BrandPage({ params, searchParams }: PageProps) {
   const { brandSlug } = await params;
   const { family, undertone: undertoneFilter, page: pageParam } = await searchParams;
@@ -50,7 +67,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
   if (!brand) notFound();
 
   const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
-  const perPage = 200;
+  const perPage = 60;
 
   const [colors, totalCount] = await Promise.all([
     getColorsByBrand(brand.id, {
@@ -71,11 +88,23 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
     "red", "orange", "yellow", "green", "blue", "purple", "pink", "black",
   ];
 
+  const brandContent = getBrandContent(brand.slug);
+  const subtitle = brandContent?.subtitle
+    ?? `Browse every ${brand.name} color with undertone tags, LRV values, and cross-brand matches`;
+
+  const orgData = brandOrgData[brand.slug];
+
   return (
     <div className="min-h-screen bg-white">
       <TrackPage
         eventName="page_view_enriched"
-        params={{ page_type: "brand", color_brand: brandSlug }}
+        params={{
+          page_type: "brand",
+          color_brand: brandSlug,
+          color_family: family,
+          undertone_filter: undertoneFilter,
+          page_number: currentPage,
+        }}
       />
       <Header />
 
@@ -92,10 +121,8 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
           All {brand.color_count.toLocaleString()} {brand.name} Paint Colors
         </h1>
         <p className="mt-1 text-gray-600">
-          Browse every {brand.name} color with undertone tags, LRV values, and cross-brand matches
+          {subtitle}
         </p>
-
-        {getBrandContent(brand.slug)?.intro}
 
         {/* Color family filter */}
         <div className="mt-6 flex flex-wrap gap-2">
@@ -161,7 +188,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
           })}
         </div>
 
-        {getBrandContent(brand.slug)?.details}
+        {brandContent?.details}
 
         {/* Color grid */}
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
@@ -239,7 +266,17 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
           </nav>
         )}
 
-        {/* JSON-LD */}
+        {/* About brand - collapsible intro content below the grid */}
+        {brandContent?.intro && (
+          <details className="mt-10">
+            <summary className="cursor-pointer text-lg font-semibold text-gray-900 hover:text-gray-700">
+              About {brand.name}
+            </summary>
+            {brandContent.intro}
+          </details>
+        )}
+
+        {/* JSON-LD: CollectionPage */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -270,19 +307,28 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             }),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "CollectionPage",
-              name: `${brand.name} Paint Colors`,
-              description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with cross-brand matching, undertone filters, and LRV values. Find your perfect color.`,
-              url: `https://www.paintcolorhq.com/brands/${brandSlug}`,
-              numberOfItems: brand.color_count,
-            }),
-          }}
-        />
+
+        {/* JSON-LD: Organization */}
+        {orgData && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: brand.name,
+                ...(orgData.url && { url: orgData.url }),
+                ...(orgData.foundingDate && { foundingDate: orgData.foundingDate }),
+                ...(orgData.headquarters && {
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: orgData.headquarters,
+                  },
+                }),
+              }),
+            }}
+          />
+        )}
       </main>
 
       <AdSenseScript />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { trackToolEngagement } from "@/lib/analytics";
 
 export function PaintCalculator() {
@@ -21,10 +21,16 @@ export function PaintCalculator() {
 
   const canCalculate = lengthNum > 0 && widthNum > 0;
 
-  if (canCalculate && !tracked.current) {
-    tracked.current = true;
-    trackToolEngagement("paint-calculator", "complete");
-  }
+  useEffect(() => {
+    trackToolEngagement("paint-calculator", "open");
+  }, []);
+
+  useEffect(() => {
+    if (canCalculate && !tracked.current) {
+      tracked.current = true;
+      trackToolEngagement("paint-calculator", "complete");
+    }
+  }, [canCalculate]);
 
   const wallArea = 2 * (lengthNum + widthNum) * heightNum;
   const doorArea = doorsNum * 21;

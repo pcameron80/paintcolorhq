@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { trackToolEngagement } from "@/lib/analytics";
 
@@ -139,6 +139,10 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
   );
   const [matches, setMatches] = useState<PaintMatch[]>([]);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    trackToolEngagement("room-visualizer", "open");
+  }, []);
 
   const selectRegion = (id: RegionId) => {
     setSelected(id);

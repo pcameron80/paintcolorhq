@@ -4,6 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PaintCalculator } from "./calculator";
 import { AdSenseScript } from "@/components/adsense-script";
+import { ToolCrossSell } from "@/components/tool-cross-sell";
 
 export const metadata: Metadata = {
   title: "Paint Calculator - How Much Paint Do I Need?",
@@ -290,14 +291,7 @@ export default function PaintCalculatorPage() {
           </div>
         </section>
 
-        <div className="mt-8">
-          <Link
-            href="/search"
-            className="text-sm font-medium text-brand-blue hover:underline"
-          >
-            Now find the perfect color &rarr;
-          </Link>
-        </div>
+        <ToolCrossSell exclude="paint-calculator" />
 
         <script
           type="application/ld+json"
@@ -359,6 +353,42 @@ export default function PaintCalculatorPage() {
           }}
         />
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How much area does one gallon of paint cover?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "One gallon of interior latex paint covers approximately 350 square feet on smooth, primed drywall in a single coat. This is the industry-standard rate published by Sherwin-Williams, Benjamin Moore, and Behr, based on ASTM D5150 spread rate testing. Textured surfaces reduce coverage to 280-300 sq ft per gallon.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How many gallons for a 12x12 room?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "A 12x12 ft room with 8 ft ceilings has 384 sq ft of wall area. Subtract 1 door (21 sq ft) and 2 windows (30 sq ft) for 333 sq ft of paintable area. At 2 coats, that is 666 sq ft divided by 350 sq ft/gallon = 2 gallons needed.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How do I calculate paint needed?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Calculate wall area using 2 x (length + width) x ceiling height. Subtract 21 sq ft per door and 15 sq ft per window. Multiply by number of coats (usually 2). Divide total by 350 sq ft per gallon and round up to the nearest whole gallon.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
 
       <AdSenseScript />
       <Footer />
