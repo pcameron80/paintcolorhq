@@ -145,16 +145,26 @@ async function main() {
     process.exit(1);
   }
 
-  // Step 3: Clear existing matches
+  // Step 3: Clear existing matches (batch delete to avoid timeout)
   console.log("Clearing existing cross_brand_matches...");
-  const { error: deleteErr } = await supabase
-    .from("cross_brand_matches")
-    .delete()
-    .neq("id", "00000000-0000-0000-0000-000000000000"); // delete all rows
-  if (deleteErr) {
-    console.error("Failed to clear matches:", deleteErr.message);
-    process.exit(1);
+  let deleteTotal = 0;
+  for (let attempt = 0; attempt < 500; attempt++) {
+    const { data: deleted, error: deleteErr } = await supabase
+      .from("cross_brand_matches")
+      .delete()
+      .not("id", "is", null)
+      .limit(5000)
+      .select("id");
+
+    if (deleteErr) {
+      console.log("  Delete batch error (continuing):", deleteErr.message);
+      break;
+    }
+    if (!deleted || deleted.length === 0) break;
+    deleteTotal += deleted.length;
+    if (deleteTotal % 50000 === 0) console.log(`  Deleted ${deleteTotal} rows...`);
   }
+  console.log(`  Cleared ${deleteTotal} existing matches.`);
 
   // Step 4: Insert in batches
   const BATCH_SIZE = 500;
@@ -168,7 +178,7 @@ async function main() {
     const batch = resolvedRows.slice(i, i + BATCH_SIZE);
     const { error: insertErr } = await supabase
       .from("cross_brand_matches")
-      .insert(batch);
+      .upsert(batch, { onConflict: "source_color_id,match_color_id", ignoreDuplicates: true });
 
     if (insertErr) {
       console.error(
