@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -55,7 +60,7 @@ export default function RootLayout({
         />
         <link rel="help" type="text/plain" href="/llms.txt" />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${manrope.variable} font-sans antialiased`}>
         {children}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-056NR93JLK"

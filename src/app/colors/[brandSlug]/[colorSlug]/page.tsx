@@ -16,6 +16,7 @@ import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
 import { TrackPage } from "@/components/track-page";
 import { TrackedLink } from "@/components/tracked-link";
+import { RoomPreview } from "@/components/room-preview";
 
 export const revalidate = 3600;
 
@@ -49,125 +50,63 @@ function hslToHex(h: number, s: number, l: number): string {
   return `#${f(0)}${f(8)}${f(4)}`;
 }
 
+function isLightColor(hex: string): boolean {
+  const [, , l] = hexToHsl(hex);
+  return l > 55;
+}
+
 async function resolveHarmonies(hex: string) {
   const [h, s, l] = hexToHsl(hex);
-
   const rawHarmonies = [
-    {
-      name: "Complementary",
-      description: "Opposite on the color wheel — creates vibrant contrast",
-      colors: [
-        { hex, label: "Base" },
-        { hex: hslToHex(h + 180, s, l), label: "Complement" },
-      ],
-    },
-    {
-      name: "Analogous",
-      description: "Adjacent colors — creates a harmonious, cohesive feel",
-      colors: [
-        { hex: hslToHex(h - 30, s, l), label: "Adjacent" },
-        { hex, label: "Base" },
-        { hex: hslToHex(h + 30, s, l), label: "Adjacent" },
-      ],
-    },
-    {
-      name: "Triadic",
-      description: "Evenly spaced — balanced and colorful",
-      colors: [
-        { hex, label: "Base" },
-        { hex: hslToHex(h + 120, s, l), label: "Triad" },
-        { hex: hslToHex(h + 240, s, l), label: "Triad" },
-      ],
-    },
-    {
-      name: "Split Complementary",
-      description: "Softer alternative to complementary — less tension, still dynamic",
-      colors: [
-        { hex, label: "Base" },
-        { hex: hslToHex(h + 150, s, l), label: "Split" },
-        { hex: hslToHex(h + 210, s, l), label: "Split" },
-      ],
-    },
+    { name: "Complementary", description: "Opposite on the color wheel \u2014 creates vibrant contrast", colors: [{ hex, label: "Base" }, { hex: hslToHex(h + 180, s, l), label: "Complement" }] },
+    { name: "Analogous", description: "Adjacent colors \u2014 creates a harmonious, cohesive feel", colors: [{ hex: hslToHex(h - 30, s, l), label: "Adjacent" }, { hex, label: "Base" }, { hex: hslToHex(h + 30, s, l), label: "Adjacent" }] },
+    { name: "Triadic", description: "Evenly spaced \u2014 balanced and colorful", colors: [{ hex, label: "Base" }, { hex: hslToHex(h + 120, s, l), label: "Triad" }, { hex: hslToHex(h + 240, s, l), label: "Triad" }] },
+    { name: "Split Complementary", description: "Softer alternative to complementary \u2014 less tension, still dynamic", colors: [{ hex, label: "Base" }, { hex: hslToHex(h + 150, s, l), label: "Split" }, { hex: hslToHex(h + 210, s, l), label: "Split" }] },
   ];
-
-  // Collect all unique hex values to resolve
   const allHexes = new Set<string>();
-  for (const harmony of rawHarmonies) {
-    for (const c of harmony.colors) {
-      allHexes.add(c.hex);
-    }
-  }
-
-  // Resolve all at once
+  for (const harmony of rawHarmonies) for (const c of harmony.colors) allHexes.add(c.hex);
   const resolved = new Map<string, Awaited<ReturnType<typeof findClosestColor>>>();
-  await Promise.all(
-    [...allHexes].map(async (h) => {
-      resolved.set(h, await findClosestColor(h));
-    })
-  );
-
+  await Promise.all([...allHexes].map(async (h) => { resolved.set(h, await findClosestColor(h)); }));
   return rawHarmonies.map((harmony) => ({
-    name: harmony.name,
-    description: harmony.description,
+    name: harmony.name, description: harmony.description,
     colors: harmony.colors.map((c) => {
       const match = resolved.get(c.hex);
-      return {
-        label: c.label,
-        paletteHex: c.hex,
-        matchHex: match?.hex ?? c.hex,
-        matchName: match?.name ?? null,
-        matchBrandSlug: match?.brand.slug ?? null,
-        matchColorSlug: match?.slug ?? null,
-      };
+      return { label: c.label, paletteHex: c.hex, matchHex: match?.hex ?? c.hex, matchName: match?.name ?? null, matchBrandSlug: match?.brand.slug ?? null, matchColorSlug: match?.slug ?? null };
     }),
   }));
 }
 
-interface PageProps {
-  params: Promise<{ brandSlug: string; colorSlug: string }>;
-}
+interface PageProps { params: Promise<{ brandSlug: string; colorSlug: string }>; }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { brandSlug, colorSlug } = await params;
   const color = await getColorBySlug(brandSlug, colorSlug);
   if (!color) return { title: "Color Not Found" };
-
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   const colorNum = color.color_number ? ` ${color.color_number}` : "";
   const undertoneTitle = color.undertone ? ` | ${color.undertone} Undertone` : "";
-  const title = `${color.name}${colorNum} by ${color.brand.name} | ${color.hex.toUpperCase()}${undertoneTitle}`;
   return {
-    title,
+    title: `${color.name}${colorNum} by ${color.brand.name} | ${color.hex.toUpperCase()}${undertoneTitle}`,
     description: generateMetaDescription(color),
     alternates: { canonical: url },
     openGraph: {
       title: `${color.name}${colorNum} by ${color.brand.name}`,
       description: `${color.name} (${color.hex.toUpperCase()}) by ${color.brand.name}. Find closest matches from other brands.`,
       url,
-      images: [
-        {
-          url: `/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`,
-          width: 1200,
-          height: 630,
-          alt: `${color.name} paint color swatch`,
-        },
-      ],
+      images: [{ url: `/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`, width: 1200, height: 630, alt: `${color.name} paint color swatch` }],
     },
   };
 }
 
 function extractColorNumber(slug: string): string | null {
-  const patterns = [
-    /-([a-z]{1,4}\d+-\d+[a-z]*)$/i,  // ppu1-4a, s420-3
-    /-([a-z]{1,4}-\d+[a-z]*)$/i,      // af-25, csp-560, hc-15, cc-38
-    /-(\d+-\d+)$/i,                    // 2035-30
-    /-(\d+)$/i,                        // 022, 50
-  ];
-  for (const p of patterns) {
-    const m = slug.match(p);
-    if (m) return m[1].toUpperCase();
-  }
+  const patterns = [/-([a-z]{1,4}\d+-\d+[a-z]*)$/i, /-([a-z]{1,4}-\d+[a-z]*)$/i, /-(\d+-\d+)$/i, /-(\d+)$/i];
+  for (const p of patterns) { const m = slug.match(p); if (m) return m[1].toUpperCase(); }
   return null;
+}
+
+// JSON-LD helper — content is server-generated from trusted database values only
+function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
 export default async function ColorPage({ params }: PageProps) {
@@ -178,509 +117,369 @@ export default async function ColorPage({ params }: PageProps) {
     const colorNumber = extractColorNumber(colorSlug);
     if (colorNumber) {
       const correctSlug = await getColorSlugByNumber(brandSlug, colorNumber);
-      if (correctSlug && correctSlug !== colorSlug) {
-        redirect(`/colors/${brandSlug}/${correctSlug}`);
-      }
+      if (correctSlug && correctSlug !== colorSlug) redirect(`/colors/${brandSlug}/${correctSlug}`);
     }
     notFound();
   }
 
-  const [matches, similarColors] = await Promise.all([
-    getCrossBrandMatches(color.id),
-    getSimilarColorsFromSameBrand(color),
-  ]);
+  const [matches, similarColors] = await Promise.all([getCrossBrandMatches(color.id), getSimilarColorsFromSameBrand(color)]);
   const description = generateColorDescription(color, matches);
   const descriptionFirstParagraph = description.split("\n\n")[0];
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
-
-  // Resolve color harmonies to real paint colors
   const harmonies = await resolveHarmonies(color.hex);
+  const light = isLightColor(color.hex);
+  const textClass = light ? "text-on-surface" : "text-on-primary";
+  const textMutedClass = light ? "text-on-surface-variant" : "text-on-primary/80";
 
-  // Build FAQ items (used for both visible FAQ and JSON-LD)
+  // Build FAQ items
   const faqItems: Array<{ question: string; answer: string }> = [];
   const lrv = color.lrv != null ? Number(color.lrv) : null;
   const undertone = color.undertone ?? "";
   const undertoneLower = undertone.toLowerCase();
 
-  // Q1: Undertone
   if (color.undertone) {
-    const undertoneDetail = undertoneLower === "warm"
-      ? "Warm undertones bring a cozy, inviting feel to a space and pair beautifully with earth tones, creamy whites, and natural wood finishes."
-      : undertoneLower === "cool"
-        ? "Cool undertones create a crisp, refreshing atmosphere and pair well with grays, blues, and bright white trim."
-        : "Neutral undertones offer exceptional versatility, working well with both warm and cool accents, making it an excellent choice for open floor plans and transitional spaces.";
-    faqItems.push({
-      question: `What undertone does ${color.name} have?`,
-      answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and belongs to the ${color.color_family} color family` : ""}. ${undertoneDetail}`,
-    });
+    const ud = undertoneLower === "warm" ? "Warm undertones bring a cozy, inviting feel and pair beautifully with earth tones and natural wood."
+      : undertoneLower === "cool" ? "Cool undertones create a crisp, refreshing atmosphere and pair well with grays, blues, and bright white trim."
+      : "Neutral undertones offer exceptional versatility, working well with both warm and cool accents.";
+    faqItems.push({ question: `What undertone does ${color.name} have?`, answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and belongs to the ${color.color_family} color family` : ""}. ${ud}` });
   }
-
-  // Q2: Cross-brand matches
   if (matches.length > 0) {
-    const topMatches = matches.slice(0, 3).map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (Delta E: ${Number(m.delta_e_score).toFixed(1)})`).join(", ");
-    const closeness = Number(matches[0].delta_e_score) < 2
-      ? "The top match is virtually indistinguishable to the human eye, making it an excellent substitute."
-      : Number(matches[0].delta_e_score) < 5
-        ? "The top match is very close in appearance, though slight differences may be visible side by side."
-        : "These matches are the closest available, but noticeable differences may exist — always compare physical swatches before committing.";
-    faqItems.push({
-      question: `What colors match ${color.name} from other brands?`,
-      answer: `The closest cross-brand matches for ${color.name} by ${color.brand.name} include ${topMatches}. ${closeness} Keep in mind that pigments and finishes vary between manufacturers, so always verify with real paint samples.`,
-    });
+    const top = matches.slice(0, 3).map((m) => `${m.match_color.name} by ${m.match_color.brand.name}`).join(", ");
+    faqItems.push({ question: `What colors match ${color.name} from other brands?`, answer: `The closest cross-brand matches include ${top}. Always verify with real paint samples as pigments and finishes vary.` });
   }
-
-  // Q3: LRV
   if (lrv != null) {
-    let lrvDetail: string;
-    if (lrv >= 65) {
-      lrvDetail = `With a high LRV, ${color.name} reflects a significant amount of light, making it an excellent choice for smaller rooms, north-facing spaces, or areas with limited natural light where you want to maximize brightness.`;
-    } else if (lrv >= 40) {
-      lrvDetail = `With a moderate LRV, ${color.name} strikes a balance between light and depth. It works well in living rooms, bedrooms, and dining areas where you want a color that feels present without overwhelming the space.`;
-    } else if (lrv >= 15) {
-      lrvDetail = `With a lower LRV, ${color.name} absorbs more light than it reflects, creating a sense of depth and intimacy. It works well as an accent wall or in larger rooms with plenty of natural light to prevent the space from feeling too enclosed.`;
-    } else {
-      lrvDetail = `With a very low LRV, ${color.name} absorbs most light and creates a bold, dramatic statement. It is best suited for accent walls, feature spaces, or rooms where you intentionally want a moody, cocooning effect — pair it with lighter trim and ample lighting.`;
-    }
-    faqItems.push({
-      question: `What is the LRV of ${color.name}?`,
-      answer: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, where 0 is absolute black and 100 is pure white. ${lrvDetail}`,
-    });
+    const ld = lrv >= 65 ? "reflects significant light \u2014 great for small or dark rooms" : lrv >= 40 ? "balances light and depth \u2014 versatile for most rooms" : lrv >= 15 ? "absorbs more light, creating depth and intimacy" : "absorbs most light \u2014 best for accent walls or dramatic statements";
+    faqItems.push({ question: `What is the LRV of ${color.name}?`, answer: `${color.name} has an LRV of ${lrv.toFixed(1)} (0=black, 100=white). It ${ld}.` });
   }
-
-  // Q4: Room recommendation
   const effectiveLrv = lrv ?? 50;
-  let roomType: string;
-  let roomAnswer: string;
-  if (undertoneLower === "warm" && effectiveLrv >= 40) {
-    roomType = "living rooms";
-    roomAnswer = `Yes, ${color.name} by ${color.brand.name} is an excellent choice for living rooms. Its warm undertone creates a welcoming, comfortable atmosphere that encourages relaxation and conversation. With an LRV of ${effectiveLrv.toFixed(1)}, it reflects enough light to keep the room feeling open while still providing warmth and character. Pair it with natural wood furniture and soft textiles for a cohesive, inviting living space.`;
-  } else if (undertoneLower === "cool" && effectiveLrv >= 55) {
-    roomType = "bathrooms";
-    roomAnswer = `Yes, ${color.name} by ${color.brand.name} works beautifully in bathrooms. Its cool undertone evokes a clean, spa-like atmosphere, and with an LRV of ${effectiveLrv.toFixed(1)}, it reflects plenty of light to keep the room feeling fresh and airy. Cool-toned colors in bathrooms pair well with chrome or brushed nickel fixtures and white tile, creating a serene retreat.`;
-  } else if (effectiveLrv >= 65) {
-    roomType = "small rooms";
-    roomAnswer = `Yes, ${color.name} by ${color.brand.name} is ideal for small rooms. With a high LRV of ${effectiveLrv.toFixed(1)}, it reflects a significant amount of light, which visually expands the space and prevents it from feeling cramped. This makes it a smart pick for powder rooms, hallways, entryways, or any area where you want to maximize the sense of openness. Pair it with mirrors and good lighting for the best effect.`;
-  } else if (effectiveLrv < 25) {
-    roomType = "accent walls";
-    roomAnswer = `${color.name} by ${color.brand.name} is a bold choice that works best as an accent wall rather than for an entire room. With a lower LRV of ${effectiveLrv.toFixed(1)}, it absorbs light and creates dramatic focal points. Use it on a single statement wall in a living room, dining room, or bedroom, and balance it with lighter surrounding walls, ample lighting, and reflective decor to keep the space from feeling too dark.`;
-  } else if (undertoneLower === "warm") {
-    roomType = "bedrooms";
-    roomAnswer = `Yes, ${color.name} by ${color.brand.name} is a wonderful option for bedrooms. Its warm undertone fosters a cozy, restful environment that promotes relaxation and sleep. With an LRV of ${effectiveLrv.toFixed(1)}, it provides enough depth to feel enveloping without making the room feel small. Pair it with soft bedding, warm-toned lighting, and natural textures for a tranquil retreat.`;
-  } else {
-    roomType = "kitchens";
-    const toneDetail = undertoneLower === "cool"
-      ? "Its cool undertone keeps the space feeling clean and fresh, which complements stainless steel appliances and modern cabinetry."
-      : "Its neutral undertone offers flexibility, pairing well with a wide range of cabinet colors, countertop materials, and hardware finishes.";
-    roomAnswer = `Yes, ${color.name} by ${color.brand.name} is a great fit for kitchens. ${toneDetail} With an LRV of ${effectiveLrv.toFixed(1)}, it balances brightness and character, ensuring the kitchen feels lively without being stark. Good lighting — both natural and task — will bring out the best in this color.`;
-  }
-  faqItems.push({
-    question: `Is ${color.name} good for ${roomType}?`,
-    answer: roomAnswer,
-  });
+  let roomType: string, roomAnswer: string;
+  if (undertoneLower === "warm" && effectiveLrv >= 40) { roomType = "living rooms"; roomAnswer = `Yes \u2014 its warm undertone creates a welcoming atmosphere with an LRV of ${effectiveLrv.toFixed(1)}.`; }
+  else if (undertoneLower === "cool" && effectiveLrv >= 55) { roomType = "bathrooms"; roomAnswer = `Yes \u2014 its cool undertone evokes a clean, spa-like feel with an LRV of ${effectiveLrv.toFixed(1)}.`; }
+  else if (effectiveLrv >= 65) { roomType = "small rooms"; roomAnswer = `Yes \u2014 its high LRV of ${effectiveLrv.toFixed(1)} visually expands tight spaces.`; }
+  else if (effectiveLrv < 25) { roomType = "accent walls"; roomAnswer = `Best as an accent wall \u2014 its low LRV of ${effectiveLrv.toFixed(1)} creates drama. Balance with lighter walls and ample lighting.`; }
+  else if (undertoneLower === "warm") { roomType = "bedrooms"; roomAnswer = `Yes \u2014 its warm undertone fosters a cozy, restful feel with an LRV of ${effectiveLrv.toFixed(1)}.`; }
+  else { roomType = "kitchens"; roomAnswer = `Yes \u2014 it balances brightness and character with an LRV of ${effectiveLrv.toFixed(1)}.`; }
+  faqItems.push({ question: `Is ${color.name} good for ${roomType}?`, answer: roomAnswer });
 
-  // Group matches by brand
-  const matchesByBrand = matches.reduce(
-    (acc, match) => {
-      const brandName = match.match_color.brand.name;
-      if (!acc[brandName]) acc[brandName] = [];
-      acc[brandName].push(match);
-      return acc;
-    },
-    {} as Record<string, typeof matches>
-  );
+  const matchesByBrand = matches.reduce((acc, match) => {
+    const bn = match.match_color.brand.name;
+    if (!acc[bn]) acc[bn] = [];
+    acc[bn].push(match);
+    return acc;
+  }, {} as Record<string, typeof matches>);
 
   return (
-    <div className="min-h-screen bg-white">
-      <TrackPage
-        eventName="page_view_enriched"
-        params={{ page_type: "color", color_brand: color.brand.slug, color_family: color.color_family ?? undefined }}
-      />
+    <div className="min-h-screen bg-surface">
+      <TrackPage eventName="page_view_enriched" params={{ page_type: "color", color_brand: color.brand.slug, color_family: color.color_family ?? undefined }} />
       <Header />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900">
-            Home
-          </Link>
-          <span className="mx-2">/</span>
-          <Link
-            href={`/brands/${color.brand.slug}`}
-            className="hover:text-gray-900"
-          >
-            {color.brand.name}
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-gray-900">{color.name}</span>
-        </nav>
+      {/* Immersive Color Hero */}
+      <section className="relative w-full min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden pt-20" style={{ backgroundColor: color.hex }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
+        <div className="relative z-10 text-center px-6 py-16">
+          <p className={`font-headline uppercase tracking-[0.4em] text-xs mb-4 opacity-80 ${textMutedClass}`}>
+            Ref. {color.hex.toUpperCase()}{color.color_number ? ` \u00B7 ${color.color_number}` : ""}
+          </p>
+          <h1 className={`font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-8 drop-shadow-2xl ${textClass}`}>
+            {color.name}
+          </h1>
+          <div className="flex justify-center items-center gap-8 md:gap-12">
+            {lrv != null && (
+              <>
+                <div className={textClass}>
+                  <span className="block font-headline text-2xl md:text-3xl font-bold">{lrv.toFixed(0)}%</span>
+                  <span className={`text-[10px] uppercase tracking-widest opacity-60 ${textMutedClass}`}>LRV Value</span>
+                </div>
+                <div className={`w-px h-12 ${light ? "bg-on-surface/20" : "bg-on-primary/20"}`} />
+              </>
+            )}
+            {color.undertone && (
+              <div className={textClass}>
+                <span className="block font-headline text-2xl md:text-3xl font-bold uppercase">{color.undertone}</span>
+                <span className={`text-[10px] uppercase tracking-widest opacity-60 ${textMutedClass}`}>Undertone</span>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 ${light ? "bg-on-surface/10" : "bg-white/10"} backdrop-blur-xl px-6 py-3 rounded-full border ${light ? "border-on-surface/10" : "border-white/10"}`}>
+          <SaveToProject colorId={color.id} currentPath={`/colors/${brandSlug}/${colorSlug}`} />
+          <ShareButton title={`${color.name} by ${color.brand.name}`} url={`/colors/${brandSlug}/${colorSlug}`} />
+        </div>
+      </section>
 
-        {/* Color Hero */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div
-            className="aspect-square w-full rounded-2xl border border-gray-200"
-            style={{ backgroundColor: color.hex }}
-          />
-          <img
-            src={`/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`}
-            alt={`${color.name}${color.color_number ? ` ${color.color_number}` : ""} by ${color.brand.name} paint color swatch`}
-            width={1200}
-            height={630}
-            className="absolute -left-[9999px] h-px w-px overflow-hidden"
-          />
-
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">
-              {color.name} {color.color_number ? `(${color.color_number})` : ""} Paint Color
-            </h1>
-            <p className="mt-1 text-lg text-gray-600">{color.brand.name}</p>
-            <p className="mt-2 text-sm text-gray-500">
-              Find matching colors from other brands, build a palette, or preview it in your room.
-            </p>
-
-            <div className="mt-4 flex flex-wrap items-center gap-3">
-              <SaveToProject
-                colorId={color.id}
-                currentPath={`/colors/${brandSlug}/${colorSlug}`}
-              />
-              <TrackedLink
-                href={`/tools/palette-generator?hex=${encodeURIComponent(color.hex)}`}
-                className="flex items-center gap-2 rounded-lg bg-brand-terra px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-terra-dark"
-                eventName="cta_click"
-                eventParams={{ cta_label: "generate_palette", color_name: color.name, color_brand: color.brand.slug }}
-              >
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
-                </svg>
+      {/* Technical Profile + Matches */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
+          <div className="lg:col-span-5 space-y-12">
+            <div>
+              <nav className="mb-8 text-sm text-on-surface-variant">
+                <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+                <span className="mx-2 text-outline">/</span>
+                <Link href={`/brands/${color.brand.slug}`} className="hover:text-primary transition-colors">{color.brand.name}</Link>
+                <span className="mx-2 text-outline">/</span>
+                <span className="text-on-surface">{color.name}</span>
+              </nav>
+              <div className="bg-surface-container-high h-1 w-12 mb-6" />
+              <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Technical Profile</h2>
+              <p className="text-on-surface-variant leading-relaxed mb-8">{descriptionFirstParagraph}</p>
+            </div>
+            <div className="space-y-0">
+              {[
+                { label: "HEX Code", value: color.hex.toUpperCase() },
+                { label: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
+                ...(lrv != null ? [{ label: "LRV", value: lrv.toFixed(1) }] : []),
+                ...(color.undertone ? [{ label: "Undertone", value: color.undertone, dot: getUndertoneDotClass(color.undertone) }] : []),
+              ].map((spec) => (
+                <div key={spec.label} className="flex justify-between items-center py-4 border-b border-outline-variant/15">
+                  <span className="text-xs uppercase tracking-widest font-semibold text-outline">{spec.label}</span>
+                  <span className="font-headline font-bold text-on-surface flex items-center gap-2">
+                    {"dot" in spec && spec.dot && <span className={`inline-block h-3 w-3 rounded-full ${spec.dot}`} />}
+                    {spec.value}
+                  </span>
+                </div>
+              ))}
+              {color.color_family && (
+                <div className="flex justify-between items-center py-4 border-b border-outline-variant/15">
+                  <span className="text-xs uppercase tracking-widest font-semibold text-outline">Color Family</span>
+                  <Link href={`/colors/family/${color.color_family}`} className="font-headline font-bold text-primary capitalize hover:underline">{color.color_family}</Link>
+                </div>
+              )}
+              <div className="flex justify-between items-center py-4 border-b border-outline-variant/15">
+                <span className="text-xs uppercase tracking-widest font-semibold text-outline">Brand</span>
+                <Link href={`/brands/${color.brand.slug}`} className="font-headline font-bold text-primary hover:underline">{color.brand.name}</Link>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <TrackedLink href={`/tools/palette-generator?hex=${encodeURIComponent(color.hex)}`} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20" eventName="cta_click" eventParams={{ cta_label: "generate_palette", color_name: color.name, color_brand: color.brand.slug }}>
                 Generate Palette
               </TrackedLink>
-              <ShareButton
-                title={`${color.name} by ${color.brand.name}`}
-                url={`/colors/${brandSlug}/${colorSlug}`}
-              />
-              <TrackedLink
-                href={`/compare?color1=${color.id}`}
-                className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-colors hover:bg-gray-50"
-                eventName="cta_click"
-                eventParams={{ cta_label: "compare", color_name: color.name, color_brand: color.brand.slug }}
-              >
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
-                </svg>
+              <TrackedLink href={`/compare?color1=${color.id}`} className="bg-surface-container-highest text-primary px-6 py-3 rounded-xl font-headline font-bold text-sm" eventName="cta_click" eventParams={{ cta_label: "compare", color_name: color.name, color_brand: color.brand.slug }}>
                 Compare
               </TrackedLink>
               {retailerLinks.map((link) => (
-                <a
-                  key={link.retailerName}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-colors hover:bg-gray-50"
-                >
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                  </svg>
+                <a key={link.retailerName} href={link.url} target="_blank" rel="noopener noreferrer" className="bg-surface-container-lowest text-on-surface px-6 py-3 rounded-xl font-headline font-bold text-sm border border-outline-variant/15 hover:shadow-md transition-all">
                   Buy at {link.retailerName}
                 </a>
               ))}
             </div>
+          </div>
 
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              <div className="rounded-lg bg-gray-50 p-4">
-                <p className="text-xs font-medium uppercase text-gray-500">
-                  Hex
-                </p>
-                <p className="mt-1 font-mono text-lg font-semibold text-gray-900">
-                  {color.hex.toUpperCase()}
-                </p>
+          <div className="lg:col-span-7">
+            {Object.keys(matchesByBrand).length > 0 && (
+              <div className="bg-surface-container-low rounded-xl p-8 md:p-10">
+                <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">Closest Matches</h2>
+                <p className="text-sm text-on-surface-variant mb-8">Closest digital match based on color values. Always verify with physical samples.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {Object.values(matchesByBrand).flatMap((bm) => bm.slice(0, 1)).slice(0, 8).map((match) => (
+                    <Link key={match.id} href={`/colors/${match.match_color.brand.slug}/${match.match_color.slug}`} className="bg-surface-container-lowest p-6 rounded-lg group cursor-pointer hover:shadow-md transition-all">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-16 h-16 rounded-lg shrink-0" style={{ backgroundColor: match.match_color.hex }} />
+                        <div className="min-w-0">
+                          <h3 className="font-headline font-bold text-on-surface truncate">{match.match_color.name}</h3>
+                          <p className="text-[10px] uppercase text-outline tracking-wider">{match.match_color.brand.name}</p>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center text-xs">
+                        <span className="text-on-surface-variant">{Number(match.delta_e_score) < 2 ? "Nearly identical" : Number(match.delta_e_score) < 5 ? "Very similar" : "Visible difference"}</span>
+                        <svg className="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </div>
-              <div className="rounded-lg bg-gray-50 p-4">
-                <p className="text-xs font-medium uppercase text-gray-500">
-                  RGB
-                </p>
-                <p className="mt-1 font-mono text-lg font-semibold text-gray-900">
-                  {color.rgb_r}, {color.rgb_g}, {color.rgb_b}
-                </p>
-              </div>
-              {color.lrv != null && (
-                <div className="rounded-lg bg-gray-50 p-4">
-                  <p className="text-xs font-medium uppercase text-gray-500">
-                    LRV
-                  </p>
-                  <p className="mt-1 text-lg font-semibold text-gray-900">
-                    {Number(color.lrv).toFixed(1)}
-                  </p>
-                  <p className="mt-1 text-[11px] leading-snug text-gray-400">
-                    Light Reflectance Value — how much light a color reflects. 0 is pure black, 100 is pure white.
-                  </p>
-                </div>
-              )}
-              {color.undertone && (
-                <div className="rounded-lg bg-gray-50 p-4">
-                  <p className="text-xs font-medium uppercase text-gray-500">
-                    Undertone
-                  </p>
-                  <p className="mt-1 flex items-center gap-2 text-lg font-semibold text-gray-900">
-                    <span
-                      className={`inline-block h-3 w-3 rounded-full ${getUndertoneDotClass(color.undertone)}`}
-                    />
-                    {color.undertone}
-                  </p>
-                  <p className="mt-1 text-[11px] leading-snug text-gray-400">
-                    The subtle base hue beneath the surface color. Affects how it pairs with trim, flooring, and other colors.
-                  </p>
-                </div>
-              )}
-              {color.color_family && (
-                <div className="rounded-lg bg-gray-50 p-4">
-                  <p className="text-xs font-medium uppercase text-gray-500">
-                    Color Family
-                  </p>
-                  <Link
-                    href={`/colors/family/${color.color_family}`}
-                    className="mt-1 block text-lg font-semibold capitalize text-brand-blue hover:underline"
-                  >
-                    {color.color_family}
-                  </Link>
-                </div>
-              )}
-            </div>
+            )}
           </div>
         </div>
+      </section>
 
-        {/* Color Description */}
-        <div className="mt-8 space-y-4">
-          {description.split("\n\n").map((paragraph, i) => (
-            <p key={i} className="text-base leading-relaxed text-gray-700">
-              {paragraph}
-            </p>
-          ))}
-        </div>
+      {/* Recommended Pairings — Room Preview */}
+      {(() => {
+        const [h, s] = hexToHsl(color.hex);
+        const trimHex = hslToHex(h, Math.max(s * 0.1, 3), 95);
+        const accentHex = hslToHex(h + 30, Math.max(s * 0.5, 15), 55);
+        const vizUrl = `/tools/room-visualizer?walls=${color.hex.slice(1)}&trim=${trimHex.slice(1)}&accent=${accentHex.slice(1)}`;
+        return (
+          <section className="bg-tertiary-fixed py-24 px-6 md:px-12">
+            <div className="max-w-7xl mx-auto">
+              <div className="mb-12">
+                <span className="inline-block px-4 py-1 bg-on-secondary-container/10 text-on-surface text-[10px] font-bold uppercase tracking-widest rounded-full mb-6">Recommended Pairings</span>
+                <h2 className="font-headline text-4xl font-extrabold text-on-surface tracking-tight leading-tight">
+                  Colors That Work With {color.name}
+                </h2>
+              </div>
 
-        {/* Complementary Colors */}
-        <ComplementaryColors hex={color.hex} harmonies={harmonies} />
-
-        {/* Curated Room Palettes */}
-        <CuratedPalettes hex={color.hex} brandId={color.brand_id} currentPath={`/colors/${brandSlug}/${colorSlug}`} />
-
-        {/* Cross-Brand Matches */}
-        {Object.keys(matchesByBrand).length > 0 && (
-          <section className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Closest Matches from Other Brands
-            </h2>
-            <p className="mt-2 text-sm text-gray-500">
-              Closest digital match based on color values. Pigments and finishes
-              differ between brands — always verify with physical samples.
-            </p>
-
-            <div className="mt-8 space-y-8">
-              {Object.entries(matchesByBrand).map(([brandName, brandMatches]) => (
-                <div key={brandName}>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    {brandName}
-                  </h3>
-                  <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                    {brandMatches.slice(0, 3).map((match) => (
-                      <Link
-                        key={match.id}
-                        href={`/colors/${match.match_color.brand.slug}/${match.match_color.slug}`}
-                        className="flex items-center gap-4 rounded-lg border border-gray-200 p-4 transition-shadow hover:shadow-md"
-                      >
-                        <ColorSwatch hex={match.match_color.hex} size="lg" />
-                        <div className="min-w-0 flex-1">
-                          <p className="font-medium text-gray-900">
-                            {match.match_color.name}
-                          </p>
-                          <p className="text-sm text-gray-500">
-                            {match.match_color.hex.toUpperCase()}
-                          </p>
-                          <p
-                            className="mt-1 text-xs text-gray-400"
-                            title={`Delta E: ${Number(match.delta_e_score).toFixed(1)}`}
-                          >
-                            {Number(match.delta_e_score) < 2
-                              ? "Nearly identical"
-                              : Number(match.delta_e_score) < 5
-                                ? "Very similar"
-                                : "Visible difference"}
-                          </p>
-                        </div>
-                      </Link>
-                    ))}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                {/* Room visualization */}
+                <div>
+                  <div className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg border-[8px] border-surface-container-lowest">
+                    <RoomPreview wallColor={color.hex} trimColor={trimHex} accentColor={accentHex} className="w-full" />
                   </div>
                 </div>
-              ))}
-            </div>
-          </section>
-        )}
 
-        {/* Similar Colors from Same Brand */}
-        {similarColors.length > 0 && (
-          <section className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Similar {color.brand.name} Colors
-            </h2>
-            <p className="mt-2 text-sm text-gray-500">
-              Other {color.brand.name} colors close to {color.name}.
-            </p>
-            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-              {similarColors.map((similar) => (
-                <ColorCard
-                  key={similar.id}
-                  name={similar.name}
-                  hex={similar.hex}
-                  brandName={color.brand.name}
-                  brandSlug={brandSlug}
-                  colorSlug={similar.slug}
-                  colorNumber={similar.color_number}
-                />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Frequently Asked Questions */}
-        {faqItems.length > 0 && (
-          <section className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Frequently Asked Questions
-            </h2>
-            <div className="mt-6 space-y-3">
-              {faqItems.map((item, i) => (
-                <details
-                  key={i}
-                  className="group rounded-lg border border-gray-200"
-                >
-                  <summary className="flex cursor-pointer items-center justify-between px-5 py-4 text-base font-medium text-gray-900 hover:bg-gray-50">
-                    {item.question}
-                    <svg
-                      className="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                    </svg>
-                  </summary>
-                  <div className="px-5 pb-4 text-sm leading-relaxed text-gray-600">
-                    {item.answer}
+                {/* Pairing swatches */}
+                <div className="space-y-6">
+                  <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
+                    <div className="flex items-center gap-4 mb-3">
+                      <div className="w-14 h-14 rounded-lg shrink-0" style={{ backgroundColor: color.hex }} />
+                      <div>
+                        <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Side Walls</p>
+                        <h4 className="font-headline font-bold text-on-surface">{color.name}</h4>
+                      </div>
+                    </div>
+                    <p className="text-[10px] text-outline">{color.hex.toUpperCase()}</p>
                   </div>
+
+                  <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
+                    <div className="flex items-center gap-4 mb-3">
+                      <div className="w-14 h-14 rounded-lg shrink-0" style={{ backgroundColor: accentHex }} />
+                      <div>
+                        <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Accent Wall</p>
+                        <h4 className="font-headline font-bold text-on-surface">Feature Wall</h4>
+                      </div>
+                    </div>
+                    <p className="text-sm text-on-surface-variant">A tonal shift on the focal wall adds depth and interest.</p>
+                  </div>
+
+                  <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
+                    <div className="flex items-center gap-4 mb-3">
+                      <div className="w-14 h-14 rounded-lg shrink-0" style={{ backgroundColor: trimHex }} />
+                      <div>
+                        <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Trim &amp; Molding</p>
+                        <h4 className="font-headline font-bold text-on-surface">Soft White</h4>
+                      </div>
+                    </div>
+                    <p className="text-sm text-on-surface-variant">Clean trim that frames the walls without competing.</p>
+                  </div>
+
+                  <div className="flex flex-col gap-3 pt-2">
+                    <TrackedLink
+                      href={vizUrl}
+                      className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 text-center"
+                      eventName="cta_click"
+                      eventParams={{ cta_label: "visualize_pairings", color_name: color.name }}
+                    >
+                      Customize in Room Visualizer
+                    </TrackedLink>
+                    <TrackedLink
+                      href={`/tools/palette-generator?hex=${encodeURIComponent(color.hex)}`}
+                      className="inline-flex items-center justify-center gap-2 border-b-2 border-primary text-primary font-headline font-bold text-sm py-2 hover:gap-3 transition-all"
+                      eventName="cta_click"
+                      eventParams={{ cta_label: "full_palette", color_name: color.name }}
+                    >
+                      Explore full palette <span>&rarr;</span>
+                    </TrackedLink>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* Full Description */}
+      <section className="bg-surface-container-low py-16 px-6 md:px-12">
+        <div className="max-w-4xl mx-auto space-y-4">
+          {description.split("\n\n").map((p, i) => (
+            <p key={i} className="text-base leading-relaxed text-on-surface-variant">{p}</p>
+          ))}
+        </div>
+      </section>
+
+      {/* Complementary Colors */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+        <ComplementaryColors hex={color.hex} harmonies={harmonies} />
+      </section>
+
+      {/* Curated Palettes */}
+      <section className="bg-tertiary-fixed py-16 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <CuratedPalettes hex={color.hex} brandId={color.brand_id} currentPath={`/colors/${brandSlug}/${colorSlug}`} />
+        </div>
+      </section>
+
+      {/* Similar Colors */}
+      {similarColors.length > 0 && (
+        <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+          <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">Similar {color.brand.name} Colors</h2>
+          <p className="mt-2 text-sm text-on-surface-variant">Other {color.brand.name} colors close to {color.name}.</p>
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+            {similarColors.map((s) => <ColorCard key={s.id} name={s.name} hex={s.hex} brandName={color.brand.name} brandSlug={brandSlug} colorSlug={s.slug} colorNumber={s.color_number} />)}
+          </div>
+        </section>
+      )}
+
+      {/* FAQ */}
+      {faqItems.length > 0 && (
+        <section className="bg-surface-container-low py-16 px-6 md:px-12">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {faqItems.map((item, i) => (
+                <details key={i} className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10">
+                  <summary className="flex cursor-pointer items-center justify-between px-6 py-5 font-headline font-bold text-on-surface hover:text-primary transition-colors">
+                    {item.question}
+                    <svg className="h-5 w-5 shrink-0 text-outline transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                  </summary>
+                  <div className="px-6 pb-5 text-sm leading-relaxed text-on-surface-variant">{item.answer}</div>
                 </details>
               ))}
             </div>
-          </section>
-        )}
-
-        {/* Keep Exploring */}
-        <section className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900">Keep Exploring</h2>
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <Link
-              href={`/tools/room-visualizer?hex=${encodeURIComponent(color.hex)}`}
-              className="rounded-lg border border-gray-200 p-6 text-center transition-shadow hover:shadow-md"
-            >
-              <svg className="mx-auto h-8 w-8 text-brand-terra" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-              </svg>
-              <p className="mt-3 font-semibold text-gray-900">See It on a Wall</p>
-              <p className="mt-1 text-sm text-gray-500">Preview this color in a real room</p>
-            </Link>
-            <Link
-              href="/tools/paint-calculator"
-              className="rounded-lg border border-gray-200 p-6 text-center transition-shadow hover:shadow-md"
-            >
-              <svg className="mx-auto h-8 w-8 text-brand-terra" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z" />
-              </svg>
-              <p className="mt-3 font-semibold text-gray-900">How Much Paint?</p>
-              <p className="mt-1 text-sm text-gray-500">Calculate gallons for your project</p>
-            </Link>
-            {color.color_family && (
-              <Link
-                href={`/colors/family/${color.color_family}`}
-                className="rounded-lg border border-gray-200 p-6 text-center transition-shadow hover:shadow-md"
-              >
-                <svg className="mx-auto h-8 w-8 text-brand-terra" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z" />
-                </svg>
-                <p className="mt-3 font-semibold text-gray-900">Browse {color.color_family} Colors</p>
-                <p className="mt-1 text-sm text-gray-500">Explore more shades in this family</p>
-              </Link>
-            )}
           </div>
         </section>
+      )}
 
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              name: `${color.name} Paint Color`,
-              description: descriptionFirstParagraph,
-              url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
-              breadcrumb: {
-                "@type": "BreadcrumbList",
-                itemListElement: [
-                  { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
-                  { "@type": "ListItem", position: 2, name: color.brand.name, item: `https://www.paintcolorhq.com/brands/${brandSlug}` },
-                  { "@type": "ListItem", position: 3, name: color.name, item: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}` },
-                ],
-              },
-              image: `https://www.paintcolorhq.com/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`,
-              about: {
-                "@type": "Product",
-                name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
-                description: descriptionFirstParagraph,
-                brand: {
-                  "@type": "Brand",
-                  name: color.brand.name,
-                },
-                sku: color.color_number ?? undefined,
-                additionalProperty: [
-                  { "@type": "PropertyValue", name: "Hex", value: color.hex.toUpperCase() },
-                  { "@type": "PropertyValue", name: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
-                  ...(color.lrv != null ? [{ "@type": "PropertyValue", name: "LRV", value: Number(color.lrv).toFixed(1) }] : []),
-                  ...(color.undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: color.undertone }] : []),
-                  ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
-                ],
-                ...(matches.length > 0 ? {
-                  isSimilarTo: matches.slice(0, 5).map((m) => ({
-                    "@type": "Product",
-                    name: m.match_color.name,
-                    brand: { "@type": "Brand", name: m.match_color.brand.name },
-                    sku: m.match_color.color_number ?? undefined,
-                    color: m.match_color.hex.toUpperCase(),
-                  })),
-                } : {}),
-              },
-            }),
-          }}
-        />
+      {/* Keep Exploring */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+        <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">Keep Exploring</h2>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <TrackedLink href={`/tools/room-visualizer?hex=${encodeURIComponent(color.hex)}`} className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500" eventName="cta_click" eventParams={{ cta_label: "room_visualizer", color_name: color.name }}>
+            <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">See It on a Wall</p>
+            <p className="mt-2 text-sm text-on-surface-variant">Preview this color in a real room</p>
+          </TrackedLink>
+          <Link href="/tools/paint-calculator" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500">
+            <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">How Much Paint?</p>
+            <p className="mt-2 text-sm text-on-surface-variant">Calculate gallons for your project</p>
+          </Link>
+          {color.color_family && (
+            <Link href={`/colors/family/${color.color_family}`} className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500">
+              <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Browse {color.color_family} Colors</p>
+              <p className="mt-2 text-sm text-on-surface-variant">Explore more shades in this family</p>
+            </Link>
+          )}
+        </div>
+      </section>
 
-        {/* FAQ JSON-LD Structured Data — content is server-generated from trusted database values */}
-        {faqItems.length > 0 && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                mainEntity: faqItems.map((item) => ({
-                  "@type": "Question",
-                  name: item.question,
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: item.answer,
-                  },
-                })),
-              }),
-            }}
-          />
-        )}
-      </main>
+      {/* JSON-LD */}
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "WebPage",
+        name: `${color.name} Paint Color`, description: descriptionFirstParagraph,
+        url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
+        breadcrumb: { "@type": "BreadcrumbList", itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+          { "@type": "ListItem", position: 2, name: color.brand.name, item: `https://www.paintcolorhq.com/brands/${brandSlug}` },
+          { "@type": "ListItem", position: 3, name: color.name, item: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}` },
+        ]},
+        about: {
+          "@type": "Product", name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
+          description: descriptionFirstParagraph, brand: { "@type": "Brand", name: color.brand.name },
+          sku: color.color_number ?? undefined,
+          additionalProperty: [
+            { "@type": "PropertyValue", name: "Hex", value: color.hex.toUpperCase() },
+            { "@type": "PropertyValue", name: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
+            ...(lrv != null ? [{ "@type": "PropertyValue", name: "LRV", value: lrv.toFixed(1) }] : []),
+            ...(color.undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: color.undertone }] : []),
+            ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
+          ],
+          ...(matches.length > 0 ? { isSimilarTo: matches.slice(0, 5).map((m) => ({
+            "@type": "Product", name: m.match_color.name, brand: { "@type": "Brand", name: m.match_color.brand.name },
+            sku: m.match_color.color_number ?? undefined, color: m.match_color.hex.toUpperCase(),
+          })) } : {}),
+        },
+      }} />
+      {faqItems.length > 0 && <JsonLd data={{
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })),
+      }} />}
 
       <Footer />
     </div>

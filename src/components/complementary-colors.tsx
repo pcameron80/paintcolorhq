@@ -33,13 +33,12 @@ export function ComplementaryColors({
   }
 
   return (
-    <section className="mt-16">
-      <h2 className="text-2xl font-bold text-gray-900">
+    <section>
+      <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">
         Suggested Color Palettes
       </h2>
-      <p className="mt-2 text-sm text-gray-500">
-        Color harmonies based on color theory — each swatch links to the closest
-        matching paint.
+      <p className="mt-2 text-sm text-on-surface-variant">
+        Color harmonies based on color theory — each swatch links to the closest matching paint.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-2">
@@ -47,10 +46,10 @@ export function ComplementaryColors({
           <button
             key={harmony.name}
             onClick={() => setActive(i)}
-            className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+            className={`rounded-full px-4 py-2 text-sm font-headline font-bold transition-all ${
               active === i
-                ? "bg-gray-900 text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                ? "bg-primary text-on-primary"
+                : "bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant/10"
             }`}
           >
             {harmony.name}
@@ -59,7 +58,7 @@ export function ComplementaryColors({
       </div>
 
       <div className="mt-6">
-        <p className="text-sm text-gray-600">{harmonies[active].description}</p>
+        <p className="text-sm text-on-surface-variant">{harmonies[active].description}</p>
         <div className="mt-4 flex gap-4">
           {harmonies[active].colors.map((color, i) => {
             const href =
@@ -69,18 +68,22 @@ export function ComplementaryColors({
             return (
               <Link key={i} href={href} className="group flex-1">
                 <div
-                  className="aspect-square w-full rounded-xl border border-gray-200 transition-shadow group-hover:shadow-md"
+                  className="aspect-square w-full rounded-xl border border-outline-variant/10 transition-shadow group-hover:shadow-md"
                   style={{ backgroundColor: color.matchHex }}
                 />
-                <p className="mt-2 text-center text-xs font-medium text-gray-500">
+                <p className="mt-2 text-center text-xs font-medium text-outline">
                   {color.label}
                 </p>
                 {color.matchName ? (
-                  <p className="truncate text-center text-xs text-gray-400 group-hover:text-brand-blue">
+                  <p className="truncate text-center text-xs text-on-surface-variant group-hover:text-primary flex items-center justify-center gap-1">
+                    <span
+                      className="inline-block h-2.5 w-2.5 rounded-full shrink-0"
+                      style={{ backgroundColor: color.matchHex }}
+                    />
                     {color.matchName}
                   </p>
                 ) : (
-                  <p className="text-center font-mono text-xs text-gray-400 group-hover:text-brand-blue">
+                  <p className="text-center font-mono text-xs text-outline group-hover:text-primary">
                     {color.matchHex.toUpperCase()}
                   </p>
                 )}

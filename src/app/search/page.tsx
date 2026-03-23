@@ -18,12 +18,10 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     description:
       "Search 25,000+ paint colors by name, number, or hex code across all major brands.",
     alternates: { canonical: "https://www.paintcolorhq.com/search" },
-    // Noindex parameterized search result URLs to prevent index bloat
     ...(hasQuery && { robots: { index: false, follow: true } }),
     openGraph: {
       title: "Search Paint Colors",
-      description:
-        "Search 25,000+ paint colors by name, number, or hex code across all major brands.",
+      description: "Search 25,000+ paint colors by name, number, or hex code across all major brands.",
       url: "https://www.paintcolorhq.com/search",
     },
   };
@@ -31,27 +29,28 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
 export default function SearchPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-surface">
       <Header />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-gray-900">
-          Search Paint Colors
-        </h1>
-        <p className="mt-2 text-gray-600">
-          Find colors by name, number, or hex code.
-        </p>
-        <p className="mt-2 text-sm text-gray-500">
-          Explore our database of 25,000+ colors from Sherwin-Williams, Benjamin
-          Moore, Behr, and 11 more brands. Each color page shows cross-brand
-          matches, undertone details, and coordinating palettes.
-        </p>
+      <section className="relative pt-24 px-6 md:px-12 py-16">
+        <div className="max-w-7xl mx-auto">
+          <span className="text-primary font-bold text-xs uppercase tracking-widest">Search</span>
+          <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
+            Find Your Color
+          </h1>
+          <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+            Search 25,000+ colors by name, number, or hex code across 14 brands.
+          </p>
+        </div>
+      </section>
 
-        <Suspense>
-          <SearchResults />
-        </Suspense>
-
-      </main>
+      <section className="px-6 md:px-12 pb-24">
+        <div className="max-w-7xl mx-auto">
+          <Suspense>
+            <SearchResults />
+          </Suspense>
+        </div>
+      </section>
 
       <AdSenseScript />
       <Footer />

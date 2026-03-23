@@ -49,26 +49,26 @@ export default async function ProjectPage({ params }: PageProps) {
   });
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-surface">
       <Header />
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <nav className="mb-6 text-sm text-gray-500">
-          <Link href="/dashboard" className="hover:text-gray-900">
+        <nav className="mb-6 text-sm text-on-surface-variant">
+          <Link href="/dashboard" className="hover:text-on-surface">
             My Projects
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-900">{project.name}</span>
+          <span className="text-on-surface">{project.name}</span>
         </nav>
 
         <RenameProject projectId={project.id} currentName={project.name} />
         {project.description && (
-          <p className="mt-2 text-gray-600">{project.description}</p>
+          <p className="mt-2 text-on-surface-variant">{project.description}</p>
         )}
 
         {/* Palette preview strip */}
         {project.project_colors.length > 0 && (
-          <div className="mt-6 flex h-20 overflow-hidden rounded-xl border border-gray-200">
+          <div className="mt-6 flex h-20 overflow-hidden rounded-xl border border-outline-variant/20">
             {project.project_colors.map((pc) => (
               <div
                 key={pc.id}
@@ -111,7 +111,7 @@ export default async function ProjectPage({ params }: PageProps) {
             <div className="mt-4">
               <Link
                 href={url}
-                className="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-gray-800"
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary hover:bg-primary/90 transition-colors shadow-sm"
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" />
@@ -124,9 +124,9 @@ export default async function ProjectPage({ params }: PageProps) {
 
         {project.project_colors.length === 0 ? (
           <div className="mt-16 text-center">
-            <p className="text-gray-500">
+            <p className="text-on-surface-variant">
               No colors saved yet. Browse{" "}
-              <Link href="/colors" className="text-brand-blue hover:underline">
+              <Link href="/colors" className="text-primary hover:underline">
                 colors
               </Link>{" "}
               and save them to this project.
@@ -136,14 +136,14 @@ export default async function ProjectPage({ params }: PageProps) {
           <div className="mt-8 space-y-8">
             {sortedRoles.map((role) => (
               <div key={role}>
-                <h2 className="text-lg font-semibold capitalize text-gray-900">
+                <h2 className="font-headline text-lg font-semibold capitalize text-on-surface">
                   {role}
                 </h2>
                 <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {colorsByRole[role].map((pc) => (
                     <div
                       key={pc.id}
-                      className="flex items-center gap-4 rounded-lg border border-gray-200 p-4"
+                      className="flex items-center gap-4 rounded-xl border border-outline-variant/20 bg-surface-container-lowest p-4"
                     >
                       <Link
                         href={`/colors/${pc.color.brand.slug}/${pc.color.slug}`}
@@ -154,14 +154,14 @@ export default async function ProjectPage({ params }: PageProps) {
                       <div className="min-w-0 flex-1">
                         <Link
                           href={`/colors/${pc.color.brand.slug}/${pc.color.slug}`}
-                          className="font-medium text-gray-900 hover:text-brand-blue"
+                          className="font-semibold text-on-surface hover:text-primary"
                         >
                           {pc.color.name}
                         </Link>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-on-surface-variant">
                           {pc.color.brand.name}
                         </p>
-                        <p className="mt-0.5 font-mono text-xs text-gray-400">
+                        <p className="mt-0.5 font-mono text-xs text-outline">
                           {pc.color.hex.toUpperCase()}
                         </p>
                       </div>

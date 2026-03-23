@@ -60,11 +60,11 @@ export function MobileNav() {
   }, [open]);
 
   return (
-    <div className="sm:hidden">
+    <div className="md:hidden">
       {/* Hamburger button */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-600 hover:bg-gray-100"
+        className="flex h-10 w-10 items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors"
         aria-label="Toggle menu"
       >
         {open ? (
@@ -82,21 +82,22 @@ export function MobileNav() {
       {open && (
         <>
           <div
-            className="fixed inset-0 z-40 bg-black/20"
+            className="fixed inset-0 z-40 bg-on-surface/20 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
-          <div className="fixed inset-x-0 top-[57px] z-50 border-b border-gray-200 bg-white px-4 pb-6 pt-4 shadow-lg">
+          <div className="fixed inset-x-0 top-[65px] z-50 bg-white/95 backdrop-blur-md px-6 pb-8 pt-6 shadow-xl rounded-b-2xl">
             <nav className="flex flex-col gap-1">
               {NAV_LINKS.map((link) => {
                 if (link.href === "/dashboard" && (!user || authLoading)) return null;
+                const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`rounded-lg px-3 py-2.5 text-base font-medium ${
-                      pathname === link.href || pathname.startsWith(link.href + "/")
-                        ? "bg-gray-100 text-gray-900"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    className={`rounded-xl px-4 py-3 font-headline text-sm uppercase font-semibold tracking-tight transition-all ${
+                      isActive
+                        ? "bg-surface-container-low text-primary"
+                        : "text-on-surface-variant hover:bg-surface-container-low hover:text-primary"
                     }`}
                   >
                     {link.label}
@@ -105,23 +106,23 @@ export function MobileNav() {
               })}
             </nav>
 
-            <hr className="my-4 border-gray-100" />
+            <div className="my-6 bg-surface-container-high h-1 w-12 mx-auto" />
 
             {authLoading ? null : user ? (
-              <div className="flex items-center justify-between px-3">
+              <div className="flex items-center justify-between px-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-200 text-sm font-medium text-gray-700">
+                  <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-surface-container-high text-sm font-semibold text-on-surface">
                     {user.avatarUrl ? (
                       <Image src={user.avatarUrl} alt="" width={32} height={32} className="h-full w-full object-cover" />
                     ) : (
                       user.email.charAt(0).toUpperCase()
                     )}
                   </div>
-                  <span className="truncate text-sm text-gray-600">{user.email}</span>
+                  <span className="truncate text-sm text-on-surface-variant">{user.email}</span>
                 </div>
                 <a
                   href="/auth/logout"
-                  className="text-sm font-medium text-gray-600 hover:text-gray-900"
+                  className="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
                 >
                   Sign out
                 </a>
@@ -129,9 +130,9 @@ export function MobileNav() {
             ) : (
               <a
                 href="/auth/login"
-                className="block rounded-lg bg-brand-blue px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-brand-blue-dark"
+                className="block rounded-xl bg-gradient-to-br from-primary to-primary-container px-4 py-3 text-center font-headline text-sm font-bold text-on-primary tracking-tight"
               >
-                Sign in
+                Sign In
               </a>
             )}
           </div>

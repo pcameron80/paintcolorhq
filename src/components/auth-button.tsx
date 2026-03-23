@@ -9,7 +9,7 @@ export function AuthButton() {
     email: string;
     avatarUrl: string | null;
   } | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const supabase = createSupabaseBrowserClient();
@@ -24,19 +24,19 @@ export function AuthButton() {
         }
       })
       .catch(() => {})
-      .finally(() => setLoading(false));
+      .finally(() => setReady(true));
   }, []);
 
-  if (loading) return null;
-
-  if (user) {
+  // Always render the sign-in link as default — both server and client start with this
+  // Once auth check completes, swap to UserMenu if logged in
+  if (ready && user) {
     return <UserMenu email={user.email} avatarUrl={user.avatarUrl} />;
   }
 
   return (
     <a
       href="/auth/login"
-      className="rounded-lg bg-brand-blue px-4 py-2 text-sm font-medium text-white hover:bg-brand-blue-dark"
+      className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-lg font-headline text-sm font-bold tracking-tight"
     >
       Sign in
     </a>

@@ -2891,3 +2891,28 @@ export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
 
   return scored.slice(0, limit).map((s) => s.post);
 }
+
+/** Find blog posts that mention a brand name in title, tags, or excerpt */
+export function getPostsByBrand(brandName: string, limit = 3): BlogPost[] {
+  const lower = brandName.toLowerCase();
+  // Also match common abbreviations
+  const aliases: Record<string, string[]> = {
+    "sherwin-williams": ["sherwin", "sw"],
+    "benjamin moore": ["benjamin", "bm"],
+    behr: ["behr"],
+    ppg: ["ppg"],
+    valspar: ["valspar"],
+    "dunn-edwards": ["dunn-edwards", "dunn edwards"],
+    "farrow & ball": ["farrow", "farrow & ball", "farrow and ball"],
+  };
+  const terms = [lower, ...(aliases[lower] ?? [])];
+
+  const matches = blogPosts.filter((p) => {
+    const searchable = `${p.title} ${p.excerpt} ${p.tags.join(" ")}`.toLowerCase();
+    return terms.some((t) => searchable.includes(t));
+  });
+
+  // Sort newest first
+  matches.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return matches.slice(0, limit);
+}

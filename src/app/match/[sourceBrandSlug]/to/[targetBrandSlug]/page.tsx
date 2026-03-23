@@ -10,334 +10,192 @@ import { getBrandBySlug, getTopCrossBrandMatches } from "@/lib/queries";
 
 export const revalidate = 3600;
 
-const MAJOR_BRANDS = [
-  "sherwin-williams",
-  "benjamin-moore",
-  "behr",
-  "valspar",
-  "ppg",
-];
+const MAJOR_BRANDS = ["sherwin-williams", "benjamin-moore", "behr", "valspar", "ppg"];
 
-interface PageProps {
-  params: Promise<{
-    sourceBrandSlug: string;
-    targetBrandSlug: string;
-  }>;
-}
+interface PageProps { params: Promise<{ sourceBrandSlug: string; targetBrandSlug: string }>; }
 
 function getDeltaELabel(deltaE: number): { label: string; shortLabel: string; className: string } {
-  if (deltaE < 1) return { label: "Exact Match", shortLabel: "Exact", className: "text-green-700 bg-green-50" };
-  if (deltaE < 2) return { label: "Nearly identical", shortLabel: "Nearly identical", className: "text-green-600 bg-green-50" };
-  if (deltaE < 3) return { label: "Very similar", shortLabel: "Very similar", className: "text-blue-700 bg-blue-50" };
-  if (deltaE < 5) return { label: "Same family", shortLabel: "Same family", className: "text-yellow-700 bg-yellow-50" };
-  return { label: "Test with sample", shortLabel: "Test first", className: "text-orange-700 bg-orange-50" };
-}
-
-function formatBrandName(brand: { name: string }): string {
-  return brand.name;
+  if (deltaE < 1) return { label: "Exact Match", shortLabel: "Exact", className: "bg-primary-fixed text-primary" };
+  if (deltaE < 2) return { label: "Nearly identical", shortLabel: "Nearly identical", className: "bg-primary-fixed text-primary" };
+  if (deltaE < 3) return { label: "Very similar", shortLabel: "Very similar", className: "bg-secondary-fixed text-secondary" };
+  if (deltaE < 5) return { label: "Same family", shortLabel: "Same family", className: "bg-tertiary-fixed text-tertiary" };
+  return { label: "Test with sample", shortLabel: "Test first", className: "bg-error-container text-error" };
 }
 
 export async function generateStaticParams() {
   const params: { sourceBrandSlug: string; targetBrandSlug: string }[] = [];
-  for (const source of MAJOR_BRANDS) {
-    for (const target of MAJOR_BRANDS) {
-      if (source !== target) {
-        params.push({ sourceBrandSlug: source, targetBrandSlug: target });
-      }
-    }
-  }
+  for (const source of MAJOR_BRANDS) for (const target of MAJOR_BRANDS) if (source !== target) params.push({ sourceBrandSlug: source, targetBrandSlug: target });
   return params;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { sourceBrandSlug, targetBrandSlug } = await params;
-
-  const [sourceBrand, targetBrand] = await Promise.all([
-    getBrandBySlug(sourceBrandSlug),
-    getBrandBySlug(targetBrandSlug),
-  ]);
-
+  const [sourceBrand, targetBrand] = await Promise.all([getBrandBySlug(sourceBrandSlug), getBrandBySlug(targetBrandSlug)]);
   if (!sourceBrand || !targetBrand) return { title: "Brand Match Not Found" };
-
-  const title = `${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)} Equivalent Colors | Paint Color HQ`;
-  const description = `Switching from ${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)}? Find the closest matching colors between the two brands, ranked by visual similarity so you can confidently pick an alternative.`;
+  const title = `${sourceBrand.name} to ${targetBrand.name} Equivalent Colors | Paint Color HQ`;
+  const description = `Switching from ${sourceBrand.name} to ${targetBrand.name}? Find the closest matching colors between the two brands.`;
   const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/to/${targetBrandSlug}`;
+  return { title, description, alternates: { canonical: url }, openGraph: { title, description, url } };
+}
 
-  return {
-    title,
-    description,
-    alternates: { canonical: url },
-    openGraph: {
-      title,
-      description,
-      url,
-    },
-  };
+// JSON-LD helper - all content is server-generated from trusted database values
+function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
 export default async function BrandToBrandMatchPage({ params }: PageProps) {
   const { sourceBrandSlug, targetBrandSlug } = await params;
-
-  const [sourceBrand, targetBrand] = await Promise.all([
-    getBrandBySlug(sourceBrandSlug),
-    getBrandBySlug(targetBrandSlug),
-  ]);
-
+  const [sourceBrand, targetBrand] = await Promise.all([getBrandBySlug(sourceBrandSlug), getBrandBySlug(targetBrandSlug)]);
   if (!sourceBrand || !targetBrand) notFound();
 
   const matches = await getTopCrossBrandMatches(sourceBrandSlug, targetBrandSlug, 50);
-
-  const itemListJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: `${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)} Equivalent Colors`,
-    description: `Top cross-brand color matches from ${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)}`,
-    numberOfItems: matches.length,
-    itemListElement: matches.map((m, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: `${m.source.name} to ${m.match.name}`,
-      url: `https://www.paintcolorhq.com/match/${sourceBrandSlug}/${m.source.slug}-to-${targetBrandSlug}`,
-    })),
-  };
-
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
-      { "@type": "ListItem", position: 2, name: "Brands", item: "https://www.paintcolorhq.com/brands" },
-      { "@type": "ListItem", position: 3, name: formatBrandName(sourceBrand), item: `https://www.paintcolorhq.com/brands/${sourceBrandSlug}` },
-      { "@type": "ListItem", position: 4, name: `${formatBrandName(sourceBrand)} to ${formatBrandName(targetBrand)}` },
-    ],
-  };
+  const brandNames: Record<string, string> = { "sherwin-williams": "Sherwin-Williams", "benjamin-moore": "Benjamin Moore", behr: "Behr", valspar: "Valspar", ppg: "PPG" };
 
   return (
-    <div className="min-h-screen bg-white">
-      <TrackPage
-        eventName="page_view_enriched"
-        params={{
-          page_type: "match_listing",
-          source_brand: sourceBrandSlug,
-          target_brand: targetBrandSlug,
-        }}
-      />
+    <div className="min-h-screen bg-surface">
+      <TrackPage eventName="page_view_enriched" params={{ page_type: "match_listing", source_brand: sourceBrandSlug, target_brand: targetBrandSlug }} />
       <Header />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* Breadcrumb */}
-        <nav className="mb-6 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900">Home</Link>
-          <span className="mx-2">/</span>
-          <Link href="/brands" className="hover:text-gray-900">Brands</Link>
-          <span className="mx-2">/</span>
-          <span className="text-gray-900">
-            {formatBrandName(sourceBrand)} to {formatBrandName(targetBrand)}
-          </span>
-        </nav>
+      {/* Hero */}
+      <section className="relative pt-24 px-6 md:px-12 py-20">
+        <div className="max-w-7xl mx-auto">
+          <nav className="mb-8 text-sm text-on-surface-variant">
+            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <span className="mx-2 text-outline">/</span>
+            <Link href="/brands" className="hover:text-primary transition-colors">Brands</Link>
+            <span className="mx-2 text-outline">/</span>
+            <span className="text-on-surface">{sourceBrand.name} to {targetBrand.name}</span>
+          </nav>
 
-        {/* Page heading */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-            {formatBrandName(sourceBrand)} to {formatBrandName(targetBrand)} Equivalent Colors
+          <h1 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-on-surface mb-4">
+            {sourceBrand.name} to {targetBrand.name}
           </h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="text-on-surface-variant max-w-2xl leading-relaxed mb-4">
+            Switching from {sourceBrand.name} to {targetBrand.name}? These are the closest matches between the two brands, ranked by how similar they actually look.
+          </p>
+          <p className="text-sm text-outline">
             Looking for{" "}
-            <Link href={`/match/${targetBrandSlug}/to/${sourceBrandSlug}`} className="text-blue-600 hover:underline">
-              {formatBrandName(targetBrand)} to {formatBrandName(sourceBrand)}
-            </Link>{" "}
-            instead?
-          </p>
-          <p className="mt-3 text-gray-600">
-            Switching from {formatBrandName(sourceBrand)} to {formatBrandName(targetBrand)}?
-            Whether your preferred color isn&apos;t available locally or you&apos;re looking for a
-            more affordable alternative, these are the closest matches between the two brands
-            — ranked by how similar they actually look.
+            <Link href={`/match/${targetBrandSlug}/to/${sourceBrandSlug}`} className="text-primary hover:underline underline-offset-4">
+              {targetBrand.name} to {sourceBrand.name}
+            </Link>
+            {" "}instead?
           </p>
         </div>
+      </section>
 
-        {/* Match quality legend */}
-        <div className="mb-6 flex flex-wrap gap-3 text-xs">
-          <span className="rounded-full bg-green-50 px-3 py-1 text-green-700">
-            Nearly identical — most people can&apos;t tell these apart
-          </span>
-          <span className="rounded-full bg-blue-50 px-3 py-1 text-blue-700">
-            Very similar — minor difference side-by-side
-          </span>
-          <span className="rounded-full bg-yellow-50 px-3 py-1 text-yellow-700">
-            Noticeable difference — same color family
-          </span>
-          <span className="rounded-full bg-orange-50 px-3 py-1 text-orange-700">
-            Loosely similar — test with a sample
-          </span>
+      {/* Legend */}
+      <section className="px-6 md:px-12 pb-8">
+        <div className="max-w-7xl mx-auto flex flex-wrap gap-3 text-xs">
+          <span className="rounded-full bg-primary-fixed px-3 py-1 text-primary font-bold">Nearly identical</span>
+          <span className="rounded-full bg-secondary-fixed px-3 py-1 text-secondary font-bold">Very similar</span>
+          <span className="rounded-full bg-tertiary-fixed px-3 py-1 text-tertiary font-bold">Same family</span>
+          <span className="rounded-full bg-error-container px-3 py-1 text-error font-bold">Test with sample</span>
         </div>
+      </section>
 
-        {matches.length > 0 ? (
-          <div className="overflow-hidden rounded-lg border border-gray-200">
-            {/* Table header - desktop */}
-            <div className="hidden border-b border-gray-200 bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-[1fr_40px_1fr_120px] sm:items-center sm:gap-4">
-              <span className="text-xs font-medium uppercase tracking-wider text-gray-500">
-                {formatBrandName(sourceBrand)}
-              </span>
-              <span />
-              <span className="text-xs font-medium uppercase tracking-wider text-gray-500">
-                {formatBrandName(targetBrand)}
-              </span>
-              <span className="text-right text-xs font-medium uppercase tracking-wider text-gray-500">
-                Match Quality
-              </span>
-            </div>
-
-            {/* Match rows */}
-            <div className="divide-y divide-gray-100">
-              {matches.map((m) => {
-                const { label, shortLabel, className } = getDeltaELabel(m.deltaE);
-                return (
-                  <Link
-                    key={`${m.source.id}-${m.match.id}`}
-                    href={`/match/${sourceBrandSlug}/${m.source.slug}-to-${targetBrandSlug}`}
-                    className="block px-4 py-3 transition hover:bg-gray-50"
-                  >
-                    {/* Desktop layout */}
-                    <div className="hidden sm:grid sm:grid-cols-[1fr_40px_1fr_120px] sm:items-center sm:gap-4">
-                      {/* Source color */}
-                      <div className="flex items-center gap-3">
-                        <ColorSwatch hex={m.source.hex} size="md" />
-                        <div>
-                          <p className="font-medium text-gray-900">{m.source.name}</p>
-                          {m.source.color_number && (
-                            <p className="text-xs text-gray-500">{m.source.color_number}</p>
-                          )}
+      {/* Match table */}
+      <section className="px-6 md:px-12 py-12 bg-surface-container-low">
+        <div className="max-w-7xl mx-auto">
+          {matches.length > 0 ? (
+            <div className="overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/10">
+              <div className="hidden border-b border-outline-variant/10 bg-surface-container-low px-6 py-4 sm:grid sm:grid-cols-[1fr_40px_1fr_140px] sm:items-center sm:gap-4">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-outline">{sourceBrand.name}</span>
+                <span />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-outline">{targetBrand.name}</span>
+                <span className="text-right text-[10px] font-bold uppercase tracking-widest text-outline">Match Quality</span>
+              </div>
+              <div className="divide-y divide-outline-variant/10">
+                {matches.map((m) => {
+                  const { label, shortLabel, className } = getDeltaELabel(m.deltaE);
+                  return (
+                    <Link key={`${m.source.id}-${m.match.id}`} href={`/match/${sourceBrandSlug}/${m.source.slug}-to-${targetBrandSlug}`}
+                      className="block px-6 py-4 transition hover:bg-surface-container-low group">
+                      <div className="hidden sm:grid sm:grid-cols-[1fr_40px_1fr_140px] sm:items-center sm:gap-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg shrink-0" style={{ backgroundColor: m.source.hex }} />
+                          <div>
+                            <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">{m.source.name}</p>
+                            {m.source.color_number && <p className="text-[10px] text-outline">{m.source.color_number}</p>}
+                          </div>
+                        </div>
+                        <div className="flex justify-center text-outline">
+                          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg shrink-0" style={{ backgroundColor: m.match.hex }} />
+                          <div>
+                            <p className="font-headline font-bold text-on-surface">{m.match.name}</p>
+                            {m.match.color_number && <p className="text-[10px] text-outline">{m.match.color_number}</p>}
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <span className={`inline-block rounded-full px-3 py-1 text-[10px] font-bold ${className}`}>{label}</span>
                         </div>
                       </div>
-
-                      {/* Arrow */}
-                      <div className="flex justify-center text-gray-400">
-                        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
+                      <div className="flex items-center gap-3 sm:hidden">
+                        <div className="w-8 h-8 rounded-md shrink-0" style={{ backgroundColor: m.source.hex }} />
+                        <p className="truncate text-sm font-headline font-bold text-on-surface flex-1">{m.source.name}</p>
+                        <svg className="h-4 w-4 text-outline shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                        <div className="w-8 h-8 rounded-md shrink-0" style={{ backgroundColor: m.match.hex }} />
+                        <p className="truncate text-sm font-headline font-bold text-on-surface flex-1">{m.match.name}</p>
+                        <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold ${className}`}>{shortLabel}</span>
                       </div>
-
-                      {/* Match color */}
-                      <div className="flex items-center gap-3">
-                        <ColorSwatch hex={m.match.hex} size="md" />
-                        <div>
-                          <p className="font-medium text-gray-900">{m.match.name}</p>
-                          {m.match.color_number && (
-                            <p className="text-xs text-gray-500">{m.match.color_number}</p>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Match Quality */}
-                      <div className="text-right">
-                        <span className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${className}`}>
-                          {label}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Mobile layout */}
-                    <div className="flex items-center gap-3 sm:hidden">
-                      <ColorSwatch hex={m.source.hex} size="sm" />
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-medium text-gray-900">
-                          {m.source.name}
-                        </p>
-                      </div>
-                      <svg className="h-4 w-4 flex-shrink-0 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                      <ColorSwatch hex={m.match.hex} size="sm" />
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-medium text-gray-900">
-                          {m.match.name}
-                        </p>
-                      </div>
-                      <span className={`flex-shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${className}`}>
-                        {shortLabel}
-                      </span>
-                    </div>
-                  </Link>
-                );
-              })}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className="rounded-lg border border-gray-200 p-12 text-center">
-            <p className="text-gray-500">
-              No cross-brand matches found between {formatBrandName(sourceBrand)} and{" "}
-              {formatBrandName(targetBrand)}.
-            </p>
-          </div>
-        )}
-
-        {/* Disclaimer */}
-        <p className="mt-6 text-center text-xs text-gray-500">
-          These are digital color matches based on color values. Actual pigments and finishes
-          differ between brands. Always verify with physical paint samples before purchasing.
-        </p>
-
-        {/* CTA */}
-        <div className="mt-12 rounded-lg bg-blue-50 p-8 text-center">
-          <h2 className="text-lg font-semibold text-blue-900">
-            Looking for a specific color?
-          </h2>
-          <p className="mt-2 text-sm text-blue-700">
-            Search our database of 25,000+ colors from all major paint brands.
-          </p>
-          <Link
-            href="/search"
-            className="mt-4 inline-block rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-medium text-white hover:bg-blue-700"
-          >
-            Search Colors
-          </Link>
+          ) : (
+            <div className="bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-12 text-center">
+              <p className="text-on-surface-variant">No cross-brand matches found between {sourceBrand.name} and {targetBrand.name}.</p>
+            </div>
+          )}
+          <p className="mt-6 text-center text-xs text-outline">Digital color matches based on color values. Always verify with physical paint samples.</p>
         </div>
+      </section>
 
-        {/* Other brand match links */}
-        <div className="mt-12">
-          <h2 className="text-lg font-semibold text-gray-900">
-            Other {formatBrandName(sourceBrand)} Matches
-          </h2>
-          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {MAJOR_BRANDS.filter(
-              (b) => b !== sourceBrandSlug && b !== targetBrandSlug
-            ).map((brandSlug) => {
-              const brandNames: Record<string, string> = {
-                "sherwin-williams": "Sherwin-Williams",
-                "benjamin-moore": "Benjamin Moore",
-                behr: "Behr",
-                valspar: "Valspar",
-                ppg: "PPG",
-              };
-              return (
-                <Link
-                  key={brandSlug}
-                  href={`/match/${sourceBrandSlug}/to/${brandSlug}`}
-                  className="rounded-lg border border-gray-200 p-4 text-center hover:shadow-md"
-                >
-                  <p className="text-sm font-medium text-gray-900">
-                    {formatBrandName(sourceBrand)} to {brandNames[brandSlug]}
-                  </p>
-                </Link>
-              );
-            })}
+      {/* Search CTA */}
+      <section className="py-20 px-6 md:px-12 bg-tertiary-fixed">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="font-headline text-3xl font-bold text-on-surface mb-4">Looking for a specific color?</h2>
+          <p className="text-on-surface-variant mb-8">Search our database of 25,000+ colors from all major paint brands.</p>
+          <Link href="/search" className="inline-block bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-headline font-bold text-base shadow-lg shadow-primary/20">Search Colors</Link>
+        </div>
+      </section>
+
+      {/* Other brand matches */}
+      <section className="py-16 px-6 md:px-12 bg-surface">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-6">Other {sourceBrand.name} Matches</h2>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {MAJOR_BRANDS.filter((b) => b !== sourceBrandSlug && b !== targetBrandSlug).map((slug) => (
+              <Link key={slug} href={`/match/${sourceBrandSlug}/to/${slug}`}
+                className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500">
+                <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">{sourceBrand.name} to {brandNames[slug]}</p>
+              </Link>
+            ))}
           </div>
         </div>
-      </main>
+      </section>
+
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "ItemList",
+        name: `${sourceBrand.name} to ${targetBrand.name} Equivalent Colors`,
+        numberOfItems: matches.length,
+        itemListElement: matches.map((m, i) => ({ "@type": "ListItem", position: i + 1, name: `${m.source.name} to ${m.match.name}`, url: `https://www.paintcolorhq.com/match/${sourceBrandSlug}/${m.source.slug}-to-${targetBrandSlug}` })),
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+          { "@type": "ListItem", position: 2, name: "Brands", item: "https://www.paintcolorhq.com/brands" },
+          { "@type": "ListItem", position: 3, name: sourceBrand.name, item: `https://www.paintcolorhq.com/brands/${sourceBrandSlug}` },
+          { "@type": "ListItem", position: 4, name: `${sourceBrand.name} to ${targetBrand.name}` },
+        ],
+      }} />
 
       <AdSenseScript />
       <Footer />
-
-      {/* JSON-LD structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
     </div>
   );
 }

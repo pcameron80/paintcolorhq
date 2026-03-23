@@ -40,52 +40,43 @@ export async function InspirationSection() {
   const resolved = await Promise.all(picked.map(resolvePalette));
 
   return (
-    <section className="mt-16">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-lg font-semibold text-gray-900">
-            Color Inspiration
-          </h2>
-          <p className="mt-2 text-sm text-gray-500">
-            Curated palettes to spark your next project — click any palette to explore.
-          </p>
-        </div>
+    <>
+      <div className="flex items-center justify-between mb-8">
+        <p className="text-sm text-on-surface-variant">
+          Curated palettes to spark your next project — click any palette to explore.
+        </p>
         <Link
           href="/inspiration"
-          className="text-sm font-medium text-brand-blue hover:text-brand-blue-dark"
+          className="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all"
         >
-          View all
+          View all <span>&rarr;</span>
         </Link>
       </div>
 
-      <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {resolved.map((palette) => (
           <Link
             key={palette.slug}
             href={`/inspiration/${palette.slug}`}
-            className="rounded-xl border border-gray-200 p-4 transition-shadow hover:shadow-md"
+            className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500 group"
           >
-            <div className="flex gap-2">
+            <div className={`grid h-48 rounded-lg overflow-hidden mb-6`} style={{ gridTemplateColumns: `repeat(${palette.swatches.length}, 1fr)` }}>
               {palette.swatches.map((swatch, i) => (
-                <div key={i} className="min-w-0 flex-1">
-                  <div
-                    className="aspect-square w-full rounded-lg border border-gray-200"
-                    style={{ backgroundColor: swatch.match?.hex ?? swatch.paletteHex }}
-                  />
-                  {swatch.match && (
-                    <p className="mt-1.5 truncate text-center text-[10px] text-gray-500">
-                      {swatch.match.name}
-                    </p>
-                  )}
-                </div>
+                <div
+                  key={i}
+                  style={{ backgroundColor: swatch.match?.hex ?? swatch.paletteHex }}
+                />
               ))}
             </div>
-            <p className="mt-3 text-sm font-semibold text-gray-900">
+            <h3 className="font-headline font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">
               {palette.name}
+            </h3>
+            <p className="text-xs text-outline tracking-wider uppercase">
+              {palette.swatches.length} Swatches
             </p>
           </Link>
         ))}
       </div>
-    </section>
+    </>
   );
 }

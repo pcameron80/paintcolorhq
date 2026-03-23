@@ -81,91 +81,91 @@ const faqs = [
   },
 ];
 
-export default function FAQPage() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
+// JSON-LD helper - all content is server-generated from trusted static values
+function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
 
+export default function FAQPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-screen flex-col bg-surface">
       <Header />
 
-      {/* FAQPage JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question", name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+          { "@type": "ListItem", position: 2, name: "FAQ", item: "https://www.paintcolorhq.com/faq" },
+        ],
+      }} />
 
       <main className="flex-1">
-        <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="mb-6 text-sm text-gray-500">
-            <Link href="/" className="hover:text-gray-700">
-              Home
-            </Link>
-            <span className="mx-2">/</span>
-            <span className="text-gray-900">FAQ</span>
-          </nav>
-
-          <h1 className="text-3xl font-bold text-gray-900">
-            Frequently Asked Questions
-          </h1>
-          <p className="mt-4 text-lg text-gray-600">
-            Common questions about paint colors, matching across brands, and
-            using our tools.
-          </p>
-
-          <div className="mt-10 divide-y divide-gray-200">
-            {faqs.map((faq, i) => (
-              <details key={i} className="group py-6" open={i === 0}>
-                <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-gray-900 hover:text-brand-blue">
-                  {faq.question}
-                  <svg
-                    className="h-5 w-5 shrink-0 text-gray-400 transition-transform group-open:rotate-180"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                    />
-                  </svg>
-                </summary>
-                <p className="mt-4 leading-relaxed text-gray-600">
-                  {faq.answer}
-                </p>
-              </details>
-            ))}
-          </div>
-
-          <div className="mt-12 rounded-lg border border-gray-200 bg-gray-50 p-6">
-            <h2 className="text-lg font-semibold text-gray-900">
-              Still have questions?
-            </h2>
-            <p className="mt-2 text-gray-600">
-              Can&apos;t find what you&apos;re looking for? Reach out and
-              we&apos;ll get back to you within 1–2 business days.
+        {/* Hero */}
+        <section className="relative pt-24 px-6 md:px-12 py-16">
+          <div className="max-w-4xl mx-auto">
+            <span className="text-primary font-bold text-xs uppercase tracking-widest">FAQ</span>
+            <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
+              Frequently Asked Questions
+            </h1>
+            <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+              Common questions about paint colors, matching across brands, and
+              using our tools.
             </p>
-            <Link
-              href="/contact"
-              className="mt-4 inline-block rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-blue-dark"
-            >
-              Contact Us
-            </Link>
           </div>
-        </div>
+        </section>
+
+        <section className="px-6 md:px-12 pb-20">
+          <div className="max-w-4xl mx-auto">
+            <div className="divide-y divide-outline-variant/20">
+              {faqs.map((faq, i) => (
+                <details key={i} className="group py-6" open={i === 0}>
+                  <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-on-surface hover:text-primary">
+                    {faq.question}
+                    <svg
+                      className="h-5 w-5 shrink-0 text-outline transition-transform group-open:rotate-180"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </summary>
+                  <p className="mt-4 leading-relaxed text-on-surface-variant">
+                    {faq.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+
+            <div className="mt-12 rounded-2xl border border-outline-variant/20 bg-surface-container-low p-8">
+              <h2 className="font-headline text-lg font-bold text-on-surface">
+                Still have questions?
+              </h2>
+              <p className="mt-2 text-on-surface-variant">
+                Can&apos;t find what you&apos;re looking for? Reach out and
+                we&apos;ll get back to you within 1–2 business days.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-4 inline-block rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary hover:bg-primary/90 transition-colors shadow-sm"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
       <AdSenseScript />
       <Footer />

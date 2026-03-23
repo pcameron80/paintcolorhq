@@ -32,18 +32,18 @@ export function ToolCrossSell({ exclude }: { exclude: string }) {
 
   return (
     <section className="mt-16 max-w-3xl">
-      <h2 className="text-2xl font-bold text-gray-900">More Tools</h2>
+      <h2 className="font-headline text-2xl font-bold text-on-surface">More Tools</h2>
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
         {filtered.map((tool) => (
           <Link
             key={tool.slug}
             href={tool.href}
-            className="group rounded-xl border border-gray-200 p-6 transition hover:shadow-md"
+            className="group rounded-xl border border-outline-variant/20 bg-surface-container-lowest p-6 transition hover:shadow-md"
           >
-            <h3 className="font-semibold text-gray-900 group-hover:text-brand-blue">
+            <h3 className="font-headline font-semibold text-on-surface group-hover:text-primary">
               {tool.title}
             </h3>
-            <p className="mt-1 text-sm text-gray-600">{tool.description}</p>
+            <p className="mt-1 text-sm text-on-surface-variant">{tool.description}</p>
           </Link>
         ))}
       </div>

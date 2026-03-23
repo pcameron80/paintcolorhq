@@ -7,6 +7,7 @@ import { ColorCard } from "@/components/color-card";
 import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/queries";
 import { getFamilyContent } from "@/lib/family-content";
 import { TrackPage } from "@/components/track-page";
+import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 
 export const revalidate = 3600;
 
@@ -15,23 +16,18 @@ const validFamilies = [
   "white", "off-white", "black", "gray", "brown", "beige", "tan", "neutral",
 ];
 
-const colorFamilies = [
-  { slug: "red", label: "Red" },
-  { slug: "orange", label: "Orange" },
-  { slug: "yellow", label: "Yellow" },
-  { slug: "green", label: "Green" },
-  { slug: "blue", label: "Blue" },
-  { slug: "purple", label: "Purple" },
-  { slug: "pink", label: "Pink" },
-  { slug: "white", label: "White" },
-  { slug: "off-white", label: "Off-White" },
-  { slug: "black", label: "Black" },
-  { slug: "gray", label: "Gray" },
-  { slug: "brown", label: "Brown" },
-  { slug: "beige", label: "Beige" },
-  { slug: "tan", label: "Tan" },
-  { slug: "neutral", label: "Neutral" },
-];
+const familyColors: Record<string, { hex: string; border?: boolean }> = {
+  red: { hex: "#DC2626" }, orange: { hex: "#EA580C" }, yellow: { hex: "#EAB308" },
+  green: { hex: "#16A34A" }, blue: { hex: "#2563EB" }, purple: { hex: "#9333EA" },
+  pink: { hex: "#EC4899" }, white: { hex: "#FFFFFF", border: true },
+  "off-white": { hex: "#F5F0E8", border: true }, black: { hex: "#1F2937" },
+  gray: { hex: "#9CA3AF" }, brown: { hex: "#8B6914" }, beige: { hex: "#D4C5A9" },
+  tan: { hex: "#D2B48C" }, neutral: { hex: "#C7C1B7" },
+};
+
+const undertoneColors: Record<string, string> = {
+  warm: "#E8B87D", cool: "#7DA8CC", neutral: "#B8B4AC",
+};
 
 interface PageProps {
   params: Promise<{ familySlug: string }>;
@@ -45,22 +41,22 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { familySlug } = await params;
   const name = familySlug.replace(/-/g, " ");
-
   const url = `https://www.paintcolorhq.com/colors/family/${familySlug}`;
   return {
     title: `${capitalize(name)} Paint Colors - All Brands`,
     description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Compare colors with hex codes and LRV values.`,
     alternates: { canonical: url },
-    openGraph: {
-      title: `${capitalize(name)} Paint Colors`,
-      description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more.`,
-      url,
-    },
+    openGraph: { title: `${capitalize(name)} Paint Colors`, description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more.`, url },
   };
 }
 
 function capitalize(s: string): string {
   return s.replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// JSON-LD helper — content is server-generated from trusted database values only
+function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
 export default async function ColorFamilyPage({ params, searchParams }: PageProps) {
@@ -73,17 +69,9 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
   const perPage = 60;
 
   const [colors, brands, totalCount] = await Promise.all([
-    getColorsByFamily(familySlug, {
-      brandSlug: brandFilter ?? undefined,
-      undertone: undertoneFilter ?? undefined,
-      limit: perPage,
-      offset: (currentPage - 1) * perPage,
-    }),
+    getColorsByFamily(familySlug, { brandSlug: brandFilter ?? undefined, undertone: undertoneFilter ?? undefined, limit: perPage, offset: (currentPage - 1) * perPage }),
     getAllBrands(),
-    getColorsByFamilyCount(familySlug, {
-      brandSlug: brandFilter ?? undefined,
-      undertone: undertoneFilter ?? undefined,
-    }),
+    getColorsByFamilyCount(familySlug, { brandSlug: brandFilter ?? undefined, undertone: undertoneFilter ?? undefined }),
   ]);
   const totalPages = Math.ceil(totalCount / perPage);
 
@@ -91,242 +79,200 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
   const familyContent = getFamilyContent(familySlug);
   const brandCount = brands.length;
   const baseUrl = `https://www.paintcolorhq.com/colors/family/${familySlug}`;
-
-  // JSON-LD structured data - built from trusted server-side data only
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "CollectionPage",
-        name: `${familyName} Paint Colors`,
-        description: `Browse ${totalCount} ${familyName.toLowerCase()} paint colors from ${brandCount} brands including Sherwin-Williams, Benjamin Moore, and Behr.`,
-        url: baseUrl,
-        numberOfItems: totalCount,
-        mainEntity: {
-          "@type": "ItemList",
-          numberOfItems: totalCount,
-          itemListElement: colors.slice(0, 20).map((color, i) => ({
-            "@type": "ListItem",
-            position: i + 1,
-            item: {
-              "@type": "Product",
-              name: color.name,
-              brand: { "@type": "Brand", name: color.brand.name },
-              color: color.hex,
-              url: `https://www.paintcolorhq.com/colors/${color.brand.slug}/${color.slug}`,
-            },
-          })),
-        },
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
-          { "@type": "ListItem", position: 2, name: "Colors", item: "https://www.paintcolorhq.com/colors" },
-          { "@type": "ListItem", position: 3, name: `${familyName} Paint Colors`, item: baseUrl },
-        ],
-      },
-    ],
-  };
+  const fc = familyColors[familySlug] ?? { hex: "#9CA3AF" };
 
   return (
-    <div className="min-h-screen bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <TrackPage
-        eventName="page_view_enriched"
-        params={{
-          page_type: "family",
-          color_family: familySlug,
-          brand_filter: brandFilter ?? "all",
-          undertone_filter: undertoneFilter ?? "all",
-          page_number: currentPage,
-          result_count: totalCount,
-        }}
-      />
+    <div className="min-h-screen bg-surface">
+      <JsonLd data={{
+        "@context": "https://schema.org", "@graph": [
+          { "@type": "CollectionPage", name: `${familyName} Paint Colors`, description: `Browse ${totalCount} ${familyName.toLowerCase()} paint colors from ${brandCount} brands.`, url: baseUrl, numberOfItems: totalCount,
+            mainEntity: { "@type": "ItemList", numberOfItems: totalCount, itemListElement: colors.slice(0, 20).map((color, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Product", name: color.name, brand: { "@type": "Brand", name: color.brand.name }, color: color.hex, url: `https://www.paintcolorhq.com/colors/${color.brand.slug}/${color.slug}` } })) },
+          },
+          { "@type": "BreadcrumbList", itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+            { "@type": "ListItem", position: 2, name: "Colors", item: "https://www.paintcolorhq.com/colors" },
+            { "@type": "ListItem", position: 3, name: `${familyName} Paint Colors`, item: baseUrl },
+          ]},
+        ],
+      }} />
+      <TrackPage eventName="page_view_enriched" params={{ page_type: "family", color_family: familySlug, brand_filter: brandFilter ?? "all", undertone_filter: undertoneFilter ?? "all", page_number: currentPage, result_count: totalCount }} />
       <Header />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <nav className="mb-6 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900">Home</Link>
-          <span className="mx-2">/</span>
-          <Link href="/colors" className="hover:text-gray-900">Colors</Link>
-          <span className="mx-2">/</span>
-          <span className="text-gray-900">{familyName}</span>
-        </nav>
-
-        <h1 className="text-3xl font-bold text-gray-900">
-          {familyName} Paint Colors
-        </h1>
-        <p className="mt-2 text-gray-600">
-          There are {totalCount} {familyName.toLowerCase()} paint colors across {brandCount} brands
-          on PaintColorHQ, including Sherwin-Williams, Benjamin Moore, and Behr. Use the brand and
-          undertone filters below to narrow your search.
-        </p>
-
-        {familyContent && familyContent.intro}
-
-        {/* Brand filter */}
-        <div className="mt-6 flex flex-wrap gap-2">
-          <Link
-            href={`/colors/family/${familySlug}${undertoneFilter ? `?undertone=${undertoneFilter}` : ""}`}
-            className={`rounded-full px-3 py-1 text-sm ${
-              !brandFilter
-                ? "bg-blue-100 text-brand-blue-dark font-medium"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-            }`}
-          >
-            All Brands
-          </Link>
-          {brands.map((b) => {
-            const params = new URLSearchParams();
-            params.set("brand", b.slug);
-            if (undertoneFilter) params.set("undertone", undertoneFilter);
-            return (
-              <Link
-                key={b.slug}
-                href={`/colors/family/${familySlug}?${params.toString()}`}
-                className={`rounded-full px-3 py-1 text-sm ${
-                  brandFilter === b.slug
-                    ? "bg-blue-100 text-brand-blue-dark font-medium"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-              >
-                {b.name}
-              </Link>
-            );
-          })}
+      {/* Hero */}
+      <section className="relative pt-24 px-6 md:px-12 py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto flex items-center gap-8">
+          <div className={`w-20 h-20 md:w-28 md:h-28 rounded-2xl shrink-0 shadow-lg ${fc.border ? "border border-outline-variant/30" : ""}`} style={{ backgroundColor: fc.hex }} />
+          <div>
+            <nav className="mb-4 text-sm text-on-surface-variant">
+              <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+              <span className="mx-2 text-outline">/</span>
+              <Link href="/colors" className="hover:text-primary transition-colors">Colors</Link>
+              <span className="mx-2 text-outline">/</span>
+              <span className="text-on-surface">{familyName}</span>
+            </nav>
+            <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-4">
+              {familyName} Paint Colors
+            </h1>
+            <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+              {totalCount.toLocaleString()} {familyName.toLowerCase()} paint colors across {brandCount} brands including Sherwin-Williams, Benjamin Moore, and Behr.
+            </p>
+          </div>
         </div>
+      </section>
 
-        {/* Undertone filter */}
-        <div className="mt-3 flex flex-wrap gap-2">
-          <Link
-            href={`/colors/family/${familySlug}${brandFilter ? `?brand=${brandFilter}` : ""}`}
-            className={`rounded-full px-3 py-1 text-sm ${
-              !undertoneFilter
-                ? "bg-purple-100 text-purple-700 font-medium"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-            }`}
-          >
-            All Undertones
-          </Link>
-          {(["warm", "cool", "neutral"] as const).map((tone) => {
-            const params = new URLSearchParams();
-            if (brandFilter) params.set("brand", brandFilter);
-            params.set("undertone", tone);
-            return (
-              <Link
-                key={tone}
-                href={`/colors/family/${familySlug}?${params.toString()}`}
-                className={`rounded-full px-3 py-1 text-sm capitalize ${
-                  undertoneFilter === tone
-                    ? "bg-purple-100 text-purple-700 font-medium"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-              >
-                {tone}
-              </Link>
-            );
-          })}
-        </div>
+      {/* Editorial Intro */}
+      {familyContent?.intro && (
+        <section className="bg-tertiary-fixed py-16 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="bg-primary h-1 w-12 mb-8" />
+            <div id="family-intro" className="max-w-4xl text-on-surface-variant leading-relaxed">
+              {familyContent.intro}
+            </div>
+            <ColorLinkEnhancer containerRef="family-intro" />
+          </div>
+        </section>
+      )}
 
-        {familyContent && familyContent.guide}
+      {/* Color Library */}
+      <section className="py-24 px-6 md:px-12 bg-surface-container-low">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
+            <div>
+              <h2 className="font-headline text-4xl font-bold tracking-tight text-on-surface">The Color Library</h2>
+              <p className="text-outline mt-2">{totalCount.toLocaleString()} colors{brandFilter ? ` from ${brandFilter}` : ""}{undertoneFilter ? ` \u00B7 ${undertoneFilter} undertone` : ""}.</p>
+            </div>
+          </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {colors.map((color) => (
-            <ColorCard
-              key={color.id}
-              name={color.name}
-              hex={color.hex}
-              brandName={color.brand.name}
-              brandSlug={color.brand.slug}
-              colorSlug={color.slug}
-              colorNumber={color.color_number}
-            />
-          ))}
-        </div>
+          {/* Brand filter */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            <Link
+              href={`/colors/family/${familySlug}${undertoneFilter ? `?undertone=${undertoneFilter}` : ""}`}
+              className={`rounded-full px-4 py-2 text-sm font-headline font-bold transition-all ${!brandFilter ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant hover:text-primary"}`}
+            >
+              All Brands
+            </Link>
+            {brands.map((b) => {
+              const p = new URLSearchParams();
+              p.set("brand", b.slug);
+              if (undertoneFilter) p.set("undertone", undertoneFilter);
+              return (
+                <Link key={b.slug} href={`/colors/family/${familySlug}?${p.toString()}`}
+                  className={`rounded-full px-4 py-2 text-sm font-headline font-bold transition-all ${brandFilter === b.slug ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant hover:text-primary"}`}
+                >{b.name}</Link>
+              );
+            })}
+          </div>
 
-        {colors.length === 0 && (
-          <p className="mt-12 text-center text-gray-500">
-            No {familyName.toLowerCase()} colors found
-            {brandFilter ? ` from this brand` : ""}.
-          </p>
-        )}
+          {/* Undertone filter */}
+          <div className="flex flex-wrap gap-2 mb-10">
+            <Link
+              href={`/colors/family/${familySlug}${brandFilter ? `?brand=${brandFilter}` : ""}`}
+              className={`rounded-full px-4 py-2 text-sm transition-all flex items-center gap-2 ${!undertoneFilter ? "bg-secondary text-on-secondary font-bold" : "bg-surface-container-lowest text-on-surface-variant hover:text-secondary"}`}
+            >
+              All Undertones
+            </Link>
+            {(["warm", "cool", "neutral"] as const).map((tone) => {
+              const p = new URLSearchParams();
+              if (brandFilter) p.set("brand", brandFilter);
+              p.set("undertone", tone);
+              return (
+                <Link key={tone} href={`/colors/family/${familySlug}?${p.toString()}`}
+                  className={`rounded-full px-4 py-2 text-sm capitalize transition-all flex items-center gap-2 ${undertoneFilter === tone ? "bg-secondary text-on-secondary font-bold" : "bg-surface-container-lowest text-on-surface-variant hover:text-secondary"}`}
+                >
+                  <span className="inline-block h-3.5 w-3.5 rounded-full shrink-0" style={{ backgroundColor: undertoneColors[tone] }} />
+                  {tone}
+                </Link>
+              );
+            })}
+          </div>
 
-        {totalPages > 1 && (
-          <nav className="mt-10 flex items-center justify-center gap-2">
-            {currentPage > 1 && (
-              <Link
-                href={(() => {
-                  const p = new URLSearchParams();
-                  if (brandFilter) p.set("brand", brandFilter);
-                  if (undertoneFilter) p.set("undertone", undertoneFilter);
-                  if (currentPage > 2) p.set("page", String(currentPage - 1));
-                  const qs = p.toString();
-                  return `/colors/family/${familySlug}${qs ? `?${qs}` : ""}`;
-                })()}
-                className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-              >
-                Previous
-              </Link>
-            )}
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+          {/* Color grid */}
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {colors.map((color) => (
+              <ColorCard key={color.id} name={color.name} hex={color.hex} brandName={color.brand.name} brandSlug={color.brand.slug} colorSlug={color.slug} colorNumber={color.color_number} />
+            ))}
+          </div>
+
+          {colors.length === 0 && (
+            <p className="mt-12 text-center text-on-surface-variant">No {familyName.toLowerCase()} colors found{brandFilter ? ` from this brand` : ""}.</p>
+          )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (() => {
+            function pageUrl(page: number) {
               const p = new URLSearchParams();
               if (brandFilter) p.set("brand", brandFilter);
               if (undertoneFilter) p.set("undertone", undertoneFilter);
               if (page > 1) p.set("page", String(page));
               const qs = p.toString();
-              return (
-                <Link
-                  key={page}
-                  href={`/colors/family/${familySlug}${qs ? `?${qs}` : ""}`}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium ${
-                    page === currentPage
-                      ? "bg-brand-blue text-white"
-                      : "border border-gray-200 text-gray-700 hover:bg-gray-50"
-                  }`}
-                >
-                  {page}
-                </Link>
-              );
-            })}
-            {currentPage < totalPages && (
-              <Link
-                href={(() => {
-                  const p = new URLSearchParams();
-                  if (brandFilter) p.set("brand", brandFilter);
-                  if (undertoneFilter) p.set("undertone", undertoneFilter);
-                  p.set("page", String(currentPage + 1));
-                  const qs = p.toString();
-                  return `/colors/family/${familySlug}${qs ? `?${qs}` : ""}`;
-                })()}
-                className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-              >
-                Next
-              </Link>
-            )}
-          </nav>
-        )}
-        {/* Cross-family navigation */}
-        <section className="mt-16 border-t border-gray-200 pt-8">
-          <h2 className="text-xl font-semibold text-gray-900">Browse Other Color Families</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {colorFamilies
-              .filter((f) => f.slug !== familySlug)
-              .map((f) => (
-                <Link
-                  key={f.slug}
-                  href={`/colors/family/${f.slug}`}
-                  className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
-                >
-                  {f.label}
-                </Link>
-              ))}
+              return `/colors/family/${familySlug}${qs ? `?${qs}` : ""}`;
+            }
+            const pages: (number | "ellipsis")[] = [];
+            const addPage = (n: number) => { if (n >= 1 && n <= totalPages && !pages.includes(n)) pages.push(n); };
+            addPage(1);
+            if (currentPage > 3) pages.push("ellipsis");
+            addPage(currentPage - 1);
+            addPage(currentPage);
+            addPage(currentPage + 1);
+            if (currentPage < totalPages - 2) pages.push("ellipsis");
+            addPage(totalPages);
+
+            return (
+              <nav className="mt-12 flex items-center justify-center gap-2">
+                {currentPage > 1 && (
+                  <Link href={pageUrl(currentPage - 1)} className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors">Previous</Link>
+                )}
+                {pages.map((page, i) =>
+                  page === "ellipsis" ? (
+                    <span key={`e${i}`} className="px-2 text-outline">...</span>
+                  ) : (
+                    <Link key={page} href={pageUrl(page)}
+                      className={`rounded-xl px-4 py-2.5 text-sm font-headline font-bold transition-all ${page === currentPage ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant border border-outline-variant/15 hover:text-primary"}`}
+                    >{page}</Link>
+                  )
+                )}
+                {currentPage < totalPages && (
+                  <Link href={pageUrl(currentPage + 1)} className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors">Next</Link>
+                )}
+              </nav>
+            );
+          })()}
+        </div>
+      </section>
+
+      {/* Guide content */}
+      {familyContent?.guide && (
+        <section className="py-16 px-6 md:px-12 bg-tertiary-fixed">
+          <div className="max-w-7xl mx-auto">
+            <div id="family-guide" className="max-w-4xl text-on-surface-variant">
+              {familyContent.guide}
+            </div>
+            <ColorLinkEnhancer containerRef="family-guide" />
           </div>
         </section>
-      </main>
+      )}
+
+      {/* Browse Other Families */}
+      <section className="py-20 px-6 md:px-12 bg-surface">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">Browse Other Color Families</h2>
+          <div className="flex flex-wrap gap-3">
+            {validFamilies
+              .filter((f) => f !== familySlug)
+              .map((f) => {
+                const fData = familyColors[f] ?? { hex: "#9CA3AF" };
+                return (
+                  <Link key={f} href={`/colors/family/${f}`}
+                    className="flex items-center gap-2 rounded-full bg-surface-container-lowest px-5 py-2.5 text-sm font-medium text-on-surface-variant transition-all hover:shadow-md hover:text-primary"
+                  >
+                    <span className={`inline-block h-5 w-5 rounded-full ${fData.border ? "border border-outline-variant/30" : ""}`} style={{ backgroundColor: fData.hex }} />
+                    {capitalize(f.replace(/-/g, " "))}
+                  </Link>
+                );
+              })}
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

@@ -15,7 +15,7 @@ const content: Record<string, BrandContent> = {
         <p>
           Sherwin-Williams is America&apos;s largest paint company, operating over 4,000 company-owned
           retail stores and offering a palette of 1,700+ colors. Their best-selling color —{" "}
-          <Link href="/colors/sherwin-williams/agreeable-gray-sw-7029" className="text-brand-blue hover:underline">
+          <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">
             Agreeable Gray SW 7029
           </Link>{" "}
           (LRV 60, warm undertone, hex #D4CDC3) — has been the top-selling paint color in the United
@@ -25,10 +25,10 @@ const content: Record<string, BrandContent> = {
         </p>
         <p>
           Other top Sherwin-Williams colors include{" "}
-          <Link href="/colors/sherwin-williams/pure-white-sw-7005" className="text-brand-blue hover:underline">Pure White SW 7005</Link>,{" "}
-          <Link href="/colors/sherwin-williams/alabaster-sw-7008" className="text-brand-blue hover:underline">Alabaster SW 7008</Link>,{" "}
-          <Link href="/colors/sherwin-williams/repose-gray-sw-7015" className="text-brand-blue hover:underline">Repose Gray SW 7015</Link>, and{" "}
-          <Link href="/colors/sherwin-williams/naval-sw-6244" className="text-brand-blue hover:underline">Naval SW 6244</Link>.
+          <Link href="/colors/sherwin-williams/pure-white-7005" className="text-brand-blue hover:underline">Pure White SW 7005</Link>,{" "}
+          <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster SW 7008</Link>,{" "}
+          <Link href="/colors/sherwin-williams/repose-gray-7015" className="text-brand-blue hover:underline">Repose Gray SW 7015</Link>, and{" "}
+          <Link href="/colors/sherwin-williams/naval-6244" className="text-brand-blue hover:underline">Naval SW 6244</Link>.
           Use Paint Color HQ&apos;s CIEDE2000-based matching to find the closest Benjamin Moore, Behr, or
           PPG equivalent for any of these colors, with exact Delta E scores.
         </p>

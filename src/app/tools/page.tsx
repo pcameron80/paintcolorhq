@@ -19,7 +19,7 @@ const tools = [
     href: "/tools/paint-calculator",
     icon: (
       <svg
-        className="h-8 w-8 text-brand-blue"
+        className="h-8 w-8 text-primary"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
@@ -40,7 +40,7 @@ const tools = [
     href: "/tools/color-identifier",
     icon: (
       <svg
-        className="h-8 w-8 text-brand-blue"
+        className="h-8 w-8 text-primary"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
@@ -61,7 +61,7 @@ const tools = [
     href: "/tools/room-visualizer",
     icon: (
       <svg
-        className="h-8 w-8 text-brand-blue"
+        className="h-8 w-8 text-primary"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
@@ -82,7 +82,7 @@ const tools = [
     href: "/tools/palette-generator",
     icon: (
       <svg
-        className="h-8 w-8 text-brand-blue"
+        className="h-8 w-8 text-primary"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
@@ -98,104 +98,65 @@ const tools = [
   },
 ];
 
+// JSON-LD helper - all content is server-generated from trusted static values
+function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
 export default function ToolsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-surface">
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "ItemList",
+        name: "Paint Tools",
+        description: "Free paint tools: palette generator, room color visualizer, photo color identifier, and paint calculator.",
+        numberOfItems: 4,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Paint Calculator", url: "https://www.paintcolorhq.com/tools/paint-calculator" },
+          { "@type": "ListItem", position: 2, name: "Photo Color Identifier", url: "https://www.paintcolorhq.com/tools/color-identifier" },
+          { "@type": "ListItem", position: 3, name: "Room Color Visualizer", url: "https://www.paintcolorhq.com/tools/room-visualizer" },
+          { "@type": "ListItem", position: 4, name: "Paint Color Palette Generator", url: "https://www.paintcolorhq.com/tools/palette-generator" },
+        ],
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+          { "@type": "ListItem", position: 2, name: "Tools", item: "https://www.paintcolorhq.com/tools" },
+        ],
+      }} />
+
       <Header />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <nav className="mb-6 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-900">
-            Home
-          </Link>
-          <span className="mx-2">/</span>
-          <span className="text-gray-900">Tools</span>
-        </nav>
+      <section className="relative pt-24 px-6 md:px-12 py-16">
+        <div className="max-w-7xl mx-auto">
+          <span className="text-primary font-bold text-xs uppercase tracking-widest">Tools</span>
+          <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
+            Paint Tools
+          </h1>
+          <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+            Free tools to help you plan your next paint project.
+          </p>
+        </div>
+      </section>
 
-        <h1 className="text-3xl font-bold text-gray-900">Paint Tools</h1>
-        <p className="mt-2 text-gray-600">
-          Free tools to help you plan your next paint project.
-        </p>
-
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <section className="px-6 md:px-12 pb-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2">
           {tools.map((tool) => (
             <Link
               key={tool.href}
               href={tool.href}
-              className="group rounded-xl border border-gray-200 p-6 transition-shadow hover:shadow-lg"
+              className="group rounded-xl border border-outline-variant/20 bg-surface-container-lowest p-8 transition-shadow hover:shadow-lg"
             >
               <div className="mb-4">{tool.icon}</div>
-              <h2 className="text-xl font-semibold text-gray-900 group-hover:text-brand-blue">
+              <h2 className="font-headline text-xl font-bold text-on-surface group-hover:text-primary">
                 {tool.title}
               </h2>
-              <p className="mt-2 text-sm text-gray-600">{tool.description}</p>
+              <p className="mt-2 text-sm text-on-surface-variant">{tool.description}</p>
             </Link>
           ))}
         </div>
-      </main>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            name: "Paint Tools",
-            description:
-              "Free paint tools: palette generator, room color visualizer, photo color identifier, and paint calculator.",
-            numberOfItems: 4,
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Paint Calculator",
-                url: "https://www.paintcolorhq.com/tools/paint-calculator",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Photo Color Identifier",
-                url: "https://www.paintcolorhq.com/tools/color-identifier",
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: "Room Color Visualizer",
-                url: "https://www.paintcolorhq.com/tools/room-visualizer",
-              },
-              {
-                "@type": "ListItem",
-                position: 4,
-                name: "Paint Color Palette Generator",
-                url: "https://www.paintcolorhq.com/tools/palette-generator",
-              },
-            ],
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://www.paintcolorhq.com",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Tools",
-                item: "https://www.paintcolorhq.com/tools",
-              },
-            ],
-          }),
-        }}
-      />
+      </section>
 
       <AdSenseScript />
       <Footer />

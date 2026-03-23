@@ -193,7 +193,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
   return (
     <div className="mt-8">
       {/* ---- SVG Room ---- */}
-      <div className="overflow-hidden rounded-xl border border-gray-200 bg-gray-100">
+      <div className="overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container">
         <svg
           viewBox="0 0 3430.1 1963"
           xmlns="http://www.w3.org/2000/svg"
@@ -431,21 +431,22 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
       </div>
 
       {/* ---- Controls ---- */}
-      <div className="mt-6 rounded-xl border border-gray-200 bg-white p-4 sm:p-6">
+      <div className="mt-6 rounded-2xl border border-outline-variant/20 bg-surface-container-lowest p-5 sm:p-8">
         {/* Region selector */}
+        <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Select Region</p>
         <div className="flex flex-wrap gap-2">
           {REGIONS.map((r) => (
             <button
               key={r.id}
               onClick={() => selectRegion(r.id)}
-              className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
+              className={`flex items-center gap-2.5 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-all ${
                 selected === r.id
-                  ? "border-brand-blue bg-blue-50 text-brand-blue-dark"
-                  : "border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50"
+                  ? "border-primary bg-primary-fixed text-on-primary-fixed shadow-sm"
+                  : "border-outline-variant/30 text-on-surface-variant hover:border-outline hover:bg-surface-container-low"
               }`}
             >
               <span
-                className="inline-block h-5 w-5 rounded border border-gray-300"
+                className="inline-block h-5 w-5 rounded-md border border-outline-variant/40 shadow-sm"
                 style={{ backgroundColor: colors[r.id] }}
               />
               {r.label}
@@ -453,7 +454,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
           ))}
           <button
             onClick={resetColors}
-            className="ml-auto rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-500 hover:border-gray-300 hover:bg-gray-50"
+            className="ml-auto rounded-xl border border-outline-variant/30 px-4 py-2.5 text-sm font-medium text-on-surface-variant hover:border-outline hover:bg-surface-container-low transition-all"
           >
             Reset All
           </button>
@@ -469,11 +470,11 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
               : null;
           if (!paletteOpts && !hasPopForRegion) return null;
           return (
-          <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
             {/* Color alternatives toggle */}
             {paletteOpts && (
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-medium text-gray-500">
+              <div className="flex items-center gap-2.5">
+                <span className="text-xs font-semibold text-on-surface-variant">
                   Palette options:
                 </span>
                 {paletteOpts.map((hex) => {
@@ -484,10 +485,10 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
                     <button
                       key={hex}
                       onClick={() => applyColor(normalized)}
-                      className={`h-8 w-8 rounded-lg border-2 transition-transform ${
+                      className={`h-9 w-9 rounded-lg border-2 transition-all ${
                         isActive
-                          ? "scale-110 border-brand-blue ring-2 ring-blue-200"
-                          : "border-gray-300 hover:scale-105 hover:border-gray-400"
+                          ? "scale-110 border-primary ring-2 ring-primary-fixed"
+                          : "border-outline-variant/40 hover:scale-105 hover:border-outline"
                       }`}
                       style={{ backgroundColor: normalized }}
                       title={normalized.toUpperCase()}
@@ -499,8 +500,8 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
 
             {/* Pop color options (shown on walls/accent wall) */}
             {popColors && popColors.length > 0 && POP_REGIONS.includes(selected) && (
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-medium text-amber-600">
+              <div className="flex items-center gap-2.5">
+                <span className="text-xs font-semibold text-secondary">
                   Pop:
                 </span>
                 {popColors.map((hex) => {
@@ -511,10 +512,10 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
                     <button
                       key={hex}
                       onClick={() => applyColor(normalized)}
-                      className={`h-8 w-8 rounded-lg border-2 transition-transform ${
+                      className={`h-9 w-9 rounded-lg border-2 transition-all ${
                         isActive
-                          ? "scale-110 border-amber-500 ring-2 ring-amber-200"
-                          : "border-gray-300 hover:scale-105 hover:border-gray-400"
+                          ? "scale-110 border-secondary ring-2 ring-secondary-container"
+                          : "border-outline-variant/40 hover:scale-105 hover:border-outline"
                       }`}
                       style={{ backgroundColor: normalized }}
                       title={`Pop: ${normalized.toUpperCase()}`}
@@ -528,51 +529,53 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
         })()}
 
         {/* Color picker */}
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <label className="text-sm font-medium text-gray-700">
-            {REGIONS.find((r) => r.id === selected)?.label} Color:
-          </label>
-          <input
-            type="color"
-            value={colors[selected]}
-            onChange={handlePickerChange}
-            className="h-10 w-14 cursor-pointer rounded border border-gray-300"
-          />
-          <div className="flex items-center rounded-lg border border-gray-300 bg-white">
-            <span className="pl-3 text-sm text-gray-400">#</span>
+        <div className="mt-6 pt-5 border-t border-outline-variant/15">
+          <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
+            {REGIONS.find((r) => r.id === selected)?.label} Color
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
             <input
-              type="text"
-              value={hexInput}
-              onChange={handleHexInput}
-              maxLength={6}
-              className="w-20 border-none bg-transparent px-1 py-2 text-sm text-gray-900 outline-none"
-              placeholder="D6D0C4"
+              type="color"
+              value={colors[selected]}
+              onChange={handlePickerChange}
+              className="h-11 w-14 cursor-pointer rounded-xl border border-outline-variant/30"
             />
+            <div className="flex items-center rounded-xl border border-outline-variant/30 bg-surface-container-low">
+              <span className="pl-3 text-sm text-outline">#</span>
+              <input
+                type="text"
+                value={hexInput}
+                onChange={handleHexInput}
+                maxLength={6}
+                className="w-20 border-none bg-transparent px-1 py-2.5 text-sm font-mono text-on-surface outline-none"
+                placeholder="D6D0C4"
+              />
+            </div>
+            <div
+              className="h-11 w-11 rounded-xl border border-outline-variant/30 shadow-sm"
+              style={{ backgroundColor: colors[selected] }}
+            />
+            <button
+              onClick={findMatches}
+              disabled={loading || hexInput.length !== 6}
+              className="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50 transition-colors shadow-sm"
+            >
+              {loading ? "Searching..." : "Find Paint Match"}
+            </button>
           </div>
-          <div
-            className="h-10 w-10 rounded-lg border border-gray-300"
-            style={{ backgroundColor: colors[selected] }}
-          />
-          <button
-            onClick={findMatches}
-            disabled={loading || hexInput.length !== 6}
-            className="rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {loading ? "Searching..." : "Find Paint Match"}
-          </button>
         </div>
 
         {/* Paint matches */}
         {matches.length > 0 && (
-          <div className="mt-4">
-            <h3 className="mb-2 text-sm font-semibold text-gray-700">
+          <div className="mt-6 pt-5 border-t border-outline-variant/15">
+            <p className="text-xs font-bold uppercase tracking-widest text-primary mb-4">
               Closest Paint Colors
-            </h3>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5">
+            </p>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
               {matches.map((m) => (
                 <div
                   key={m.id}
-                  className="group flex flex-col overflow-hidden rounded-lg border border-gray-200 transition-shadow hover:shadow-md"
+                  className="group flex flex-col overflow-hidden rounded-xl border border-outline-variant/20 bg-surface-container-low transition-shadow hover:shadow-md"
                 >
                   <button
                     onClick={() => applyColor(m.hex)}
@@ -580,19 +583,19 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
                     style={{ backgroundColor: m.hex }}
                     title={`Apply ${m.name}`}
                   >
-                    <span className="absolute inset-0 flex items-center justify-center bg-black/0 text-xs font-medium text-white opacity-0 transition-opacity group-hover:bg-black/30 group-hover:opacity-100">
+                    <span className="absolute inset-0 flex items-center justify-center bg-black/0 text-xs font-semibold text-white opacity-0 transition-opacity group-hover:bg-black/30 group-hover:opacity-100">
                       Apply
                     </span>
                   </button>
-                  <div className="p-2">
+                  <div className="p-2.5">
                     <Link
                       href={`/colors/${m.brandSlug}/${m.colorSlug}`}
-                      className="block text-xs font-medium text-gray-900 hover:text-brand-blue"
+                      className="block text-xs font-semibold text-on-surface hover:text-primary"
                     >
                       {m.name}
                     </Link>
-                    <p className="text-xs text-gray-500">{m.brandName}</p>
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-on-surface-variant">{m.brandName}</p>
+                    <p className="text-xs font-mono text-outline">
                       {m.hex.toUpperCase()}
                     </p>
                   </div>

@@ -177,18 +177,17 @@ export async function CuratedPalettes({
   }));
 
   return (
-    <section className="mt-16">
-      <h2 className="text-2xl font-bold text-gray-900">Room Palettes</h2>
-      <p className="mt-2 text-sm text-gray-500">
-        Color schemes built around this color — each swatch links to the
-        closest matching paint.
+    <section>
+      <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">Room Palettes</h2>
+      <p className="mt-2 text-sm text-on-surface-variant">
+        Color schemes built around this color — each swatch links to the closest matching paint.
       </p>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {resolved.map((palette) => (
           <div
             key={palette.name}
-            className="rounded-xl border border-gray-200 p-5"
+            className="rounded-xl bg-surface-container-lowest border border-outline-variant/10 p-5"
           >
             <div className="flex gap-2">
               {palette.colors.map((color, i) => {
@@ -196,16 +195,13 @@ export async function CuratedPalettes({
                   return (
                     <div key={i} className="min-w-0 flex-1">
                       <div
-                        className="aspect-square w-full rounded-lg border-2 border-gray-900 ring-2 ring-gray-900/10"
-                        style={{
-                          backgroundColor:
-                            color.match?.hex ?? color.paletteHex,
-                        }}
+                        className="aspect-square w-full rounded-lg border-2 border-on-surface ring-2 ring-on-surface/10"
+                        style={{ backgroundColor: color.match?.hex ?? color.paletteHex }}
                       />
-                      <p className="mt-1.5 text-center text-[10px] font-bold text-gray-900">
+                      <p className="mt-1.5 text-center text-[10px] font-bold text-on-surface">
                         {color.role}
                       </p>
-                      <p className="truncate text-center text-[10px] font-medium text-gray-700">
+                      <p className="truncate text-center text-[10px] font-medium text-on-surface-variant">
                         This Color
                       </p>
                     </div>
@@ -217,17 +213,18 @@ export async function CuratedPalettes({
                 return (
                   <Link key={i} href={href} className="group min-w-0 flex-1">
                     <div
-                      className="aspect-square w-full rounded-lg border border-gray-200 transition-shadow group-hover:shadow-md"
-                      style={{
-                        backgroundColor:
-                          color.match?.hex ?? color.paletteHex,
-                      }}
+                      className="aspect-square w-full rounded-lg border border-outline-variant/10 transition-shadow group-hover:shadow-md"
+                      style={{ backgroundColor: color.match?.hex ?? color.paletteHex }}
                     />
-                    <p className="mt-1.5 text-center text-[10px] font-medium text-gray-400">
+                    <p className="mt-1.5 text-center text-[10px] font-medium text-outline">
                       {color.role}
                     </p>
                     {color.match && (
-                      <p className="truncate text-center text-[10px] text-gray-500">
+                      <p className="truncate text-center text-[10px] text-on-surface-variant group-hover:text-primary flex items-center justify-center gap-1">
+                        <span
+                          className="inline-block h-2 w-2 rounded-full shrink-0"
+                          style={{ backgroundColor: color.match.hex }}
+                        />
                         {color.match.name}
                       </p>
                     )}
@@ -235,10 +232,10 @@ export async function CuratedPalettes({
                 );
               })}
             </div>
-            <h3 className="mt-4 font-semibold text-gray-900">
+            <h3 className="mt-4 font-headline font-bold text-on-surface">
               {palette.name}
             </h3>
-            <p className="mt-1 text-xs text-gray-500">{palette.description}</p>
+            <p className="mt-1 text-xs text-on-surface-variant">{palette.description}</p>
             <div className="mt-3">
               <AddPaletteToProject
                 colors={palette.colors
