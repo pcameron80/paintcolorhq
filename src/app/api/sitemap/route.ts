@@ -4,12 +4,13 @@ import { getAllBlogSlugs } from "@/lib/blog-posts";
 
 const BASE_URL = "https://www.paintcolorhq.com";
 const COLORS_PER_SITEMAP = 5000;
-// All 14 brands now included — Google is indexing 13.5k pages (2.6x the old
-// 5-brand sitemap). Domain authority supports full coverage as of March 2026.
+// Reduced to top 5 brands to improve indexed-to-submitted ratio.
+// HCU penalty recovery requires fewer, higher-quality pages in sitemap.
+const SITEMAP_BRANDS = ["sherwin-williams", "benjamin-moore", "behr", "ppg", "valspar"];
 
 export async function GET() {
   try {
-    const colorSlugs = await getAllColorSlugs();
+    const colorSlugs = await getAllColorSlugs({ brandSlugs: SITEMAP_BRANDS });
     const totalColorSitemaps = Math.ceil(colorSlugs.length / COLORS_PER_SITEMAP);
 
     // Build list of named sub-sitemaps

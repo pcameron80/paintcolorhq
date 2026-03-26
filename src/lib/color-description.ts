@@ -834,98 +834,23 @@ export function generateColorDescription(
   color: ColorWithBrand,
   matches: CrossBrandMatchWithColor[]
 ): string {
-  // Use both hex and name for hash — ensures similar hexes with different names get different content
-  const hash = hashStr(color.hex + color.name + color.brand.slug);
+  // Only genuinely unique, data-driven content per color.
+  // Templated prose removed to improve site-wide content quality signal.
   const props = deriveProps(color);
-  const lrv = color.lrv != null ? Number(color.lrv) : null;
-
-  // === PARAGRAPH 1: Character & Context ===
-
-  // 1. Character statement (always included)
-  const lightDesc = getLightDescription(color, props);
-  const feel = pick(getColorFeel(props), hash, 100);
-  const undertone = pick(getUndertonePhrase(props), hash, 101);
-  const characterSentence = pick(characterFrames, hash, 102)(
-    color.name,
-    color.brand.name,
-    lightDesc,
-    feel,
-    undertone
-  );
-
-  // 2. Room suggestion (always included)
-  const roomSentence = getRoomSuggestion(props, lrv, hash);
-
-  // 3. Color number sentence (when available)
-  const colorNumSentence = getColorNumberIntro(color, hash);
-
-  // 4. Cross-brand match (when available)
-  const matchSentence = getMatchSentence(matches, hash);
-
-  // 5. Design, lighting, coordination — include ALL three
-  const designStyle = getDesignStyle(props, hash);
-  const lighting = getLightingBehavior(props, hash);
-  const coordination = getCoordinationTip(color, props, hash);
-
-  const p1Sentences = [characterSentence, roomSentence];
-  if (colorNumSentence) p1Sentences.push(colorNumSentence);
-  if (matchSentence) p1Sentences.push(matchSentence);
-  p1Sentences.push(designStyle, lighting, coordination);
-
-  const paragraph1 = p1Sentences.join(" ");
-
-  // === PARAGRAPH 2: SEO Query Targeting (uses specific per-color data) ===
-  const queryTargeting = getQueryTargetingSentences(color, matches, props);
-  const paragraph2 = queryTargeting;
-
-  // NOTE: getPracticalTips, getTrimPairing, getFloorCountertopTip, getFixtureSuggestion
-  // are defined but not included — their content is too generic/templated across 25k pages
-  // and risks triggering a Helpful Content flag. Can be re-enabled once domain authority
-  // is strong enough to absorb the risk.
-
-  return [paragraph1, paragraph2].join("\n\n");
+  return getQueryTargetingSentences(color, matches, props);
 }
 
 export function generateMetaDescription(color: ColorWithBrand): string {
-  const hash = hashStr(color.hex + color.name);
   const props = deriveProps(color);
   const family = color.color_family || getHueName(props.hue);
   const lrv = color.lrv != null ? Math.round(Number(color.lrv)) : null;
-  const brandName = color.brand.name;
   const colorNum = color.color_number ? ` (${color.color_number})` : "";
-  const undertoneWord = color.undertone ? ` ${color.undertone} undertone.` : "";
+  const lrvPart = lrv != null ? `, LRV ${lrv}` : "";
+  const undertonePart = color.undertone ? `, ${color.undertone.toLowerCase()} undertone` : "";
 
-  // Multiple meta description patterns for variety
-  const patterns = [
-    () => {
-      const tempWord = props.temperature === "neutral" ? "" : `${props.temperature} `;
-      const lrvPart = lrv != null ? ` LRV ${lrv}.` : "";
-      return `${color.name}${colorNum} by ${brandName} — a ${props.lightness} ${tempWord}${family}. ${color.hex.toUpperCase()}.${lrvPart}${undertoneWord} See matches from 14 brands.`;
-    },
-    () => {
-      const lrvPart = lrv != null ? `, LRV ${lrv}` : "";
-      return `Explore ${brandName}'s ${color.name}${colorNum}, a ${props.lightness} ${family} (${color.hex.toUpperCase()}${lrvPart}). Cross-brand matches, palettes & room ideas.`;
-    },
-    () => {
-      const tempWord = props.temperature === "neutral" ? "neutral" : props.temperature;
-      const lrvPart = lrv != null ? ` with an LRV of ${lrv}` : "";
-      return `${color.name} by ${brandName} is a ${props.lightness}, ${tempWord} ${family}${lrvPart}. Find equivalent colors from Sherwin-Williams, Benjamin Moore, Behr & more.`;
-    },
-    () => {
-      const lrvPart = lrv != null ? ` LRV ${lrv}.` : "";
-      return `${brandName} ${color.name}${colorNum} (${color.hex.toUpperCase()}) — ${props.lightness} ${family}.${lrvPart} Match it across 14 paint brands, build palettes & visualize in a room.`;
-    },
-    () => {
-      const lrvPart = lrv != null ? `, LRV ${lrv}` : "";
-      const tempWord = props.temperature === "neutral" ? "" : `${props.temperature}-toned `;
-      return `${color.name} is a ${props.lightness} ${tempWord}${family} from ${brandName} (${color.hex.toUpperCase()}${lrvPart}). Compare across brands & generate palettes.`;
-    },
-  ];
-
-  const result = pick(patterns, hash, 900)();
+  const result = `${color.name}${colorNum} by ${color.brand.name} — ${color.hex.toUpperCase()}${lrvPart}${undertonePart}. ${family} with cross-brand matches from 14 paint brands.`;
 
   if (result.length <= 160) return result;
-  // Trim gracefully at last space before 157 chars
   const trimmed = result.slice(0, 157);
   const lastSpace = trimmed.lastIndexOf(" ");
   return trimmed.slice(0, lastSpace > 120 ? lastSpace : 157) + "...";

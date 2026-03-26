@@ -78,6 +78,9 @@ async function resolveHarmonies(hex: string) {
 
 interface PageProps { params: Promise<{ brandSlug: string; colorSlug: string }>; }
 
+// Top brands included in sitemap — smaller brands get noindex during HCU recovery
+const INDEXED_BRANDS = ["sherwin-williams", "benjamin-moore", "behr", "ppg", "valspar"];
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { brandSlug, colorSlug } = await params;
   const color = await getColorBySlug(brandSlug, colorSlug);
@@ -85,10 +88,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   const colorNum = color.color_number ? ` ${color.color_number}` : "";
   const undertoneTitle = color.undertone ? ` | ${color.undertone} Undertone` : "";
+  const shouldIndex = INDEXED_BRANDS.includes(brandSlug);
   return {
     title: `${color.name}${colorNum} by ${color.brand.name} | ${color.hex.toUpperCase()}${undertoneTitle}`,
     description: generateMetaDescription(color),
     alternates: { canonical: url },
+    ...(!shouldIndex && { robots: { index: false, follow: true } }),
     openGraph: {
       title: `${color.name}${colorNum} by ${color.brand.name}`,
       description: `${color.name} (${color.hex.toUpperCase()}) by ${color.brand.name}. Find closest matches from other brands.`,
@@ -124,7 +129,6 @@ export default async function ColorPage({ params }: PageProps) {
 
   const [matches, similarColors] = await Promise.all([getCrossBrandMatches(color.id), getSimilarColorsFromSameBrand(color)]);
   const description = generateColorDescription(color, matches);
-  const descriptionFirstParagraph = description.split("\n\n")[0];
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
   const harmonies = await resolveHarmonies(color.hex);
   const light = isLightColor(color.hex);
@@ -137,29 +141,17 @@ export default async function ColorPage({ params }: PageProps) {
   const undertone = color.undertone ?? "";
   const undertoneLower = undertone.toLowerCase();
 
+  // Only include FAQs with genuinely unique, data-specific answers
   if (color.undertone) {
-    const ud = undertoneLower === "warm" ? "Warm undertones bring a cozy, inviting feel and pair beautifully with earth tones and natural wood."
-      : undertoneLower === "cool" ? "Cool undertones create a crisp, refreshing atmosphere and pair well with grays, blues, and bright white trim."
-      : "Neutral undertones offer exceptional versatility, working well with both warm and cool accents.";
-    faqItems.push({ question: `What undertone does ${color.name} have?`, answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and belongs to the ${color.color_family} color family` : ""}. ${ud}` });
+    faqItems.push({ question: `What undertone does ${color.name} have?`, answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and belongs to the ${color.color_family} color family` : ""}.` });
   }
   if (matches.length > 0) {
-    const top = matches.slice(0, 3).map((m) => `${m.match_color.name} by ${m.match_color.brand.name}`).join(", ");
-    faqItems.push({ question: `What colors match ${color.name} from other brands?`, answer: `The closest cross-brand matches include ${top}. Always verify with real paint samples as pigments and finishes vary.` });
+    const top = matches.slice(0, 3).map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (${m.match_color.hex.toUpperCase()})`).join(", ");
+    faqItems.push({ question: `What colors match ${color.name} from other brands?`, answer: `The closest matches are ${top}. Always verify with physical samples.` });
   }
   if (lrv != null) {
-    const ld = lrv >= 65 ? "reflects significant light \u2014 great for small or dark rooms" : lrv >= 40 ? "balances light and depth \u2014 versatile for most rooms" : lrv >= 15 ? "absorbs more light, creating depth and intimacy" : "absorbs most light \u2014 best for accent walls or dramatic statements";
-    faqItems.push({ question: `What is the LRV of ${color.name}?`, answer: `${color.name} has an LRV of ${lrv.toFixed(1)} (0=black, 100=white). It ${ld}.` });
+    faqItems.push({ question: `What is the LRV of ${color.name}?`, answer: `${color.name} has an LRV of ${lrv.toFixed(1)}, where 0 is pure black and 100 is pure white.` });
   }
-  const effectiveLrv = lrv ?? 50;
-  let roomType: string, roomAnswer: string;
-  if (undertoneLower === "warm" && effectiveLrv >= 40) { roomType = "living rooms"; roomAnswer = `Yes \u2014 its warm undertone creates a welcoming atmosphere with an LRV of ${effectiveLrv.toFixed(1)}.`; }
-  else if (undertoneLower === "cool" && effectiveLrv >= 55) { roomType = "bathrooms"; roomAnswer = `Yes \u2014 its cool undertone evokes a clean, spa-like feel with an LRV of ${effectiveLrv.toFixed(1)}.`; }
-  else if (effectiveLrv >= 65) { roomType = "small rooms"; roomAnswer = `Yes \u2014 its high LRV of ${effectiveLrv.toFixed(1)} visually expands tight spaces.`; }
-  else if (effectiveLrv < 25) { roomType = "accent walls"; roomAnswer = `Best as an accent wall \u2014 its low LRV of ${effectiveLrv.toFixed(1)} creates drama. Balance with lighter walls and ample lighting.`; }
-  else if (undertoneLower === "warm") { roomType = "bedrooms"; roomAnswer = `Yes \u2014 its warm undertone fosters a cozy, restful feel with an LRV of ${effectiveLrv.toFixed(1)}.`; }
-  else { roomType = "kitchens"; roomAnswer = `Yes \u2014 it balances brightness and character with an LRV of ${effectiveLrv.toFixed(1)}.`; }
-  faqItems.push({ question: `Is ${color.name} good for ${roomType}?`, answer: roomAnswer });
 
   const matchesByBrand = matches.reduce((acc, match) => {
     const bn = match.match_color.brand.name;
@@ -221,7 +213,7 @@ export default async function ColorPage({ params }: PageProps) {
               </nav>
               <div className="bg-surface-container-high h-1 w-12 mb-6" />
               <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Technical Profile</h2>
-              <p className="text-on-surface-variant leading-relaxed mb-8">{descriptionFirstParagraph}</p>
+              <p className="text-on-surface-variant leading-relaxed mb-8">{description}</p>
             </div>
             <div className="space-y-0">
               {[
@@ -376,15 +368,6 @@ export default async function ColorPage({ params }: PageProps) {
         );
       })()}
 
-      {/* Full Description */}
-      <section className="bg-surface-container-low py-16 px-6 md:px-12">
-        <div className="max-w-4xl mx-auto space-y-4">
-          {description.split("\n\n").map((p, i) => (
-            <p key={i} className="text-base leading-relaxed text-on-surface-variant">{p}</p>
-          ))}
-        </div>
-      </section>
-
       {/* Complementary Colors */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
         <ComplementaryColors hex={color.hex} harmonies={harmonies} />
@@ -452,7 +435,7 @@ export default async function ColorPage({ params }: PageProps) {
       {/* JSON-LD */}
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebPage",
-        name: `${color.name} Paint Color`, description: descriptionFirstParagraph,
+        name: `${color.name} Paint Color`, description: description,
         url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
         breadcrumb: { "@type": "BreadcrumbList", itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
@@ -461,7 +444,7 @@ export default async function ColorPage({ params }: PageProps) {
         ]},
         about: {
           "@type": "Product", name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
-          description: descriptionFirstParagraph, brand: { "@type": "Brand", name: color.brand.name },
+          description: description, brand: { "@type": "Brand", name: color.brand.name },
           sku: color.color_number ?? undefined,
           additionalProperty: [
             { "@type": "PropertyValue", name: "Hex", value: color.hex.toUpperCase() },
