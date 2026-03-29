@@ -43,7 +43,11 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
         { status: 409 }
       );
     }
-    throw error;
+    console.error("Failed to add color to project:", error);
+    return NextResponse.json(
+      { error: "Failed to add color to project" },
+      { status: 500 },
+    );
   }
 }
 
@@ -55,7 +59,12 @@ export async function DELETE(request: NextRequest) {
   if (!user)
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { projectColorId } = await request.json();
-  await removeColorFromProject(supabase, projectColorId);
-  return NextResponse.json({ success: true });
+  try {
+    const { projectColorId } = await request.json();
+    await removeColorFromProject(supabase, projectColorId);
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Failed to remove color from project:", error);
+    return NextResponse.json({ error: "Failed to remove color" }, { status: 500 });
+  }
 }

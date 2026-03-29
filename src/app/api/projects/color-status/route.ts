@@ -12,6 +12,11 @@ export async function GET(request: NextRequest) {
   const colorId = request.nextUrl.searchParams.get("colorId");
   if (!colorId) return NextResponse.json({ savedIn: [] });
 
-  const savedIn = await getProjectsForColor(supabase, colorId);
-  return NextResponse.json({ savedIn });
+  try {
+    const savedIn = await getProjectsForColor(supabase, colorId);
+    return NextResponse.json({ savedIn });
+  } catch (error) {
+    console.error("Failed to fetch color status:", error);
+    return NextResponse.json({ savedIn: [], error: "Failed to load color status" }, { status: 500 });
+  }
 }
