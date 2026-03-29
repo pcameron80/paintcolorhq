@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { InspirationSection } from "@/components/inspiration-section";
 import { TrackPage } from "@/components/track-page";
 import { AdSenseScript } from "@/components/adsense-script";
+import { AdUnit } from "@/components/ad-unit";
 import { getAllPosts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
@@ -206,6 +207,11 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Display Ad — below tools, above brands */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">
+        <AdUnit slot="HOME_DISPLAY" format="horizontal" />
+      </div>
 
       {/* Curated Brands — Tonal Transition */}
       <section className="bg-surface py-20 px-6 md:px-12">

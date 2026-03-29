@@ -7,6 +7,7 @@ import { ColorCard } from "@/components/color-card";
 import { getBrandBySlug, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
 import { getBrandContent } from "@/lib/brand-content";
 import { AdSenseScript } from "@/components/adsense-script";
+import { AdUnit } from "@/components/ad-unit";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 import { getPostsByBrand } from "@/lib/blog-posts";
@@ -255,10 +256,17 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             })}
           </div>
 
-          {/* Color grid */}
+          {/* Color grid with in-feed ads */}
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {colors.map((color) => (
-              <ColorCard key={color.id} name={color.name} hex={color.hex} brandName={brand.name} brandSlug={brand.slug} colorSlug={color.slug} colorNumber={color.color_number} />
+            {colors.map((color, i) => (
+              <>{/* In-feed ad every 10 cards */}
+                {i > 0 && i % 10 === 0 && (
+                  <div key={`ad-${i}`} className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5">
+                    <AdUnit slot="BRAND_GRID_INFEED" format="fluid" layout="in-article" layoutKey="-fb+5w+4e-db+86" />
+                  </div>
+                )}
+                <ColorCard key={color.id} name={color.name} hex={color.hex} brandName={brand.name} brandSlug={brand.slug} colorSlug={color.slug} colorNumber={color.color_number} />
+              </>
             ))}
           </div>
 

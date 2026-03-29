@@ -17,6 +17,8 @@ import { getRetailerLinks } from "@/lib/retailer-links";
 import { TrackPage } from "@/components/track-page";
 import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
+import { AdUnit } from "@/components/ad-unit";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const revalidate = 3600;
 
@@ -284,6 +286,11 @@ export default async function ColorPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Display Ad — between specs and pairings */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">
+        <AdUnit slot="COLOR_DETAIL_MID" format="horizontal" />
+      </div>
+
       {/* Recommended Pairings — Room Preview */}
       <PairingSelector colorHex={color.hex} colorName={color.name} />
 
@@ -351,6 +358,11 @@ export default async function ColorPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Multiplex Ad — bottom of page */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">
+        <AdUnit slot="COLOR_DETAIL_BOTTOM" format="auto" />
+      </div>
+
       {/* JSON-LD */}
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebPage",
@@ -383,6 +395,7 @@ export default async function ColorPage({ params }: PageProps) {
         mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })),
       }} />}
 
+      <AdSenseScript />
       <Footer />
     </div>
   );

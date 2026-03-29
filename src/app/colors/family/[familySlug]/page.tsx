@@ -8,6 +8,8 @@ import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/q
 import { getFamilyContent } from "@/lib/family-content";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
+import { AdUnit } from "@/components/ad-unit";
+import { AdSenseScript } from "@/components/adsense-script";
 
 export const revalidate = 3600;
 
@@ -186,10 +188,17 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
             })}
           </div>
 
-          {/* Color grid */}
+          {/* Color grid with in-feed ads */}
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {colors.map((color) => (
-              <ColorCard key={color.id} name={color.name} hex={color.hex} brandName={color.brand.name} brandSlug={color.brand.slug} colorSlug={color.slug} colorNumber={color.color_number} />
+            {colors.map((color, i) => (
+              <>{/* In-feed ad every 10 cards */}
+                {i > 0 && i % 10 === 0 && (
+                  <div key={`ad-${i}`} className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5">
+                    <AdUnit slot="FAMILY_GRID_INFEED" format="fluid" layout="in-article" layoutKey="-fb+5w+4e-db+86" />
+                  </div>
+                )}
+                <ColorCard key={color.id} name={color.name} hex={color.hex} brandName={color.brand.name} brandSlug={color.brand.slug} colorSlug={color.slug} colorNumber={color.color_number} />
+              </>
             ))}
           </div>
 
@@ -274,6 +283,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
         </div>
       </section>
 
+      <AdSenseScript />
       <Footer />
     </div>
   );
