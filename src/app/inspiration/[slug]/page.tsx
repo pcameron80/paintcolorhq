@@ -167,6 +167,14 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
           </div>
         </div>
 
+        {palette.body && (
+          <div className="mb-12 max-w-3xl">
+            {palette.body.split("\n\n").map((paragraph, i) => (
+              <p key={i} className={`text-on-surface-variant leading-relaxed${i > 0 ? " mt-4" : ""}`}>{paragraph}</p>
+            ))}
+          </div>
+        )}
+
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-5">
           {swatches.map((swatch, i) => {
             const displayHex = swatch.match?.hex ?? swatch.paletteHex;

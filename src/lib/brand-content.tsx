@@ -418,23 +418,35 @@ const content: Record<string, BrandContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Kilz is best known as America&apos;s #1 primer brand, but they also offer a full line of
-          interior paints. Founded in 1954 and now a sister company to Behr under the Masco
-          Corporation, Kilz brings decades of stain-blocking and adhesion expertise to their paint
-          formulas. Kilz products are sold at Home Depot and Walmart.
+          Kilz is America&apos;s #1 primer brand, trusted by contractors and DIYers since 1954 for its
+          unmatched stain-blocking power. Originally formulated as an oil-based primer to seal water
+          stains, smoke damage, and tannin bleed, Kilz has expanded into a complete line of interior
+          paints. Now a sister brand to Behr under the Masco Corporation, Kilz products are sold at
+          Home Depot and Walmart nationwide — making them among the most accessible paint brands in
+          the country.
         </p>
         <p>
-          Their flagship paint line is <strong>Kilz Tribute</strong> — a premium interior paint +
-          primer with excellent stain-blocking and coverage (up to 400 sq ft per gallon), available in
-          Matte, Eggshell, Satin, and Semi-Gloss. They also make specialty paints including{" "}
-          <strong>Porch & Patio</strong> floor paint and <strong>Cabinet & Trim</strong>. Price
-          range: $30–$40 per gallon.
+          Their color palette focuses on versatile, livable neutrals — the warm whites, soft grays,
+          and clean greiges that pair well with their primer-based formulas. Explore the full range of
+          Kilz{" "}
+          <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>,{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>, and{" "}
+          <Link href="/colors/family/beige" className="text-brand-blue hover:underline">warm neutrals</Link>{" "}
+          below, and use our Delta E matching to find the closest equivalent in any other brand.
+        </p>
+        <p>
+          Top product lines include <strong>Kilz Tribute</strong> (premium interior paint + primer,
+          up to 400 sq ft per gallon, $35&ndash;$42/gallon), <strong>Kilz 2 All-Purpose</strong> (the
+          iconic water-based primer for most surfaces, $20&ndash;$25/gallon), <strong>Kilz Original</strong>{" "}
+          (oil-based, maximum stain-blocking for severe damage), and specialty lines including{" "}
+          <strong>Porch &amp; Patio</strong> floor paint and <strong>Cabinet &amp; Trim</strong>.
+          All Kilz paints are available in Matte, Eggshell, Satin, and Semi-Gloss.
         </p>
       </div>
     ),
     details: (
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
-        <h2 className="text-lg font-semibold text-gray-900">Kilz Cross-Brand Matching</h2>
+        <h2 className="text-lg font-semibold text-gray-900">Kilz Color Matching &amp; Comparisons</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
           Click any Kilz color below to find the closest matches from{" "}
           <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>,{" "}
@@ -443,7 +455,11 @@ const content: Record<string, BrandContent> = {
           and all other brands in our database — ranked by{" "}
           <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
             Delta E accuracy
-          </Link>.
+          </Link>. Browse Kilz{" "}
+          <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutrals</Link> and{" "}
+          <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, or use
+          the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check
+          the exact perceptual distance between any two colors.
         </p>
       </div>
     ),
@@ -487,16 +503,30 @@ const content: Record<string, BrandContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Hirshfield&apos;s is a fourth-generation, family-owned paint and decorating company based in
-          Minneapolis, Minnesota, with over 130 years of history. They are the largest manufacturer of
-          trade sales paint in Minnesota, producing over 5,000 gallons daily at their Minneapolis
-          facility. Hirshfield&apos;s operates 30+ decorating centers across Minnesota, North Dakota,
-          South Dakota, and Wisconsin.
+          Minneapolis, Minnesota, with over 130 years of industry history. Founded in 1894, they are
+          the largest manufacturer of trade sales paint in Minnesota, producing over 5,000 gallons
+          daily at their Minneapolis facility. Hirshfield&apos;s operates 30+ decorating centers across
+          Minnesota, North Dakota, South Dakota, and Wisconsin — making them the premier paint
+          destination for Upper Midwest homeowners and contractors.
         </p>
         <p>
-          Top product lines include <strong>Platinum Ceramic</strong> (premium interior),{" "}
-          <strong>Reserve</strong> (mid-premium interior), and <strong>Wash & Wear</strong> (solid
-          everyday flat). They also make <strong>Housecoat</strong> and <strong>House & Trim</strong>{" "}
-          for exteriors. Price range: $47–$69 per gallon.
+          Hirshfield&apos;s color palette leans toward sophisticated, regionally inspired hues — warm
+          earth tones that hold up against the gray Upper Midwest sky, rich jewel tones for cozy
+          interiors, and the clean neutrals that pair beautifully with natural wood and stone. Explore
+          their{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>,{" "}
+          <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blues</Link>, and{" "}
+          <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutrals</Link>{" "}
+          below, and use Paint Color HQ&apos;s CIEDE2000-based matching to find the closest nationally
+          available equivalent for any shade.
+        </p>
+        <p>
+          Top product lines include <strong>Platinum Ceramic</strong> (premium interior with ceramic
+          additives for extra durability, $65&ndash;$69/gallon), <strong>Reserve</strong> (mid-premium,
+          excellent hide and flow, $55&ndash;$60/gallon), <strong>Wash &amp; Wear</strong> (scrubbable
+          flat for family rooms, $47&ndash;$52/gallon), and the exterior lines{" "}
+          <strong>Housecoat</strong> and <strong>House &amp; Trim</strong>. Hirshfield&apos;s also
+          offers professional design services in-store &mdash; a real differentiator from big-box competitors.
         </p>
       </div>
     ),
@@ -508,7 +538,10 @@ const content: Record<string, BrandContent> = {
           equivalent from nationally available brands like{" "}
           <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
           <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and{" "}
-          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>. Use our{" "}
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>. Browse their{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link> and{" "}
+          <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutrals</Link>, or
+          use our{" "}
           <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check the
           exact Delta E difference between any two colors.
         </p>
@@ -517,19 +550,33 @@ const content: Record<string, BrandContent> = {
   },
 
   colorhouse: {
-    subtitle: "Explore Colorhouse's eco-friendly palette — with matches from all 14 brands",
+    subtitle: "Explore Colorhouse's zero-VOC palette — eco-friendly paint with matches from all 14 brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Colorhouse is a woman-owned, eco-friendly paint company founded in 2005 in Portland, Oregon.
-          Their paints are zero-VOC, low-odor, and free of reproductive toxins and chemical solvents —
-          making them an excellent choice for nurseries, bedrooms, and homes with children or pets.
-          Colorhouse paints are sold online and through select retailers.
+          Colorhouse is a woman-owned, eco-friendly paint company founded in 2005 in Portland, Oregon,
+          with an environmental mission at its core. Every Colorhouse paint is zero-VOC, low-odor, and
+          free of reproductive toxins, chemical solvents, and formaldehyde — making them one of the
+          safest paint options for nurseries, bedrooms, and homes with children, pets, or anyone
+          sensitive to fumes. Colorhouse paints are sold online and through select specialty retailers.
         </p>
         <p>
-          Their artist-crafted palette is organized into unique thematic families like Air, Stone,
-          Clay, Leaf, Water, and Petal. Available in Flat, Eggshell, and Semi-Gloss sheens. Price
-          range: $36–$50 per gallon.
+          What sets Colorhouse apart is their artist-curated, philosophy-driven color palette. Rather
+          than organizing colors by hue, Colorhouse groups them into thematic collections: <strong>Air</strong>{" "}
+          (airy whites and pale blues), <strong>Stone</strong> (cool grays and slate), <strong>Clay</strong>{" "}
+          (warm neutrals and terracottas), <strong>Leaf</strong> (earthy greens), <strong>Water</strong>{" "}
+          (aquas and teal), and <strong>Petal</strong> (soft pinks and lavenders). Browse their{" "}
+          <Link href="/colors/family/green" className="text-brand-blue hover:underline">greens</Link>,{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>, and{" "}
+          <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>{" "}
+          and use our matching to find the closest mainstream-brand equivalent.
+        </p>
+        <p>
+          Colorhouse paints are available in Flat, Eggshell, and Semi-Gloss sheens. Price range:
+          $36&ndash;$50 per gallon — premium pricing for the zero-VOC formulation, but competitive
+          with other eco-conscious paint brands. For nurseries and bedrooms, the zero-VOC certification
+          makes the price difference well worth it compared to standard latex paints. Their packaging
+          is also 100% recyclable, and the company offsets carbon emissions from manufacturing.
         </p>
       </div>
     ),
@@ -537,11 +584,18 @@ const content: Record<string, BrandContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Colorhouse Cross-Brand Matching</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Love a Colorhouse shade but want to compare options? Click any color below to see the
-          closest matches from all 14 brands in our database. For nursery-safe color ideas, see our{" "}
+          Love a Colorhouse shade but want to compare eco-friendly options from mainstream brands?
+          Click any color below to see the closest matches from all 14 brands in our database. For
+          nursery-safe color ideas, see our{" "}
           <Link href="/blog/best-nursery-paint-colors" className="text-brand-blue hover:underline">
             nursery paint colors guide
-          </Link>.
+          </Link>. Explore Colorhouse{" "}
+          <Link href="/colors/family/green" className="text-brand-blue hover:underline">greens</Link>{" "}
+          and{" "}
+          <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutrals</Link>, or
+          use the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check
+          exact Delta E distance between any two colors.
         </p>
       </div>
     ),
@@ -552,16 +606,30 @@ const content: Record<string, BrandContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Dutch Boy is a heritage paint brand founded in 1907, now a subsidiary of Sherwin-Williams.
-          Known for its iconic Dutch boy mascot and innovations like the Twist & Pour paint can,
-          Dutch Boy is primarily sold at Menards stores and is positioned as a value-to-mid-tier
-          paint brand with solid performance.
+          Dutch Boy is one of America&apos;s oldest paint brands, founded in 1907 and now a subsidiary
+          of Sherwin-Williams. Best known for its iconic Dutch boy mascot and the game-changing{" "}
+          <strong>Twist &amp; Pour</strong> paint can — which replaced the traditional lid that required
+          a screwdriver to open — Dutch Boy has always prioritized the DIY homeowner experience. Today,
+          Dutch Boy is sold primarily at Menards stores across the Midwest and is positioned as a
+          value-to-mid-tier paint with solid coverage and easy application.
         </p>
         <p>
-          Top product lines include <strong>Platinum Plus</strong> (premium, with water-based alkyd
-          technology for cabinets and trim), <strong>Dura Clean</strong> (dirt-resistant formula with
-          Kitchen & Bath variants), and <strong>Forever</strong> (interior/exterior with Arm & Hammer
-          odor-eliminating technology). Price range: $25–$45 per gallon at Menards.
+          Dutch Boy&apos;s color palette is broad, emphasizing the warm neutrals, soft whites, and
+          versatile greiges that appeal to homeowners updating living rooms, bedrooms, and kitchens.
+          Explore their{" "}
+          <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>,{" "}
+          <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link>, and{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>{" "}
+          below, and use our CIEDE2000-based matching to find the closest equivalent at your local
+          Home Depot or independent paint store.
+        </p>
+        <p>
+          Top product lines include <strong>Platinum Plus</strong> (premium interior with water-based
+          alkyd technology for cabinets and trim, $40&ndash;$45/gallon), <strong>Dura Clean</strong>{" "}
+          (dirt-resistant formula with Kitchen &amp; Bath variants, $30&ndash;$35/gallon), and{" "}
+          <strong>Forever</strong> (interior/exterior with Arm &amp; Hammer odor-eliminating technology,
+          $35&ndash;$42/gallon). If you don&apos;t have a Menards nearby, use our matching to find the
+          closest Sherwin-Williams or Behr equivalent for any Dutch Boy color.
         </p>
       </div>
     ),
@@ -577,7 +645,11 @@ const content: Record<string, BrandContent> = {
           ranked by{" "}
           <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
             Delta E accuracy
-          </Link>.
+          </Link>. Browse Dutch Boy{" "}
+          <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutrals</Link> and{" "}
+          <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, or use the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check exact
+          perceptual color distance.
         </p>
       </div>
     ),
