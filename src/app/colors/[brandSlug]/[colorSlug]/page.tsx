@@ -16,7 +16,7 @@ import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
 import { TrackPage } from "@/components/track-page";
 import { TrackedLink } from "@/components/tracked-link";
-import { RoomPreview } from "@/components/room-preview";
+import { PairingSelector } from "@/components/pairing-selector";
 
 export const revalidate = 3600;
 
@@ -285,88 +285,7 @@ export default async function ColorPage({ params }: PageProps) {
       </section>
 
       {/* Recommended Pairings — Room Preview */}
-      {(() => {
-        const [h, s] = hexToHsl(color.hex);
-        const trimHex = hslToHex(h, Math.max(s * 0.1, 3), 95);
-        const accentHex = hslToHex(h + 30, Math.max(s * 0.5, 15), 55);
-        const vizUrl = `/tools/room-visualizer?walls=${color.hex.slice(1)}&trim=${trimHex.slice(1)}&accent=${accentHex.slice(1)}`;
-        return (
-          <section className="bg-tertiary-fixed py-24 px-6 md:px-12">
-            <div className="max-w-7xl mx-auto">
-              <div className="mb-12">
-                <span className="inline-block px-4 py-1 bg-on-secondary-container/10 text-on-surface text-[10px] font-bold uppercase tracking-widest rounded-full mb-6">Recommended Pairings</span>
-                <h2 className="font-headline text-4xl font-extrabold text-on-surface tracking-tight leading-tight">
-                  Colors That Work With {color.name}
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                {/* Room visualization */}
-                <div>
-                  <div className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg border-[8px] border-surface-container-lowest">
-                    <RoomPreview wallColor={color.hex} trimColor={trimHex} accentColor={accentHex} className="w-full" />
-                  </div>
-                </div>
-
-                {/* Pairing swatches */}
-                <div className="space-y-6">
-                  <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="w-14 h-14 rounded-lg shrink-0" style={{ backgroundColor: color.hex }} />
-                      <div>
-                        <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Side Walls</p>
-                        <h4 className="font-headline font-bold text-on-surface">{color.name}</h4>
-                      </div>
-                    </div>
-                    <p className="text-[10px] text-outline">{color.hex.toUpperCase()}</p>
-                  </div>
-
-                  <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="w-14 h-14 rounded-lg shrink-0" style={{ backgroundColor: accentHex }} />
-                      <div>
-                        <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Accent Wall</p>
-                        <h4 className="font-headline font-bold text-on-surface">Feature Wall</h4>
-                      </div>
-                    </div>
-                    <p className="text-sm text-on-surface-variant">A tonal shift on the focal wall adds depth and interest.</p>
-                  </div>
-
-                  <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="w-14 h-14 rounded-lg shrink-0" style={{ backgroundColor: trimHex }} />
-                      <div>
-                        <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Trim &amp; Molding</p>
-                        <h4 className="font-headline font-bold text-on-surface">Soft White</h4>
-                      </div>
-                    </div>
-                    <p className="text-sm text-on-surface-variant">Clean trim that frames the walls without competing.</p>
-                  </div>
-
-                  <div className="flex flex-col gap-3 pt-2">
-                    <TrackedLink
-                      href={vizUrl}
-                      className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 text-center"
-                      eventName="cta_click"
-                      eventParams={{ cta_label: "visualize_pairings", color_name: color.name }}
-                    >
-                      Customize in Room Visualizer
-                    </TrackedLink>
-                    <TrackedLink
-                      href={`/tools/palette-generator?hex=${encodeURIComponent(color.hex)}`}
-                      className="inline-flex items-center justify-center gap-2 border-b-2 border-primary text-primary font-headline font-bold text-sm py-2 hover:gap-3 transition-all"
-                      eventName="cta_click"
-                      eventParams={{ cta_label: "full_palette", color_name: color.name }}
-                    >
-                      Explore full palette <span>&rarr;</span>
-                    </TrackedLink>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        );
-      })()}
+      <PairingSelector colorHex={color.hex} colorName={color.name} />
 
       {/* Complementary Colors */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
