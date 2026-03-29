@@ -90,7 +90,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   const colorNum = color.color_number ? ` ${color.color_number}` : "";
   const undertoneTitle = color.undertone ? ` | ${color.undertone} Undertone` : "";
-  const shouldIndex = INDEXED_BRANDS.includes(brandSlug);
+  const shouldIndex = INDEXED_BRANDS.includes(brandSlug) && !(color.undertone == null && color.lrv == null);
   return {
     title: `${color.name}${colorNum} by ${color.brand.name} | ${color.hex.toUpperCase()}${undertoneTitle}`,
     description: generateMetaDescription(color),
