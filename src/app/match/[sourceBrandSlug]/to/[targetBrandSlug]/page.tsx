@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { sourceBrandSlug, targetBrandSlug } = await params;
   const [sourceBrand, targetBrand] = await Promise.all([getBrandBySlug(sourceBrandSlug), getBrandBySlug(targetBrandSlug)]);
   if (!sourceBrand || !targetBrand) return { title: "Brand Match Not Found" };
-  const title = `${sourceBrand.name} to ${targetBrand.name} Equivalent Colors | Paint Color HQ`;
+  const title = `${sourceBrand.name} to ${targetBrand.name} Equivalent Colors`;
   const description = `Switching from ${sourceBrand.name} to ${targetBrand.name}? Find the closest matching colors between the two brands.`;
   const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/to/${targetBrandSlug}`;
   return { title, description, alternates: { canonical: url }, openGraph: { title, description, url } };

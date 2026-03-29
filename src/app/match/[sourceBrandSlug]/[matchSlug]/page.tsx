@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const note = best ? deltaELabel(Number(best.delta_e_score)) : "match";
   const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/${parsed.colorSlug}-to-${parsed.targetBrandSlug}`;
   return {
-    title: `${sourceColor.brand.name} ${sourceColor.name} to ${targetBrand.name} Match | Paint Color HQ`,
+    title: `${sourceColor.brand.name} ${sourceColor.name} to ${targetBrand.name} Match`,
     description: `${sourceColor.brand.name} ${sourceColor.name} (${sourceColor.hex.toUpperCase()}) to ${targetBrand.name}: ${note}. Compare hex, undertone, and LRV.`,
     alternates: { canonical: url },
     openGraph: { title: `${sourceColor.brand.name} ${sourceColor.name} to ${targetBrand.name} Match`, description: `Find the closest ${targetBrand.name} equivalent.`, url,

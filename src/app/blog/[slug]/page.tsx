@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return { title: "Post Not Found" };
   const url = `https://www.paintcolorhq.com/blog/${post.slug}`;
   return {
-    title: `${post.title} | Paint Color HQ`,
+    title: `${post.title}`,
     description: post.excerpt,
     alternates: { canonical: url },
     openGraph: {
