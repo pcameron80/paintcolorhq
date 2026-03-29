@@ -2,6 +2,15 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
+  // Enforce www canonical domain (301 redirect)
+  const host = request.headers.get("host") ?? "";
+  if (host === "paintcolorhq.com") {
+    const url = new URL(request.url);
+    url.host = "www.paintcolorhq.com";
+    url.protocol = "https";
+    return NextResponse.redirect(url, 301);
+  }
+
   // Supabase redirects OAuth codes to the Site URL (root).
   // Catch them here and forward to the callback route.
   const code = request.nextUrl.searchParams.get("code");
