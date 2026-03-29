@@ -21,10 +21,15 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
     return NextResponse.json({ error: "Name is required" }, { status: 400 });
   }
 
-  const project = await updateProject(supabase, projectId, {
-    name: name.trim(),
-  });
-  return NextResponse.json({ project });
+  try {
+    const project = await updateProject(supabase, projectId, {
+      name: name.trim(),
+    });
+    return NextResponse.json({ project });
+  } catch (error) {
+    console.error("Failed to update project:", error);
+    return NextResponse.json({ error: "Failed to update project" }, { status: 500 });
+  }
 }
 
 export async function DELETE(_request: NextRequest, { params }: RouteParams) {
@@ -36,6 +41,11 @@ export async function DELETE(_request: NextRequest, { params }: RouteParams) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { projectId } = await params;
-  await deleteProject(supabase, projectId);
-  return NextResponse.json({ success: true });
+  try {
+    await deleteProject(supabase, projectId);
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Failed to delete project:", error);
+    return NextResponse.json({ error: "Failed to delete project" }, { status: 500 });
+  }
 }

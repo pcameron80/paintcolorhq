@@ -18,45 +18,53 @@ export async function GET(request: NextRequest) {
   const { r, g, b } = hexToRgb(normalizedHex);
   const inputLab = rgbToLab(r, g, b);
 
-  // Fetch candidates within RGB range
-  let range = 40;
-  let candidates = await fetchCandidates(r, g, b, range, brand);
+  try {
+    // Fetch candidates within RGB range
+    let range = 40;
+    let candidates = await fetchCandidates(r, g, b, range, brand);
 
-  // Widen search if too few results
-  if (candidates.length < 10) {
-    range = 80;
-    candidates = await fetchCandidates(r, g, b, range, brand);
-  }
-
-  // Score each candidate using Delta E 2000
-  const scored = candidates.map((c) => {
-    let candidateLab: Lab;
-    if (c.lab_l != null && c.lab_a != null && c.lab_b_val != null) {
-      candidateLab = {
-        L: Number(c.lab_l),
-        a: Number(c.lab_a),
-        b: Number(c.lab_b_val),
-      };
-    } else {
-      candidateLab = rgbToLab(c.rgb_r, c.rgb_g, c.rgb_b);
+    // Widen search if too few results
+    if (candidates.length < 10) {
+      range = 80;
+      candidates = await fetchCandidates(r, g, b, range, brand);
     }
 
-    return {
-      id: c.id,
-      name: c.name,
-      hex: c.hex,
-      brandName: c.brand.name,
-      brandSlug: c.brand.slug,
-      colorSlug: c.slug,
-      colorNumber: c.color_number,
-      deltaE: Number(deltaE2000(inputLab, candidateLab).toFixed(2)),
-    };
-  });
+    // Score each candidate using Delta E 2000
+    const scored = candidates.map((c) => {
+      let candidateLab: Lab;
+      if (c.lab_l != null && c.lab_a != null && c.lab_b_val != null) {
+        candidateLab = {
+          L: Number(c.lab_l),
+          a: Number(c.lab_a),
+          b: Number(c.lab_b_val),
+        };
+      } else {
+        candidateLab = rgbToLab(c.rgb_r, c.rgb_g, c.rgb_b);
+      }
 
-  // Sort by Delta E and return top 10
-  scored.sort((a, b) => a.deltaE - b.deltaE);
+      return {
+        id: c.id,
+        name: c.name,
+        hex: c.hex,
+        brandName: c.brand.name,
+        brandSlug: c.brand.slug,
+        colorSlug: c.slug,
+        colorNumber: c.color_number,
+        deltaE: Number(deltaE2000(inputLab, candidateLab).toFixed(2)),
+      };
+    });
 
-  return NextResponse.json({ matches: scored.slice(0, 10) });
+    // Sort by Delta E and return top 10
+    scored.sort((a, b) => a.deltaE - b.deltaE);
+
+    return NextResponse.json({ matches: scored.slice(0, 10) });
+  } catch (error) {
+    console.error("Color match error:", error);
+    return NextResponse.json(
+      { error: "Failed to find color matches. Please try again." },
+      { status: 500 },
+    );
+  }
 }
 
 async function fetchCandidates(r: number, g: number, b: number, range: number, brand?: string | null) {
