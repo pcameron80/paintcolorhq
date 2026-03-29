@@ -2849,6 +2849,893 @@ const blogPosts: BlogPost[] = [
       </>
     ),
   },
+
+  /* ──────────────── PPG — Living Room Colors ──────────────── */
+  {
+    slug: "best-ppg-paint-colors-living-room",
+    title: "Best PPG Paint Colors for Living Rooms (2026)",
+    date: "2026-03-10",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "PPG's professional-grade palette delivers some of the best living room colors on the market — from warm neutrals to bold accent walls. Here are the top picks for 2026.",
+    coverColor: "#6d4741",
+    coverImage: "/blog/best-ppg-paint-colors-living-room.webp",
+    tags: ["PPG", "Living Room", "Design", "Neutrals"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          PPG is one of the world&apos;s largest paint manufacturers, supplying professional-grade coatings to contractors and homeowners alike. Their residential line — sold at The Home Depot, Menards, and independent paint stores — covers everything from crisp whites to deep jewel tones. For living rooms specifically, PPG&apos;s strength is in warm neutrals, earthy tones, and their expanded 2026 collection that leans into natural, grounded hues. Here are the standout living room picks for 2026.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Neutrals for Living Room Walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Neutral living room walls anchor a space without competing with furniture and art. PPG&apos;s neutral palette leans warmer than many competitors, which suits the 2026 trend away from cool grays.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F5F0E3" name="Antique White" brand="PPG" /> — a warm, creamy white that keeps living rooms bright without the harshness of pure white. It reads as an off-white in most lighting and pairs well with warm wood floors, leather furniture, and natural fiber rugs. Compare it side by side using our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D5C8B2" name="Aged Beige" brand="PPG" /> — a classic warm greige that has held its popularity for over a decade. It reads as pure taupe in south-facing rooms and shifts slightly cooler in north-facing rooms. Explore the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> to find PPG&apos;s full range of greige options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8BCA8" name="Parchment Paper" brand="PPG" /> — a soft, papery neutral with faint yellow undertones. It adds warmth to large living rooms that would otherwise feel cold with true gray. In open floor plans, it bridges the living area to kitchens painted in white or cream.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Greens for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Green has overtaken gray as the decade&apos;s defining living room color, and PPG&apos;s green palette offers excellent options across the spectrum — from pale sage to deep forest.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A8B89A" name="Sage Wisdom" brand="PPG" /> — a muted, dusty sage with gray undertones that prevents it from reading too bright. It works in both traditional and contemporary living rooms and pairs beautifully with natural linen upholstery, rattan furniture, and gold accents. See our <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for related shades across all brands.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6B7A5E" name="Forest Floor" brand="PPG" /> — a deeper, earthier green that adds grounding presence to large living rooms with high ceilings. It reads as a rich olive in warm lighting. Pair it with warm whites for trim and ceilings to prevent the room from feeling heavy.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Blues & Blue-Grays for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blue living rooms have long been associated with calm and sophistication. PPG&apos;s blue palette ranges from airy coastal tones to dramatic navy.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8FA8B8" name="Harbor Fog" brand="PPG" /> — a hazy blue-gray that captures the muted palette of coastal interiors. It works in both traditional and Scandinavian-inspired living rooms and shifts beautifully between blue and gray depending on the light. Explore the full <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#4A5A6A" name="Deep Current" brand="PPG" /> — a rich, deep blue-gray for accent walls and color-drenched living rooms. It stops short of navy, reading as a moody slate that feels modern and sophisticated. Use it on a single feature wall behind the sofa for maximum impact.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG&apos;s 2026 Color of the Year: Warm Mahogany</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is PPG&apos;s 2026 Color of the Year — a rich, warm brown-red that evokes aged wood, autumn leaves, and natural warmth. In a living room, it works best as an accent wall color rather than an all-over wall color. Behind a fireplace or along a single feature wall, it adds dramatic warmth that no other neutral can match. Read our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link> for how it stacks up against picks from Sherwin-Williams, Behr, and Benjamin Moore.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Paint Lines for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>PPG Diamond:</strong> PPG&apos;s flagship interior paint. Diamond offers excellent hide, scrubbability, and a tight formula that minimizes roller texture. It&apos;s available at The Home Depot and is the go-to for living room walls. Eggshell sheen is the standard for living rooms — it hides wall imperfections while being wipeable.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>PPG Timeless:</strong> Also sold at The Home Depot, Timeless is a one-coat paint+primer that works well for re-paints over similar colors. It covers slightly less surface area per gallon than Diamond but is faster to apply when doing color updates rather than full color changes.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to determine exactly how many gallons you need based on your living room dimensions. Don&apos;t forget to account for a second coat when doing a dramatic color change.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose a PPG Living Room Color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Start with your fixed elements.</strong> Your flooring, sofa fabric, and any existing furniture you&apos;re keeping are the anchors. Identify the undertone of your flooring first — warm honey oak calls for warmer wall colors, while cool gray tile allows for both warm and cool paint choices.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Test PPG samples on your actual wall.</strong> PPG offers sample quarts for about $5 at The Home Depot. Paint a 12×12 inch swatch on multiple walls in your living room. Check it at morning, midday, and evening light over 48 hours. For more on reading undertones, see our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint undertone guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Consider your room&apos;s orientation.</strong> North-facing living rooms get cool, indirect light — warm tones like Parchment Paper and Warm Mahogany help counteract the chill. South-facing rooms can handle cooler tones without looking washed out. Read our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing room guide</Link> for more detail.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>What is the most popular PPG color for living rooms?</strong> PPG&apos;s warm neutrals — particularly their greige and taupe range — are consistently the top sellers for living rooms. Aged Beige and similar warm neutrals have been consistent bestsellers for years.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Is PPG paint as good as Sherwin-Williams?</strong> PPG Diamond and Sherwin-Williams Duration are comparable in quality at similar price points. The main difference is color selection and distribution: Sherwin-Williams has more exclusive colors and dedicated stores, while PPG is widely available at The Home Depot. Read our <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">brand comparison guide</Link> for a full breakdown.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Can I find PPG color matches at other brands?</strong> Yes. Visit any <Link href="/brands/ppg" className="text-brand-blue hover:underline">PPG color page</Link> on our site to see the closest match from 14 brands in our database. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find PPG colors by name or code.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For more living room inspiration beyond PPG, see our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen color guide</Link> and our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a complete room color scheme.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Valspar — Bedroom Colors ──────────────── */
+  {
+    slug: "best-valspar-paint-colors-bedrooms",
+    title: "Best Valspar Paint Colors for Bedrooms (2026)",
+    date: "2026-03-11",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "Valspar's palette — exclusive to Lowe's — includes some of the most serene and sophisticated bedroom colors available. Here are the top picks for calm, restful, and stylish bedrooms in 2026.",
+    coverColor: "#7C7F70",
+    coverImage: "/blog/best-valspar-paint-colors-bedrooms.webp",
+    tags: ["Valspar", "Bedroom", "Design", "Calming Colors"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Valspar, available exclusively at Lowe&apos;s, offers over 2,000 colors and is known for its soft, livable hues that work particularly well in bedrooms. Valspar&apos;s strength lies in their mid-tone palette — colors that aren&apos;t too light or too dark — which is exactly what most bedrooms need. Their 2026 Color of the Year, Warm Eucalyptus, captures the calming, nature-inspired direction that defines bedroom design right now. This guide covers the best Valspar colors for every bedroom style.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Greens for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Green bedrooms are having their biggest moment in decades, and Valspar&apos;s muted, earthy greens are perfectly suited to the trend. These aren&apos;t the bright greens of the 1970s — they&apos;re grounded, sophisticated tones that feel restorative.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> — Valspar&apos;s 2026 Color of the Year is a grounded gray-green described as a &ldquo;new neutral.&rdquo; In a bedroom, it reads as a sophisticated muted sage that shifts from warm to cool depending on the time of day. It pairs beautifully with linen bedding, warm wood furniture, and brass or matte black hardware. See our full <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#9BA88A" name="Moss Landing" brand="Valspar" /> — a softer, lighter sage with warm yellow-green undertones. It creates a gentle, garden-inspired bedroom atmosphere without the drama of deeper greens. Works especially well in east-facing bedrooms that get morning light. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for similar shades.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Blues for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blue is perennially the most popular bedroom color — it&apos;s associated with calm, trust, and restful sleep. Valspar&apos;s blue range covers everything from pale sky tones to deep nighttime navy.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8C4CC" name="Morning Mist" brand="Valspar" /> — a pale, silvery blue with cool gray undertones. It reflects light beautifully in bedrooms with east or south exposure and creates a serene, spa-like atmosphere. It&apos;s one of Valspar&apos;s best-selling bedroom colors. Use our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom color guide</Link> for more blue options across brands.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6A7E8E" name="Slate Tile" brand="Valspar" /> — a medium-depth blue-gray that reads as a sophisticated, moody bedroom color without going full dark. It works in primary bedrooms where you want drama without the cave effect. Pair with warm white bedding and natural linen for balance.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#2C3D52" name="Midnight Sail" brand="Valspar" /> — a rich midnight navy for those who want a dramatic, cocoon-like bedroom. Dark bedrooms create a sense of enclosure that many people find deeply restful. Use this on all four walls or just the wall behind the headboard as an accent. Explore the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for more options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Neutrals for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Neutral bedrooms remain popular because they work with any bedding color and create a peaceful, uncluttered backdrop. Valspar&apos;s neutral palette leans toward warm taupes and greiges in 2026.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8BBA8" name="Toasted Almond" brand="Valspar" /> — a warm, sandy taupe that reads as a rich neutral in bedroom settings. It pairs especially well with off-white trim and creates an inviting, cocooning bedroom atmosphere. It&apos;s warm enough to feel cozy in north-facing bedrooms where light tends to be cool. Read our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">guide to north-facing rooms</Link> for more tips.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D8D0C5" name="Pale Linen" brand="Valspar" /> — a very light, barely-there warm gray. In bedrooms, it creates a clean, minimal backdrop that never looks cold or institutional. It&apos;s one of the most versatile bedroom neutrals in the Valspar line — it works with every bedding palette from bold jewel tones to all-white.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#9E8F80" name="Drift of Mist" brand="Valspar" /> — a medium warm gray with brown undertones. For master bedrooms with warm wood furniture and floors, this greige provides the perfect grounding backdrop. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how it compares to similar tones from Benjamin Moore and Sherwin-Williams.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Whites for Bedroom Trim & Ceilings</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Even if you choose a bold or colorful wall color, the right trim and ceiling white makes or breaks a bedroom. Valspar&apos;s white range includes several warm whites that complement their earthy palette.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F2EDE2" name="Swiss Coffee" brand="Valspar" /> — a warm, slightly creamy white that reads as pure white from a distance but adds warmth up close. It&apos;s the best Valspar trim white for bedrooms with warm wall colors like Toasted Almond or Warm Eucalyptus. See our comprehensive <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for more options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Paint Line for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Valspar Reserve:</strong> Valspar&apos;s premium interior paint with excellent hide and durability. For bedrooms, Reserve in eggshell sheen provides a soft, low-sheen finish that hides wall imperfections while remaining washable. It&apos;s thicker than standard Valspar paints, meaning better coverage per coat.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Valspar Signature:</strong> One step below Reserve, Signature offers solid performance at a lower price point. It&apos;s a good choice for guest bedrooms or children&apos;s rooms where the walls see more action and you might repaint in a few years anyway.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to determine how many gallons you need. Most standard bedrooms need 1-2 gallons for the walls in two coats.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>What is the most popular Valspar bedroom color?</strong> Valspar&apos;s soft blues and warm greiges are consistently their top bedroom sellers. Morning Mist (pale silvery blue) and Toasted Almond (warm taupe) are perennial favorites among homeowners.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Where can I buy Valspar paint?</strong> Valspar is sold exclusively at Lowe&apos;s stores nationwide. You can also order online at Lowes.com for in-store pickup or home delivery.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Can I find Benjamin Moore or Sherwin-Williams equivalents for Valspar colors?</strong> Yes. Visit any <Link href="/brands/valspar" className="text-brand-blue hover:underline">Valspar color page</Link> to find the closest cross-brand match. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find any Valspar color by name.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For more bedroom color inspiration, see our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom paint colors guide</Link> and our <Link href="/blog/best-behr-colors-for-bedrooms" className="text-brand-blue hover:underline">Behr bedroom colors guide</Link>.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Dunn-Edwards — Exterior Colors ──────────────── */
+  {
+    slug: "best-dunn-edwards-exterior-paint-colors",
+    title: "Best Dunn-Edwards Exterior Paint Colors (2026)",
+    date: "2026-03-12",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "Dunn-Edwards is the West Coast's premier paint brand, famous for low-VOC formulas and colors inspired by California's landscapes. Here are the best exterior picks for 2026.",
+    coverColor: "#C4A882",
+    coverImage: "/blog/best-dunn-edwards-exterior-paint-colors.webp",
+    tags: ["Dunn-Edwards", "Exterior", "Design", "Curb Appeal"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Dunn-Edwards is the dominant paint brand on the West Coast, with over 140 stores across California, Arizona, Nevada, and neighboring states. They&apos;re known for three things: low-VOC Evershield formulas designed for harsh UV and wildfire-smoke conditions, colors inspired by California&apos;s diverse landscapes, and a professional-grade quality standard that contractors in the Southwest trust implicitly. For exterior paint specifically, Dunn-Edwards is often the first choice of Los Angeles and San Francisco designers. Here are the best exterior colors for 2026.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Whites for Exterior Walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          White and near-white exteriors are the defining look of California architecture — from Spanish Colonial to Mid-Century Modern. Dunn-Edwards offers a wide range of whites that hold up to intense UV without yellowing.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0EBE0" name="White Picket Fence" brand="Dunn-Edwards" /> — a classic warm white that reads as clean and traditional on stucco, wood siding, and fiber cement. It has the faintest warm undertone that prevents it from looking clinical. It&apos;s one of the best-selling exterior whites in California. Browse our <Link href="/brands/dunn-edwards" className="text-brand-blue hover:underline">full Dunn-Edwards color catalog</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDE7D8" name="Cotton Ball" brand="Dunn-Edwards" /> — slightly warmer and creamier than White Picket Fence. Best for homes with warm-toned rooflines, terracotta tile, or natural stone accents. In the intense California sun, it holds its warmth rather than washing out. Compare warm whites using our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F5F2EA" name="Brilliant White" brand="Dunn-Edwards" /> — the cleanest, coolest white in the Dunn-Edwards exterior line. Use this for Contemporary and Modernist homes where crisp, architectural white is part of the design language. It also works as exterior trim on homes with any body color. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">guide to white paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Earth Tones for Exterior Walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Earth-toned exteriors — taupes, warm beiges, terracottas, and desert sands — are the signature of California residential architecture. Dunn-Edwards&apos; earth tone palette is unmatched, drawing directly from the California landscape for inspiration.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C4A882" name="Adobe Dust" brand="Dunn-Edwards" /> — a warm sandy tan that evokes the California desert and complements both modern and traditional architecture. It reads as a rich, natural taupe in morning light and a golden sand in afternoon sun. It&apos;s particularly stunning with terracotta tile roofs.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B89B78" name="Warm Sand" brand="Dunn-Edwards" /> — deeper and more saturated than Adobe Dust, this is a true desert sand color. Use it on homes surrounded by native California landscaping — it blends naturally with drought-tolerant gardens and gravel mulch. Explore the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for cross-brand equivalents.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#9E8470" name="Canyon Clay" brand="Dunn-Edwards" /> — a warm, rosy brown inspired by California&apos;s coastal canyons. It has subtle terracotta undertones that make it feel distinctly Californian. Use it with white trim and dark bronze window frames for a contemporary look.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Grays for Modern Exteriors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Warm and cool grays are increasingly popular on contemporary California homes — they photograph well, pair with sleek architectural details, and age gracefully in the California climate.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B2AEAD" name="Coastal Fog" brand="Dunn-Edwards" /> — a true mid-tone gray inspired by Bay Area marine layer mornings. It reads as a sophisticated, cool gray that works on contemporary homes with metal trim, black windows, and concrete accents. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> for more exterior gray options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8A8680" name="Stonewall" brand="Dunn-Edwards" /> — a darker, charcoal-influenced gray for homes where you want a strong architectural presence. It reads as a sophisticated dark neutral that pairs beautifully with white trim or crisp black trim. It holds up well to UV exposure without fading.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Paint Lines for Exteriors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Evershield Exterior:</strong> Dunn-Edwards&apos; flagship exterior formula. Designed for California&apos;s extreme climate conditions — intense UV, wildfire smoke, and coastal salt air — Evershield resists fading, cracking, and mildew. Low-VOC and GREENGUARD certified. It&apos;s the professional standard in the Southwest.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>EverSeal:</strong> A primer-sealer that prepares exterior surfaces (especially stucco) before topcoating. For homes that haven&apos;t been painted in more than 10 years, applying EverSeal before Evershield significantly improves adhesion and color uniformity.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Is Dunn-Edwards paint available outside California?</strong> Dunn-Edwards stores are primarily in California, Arizona, Nevada, Colorado, New Mexico, and Texas. Outside these states, Dunn-Edwards colors can sometimes be color-matched at independent paint stores. Find their closest equivalent using our <Link href="/search" className="text-brand-blue hover:underline">color search</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Why is Dunn-Edwards popular with professionals?</strong> Professional painters and contractors choose Dunn-Edwards for their thick formula (high hide per coat), strong UV resistance, and the expertise of their in-store color consultants. Their stores are trade-focused and often have professionals on staff who can recommend the right formula for specific surface types.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Can I find equivalent Sherwin-Williams or Benjamin Moore colors?</strong> Yes — visit any <Link href="/brands/dunn-edwards" className="text-brand-blue hover:underline">Dunn-Edwards color page</Link> to see the closest cross-brand match. Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a complete exterior color scheme.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Glidden — Every Room ──────────────── */
+  {
+    slug: "best-glidden-paint-colors",
+    title: "Best Glidden Paint Colors for Every Room (2026)",
+    date: "2026-03-13",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "Glidden is one of America's most accessible paint brands, available at The Home Depot. These are the best Glidden colors for living rooms, bedrooms, kitchens, and bathrooms in 2026.",
+    coverColor: "#A8B89A",
+    coverImage: "/blog/best-glidden-paint-colors.webp",
+    tags: ["Glidden", "Design", "Living Room", "Bedroom", "Budget Paint"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Glidden is one of the most widely available paint brands in America — sold at The Home Depot alongside PPG and Behr — and offers some of the best value in the industry. Part of the PPG family, Glidden shares manufacturing expertise with a professional-grade parent while keeping prices accessible. Their color selection covers all the classics, with a 2026 palette that leans into the warm neutrals, soft greens, and nature-inspired tones defining the current design moment. Here are the best Glidden colors by room for 2026.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Glidden Colors for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8C0B0" name="Antler Velvet" brand="Glidden" /> — a warm, mushroomy greige that anchors living rooms without feeling dated. It&apos;s the kind of neutral that looks different in every light: closer to tan in afternoon sun, closer to gray in the evening. Pair with warm-toned furniture and natural wood accents. Browse the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for similar tones.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D5CFC4" name="Bleached Linen" brand="Glidden" /> — a very light warm gray that reads almost as white in large, well-lit living rooms. It keeps living rooms airy and open while avoiding the sterile feeling of a true white. It&apos;s particularly popular for open-plan spaces where the living area flows into a kitchen or dining room.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8F9E8A" name="Herb Garden" brand="Glidden" /> — a medium-depth sage green that bridges the gap between subtle and statement. It works on a single accent wall behind a sofa or as an all-over living room color in rooms with good natural light. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link> for cross-brand green options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Glidden Colors for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8C5CC" name="Quiet Tide" brand="Glidden" /> — a soft, misty blue-gray that creates a spa-like bedroom atmosphere. It reads as pale blue in good light and shifts to soft gray in lower light — both effects are restful and calming. One of Glidden&apos;s most beloved bedroom colors. Compare it with other calming bedroom colors using our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">bedroom color guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E2D9CC" name="Warm Cashmere" brand="Glidden" /> — a pale, warm neutral for bedrooms where you want comfort and coziness without any color commitment. It works as a backdrop for any bedding palette and reads as a very warm off-white. Best for north-facing bedrooms where more neutral grays would feel cold.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7A8E85" name="Eucalyptus Leaf" brand="Glidden" /> — a deeper, more muted sage for those who want a bolder bedroom statement. It creates a cocooning effect that many people find deeply restful. Pair it with warm white bedding and natural linen curtains for a contemporary organic look. Read our <Link href="/blog/best-behr-colors-for-bedrooms" className="text-brand-blue hover:underline">bedroom colors guide</Link> for more options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Glidden Colors for Kitchens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F3EEE2" name="Butter Cream" brand="Glidden" /> — a warm, buttery white that keeps kitchens bright while adding warmth. It&apos;s particularly effective in kitchens with honey-toned wood cabinets where a cool white would clash. See more kitchen options in our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen color guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D0C4B4" name="Perfect Greige" brand="Glidden" /> — a versatile kitchen wall color that pairs with both white and wood cabinets. Its warm undertone prevents it from looking muddy under fluorescent kitchen lighting.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Glidden Colors for Bathrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8D8D8" name="Misty Aqua" brand="Glidden" /> — a soft, muted aqua with gray undertones that creates a serene, spa-like bathroom. It avoids the dated look of bright teals while still bringing a hint of color. Explore the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue-green color family</Link> for similar tones.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EAE3D8" name="Sand Dollar" brand="Glidden" /> — a warm, barely-there neutral for bathrooms where you want light, clean walls without stark white. It pairs with white subway tile, marble, and chrome or brass fixtures equally well.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Glidden Paint Lines Explained</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Glidden Premium:</strong> The mid-range option, covering most interior rooms adequately. Two coats typically provide good coverage. For bedrooms and low-traffic rooms, Premium is sufficient.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Glidden Diamond:</strong> Glidden&apos;s top-tier interior paint, co-branded with PPG. Offers better hide, washability, and durability than Premium. Use Diamond for kitchens, hallways, and bathrooms that see heavy use. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate your coverage needs.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Is Glidden good quality paint?</strong> Glidden Premium is a reliable mid-grade interior paint. For most residential rooms with typical use, it performs well. For high-traffic areas and kitchens, upgrade to Glidden Diamond or PPG Diamond for better washability.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Is Glidden the same as PPG?</strong> Glidden is owned by PPG and shares formulation technology, but is positioned as a more value-oriented line. PPG Diamond (also at The Home Depot) is the premium tier above Glidden.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Can I find cross-brand matches for Glidden colors?</strong> Yes. Browse <Link href="/brands/glidden" className="text-brand-blue hover:underline">Glidden colors</Link> on our site to find the closest Sherwin-Williams, Benjamin Moore, and Behr equivalents. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find Glidden colors by name.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Farrow & Ball — Living Room Colors ──────────────── */
+  {
+    slug: "best-farrow-ball-living-room-colors",
+    title: "Best Farrow & Ball Colors for Living Rooms (2026)",
+    date: "2026-03-14",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "Farrow & Ball's richly pigmented paints and curated palette of 132 colors make them the gold standard for living room color. Here are the best picks for 2026, from soft off-whites to dramatic dark tones.",
+    coverColor: "#848078",
+    coverImage: "/blog/best-farrow-ball-living-room-colors.webp",
+    tags: ["Farrow & Ball", "Living Room", "Design", "Premium Paint"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Farrow &amp; Ball is the most coveted paint brand in interior design. Crafted in Dorset, England since 1946, their paints are known for their complex, chalky pigments that create a depth of color you simply can&apos;t achieve with standard paint. Their limited palette — just 132 colors — means every shade has been carefully considered. In living rooms specifically, Farrow &amp; Ball colors have defined the modern British interior aesthetic that has spread worldwide. Here are the best Farrow &amp; Ball living room picks for 2026.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Farrow &amp; Ball Off-Whites for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Farrow &amp; Ball&apos;s whites are some of the most discussed paint colors in the world — they&apos;re complex, living whites that change dramatically with the light, unlike the flat whites of commodity paint brands.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F5F0E8" name="All White No. 2005" brand="Farrow & Ball" /> — the cleanest of Farrow &amp; Ball&apos;s whites, with just a touch of warmth. It reads as a true, honest white in most lighting but avoids the blue-white coldness of pure titanium white. It&apos;s the most popular white for living room ceilings in the Farrow &amp; Ball line. Compare with our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CAC3B9" name="Cornforth White No. 228" brand="Farrow & Ball" /> — technically a white but actually a soft gray. The name is brilliantly misleading — in good light it reads white, in low light it reads gray. This characteristic makes it perfect for living rooms where you want a neutral that stays interesting throughout the day. It&apos;s one of Farrow &amp; Ball&apos;s top-selling living room colors worldwide.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8BBA5" name="Skimming Stone No. 241" brand="Farrow & Ball" /> — a warm, creamy greige that photographs as a warm beige-white. In person, it has an almost chalky, matte quality that looks effortlessly sophisticated. It works equally well in Hamptons-style houses and contemporary London flats.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Farrow &amp; Ball Grays for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Farrow &amp; Ball&apos;s gray palette is where their complexity truly shines. These are not flat, corporate grays — they&apos;re grays with life, undertone, and character.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#9B9589" name="Elephant&apos;s Breath No. 229" brand="Farrow & Ball" /> — one of the most famous paint colors in the world. A warm, mole-toned gray that sits perfectly between warm and cool. In London townhouses and New York apartments alike, it&apos;s the living room gray. The name alone has sold millions of cans. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see Sherwin-Williams and Benjamin Moore equivalents.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#848078" name="Mole&apos;s Breath No. 26" brand="Farrow & Ball" /> — a deeper, more saturated version of Elephant&apos;s Breath. Where Elephant&apos;s Breath reads as a warm mid-gray, Mole&apos;s Breath reads as a true charcoal with warm brown undertones. For large living rooms with high ceilings, it adds drama without going fully dark. Explore the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Farrow &amp; Ball Blues for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Farrow &amp; Ball&apos;s blues are among the most celebrated in the design world — complex, multi-toned colors that change dramatically between day and night.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#2B4B6E" name="Hague Blue No. 30" brand="Farrow & Ball" /> — the most requested dark blue in interior design. A deep, inky blue-green that makes living rooms feel like intimate, jewel-box spaces. It pairs with warm brass and copper hardware, dark wood floors, and antique furniture for a maximalist, collector&apos;s living room look. See more bold blues in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#88A0B4" name="Stone Blue No. 86" brand="Farrow & Ball" /> — a softer, powdery blue for living rooms where you want color but not drama. It reads as a sophisticated, slightly faded blue — like the paint on a Georgian country house. Pairs beautifully with warm whites, aged wood, and natural linen.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Farrow &amp; Ball Greens for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6B7A5A" name="Calke Green No. 80" brand="Farrow & Ball" /> — a deep, dusty sage named after the National Trust&apos;s Calke Abbey. It reads as a museum-caliber color — complex, slightly faded, deeply sophisticated. Use it in living rooms with period features, original fireplaces, and antique furniture. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A8B895" name="Mizzle No. 266" brand="Farrow & Ball" /> — a gentle, rain-washed sage green that feels quintessentially British. It captures the soft green of English countryside hedgerows after rain. In a living room, it creates a serene, restorative atmosphere. It pairs well with off-white trim and natural linen.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">About Farrow &amp; Ball Paint Quality</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Farrow &amp; Ball uses water-based paints with high pigment loads and no synthetic brighteners. This creates their characteristic chalky, matte depth — but also means their paints can be less washable than commodity paints. For high-traffic living rooms, use their Estate Eggshell for walls (more durable) rather than Estate Emulsion. Modern Emulsion is for lower-traffic areas.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>On pricing:</strong> Farrow &amp; Ball costs $115–$130 per gallon, roughly 3–4× the price of Sherwin-Williams or Behr. For many design professionals, the color complexity justifies the cost. But if budget is a concern, use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest affordable equivalent from any brand.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>What is the most popular Farrow &amp; Ball color for living rooms?</strong> Elephant&apos;s Breath No. 229 and Cornforth White No. 228 are the two most requested Farrow &amp; Ball living room colors globally. Hague Blue No. 30 is the most popular bold accent color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Can I get Farrow &amp; Ball colors matched at other brands?</strong> Yes — but color-matched versions won&apos;t have the same pigment depth and chalky quality. Visit any <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball color page</Link> to see the closest Delta E match from 14 brands. Use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a complete room scheme.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Does Farrow &amp; Ball paint cover well?</strong> Farrow &amp; Ball recommends two coats for all colors, and in some cases (particularly dark-to-light changes), three coats. Their high pigment load means excellent hide per coat for like-to-like coverage.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Clark+Kensington ──────────────── */
+  {
+    slug: "best-clark-kensington-paint-colors",
+    title: "Best Clark+Kensington Paint Colors for Every Room (2026)",
+    date: "2026-03-15",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "Clark+Kensington, Ace Hardware's exclusive paint brand, offers paint+primer-in-one across 1,000+ colors. These are the best Clark+Kensington colors for living rooms, bedrooms, and more in 2026.",
+    coverColor: "#8C9E90",
+    coverImage: "/blog/best-clark-kensington-paint-colors.webp",
+    tags: ["Clark+Kensington", "Design", "Living Room", "Bedroom"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Clark+Kensington is Ace Hardware&apos;s exclusive house paint brand and one of the best-kept secrets in the paint world. It&apos;s a genuine paint+primer-in-one that covers most surfaces in two coats with no separate priming step — a major time saver for DIY painters. Available in over 1,000 colors exclusively at Ace Hardware stores, Clark+Kensington combines professional quality with accessible pricing. Here are the best Clark+Kensington colors for every room in 2026.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Clark+Kensington Colors for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C4B8A8" name="Rustic Taupe" brand="Clark+Kensington" /> — a warm, earthy taupe that defines the 2026 living room aesthetic. It has enough warmth to feel cozy while remaining neutral enough to work with any furniture palette. In south-facing rooms it glows warm and golden; in north-facing rooms it reads as a rich, sophisticated taupe. See our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing room guide</Link> for tips.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8C9E90" name="Meadow Mist" brand="Clark+Kensington" /> — a soft, muted green with gray undertones. Clark+Kensington&apos;s greens lean sophisticated and muted rather than bright and botanical, which makes them age well in living rooms. Pair with warm white trim for a fresh, contemporary look. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D0C8BC" name="Linen White" brand="Clark+Kensington" /> — a warm, neutral backdrop that reads between white and greige. It keeps living rooms bright while avoiding the cold feel of pure white. One of Clark+Kensington&apos;s best-selling neutral shades, it works in any room with any style.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#4A5560" name="Navy Coat" brand="Clark+Kensington" /> — a rich, dark navy for bold living room accent walls. Navy is the enduring dramatic choice for living rooms, and Clark+Kensington&apos;s version has a slightly blue-gray quality that feels sophisticated rather than stark. Explore the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Clark+Kensington Colors for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8C0C8" name="Morning Quiet" brand="Clark+Kensington" /> — a pale, slightly blue-gray that creates a restful bedroom atmosphere. It&apos;s serene without feeling cold, particularly in bedrooms with warm wood furniture. Compare with calming blues in our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">bedroom color guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E0D8CC" name="Soft Cream" brand="Clark+Kensington" /> — a warm, barely-there neutral for low-commitment bedroom refreshes. It reads as warm white in most lighting and works as a blank canvas for any bedding or furniture choice. See cross-brand equivalents at our <Link href="/brands/clark-kensington" className="text-brand-blue hover:underline">Clark+Kensington brand page</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7A8C7E" name="Stone Cottage" brand="Clark+Kensington" /> — a medium-depth sage green for bedrooms where you want a calming, nature-inspired cocoon. It pairs beautifully with natural wood furniture and warm white bedding for a contemporary organic look.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Clark+Kensington Colors for Kitchens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0EAD8" name="Cream Linen" brand="Clark+Kensington" /> — a warm, creamy kitchen white that keeps the space bright and inviting. For white kitchen cabinets, this warm white avoids the clinical feel of stark white while keeping things clean and fresh. See our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen color guide</Link> for more options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#678475" name="Sage Advice" brand="Clark+Kensington" /> — a medium sage for kitchen cabinet painting. Clark+Kensington&apos;s Advance formula (ask in-store) creates a hard, enamel-like finish on cabinets that resists grease and moisture.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Choose Clark+Kensington?</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The key advantage of Clark+Kensington is convenience — Ace Hardware locations are often closer to residential neighborhoods than Home Depot or Lowe&apos;s. For small projects, touch-ups, and quick room refreshes, being able to drive 5 minutes instead of 30 is a real benefit. The paint+primer-in-one formula also means you can typically skip a primer coat on previously painted surfaces in good condition, saving both time and money.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For color assistance, use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a complete room color scheme, or our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how Clark+Kensington colors stack up against other brands. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate gallons needed.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Is Clark+Kensington a good paint brand?</strong> Clark+Kensington is a solid mid-grade paint brand. Its paint+primer-in-one formula covers well on most interior surfaces. For high-traffic areas, consider their premium line. It consistently outperforms paint brands at the same price point.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Where is Clark+Kensington sold?</strong> Exclusively at Ace Hardware stores nationwide. You can also order through the Ace Hardware website for in-store pickup.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Can I find equivalents for Clark+Kensington colors?</strong> Yes. Visit <Link href="/brands/clark-kensington" className="text-brand-blue hover:underline">Clark+Kensington on our site</Link> to find the closest cross-brand matches, or use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find any color by name.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── HGTV Home by Sherwin-Williams ──────────────── */
+  {
+    slug: "best-hgtv-home-sherwin-williams-colors",
+    title: "Best HGTV Home by Sherwin-Williams Paint Colors (2026)",
+    date: "2026-03-16",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "HGTV Home by Sherwin-Williams brings designer-curated color palettes to any home. Here are the standout colors from the 2026 collection — every room, every style.",
+    coverColor: "#B8A992",
+    coverImage: "/blog/best-hgtv-home-sherwin-williams-colors.webp",
+    tags: ["HGTV Home", "Sherwin-Williams", "Design", "2026"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          HGTV Home by Sherwin-Williams is a curated sub-brand that brings the design expertise of HGTV&apos;s shows and designers to Sherwin-Williams&apos; professional-grade paint. The collection is sold exclusively at Lowe&apos;s and features colors vetted by HGTV&apos;s design team for on-trend, livable appeal. Every few years, HGTV Home also releases a Color Collection — a coordinated palette of colors designed to work together across a whole home. The 2026 HGTV Home collection leans into warm, earthy neutrals and nature-inspired tones. Here are the standout colors.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">HGTV Home 2026 Color Collection</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="HGTV Home by Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — the anchor neutral of the 2026 HGTV Home collection. A warm, sandy tan that bridges the gap between beige and gray with understated sophistication. It works in living rooms, dining rooms, and bedrooms and is one of the key 2026 Color of the Year picks. Read our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link> for full context.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The 2026 HGTV Home collection is built around warm naturals — taupes, warm whites, sage greens, and dusty blues — that coordinate across rooms for a cohesive whole-home look. The palette is deliberately livable: these are colors that photograph well for social media but also genuinely work as daily-life backdrops.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best HGTV Home Colors for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8BDA8" name="Antique Lace" brand="HGTV Home" /> — a creamy, warm neutral that feels immediately welcoming in living rooms. It has just enough warmth to feel cozy in north-facing rooms and just enough neutrality to avoid looking orange in south-facing sun. Pair it with warm wood tones and textural fabrics for the 2026 &ldquo;organic comfort&rdquo; living room look.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#9EA88E" name="Dried Herb" brand="HGTV Home" /> — a muted, dusty sage that captures the grounded, nature-inspired mood of 2026 interior design. It reads as a sophisticated, earthy green that works in both open-plan and traditional living room settings. Explore the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for cross-brand comparisons.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7C8898" name="Quiet Rain" brand="HGTV Home" /> — a calm, dusty blue for living rooms where you want a fresh, airy quality without the brightness of sky blue. It reads as a sophisticated blue-gray that pairs with warm whites, natural fiber rugs, and wood furniture. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best HGTV Home Colors for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D8D0C5" name="Warm Mist" brand="HGTV Home" /> — a pale, barely-there neutral that creates a restful bedroom atmosphere. It reads as warm white in bright rooms and as a soft warm gray in lower light. One of the most versatile HGTV Home bedroom colors because it works with every bedding palette.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8A9898" name="Aged Teal" brand="HGTV Home" /> — a muted, dusty teal-gray that creates a sophisticated, moody bedroom. It avoids the brightness of vibrant teal while keeping a hint of color personality. Pair with warm white trim and natural wood furniture. Compare with our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom colors guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best HGTV Home Colors for Kitchens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8E0D0" name="Antique White" brand="HGTV Home" /> — a warm kitchen white that HGTV&apos;s designers return to repeatedly for cabinet and wall applications. It has a clean, fresh feel while avoiding the stark coldness of blue-toned whites. For more kitchen color options, see our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen color guide</Link> and the <Link href="/blog/best-sherwin-williams-kitchen-colors" className="text-brand-blue hover:underline">Sherwin-Williams kitchen colors guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">About HGTV Home Paint Quality</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          HGTV Home by Sherwin-Williams uses Sherwin-Williams&apos; professional formulas, which means it benefits from the same quality control and pigment technology as Sherwin-Williams Duration, Emerald, and other premium lines. The main difference is curation — HGTV Home colors are selected for trend-forward appeal and whole-home coordination, while the broader Sherwin-Williams line includes everything from historical colors to industrial coatings.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to plan your project, and visit any <Link href="/brands/hgtv-home" className="text-brand-blue hover:underline">HGTV Home color page</Link> to find cross-brand equivalents from Benjamin Moore, Behr, and other brands.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Where can I buy HGTV Home by Sherwin-Williams?</strong> Exclusively at Lowe&apos;s stores nationwide. It is not available at Sherwin-Williams stores.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Is HGTV Home the same quality as Sherwin-Williams?</strong> Yes — HGTV Home uses Sherwin-Williams formulations and color technology. The quality is equivalent to Sherwin-Williams Harmony and SuperPaint lines.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Can I find Sherwin-Williams equivalents for HGTV Home colors?</strong> Many HGTV Home colors are exact Sherwin-Williams colors with the same formula. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find any HGTV Home color and see matches across all brands.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Cabot — Exterior Stain Colors ──────────────── */
+  {
+    slug: "best-cabot-exterior-stain-colors",
+    title: "Best Cabot Exterior Stain Colors for Decks & Siding (2026)",
+    date: "2026-03-17",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "Cabot is North America's leading exterior wood stain brand. These are the best Cabot stain colors for decks, fences, siding, and wood surfaces — with finish and application tips for 2026.",
+    coverColor: "#8B6B4A",
+    coverImage: "/blog/best-cabot-exterior-stain-colors.webp",
+    tags: ["Cabot", "Exterior", "Deck", "Wood Stain", "Siding"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Cabot is one of North America&apos;s oldest and most trusted exterior wood finish brands. Their stains — available at The Home Depot, Menards, and independent hardware stores — protect decks, fences, siding, and all exterior wood surfaces from UV damage, moisture, and weathering. Unlike paint, stain penetrates the wood rather than sitting on top, which means it can&apos;t peel or crack. The trade-off is that you see the natural wood grain through the color, which many homeowners prefer. Here are the best Cabot stain colors and finishes for 2026.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Cabot Colors for Deck Staining</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Deck staining requires a product that handles foot traffic, moisture, UV exposure, and freeze-thaw cycles. Cabot Australian Timber Oil and Cabot Wood Toned Deck &amp; Siding Stain are the go-to lines for deck applications.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6B4E38" name="New Barn" brand="Cabot" /> — a warm, red-brown that&apos;s one of Cabot&apos;s best-selling deck colors. It evokes rustic farmhouse aesthetics and pairs beautifully with natural landscaping, stone patios, and warm-toned house siding. On pressure-treated lumber, it adds warmth that counteracts the green tinge of treated wood.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8B7355" name="Heartwood" brand="Cabot" /> — a classic warm brown that reads as a natural, slightly reddish wood tone. It&apos;s the most popular &ldquo;natural&rdquo; deck stain color in the Cabot line — it enhances the wood&apos;s warmth without making it look artificially red or yellow. Explore all <Link href="/brands/cabot" className="text-brand-blue hover:underline">Cabot stain colors</Link> on our site.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7A6B5C" name="Driftwood" brand="Cabot" /> — a warm gray-brown that captures the look of weathered coastal wood. It&apos;s popular on beach house decks and modern farmhouse exteriors where you want a gray deck without the coldness of a true gray. In gray exterior stains, a warm underlying tone prevents the deck from looking bleak in winter.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A08060" name="Autumn Brown" brand="Cabot" /> — a lighter, golden-brown stain for decks where you want warmth and brightness. It reads as a fresh, clean wood tone that makes decks feel inviting and sunlit. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how it stacks up against similar browns from other stain brands.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Cabot Colors for Exterior Siding</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For wood or fiber cement siding, Cabot&apos;s solid stains provide opaque coverage with a more matte, paint-like appearance while still allowing the wood texture to show through slightly.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#6A7068" name="Wedgewood Gray" brand="Cabot" /> — a popular exterior gray with warm brown undertones that prevent it from looking stark or industrial on residential siding. It reads as a sophisticated, weathered gray that ages gracefully. Pair with crisp white trim for a classic New England exterior look.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#5A5850" name="Slate Gray" brand="Cabot" /> — a deeper charcoal-gray for contemporary homes where strong architectural contrast is the goal. It pairs with black window frames and bright white trim for a bold, modern exterior palette. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#4A3E34" name="Chestnut Brown" brand="Cabot" /> — a deep, rich brown for log homes, craftsman bungalows, and wood-sided houses where you want the stain to complement the architecture&apos;s natural character. Darker stains protect UV-exposed siding better than lighter semi-transparent stains. Explore the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cabot Stain Product Lines Explained</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Cabot Australian Timber Oil:</strong> A penetrating oil finish for exotic and pressure-treated hardwoods. Excellent for teak, ipe, and Brazilian hardwood decks. Provides a natural, semi-transparent look. Requires reapplication every 1–2 years.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Cabot Wood Toned Deck &amp; Siding Stain:</strong> A water-based stain designed specifically for decks and siding. Available in semi-transparent and solid formats. Semi-transparent lets wood grain show; solid provides more color coverage. The deck formula includes wear additives for foot traffic resistance.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Cabot Solid Color Acrylic Decking Stain:</strong> For old or weathered decks with uneven surfaces. The solid formula hides imperfections and provides a uniform color. It&apos;s more paint-like in appearance but still penetrates the wood rather than forming a film. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate coverage for your deck area.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose a Cabot Stain Color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Match your house color first.</strong> Your deck stain should complement your exterior house color. If your house is gray, a warm brown deck like Heartwood adds contrast and warmth. If your house is a warm tan, a gray stain like Wedgewood Gray creates sophisticated contrast.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Test the stain on a board first.</strong> Stain appearance varies significantly by wood species, grain direction, and existing weathering. Buy a sample quart and apply it to a test board (or a hidden area of the deck) before committing to full application.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>New vs. weathered wood:</strong> New wood needs to weather for 30–60 days before staining. Weathered wood needs cleaning with a deck cleaner to open the grain. Both affect how the final stain color appears.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>How long does Cabot stain last on a deck?</strong> Semi-transparent stains typically last 2–3 years on horizontal deck surfaces (floors) and longer on vertical siding. Solid stains last 4–6 years. Reapplication is easier than with paint — no stripping required for semi-transparent stains, just cleaning and a fresh coat.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Can I stain over old Cabot stain?</strong> Yes, for semi-transparent stains if the old stain is in good condition. For solid stains over old solid stains, clean and lightly sand before recoating. Avoid applying semi-transparent over solid stain — the semi-transparent coat won&apos;t penetrate properly.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For full Cabot color options, visit our <Link href="/brands/cabot" className="text-brand-blue hover:underline">Cabot brand page</Link> or use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest match from any brand.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Olympic — Interior & Exterior ──────────────── */
+  {
+    slug: "best-olympic-paint-colors",
+    title: "Best Olympic Paint Colors for Interior & Exterior (2026)",
+    date: "2026-03-18",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "Olympic paint, exclusive to Lowe's, offers reliable quality across interior and exterior applications. Here are the best Olympic paint colors for every room and surface in 2026.",
+    coverColor: "#88A498",
+    coverImage: "/blog/best-olympic-paint-colors.webp",
+    tags: ["Olympic", "Design", "Interior", "Exterior", "Living Room"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Olympic Paint is Lowe&apos;s own house brand — available exclusively in Lowe&apos;s stores — and offers one of the strongest value propositions in the paint market. Olympic Maximum handles extreme weather conditions for exterior applications, while Olympic ONE provides a reliable paint+primer-in-one for interior rooms. With over 1,000 colors spanning the full spectrum, Olympic has solid options at every price point. Here are the best Olympic colors for interior and exterior projects in 2026.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Olympic Colors for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8BCA8" name="Warm Linen" brand="Olympic" /> — a warm, versatile neutral that bridges the gap between white and greige. Olympic&apos;s neutrals are calibrated to look warm without going orange, making Warm Linen one of the most livable living room colors in their catalog. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to find Sherwin-Williams and Behr equivalents.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#88A498" name="Sea Glass" brand="Olympic" /> — a muted, dusty teal-green that reads as a sophisticated, resort-inspired living room color. It sits at the intersection of blue and green, which means it reads differently in morning (more green) and evening (more blue) light. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for similar tones.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#4E5E70" name="Night Watch" brand="Olympic" /> — a deep, sophisticated navy-blue for accent walls and color-drenched living rooms. It pairs with warm metallic accents, aged wood furniture, and natural fiber textiles for a moody, layered living room aesthetic. Explore the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Olympic Colors for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C0C8CC" name="Silver Feather" brand="Olympic" /> — a pale, cool gray-blue that creates a tranquil, spa-like bedroom. It reads slightly blue in natural light, which makes it restorative and calm. Works best in bedrooms with white trim and natural wood accents. See our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A8B8A0" name="Sage Field" brand="Olympic" /> — a soft sage green that brings a gentle, organic quality to bedrooms. It pairs well with warm wood furniture, cotton bedding, and natural fiber curtains for the 2026 &ldquo;quiet luxury&rdquo; bedroom aesthetic. Compare with our <Link href="/blog/best-behr-colors-for-bedrooms" className="text-brand-blue hover:underline">Behr bedroom colors guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Olympic Exterior Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8E0D0" name="Classic Cream" brand="Olympic" /> — a warm exterior white for traditional and Colonial-style homes. Olympic Maximum in this tone holds up well to direct sun exposure without yellowing significantly over time. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7A8480" name="Aged Slate" brand="Olympic" /> — a sophisticated gray-green for contemporary exteriors. It&apos;s warm enough to feel residential rather than institutional. Use it with crisp white trim and black or oil-rubbed bronze hardware for a polished contemporary exterior. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#5C5048" name="Rich Espresso" brand="Olympic" /> — a deep, dark brown for front doors, shutters, and accent elements. On a house with light siding, a dark brown front door adds significant curb appeal and architectural presence. It also works as an all-over color on small structures like sheds, garages, and outbuildings.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Olympic Paint Lines Explained</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Olympic ONE Interior:</strong> Paint+primer-in-one for interior rooms. A reliable choice for most standard interior applications. The eggshell and satin sheens provide good washability for living areas, kitchens, and bathrooms.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Olympic Maximum Exterior:</strong> Olympic&apos;s flagship exterior formula with best-in-class fade resistance and mildew protection. Uses a 100% acrylic formula that provides flexibility in temperature extremes. For exterior siding, this is the line to choose. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate gallons.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Is Olympic paint as good as Behr or Valspar?</strong> Olympic ONE and Valspar Reserve are similar in quality and price. Olympic Maximum Exterior is comparable to Behr Premium Plus Exterior. All three are reliable mid-grade brands that outperform entry-level paint significantly.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Can I find Olympic color matches at other brands?</strong> Yes. Visit any <Link href="/brands/olympic" className="text-brand-blue hover:underline">Olympic color page</Link> to see the closest match from all brands. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> for cross-brand matching.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For more color inspiration, see our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year guide</Link> and use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a complete room scheme.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Rust-Oleum — Furniture & Cabinets ──────────────── */
+  {
+    slug: "best-rust-oleum-paint-colors",
+    title: "Best Rust-Oleum Colors for Furniture & Cabinets (2026)",
+    date: "2026-03-19",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "Rust-Oleum's Chalked, Milk Paint, and Cabinet Transformations lines make it possible to completely transform furniture and cabinets. Here are the best Rust-Oleum colors for 2026.",
+    coverColor: "#A89880",
+    coverImage: "/blog/best-rust-oleum-paint-colors.webp",
+    tags: ["Rust-Oleum", "Furniture", "Cabinets", "Design", "DIY"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Rust-Oleum is best known for its industrial corrosion protection, but their home décor lines — particularly Chalked Paint, Milk Paint, and Cabinet Transformations — have made them a favorite of DIY furniture refinishers and home renovators. Rust-Oleum&apos;s specialty formulas allow you to paint furniture, cabinets, floors, and even fabric without extensive prep work. Their color palette leans toward soft, matte, and vintage-inspired tones that suit the current organic, artisan interior trend. Here are the best Rust-Oleum colors for 2026 furniture and cabinet projects.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Rust-Oleum Chalked Paint Colors for Furniture</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Rust-Oleum Chalked Paint is an ultra-matte paint that creates the vintage, chalky look associated with farmhouse and cottage furniture. It requires minimal prep — often just a light sand and wipe — and goes directly over most surfaces without primer.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0EBE0" name="Linen White" brand="Rust-Oleum" /> — the most popular Chalked color, a warm off-white that photographs beautifully and creates a clean, fresh furniture look. Use it on dressers, side tables, and bed frames to instantly update a bedroom. Finish with clear chalk wax for protection. Browse <Link href="/brands/rust-oleum" className="text-brand-blue hover:underline">all Rust-Oleum colors</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8A9890" name="Aged Gray" brand="Rust-Oleum" /> — a warm, muted gray-green that reads as a subtle, sophisticated neutral on furniture. It&apos;s warmer than true gray, which prevents it from looking cold on wood furniture. It pairs with natural wood tops, antique brass hardware, and white walls for the timeless farmhouse look. See the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C4A882" name="Country Gray" brand="Rust-Oleum" /> — a taupe-tinted gray that sits between warm beige and cool gray. On furniture, it reads as a rich, antiqued neutral. It&apos;s particularly effective on furniture with ornate carved details where a color that recedes slightly allows the details to read clearly.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#5C6858" name="Garden Sage" brand="Rust-Oleum" /> — a deep, dusty sage green for furniture pieces where you want a color statement. A sage green dresser or bookcase against white walls creates a grounded, botanical quality that defines the 2026 interior trend. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#2E3A50" name="Coastal Blue" brand="Rust-Oleum" /> — a deep, dusty navy for furniture accents. A navy nightstand, an accent chair, or a bookcase painted in Coastal Blue adds sophisticated depth to bedrooms and living rooms. Pair with brass hardware for maximum impact. Explore the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Rust-Oleum Cabinet Transformation Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Rust-Oleum Cabinet Transformations is a complete kitchen cabinet painting system that includes deglosser, primer, top coat, and finishing glaze. It&apos;s designed for homeowners who want to paint their kitchen cabinets without professional spraying equipment.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8E0D0" name="Antique White" brand="Rust-Oleum" /> — the best-selling Cabinet Transformations color. A warm, slightly off-white that modernizes dated wooden cabinets instantly. It&apos;s warm enough to avoid a clinical look but clean enough to keep kitchens feeling fresh. See our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen paint guide</Link> for more cabinet color ideas.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#607060" name="Slate" brand="Rust-Oleum" /> — a deep gray-green for kitchen cabinets where you want a bold, modern statement. In the Cabinet Transformations system, it comes with a finishing glaze that adds subtle depth and handpainted character. Pair with white countertops and stainless appliances for a contemporary contrast. Compare with our <Link href="/blog/best-sherwin-williams-kitchen-colors" className="text-brand-blue hover:underline">Sherwin-Williams kitchen guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Rust-Oleum Colors for Spray Paint Projects</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Rust-Oleum&apos;s spray paint line includes metallic, matte, gloss, and specialty finishes that are invaluable for small DIY furniture and décor projects. Their 2X Ultra Cover spray paints go on in smooth, even coats without drips.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C0A878" name="Antique Brass" brand="Rust-Oleum" /> — the most popular metallic spray for hardware updates. A single can can transform a set of cabinet hardware, picture frames, or lamp bases from dated to designer-caliber. Pair with dark colors and rich wood tones.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#2A2A2A" name="Matte Black" brand="Rust-Oleum" /> — matte black spray is the designer&apos;s go-to for hardware, light fixtures, and metal accents. It creates a flat, contemporary finish that photographs as true black with no shine. Use it to update builder-grade brass hardware throughout the house in a weekend.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Use Rust-Oleum Chalked Paint</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Prep:</strong> Clean the surface with TSP or a degreaser. For glossy surfaces, lightly sand with 220-grit. Wipe clean with a tack cloth.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Apply:</strong> Chalk paint is very thick — thin with a small amount of water if it drags. Apply with a short-bristle brush in long, smooth strokes. Two thin coats are better than one thick coat.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Seal:</strong> Apply Rust-Oleum clear chalk wax or a water-based polycrylic topcoat for durability, especially on high-traffic furniture like dining tables and dressers. For more ideas on color coordination, use our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Do you need to prime before Rust-Oleum Chalked Paint?</strong> Generally no — the chalk paint formula adheres to most surfaces without a separate primer step. Exceptions include bare metal, high-gloss surfaces you haven&apos;t sanded, and surfaces with heavy stain bleed-through (tannic oak, for example).
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Is Rust-Oleum Cabinet Transformations durable?</strong> The Cabinet Transformations system is adequate for most kitchens but less durable than professional spray finishes. For high-use kitchens, consider professional spraying with a catalyzed enamel for better chip resistance.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Browse all <Link href="/brands/rust-oleum" className="text-brand-blue hover:underline">Rust-Oleum colors</Link> on our site and use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find equivalent tones from major wall paint brands.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Dutch Boy — Every Room ──────────────── */
+  {
+    slug: "best-dutch-boy-paint-colors",
+    title: "Best Dutch Boy Paint Colors for Every Room (2026)",
+    date: "2026-03-20",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "Dutch Boy has been trusted since 1907. Their Refresh Paint+Primer line and accessible color palette make them a smart choice for budget-conscious home painters. Here are the best Dutch Boy colors for 2026.",
+    coverColor: "#8A9C8E",
+    coverImage: "/blog/best-dutch-boy-paint-colors.webp",
+    tags: ["Dutch Boy", "Design", "Living Room", "Bedroom", "Budget Paint"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Dutch Boy has been a household name in American paint since 1907, and their Refresh Paint+Primer line is one of the most reliable budget-tier paints available today. Sold at Menards, Walmart, and independent hardware stores, Dutch Boy offers surprising quality at accessible price points. Their color palette hits all the modern trends without the premium pricing of Sherwin-Williams or Benjamin Moore. Here are the best Dutch Boy colors for living rooms, bedrooms, kitchens, and exteriors in 2026.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dutch Boy Colors for Living Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C8C0B0" name="Natural Linen" brand="Dutch Boy" /> — a warm, barely-there neutral that reads between cream and greige. In living rooms, it acts as a blank canvas that works with any furniture style — from mid-century modern to farmhouse. It&apos;s warm enough to prevent the coldness of a true gray-white. Browse the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for cross-brand comparisons.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8A9C8E" name="Garden Thyme" brand="Dutch Boy" /> — a muted sage green that captures the nature-inspired living room trend without requiring a big color commitment. It reads as a dusty, sophisticated green that feels current without being trendy. Use it on all four walls or as an accent wall behind the main seating. Explore the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D8C8B0" name="Sandy Shore" brand="Dutch Boy" /> — a warm, golden sand that brings the warmth of natural materials to a living room. It pairs beautifully with warm wood tones, rattan furniture, and warm brass or gold accents — the core of 2026&apos;s &ldquo;organic warmth&rdquo; design trend.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#485870" name="Marine Layer" brand="Dutch Boy" /> — a deep, sophisticated navy-blue for those who want a bold living room statement on a budget. Navy living rooms have been consistently popular and Dutch Boy&apos;s version is a rich, slightly blue-gray that avoids looking flat. Explore the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dutch Boy Colors for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8C0C8" name="Serene Sky" brand="Dutch Boy" /> — a soft, pale blue that reads as a restful and calming bedroom backdrop. Dutch Boy&apos;s pale blues are slightly warmer than competing brands at the same price point, which prevents the clinical feel that cooler blues can create. Read our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom guide</Link> for more options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E0D8CC" name="Warm Ivory" brand="Dutch Boy" /> — a pale, barely-there warm neutral for bedrooms where you want the lightest possible color with some warmth. It reads as warm white in bright bedrooms and creamy ivory in bedrooms with less natural light. It never looks cold, even in north-facing rooms. Read our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing room guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7A8C82" name="Forest Mist" brand="Dutch Boy" /> — a medium sage green for those who want a more committed bedroom color statement. It creates a cocooning, nature-inspired bedroom atmosphere. Pair with white bedding, warm wood furniture, and natural fiber rugs for the full effect. Compare with <Link href="/blog/best-behr-colors-for-bedrooms" className="text-brand-blue hover:underline">Behr bedroom colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dutch Boy Colors for Kitchens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F0E8D8" name="Cream Delight" brand="Dutch Boy" /> — a warm, creamy kitchen white that keeps the space bright while adding warmth. It avoids the stark feel of true white while remaining clean enough for kitchen applications. See more in our comprehensive <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen color guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8A890" name="Toasted Wheat" brand="Dutch Boy" /> — a warm beige for kitchen walls paired with white or cream cabinets. It bridges the classic white kitchen and the more current warm-neutral kitchen trends, offering a versatile middle ground.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dutch Boy Exterior Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E0DAD0" name="Soft Cream" brand="Dutch Boy" /> — a warm exterior white for traditional homes. Dutch Boy exterior paints use 100% acrylic latex formulas that resist fading and chalking on typical residential siding materials.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#787A72" name="Aged Pewter" brand="Dutch Boy" /> — a sophisticated gray-green for contemporary exteriors. It reads as a medium-depth gray with just enough warmth to feel residential. Pair with crisp white trim and dark window frames. Browse all <Link href="/brands/dutch-boy" className="text-brand-blue hover:underline">Dutch Boy exterior colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dutch Boy Paint Lines Explained</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Dutch Boy Refresh Paint+Primer:</strong> The flagship interior line. Paint and primer in one formula that covers most interior rooms in two coats over light colors. Eggshell and satin sheens are available for living areas and bathrooms respectively.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Dutch Boy Dura Clean:</strong> A scrubble, washable interior paint designed for kitchens, bathrooms, and high-traffic areas. Offers better stain and moisture resistance than Refresh. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to plan quantities.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Is Dutch Boy a good paint brand?</strong> Dutch Boy Refresh is a solid budget-tier paint brand. It&apos;s a step below Behr, Valspar, and Glidden in terms of hide and washability, but for bedrooms, living rooms, and other lower-traffic interior rooms, it performs reliably and provides excellent value.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Where is Dutch Boy paint sold?</strong> Dutch Boy is primarily sold at Menards (Midwest), Walmart, and independent hardware stores. Availability varies by region.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Can I find equivalent colors from other brands?</strong> Yes. Visit any <Link href="/brands/dutch-boy" className="text-brand-blue hover:underline">Dutch Boy color page</Link> to find the closest match from Sherwin-Williams, Benjamin Moore, Behr, and others. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find Dutch Boy colors by name. For a full 2026 color inspiration roundup, see our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link>.
+        </p>
+      </>
+    ),
+  },
 ];
 
 /* ------------------------------------------------------------------ */
