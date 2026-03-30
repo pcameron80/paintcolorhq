@@ -198,6 +198,17 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
         </div>
       </main>
 
+      {/* Editorial content */}
+      {palette.editorial && (
+        <section className="px-6 md:px-12 py-16 bg-surface border-t border-outline-variant/10">
+          <div className="max-w-3xl mx-auto">
+            {palette.editorial.split("\n\n").map((para, i) => (
+              <p key={i} className="text-gray-700 leading-relaxed mt-4 first:mt-0">{para}</p>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Related palettes */}
       <section className="px-6 md:px-12 py-20 bg-tertiary-fixed">
         <div className="max-w-7xl mx-auto">
