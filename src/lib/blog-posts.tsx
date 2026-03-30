@@ -348,88 +348,108 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 4 ──────────────── */
   {
     slug: "best-kitchen-paint-colors-2025",
-    title: "The 15 Best Kitchen Paint Colors for 2025",
+    title: "The 15 Best Kitchen Paint Colors for 2026",
     date: "2026-02-19",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
-      "From crisp whites for a clean look to moody greens for drama, these are the 15 kitchen paint colors designers are reaching for in 2025.",
+      "From crisp whites that survive daily scrubbing to moody greens taking over cabinetry in 2026, these are the kitchen paint colors that hold up in real kitchens — with specific LRV values, finish guidance, and application tips.",
     coverColor: "#4A5D4F",
     coverImage: "/blog/best-kitchen-paint-colors-2025.webp",
-    tags: ["Kitchen", "2025", "Design"],
+    tags: ["Kitchen", "2026", "Design", "Cabinets"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The kitchen is the most-repainted room in the house, and 2025 is bringing a fresh wave of choices. We asked designers, scoured social media trends, and analyzed search data to find the 15 colors defining kitchens this year. Whether you&apos;re painting cabinets, walls, or an island, there&apos;s a shade here for you.
+          The best kitchen paint color depends on three things most guides skip: your lighting direction, your countertop undertone, and whether you are painting cabinets, walls, or both. A color that looks perfect on a chip in a south-facing showroom will look completely different on your north-facing kitchen cabinets at 7 PM under LED task lighting. This guide covers 15 specific colors across five categories, with LRV values and finish recommendations for each.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Crisp Whites</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Kitchen Paint Is Different</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White kitchens aren&apos;t going anywhere, but the specific whites are evolving. The trend is away from stark, blue-white tones toward warmer whites that feel lived-in — and both <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and Sherwin-Williams offer excellent options.
+          Kitchens put more demands on paint than any other room. Daily cooking generates grease, steam, and splatter that require a finish tough enough to wipe clean repeatedly without dulling or peeling. The rule: <strong>satin or semi-gloss finish only</strong> for kitchen cabinets and walls. Flat and eggshell absorb grease and cannot be scrubbed clean without removing the paint film.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — the gold standard for a clean, true white with no yellow cast. Perfect for modern kitchens with lots of stainless steel.
+          For cabinet-grade durability, Benjamin Moore Advance and Sherwin-Williams Emerald Urethane Trim Enamel are the two best formulations available to consumers. Both self-level (reducing brush marks), cure to a hard finish, and hold color better than standard wall paint under repeated cleaning.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — a slightly warmer alternative that pairs beautifully with butcher block countertops and brass hardware.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — for kitchens that want warmth without crossing into cream territory. Explore more in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint guide</Link>.
+          LRV (Light Reflectance Value, on a 0–100 scale) matters more in kitchens than almost any other room because task lighting creates harsh contrast. Colors below LRV 20 on full-height cabinets can make a kitchen feel closed-in unless the room has substantial natural light or high ceilings.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Crisp Whites (LRV 83–92)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green is the biggest color story in kitchens right now. Dark, forest-inspired greens on cabinetry create a grounding, organic feel that plays beautifully with natural materials.
+          White remains the most-specified kitchen color for one practical reason: it reflects task lighting back into the work area instead of absorbing it. The critical variable is undertone. Blue-white kitchens look clinical under warm incandescent or LED bulbs; yellow-white kitchens look dingy under cool daylight bulbs. The three whites below are chosen specifically because their undertones stay stable across bulb types.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — deep, dramatic, and incredibly sophisticated on lower cabinets with white uppers.
+          <Swatch hex="#F5F1EB" name="Chantilly Lace OC-65" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — LRV 92. The cleanest true white in the Benjamin Moore line with virtually no undertone. It does not read yellow under warm bulbs or blue under cool ones, which is why it has become the go-to for modern kitchens with stainless appliances and quartz countertops. At LRV 92, it maximizes light reflection. Finish: semi-gloss for cabinets, satin for walls.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6B7C6E" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — a softer sage-forest hybrid that&apos;s forgiving in both warm and cool light.
+          <Swatch hex="#F3EEE0" name="Pure White SW 7005" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — LRV 84. A warm white with subtle cream undertones that pairs naturally with butcher block, brass hardware, and warm oak flooring. Where Chantilly Lace is crisp, Pure White is inviting. It is the most popular Sherwin-Williams cabinet color and holds up under both warm and cool lighting without shifting to yellow.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#52625B" name="Tarrytown Green" brand="Benjamin Moore" href="/colors/benjamin-moore/tarrytown-green-hc-134" /> — a mid-tone green with blue undertones for a more modern feel. Browse the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          The gray kitchen era has given way to warm neutrals — creams, tans, and mushroom tones that add personality without being loud.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that&apos;s become the default cabinet color for transitional kitchens.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — slightly warmer and works beautifully with oak flooring and stone countertops.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B5A898" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — a trendy mushroom tone for a kitchen that feels organic and current.
+          <Swatch hex="#EDE6D3" name="White Dove OC-17" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — LRV 83. Crosses into warm white territory with a soft cream-yellow undertone. Best for kitchens with warm-toned countertops (marble with warm veining, soapstone, butcher block) where you want the cabinetry to feel like part of a warm, cohesive palette rather than a stark contrast. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">full white color family</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bold Statement Colors</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens (LRV 11–22) — The 2026 Trend</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For homeowners who want to make their kitchen the star of the house, these bold choices are designer-approved.
+          Green cabinetry went from trend to mainstream between 2023 and 2025, and in 2026 the direction has shifted from bright sage toward deeper, more complex greens with blue or gray undertones. These are not colors for timid renovations. At LRV 11–22, they absorb most of the light in the room and demand specific countertop pairings to avoid looking muddy. Done right, they are the most striking kitchen choice available.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a rich navy for island cabinetry that pairs with white countertops and gold hardware.
+          <Swatch hex="#4A5D4F" name="Essex Green HC-188" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — LRV 11. Dark forest green that reads almost black in low light. Best used on lower cabinets paired with white or cream uppers, where the contrast creates a furniture-like look. Requires white or very light quartz countertops to keep the kitchen from reading too dark. Finish: semi-gloss in Benjamin Moore Advance to show off the depth.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as a very deep charcoal, perfect for modern kitchen cabinets.
+          <Swatch hex="#6B7C6E" name="Pewter Green SW 6208" brand="Benjamin Moore" href="/colors/sherwin-williams/pewter-green-6208" /> — LRV 22. The most versatile green on this list. Its gray undertone keeps it from reading as primary green, which makes it work on full-height cabinetry where Essex Green would be too intense. It holds its color under both warm and cool lighting. Pairs with quartz, marble, and even warm laminate countertops without looking jarring.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> — the 2025 Color of the Year brings a warm, earthy brown to kitchen cabinets or an island. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year breakdown</Link>.
+          <Swatch hex="#52625B" name="Tarrytown Green HC-134" brand="Benjamin Moore" href="/colors/benjamin-moore/tarrytown-green-hc-134" /> — LRV 16. A mid-tone blue-green that sits between Essex Green and Pewter Green in both depth and mood. Its blue undertone gives it a cooler, more modern feel than purely warm greens. Works best in kitchens with cool-toned countertops (white quartz, gray marble, concrete). Browse the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals (LRV 47–65)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Light, airy blues offer a fresh alternative to all-white kitchens without the commitment of a dark color.
+          The cool gray kitchen dominated the 2010s. In 2026, warm neutrals, greiges, and mushroom tones have replaced it for homeowners who want a timeless kitchen without going all-white or all-bold. At LRV 47–65, these colors reflect enough light to stay bright while adding warmth that cool grays never could.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C3D1D6" name="Boothbay Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/boothbay-gray-hc-165" /> — a blue-gray that feels coastal without being literal about it.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray HC-173" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — LRV 63. The most-specified warm greige for transitional kitchens. It reads as neither beige nor gray, which makes it flexible with a wide range of countertop materials. Works with both warm and cool hardware finishes. Its LRV is high enough to stay bright in north-facing kitchens without looking washed out in south-facing ones.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — a muted powder blue that&apos;s calming and clean for kitchen walls. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+          <Swatch hex="#C2B59B" name="Accessible Beige SW 7036" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — LRV 58. Leans warmer than Edgecomb Gray, with more yellow-tan in its undertone. This makes it a natural match for kitchens with oak or honey-toned wood flooring, where a cooler neutral would clash with the wood&apos;s warmth. On countertops with strong warm veining (travertine, warm quartzite), it integrates seamlessly.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these colors in a kitchen setting, and our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint your kitchen project will need. For help choosing between warm and cool whites, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link>.
+          <Swatch hex="#B5A898" name="Shiitake SW 9173" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — LRV 47. A deeper mushroom-taupe that is the most current of the three warm neutrals listed here. At LRV 47, it is dark enough to feel intentional while still maintaining readability in natural light. Best paired with natural stone countertops and unlacquered brass hardware for a fully organic, 2026-forward kitchen aesthetic.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bold Darks (LRV 6–12)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Dark cabinetry has moved from accent islands to full kitchens in high-end renovations. At LRV 6–12, these colors need strong light sources to prevent the kitchen from feeling like a cave. They work best in kitchens with large windows, skylights, or generous overhead lighting, and they require light-colored countertops and backsplashes as counterbalance.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#34405A" name="Naval SW 6244" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — LRV 7. A deep, complex navy with blue-black depth. At LRV 7, it is very dark. The classic application is a navy island with white perimeter cabinets and white quartz countertops, creating a high-contrast look that photographs extremely well. Aged brass or unlacquered brass hardware at the same warmth level.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3B3B3B" name="Wrought Iron 2124-10" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — LRV 6. Not pure black. Wrought Iron has warm charcoal undertones that read as very deep gray in natural light, which is what separates it from flat-black competitors. In full kitchens, it requires white or very light countertops and a light backsplash to stay functional. On islands, it pairs with nearly any countertop material.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8E7462" name="Universal Khaki SW 6149" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6149" /> — LRV 26. The Sherwin-Williams 2026 Color of the Year, and the best bold-but-not-dark choice on this list. At LRV 26, it is deep enough to feel intentional without the light requirements of Navy or Wrought Iron. Its warm sandy-brown tone pairs with butcher block, warm marble, and black or aged brass hardware. See the full <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues (LRV 51–56)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blue kitchen walls offer a fresh alternative to all-white kitchens at a moderate LRV that maintains brightness while adding clear color identity. These blues are all desaturated enough to read as sophisticated rather than playful, and their gray undertones prevent them from looking juvenile in adult spaces.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C3D1D6" name="Boothbay Gray HC-165" brand="Benjamin Moore" href="/colors/benjamin-moore/boothbay-gray-hc-165" /> — LRV 51. A blue-gray that sits exactly at the intersection of blue and gray. It reads as blue in warm afternoon light and as gray in cool morning light. This shifting quality works well in kitchens open to living areas where you want a color that feels different at different times of day without being dramatic. White trim makes it pop; warm wood tones ground it.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8CAD0" name="Sleepy Blue SW 6225" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — LRV 56. A powder blue with enough gray to stay calm rather than chipper. On walls in an open-plan kitchen, it creates a palette that works with stainless, white, and natural wood without requiring any of them specifically. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Test Before Committing</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Kitchen lighting is the hardest lighting condition to predict from a chip. Most kitchens have overhead task lighting that creates bright spots and shadows simultaneously. Before buying a full gallon, test with large peel-and-stick samples from Benjamin Moore or Sherwin-Williams (roughly $5–8 each, approximately 8 x 8 inches). Place samples next to your countertops and hardware, and observe them at three specific times: morning natural light, midday overhead light, and evening with your kitchen lights on at full intensity.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For cabinet colors specifically: paint a sample board the same size as one cabinet door and lean it against the actual cabinet for 48 hours before making a final decision. The color on a flat surface at eye level reads differently than on a recessed panel at varying heights and angles.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these colors in a kitchen setting, and our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint your project will need. For help understanding warm versus cool undertones, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link>, or see how lighting direction affects color in our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link>.
         </p>
       </>
     ),
