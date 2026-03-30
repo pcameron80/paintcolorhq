@@ -9,10 +9,10 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { getAllPosts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
-  title: "Match Any Paint Color Across 14 Brands | Paint Color HQ",
+  title: "Match Any Paint Color Across 14 Brands",
   description:
     "Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr, PPG & 11 more brands. 25,000+ colors with room visualizer, photo identifier & paint calculator.",
-  alternates: { canonical: "https://www.paintcolorhq.com" },
+  alternates: { canonical: "https://www.paintcolorhq.com/" },
 };
 
 const brands = [

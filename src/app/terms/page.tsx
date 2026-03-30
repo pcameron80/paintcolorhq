@@ -3,7 +3,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Paint Color HQ",
+  title: "Terms of Service",
   description:
     "Terms of Service for Paint Color HQ. Read the terms and conditions governing the use of our paint color matching and comparison service.",
   alternates: { canonical: "https://www.paintcolorhq.com/terms" },

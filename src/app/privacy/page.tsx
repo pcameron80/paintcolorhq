@@ -3,7 +3,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Paint Color HQ",
+  title: "Privacy Policy",
   description:
     "Privacy Policy for Paint Color HQ. Learn how we collect, use, and protect your information when you use our paint color matching service.",
   alternates: { canonical: "https://www.paintcolorhq.com/privacy" },

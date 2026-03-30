@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const noindexSlugs = new Set(["best-home-office-paint-colors"]);
 
   return {
-    title: `${post.title} | Paint Color HQ`,
+    title: `${post.title}`,
     description: post.excerpt,
     ...(noindexSlugs.has(slug) && { robots: { index: false, follow: true } }),
     alternates: { canonical: url },

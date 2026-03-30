@@ -10,7 +10,7 @@ import type { ColorWithBrand } from "@/lib/types";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Color Inspiration | Paint Color HQ",
+  title: "Color Inspiration",
   description: "Browse 18 curated color palettes for every style — modern farmhouse, coastal retreat, moody library, and more. Each palette maps to real paint colors.",
   alternates: { canonical: "https://www.paintcolorhq.com/inspiration" },
   openGraph: { title: "Color Inspiration | Paint Color HQ", description: "Browse curated color palettes for every style.", url: "https://www.paintcolorhq.com/inspiration" },

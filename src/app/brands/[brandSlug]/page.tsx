@@ -31,7 +31,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   if (!brand) return { title: "Brand Not Found" };
   const count = brand.color_count.toLocaleString();
   const url = `https://www.paintcolorhq.com/brands/${brandSlug}`;
-  const title = `All ${count} ${brand.name} Paint Colors | Paint Color HQ`;
+  const title = `All ${count} ${brand.name} Paint Colors`;
   const description = `Browse all ${count} ${brand.name} paint colors with cross-brand matching, undertone filters, and LRV values. Find your perfect color.`;
   const currentPage = parseInt(pageParam ?? "1", 10) || 1;
   const brandContent = getBrandContent(brandSlug);
