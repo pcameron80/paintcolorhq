@@ -68,6 +68,8 @@ export default async function MatchPage({ params }: PageProps) {
   const targetMatches = allMatches.filter((m) => m.match_color.brand.slug === parsed.targetBrandSlug);
   const bestMatch = targetMatches[0];
 
+  if (!bestMatch) notFound();
+
   const otherBrandMatches = new Map<string, { brandName: string; brandSlug: string }>();
   for (const m of allMatches) {
     const slug = m.match_color.brand.slug;

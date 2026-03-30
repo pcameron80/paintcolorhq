@@ -38,14 +38,17 @@ export async function generateStaticParams() {
   return validFamilies.map((f) => ({ familySlug: f }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { familySlug } = await params;
+  const { page: pageParam } = await searchParams;
   const name = familySlug.replace(/-/g, " ");
   const url = `https://www.paintcolorhq.com/colors/family/${familySlug}`;
+  const currentPage = parseInt(pageParam ?? "1", 10) || 1;
   return {
     title: `${capitalize(name)} Paint Colors - All Brands`,
     description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Compare colors with hex codes and LRV values.`,
     alternates: { canonical: url },
+    ...(currentPage > 1 && { robots: { index: false, follow: true } }),
     openGraph: { title: `${capitalize(name)} Paint Colors`, description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more.`, url },
   };
 }

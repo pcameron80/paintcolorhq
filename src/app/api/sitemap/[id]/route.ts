@@ -85,14 +85,14 @@ export async function GET(
         lastmod: "",
       }));
     } else if (id === "matches") {
-      // Brand-to-brand match landing pages — all brand combinations
-      const allBrands = await getAllBrands();
+      // Brand-to-brand match landing pages — only major brand combinations
+      const MAJOR_MATCH_BRANDS = ["sherwin-williams", "benjamin-moore", "behr", "ppg", "valspar"];
       entries = [];
-      for (const source of allBrands) {
-        for (const target of allBrands) {
-          if (source.slug !== target.slug) {
+      for (const source of MAJOR_MATCH_BRANDS) {
+        for (const target of MAJOR_MATCH_BRANDS) {
+          if (source !== target) {
             entries.push({
-              url: `/match/${source.slug}/to/${target.slug}`,
+              url: `/match/${source}/to/${target}`,
               priority: "0.8",
               changefreq: "weekly",
               lastmod: "",
