@@ -102,7 +102,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <div className="mt-4 flex items-center gap-3 text-sm text-outline">
               <time dateTime={post.date}>{formatDate(post.date)}</time>
               <div className="bg-surface-container-high h-1 w-4" />
-              <span>{post.author}</span>
+              <Link href="/authors/paint-color-hq-staff" className="hover:text-primary transition-colors">{post.author}</Link>
             </div>
 
             <div id="blog-content" className="prose prose-gray max-w-none mt-10 text-on-surface-variant leading-relaxed">
@@ -180,7 +180,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.paintcolorhq.com/blog/${post.slug}` },
         keywords: post.tags.join(", "),
         ...(post.coverImage && { image: `https://www.paintcolorhq.com${post.coverImage}` }),
-        author: { "@type": "Organization", name: post.author, url: "https://www.paintcolorhq.com", logo: { "@type": "ImageObject", url: "https://www.paintcolorhq.com/og-image.webp" } },
+        author: { "@type": "Person", name: post.author, url: "https://www.paintcolorhq.com/authors/paint-color-hq-staff", jobTitle: "Editorial Team", worksFor: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" } },
         publisher: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com", logo: { "@type": "ImageObject", url: "https://www.paintcolorhq.com/og-image.webp" } },
       }} />
       <JsonLd data={{
