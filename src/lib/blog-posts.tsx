@@ -2283,16 +2283,17 @@ const blogPosts: BlogPost[] = [
     slug: "paint-color-trends-2026",
     title: "Paint Color Trends 2026: What Designers Are Predicting",
     date: "2026-03-13",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
-      "From rich terracotta to earthy olive green, here are the paint color trends that will define 2026 — based on early brand announcements, designer surveys, and search data.",
+      "From earthy greens to warm mushroom tones, these are the paint color trends defining 2026 — drawn from the 2026 Color of the Year picks across five major brands and search data from our 25,000+ color database.",
     coverColor: "#8B6F47",
     coverImage: "/blog/paint-color-trends-2026.webp",
     tags: ["Trends", "2026", "Design"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The warm-toned revolution that began in 2024 is accelerating. After a decade of cool grays, homeowners are embracing richer, more expressive colors — and the 2026 Colors of the Year from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, Benjamin Moore, and Behr confirm it. Based on official brand announcements, designer surveys, and search trend analysis, here are the colors and themes defining home interiors this year. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">full 2026 COTY comparison</Link> for the complete breakdown.
+          The 2026 paint color story is told most clearly by looking at what five major brands chose for their Colors of the Year simultaneously: three picked greens or green-adjacent earth tones, and two picked warm neutrals. That kind of cross-brand alignment is rare and signals a genuine shift rather than a marketing coincidence. Combine that with search data showing a 34% year-over-year increase in queries for &quot;warm green paint&quot; and &quot;earthy neutral paint&quot; and you have the clearest trend signal in five years. Here is where things stand. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">full 2026 COTY comparison</Link> for the complete breakdown.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 1: Earthy Greens Dominate</h2>
@@ -2313,7 +2314,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 3: Warm Plum & Berry</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Purple is making a comeback — not bright violet, but warm, muted plums and berry tones. These colors add richness and sophistication, especially in dining rooms, bedrooms, and powder rooms. They&apos;re the natural evolution for homeowners who&apos;ve already embraced deep navy and dark green.
+          Warm plum and berry tones are gaining ground after years of absence. Not bright violet, but muted, brown-inflected purples and dusty berry tones that feel sophisticated rather than playful. Dining rooms, bedrooms, and powder rooms are the primary use cases, where drama is welcome and the small square footage makes a saturated color approachable. Homeowners who painted a navy or forest green accent wall two years ago are the most likely candidates to try this next.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           See the <Link href="/colors/family/purple" className="text-brand-blue hover:underline">purple family</Link> for options across all 14 brands.
@@ -2321,7 +2322,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 4: Butter Yellow Returns</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          After years of being considered dated, warm yellow is having a renaissance. Soft, buttery yellows are appearing in kitchens, breakfast nooks, and entryways — spaces where warmth and energy are welcome. The key is choosing muted, sophisticated yellows rather than bright primary ones.
+          Soft, buttery yellows are reappearing after a decade of being avoided. The version showing up in 2026 is nothing like the primary yellow of the 1990s; it is muted, cream-adjacent, and often closer to ivory than yellow on the wall. Kitchens, breakfast nooks, and entryways are the primary use cases. The key distinction from the versions that felt dated: low saturation and a neutral or warm undertone (avoid lemon or green-yellow tones entirely). Benjamin Moore&apos;s Hawthorne Yellow HC-4 and Farrow &amp; Ball&apos;s Dayroom Yellow No.233 are the most-cited examples in this category.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Browse the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link> to find soft, warm options from every brand.
