@@ -23,13 +23,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
   const url = `https://www.paintcolorhq.com/blog/${post.slug}`;
-  // Noindex pages pending content rewrite (CAM-65)
-  const noindexSlugs = new Set(["best-home-office-paint-colors"]);
-
   return {
     title: `${post.title}`,
     description: post.excerpt,
-    ...(noindexSlugs.has(slug) && { robots: { index: false, follow: true } }),
+    ...(post.noindex && { robots: { index: false, follow: true } }),
     alternates: { canonical: url },
     openGraph: {
       title: post.title, description: post.excerpt, type: "article",
