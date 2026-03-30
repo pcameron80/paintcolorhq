@@ -8,7 +8,7 @@ import { getAllPosts } from "@/lib/blog-posts";
 import { TagFilter } from "@/components/tag-filter";
 
 export const metadata: Metadata = {
-  title: "Blog | Paint Color HQ",
+  title: "Blog",
   description:
     "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips. Learn how to choose the perfect paint color for every room.",
   alternates: { canonical: "https://www.paintcolorhq.com/blog" },

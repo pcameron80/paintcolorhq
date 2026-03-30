@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!palette) return { title: "Palette Not Found" };
   const url = `https://www.paintcolorhq.com/inspiration/${slug}`;
   return {
-    title: `${palette.name} Color Palette | Paint Color HQ`,
+    title: `${palette.name} Color Palette`,
     description: palette.description,
     alternates: { canonical: url },
     robots: { index: false, follow: true },
