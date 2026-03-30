@@ -1534,16 +1534,17 @@ const blogPosts: BlogPost[] = [
     slug: "best-exterior-paint-colors",
     title: "The Best Exterior Paint Colors to Boost Curb Appeal",
     date: "2026-03-09",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
-      "From classic white farmhouses to moody dark siding, these exterior paint colors maximize curb appeal and complement every architectural style.",
+      "Exterior paint has to work with your roof, your trim, and full sun — conditions that change how colors look compared to interior swatches. These are the colors that hold up outdoors, with specific pairing advice for every architectural style.",
     coverColor: "#4B5E52",
     coverImage: "/blog/best-exterior-paint-colors.webp",
-    tags: ["Exterior", "Curb Appeal", "Design"],
+    tags: ["Exterior", "Curb Appeal", "Design", "2026"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Your exterior color scheme is the first impression your home makes. Unlike interior paint, exterior colors must work with fixed elements you can&apos;t change — your roof, stone or brick accents, landscaping, and even your neighbors&apos; houses. Brands like <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore offer exterior-specific formulations designed for durability and UV resistance. Here are the best exterior paint colors for every style, plus the strategies designers use to create standout curb appeal.
+          Exterior paint selection is harder than interior because you cannot control the conditions. Your roof, stone or brick accents, landscaping, and neighboring houses are fixed. Full sun washes out colors by 2 to 3 shades compared to how they look on a chip indoors. Wind, rain, UV exposure, and temperature swings mean formulation matters as much as color. The best exterior paints for 2026 use 100% acrylic formulations with UV-resistant pigments; both Benjamin Moore Aura Exterior and Sherwin-Williams Emerald Exterior are rated for 15+ years before significant fading.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Classic White Exteriors</h2>
@@ -1562,13 +1563,13 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark & Dramatic Siding</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Dark exteriors have exploded in popularity. Charcoal, navy, and deep green siding creates a striking, modern look that makes white trim pop and landscaping stand out.
+          Dark exteriors have been climbing steadily since 2020 and now represent a significant share of new-construction spec choices. Charcoal, navy, and deep green siding reads as modern and intentional rather than simply dark. The critical pairing requirement: light trim is non-negotiable. Without white or cream trim to create contrast, dark siding absorbs all the light and the house loses its architectural definition.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as deep charcoal in sunlight. The most popular dark exterior color. It&apos;s sophisticated without being as stark as true black.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4B5E52" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that&apos;s having a massive moment on exteriors. It blends with the landscape while standing out from the neighborhood.
+          <Swatch hex="#4B5E52" name="Essex Green HC-188" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — at LRV 11, this is a very dark forest green that reads differently from charcoal: where dark grays feel urban and modern, Essex Green on a craftsman or colonial feels grounded and organic. It blends with mature tree lines while clearly distinguishing the house from the neighborhood.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a rich navy for front doors, shutters, or full siding. It pairs beautifully with both warm and cool-toned roofs.
@@ -1585,7 +1586,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#8E8579" name="Mega Greige" brand="Sherwin-Williams" href="/colors/sherwin-williams/mega-greige-7031" /> — a deeper greige for a more substantial exterior color. It reads as a warm, sophisticated gray that avoids looking cold.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7D6B5D" name="Rumors" brand="Behr" href="/colors/behr/rumors-mq1-15" /> — the 2025 Color of the Year is a muted mushroom brown that works surprisingly well on craftsman and cottage-style exteriors. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year comparison</Link>. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> for more options.
+          <Swatch hex="#7D6B5D" name="Rumors MQ1-15" brand="Behr" href="/colors/behr/rumors-mq1-15" /> — a muted mushroom brown that works well on craftsman and cottage-style exteriors. Its warm brown-gray undertone complements wood accents, stone foundations, and both dark and medium-toned roofing. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> for more options.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Three-Color Rule</h2>
@@ -1607,7 +1608,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black door works on every house style and makes hardware stand out.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> — the 2025 Color of the Year makes a warm, inviting front door color that pairs beautifully with white trim and stone accents.
+          <Swatch hex="#8E7462" name="Universal Khaki SW 6149" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6149" /> — the Sherwin-Williams 2026 Color of the Year translates well to front doors. Its warm sandy-brown tone reads as welcoming rather than bold, making it a good middle ground between a neutral door and a statement door. Pairs with both warm stone and cool concrete surrounds. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Exterior Painting Tips</h2>
