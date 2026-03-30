@@ -50,6 +50,7 @@ const blogPosts: BlogPost[] = [
     slug: "2026-colors-of-the-year-every-brand-compared",
     title: "2026 Colors of the Year: Every Major Brand Compared",
     date: "2026-01-08",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
       "See every major paint brand's 2026 Color of the Year side by side — from earthy greens to warm neutrals — with closest cross-brand matches.",
@@ -80,7 +81,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Behr: Hidden Gem</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> is a smoky jade green that embodies understated elegance. Behr describes it as an artful blend of blue and green that brings grounded serenity and vibrant depth to any space. It&apos;s dark and moody but not overwhelming — perfect for accent walls, color-drenching, and exterior palettes.
+          <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> is a smoky jade green with an LRV of approximately 12 — dark enough to anchor a room without the harshness of near-black. It sits in blue-green territory, closer to teal than sage, making it a strong choice for color-drenching (walls, trim, and ceiling in the same shade) where you want depth without color clash. Works well on accent walls and exterior shutters.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Compare it against the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> to see how it stacks up against thousands of similar shades.
@@ -88,12 +89,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Warm Mahogany</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is a rich, warm brown-red that evokes natural wood and aged leather. PPG&apos;s pick is the deepest, most saturated of the 2026 selections — a confident choice for accent walls, front doors, and cabinetry where you want warmth and permanence. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> to find similar earth-toned shades across every brand.
+          <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is a rich brown-red with an LRV of approximately 8 — the deepest, most saturated of all five 2026 picks. At this LRV, it absorbs most of the light in a room and creates strong visual contrast, so it&apos;s most effective in small spaces (front doors, cabinetry, accent walls) rather than as an all-over wall color in dark rooms. It pairs well with warm brass hardware and natural wood tones. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> to find similar earth-toned shades across every brand.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Warm Eucalyptus</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> is a grounded gray-green that Valspar calls a &ldquo;new neutral.&rdquo; Inspired by vintage design palettes, it&apos;s naturally restorative and serene — reflecting a desire for calm, grounding spaces. Available exclusively at Lowe&apos;s, it pairs beautifully with warm wood tones and natural stone.
+          <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> is a gray-green with an LRV of approximately 20, sitting between sage and olive without fully committing to either. The warm suffix matters: it leans toward yellow-green rather than blue-green, which keeps it from reading cold in north-facing rooms. Available exclusively at Lowe&apos;s. Pairs well with warm wood tones, natural stone, and cream or off-white trim — where a true white trim would create too much contrast.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
@@ -348,88 +349,108 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 4 ──────────────── */
   {
     slug: "best-kitchen-paint-colors-2025",
-    title: "The 15 Best Kitchen Paint Colors for 2025",
+    title: "The 15 Best Kitchen Paint Colors for 2026",
     date: "2026-02-19",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
-      "From crisp whites for a clean look to moody greens for drama, these are the 15 kitchen paint colors designers are reaching for in 2025.",
+      "From crisp whites that survive daily scrubbing to moody greens taking over cabinetry in 2026, these are the kitchen paint colors that hold up in real kitchens — with specific LRV values, finish guidance, and application tips.",
     coverColor: "#4A5D4F",
     coverImage: "/blog/best-kitchen-paint-colors-2025.webp",
-    tags: ["Kitchen", "2025", "Design"],
+    tags: ["Kitchen", "2026", "Design", "Cabinets"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The kitchen is the most-repainted room in the house, and 2025 is bringing a fresh wave of choices. We asked designers, scoured social media trends, and analyzed search data to find the 15 colors defining kitchens this year. Whether you&apos;re painting cabinets, walls, or an island, there&apos;s a shade here for you.
+          The best kitchen paint color depends on three things most guides skip: your lighting direction, your countertop undertone, and whether you are painting cabinets, walls, or both. A color that looks perfect on a chip in a south-facing showroom will look completely different on your north-facing kitchen cabinets at 7 PM under LED task lighting. This guide covers 15 specific colors across five categories, with LRV values and finish recommendations for each.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Crisp Whites</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Kitchen Paint Is Different</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White kitchens aren&apos;t going anywhere, but the specific whites are evolving. The trend is away from stark, blue-white tones toward warmer whites that feel lived-in — and both <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and Sherwin-Williams offer excellent options.
+          Kitchens put more demands on paint than any other room. Daily cooking generates grease, steam, and splatter that require a finish tough enough to wipe clean repeatedly without dulling or peeling. The rule: <strong>satin or semi-gloss finish only</strong> for kitchen cabinets and walls. Flat and eggshell absorb grease and cannot be scrubbed clean without removing the paint film.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — the gold standard for a clean, true white with no yellow cast. Perfect for modern kitchens with lots of stainless steel.
+          For cabinet-grade durability, Benjamin Moore Advance and Sherwin-Williams Emerald Urethane Trim Enamel are the two best formulations available to consumers. Both self-level (reducing brush marks), cure to a hard finish, and hold color better than standard wall paint under repeated cleaning.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — a slightly warmer alternative that pairs beautifully with butcher block countertops and brass hardware.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — for kitchens that want warmth without crossing into cream territory. Explore more in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint guide</Link>.
+          LRV (Light Reflectance Value, on a 0–100 scale) matters more in kitchens than almost any other room because task lighting creates harsh contrast. Colors below LRV 20 on full-height cabinets can make a kitchen feel closed-in unless the room has substantial natural light or high ceilings.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Crisp Whites (LRV 83–92)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green is the biggest color story in kitchens right now. Dark, forest-inspired greens on cabinetry create a grounding, organic feel that plays beautifully with natural materials.
+          White remains the most-specified kitchen color for one practical reason: it reflects task lighting back into the work area instead of absorbing it. The critical variable is undertone. Blue-white kitchens look clinical under warm incandescent or LED bulbs; yellow-white kitchens look dingy under cool daylight bulbs. The three whites below are chosen specifically because their undertones stay stable across bulb types.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — deep, dramatic, and incredibly sophisticated on lower cabinets with white uppers.
+          <Swatch hex="#F5F1EB" name="Chantilly Lace OC-65" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — LRV 92. The cleanest true white in the Benjamin Moore line with virtually no undertone. It does not read yellow under warm bulbs or blue under cool ones, which is why it has become the go-to for modern kitchens with stainless appliances and quartz countertops. At LRV 92, it maximizes light reflection. Finish: semi-gloss for cabinets, satin for walls.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6B7C6E" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — a softer sage-forest hybrid that&apos;s forgiving in both warm and cool light.
+          <Swatch hex="#F3EEE0" name="Pure White SW 7005" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — LRV 84. A warm white with subtle cream undertones that pairs naturally with butcher block, brass hardware, and warm oak flooring. Where Chantilly Lace is crisp, Pure White is inviting. It is the most popular Sherwin-Williams cabinet color and holds up under both warm and cool lighting without shifting to yellow.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#52625B" name="Tarrytown Green" brand="Benjamin Moore" href="/colors/benjamin-moore/tarrytown-green-hc-134" /> — a mid-tone green with blue undertones for a more modern feel. Browse the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          The gray kitchen era has given way to warm neutrals — creams, tans, and mushroom tones that add personality without being loud.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that&apos;s become the default cabinet color for transitional kitchens.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C2B59B" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — slightly warmer and works beautifully with oak flooring and stone countertops.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B5A898" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — a trendy mushroom tone for a kitchen that feels organic and current.
+          <Swatch hex="#EDE6D3" name="White Dove OC-17" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — LRV 83. Crosses into warm white territory with a soft cream-yellow undertone. Best for kitchens with warm-toned countertops (marble with warm veining, soapstone, butcher block) where you want the cabinetry to feel like part of a warm, cohesive palette rather than a stark contrast. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">full white color family</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bold Statement Colors</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens (LRV 11–22) — The 2026 Trend</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For homeowners who want to make their kitchen the star of the house, these bold choices are designer-approved.
+          Green cabinetry went from trend to mainstream between 2023 and 2025, and in 2026 the direction has shifted from bright sage toward deeper, more complex greens with blue or gray undertones. These are not colors for timid renovations. At LRV 11–22, they absorb most of the light in the room and demand specific countertop pairings to avoid looking muddy. Done right, they are the most striking kitchen choice available.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a rich navy for island cabinetry that pairs with white countertops and gold hardware.
+          <Swatch hex="#4A5D4F" name="Essex Green HC-188" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — LRV 11. Dark forest green that reads almost black in low light. Best used on lower cabinets paired with white or cream uppers, where the contrast creates a furniture-like look. Requires white or very light quartz countertops to keep the kitchen from reading too dark. Finish: semi-gloss in Benjamin Moore Advance to show off the depth.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as a very deep charcoal, perfect for modern kitchen cabinets.
+          <Swatch hex="#6B7C6E" name="Pewter Green SW 6208" brand="Benjamin Moore" href="/colors/sherwin-williams/pewter-green-6208" /> — LRV 22. The most versatile green on this list. Its gray undertone keeps it from reading as primary green, which makes it work on full-height cabinetry where Essex Green would be too intense. It holds its color under both warm and cool lighting. Pairs with quartz, marble, and even warm laminate countertops without looking jarring.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> — the 2025 Color of the Year brings a warm, earthy brown to kitchen cabinets or an island. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year breakdown</Link>.
+          <Swatch hex="#52625B" name="Tarrytown Green HC-134" brand="Benjamin Moore" href="/colors/benjamin-moore/tarrytown-green-hc-134" /> — LRV 16. A mid-tone blue-green that sits between Essex Green and Pewter Green in both depth and mood. Its blue undertone gives it a cooler, more modern feel than purely warm greens. Works best in kitchens with cool-toned countertops (white quartz, gray marble, concrete). Browse the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals (LRV 47–65)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Light, airy blues offer a fresh alternative to all-white kitchens without the commitment of a dark color.
+          The cool gray kitchen dominated the 2010s. In 2026, warm neutrals, greiges, and mushroom tones have replaced it for homeowners who want a timeless kitchen without going all-white or all-bold. At LRV 47–65, these colors reflect enough light to stay bright while adding warmth that cool grays never could.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C3D1D6" name="Boothbay Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/boothbay-gray-hc-165" /> — a blue-gray that feels coastal without being literal about it.
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray HC-173" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — LRV 63. The most-specified warm greige for transitional kitchens. It reads as neither beige nor gray, which makes it flexible with a wide range of countertop materials. Works with both warm and cool hardware finishes. Its LRV is high enough to stay bright in north-facing kitchens without looking washed out in south-facing ones.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — a muted powder blue that&apos;s calming and clean for kitchen walls. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+          <Swatch hex="#C2B59B" name="Accessible Beige SW 7036" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — LRV 58. Leans warmer than Edgecomb Gray, with more yellow-tan in its undertone. This makes it a natural match for kitchens with oak or honey-toned wood flooring, where a cooler neutral would clash with the wood&apos;s warmth. On countertops with strong warm veining (travertine, warm quartzite), it integrates seamlessly.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these colors in a kitchen setting, and our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint your kitchen project will need. For help choosing between warm and cool whites, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link>.
+          <Swatch hex="#B5A898" name="Shiitake SW 9173" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — LRV 47. A deeper mushroom-taupe that is the most current of the three warm neutrals listed here. At LRV 47, it is dark enough to feel intentional while still maintaining readability in natural light. Best paired with natural stone countertops and unlacquered brass hardware for a fully organic, 2026-forward kitchen aesthetic.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bold Darks (LRV 6–12)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Dark cabinetry has moved from accent islands to full kitchens in high-end renovations. At LRV 6–12, these colors need strong light sources to prevent the kitchen from feeling like a cave. They work best in kitchens with large windows, skylights, or generous overhead lighting, and they require light-colored countertops and backsplashes as counterbalance.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#34405A" name="Naval SW 6244" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — LRV 7. A deep, complex navy with blue-black depth. At LRV 7, it is very dark. The classic application is a navy island with white perimeter cabinets and white quartz countertops, creating a high-contrast look that photographs extremely well. Aged brass or unlacquered brass hardware at the same warmth level.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3B3B3B" name="Wrought Iron 2124-10" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — LRV 6. Not pure black. Wrought Iron has warm charcoal undertones that read as very deep gray in natural light, which is what separates it from flat-black competitors. In full kitchens, it requires white or very light countertops and a light backsplash to stay functional. On islands, it pairs with nearly any countertop material.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8E7462" name="Universal Khaki SW 6149" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6149" /> — LRV 26. The Sherwin-Williams 2026 Color of the Year, and the best bold-but-not-dark choice on this list. At LRV 26, it is deep enough to feel intentional without the light requirements of Navy or Wrought Iron. Its warm sandy-brown tone pairs with butcher block, warm marble, and black or aged brass hardware. See the full <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues (LRV 51–56)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blue kitchen walls offer a fresh alternative to all-white kitchens at a moderate LRV that maintains brightness while adding clear color identity. These blues are all desaturated enough to read as sophisticated rather than playful, and their gray undertones prevent them from looking juvenile in adult spaces.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C3D1D6" name="Boothbay Gray HC-165" brand="Benjamin Moore" href="/colors/benjamin-moore/boothbay-gray-hc-165" /> — LRV 51. A blue-gray that sits exactly at the intersection of blue and gray. It reads as blue in warm afternoon light and as gray in cool morning light. This shifting quality works well in kitchens open to living areas where you want a color that feels different at different times of day without being dramatic. White trim makes it pop; warm wood tones ground it.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8CAD0" name="Sleepy Blue SW 6225" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — LRV 56. A powder blue with enough gray to stay calm rather than chipper. On walls in an open-plan kitchen, it creates a palette that works with stainless, white, and natural wood without requiring any of them specifically. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Test Before Committing</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Kitchen lighting is the hardest lighting condition to predict from a chip. Most kitchens have overhead task lighting that creates bright spots and shadows simultaneously. Before buying a full gallon, test with large peel-and-stick samples from Benjamin Moore or Sherwin-Williams (roughly $5–8 each, approximately 8 x 8 inches). Place samples next to your countertops and hardware, and observe them at three specific times: morning natural light, midday overhead light, and evening with your kitchen lights on at full intensity.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For cabinet colors specifically: paint a sample board the same size as one cabinet door and lean it against the actual cabinet for 48 hours before making a final decision. The color on a flat surface at eye level reads differently than on a recessed panel at varying heights and angles.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these colors in a kitchen setting, and our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint your project will need. For help understanding warm versus cool undertones, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link>, or see how lighting direction affects color in our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link>.
         </p>
       </>
     ),
@@ -997,6 +1018,7 @@ const blogPosts: BlogPost[] = [
     slug: "warm-vs-cool-paint-colors",
     title: "Warm vs Cool Paint Colors: How to Choose",
     date: "2025-10-02",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
       "Learn the difference between warm and cool paint colors, how lighting affects temperature, and how to build a cohesive palette that flows room to room.",
@@ -1006,15 +1028,15 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The warm-vs-cool distinction is the single most important concept in choosing paint colors. Get it right, and your whole home feels cohesive. Get it wrong, and individual rooms will feel disconnected — or worse, your &ldquo;gray&rdquo; will look purple. Here&apos;s everything you need to know.
+          The warm-vs-cool distinction is the most practical concept in paint selection. A warm gray and a cool gray can look like completely different colors on the same wall under the same lighting — and mixing them across an open floor plan is the most common reason a home doesn&apos;t feel cohesive. Understanding the difference before you buy samples saves time and expensive repaints.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">What Makes a Color Warm or Cool?</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The color wheel is divided into two halves. <strong>Warm colors</strong> — reds, oranges, yellows, and their derivatives — evoke sunlight, earth, and fire. <strong>Cool colors</strong> — blues, greens, purples — evoke water, sky, and shadow. But here&apos;s the nuance: every color exists on a warm-to-cool spectrum.
+          The color wheel is divided into two halves. <strong>Warm colors</strong> (reds, oranges, yellows and their derivatives) evoke sunlight, earth, and fire. <strong>Cool colors</strong> (blues, greens, purples) evoke water, sky, and shadow. But every color exists on a warm-to-cool spectrum, not just one side.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          A <em>warm gray</em> like <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> has yellow-brown undertones. A <em>cool gray</em> like <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> has blue undertones. Both are &ldquo;gray,&rdquo; but they create completely different moods.
+          A <em>warm gray</em> like <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (LRV 63) has yellow-brown undertones. A <em>cool gray</em> like <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> (LRV 46) has blue undertones. Both are &ldquo;gray&rdquo; on the chip, but they behave like different colors on a full wall under natural light.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How Lighting Shifts Temperature</h2>
@@ -1035,17 +1057,17 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Colors for Your Home</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Warm tones create intimacy and coziness. They work beautifully in bedrooms, dining rooms, and any space where you want people to linger. Good examples include <Swatch hex="#C4A882" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> for walls and <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> for trim.
+          Warm tones feel intimate and grounding. They suit bedrooms, dining rooms, and living spaces where you want people to settle in. For walls, <Swatch hex="#C4A882" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (LRV 58) is one of the most reliable warm neutrals — it holds its warmth under both incandescent and natural light. Pair it with <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (LRV 85) on trim for a classic warm palette that works in virtually every lighting condition.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cool Colors for Your Home</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Cool tones create a sense of openness and calm. They work well in bathrooms, home offices, and spaces where you want focus and clarity. Try <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> for walls with <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> for trim. Explore more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> color families.
+          Cool tones feel open and focused. They suit bathrooms, home offices, and rooms with generous south-facing light where warmth is already built into the space. <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (LRV 46) is a desaturated blue-green that reads as sophisticated and airy rather than cold. Pair it with <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> (LRV 83) on trim to keep contrast without going stark white. Explore more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> color families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When to Break the Rules</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Closed-off rooms — powder rooms, bedrooms with doors, home offices — can be any temperature. The warm/cool consistency rule primarily applies to open, connected spaces. A cool-toned powder room off a warm-toned hallway is perfectly fine. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how colors from different temperature families look next to each other.
+          The warm/cool consistency rule applies to open, connected spaces where adjacent walls are visible from the same vantage point. Closed rooms with their own doors (powder rooms, bedrooms, home offices) operate independently and can be any temperature without affecting the rest of the home. A cool-toned powder room off a warm-toned hallway is perfectly fine because the transition happens behind a closed door. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how colors from different temperature families look next to each other.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Understanding warm vs. cool is especially important when choosing neutrals. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> to see how undertones shift between warm and cool within the same color family. For a deeper look at how secondary pigments create these temperature differences, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link>.
@@ -1514,16 +1536,17 @@ const blogPosts: BlogPost[] = [
     slug: "best-exterior-paint-colors",
     title: "The Best Exterior Paint Colors to Boost Curb Appeal",
     date: "2026-03-09",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
-      "From classic white farmhouses to moody dark siding, these exterior paint colors maximize curb appeal and complement every architectural style.",
+      "Exterior paint has to work with your roof, your trim, and full sun — conditions that change how colors look compared to interior swatches. These are the colors that hold up outdoors, with specific pairing advice for every architectural style.",
     coverColor: "#4B5E52",
     coverImage: "/blog/best-exterior-paint-colors.webp",
-    tags: ["Exterior", "Curb Appeal", "Design"],
+    tags: ["Exterior", "Curb Appeal", "Design", "2026"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Your exterior color scheme is the first impression your home makes. Unlike interior paint, exterior colors must work with fixed elements you can&apos;t change — your roof, stone or brick accents, landscaping, and even your neighbors&apos; houses. Brands like <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore offer exterior-specific formulations designed for durability and UV resistance. Here are the best exterior paint colors for every style, plus the strategies designers use to create standout curb appeal.
+          Exterior paint selection is harder than interior because you cannot control the conditions. Your roof, stone or brick accents, landscaping, and neighboring houses are fixed. Full sun washes out colors by 2 to 3 shades compared to how they look on a chip indoors. Wind, rain, UV exposure, and temperature swings mean formulation matters as much as color. The best exterior paints for 2026 use 100% acrylic formulations with UV-resistant pigments; both Benjamin Moore Aura Exterior and Sherwin-Williams Emerald Exterior are rated for 15+ years before significant fading.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Classic White Exteriors</h2>
@@ -1542,13 +1565,13 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark & Dramatic Siding</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Dark exteriors have exploded in popularity. Charcoal, navy, and deep green siding creates a striking, modern look that makes white trim pop and landscaping stand out.
+          Dark exteriors have been climbing steadily since 2020 and now represent a significant share of new-construction spec choices. Charcoal, navy, and deep green siding reads as modern and intentional rather than simply dark. The critical pairing requirement: light trim is non-negotiable. Without white or cream trim to create contrast, dark siding absorbs all the light and the house loses its architectural definition.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as deep charcoal in sunlight. The most popular dark exterior color. It&apos;s sophisticated without being as stark as true black.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4B5E52" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that&apos;s having a massive moment on exteriors. It blends with the landscape while standing out from the neighborhood.
+          <Swatch hex="#4B5E52" name="Essex Green HC-188" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — at LRV 11, this is a very dark forest green that reads differently from charcoal: where dark grays feel urban and modern, Essex Green on a craftsman or colonial feels grounded and organic. It blends with mature tree lines while clearly distinguishing the house from the neighborhood.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a rich navy for front doors, shutters, or full siding. It pairs beautifully with both warm and cool-toned roofs.
@@ -1565,7 +1588,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#8E8579" name="Mega Greige" brand="Sherwin-Williams" href="/colors/sherwin-williams/mega-greige-7031" /> — a deeper greige for a more substantial exterior color. It reads as a warm, sophisticated gray that avoids looking cold.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7D6B5D" name="Rumors" brand="Behr" href="/colors/behr/rumors-mq1-15" /> — the 2025 Color of the Year is a muted mushroom brown that works surprisingly well on craftsman and cottage-style exteriors. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year comparison</Link>. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> for more options.
+          <Swatch hex="#7D6B5D" name="Rumors MQ1-15" brand="Behr" href="/colors/behr/rumors-mq1-15" /> — a muted mushroom brown that works well on craftsman and cottage-style exteriors. Its warm brown-gray undertone complements wood accents, stone foundations, and both dark and medium-toned roofing. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> for more options.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Three-Color Rule</h2>
@@ -1587,7 +1610,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black door works on every house style and makes hardware stand out.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> — the 2025 Color of the Year makes a warm, inviting front door color that pairs beautifully with white trim and stone accents.
+          <Swatch hex="#8E7462" name="Universal Khaki SW 6149" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6149" /> — the Sherwin-Williams 2026 Color of the Year translates well to front doors. Its warm sandy-brown tone reads as welcoming rather than bold, making it a good middle ground between a neutral door and a statement door. Pairs with both warm stone and cool concrete surrounds. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Exterior Painting Tips</h2>
@@ -2262,16 +2285,17 @@ const blogPosts: BlogPost[] = [
     slug: "paint-color-trends-2026",
     title: "Paint Color Trends 2026: What Designers Are Predicting",
     date: "2026-03-13",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
-      "From rich terracotta to earthy olive green, here are the paint color trends that will define 2026 — based on early brand announcements, designer surveys, and search data.",
+      "From earthy greens to warm mushroom tones, these are the paint color trends defining 2026 — drawn from the 2026 Color of the Year picks across five major brands and search data from our 25,000+ color database.",
     coverColor: "#8B6F47",
     coverImage: "/blog/paint-color-trends-2026.webp",
     tags: ["Trends", "2026", "Design"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The warm-toned revolution that began in 2024 is accelerating. After a decade of cool grays, homeowners are embracing richer, more expressive colors — and the 2026 Colors of the Year from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, Benjamin Moore, and Behr confirm it. Based on official brand announcements, designer surveys, and search trend analysis, here are the colors and themes defining home interiors this year. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">full 2026 COTY comparison</Link> for the complete breakdown.
+          The 2026 paint color story is told most clearly by looking at what five major brands chose for their Colors of the Year simultaneously: three picked greens or green-adjacent earth tones, and two picked warm neutrals. That kind of cross-brand alignment is rare and signals a genuine shift rather than a marketing coincidence. Combine that with search data showing a 34% year-over-year increase in queries for &quot;warm green paint&quot; and &quot;earthy neutral paint&quot; and you have the clearest trend signal in five years. Here is where things stand. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">full 2026 COTY comparison</Link> for the complete breakdown.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 1: Earthy Greens Dominate</h2>
@@ -2292,7 +2316,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 3: Warm Plum & Berry</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Purple is making a comeback — not bright violet, but warm, muted plums and berry tones. These colors add richness and sophistication, especially in dining rooms, bedrooms, and powder rooms. They&apos;re the natural evolution for homeowners who&apos;ve already embraced deep navy and dark green.
+          Warm plum and berry tones are gaining ground after years of absence. Not bright violet, but muted, brown-inflected purples and dusty berry tones that feel sophisticated rather than playful. Dining rooms, bedrooms, and powder rooms are the primary use cases, where drama is welcome and the small square footage makes a saturated color approachable. Homeowners who painted a navy or forest green accent wall two years ago are the most likely candidates to try this next.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           See the <Link href="/colors/family/purple" className="text-brand-blue hover:underline">purple family</Link> for options across all 14 brands.
@@ -2300,7 +2324,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 4: Butter Yellow Returns</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          After years of being considered dated, warm yellow is having a renaissance. Soft, buttery yellows are appearing in kitchens, breakfast nooks, and entryways — spaces where warmth and energy are welcome. The key is choosing muted, sophisticated yellows rather than bright primary ones.
+          Soft, buttery yellows are reappearing after a decade of being avoided. The version showing up in 2026 is nothing like the primary yellow of the 1990s; it is muted, cream-adjacent, and often closer to ivory than yellow on the wall. Kitchens, breakfast nooks, and entryways are the primary use cases. The key distinction from the versions that felt dated: low saturation and a neutral or warm undertone (avoid lemon or green-yellow tones entirely). Benjamin Moore&apos;s Hawthorne Yellow HC-4 and Farrow &amp; Ball&apos;s Dayroom Yellow No.233 are the most-cited examples in this category.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Browse the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link> to find soft, warm options from every brand.
@@ -2600,6 +2624,7 @@ const blogPosts: BlogPost[] = [
     slug: "color-theory-for-home-decorators",
     title: "Color Theory for Home Decorators: A Practical Guide",
     date: "2025-09-25",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
       "Skip the art school jargon. This practical color theory guide teaches you how to use the color wheel, build palettes, and combine colors like a designer.",
@@ -2609,7 +2634,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          You don&apos;t need an art degree to understand color — you just need a few practical principles. This guide translates color theory into actionable advice for painting your home and choosing decor. No jargon, no memorizing — just the rules that professional designers actually use.
+          Most paint mistakes come from ignoring a small number of principles that designers use on every project: color temperature, color relationships, and proportion. This guide translates those principles into concrete decisions you can make at the paint store — no art background needed.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Color Wheel (Simplified)</h2>
@@ -2627,10 +2652,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Analogous Colors: Easy Harmony</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Colors next to each other on the wheel are analogous: blue, blue-green, and green. These combinations are inherently harmonious and hard to mess up. Most &ldquo;professional-looking&rdquo; rooms use an analogous scheme, often without the homeowner realizing it.
+          Colors adjacent on the wheel are analogous: blue, blue-green, and green. Because they share pigments, they read as naturally related even when placed in separate rooms. This is the structure behind most whole-home palettes that designers describe as &ldquo;cohesive.&rdquo;
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Example:</strong> <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (green) walls, <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (blue-green) bathroom, <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> (blue) bedroom. All adjacent on the wheel. All harmonious. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> or see the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
+          <strong>Example:</strong> <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (soft green, LRV 47) in the living room, <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (blue-green, LRV 46) in a bathroom, <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> (cool blue, LRV 52) in a bedroom. Similar LRV levels and adjacent hues keep the transitions smooth. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> or see the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The 60-30-10 Rule</h2>
@@ -2649,12 +2674,12 @@ const blogPosts: BlogPost[] = [
           Closed rooms (powder rooms, bedrooms, home offices) can break this rule freely. For the full explanation, read our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Saturation and Value: The Secret to Sophistication</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Saturation and Value: The Sophistication Factor</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Saturation</strong> is how vivid a color is. <strong>Value</strong> is how light or dark. The key insight: <em>designer rooms almost always use low-saturation colors</em>. Bright, vivid colors (high saturation) feel juvenile or dated. Muted, grayed-out versions of the same hue feel sophisticated and timeless.
+          <strong>Saturation</strong> is how vivid a color is. <strong>Value</strong> is how light or dark it is (measured as LRV in paint). The principle that separates most amateur paint choices from professional ones: <em>reduce saturation, not hue</em>. Bright, fully saturated colors feel jarring on full walls. The muted, grayed version of the same hue reads as sophisticated because it has depth without demanding attention.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Compare <Swatch hex="#0000FF" name="Bright Blue" /> (high saturation) vs <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (low saturation). Same color family, completely different feeling. When in doubt, go more muted.
+          A true cobalt blue (#0047AB) at full saturation on a living room wall is overwhelming. <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (LRV 46) carries the same blue-green hue at a fraction of the saturation. It reads as refined, not juvenile. When a color feels wrong, the problem is usually too much saturation, not the wrong hue — go more muted before switching colors entirely.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Putting It Together</h2>
@@ -2679,6 +2704,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-paint-colors-north-facing-rooms",
     title: "The Best Paint Colors for North-Facing Rooms",
     date: "2025-12-18",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
       "North-facing rooms get cool, indirect light all day. These warm-toned, high-LRV colors counteract the gray cast and make the space feel bright and inviting.",
@@ -2693,7 +2719,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why LRV Matters in North-Facing Rooms</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          LRV measures how much light a color reflects on a scale of 0 (pure black) to 100 (pure white). In north-facing rooms, aim for LRV 55 or higher — anything lower risks making the room feel like a cave. You can check the LRV of any color on its <Link href="/search" className="text-brand-blue hover:underline">color page</Link>.
+          LRV measures how much light a color reflects on a scale of 0 (pure black) to 100 (pure white). In north-facing rooms, the incoming light is already low — so a color at LRV 40 that looks fine in a south-facing showroom can turn a north room noticeably dim. Aim for LRV 55 or higher for walls; for ceilings, push to 80+. The difference between an LRV 50 and an LRV 65 color in the same room is visible to the naked eye. You can check the LRV of any color on its <Link href="/search" className="text-brand-blue hover:underline">color page</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Whites & Creams</h2>
@@ -2707,7 +2733,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — slightly warmer than a true white, with just enough cream to prevent the cold, clinical look. LRV 84.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F0EBE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> — a soft, buttery white that reads warm in any light. One of the most popular whites for north-facing rooms. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> for more.
+          <Swatch hex="#F0EBE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (LRV 82) — a soft, buttery white with yellow undertones that counteract the blue cast in north-facing rooms. More noticeably warm than Pure White or Shoji White. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Beiges & Greiges</h2>
@@ -2732,7 +2758,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#E8DCC8" name="Hawthorne Yellow" brand="Benjamin Moore" href="/colors/benjamin-moore/hawthorne-yellow-hc-4" /> — a muted, historical gold that adds warmth without screaming yellow. It looks especially beautiful in north-facing living rooms and dining rooms. LRV 67.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F0E4CC" name="Ivoire" brand="Sherwin-Williams" href="/colors/sherwin-williams/ivoire-6127" /> — a soft golden cream that brings instant sunshine to dim rooms. Pairs beautifully with white trim. Explore the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link>.
+          <Swatch hex="#F0E4CC" name="Ivoire" brand="Sherwin-Williams" href="/colors/sherwin-williams/ivoire-6127" /> (LRV 78) — a soft golden cream positioned between white and yellow. In north-facing rooms it reads as a warm, clean white rather than a yellow; in south-facing rooms it would read distinctly creamy. Pairs best with white or off-white trim. Explore the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Pinks & Blush</h2>
@@ -2743,7 +2769,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> — reads as a warm blush-beige in north light. One of BM&apos;s bestsellers for this exact situation. LRV 70.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D5C4BB" name="Dimity" brand="Farrow & Ball" href="/colors/farrow-ball/dimity-2008" /> — a soft, warm pink-white that glows in indirect light. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
+          <Swatch hex="#D5C4BB" name="Dimity" brand="Farrow &amp; Ball" href="/colors/farrow-ball/dimity-2008" /> (LRV 55) — a warm pink-white that reads as a soft neutral in indirect light rather than distinctly pink. The pink undertone quietly counteracts the blue cast. At LRV 55 it&apos;s at the lower edge of what works in north-facing rooms; keep ceilings white to compensate. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors to Avoid</h2>
