@@ -24,12 +24,26 @@
 - [Paint Calculator](https://www.paintcolorhq.com/tools/paint-calculator): Calculate exact gallons needed by room dimensions. Accounts for doors, windows, and number of coats.
 
 ## Expert Guides & Analysis
-- [The 15 Best White Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-white-paint-colors-guide): 15 whites compared by undertone (warm/cool/true), LRV, and best room application. Includes cross-brand equivalents table.
-- [Paint Color Undertones Explained](https://www.paintcolorhq.com/blog/understanding-paint-color-undertones): How to identify blue, green, purple, and brown undertones in gray, white, and beige paints before purchasing.
-- [How to Match Paint Colors Across Brands](https://www.paintcolorhq.com/blog/how-to-find-perfect-color-match-across-brands): Step-by-step guide using CIEDE2000 Delta E scores with real examples (Agreeable Gray to Behr, BM, PPG equivalents).
-- [Behr vs Sherwin-Williams vs Benjamin Moore](https://www.paintcolorhq.com/blog/behr-vs-sherwin-williams-vs-benjamin-moore): Head-to-head comparison of pricing ($45-90/gal), quality, availability, color selection, and best-use cases.
-- [Best Bathroom Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-bathroom-paint-colors): 15 moisture-resistant picks organized by mood (spa blues, warm whites, sage greens, earth tones, moody jewel tones).
-- [Best Kitchen Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-sherwin-williams-kitchen-colors): 18 Sherwin-Williams colors for kitchens with lighting guidance and finish recommendations.
+- [The 15 Best White Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-white-paint-colors-guide): 15 whites compared by undertone (warm/cool/true), LRV, and best room application. Includes cross-brand equivalents and LRV data for every pick.
+- [Paint Color Undertones Explained](https://www.paintcolorhq.com/blog/understanding-paint-color-undertones): How to identify blue, green, purple, and brown undertones in gray, white, and beige paints. Explains why Repose Gray reads as a true neutral and why Revere Pewter shifts green in cool light.
+- [How to Match Paint Colors Across Brands](https://www.paintcolorhq.com/blog/how-to-find-perfect-color-match-across-brands): Step-by-step guide using CIEDE2000 Delta E scores with real examples (Agreeable Gray → Behr, BM, PPG equivalents). Delta E under 2.0 is a match most people cannot distinguish on walls.
+- [Behr vs Sherwin-Williams vs Benjamin Moore (2026)](https://www.paintcolorhq.com/blog/behr-vs-sherwin-williams-vs-benjamin-moore): Price comparison ($35–90/gal), quality ratings, availability, and color selection. Includes side-by-side Delta E comparisons of top sellers.
+- [Sherwin-Williams vs Benjamin Moore: Full Comparison](https://www.paintcolorhq.com/blog/sherwin-williams-vs-benjamin-moore): Coverage rates, durability, price per sq ft, and which brand wins by use case (exteriors, cabinets, whole-house neutrals).
+- [Best Bathroom Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-bathroom-paint-colors): 15 moisture-resistant picks organized by mood: spa blues, warm whites, sage greens, earth tones, moody jewel tones. Includes LRV guidance for small bathrooms.
+- [Best Kitchen Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-kitchen-paint-colors-2025): 15 kitchen colors with finish guidance (satin/semi-gloss) and countertop pairing advice. BM Advance vs SW Emerald Urethane for cabinets.
+- [Best Kitchen Colors by Sherwin-Williams](https://www.paintcolorhq.com/blog/best-sherwin-williams-kitchen-colors): 18 SW-specific kitchen picks with LRV data, cabinet vs. wall applications, and hardware pairing recommendations.
+- [Best Exterior Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-exterior-paint-colors): Top picks for siding, trim, and front doors. UV resistance specs, 15+ year durability formulas.
+- [Best Living Room Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-living-room-paint-colors): Picks for open-plan spaces, cozy rooms, and high-ceiling great rooms, organized by light exposure and size.
+- [Best Bedroom Paint Colors for Calm](https://www.paintcolorhq.com/blog/calming-bedroom-paint-colors): Sleep-promoting picks. Bedrooms benefit from LRV 45–65 for restful atmosphere.
+- [Best Behr Colors for Bedrooms](https://www.paintcolorhq.com/blog/best-behr-colors-for-bedrooms): Budget-friendly Behr picks at $35–50/gallon. Includes Home Depot SKUs and undertone analysis.
+- [Benjamin Moore's Most Popular Whites](https://www.paintcolorhq.com/blog/benjamin-moore-most-popular-whites): BM's top-selling whites ranked by LRV: White Dove (83), Simply White (89), Chantilly Lace (90), Cloud White (85), Linen White (79).
+- [Best Paint Colors for North-Facing Rooms](https://www.paintcolorhq.com/blog/best-paint-colors-north-facing-rooms): North-facing rooms need LRV 65+ for whites. Specific picks: Navajo White (LRV 70), Antique White (LRV 72), Ivory Lace (LRV 77).
+- [Best Paint Colors for East-Facing Rooms](https://www.paintcolorhq.com/blog/best-paint-colors-east-facing-rooms): Best colors for rooms with warm morning light that shifts cool by afternoon.
+- [Warm vs. Cool Paint Colors: Complete Guide](https://www.paintcolorhq.com/blog/warm-vs-cool-paint-colors): Repose Gray = true neutral; Agreeable Gray = warm-neutral; Stonington Gray = cool.
+- [2026 Colors of the Year: Every Brand Compared](https://www.paintcolorhq.com/blog/2026-colors-of-the-year-every-brand-compared): SW Universal Khaki (LRV 42), BM Silhouette (dark gray-brown), Behr Hidden Gem (jade, LRV ~16), PPG Warm Mahogany (brown-red), Valspar Warm Eucalyptus (gray-green).
+- [2026 Paint Color Trends](https://www.paintcolorhq.com/blog/paint-color-trends-2026): Green and earth tones dominate. 34% YoY search growth for "sage green walls."
+- [Paint Sheen Guide](https://www.paintcolorhq.com/blog/paint-sheen-guide): Flat for ceilings, eggshell for living rooms, satin for kitchens/bathrooms, semi-gloss for trim/doors.
+- [How to Test Paint Samples](https://www.paintcolorhq.com/blog/how-to-test-paint-samples): Test on 12"×12" boards viewed in actual room lighting at different times of day — not on tiny paint chips.
 
 ## Browse by Brand
 - [All 1,527 Sherwin-Williams Colors](https://www.paintcolorhq.com/brands/sherwin-williams): America's largest paint company. Top sellers: Agreeable Gray, Pure White, Alabaster.
@@ -44,12 +58,18 @@
 - [About Our Methodology](https://www.paintcolorhq.com/about): Uses CIEDE2000 — the International Commission on Illumination (CIE) standard for perceptual color difference. Every color includes hex, RGB, LRV, undertone classification (warm/cool/neutral), and cross-brand matches ranked by Delta E score.
 
 ## Common Questions This Site Answers
-- What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray? -> Wish AF-680 (Delta E 0.91)
-- What undertone does Agreeable Gray have? -> Warm, balanced neutral
-- What is the best white paint for trim? -> Chantilly Lace (true white, LRV 90) or White Dove (warm white, LRV 83)
-- How do I match paint colors across brands? -> Use CIEDE2000 Delta E scores. Delta E < 2 = virtually identical.
-- What is the hex code for Agreeable Gray? -> #D1CBC1
-- What does LRV mean? -> Light Reflectance Value (0-100). Higher = lighter. LRV > 50 makes rooms feel open.
+- What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray? → Wish AF-680 (Delta E 0.91) — virtually identical on walls.
+- What is the Behr equivalent of Agreeable Gray? → Toasty Gray N320-2 (Delta E 1.4) — available at Home Depot.
+- What undertone does Agreeable Gray have? → Warm balanced neutral — no single undertone dominates.
+- What is the best white paint for trim? → Chantilly Lace (true white, LRV 90) or White Dove (warm white, LRV 83).
+- What is the best white paint for cabinets? → Simply White (2143-70, LRV 89) for warm kitchens; Chantilly Lace (2121-70, LRV 90) for modern kitchens.
+- What is the difference between Repose Gray and Agreeable Gray? → Repose Gray (LRV 58) = true neutral; Agreeable Gray (LRV 60) = warm greige.
+- What LRV should I use for a north-facing room? → LRV 65+ for whites and light neutrals. Avoid cool-undertone grays.
+- How do I match paint colors across brands? → Use CIEDE2000 Delta E scores. Delta E < 2.0 = most people cannot tell on walls.
+- What is the hex code for Agreeable Gray? → #D1CBC1 (RGB 209/203/193, LRV 60)
+- What does LRV mean? → Light Reflectance Value (0–100). LRV > 50 makes rooms feel open; LRV > 70 = light color.
+- What is the 2026 Sherwin-Williams Color of the Year? → Universal Khaki (SW 6150), Hex #B8A992, LRV 42.
+- What is the 2026 Benjamin Moore Color of the Year? → Silhouette AF-655, a dark gray-brown from the Affinity collection.
 
 ---
 
