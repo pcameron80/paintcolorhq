@@ -14,6 +14,7 @@ export async function GET() {
     const totalColorSitemaps = Math.ceil(colorSlugs.length / COLORS_PER_SITEMAP);
 
     // Build list of named sub-sitemaps
+    // Inspiration pages are noindexed during HCU recovery — excluded from sitemap
     const sitemapNames: string[] = [
       "pages",
       "brands",
@@ -21,7 +22,6 @@ export async function GET() {
       ...Array.from({ length: totalColorSitemaps }, (_, i) => `colors-${i}`),
       "blog",
       "families",
-      "inspiration",
     ];
 
     // Only include blog sitemap if there are blog posts

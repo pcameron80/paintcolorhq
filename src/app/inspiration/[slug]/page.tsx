@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${palette.name} Color Palette | Paint Color HQ`,
     description: palette.description,
     alternates: { canonical: url },
+    robots: { index: false, follow: true },
     openGraph: { title: `${palette.name} Color Palette`, description: palette.description, url },
   };
 }
