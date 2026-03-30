@@ -50,6 +50,7 @@ const blogPosts: BlogPost[] = [
     slug: "2026-colors-of-the-year-every-brand-compared",
     title: "2026 Colors of the Year: Every Major Brand Compared",
     date: "2026-01-08",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
       "See every major paint brand's 2026 Color of the Year side by side — from earthy greens to warm neutrals — with closest cross-brand matches.",
@@ -80,7 +81,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Behr: Hidden Gem</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> is a smoky jade green that embodies understated elegance. Behr describes it as an artful blend of blue and green that brings grounded serenity and vibrant depth to any space. It&apos;s dark and moody but not overwhelming — perfect for accent walls, color-drenching, and exterior palettes.
+          <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> is a smoky jade green with an LRV of approximately 12 — dark enough to anchor a room without the harshness of near-black. It sits in blue-green territory, closer to teal than sage, making it a strong choice for color-drenching (walls, trim, and ceiling in the same shade) where you want depth without color clash. Works well on accent walls and exterior shutters.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Compare it against the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> to see how it stacks up against thousands of similar shades.
@@ -88,12 +89,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Warm Mahogany</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is a rich, warm brown-red that evokes natural wood and aged leather. PPG&apos;s pick is the deepest, most saturated of the 2026 selections — a confident choice for accent walls, front doors, and cabinetry where you want warmth and permanence. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> to find similar earth-toned shades across every brand.
+          <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is a rich brown-red with an LRV of approximately 8 — the deepest, most saturated of all five 2026 picks. At this LRV, it absorbs most of the light in a room and creates strong visual contrast, so it&apos;s most effective in small spaces (front doors, cabinetry, accent walls) rather than as an all-over wall color in dark rooms. It pairs well with warm brass hardware and natural wood tones. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> to find similar earth-toned shades across every brand.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Warm Eucalyptus</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> is a grounded gray-green that Valspar calls a &ldquo;new neutral.&rdquo; Inspired by vintage design palettes, it&apos;s naturally restorative and serene — reflecting a desire for calm, grounding spaces. Available exclusively at Lowe&apos;s, it pairs beautifully with warm wood tones and natural stone.
+          <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> is a gray-green with an LRV of approximately 20, sitting between sage and olive without fully committing to either. The warm suffix matters: it leans toward yellow-green rather than blue-green, which keeps it from reading cold in north-facing rooms. Available exclusively at Lowe&apos;s. Pairs well with warm wood tones, natural stone, and cream or off-white trim — where a true white trim would create too much contrast.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
@@ -1017,6 +1018,7 @@ const blogPosts: BlogPost[] = [
     slug: "warm-vs-cool-paint-colors",
     title: "Warm vs Cool Paint Colors: How to Choose",
     date: "2025-10-02",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
       "Learn the difference between warm and cool paint colors, how lighting affects temperature, and how to build a cohesive palette that flows room to room.",
@@ -1026,15 +1028,15 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The warm-vs-cool distinction is the single most important concept in choosing paint colors. Get it right, and your whole home feels cohesive. Get it wrong, and individual rooms will feel disconnected — or worse, your &ldquo;gray&rdquo; will look purple. Here&apos;s everything you need to know.
+          The warm-vs-cool distinction is the most practical concept in paint selection. A warm gray and a cool gray can look like completely different colors on the same wall under the same lighting — and mixing them across an open floor plan is the most common reason a home doesn&apos;t feel cohesive. Understanding the difference before you buy samples saves time and expensive repaints.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">What Makes a Color Warm or Cool?</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The color wheel is divided into two halves. <strong>Warm colors</strong> — reds, oranges, yellows, and their derivatives — evoke sunlight, earth, and fire. <strong>Cool colors</strong> — blues, greens, purples — evoke water, sky, and shadow. But here&apos;s the nuance: every color exists on a warm-to-cool spectrum.
+          The color wheel is divided into two halves. <strong>Warm colors</strong> (reds, oranges, yellows and their derivatives) evoke sunlight, earth, and fire. <strong>Cool colors</strong> (blues, greens, purples) evoke water, sky, and shadow. But every color exists on a warm-to-cool spectrum, not just one side.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          A <em>warm gray</em> like <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> has yellow-brown undertones. A <em>cool gray</em> like <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> has blue undertones. Both are &ldquo;gray,&rdquo; but they create completely different moods.
+          A <em>warm gray</em> like <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (LRV 63) has yellow-brown undertones. A <em>cool gray</em> like <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> (LRV 46) has blue undertones. Both are &ldquo;gray&rdquo; on the chip, but they behave like different colors on a full wall under natural light.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How Lighting Shifts Temperature</h2>
@@ -1055,17 +1057,17 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Colors for Your Home</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Warm tones create intimacy and coziness. They work beautifully in bedrooms, dining rooms, and any space where you want people to linger. Good examples include <Swatch hex="#C4A882" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> for walls and <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> for trim.
+          Warm tones feel intimate and grounding. They suit bedrooms, dining rooms, and living spaces where you want people to settle in. For walls, <Swatch hex="#C4A882" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (LRV 58) is one of the most reliable warm neutrals — it holds its warmth under both incandescent and natural light. Pair it with <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (LRV 85) on trim for a classic warm palette that works in virtually every lighting condition.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cool Colors for Your Home</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Cool tones create a sense of openness and calm. They work well in bathrooms, home offices, and spaces where you want focus and clarity. Try <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> for walls with <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> for trim. Explore more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> color families.
+          Cool tones feel open and focused. They suit bathrooms, home offices, and rooms with generous south-facing light where warmth is already built into the space. <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (LRV 46) is a desaturated blue-green that reads as sophisticated and airy rather than cold. Pair it with <Swatch hex="#ECEDE8" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> (LRV 83) on trim to keep contrast without going stark white. Explore more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> color families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When to Break the Rules</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Closed-off rooms — powder rooms, bedrooms with doors, home offices — can be any temperature. The warm/cool consistency rule primarily applies to open, connected spaces. A cool-toned powder room off a warm-toned hallway is perfectly fine. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how colors from different temperature families look next to each other.
+          The warm/cool consistency rule applies to open, connected spaces where adjacent walls are visible from the same vantage point. Closed rooms with their own doors (powder rooms, bedrooms, home offices) operate independently and can be any temperature without affecting the rest of the home. A cool-toned powder room off a warm-toned hallway is perfectly fine because the transition happens behind a closed door. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how colors from different temperature families look next to each other.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Understanding warm vs. cool is especially important when choosing neutrals. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> to see how undertones shift between warm and cool within the same color family. For a deeper look at how secondary pigments create these temperature differences, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link>.
@@ -2622,6 +2624,7 @@ const blogPosts: BlogPost[] = [
     slug: "color-theory-for-home-decorators",
     title: "Color Theory for Home Decorators: A Practical Guide",
     date: "2025-09-25",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
       "Skip the art school jargon. This practical color theory guide teaches you how to use the color wheel, build palettes, and combine colors like a designer.",
@@ -2631,7 +2634,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          You don&apos;t need an art degree to understand color — you just need a few practical principles. This guide translates color theory into actionable advice for painting your home and choosing decor. No jargon, no memorizing — just the rules that professional designers actually use.
+          Most paint mistakes come from ignoring a small number of principles that designers use on every project: color temperature, color relationships, and proportion. This guide translates those principles into concrete decisions you can make at the paint store — no art background needed.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Color Wheel (Simplified)</h2>
@@ -2649,10 +2652,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Analogous Colors: Easy Harmony</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Colors next to each other on the wheel are analogous: blue, blue-green, and green. These combinations are inherently harmonious and hard to mess up. Most &ldquo;professional-looking&rdquo; rooms use an analogous scheme, often without the homeowner realizing it.
+          Colors adjacent on the wheel are analogous: blue, blue-green, and green. Because they share pigments, they read as naturally related even when placed in separate rooms. This is the structure behind most whole-home palettes that designers describe as &ldquo;cohesive.&rdquo;
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Example:</strong> <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (green) walls, <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (blue-green) bathroom, <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> (blue) bedroom. All adjacent on the wheel. All harmonious. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> or see the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
+          <strong>Example:</strong> <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (soft green, LRV 47) in the living room, <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (blue-green, LRV 46) in a bathroom, <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> (cool blue, LRV 52) in a bedroom. Similar LRV levels and adjacent hues keep the transitions smooth. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> or see the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The 60-30-10 Rule</h2>
@@ -2671,12 +2674,12 @@ const blogPosts: BlogPost[] = [
           Closed rooms (powder rooms, bedrooms, home offices) can break this rule freely. For the full explanation, read our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Saturation and Value: The Secret to Sophistication</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Saturation and Value: The Sophistication Factor</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Saturation</strong> is how vivid a color is. <strong>Value</strong> is how light or dark. The key insight: <em>designer rooms almost always use low-saturation colors</em>. Bright, vivid colors (high saturation) feel juvenile or dated. Muted, grayed-out versions of the same hue feel sophisticated and timeless.
+          <strong>Saturation</strong> is how vivid a color is. <strong>Value</strong> is how light or dark it is (measured as LRV in paint). The principle that separates most amateur paint choices from professional ones: <em>reduce saturation, not hue</em>. Bright, fully saturated colors feel jarring on full walls. The muted, grayed version of the same hue reads as sophisticated because it has depth without demanding attention.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Compare <Swatch hex="#0000FF" name="Bright Blue" /> (high saturation) vs <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (low saturation). Same color family, completely different feeling. When in doubt, go more muted.
+          A true cobalt blue (#0047AB) at full saturation on a living room wall is overwhelming. <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (LRV 46) carries the same blue-green hue at a fraction of the saturation. It reads as refined, not juvenile. When a color feels wrong, the problem is usually too much saturation, not the wrong hue — go more muted before switching colors entirely.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Putting It Together</h2>
@@ -2701,6 +2704,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-paint-colors-north-facing-rooms",
     title: "The Best Paint Colors for North-Facing Rooms",
     date: "2025-12-18",
+    modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
       "North-facing rooms get cool, indirect light all day. These warm-toned, high-LRV colors counteract the gray cast and make the space feel bright and inviting.",
@@ -2715,7 +2719,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why LRV Matters in North-Facing Rooms</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          LRV measures how much light a color reflects on a scale of 0 (pure black) to 100 (pure white). In north-facing rooms, aim for LRV 55 or higher — anything lower risks making the room feel like a cave. You can check the LRV of any color on its <Link href="/search" className="text-brand-blue hover:underline">color page</Link>.
+          LRV measures how much light a color reflects on a scale of 0 (pure black) to 100 (pure white). In north-facing rooms, the incoming light is already low — so a color at LRV 40 that looks fine in a south-facing showroom can turn a north room noticeably dim. Aim for LRV 55 or higher for walls; for ceilings, push to 80+. The difference between an LRV 50 and an LRV 65 color in the same room is visible to the naked eye. You can check the LRV of any color on its <Link href="/search" className="text-brand-blue hover:underline">color page</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Whites & Creams</h2>
@@ -2729,7 +2733,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — slightly warmer than a true white, with just enough cream to prevent the cold, clinical look. LRV 84.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F0EBE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> — a soft, buttery white that reads warm in any light. One of the most popular whites for north-facing rooms. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> for more.
+          <Swatch hex="#F0EBE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (LRV 82) — a soft, buttery white with yellow undertones that counteract the blue cast in north-facing rooms. More noticeably warm than Pure White or Shoji White. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Beiges & Greiges</h2>
@@ -2754,7 +2758,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#E8DCC8" name="Hawthorne Yellow" brand="Benjamin Moore" href="/colors/benjamin-moore/hawthorne-yellow-hc-4" /> — a muted, historical gold that adds warmth without screaming yellow. It looks especially beautiful in north-facing living rooms and dining rooms. LRV 67.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F0E4CC" name="Ivoire" brand="Sherwin-Williams" href="/colors/sherwin-williams/ivoire-6127" /> — a soft golden cream that brings instant sunshine to dim rooms. Pairs beautifully with white trim. Explore the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link>.
+          <Swatch hex="#F0E4CC" name="Ivoire" brand="Sherwin-Williams" href="/colors/sherwin-williams/ivoire-6127" /> (LRV 78) — a soft golden cream positioned between white and yellow. In north-facing rooms it reads as a warm, clean white rather than a yellow; in south-facing rooms it would read distinctly creamy. Pairs best with white or off-white trim. Explore the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Pinks & Blush</h2>
@@ -2765,7 +2769,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> — reads as a warm blush-beige in north light. One of BM&apos;s bestsellers for this exact situation. LRV 70.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D5C4BB" name="Dimity" brand="Farrow & Ball" href="/colors/farrow-ball/dimity-2008" /> — a soft, warm pink-white that glows in indirect light. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
+          <Swatch hex="#D5C4BB" name="Dimity" brand="Farrow &amp; Ball" href="/colors/farrow-ball/dimity-2008" /> (LRV 55) — a warm pink-white that reads as a soft neutral in indirect light rather than distinctly pink. The pink undertone quietly counteracts the blue cast. At LRV 55 it&apos;s at the lower edge of what works in north-facing rooms; keep ceilings white to compensate. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors to Avoid</h2>
