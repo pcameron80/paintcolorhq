@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${palette.name} Color Palette | Paint Color HQ`,
     description: palette.description,
     alternates: { canonical: url },
+    robots: { index: false, follow: true },
     openGraph: { title: `${palette.name} Color Palette`, description: palette.description, url },
   };
 }
@@ -197,6 +198,17 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
           })}
         </div>
       </main>
+
+      {/* Editorial content */}
+      {palette.editorial && (
+        <section className="px-6 md:px-12 py-16 bg-surface border-t border-outline-variant/10">
+          <div className="max-w-3xl mx-auto prose prose-gray prose-lg">
+            {palette.editorial.split("\n\n").map((para, i) => (
+              <p key={i} className="text-gray-700 leading-relaxed mt-4 first:mt-0">{para}</p>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Related palettes */}
       <section className="px-6 md:px-12 py-20 bg-tertiary-fixed">
