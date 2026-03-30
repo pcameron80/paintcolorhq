@@ -15,6 +15,7 @@ export interface BlogPost {
   coverImage?: string; // path to cover image, e.g. "/blog/my-post.webp"
   modifiedDate?: string; // "YYYY-MM-DD" — omit if same as date
   tags: string[];
+  noindex?: boolean; // true = exclude from sitemap and add noindex meta
   content: () => ReactNode;
 }
 
@@ -1405,6 +1406,7 @@ const blogPosts: BlogPost[] = [
     coverColor: "#5B7A6E",
     coverImage: "/blog/best-home-office-paint-colors.webp",
     tags: ["Home Office", "Productivity", "Design", "2026 Trends"],
+    noindex: true,
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
@@ -2893,9 +2895,9 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);
 }
 
-/** All slugs — for generateStaticParams and sitemap */
+/** All slugs — for generateStaticParams and sitemap. Excludes noindexed posts. */
 export function getAllBlogSlugs(): string[] {
-  return blogPosts.map((p) => p.slug);
+  return blogPosts.filter((p) => !p.noindex).map((p) => p.slug);
 }
 
 /** Related posts: same-tag posts excluding the current one, newest first */
