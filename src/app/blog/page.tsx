@@ -219,6 +219,13 @@ export default async function BlogIndex({ searchParams }: BlogPageProps) {
           ...(post.coverImage && { image: `https://www.paintcolorhq.com${post.coverImage}` }),
         })),
       }} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+          { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.paintcolorhq.com/blog" },
+        ],
+      }} />
 
       <AdSenseScript />
       <Footer />
