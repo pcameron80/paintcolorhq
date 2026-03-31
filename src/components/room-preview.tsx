@@ -49,7 +49,7 @@ export function RoomPreview({ wallColor, trimColor, accentColor, className }: Ro
   return (
     <div className={`relative overflow-hidden ${className ?? ""}`}>
       <img
-        src="/room-preview.jpeg"
+        src="/room-preview.webp"
         alt="Living room with applied paint colors"
         className="w-full h-auto block"
         loading="lazy"
