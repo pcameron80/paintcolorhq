@@ -9,6 +9,8 @@ Disallow: /api/
 # Tool pages with infinite param combinations
 Disallow: /tools/room-visualizer?
 Disallow: /tools/palette-generator?
+Disallow: /tools/color-identifier?
+Disallow: /tools/paint-calculator?
 Disallow: /compare?
 Disallow: /search?
 

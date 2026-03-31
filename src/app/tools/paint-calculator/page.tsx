@@ -6,14 +6,23 @@ import { PaintCalculator } from "./calculator";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 
-export const metadata: Metadata = {
-  title: "Paint Calculator - How Much Paint Do I Need?",
-  description:
-    "Calculate exactly how many gallons of paint you need. Enter room dimensions, subtract doors and windows, and get coverage based on the 350 sq ft/gallon industry standard. Free calculator for Sherwin-Williams, Benjamin Moore, Behr, and all brands.",
-  alternates: {
-    canonical: "https://www.paintcolorhq.com/tools/paint-calculator",
-  },
-};
+interface PageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const sp = await searchParams;
+  const hasParams = Object.keys(sp).length > 0;
+  return {
+    title: "Paint Calculator - How Much Paint Do I Need?",
+    description:
+      "Calculate exactly how many gallons of paint you need. Enter room dimensions, subtract doors and windows, and get coverage based on the 350 sq ft/gallon industry standard. Free calculator for Sherwin-Williams, Benjamin Moore, Behr, and all brands.",
+    alternates: {
+      canonical: "https://www.paintcolorhq.com/tools/paint-calculator",
+    },
+    ...(hasParams && { robots: { index: false, follow: true } }),
+  };
+}
 
 // JSON-LD helper - all content is server-generated from trusted static values
 function JsonLd({ data }: { data: object }) {
