@@ -47,11 +47,22 @@ export default async function InspirationPage() {
       <Header />
 
       <JsonLd data={{
-        "@context": "https://schema.org", "@type": "ItemList",
+        "@context": "https://schema.org", "@type": "CollectionPage",
         name: "Paint Color Palettes & Inspiration",
         description: "Curated paint color palettes for every style.",
-        numberOfItems: palettes.length,
-        itemListElement: palettes.map((p, i) => ({ "@type": "ListItem", position: i + 1, name: p.name, description: p.description, url: `https://www.paintcolorhq.com/inspiration/${p.slug}` })),
+        url: "https://www.paintcolorhq.com/inspiration",
+        mainEntity: {
+          "@type": "ItemList",
+          numberOfItems: palettes.length,
+          itemListElement: palettes.map((p, i) => ({ "@type": "ListItem", position: i + 1, name: p.name, description: p.description, url: `https://www.paintcolorhq.com/inspiration/${p.slug}` })),
+        },
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+          { "@type": "ListItem", position: 2, name: "Inspiration", item: "https://www.paintcolorhq.com/inspiration" },
+        ],
       }} />
 
       {/* Hero */}

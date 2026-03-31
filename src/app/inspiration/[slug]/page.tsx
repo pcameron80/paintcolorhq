@@ -120,6 +120,14 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
           description: `${s.role} color — ${s.match!.name} by ${s.match!.brand.name} (${s.match!.hex.toUpperCase()})`,
         })),
       }} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+          { "@type": "ListItem", position: 2, name: "Inspiration", item: "https://www.paintcolorhq.com/inspiration" },
+          { "@type": "ListItem", position: 3, name: `${palette.name}`, item: `https://www.paintcolorhq.com/inspiration/${slug}` },
+        ],
+      }} />
 
       {/* Hero — full-bleed palette strip */}
       <div className="pt-[65px]">
