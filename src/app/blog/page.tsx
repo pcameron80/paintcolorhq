@@ -7,18 +7,29 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { getAllPosts } from "@/lib/blog-posts";
 import { TagFilter } from "@/components/tag-filter";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips. Learn how to choose the perfect paint color for every room.",
-  alternates: { canonical: "https://www.paintcolorhq.com/blog" },
-  openGraph: {
-    title: "Blog | Paint Color HQ",
-    description: "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips.",
-    type: "website",
-    url: "https://www.paintcolorhq.com/blog",
-  },
-};
+interface BlogPageProps {
+  searchParams: Promise<{ tag?: string }>;
+}
+
+export async function generateMetadata({ searchParams }: BlogPageProps): Promise<Metadata> {
+  const { tag } = await searchParams;
+  const base: Metadata = {
+    title: "Blog",
+    description:
+      "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips. Learn how to choose the perfect paint color for every room.",
+    alternates: { canonical: "https://www.paintcolorhq.com/blog" },
+    openGraph: {
+      title: "Blog | Paint Color HQ",
+      description: "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips.",
+      type: "website",
+      url: "https://www.paintcolorhq.com/blog",
+    },
+  };
+  if (tag) {
+    base.robots = { index: false, follow: true };
+  }
+  return base;
+}
 
 function formatDate(dateStr: string) {
   return new Date(dateStr + "T00:00:00").toLocaleDateString("en-US", {
@@ -31,10 +42,6 @@ function formatDate(dateStr: string) {
 // JSON-LD helper — content is server-generated from trusted static data only
 function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
-}
-
-interface BlogPageProps {
-  searchParams: Promise<{ tag?: string }>;
 }
 
 export default async function BlogIndex({ searchParams }: BlogPageProps) {
