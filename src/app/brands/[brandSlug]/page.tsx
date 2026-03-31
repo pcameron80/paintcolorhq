@@ -367,20 +367,23 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         );
       })()}
 
-      {/* JSON-LD */}
+      {/* JSON-LD — separate top-level schemas for crawler compatibility */}
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "CollectionPage",
         name: `${brand.name} Paint Colors`,
         description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with hex codes, RGB values, and cross-brand matches.`,
         url: `https://www.paintcolorhq.com/brands/${brand.slug}`,
-        breadcrumb: { "@type": "BreadcrumbList", itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
-          { "@type": "ListItem", position: 2, name: "Brands", item: "https://www.paintcolorhq.com/brands" },
-          { "@type": "ListItem", position: 3, name: brand.name },
-        ]},
         mainEntity: { "@type": "ItemList", numberOfItems: totalCount,
           itemListElement: colors.map((color, i) => ({ "@type": "ListItem", position: (currentPage - 1) * perPage + i + 1, url: `https://www.paintcolorhq.com/colors/${brand.slug}/${color.slug}`, name: color.name })),
         },
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+          { "@type": "ListItem", position: 2, name: "Brands", item: "https://www.paintcolorhq.com/brands" },
+          { "@type": "ListItem", position: 3, name: brand.name },
+        ],
       }} />
       {orgData && <JsonLd data={{
         "@context": "https://schema.org", "@type": "Organization", name: brand.name,

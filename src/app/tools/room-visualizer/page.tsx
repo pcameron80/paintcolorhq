@@ -6,14 +6,19 @@ import { RoomVisualizer } from "./visualizer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 
-export const metadata: Metadata = {
-  title: "Room Color Visualizer - Preview Paint Colors in a Room",
-  description:
-    "See how paint colors look in a room before you buy. Pick colors for walls, ceiling, accent wall, trim, and floor. Works with all major paint brands.",
-  alternates: {
-    canonical: "https://www.paintcolorhq.com/tools/room-visualizer",
-  },
-};
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const sp = await searchParams;
+  const hasParams = Object.keys(sp).length > 0;
+  return {
+    title: "Room Color Visualizer - Preview Paint Colors in a Room",
+    description:
+      "See how paint colors look in a room before you buy. Pick colors for walls, ceiling, accent wall, trim, and floor. Works with all major paint brands.",
+    alternates: {
+      canonical: "https://www.paintcolorhq.com/tools/room-visualizer",
+    },
+    ...(hasParams && { robots: { index: false, follow: true } }),
+  };
+}
 
 // JSON-LD helper - all content is server-generated from trusted static values
 function JsonLd({ data }: { data: object }) {

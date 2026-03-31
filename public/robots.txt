@@ -5,6 +5,19 @@ Disallow: /dashboard/
 Disallow: /auth/
 Disallow: /api/
 
+# Prevent crawling parameterized URLs (canonical versions exist on base pages)
+# Tool pages with infinite param combinations
+Disallow: /tools/room-visualizer?
+Disallow: /tools/palette-generator?
+Disallow: /compare?
+Disallow: /search?
+
+# Filter/pagination params on browse pages
+Disallow: /*?*brand=
+Disallow: /*?*undertone=
+Disallow: /*?*family=
+Disallow: /*?*page=
+
 # AI Crawlers — explicitly allowed
 User-agent: GPTBot
 Allow: /

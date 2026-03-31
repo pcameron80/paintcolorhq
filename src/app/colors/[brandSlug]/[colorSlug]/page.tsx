@@ -351,32 +351,34 @@ export default async function ColorPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* JSON-LD */}
+      {/* JSON-LD — separate top-level schemas for crawler compatibility */}
       <JsonLd data={{
-        "@context": "https://schema.org", "@type": "WebPage",
-        name: `${color.name} Paint Color`, description: description,
+        "@context": "https://schema.org", "@type": "Product",
+        name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
+        description: description,
+        brand: { "@type": "Brand", name: color.brand.name },
+        sku: color.color_number ?? undefined,
+        color: color.hex.toUpperCase(),
         url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
-        breadcrumb: { "@type": "BreadcrumbList", itemListElement: [
+        additionalProperty: [
+          { "@type": "PropertyValue", name: "Hex", value: color.hex.toUpperCase() },
+          { "@type": "PropertyValue", name: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
+          ...(lrv != null ? [{ "@type": "PropertyValue", name: "LRV", value: lrv.toFixed(1) }] : []),
+          ...(color.undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: color.undertone }] : []),
+          ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
+        ],
+        ...(matches.length > 0 ? { isSimilarTo: matches.slice(0, 5).map((m) => ({
+          "@type": "Product", name: m.match_color.name, brand: { "@type": "Brand", name: m.match_color.brand.name },
+          sku: m.match_color.color_number ?? undefined, color: m.match_color.hex.toUpperCase(),
+        })) } : {}),
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
           { "@type": "ListItem", position: 2, name: color.brand.name, item: `https://www.paintcolorhq.com/brands/${brandSlug}` },
           { "@type": "ListItem", position: 3, name: color.name, item: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}` },
-        ]},
-        about: {
-          "@type": "Product", name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
-          description: description, brand: { "@type": "Brand", name: color.brand.name },
-          sku: color.color_number ?? undefined,
-          additionalProperty: [
-            { "@type": "PropertyValue", name: "Hex", value: color.hex.toUpperCase() },
-            { "@type": "PropertyValue", name: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
-            ...(lrv != null ? [{ "@type": "PropertyValue", name: "LRV", value: lrv.toFixed(1) }] : []),
-            ...(color.undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: color.undertone }] : []),
-            ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
-          ],
-          ...(matches.length > 0 ? { isSimilarTo: matches.slice(0, 5).map((m) => ({
-            "@type": "Product", name: m.match_color.name, brand: { "@type": "Brand", name: m.match_color.brand.name },
-            sku: m.match_color.color_number ?? undefined, color: m.match_color.hex.toUpperCase(),
-          })) } : {}),
-        },
+        ],
       }} />
       {faqItems.length > 0 && <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
