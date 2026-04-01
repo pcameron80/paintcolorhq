@@ -7,6 +7,8 @@ Disallow: /api/
 Disallow: /match/
 Disallow: /compare?color1=
 Disallow: /compare?color2=
+Disallow: /signin/
+Disallow: /lifecycle/
 
 # AI Crawlers — explicitly allowed
 User-agent: GPTBot

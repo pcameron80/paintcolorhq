@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -15,6 +15,11 @@ const validFamilies = [
   "red", "orange", "yellow", "green", "blue", "purple", "pink",
   "white", "off-white", "black", "gray", "brown", "beige", "tan", "neutral",
 ];
+
+// Redirect aliases for family slugs that don't exist as distinct families
+const familyRedirects: Record<string, string> = {
+  taupe: "brown",
+};
 
 const familyColors: Record<string, { hex: string; border?: boolean }> = {
   red: { hex: "#DC2626" }, orange: { hex: "#EA580C" }, yellow: { hex: "#EAB308" },
@@ -66,7 +71,11 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
   const { familySlug } = await params;
   const { brand: brandFilter, undertone: undertoneFilter, page: pageParam } = await searchParams;
 
-  if (!validFamilies.includes(familySlug)) notFound();
+  if (!validFamilies.includes(familySlug)) {
+    const redirectTarget = familyRedirects[familySlug];
+    if (redirectTarget) redirect(`/colors/family/${redirectTarget}`);
+    notFound();
+  }
 
   const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
   const perPage = 60;
