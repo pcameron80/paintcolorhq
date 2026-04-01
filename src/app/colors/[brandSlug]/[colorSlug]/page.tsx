@@ -127,10 +127,9 @@ export default async function ColorPage({ params }: PageProps) {
     notFound();
   }
 
-  const [matches, similarColors] = await Promise.all([getCrossBrandMatches(color.id), getSimilarColorsFromSameBrand(color)]);
+  const [matches, similarColors, harmonies] = await Promise.all([getCrossBrandMatches(color.id), getSimilarColorsFromSameBrand(color), resolveHarmonies(color.hex)]);
   const description = generateColorDescription(color, matches);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
-  const harmonies = await resolveHarmonies(color.hex);
   const light = isLightColor(color.hex);
   const textClass = light ? "text-on-surface" : "text-on-primary";
   const textMutedClass = light ? "text-on-surface-variant" : "text-on-primary/80";

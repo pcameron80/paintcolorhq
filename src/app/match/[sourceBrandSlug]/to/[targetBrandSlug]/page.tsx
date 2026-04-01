@@ -35,8 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${sourceBrand.name} to ${targetBrand.name} Equivalent Colors`;
   const description = `Switching from ${sourceBrand.name} to ${targetBrand.name}? Find the closest matching colors between the two brands.`;
   const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/to/${targetBrandSlug}`;
-  const shouldIndex = MAJOR_BRANDS.includes(sourceBrandSlug) && MAJOR_BRANDS.includes(targetBrandSlug);
-  return { title, description, alternates: { canonical: url }, ...(!shouldIndex && { robots: { index: false } }), openGraph: { title, description, url } };
+  return { title, description, alternates: { canonical: url }, robots: { index: false, follow: true }, openGraph: { title, description, url } };
 }
 
 // JSON-LD helper - all content is server-generated from trusted database values

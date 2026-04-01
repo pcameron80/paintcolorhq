@@ -46,6 +46,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${sourceColor.brand.name} ${sourceColor.name} to ${targetBrand.name} Match`,
     description: `${sourceColor.brand.name} ${sourceColor.name} (${sourceColor.hex.toUpperCase()}) to ${targetBrand.name}: ${note}. Compare hex, undertone, and LRV.`,
     alternates: { canonical: url },
+    robots: { index: false, follow: true },
     openGraph: { title: `${sourceColor.brand.name} ${sourceColor.name} to ${targetBrand.name} Match`, description: `Find the closest ${targetBrand.name} equivalent.`, url,
       images: [{ url: `/api/og?hex=${encodeURIComponent(sourceColor.hex)}&name=${encodeURIComponent(sourceColor.name)}&brand=${encodeURIComponent(`${sourceColor.brand.name} \u2192 ${targetBrand.name}`)}`, width: 1200, height: 630 }],
     },

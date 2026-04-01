@@ -4,6 +4,9 @@ Disallow: /dashboard
 Disallow: /dashboard/
 Disallow: /auth/
 Disallow: /api/
+Disallow: /match/
+Disallow: /compare?color1=
+Disallow: /compare?color2=
 
 # AI Crawlers — explicitly allowed
 User-agent: GPTBot
