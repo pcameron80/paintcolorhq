@@ -26,6 +26,7 @@ export interface Color {
   color_family: string | null;
   collections: string[];
   undertone: string | null;
+  description_extended: string | null;
   is_discontinued: boolean;
   created_at: string;
 }

@@ -153,6 +153,51 @@ export default async function ColorPage({ params }: PageProps) {
     faqItems.push({ question: `What is the LRV of ${color.name}?`, answer: `${color.name} has an LRV of ${lrv.toFixed(1)}, where 0 is pure black and 100 is pure white.` });
   }
 
+  // Trim color FAQ — rule-based on undertone and color family
+  if (color.undertone || color.color_family) {
+    const trimAnswer = (() => {
+      const warm = ["warm", "yellow", "gold", "orange", "red", "peach", "coral"];
+      const cool = ["cool", "blue", "green", "violet", "purple", "gray"];
+      const isWarm = warm.some((w) => undertoneLower.includes(w) || (color.color_family ?? "").toLowerCase().includes(w));
+      const isCool = cool.some((c) => undertoneLower.includes(c) || (color.color_family ?? "").toLowerCase().includes(c));
+      if (isWarm) return `For ${color.name}, a warm-toned trim like creamy white or ivory works best. Avoid stark, blue-white trims which can clash with ${undertoneLower || color.color_family} tones.`;
+      if (isCool) return `For ${color.name}, a crisp, clean white trim pairs beautifully. The cool ${undertoneLower || color.color_family} tones are complemented by bright whites or soft silver-grays.`;
+      return `A classic white trim works well with ${color.name}. For a softer look, consider an off-white that shares the ${undertoneLower || "neutral"} undertone.`;
+    })();
+    faqItems.push({ question: `What trim color works best with ${color.name}?`, answer: trimAnswer });
+  }
+
+  // Small/dark rooms FAQ — LRV-based
+  if (lrv != null) {
+    const roomAnswer = lrv > 70
+      ? `Yes — with an LRV of ${lrv.toFixed(0)}, ${color.name} reflects plenty of light, making it an excellent choice for small or dark rooms. It will help the space feel open and airy.`
+      : lrv >= 40
+      ? `It depends on the room. ${color.name} has an LRV of ${lrv.toFixed(0)}, which is mid-range. In rooms with good natural light, it works well. In darker or smaller rooms, pair it with lighter trim and furnishings to keep the space from feeling closed in.`
+      : `${color.name} has an LRV of ${lrv.toFixed(0)}, which absorbs more light than it reflects. It's best suited for larger rooms or spaces with ample natural light. In small or dark rooms, consider using it as an accent wall rather than on all four walls.`;
+    faqItems.push({ question: `Is ${color.name} good for small or dark rooms?`, answer: roomAnswer });
+  }
+
+  // Design style FAQ — color family + undertone based
+  if (color.color_family) {
+    const family = color.color_family.toLowerCase();
+    const styleMap: Record<string, string> = {
+      white: "minimalist, Scandinavian, modern farmhouse, and coastal",
+      "off-white": "transitional, French country, Japandi, and modern farmhouse",
+      gray: "contemporary, industrial, Scandinavian, and minimalist",
+      beige: "transitional, traditional, Mediterranean, and warm modern",
+      neutral: "virtually any style — transitional, modern, farmhouse, or Japandi",
+      brown: "rustic, traditional, mid-century modern, and craftsman",
+      tan: "coastal, bohemian, transitional, and warm contemporary",
+      red: "traditional, eclectic, maximalist, and Mediterranean",
+      orange: "mid-century modern, bohemian, southwestern, and eclectic",
+      yellow: "cottage, farmhouse, coastal, and cheerful contemporary",
+      green: "biophilic, cottage, traditional, and modern organic",
+      blue: "coastal, traditional, Scandinavian, and classic American",
+    };
+    const styles = styleMap[family] ?? "a range of design styles depending on the shade and undertone";
+    faqItems.push({ question: `What interior design styles suit ${color.name}?`, answer: `${color.name} is a natural fit for ${styles} interiors.${color.undertone ? ` Its ${undertoneLower} undertone ${undertoneLower.includes("warm") || undertoneLower.includes("yellow") || undertoneLower.includes("gold") ? "adds warmth and coziness" : undertoneLower.includes("cool") || undertoneLower.includes("blue") || undertoneLower.includes("green") ? "lends a calm, sophisticated feel" : "provides versatile grounding"} to the space.` : ""}` });
+  }
+
   const matchesByBrand = matches.reduce((acc, match) => {
     const bn = match.match_color.brand.name;
     if (!acc[bn]) acc[bn] = [];
@@ -283,6 +328,23 @@ export default async function ColorPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* Using [Color] in Your Home — editorial content from description_extended */}
+      {color.description_extended && (
+        <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+          <div className="max-w-3xl">
+            <div className="bg-surface-container-high h-1 w-12 mb-6" />
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">
+              Using {color.name} in Your Home
+            </h2>
+            <div className="text-on-surface-variant leading-relaxed space-y-4">
+              {color.description_extended.split("\n\n").map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Recommended Pairings — Room Preview */}
       <PairingSelector colorHex={color.hex} colorName={color.name} />
