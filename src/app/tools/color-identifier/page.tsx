@@ -6,14 +6,23 @@ import { ColorIdentifier } from "./identifier";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 
-export const metadata: Metadata = {
-  title: "Photo Color Identifier - Find Paint Colors from Photos",
-  description:
-    "Upload a photo and click any spot to find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Free, instant, cross-brand results.",
-  alternates: {
-    canonical: "https://www.paintcolorhq.com/tools/color-identifier",
-  },
-};
+interface PageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const sp = await searchParams;
+  const hasParams = Object.keys(sp).length > 0;
+  return {
+    title: "Photo Color Identifier - Find Paint Colors from Photos",
+    description:
+      "Upload a photo and click any spot to find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Free, instant, cross-brand results.",
+    alternates: {
+      canonical: "https://www.paintcolorhq.com/tools/color-identifier",
+    },
+    ...(hasParams && { robots: { index: false, follow: true } }),
+  };
+}
 
 // JSON-LD helper - all content is server-generated from trusted static values
 function JsonLd({ data }: { data: object }) {

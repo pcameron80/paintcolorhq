@@ -6,14 +6,23 @@ import { PaletteGenerator } from "./generator";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 
-export const metadata: Metadata = {
-  title: "Paint Color Palette Generator - Build a Coordinated Color Scheme",
-  description:
-    "Pick a starting color and instantly generate coordinated paint palettes with Walls, Trim, Accent, and Pop roles. Matched to real colors from 14 brands.",
-  alternates: {
-    canonical: "https://www.paintcolorhq.com/tools/palette-generator",
-  },
-};
+interface PageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const sp = await searchParams;
+  const hasParams = Object.keys(sp).length > 0;
+  return {
+    title: "Paint Color Palette Generator - Build a Coordinated Color Scheme",
+    description:
+      "Pick a starting color and instantly generate coordinated paint palettes with Walls, Trim, Accent, and Pop roles. Matched to real colors from 14 brands.",
+    alternates: {
+      canonical: "https://www.paintcolorhq.com/tools/palette-generator",
+    },
+    ...(hasParams && { robots: { index: false, follow: true } }),
+  };
+}
 
 // JSON-LD helper - all content is server-generated from trusted static values
 function JsonLd({ data }: { data: object }) {

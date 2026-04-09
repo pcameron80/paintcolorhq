@@ -25,6 +25,20 @@ const securityHeaders = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=()",
   },
+  {
+    key: "Content-Security-Policy",
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://adservice.google.com https://tpc.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https: http:",
+      "font-src 'self' data:",
+      "connect-src 'self' https://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://pagead2.googlesyndication.com https://adservice.google.com",
+      "frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com",
+      "object-src 'none'",
+      "base-uri 'self'",
+    ].join("; "),
+  },
 ];
 
 const nextConfig: NextConfig = {
