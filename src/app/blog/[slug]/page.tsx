@@ -188,6 +188,15 @@ export default async function BlogPostPage({ params }: PageProps) {
           { "@type": "ListItem", position: 3, name: post.title, item: `https://www.paintcolorhq.com/blog/${post.slug}` },
         ],
       }} />
+      {post.faqs && post.faqs.length > 0 && (
+        <JsonLd data={{
+          "@context": "https://schema.org", "@type": "FAQPage",
+          mainEntity: post.faqs.map((faq) => ({
+            "@type": "Question", name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+          })),
+        }} />
+      )}
     </div>
   );
 }

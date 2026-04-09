@@ -16,6 +16,7 @@ export interface BlogPost {
   modifiedDate?: string; // "YYYY-MM-DD" — omit if same as date
   tags: string[];
   noindex?: boolean; // true = exclude from sitemap and add noindex meta
+  faqs?: Array<{ question: string; answer: string }>; // FAQ pairs for FAQPage JSON-LD
   content: () => ReactNode;
 }
 
@@ -750,12 +751,21 @@ const blogPosts: BlogPost[] = [
     slug: "best-white-paint-colors-guide",
     title: "The 15 Best White Paint Colors for Every Room (2026)",
     date: "2025-11-06",
+    modifiedDate: "2026-04-09",
     author: "Paint Color HQ Staff",
     excerpt:
       "White is the hardest paint color to choose. This guide ranks the 15 best warm whites, cool whites, and true whites from Sherwin-Williams, Benjamin Moore, Behr, and more — with room-by-room advice, undertone breakdowns, and designer pairings.",
     coverColor: "#F0EBE0",
     coverImage: "/blog/best-white-paint-colors-guide.webp",
     tags: ["White", "Guide", "Design", "2026"],
+    faqs: [
+      { question: "What is the most popular white paint color?", answer: "Benjamin Moore White Dove (OC-17) is the most popular white paint overall. For Sherwin-Williams, it's a tie between Alabaster (SW 7008) and Pure White (SW 7005). These warm whites dominate because they work in the widest range of lighting conditions and pair with the most common fixed elements." },
+      { question: "What is the best white paint that is not too warm and not too cool?", answer: "Simply White (BM OC-117) and Cloud White (BM OC-130) sit right in the middle — warm enough to feel inviting but not so warm that they read as cream. For Sherwin-Williams, Greek Villa (SW 7551) offers a similar balanced warmth." },
+      { question: "Is white a warm or cool color?", answer: "Pure white (like fresh snow) is technically neutral — neither warm nor cool. But almost every white paint leans one direction. White Dove and Alabaster are warm whites. Decorator's White and Snowbound are cool whites. Chantilly Lace and High Reflective White are the closest to truly neutral." },
+      { question: "How many shades of white paint are there?", answer: "Benjamin Moore offers 152 distinct white and off-white shades. Sherwin-Williams has 110+. Behr lists 90+. The differences between adjacent whites are often just 1–2 LRV points or a Delta E under 1.5 — imperceptible on a paint chip but visible at wall scale." },
+      { question: "Should I use the same white throughout my house?", answer: "Using one white for all walls creates a seamless, cohesive flow — especially important in open floor plans. Alabaster and White Dove are the most popular whole-house whites because they adapt well to different lighting conditions. However, most designers use a second, crisper white for trim and ceilings to create subtle dimension." },
+      { question: "What is the best white for painting over dark colors?", answer: "High-LRV true whites like Chantilly Lace (LRV 92) and High Reflective White (LRV 93) provide the best coverage over dark colors. Use a high-quality primer first, then apply two coats. Warm whites with lower LRVs may need three coats to fully cover a dark base." },
+    ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
@@ -1147,12 +1157,20 @@ const blogPosts: BlogPost[] = [
     slug: "best-bathroom-paint-colors",
     title: "15 Best Bathroom Paint Colors That Handle Humidity (2026)",
     date: "2026-03-05",
+    modifiedDate: "2026-04-09",
     author: "Paint Color HQ Staff",
     excerpt:
       "The best bathroom paint colors for 2026 — from spa blues and warm earth tones to dramatic jewel shades. Every pick handles humidity, and we explain which finish and formulation to use.",
     coverColor: "#7BAFB4",
     coverImage: "/blog/best-bathroom-paint-colors.webp",
     tags: ["Bathroom", "Design", "Tips", "2026"],
+    faqs: [
+      { question: "What is the best paint finish for bathrooms?", answer: "Satin or semi-gloss. Both resist moisture, clean easily, and inhibit mildew growth. Semi-gloss is best for high-moisture zones like ceilings above showers. Avoid flat and eggshell finishes in any bathroom." },
+      { question: "Can you use dark colors in a small bathroom?", answer: "Yes — with caveats. Dark colors work best in powder rooms and half baths where you want drama over spaciousness. In a small full bath, limit dark color to one accent wall and keep the remaining walls light. Good lighting is essential." },
+      { question: "How do I prevent bathroom paint from peeling?", answer: "Three things: use mildew-resistant paint in satin or semi-gloss, run your exhaust fan for 20 minutes after every shower, and apply a quality primer before painting — especially over previously damaged or mildew-stained surfaces." },
+      { question: "What bathroom paint colors increase home value?", answer: "Light, neutral tones consistently test well with homebuyers. Soft blues, warm whites, and light grays photograph well in listings and appeal to the widest audience. Avoid highly personal or trendy colors if you plan to sell within a few years." },
+      { question: "Should bathroom walls and ceiling be the same color?", answer: "In small bathrooms, painting the ceiling the same color as the walls creates a cocoon effect that can actually make the room feel larger. In larger bathrooms with higher ceilings, a lighter ceiling color keeps the space feeling open. Either way, use semi-gloss on the ceiling for maximum moisture resistance." },
+    ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
@@ -1400,6 +1418,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-home-office-paint-colors",
     title: "Best Home Office Paint Colors for Productivity in 2026",
     date: "2026-02-05",
+    modifiedDate: "2026-04-09",
     author: "Paint Color HQ Staff",
     excerpt:
       "The best paint colors for home office productivity — from calming blues and greens to 2026 trending shades — picked for focus, mood, and video call appearance.",
@@ -1407,6 +1426,12 @@ const blogPosts: BlogPost[] = [
     coverImage: "/blog/best-home-office-paint-colors.webp",
     tags: ["Home Office", "Productivity", "Design", "2026 Trends"],
     noindex: true,
+    faqs: [
+      { question: "What is the best paint color for home office productivity?", answer: "Muted blues and greens consistently perform best for productivity. Quiet Moments (Benjamin Moore 1563) and Pewter Green (Sherwin-Williams 6208) top most designer recommendations because they lower heart rate, reduce anxiety, and provide a natural resting point for eyes fatigued by screens." },
+      { question: "What colors should you avoid in a home office?", answer: "Avoid bright white, cool gray, and beige — research from the University of Texas links these common office colors to increased feelings of sadness and fatigue. Bright red and orange can spike stress hormones, making them poor choices for spaces where you need sustained concentration." },
+      { question: "What home office colors increase focus?", answer: "Low-saturation blues are the strongest focus enhancers. Blue reduces heart rate and anxiety while sharpening attention to detail. Silver Mist and Stonington Gray are excellent choices for analytical or numbers-heavy work. Greens promote creative focus — better for writing, design, or brainstorming roles." },
+      { question: "Does paint finish matter in a home office?", answer: "Yes. Matte or eggshell finishes reduce screen glare and prevent eye strain during long work sessions. Avoid semi-gloss on walls — it reflects overhead lighting and monitor light back at you. Save semi-gloss for trim only." },
+    ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
@@ -1639,12 +1664,20 @@ const blogPosts: BlogPost[] = [
     slug: "best-nursery-paint-colors",
     title: "15 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last)",
     date: "2026-01-29",
+    modifiedDate: "2026-04-09",
     author: "Paint Color HQ Staff",
     excerpt:
       "The best nursery paint colors for 2026 — gender-neutral picks from Sherwin-Williams, Benjamin Moore, and Behr that grow with your child from infant through elementary school.",
     coverColor: "#B2BAA4",
     coverImage: "/blog/best-nursery-paint-colors.webp",
     tags: ["Nursery", "Kids Room", "Design", "Gender-Neutral", "Baby Room"],
+    faqs: [
+      { question: "What is the best color for a nursery?", answer: "Soft sage greens (like Saybrook Sage) and warm neutrals (like White Dove) are the most universally loved nursery colors. They're gender-neutral, calming, and transition well as your child grows." },
+      { question: "What nursery colors help babies sleep?", answer: "Cool blues and soft greens are backed by research as sleep-promoting colors. They lower heart rate and reduce anxiety. Avoid bright reds, oranges, or saturated yellows, which are stimulating." },
+      { question: "Is it safe to paint while pregnant?", answer: "Zero-VOC paints (Benjamin Moore Natura, Sherwin-Williams Harmony, Behr Premium Plus) emit less than 5 grams per liter of volatile organic compounds. The American Pregnancy Association advises pregnant women to avoid painting directly but notes that brief exposure to zero-VOC paint after the first trimester poses minimal risk. Have someone else paint and ventilate the room for 48–72 hours before use." },
+      { question: "What are the trending nursery colors for 2026?", answer: "Earthy mushroom taupes, smoky sages, warm clay blushes, and creamy whites dominate 2026 nursery trends. The shift is toward warmer, more atmospheric colors rather than the cool grays that were popular in previous years." },
+      { question: "How many coats of paint does a nursery need?", answer: "Plan for two coats of your chosen color over a quality primer. If you're painting over a dark color, you may need a third coat or a tinted primer." },
+    ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
@@ -1787,12 +1820,20 @@ const blogPosts: BlogPost[] = [
     slug: "best-dining-room-paint-colors",
     title: "15 Best Dining Room Paint Colors for Every Style (2026)",
     date: "2026-02-12",
+    modifiedDate: "2026-04-09",
     author: "Paint Color HQ Staff",
     excerpt:
       "The best dining room paint colors for 2026 — from bold jewel tones to warm earth tones and elegant neutrals. Includes specific colors from Sherwin-Williams, Benjamin Moore, Behr, and Valspar with hex codes and pairing tips.",
     coverColor: "#5A4A5E",
     coverImage: "/blog/best-dining-room-paint-colors.webp",
     tags: ["Dining Room", "Design", "Entertaining", "2026"],
+    faqs: [
+      { question: "What is the most popular dining room paint color?", answer: "Navy blue (like Sherwin-Williams Naval) and warm greige (like Edgecomb Gray) are consistently the two most popular dining room paint colors. Navy dominates in formal dining rooms while greige leads in open-concept homes." },
+      { question: "What dining room colors are trending in 2026?", answer: "Warm earth tones are the biggest 2026 dining room trend — sandy khakis, terracottas, and mushroom shades are replacing the cool grays of recent years. Deep, botanical greens and warm mahogany reds are also gaining popularity for statement dining rooms." },
+      { question: "Should I paint my dining room a dark color?", answer: "Yes, if you want drama and intimacy. Dining rooms are one of the best spaces for dark colors because they're used in short bursts under warm evening light. Dark colors like navy, forest green, and deep plum look better at night than they do on a daytime paint chip." },
+      { question: "What color makes a small dining room look bigger?", answer: "Light, warm neutrals like Edgecomb Gray or Accessible Beige open up small dining rooms. Painting the ceiling the same color as the walls — or one shade lighter — also creates the illusion of height." },
+      { question: "What paint finish is best for a dining room?", answer: "Eggshell or satin for walls, semi-gloss for trim and wainscoting. Flat/matte finishes show every scuff and are hard to clean — avoid them in a room where food and drink are served." },
+    ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
@@ -1926,12 +1967,19 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-kitchen-colors",
     title: "18 Best Sherwin-Williams Paint Colors for Kitchens (2026)",
     date: "2026-02-26",
+    modifiedDate: "2026-04-09",
     author: "Paint Color HQ Staff",
     excerpt:
       "The most popular Sherwin-Williams kitchen colors for cabinets, walls, and islands — with finish recommendations, lighting tips, and designer pairings for every style.",
     coverColor: "#6B7C6E",
     coverImage: "/blog/best-sherwin-williams-kitchen-colors.webp",
     tags: ["Sherwin-Williams", "Kitchen", "Design", "Cabinets"],
+    faqs: [
+      { question: "What is the most popular Sherwin-Williams color for kitchen cabinets?", answer: "Pure White (SW 7005) is the most specified cabinet color at Sherwin-Williams. Alabaster (SW 7008) is a close second for homeowners who prefer a warmer, creamier white." },
+      { question: "What Sherwin-Williams paint should I use on kitchen cabinets?", answer: "Emerald Urethane Trim Enamel in satin sheen. It self-levels for a smooth finish, resists yellowing, and holds up to the moisture, grease, and constant wiping that kitchen cabinets endure." },
+      { question: "What is the best Sherwin-Williams color for small kitchens?", answer: "Alabaster (SW 7008) opens up small kitchens with its warm glow, while Agreeable Gray (SW 7029) adds depth without closing the space in. Avoid very dark colors on all surfaces in a small kitchen — use them as accents on an island or lower cabinets instead." },
+      { question: "Can I find Benjamin Moore equivalents for these colors?", answer: "Yes. Click any Sherwin-Williams color on PaintColorHQ to see the closest match from all 14 brands in the database. Use color search to find any color by name or code." },
+    ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
@@ -2147,12 +2195,19 @@ const blogPosts: BlogPost[] = [
     slug: "best-behr-colors-for-bedrooms",
     title: "12 Best Behr Paint Colors for Bedrooms (2026 Picks)",
     date: "2026-01-22",
+    modifiedDate: "2026-04-09",
     author: "Paint Color HQ Staff",
     excerpt:
       "The best Behr bedroom paint colors for 2026 — from calming blues and soft greens to warm neutrals — with real pricing, sheen advice, and CIEDE2000 cross-brand matches.",
     coverColor: "#B5C4CB",
     coverImage: "/blog/best-behr-colors-for-bedrooms.webp",
     tags: ["Behr", "Bedroom", "Budget", "2026"],
+    faqs: [
+      { question: "What is the most popular Behr color for bedrooms?", answer: "Silver Drop (790C-2) and Light French Gray (720E-2) are consistently Behr's top-selling bedroom colors. Both are versatile neutrals with enough depth to feel intentional, and both work in any lighting condition." },
+      { question: "Is Behr Dynasty worth the extra cost over Marquee?", answer: "For primary bedrooms and kids' rooms, yes. Dynasty has better stain and scuff resistance. For guest rooms and low-traffic spaces, Marquee delivers nearly identical results at $5–10 less per gallon." },
+      { question: "What is Behr's 2026 Color of the Year?", answer: "Behr's 2026 Color of the Year is Hidden Gem (N430-6A), a smoky jade green. It works as a bold bedroom accent wall but is too dark (LRV 15) for all four walls in most bedrooms. Pair it with Cameo White or Ultra Pure White trim." },
+      { question: "Which Behr paint finish is best for bedroom walls?", answer: "Eggshell is the standard for bedroom walls — it's wipeable, hides minor imperfections, and gives a soft finish. Use matte/flat only on ceilings or if your walls are in perfect condition. Use semi-gloss on trim and baseboards." },
+    ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
