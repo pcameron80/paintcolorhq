@@ -44,7 +44,7 @@ export async function getColorsByBrand(
       query = query.in("undertone", labels);
     }
   }
-  if (options?.offset && options?.limit) {
+  if (options?.offset != null && options?.limit) {
     query = query.range(options.offset, options.offset + options.limit - 1);
   } else if (options?.limit) {
     query = query.limit(options.limit);
@@ -210,7 +210,7 @@ export async function getColorsByFamily(
       query = query.in("undertone", labels);
     }
   }
-  if (options?.offset && options?.limit) {
+  if (options?.offset != null && options?.limit) {
     query = query.range(options.offset, options.offset + options.limit - 1);
   } else if (options?.limit) {
     query = query.limit(options.limit);

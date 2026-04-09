@@ -18,7 +18,6 @@ export async function GET() {
     const sitemapNames: string[] = [
       "pages",
       "brands",
-      "matches",
       ...Array.from({ length: totalColorSitemaps }, (_, i) => `colors-${i}`),
       "blog",
       "families",

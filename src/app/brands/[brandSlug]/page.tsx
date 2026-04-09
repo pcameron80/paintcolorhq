@@ -26,7 +26,7 @@ interface PageProps {
 
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { brandSlug } = await params;
-  const { page: pageParam } = await searchParams;
+  const { page: pageParam, family, undertone } = await searchParams;
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) return { title: "Brand Not Found" };
   const count = brand.color_count.toLocaleString();
@@ -35,7 +35,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const description = `Browse all ${count} ${brand.name} paint colors with cross-brand matching, undertone filters, and LRV values. Find your perfect color.`;
   const currentPage = parseInt(pageParam ?? "1", 10) || 1;
   const brandContent = getBrandContent(brandSlug);
-  const shouldNoindex = currentPage > 1 || !brandContent;
+  const shouldNoindex = currentPage > 1 || !brandContent || !!family || !!undertone;
   return {
     title, description,
     alternates: { canonical: url },

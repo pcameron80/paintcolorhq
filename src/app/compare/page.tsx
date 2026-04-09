@@ -5,14 +5,19 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { getColorById } from "@/lib/queries";
 import { CompareClient } from "./compare-client";
 
-export const metadata: Metadata = {
-  title: "Compare Paint Colors Side by Side",
-  description: "Compare any two paint colors side by side with hex codes, RGB values, LRV, and visual swatches.",
-  alternates: { canonical: "https://www.paintcolorhq.com/compare" },
-  openGraph: { title: "Compare Paint Colors Side by Side", description: "Compare any two paint colors side by side.", url: "https://www.paintcolorhq.com/compare" },
-};
-
 interface PageProps { searchParams: Promise<{ color1?: string; color2?: string }>; }
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const { color1, color2 } = await searchParams;
+  const hasParams = !!color1 || !!color2;
+  return {
+    title: "Compare Paint Colors Side by Side",
+    description: "Compare any two paint colors side by side with hex codes, RGB values, LRV, and visual swatches.",
+    alternates: { canonical: "https://www.paintcolorhq.com/compare" },
+    ...(hasParams && { robots: { index: false, follow: true } }),
+    openGraph: { title: "Compare Paint Colors Side by Side", description: "Compare any two paint colors side by side.", url: "https://www.paintcolorhq.com/compare" },
+  };
+}
 
 // JSON-LD helper - all content is server-generated from trusted static values
 function JsonLd({ data }: { data: object }) {
