@@ -5,6 +5,15 @@ Disallow: /dashboard/
 Disallow: /auth/
 Disallow: /api/
 
+# Prevent crawling filter/pagination variants (duplicate content)
+Disallow: /brands/*?family=
+Disallow: /brands/*?undertone=
+Disallow: /brands/*?page=
+Disallow: /colors/family/*?brand=
+Disallow: /colors/family/*?undertone=
+Disallow: /colors/family/*?page=
+Disallow: /blog?tag=
+
 # AI Crawlers — explicitly allowed
 User-agent: GPTBot
 Allow: /
