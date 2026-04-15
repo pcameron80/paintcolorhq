@@ -158,6 +158,17 @@ export default function ToolsPage() {
         </div>
       </section>
 
+      <section className="py-16 px-6 md:px-12 bg-surface-container-low">
+        <div className="max-w-3xl mx-auto text-on-surface-variant leading-relaxed">
+          <h2 className="font-headline text-3xl font-bold text-on-surface mb-6">When to use each tool</h2>
+          <p className="mb-4"><strong>Paint Calculator</strong> — before ordering. A standard gallon covers about 350 sq ft with one coat on primed drywall. Two coats is standard for a color change, and darker colors often need a tinted primer plus two topcoats. The calculator accounts for doors, windows, and standard trim.</p>
+          <p className="mb-4"><strong>Photo Color Identifier</strong> — when you already have a color you love but don&apos;t know its name. Works best on interior walls photographed in natural light. Results are ranked by Delta E distance, so the top match is the closest, not necessarily the one you expected.</p>
+          <p className="mb-4"><strong>Room Color Visualizer</strong> — for testing combinations before buying samples. Tests walls, accent wall, trim, and floor in a fixed reference room. Useful for catching clashes before committing to a $60 quart you won&apos;t end up using.</p>
+          <p className="mb-4"><strong>Palette Generator</strong> — when you&apos;re starting from a single color you already like. Generates complementary, analogous, triadic, and split-complementary schemes using real paint colors, not abstract hex values.</p>
+          <p>None of these replace physical samples. Paint chips under store lighting read differently than they will on your wall, and any screen preview is limited by your monitor&apos;s calibration. Use these to narrow options, then order actual sample pots before deciding.</p>
+        </div>
+      </section>
+
       <AdSenseScript />
       <Footer />
     </div>

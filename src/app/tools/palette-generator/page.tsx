@@ -81,6 +81,19 @@ export default function PaletteGeneratorPage() {
         </div>
       </section>
 
+      <section className="py-16 px-6 md:px-12 bg-surface-container-low">
+        <div className="max-w-3xl mx-auto text-on-surface-variant leading-relaxed">
+          <h2 className="font-headline text-3xl font-bold text-on-surface mb-6">How the palettes are built</h2>
+          <p className="mb-4">The generator starts from your chosen color and uses standard color-wheel relationships to produce five palette types:</p>
+          <p className="mb-4"><strong>Complementary</strong> — the color directly opposite yours on the wheel. High contrast; works well for an accent wall against a neutral main color.</p>
+          <p className="mb-4"><strong>Analogous</strong> — colors adjacent to yours. Lower contrast, unified feel. Common in bedrooms and living rooms where you want calm.</p>
+          <p className="mb-4"><strong>Triadic</strong> — three colors evenly spaced around the wheel. Energetic, but needs careful balance — one dominant color, two supporting, not equal thirds.</p>
+          <p className="mb-4"><strong>Split-complementary</strong> — your color plus the two adjacent to its complement. Softer than pure complementary while still high-interest.</p>
+          <p className="mb-4"><strong>Monochromatic</strong> — tints and shades of a single hue. Sophisticated but can feel flat without careful variation in LRV.</p>
+          <p>Each generated color is matched to the nearest real paint from the catalog, so palettes are purchasable rather than abstract. Roles are assigned by LRV and chroma: Walls get the mid-LRV anchor, Trim gets the lightest value, Accent gets the second-darkest, and Pop gets the most saturated color for use on pillows, art, or a statement piece.</p>
+        </div>
+      </section>
+
       <section className="py-20 px-6 md:px-12">
         <div className="max-w-4xl mx-auto">
           <div className="mt-12">

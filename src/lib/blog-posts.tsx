@@ -1712,7 +1712,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> (LRV 41) — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral with a Delta E under 3.0 to Benjamin Moore Shaker Beige (HC-45). See our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> roundup.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown</Link> and <Link href="/colors/family/taupe" className="text-brand-blue hover:underline">taupe</Link> families for more earthy nursery options.
+          Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families for more earthy nursery options.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Pink &amp; Lavender (Done Right)</h2>

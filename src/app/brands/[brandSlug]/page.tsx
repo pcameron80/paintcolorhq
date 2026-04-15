@@ -213,7 +213,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
             <div>
-              <h2 className="font-headline text-4xl font-bold tracking-tight text-on-surface">The Color Library</h2>
+              <h2 className="font-headline text-4xl font-bold tracking-tight text-on-surface">{brand.name} Color Library</h2>
               <p className="text-outline mt-2">{totalCount.toLocaleString()} colors{family ? ` in ${family}` : ""}{undertoneFilter ? ` \u00B7 ${undertoneFilter} undertone` : ""}.</p>
             </div>
           </div>
