@@ -68,15 +68,18 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
 
   if (!validFamilies.includes(familySlug)) notFound();
 
-  const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
+  const requestedPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
   const perPage = 60;
 
-  const [colors, brands, totalCount] = await Promise.all([
+  const totalCount = await getColorsByFamilyCount(familySlug, { brandSlug: brandFilter ?? undefined, undertone: undertoneFilter ?? undefined });
+  const totalPages = Math.max(1, Math.ceil(totalCount / perPage));
+  if (requestedPage > totalPages) notFound();
+  const currentPage = requestedPage;
+
+  const [colors, brands] = await Promise.all([
     getColorsByFamily(familySlug, { brandSlug: brandFilter ?? undefined, undertone: undertoneFilter ?? undefined, limit: perPage, offset: (currentPage - 1) * perPage }),
     getAllBrands(),
-    getColorsByFamilyCount(familySlug, { brandSlug: brandFilter ?? undefined, undertone: undertoneFilter ?? undefined }),
   ]);
-  const totalPages = Math.ceil(totalCount / perPage);
 
   const familyName = capitalize(familySlug.replace(/-/g, " "));
   const familyContent = getFamilyContent(familySlug);
@@ -141,7 +144,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
             <div>
-              <h2 className="font-headline text-4xl font-bold tracking-tight text-on-surface">The Color Library</h2>
+              <h2 className="font-headline text-4xl font-bold tracking-tight text-on-surface">{familyName} Color Library</h2>
               <p className="text-outline mt-2">{totalCount.toLocaleString()} colors{brandFilter ? ` from ${brandFilter}` : ""}{undertoneFilter ? ` \u00B7 ${undertoneFilter} undertone` : ""}.</p>
             </div>
           </div>

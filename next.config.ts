@@ -28,6 +28,8 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  htmlLimitedBots:
+    /Mediapartners-Google|AdsBot-Google|Googlebot|Google-InspectionTool|Google-PageRenderer|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|bingbot|BingPreview|msnbot|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|SkypeUriPreview|Bytespider|SeznamBot|Pinterestbot|PetalBot|WhatsApp|AhrefsBot|AhrefsSiteAudit|SemrushBot|DotBot|MJ12bot|Screaming Frog|Sitebulb|DeepCrawl|OnCrawl|Bloodhound/i,
   images: {
     remotePatterns: [
       { hostname: "lh3.googleusercontent.com" },
@@ -40,6 +42,11 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         has: [{ type: "host", value: "paintcolorhq.com" }],
         destination: "https://www.paintcolorhq.com/:path*",
+        permanent: true,
+      },
+      {
+        source: "/colors/family/taupe",
+        destination: "/colors/family/beige",
         permanent: true,
       },
     ];

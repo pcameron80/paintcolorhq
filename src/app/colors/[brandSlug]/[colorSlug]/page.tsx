@@ -87,10 +87,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!color) return { title: "Color Not Found" };
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   const colorNum = color.color_number ? ` ${color.color_number}` : "";
-  const undertoneTitle = color.undertone ? ` | ${color.undertone} Undertone` : "";
   const shouldIndex = INDEXED_BRANDS.includes(brandSlug) && !(color.undertone == null && color.lrv == null);
   return {
-    title: `${color.name}${colorNum} by ${color.brand.name} | ${color.hex.toUpperCase()}${undertoneTitle}`,
+    title: `${color.name}${colorNum} by ${color.brand.name} | ${color.hex.toUpperCase()}`,
     description: generateMetaDescription(color),
     alternates: { canonical: url },
     ...(!shouldIndex && { robots: { index: false, follow: true } }),

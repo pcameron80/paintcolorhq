@@ -96,6 +96,16 @@ export default async function ColorsPage() {
         </div>
       </section>
 
+      <section className="py-16 px-6 md:px-12 bg-surface">
+        <div className="max-w-3xl mx-auto text-on-surface-variant leading-relaxed">
+          <h2 className="font-headline text-3xl font-bold text-on-surface mb-6">How these families are grouped</h2>
+          <p className="mb-4">Paint brands don&apos;t agree on color categorization. Sherwin-Williams might file a warm gray under &ldquo;Neutral&rdquo; while Benjamin Moore puts a similar undertone in &ldquo;Gray.&rdquo; This catalog groups by visual family regardless of each brand&apos;s own classification, so cross-brand matches make sense.</p>
+          <p className="mb-4"><strong>White and off-white</strong> are split because they behave differently on a wall. A true white (LRV 85+) reflects nearly all light and works as trim or ceiling. An off-white (LRV 70–85) has enough pigment to read as a wall color without washing out under warm bulbs.</p>
+          <p className="mb-4"><strong>Beige and tan</strong> overlap, but beige generally leans cooler and grayer; tan leans warmer and yellower. The distinction matters for pairing — beige walls work with cool-tone tile and stainless; tan walls pair better with warm woods and brass.</p>
+          <p><strong>Neutral</strong> covers colors that don&apos;t commit to a warm or cool undertone — the &ldquo;greige&rdquo; category brands now market heavily. These shift through the day as lighting changes, which is why they&apos;re popular in rooms with mixed light sources.</p>
+        </div>
+      </section>
+
       {/* Browse by Brand CTA */}
       <section className="py-20 px-6 md:px-12 bg-surface">
         <div className="max-w-5xl mx-auto bg-surface-container-low rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-12 border border-outline-variant/15">
