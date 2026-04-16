@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Inter, Manrope } from "next/font/google";
 import { AnalyticsProvider } from "@/components/analytics-provider";
+import { CookieConsent } from "@/components/cookie-consent";
 import "./globals.css";
 
 const inter = Inter({
@@ -62,33 +62,8 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${manrope.variable} font-sans antialiased`}>
         {children}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-056NR93JLK"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            // Tag internal traffic for GA4 data filter
-            var isInternal = (
-              location.hostname === 'localhost' ||
-              location.hostname === '127.0.0.1' ||
-              location.hostname.endsWith('.vercel.app') ||
-              location.search.indexOf('debug=true') !== -1
-            );
-
-            gtag('config', 'G-056NR93JLK', isInternal ? {
-              traffic_type: 'internal'
-            } : {});
-          `}
-        </Script>
+        <CookieConsent />
         <AnalyticsProvider />
-        {/* AdSense script moved to per-page inclusion via <AdSenseScript /> component.
-            Only loaded on high-content pages (blog, brands, tools, homepage).
-            Excluded from color pages until content is enriched. */}
       </body>
     </html>
   );
