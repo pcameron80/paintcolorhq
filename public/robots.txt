@@ -4,6 +4,12 @@ Disallow: /dashboard
 Disallow: /dashboard/
 Disallow: /auth/
 Disallow: /api/
+# Parametric tool URLs are combinatorial (unbounded) and have no SEO value.
+# Bare /tools/palette-generator and /tools/room-visualizer landing pages stay
+# indexable; only variants with query strings are blocked.
+Disallow: /tools/palette-generator?
+Disallow: /tools/room-visualizer?
+Disallow: /compare?
 
 # AI Crawlers — explicitly allowed
 User-agent: GPTBot
