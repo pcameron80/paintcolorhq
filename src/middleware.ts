@@ -46,6 +46,13 @@ export async function middleware(request: NextRequest) {
   // Refresh the session token
   await supabase.auth.getUser();
 
+  // Set canonical Link header AFTER Supabase auth (which may recreate
+  // supabaseResponse via setAll), so the header survives on the final response.
+  // Crawlers use this even when Next.js 16 streams <link rel="canonical">
+  // inside <body> via RSC.
+  const canonical = `https://www.paintcolorhq.com${request.nextUrl.pathname}`;
+  supabaseResponse.headers.set("Link", `<${canonical}>; rel="canonical"`);
+
   return supabaseResponse;
 }
 

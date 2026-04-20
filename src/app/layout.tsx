@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   description:
     "Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. 25,000+ colors with room visualizer & photo color identifier.",
   metadataBase: new URL("https://www.paintcolorhq.com"),
+  verification: {
+    other: { "impact-site-verification": ["dc26e305-732b-490f-9212-85e5f25c94b7"] },
+  },
   openGraph: {
     type: "website",
     siteName: "Paint Color HQ",
@@ -50,16 +53,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="impact-site-verification" content="dc26e305-732b-490f-9212-85e5f25c94b7" />
-        <link
-          rel="preload"
-          as="image"
-          href="/hero.webp"
-          fetchPriority="high"
-        />
-        <link rel="help" type="text/plain" href="/llms.txt" />
-      </head>
       <body className={`${inter.variable} ${manrope.variable} font-sans antialiased`}>
         {children}
         <CookieConsent />

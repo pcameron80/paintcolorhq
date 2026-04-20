@@ -215,6 +215,7 @@ export default async function BlogIndex({ searchParams }: BlogPageProps) {
         publisher: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" },
         blogPost: allPosts.map((post) => ({
           "@type": "BlogPosting", headline: post.title, datePublished: post.date,
+          dateModified: post.modifiedDate ?? post.date,
           url: `https://www.paintcolorhq.com/blog/${post.slug}`,
           ...(post.coverImage && { image: `https://www.paintcolorhq.com${post.coverImage}` }),
         })),
