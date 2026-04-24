@@ -78,21 +78,16 @@ async function resolveHarmonies(hex: string) {
 
 interface PageProps { params: Promise<{ brandSlug: string; colorSlug: string }>; }
 
-// Top brands included in sitemap — smaller brands get noindex during HCU recovery
-const INDEXED_BRANDS = ["sherwin-williams", "benjamin-moore", "behr", "ppg", "valspar"];
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { brandSlug, colorSlug } = await params;
   const color = await getColorBySlug(brandSlug, colorSlug);
   if (!color) return { title: "Color Not Found" };
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   const colorNum = color.color_number ? ` ${color.color_number}` : "";
-  const shouldIndex = INDEXED_BRANDS.includes(brandSlug) && !(color.undertone == null && color.lrv == null);
   return {
     title: `${color.name}${colorNum} by ${color.brand.name} | ${color.hex.toUpperCase()}`,
     description: generateMetaDescription(color),
     alternates: { canonical: url },
-    ...(!shouldIndex && { robots: { index: false, follow: true } }),
     openGraph: {
       title: `${color.name}${colorNum} by ${color.brand.name}`,
       description: `${color.name} (${color.hex.toUpperCase()}) by ${color.brand.name}. Find closest matches from other brands.`,

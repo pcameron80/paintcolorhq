@@ -4,17 +4,12 @@ import { getAllBlogSlugs } from "@/lib/blog-posts";
 
 const BASE_URL = "https://www.paintcolorhq.com";
 const COLORS_PER_SITEMAP = 5000;
-// Reduced to top 5 brands to improve indexed-to-submitted ratio.
-// HCU penalty recovery requires fewer, higher-quality pages in sitemap.
-const SITEMAP_BRANDS = ["sherwin-williams", "benjamin-moore", "behr", "ppg", "valspar"];
 
 export async function GET() {
   try {
-    const colorSlugs = await getAllColorSlugs({ brandSlugs: SITEMAP_BRANDS });
+    const colorSlugs = await getAllColorSlugs();
     const totalColorSitemaps = Math.ceil(colorSlugs.length / COLORS_PER_SITEMAP);
 
-    // Build list of named sub-sitemaps
-    // Inspiration pages are noindexed during HCU recovery — excluded from sitemap
     const sitemapNames: string[] = [
       "pages",
       "brands",
@@ -22,6 +17,7 @@ export async function GET() {
       ...Array.from({ length: totalColorSitemaps }, (_, i) => `colors-${i}`),
       "blog",
       "families",
+      "inspiration",
     ];
 
     // Only include blog sitemap if there are blog posts
