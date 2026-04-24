@@ -5,9 +5,9 @@ import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 
 export const metadata: Metadata = {
-  title: "Paint Tools",
+  title: "Free Paint Color Tools — Visualizer & Calculator",
   description:
-    "Free paint tools: palette generator, room color visualizer, photo color identifier, and paint calculator. Build coordinated color schemes, preview colors in a room, match colors from photos, and estimate coverage. Works with all major brands.",
+    "Free paint tools: palette generator, room visualizer, photo color identifier, and paint calculator. Preview colors, match from photos, and estimate coverage across all major brands.",
   alternates: { canonical: "https://www.paintcolorhq.com/tools" },
 };
 

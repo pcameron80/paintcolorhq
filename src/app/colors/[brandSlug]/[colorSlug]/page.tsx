@@ -78,19 +78,28 @@ async function resolveHarmonies(hex: string) {
 
 interface PageProps { params: Promise<{ brandSlug: string; colorSlug: string }>; }
 
+function extractVariantSuffix(slug: string, colorNumber: string | null | undefined): string {
+  const m = slug.match(/-([2-9])$/);
+  if (!m) return "";
+  const digit = m[1];
+  if (colorNumber && colorNumber.toLowerCase().endsWith(digit)) return "";
+  return ` (variant ${digit})`;
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { brandSlug, colorSlug } = await params;
   const color = await getColorBySlug(brandSlug, colorSlug);
   if (!color) return { title: "Color Not Found" };
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   const colorNum = color.color_number ? ` ${color.color_number}` : "";
+  const variant = extractVariantSuffix(colorSlug, color.color_number);
   return {
-    title: `${color.name}${colorNum} by ${color.brand.name} | ${color.hex.toUpperCase()}`,
-    description: generateMetaDescription(color),
+    title: `${color.name}${colorNum} by ${color.brand.name}${variant} | ${color.hex.toUpperCase()}`,
+    description: generateMetaDescription(color) + variant,
     alternates: { canonical: url },
     openGraph: {
-      title: `${color.name}${colorNum} by ${color.brand.name}`,
-      description: `${color.name} (${color.hex.toUpperCase()}) by ${color.brand.name}. Find closest matches from other brands.`,
+      title: `${color.name}${colorNum} by ${color.brand.name}${variant}`,
+      description: `${color.name} (${color.hex.toUpperCase()}) by ${color.brand.name}${variant}. Find closest matches from other brands.`,
       url,
       images: [{ url: `/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`, width: 1200, height: 630, alt: `${color.name} paint color swatch` }],
     },
@@ -206,7 +215,7 @@ export default async function ColorPage({ params }: PageProps) {
                 <span className="text-on-surface">{color.name}</span>
               </nav>
               <div className="bg-surface-container-high h-1 w-12 mb-6" />
-              <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Technical Profile</h2>
+              <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">{color.name} Technical Profile</h2>
               <p className="text-on-surface-variant leading-relaxed mb-8">{description}</p>
             </div>
             <div className="space-y-0">
@@ -253,7 +262,7 @@ export default async function ColorPage({ params }: PageProps) {
           <div className="lg:col-span-7">
             {Object.keys(matchesByBrand).length > 0 && (
               <div className="bg-surface-container-low rounded-xl p-8 md:p-10">
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">Closest Matches</h2>
+                <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">Colors Similar to {color.name}</h2>
                 <p className="text-sm text-on-surface-variant mb-8">Closest digital match based on color values. Always verify with physical samples.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {Object.values(matchesByBrand).flatMap((bm) => bm.slice(0, 1)).slice(0, 8).map((match) => (
@@ -283,13 +292,13 @@ export default async function ColorPage({ params }: PageProps) {
 
       {/* Complementary Colors */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
-        <ComplementaryColors hex={color.hex} harmonies={harmonies} />
+        <ComplementaryColors hex={color.hex} harmonies={harmonies} colorName={color.name} />
       </section>
 
       {/* Curated Palettes */}
       <section className="bg-tertiary-fixed py-16 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
-          <CuratedPalettes hex={color.hex} brandId={color.brand_id} currentPath={`/colors/${brandSlug}/${colorSlug}`} />
+          <CuratedPalettes hex={color.hex} brandId={color.brand_id} currentPath={`/colors/${brandSlug}/${colorSlug}`} colorName={color.name} />
         </div>
       </section>
 
@@ -308,7 +317,7 @@ export default async function ColorPage({ params }: PageProps) {
       {faqItems.length > 0 && (
         <section className="bg-surface-container-low py-16 px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">Frequently Asked Questions</h2>
+            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">{color.name} — Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqItems.map((item, i) => (
                 <details key={i} className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10">
@@ -326,7 +335,7 @@ export default async function ColorPage({ params }: PageProps) {
 
       {/* Keep Exploring */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
-        <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">Keep Exploring</h2>
+        <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">Explore More with {color.name}</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           <TrackedLink href={`/tools/room-visualizer?hex=${encodeURIComponent(color.hex)}`} className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500" eventName="cta_click" eventParams={{ cta_label: "room_visualizer", color_name: color.name }}>
             <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">See It on a Wall</p>

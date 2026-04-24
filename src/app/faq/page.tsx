@@ -7,7 +7,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions About Paint Colors",
   description:
-    "Answers to common questions about paint colors, matching colors across brands, choosing undertones, calculating paint quantities, and using Paint Color HQ tools.",
+    "Answers to common questions about paint colors — cross-brand matching, undertones, paint quantities, and Paint Color HQ tools.",
   alternates: { canonical: "https://www.paintcolorhq.com/faq" },
   openGraph: {
     title: "Paint Color FAQ - Common Questions Answered",

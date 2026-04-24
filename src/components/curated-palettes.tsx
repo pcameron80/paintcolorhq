@@ -140,10 +140,12 @@ export async function CuratedPalettes({
   hex,
   brandId,
   currentPath,
+  colorName,
 }: {
   hex: string;
   brandId: string;
   currentPath: string;
+  colorName?: string;
 }) {
   const palettes = generatePalettes(hex);
 
@@ -178,7 +180,7 @@ export async function CuratedPalettes({
 
   return (
     <section>
-      <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">Room Palettes</h2>
+      <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">{colorName ? `${colorName} Room Palettes` : "Room Palettes"}</h2>
       <p className="mt-2 text-sm text-on-surface-variant">
         Color schemes built around this color — each swatch links to the closest matching paint.
       </p>

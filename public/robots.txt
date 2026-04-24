@@ -10,6 +10,7 @@ Disallow: /api/
 Disallow: /tools/palette-generator?
 Disallow: /tools/room-visualizer?
 Disallow: /compare?
+Disallow: /search?
 
 # AI Crawlers — explicitly allowed
 User-agent: GPTBot
