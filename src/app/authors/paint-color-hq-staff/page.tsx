@@ -8,12 +8,12 @@ import { AdSenseScript } from "@/components/adsense-script";
 export const metadata: Metadata = {
   title: "Paint Color HQ Staff | Authors",
   description:
-    "Meet the Paint Color HQ editorial team. Our staff writers specialize in paint color science, cross-brand matching, interior design trends, and home improvement guidance.",
+    "Meet the Paint Color HQ editorial team — staff writers covering color science, cross-brand matching, and interior design.",
   alternates: { canonical: "https://www.paintcolorhq.com/authors/paint-color-hq-staff" },
   openGraph: {
     title: "Paint Color HQ Staff | Authors",
     description:
-      "Meet the Paint Color HQ editorial team. Our staff writers specialize in paint color science, cross-brand matching, interior design trends, and home improvement guidance.",
+      "Meet the Paint Color HQ editorial team — staff writers covering color science, cross-brand matching, and interior design.",
     type: "profile",
     url: "https://www.paintcolorhq.com/authors/paint-color-hq-staff",
   },

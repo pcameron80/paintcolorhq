@@ -252,7 +252,7 @@ const blogPosts: BlogPost[] = [
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Most Common Gray Undertones</h2>
-        <img src="/blog/understanding-paint-color-undertones-gray-comparison.webp" alt="Side-by-side comparison of five gray paint colors showing blue, green, purple, brown, and neutral undertones from Benjamin Moore and Sherwin-Williams" width={1200} height={450} className="mt-6 w-full rounded-lg" />
+        <img src="/blog/understanding-paint-color-undertones-gray-comparison.webp" alt="Five gray paint colors compared side by side with different undertones" width={1200} height={450} className="mt-6 w-full rounded-lg" />
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Blue undertone:</strong> <Swatch hex="#B0B7BB" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> — looks cool and airy in north-facing light, but can feel cold in rooms without much natural light.
         </p>
@@ -308,7 +308,7 @@ const blogPosts: BlogPost[] = [
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Undertones in White Paint</h2>
-        <img src="/blog/understanding-paint-color-undertones-warm-cool-whites.webp" alt="Comparison of warm white paint colors (White Dove, Simply White) versus cool white paint colors (Decorator's White, Chantilly Lace) from Benjamin Moore" width={1200} height={400} className="mt-6 w-full rounded-lg" />
+        <img src="/blog/understanding-paint-color-undertones-warm-cool-whites.webp" alt="Warm white versus cool white Benjamin Moore paint colors compared" width={1200} height={400} className="mt-6 w-full rounded-lg" />
         <p className="mt-4 text-gray-700 leading-relaxed">
           White is the single most popular paint color in the world — and ironically, it&apos;s where undertones cause the most grief. There is no such thing as a &ldquo;plain white&rdquo; paint. Every white on the market carries an undertone, and on a large wall that undertone becomes the dominant visual characteristic. What looked like a clean white in the store can read as pink, yellow, green, or blue once it covers 200 square feet of drywall. Our analysis of over 800 white paint colors using CIEDE2000 color science confirms this: even whites with nearly identical lightness values can differ dramatically in undertone.
         </p>
@@ -355,7 +355,7 @@ const blogPosts: BlogPost[] = [
     modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
-      "From crisp whites that survive daily scrubbing to moody greens taking over cabinetry in 2026, these are the kitchen paint colors that hold up in real kitchens — with specific LRV values, finish guidance, and application tips.",
+      "From crisp whites to moody greens, the 2026 kitchen paint colors that hold up in real kitchens — with LRV values and finish tips.",
     coverColor: "#4A5D4F",
     coverImage: "/blog/best-kitchen-paint-colors-2025.webp",
     tags: ["Kitchen", "2026", "Design", "Cabinets"],
@@ -615,7 +615,7 @@ const blogPosts: BlogPost[] = [
     date: "2025-12-11",
     author: "Paint Color HQ Staff",
     excerpt:
-      "The definitive guide to cross-brand paint color matching. Learn how CIEDE2000 color science, Delta E scores, and a 25,000+ color database make finding exact equivalents easy.",
+      "The definitive guide to cross-brand paint color matching. Learn how CIEDE2000, Delta E, and a 25,000+ color database find exact equivalents.",
     coverColor: "#6B8F71",
     coverImage: "/blog/how-to-find-perfect-color-match-across-brands.webp",
     tags: ["How-To", "Cross-Brand Matching", "Color Science"],
@@ -642,7 +642,7 @@ const blogPosts: BlogPost[] = [
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Understanding Delta E and CIEDE2000 Color Science</h2>
-        <img src="/blog/understanding-paint-color-undertones-delta-e-guide.webp" alt="Visual guide showing Delta E color difference levels: virtually identical (under 1.0), very close (1-2), close match (2-3), and noticeable difference (3-5)" width={1200} height={350} className="mt-6 w-full rounded-lg" />
+        <img src="/blog/understanding-paint-color-undertones-delta-e-guide.webp" alt="Delta E color difference scale from virtually identical to noticeable" width={1200} height={350} className="mt-6 w-full rounded-lg" />
         <p className="mt-4 text-gray-700 leading-relaxed">
           Delta E (ΔE) measures the perceptual difference between two colors. The CIEDE2000 revision of the formula — which Paint Color HQ uses for every match calculation — is the gold standard in color science. Unlike simpler formulas that just compare RGB values, CIEDE2000 accounts for the fact that human eyes are more sensitive to some color differences than others. For example, we&apos;re more sensitive to differences in neutral tones (grays, beiges) than in saturated colors, and CIEDE2000 weights its calculations accordingly.
         </p>
@@ -752,7 +752,7 @@ const blogPosts: BlogPost[] = [
     date: "2025-11-06",
     author: "Paint Color HQ Staff",
     excerpt:
-      "White is the hardest paint color to choose. This guide ranks the 15 best warm whites, cool whites, and true whites from Sherwin-Williams, Benjamin Moore, Behr, and more — with room-by-room advice, undertone breakdowns, and designer pairings.",
+      "White is the hardest paint color to choose. This guide ranks 15 warm, cool, and true whites from top brands with room-by-room advice.",
     coverColor: "#F0EBE0",
     coverImage: "/blog/best-white-paint-colors-guide.webp",
     tags: ["White", "Guide", "Design", "2026"],
@@ -1149,7 +1149,7 @@ const blogPosts: BlogPost[] = [
     date: "2026-03-05",
     author: "Paint Color HQ Staff",
     excerpt:
-      "The best bathroom paint colors for 2026 — from spa blues and warm earth tones to dramatic jewel shades. Every pick handles humidity, and we explain which finish and formulation to use.",
+      "The best bathroom paint colors for 2026 — spa blues, warm earth tones, and dramatic jewel shades. Every pick handles humidity, with finish advice.",
     coverColor: "#7BAFB4",
     coverImage: "/blog/best-bathroom-paint-colors.webp",
     tags: ["Bathroom", "Design", "Tips", "2026"],
@@ -1541,7 +1541,7 @@ const blogPosts: BlogPost[] = [
     modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
-      "Exterior paint has to work with your roof, your trim, and full sun — conditions that change how colors look compared to interior swatches. These are the colors that hold up outdoors, with specific pairing advice for every architectural style.",
+      "Exterior paint must work with your roof, trim, and full sun. These are the colors that hold up outdoors, with pairing advice for every style.",
     coverColor: "#4B5E52",
     coverImage: "/blog/best-exterior-paint-colors.webp",
     tags: ["Exterior", "Curb Appeal", "Design", "2026"],
@@ -1641,7 +1641,7 @@ const blogPosts: BlogPost[] = [
     date: "2026-01-29",
     author: "Paint Color HQ Staff",
     excerpt:
-      "The best nursery paint colors for 2026 — gender-neutral picks from Sherwin-Williams, Benjamin Moore, and Behr that grow with your child from infant through elementary school.",
+      "The best nursery paint colors for 2026 — gender-neutral picks from Sherwin-Williams, Benjamin Moore, and Behr that grow with your child.",
     coverColor: "#B2BAA4",
     coverImage: "/blog/best-nursery-paint-colors.webp",
     tags: ["Nursery", "Kids Room", "Design", "Gender-Neutral", "Baby Room"],
@@ -1789,7 +1789,7 @@ const blogPosts: BlogPost[] = [
     date: "2026-02-12",
     author: "Paint Color HQ Staff",
     excerpt:
-      "The best dining room paint colors for 2026 — from bold jewel tones to warm earth tones and elegant neutrals. Includes specific colors from Sherwin-Williams, Benjamin Moore, Behr, and Valspar with hex codes and pairing tips.",
+      "The best dining room paint colors for 2026 — bold jewel tones, warm earth tones, and elegant neutrals with hex codes and pairing tips.",
     coverColor: "#5A4A5E",
     coverImage: "/blog/best-dining-room-paint-colors.webp",
     tags: ["Dining Room", "Design", "Entertaining", "2026"],
@@ -1928,7 +1928,7 @@ const blogPosts: BlogPost[] = [
     date: "2026-02-26",
     author: "Paint Color HQ Staff",
     excerpt:
-      "The most popular Sherwin-Williams kitchen colors for cabinets, walls, and islands — with finish recommendations, lighting tips, and designer pairings for every style.",
+      "The most popular Sherwin-Williams kitchen colors for cabinets, walls, and islands — with finish tips, lighting advice, and designer pairings.",
     coverColor: "#6B7C6E",
     coverImage: "/blog/best-sherwin-williams-kitchen-colors.webp",
     tags: ["Sherwin-Williams", "Kitchen", "Design", "Cabinets"],
@@ -2149,7 +2149,7 @@ const blogPosts: BlogPost[] = [
     date: "2026-01-22",
     author: "Paint Color HQ Staff",
     excerpt:
-      "The best Behr bedroom paint colors for 2026 — from calming blues and soft greens to warm neutrals — with real pricing, sheen advice, and CIEDE2000 cross-brand matches.",
+      "The best Behr bedroom paint colors for 2026 — calming blues, soft greens, and warm neutrals with real pricing and cross-brand matches.",
     coverColor: "#B5C4CB",
     coverImage: "/blog/best-behr-colors-for-bedrooms.webp",
     tags: ["Behr", "Bedroom", "Budget", "2026"],
@@ -2290,7 +2290,7 @@ const blogPosts: BlogPost[] = [
     modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
-      "From earthy greens to warm mushroom tones, these are the paint color trends defining 2026 — drawn from the 2026 Color of the Year picks across five major brands and search data from our 25,000+ color database.",
+      "From earthy greens to warm mushroom tones, the paint color trends defining 2026 — drawn from Color of the Year picks across five major brands.",
     coverColor: "#8B6F47",
     coverImage: "/blog/paint-color-trends-2026.webp",
     tags: ["Trends", "2026", "Design"],
@@ -2365,7 +2365,7 @@ const blogPosts: BlogPost[] = [
     date: "2025-11-27",
     author: "Paint Color HQ Staff",
     excerpt:
-      "A detailed head-to-head comparison of America's two most popular premium paint brands — covering quality, price, color matching, availability, and which to choose.",
+      "A head-to-head comparison of America's two premium paint brands — covering quality, price, color matching, and which to choose.",
     coverColor: "#C4B8A2",
     coverImage: "/blog/sherwin-williams-vs-benjamin-moore.webp",
     tags: ["Brands", "Comparison", "Buying Guide"],
@@ -2709,7 +2709,7 @@ const blogPosts: BlogPost[] = [
     modifiedDate: "2026-03-30",
     author: "Paint Color HQ Staff",
     excerpt:
-      "North-facing rooms get cool, indirect light all day. These warm-toned, high-LRV colors counteract the gray cast and make the space feel bright and inviting.",
+      "North-facing rooms get cool, indirect light. These warm-toned, high-LRV colors counteract the gray cast and make the space feel bright.",
     coverColor: "#D5C8B5",
     coverImage: "/blog/best-paint-colors-north-facing-rooms.webp",
     tags: ["North-Facing", "Lighting", "Design"],

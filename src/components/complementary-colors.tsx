@@ -21,9 +21,11 @@ interface ResolvedHarmony {
 export function ComplementaryColors({
   hex,
   harmonies,
+  colorName,
 }: {
   hex: string;
   harmonies: ResolvedHarmony[];
+  colorName?: string;
 }) {
   const [active, setActive] = useState(0);
   const [prevHex, setPrevHex] = useState(hex);
@@ -35,7 +37,7 @@ export function ComplementaryColors({
   return (
     <section>
       <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">
-        Suggested Color Palettes
+        {colorName ? `Color Palettes for ${colorName}` : "Suggested Color Palettes"}
       </h2>
       <p className="mt-2 text-sm text-on-surface-variant">
         Color harmonies based on color theory — each swatch links to the closest matching paint.

@@ -42,11 +42,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const best = allMatches.find((m) => m.match_color.brand.slug === parsed.targetBrandSlug);
   const note = best ? deltaELabel(Number(best.delta_e_score)) : "match";
   const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/${parsed.colorSlug}-to-${parsed.targetBrandSlug}`;
+  const variantMatch = parsed.colorSlug.match(/-([2-9])$/);
+  const variant = variantMatch && !sourceColor.color_number?.toLowerCase().endsWith(variantMatch[1]) ? ` (variant ${variantMatch[1]})` : "";
+  const shortTitle = `${sourceColor.name}${variant} (${sourceColor.brand.name}) to ${targetBrand.name}`;
   return {
-    title: `${sourceColor.brand.name} ${sourceColor.name} to ${targetBrand.name} Match`,
-    description: `${sourceColor.brand.name} ${sourceColor.name} (${sourceColor.hex.toUpperCase()}) to ${targetBrand.name}: ${note}. Compare hex, undertone, and LRV.`,
+    title: { absolute: shortTitle },
+    description: `${sourceColor.brand.name} ${sourceColor.name}${variant} (${sourceColor.hex.toUpperCase()}) to ${targetBrand.name}: ${note}. Compare hex, undertone, and LRV.`,
     alternates: { canonical: url },
-    openGraph: { title: `${sourceColor.brand.name} ${sourceColor.name} to ${targetBrand.name} Match`, description: `Find the closest ${targetBrand.name} equivalent.`, url,
+    openGraph: { title: shortTitle, description: `Find the closest ${targetBrand.name} equivalent.`, url,
       images: [{ url: `/api/og?hex=${encodeURIComponent(sourceColor.hex)}&name=${encodeURIComponent(sourceColor.name)}&brand=${encodeURIComponent(`${sourceColor.brand.name} \u2192 ${targetBrand.name}`)}`, width: 1200, height: 630 }],
     },
   };
@@ -175,7 +178,7 @@ export default async function MatchPage({ params }: PageProps) {
             )}
 
             <section className="bg-surface-container-low rounded-2xl p-8 md:p-12">
-              <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-6">Keep Exploring</h2>
+              <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-6">Keep Exploring {sourceColor.name}</h2>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <Link href={`/compare?colors=${sourceColor.hex.slice(1)},${bestMatch.match_color.hex.slice(1)}`}
                   className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all">

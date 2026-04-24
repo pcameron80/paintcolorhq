@@ -9,7 +9,7 @@ import { ToolCrossSell } from "@/components/tool-cross-sell";
 export const metadata: Metadata = {
   title: "Paint Calculator - How Much Paint Do I Need?",
   description:
-    "Calculate exactly how many gallons of paint you need. Enter room dimensions, subtract doors and windows, and get coverage based on the 350 sq ft/gallon industry standard. Free calculator for Sherwin-Williams, Benjamin Moore, Behr, and all brands.",
+    "Calculate exactly how many gallons of paint you need. Enter room dimensions, subtract doors and windows, and get coverage for any paint brand.",
   alternates: {
     canonical: "https://www.paintcolorhq.com/tools/paint-calculator",
   },

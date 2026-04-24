@@ -6,6 +6,7 @@
  * Groups: OuterWalls (left + right), Trim (crown, exterior window, baseboard,
  *         window recess, window frame), Back_Wall (left, right, window wall, base)
  */
+import Image from "next/image";
 
 // Helper: convert "x1 y1 x2 y2 ..." polygon points to "M x1,y1 L x2,y2 ... Z" path
 function pts(s: string): string {
@@ -48,9 +49,12 @@ export function RoomPreview({ wallColor, trimColor, accentColor, className }: Ro
 
   return (
     <div className={`relative overflow-hidden ${className ?? ""}`}>
-      <img
+      <Image
         src="/room-preview.webp"
         alt="Living room with applied paint colors"
+        width={862}
+        height={1290}
+        sizes="(max-width: 768px) 100vw, 600px"
         className="w-full h-auto block"
         loading="lazy"
       />

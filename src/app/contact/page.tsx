@@ -6,7 +6,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact — Report Issues & Ask Questions",
   description:
     "Get in touch with the Paint Color HQ team. Report color data issues, suggest features, or ask questions about our paint color matching tools.",
   alternates: { canonical: "https://www.paintcolorhq.com/contact" },

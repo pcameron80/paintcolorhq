@@ -25,7 +25,7 @@ export function TagFilter({ tags, activeTag, initialCount = 5 }: TagFilterProps)
       {visibleTags.map((tag) => (
         <Link
           key={tag}
-          href={`/blog?tag=${encodeURIComponent(tag)}`}
+          href={`/blog?tag=${encodeURIComponent(tag.toLowerCase())}`}
           className={`rounded-full px-4 py-2 text-sm font-headline font-bold transition-all ${activeTag?.toLowerCase() === tag.toLowerCase() ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant hover:text-primary"}`}
         >
           {tag}

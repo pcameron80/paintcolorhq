@@ -1,6 +1,24 @@
 import type { NextConfig } from "next";
 
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://adservice.google.com https://*.adtrafficquality.google https://va.vercel-scripts.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "connect-src 'self' https://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://pagead2.googlesyndication.com https://*.adtrafficquality.google https://vitals.vercel-insights.com",
+  "frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+].join("; ");
+
 const securityHeaders = [
+  {
+    key: "Content-Security-Policy",
+    value: contentSecurityPolicy,
+  },
   {
     key: "X-Frame-Options",
     value: "SAMEORIGIN",
@@ -47,6 +65,30 @@ const nextConfig: NextConfig = {
       {
         source: "/colors/family/taupe",
         destination: "/colors/family/beige",
+        permanent: true,
+      },
+      {
+        source: "/blog",
+        has: [{ type: "query", key: "tag", value: "Design" }],
+        destination: "/blog?tag=design",
+        permanent: true,
+      },
+      {
+        source: "/blog",
+        has: [{ type: "query", key: "tag", value: "Guide" }],
+        destination: "/blog?tag=guide",
+        permanent: true,
+      },
+      {
+        source: "/blog",
+        has: [{ type: "query", key: "tag", value: "Trends" }],
+        destination: "/blog?tag=trends",
+        permanent: true,
+      },
+      {
+        source: "/blog",
+        has: [{ type: "query", key: "tag", value: "Tips" }],
+        destination: "/blog?tag=tips",
         permanent: true,
       },
     ];
