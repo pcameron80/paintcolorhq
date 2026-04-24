@@ -365,9 +365,11 @@ export default async function ColorPage({ params }: PageProps) {
           { "@type": "ListItem", position: 3, name: color.name, item: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}` },
         ]},
         about: {
-          "@type": "Product", name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
-          description: description, brand: { "@type": "Brand", name: color.brand.name },
-          sku: color.color_number ?? undefined,
+          "@type": "DefinedTerm",
+          name: `${color.name}${color.color_number ? ` (${color.color_number})` : ""}`,
+          description: description,
+          inDefinedTermSet: color.brand.name,
+          ...(color.color_number ? { termCode: color.color_number } : {}),
           additionalProperty: [
             { "@type": "PropertyValue", name: "Hex", value: color.hex.toUpperCase() },
             { "@type": "PropertyValue", name: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
@@ -375,10 +377,6 @@ export default async function ColorPage({ params }: PageProps) {
             ...(color.undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: color.undertone }] : []),
             ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
           ],
-          ...(matches.length > 0 ? { isSimilarTo: matches.slice(0, 5).map((m) => ({
-            "@type": "Product", name: m.match_color.name, brand: { "@type": "Brand", name: m.match_color.brand.name },
-            sku: m.match_color.color_number ?? undefined, color: m.match_color.hex.toUpperCase(),
-          })) } : {}),
         },
       }} />
       {faqItems.length > 0 && <JsonLd data={{
