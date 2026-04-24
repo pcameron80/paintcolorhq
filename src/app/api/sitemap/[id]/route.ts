@@ -5,8 +5,6 @@ import { inspirationPalettes } from "@/lib/palettes";
 
 const BASE_URL = "https://www.paintcolorhq.com";
 const COLORS_PER_SITEMAP = 5000;
-// Reduced to top 5 brands to improve indexed-to-submitted ratio during HCU recovery.
-const SITEMAP_BRANDS = ["sherwin-williams", "benjamin-moore", "behr", "ppg", "valspar"];
 
 interface SitemapEntry {
   url: string;
@@ -72,7 +70,7 @@ export async function GET(
       if (isNaN(pageNum) || pageNum < 0) {
         return new NextResponse("Not found", { status: 404 });
       }
-      const colorSlugs = await getAllColorSlugs({ brandSlugs: SITEMAP_BRANDS });
+      const colorSlugs = await getAllColorSlugs();
       const start = pageNum * COLORS_PER_SITEMAP;
       const pageColors = colorSlugs.slice(start, start + COLORS_PER_SITEMAP);
       if (pageColors.length === 0) {
