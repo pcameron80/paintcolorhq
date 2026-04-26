@@ -93,7 +93,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
       <JsonLd data={{
         "@context": "https://schema.org", "@graph": [
           { "@type": "CollectionPage", name: `${familyName} Paint Colors`, description: `Browse ${totalCount} ${familyName.toLowerCase()} paint colors from ${brandCount} brands.`, url: baseUrl, numberOfItems: totalCount,
-            mainEntity: { "@type": "ItemList", numberOfItems: totalCount, itemListElement: colors.slice(0, 20).map((color, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Product", name: color.name, brand: { "@type": "Brand", name: color.brand.name }, color: color.hex, url: `https://www.paintcolorhq.com/colors/${color.brand.slug}/${color.slug}` } })) },
+            mainEntity: { "@type": "ItemList", numberOfItems: totalCount, itemListElement: colors.slice(0, 20).map((color, i) => ({ "@type": "ListItem", position: i + 1, name: color.name, url: `https://www.paintcolorhq.com/colors/${color.brand.slug}/${color.slug}` })) },
           },
           { "@type": "BreadcrumbList", itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
