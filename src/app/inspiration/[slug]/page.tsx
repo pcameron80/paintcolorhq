@@ -113,9 +113,10 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
         url: `https://www.paintcolorhq.com/inspiration/${slug}`,
         author: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" },
         hasPart: swatches.filter((s) => s.match).map((s) => ({
-          "@type": "Product", name: s.match!.name,
-          brand: { "@type": "Brand", name: s.match!.brand.name },
-          color: s.match!.hex,
+          "@type": "DefinedTerm",
+          name: s.match!.name,
+          inDefinedTermSet: s.match!.brand.name,
+          ...(s.match!.color_number ? { termCode: s.match!.color_number } : {}),
           description: `${s.role} color — ${s.match!.name} by ${s.match!.brand.name} (${s.match!.hex.toUpperCase()})`,
         })),
       }} />
