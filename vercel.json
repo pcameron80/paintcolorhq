@@ -1,4 +1,10 @@
 {
+  "crons": [
+    {
+      "path": "/api/cron/indexnow",
+      "schedule": "23 8 * * *"
+    }
+  ],
   "redirects": [
     {
       "source": "/:path(.*)",
