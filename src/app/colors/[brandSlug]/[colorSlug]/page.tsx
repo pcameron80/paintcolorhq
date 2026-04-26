@@ -89,7 +89,19 @@ function extractVariantSuffix(slug: string, colorNumber: string | null | undefin
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { brandSlug, colorSlug } = await params;
   const color = await getColorBySlug(brandSlug, colorSlug);
-  if (!color) return { title: "Color Not Found" };
+  if (!color) {
+    // Slug-renamed redirect: Google still has old slugs like /benjamin-moore/blue-736
+    // indexed at decent positions. Resolve via color_number → canonical slug. Doing
+    // this in generateMetadata (not just the page body) ensures Next.js short-circuits
+    // with a proper HTTP 307 instead of streaming the not-found UI alongside a meta
+    // refresh, which Googlebot indexes as a soft-404.
+    const colorNumber = extractColorNumber(colorSlug);
+    if (colorNumber) {
+      const correctSlug = await getColorSlugByNumber(brandSlug, colorNumber);
+      if (correctSlug && correctSlug !== colorSlug) redirect(`/colors/${brandSlug}/${correctSlug}`);
+    }
+    return { title: "Color Not Found" };
+  }
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   const colorNum = color.color_number ? ` ${color.color_number}` : "";
   const variant = extractVariantSuffix(colorSlug, color.color_number);
