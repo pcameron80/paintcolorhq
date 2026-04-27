@@ -9,7 +9,7 @@ import { ToolCrossSell } from "@/components/tool-cross-sell";
 export const metadata: Metadata = {
   title: "Paint Color Palette Generator - Build a Coordinated Color Scheme",
   description:
-    "Pick a starting color and instantly generate coordinated paint palettes with Walls, Trim, Accent, and Pop roles. Matched to real colors from 14 brands.",
+    "Generate coordinated paint palettes from any starting color. Walls, Trim, Accent, and Pop roles matched to Sherwin-Williams, Benjamin Moore, Behr, and 11 more.",
   alternates: {
     canonical: "https://www.paintcolorhq.com/tools/palette-generator",
   },

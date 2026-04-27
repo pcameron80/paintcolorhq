@@ -9,7 +9,7 @@ import { ToolCrossSell } from "@/components/tool-cross-sell";
 export const metadata: Metadata = {
   title: "Room Color Visualizer - Preview Paint Colors in a Room",
   description:
-    "See how paint colors look in a room before you buy. Pick colors for walls, ceiling, accent wall, trim, and floor. Works with all major paint brands.",
+    "Preview paint colors in a room before you buy. Works with Sherwin-Williams, Benjamin Moore, Behr, PPG, and 10 more brands. Choose walls, ceiling, trim, accent.",
   alternates: {
     canonical: "https://www.paintcolorhq.com/tools/room-visualizer",
   },
