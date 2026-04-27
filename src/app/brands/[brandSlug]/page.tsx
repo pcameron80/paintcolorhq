@@ -33,12 +33,19 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const url = `https://www.paintcolorhq.com/brands/${brandSlug}`;
   // Lead with the head-query phrase ("[Brand] Paint Colors"). The unique
   // color count carries SERP differentiation against Behr.com / Home Depot.
-  const title = `${brand.name} Paint Colors: All ${count} Shades with Cross-Brand Matches`;
+  // Avoid "Vista Paint Paint Colors" doubling when the brand name already
+  // contains "Paint".
+  const brandHasPaintWord = /\bpaint(s)?\b/i.test(brand.name);
+  const headerPhrase = brandHasPaintWord
+    ? `${brand.name} Colors`
+    : `${brand.name} Paint Colors`;
+  const title = `${headerPhrase}: All ${count} Shades with Cross-Brand Matches`;
   // Pick 3 well-known compare brands different from the source.
   const compareTo = ["Sherwin-Williams", "Benjamin Moore", "Behr", "PPG"]
     .filter((b) => b !== brand.name)
     .slice(0, 3);
-  const description = `All ${count} ${brand.name} paint colors with hex codes, LRV values, and undertone tags. Side-by-side matches to ${compareTo.join(", ")}, and 10 more brands.`;
+  const colorsWord = brandHasPaintWord ? "colors" : "paint colors";
+  const description = `All ${count} ${brand.name} ${colorsWord} with hex codes, LRV values, and undertone tags. Side-by-side matches to ${compareTo.join(", ")}, and 10 more brands.`;
   const currentPage = parseInt(pageParam ?? "1", 10) || 1;
   const brandContent = getBrandContent(brandSlug);
   const shouldNoindex = currentPage > 1 || !brandContent || !!family || !!undertone;
