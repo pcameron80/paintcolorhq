@@ -31,8 +31,14 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   if (!brand) return { title: "Brand Not Found" };
   const count = brand.color_count.toLocaleString();
   const url = `https://www.paintcolorhq.com/brands/${brandSlug}`;
-  const title = `All ${count} ${brand.name} Paint Colors`;
-  const description = `Browse all ${count} ${brand.name} paint colors with cross-brand matching, undertone filters, and LRV values. Find your perfect color.`;
+  // Lead with the head-query phrase ("[Brand] Paint Colors"). The unique
+  // color count carries SERP differentiation against Behr.com / Home Depot.
+  const title = `${brand.name} Paint Colors: All ${count} Shades with Cross-Brand Matches`;
+  // Pick 3 well-known compare brands different from the source.
+  const compareTo = ["Sherwin-Williams", "Benjamin Moore", "Behr", "PPG"]
+    .filter((b) => b !== brand.name)
+    .slice(0, 3);
+  const description = `All ${count} ${brand.name} paint colors with hex codes, LRV values, and undertone tags. Side-by-side matches to ${compareTo.join(", ")}, and 10 more brands.`;
   const currentPage = parseInt(pageParam ?? "1", 10) || 1;
   const brandContent = getBrandContent(brandSlug);
   const shouldNoindex = currentPage > 1 || !brandContent || !!family || !!undertone;
