@@ -105,8 +105,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   const colorNum = color.color_number ? ` ${color.color_number}` : "";
   const variant = extractVariantSuffix(colorSlug, color.color_number);
+  // Title pivot: replace the hex code (low CTR signal) with LRV + family. LRV
+  // is searched ("LRV 70 paint", "high LRV white"), and the family word
+  // captures family-level intent ("yellow paint color").
+  const lrvForTitle = color.lrv != null ? Math.round(Number(color.lrv)) : null;
+  const familyForTitle = color.color_family
+    ? color.color_family.charAt(0).toUpperCase() + color.color_family.slice(1)
+    : null;
+  const titleSuffix = familyForTitle
+    ? ` | ${lrvForTitle != null ? `LRV ${lrvForTitle} ` : ""}${familyForTitle} Paint Color`
+    : ` | ${color.hex.toUpperCase()}`; // fall back to hex if family unavailable
   return {
-    title: `${color.name}${colorNum} by ${color.brand.name}${variant} | ${color.hex.toUpperCase()}`,
+    title: `${color.name}${colorNum} by ${color.brand.name}${variant}${titleSuffix}`,
     description: generateMetaDescription(color) + variant,
     alternates: { canonical: url },
     openGraph: {

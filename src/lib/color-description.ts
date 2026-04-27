@@ -110,6 +110,8 @@ export function generateColorDescription(
   return getQueryTargetingSentences(color, matches, props);
 }
 
+const TOP_BRANDS_FOR_COMPARE = ["Sherwin-Williams", "Benjamin Moore", "Behr", "PPG"];
+
 export function generateMetaDescription(color: ColorWithBrand): string {
   const props = deriveProps(color);
   const family = color.color_family || getHueName(props.hue);
@@ -118,7 +120,13 @@ export function generateMetaDescription(color: ColorWithBrand): string {
   const lrvPart = lrv != null ? `, LRV ${lrv}` : "";
   const undertonePart = color.undertone ? `, ${color.undertone.toLowerCase()} undertone` : "";
 
-  const result = `${color.name}${colorNum} by ${color.brand.name} — ${color.hex.toUpperCase()}${lrvPart}${undertonePart}. ${family} with cross-brand matches from 14 paint brands.`;
+  // Pick 3 well-known brands different from the source for the cross-brand
+  // comparison list. With 14 brands total, "and 10 more" is correct whether
+  // the source is one of the top 4 or not.
+  const compareTo = TOP_BRANDS_FOR_COMPARE.filter((b) => b !== color.brand.name).slice(0, 3);
+  const compareList = `${compareTo.join(", ")}, and 10 more`;
+
+  const result = `${color.brand.name} ${color.name}${colorNum} — ${family}${lrvPart}${undertonePart}. Compare matches across ${compareList}.`;
 
   if (result.length <= 160) return result;
   const trimmed = result.slice(0, 157);
