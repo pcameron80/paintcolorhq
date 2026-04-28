@@ -10,12 +10,32 @@
  * cost in exchange for never dealing with stale tokens.
  */
 
-export const PINTEREST_BOARDS = {
+// Pinterest splits production and sandbox into separate environments with
+// separate data + separate API hosts. Until the app graduates from trial to
+// standard access, pin creation must go through sandbox. Toggle by setting
+// PINTEREST_USE_SANDBOX=true; once standard access lands, unset it (or set
+// to false) and it routes to the real production boards/host.
+const USE_SANDBOX = process.env.PINTEREST_USE_SANDBOX === "true";
+
+export const PINTEREST_API_HOST = USE_SANDBOX
+  ? "https://api-sandbox.pinterest.com"
+  : "https://api.pinterest.com";
+
+const PRODUCTION_BOARDS = {
   paintColors: "1116681738796524224",
   colorPalettes: "1116681738796524225",
   colorComparisons: "1116681738796524226",
   paintColorGuides: "1116681738796524227",
 } as const;
+
+const SANDBOX_BOARDS = {
+  paintColors: "1116681738796524288",
+  colorPalettes: "1116681738796524289",
+  colorComparisons: "1116681738796524290",
+  paintColorGuides: "1116681738796524292",
+} as const;
+
+export const PINTEREST_BOARDS = USE_SANDBOX ? SANDBOX_BOARDS : PRODUCTION_BOARDS;
 
 export type PinterestBoardKey = keyof typeof PINTEREST_BOARDS;
 
@@ -57,7 +77,7 @@ export async function refreshAccessToken(): Promise<string> {
   }
 
   const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
-  const res = await fetch("https://api.pinterest.com/v5/oauth/token", {
+  const res = await fetch(`${PINTEREST_API_HOST}/v5/oauth/token`, {
     method: "POST",
     headers: {
       Authorization: `Basic ${basicAuth}`,
@@ -82,7 +102,7 @@ export async function createPin(
   pin: PinterestPinSpec,
   accessToken: string,
 ): Promise<PinterestPinResponse> {
-  const res = await fetch("https://api.pinterest.com/v5/pins", {
+  const res = await fetch(`${PINTEREST_API_HOST}/v5/pins`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${accessToken}`,
