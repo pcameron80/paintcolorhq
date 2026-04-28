@@ -1,0 +1,152 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Paint Color HQ" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Paint Color HQ" [ref=e6]
+        - navigation [ref=e7]:
+          - link "Brands" [ref=e8] [cursor=pointer]:
+            - /url: /brands
+          - link "Colors" [ref=e9] [cursor=pointer]:
+            - /url: /colors
+          - link "Inspiration" [ref=e10] [cursor=pointer]:
+            - /url: /inspiration
+          - link "Blog" [ref=e11] [cursor=pointer]:
+            - /url: /blog
+          - link "Tools" [ref=e12] [cursor=pointer]:
+            - /url: /tools
+        - generic [ref=e13]:
+          - link "Search colors..." [ref=e14] [cursor=pointer]:
+            - /url: /search
+            - img [ref=e15]
+            - generic [ref=e17]: Search colors...
+          - link "Sign in" [ref=e18] [cursor=pointer]:
+            - /url: /auth/login
+    - generic [ref=e21]:
+      - text: Tool
+      - heading "Compare Colors" [level=1] [ref=e22]
+      - paragraph [ref=e23]: Search for two paint colors to compare them side by side with Delta E similarity scores.
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Color 1
+        - textbox "Search by name, number, or hex..." [ref=e29]
+      - generic [ref=e30]:
+        - generic [ref=e31]: Color 2
+        - textbox "Search by name, number, or hex..." [ref=e32]
+    - generic [ref=e34]:
+      - heading "Reading the comparison" [level=2] [ref=e35]
+      - paragraph [ref=e36]: Delta E (ΔE) measures perceptual color difference using the CIEDE2000 formula — the current industry standard. A ΔE under 1.0 is indistinguishable to the human eye. Most paint match tests pass at ΔE ≤ 2.0. Between 2 and 5 the difference is visible but subtle; above 5 the colors read as clearly different.
+      - paragraph [ref=e37]: When you're verifying a custom match against the original can, anything under 2 is usually fine for touch-ups without repainting an adjacent wall. For side-by-side choices (trim vs. wall, accent vs. main), aim for ΔE of at least 3 so the contrast reads intentional rather than muddled.
+      - paragraph [ref=e38]: LRV (Light Reflectance Value) shows how much light the paint reflects — 0 for pure black, 100 for pure white. Two colors within 5–10 LRV points will read similarly under the same lighting, even if their hex values differ. That matters when you're trying to keep a room feeling balanced across walls, trim, and ceiling.
+      - paragraph [ref=e39]: "Common uses: checking whether two “white” paints (Chantilly Lace vs. Simply White) actually differ on the wall, confirming a competitor match before buying gallons, or verifying trim-to-wall contrast before committing."
+    - contentinfo [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]: Paint Color HQ
+          - paragraph [ref=e44]: Architectural precision in every hue. Curating 25,000+ colors across 14 brands for modern spaces.
+        - generic [ref=e45]:
+          - heading "Directory" [level=4] [ref=e46]
+          - list [ref=e47]:
+            - listitem [ref=e48]:
+              - link "Sherwin-Williams" [ref=e49] [cursor=pointer]:
+                - /url: /brands/sherwin-williams
+            - listitem [ref=e50]:
+              - link "Benjamin Moore" [ref=e51] [cursor=pointer]:
+                - /url: /brands/benjamin-moore
+            - listitem [ref=e52]:
+              - link "Behr" [ref=e53] [cursor=pointer]:
+                - /url: /brands/behr
+            - listitem [ref=e54]:
+              - link "PPG" [ref=e55] [cursor=pointer]:
+                - /url: /brands/ppg
+            - listitem [ref=e56]:
+              - link "Valspar" [ref=e57] [cursor=pointer]:
+                - /url: /brands/valspar
+            - listitem [ref=e58]:
+              - link "Dunn-Edwards" [ref=e59] [cursor=pointer]:
+                - /url: /brands/dunn-edwards
+            - listitem [ref=e60]:
+              - link "Farrow & Ball" [ref=e61] [cursor=pointer]:
+                - /url: /brands/farrow-ball
+            - listitem [ref=e62]:
+              - link "All 14 Brands" [ref=e63] [cursor=pointer]:
+                - /url: /brands
+        - generic [ref=e64]:
+          - heading "Tools" [level=4] [ref=e65]
+          - list [ref=e66]:
+            - listitem [ref=e67]:
+              - link "Color Search" [ref=e68] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=e69]:
+              - link "Compare Colors" [ref=e70] [cursor=pointer]:
+                - /url: /compare
+            - listitem [ref=e71]:
+              - link "Room Visualizer" [ref=e72] [cursor=pointer]:
+                - /url: /tools/room-visualizer
+            - listitem [ref=e73]:
+              - link "Photo Color Identifier" [ref=e74] [cursor=pointer]:
+                - /url: /tools/color-identifier
+            - listitem [ref=e75]:
+              - link "Palette Generator" [ref=e76] [cursor=pointer]:
+                - /url: /tools/palette-generator
+            - listitem [ref=e77]:
+              - link "Paint Calculator" [ref=e78] [cursor=pointer]:
+                - /url: /tools/paint-calculator
+          - heading "Resources" [level=4] [ref=e79]
+          - list [ref=e80]:
+            - listitem [ref=e81]:
+              - link "Blog" [ref=e82] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e83]:
+              - link "Inspiration Palettes" [ref=e84] [cursor=pointer]:
+                - /url: /inspiration
+            - listitem [ref=e85]:
+              - link "FAQ" [ref=e86] [cursor=pointer]:
+                - /url: /faq
+        - generic [ref=e87]:
+          - heading "Company" [level=4] [ref=e88]
+          - list [ref=e89]:
+            - listitem [ref=e90]:
+              - link "About" [ref=e91] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e92]:
+              - link "Contact" [ref=e93] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e94]:
+              - link "Privacy Policy" [ref=e95] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e96]:
+              - link "Terms of Service" [ref=e97] [cursor=pointer]:
+                - /url: /terms
+          - heading "Color Families" [level=4] [ref=e98]
+          - generic [ref=e99]:
+            - link "White" [ref=e100] [cursor=pointer]:
+              - /url: /colors/family/white
+            - link "Gray" [ref=e101] [cursor=pointer]:
+              - /url: /colors/family/gray
+            - link "Beige" [ref=e102] [cursor=pointer]:
+              - /url: /colors/family/beige
+            - link "Blue" [ref=e103] [cursor=pointer]:
+              - /url: /colors/family/blue
+            - link "Green" [ref=e104] [cursor=pointer]:
+              - /url: /colors/family/green
+            - link "Red" [ref=e105] [cursor=pointer]:
+              - /url: /colors/family/red
+            - link "Yellow" [ref=e106] [cursor=pointer]:
+              - /url: /colors/family/yellow
+            - link "Black" [ref=e107] [cursor=pointer]:
+              - /url: /colors/family/black
+      - paragraph [ref=e109]: © 2026 Paint Color HQ. Color data is approximate. Always verify with physical samples before purchasing.
+  - button "Open Next.js Dev Tools" [ref=e115] [cursor=pointer]:
+    - img [ref=e116]
+  - alert [ref=e119]
+  - generic [ref=e121]:
+    - paragraph [ref=e122]:
+      - text: We use cookies for analytics and to improve your experience. See our
+      - link "Privacy Policy" [ref=e123] [cursor=pointer]:
+        - /url: /privacy
+      - text: .
+    - generic [ref=e124]:
+      - button "Decline" [ref=e125]
+      - button "Accept" [ref=e126]

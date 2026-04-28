@@ -9,6 +9,7 @@ import { ComplementaryColors } from "@/components/complementary-colors";
 import { CuratedPalettes } from "@/components/curated-palettes";
 import { SaveToProject } from "@/components/save-to-project";
 import { ShareButton } from "@/components/share-button";
+import { PinterestSaveButton } from "@/components/pinterest-save-button";
 import { redirect } from "next/navigation";
 import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand } from "@/lib/queries";
 import { generateColorDescription, generateMetaDescription } from "@/lib/color-description";
@@ -253,6 +254,11 @@ export default async function ColorPage({ params }: PageProps) {
         <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 ${light ? "bg-on-surface/10" : "bg-white/10"} backdrop-blur-xl px-6 py-3 rounded-full border ${light ? "border-on-surface/10" : "border-white/10"}`}>
           <SaveToProject colorId={color.id} currentPath={`/colors/${brandSlug}/${colorSlug}`} />
           <ShareButton title={`${color.name} by ${color.brand.name}`} url={`/colors/${brandSlug}/${colorSlug}`} />
+          <PinterestSaveButton
+            pageUrl={`/colors/${brandSlug}/${colorSlug}`}
+            mediaUrl={pinImageUrl}
+            description={pinDescription}
+          />
         </div>
       </section>
 

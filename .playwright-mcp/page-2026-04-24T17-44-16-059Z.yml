@@ -1,0 +1,224 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Paint Color HQ" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Paint Color HQ" [ref=e6]
+        - navigation [ref=e7]:
+          - link "Brands" [ref=e8] [cursor=pointer]:
+            - /url: /brands
+          - link "Colors" [ref=e9] [cursor=pointer]:
+            - /url: /colors
+          - link "Inspiration" [ref=e10] [cursor=pointer]:
+            - /url: /inspiration
+          - link "Blog" [ref=e11] [cursor=pointer]:
+            - /url: /blog
+          - link "Tools" [ref=e12] [cursor=pointer]:
+            - /url: /tools
+        - generic [ref=e13]:
+          - link "Search colors..." [ref=e14] [cursor=pointer]:
+            - /url: /search
+            - img [ref=e15]
+            - generic [ref=e17]: Search colors...
+          - link "Sign in" [ref=e18] [cursor=pointer]:
+            - /url: /auth/login
+    - generic [ref=e21]:
+      - generic [ref=e23]:
+        - paragraph [ref=e24]: Americana
+        - paragraph [ref=e25]: Behr
+      - generic [ref=e27]:
+        - paragraph [ref=e28]: Jacaranda
+        - paragraph [ref=e29]: Sherwin-Williams
+    - main [ref=e30]:
+      - navigation [ref=e31]:
+        - link "Home" [ref=e32] [cursor=pointer]:
+          - /url: /
+        - text: /
+        - link "Americana" [ref=e33] [cursor=pointer]:
+          - /url: /colors/behr/americana-570d-5
+        - text: /
+        - generic [ref=e34]: Match in Sherwin-Williams
+      - heading "Behr Americana in Sherwin-Williams" [level=1] [ref=e35]
+      - paragraph [ref=e36]: The closest Sherwin-Williams equivalent to Behr Americana (#5B98C1) is Jacaranda (#5A9EC0) \u2014 close match. Always verify with physical paint samples.
+      - generic [ref=e37]:
+        - paragraph [ref=e38]: Very similar
+        - paragraph [ref=e39]: Based on CIEDE2000 color difference analysis
+      - generic [ref=e40]:
+        - 'link "Behr Americana #5B98C1" [ref=e41] [cursor=pointer]':
+          - /url: /colors/behr/americana-570d-5
+          - generic [ref=e43]:
+            - paragraph [ref=e44]: Behr
+            - heading "Americana" [level=2] [ref=e45]
+            - paragraph [ref=e47]: "#5B98C1"
+        - 'link "Sherwin-Williams Jacaranda #5A9EC0" [ref=e48] [cursor=pointer]':
+          - /url: /colors/sherwin-williams/jacaranda-6802
+          - generic [ref=e50]:
+            - paragraph [ref=e51]: Sherwin-Williams
+            - heading "Jacaranda" [level=2] [ref=e52]
+            - paragraph [ref=e54]: "#5A9EC0"
+      - generic [ref=e55]:
+        - heading "Other Close Matches in Sherwin-Williams" [level=2] [ref=e56]
+        - generic [ref=e57]:
+          - link "Lobelia noticeable difference" [ref=e58] [cursor=pointer]:
+            - /url: /colors/sherwin-williams/lobelia-6809
+            - generic [ref=e60]:
+              - paragraph [ref=e61]: Lobelia
+              - paragraph [ref=e62]: noticeable difference
+          - link "Blue Cruise noticeable difference" [ref=e63] [cursor=pointer]:
+            - /url: /colors/sherwin-williams/blue-cruise-7606
+            - generic [ref=e65]:
+              - paragraph [ref=e66]: Blue Cruise
+              - paragraph [ref=e67]: noticeable difference
+          - link "Dynamic Blue noticeable difference" [ref=e68] [cursor=pointer]:
+            - /url: /colors/sherwin-williams/dynamic-blue-6958
+            - generic [ref=e70]:
+              - paragraph [ref=e71]: Dynamic Blue
+              - paragraph [ref=e72]: noticeable difference
+          - link "Bluebird Feather noticeable difference" [ref=e73] [cursor=pointer]:
+            - /url: /colors/sherwin-williams/bluebird-feather-9062
+            - generic [ref=e75]:
+              - paragraph [ref=e76]: Bluebird Feather
+              - paragraph [ref=e77]: noticeable difference
+      - generic [ref=e78]:
+        - heading "Keep Exploring Americana" [level=2] [ref=e79]
+        - generic [ref=e80]:
+          - link "Compare Side by Side See both colors next to each other" [ref=e81] [cursor=pointer]:
+            - /url: /compare?colors=5b98c1,5a9ec0
+            - paragraph [ref=e82]: Compare Side by Side
+            - paragraph [ref=e83]: See both colors next to each other
+          - link "View Americana Full color details" [ref=e84] [cursor=pointer]:
+            - /url: /colors/behr/americana-570d-5
+            - generic [ref=e86]:
+              - paragraph [ref=e87]: View Americana
+              - paragraph [ref=e88]: Full color details
+          - link "View Jacaranda Full color details" [ref=e89] [cursor=pointer]:
+            - /url: /colors/sherwin-williams/jacaranda-6802
+            - generic [ref=e91]:
+              - paragraph [ref=e92]: View Jacaranda
+              - paragraph [ref=e93]: Full color details
+        - generic [ref=e94]:
+          - heading "Match Americana in other brands" [level=3] [ref=e95]
+          - generic [ref=e96]:
+            - link "Vista Paint" [ref=e97] [cursor=pointer]:
+              - /url: /match/behr/americana-570d-5-to-vista-paint
+            - link "Benjamin Moore" [ref=e98] [cursor=pointer]:
+              - /url: /match/behr/americana-570d-5-to-benjamin-moore
+            - link "Kilz" [ref=e99] [cursor=pointer]:
+              - /url: /match/behr/americana-570d-5-to-kilz
+            - link "Farrow & Ball" [ref=e100] [cursor=pointer]:
+              - /url: /match/behr/americana-570d-5-to-farrow-ball
+            - link "Valspar" [ref=e101] [cursor=pointer]:
+              - /url: /match/behr/americana-570d-5-to-valspar
+            - link "PPG" [ref=e102] [cursor=pointer]:
+              - /url: /match/behr/americana-570d-5-to-ppg
+    - contentinfo [ref=e103]:
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - generic [ref=e106]: Paint Color HQ
+          - paragraph [ref=e107]: Architectural precision in every hue. Curating 25,000+ colors across 14 brands for modern spaces.
+        - generic [ref=e108]:
+          - heading "Directory" [level=4] [ref=e109]
+          - list [ref=e110]:
+            - listitem [ref=e111]:
+              - link "Sherwin-Williams" [ref=e112] [cursor=pointer]:
+                - /url: /brands/sherwin-williams
+            - listitem [ref=e113]:
+              - link "Benjamin Moore" [ref=e114] [cursor=pointer]:
+                - /url: /brands/benjamin-moore
+            - listitem [ref=e115]:
+              - link "Behr" [ref=e116] [cursor=pointer]:
+                - /url: /brands/behr
+            - listitem [ref=e117]:
+              - link "PPG" [ref=e118] [cursor=pointer]:
+                - /url: /brands/ppg
+            - listitem [ref=e119]:
+              - link "Valspar" [ref=e120] [cursor=pointer]:
+                - /url: /brands/valspar
+            - listitem [ref=e121]:
+              - link "Dunn-Edwards" [ref=e122] [cursor=pointer]:
+                - /url: /brands/dunn-edwards
+            - listitem [ref=e123]:
+              - link "Farrow & Ball" [ref=e124] [cursor=pointer]:
+                - /url: /brands/farrow-ball
+            - listitem [ref=e125]:
+              - link "All 14 Brands" [ref=e126] [cursor=pointer]:
+                - /url: /brands
+        - generic [ref=e127]:
+          - heading "Tools" [level=4] [ref=e128]
+          - list [ref=e129]:
+            - listitem [ref=e130]:
+              - link "Color Search" [ref=e131] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=e132]:
+              - link "Compare Colors" [ref=e133] [cursor=pointer]:
+                - /url: /compare
+            - listitem [ref=e134]:
+              - link "Room Visualizer" [ref=e135] [cursor=pointer]:
+                - /url: /tools/room-visualizer
+            - listitem [ref=e136]:
+              - link "Photo Color Identifier" [ref=e137] [cursor=pointer]:
+                - /url: /tools/color-identifier
+            - listitem [ref=e138]:
+              - link "Palette Generator" [ref=e139] [cursor=pointer]:
+                - /url: /tools/palette-generator
+            - listitem [ref=e140]:
+              - link "Paint Calculator" [ref=e141] [cursor=pointer]:
+                - /url: /tools/paint-calculator
+          - heading "Resources" [level=4] [ref=e142]
+          - list [ref=e143]:
+            - listitem [ref=e144]:
+              - link "Blog" [ref=e145] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e146]:
+              - link "Inspiration Palettes" [ref=e147] [cursor=pointer]:
+                - /url: /inspiration
+            - listitem [ref=e148]:
+              - link "FAQ" [ref=e149] [cursor=pointer]:
+                - /url: /faq
+        - generic [ref=e150]:
+          - heading "Company" [level=4] [ref=e151]
+          - list [ref=e152]:
+            - listitem [ref=e153]:
+              - link "About" [ref=e154] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e155]:
+              - link "Contact" [ref=e156] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e157]:
+              - link "Privacy Policy" [ref=e158] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e159]:
+              - link "Terms of Service" [ref=e160] [cursor=pointer]:
+                - /url: /terms
+          - heading "Color Families" [level=4] [ref=e161]
+          - generic [ref=e162]:
+            - link "White" [ref=e163] [cursor=pointer]:
+              - /url: /colors/family/white
+            - link "Gray" [ref=e164] [cursor=pointer]:
+              - /url: /colors/family/gray
+            - link "Beige" [ref=e165] [cursor=pointer]:
+              - /url: /colors/family/beige
+            - link "Blue" [ref=e166] [cursor=pointer]:
+              - /url: /colors/family/blue
+            - link "Green" [ref=e167] [cursor=pointer]:
+              - /url: /colors/family/green
+            - link "Red" [ref=e168] [cursor=pointer]:
+              - /url: /colors/family/red
+            - link "Yellow" [ref=e169] [cursor=pointer]:
+              - /url: /colors/family/yellow
+            - link "Black" [ref=e170] [cursor=pointer]:
+              - /url: /colors/family/black
+      - paragraph [ref=e172]: © 2026 Paint Color HQ. Color data is approximate. Always verify with physical samples before purchasing.
+  - button "Open Next.js Dev Tools" [ref=e178] [cursor=pointer]:
+    - img [ref=e179]
+  - alert [ref=e182]
+  - generic [ref=e184]:
+    - paragraph [ref=e185]:
+      - text: We use cookies for analytics and to improve your experience. See our
+      - link "Privacy Policy" [ref=e186] [cursor=pointer]:
+        - /url: /privacy
+      - text: .
+    - generic [ref=e187]:
+      - button "Decline" [ref=e188]
+      - button "Accept" [ref=e189]

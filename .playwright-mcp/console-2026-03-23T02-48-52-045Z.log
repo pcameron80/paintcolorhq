@@ -1,0 +1,53 @@
+[     607ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="naval-6244/" loading={[...]}>
+              <Suspense name="naval-6244/" fallback={<Fragment>}>
+                <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                  <RedirectBoundary>
+                    <RedirectErrorBoundary router={{...}}>
+                      <InnerLayoutRouter url="/colors/sh..." tree={[...]} params={{...}} ...>
+                        <SegmentViewNode type="page" pagePath="/Documents...">
+                          <SegmentTrieNode>
+                          <ColorPage>
++                           <div className="min-h-screen bg-surface">
+-                           <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+                        ...
+                      ...
+          ...
+
+    at throwOnHydrationMismatch (http://localhost:3000/_next/static/chunks/a0e14_next_dist_compiled_react-dom_e1e527de._.js:3351:56)
+    at beginWork (http://localhost:3000/_next/static/chunks/a0e14_next_dist_compiled_react-dom_e1e527de._.js:6778:918)
+    at replayBeginWork (http://localhost:3000/_next/static/chunks/a0e14_next_dist_compiled_react-dom_e1e527de._.js:9588:156)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/a0e14_next_dist_compiled_react-dom_e1e527de._.js:968:74)
+    at replaySuspendedUnitOfWork (http://localhost:3000/_next/static/chunks/a0e14_next_dist_compiled_react-dom_e1e527de._.js:9570:20)
+    at renderRootConcurrent (http://localhost:3000/_next/static/chunks/a0e14_next_dist_compiled_react-dom_e1e527de._.js:9503:141)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/a0e14_next_dist_compiled_react-dom_e1e527de._.js:9071:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/a0e14_next_dist_compiled_react-dom_e1e527de._.js:10233:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/a0e14_next_dist_compiled_17a45007._.js:2686:64)
+[    3647ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[    8600ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[   12519ms] [WARNING] AdSense head tag doesn't support data-nscript attribute. @ http://localhost:3000/_next/static/chunks/a0e14_next_dist_bcdd65cb._.js:2384
+[   17172ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/search:0
+[   23042ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/accessible-beige-7036:0
+[   28047ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/accessible-beige-7036:0
+[   38604ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/accessible-beige-7036:0
+[   50642ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/spiced-cider-7702:0
+[   55224ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/spiced-cider-7702:0
+[   60194ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/jamaica-bay-6781:0
+[   63602ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/jamaica-bay-6781:0
+[   68642ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/jamaica-bay-6781:0

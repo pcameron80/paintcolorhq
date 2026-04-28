@@ -1,0 +1,18 @@
+[    1945ms] Error: Minified React error #200; visit https://reactjs.org/docs/error-decoder.html?invariant=200 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at e.render (https://www.sherwin-williams.com/etc.clientlibs/tag-aem-spa/clientlibs/clientlib-quiz.min.1ae802fd1420a55c113e2e3638ca54b2.js:2:213229)
+    at https://www.sherwin-williams.com/etc.clientlibs/tag-aem-spa/clientlibs/clientlib-quiz.min.1ae802fd1420a55c113e2e3638ca54b2.js:2:492625
+    at https://www.sherwin-williams.com/etc.clientlibs/tag-aem-spa/clientlibs/clientlib-quiz.min.1ae802fd1420a55c113e2e3638ca54b2.js:2:492689
+    at https://www.sherwin-williams.com/etc.clientlibs/tag-aem-spa/clientlibs/clientlib-quiz.min.1ae802fd1420a55c113e2e3638ca54b2.js:2:492692
+[    2116ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.sherwin-williams.com/wcs/resources/store/10151/cart/@self?catalogId=11051&languageId=-1&storeId=10151:0
+[    2118ms] [WARNING] o @ https://www.sherwin-williams.com/etc.clientlibs/tag-aem-swcom/clientlibs/clientlib-header.min.f5b1731fd61cbb5c5c99a8c25ca84e57.js:1
+[    3442ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'document-domain'. @ :0
+[    4865ms] [ERROR] ACK timeout error @ https://cdn.gbqofs.com/swp/common/p/detector-bootstrap.min.js:9
+[    7399ms] [WARNING] GeolocationPositionError @ https://www.sherwin-williams.com/etc.clientlibs/tag-aem-swcom/clientlibs/clientlib-header.min.f5b1731fd61cbb5c5c99a8c25ca84e57.js:1
+[    7399ms] [ERROR] GeolocationPositionError @ https://cdn.gbqofs.com/swp/common/p/detector-bootstrap.min.js:9
+[    7400ms] [ERROR] Could not access users position in middleHeader. Falling back to displaying minicart @ https://cdn.gbqofs.com/swp/common/p/detector-bootstrap.min.js:9
+[    7400ms] [ERROR] Could not access users position in gateway-storedetail RegionDetection. @ https://cdn.gbqofs.com/swp/common/p/detector-bootstrap.min.js:9
+[    7400ms] [ERROR] Could not access users position in gateway-storedetail RegionDetection. @ https://cdn.gbqofs.com/swp/common/p/detector-bootstrap.min.js:9
+[    7799ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.sherwin-williams.com/wcs/resources/store/10151/cart/@self?catalogId=11051&languageId=-1&storeId=10151:0
+[    7799ms] [WARNING] o @ https://www.sherwin-williams.com/etc.clientlibs/tag-aem-swcom/clientlibs/clientlib-header.min.f5b1731fd61cbb5c5c99a8c25ca84e57.js:1
+[    9313ms] [ERROR] GeolocationPositionError @ https://cdn.gbqofs.com/swp/common/p/detector-bootstrap.min.js:9
+[    9314ms] [ERROR] Could not access users position in middleHeader. Falling back to displaying minicart @ https://cdn.gbqofs.com/swp/common/p/detector-bootstrap.min.js:9

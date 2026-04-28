@@ -1,0 +1,223 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Paint Color HQ" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Paint Color HQ" [ref=e6]
+        - navigation [ref=e7]:
+          - link "Brands" [ref=e8] [cursor=pointer]:
+            - /url: /brands
+          - link "Colors" [ref=e9] [cursor=pointer]:
+            - /url: /colors
+          - link "Inspiration" [ref=e10] [cursor=pointer]:
+            - /url: /inspiration
+          - link "Blog" [ref=e11] [cursor=pointer]:
+            - /url: /blog
+          - link "Tools" [ref=e12] [cursor=pointer]:
+            - /url: /tools
+        - generic [ref=e13]:
+          - link "Search colors..." [ref=e14] [cursor=pointer]:
+            - /url: /search
+            - img [ref=e15]
+            - generic [ref=e17]: Search colors...
+          - link "Sign in" [ref=e18] [cursor=pointer]:
+            - /url: /auth/login
+    - generic [ref=e21]:
+      - text: Tool
+      - heading "Room Color Visualizer" [level=1] [ref=e22]
+      - paragraph [ref=e23]: Preview paint colors on walls, ceiling, trim, and more. Click a region or select it below, then pick a color to see it applied instantly.
+    - generic [ref=e26]:
+      - img [ref=e28]
+      - generic [ref=e84]:
+        - paragraph [ref=e85]: Select Region
+        - generic [ref=e86]:
+          - button "Walls" [ref=e87]: Walls
+          - button "Accent Wall" [ref=e89]: Accent Wall
+          - button "Trim" [ref=e91]: Trim
+          - button "Floor" [ref=e93]: Floor
+          - button "Reset All" [ref=e95]
+        - generic [ref=e96]:
+          - paragraph [ref=e97]: Walls Color
+          - generic [ref=e98]:
+            - textbox [ref=e99] [cursor=pointer]: "#d6d0c4"
+            - generic [ref=e100]:
+              - generic [ref=e101]: "#"
+              - textbox "D6D0C4" [ref=e102]
+            - button "Find Paint Match" [ref=e104]
+    - generic [ref=e106]:
+      - heading "How to Use" [level=2] [ref=e107]
+      - generic [ref=e108]:
+        - list [ref=e110]:
+          - listitem [ref=e111]:
+            - strong [ref=e112]: Select a region
+            - text: by clicking directly on the room image or using the buttons below it.
+          - listitem [ref=e113]:
+            - strong [ref=e114]: Pick a color
+            - text: using the color picker or type a hex code. The room updates instantly.
+          - listitem [ref=e115]:
+            - strong [ref=e116]: Find paint matches
+            - text: to discover which real paint colors from Sherwin-Williams, Benjamin Moore, Behr, and other brands are closest to your selection.
+        - paragraph [ref=e117]: Screen colors differ from physical paint. Always verify with a swatch or sample before purchasing.
+    - generic [ref=e119]:
+      - heading "What the Room Visualizer Does" [level=2] [ref=e120]
+      - generic [ref=e121]:
+        - paragraph [ref=e122]: The Paint Color HQ Room Visualizer lets you preview paint colors on every surface in a room before you commit to a single can of paint. Click on any region — walls, ceiling, trim, accent wall, or floor — to select it, then choose a color from the picker or type in a specific hex code. The room updates instantly so you can experiment freely without any waiting.
+        - paragraph [ref=e123]: Once you find a color you love, use the "Find Paint Match" feature to see which real-world paints from 14 major brands — including Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, and Farrow & Ball — are the closest match. Every suggestion links to its full color detail page so you can explore undertones, coordinating colors, and cross-brand alternatives.
+    - generic [ref=e125]:
+      - heading "Why Preview Before You Paint" [level=2] [ref=e126]
+      - generic [ref=e127]:
+        - paragraph [ref=e128]: Paint always looks different on a full wall than it does on a tiny swatch card at the store. Lighting conditions, room dimensions, and the colors surrounding a surface all change how a shade is perceived. A warm beige can read pink under cool fluorescent light, and a soft gray can shift blue next to certain wood tones. Previewing colors in a room context helps you catch these surprises before they become expensive mistakes.
+        - paragraph [ref=e129]: Testing digitally also saves real money. Instead of buying three or four sample pots at $5 to $8 each, you can narrow your choices down to a single front-runner in minutes. This is especially valuable when you are planning a whole-room color scheme with coordinated walls, trim, and an accent wall — getting that balance right on screen first means fewer trips back to the paint counter.
+    - generic [ref=e131]:
+      - heading "Tips for Getting the Most Out of the Visualizer" [level=2] [ref=e132]
+      - generic [ref=e133]:
+        - paragraph [ref=e134]:
+          - strong [ref=e135]: Start with the wall color.
+          - text: Walls cover the most surface area, so they set the overall tone for the room. Pick your wall shade first, then build the rest of the palette around it.
+        - paragraph [ref=e136]:
+          - strong [ref=e137]: Use contrasting trim.
+          - text: White or off-white trim against colored walls is a timeless combination that makes architectural details pop. Try it in the visualizer to see how much definition trim color adds.
+        - paragraph [ref=e138]:
+          - strong [ref=e139]: Experiment with the accent wall.
+          - text: A single bold wall can anchor a space without overwhelming it. The accent wall region lets you test dramatic colors in a contained way before committing to an entire room.
+        - paragraph [ref=e140]:
+          - strong [ref=e141]: Convert custom colors to real paint.
+          - text: Any color you pick — even a custom hex — can be matched to a real product from major brands using the "Find Paint Match" button. This bridges the gap between inspiration and a trip to the store.
+        - paragraph [ref=e142]:
+          - strong [ref=e143]: Use our other tools alongside the visualizer.
+          - text: Once you have colors you like, open the
+          - link "Color Comparison tool" [ref=e144] [cursor=pointer]:
+            - /url: /compare
+          - text: to see them side by side, or try the
+          - link "Palette Generator" [ref=e145] [cursor=pointer]:
+            - /url: /tools/palette-generator
+          - text: to build a fully coordinated scheme. If you are unsure whether a color runs warm or cool, our guide on
+          - link "understanding paint color undertones" [ref=e146] [cursor=pointer]:
+            - /url: /blog/understanding-paint-color-undertones
+          - text: breaks down what to look for.
+      - generic [ref=e148]:
+        - heading "More Tools" [level=2] [ref=e149]
+        - generic [ref=e150]:
+          - link "Photo Color Identifier Find paint matches from any photo" [ref=e151] [cursor=pointer]:
+            - /url: /tools/color-identifier
+            - heading "Photo Color Identifier" [level=3] [ref=e152]
+            - paragraph [ref=e153]: Find paint matches from any photo
+          - link "Palette Generator Build coordinating color schemes" [ref=e154] [cursor=pointer]:
+            - /url: /tools/palette-generator
+            - heading "Palette Generator" [level=3] [ref=e155]
+            - paragraph [ref=e156]: Build coordinating color schemes
+          - link "Paint Calculator Calculate exactly how many gallons you need" [ref=e157] [cursor=pointer]:
+            - /url: /tools/paint-calculator
+            - heading "Paint Calculator" [level=3] [ref=e158]
+            - paragraph [ref=e159]: Calculate exactly how many gallons you need
+    - contentinfo [ref=e160]:
+      - generic [ref=e161]:
+        - generic [ref=e162]:
+          - generic [ref=e163]: Paint Color HQ
+          - paragraph [ref=e164]: Architectural precision in every hue. Curating 25,000+ colors across 14 brands for modern spaces.
+        - generic [ref=e165]:
+          - heading "Directory" [level=4] [ref=e166]
+          - list [ref=e167]:
+            - listitem [ref=e168]:
+              - link "Sherwin-Williams" [ref=e169] [cursor=pointer]:
+                - /url: /brands/sherwin-williams
+            - listitem [ref=e170]:
+              - link "Benjamin Moore" [ref=e171] [cursor=pointer]:
+                - /url: /brands/benjamin-moore
+            - listitem [ref=e172]:
+              - link "Behr" [ref=e173] [cursor=pointer]:
+                - /url: /brands/behr
+            - listitem [ref=e174]:
+              - link "PPG" [ref=e175] [cursor=pointer]:
+                - /url: /brands/ppg
+            - listitem [ref=e176]:
+              - link "Valspar" [ref=e177] [cursor=pointer]:
+                - /url: /brands/valspar
+            - listitem [ref=e178]:
+              - link "Dunn-Edwards" [ref=e179] [cursor=pointer]:
+                - /url: /brands/dunn-edwards
+            - listitem [ref=e180]:
+              - link "Farrow & Ball" [ref=e181] [cursor=pointer]:
+                - /url: /brands/farrow-ball
+            - listitem [ref=e182]:
+              - link "All 14 Brands" [ref=e183] [cursor=pointer]:
+                - /url: /brands
+        - generic [ref=e184]:
+          - heading "Tools" [level=4] [ref=e185]
+          - list [ref=e186]:
+            - listitem [ref=e187]:
+              - link "Color Search" [ref=e188] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=e189]:
+              - link "Compare Colors" [ref=e190] [cursor=pointer]:
+                - /url: /compare
+            - listitem [ref=e191]:
+              - link "Room Visualizer" [ref=e192] [cursor=pointer]:
+                - /url: /tools/room-visualizer
+            - listitem [ref=e193]:
+              - link "Photo Color Identifier" [ref=e194] [cursor=pointer]:
+                - /url: /tools/color-identifier
+            - listitem [ref=e195]:
+              - link "Palette Generator" [ref=e196] [cursor=pointer]:
+                - /url: /tools/palette-generator
+            - listitem [ref=e197]:
+              - link "Paint Calculator" [ref=e198] [cursor=pointer]:
+                - /url: /tools/paint-calculator
+          - heading "Resources" [level=4] [ref=e199]
+          - list [ref=e200]:
+            - listitem [ref=e201]:
+              - link "Blog" [ref=e202] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e203]:
+              - link "Inspiration Palettes" [ref=e204] [cursor=pointer]:
+                - /url: /inspiration
+            - listitem [ref=e205]:
+              - link "FAQ" [ref=e206] [cursor=pointer]:
+                - /url: /faq
+        - generic [ref=e207]:
+          - heading "Company" [level=4] [ref=e208]
+          - list [ref=e209]:
+            - listitem [ref=e210]:
+              - link "About" [ref=e211] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e212]:
+              - link "Contact" [ref=e213] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e214]:
+              - link "Privacy Policy" [ref=e215] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e216]:
+              - link "Terms of Service" [ref=e217] [cursor=pointer]:
+                - /url: /terms
+          - heading "Color Families" [level=4] [ref=e218]
+          - generic [ref=e219]:
+            - link "White" [ref=e220] [cursor=pointer]:
+              - /url: /colors/family/white
+            - link "Gray" [ref=e221] [cursor=pointer]:
+              - /url: /colors/family/gray
+            - link "Beige" [ref=e222] [cursor=pointer]:
+              - /url: /colors/family/beige
+            - link "Blue" [ref=e223] [cursor=pointer]:
+              - /url: /colors/family/blue
+            - link "Green" [ref=e224] [cursor=pointer]:
+              - /url: /colors/family/green
+            - link "Red" [ref=e225] [cursor=pointer]:
+              - /url: /colors/family/red
+            - link "Yellow" [ref=e226] [cursor=pointer]:
+              - /url: /colors/family/yellow
+            - link "Black" [ref=e227] [cursor=pointer]:
+              - /url: /colors/family/black
+      - paragraph [ref=e229]: © 2026 Paint Color HQ. Color data is approximate. Always verify with physical samples before purchasing.
+  - button "Open Next.js Dev Tools" [ref=e235] [cursor=pointer]:
+    - img [ref=e236]
+  - alert [ref=e239]
+  - generic [ref=e241]:
+    - paragraph [ref=e242]:
+      - text: We use cookies for analytics and to improve your experience. See our
+      - link "Privacy Policy" [ref=e243] [cursor=pointer]:
+        - /url: /privacy
+      - text: .
+    - generic [ref=e244]:
+      - button "Decline" [ref=e245]
+      - button "Accept" [ref=e246]

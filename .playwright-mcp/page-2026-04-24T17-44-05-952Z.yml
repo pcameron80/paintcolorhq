@@ -1,0 +1,387 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Paint Color HQ" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Paint Color HQ" [ref=e6]
+        - navigation [ref=e7]:
+          - link "Brands" [ref=e8] [cursor=pointer]:
+            - /url: /brands
+          - link "Colors" [ref=e9] [cursor=pointer]:
+            - /url: /colors
+          - link "Inspiration" [ref=e10] [cursor=pointer]:
+            - /url: /inspiration
+          - link "Blog" [ref=e11] [cursor=pointer]:
+            - /url: /blog
+          - link "Tools" [ref=e12] [cursor=pointer]:
+            - /url: /tools
+        - generic [ref=e13]:
+          - link "Search colors..." [ref=e14] [cursor=pointer]:
+            - /url: /search
+            - img [ref=e15]
+            - generic [ref=e17]: Search colors...
+          - link "Sign in" [ref=e18] [cursor=pointer]:
+            - /url: /auth/login
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - paragraph [ref=e22]: "Ref. #F3EFE0 · OC-17"
+        - heading "White Dove" [level=1] [ref=e23]
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - generic [ref=e26]: 94%
+            - text: LRV Value
+          - generic [ref=e28]:
+            - generic [ref=e29]: Neutral
+            - text: Undertone
+      - generic [ref=e30]:
+        - button "Save to Project" [ref=e32]:
+          - img [ref=e33]
+          - text: Save to Project
+        - button "Share" [ref=e35]:
+          - img [ref=e36]
+          - text: Share
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - navigation [ref=e42]:
+          - link "Home" [ref=e43] [cursor=pointer]:
+            - /url: /
+          - text: /
+          - link "Benjamin Moore" [ref=e44] [cursor=pointer]:
+            - /url: /brands/benjamin-moore
+          - text: /White Dove
+        - heading "White Dove Technical Profile" [level=2] [ref=e46]
+        - paragraph [ref=e47]: "What color is White Dove? It's a very light warm yellow with the hex code #F3EFE0. White Dove has a neutral undertone, which affects how it pairs with trim, flooring, and adjacent wall colors."
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e50]: HEX Code
+          - generic [ref=e51]: "#F3EFE0"
+        - generic [ref=e52]:
+          - generic [ref=e53]: RGB
+          - generic [ref=e54]: 243, 239, 224
+        - generic [ref=e55]:
+          - generic [ref=e56]: LRV
+          - generic [ref=e57]: "93.6"
+        - generic [ref=e58]:
+          - generic [ref=e59]: Undertone
+          - generic [ref=e60]: Neutral
+        - generic [ref=e62]:
+          - generic [ref=e63]: Color Family
+          - link "yellow" [ref=e64] [cursor=pointer]:
+            - /url: /colors/family/yellow
+        - generic [ref=e65]:
+          - generic [ref=e66]: Brand
+          - link "Benjamin Moore" [ref=e67] [cursor=pointer]:
+            - /url: /brands/benjamin-moore
+      - generic [ref=e68]:
+        - link "Generate Palette" [ref=e69] [cursor=pointer]:
+          - /url: /tools/palette-generator?hex=%23F3EFE0
+        - link "Compare" [ref=e70] [cursor=pointer]:
+          - /url: /compare?color1=2c655797-9532-4c5a-bd20-7d3aaf3df999
+        - link "Buy at Benjamin Moore" [ref=e71] [cursor=pointer]:
+          - /url: https://www.benjaminmoore.com/en-us/paint-colors/color/oc-17/white-dove
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]: Recommended Pairings
+        - heading "Colors That Work With White Dove" [level=2] [ref=e77]
+      - generic [ref=e78]:
+        - button "Classic" [ref=e79]
+        - button "Bold Contrast" [ref=e80]
+        - button "Warm Neutral" [ref=e81]
+        - button "Cool Modern" [ref=e82]
+      - paragraph [ref=e83]: Timeless pairing with clean white trim and a tonal accent wall
+      - generic [ref=e84]:
+        - generic [ref=e87]:
+          - img "Living room with applied paint colors" [ref=e88]
+          - img [ref=e89]
+          - img [ref=e101]
+        - generic [ref=e108]:
+          - generic [ref=e109]:
+            - generic [ref=e112]:
+              - paragraph [ref=e113]: Side Walls
+              - heading "White Dove" [level=4] [ref=e114]
+            - paragraph [ref=e115]: "#F3EFE0"
+          - generic [ref=e116]:
+            - generic [ref=e119]:
+              - paragraph [ref=e120]: Accent Wall
+              - heading "Tonal Shift" [level=4] [ref=e121]
+            - paragraph [ref=e122]: A warm shift that adds depth without clashing.
+            - paragraph [ref=e123]: "#A4B47E"
+          - generic [ref=e124]:
+            - generic [ref=e127]:
+              - paragraph [ref=e128]: Trim & Molding
+              - heading "Pure White" [level=4] [ref=e129]
+            - paragraph [ref=e130]: Crisp white trim for a clean, traditional look.
+            - paragraph [ref=e131]: "#FFFFFF"
+          - generic [ref=e132]:
+            - link "Customize in Room Visualizer" [ref=e133] [cursor=pointer]:
+              - /url: /tools/room-visualizer?walls=F3EFE0&trim=FFFFFF&accent=a4b47e
+            - link "Explore full palette →" [ref=e134] [cursor=pointer]:
+              - /url: /tools/palette-generator?hex=%23F3EFE0
+              - text: Explore full palette
+              - generic [ref=e135]: →
+    - generic [ref=e137]:
+      - heading "Color Palettes for White Dove" [level=2] [ref=e138]
+      - paragraph [ref=e139]: Color harmonies based on color theory — each swatch links to the closest matching paint.
+      - generic [ref=e140]:
+        - button "Complementary" [ref=e141]
+        - button "Analogous" [ref=e142]
+        - button "Triadic" [ref=e143]
+        - button "Split Complementary" [ref=e144]
+      - generic [ref=e145]:
+        - paragraph [ref=e146]: Opposite on the color wheel — creates vibrant contrast
+        - generic [ref=e147]:
+          - link "Base Pale View" [ref=e148] [cursor=pointer]:
+            - /url: /colors/dunn-edwards/pale-view-de5525
+            - paragraph [ref=e150]: Base
+            - paragraph [ref=e151]: Pale View
+          - link "Complement White Heaven" [ref=e153] [cursor=pointer]:
+            - /url: /colors/benjamin-moore/white-heaven-2068-70
+            - paragraph [ref=e155]: Complement
+            - paragraph [ref=e156]: White Heaven
+    - generic [ref=e160]:
+      - heading "White Dove Room Palettes" [level=2] [ref=e161]
+      - paragraph [ref=e162]: Color schemes built around this color — each swatch links to the closest matching paint.
+      - generic [ref=e163]:
+        - generic [ref=e164]:
+          - generic [ref=e165]:
+            - generic [ref=e166]:
+              - paragraph [ref=e168]: Walls
+              - paragraph [ref=e169]: This Color
+            - link "Trim White Opulence" [ref=e170] [cursor=pointer]:
+              - /url: /colors/benjamin-moore/white-opulence-879
+              - paragraph [ref=e172]: Trim
+              - paragraph [ref=e173]: White Opulence
+            - link "Accent Sage" [ref=e175] [cursor=pointer]:
+              - /url: /colors/benjamin-moore/sage-2143-10
+              - paragraph [ref=e177]: Accent
+              - paragraph [ref=e178]: Sage
+            - link "Pop Amber" [ref=e180] [cursor=pointer]:
+              - /url: /colors/benjamin-moore/amber-168
+              - paragraph [ref=e182]: Pop
+              - paragraph [ref=e183]: Amber
+          - heading "Warm & Inviting" [level=3] [ref=e185]
+          - paragraph [ref=e186]: Warm tones with cozy appeal — welcoming and comfortable
+          - button "Add to Project" [ref=e189]:
+            - img [ref=e190]
+            - text: Add to Project
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - generic [ref=e194]:
+              - paragraph [ref=e196]: Walls
+              - paragraph [ref=e197]: This Color
+            - link "Trim Chantilly Lace" [ref=e198] [cursor=pointer]:
+              - /url: /colors/benjamin-moore/chantilly-lace-2121-70
+              - paragraph [ref=e200]: Trim
+              - paragraph [ref=e201]: Chantilly Lace
+            - link "Accent Balsam" [ref=e203] [cursor=pointer]:
+              - /url: /colors/benjamin-moore/balsam-567
+              - paragraph [ref=e205]: Accent
+              - paragraph [ref=e206]: Balsam
+            - link "Pop Charmed Violet" [ref=e208] [cursor=pointer]:
+              - /url: /colors/benjamin-moore/charmed-violet-1398
+              - paragraph [ref=e210]: Pop
+              - paragraph [ref=e211]: Charmed Violet
+          - heading "Cool & Calm" [level=3] [ref=e213]
+          - paragraph [ref=e214]: Cool hues with soft contrast — serene and restful
+          - button "Add to Project" [ref=e217]:
+            - img [ref=e218]
+            - text: Add to Project
+        - generic [ref=e220]:
+          - generic [ref=e221]:
+            - generic [ref=e222]:
+              - paragraph [ref=e224]: Walls
+              - paragraph [ref=e225]: This Color
+            - link "Trim Chantilly Lace" [ref=e226] [cursor=pointer]:
+              - /url: /colors/benjamin-moore/chantilly-lace-2121-70
+              - paragraph [ref=e228]: Trim
+              - paragraph [ref=e229]: Chantilly Lace
+            - link "Accent Coat of Arms" [ref=e231] [cursor=pointer]:
+              - /url: /colors/benjamin-moore/coat-of-arms-763
+              - paragraph [ref=e233]: Accent
+              - paragraph [ref=e234]: Coat of Arms
+            - link "Pop Mosaic" [ref=e236] [cursor=pointer]:
+              - /url: /colors/benjamin-moore/mosaic-cc-874
+              - paragraph [ref=e238]: Pop
+              - paragraph [ref=e239]: Mosaic
+          - heading "Bold Contrast" [level=3] [ref=e241]
+          - paragraph [ref=e242]: Complementary hues with punch — dynamic and striking
+          - button "Add to Project" [ref=e245]:
+            - img [ref=e246]
+            - text: Add to Project
+    - generic [ref=e248]:
+      - heading "Similar Benjamin Moore Colors" [level=2] [ref=e249]
+      - paragraph [ref=e250]: Other Benjamin Moore colors close to White Dove.
+      - generic [ref=e251]:
+        - 'link "AC-adia Benjamin Moore · AC-41 #F3F0E0" [ref=e252] [cursor=pointer]':
+          - /url: /colors/benjamin-moore/ac-adia-ac-41
+          - generic [ref=e254]:
+            - paragraph [ref=e255]: AC-adia
+            - paragraph [ref=e257]: Benjamin Moore · AC-41
+            - paragraph [ref=e259]: "#F3F0E0"
+        - 'link "Vapor Benjamin Moore · AF-35 #F0EDE0" [ref=e260] [cursor=pointer]':
+          - /url: /colors/benjamin-moore/vapor-af-35
+          - generic [ref=e262]:
+            - paragraph [ref=e263]: Vapor
+            - paragraph [ref=e265]: Benjamin Moore · AF-35
+            - paragraph [ref=e267]: "#F0EDE0"
+        - 'link "Lychee Benjamin Moore · AF-40 #F6EDDD" [ref=e268] [cursor=pointer]':
+          - /url: /colors/benjamin-moore/lychee-af-40
+          - generic [ref=e270]:
+            - paragraph [ref=e271]: Lychee
+            - paragraph [ref=e273]: Benjamin Moore · AF-40
+            - paragraph [ref=e275]: "#F6EDDD"
+        - 'link "Paper Mache Benjamin Moore · AF-25 #F1F1E4" [ref=e276] [cursor=pointer]':
+          - /url: /colors/benjamin-moore/paper-mache-af-25
+          - generic [ref=e278]:
+            - paragraph [ref=e279]: Paper Mache
+            - paragraph [ref=e281]: Benjamin Moore · AF-25
+            - paragraph [ref=e283]: "#F1F1E4"
+        - 'link "Collector''s Item Benjamin Moore · AF-45 #F2EBDD" [ref=e284] [cursor=pointer]':
+          - /url: /colors/benjamin-moore/collectors-item-af-45
+          - generic [ref=e286]:
+            - paragraph [ref=e287]: Collector's Item
+            - paragraph [ref=e289]: Benjamin Moore · AF-45
+            - paragraph [ref=e291]: "#F2EBDD"
+        - 'link "Deep in Thought Benjamin Moore · AF-30 #EFEDDC" [ref=e292] [cursor=pointer]':
+          - /url: /colors/benjamin-moore/deep-in-thought-af-30
+          - generic [ref=e294]:
+            - paragraph [ref=e295]: Deep in Thought
+            - paragraph [ref=e297]: Benjamin Moore · AF-30
+            - paragraph [ref=e299]: "#EFEDDC"
+    - generic [ref=e301]:
+      - heading "White Dove — Frequently Asked Questions" [level=2] [ref=e302]
+      - generic [ref=e303]:
+        - group [ref=e304]:
+          - generic "What undertone does White Dove have?" [ref=e305] [cursor=pointer]:
+            - text: What undertone does White Dove have?
+            - img [ref=e306]
+        - group [ref=e308]:
+          - generic "What is the LRV of White Dove?" [ref=e309] [cursor=pointer]:
+            - text: What is the LRV of White Dove?
+            - img [ref=e310]
+    - generic [ref=e312]:
+      - heading "Explore More with White Dove" [level=2] [ref=e313]
+      - generic [ref=e314]:
+        - link "See It on a Wall Preview this color in a real room" [ref=e315] [cursor=pointer]:
+          - /url: /tools/room-visualizer?hex=%23F3EFE0
+          - paragraph [ref=e316]: See It on a Wall
+          - paragraph [ref=e317]: Preview this color in a real room
+        - link "How Much Paint? Calculate gallons for your project" [ref=e318] [cursor=pointer]:
+          - /url: /tools/paint-calculator
+          - paragraph [ref=e319]: How Much Paint?
+          - paragraph [ref=e320]: Calculate gallons for your project
+        - link "Browse yellow Colors Explore more shades in this family" [ref=e321] [cursor=pointer]:
+          - /url: /colors/family/yellow
+          - paragraph [ref=e322]: Browse yellow Colors
+          - paragraph [ref=e323]: Explore more shades in this family
+    - contentinfo [ref=e324]:
+      - generic [ref=e325]:
+        - generic [ref=e326]:
+          - generic [ref=e327]: Paint Color HQ
+          - paragraph [ref=e328]: Architectural precision in every hue. Curating 25,000+ colors across 14 brands for modern spaces.
+        - generic [ref=e329]:
+          - heading "Directory" [level=4] [ref=e330]
+          - list [ref=e331]:
+            - listitem [ref=e332]:
+              - link "Sherwin-Williams" [ref=e333] [cursor=pointer]:
+                - /url: /brands/sherwin-williams
+            - listitem [ref=e334]:
+              - link "Benjamin Moore" [ref=e335] [cursor=pointer]:
+                - /url: /brands/benjamin-moore
+            - listitem [ref=e336]:
+              - link "Behr" [ref=e337] [cursor=pointer]:
+                - /url: /brands/behr
+            - listitem [ref=e338]:
+              - link "PPG" [ref=e339] [cursor=pointer]:
+                - /url: /brands/ppg
+            - listitem [ref=e340]:
+              - link "Valspar" [ref=e341] [cursor=pointer]:
+                - /url: /brands/valspar
+            - listitem [ref=e342]:
+              - link "Dunn-Edwards" [ref=e343] [cursor=pointer]:
+                - /url: /brands/dunn-edwards
+            - listitem [ref=e344]:
+              - link "Farrow & Ball" [ref=e345] [cursor=pointer]:
+                - /url: /brands/farrow-ball
+            - listitem [ref=e346]:
+              - link "All 14 Brands" [ref=e347] [cursor=pointer]:
+                - /url: /brands
+        - generic [ref=e348]:
+          - heading "Tools" [level=4] [ref=e349]
+          - list [ref=e350]:
+            - listitem [ref=e351]:
+              - link "Color Search" [ref=e352] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=e353]:
+              - link "Compare Colors" [ref=e354] [cursor=pointer]:
+                - /url: /compare
+            - listitem [ref=e355]:
+              - link "Room Visualizer" [ref=e356] [cursor=pointer]:
+                - /url: /tools/room-visualizer
+            - listitem [ref=e357]:
+              - link "Photo Color Identifier" [ref=e358] [cursor=pointer]:
+                - /url: /tools/color-identifier
+            - listitem [ref=e359]:
+              - link "Palette Generator" [ref=e360] [cursor=pointer]:
+                - /url: /tools/palette-generator
+            - listitem [ref=e361]:
+              - link "Paint Calculator" [ref=e362] [cursor=pointer]:
+                - /url: /tools/paint-calculator
+          - heading "Resources" [level=4] [ref=e363]
+          - list [ref=e364]:
+            - listitem [ref=e365]:
+              - link "Blog" [ref=e366] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e367]:
+              - link "Inspiration Palettes" [ref=e368] [cursor=pointer]:
+                - /url: /inspiration
+            - listitem [ref=e369]:
+              - link "FAQ" [ref=e370] [cursor=pointer]:
+                - /url: /faq
+        - generic [ref=e371]:
+          - heading "Company" [level=4] [ref=e372]
+          - list [ref=e373]:
+            - listitem [ref=e374]:
+              - link "About" [ref=e375] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e376]:
+              - link "Contact" [ref=e377] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e378]:
+              - link "Privacy Policy" [ref=e379] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e380]:
+              - link "Terms of Service" [ref=e381] [cursor=pointer]:
+                - /url: /terms
+          - heading "Color Families" [level=4] [ref=e382]
+          - generic [ref=e383]:
+            - link "White" [ref=e384] [cursor=pointer]:
+              - /url: /colors/family/white
+            - link "Gray" [ref=e385] [cursor=pointer]:
+              - /url: /colors/family/gray
+            - link "Beige" [ref=e386] [cursor=pointer]:
+              - /url: /colors/family/beige
+            - link "Blue" [ref=e387] [cursor=pointer]:
+              - /url: /colors/family/blue
+            - link "Green" [ref=e388] [cursor=pointer]:
+              - /url: /colors/family/green
+            - link "Red" [ref=e389] [cursor=pointer]:
+              - /url: /colors/family/red
+            - link "Yellow" [ref=e390] [cursor=pointer]:
+              - /url: /colors/family/yellow
+            - link "Black" [ref=e391] [cursor=pointer]:
+              - /url: /colors/family/black
+      - paragraph [ref=e393]: © 2026 Paint Color HQ. Color data is approximate. Always verify with physical samples before purchasing.
+  - button "Open Next.js Dev Tools" [ref=e399] [cursor=pointer]:
+    - img [ref=e400]
+  - alert [ref=e403]
+  - generic [ref=e405]:
+    - paragraph [ref=e406]:
+      - text: We use cookies for analytics and to improve your experience. See our
+      - link "Privacy Policy" [ref=e407] [cursor=pointer]:
+        - /url: /privacy
+      - text: .
+    - generic [ref=e408]:
+      - button "Decline" [ref=e409]
+      - button "Accept" [ref=e410]

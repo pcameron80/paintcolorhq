@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#ccc6bc",
+              "surface-container-high": "#e6e6ff",
+              "on-background": "#161935",
+              "on-secondary-fixed": "#001e2b",
+              "background": "#fbf8ff",
+              "primary-container": "#2563eb",
+              "on-error-container": "#93000a",
+              "surface-container": "#edecff",
+              "tertiary": "#58554d",
+              "on-tertiary-fixed": "#1e1b15",
+              "on-secondary-container": "#14607f",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#4a463f",
+              "surface-dim": "#d6d7fc",
+              "primary-fixed": "#dbe1ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#fbf8ff",
+              "secondary": "#1c6584",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-surface": "#161935",
+              "inverse-on-surface": "#f1efff",
+              "primary": "#004ac6",
+              "surface-tint": "#0053db",
+              "on-tertiary-container": "#f7f0e5",
+              "on-primary-fixed": "#00174b",
+              "surface-container-low": "#f4f2ff",
+              "on-surface-variant": "#434655",
+              "secondary-fixed-dim": "#8fcff1",
+              "surface-variant": "#dfe0ff",
+              "outline-variant": "#c3c6d7",
+              "secondary-fixed": "#c2e8ff",
+              "on-primary-container": "#eeefff",
+              "inverse-surface": "#2b2e4b",
+              "inverse-primary": "#b4c5ff",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#e8e2d7",
+              "outline": "#737686",
+              "tertiary-container": "#716d65",
+              "primary-fixed-dim": "#b4c5ff",
+              "error-container": "#ffdad6",
+              "secondary-container": "#9adafd",
+              "on-tertiary": "#ffffff",
+              "surface": "#fbf8ff",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed-variant": "#004d67",
+              "surface-container-highest": "#dfe0ff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-12 py-4 max-w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="text-2xl font-bold tracking-tighter text-blue-900 dark:text-blue-100 font-headline">Atelier Color</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors duration-300" href="#">Directory</a>
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors duration-300" href="#">Palette Builder</a>
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors duration-300" href="#">Visualizer</a>
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors duration-300" href="#">Blog</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-slate-500">search</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-lg font-manrope text-sm font-semibold tracking-tight transition-opacity active:opacity-70">Sign In</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-12 max-w-[1600px] mx-auto">
+<!-- Header Section -->
+<header class="mb-20">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-3xl">
+<span class="inline-block px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] uppercase tracking-[0.2em] font-bold mb-6 rounded-sm">Inspiration Gallery</span>
+<h1 class="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter text-on-surface leading-[0.9]">
+                        The Studio <br/> <span class="text-primary italic">Lookbook</span>
+</h1>
+</div>
+<div class="flex items-center gap-4 text-sm font-medium text-on-surface-variant max-w-xs">
+<div class="w-12 h-[2px] bg-primary"></div>
+<p>A curated study of light, texture, and architectural intent in modern interiors.</p>
+</div>
+</div>
+</header>
+<!-- Filters Section -->
+<section class="mb-16 flex flex-wrap items-center justify-between gap-6 border-b border-outline-variant/15 pb-8">
+<div class="flex flex-wrap gap-4">
+<div class="group relative">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-low text-on-surface-variant text-xs font-semibold uppercase tracking-wider rounded-full hover:bg-surface-container hover:text-primary transition-all">
+                        Room Type <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="group relative">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-low text-on-surface-variant text-xs font-semibold uppercase tracking-wider rounded-full hover:bg-surface-container hover:text-primary transition-all">
+                        Mood <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<div class="group relative">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-low text-on-surface-variant text-xs font-semibold uppercase tracking-wider rounded-full hover:bg-surface-container hover:text-primary transition-all">
+                        Color Family <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant/60 text-xs font-medium uppercase tracking-widest">
+                Showing <span class="text-on-surface font-bold">24</span> Curated Spaces
+            </div>
+</section>
+<!-- Gallery Grid (Asymmetrical Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+<!-- Large Hero Card -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-lowest">
+<div class="aspect-[16/9] w-full overflow-hidden">
+<img alt="Modern minimalist living room" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Minimalist living room with soft beige walls and high ceilings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvsUOywWI2jP9phVMzi3ttzw4lOJjeu20-k9dfxFmR6cXwNPh9QDzEqb81TFM9ldiEN1m5T71KrBFDW4t679DXBhPUiRDXcPiw1ybLfRsCn9G5nXk2GTTZbGP6CVQs7JBGAsOeQ_fbUsP08bBAqVuOzYseTSMzOSw2-FGRXWuya9b6rLmxpyBXl6yGjMeIlbQmJjR3mggbfmwOjckH4jQwvY5r7ahiA7l66HwLkk-UoSNCTUQaLYHbSDn7Dgj9WQFUAILTmvz82Nk"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<!-- Palette Sidebar Overlay -->
+<div class="absolute top-6 right-6 bottom-6 w-72 glass-effect bg-white/80 translate-x-[110%] group-hover:translate-x-0 transition-transform duration-500 p-8 flex flex-col justify-between">
+<div>
+<h3 class="font-headline font-bold text-lg mb-1">Nordic Serenity</h3>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-8">Airy • Living Room</p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-[#E8E2D7] shadow-sm"></div>
+<div>
+<div class="text-xs font-bold uppercase tracking-tighter">Bone Ash</div>
+<div class="text-[10px] text-slate-400">#E8E2D7</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-[#1C6584] shadow-sm"></div>
+<div>
+<div class="text-xs font-bold uppercase tracking-tighter">Lake Depth</div>
+<div class="text-[10px] text-slate-400">#1C6584</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-[#58554D] shadow-sm"></div>
+<div>
+<div class="text-xs font-bold uppercase tracking-tighter">Wet Slate</div>
+<div class="text-[10px] text-slate-400">#58554D</div>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 text-xs font-bold uppercase tracking-widest rounded-lg">Shop Palette</button>
+</div>
+</div>
+<!-- Vertical Secondary Card -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-lowest">
+<div class="aspect-[4/5] w-full overflow-hidden">
+<img alt="Dark moody kitchen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern kitchen with dark navy cabinets and marble countertops" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnfwYhYW4ebVmtYUb0qLZXNQJPgZuAO8qWPcoH_Xs6o3GATd90W64I-qB50fJPyxlItcWk2KR3i0_bAo5hBocbxfJxV-ypJxlEVCgZYXYLoS4nDfwEhwyNTx3SBJo8W5kWAk1gMOHnbJX_FORHb_d3wS2YALmHO18dPEfN7PoKp51SpFKGPrTokqbQ7iJxID8L92cfH6xZG6P4RrQG3yJhvAcZSsVJu9AaGILqvolQ_JvRgPKfl3uAul23Pp0oanJzbwpeuvHXEwo"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-xl">The Midnight Studio</h3>
+<span class="material-symbols-outlined text-primary cursor-pointer">bookmark</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">A deep exploration of contrast using matte finishes against reflective surfaces.</p>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-[#001E2B] shadow-sm"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-[#D6D7FC] shadow-sm"></div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-[#434655] shadow-sm"></div>
+<div class="w-8 h-8 flex items-center justify-center rounded-full border-2 border-white bg-slate-100 text-[10px] font-bold">+2</div>
+</div>
+</div>
+</div>
+<!-- Mixed Grid Item 1 -->
+<div class="md:col-span-5 group relative overflow-hidden rounded-xl bg-surface-container-lowest">
+<div class="aspect-square w-full overflow-hidden">
+<img alt="Warm bedroom palette" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Bedroom with terracotta accent wall and linen bedding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7SdOwSLUMBrnO3uRIDGCxqEwvmmylI44j4YtE9-a6baCJF_L80cSoko8HrHnxpQHD0DjWB05dw8kmomQycYXFju76KRvqzomTOFXLufPY_pXJa9tNnzO5OwHm5t_bLxH3vZe4i5LPISacRtFpEd30gqJGY2CrU67ff0nIKCr0WZhBa2pefU0KVrDes-Kd9sLeUZSnoAplfbrBhPOmNaHCRWpi6Z1UvQxILsRLbo46OpijXh4ktyMZg6jiTkcxQmcVgMlwQjr-CrQ"/>
+</div>
+<div class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-on-surface/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div class="text-white">
+<h4 class="font-headline font-bold text-2xl mb-2">Earth &amp; Vellum</h4>
+<button class="text-xs font-bold uppercase tracking-widest flex items-center gap-2 group/btn">
+                            View Palette <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Mixed Grid Item 2 (The Offset/Asymmetric element) -->
+<div class="md:col-span-7 md:mt-20 group relative overflow-hidden rounded-xl bg-surface-container-lowest">
+<div class="aspect-[16/7] w-full overflow-hidden">
+<img alt="Bright exterior terrace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern outdoor terrace with architectural lighting and stone walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV3zWFLwjDu0ONKoCpEPRyEtfJOKYoQoLioo_711naYmL31BTE-3uFYt5WRwq9BeWNqjD6NWpOiSxAHrngvI16yhambvbTg9hDvN4f8GaGh6JqxTrQ0le3sliQJWPXUVSPHygOEAsidyKez3A358ClH8VLJCq4Tim2wmjQe6sn94x9mEa-PZ7QTK8bWp4gEUsUitTZv4a7RukrgCx2iJ8e2FM9HiKCHKZH8NQovRCa-tfqYT4_BxNS5f2o4HZR4jDV-ua-mBU4Jqk"/>
+</div>
+<div class="p-8 border-l-4 border-primary mt-4">
+<h3 class="font-headline font-bold text-2xl mb-2">Al Fresco Minimalism</h3>
+<p class="text-on-surface-variant text-sm max-w-lg mb-6">Utilizing Tertiary Fixed and Stone tones to blend architecture seamlessly with the natural landscape.</p>
+<div class="flex gap-3">
+<span class="px-4 py-1.5 bg-surface-container-high text-primary text-[10px] font-bold uppercase tracking-wider rounded-sm">Exterior</span>
+<span class="px-4 py-1.5 bg-surface-container-high text-primary text-[10px] font-bold uppercase tracking-wider rounded-sm">Stone Tone</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination/Load More -->
+<div class="mt-32 flex flex-col items-center">
+<div class="w-12 h-1 bg-slate-100 dark:bg-slate-800 mb-8"></div>
+<button class="font-headline font-extrabold text-2xl tracking-tighter hover:text-primary transition-colors flex items-center gap-4">
+                Explore More Studies
+                <span class="material-symbols-outlined text-4xl">keyboard_arrow_down</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 w-full border-t border-slate-200/15 dark:border-slate-800/15">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-12 py-16 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-manrope font-bold text-lg text-blue-900 dark:text-blue-100 mb-6">Atelier Color</div>
+<p class="font-inter text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    © 2024 Atelier Color Directory. Architectural Precision in Every Hue.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface mb-2">Company</h5>
+<a class="font-inter text-xs text-slate-500 hover:text-blue-600 underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="font-inter text-xs text-slate-500 hover:text-blue-600 underline-offset-4 hover:underline" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface mb-2">Collaborate</h5>
+<a class="font-inter text-xs text-slate-500 hover:text-blue-600 underline-offset-4 hover:underline" href="#">Brand Partnerships</a>
+<a class="font-inter text-xs text-slate-500 hover:text-blue-600 underline-offset-4 hover:underline" href="#">Contact Architect</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface mb-2">Newsletter</h5>
+<p class="text-[10px] text-slate-400 mb-2">Receive our monthly color report.</p>
+<div class="flex gap-2">
+<input class="bg-surface-container-low border-none rounded-sm text-xs px-3 py-2 w-full focus:ring-1 focus:ring-primary" placeholder="Email" type="email"/>
+<button class="bg-on-surface text-surface px-4 py-2 rounded-sm text-[10px] font-bold uppercase">Join</button>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
