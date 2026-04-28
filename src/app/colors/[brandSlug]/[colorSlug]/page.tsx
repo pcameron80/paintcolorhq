@@ -185,9 +185,41 @@ export default async function ColorPage({ params }: PageProps) {
     return acc;
   }, {} as Record<string, typeof matches>);
 
+  // Pinterest pin metadata — the browser extension and Save button look for
+  // data-pin-media + data-pin-description on a hidden element to find a
+  // higher-quality vertical (2:3) image for the saved pin.
+  const pinParams = new URLSearchParams({
+    hex: color.hex,
+    name: color.name,
+    brand: color.brand.name,
+  });
+  if (color.color_number) pinParams.set("code", color.color_number);
+  if (color.lrv != null) pinParams.set("lrv", String(Math.round(Number(color.lrv))));
+  if (color.color_family) pinParams.set("family", color.color_family);
+  const pinImageUrl = `https://www.paintcolorhq.com/api/pin?${pinParams.toString()}`;
+  const pinFamily = color.color_family ? ` ${color.color_family}` : "";
+  const pinLrv = color.lrv != null ? `, LRV ${Math.round(Number(color.lrv))}` : "";
+  const pinUndertone = color.undertone ? `, ${color.undertone.toLowerCase()} undertone` : "";
+  const brandHashtag = `#${color.brand.name.toLowerCase().replace(/[^a-z0-9]/g, "")}`;
+  const familyHashtag = color.color_family
+    ? ` #${color.color_family.toLowerCase().replace(/[^a-z0-9]/g, "")}paint`
+    : "";
+  const pinDescription = `${color.brand.name} ${color.name}${color.color_number ? ` (${color.color_number})` : ""} —${pinFamily} paint color${pinLrv}${pinUndertone}. Cross-brand matches at PaintColorHQ.com #paintcolor ${brandHashtag}${familyHashtag}`;
+
   return (
     <div className="min-h-screen bg-surface">
       <TrackPage eventName="page_view_enriched" params={{ page_type: "color", color_brand: color.brand.slug, color_family: color.color_family ?? undefined }} />
+      {/* Pinterest pin trigger — hidden from users, picked up by the Save extension */}
+      <img
+        src={pinImageUrl}
+        data-pin-media={pinImageUrl}
+        data-pin-description={pinDescription}
+        alt={`${color.name} by ${color.brand.name} paint color`}
+        width={1000}
+        height={1500}
+        loading="lazy"
+        style={{ position: "absolute", left: "-99999px", width: 1, height: 1, opacity: 0 }}
+      />
       <Header />
 
       {/* Immersive Color Hero */}
