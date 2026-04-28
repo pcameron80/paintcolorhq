@@ -1,0 +1,20 @@
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M105.98 716.44 1…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M774.04 278.03 7…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M125.51 277.4 20…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M683.91 277.94 7…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M224.45 714.8 22…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M323.77 739.03 3…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M209.79 700.31 2…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M860.16 876.37 7…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M240.23 305.8 65…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M387.86 339.25 3…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M105.98 716.44 1…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M774.04 278.03 7…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M125.51 277.4 20…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     155ms] [ERROR] Error: <polygon> attribute points: Expected number, "M683.91 277.94 7…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     156ms] [ERROR] Error: <polygon> attribute points: Expected number, "M224.45 714.8 22…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[     156ms] [ERROR] Error: <polygon> attribute points: Expected number, "M323.77 739.03 3…". @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[    3679ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[    8529ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[   38281ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/naval-6244:0
+[   71237ms] [WARNING] The resource http://localhost:3000/hero.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/colors/sherwin-williams/naval-6244:0

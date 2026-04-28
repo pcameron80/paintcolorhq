@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Room Mask Editor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1a2e; color: #fff; font-family: system-ui; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+  h1 { font-size: 18px; margin-bottom: 10px; }
+  .controls { display: flex; gap: 16px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
+  .controls label { font-size: 13px; display: flex; align-items: center; gap: 6px; }
+  .controls input[type=range] { width: 100px; }
+  .controls button { padding: 6px 14px; border-radius: 6px; border: none; cursor: pointer; font-size: 12px; font-weight: 600; }
+  .controls button.active { background: #4CAF50; color: #fff; }
+  .controls button:not(.active) { background: #333; color: #aaa; }
+  #canvas-wrap { position: relative; display: inline-block; cursor: crosshair; }
+  #canvas-wrap img { display: block; max-width: 100%; height: auto; }
+  #canvas-wrap svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  #coords { position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.85); padding: 12px 16px; border-radius: 8px; font-family: monospace; font-size: 13px; z-index: 100; min-width: 250px; }
+  #path-output { margin-top: 16px; }
+  #path-output textarea { width: 100%; height: 200px; background: #111; color: #0f0; border: 1px solid #333; border-radius: 6px; padding: 10px; font-family: monospace; font-size: 11px; }
+  .zone-btn { padding: 6px 14px; border-radius: 6px; border: 2px solid transparent; cursor: pointer; font-size: 12px; font-weight: 600; }
+  .zone-btn.selected { border-color: #fff; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Room Mask Editor - Click to trace zone boundaries, press E to export paths</h1>
+  <div class="controls">
+    <label>Opacity: <input type="range" id="opacity" min="0" max="100" value="50"> <span id="opVal">50%</span></label>
+    <button id="toggleOverlay" class="active">Show overlay (H)</button>
+    <button id="undoBtn">Undo (Cmd+Z)</button>
+    <button id="clearBtn">Clear zone</button>
+    <button id="exportBtn" style="background:#2563eb;color:#fff">Export (E)</button>
+    <span style="margin-left:16px; font-size:13px;">Zone:</span>
+    <button class="zone-btn selected" data-zone="leftWall" style="background:rgba(255,0,0,0.7);color:#fff">Left Wall</button>
+    <button class="zone-btn" data-zone="rightWall" style="background:rgba(0,128,255,0.7);color:#fff">Right Wall</button>
+    <button class="zone-btn" data-zone="backWallTop" style="background:rgba(0,200,0,0.7);color:#fff">Back Top</button>
+    <button class="zone-btn" data-zone="backWallLeft" style="background:rgba(200,200,0,0.7);color:#fff">Back Left</button>
+    <button class="zone-btn" data-zone="backWallRight" style="background:rgba(200,0,200,0.7);color:#fff">Back Right</button>
+    <button class="zone-btn" data-zone="backWallBelow" style="background:rgba(0,200,200,0.7);color:#fff">Back Below</button>
+    <button class="zone-btn" data-zone="trimCrown" style="background:rgba(255,255,255,0.7);color:#000">Crown</button>
+    <button class="zone-btn" data-zone="trimBaseboard" style="background:rgba(200,200,200,0.7);color:#000">Baseboard</button>
+  </div>
+
+  <div id="canvas-wrap">
+    <img id="roomImg" src="/room-preview.jpeg" alt="Room">
+    <svg id="overlaySvg" viewBox="0 0 3584 5376" preserveAspectRatio="xMidYMid meet"></svg>
+  </div>
+
+  <div id="coords">
+    <div>Cursor: <span id="cx">-</span>, <span id="cy">-</span></div>
+    <div>Points: <span id="ptCount">0</span></div>
+    <div>Zone: <span id="curZone">leftWall</span></div>
+  </div>
+
+  <div id="path-output">
+    <h3 style="margin-bottom:8px">Generated SVG Paths (copy to room-preview.tsx)</h3>
+    <textarea id="output" readonly></textarea>
+  </div>
+</div>
+
+<script>
+const IMG_W = 3584, IMG_H = 5376;
+const zones = {
+  leftWall: { points: [], color: 'rgba(255,0,0,0.4)' },
+  rightWall: { points: [], color: 'rgba(0,128,255,0.4)' },
+  backWallTop: { points: [], color: 'rgba(0,200,0,0.4)' },
+  backWallLeft: { points: [], color: 'rgba(200,200,0,0.4)' },
+  backWallRight: { points: [], color: 'rgba(200,0,200,0.4)' },
+  backWallBelow: { points: [], color: 'rgba(0,200,200,0.4)' },
+  trimCrown: { points: [], color: 'rgba(255,255,255,0.5)' },
+  trimBaseboard: { points: [], color: 'rgba(200,200,200,0.5)' },
+};
+let currentZone = 'leftWall';
+let showOverlay = true;
+let opacity = 0.5;
+
+const img = document.getElementById('roomImg');
+const svg = document.getElementById('overlaySvg');
+const wrap = document.getElementById('canvas-wrap');
+
+document.querySelectorAll('.zone-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.zone-btn').forEach(function(b) { b.classList.remove('selected'); });
+    btn.classList.add('selected');
+    currentZone = btn.dataset.zone;
+    document.getElementById('curZone').textContent = currentZone;
+    updatePointCount();
+  });
+});
+
+wrap.addEventListener('click', function(e) {
+  var rect = img.getBoundingClientRect();
+  var x = Math.round(((e.clientX - rect.left) / rect.width) * IMG_W);
+  var y = Math.round(((e.clientY - rect.top) / rect.height) * IMG_H);
+  zones[currentZone].points.push([x, y]);
+  updatePointCount();
+  render();
+});
+
+wrap.addEventListener('mousemove', function(e) {
+  var rect = img.getBoundingClientRect();
+  var x = Math.round(((e.clientX - rect.left) / rect.width) * IMG_W);
+  var y = Math.round(((e.clientY - rect.top) / rect.height) * IMG_H);
+  document.getElementById('cx').textContent = x;
+  document.getElementById('cy').textContent = y;
+});
+
+document.getElementById('opacity').addEventListener('input', function(e) {
+  opacity = e.target.value / 100;
+  document.getElementById('opVal').textContent = e.target.value + '%';
+  render();
+});
+
+document.getElementById('toggleOverlay').addEventListener('click', function(e) {
+  showOverlay = !showOverlay;
+  e.target.classList.toggle('active');
+  render();
+});
+
+document.getElementById('undoBtn').addEventListener('click', function() {
+  zones[currentZone].points.pop();
+  updatePointCount();
+  render();
+});
+
+document.getElementById('clearBtn').addEventListener('click', function() {
+  zones[currentZone].points = [];
+  updatePointCount();
+  render();
+});
+
+document.getElementById('exportBtn').addEventListener('click', exportPaths);
+
+function updatePointCount() {
+  document.getElementById('ptCount').textContent = zones[currentZone].points.length;
+}
+
+function pointsToPath(pts) {
+  if (pts.length < 3) return '';
+  return 'M ' + pts.map(function(p) { return p.join(','); }).join(' L ') + ' Z';
+}
+
+function render() {
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  if (!showOverlay) return;
+
+  Object.keys(zones).forEach(function(name) {
+    var zone = zones[name];
+    if (zone.points.length < 2) {
+      zone.points.forEach(function(pt) {
+        var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', pt[0]);
+        circle.setAttribute('cy', pt[1]);
+        circle.setAttribute('r', 30);
+        circle.setAttribute('fill', zone.color.replace(/[\d.]+\)$/, '1)'));
+        svg.appendChild(circle);
+      });
+      return;
+    }
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', pointsToPath(zone.points));
+    path.setAttribute('fill', zone.color);
+    path.setAttribute('opacity', String(opacity));
+    path.setAttribute('stroke', name === currentZone ? '#fff' : 'none');
+    path.setAttribute('stroke-width', name === currentZone ? '8' : '0');
+    svg.appendChild(path);
+
+    // Draw point markers for current zone
+    if (name === currentZone) {
+      zone.points.forEach(function(pt, i) {
+        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', pt[0]);
+        c.setAttribute('cy', pt[1]);
+        c.setAttribute('r', 15);
+        c.setAttribute('fill', '#fff');
+        c.setAttribute('stroke', '#000');
+        c.setAttribute('stroke-width', '3');
+        svg.appendChild(c);
+        var t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        t.setAttribute('x', pt[0] + 20);
+        t.setAttribute('y', pt[1] + 8);
+        t.setAttribute('fill', '#fff');
+        t.setAttribute('font-size', '28');
+        t.setAttribute('font-weight', 'bold');
+        t.textContent = String(i);
+        svg.appendChild(t);
+      });
+    }
+  });
+}
+
+function exportPaths() {
+  var lines = [];
+  Object.keys(zones).forEach(function(name) {
+    var zone = zones[name];
+    if (zone.points.length < 3) return;
+    var constName = name.replace(/([A-Z])/g, '_$1').toUpperCase();
+    lines.push('const ' + constName + ' = "' + pointsToPath(zone.points) + '";');
+    lines.push('');
+  });
+  document.getElementById('output').value = lines.join('\n');
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'z' && (e.ctrlKey || e.metaKey)) {
+    e.preventDefault();
+    zones[currentZone].points.pop();
+    updatePointCount();
+    render();
+  }
+  if (e.key === 'e') exportPaths();
+  if (e.key === 'h') { showOverlay = !showOverlay; render(); }
+});
+</script>
+</body>
+</html>

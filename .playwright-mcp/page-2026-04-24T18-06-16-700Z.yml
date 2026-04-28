@@ -1,0 +1,352 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Paint Color HQ" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Paint Color HQ" [ref=e6]
+        - navigation [ref=e7]:
+          - link "Brands" [ref=e8] [cursor=pointer]:
+            - /url: /brands
+          - link "Colors" [ref=e9] [cursor=pointer]:
+            - /url: /colors
+          - link "Inspiration" [ref=e10] [cursor=pointer]:
+            - /url: /inspiration
+          - link "Blog" [ref=e11] [cursor=pointer]:
+            - /url: /blog
+          - link "Tools" [ref=e12] [cursor=pointer]:
+            - /url: /tools
+        - generic [ref=e13]:
+          - link "Search colors..." [ref=e14] [cursor=pointer]:
+            - /url: /search
+            - img [ref=e15]
+            - generic [ref=e17]: Search colors...
+          - link "Sign in" [ref=e18] [cursor=pointer]:
+            - /url: /auth/login
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]: 25,000+ colors · 14 brands · 100% free
+        - heading "Match Any Color Across Brands." [level=1] [ref=e23]:
+          - text: Match Any Color
+          - text: Across Brands.
+        - paragraph [ref=e24]: Your designer picked one brand but your store carries another? Search 25,000+ colors and find the closest match instantly.
+        - generic [ref=e25]:
+          - link "Find a Color" [ref=e26] [cursor=pointer]:
+            - /url: /search
+            - text: Find a Color
+            - img [ref=e27]
+          - link "Build a Palette" [ref=e29] [cursor=pointer]:
+            - /url: /tools/palette-generator
+      - generic [ref=e30]:
+        - img "Modern interior with architectural paint" [ref=e32]
+        - img "Close up of a paint brush with blue paint" [ref=e34]
+        - generic [ref=e35]:
+          - paragraph [ref=e37]: Cerulean Dusk
+          - paragraph [ref=e39]: "#1C6584"
+    - generic [ref=e41]:
+      - heading "Everything You Need to Choose the Right Color" [level=2] [ref=e43]:
+        - text: Everything You Need to
+        - text: Choose the Right Color
+      - generic [ref=e44]:
+        - link "Cross-Brand Matching Love a Sherwin-Williams color but shopping at Home Depot? Find the closest Behr, PPG, or Benjamin Moore match in seconds. Find a match →" [ref=e45] [cursor=pointer]:
+          - /url: /search
+          - heading "Cross-Brand Matching" [level=3] [ref=e46]
+          - paragraph [ref=e47]: Love a Sherwin-Williams color but shopping at Home Depot? Find the closest Behr, PPG, or Benjamin Moore match in seconds.
+          - generic [ref=e48]:
+            - text: Find a match
+            - generic [ref=e49]: →
+        - link "Room Visualizer Preview any color on walls, trim, and floor in a realistic room scene before you buy a single sample pot. Try it free →" [ref=e50] [cursor=pointer]:
+          - /url: /tools/room-visualizer
+          - heading "Room Visualizer" [level=3] [ref=e51]
+          - paragraph [ref=e52]: Preview any color on walls, trim, and floor in a realistic room scene before you buy a single sample pot.
+          - generic [ref=e53]:
+            - text: Try it free
+            - generic [ref=e54]: →
+        - link "Photo Color Identifier Snap a photo of any color you love — a pillow, a sunset, a Pinterest pin — and find the closest paint match. Upload a photo →" [ref=e55] [cursor=pointer]:
+          - /url: /tools/color-identifier
+          - heading "Photo Color Identifier" [level=3] [ref=e56]
+          - paragraph [ref=e57]: Snap a photo of any color you love — a pillow, a sunset, a Pinterest pin — and find the closest paint match.
+          - generic [ref=e58]:
+            - text: Upload a photo
+            - generic [ref=e59]: →
+        - link "Paint Calculator Enter your room dimensions and get the exact number of gallons you need. Accounts for doors, windows, and coats. Calculate now →" [ref=e60] [cursor=pointer]:
+          - /url: /tools/paint-calculator
+          - heading "Paint Calculator" [level=3] [ref=e61]
+          - paragraph [ref=e62]: Enter your room dimensions and get the exact number of gallons you need. Accounts for doors, windows, and coats.
+          - generic [ref=e63]:
+            - text: Calculate now
+            - generic [ref=e64]: →
+        - link "Undertone Analysis Every color tagged warm, cool, or neutral — so your new paint won't clash with your trim or cabinets. Browse colors →" [ref=e65] [cursor=pointer]:
+          - /url: /colors
+          - heading "Undertone Analysis" [level=3] [ref=e66]
+          - paragraph [ref=e67]: Every color tagged warm, cool, or neutral — so your new paint won't clash with your trim or cabinets.
+          - generic [ref=e68]:
+            - text: Browse colors
+            - generic [ref=e69]: →
+        - link "Palette Generator Pick one color you love and get a designer-quality palette — all mapped to real paints you can buy at the store. Build a palette →" [ref=e70] [cursor=pointer]:
+          - /url: /tools/palette-generator
+          - heading "Palette Generator" [level=3] [ref=e71]
+          - paragraph [ref=e72]: Pick one color you love and get a designer-quality palette — all mapped to real paints you can buy at the store.
+          - generic [ref=e73]:
+            - text: Build a palette
+            - generic [ref=e74]: →
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - heading "Browse by Brand" [level=2] [ref=e79]
+          - paragraph [ref=e80]: Explore colors from trusted paint manufacturers.
+        - link "All brands →" [ref=e81] [cursor=pointer]:
+          - /url: /brands
+          - text: All brands
+          - generic [ref=e82]: →
+      - generic [ref=e83]:
+        - link "Sherwin-Williams" [ref=e84] [cursor=pointer]:
+          - /url: /brands/sherwin-williams
+          - generic [ref=e85]: Sherwin-Williams
+        - link "Benjamin Moore" [ref=e86] [cursor=pointer]:
+          - /url: /brands/benjamin-moore
+          - generic [ref=e87]: Benjamin Moore
+        - link "Behr" [ref=e88] [cursor=pointer]:
+          - /url: /brands/behr
+          - generic [ref=e89]: Behr
+        - link "PPG" [ref=e90] [cursor=pointer]:
+          - /url: /brands/ppg
+          - generic [ref=e91]: PPG
+      - generic [ref=e92]:
+        - link "Dunn-Edwards" [ref=e93] [cursor=pointer]:
+          - /url: /brands/dunn-edwards
+          - generic [ref=e94]: Dunn-Edwards
+        - link "Valspar" [ref=e95] [cursor=pointer]:
+          - /url: /brands/valspar
+          - generic [ref=e96]: Valspar
+        - link "Farrow & Ball" [ref=e97] [cursor=pointer]:
+          - /url: /brands/farrow-ball
+          - generic [ref=e98]: Farrow & Ball
+    - generic [ref=e100]:
+      - heading "Browse by Color Family" [level=2] [ref=e101]
+      - generic [ref=e102]:
+        - link "White" [ref=e103] [cursor=pointer]:
+          - /url: /colors/family/white
+          - text: White
+        - link "Off-White" [ref=e105] [cursor=pointer]:
+          - /url: /colors/family/off-white
+          - text: Off-White
+        - link "Gray" [ref=e107] [cursor=pointer]:
+          - /url: /colors/family/gray
+          - text: Gray
+        - link "Beige" [ref=e109] [cursor=pointer]:
+          - /url: /colors/family/beige
+          - text: Beige
+        - link "Brown" [ref=e111] [cursor=pointer]:
+          - /url: /colors/family/brown
+          - text: Brown
+        - link "Red" [ref=e113] [cursor=pointer]:
+          - /url: /colors/family/red
+          - text: Red
+        - link "Orange" [ref=e115] [cursor=pointer]:
+          - /url: /colors/family/orange
+          - text: Orange
+        - link "Yellow" [ref=e117] [cursor=pointer]:
+          - /url: /colors/family/yellow
+          - text: Yellow
+        - link "Green" [ref=e119] [cursor=pointer]:
+          - /url: /colors/family/green
+          - text: Green
+        - link "Blue" [ref=e121] [cursor=pointer]:
+          - /url: /colors/family/blue
+          - text: Blue
+        - link "Purple" [ref=e123] [cursor=pointer]:
+          - /url: /colors/family/purple
+          - text: Purple
+        - link "Pink" [ref=e125] [cursor=pointer]:
+          - /url: /colors/family/pink
+          - text: Pink
+        - link "Black" [ref=e127] [cursor=pointer]:
+          - /url: /colors/family/black
+          - text: Black
+    - generic [ref=e130]:
+      - generic [ref=e131]:
+        - text: Inspiration
+        - heading "Color Palettes to Spark Your Next Project" [level=2] [ref=e132]
+      - generic [ref=e133]:
+        - paragraph [ref=e134]: Curated palettes to spark your next project — click any palette to explore.
+        - link "View all →" [ref=e135] [cursor=pointer]:
+          - /url: /inspiration
+          - text: View all
+          - generic [ref=e136]: →
+      - generic [ref=e137]:
+        - link "Earthy Organic 5 Swatches" [ref=e138] [cursor=pointer]:
+          - /url: /inspiration/earthy-organic
+          - heading "Earthy Organic" [level=3] [ref=e145]
+          - paragraph [ref=e146]: 5 Swatches
+        - link "Classic Traditional 5 Swatches" [ref=e147] [cursor=pointer]:
+          - /url: /inspiration/classic-traditional
+          - heading "Classic Traditional" [level=3] [ref=e154]
+          - paragraph [ref=e155]: 5 Swatches
+        - link "Tropical Escape 5 Swatches" [ref=e156] [cursor=pointer]:
+          - /url: /inspiration/tropical-escape
+          - heading "Tropical Escape" [level=3] [ref=e163]
+          - paragraph [ref=e164]: 5 Swatches
+        - link "Midnight Luxe 5 Swatches" [ref=e165] [cursor=pointer]:
+          - /url: /inspiration/midnight-luxe
+          - heading "Midnight Luxe" [level=3] [ref=e172]
+          - paragraph [ref=e173]: 5 Swatches
+        - link "Modern Farmhouse 5 Swatches" [ref=e174] [cursor=pointer]:
+          - /url: /inspiration/modern-farmhouse
+          - heading "Modern Farmhouse" [level=3] [ref=e181]
+          - paragraph [ref=e182]: 5 Swatches
+        - link "Urban Industrial 5 Swatches" [ref=e183] [cursor=pointer]:
+          - /url: /inspiration/urban-industrial
+          - heading "Urban Industrial" [level=3] [ref=e190]
+          - paragraph [ref=e191]: 5 Swatches
+    - generic [ref=e193]:
+      - generic [ref=e194]:
+        - generic [ref=e195]:
+          - text: Insights
+          - heading "The Color Journal" [level=2] [ref=e196]
+        - link "All articles →" [ref=e197] [cursor=pointer]:
+          - /url: /blog
+          - text: All articles
+          - generic [ref=e198]: →
+      - generic [ref=e199]:
+        - 'link "Paint Color Trends 2026: What Designers Are Predicting Paint Color Trends 2026: What Designers Are Predicting From earthy greens to warm mushroom tones, the paint color trends defining 2026 — drawn from Color of the Year picks across five major brands." [ref=e200] [cursor=pointer]':
+          - /url: /blog/paint-color-trends-2026
+          - 'img "Paint Color Trends 2026: What Designers Are Predicting" [ref=e202]'
+          - 'heading "Paint Color Trends 2026: What Designers Are Predicting" [level=3] [ref=e203]'
+          - paragraph [ref=e204]: From earthy greens to warm mushroom tones, the paint color trends defining 2026 — drawn from Color of the Year picks across five major brands.
+        - link "The Best Exterior Paint Colors to Boost Curb Appeal The Best Exterior Paint Colors to Boost Curb Appeal Exterior paint must work with your roof, trim, and full sun. These are the colors that hold up outdoors, with pairing advice for every style." [ref=e205] [cursor=pointer]:
+          - /url: /blog/best-exterior-paint-colors
+          - img "The Best Exterior Paint Colors to Boost Curb Appeal" [ref=e207]
+          - heading "The Best Exterior Paint Colors to Boost Curb Appeal" [level=3] [ref=e208]
+          - paragraph [ref=e209]: Exterior paint must work with your roof, trim, and full sun. These are the colors that hold up outdoors, with pairing advice for every style.
+        - link "15 Best Bathroom Paint Colors That Handle Humidity (2026) 15 Best Bathroom Paint Colors That Handle Humidity (2026) The best bathroom paint colors for 2026 — spa blues, warm earth tones, and dramatic jewel shades. Every pick handles humidity, with finish advice." [ref=e210] [cursor=pointer]:
+          - /url: /blog/best-bathroom-paint-colors
+          - img "15 Best Bathroom Paint Colors That Handle Humidity (2026)" [ref=e212]
+          - heading "15 Best Bathroom Paint Colors That Handle Humidity (2026)" [level=3] [ref=e213]
+          - paragraph [ref=e214]: The best bathroom paint colors for 2026 — spa blues, warm earth tones, and dramatic jewel shades. Every pick handles humidity, with finish advice.
+    - generic [ref=e217]:
+      - heading "Side-by-Side Color Comparison" [level=2] [ref=e218]
+      - paragraph [ref=e219]: See how any two colors look next to each other. Get an instant accuracy verdict and find out if a cross-brand match truly works for your space.
+      - link "Try the Compare Tool" [ref=e220] [cursor=pointer]:
+        - /url: /compare
+    - generic [ref=e225]:
+      - heading "Common Questions" [level=2] [ref=e226]
+      - generic [ref=e227]:
+        - generic [ref=e228]:
+          - heading "How does cross-brand color matching work?" [level=3] [ref=e229]
+          - paragraph [ref=e230]: We use the same color-matching formula that professional labs use (CIEDE2000) to find the closest equivalent across brands. Each match comes with an accuracy score — the lower the number, the closer the match. Most of ours score under 2.0, which means the difference is barely noticeable.
+        - generic [ref=e231]:
+          - heading "How much paint do I need?" [level=3] [ref=e232]
+          - paragraph [ref=e233]: The Paint Calculator computes the exact number of gallons needed based on your room dimensions, number of coats, and door/window cutouts. One gallon of paint covers approximately 350–400 square feet.
+        - generic [ref=e234]:
+          - heading "What are paint color undertones?" [level=3] [ref=e235]
+          - paragraph [ref=e236]: Every color has a hidden tint — warm (yellow/pink), cool (blue/gray), or neutral — that shows up under different lighting. All 25,000+ colors in our database are tagged so you can filter by undertone and avoid clashing with your existing trim, flooring, or cabinets.
+      - paragraph [ref=e237]: Color data is based on manufacturer-published digital values (hex, RGB). Actual pigments, finishes, and lighting conditions vary. Always verify with a physical paint sample before purchasing.
+    - contentinfo [ref=e238]:
+      - generic [ref=e239]:
+        - generic [ref=e240]:
+          - generic [ref=e241]: Paint Color HQ
+          - paragraph [ref=e242]: Architectural precision in every hue. Curating 25,000+ colors across 14 brands for modern spaces.
+        - generic [ref=e243]:
+          - heading "Directory" [level=4] [ref=e244]
+          - list [ref=e245]:
+            - listitem [ref=e246]:
+              - link "Sherwin-Williams" [ref=e247] [cursor=pointer]:
+                - /url: /brands/sherwin-williams
+            - listitem [ref=e248]:
+              - link "Benjamin Moore" [ref=e249] [cursor=pointer]:
+                - /url: /brands/benjamin-moore
+            - listitem [ref=e250]:
+              - link "Behr" [ref=e251] [cursor=pointer]:
+                - /url: /brands/behr
+            - listitem [ref=e252]:
+              - link "PPG" [ref=e253] [cursor=pointer]:
+                - /url: /brands/ppg
+            - listitem [ref=e254]:
+              - link "Valspar" [ref=e255] [cursor=pointer]:
+                - /url: /brands/valspar
+            - listitem [ref=e256]:
+              - link "Dunn-Edwards" [ref=e257] [cursor=pointer]:
+                - /url: /brands/dunn-edwards
+            - listitem [ref=e258]:
+              - link "Farrow & Ball" [ref=e259] [cursor=pointer]:
+                - /url: /brands/farrow-ball
+            - listitem [ref=e260]:
+              - link "All 14 Brands" [ref=e261] [cursor=pointer]:
+                - /url: /brands
+        - generic [ref=e262]:
+          - heading "Tools" [level=4] [ref=e263]
+          - list [ref=e264]:
+            - listitem [ref=e265]:
+              - link "Color Search" [ref=e266] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=e267]:
+              - link "Compare Colors" [ref=e268] [cursor=pointer]:
+                - /url: /compare
+            - listitem [ref=e269]:
+              - link "Room Visualizer" [ref=e270] [cursor=pointer]:
+                - /url: /tools/room-visualizer
+            - listitem [ref=e271]:
+              - link "Photo Color Identifier" [ref=e272] [cursor=pointer]:
+                - /url: /tools/color-identifier
+            - listitem [ref=e273]:
+              - link "Palette Generator" [ref=e274] [cursor=pointer]:
+                - /url: /tools/palette-generator
+            - listitem [ref=e275]:
+              - link "Paint Calculator" [ref=e276] [cursor=pointer]:
+                - /url: /tools/paint-calculator
+          - heading "Resources" [level=4] [ref=e277]
+          - list [ref=e278]:
+            - listitem [ref=e279]:
+              - link "Blog" [ref=e280] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e281]:
+              - link "Inspiration Palettes" [ref=e282] [cursor=pointer]:
+                - /url: /inspiration
+            - listitem [ref=e283]:
+              - link "FAQ" [ref=e284] [cursor=pointer]:
+                - /url: /faq
+        - generic [ref=e285]:
+          - heading "Company" [level=4] [ref=e286]
+          - list [ref=e287]:
+            - listitem [ref=e288]:
+              - link "About" [ref=e289] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e290]:
+              - link "Contact" [ref=e291] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e292]:
+              - link "Privacy Policy" [ref=e293] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e294]:
+              - link "Terms of Service" [ref=e295] [cursor=pointer]:
+                - /url: /terms
+          - heading "Color Families" [level=4] [ref=e296]
+          - generic [ref=e297]:
+            - link "White" [ref=e298] [cursor=pointer]:
+              - /url: /colors/family/white
+            - link "Gray" [ref=e299] [cursor=pointer]:
+              - /url: /colors/family/gray
+            - link "Beige" [ref=e300] [cursor=pointer]:
+              - /url: /colors/family/beige
+            - link "Blue" [ref=e301] [cursor=pointer]:
+              - /url: /colors/family/blue
+            - link "Green" [ref=e302] [cursor=pointer]:
+              - /url: /colors/family/green
+            - link "Red" [ref=e303] [cursor=pointer]:
+              - /url: /colors/family/red
+            - link "Yellow" [ref=e304] [cursor=pointer]:
+              - /url: /colors/family/yellow
+            - link "Black" [ref=e305] [cursor=pointer]:
+              - /url: /colors/family/black
+      - paragraph [ref=e307]: © 2026 Paint Color HQ. Color data is approximate. Always verify with physical samples before purchasing.
+  - alert [ref=e308]
+  - generic [ref=e310]:
+    - paragraph [ref=e311]:
+      - text: We use cookies for analytics and to improve your experience. See our
+      - link "Privacy Policy" [ref=e312] [cursor=pointer]:
+        - /url: /privacy
+      - text: .
+    - generic [ref=e313]:
+      - button "Decline" [ref=e314]
+      - button "Accept" [ref=e315]

@@ -1,0 +1,710 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e6] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e7]:
+      - img [ref=e8]
+    - generic [ref=e11]:
+      - button "Open issues overlay" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: "0"
+          - generic [ref=e15]: "1"
+        - generic [ref=e16]: Issue
+      - button "Collapse issues badge" [ref=e17]:
+        - img [ref=e18]
+  - generic [ref=e20]:
+    - banner [ref=e21]:
+      - generic [ref=e22]:
+        - link "Paint Color HQ" [ref=e23] [cursor=pointer]:
+          - /url: /
+          - img "Paint Color HQ" [ref=e24]
+        - navigation [ref=e25]:
+          - link "Brands" [ref=e26] [cursor=pointer]:
+            - /url: /brands
+          - link "Colors" [ref=e27] [cursor=pointer]:
+            - /url: /colors
+          - link "Inspiration" [ref=e28] [cursor=pointer]:
+            - /url: /inspiration
+          - link "Blog" [ref=e29] [cursor=pointer]:
+            - /url: /blog
+          - link "Tools" [ref=e30] [cursor=pointer]:
+            - /url: /tools
+        - generic [ref=e31]:
+          - link "Search colors..." [ref=e32] [cursor=pointer]:
+            - /url: /search
+            - img [ref=e33]
+            - generic [ref=e35]: Search colors...
+          - link "Sign in" [ref=e36] [cursor=pointer]:
+            - /url: /auth/login
+    - generic [ref=e39]:
+      - navigation [ref=e40]:
+        - link "Home" [ref=e41] [cursor=pointer]:
+          - /url: /
+        - text: /
+        - link "Brands" [ref=e42] [cursor=pointer]:
+          - /url: /brands
+        - text: /Behr
+      - generic [ref=e43]: 4,536 Colors · Santa Ana, California, USA
+      - heading "Behr" [level=1] [ref=e44]
+      - paragraph [ref=e45]: Shop all Behr colors from Home Depot — with side-by-side matches to other brands
+      - generic [ref=e46]:
+        - link "Explore Colors" [ref=e47] [cursor=pointer]:
+          - /url: "#colors"
+        - link "Visit Behr →" [ref=e48] [cursor=pointer]:
+          - /url: https://www.behr.com
+          - text: Visit Behr
+          - generic [ref=e49]: →
+    - generic [ref=e51]:
+      - heading "About Behr" [level=2] [ref=e53]
+      - generic [ref=e56]:
+        - paragraph [ref=e57]:
+          - text: Behr is sold exclusively at Home Depot — the only place to buy it — and offers a palette of 3,000+ colors, making it the largest color selection among the "big three" consumer paint brands. Consumer Reports has consistently ranked
+          - strong [ref=e58]: Behr Marquee
+          - text: "at or near the top in blind coverage and durability tests, and Behr's thick, one-coat formulas are specifically designed for DIY homeowners. Price range: $35–$55 per gallon, making Behr the most affordable of the big three (vs. Sherwin-Williams at $55–$85 and Benjamin Moore at $60–$85)."
+        - paragraph [ref=e59]:
+          - text: The most popular Behr paint colors include
+          - link "Silver Drop 790C-2" [ref=e60] [cursor=pointer]:
+            - /url: /colors/behr/silver-drop-790c-2
+          - text: ","
+          - link "Ultra Pure White 1850" [ref=e61] [cursor=pointer]:
+            - /url: /colors/behr/ultra-pure-white-1850
+          - text: ","
+          - link "Cameo White W-D-200" [ref=e62] [cursor=pointer]:
+            - /url: /colors/behr/cameo-white-w-d-200
+          - text: ","
+          - link "Dolphin Fin 790C-3" [ref=e63] [cursor=pointer]:
+            - /url: /colors/behr/dolphin-fin-790c-3
+          - text: ", and"
+          - link "Whisper White W-D-300" [ref=e64] [cursor=pointer]:
+            - /url: /colors/behr/whisper-white-w-d-300
+          - text: . These top sellers are overwhelmingly neutrals and greiges. Use Paint Color HQ's CIEDE2000-based matching to find the closest Sherwin-Williams or Benjamin Moore equivalent for any Behr color, with exact Delta E perceptual distance scores.
+        - paragraph [ref=e65]:
+          - text: Top product lines include
+          - strong [ref=e66]: Dynasty
+          - text: (premium, one-coat, scuff-resistant — $50–$55/gallon),
+          - strong [ref=e67]: Marquee
+          - text: (excellent coverage with stain-blocking technology — $45–$50/gallon),
+          - strong [ref=e68]: Ultra
+          - text: (solid mid-range — $38–$42/gallon), and
+          - strong [ref=e69]: Premium Plus
+          - text: (budget-friendly — $35–$38/gallon). All Behr paints are available in-store at Home Depot's 2,300+ US locations or online at homedepot.com with free delivery on qualifying orders.
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - text: Insights
+          - heading "Behr in The Color Journal" [level=2] [ref=e74]
+        - link "All articles →" [ref=e75] [cursor=pointer]:
+          - /url: /blog
+          - text: All articles
+          - generic [ref=e76]: →
+      - generic [ref=e77]:
+        - link "15 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last) 15 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last) The best nursery paint colors for 2026 — gender-neutral picks from Sherwin-Williams, Benjamin Moore, and Behr that grow with your child." [ref=e78] [cursor=pointer]:
+          - /url: /blog/best-nursery-paint-colors
+          - img "15 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last)" [ref=e80]
+          - heading "15 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last)" [level=3] [ref=e81]
+          - paragraph [ref=e82]: The best nursery paint colors for 2026 — gender-neutral picks from Sherwin-Williams, Benjamin Moore, and Behr that grow with your child.
+        - link "12 Best Behr Paint Colors for Bedrooms (2026 Picks) 12 Best Behr Paint Colors for Bedrooms (2026 Picks) The best Behr bedroom paint colors for 2026 — calming blues, soft greens, and warm neutrals with real pricing and cross-brand matches." [ref=e83] [cursor=pointer]:
+          - /url: /blog/best-behr-colors-for-bedrooms
+          - img "12 Best Behr Paint Colors for Bedrooms (2026 Picks)" [ref=e85]
+          - heading "12 Best Behr Paint Colors for Bedrooms (2026 Picks)" [level=3] [ref=e86]
+          - paragraph [ref=e87]: The best Behr bedroom paint colors for 2026 — calming blues, soft greens, and warm neutrals with real pricing and cross-brand matches.
+        - 'link "Behr vs Sherwin-Williams vs Benjamin Moore: Which Paint Brand Is Best? Behr vs Sherwin-Williams vs Benjamin Moore: Which Paint Brand Is Best? An honest comparison of the three biggest paint brands in America — covering quality, price, color selection, availability, and who each brand is best for." [ref=e88] [cursor=pointer]':
+          - /url: /blog/behr-vs-sherwin-williams-vs-benjamin-moore
+          - 'img "Behr vs Sherwin-Williams vs Benjamin Moore: Which Paint Brand Is Best?" [ref=e90]'
+          - 'heading "Behr vs Sherwin-Williams vs Benjamin Moore: Which Paint Brand Is Best?" [level=3] [ref=e91]'
+          - paragraph [ref=e92]: An honest comparison of the three biggest paint brands in America — covering quality, price, color selection, availability, and who each brand is best for.
+    - generic [ref=e94]:
+      - generic [ref=e96]:
+        - heading "Behr Color Library" [level=2] [ref=e97]
+        - paragraph [ref=e98]: 809 colors in blue.
+      - generic [ref=e99]:
+        - link "All" [ref=e100] [cursor=pointer]:
+          - /url: /brands/behr
+        - link "white" [ref=e101] [cursor=pointer]:
+          - /url: /brands/behr?family=white
+          - text: white
+        - link "off-white" [ref=e103] [cursor=pointer]:
+          - /url: /brands/behr?family=off-white
+          - text: off-white
+        - link "gray" [ref=e105] [cursor=pointer]:
+          - /url: /brands/behr?family=gray
+          - text: gray
+        - link "beige" [ref=e107] [cursor=pointer]:
+          - /url: /brands/behr?family=beige
+          - text: beige
+        - link "neutral" [ref=e109] [cursor=pointer]:
+          - /url: /brands/behr?family=neutral
+          - text: neutral
+        - link "brown" [ref=e111] [cursor=pointer]:
+          - /url: /brands/behr?family=brown
+          - text: brown
+        - link "tan" [ref=e113] [cursor=pointer]:
+          - /url: /brands/behr?family=tan
+          - text: tan
+        - link "red" [ref=e115] [cursor=pointer]:
+          - /url: /brands/behr?family=red
+          - text: red
+        - link "orange" [ref=e117] [cursor=pointer]:
+          - /url: /brands/behr?family=orange
+          - text: orange
+        - link "yellow" [ref=e119] [cursor=pointer]:
+          - /url: /brands/behr?family=yellow
+          - text: yellow
+        - link "green" [ref=e121] [cursor=pointer]:
+          - /url: /brands/behr?family=green
+          - text: green
+        - link "blue" [ref=e123] [cursor=pointer]:
+          - /url: /brands/behr?family=blue
+          - text: blue
+        - link "purple" [ref=e125] [cursor=pointer]:
+          - /url: /brands/behr?family=purple
+          - text: purple
+        - link "pink" [ref=e127] [cursor=pointer]:
+          - /url: /brands/behr?family=pink
+          - text: pink
+        - link "black" [ref=e129] [cursor=pointer]:
+          - /url: /brands/behr?family=black
+          - text: black
+      - generic [ref=e131]:
+        - link "All Undertones" [ref=e132] [cursor=pointer]:
+          - /url: /brands/behr?family=blue
+        - link "warm" [ref=e133] [cursor=pointer]:
+          - /url: /brands/behr?family=blue&undertone=warm
+          - text: warm
+        - link "cool" [ref=e135] [cursor=pointer]:
+          - /url: /brands/behr?family=blue&undertone=cool
+          - text: cool
+        - link "neutral" [ref=e137] [cursor=pointer]:
+          - /url: /brands/behr?family=blue&undertone=neutral
+          - text: neutral
+      - generic [ref=e139]:
+        - 'link "Absolute Zero Behr · N490-1 #CEE3E4" [ref=e140] [cursor=pointer]':
+          - /url: /colors/behr/absolute-zero-n490-1
+          - generic [ref=e142]:
+            - paragraph [ref=e143]: Absolute Zero
+            - paragraph [ref=e145]: Behr · N490-1
+            - paragraph [ref=e147]: "#CEE3E4"
+        - 'link "Academy Purple Behr · 640F-7 #364276" [ref=e148] [cursor=pointer]':
+          - /url: /colors/behr/academy-purple-640f-7
+          - generic [ref=e150]:
+            - paragraph [ref=e151]: Academy Purple
+            - paragraph [ref=e153]: Behr · 640F-7
+            - paragraph [ref=e155]: "#364276"
+        - 'link "Adirondack Blue Behr · N480-5 #6691A0" [ref=e156] [cursor=pointer]':
+          - /url: /colors/behr/adirondack-blue-n480-5
+          - generic [ref=e158]:
+            - paragraph [ref=e159]: Adirondack Blue
+            - paragraph [ref=e161]: Behr · N480-5
+            - paragraph [ref=e163]: "#6691A0"
+        - 'link "Admiral Blue Behr · M520-7 #24519F" [ref=e164] [cursor=pointer]':
+          - /url: /colors/behr/admiral-blue-m520-7
+          - generic [ref=e166]:
+            - paragraph [ref=e167]: Admiral Blue
+            - paragraph [ref=e169]: Behr · M520-7
+            - paragraph [ref=e171]: "#24519F"
+        - 'link "Adonis Behr · MQ4-51 #5FB2BF" [ref=e172] [cursor=pointer]':
+          - /url: /colors/behr/adonis-mq4-51
+          - generic [ref=e174]:
+            - paragraph [ref=e175]: Adonis
+            - paragraph [ref=e177]: Behr · MQ4-51
+            - paragraph [ref=e179]: "#5FB2BF"
+        - 'link "Aegean Blue Behr · BXC-36 #4F929E" [ref=e180] [cursor=pointer]':
+          - /url: /colors/behr/aegean-blue-bxc-36
+          - generic [ref=e182]:
+            - paragraph [ref=e183]: Aegean Blue
+            - paragraph [ref=e185]: Behr · BXC-36
+            - paragraph [ref=e187]: "#4F929E"
+        - 'link "Aerial View Behr · S530-3 #A0C7E3" [ref=e188] [cursor=pointer]':
+          - /url: /colors/behr/aerial-view-s530-3
+          - generic [ref=e190]:
+            - paragraph [ref=e191]: Aerial View
+            - paragraph [ref=e193]: Behr · S530-3
+            - paragraph [ref=e195]: "#A0C7E3"
+        - 'link "After Rain Behr · M520-2 #C7EFF9" [ref=e196] [cursor=pointer]':
+          - /url: /colors/behr/after-rain-m520-2
+          - generic [ref=e198]:
+            - paragraph [ref=e199]: After Rain
+            - paragraph [ref=e201]: Behr · M520-2
+            - paragraph [ref=e203]: "#C7EFF9"
+        - 'link "Aged To Perfection Behr · M100-4 #9F8BD4" [ref=e204] [cursor=pointer]':
+          - /url: /colors/behr/aged-to-perfection-m100-4
+          - generic [ref=e206]:
+            - paragraph [ref=e207]: Aged To Perfection
+            - paragraph [ref=e209]: Behr · M100-4
+            - paragraph [ref=e211]: "#9F8BD4"
+        - 'link "Air Blue Behr · S460-1 #C0F2EC" [ref=e212] [cursor=pointer]':
+          - /url: /colors/behr/air-blue-s460-1
+          - generic [ref=e214]:
+            - paragraph [ref=e215]: Air Blue
+            - paragraph [ref=e217]: Behr · S460-1
+            - paragraph [ref=e219]: "#C0F2EC"
+        - 'link "Air Castle Behr · P560-2 #DED6FF" [ref=e220] [cursor=pointer]':
+          - /url: /colors/behr/air-castle-p560-2
+          - generic [ref=e222]:
+            - paragraph [ref=e223]: Air Castle
+            - paragraph [ref=e225]: Behr · P560-2
+            - paragraph [ref=e227]: "#DED6FF"
+        - 'link "Airy Behr · 550C-1 #DCFBF9" [ref=e228] [cursor=pointer]':
+          - /url: /colors/behr/airy-550c-1
+          - generic [ref=e230]:
+            - paragraph [ref=e231]: Airy
+            - paragraph [ref=e233]: Behr · 550C-1
+            - paragraph [ref=e235]: "#DCFBF9"
+        - 'link "Aloha Behr · MQ4-23 #ABE9DF" [ref=e236] [cursor=pointer]':
+          - /url: /colors/behr/aloha-mq4-23
+          - generic [ref=e238]:
+            - paragraph [ref=e239]: Aloha
+            - paragraph [ref=e241]: Behr · MQ4-23
+            - paragraph [ref=e243]: "#ABE9DF"
+        - 'link "Alpha Blue Behr · M520-5 #4FA2DE" [ref=e244] [cursor=pointer]':
+          - /url: /colors/behr/alpha-blue-m520-5
+          - generic [ref=e246]:
+            - paragraph [ref=e247]: Alpha Blue
+            - paragraph [ref=e249]: Behr · M520-5
+            - paragraph [ref=e251]: "#4FA2DE"
+        - 'link "American Anthem Behr · 580B-7 #1F63CA" [ref=e252] [cursor=pointer]':
+          - /url: /colors/behr/american-anthem-580b-7
+          - generic [ref=e254]:
+            - paragraph [ref=e255]: American Anthem
+            - paragraph [ref=e257]: Behr · 580B-7
+            - paragraph [ref=e259]: "#1F63CA"
+        - 'link "Americana Behr · 570D-5 #5B98C1" [ref=e260] [cursor=pointer]':
+          - /url: /colors/behr/americana-570d-5
+          - generic [ref=e262]:
+            - paragraph [ref=e263]: Americana
+            - paragraph [ref=e265]: Behr · 570D-5
+            - paragraph [ref=e267]: "#5B98C1"
+        - 'link "Amethyst Cream Behr · 630A-1 #EFF0FB" [ref=e268] [cursor=pointer]':
+          - /url: /colors/behr/amethyst-cream-630a-1
+          - generic [ref=e270]:
+            - paragraph [ref=e271]: Amethyst Cream
+            - paragraph [ref=e273]: Behr · 630A-1
+            - paragraph [ref=e275]: "#EFF0FB"
+        - 'link "Amethyst Phlox Behr · 660F-5 #9396BE" [ref=e276] [cursor=pointer]':
+          - /url: /colors/behr/amethyst-phlox-660f-5
+          - generic [ref=e278]:
+            - paragraph [ref=e279]: Amethyst Phlox
+            - paragraph [ref=e281]: Behr · 660F-5
+            - paragraph [ref=e283]: "#9396BE"
+        - 'link "Ancestry Violet Behr · S100-4 #9792CC" [ref=e284] [cursor=pointer]':
+          - /url: /colors/behr/ancestry-violet-s100-4
+          - generic [ref=e286]:
+            - paragraph [ref=e287]: Ancestry Violet
+            - paragraph [ref=e289]: Behr · S100-4
+            - paragraph [ref=e291]: "#9792CC"
+        - 'link "Anemone Behr · 590B-4 #9BC2FC" [ref=e292] [cursor=pointer]':
+          - /url: /colors/behr/anemone-590b-4
+          - generic [ref=e294]:
+            - paragraph [ref=e295]: Anemone
+            - paragraph [ref=e297]: Behr · 590B-4
+            - paragraph [ref=e299]: "#9BC2FC"
+        - 'link "Angelic Blue Behr · M540-2 #D3E9FA" [ref=e300] [cursor=pointer]':
+          - /url: /colors/behr/angelic-blue-m540-2
+          - generic [ref=e302]:
+            - paragraph [ref=e303]: Angelic Blue
+            - paragraph [ref=e305]: Behr · M540-2
+            - paragraph [ref=e307]: "#D3E9FA"
+        - 'link "Antigua Behr · M460-7 #1F7E70" [ref=e308] [cursor=pointer]':
+          - /url: /colors/behr/antigua-m460-7
+          - generic [ref=e310]:
+            - paragraph [ref=e311]: Antigua
+            - paragraph [ref=e313]: Behr · M460-7
+            - paragraph [ref=e315]: "#1F7E70"
+        - 'link "Aqua Gray Behr · BNC-18 #80B4B3" [ref=e316] [cursor=pointer]':
+          - /url: /colors/behr/aqua-gray-bnc-18
+          - generic [ref=e318]:
+            - paragraph [ref=e319]: Aqua Gray
+            - paragraph [ref=e321]: Behr · BNC-18
+            - paragraph [ref=e323]: "#80B4B3"
+        - 'link "Aqua Revival Behr · HDC-WR15-9 #51A093" [ref=e324] [cursor=pointer]':
+          - /url: /colors/behr/aqua-revival-hdc-wr15-9
+          - generic [ref=e326]:
+            - paragraph [ref=e327]: Aqua Revival
+            - paragraph [ref=e329]: Behr · HDC-WR15-9
+            - paragraph [ref=e331]: "#51A093"
+        - 'link "Aquifer Behr · MQ6-8 #98C4C5" [ref=e332] [cursor=pointer]':
+          - /url: /colors/behr/aquifer-mq6-8
+          - generic [ref=e334]:
+            - paragraph [ref=e335]: Aquifer
+            - paragraph [ref=e337]: Behr · MQ6-8
+            - paragraph [ref=e339]: "#98C4C5"
+        - 'link "Arctic Shadow Behr · 570C-1 #DDF1FA" [ref=e340] [cursor=pointer]':
+          - /url: /colors/behr/arctic-shadow-570c-1
+          - generic [ref=e342]:
+            - paragraph [ref=e343]: Arctic Shadow
+            - paragraph [ref=e345]: Behr · 570C-1
+            - paragraph [ref=e347]: "#DDF1FA"
+        - 'link "Arrowhead Lake Behr · PPU14-01 #57728B" [ref=e348] [cursor=pointer]':
+          - /url: /colors/behr/arrowhead-lake-ppu14-01
+          - generic [ref=e350]:
+            - paragraph [ref=e351]: Arrowhead Lake
+            - paragraph [ref=e353]: Behr · PPU14-01
+            - paragraph [ref=e355]: "#57728B"
+        - 'link "Artesian Water Behr · S-G-550 #2591EF" [ref=e356] [cursor=pointer]':
+          - /url: /colors/behr/artesian-water-s-g-550
+          - generic [ref=e358]:
+            - paragraph [ref=e359]: Artesian Water
+            - paragraph [ref=e361]: Behr · S-G-550
+            - paragraph [ref=e363]: "#2591EF"
+        - 'link "Artistic Violet Behr · P550-2 #D6DDFF" [ref=e364] [cursor=pointer]':
+          - /url: /colors/behr/artistic-violet-p550-2
+          - generic [ref=e366]:
+            - paragraph [ref=e367]: Artistic Violet
+            - paragraph [ref=e369]: Behr · P550-2
+            - paragraph [ref=e371]: "#D6DDFF"
+        - 'link "Aruba Blue Behr · P480-6 #29ABB4" [ref=e372] [cursor=pointer]':
+          - /url: /colors/behr/aruba-blue-p480-6
+          - generic [ref=e374]:
+            - paragraph [ref=e375]: Aruba Blue
+            - paragraph [ref=e377]: Behr · P480-6
+            - paragraph [ref=e379]: "#29ABB4"
+        - 'link "Ash Violet Behr · 640F-5 #8D9CBE" [ref=e380] [cursor=pointer]':
+          - /url: /colors/behr/ash-violet-640f-5
+          - generic [ref=e382]:
+            - paragraph [ref=e383]: Ash Violet
+            - paragraph [ref=e385]: Behr · 640F-5
+            - paragraph [ref=e387]: "#8D9CBE"
+        - 'link "Ash White Behr · W-F-520 #E2EDEC" [ref=e388] [cursor=pointer]':
+          - /url: /colors/behr/ash-white-w-f-520
+          - generic [ref=e390]:
+            - paragraph [ref=e391]: Ash White
+            - paragraph [ref=e393]: Behr · W-F-520
+            - paragraph [ref=e395]: "#E2EDEC"
+        - 'link "Ashberry Behr · N550-4 #9CA9BE" [ref=e396] [cursor=pointer]':
+          - /url: /colors/behr/ashberry-n550-4
+          - generic [ref=e398]:
+            - paragraph [ref=e399]: Ashberry
+            - paragraph [ref=e401]: Behr · N550-4
+            - paragraph [ref=e403]: "#9CA9BE"
+        - 'link "Atlantic Blue Behr · 600F-6 #4D70A5" [ref=e404] [cursor=pointer]':
+          - /url: /colors/behr/atlantic-blue-600f-6
+          - generic [ref=e406]:
+            - paragraph [ref=e407]: Atlantic Blue
+            - paragraph [ref=e409]: Behr · 600F-6
+            - paragraph [ref=e411]: "#4D70A5"
+        - 'link "Atlantic Tide Behr · BXC-24 #28517F" [ref=e412] [cursor=pointer]':
+          - /url: /colors/behr/atlantic-tide-bxc-24
+          - generic [ref=e414]:
+            - paragraph [ref=e415]: Atlantic Tide
+            - paragraph [ref=e417]: Behr · BXC-24
+            - paragraph [ref=e419]: "#28517F"
+        - 'link "Atlantic Tulip Behr · 660B-5 #B491FB" [ref=e420] [cursor=pointer]':
+          - /url: /colors/behr/atlantic-tulip-660b-5
+          - generic [ref=e422]:
+            - paragraph [ref=e423]: Atlantic Tulip
+            - paragraph [ref=e425]: Behr · 660B-5
+            - paragraph [ref=e427]: "#B491FB"
+        - 'link "Atmosphere Behr · QE-51 #89ADBD" [ref=e428] [cursor=pointer]':
+          - /url: /colors/behr/atmosphere-qe-51
+          - generic [ref=e430]:
+            - paragraph [ref=e431]: Atmosphere
+            - paragraph [ref=e433]: Behr · QE-51
+            - paragraph [ref=e435]: "#89ADBD"
+        - 'link "Aurora Splendor Behr · PPU16-01 #585683" [ref=e436] [cursor=pointer]':
+          - /url: /colors/behr/aurora-splendor-ppu16-01
+          - generic [ref=e438]:
+            - paragraph [ref=e439]: Aurora Splendor
+            - paragraph [ref=e441]: Behr · PPU16-01
+            - paragraph [ref=e443]: "#585683"
+        - 'link "Award Blue Behr · 590B-7 #1444B7" [ref=e444] [cursor=pointer]':
+          - /url: /colors/behr/award-blue-590b-7
+          - generic [ref=e446]:
+            - paragraph [ref=e447]: Award Blue
+            - paragraph [ref=e449]: Behr · 590B-7
+            - paragraph [ref=e451]: "#1444B7"
+        - 'link "Award Night Behr · MQ5-15 #556181" [ref=e452] [cursor=pointer]':
+          - /url: /colors/behr/award-night-mq5-15
+          - generic [ref=e454]:
+            - paragraph [ref=e455]: Award Night
+            - paragraph [ref=e457]: Behr · MQ5-15
+            - paragraph [ref=e459]: "#556181"
+        - 'link "Aztec Sky Behr · P490-4 #5DE9EC" [ref=e460] [cursor=pointer]':
+          - /url: /colors/behr/aztec-sky-p490-4
+          - generic [ref=e462]:
+            - paragraph [ref=e463]: Aztec Sky
+            - paragraph [ref=e465]: Behr · P490-4
+            - paragraph [ref=e467]: "#5DE9EC"
+        - 'link "Azurean Behr · 530B-5 #67ECEA" [ref=e468] [cursor=pointer]':
+          - /url: /colors/behr/azurean-530b-5
+          - generic [ref=e470]:
+            - paragraph [ref=e471]: Azurean
+            - paragraph [ref=e473]: Behr · 530B-5
+            - paragraph [ref=e475]: "#67ECEA"
+        - 'link "Babbling Brook Behr · 600D-5 #759DDC" [ref=e476] [cursor=pointer]':
+          - /url: /colors/behr/babbling-brook-600d-5
+          - generic [ref=e478]:
+            - paragraph [ref=e479]: Babbling Brook
+            - paragraph [ref=e481]: Behr · 600D-5
+            - paragraph [ref=e483]: "#759DDC"
+        - 'link "Balboa Behr · MQ4-55 #ABD0D9" [ref=e484] [cursor=pointer]':
+          - /url: /colors/behr/balboa-mq4-55
+          - generic [ref=e486]:
+            - paragraph [ref=e487]: Balboa
+            - paragraph [ref=e489]: Behr · MQ4-55
+            - paragraph [ref=e491]: "#ABD0D9"
+        - 'link "Bali Bliss Behr · PPU13-05 #5E9EA1" [ref=e492] [cursor=pointer]':
+          - /url: /colors/behr/bali-bliss-ppu13-05
+          - generic [ref=e494]:
+            - paragraph [ref=e495]: Bali Bliss
+            - paragraph [ref=e497]: Behr · PPU13-05
+            - paragraph [ref=e499]: "#5E9EA1"
+        - 'link "Ballroom Blue Behr · PPU15-14 #A6B3CA" [ref=e500] [cursor=pointer]':
+          - /url: /colors/behr/ballroom-blue-ppu15-14
+          - generic [ref=e502]:
+            - paragraph [ref=e503]: Ballroom Blue
+            - paragraph [ref=e505]: Behr · PPU15-14
+            - paragraph [ref=e507]: "#A6B3CA"
+        - 'link "Baltic Blue Behr · HDC-FL13-6 #5179AB" [ref=e508] [cursor=pointer]':
+          - /url: /colors/behr/baltic-blue-hdc-fl13-6
+          - generic [ref=e510]:
+            - paragraph [ref=e511]: Baltic Blue
+            - paragraph [ref=e513]: Behr · HDC-FL13-6
+            - paragraph [ref=e515]: "#5179AB"
+        - 'link "Bayou Behr · 570B-4 #8FD0FC" [ref=e516] [cursor=pointer]':
+          - /url: /colors/behr/bayou-570b-4
+          - generic [ref=e518]:
+            - paragraph [ref=e519]: Bayou
+            - paragraph [ref=e521]: Behr · 570B-4
+            - paragraph [ref=e523]: "#8FD0FC"
+        - 'link "Bayside Behr · 510F-5 #61A89F" [ref=e524] [cursor=pointer]':
+          - /url: /colors/behr/bayside-510f-5
+          - generic [ref=e526]:
+            - paragraph [ref=e527]: Bayside
+            - paragraph [ref=e529]: Behr · 510F-5
+            - paragraph [ref=e531]: "#61A89F"
+        - 'link "Beach Towel Behr · S-G-510 #1D9186" [ref=e532] [cursor=pointer]':
+          - /url: /colors/behr/beach-towel-s-g-510
+          - generic [ref=e534]:
+            - paragraph [ref=e535]: Beach Towel
+            - paragraph [ref=e537]: Behr · S-G-510
+            - paragraph [ref=e539]: "#1D9186"
+        - 'link "Beacon Blue Behr · P510-7 #1350DE" [ref=e540] [cursor=pointer]':
+          - /url: /colors/behr/beacon-blue-p510-7
+          - generic [ref=e542]:
+            - paragraph [ref=e543]: Beacon Blue
+            - paragraph [ref=e545]: Behr · P510-7
+            - paragraph [ref=e547]: "#1350DE"
+        - 'link "Beautiful Dream Behr · 590A-3 #B7D6FD" [ref=e548] [cursor=pointer]':
+          - /url: /colors/behr/beautiful-dream-590a-3
+          - generic [ref=e550]:
+            - paragraph [ref=e551]: Beautiful Dream
+            - paragraph [ref=e553]: Behr · 590A-3
+            - paragraph [ref=e555]: "#B7D6FD"
+        - 'link "Bellflower Behr · 610D-4 #A1BFE7" [ref=e556] [cursor=pointer]':
+          - /url: /colors/behr/bellflower-610d-4
+          - generic [ref=e558]:
+            - paragraph [ref=e559]: Bellflower
+            - paragraph [ref=e561]: Behr · 610D-4
+            - paragraph [ref=e563]: "#A1BFE7"
+        - 'link "Bellflower Blue Behr · M540-1 #E6F4FA" [ref=e564] [cursor=pointer]':
+          - /url: /colors/behr/bellflower-blue-m540-1
+          - generic [ref=e566]:
+            - paragraph [ref=e567]: Bellflower Blue
+            - paragraph [ref=e569]: Behr · M540-1
+            - paragraph [ref=e571]: "#E6F4FA"
+        - 'link "Below Zero Behr · M480-4 #7AE0DC" [ref=e572] [cursor=pointer]':
+          - /url: /colors/behr/below-zero-m480-4
+          - generic [ref=e574]:
+            - paragraph [ref=e575]: Below Zero
+            - paragraph [ref=e577]: Behr · M480-4
+            - paragraph [ref=e579]: "#7AE0DC"
+        - 'link "Bengal Blue Behr · M480-3 #A7F1EB" [ref=e580] [cursor=pointer]':
+          - /url: /colors/behr/bengal-blue-m480-3
+          - generic [ref=e582]:
+            - paragraph [ref=e583]: Bengal Blue
+            - paragraph [ref=e585]: Behr · M480-3
+            - paragraph [ref=e587]: "#A7F1EB"
+        - 'link "Bering Wave Behr · S490-6 #2C759A" [ref=e588] [cursor=pointer]':
+          - /url: /colors/behr/bering-wave-s490-6
+          - generic [ref=e590]:
+            - paragraph [ref=e591]: Bering Wave
+            - paragraph [ref=e593]: Behr · S490-6
+            - paragraph [ref=e595]: "#2C759A"
+        - 'link "Bermudan Blue Behr · PPU13-18 #376171" [ref=e596] [cursor=pointer]':
+          - /url: /colors/behr/bermudan-blue-ppu13-18
+          - generic [ref=e598]:
+            - paragraph [ref=e599]: Bermudan Blue
+            - paragraph [ref=e601]: Behr · PPU13-18
+            - paragraph [ref=e603]: "#376171"
+        - 'link "Berry Charm Behr · S-H-650 #322F7A" [ref=e604] [cursor=pointer]':
+          - /url: /colors/behr/berry-charm-s-h-650
+          - generic [ref=e606]:
+            - paragraph [ref=e607]: Berry Charm
+            - paragraph [ref=e609]: Behr · S-H-650
+            - paragraph [ref=e611]: "#322F7A"
+        - 'link "Berry Jam Behr · 640B-7 #4940B6" [ref=e612] [cursor=pointer]':
+          - /url: /colors/behr/berry-jam-640b-7
+          - generic [ref=e614]:
+            - paragraph [ref=e615]: Berry Jam
+            - paragraph [ref=e617]: Behr · 640B-7
+            - paragraph [ref=e619]: "#4940B6"
+      - navigation [ref=e620]:
+        - link "1" [ref=e621] [cursor=pointer]:
+          - /url: /brands/behr?family=blue
+        - link "2" [ref=e622] [cursor=pointer]:
+          - /url: /brands/behr?family=blue&page=2
+        - generic [ref=e623]: ...
+        - link "14" [ref=e624] [cursor=pointer]:
+          - /url: /brands/behr?family=blue&page=14
+        - link "Next" [ref=e625] [cursor=pointer]:
+          - /url: /brands/behr?family=blue&page=2
+    - generic [ref=e629]:
+      - heading "Popular Behr Colors" [level=2] [ref=e630]
+      - paragraph [ref=e631]:
+        - text: "Explore Behr's most loved color families:"
+        - link "grays" [ref=e632] [cursor=pointer]:
+          - /url: /colors/family/gray
+        - text: ","
+        - link "whites" [ref=e633] [cursor=pointer]:
+          - /url: /colors/family/white
+        - text: ", and"
+        - link "beiges" [ref=e634] [cursor=pointer]:
+          - /url: /colors/family/beige
+        - text: are the top sellers. For a full comparison of the big three brands, read our
+        - link "Behr vs SW vs BM guide" [ref=e635] [cursor=pointer]:
+          - /url: /blog/behr-vs-sherwin-williams-vs-benjamin-moore
+        - text: . Preview any Behr color in your room with our
+        - link "room visualizer" [ref=e636] [cursor=pointer]:
+          - /url: /tools/room-visualizer
+        - text: ", or use the"
+        - link "compare tool" [ref=e637] [cursor=pointer]:
+          - /url: /compare
+        - text: to find the closest match from Sherwin-Williams, Benjamin Moore, and 11 other brands.
+    - generic [ref=e639]:
+      - heading "Cross-Brand Matching" [level=2] [ref=e640]
+      - paragraph [ref=e641]: Find equivalent colors from Behr in other major paint brands.
+      - generic [ref=e642]:
+        - link "Behr to Sherwin-Williams View equivalent colors Explore →" [ref=e643] [cursor=pointer]:
+          - /url: /match/behr/to/sherwin-williams
+          - heading "Behr to Sherwin-Williams" [level=3] [ref=e644]
+          - paragraph [ref=e645]: View equivalent colors
+          - generic [ref=e646]:
+            - text: Explore
+            - generic [ref=e647]: →
+        - link "Behr to Benjamin Moore View equivalent colors Explore →" [ref=e648] [cursor=pointer]:
+          - /url: /match/behr/to/benjamin-moore
+          - heading "Behr to Benjamin Moore" [level=3] [ref=e649]
+          - paragraph [ref=e650]: View equivalent colors
+          - generic [ref=e651]:
+            - text: Explore
+            - generic [ref=e652]: →
+        - link "Behr to PPG View equivalent colors Explore →" [ref=e653] [cursor=pointer]:
+          - /url: /match/behr/to/ppg
+          - heading "Behr to PPG" [level=3] [ref=e654]
+          - paragraph [ref=e655]: View equivalent colors
+          - generic [ref=e656]:
+            - text: Explore
+            - generic [ref=e657]: →
+        - link "Behr to Valspar View equivalent colors Explore →" [ref=e658] [cursor=pointer]:
+          - /url: /match/behr/to/valspar
+          - heading "Behr to Valspar" [level=3] [ref=e659]
+          - paragraph [ref=e660]: View equivalent colors
+          - generic [ref=e661]:
+            - text: Explore
+            - generic [ref=e662]: →
+    - contentinfo [ref=e663]:
+      - generic [ref=e664]:
+        - generic [ref=e665]:
+          - generic [ref=e666]: Paint Color HQ
+          - paragraph [ref=e667]: Architectural precision in every hue. Curating 25,000+ colors across 14 brands for modern spaces.
+        - generic [ref=e668]:
+          - heading "Directory" [level=4] [ref=e669]
+          - list [ref=e670]:
+            - listitem [ref=e671]:
+              - link "Sherwin-Williams" [ref=e672] [cursor=pointer]:
+                - /url: /brands/sherwin-williams
+            - listitem [ref=e673]:
+              - link "Benjamin Moore" [ref=e674] [cursor=pointer]:
+                - /url: /brands/benjamin-moore
+            - listitem [ref=e675]:
+              - link "Behr" [ref=e676] [cursor=pointer]:
+                - /url: /brands/behr
+            - listitem [ref=e677]:
+              - link "PPG" [ref=e678] [cursor=pointer]:
+                - /url: /brands/ppg
+            - listitem [ref=e679]:
+              - link "Valspar" [ref=e680] [cursor=pointer]:
+                - /url: /brands/valspar
+            - listitem [ref=e681]:
+              - link "Dunn-Edwards" [ref=e682] [cursor=pointer]:
+                - /url: /brands/dunn-edwards
+            - listitem [ref=e683]:
+              - link "Farrow & Ball" [ref=e684] [cursor=pointer]:
+                - /url: /brands/farrow-ball
+            - listitem [ref=e685]:
+              - link "All 14 Brands" [ref=e686] [cursor=pointer]:
+                - /url: /brands
+        - generic [ref=e687]:
+          - heading "Tools" [level=4] [ref=e688]
+          - list [ref=e689]:
+            - listitem [ref=e690]:
+              - link "Color Search" [ref=e691] [cursor=pointer]:
+                - /url: /search
+            - listitem [ref=e692]:
+              - link "Compare Colors" [ref=e693] [cursor=pointer]:
+                - /url: /compare
+            - listitem [ref=e694]:
+              - link "Room Visualizer" [ref=e695] [cursor=pointer]:
+                - /url: /tools/room-visualizer
+            - listitem [ref=e696]:
+              - link "Photo Color Identifier" [ref=e697] [cursor=pointer]:
+                - /url: /tools/color-identifier
+            - listitem [ref=e698]:
+              - link "Palette Generator" [ref=e699] [cursor=pointer]:
+                - /url: /tools/palette-generator
+            - listitem [ref=e700]:
+              - link "Paint Calculator" [ref=e701] [cursor=pointer]:
+                - /url: /tools/paint-calculator
+          - heading "Resources" [level=4] [ref=e702]
+          - list [ref=e703]:
+            - listitem [ref=e704]:
+              - link "Blog" [ref=e705] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e706]:
+              - link "Inspiration Palettes" [ref=e707] [cursor=pointer]:
+                - /url: /inspiration
+            - listitem [ref=e708]:
+              - link "FAQ" [ref=e709] [cursor=pointer]:
+                - /url: /faq
+        - generic [ref=e710]:
+          - heading "Company" [level=4] [ref=e711]
+          - list [ref=e712]:
+            - listitem [ref=e713]:
+              - link "About" [ref=e714] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e715]:
+              - link "Contact" [ref=e716] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e717]:
+              - link "Privacy Policy" [ref=e718] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e719]:
+              - link "Terms of Service" [ref=e720] [cursor=pointer]:
+                - /url: /terms
+          - heading "Color Families" [level=4] [ref=e721]
+          - generic [ref=e722]:
+            - link "White" [ref=e723] [cursor=pointer]:
+              - /url: /colors/family/white
+            - link "Gray" [ref=e724] [cursor=pointer]:
+              - /url: /colors/family/gray
+            - link "Beige" [ref=e725] [cursor=pointer]:
+              - /url: /colors/family/beige
+            - link "Blue" [ref=e726] [cursor=pointer]:
+              - /url: /colors/family/blue
+            - link "Green" [ref=e727] [cursor=pointer]:
+              - /url: /colors/family/green
+            - link "Red" [ref=e728] [cursor=pointer]:
+              - /url: /colors/family/red
+            - link "Yellow" [ref=e729] [cursor=pointer]:
+              - /url: /colors/family/yellow
+            - link "Black" [ref=e730] [cursor=pointer]:
+              - /url: /colors/family/black
+      - paragraph [ref=e732]: © 2026 Paint Color HQ. Color data is approximate. Always verify with physical samples before purchasing.
+  - alert [ref=e733]
+  - generic [ref=e735]:
+    - paragraph [ref=e736]:
+      - text: We use cookies for analytics and to improve your experience. See our
+      - link "Privacy Policy" [ref=e737] [cursor=pointer]:
+        - /url: /privacy
+      - text: .
+    - generic [ref=e738]:
+      - button "Decline" [ref=e739]
+      - button "Accept" [ref=e740]

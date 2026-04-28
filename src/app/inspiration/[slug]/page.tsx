@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BrandPicker } from "@/components/brand-picker";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
+import { PinterestSaveButton } from "@/components/pinterest-save-button";
 import { getPaletteBySlug, assignPaletteRoles, inspirationPalettes } from "@/lib/palettes";
 import { getAllBrands, findClosestColor, getBrandBySlug } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
@@ -84,6 +85,19 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
   const currentPath = brandSlug ? `/inspiration/${slug}?brand=${brandSlug}` : `/inspiration/${slug}`;
   const projectColors = swatches.filter((s) => s.match).map((s) => ({ colorId: s.match!.id, role: s.role.toLowerCase() }));
 
+  // Pinterest pin metadata. Use the matched colors when available (so the
+  // pin shows real paint hexes), falling back to palette source hexes.
+  const pinSwatchPairs = swatches
+    .map((s) => `${(s.match?.hex ?? s.paletteHex).toLowerCase()}:${s.role}`)
+    .join(",");
+  const pinPaletteParams = new URLSearchParams({
+    name: palette.name,
+    description: palette.description,
+    colors: pinSwatchPairs,
+  });
+  const palettePinImageUrl = `https://www.paintcolorhq.com/api/pin/palette?${pinPaletteParams.toString()}`;
+  const palettePinDescription = `${palette.name} — ${palette.description} 5-color paint palette with cross-brand matches at PaintColorHQ.com #paintpalette #colorpalette #${palette.slug.replace(/-/g, "")}`;
+
   const vizUrl = (() => {
     const roleToParam: Record<string, string> = { walls: "walls", trim: "trim", accent: "accent" };
     const collected: Record<string, string[]> = {};
@@ -105,6 +119,17 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
 
   return (
     <div className="min-h-screen bg-surface">
+      {/* Pinterest pin trigger — hidden, picked up by the Save extension */}
+      <img
+        src={palettePinImageUrl}
+        data-pin-media={palettePinImageUrl}
+        data-pin-description={palettePinDescription}
+        alt={`${palette.name} 5-color paint palette`}
+        width={1000}
+        height={1500}
+        loading="lazy"
+        style={{ position: "absolute", left: "-99999px", width: 1, height: 1, opacity: 0 }}
+      />
       <Header />
 
       <JsonLd data={{
@@ -168,6 +193,11 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
           <div className="flex flex-wrap items-center gap-3">
             <BrandPicker brands={brands.map((b) => ({ slug: b.slug, name: b.name }))} currentBrand={brandSlug ?? null} slug={slug} />
             {projectColors.length > 0 && <AddPaletteToProject colors={projectColors} currentPath={currentPath} />}
+            <PinterestSaveButton
+              pageUrl={`/inspiration/${slug}`}
+              mediaUrl={palettePinImageUrl}
+              description={palettePinDescription}
+            />
             {vizUrl && (
               <Link href={vizUrl} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20">
                 Visualize in Room
