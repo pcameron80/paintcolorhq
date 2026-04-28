@@ -1,6 +1,0 @@
-[     112ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/a0e14_next_dist_bcdd65cb._.js:2384
-[     139ms] [LOG] [Fast Refresh] done in 127ms @ http://localhost:3001/_next/static/chunks/a0e14_next_dist_bcdd65cb._.js:2384
-[     239ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/a0e14_next_dist_bcdd65cb._.js:2384
-[     251ms] [LOG] [HMR] connected @ http://localhost:3001/_next/static/chunks/a0e14_next_dist_bcdd65cb._.js:2384
-[     302ms] [WARNING] Image with src "/blog/paint-color-trends-2026.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading @ http://localhost:3001/_next/static/chunks/a0e14_next_dist_bcdd65cb._.js:2384

@@ -1,9 +1,0 @@
-[     662ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.behr.com/'https://mascocg.my.site.com/ESWEnhancedChat1767201575626/assets/js/bootstrap.min.js:0
-[    1217ms] [ERROR] Refused to execute script from 'https://www.behr.com/'https://mascocg.my.site.com/ESWEnhancedChat1767201575626/assets/js/bootstrap.min.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ https://www.behr.com/consumer/colors/paint-colors/:0
-[    2030ms] [WARNING] reCAPTCHA couldn't find user-provided function: onloadCallbackRecaptcha @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKCyjBw2xIzFLIf/recaptcha__en.js:67
-[    2641ms] [ERROR] Attestation check for Attribution Reporting on https://ara.paa-reporting-advertising.amazon failed. @ https://www.behr.com/consumer/colors/paint-colors/:0
-[    2641ms] [ERROR] Attestation check for Shared Storage on https://ara.paa-reporting-advertising.amazon failed. @ https://www.behr.com/consumer/colors/paint-colors/:0
-[    2925ms] [ERROR] Attestation check for Attribution Reporting on https://www.google-analytics.com failed. @ https://www.behr.com/consumer/colors/paint-colors/:0
-[    3464ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://www.behr.com/consumer/colors/paint-colors/:0
-[    4365ms] [ERROR] Error occurred: Pf @ https://www.behr.com/webfiles/latest/js/behr/colorsmart/v19/main.js:20
-[    4383ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://www.behr.com/consumer/colors/paint-colors:0
