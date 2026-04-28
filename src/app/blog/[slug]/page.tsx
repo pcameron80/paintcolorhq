@@ -9,6 +9,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 import { TableOfContents } from "@/components/table-of-contents";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
+import { PinterestSaveButton } from "@/components/pinterest-save-button";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -60,8 +61,33 @@ export default async function BlogPostPage({ params }: PageProps) {
   const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
   const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 
+  // Pinterest pin metadata — generates a 1000×1500 vertical pin image for
+  // the post and surfaces it via data-pin-media + a visible Save button.
+  const pinParams = new URLSearchParams({ title: post.title });
+  if (post.coverImage) pinParams.set("cover", post.coverImage);
+  if (post.coverColor) pinParams.set("color", post.coverColor);
+  if (post.tags[0]) pinParams.set("tag", post.tags[0]);
+  const blogPinImageUrl = `https://www.paintcolorhq.com/api/pin/blog?${pinParams.toString()}`;
+  const tagHashtags = post.tags
+    .slice(0, 4)
+    .map((t) => `#${t.toLowerCase().replace(/[^a-z0-9]/g, "")}`)
+    .filter(Boolean)
+    .join(" ");
+  const blogPinDescription = `${post.excerpt} Read at PaintColorHQ.com ${tagHashtags}`;
+
   return (
     <div className="min-h-screen bg-surface">
+      {/* Pinterest pin trigger — hidden, picked up by the Save extension */}
+      <img
+        src={blogPinImageUrl}
+        data-pin-media={blogPinImageUrl}
+        data-pin-description={blogPinDescription}
+        alt={post.title}
+        width={1000}
+        height={1500}
+        loading="lazy"
+        style={{ position: "absolute", left: "-99999px", width: 1, height: 1, opacity: 0 }}
+      />
       <Header />
 
       {/* Hero image or color bar */}
@@ -96,10 +122,16 @@ export default async function BlogPostPage({ params }: PageProps) {
               {post.title}
             </h1>
 
-            <div className="mt-4 flex items-center gap-3 text-sm text-outline">
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-outline">
               <time dateTime={post.date}>{formatDate(post.date)}</time>
               <div className="bg-surface-container-high h-1 w-4" />
               <Link href="/authors/paint-color-hq-staff" className="hover:text-primary transition-colors">{post.author}</Link>
+              <div className="bg-surface-container-high h-1 w-4" />
+              <PinterestSaveButton
+                pageUrl={`/blog/${slug}`}
+                mediaUrl={blogPinImageUrl}
+                description={blogPinDescription}
+              />
             </div>
 
             <div id="blog-content" className="prose prose-gray max-w-none mt-10 text-on-surface-variant leading-relaxed">
