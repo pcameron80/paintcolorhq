@@ -18,7 +18,6 @@
 
 import { NextResponse } from "next/server";
 import {
-  refreshAccessToken,
   createPin,
   PINTEREST_BOARDS,
   type PinterestPinSpec,
@@ -60,12 +59,14 @@ export async function GET(req: Request) {
   const queue = getQueue();
   const selected = selectForRun(queue, count, dayOffset);
 
-  let accessToken: string;
-  try {
-    accessToken = await refreshAccessToken();
-  } catch (err) {
+  // Use access token directly until we add Supabase-backed token persistence.
+  // Pinterest refresh tokens are single-use and rotate on every refresh —
+  // refreshing on every cron call without persisting the new token breaks
+  // the next call. The access_token alone is good for 30 days from issuance.
+  const accessToken = process.env.PINTEREST_ACCESS_TOKEN;
+  if (!accessToken) {
     return NextResponse.json(
-      { ok: false, stage: "refresh", error: String(err) },
+      { ok: false, stage: "auth", error: "PINTEREST_ACCESS_TOKEN env var not set" },
       { status: 500 },
     );
   }
