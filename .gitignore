@@ -37,6 +37,16 @@ yarn-error.log*
 # vercel
 .vercel
 
+# debug artifacts kept locally only
+.playwright-mcp/
+*.bak
+/stitch_palette_visualizer/
+
+# loose screenshots / scratch in repo root
+/*.png
+/*.jpg
+/*.jpeg
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
