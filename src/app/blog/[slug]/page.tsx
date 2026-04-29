@@ -61,13 +61,18 @@ export default async function BlogPostPage({ params }: PageProps) {
   const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
   const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 
-  // Pinterest pin metadata — generates a 1000×1500 vertical pin image for
-  // the post and surfaces it via data-pin-media + a visible Save button.
-  const pinParams = new URLSearchParams({ title: post.title });
-  if (post.coverImage) pinParams.set("cover", post.coverImage);
-  if (post.coverColor) pinParams.set("color", post.coverColor);
-  if (post.tags[0]) pinParams.set("tag", post.tags[0]);
-  const blogPinImageUrl = `https://www.paintcolorhq.com/api/pin/blog?${pinParams.toString()}`;
+  // Pinterest pin metadata — uses post.pinImage if provided (hand-designed
+  // 1000×1500 vertical pin), otherwise auto-generates via /api/pin/blog.
+  let blogPinImageUrl: string;
+  if (post.pinImage) {
+    blogPinImageUrl = `https://www.paintcolorhq.com${post.pinImage}`;
+  } else {
+    const pinParams = new URLSearchParams({ title: post.title });
+    if (post.coverImage) pinParams.set("cover", post.coverImage);
+    if (post.coverColor) pinParams.set("color", post.coverColor);
+    if (post.tags[0]) pinParams.set("tag", post.tags[0]);
+    blogPinImageUrl = `https://www.paintcolorhq.com/api/pin/blog?${pinParams.toString()}`;
+  }
   const tagHashtags = post.tags
     .slice(0, 4)
     .map((t) => `#${t.toLowerCase().replace(/[^a-z0-9]/g, "")}`)
