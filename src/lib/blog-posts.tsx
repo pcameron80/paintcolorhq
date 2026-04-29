@@ -390,9 +390,9 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#EDE6D3" name="White Dove OC-17" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — LRV 86.2. Crosses into warm white territory with a soft cream-yellow undertone. Best for kitchens with warm-toned countertops (marble with warm veining, soapstone, butcher block) where you want the cabinetry to feel like part of a warm, cohesive palette rather than a stark contrast. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">full white color family</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens (LRV 11–22) — The 2026 Trend</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens (LRV 3–12) — The 2026 Trend</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green cabinetry went from trend to mainstream between 2023 and 2025, and in 2026 the direction has shifted from bright sage toward deeper, more complex greens with blue or gray undertones. These are not colors for timid renovations. At LRV 11–22, they absorb most of the light in the room and demand specific countertop pairings to avoid looking muddy. Done right, they are the most striking kitchen choice available.
+          Green cabinetry went from trend to mainstream between 2023 and 2025, and in 2026 the direction has shifted from bright sage toward deeper, more complex greens with blue or gray undertones. These are not colors for timid renovations. At LRV 3–12, they absorb most of the light in the room and demand specific countertop pairings to avoid looking muddy. Done right, they are the most striking kitchen choice available.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#4A5D4F" name="Essex Green HC-188" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — LRV 3.4. Dark forest green that reads almost black in low light. Best used on lower cabinets paired with white or cream uppers, where the contrast creates a furniture-like look. Requires white or very light quartz countertops to keep the kitchen from reading too dark. Finish: semi-gloss in Benjamin Moore Advance to show off the depth.
@@ -404,9 +404,9 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#52625B" name="Tarrytown Green HC-134" brand="Benjamin Moore" href="/colors/benjamin-moore/tarrytown-green-hc-134" /> — LRV 8.8. A mid-tone blue-green that sits between Essex Green and Pewter Green in both depth and mood. Its blue undertone gives it a cooler, more modern feel than purely warm greens. Works best in kitchens with cool-toned countertops (white quartz, gray marble, concrete). Browse the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals (LRV 47–65)</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals (LRV 51–66)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The cool gray kitchen dominated the 2010s. In 2026, warm neutrals, greiges, and mushroom tones have replaced it for homeowners who want a timeless kitchen without going all-white or all-bold. At LRV 47–65, these colors reflect enough light to stay bright while adding warmth that cool grays never could.
+          The cool gray kitchen dominated the 2010s. In 2026, warm neutrals, greiges, and mushroom tones have replaced it for homeowners who want a timeless kitchen without going all-white or all-bold. At LRV 51–66, these colors reflect enough light to stay bright while adding warmth that cool grays never could.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D3CBBA" name="Edgecomb Gray HC-173" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — LRV 66. The most-specified warm greige for transitional kitchens. It reads as neither beige nor gray, which makes it flexible with a wide range of countertop materials. Works with both warm and cool hardware finishes. Its LRV is high enough to stay bright in north-facing kitchens without looking washed out in south-facing ones.
@@ -415,24 +415,24 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#C2B59B" name="Accessible Beige SW 7036" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — LRV 58. Leans warmer than Edgecomb Gray, with more yellow-tan in its undertone. This makes it a natural match for kitchens with oak or honey-toned wood flooring, where a cooler neutral would clash with the wood&apos;s warmth. On countertops with strong warm veining (travertine, warm quartzite), it integrates seamlessly.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B5A898" name="Shiitake SW 9173" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — LRV 51.2. A deeper mushroom-taupe that is the most current of the three warm neutrals listed here. At LRV 47, it is dark enough to feel intentional while still maintaining readability in natural light. Best paired with natural stone countertops and unlacquered brass hardware for a fully organic, 2026-forward kitchen aesthetic.
+          <Swatch hex="#B5A898" name="Shiitake SW 9173" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — LRV 51.2. A deeper mushroom-taupe that is the most current of the three warm neutrals listed here. At LRV 51, it is dark enough to feel intentional while still maintaining readability in natural light. Best paired with natural stone countertops and unlacquered brass hardware for a fully organic, 2026-forward kitchen aesthetic.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bold Darks (LRV 6–12)</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bold Darks (LRV 4–41)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Dark cabinetry has moved from accent islands to full kitchens in high-end renovations. At LRV 6–12, these colors need strong light sources to prevent the kitchen from feeling like a cave. They work best in kitchens with large windows, skylights, or generous overhead lighting, and they require light-colored countertops and backsplashes as counterbalance.
+          Dark cabinetry has moved from accent islands to full kitchens in high-end renovations. At LRV 4–8, these colors need strong light sources to prevent the kitchen from feeling like a cave. They work best in kitchens with large windows, skylights, or generous overhead lighting, and they require light-colored countertops and backsplashes as counterbalance.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#34405A" name="Naval SW 6244" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — LRV 4.5. A deep, complex navy with blue-black depth. At LRV 7, it is very dark. The classic application is a navy island with white perimeter cabinets and white quartz countertops, creating a high-contrast look that photographs extremely well. Aged brass or unlacquered brass hardware at the same warmth level.
+          <Swatch hex="#34405A" name="Naval SW 6244" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — LRV 4.5. A deep, complex navy with blue-black depth. At LRV 4.5, it is very dark. The classic application is a navy island with white perimeter cabinets and white quartz countertops, creating a high-contrast look that photographs extremely well. Aged brass or unlacquered brass hardware at the same warmth level.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#3B3B3B" name="Wrought Iron 2124-10" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — LRV 7. Not pure black. Wrought Iron has warm charcoal undertones that read as very deep gray in natural light, which is what separates it from flat-black competitors. In full kitchens, it requires white or very light countertops and a light backsplash to stay functional. On islands, it pairs with nearly any countertop material.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8E7462" name="Universal Khaki SW 6149" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6149" /> — LRV 26. The Sherwin-Williams 2026 Color of the Year, and the best bold-but-not-dark choice on this list. At LRV 26, it is deep enough to feel intentional without the light requirements of Navy or Wrought Iron. Its warm sandy-brown tone pairs with butcher block, warm marble, and black or aged brass hardware. See the full <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
+          <Swatch hex="#b8a992" name="Universal Khaki SW 6150" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — LRV 40.6. The Sherwin-Williams 2026 Color of the Year, and the best mid-tone alternative for kitchens that want warmth without going dark. At LRV 40.6, it sits in the moderate range — not bright enough to read as a neutral, not deep enough to need the light requirements of Navy or Wrought Iron. Its warm sandy-brown tone pairs with butcher block, warm marble, and black or aged brass hardware. See the full <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues (LRV 51–56)</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues (LRV 44–58)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Blue kitchen walls offer a fresh alternative to all-white kitchens at a moderate LRV that maintains brightness while adding clear color identity. These blues are all desaturated enough to read as sophisticated rather than playful, and their gray undertones prevent them from looking juvenile in adult spaces.
         </p>
@@ -759,7 +759,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best white paint color for most homes is Benjamin Moore White Dove (OC-17, hex #EDE6D3, LRV 85) — a warm cream white that works on walls, cabinets, and trim in virtually any lighting condition. For a true, no-undertone white, Benjamin Moore Chantilly Lace (OC-65, LRV 92) is the industry standard. There are over 500 &ldquo;white&rdquo; paints across Sherwin-Williams, Benjamin Moore, Behr, and other major brands, and each carries different undertones that can make or break a room — a CIEDE2000 Delta E difference of just 2.0 between two whites is perceptible to most people. This guide ranks the 15 best white paint colors, explains their undertones and LRV values, and tells you exactly which rooms they work in.
+          The best white paint color for most homes is Benjamin Moore White Dove (OC-17, hex #F3EFE0, LRV 86) — a warm cream white that works on walls, cabinets, and trim in virtually any lighting condition. For a true, no-undertone white, Benjamin Moore Chantilly Lace (OC-65, LRV 92) is the industry standard. There are over 500 &ldquo;white&rdquo; paints across Sherwin-Williams, Benjamin Moore, Behr, and other major brands, and each carries different undertones that can make or break a room — a CIEDE2000 Delta E difference of just 2.0 between two whites is perceptible to most people. This guide ranks the 15 best white paint colors, explains their undertones and LRV values, and tells you exactly which rooms they work in.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Choosing White Paint Is So Hard</h2>
@@ -972,11 +972,11 @@ const blogPosts: BlogPost[] = [
           Found a white you love from one brand but need to buy from another? Here are the closest cross-brand matches. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find matches across 25,000+ colors from 14 brands, or try the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see the Delta E difference between any two whites.
         </p>
         <ul className="mt-4 space-y-2 text-gray-700 leading-relaxed">
-          <li><strong>White Dove OC-17 (BM, LRV 85, #EDE6D3)</strong> &#8776; Pure White SW 7005 (LRV 84, #F3EEE0) &#8776; Cameo White (Behr, LRV 81, #F0E8D8) — Delta E under 2.5 across all three</li>
+          <li><strong>White Dove OC-17 (BM, LRV 86, #F3EFE0)</strong> &#8776; Pure White SW 7005 (LRV 84, #edece6) &#8776; Cameo White (Behr, LRV 79, #e9e6e1) — Delta E under 2.5 across all three</li>
           <li><strong>Chantilly Lace OC-65 (BM, LRV 92, #F5F1EB)</strong> &#8776; High Reflective White SW 7757 (LRV 93, #F6F0E4) &#8776; Ultra Pure White (Behr, LRV 94, #F2ECE0) — Delta E under 2.0</li>
           <li><strong>Alabaster SW 7008 (LRV 82, #F0EAD6)</strong> &#8776; Swiss Coffee OC-45 (BM, LRV 84, #EFE4CE) &#8776; Cottage White (Behr) — Delta E 2.0–3.0</li>
-          <li><strong>Decorator&apos;s White OC-149 (BM, LRV 87, #EEF0EC)</strong> &#8776; Snowbound SW 7004 (LRV 87, #ECEDE8) — Delta E under 2.0</li>
-          <li><strong>Simply White OC-117 (BM, LRV 91, #F1EDE3)</strong> &#8776; Extra White SW 7006 — Delta E under 2.5</li>
+          <li><strong>Decorator&apos;s White OC-149 (BM, LRV 85, #eceeeb)</strong> &#8776; Snowbound SW 7004 (LRV 83, #edeae5) — Delta E under 2.0</li>
+          <li><strong>Simply White OC-117 (BM, LRV 92, #f7f7ee)</strong> &#8776; Extra White SW 7006 — Delta E under 2.5</li>
         </ul>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">White Paint FAQ</h2>
@@ -1648,7 +1648,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best nursery paint color for most rooms is Benjamin Moore Saybrook Sage (HC-114, hex #B2BAA4, LRV 47) — a warm, gender-neutral sage green that is calming for newborns and still looks stylish at age ten. For parents who prefer a neutral, Benjamin Moore White Dove (OC-17, hex #EDE6D3, LRV 85) is the safest warm white for nurseries. The 2026 nursery trend has shifted away from pastel pink and baby blue toward earthy, muted tones — mushroom taupes, smoky sages, and warm clays that grow with your child. These 15 nursery paint colors from <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> are ranked by versatility, longevity, and sleep-science research.
+          The best nursery paint color for most rooms is Benjamin Moore Saybrook Sage (HC-114, hex #b2b8a3, LRV 46) — a warm, gender-neutral sage green that is calming for newborns and still looks stylish at age ten. For parents who prefer a neutral, Benjamin Moore White Dove (OC-17, hex #F3EFE0, LRV 86) is the safest warm white for nurseries. The 2026 nursery trend has shifted away from pastel pink and baby blue toward earthy, muted tones — mushroom taupes, smoky sages, and warm clays that grow with your child. These 15 nursery paint colors from <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> are ranked by versatility, longevity, and sleep-science research.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Baby Pastels Are Out in 2026</h2>
@@ -1670,7 +1670,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> (LRV 49.3) — barely there. This whisper of green reads almost neutral, making it the safest green choice for any nursery. It works in every lighting condition — north-facing, south-facing, and under warm 2700K nightlights.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" /> (LRV 39.1) — a deeper sage for a nursery accent wall. At LRV 21, it is too dark for all four walls in a small nursery but adds personality on a single feature wall. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for more options.
+          <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" /> (LRV 39.1) — a deeper sage for a nursery accent wall. At LRV 39, it is on the darker side for all four walls in a small nursery but adds genuine personality on a single feature wall. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for more options.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Calming Blue Nursery Colors</h2>
@@ -1681,7 +1681,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (LRV 61.6) — a blue-green-gray that shifts from calming blue at naptime to cheerful green-gray in morning light. Its closest Behr equivalent is Light French Gray (720E-2) with a Delta E of approximately 3.1. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for details on how light affects this color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> (LRV 57.9) — a gentle powder blue with gray undertones that never feels babyish. At LRV 55, it reflects enough light to keep small nurseries feeling open while providing real color presence.
+          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> (LRV 57.9) — a gentle powder blue with gray undertones that never feels babyish. At LRV 58, it reflects enough light to keep small nurseries feeling open while providing real color presence.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#A5B8C4" name="Silver Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-mist-1619" /> (LRV 63.9) — a silvery blue that transitions from nursery to tween room without repainting. See more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link>.
@@ -1695,10 +1695,10 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (LRV 86.2) — the most popular warm white in America. In a nursery, it creates a bright, peaceful space that lets colorful decor pop. Its Sherwin-Williams equivalent is Pure White (SW 7005, LRV 84) with a Delta E under 2.5. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> (LRV 74.3) — a creamy, sandy white that counteracts the cool blue cast in north-facing nurseries. At LRV 62, it reflects enough light to keep the room bright while adding perceptible warmth. See our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link> for more.
+          <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> (LRV 74.3) — a creamy, sandy white that counteracts the cool blue cast in north-facing nurseries. At LRV 74, it reflects enough light to keep the room bright while adding perceptible warmth. See our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link> for more.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> (LRV 68.1) — a warm gray-beige for parents who want depth beyond white. At LRV 60, it is cozy without being dark. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families for similar tones.
+          <Swatch hex="#C8BFB0" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> (LRV 68.1) — a warm gray-beige for parents who want depth beyond white. At LRV 68, it is cozy without being dark. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families for similar tones.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Earthy Tones: The 2026 Nursery Trend</h2>
@@ -1706,7 +1706,7 @@ const blogPosts: BlogPost[] = [
           The biggest shift in nursery paint colors for 2026 is toward earthy, grounding tones — mushroom taupes, warm clays, and dusted olives. These colors create a cocoon-like atmosphere that feels safe, warm, and timeless. Color-drenching (painting walls, trim, and ceiling the same shade) is one of the most popular nursery techniques for 2026.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#B5A898" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> (LRV 51.2) — the defining mushroom taupe of 2026. It sits between beige, gray, and the faintest whisper of brown. At LRV 40, it is warm and grounding without darkening a small nursery.
+          <Swatch hex="#B5A898" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> (LRV 51.2) — the defining mushroom taupe of 2026. It sits between beige, gray, and the faintest whisper of brown. At LRV 51, it is warm and grounding without darkening a small nursery.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> (LRV 41) — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral with a Delta E under 3.0 to Benjamin Moore Shaker Beige (HC-45). See our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> roundup.
@@ -2156,7 +2156,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best Behr paint color for most bedrooms is Silver Drop (790C-2, hex #D2CBBD, LRV 59) — a warm gray-beige that works in any lighting condition and costs $45–55/gallon in the Dynasty line, compared to $80–90/gallon for Benjamin Moore Aura. Consumer Reports ranked Behr Dynasty and Marquee at or near the top of their 2025 independent blind tests for coverage, durability, and stain resistance. Every color below is available at Home Depot, and we used CIEDE2000 Delta E calculations to find the closest cross-brand matches from Sherwin-Williams and Benjamin Moore.
+          The best Behr paint color for most bedrooms is Silver Drop (790C-2, hex #dde3d7, LRV 75) — a warm gray-beige that works in any lighting condition and costs $45–55/gallon in the Dynasty line, compared to $80–90/gallon for Benjamin Moore Aura. Consumer Reports ranked Behr Dynasty and Marquee at or near the top of their 2025 independent blind tests for coverage, durability, and stain resistance. Every color below is available at Home Depot, and we used CIEDE2000 Delta E calculations to find the closest cross-brand matches from Sherwin-Williams and Benjamin Moore.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Calming Blues</h2>
@@ -2170,7 +2170,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#A8BFC8" name="Watery" brand="Behr" href="/colors/behr/watery-hdc-ct-26" /> — a soft aqua-blue that creates instant coastal calm. Light enough for small bedrooms (LRV 50), interesting enough to stand alone without an accent color. Its closest Benjamin Moore match is Palladian Blue (HC-144) with a Delta E of just 2.1. Browse more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8AAAB4" name="Adirondack Blue" brand="Behr" href="/colors/behr/adirondack-blue-ppu13-09" /> (LRV 37) — a deeper, slate-toned blue that adds sophistication to larger bedrooms. At LRV 37, it is best suited for bedrooms over 150 sq ft or as a single accent wall behind the headboard. It pairs with crisp white trim and warm wood nightstands.
+          <Swatch hex="#6691a0" name="Adirondack Blue" brand="Behr" href="/colors/behr/adirondack-blue-n480-5" /> (LRV 25.6) — a deeper, slate-toned blue that adds sophistication to larger bedrooms. At LRV 25.6, it is best suited for bedrooms over 150 sq ft or as a single accent wall behind the headboard. It pairs with crisp white trim and warm wood nightstands.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens</h2>
@@ -2272,7 +2272,7 @@ const blogPosts: BlogPost[] = [
         </p>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">What is Behr&apos;s 2026 Color of the Year?</h3>
         <p className="mt-2 text-gray-700 leading-relaxed">
-          Behr&apos;s 2026 Color of the Year is Hidden Gem (N430-6A), a smoky jade green. It works as a bold bedroom accent wall but is too dark (LRV 15) for all four walls in most bedrooms. Pair it with Cameo White or Ultra Pure White trim.
+          Behr&apos;s 2026 Color of the Year is Hidden Gem (N430-6A), a smoky jade green. It works as a bold bedroom accent wall but is too dark (LRV 14) for all four walls in most bedrooms. Pair it with Cameo White or Ultra Pure White trim.
         </p>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">Which Behr paint finish is best for bedroom walls?</h3>
         <p className="mt-2 text-gray-700 leading-relaxed">
@@ -2771,7 +2771,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> — reads as a warm blush-beige in north light. One of BM&apos;s bestsellers for this exact situation. LRV 70.8.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D5C4BB" name="Dimity" brand="Farrow &amp; Ball" href="/colors/farrow-ball/dimity-2008" /> (LRV 77.8) — a warm pink-white that reads as a soft neutral in indirect light rather than distinctly pink. The pink undertone quietly counteracts the blue cast. At LRV 55 it&apos;s at the lower edge of what works in north-facing rooms; keep ceilings white to compensate. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
+          <Swatch hex="#D5C4BB" name="Dimity" brand="Farrow &amp; Ball" href="/colors/farrow-ball/dimity-2008" /> (LRV 77.8) — a warm pink-white that reads as a soft neutral in indirect light rather than distinctly pink. The pink undertone quietly counteracts the blue cast. At LRV 78 it&apos;s solidly in the bright-white range that works well in north-facing rooms; keep ceilings white to compensate. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors to Avoid</h2>
