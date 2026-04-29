@@ -13,6 +13,7 @@ export interface BlogPost {
   excerpt: string;
   coverColor: string; // hex for card accent
   coverImage?: string; // path to cover image, e.g. "/blog/my-post.webp"
+  pinImage?: string; // optional custom Pinterest pin (1000×1500), e.g. "/blog/my-post-pin.jpg" — overrides auto-generated pin
   modifiedDate?: string; // "YYYY-MM-DD" — omit if same as date
   tags: string[];
   noindex?: boolean; // true = exclude from sitemap and add noindex meta
@@ -46,6 +47,158 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Post 0 (newest) ──────────────── */
+  {
+    slug: "best-paint-colors-for-laundry-rooms",
+    title: "The Best Paint Colors for Laundry Rooms (12 Picks That Actually Work Under Cool LEDs)",
+    date: "2026-04-29",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "A laundry room's harsh overhead lighting wrecks most paint colors. Here are 12 shades that hold up — with LRVs, finish recommendations, and what to skip.",
+    coverColor: "#B2BAA4",
+    coverImage: "/blog/best-paint-colors-for-laundry-rooms.webp",
+    pinImage: "/blog/best-paint-colors-for-laundry-rooms-pin.jpg",
+    tags: ["Laundry Room", "Small Spaces", "Design", "2026"],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best paint color for most laundry rooms is <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> (OC-117, LRV 92.5) — bright enough to brighten a windowless space, warm enough to avoid the clinical chill that pure cool whites give a small room, and stable across both warm and cool bulb temperatures. But &ldquo;best&rdquo; depends on whether your laundry room has a window, what the cabinetry looks like, and whether the room connects to a mudroom. This guide ranks 12 specific colors across whites, soft greens, soft blues, warm neutrals, and a few moody picks for confident larger rooms — every pick has been chosen with <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">LRV</Link>, undertone behavior under 4000K LED bulbs, and finish requirements in mind. CIEDE2000 cross-brand matching across our 25,000+ color database confirms that nearly every color below has a near-identical equivalent in another brand, so your painter&apos;s preferred deck is rarely a constraint.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Laundry Rooms Break the Usual Color Rules</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three constraints make laundry-room paint selection harder than people expect, and ignoring any one of them is why so many of these spaces feel like utility closets.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Lighting is almost always artificial and almost always cool.</strong> Most laundry rooms are interior spaces lit by 4000–5000K LED bulbs or a single fluorescent tube. That spectrum pulls warm undertones gray and pulls cool undertones icy. A white that looks balanced in a south-facing showroom reads clinical here. A beige that looks cozy in your living room reads sallow. The same paint in two rooms of the same house will not look like the same color — which is the central truth most paint guides skip.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>The finish has to be washable.</strong> Detergent splashes, water from the utility sink, and the constant film of dryer dust mean you will be wiping these walls. Flat and matte finishes absorb that grime and burnish when scrubbed. Minimum acceptable finish for laundry-room walls: <strong>eggshell</strong>. Better: <strong>satin</strong>. For trim, doors, and any wainscoting, go <strong>semi-gloss</strong>. For cabinetry, use a true cabinet-grade enamel — Benjamin Moore Advance or Sherwin-Williams Emerald Urethane Trim Enamel both self-level, cure hard, and survive repeated cleaning around a washer.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>The space is usually small.</strong> Most laundry rooms are 5 by 7 feet or smaller. That changes the math on saturation. A deep navy that anchors a 14-foot great room can swallow a 35-square-foot laundry room whole. Conversely, a stark high-LRV white that opens up an open floor plan can read bleached and institutional in a closet-sized utility space. LRV (Light Reflectance Value) matters more here than in almost any other room, and it is the single number you should check before buying samples.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bright Whites for Small or Windowless Laundry Rooms (LRV 83+)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If your laundry room is windowless or has only a tiny high window, your first job is to throw as much artificial light back into the room as possible. Whites with LRV above 83 reflect more light than they absorb, which is why nearly every contractor defaults to one of these three.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — LRV 92.3. The cleanest true white in the <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> deck, with virtually no undertone. Chantilly Lace does not flash yellow under warm bulbs or blue under cool ones, which makes it the safest pick for a windowless laundry room where you cannot predict bulb behavior. If you only paint one room in the house with Chantilly Lace, the laundry room is a defensible choice.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — LRV 83.7. Slightly warmer than Chantilly Lace, with a faint cream undertone. The right pick if your laundry room has wood cabinetry, butcher-block folding counters, brass hardware, or warm-toned tile — Pure White lets those warm elements stay warm without fighting them. The closest <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore equivalent</Link> lands within Delta E 2.5, so either brand reads identical on the wall.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> — LRV 92.5. The middle ground. Just a whisper of warmth without obvious cream. Bright enough to brighten a dim space, warm enough to avoid clinical chill. My default pick when the cabinetry and flooring have not been finalized yet, because it adapts to either direction. For more white options, see our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> or browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A note on Behr Ultra Pure White and SW High Reflective White: both excellent for ceilings and trim, but at LRV 93–94 they can read flat and dimensionless on walls in a tiny room. Save them for the ceiling.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens — The 2026 Direction (LRV 46–63)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Soft green is the single best category if you want your laundry room to feel like a place you do not mind spending 20 minutes in. Green sits opposite red on the color wheel, so it neutralizes the slight pinkish cast that fluorescent and warm LED bulbs throw at white walls. It pairs beautifully with white cabinetry, marble or quartz folding counters, and natural-fiber baskets. And it photographs well, which matters if your laundry room ever ends up on Instagram.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B2BAA4" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — LRV 46.4. A warm, dusty sage with a touch of gray. Saybrook Sage is the rare green that does not lurch toward mint under cool LEDs or olive under warm bulbs. Paired with white shaker cabinets and brass pulls, it reads like a small French country utility room. Browse the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for similar options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — LRV 49.3. So soft it almost reads as a warm gray with a green whisper. The right pick if you want green energy without committing to a green room. Under typical laundry-room overheads it shifts subtly through the day from neutral to faintly herbal — which is exactly what you want when the bulbs are the dominant light source.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CBD1C2" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> — LRV 63.3. Technically a blue-green, Sea Salt has been one of Sherwin-Williams&apos; top sellers for over a decade for good reason: it reads as either pale blue or pale green depending on the light, and that flexibility is gold in a windowless room. With white tile and a porcelain utility sink, it tips toward spa-blue; with butcher block, it tips toward pale sage. For a deeper look at why this happens, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues — Crisp, Clean, and Forgiving (LRV 58–62)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blue and laundry have an old visual association — soap, fresh sheets, water — and the right soft blue makes a small room feel hygienic without going cold. The trick is desaturation. A bright cobalt or saturated periwinkle reads like a kid&apos;s bathroom. The blues below all sit closer to gray than to true blue, and they hold up across both warm and cool bulbs.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#8BA7B0" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — LRV 61.6. A blue-green-gray that shifts through the day. Enough depth to feel intentional on a laundry-room wall without going dark, and the green undertone keeps it from reading icy under cool LEDs. Pair with Chantilly Lace or White Dove on the trim for the cleanest result.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B8CAD0" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — LRV 57.9. A powder blue with strong gray undertones. Genuinely soothing — it shows up on our shortlist for <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom palettes</Link> — and the same quality turns a laundry room from a chore zone into something closer to a small spa. It needs warm wood or brass somewhere in the room to keep it from drifting clinical.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B5C7C8" name="Palladian Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/palladian-blue-hc-144" /> — LRV 61.8. A pale aqua-blue with a green whisper. A Historic Color that has aged better than almost any other in the BM Historical Collection — designers have specified it continuously since the 1990s without it ever feeling dated. The right pick if your laundry room opens off a hallway with white trim and you want it to feel like a deliberate jewel-box rather than a closet. See more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals — When the Laundry Connects to a Mudroom (LRV 58–66)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If your laundry room is part of a larger mudroom or boot room, the most cohesive choice is to flow the same warm neutral from the entry into the laundry. This avoids the visual whiplash of walking from a warm hallway into a cool utility space. Both colors below are top-five sellers for their respective brands and have widely-matched cross-brand equivalents within Delta E 2.0.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — LRV 66.0. A warm greige sitting almost exactly between gray and beige. The most-specified warm neutral in transitional residential design, and it works as a whole-house color flowing from entry to laundry to powder room without feeling repetitive. Under cool laundry-room bulbs it shifts slightly cooler but never tips fully gray.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D2C8B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — LRV 57.9. The Sherwin-Williams answer to Edgecomb Gray, with a slightly warmer cream undertone. Holds its warmth under cool LEDs better than almost any other warm neutral — exactly the property you need in a laundry room. With warm-toned LVP flooring or wood cabinetry, this is the safer of the two picks. Compare the two with our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> before deciding.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bold and Moody — When You Have the Square Footage (LRV 4–14)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Skip this section if your laundry room is under 50 square feet. Dark colors swallow small spaces, and a moody navy in a closet-sized laundry room reads oppressive rather than dramatic. But if you have a real laundry room with a window — or a laundry-mudroom-pantry combo — going dark on the lower cabinets, or color-drenching the entire envelope, can be one of the most striking design moves in the whole house.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — LRV 4.5. A deep, rich navy that reads nearly black in low light. Naval on the lower cabinets paired with Chantilly Lace upper cabinets and walls is one of the most reliably elegant laundry-room combinations in modern design.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3E4450" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — LRV 7.1. The BM equivalent of Naval, with a slightly warmer undertone. The safer pick if your laundry room has any warm wood flooring or brass hardware — the warmth in the navy keeps the contrast from feeling icy.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> — LRV 14.1. <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Behr&apos;s 2026 Color of the Year</Link> and a smart unconventional pick for a laundry room. The smoky jade green color-drenches beautifully — walls, cabinets, and ceiling all the same shade — and the green undertone neutralizes the harsh cast of cool LED bulbs in a way no navy can. The most &ldquo;designer&rdquo; choice on this list.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Practical Rules That Matter More Than the Color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Five hard-earned rules that decide whether you repaint in 18 months.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Eggshell or satin on walls; semi-gloss on trim.</strong> Flat and matte cannot be scrubbed without burnishing. Non-negotiable in a laundry room.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Paint the ceiling. Do not default to flat ceiling white.</strong> A laundry-room ceiling at 8 feet is close enough to the eye that cheap flat ceiling white reads as an afterthought. Use the wall color one shade lighter, or color-drench the ceiling in the wall color. Color-drenching is especially effective in tiny laundry rooms because it eliminates the visual ceiling line that makes the room feel boxed in.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sample under your actual bulbs, not at the paint store.</strong> Buy two-ounce samples of your top three picks. Paint a 12-by-12-inch swatch on the wall most affected by the laundry-room bulbs. Look at it in the morning, under the overheads at night, and with the dryer running and a load steaming the room. The color you paint at noon and the color you wash clothes under at 9 PM should be the same color. Our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> can narrow your shortlist before you spend on physical samples.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Use a paint calculator before you go to the store.</strong> A small laundry room often needs less than a single gallon of wall paint, but you will need a separate quart for trim and doors. Buying three full gallons when you needed a gallon and two quarts is the most common laundry-room paint mistake. Our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> takes the guesswork out.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Build a coordinated palette, not just a wall color.</strong> Walls, ceiling, trim, doors, cabinets, and any wainscoting should be specified together. Use the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to assemble a coordinated wall + trim + cabinet scheme rather than picking each in isolation.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What to Avoid</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A short list of mistakes that show up in laundry rooms over and over.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Saturated yellow.</strong> Sounds cheerful in theory. Under cool LED laundry-room bulbs, it reads institutional and sallow.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Stark cool grays.</strong> Anything with a strong blue undertone reads dingy under typical laundry-room lighting.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>High-contrast wallpaper feature walls.</strong> Pinterest is currently selling these. In a small laundry room, busy wallpaper turns the space into visual noise. Save wallpaper for the powder room.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Builder-grade flat white on every surface.</strong> This is the default in production homes and the single biggest reason laundry rooms feel like utility closets. Even a one-shade upgrade to a warm white in eggshell transforms the space.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cross-Brand Matching for Laundry Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If your painter only stocks one brand and you have specified colors from another, every color page on Paint Color HQ shows the closest matches across all 14 brands in our database, ranked by Delta E. For a laundry room — small, mostly artificially lit — a Delta E under 2.5 is generally close enough that you cannot tell the difference between brands on a finished wall. Our <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">cross-brand color matching guide</Link> walks through the full process; for quick checks, the <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> puts any two colors side by side with their CIEDE2000 score.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Start With One Color, Then Sample</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Pick the one color from this list that best fits your laundry room&apos;s lighting and adjacent spaces. Buy a two-ounce sample. Paint a real-size swatch on the wall, look at it under the bulbs you actually have, and only then commit to the gallon. The laundry room is a small enough space that getting the color right does not require a designer — but it does require sampling. Use the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to narrow down before buying samples, the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to round out the trim and cabinet choices, and the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out exactly how much you need so you do not overbuy.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Post 0 ──────────────── */
   {
     slug: "2026-colors-of-the-year-every-brand-compared",
