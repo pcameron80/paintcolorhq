@@ -22,11 +22,15 @@ export async function GET(request: NextRequest) {
   const fallbackColor = searchParams.get("color") || "#e5e7eb";
   const tag = searchParams.get("tag") || "";
 
-  // Cover image must be absolute for next/og to fetch it
-  const coverUrl = cover
-    ? cover.startsWith("http")
-      ? cover
-      : `https://www.paintcolorhq.com${cover}`
+  // @vercel/og (the engine behind ImageResponse) decodes JPG/PNG/GIF but
+  // not WebP. Cover images on disk are WebP for site performance — convert
+  // the path to the JPG sibling for pin generation. Both formats are
+  // shipped in /public/blog/ via scripts/convert-blog-covers-to-jpg.mjs.
+  const coverPath = cover ? cover.replace(/\.webp$/i, ".jpg") : null;
+  const coverUrl = coverPath
+    ? coverPath.startsWith("http")
+      ? coverPath
+      : `https://www.paintcolorhq.com${coverPath}`
     : null;
 
   return new ImageResponse(
