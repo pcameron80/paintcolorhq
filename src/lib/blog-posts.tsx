@@ -1670,7 +1670,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> (LRV 49.3) — barely there. This whisper of green reads almost neutral, making it the safest green choice for any nursery. It works in every lighting condition — north-facing, south-facing, and under warm 2700K nightlights.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" /> (LRV 39.1) — a deeper sage for a nursery accent wall. At LRV 39, it is on the darker side for all four walls in a small nursery but adds genuine personality on a single feature wall. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for more options.
+          <Swatch hex="#6B8F71" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" /> (LRV 39.1) — a richer sage suited for a nursery accent wall. At LRV 39, it is on the darker side for all four walls in a small nursery but adds genuine personality on a single feature wall. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for more options.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Calming Blue Nursery Colors</h2>
@@ -2156,7 +2156,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best Behr paint color for most bedrooms is Silver Drop (790C-2, hex #dde3d7, LRV 75) — a warm gray-beige that works in any lighting condition and costs $45–55/gallon in the Dynasty line, compared to $80–90/gallon for Benjamin Moore Aura. Consumer Reports ranked Behr Dynasty and Marquee at or near the top of their 2025 independent blind tests for coverage, durability, and stain resistance. Every color below is available at Home Depot, and we used CIEDE2000 Delta E calculations to find the closest cross-brand matches from Sherwin-Williams and Benjamin Moore.
+          The best Behr paint color for most bedrooms is Silver Drop (790C-2, hex #dde3d7, LRV 75) — a soft, barely-warm off-white that works in any lighting condition and costs $45–55/gallon in the Dynasty line, compared to $80–90/gallon for Benjamin Moore Aura. Consumer Reports ranked Behr Dynasty and Marquee at or near the top of their 2025 independent blind tests for coverage, durability, and stain resistance. Every color below is available at Home Depot, and we used CIEDE2000 Delta E calculations to find the closest cross-brand matches from Sherwin-Williams and Benjamin Moore.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Calming Blues</h2>
@@ -2189,7 +2189,7 @@ const blogPosts: BlogPost[] = [
           Warm neutrals are the safe pick that still looks intentional. These greiges and taupes work with virtually any furniture, any lighting, and any style — from mid-century modern to farmhouse.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D2CBBD" name="Silver Drop" brand="Behr" href="/colors/behr/silver-drop-790c-2" /> — Behr&apos;s answer to Agreeable Gray. A warm gray-beige that has been a top-5 Behr seller for years. It creates a cozy, enveloping bedroom without feeling dark. LRV 75.2 keeps it light enough for rooms with limited natural light.
+          <Swatch hex="#dde3d7" name="Silver Drop" brand="Behr" href="/colors/behr/silver-drop-790c-2" /> — A soft, barely-warm off-white that has been a top-5 Behr seller for years. At LRV 75.2 it stays light enough for rooms with limited natural light while adding a whisper of warmth that pure white can&apos;t deliver.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D8CFC0" name="Dolphin Fin" brand="Behr" href="/colors/behr/dolphin-fin-790c-3" /> (LRV 65.2) — a slightly cooler greige that works in bedrooms with both warm and cool elements. Its Delta E to Sherwin-Williams Agreeable Gray (SW 7029) is approximately 2.8, making it Behr&apos;s closest equivalent to America&apos;s most popular paint color. Compare it side-by-side with Silver Drop using our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
