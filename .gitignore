@@ -56,3 +56,8 @@ next-env.d.ts
 
 # secrets
 client_secret_*.json
+
+# routine artifacts (local-only — not source)
+/drafts/
+/reports/
+/docs/blog-calendar.md
