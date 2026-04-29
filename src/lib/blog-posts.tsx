@@ -13,6 +13,7 @@ export interface BlogPost {
   excerpt: string;
   coverColor: string; // hex for card accent
   coverImage?: string; // path to cover image, e.g. "/blog/my-post.webp"
+  pinImage?: string; // optional custom Pinterest pin (1000×1500), e.g. "/blog/my-post-pin.jpg" — overrides auto-generated pin
   modifiedDate?: string; // "YYYY-MM-DD" — omit if same as date
   tags: string[];
   noindex?: boolean; // true = exclude from sitemap and add noindex meta
@@ -56,6 +57,7 @@ const blogPosts: BlogPost[] = [
       "A laundry room's harsh overhead lighting wrecks most paint colors. Here are 12 shades that hold up — with LRVs, finish recommendations, and what to skip.",
     coverColor: "#B2BAA4",
     coverImage: "/blog/best-paint-colors-for-laundry-rooms.webp",
+    pinImage: "/blog/best-paint-colors-for-laundry-rooms-pin.jpg",
     tags: ["Laundry Room", "Small Spaces", "Design", "2026"],
     content: () => (
       <>
