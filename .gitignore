@@ -61,3 +61,6 @@ client_secret_*.json
 /drafts/
 /reports/
 /docs/blog-calendar.md
+
+# scrape caches (local-only — re-fetchable from manufacturer sites)
+/scripts/data/
