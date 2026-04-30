@@ -1,2 +1,3 @@
 data/
 scripts/
+!scripts/build-match-data.ts
