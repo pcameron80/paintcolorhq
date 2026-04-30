@@ -16,9 +16,37 @@
 
 import * as dotenv from "dotenv";
 import * as path from "path";
+import * as fs from "fs";
 import { createClient } from "@supabase/supabase-js";
 
 dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
+
+// Cache scraped LRVs locally so rate-limit blips don't lose progress.
+// Re-runs reuse cached values, only scrape rows missing from the cache.
+const CACHE_PATH = path.resolve(__dirname, "data/bm-lrv-cache.json");
+const CACHE_TTL_DAYS = 30;
+type CacheEntry = { lrv: number | null; scrapedAt: string };
+type Cache = Record<string, CacheEntry>;
+
+function loadCache(): Cache {
+  try {
+    const raw = fs.readFileSync(CACHE_PATH, "utf8");
+    const data = JSON.parse(raw) as Cache;
+    const cutoff = Date.now() - CACHE_TTL_DAYS * 86400_000;
+    const fresh: Cache = {};
+    for (const [k, v] of Object.entries(data)) {
+      if (new Date(v.scrapedAt).getTime() > cutoff) fresh[k] = v;
+    }
+    return fresh;
+  } catch {
+    return {};
+  }
+}
+
+function saveCache(cache: Cache) {
+  fs.mkdirSync(path.dirname(CACHE_PATH), { recursive: true });
+  fs.writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2));
+}
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -35,7 +63,8 @@ const supabase = createClient(supabaseUrl, serviceKey, {
 const APPLY = process.argv.includes("--apply");
 const thresholdArg = process.argv.find((a) => a.startsWith("--threshold="));
 const THRESHOLD = thresholdArg ? parseFloat(thresholdArg.split("=")[1]) : 2.0;
-const CONCURRENCY = 8;
+const CONCURRENCY = 4;
+const REQUEST_DELAY_MS = 100;
 const USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15";
 
@@ -116,26 +145,46 @@ async function main() {
   }
   console.log(`BM colors in DB: ${rows.length}\n`);
 
-  // 3. Scrape with bounded concurrency
+  // 3. Load cache, scrape only missing rows
+  const cache = loadCache();
+  const cacheStartSize = Object.keys(cache).length;
+  console.log(`Cache loaded: ${cacheStartSize} previously-scraped colors (TTL ${CACHE_TTL_DAYS}d)\n`);
+
   const results: { row: BmRow; bmLrv: number | null }[] = [];
+  const toScrape = rows.filter((r) => !cache[r.slug]);
+  // Resolve cached rows immediately
+  for (const row of rows) {
+    if (cache[row.slug]) results.push({ row, bmLrv: cache[row.slug].lrv });
+  }
+  console.log(`Need to scrape: ${toScrape.length} (${rows.length - toScrape.length} cached)\n`);
+
   let processed = 0;
   let lastTick = Date.now();
   let hits = 0;
   let misses = 0;
+  let writesSinceFlush = 0;
 
   async function processOne(row: BmRow) {
     const bmLrv = await fetchBmLrv(row);
     results.push({ row, bmLrv });
+    cache[row.slug] = { lrv: bmLrv, scrapedAt: new Date().toISOString() };
     processed++;
+    writesSinceFlush++;
     if (bmLrv !== null) hits++;
     else misses++;
+    // Flush cache every 100 scrapes so a crash doesn't lose progress
+    if (writesSinceFlush >= 100) {
+      saveCache(cache);
+      writesSinceFlush = 0;
+    }
     if (Date.now() - lastTick > 1000) {
-      process.stdout.write(`\r  Scraped ${processed}/${rows.length}  (hits ${hits}, misses ${misses})`);
+      process.stdout.write(`\r  Scraped ${processed}/${toScrape.length}  (hits ${hits}, misses ${misses})`);
       lastTick = Date.now();
     }
+    if (REQUEST_DELAY_MS > 0) await new Promise((r) => setTimeout(r, REQUEST_DELAY_MS));
   }
 
-  const queue = [...rows];
+  const queue = [...toScrape];
   const workers = Array.from({ length: CONCURRENCY }, async () => {
     while (queue.length > 0) {
       const r = queue.shift();
@@ -144,7 +193,8 @@ async function main() {
     }
   });
   await Promise.all(workers);
-  process.stdout.write(`\r  Scraped ${processed}/${rows.length}  (hits ${hits}, misses ${misses})\n\n`);
+  saveCache(cache);
+  process.stdout.write(`\r  Scraped ${processed}/${toScrape.length}  (hits ${hits}, misses ${misses})\n\n`);
 
   // 4. Compute deltas
   const updates: { id: string; oldLrv: number | null; newLrv: number; slug: string; delta: number }[] = [];
