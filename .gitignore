@@ -64,3 +64,6 @@ client_secret_*.json
 
 # scrape caches (local-only — re-fetchable from manufacturer sites)
 /scripts/data/
+
+# pre-computed match data (regenerated at build time by scripts/build-match-data.ts)
+/public/match-data/

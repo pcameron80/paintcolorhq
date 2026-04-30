@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "tsx scripts/build-match-data.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -11,7 +12,8 @@
     "seed-db": "tsx scripts/seed-database.ts",
     "compute-matches": "tsx scripts/compute-matches.ts",
     "seed-matches": "tsx scripts/seed-matches.ts",
-    "populate-undertones": "tsx scripts/populate-undertones.ts"
+    "populate-undertones": "tsx scripts/populate-undertones.ts",
+    "build-match-data": "tsx scripts/build-match-data.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",
