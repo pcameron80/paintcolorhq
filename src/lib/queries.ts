@@ -2,6 +2,25 @@ import { supabase } from "./supabase";
 import type { Brand, Color, ColorWithBrand, CrossBrandMatchWithColor, ColorFamily } from "./types";
 import { expandUndertoneFilter, UNDERTONE_CATEGORIES } from "./undertone-utils";
 
+// Egress reduction: explicitly narrow SELECTs to the fields actually rendered.
+// Migration 004 + the SEO push (Apr 2026) made egress the project's #1 cost
+// driver. Pulling `*` returns ~18 Color columns and ~8 Brand columns when
+// pages typically use 5–13 of each. See commit 274527b for the original
+// cross_brand_matches narrowing.
+
+// Fields the ColorCard component renders (brand/family grid + search results).
+const COLOR_CARD_FIELDS =
+  "id, name, slug, hex, color_number";
+const COLOR_CARD_FIELDS_WITH_BRAND =
+  "id, name, slug, hex, color_number, brand:brand_id (id, name, slug)";
+
+// Fields the color detail page + color-description.ts utilities consume.
+// rgb_* and lab_* are used by the description generator + nearest-color logic.
+const COLOR_DETAIL_FIELDS =
+  "id, brand_id, name, slug, color_number, hex, rgb_r, rgb_g, rgb_b, lab_a, lab_b_val, lrv, color_family, undertone";
+const COLOR_DETAIL_FIELDS_WITH_BRAND =
+  COLOR_DETAIL_FIELDS + ", brand:brand_id (id, name, slug)";
+
 export async function getAllBrands(): Promise<Brand[]> {
   const { data, error } = await supabase
     .from("brands")
@@ -27,9 +46,10 @@ export async function getColorsByBrand(
   brandId: string,
   options?: { family?: string; undertone?: string; limit?: number; offset?: number }
 ): Promise<Color[]> {
+  // Brand grid renders ColorCard, which uses 5 fields per color.
   let query = supabase
     .from("colors")
-    .select("*")
+    .select(COLOR_CARD_FIELDS)
     .eq("brand_id", brandId)
     .order("name");
 
@@ -52,7 +72,7 @@ export async function getColorsByBrand(
 
   const { data, error } = await query;
   if (error) throw error;
-  return data ?? [];
+  return (data ?? []) as unknown as Color[];
 }
 
 export async function getColorBySlug(
@@ -62,15 +82,16 @@ export async function getColorBySlug(
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) return null;
 
+  // Color detail page consumes 13 fields; color-description.ts adds lab_a/lab_b_val.
   const { data, error } = await supabase
     .from("colors")
-    .select("*")
+    .select(COLOR_DETAIL_FIELDS)
     .eq("brand_id", brand.id)
     .eq("slug", colorSlug)
     .single();
 
   if (error) return null;
-  return { ...data, brand };
+  return { ...(data as unknown as Color), brand };
 }
 
 export async function getColorSlugByNumber(
@@ -134,7 +155,7 @@ export async function searchColors(
     const hex = query.startsWith("#") ? query : `#${query}`;
     const { data } = await supabase
       .from("colors")
-      .select("*, brand:brand_id (*)")
+      .select(COLOR_CARD_FIELDS_WITH_BRAND)
       .ilike("hex", hex)
       .limit(limit);
 
@@ -157,7 +178,7 @@ export async function searchColors(
       if (colorPart) {
         let q = supabase
           .from("colors")
-          .select("*, brand:brand_id (*)")
+          .select(COLOR_CARD_FIELDS_WITH_BRAND)
           .in("undertone", labels);
 
         // Try matching as color_family first
@@ -171,7 +192,7 @@ export async function searchColors(
         // Fall back to name search with undertone filter
         const { data: nameData, error: nameError } = await supabase
           .from("colors")
-          .select("*, brand:brand_id (*)")
+          .select(COLOR_CARD_FIELDS_WITH_BRAND)
           .in("undertone", labels)
           .ilike("name", `%${colorPart}%`)
           .limit(limit);
@@ -186,7 +207,7 @@ export async function searchColors(
   // Full-text search on name
   const { data, error } = await supabase
     .from("colors")
-    .select("*, brand:brand_id (*)")
+    .select(COLOR_CARD_FIELDS_WITH_BRAND)
     .or(`name.ilike.%${query}%,color_number.ilike.%${query}%`)
     .limit(limit);
 
@@ -198,9 +219,10 @@ export async function getColorsByFamily(
   familySlug: string,
   options?: { brandSlug?: string; undertone?: string; limit?: number; offset?: number }
 ): Promise<ColorWithBrand[]> {
+  // Family grid renders ColorCard.
   let query = supabase
     .from("colors")
-    .select("*, brand:brand_id (*)")
+    .select(COLOR_CARD_FIELDS_WITH_BRAND)
     .eq("color_family", familySlug)
     .order("name");
 
@@ -297,7 +319,7 @@ export async function getAllColorFamilies(): Promise<ColorFamily[]> {
 export async function getColorById(id: string): Promise<ColorWithBrand | null> {
   const { data, error } = await supabase
     .from("colors")
-    .select("*, brand:brand_id (*)")
+    .select(COLOR_DETAIL_FIELDS_WITH_BRAND)
     .eq("id", id)
     .single();
 
@@ -314,7 +336,7 @@ export async function findClosestColor(hex: string, brandId?: string): Promise<C
   const range = 30;
   let query = supabase
     .from("colors")
-    .select("*, brand:brand_id (*)")
+    .select(COLOR_DETAIL_FIELDS_WITH_BRAND)
     .gte("rgb_r", Math.max(0, r - range))
     .lte("rgb_r", Math.min(255, r + range))
     .gte("rgb_g", Math.max(0, g - range))
@@ -333,7 +355,7 @@ export async function findClosestColor(hex: string, brandId?: string): Promise<C
     const wide = 60;
     let wideQuery = supabase
       .from("colors")
-      .select("*, brand:brand_id (*)")
+      .select(COLOR_DETAIL_FIELDS_WITH_BRAND)
       .gte("rgb_r", Math.max(0, r - wide))
       .lte("rgb_r", Math.min(255, r + wide))
       .gte("rgb_g", Math.max(0, g - wide))
@@ -372,9 +394,11 @@ export async function getSimilarColorsFromSameBrand(
   const b = parseInt(color.hex.slice(5, 7), 16);
 
   const range = 25;
+  // Similar-colors carousel needs id, name, slug, hex, color_number for the card,
+  // plus rgb_* for the distance sort below.
   const { data, error } = await supabase
     .from("colors")
-    .select("*")
+    .select("id, name, slug, hex, color_number, rgb_r, rgb_g, rgb_b")
     .eq("brand_id", color.brand_id)
     .neq("id", color.id)
     .gte("rgb_r", Math.max(0, r - range))
@@ -388,7 +412,9 @@ export async function getSimilarColorsFromSameBrand(
   if (error) throw error;
 
   const candidates = data ?? [];
-  // Sort by Euclidean distance and return top N
+  // Sort by Euclidean distance and return top N. Cast at boundary —
+  // the narrowed SELECT returns a subset of Color, sufficient for the
+  // similar-colors carousel which only renders ColorCard fields.
   return candidates
     .map((c) => {
       const dr = c.rgb_r - r;
@@ -397,7 +423,7 @@ export async function getSimilarColorsFromSameBrand(
       return { ...c, dist: dr * dr + dg * dg + db * db };
     })
     .sort((a, b) => a.dist - b.dist)
-    .slice(0, limit);
+    .slice(0, limit) as unknown as Color[];
 }
 
 export async function getTopCrossBrandMatches(
