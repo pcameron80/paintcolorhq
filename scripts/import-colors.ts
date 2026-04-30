@@ -176,7 +176,17 @@ function classifyColorFamily(r: number, g: number, b: number): string {
 // ---------------------------------------------------------------------------
 
 function calculateLrv(r: number, g: number, b: number): number {
-  return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255 * 100;
+  // Gamma-corrected sRGB → linear luminance per IEC 61966-2-1 / WCAG 2.x.
+  // Without gamma correction, mid-tones are inflated by 25-35 points
+  // (e.g. SW Pure White would compute as LRV 92 instead of the real 84).
+  // See supabase/migrations/004_recompute_lrv.sql for context.
+  const linearize = (c: number) => {
+    const s = c / 255;
+    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  };
+  return (
+    0.2126 * linearize(r) + 0.7152 * linearize(g) + 0.0722 * linearize(b)
+  ) * 100;
 }
 
 // ---------------------------------------------------------------------------
