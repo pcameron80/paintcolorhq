@@ -94,27 +94,35 @@ export async function getColorSlugByNumber(
 export async function getCrossBrandMatches(
   colorId: string
 ): Promise<CrossBrandMatchWithColor[]> {
+  // Narrow the SELECT to only the fields the color page + description
+  // generator actually consume. Pulling `*` across three joined tables on
+  // every page render was the dominant Supabase egress source on PCHQ.
+  // Limit to 50 because the UI groups matches by brand and never needs
+  // more than a handful per brand — 50 covers all 14 brands comfortably.
   const { data, error } = await supabase
     .from("cross_brand_matches")
     .select(`
-      *,
+      id,
+      delta_e_score,
       match_color:match_color_id (
-        *,
-        brand:brand_id (*)
+        id,
+        name,
+        slug,
+        hex,
+        brand:brand_id (
+          name,
+          slug
+        )
       )
     `)
     .eq("source_color_id", colorId)
-    .order("delta_e_score", { ascending: true });
+    .order("delta_e_score", { ascending: true })
+    .limit(50);
 
   if (error) throw error;
 
-  return (data ?? []).map((match) => ({
-    ...match,
-    match_color: {
-      ...match.match_color,
-      brand: match.match_color.brand,
-    },
-  })) as CrossBrandMatchWithColor[];
+  // PostgREST returns nested embeds with looser types; cast at the boundary.
+  return (data ?? []) as unknown as CrossBrandMatchWithColor[];
 }
 
 export async function searchColors(
