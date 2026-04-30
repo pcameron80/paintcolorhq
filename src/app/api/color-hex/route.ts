@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
     if (data?.hex) {
       return NextResponse.json(
         { hex: data.hex },
-        { headers: { "Cache-Control": "public, max-age=86400, s-maxage=86400" } }
+        { headers: { "Cache-Control": "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800" } }
       );
     }
   }
@@ -49,6 +49,6 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json(
     { hex: color.hex },
-    { headers: { "Cache-Control": "public, max-age=86400, s-maxage=86400" } }
+    { headers: { "Cache-Control": "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800" } }
   );
 }

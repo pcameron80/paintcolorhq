@@ -56,7 +56,19 @@ export async function GET(request: NextRequest) {
   // Sort by Delta E and return top 10
   scored.sort((a, b) => a.deltaE - b.deltaE);
 
-  return NextResponse.json({ matches: scored.slice(0, 10) });
+  // Cache at the CDN edge for 24h. Same (hex, brand) input always returns
+  // the same matches because color data is stable; the only invalidation
+  // event is a re-run of scripts/compute-matches.ts (rare, and even then
+  // RGB-bucket candidates only shift at the margins).
+  return NextResponse.json(
+    { matches: scored.slice(0, 10) },
+    {
+      headers: {
+        "Cache-Control":
+          "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800",
+      },
+    },
+  );
 }
 
 async function fetchCandidates(r: number, g: number, b: number, range: number, brand?: string | null) {
