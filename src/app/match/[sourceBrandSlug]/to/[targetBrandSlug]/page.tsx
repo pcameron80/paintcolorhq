@@ -191,7 +191,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
           { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
           { "@type": "ListItem", position: 2, name: "Brands", item: "https://www.paintcolorhq.com/brands" },
           { "@type": "ListItem", position: 3, name: sourceBrand.name, item: `https://www.paintcolorhq.com/brands/${sourceBrandSlug}` },
-          { "@type": "ListItem", position: 4, name: `${sourceBrand.name} to ${targetBrand.name}` },
+          { "@type": "ListItem", position: 4, name: `${sourceBrand.name} to ${targetBrand.name}`, item: `https://www.paintcolorhq.com/match/${sourceBrandSlug}/to/${targetBrandSlug}` },
         ],
       }} />
 

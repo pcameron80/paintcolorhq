@@ -24,16 +24,6 @@ export default function ColorIdentifierPage() {
   return (
     <div className="min-h-screen bg-surface">
       <JsonLd data={{
-        "@context": "https://schema.org", "@type": "HowTo",
-        name: "Find Paint Colors from a Photo",
-        description: "Upload a photo, click any spot, and instantly find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more.",
-        step: [
-          { "@type": "HowToStep", name: "Upload a photo", text: "Upload a photo from your device or snap one with your camera. Any image format works." },
-          { "@type": "HowToStep", name: "Click a spot", text: "Click a spot on the image to sample the color. The tool reads the exact pixel color at that point." },
-          { "@type": "HowToStep", name: "Get matches", text: "Instantly see the closest matching paint colors from 25,000+ colors across 14 major brands, matched using the Delta E 2000 formula." },
-        ],
-      }} />
-      <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Photo Color Identifier — Find Paint Colors from Any Photo",
         description: "Upload any photo and click a pixel to match it against 25,000+ paint colors from 14 brands (Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Farrow & Ball) using the CIEDE2000 Delta E 2000 color difference formula.",
