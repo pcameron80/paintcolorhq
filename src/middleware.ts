@@ -1,6 +1,8 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+const AUTH_PATH_PREFIXES = ["/dashboard", "/auth", "/account"];
+
 export async function middleware(request: NextRequest) {
   // Enforce www canonical domain (301 redirect)
   const host = request.headers.get("host") ?? "";
@@ -27,6 +29,19 @@ export async function middleware(request: NextRequest) {
   // Doing it here yields a proper 308.
   const colorRedirect = await maybeColorSlugRedirect(request);
   if (colorRedirect) return colorRedirect;
+
+  // Skip Supabase session refresh for anonymous traffic on public routes.
+  // Calling auth.getUser() invokes setAll with cookies, which makes Vercel
+  // mark responses `private, no-store` and bypass the ISR cache.
+  const hasSupabaseSession = request.cookies
+    .getAll()
+    .some((c) => c.name.startsWith("sb-"));
+  const needsAuth = AUTH_PATH_PREFIXES.some((prefix) =>
+    request.nextUrl.pathname.startsWith(prefix),
+  );
+  if (!hasSupabaseSession && !needsAuth) {
+    return NextResponse.next({ request });
+  }
 
   let supabaseResponse = NextResponse.next({ request });
 

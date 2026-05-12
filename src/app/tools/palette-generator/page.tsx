@@ -24,16 +24,6 @@ export default function PaletteGeneratorPage() {
   return (
     <div className="min-h-screen bg-surface">
       <JsonLd data={{
-        "@context": "https://schema.org", "@type": "HowTo",
-        name: "How to Generate a Paint Color Palette",
-        description: "Pick a starting color and generate coordinated paint palettes with walls, trim, accent, and pop roles.",
-        step: [
-          { "@type": "HowToStep", name: "Pick a color", text: "Use the color picker or type a hex code to choose your starting color. Optionally select a brand to filter results." },
-          { "@type": "HowToStep", name: "Choose a scheme", text: "Five coordinated palettes appear instantly, each with Walls, Trim, Accent, and Pop roles matched to real paint colors." },
-          { "@type": "HowToStep", name: "Save or visualize", text: "Open any palette in the Room Visualizer to preview on walls, or save it to a project for later reference." },
-        ],
-      }} />
-      <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Paint Palette Generator",
         description: "Build coordinated paint palettes from any starting color. Generates complementary, analogous, and triadic schemes matched to real paint colors.",

@@ -213,9 +213,9 @@ export default async function BlogPostPage({ params }: PageProps) {
         description: post.excerpt, url: `https://www.paintcolorhq.com/blog/${post.slug}`,
         mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.paintcolorhq.com/blog/${post.slug}` },
         keywords: post.tags.join(", "),
-        ...(post.coverImage && { image: `https://www.paintcolorhq.com${post.coverImage}` }),
+        ...(post.coverImage && { image: { "@type": "ImageObject", url: `https://www.paintcolorhq.com${post.coverImage}`, width: 1200, height: 630 } }),
         author: { "@type": "Person", name: post.author, url: "https://www.paintcolorhq.com/authors/paint-color-hq-staff", jobTitle: "Editorial Team", worksFor: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" } },
-        publisher: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com", logo: { "@type": "ImageObject", url: "https://www.paintcolorhq.com/og-image.webp" } },
+        publisher: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com", logo: { "@type": "ImageObject", url: "https://www.paintcolorhq.com/logo.webp", width: 600, height: 60 } },
       }} />
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "BreadcrumbList",

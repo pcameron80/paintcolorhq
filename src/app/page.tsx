@@ -396,6 +396,7 @@ export default async function Home() {
         url: "https://www.paintcolorhq.com",
         logo: "https://www.paintcolorhq.com/logo.webp",
         description: "Free paint color reference database with 25,000+ colors from 14 brands. Uses the CIEDE2000 Delta E formula for cross-brand matching.",
+        sameAs: ["https://www.pinterest.com/paintcolorhq"],
         contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: "https://www.paintcolorhq.com/contact" },
       }} />
 

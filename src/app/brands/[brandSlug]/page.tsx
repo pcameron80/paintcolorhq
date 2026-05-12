@@ -57,14 +57,14 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   };
 }
 
-const brandOrgData: Record<string, { foundingDate?: string; headquarters?: string; url?: string }> = {
-  "sherwin-williams": { foundingDate: "1866", headquarters: "Cleveland, Ohio, USA", url: "https://www.sherwin-williams.com" },
-  "benjamin-moore": { foundingDate: "1883", headquarters: "Montvale, New Jersey, USA", url: "https://www.benjaminmoore.com" },
-  behr: { headquarters: "Santa Ana, California, USA", url: "https://www.behr.com" },
-  ppg: { foundingDate: "1883", headquarters: "Pittsburgh, Pennsylvania, USA", url: "https://www.ppgpaints.com" },
-  valspar: { headquarters: "Minneapolis, Minnesota, USA", url: "https://www.valspar.com" },
+const brandOrgData: Record<string, { foundingDate?: string; headquarters?: string; url?: string; sameAs?: string[] }> = {
+  "sherwin-williams": { foundingDate: "1866", headquarters: "Cleveland, Ohio, USA", url: "https://www.sherwin-williams.com", sameAs: ["https://en.wikipedia.org/wiki/Sherwin-Williams"] },
+  "benjamin-moore": { foundingDate: "1883", headquarters: "Montvale, New Jersey, USA", url: "https://www.benjaminmoore.com", sameAs: ["https://en.wikipedia.org/wiki/Benjamin_Moore_%26_Co."] },
+  behr: { headquarters: "Santa Ana, California, USA", url: "https://www.behr.com", sameAs: ["https://en.wikipedia.org/wiki/Behr_Paint"] },
+  ppg: { foundingDate: "1883", headquarters: "Pittsburgh, Pennsylvania, USA", url: "https://www.ppgpaints.com", sameAs: ["https://en.wikipedia.org/wiki/PPG_Industries"] },
+  valspar: { headquarters: "Minneapolis, Minnesota, USA", url: "https://www.valspar.com", sameAs: ["https://en.wikipedia.org/wiki/Valspar"] },
   "dunn-edwards": { foundingDate: "1925", headquarters: "Los Angeles, California, USA", url: "https://www.dunnedwards.com" },
-  "farrow-ball": { foundingDate: "1946", headquarters: "Dorset, England, UK", url: "https://www.farrow-ball.com" },
+  "farrow-ball": { foundingDate: "1946", headquarters: "Dorset, England, UK", url: "https://www.farrow-ball.com", sameAs: ["https://en.wikipedia.org/wiki/Farrow_%26_Ball"] },
   kilz: { foundingDate: "1954", url: "https://www.kilz.com" },
   "vista-paint": { foundingDate: "1956", headquarters: "Fullerton, California, USA", url: "https://www.vistapaint.com" },
   hirshfields: { headquarters: "Minneapolis, Minnesota, USA", url: "https://www.hirshfields.com" },
@@ -389,7 +389,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         breadcrumb: { "@type": "BreadcrumbList", itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
           { "@type": "ListItem", position: 2, name: "Brands", item: "https://www.paintcolorhq.com/brands" },
-          { "@type": "ListItem", position: 3, name: brand.name },
+          { "@type": "ListItem", position: 3, name: brand.name, item: `https://www.paintcolorhq.com/brands/${brand.slug}` },
         ]},
         mainEntity: { "@type": "ItemList", numberOfItems: totalCount,
           itemListElement: colors.map((color, i) => ({ "@type": "ListItem", position: (currentPage - 1) * perPage + i + 1, url: `https://www.paintcolorhq.com/colors/${brand.slug}/${color.slug}`, name: color.name })),
@@ -400,6 +400,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         ...(orgData.url && { url: orgData.url }),
         ...(orgData.foundingDate && { foundingDate: orgData.foundingDate }),
         ...(orgData.headquarters && { address: { "@type": "PostalAddress", addressLocality: orgData.headquarters } }),
+        ...(orgData.sameAs && orgData.sameAs.length > 0 && { sameAs: orgData.sameAs }),
       }} />}
 
       <AdSenseScript />

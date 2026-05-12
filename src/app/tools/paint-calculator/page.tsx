@@ -24,18 +24,6 @@ export default function PaintCalculatorPage() {
   return (
     <div className="min-h-screen bg-surface">
       <JsonLd data={{
-        "@context": "https://schema.org", "@type": "HowTo",
-        name: "How to Calculate How Much Paint You Need",
-        description: "Calculate paint needed for a room using wall dimensions, doors, windows, and number of coats.",
-        step: [
-          { "@type": "HowToStep", name: "Measure your room", text: "Measure the length, width, and height of the room in feet." },
-          { "@type": "HowToStep", name: "Calculate wall area", text: "Multiply 2 times (length + width) times height to get total wall area." },
-          { "@type": "HowToStep", name: "Subtract doors and windows", text: "Subtract 21 sq ft per door and 15 sq ft per window." },
-          { "@type": "HowToStep", name: "Account for coats", text: "Multiply paintable area by number of coats (usually 2)." },
-          { "@type": "HowToStep", name: "Calculate gallons", text: "Divide total area by 350 sq ft per gallon and round up." },
-        ],
-      }} />
-      <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Paint Calculator — How Much Paint Do I Need?",
         description: "Calculate exactly how many gallons of paint you need. Enter room dimensions (length, width, height), subtract doors and windows, and get coverage based on the industry-standard rate of 350 sq ft per gallon for interior latex paint.",
