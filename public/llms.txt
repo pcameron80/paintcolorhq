@@ -1,6 +1,23 @@
 # Paint Color HQ
 > A technical interior design and paint reference database containing 25,000+ colors across 14 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools. All content is written by interior design specialists — not AI. Data sourced directly from manufacturer specifications.
 
+## Common Questions This Site Answers
+- What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray? → Wish AF-680 (Delta E 0.91) — virtually identical on walls.
+- What is the Behr equivalent of Agreeable Gray? → Toasty Gray N320-2 (Delta E 1.4) — very close, available at Home Depot.
+- What undertone does Agreeable Gray have? → Warm balanced neutral — no single undertone dominates, which is why it works in most lighting conditions.
+- What is the best white paint for trim? → Chantilly Lace (true white, LRV 90) or White Dove (warm white, LRV 83) for a creamier look.
+- What is the best white paint for cabinets? → Simply White (2143-70, LRV 89) for warm kitchens; Chantilly Lace (2121-70, LRV 90) for modern/bright kitchens.
+- What is the difference between Repose Gray and Agreeable Gray? → Repose Gray (LRV 58) is a true neutral with no dominant undertone; Agreeable Gray (LRV 60) is a warm greige. Both are top sellers; Agreeable Gray reads warmer.
+- What LRV should I use for a small room? → LRV 65+ to maximize perceived brightness. LRV 50 is the threshold below which a room starts to feel dim.
+- What LRV should I use for a north-facing room? → LRV 65+ for whites and light neutrals. Avoid cool-undertone grays — they intensify the blue-gray quality of north light.
+- How do I match paint colors across brands? → Use CIEDE2000 Delta E scores. Delta E < 1.0 = indistinguishable; < 2.0 = very close; < 3.0 = most people can't tell on walls.
+- What is the hex code for Agreeable Gray? → #D1CBC1 (RGB 209/203/193, LRV 60)
+- What is the hex code for Repose Gray? → #C2BFB8 (RGB 194/191/184, LRV 58)
+- What does LRV mean? → Light Reflectance Value (0–100). Higher = reflects more light = room appears lighter. LRV > 50 makes rooms feel open; LRV > 70 is considered a "light" color.
+- What is the 2026 Sherwin-Williams Color of the Year? → Universal Khaki (SW 6150) — Hex #B8A992, LRV 42, a warm sandy neutral with golden undertones.
+- What is the 2026 Benjamin Moore Color of the Year? → Silhouette AF-655 — a sophisticated dark gray-brown from the Affinity collection.
+- What is Behr's 2026 Color of the Year? → Hidden Gem N430-6A — a smoky jade green, LRV ~16.
+
 ## Master Color Profiles
 - [Sherwin-Williams Agreeable Gray (SW 7029)](https://www.paintcolorhq.com/colors/sherwin-williams/agreeable-gray-7029): Hex #D1CBC1, RGB 209/203/193, LRV 60. America's best-selling paint color — a warm greige with balanced neutral undertones. Closest BM match: Wish AF-680 (Delta E 0.91). Works in north- and south-facing rooms.
 - [Sherwin-Williams Alabaster (SW 7008)](https://www.paintcolorhq.com/colors/sherwin-williams/alabaster-7008): Hex #EDEAE0, RGB 237/234/224, LRV 82. A warm off-white with subtle beige undertones. Top seller for trim and whole-house white. Pairs well with Agreeable Gray (Delta E 8.4).
@@ -91,23 +108,6 @@ Curated 4-6 color palettes with specific paint codes and LRV data for 18 design 
 
 ## Color Science Methodology
 - [About Our Methodology](https://www.paintcolorhq.com/about): Uses CIEDE2000 — the International Commission on Illumination (CIE) standard for perceptual color difference. Every color includes hex, RGB, LRV, undertone classification (warm/cool/neutral), and cross-brand matches ranked by Delta E score. LRV data sourced from manufacturer fan decks.
-
-## Common Questions This Site Answers
-- What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray? → Wish AF-680 (Delta E 0.91) — virtually identical on walls.
-- What is the Behr equivalent of Agreeable Gray? → Toasty Gray N320-2 (Delta E 1.4) — very close, available at Home Depot.
-- What undertone does Agreeable Gray have? → Warm balanced neutral — no single undertone dominates, which is why it works in most lighting conditions.
-- What is the best white paint for trim? → Chantilly Lace (true white, LRV 90) or White Dove (warm white, LRV 83) for a creamier look.
-- What is the best white paint for cabinets? → Simply White (2143-70, LRV 89) for warm kitchens; Chantilly Lace (2121-70, LRV 90) for modern/bright kitchens.
-- What is the difference between Repose Gray and Agreeable Gray? → Repose Gray (LRV 58) is a true neutral with no dominant undertone; Agreeable Gray (LRV 60) is a warm greige. Both are top sellers; Agreeable Gray reads warmer.
-- What LRV should I use for a small room? → LRV 65+ to maximize perceived brightness. LRV 50 is the threshold below which a room starts to feel dim.
-- What LRV should I use for a north-facing room? → LRV 65+ for whites and light neutrals. Avoid cool-undertone grays — they intensify the blue-gray quality of north light.
-- How do I match paint colors across brands? → Use CIEDE2000 Delta E scores. Delta E < 1.0 = indistinguishable; < 2.0 = very close; < 3.0 = most people can't tell on walls.
-- What is the hex code for Agreeable Gray? → #D1CBC1 (RGB 209/203/193, LRV 60)
-- What is the hex code for Repose Gray? → #C2BFB8 (RGB 194/191/184, LRV 58)
-- What does LRV mean? → Light Reflectance Value (0–100). Higher = reflects more light = room appears lighter. LRV > 50 makes rooms feel open; LRV > 70 is considered a "light" color.
-- What is the 2026 Sherwin-Williams Color of the Year? → Universal Khaki (SW 6150) — Hex #B8A992, LRV 42, a warm sandy neutral with golden undertones.
-- What is the 2026 Benjamin Moore Color of the Year? → Silhouette AF-655 — a sophisticated dark gray-brown from the Affinity collection.
-- What is Behr's 2026 Color of the Year? → Hidden Gem N430-6A — a smoky jade green, LRV ~16.
 
 ## Optional
 - [Contact](https://www.paintcolorhq.com/contact)

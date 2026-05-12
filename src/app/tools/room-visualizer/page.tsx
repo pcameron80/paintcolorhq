@@ -66,16 +66,6 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       }} />
       <JsonLd data={{
-        "@context": "https://schema.org", "@type": "HowTo",
-        name: "Preview Paint Colors in a Room",
-        description: "See how paint colors look in a room before you buy. Pick colors for walls, accent wall, trim, and floor.",
-        step: [
-          { "@type": "HowToStep", name: "Select a region", text: "Click directly on the room image or use the buttons below it to select walls, trim, accent wall, or floor." },
-          { "@type": "HowToStep", name: "Pick a color", text: "Use the color picker or type a hex code. The room updates instantly so you can see the result." },
-          { "@type": "HowToStep", name: "Find paint matches", text: "Discover which real paint colors from Sherwin-Williams, Benjamin Moore, Behr, and other brands are closest to your selection." },
-        ],
-      }} />
-      <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: [
           { "@type": "Question", name: "What is a room color visualizer?", acceptedAnswer: { "@type": "Answer", text: "A room color visualizer is a free online tool that lets you preview paint colors on walls, ceiling, trim, accent wall, and floor in a realistic room scene before you buy paint. Paint Color HQ's visualizer updates instantly as you pick colors and supports all major paint brands." } },
