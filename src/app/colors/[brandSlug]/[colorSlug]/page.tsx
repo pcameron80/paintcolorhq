@@ -491,6 +491,29 @@ export default async function ColorPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Related Reading — closes the color -> blog cluster gap the audit
+          flagged. Universal links to high-relevance editorial guides. */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-16">
+        <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">Related Reading</h2>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
+            <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">How to Match Paint Colors Across Brands</p>
+            <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">The science behind Delta E and CIEDE2000 — find a Behr equivalent of any Sherwin-Williams shade, or a Benjamin Moore alternative when your store is out of stock.</p>
+          </Link>
+          {color.undertone ? (
+            <Link href="/blog/understanding-paint-color-undertones" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
+              <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Understanding Paint Color Undertones</p>
+              <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">Why {color.name}&apos;s {color.undertone.toLowerCase()} undertone matters more than its surface color — and how to read undertones in any paint chip.</p>
+            </Link>
+          ) : (
+            <Link href="/blog/paint-sheen-guide" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
+              <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Paint Sheen Guide</p>
+              <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">Flat, eggshell, satin, or semi-gloss — the right finish for {color.name} depends on the room. Here&apos;s how to choose.</p>
+            </Link>
+          )}
+        </div>
+      </section>
+
       {/* JSON-LD — Product schema for color detail */}
       <JsonLd data={{
         "@context": "https://schema.org",
