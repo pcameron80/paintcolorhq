@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getAllColorSlugs, getAllBrands, getAllColorFamilies } from "@/lib/queries";
 import { getAllBlogSlugs, getPostBySlug } from "@/lib/blog-posts";
 import { inspirationPalettes } from "@/lib/palettes";
+import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 
 const BASE_URL = "https://www.paintcolorhq.com";
 const COLORS_PER_SITEMAP = 5000;
@@ -84,7 +85,6 @@ export async function GET(
       }));
     } else if (id === "matches") {
       // Brand-to-brand match landing pages — only major brand combinations
-      const MAJOR_MATCH_BRANDS = ["sherwin-williams", "benjamin-moore", "behr", "ppg", "valspar"];
       entries = [];
       for (const source of MAJOR_MATCH_BRANDS) {
         for (const target of MAJOR_MATCH_BRANDS) {
@@ -96,6 +96,26 @@ export async function GET(
               lastmod: "",
             });
           }
+        }
+      }
+    } else if (id === "match-individual") {
+      // Individual cross-brand match pages for popular source colors. Each
+      // popular color emits one URL per major target brand (excluding self).
+      // ~47 source colors × 4–5 target brands = ~200 URLs in a single shard,
+      // well under the 50,000 sitemap limit. Non-popular colors' match pages
+      // still exist and are discoverable via internal links from color detail
+      // pages; sitemap inclusion is limited to the popular set to focus
+      // crawl budget on the highest-value cross-brand matches.
+      entries = [];
+      for (const { brandSlug, colorSlug } of POPULAR_COLOR_SLUGS) {
+        for (const target of MAJOR_MATCH_BRANDS) {
+          if (target === brandSlug) continue;
+          entries.push({
+            url: `/match/${brandSlug}/${colorSlug}-to-${target}`,
+            priority: "0.7",
+            changefreq: "monthly",
+            lastmod: "",
+          });
         }
       }
     } else if (id === "blog") {
