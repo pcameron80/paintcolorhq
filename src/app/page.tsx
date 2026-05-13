@@ -161,7 +161,7 @@ export default async function Home() {
           </div>
           <div className="absolute bottom-0 left-0 w-2/5 h-1/2 rounded-xl overflow-hidden shadow-2xl z-20 border-8 border-surface">
             <Image
-              src="/hero-brush.png"
+              src="/hero-brush.webp"
               alt="Close up of a paint brush with blue paint"
               fill
               sizes="(max-width: 1024px) 60vw, 25vw"
