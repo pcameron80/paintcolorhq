@@ -1,4 +1,34 @@
-# PaintColorHQ
+# PaintColorHQ — Claude Code repo context
+
+> **Portfolio context.** This file augments the global identity at `~/.claude/CLAUDE.md` (laptop scope, tone, preferences, tool rules). Read both. Project knowledge / daily logs for this site live in `~/Brain-Personal/10-projects/paintcolorhq/`.
+
+## Role in the portfolio
+
+- **URL:** https://www.paintcolorhq.com
+- **Type:** Cross-brand paint color matching and reference site.
+- **Scale:** 25K+ paint colors across 14 brands; cross-brand matches via CIEDE2000 / Delta E 2000.
+- **Audience:** US, English. Homeowners and decorators researching paint colors, matching colors across brands, planning painting projects.
+- **Stack:** Next.js 16 (App Router, Turbopack) + React 19 + TypeScript 5.9 + Tailwind 4 + Supabase (Postgres) + Resend + GA4 (G-056NR93JLK) + tsx scripts for the data pipeline.
+- **Monetization:** Currently engagement-driven; potential routes via affiliate links to paint retailers, but not active yet.
+- **Repo:** `git@github.com:pcameron80/paintcolorhq.git`
+
+## Strategic notes (apply when working in this repo)
+
+- This is the **most data-rich site in the portfolio** — the color-matching dataset is the moat. Treat the database as load-bearing infrastructure: schema changes need migrations, not ad-hoc edits.
+- **Pre-deploy gate:** run `seo-preflight` and `seo-drift` before pushing changes to content / meta / links / schema. Tens of thousands of color-detail pages mean SEO regressions compound fast.
+- **All published content must clear the four non-negotiables** in `~/Documents/CoWork-OS/ABOUT ME/voice-profile.md`: useful / specific / evergreen / monetizable.
+- **GEO is a first-class concern here.** The site is heavily structured (FAQPage schema, Product schema on color pages, CollectionPage on family pages, Organization on brand pages, BlogPosting on blog posts). Maintain the citeable-summary pattern on new pages so AI engines can extract clean answers.
+
+## Critical gotchas (don't trip over these again)
+
+- **Next.js 16 match-page bug:** the `/match/[sourceBrandSlug]/[matchSlug]` route uses a single regex-parsed slug param, NOT compound `[a]-to-[b]` segments. Don't refactor to compound segments — it triggers a Next.js 16 bug.
+- **AnalyticsProvider load order:** it must load AFTER gtag scripts in `layout.tsx`. There was a race-condition fix here — don't reorder.
+- **Brand and family pages use `perPage=60`**, not 200. Going higher hurts LCP and isn't worth the SEO trade-off.
+- **Delta E values must be shown as plain language** in the UI ("Nearly identical" / "Very similar" / "Visible difference"), NOT raw numbers. Don't expose the algorithm output directly.
+
+---
+
+## About the site
 
 Paint color reference and matching website. Helps users explore paint colors across brands, find cross-brand matches, build palettes, and plan painting projects.
 
