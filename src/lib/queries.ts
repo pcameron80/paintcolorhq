@@ -245,18 +245,17 @@ export async function searchColors(
 }
 
 // Match colors where the LAB-based classifier assigned this family OR the
-// color name contains the family slug as a substring. Catches name-driven
-// blues like "Sleepy Blue" or "Cornflower Blue" that the classifier puts
-// into adjacent families (neutral, gray) based on hex values. Soft
-// multi-family — a single color can appear on both /family/blue and
-// /family/neutral if its name says blue but its hex sits near the boundary.
+// color name contains the family slug as a standalone word. Catches
+// name-driven blues like "Sleepy Blue" or "Cornflower Blue" that the
+// classifier puts into adjacent families (neutral, gray) based on hex values.
 //
-// `name.ilike.%${familySlug}%` matches substrings case-insensitively. For
-// paint color names this is safe — false positives like "Babyblue" matching
-// "blue" are actually wanted (it IS a blue). For slugs like `off-white`
-// the substring rarely appears in names so the OR is effectively a no-op.
+// The name match uses POSIX word-boundary regex (\m, \M) rather than a raw
+// substring. Substring matching was producing false positives at scale:
+// `name ILIKE '%red%'` was pulling "Tired Rose" and "Spread the Word" into
+// /family/red; `%tan%` was matching "Tangerine". Word boundaries fix this
+// while still catching multi-word names like "Light Tan" or "Powder Blue".
 function familyMatchFilter(familySlug: string): string {
-  return `color_family.eq.${familySlug},name.ilike.%${familySlug}%`;
+  return `color_family.eq.${familySlug},name.imatch.\\m${familySlug}\\M`;
 }
 
 export async function getColorsByFamily(

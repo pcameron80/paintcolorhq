@@ -49,10 +49,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // ("What is the Behr equivalent of Agreeable Gray?") to lift CTR and
   // align with the way Google surfaces "[Brand] equivalent of [color]" results.
   const shortTitle = `${targetBrand.name} Equivalent of ${sourceColor.brand.name} ${sourceColor.name}${colorNum}${variant}`;
+  // Index only matches close enough to be useful answers. At Delta E >= 3 the
+  // "match" carries a visible difference and the page reads as a low-quality
+  // doorway at scale (~150k crawlable pairs total).
+  const deltaScore = best ? Number(best.delta_e_score) : null;
+  const shouldIndex = deltaScore !== null && deltaScore < 3;
   return {
     title: { absolute: shortTitle },
     description: `Find the closest ${targetBrand.name} match for ${sourceColor.brand.name} ${sourceColor.name}${colorNum}${variant} (${sourceColor.hex.toUpperCase()}). ${note}. Compare hex, LRV, and undertone side by side.`,
     alternates: { canonical: url },
+    robots: shouldIndex ? undefined : { index: false, follow: true },
     openGraph: { title: shortTitle, description: `Find the closest ${targetBrand.name} equivalent.`, url,
       images: [{ url: `/api/og?hex=${encodeURIComponent(sourceColor.hex)}&name=${encodeURIComponent(sourceColor.name)}&brand=${encodeURIComponent(`${sourceColor.brand.name} \u2192 ${targetBrand.name}`)}`, width: 1200, height: 630 }],
     },
