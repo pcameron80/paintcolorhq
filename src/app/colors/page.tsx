@@ -54,7 +54,7 @@ export default async function ColorsPage() {
             Browse by<br />Color Family
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Explore 25,000+ paint colors organized by color family across 14 brands.
+            Explore 23,000+ paint colors organized by color family across 14 brands.
           </p>
         </div>
       </section>
