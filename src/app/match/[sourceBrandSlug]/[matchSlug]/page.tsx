@@ -44,10 +44,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/${parsed.colorSlug}-to-${parsed.targetBrandSlug}`;
   const variantMatch = parsed.colorSlug.match(/-([2-9])$/);
   const variant = variantMatch && !sourceColor.color_number?.toLowerCase().endsWith(variantMatch[1]) ? ` (variant ${variantMatch[1]})` : "";
-  const shortTitle = `${sourceColor.name}${variant} (${sourceColor.brand.name}) to ${targetBrand.name}`;
+  const colorNum = sourceColor.color_number ? ` ${sourceColor.color_number}` : "";
+  // Title pivots to the exact phrasing of the dominant PAA query
+  // ("What is the Behr equivalent of Agreeable Gray?") to lift CTR and
+  // align with the way Google surfaces "[Brand] equivalent of [color]" results.
+  const shortTitle = `${targetBrand.name} Equivalent of ${sourceColor.brand.name} ${sourceColor.name}${colorNum}${variant}`;
   return {
     title: { absolute: shortTitle },
-    description: `${sourceColor.brand.name} ${sourceColor.name}${variant} (${sourceColor.hex.toUpperCase()}) to ${targetBrand.name}: ${note}. Compare hex, undertone, and LRV.`,
+    description: `Find the closest ${targetBrand.name} match for ${sourceColor.brand.name} ${sourceColor.name}${colorNum}${variant} (${sourceColor.hex.toUpperCase()}). ${note}. Compare hex, LRV, and undertone side by side.`,
     alternates: { canonical: url },
     openGraph: { title: shortTitle, description: `Find the closest ${targetBrand.name} equivalent.`, url,
       images: [{ url: `/api/og?hex=${encodeURIComponent(sourceColor.hex)}&name=${encodeURIComponent(sourceColor.name)}&brand=${encodeURIComponent(`${sourceColor.brand.name} \u2192 ${targetBrand.name}`)}`, width: 1200, height: 630 }],
@@ -124,8 +128,11 @@ export default async function MatchPage({ params }: PageProps) {
         </nav>
 
         <h1 className="font-headline text-3xl md:text-4xl font-extrabold tracking-tight text-on-surface mb-4">
-          {sourceColor.brand.name} {sourceColor.name} in {targetBrand.name}
+          {targetBrand.name} Equivalent of {sourceColor.name}{sourceColor.color_number ? ` ${sourceColor.color_number}` : ""}
         </h1>
+        <p className="text-sm text-on-surface-variant mb-4">
+          Cross-brand match from {sourceColor.brand.name} {sourceColor.name} to {targetBrand.name}.
+        </p>
 
         {bestMatch ? (
           <>
