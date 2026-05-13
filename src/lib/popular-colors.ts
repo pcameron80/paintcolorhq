@@ -71,12 +71,17 @@ export const POPULAR_COLOR_SLUGS: Array<{
 ];
 
 // Major brands used as target brands when generating cross-brand match
-// URLs for the sitemap. Matches the same MAJOR_MATCH_BRANDS list used
-// elsewhere for brand-to-brand listing pages.
+// URLs for the sitemap, and as the source/target set for the static
+// /match/[a]/to/[b] listing pages. Expanded from 5 to 7 brands so the
+// 10 Dunn-Edwards and Farrow & Ball entries in POPULAR_COLOR_SLUGS
+// produce both /to/dunn-edwards and /to/farrow-ball sitemap URLs
+// instead of being one-directional (the M6 audit finding).
 export const MAJOR_MATCH_BRANDS = [
   "sherwin-williams",
   "benjamin-moore",
   "behr",
   "ppg",
   "valspar",
+  "dunn-edwards",
+  "farrow-ball",
 ];
