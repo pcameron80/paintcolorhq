@@ -7,12 +7,12 @@ import { AdSenseScript } from "@/components/adsense-script";
 export const metadata: Metadata = {
   title: "About Paint Color HQ | Our Color Science Methodology",
   description:
-    "Learn how Paint Color HQ uses CIEDE2000 color science to match 25,000+ colors across 14 brands. Independent, data-driven paint color tools.",
+    "Learn how Paint Color HQ uses CIEDE2000 color science to match 23,000+ colors across 14 brands. Independent, data-driven paint color tools.",
   alternates: { canonical: "https://www.paintcolorhq.com/about" },
   openGraph: {
     title: "About Paint Color HQ | Our Color Science Methodology",
     description:
-      "Learn how Paint Color HQ uses CIEDE2000 color science to match 25,000+ colors across 14 brands. Independent, data-driven paint color tools.",
+      "Learn how Paint Color HQ uses CIEDE2000 color science to match 23,000+ colors across 14 brands. Independent, data-driven paint color tools.",
     type: "website",
     url: "https://www.paintcolorhq.com/about",
   },
@@ -40,7 +40,7 @@ export default function AboutPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "AboutPage",
         name: "About Paint Color HQ",
-        description: "Learn how Paint Color HQ uses CIEDE2000 color science to match 25,000+ paint colors across 14 brands.",
+        description: "Learn how Paint Color HQ uses CIEDE2000 color science to match 23,000+ paint colors across 14 brands.",
         url: "https://www.paintcolorhq.com/about",
         mainEntity: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" },
       }} />
@@ -73,7 +73,7 @@ export default function AboutPage() {
               <p>
                 Paint Color HQ is a paint color discovery and cross-brand
                 matching platform. We catalog{" "}
-                <strong className="text-on-surface">over 25,000 colors across 14 major paint brands</strong>{" "}
+                <strong className="text-on-surface">over 23,000 colors across 14 major paint brands</strong>{" "}
                 and provide free tools that help homeowners, interior designers,
                 and painting professionals choose paint colors with confidence.
               </p>

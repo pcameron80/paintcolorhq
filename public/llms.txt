@@ -1,5 +1,5 @@
 # Paint Color HQ
-> A technical interior design and paint reference database containing 25,000+ colors across 14 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools. All content is written by interior design specialists — not AI. Data sourced directly from manufacturer specifications.
+> A technical interior design and paint reference database containing 23,000+ colors across 14 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools. All content is written by interior design specialists — not AI. Data sourced directly from manufacturer specifications.
 
 ## Common Questions This Site Answers
 - What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray? → Wish AF-680 (Delta E 0.91) — virtually identical on walls.
@@ -32,7 +32,7 @@
 
 ## Cross-Brand Color Matching
 - [Color Compare Tool](https://www.paintcolorhq.com/compare): Side-by-side comparison of any two colors with Delta E (CIEDE2000) perceptual difference score. Delta E < 1 = virtually identical, 1-2 = very close, 2-3 = close, 3-5 = noticeable difference.
-- [Color Search](https://www.paintcolorhq.com/search): Search 25,000+ colors by name, hex code, brand, color family, or undertone across all 14 brands.
+- [Color Search](https://www.paintcolorhq.com/search): Search 23,000+ colors by name, hex code, brand, color family, or undertone across all 14 brands.
 - [Brand-to-Brand Matches](https://www.paintcolorhq.com/match/sherwin-williams/to/benjamin-moore): Top 50 cross-brand matches between any two brands, ranked by Delta E score.
 - [SW to Benjamin Moore](https://www.paintcolorhq.com/match/sherwin-williams/to/benjamin-moore): Find the closest Benjamin Moore color for any Sherwin-Williams paint.
 - [Benjamin Moore to Behr](https://www.paintcolorhq.com/match/benjamin-moore/to/behr): Find budget Behr alternatives to premium Benjamin Moore colors.
