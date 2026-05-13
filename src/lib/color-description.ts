@@ -13,13 +13,31 @@ interface DerivedProps {
   hue: number;
 }
 
+// Color families the brand classified as visually neutral. Honoring these
+// catches famously-warm grays like SW Agreeable Gray (HSL saturation 14%
+// pushes them past the strict s<8 threshold, mis-classifying them as
+// chromatic orange) by trusting the brand's family label.
+const ACHROMATIC_FAMILIES = new Set([
+  "gray",
+  "neutral",
+  "off-white",
+  "white",
+  "beige",
+  "cream",
+  "tan",
+  "brown",
+  "black",
+  "charcoal",
+]);
+
 function deriveProps(color: ColorWithBrand): DerivedProps {
   const [h, s, l] = hexToHsl(color.hex);
   const lrv = color.lrv != null ? Number(color.lrv) : null;
   const labA = color.lab_a != null ? Number(color.lab_a) : null;
   const labB = color.lab_b_val != null ? Number(color.lab_b_val) : null;
 
-  const isAchromatic = s < 8;
+  const familyAchromatic = color.color_family ? ACHROMATIC_FAMILIES.has(color.color_family.toLowerCase()) : false;
+  const isAchromatic = s < 8 || familyAchromatic;
 
   // Temperature: use LAB a* if available, else hue
   let temperature: Temperature;
@@ -87,31 +105,119 @@ function getLrvApplicationSentence(name: string, lrv: number): string {
   return `With an LRV of ${lrv}, ${name} creates a dramatic, enveloping mood — best on accent walls, dining rooms, and intimate spaces where atmosphere matters more than reflected light.`;
 }
 
-// Temperature → trim/hardware pairing sentence. Gives an opinionated styling
-// recommendation that varies by warm/cool/neutral so the copy reads less
-// templated.
-function getPairingSentence(name: string, temperature: Temperature): string {
-  if (temperature === "warm") {
-    return `Pair it with warm whites like Sherwin-Williams Pure White or Benjamin Moore White Dove for trim, plus natural wood tones and brass hardware for a coordinated warm palette.`;
+// Hue-family axis for the pairing + lighting sentences. Keying these on a
+// single binary "temperature" produced only 3 variants per slot, which at
+// 23k color pages meant the same trim/hardware sentence appeared on roughly
+// 7,800 pages verbatim. Switching to hue family expands the surface to 11
+// variants (8 chromatic + 3 achromatic flavors) and cuts the per-variant
+// page count by ~3x. Matters post-HCU because Google's near-duplicate
+// clustering flagged the prior pattern as templated doorway copy.
+type HueFamily =
+  | "red"
+  | "orange"
+  | "yellow"
+  | "green"
+  | "teal"
+  | "blue"
+  | "purple"
+  | "magenta"
+  | "achromatic-warm"
+  | "achromatic-cool"
+  | "achromatic-neutral";
+
+// Map brand-classified families to our HueFamily values. The brand
+// classifier produces 7 chromatic families (red, orange, yellow, green,
+// blue, purple, pink). "pink" maps to magenta in our taxonomy — same
+// pairing/lighting advice serves both. Teal isn't a brand family so
+// teal colors fall through to HSL math (hue 165-200).
+const FAMILY_TO_HUE: Record<string, HueFamily> = {
+  red: "red",
+  orange: "orange",
+  yellow: "yellow",
+  green: "green",
+  blue: "blue",
+  purple: "purple",
+  pink: "magenta",
+};
+
+function getHueFamily(color: ColorWithBrand, props: DerivedProps): HueFamily {
+  if (props.isAchromatic) {
+    if (props.temperature === "warm") return "achromatic-warm";
+    if (props.temperature === "cool") return "achromatic-cool";
+    return "achromatic-neutral";
   }
-  if (temperature === "cool") {
-    return `Pair it with cool whites such as Benjamin Moore Chantilly Lace for trim, plus brushed nickel hardware and gray-toned flooring for a cohesive cool palette.`;
-  }
-  return `As a neutral, ${name} pairs flexibly — crisp whites for trim, oak or walnut floors, and either warm brass or cool nickel hardware depending on the mood you want.`;
+  const family = color.color_family?.toLowerCase();
+  if (family && FAMILY_TO_HUE[family]) return FAMILY_TO_HUE[family];
+  // HSL hue fallback when color_family is unmapped (e.g. teal) or missing.
+  const h = props.hue;
+  if (h < 15) return "red";
+  if (h < 40) return "orange";
+  if (h < 70) return "yellow";
+  if (h < 150) return "green";
+  if (h < 200) return "teal";
+  if (h < 260) return "blue";
+  if (h < 290) return "purple";
+  if (h < 330) return "magenta";
+  return "red";
 }
 
-// Temperature → lighting-behavior sentence. Bulb-color guidance is one of the
-// most-asked questions about residential paint and rarely appears in
-// programmatic color descriptions — adding it lifts the page out of pure
-// data-sheet territory.
-function getLightingBehaviorSentence(name: string, temperature: Temperature): string {
-  if (temperature === "warm") {
-    return `Under 2700K-3000K warm bulbs ${name} stays true to itself; under 4000K+ cool LED bulbs it reads slightly more muted but keeps its warmth.`;
+// Hue-family → trim/hardware pairing sentence. 11 variants instead of 3.
+function getPairingSentence(name: string, family: HueFamily): string {
+  switch (family) {
+    case "red":
+      return `Pair it with creamy off-whites like Alabaster for trim, walnut or cherry hardwoods, and brass hardware — the warmth keeps reds from feeling clinical. Deep forest green or navy work as bold accent walls.`;
+    case "orange":
+      return `Pair it with warm whites like White Dove, white oak floors, and unlacquered brass or copper hardware. Terracotta tile or deep green plants complete an earthy warm palette.`;
+    case "yellow":
+      return `Pair it with crisp whites like Pure White for trim, oak or maple woods, and brass hardware. Navy or deep teal accents balance the brightness without competing for attention.`;
+    case "green":
+      return `Pair it with off-whites like Simply White, walnut or rift-cut oak floors, and mixed metals — brass for warmth, matte black for grounding. Terracotta and rust accents add warm contrast.`;
+    case "teal":
+      return `Pair it with crisp whites like Decorator's White, white oak floors, and brushed nickel or chrome hardware. Aged brass or copper introduces deliberate warm contrast if you want to break up the cool palette.`;
+    case "blue":
+      return `Pair it with cool whites like Chantilly Lace, walnut or rift-cut oak floors, and brushed nickel or polished chrome hardware. Brass accents add warmth for a layered look.`;
+    case "purple":
+      return `Pair it with cool whites for trim, walnut floors, and either brass or matte black hardware depending on whether you want warm or grounded contrast. Sage green works as a complementary accent.`;
+    case "magenta":
+      return `Pair it with warm whites like Simply White, blonde wood floors, and brass or gold hardware. Deep green or forest accents add contrast that keeps it from feeling too sweet.`;
+    case "achromatic-warm":
+      return `As a warm neutral, ${name} pairs with off-whites for trim, white oak or walnut floors, and brass or warm brushed nickel hardware. Deep green, navy, or terra-cotta all read well as accent colors.`;
+    case "achromatic-cool":
+      return `As a cool neutral, ${name} pairs with cool whites for trim, gray-toned or rift-cut oak floors, and brushed nickel or polished chrome hardware. Black accents and natural greenery add contrast.`;
+    case "achromatic-neutral":
+      return `${name} is a true neutral — pair with any wood, any metal, any trim color. Off-white trim works in most homes; brushed nickel or matte black hardware both read well across spaces.`;
   }
-  if (temperature === "cool") {
-    return `${name} holds its coolness under cool LED lighting (4000K and up) but can shift warmer under 2700K incandescent or warm-white bulbs — worth sampling in your actual room lighting.`;
+}
+
+// Hue-family → lighting-behavior sentence. Bulb-color guidance is one of the
+// most-asked questions about residential paint. Hue-keyed variants give
+// concrete per-family advice (purples shift mauve under 2700K, blues read
+// grayer, etc.) that pure-temperature copy couldn't deliver.
+function getLightingBehaviorSentence(name: string, family: HueFamily): string {
+  switch (family) {
+    case "red":
+      return `Reds intensify under 2700K-3000K warm bulbs, deepening into wine territory. Under 4000K+ cool LEDs they can read pinker or slightly washed — sample under your actual room lighting before committing.`;
+    case "orange":
+      return `Oranges glow under 2700K warm bulbs, deepening into rich amber. Under 4000K cool light they can lose warmth and shift toward beige — particularly true for muted or dusty oranges.`;
+    case "yellow":
+      return `Under 2700K warm bulbs ${name} reads more golden or buttery. Under 4000K daylight bulbs it stays truer to the chip, though saturated yellows can edge toward green in mixed light.`;
+    case "green":
+      return `Greens shift the most under different light. 2700K warms them toward olive or yellow-green; 4000K daylight reveals their true tone. Bluer greens especially benefit from north-facing daylight.`;
+    case "teal":
+      return `Teals hold their clarity under 4000K LEDs. Under 2700K warm bulbs they can dull toward muted gray-blue or push slightly green — preview in evening light if your bulbs run warm.`;
+    case "blue":
+      return `Blues stay crisp under 4000K+ cool LEDs. Under 2700K warm bulbs they can read grayer or shift slightly purple — particularly true for mid-tone and saturated blues.`;
+    case "purple":
+      return `Purples are the most lighting-sensitive paint family. 2700K bulbs push them toward mauve or pink; 4000K daylight keeps them violet or even slightly blue. Always sample at multiple times of day.`;
+    case "magenta":
+      return `Under 2700K warm bulbs pinks and magentas glow warmly, leaning coral. Under 4000K cool light they read more vibrant — important for nursery and bedroom planning where bulb choice changes the mood.`;
+    case "achromatic-warm":
+      return `Warm neutrals come alive under 2700K bulbs, where their underlying yellow or peach undertones add visible warmth. Under 4000K daylight they read cleaner and slightly cooler.`;
+    case "achromatic-cool":
+      return `Cool neutrals hold their crisp quality under 4000K+ daylight bulbs. Under 2700K warm light they soften considerably — particularly true for any blue or green undertone.`;
+    case "achromatic-neutral":
+      return `True neutrals read consistently across lighting conditions, which is why they're popular base colors. They inherit a faint warm cast under 2700K and a cool cast under 4000K, but never dramatically.`;
   }
-  return `${name} stays neutral across most lighting conditions, though warm 2700K bulbs will slightly amplify any underlying warm undertones while cool 4000K bulbs do the opposite.`;
 }
 
 function getQueryTargetingSentences(
@@ -147,11 +253,12 @@ function getQueryTargetingSentences(
   const lrv = color.lrv != null ? Math.round(Number(color.lrv)) : null;
   const lrvSentence = lrv != null ? getLrvApplicationSentence(color.name, lrv) : "";
 
-  // Trim/hardware pairing recommendation, varied by temperature
-  const pairingSentence = getPairingSentence(color.name, props.temperature);
+  // Trim/hardware pairing recommendation, varied by hue family (11 variants)
+  const hueFamily = getHueFamily(color, props);
+  const pairingSentence = getPairingSentence(color.name, hueFamily);
 
-  // Lighting-behavior guidance — concrete bulb temperature advice
-  const lightingSentence = getLightingBehaviorSentence(color.name, props.temperature);
+  // Lighting-behavior guidance — concrete bulb-temperature advice, hue-keyed
+  const lightingSentence = getLightingBehaviorSentence(color.name, hueFamily);
 
   return [
     whatColorIs,
