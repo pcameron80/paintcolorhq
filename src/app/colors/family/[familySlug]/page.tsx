@@ -8,6 +8,7 @@ import { FamilyColorLibrary } from "@/components/family-color-library";
 import { FamilyColorLibraryFallback } from "@/components/family-color-library-fallback";
 import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/queries";
 import { getFamilyContent, getFamilyRelatedPalettes } from "@/lib/family-content";
+import { FAMILY_UNDERTONE_ANSWERS } from "@/lib/family-undertone-copy";
 import { getPaletteBySlug } from "@/lib/palettes";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
@@ -120,7 +121,12 @@ export default async function ColorFamilyPage({ params }: PageProps) {
             name: `What undertones do ${familyName.toLowerCase()} paint colors have?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `${familyName} paint colors come in warm undertones (leaning yellower, redder, or browner), cool undertones (leaning bluer or greener), and balanced neutrals. Use the undertone filter on this page to narrow your search to warm, cool, or neutral options.`,
+              // Use a family-specific paragraph when available so the FAQ answer
+              // varies across all 15 family hubs instead of reading as a
+              // templated string with only the family name swapped (M1 audit).
+              text:
+                FAMILY_UNDERTONE_ANSWERS[familySlug] ??
+                `${familyName} paint colors come in warm undertones (leaning yellower, redder, or browner), cool undertones (leaning bluer or greener), and balanced neutrals. Use the undertone filter on this page to narrow your search to warm, cool, or neutral options.`,
             },
           },
           {
