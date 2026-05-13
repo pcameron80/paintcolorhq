@@ -14,6 +14,7 @@ export async function GET() {
       "pages",
       "brands",
       "matches",
+      "match-individual",
       ...Array.from({ length: totalColorSitemaps }, (_, i) => `colors-${i}`),
       "blog",
       "families",
