@@ -44,8 +44,42 @@ const supabase = createClient(supabaseUrl, serviceKey, {
 });
 
 const OUT_DIR = path.resolve(__dirname, "../public/match-data");
+// Vercel preserves .next/cache between builds. Use it to skip regeneration
+// when neither colors nor cross_brand_matches has changed since last build.
+const CACHE_DIR = path.resolve(__dirname, "../.next/cache/match-data");
+const CACHE_MARKER = path.join(CACHE_DIR, ".hash");
 const TOP_N_PER_COLOR = 50;
 const MATCH_BATCH_SIZE = 1000; // PostgREST default cap is 1000 rows/request
+
+async function getDataHash(): Promise<string | null> {
+  // Cheap fingerprint: row counts across both source tables. cross_brand_matches
+  // is the dominant dataset (~1.5M rows) and is append-only on compute-matches
+  // re-runs, so count is a reliable change signal. Including colors guards
+  // against name/slug edits that would render stale embedded metadata.
+  const matchesRes = await supabase
+    .from("cross_brand_matches")
+    .select("*", { count: "exact", head: true });
+  if (matchesRes.error) return null;
+  const colorsRes = await supabase
+    .from("colors")
+    .select("*", { count: "exact", head: true });
+  if (colorsRes.error) return null;
+  return `matches:${matchesRes.count}|colors:${colorsRes.count}`;
+}
+
+function copyDirSync(src: string, dest: string): number {
+  fs.mkdirSync(dest, { recursive: true });
+  let copied = 0;
+  for (const file of fs.readdirSync(src)) {
+    const s = path.join(src, file);
+    const d = path.join(dest, file);
+    if (fs.statSync(s).isFile()) {
+      fs.copyFileSync(s, d);
+      copied++;
+    }
+  }
+  return copied;
+}
 
 interface ColorRow {
   id: string;
@@ -79,6 +113,31 @@ interface OutputMatch {
 async function main() {
   console.log(`Output dir: ${OUT_DIR}`);
   fs.mkdirSync(OUT_DIR, { recursive: true });
+
+  // Cache shortcut — skip the 5-minute generation when neither colors nor
+  // cross_brand_matches has changed since the previous build. Vercel's
+  // build cache preserves .next/cache/ between deploys, so a cached copy
+  // of the JSON files lives there and we copy to public/ at the start.
+  const currentHash = await getDataHash();
+  if (currentHash && fs.existsSync(CACHE_MARKER) && fs.existsSync(CACHE_DIR)) {
+    const savedHash = fs.readFileSync(CACHE_MARKER, "utf-8").trim();
+    const cachedFiles = fs
+      .readdirSync(CACHE_DIR)
+      .filter((f) => f.endsWith(".json"));
+    if (savedHash === currentHash && cachedFiles.length > 0) {
+      console.log(
+        `Cache hit (${currentHash}). Copying ${cachedFiles.length} files from .next/cache to public/...`,
+      );
+      const copied = copyDirSync(CACHE_DIR, OUT_DIR);
+      console.log(`Copied ${copied} files. Skipping regeneration.`);
+      return;
+    }
+    console.log(
+      `Cache miss (saved=${savedHash}, current=${currentHash}). Regenerating...`,
+    );
+  } else if (currentHash) {
+    console.log(`No cache marker. Generating fresh (current hash ${currentHash})...`);
+  }
 
   // 1. Load brands map
   console.log("\n[1/3] Loading brands...");
@@ -222,6 +281,21 @@ async function main() {
     console.log(
       `Avg per color: ${(totalBytes / files.length / 1024).toFixed(1)} KB`,
     );
+  }
+
+  // Persist to the build cache so the next deploy can short-circuit when
+  // data is unchanged. currentHash was computed at the top of main().
+  if (currentHash) {
+    console.log(`\nSaving to .next/cache for next-build shortcut...`);
+    fs.mkdirSync(CACHE_DIR, { recursive: true });
+    // Clear stale files first — a removed color must not leave a stale JSON
+    // behind in the cache that would re-appear on the next build.
+    for (const f of fs.readdirSync(CACHE_DIR)) {
+      if (f.endsWith(".json")) fs.unlinkSync(path.join(CACHE_DIR, f));
+    }
+    const copied = copyDirSync(OUT_DIR, CACHE_DIR);
+    fs.writeFileSync(CACHE_MARKER, currentHash);
+    console.log(`Cached ${copied} files with hash ${currentHash}.`);
   }
 }
 
