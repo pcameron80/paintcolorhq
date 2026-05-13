@@ -2543,12 +2543,35 @@ const blogPosts: BlogPost[] = [
     slug: "sherwin-williams-vs-benjamin-moore",
     title: "Sherwin-Williams vs Benjamin Moore: The Complete Comparison",
     date: "2025-11-27",
+    modifiedDate: "2026-05-13",
     author: "Paint Color HQ Staff",
     excerpt:
-      "A head-to-head comparison of America's two premium paint brands — covering quality, price, color matching, and which to choose.",
+      "A head-to-head comparison of America's two premium paint brands — covering quality, price, color matching, cabinet vs wall paint, exterior durability, and which to choose for each project.",
     coverColor: "#C4B8A2",
     coverImage: "/blog/sherwin-williams-vs-benjamin-moore.webp",
     tags: ["Brands", "Comparison", "Buying Guide"],
+    faq: [
+      {
+        question: "Is Sherwin-Williams or Benjamin Moore better?",
+        answer:
+          "Both make excellent paint. Benjamin Moore Aura has a slight edge in color depth and one-coat coverage; Sherwin-Williams Emerald excels in self-leveling and workability. At full retail BM is more expensive, but SW runs 30-40% off sales 4-6 times per year that flip the value math. For cabinets, pros generally prefer BM Advance. For walls, it's a near toss-up at the premium tier.",
+      },
+      {
+        question: "Can I get a Benjamin Moore color in Sherwin-Williams paint (or vice versa)?",
+        answer:
+          "Yes - both stores can spectrophotometer-match any physical chip and mix the color in their own paint base. But a custom mix isn't the same as a formulated catalog color: in-store spectrophotometers can drift by Delta E 2.0-5.0 between calibrations, and batch-to-batch consistency for custom mixes is weaker. For best results, find the brand's closest catalog equivalent first - see the SW to BM and BM to SW conversion charts.",
+      },
+      {
+        question: "Which brand is better for kitchen cabinets?",
+        answer:
+          "Benjamin Moore Advance is widely preferred by cabinet painters - it's a waterborne alkyd that levels like oil-based paint but cleans up with water and dries to a hard, factory-like finish. Sherwin-Williams ProClassic Waterbased and Emerald Urethane Trim Enamel are strong alternatives. For best durability, all three need an oil-based or shellac-based primer (Zinsser BIN) on previously-painted cabinets.",
+      },
+      {
+        question: "Which brand is better for exterior paint?",
+        answer:
+          "Both have excellent exterior lines. Benjamin Moore Aura Exterior carries a 'Lifetime Limited Warranty' on most substrates. Sherwin-Williams Emerald Rain Refresh is engineered for early washability (rain within 60 minutes of application). For UV stability on dark or saturated colors, BM Aura Exterior has a slight edge. For tough climates with frequent rain, SW Emerald Rain Refresh is the safer choice for contractor schedules.",
+      },
+    ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
@@ -2580,7 +2603,22 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> ↔ <Swatch hex="#F1ECE0" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> — Warm whites for whole-house color. Nearly identical in person.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to check the exact Delta E between any SW and BM colors. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> to understand why similar-looking colors can feel different on your walls.
+          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> ↔ <Swatch hex="#3B444B" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — The two most-specified navies. Naval is slightly cooler and more saturated; Hale Navy has a hint of green that makes it pair more easily with warm woods. Delta E 2.1.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D0C8B5" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> ↔ <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — Both warm greiges that have replaced cool gray for whole-home neutral applications. Edgecomb has slightly more green; Accessible Beige reads slightly warmer.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C2BFB8" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> ↔ <Swatch hex="#C6BFA3" name="Classic Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/classic-gray-oc-23" /> — The most-specified true mid-grays. Repose has more brown; Classic Gray reads slightly cooler. Both are reliable in any direction of natural light.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#1F1F1F" name="Tricorn Black" brand="Sherwin-Williams" href="/colors/sherwin-williams/tricorn-black-6258" /> ↔ <Swatch hex="#2A2A28" name="Black Beauty" brand="Benjamin Moore" href="/colors/benjamin-moore/black-beauty-2128-10" /> — The reliable blacks for trim, doors, and accent walls. Tricorn is a true neutral black; Black Beauty has the faintest blue cast that designers prize for sophistication.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F5F1EB" name="Extra White" brand="Sherwin-Williams" href="/colors/sherwin-williams/extra-white-7006" /> ↔ <Swatch hex="#F5F2ED" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — The brightest true whites in each brand&apos;s deck. Both read clean and bright with no obvious undertone. Excellent for trim against any wall color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to check the exact Delta E between any SW and BM colors. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> to understand why similar-looking colors can feel different on your walls. For a systematic view, browse the full <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM conversion chart</Link> or the <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">BM to SW chart</Link> for the 50 closest pairs.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Quality: Advantage BM (Slightly)</h2>
@@ -2622,9 +2660,57 @@ const blogPosts: BlogPost[] = [
           You want the absolute richest color depth, you&apos;re painting cabinets (BM Advance is hard to beat), your designer specced BM colors, or you prefer working with an independent paint store for expert advice. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link>.
         </p>
 
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cabinets and Trim Deep Dive</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Cabinet and trim paint is the one category where the brand choice meaningfully affects the result. Wall paint can be touched up; cabinets cannot. The wrong product on a kitchen cabinet means stripping and starting over.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Benjamin Moore Advance</strong> ($75–$85/gallon) is the cabinet paint most pros reach for. It&apos;s a waterborne alkyd — flows and levels like oil-based paint, dries to a hard factory-like finish, and cleans up with water. Critical detail: Advance needs an extended cure time (30 days to full hardness) before you stack heavy items on shelves or close drawers fully. The finish is worth the wait.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sherwin-Williams Emerald Urethane Trim Enamel</strong> ($75–$85/gallon) is SW&apos;s closest equivalent. Similar leveling characteristics, comparable hardness, slightly less open time (means you have less working window before the brush starts dragging). Pros split on which is better — both are excellent. ProClassic Waterbased ($55–$65/gallon) is the budget alternative if you&apos;re doing trim only, not cabinets.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For both brands, the prep work matters more than the paint. On previously-painted cabinets, sand to scuff the finish, clean with TSP or denatured alcohol, and prime with an oil-based or shellac-based primer (Zinsser BIN is the standard) before applying topcoat. Skipping this step is the #1 reason cabinet paint fails. Read our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> — for cabinets, satin or semi-gloss is standard.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Exterior Paint: Different Trade-Offs</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Exterior paint inverts some of the interior trade-offs. Weatherability, UV stability, and washability matter more than leveling. Both brands have premium exterior lines, but their strengths differ.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Benjamin Moore Aura Exterior</strong> ($90–$100/gallon) carries a Lifetime Limited Warranty on most substrates. Color retention on darker shades is the strongest in the residential category — important for the navy and charcoal exteriors trending in 2026. The mildewcide is robust enough for humid climates without yellowing white trim.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sherwin-Williams Emerald Rain Refresh</strong> ($80–$90/gallon) is engineered for a specific contractor problem: early washability. Paint dried for 60 minutes can survive a rain event without streaking, which saves repaint jobs on unpredictable weather days. For exteriors in regions with frequent spring rain (Pacific Northwest, Northeast, Southeast), this feature is genuinely valuable.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For front doors specifically, both brands offer specialty products: <strong>BM Aura Grand Entrance</strong> (a high-gloss exterior alkyd) and <strong>SW Resilience</strong> (waterborne with strong color depth on doors). Read our <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">best exterior paint colors guide</Link> for color picks specifically for siding, trim, and shutters.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cost Analysis: What a Real Project Actually Costs</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          List prices tell half the story. Here&apos;s what a typical 12×14 bedroom (paint walls and one accent wall, 2 coats) actually costs in each brand:
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Bedroom walls — 384 sq ft of wall area, minus 1 door (21 sq ft) and 2 windows (30 sq ft) = 333 sq ft per coat × 2 coats = 666 sq ft.</strong> At 350 sq ft per gallon, that&apos;s 2 gallons of wall paint. Run the numbers in our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> with your actual dimensions for exact gallons.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Benjamin Moore Regal Select:</strong> 2 gallons × $70 = $140. No sale typically available.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Sherwin-Williams SuperPaint:</strong> 2 gallons × $65 = $130 at full price. During an SW Big Sale (typically Memorial Day, July 4, Labor Day, Black Friday): 2 × $39 = $78. Effective savings: $52, or 37%.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a whole-house repaint (assume 2,400 sq ft of wall area, 14 gallons total), the gap widens: $980 at BM list price vs $546 at SW sale pricing. That&apos;s real budget that can fund cabinet paint, sample pots for testing, or designer hours.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>The asterisk:</strong> SW sales are unpredictable in timing and exact discount percentage. If you have a project deadline that doesn&apos;t flex, factor in the possibility of buying at full price. BM dealers occasionally offer their own promotions (especially around inventory turnover), but they&apos;re less frequent and smaller in scale.
+        </p>
+
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best of Both Worlds</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Many homeowners use both brands. A common approach: BM Advance for cabinets and trim (superior finish), SW Emerald for walls (more accessible, great with sales). Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to make sure your BM trim white matches your SW wall color. Our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> can help you build a cohesive scheme mixing colors from either brand.
+          Many homeowners use both brands. A common approach: BM Advance for cabinets and trim (superior finish), SW Emerald for walls (more accessible, great with sales). Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to make sure your BM trim white matches your SW wall color. Our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> can help you build a cohesive scheme mixing colors from either brand. To preview any combination in a real room before buying samples, try the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
         </p>
       </>
     ),
@@ -3075,6 +3161,162 @@ const blogPosts: BlogPost[] = [
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Don&apos;t pick colors in morning light only.</strong> This is the most common mistake — a color chosen at 10 AM in an east-facing room can be a completely different color by dinnertime. Our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> can help you preview before you invest in samples. For more on how undertones shift with lighting, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link>.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Pillar — Best Blue Paint Colors ──────────────── */
+  {
+    slug: "best-blue-paint-colors",
+    title: "The Best Blue Paint Colors for Every Room (2026)",
+    date: "2026-05-13",
+    author: "Paint Color HQ Staff",
+    excerpt:
+      "Fourteen designer-favorite blues ranked by undertone, LRV, and room application — from airy sky blues to dramatic naval. Every pick verified against our 23,000+ color database with cross-brand matches.",
+    coverColor: "#4A6B8F",
+    coverImage: "/blog/best-blue-paint-colors.webp",
+    tags: ["Guide", "Blue", "Trends"],
+    faq: [
+      {
+        question: "What is the best blue paint color overall?",
+        answer:
+          "For most rooms, Benjamin Moore Hale Navy (HC-154, LRV 8) is the most-specified blue among designers — a deeply saturated transitional navy that works on cabinetry, accent walls, and exteriors without committing to a single style. For lighter applications, Sherwin-Williams Sleepy Blue (SW 6225, LRV 55) is a versatile mid-tone that reads serene under most lighting conditions.",
+      },
+      {
+        question: "What's the best blue paint for a bedroom?",
+        answer:
+          "Blues with LRV 45-65 work best for bedrooms — bright enough not to feel cave-like, soft enough to promote rest. Benjamin Moore Quiet Moments (1563, LRV 54) and Sherwin-Williams Rainwashed (6211, LRV 56) are top picks for primary bedrooms. For nurseries and kids' rooms, aim higher LRV (65+) like Benjamin Moore Iceberg (2122-50) for energy without overstimulation.",
+      },
+      {
+        question: "What blue paint color goes with everything?",
+        answer:
+          "Hale Navy (BM HC-154) is the most versatile dark blue — its near-balanced undertones (slight green) make it work with both warm wood floors and cool gray cabinetry. For a lighter universal blue, Sherwin-Williams Drizzle (SW 6479, LRV 55) has just enough green to ground it without committing to teal territory.",
+      },
+      {
+        question: "What's the difference between navy and royal blue paint?",
+        answer:
+          "Navy blues sit around LRV 7-12 with a near-neutral or slightly green undertone — Hale Navy, Naval (SW 6244), and Newburyport Blue (HC-155) are classic navies. Royal blue is more saturated and brighter, typically LRV 12-18 with a clear blue undertone — colors like Symphony Blue (BM 2060-10) lean royal. Navy reads sophisticated and traditional; royal reads bolder and more contemporary.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best blue paint color for most projects is{" "}
+          <Swatch hex="#3B444B" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> (HC-154, LRV 8) — a deeply saturated transitional navy that works on cabinetry, accent walls, and front doors without committing to a single design style. But &ldquo;best&rdquo; depends on the room, the lighting, and how dark you can go. This guide ranks 14 designer-favorite blues across navy, mid-tone, and airy LRV ranges — each pick verified against our database with cross-brand matches so your painter&apos;s preferred deck is rarely a constraint.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose a Blue (Don&apos;t Skip This)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three variables decide whether a blue works in your specific room: <strong>LRV</strong>, <strong>undertone</strong>, and <strong>natural light direction</strong>. Get any of these wrong and a beautiful chip becomes a wrong color on the wall.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>LRV (Light Reflectance Value).</strong> A blue with LRV under 15 will read almost black in low light and create a dramatic, enveloping room. LRV 15-40 is the &ldquo;mid-blue&rdquo; range — colors like teal and dusty blue that feel substantial but not heavy. LRV 40-65 is the airy mid-tone range, suitable for full-room walls in moderate light. Anything above LRV 65 is a pale wash — great for ceilings or rooms that need maximum brightness, but easy to read as gray on cloudy days.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Undertone.</strong> Pure blue is rare in residential paint. Most &ldquo;blues&rdquo; lean green (teal, ocean), purple (periwinkle, lavender-blue), or gray (steel, slate). Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for the full method, but the quick test: hold the chip against a piece of pure white printer paper. The contrast reveals which direction the color leans.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Light direction.</strong> North-facing rooms get cool, neutral light that intensifies any blue&apos;s coolness — blues read colder there. South-facing rooms get warm direct sun that softens blues and brings out any warm undertones. East-facing rooms shift dramatically across the day. West-facing rooms warm up in afternoon. Always sample before committing.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The 5 Best Navy Blues</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Navy is the most reliable blue category — these LRV 5-15 colors read as &ldquo;dark blue&rdquo; without flashing purple or green in most lighting. Excellent for accent walls, kitchen islands, cabinetry, front doors, and dining rooms where you want atmosphere.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3B444B" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — HC-154, LRV 8. The most-specified navy among designers. Slightly green-leaning undertone makes it warmer than pure navy, which is why it pairs equally with warm wood floors and cool gray cabinetry. Closest <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams equivalent</Link> is Naval (SW 6244) within Delta E 2.1.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#34405A" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — SW 6244, LRV 7. Sherwin-Williams&apos; signature deep navy. Slightly more saturated and slightly cooler than Hale Navy. The right pick when you want a navy that reads unambiguously navy — no question whether it&apos;s &ldquo;a dark color&rdquo; or &ldquo;a navy.&rdquo; Excellent on kitchen islands and shutters.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#2C3548" name="Newburyport Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/newburyport-blue-hc-155" /> — HC-155, LRV 6. Darker and more traditional than Hale Navy. The Historic Colors collection palette places this firmly in the &ldquo;heritage&rdquo; category — front doors on colonial homes, libraries with built-ins, dining rooms with deep crown molding. Pairs especially well with brass hardware and oil-rubbed bronze.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#5A6678" name="Indigo Batik" brand="Sherwin-Williams" href="/colors/sherwin-williams/indigo-batik-7602" /> — SW 7602, LRV 11. A softer, slightly grayer take on navy. Reads more &ldquo;dusty denim&rdquo; than &ldquo;naval uniform.&rdquo; The right pick for primary bedrooms when you want depth without going to a hard navy. Excellent paired with white linen bedding and natural wood headboards.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#1A2D40" name="Stiffkey Blue" brand="Farrow & Ball" href="/colors/farrow-ball/stiffkey-blue-281" /> — No. 281, LRV 5. The most dramatic blue on this list. Reads almost black in low light but reveals deep blue undertones when sunlight hits. The premium option for color-drenched rooms — paint walls, trim, and ceiling all in Stiffkey for the full Farrow &amp; Ball effect. At $115/gallon it&apos;s an investment; the closest <Link href="/match/farrow-ball/to/sherwin-williams" className="text-brand-blue hover:underline">SW equivalent</Link> drops the cost ~50% with minimal visual difference on walls.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The 5 Best Mid-Tone Blues</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          LRV 40-65. These work as full-room wall colors in moderate-to-bright light and pair well with white trim and natural wood floors. Designer-favorite category for primary bedrooms, home offices, and dining rooms that don&apos;t want navy commitment.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C5D5DC" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — SW 6225, LRV 55. A soft mid-blue with green-gray undertones that prevent it from reading babyish. Works in any direction of natural light. The default mid-blue for bedrooms — bright enough to feel awake, soft enough to feel restful. Pairs naturally with white trim and warm hardwood floors. Browse more <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue paint colors</Link> for the full palette.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A6B5BB" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — 1563, LRV 54. A soft blue-gray with just enough blue to commit to the category. Reads serene rather than chilly. The exact mid-point between &ldquo;blue&rdquo; and &ldquo;gray&rdquo; — if you can&apos;t decide which family fits your room, this is the answer. Closest <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">Behr equivalent</Link> is Composed (HDC-AC-23) within Delta E 1.8.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#BBC9BD" name="Rainwashed" brand="Sherwin-Williams" href="/colors/sherwin-williams/rainwashed-6211" /> — SW 6211, LRV 56. A subtle blue-green that reads more &ldquo;coastal&rdquo; than the others on this list. Strong green undertone makes it work with sage cabinetry and natural fiber rugs. Excellent for bathrooms and bedrooms in coastal-inspired or organic-modern interiors.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7E9CAB" name="Smoky Azurite" brand="Sherwin-Williams" href="/colors/sherwin-williams/smoky-azurite-9148" /> — SW 9148, LRV 30. A deeper mid-blue with smoky gray undertones. Sits between mid-blue and navy — useful when you want depth but the room can&apos;t handle full navy. Reads especially well in north-facing rooms where cooler light intensifies its smokier qualities.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#9DAFBD" name="Drizzle" brand="Sherwin-Williams" href="/colors/sherwin-williams/drizzle-6479" /> — SW 6479, LRV 55. A clean mid-tone blue with balanced undertones — neither obviously green nor obviously gray. The most &ldquo;just blue&rdquo; pick on this list. Works as a safe-but-not-boring blue when a project needs the color without strong character.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The 4 Best Airy Light Blues</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          LRV 65+. These nearly-white blues are perfect for ceilings, small rooms that need maximum light, and spaces that should feel airy and breathable. They demand attention to undertone — at this LRV range, a faintly warm or cool blue can shift dramatically across the day.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CFD8D7" name="Aleutian" brand="Sherwin-Williams" href="/colors/sherwin-williams/aleutian-6241" /> — SW 6241, LRV 48. The bright end of the mid-blue category, almost airy. Reads soft and atmospheric in moderate light. Excellent for foyers, hallways, and rooms that connect to whites without harsh transition.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D8E1E2" name="Iceberg" brand="Benjamin Moore" href="/colors/benjamin-moore/iceberg-2122-50" /> — 2122-50, LRV 65. A pale icy blue. Best for north-facing bathrooms and powder rooms where you want a hint of color without committing to a deep blue. Pairs naturally with white subway tile, polished nickel, and bright white trim.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E5EDED" name="Constellation" brand="Sherwin-Williams" href="/colors/sherwin-williams/constellation-6532" /> — SW 6532, LRV 70. Nearly white with a subtle blue cast. Reads as &ldquo;white with a hint of blue&rdquo; in most lighting. Ideal for primary bedrooms in south-facing homes, where warm sunlight balances the cool undertone.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D7DDDD" name="Misty" brand="Sherwin-Williams" href="/colors/sherwin-williams/misty-6232" /> — SW 6232, LRV 64. A pale blue-gray that reads more atmospheric than colorful. Works exceptionally well on ceilings — adds dimension without competing with wall colors.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Blue Paint by Room</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Bedrooms.</strong> Aim for LRV 45-65 for primary bedrooms. Quiet Moments, Sleepy Blue, and Indigo Batik (slightly darker, more sophisticated) are top picks. For kids&apos; rooms and nurseries, go higher LRV (Iceberg, Constellation) to keep the room energizing without overstimulation. Read our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom paint colors guide</Link> for the full LRV-driven approach.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Kitchens (cabinets).</strong> Navy blues dominate. Hale Navy is the safe default for islands or lower cabinets, paired with white upper cabinets and brass or polished chrome hardware. For a more contemporary look, Naval (SW) provides slightly more saturation. Use Benjamin Moore Advance (waterborne alkyd) for cabinet durability — read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">SW vs BM brand comparison</Link> for the cabinet paint specifics.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Bathrooms.</strong> Mid-tone blues (Quiet Moments, Sleepy Blue) work for primary bathrooms with good natural light. For powder rooms, go bolder — Stiffkey Blue or Hale Navy create the &ldquo;jewel box&rdquo; effect on a small footprint. For coastal/beachy bathrooms, Rainwashed (SW 6211) with its green-blue undertone is the go-to.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Exteriors.</strong> Hale Navy and Naval are the dominant exterior navies for shutters, doors, and accent siding. For full-house blue siding, look at deeper navies that hold their color over years of UV exposure — Newburyport Blue and Naval both have strong UV stability. Read our <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">best exterior paint colors guide</Link> for sheen and durability requirements.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Front doors.</strong> Stiffkey Blue, Hale Navy, and Newburyport Blue are the classic front-door blues. The right one depends on your siding color: navy doors work with white, off-white, gray, and natural wood siding; they fight red brick.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Common Mistakes With Blue Paint</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Choosing in store lighting.</strong> Paint stores use 5000K-6500K fluorescent bulbs designed to neutralize undertones. Your home almost certainly uses 2700K-3000K LED bulbs. A blue that looks balanced in the store can read significantly warmer or cooler at home. Always view a chip in your actual room before buying samples.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Ignoring the green-blue/purple-blue split.</strong> Most blue mistakes come from picking a blue with the wrong undertone for the room&apos;s existing materials. Green-leaning blues (Hale Navy, Rainwashed) work with warm wood floors and natural fiber rugs. Purple-leaning blues (Symphony Blue, some royals) work with cool gray cabinets and chrome fixtures. Mixing the two creates a visual clash.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Going too dark in a small dark room.</strong> Stiffkey Blue is gorgeous in a windowed dining room with afternoon sun. The same color in a windowless powder room reads cave-like. Always sample LRV-below-15 blues in the actual room before committing — and never pick a navy from a chip alone.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Skipping the cross-brand check.</strong> If your contractor stocks Behr and your designer specified Hale Navy, the close <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">Benjamin Moore to Behr conversion</Link> equivalent at $50-60/gallon (vs Hale Navy at $80+) is often the better project value. Read our <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">cross-brand matching guide</Link> for the Delta E methodology.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Find a Blue Match Across Brands</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every color on Paint Color HQ shows cross-brand matches ranked by Delta E score. Click any of the colors above and scroll to the cross-brand matches section — you&apos;ll see the closest equivalents from all 14 brands ranked by perceptual color difference. Delta E under 2.0 means the colors are virtually indistinguishable on a finished wall.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For systematic brand-to-brand conversions, see the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM</Link>, <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">BM to Behr</Link>, and <Link href="/match/sherwin-williams/to/behr" className="text-brand-blue hover:underline">SW to Behr</Link> conversion charts — each shows the 50 closest cross-brand pairs across all color families.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          To preview any of these blues in your specific room before committing to samples, use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. To build a complete palette around a blue (walls, trim, accent, pop), try the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> with any of the blues above as the base color.
         </p>
       </>
     ),
