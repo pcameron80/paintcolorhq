@@ -18,6 +18,11 @@ export interface BlogPost {
   tags: string[];
   noindex?: boolean; // true = exclude from sitemap and add noindex meta
   content: () => ReactNode;
+  // Optional FAQ items emitted as FAQPage JSON-LD for AI engine citation
+  // (Perplexity, AI Overviews, ChatGPT). Google restricted FAQPage rich
+  // results to government/healthcare in Aug 2023, so this won't surface
+  // a rich result on Google SERPs but does help AI engines extract Q&A.
+  faq?: Array<{ question: string; answer: string }>;
 }
 
 /* ------------------------------------------------------------------ */
@@ -772,6 +777,28 @@ const blogPosts: BlogPost[] = [
     coverColor: "#6B8F71",
     coverImage: "/blog/how-to-find-perfect-color-match-across-brands.webp",
     tags: ["How-To", "Cross-Brand Matching", "Color Science"],
+    faq: [
+      {
+        question: "What is Delta E in paint matching?",
+        answer:
+          "Delta E (ΔE) is a numeric score that measures perceived color difference. Paint Color HQ uses the CIEDE2000 revision, the international color-science standard. ΔE under 1.0 is virtually indistinguishable, ΔE 1.0-2.0 is a very close match most people won't notice, ΔE 2.0-3.0 is close but perceptible at a glance, and ΔE above 5.0 is clearly different colors.",
+      },
+      {
+        question: "How accurate are cross-brand paint color matches?",
+        answer:
+          "Cross-brand matches under ΔE 2.0 are virtually identical on a finished wall — most homeowners won't perceive the difference. The vast majority of popular colors from major brands (Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG) have at least one cross-brand match within ΔE 2.0 in our database.",
+      },
+      {
+        question: "Should I trust a custom-mixed paint match over a catalog match?",
+        answer:
+          "A formulated catalog color is usually more reliable. In-store spectrophotometers drift between calibrations, producing ΔE errors of 2.0-5.0 on a single scan, and custom mixes carry batch-to-batch variation that complicates touch-ups years later. Standard catalog colors are formulated to ΔE under 0.5 batch-to-batch.",
+      },
+      {
+        question: "What's the best way to verify a paint color match in person?",
+        answer:
+          "Buy sample pots of both the original and the proposed match. Paint at least 12×12-inch swatches side-by-side on the same wall, then view them at four times of day: early morning, midday with direct sun, late afternoon, and nighttime under artificial light. Color shifts in different lighting often reveal differences that aren't visible on a chip.",
+      },
+    ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
@@ -2614,6 +2641,28 @@ const blogPosts: BlogPost[] = [
     coverColor: "#C8C0B4",
     coverImage: "/blog/paint-sheen-guide.webp",
     tags: ["Guide", "Tips", "Beginner"],
+    faq: [
+      {
+        question: "What paint sheen should I use for a bedroom?",
+        answer:
+          "Eggshell is the standard for adult bedrooms — soft, slightly washable, hides minor wall imperfections. Use flat or matte for ceilings. Kids' bedrooms benefit from satin or eggshell for easier cleanup of fingerprints and crayon.",
+      },
+      {
+        question: "What sheen for kitchens and bathrooms?",
+        answer:
+          "Satin or semi-gloss for kitchen and bathroom walls — both are moisture-resistant and easy to clean. Eggshell can work in dry, well-ventilated bathrooms but won't hold up over a shower. For trim, use semi-gloss in both rooms.",
+      },
+      {
+        question: "What sheen for trim, doors, and baseboards?",
+        answer:
+          "Semi-gloss is standard for trim and doors — it's durable enough to handle frequent contact and easy to wipe clean. The slight contrast in sheen between walls (eggshell) and trim (semi-gloss) is what gives a room its crisp finished look. High-gloss is reserved for accent doors, cabinets, or trim where you want maximum shine.",
+      },
+      {
+        question: "Does sheen affect how a paint color looks?",
+        answer:
+          "Yes. The same color looks slightly different across sheens. Higher sheens reflect more light, making colors appear marginally lighter and more saturated. Flat absorbs light and produces the richest, deepest color appearance. When comparing colors across brands, always compare the same sheen level.",
+      },
+    ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">

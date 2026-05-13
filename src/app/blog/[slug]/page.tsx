@@ -225,6 +225,22 @@ export default async function BlogPostPage({ params }: PageProps) {
           { "@type": "ListItem", position: 3, name: post.title, item: `https://www.paintcolorhq.com/blog/${post.slug}` },
         ],
       }} />
+      {/* FAQPage schema — for AI engine citation (Perplexity, AI Overviews,
+          ChatGPT). Google restricted FAQPage rich results to government/
+          healthcare in Aug 2023, so no Google SERP lift, but AI engines still
+          extract these Q&A pairs for citation. Only emitted when the post
+          defines a `faq` array. */}
+      {post.faq && post.faq.length > 0 && (
+        <JsonLd data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        }} />
+      )}
     </div>
   );
 }
