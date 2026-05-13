@@ -373,7 +373,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Your Own Matches</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Don&apos;t see your color here? Every color page on Paint Color HQ shows the <strong>closest matches from every other brand</strong> automatically. Just search for your Benjamin Moore color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> and scroll to the cross-brand matches section. You can also use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any match on your walls before committing. For a detailed comparison of the brands themselves, read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore</Link> breakdown.
+          Don&apos;t see your color here? Every color page on Paint Color HQ shows the <strong>closest matches from every other brand</strong> automatically. Just search for your Benjamin Moore color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> and scroll to the cross-brand matches section. For a systematic view of all 50 closest SW alternatives, see the full <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Benjamin Moore to Sherwin-Williams conversion chart</Link>. You can also use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any match on your walls before committing. For a detailed comparison of the brands themselves, read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore</Link> breakdown.
         </p>
       </>
     ),
@@ -656,7 +656,7 @@ const blogPosts: BlogPost[] = [
           <strong>Best-selling white:</strong> <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#F5F2ED" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-ul170-13" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to check the exact Delta E between any two colors, and read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore deep dive</Link> for a more detailed head-to-head.
+          Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to check the exact Delta E between any two colors, and read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore deep dive</Link> for a more detailed head-to-head. For a systematic view of the closest matches across each pair, see the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM</Link>, <Link href="/match/sherwin-williams/to/behr" className="text-brand-blue hover:underline">SW to Behr</Link>, and <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">BM to Behr</Link> conversion charts.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Paint Quality</h2>
@@ -854,7 +854,7 @@ const blogPosts: BlogPost[] = [
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Navy blues across brands.</strong>{" "}
-          <Swatch hex="#2E3B4E" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> is a classic navy that designers love for accent walls and cabinetry. If you need a Sherwin-Williams alternative, search for Hale Navy on our site and you&apos;ll find the closest SW navy ranked by Delta E. Explore more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+          <Swatch hex="#2E3B4E" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> is a classic navy that designers love for accent walls and cabinetry. If you need a Sherwin-Williams alternative, search for Hale Navy on our site and you&apos;ll find the closest SW navy ranked by Delta E. Explore more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>, or browse the full <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">BM to SW conversion chart</Link> for top crossovers across all color families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When a Perfect Match Doesn&apos;t Exist</h2>
@@ -2582,7 +2582,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Color Matching Question</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Can you take a BM color to an SW store (or vice versa)? Yes — both stores can spectrophotometer-match any physical chip. But a custom-matched color isn&apos;t the same as a formulated color. For the best result, find the brand&apos;s closest existing color using our <Link href="/search" className="text-brand-blue hover:underline">cross-brand search</Link>, then sample both the original and the match.
+          Can you take a BM color to an SW store (or vice versa)? Yes — both stores can spectrophotometer-match any physical chip. But a custom-matched color isn&apos;t the same as a formulated color. For the best result, find the brand&apos;s closest existing color using our <Link href="/search" className="text-brand-blue hover:underline">cross-brand search</Link>, then sample both the original and the match. For a curated view, browse the full <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM conversion chart</Link> or the reverse <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">BM to SW chart</Link> — both show the 50 closest cross-brand matches ranked by Delta E.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Who Should Choose SW</h2>
