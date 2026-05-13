@@ -244,7 +244,23 @@ export default async function ColorFamilyPage({ params }: PageProps) {
           .filter((p): p is NonNullable<typeof p> => p !== undefined);
         if (relatedPalettes.length === 0) return null;
         return (
-          <section className="py-20 px-6 md:px-12 bg-surface-container-low">
+          <>
+            {/* ItemList JSON-LD for the inspiration card grid. Gives crawlers a
+                structured signal that family hubs surface non-color content
+                (the CollectionPage ItemList only covers the color grid). */}
+            <JsonLd data={{
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              name: `Inspiration palettes featuring ${familyName.toLowerCase()} colors`,
+              numberOfItems: relatedPalettes.length,
+              itemListElement: relatedPalettes.map((p, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: p.name,
+                url: `https://www.paintcolorhq.com/inspiration/${p.slug}`,
+              })),
+            }} />
+            <section className="py-20 px-6 md:px-12 bg-surface-container-low">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-2">
                 Inspiration Featuring {familyName}
@@ -281,6 +297,7 @@ export default async function ColorFamilyPage({ params }: PageProps) {
               </div>
             </div>
           </section>
+          </>
         );
       })()}
 

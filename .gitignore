@@ -67,3 +67,8 @@ client_secret_*.json
 
 # pre-computed match data (regenerated at build time by scripts/build-match-data.ts)
 /public/match-data/
+
+# Drift detection runtime data (SQLite)
+scripts/drift/*.db
+scripts/drift/*.db-shm
+scripts/drift/*.db-wal

@@ -7,10 +7,11 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { ColorSwatch } from "@/components/color-swatch";
 import { TrackPage } from "@/components/track-page";
 import { getBrandBySlug, getTopCrossBrandMatches } from "@/lib/queries";
+import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 
 export const revalidate = 3600;
 
-const MAJOR_BRANDS = ["sherwin-williams", "benjamin-moore", "behr", "valspar", "ppg"];
+const MAJOR_BRANDS = MAJOR_MATCH_BRANDS;
 
 interface PageProps { params: Promise<{ sourceBrandSlug: string; targetBrandSlug: string }>; }
 
@@ -50,7 +51,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
   if (!sourceBrand || !targetBrand) notFound();
 
   const matches = await getTopCrossBrandMatches(sourceBrandSlug, targetBrandSlug, 50);
-  const brandNames: Record<string, string> = { "sherwin-williams": "Sherwin-Williams", "benjamin-moore": "Benjamin Moore", behr: "Behr", valspar: "Valspar", ppg: "PPG" };
+  const brandNames: Record<string, string> = { "sherwin-williams": "Sherwin-Williams", "benjamin-moore": "Benjamin Moore", behr: "Behr", valspar: "Valspar", ppg: "PPG", "dunn-edwards": "Dunn-Edwards", "farrow-ball": "Farrow & Ball" };
 
   return (
     <div className="min-h-screen bg-surface">
