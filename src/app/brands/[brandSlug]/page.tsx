@@ -4,8 +4,9 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
-import { getBrandBySlug, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
+import { getBrandBySlug, getColorBySlug, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
 import { getBrandContent } from "@/lib/brand-content";
+import { POPULAR_COLOR_SLUGS } from "@/lib/popular-colors";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
@@ -87,10 +88,23 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
   const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
   const perPage = 60;
 
-  const [colors, totalCount] = await Promise.all([
+  // H2.2: surface this brand's POPULAR_COLOR_SLUGS as a featured section
+  // above the paginated grid on page 1. Without this the popular slugs only
+  // benefit from generateStaticParams (pre-render cache) but get the same
+  // brand-page link signal as any other color buried on page 4.
+  const popularSlugsForBrand = POPULAR_COLOR_SLUGS
+    .filter((p) => p.brandSlug === brandSlug)
+    .map((p) => p.colorSlug);
+  const showPopularSection = currentPage === 1 && !family && !undertoneFilter && popularSlugsForBrand.length > 0;
+
+  const [colors, totalCount, popularColorsResults] = await Promise.all([
     getColorsByBrand(brand.id, { family: family ?? undefined, undertone: undertoneFilter ?? undefined, limit: perPage, offset: (currentPage - 1) * perPage }),
     getColorsByBrandCount(brand.id, { family: family ?? undefined, undertone: undertoneFilter ?? undefined }),
+    showPopularSection
+      ? Promise.all(popularSlugsForBrand.map((slug) => getColorBySlug(brandSlug, slug)))
+      : Promise.resolve([] as Awaited<ReturnType<typeof getColorBySlug>>[]),
   ]);
+  const popularColors = popularColorsResults.filter((c): c is NonNullable<typeof c> => c !== null);
   const totalPages = Math.ceil(totalCount / perPage);
 
   const families: { name: string; hex: string; border?: boolean }[] = [
@@ -220,6 +234,27 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
           </section>
         );
       })()}
+
+      {/* Popular Colors — featured above the paginated grid on page 1.
+          Promotes the curated POPULAR_COLOR_SLUGS subset with explicit
+          brand-page link signal, not just generateStaticParams pre-render. */}
+      {popularColors.length > 0 && (
+        <section className="py-16 px-6 md:px-12 bg-surface">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-2">
+              Most Popular {brand.name} Colors
+            </h2>
+            <p className="text-on-surface-variant mb-8">
+              The {popularColors.length} {brand.name} colors most-searched on Paint Color HQ — verified bestsellers based on cross-brand match volume.
+            </p>
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {popularColors.map((c) => (
+                <ColorCard key={c.id} name={c.name} hex={c.hex} brandName={brand.name} brandSlug={brandSlug} colorSlug={c.slug} colorNumber={c.color_number} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Color Library */}
       <section id="colors" className="py-24 px-6 md:px-12 bg-surface-container-low scroll-mt-20">
