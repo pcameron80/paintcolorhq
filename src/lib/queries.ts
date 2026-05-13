@@ -244,6 +244,21 @@ export async function searchColors(
   return (data ?? []) as unknown as ColorWithBrand[];
 }
 
+// Match colors where the LAB-based classifier assigned this family OR the
+// color name contains the family slug as a substring. Catches name-driven
+// blues like "Sleepy Blue" or "Cornflower Blue" that the classifier puts
+// into adjacent families (neutral, gray) based on hex values. Soft
+// multi-family — a single color can appear on both /family/blue and
+// /family/neutral if its name says blue but its hex sits near the boundary.
+//
+// `name.ilike.%${familySlug}%` matches substrings case-insensitively. For
+// paint color names this is safe — false positives like "Babyblue" matching
+// "blue" are actually wanted (it IS a blue). For slugs like `off-white`
+// the substring rarely appears in names so the OR is effectively a no-op.
+function familyMatchFilter(familySlug: string): string {
+  return `color_family.eq.${familySlug},name.ilike.%${familySlug}%`;
+}
+
 export async function getColorsByFamily(
   familySlug: string,
   options?: { brandSlug?: string; undertone?: string; limit?: number; offset?: number }
@@ -252,7 +267,7 @@ export async function getColorsByFamily(
   let query = supabase
     .from("colors")
     .select(COLOR_CARD_FIELDS_WITH_BRAND)
-    .eq("color_family", familySlug)
+    .or(familyMatchFilter(familySlug))
     .order("name");
 
   if (options?.brandSlug) {
@@ -287,7 +302,7 @@ export async function getColorsByFamilyCount(
   let query = supabase
     .from("colors")
     .select("id", { count: "exact", head: true })
-    .eq("color_family", familySlug);
+    .or(familyMatchFilter(familySlug));
 
   if (options?.brandSlug) {
     const brand = await getBrandBySlug(options.brandSlug);
