@@ -16,12 +16,12 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   return {
     title: "Search Paint Colors",
     description:
-      "Search 25,000+ paint colors by name, number, or hex code across all major brands.",
+      "Search 23,000+ paint colors by name, number, or hex code across all major brands.",
     alternates: { canonical: "https://www.paintcolorhq.com/search" },
     ...(hasQuery && { robots: { index: false, follow: true } }),
     openGraph: {
       title: "Search Paint Colors",
-      description: "Search 25,000+ paint colors by name, number, or hex code across all major brands.",
+      description: "Search 23,000+ paint colors by name, number, or hex code across all major brands.",
       url: "https://www.paintcolorhq.com/search",
     },
   };
@@ -39,7 +39,7 @@ export default function SearchPage() {
             Find Your Color
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Search 25,000+ colors by name, number, or hex code across 14 brands.
+            Search 23,000+ colors by name, number, or hex code across 14 brands.
           </p>
         </div>
       </section>

@@ -109,7 +109,7 @@ export default function PaintColorHqStaffPage() {
                 The Paint Color HQ Staff is our in-house editorial team dedicated to helping homeowners, designers, and painting professionals make confident color choices. We combine hands-on paint industry experience with data-driven color science to produce practical, trustworthy guides.
               </p>
               <p>
-                Our team uses the <strong className="text-on-surface">CIEDE2000 color difference algorithm</strong> to analyze and cross-reference over 25,000 paint colors across 14 major brands. Every recommendation we publish is grounded in measurable color data, not subjective opinion alone.
+                Our team uses the <strong className="text-on-surface">CIEDE2000 color difference algorithm</strong> to analyze and cross-reference over 23,000 paint colors across 14 major brands. Every recommendation we publish is grounded in measurable color data, not subjective opinion alone.
               </p>
               <p>
                 From annual color-of-the-year roundups to room-by-room painting guides, our goal is to take the guesswork out of choosing paint colors. We regularly update our content as brands release new palettes and as design trends evolve.
