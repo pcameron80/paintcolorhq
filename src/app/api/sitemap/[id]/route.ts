@@ -113,9 +113,7 @@ export async function GET(
           if (target === brandSlug) continue;
           entries.push({
             url: `/match/${brandSlug}/${colorSlug}-to-${target}`,
-            priority: "0.7",
-            changefreq: "monthly",
-            lastmod: "",
+            lastmod: SITE_BUILD_DATE,
           });
         }
       }
