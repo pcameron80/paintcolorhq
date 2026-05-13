@@ -109,6 +109,32 @@ function extractVariantSuffix(slug: string, colorNumber: string | null | undefin
   return ` (variant ${digit})`;
 }
 
+// Thin-content gate. Two paths to noindex:
+//   1. Code-only name: when the color name has no alphabetic run of 3+
+//      letters (e.g. Behr "YL-W15", "PPU5-16"). These can't rank for
+//      natural-language queries — no one searches "YL-W15 paint." Colors
+//      with real-word names like "Red", "Tan", or "Imagine .04" still
+//      pass even when name overlaps with color_number.
+//   2. Data quality score < 2: missing two or more of {LRV, undertone,
+//      family, has-name}. Today every color has score >= 3 so this is
+//      future-proofing for sparse imports.
+function isCodeOnlyName(name: string): boolean {
+  if (!name.trim()) return true;
+  // Unicode-aware so "Crème" reads as a 5-letter word, not "Cr" + "me".
+  const runs = name.match(/\p{L}+/gu);
+  if (!runs) return true;
+  return runs.every((r) => r.length < 3);
+}
+
+function dataQualityScore(color: { lrv: number | string | null; undertone: string | null; color_family: string | null; name: string }): number {
+  let score = 0;
+  if (color.lrv !== null && color.lrv !== undefined) score++;
+  if (color.undertone) score++;
+  if (color.color_family) score++;
+  if (!isCodeOnlyName(color.name)) score++;
+  return score;
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { brandSlug, colorSlug } = await params;
   const color = await getColorBySlug(brandSlug, colorSlug);
@@ -138,10 +164,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const titleSuffix = familyForTitle
     ? ` | ${lrvForTitle != null ? `LRV ${lrvForTitle} ` : ""}${familyForTitle} Paint Color`
     : ` | ${color.hex.toUpperCase()}`; // fall back to hex if family unavailable
+  const shouldIndex = !isCodeOnlyName(color.name) && dataQualityScore(color) >= 2;
   return {
     title: `${color.name}${colorNum} by ${color.brand.name}${variant}${titleSuffix}`,
     description: generateMetaDescription(color) + variant,
     alternates: { canonical: url },
+    robots: shouldIndex ? undefined : { index: false, follow: true },
     openGraph: {
       title: `${color.name}${colorNum} by ${color.brand.name}${variant}`,
       description: `${color.name} (${color.hex.toUpperCase()}) by ${color.brand.name}${variant}. Find closest matches from other brands.`,
