@@ -97,6 +97,41 @@ export default async function ColorFamilyPage({ params }: PageProps) {
           ]},
         ],
       }} />
+      {/* FAQPage schema — primarily for AI engine citation (Perplexity, AI
+          Overviews, ChatGPT). Google restricted FAQPage rich results to
+          government/healthcare in Aug 2023, so commercial pages don't get
+          Google rich-result lift here, but the structured Q&A is still
+          consumed by AI search and lifts citation odds. */}
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `How many ${familyName.toLowerCase()} paint colors are catalogued?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `Paint Color HQ catalogs ${totalCount.toLocaleString()} ${familyName.toLowerCase()} paint colors across ${brandCount} major brands, including Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, and Farrow & Ball.`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: `What undertones do ${familyName.toLowerCase()} paint colors have?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `${familyName} paint colors come in warm undertones (leaning yellower, redder, or browner), cool undertones (leaning bluer or greener), and balanced neutrals. Use the undertone filter on this page to narrow your search to warm, cool, or neutral options.`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: `How do I find a ${familyName.toLowerCase()} paint color that matches across brands?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `Every color page on Paint Color HQ shows cross-brand matches ranked by CIEDE2000 Delta E score. Colors with a Delta E under 2.0 are virtually identical on a finished wall. Click any color in the grid above to see its closest matches across all ${brandCount} brands.`,
+            },
+          },
+        ],
+      }} />
       <TrackPage eventName="page_view_enriched" params={{ page_type: "family", color_family: familySlug, result_count: totalCount }} />
       <Header />
 
