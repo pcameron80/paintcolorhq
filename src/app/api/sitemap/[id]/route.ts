@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getAllColorSlugs, getAllBrands, getAllColorFamilies } from "@/lib/queries";
+import { getAllColorSlugs, getAllBrands, getAllColorFamilies, getLatestColorDateByBrand, getLatestColorDateByFamily } from "@/lib/queries";
 import { getAllBlogSlugs, getPostBySlug } from "@/lib/blog-posts";
 import { inspirationPalettes } from "@/lib/palettes";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
@@ -66,10 +66,12 @@ export async function GET(
         { url: "/authors/paint-color-hq-staff", lastmod: SITE_BUILD_DATE },
       ];
     } else if (id === "brands") {
-      const brands = await getAllBrands();
+      const [brands, latestByBrand] = await Promise.all([getAllBrands(), getLatestColorDateByBrand()]);
       entries = brands.map((b) => ({
         url: `/brands/${b.slug}`,
-        lastmod: SITE_BUILD_DATE,
+        // Brand lastmod = newest color insertion date for this brand.
+        // Real "latest activity" signal per brand instead of a uniform build date.
+        lastmod: latestByBrand.get(b.slug) ?? SITE_BUILD_DATE,
       }));
     } else if (id.startsWith("colors-")) {
       const pageNum = Number(id.slice("colors-".length));
@@ -84,7 +86,9 @@ export async function GET(
       }
       entries = pageColors.map((c) => ({
         url: `/colors/${c.brandSlug}/${c.colorSlug}`,
-        lastmod: SITE_BUILD_DATE,
+        // Per-row created_at instead of a uniform build date — Google ignores
+        // lastmod fields that are identical across thousands of URLs.
+        lastmod: c.createdAt ? c.createdAt.split("T")[0] : SITE_BUILD_DATE,
       }));
     } else if (id === "matches") {
       // Brand-to-brand match landing pages — only major brand combinations
@@ -127,10 +131,10 @@ export async function GET(
         };
       });
     } else if (id === "families") {
-      const families = await getAllColorFamilies();
+      const [families, latestByFamily] = await Promise.all([getAllColorFamilies(), getLatestColorDateByFamily()]);
       entries = families.map((f) => ({
         url: `/colors/family/${f.slug}`,
-        lastmod: SITE_BUILD_DATE,
+        lastmod: latestByFamily.get(f.slug) ?? SITE_BUILD_DATE,
       }));
     } else if (id === "inspiration") {
       entries = inspirationPalettes.map((p) => ({

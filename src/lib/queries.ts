@@ -582,7 +582,7 @@ export async function getTopCrossBrandMatches(
 export async function getAllColorSlugs(options?: {
   perBrand?: number;
   brandSlugs?: string[];
-}): Promise<{ brandSlug: string; colorSlug: string }[]> {
+}): Promise<{ brandSlug: string; colorSlug: string; createdAt: string }[]> {
   const perBrand = options?.perBrand;
   const brandSlugs = options?.brandSlugs;
 
@@ -592,12 +592,12 @@ export async function getAllColorSlugs(options?: {
     const brands = brandSlugs
       ? allBrands.filter((b) => brandSlugs.includes(b.slug))
       : allBrands;
-    const results: { brandSlug: string; colorSlug: string }[] = [];
+    const results: { brandSlug: string; colorSlug: string; createdAt: string }[] = [];
 
     for (const brand of brands) {
       let query = supabase
         .from("colors")
-        .select("slug, brand:brand_id (slug)")
+        .select("slug, created_at, brand:brand_id (slug)")
         .eq("brand_id", brand.id)
         .order("name");
 
@@ -614,6 +614,7 @@ export async function getAllColorSlugs(options?: {
           results.push({
             brandSlug: brandData.slug,
             colorSlug: color.slug,
+            createdAt: color.created_at,
           });
         }
       }
@@ -623,7 +624,7 @@ export async function getAllColorSlugs(options?: {
   }
 
   // Fetch all colors (no limit)
-  const results: { brandSlug: string; colorSlug: string }[] = [];
+  const results: { brandSlug: string; colorSlug: string; createdAt: string }[] = [];
   const batchSize = 1000;
   let offset = 0;
   let hasMore = true;
@@ -631,7 +632,7 @@ export async function getAllColorSlugs(options?: {
   while (hasMore) {
     const { data, error } = await supabase
       .from("colors")
-      .select("slug, brand:brand_id (slug)")
+      .select("slug, created_at, brand:brand_id (slug)")
       .range(offset, offset + batchSize - 1);
 
     if (error) throw error;
@@ -645,6 +646,7 @@ export async function getAllColorSlugs(options?: {
       results.push({
         brandSlug: brandData.slug,
         colorSlug: color.slug,
+        createdAt: color.created_at,
       });
     }
 
@@ -655,4 +657,58 @@ export async function getAllColorSlugs(options?: {
   }
 
   return results;
+}
+
+// Latest color insertion date per brand (slug → ISO date YYYY-MM-DD). Used
+// for brand-page sitemap lastmod so each brand emits a real "latest activity"
+// signal instead of all 14 brand URLs sharing the same build date.
+// Paginates through the colors table because Supabase caps single-request
+// returns at 1000 rows by default and the table has 23k+ rows.
+export async function getLatestColorDateByBrand(): Promise<Map<string, string>> {
+  const map = new Map<string, string>();
+  const batchSize = 1000;
+  let offset = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from("colors")
+      .select("created_at, brand:brand_id (slug)")
+      .range(offset, offset + batchSize - 1);
+    if (error) throw error;
+    if (!data || data.length === 0) break;
+    for (const row of data) {
+      const brandSlug = (row.brand as unknown as { slug: string }).slug;
+      const date = row.created_at.split("T")[0];
+      const existing = map.get(brandSlug);
+      if (!existing || date > existing) map.set(brandSlug, date);
+    }
+    if (data.length < batchSize) break;
+    offset += batchSize;
+  }
+  return map;
+}
+
+// Latest color insertion date per color family (family slug → ISO date).
+// Same purpose as getLatestColorDateByBrand but keyed on color_family.
+export async function getLatestColorDateByFamily(): Promise<Map<string, string>> {
+  const map = new Map<string, string>();
+  const batchSize = 1000;
+  let offset = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from("colors")
+      .select("created_at, color_family")
+      .not("color_family", "is", null)
+      .range(offset, offset + batchSize - 1);
+    if (error) throw error;
+    if (!data || data.length === 0) break;
+    for (const row of data) {
+      if (!row.color_family) continue;
+      const date = row.created_at.split("T")[0];
+      const existing = map.get(row.color_family);
+      if (!existing || date > existing) map.set(row.color_family, date);
+    }
+    if (data.length < batchSize) break;
+    offset += batchSize;
+  }
+  return map;
 }
