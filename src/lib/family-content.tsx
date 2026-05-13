@@ -695,6 +695,33 @@ const content: Record<string, FamilyContent> = {
   },
 };
 
+// Maps each family slug to 2-3 inspiration palette slugs whose color
+// composition naturally features that family. Used by the family page
+// to surface contextual inspiration cards — closes the cluster gap
+// flagged by the audit where family pages had zero outbound links to
+// inspiration palettes despite obvious thematic alignment.
+const familyRelatedPalettes: Record<string, string[]> = {
+  white: ["modern-farmhouse", "scandinavian-minimal", "soft-romantic"],
+  "off-white": ["modern-farmhouse", "scandinavian-minimal", "french-country"],
+  gray: ["modern-farmhouse", "scandinavian-minimal", "urban-industrial"],
+  beige: ["modern-farmhouse", "earthy-organic", "french-country"],
+  tan: ["french-country", "classic-traditional", "modern-farmhouse"],
+  brown: ["earthy-organic", "woodland-cabin", "desert-sunset"],
+  black: ["midnight-luxe", "urban-industrial", "moody-library"],
+  blue: ["coastal-retreat", "ocean-breeze", "moody-library"],
+  green: ["earthy-organic", "woodland-cabin", "spring-garden"],
+  red: ["bold-and-eclectic", "tropical-escape", "classic-traditional"],
+  orange: ["desert-sunset", "mediterranean-sun", "tropical-escape"],
+  yellow: ["spring-garden", "tropical-escape", "mediterranean-sun"],
+  pink: ["soft-romantic", "vintage-charm", "spring-garden"],
+  purple: ["midnight-luxe", "vintage-charm"],
+  neutral: ["modern-farmhouse", "scandinavian-minimal", "french-country"],
+};
+
+export function getFamilyRelatedPalettes(slug: string): string[] {
+  return familyRelatedPalettes[slug] ?? [];
+}
+
 export function getFamilyContent(slug: string): FamilyContent | undefined {
   return content[slug];
 }

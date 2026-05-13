@@ -7,7 +7,8 @@ import { Footer } from "@/components/footer";
 import { FamilyColorLibrary } from "@/components/family-color-library";
 import { FamilyColorLibraryFallback } from "@/components/family-color-library-fallback";
 import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/queries";
-import { getFamilyContent } from "@/lib/family-content";
+import { getFamilyContent, getFamilyRelatedPalettes } from "@/lib/family-content";
+import { getPaletteBySlug } from "@/lib/palettes";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 
@@ -197,6 +198,56 @@ export default async function ColorFamilyPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* Inspiration Featuring [Family] — closes the family -> inspiration
+          cluster gap the audit flagged. Cards link to curated palettes that
+          prominently feature this color family. */}
+      {(() => {
+        const relatedSlugs = getFamilyRelatedPalettes(familySlug);
+        const relatedPalettes = relatedSlugs
+          .map((slug) => getPaletteBySlug(slug))
+          .filter((p): p is NonNullable<typeof p> => p !== undefined);
+        if (relatedPalettes.length === 0) return null;
+        return (
+          <section className="py-20 px-6 md:px-12 bg-surface-container-low">
+            <div className="max-w-7xl mx-auto">
+              <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-2">
+                Inspiration Featuring {familyName}
+              </h2>
+              <p className="text-on-surface-variant mb-8 max-w-2xl">
+                Curated palettes where {familyName.toLowerCase()} plays a leading role — see how designers pair these colors in real rooms.
+              </p>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {relatedPalettes.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/inspiration/${p.slug}`}
+                    className="group block overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/10 transition-all hover:shadow-lg"
+                  >
+                    <div className="flex h-24 w-full">
+                      {p.colors.map((hex, i) => (
+                        <div
+                          key={i}
+                          className="flex-1"
+                          style={{ backgroundColor: hex }}
+                        />
+                      ))}
+                    </div>
+                    <div className="p-5">
+                      <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">
+                        {p.name}
+                      </p>
+                      <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
+                        {p.description}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       <Footer />
     </div>
