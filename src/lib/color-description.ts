@@ -70,6 +70,50 @@ function getHueName(hue: number): string {
 
 // ---------- SEO query-targeting sentences ----------
 
+// LRV bucket → room-application sentence. Splits across 4 LRV ranges so the
+// generated copy varies meaningfully across the 25k color pages instead of
+// reading as a templated string repeated thousands of times — that pattern
+// was a known driver of the March 2026 Helpful Content suppression.
+function getLrvApplicationSentence(name: string, lrv: number): string {
+  if (lrv >= 70) {
+    return `With a Light Reflectance Value of ${lrv}, ${name} reflects a generous amount of light, making it well-suited for north-facing rooms or smaller spaces that benefit from extra brightness.`;
+  }
+  if (lrv >= 50) {
+    return `At LRV ${lrv}, ${name} sits in the comfortable mid-light range — bright enough for living areas yet soft enough for bedrooms, and adaptable across most lighting conditions.`;
+  }
+  if (lrv >= 25) {
+    return `Its LRV of ${lrv} gives ${name} depth without going dark, which makes it a strong choice for accent walls, libraries, and rooms with abundant natural light.`;
+  }
+  return `With an LRV of ${lrv}, ${name} creates a dramatic, enveloping mood — best on accent walls, dining rooms, and intimate spaces where atmosphere matters more than reflected light.`;
+}
+
+// Temperature → trim/hardware pairing sentence. Gives an opinionated styling
+// recommendation that varies by warm/cool/neutral so the copy reads less
+// templated.
+function getPairingSentence(name: string, temperature: Temperature): string {
+  if (temperature === "warm") {
+    return `Pair it with warm whites like Sherwin-Williams Pure White or Benjamin Moore White Dove for trim, plus natural wood tones and brass hardware for a coordinated warm palette.`;
+  }
+  if (temperature === "cool") {
+    return `Pair it with cool whites such as Benjamin Moore Chantilly Lace for trim, plus brushed nickel hardware and gray-toned flooring for a cohesive cool palette.`;
+  }
+  return `As a neutral, ${name} pairs flexibly — crisp whites for trim, oak or walnut floors, and either warm brass or cool nickel hardware depending on the mood you want.`;
+}
+
+// Temperature → lighting-behavior sentence. Bulb-color guidance is one of the
+// most-asked questions about residential paint and rarely appears in
+// programmatic color descriptions — adding it lifts the page out of pure
+// data-sheet territory.
+function getLightingBehaviorSentence(name: string, temperature: Temperature): string {
+  if (temperature === "warm") {
+    return `Under 2700K-3000K warm bulbs ${name} stays true to itself; under 4000K+ cool LED bulbs it reads slightly more muted but keeps its warmth.`;
+  }
+  if (temperature === "cool") {
+    return `${name} holds its coolness under cool LED lighting (4000K and up) but can shift warmer under 2700K incandescent or warm-white bulbs — worth sampling in your actual room lighting.`;
+  }
+  return `${name} stays neutral across most lighting conditions, though warm 2700K bulbs will slightly amplify any underlying warm undertones while cool 4000K bulbs do the opposite.`;
+}
+
 function getQueryTargetingSentences(
   color: ColorWithBrand,
   matches: CrossBrandMatchWithColor[],
@@ -97,7 +141,28 @@ function getQueryTargetingSentences(
     ? `${color.name} has a ${color.undertone.toLowerCase()} undertone, which affects how it pairs with trim, flooring, and adjacent wall colors.`
     : "";
 
-  return [whatColorIs, similarColors, undertoneCallout].filter(Boolean).join(" ");
+  // LRV-driven room application context — adds use-case framing that lifts
+  // the description into the 134-167 word citation window the GEO audit
+  // identified as the optimal range for AI engines (Perplexity, AI Overviews).
+  const lrv = color.lrv != null ? Math.round(Number(color.lrv)) : null;
+  const lrvSentence = lrv != null ? getLrvApplicationSentence(color.name, lrv) : "";
+
+  // Trim/hardware pairing recommendation, varied by temperature
+  const pairingSentence = getPairingSentence(color.name, props.temperature);
+
+  // Lighting-behavior guidance — concrete bulb temperature advice
+  const lightingSentence = getLightingBehaviorSentence(color.name, props.temperature);
+
+  return [
+    whatColorIs,
+    similarColors,
+    undertoneCallout,
+    lrvSentence,
+    pairingSentence,
+    lightingSentence,
+  ]
+    .filter(Boolean)
+    .join(" ");
 }
 
 // ---------- Public API ----------
