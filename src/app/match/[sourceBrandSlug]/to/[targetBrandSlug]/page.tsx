@@ -8,6 +8,7 @@ import { ColorSwatch } from "@/components/color-swatch";
 import { TrackPage } from "@/components/track-page";
 import { getBrandBySlug, getTopCrossBrandMatches } from "@/lib/queries";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
+import { getBrandPairIntro } from "@/lib/brand-pair-intros";
 
 export const revalidate = 3600;
 
@@ -72,8 +73,14 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
           <h1 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-on-surface mb-4">
             {sourceBrand.name} to {targetBrand.name}
           </h1>
+          {/* Per-pair intro paragraph — M7 fix. Each of the 42 directional
+              brand pairs gets a unique 60-100 word positioning paragraph
+              covering price/availability differences and color-matching
+              specifics. Falls back to the generic templated copy if the
+              pair isn't in the BRAND_PAIR_INTROS map. */}
           <p className="text-on-surface-variant max-w-2xl leading-relaxed mb-4">
-            Switching from {sourceBrand.name} to {targetBrand.name}? These are the closest matches between the two brands, ranked by how similar they actually look.
+            {getBrandPairIntro(sourceBrandSlug, targetBrandSlug) ??
+              `Switching from ${sourceBrand.name} to ${targetBrand.name}? These are the closest matches between the two brands, ranked by how similar they actually look.`}
           </p>
           <p className="text-sm text-outline">
             Looking for{" "}
