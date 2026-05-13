@@ -1,9 +1,11 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { FamilyColorLibrary } from "@/components/family-color-library";
+import { FamilyColorLibraryFallback } from "@/components/family-color-library-fallback";
 import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/queries";
 import { getFamilyContent } from "@/lib/family-content";
 import { TrackPage } from "@/components/track-page";
@@ -133,18 +135,32 @@ export default async function ColorFamilyPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* Color Library \u2014 client-driven for filter/pagination interactivity. The
-          server-rendered initial state (page 1, unfiltered) is what Google
-          indexes; client refetches via /api/family/[slug]/colors on URL change. */}
+      {/* Color Library \u2014 client-driven for filter/pagination interactivity.
+          Suspense fallback renders the static unfiltered page-1 state, which
+          is what Googlebot sees. useSearchParams in the client component
+          requires the Suspense boundary so the rest of the page can still
+          be statically prerendered. */}
       <section className="py-24 px-6 md:px-12 bg-surface-container-low">
         <div className="max-w-7xl mx-auto">
-          <FamilyColorLibrary
-            familySlug={familySlug}
-            familyName={familyName}
-            brands={brands}
-            initialColors={colors}
-            initialTotalCount={totalCount}
-          />
+          <Suspense
+            fallback={
+              <FamilyColorLibraryFallback
+                familySlug={familySlug}
+                familyName={familyName}
+                brands={brands}
+                initialColors={colors}
+                initialTotalCount={totalCount}
+              />
+            }
+          >
+            <FamilyColorLibrary
+              familySlug={familySlug}
+              familyName={familyName}
+              brands={brands}
+              initialColors={colors}
+              initialTotalCount={totalCount}
+            />
+          </Suspense>
         </div>
       </section>
 
