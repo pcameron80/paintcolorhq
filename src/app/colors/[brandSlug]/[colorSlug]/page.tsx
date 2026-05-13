@@ -11,7 +11,7 @@ import { SaveToProject } from "@/components/save-to-project";
 import { ShareButton } from "@/components/share-button";
 import { PinterestSaveButton } from "@/components/pinterest-save-button";
 import { redirect } from "next/navigation";
-import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand } from "@/lib/queries";
+import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand, getMoreFromFamily } from "@/lib/queries";
 import { generateColorDescription, generateMetaDescription } from "@/lib/color-description";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
@@ -211,7 +211,11 @@ export default async function ColorPage({ params }: PageProps) {
     notFound();
   }
 
-  const [matches, similarColors] = await Promise.all([getCrossBrandMatches(color.id), getSimilarColorsFromSameBrand(color)]);
+  const [matches, similarColors, moreFromFamily] = await Promise.all([
+    getCrossBrandMatches(color.id),
+    getSimilarColorsFromSameBrand(color),
+    getMoreFromFamily({ id: color.id, color_family: color.color_family, brand_id: color.brand_id }),
+  ]);
   const description = generateColorDescription(color, matches);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
   const harmonies = await resolveHarmonies(color.hex);
@@ -427,6 +431,18 @@ export default async function ColorPage({ params }: PageProps) {
           <p className="mt-2 text-sm text-on-surface-variant">Other {color.brand.name} colors close to {color.name}.</p>
           <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {similarColors.map((s) => <ColorCard key={s.id} name={s.name} hex={s.hex} brandName={color.brand.name} brandSlug={brandSlug} colorSlug={s.slug} colorNumber={s.color_number} />)}
+          </div>
+        </section>
+      )}
+
+      {/* More from family — cross-brand colors in the same family. Spreads
+          internal link equity into the long tail (H2 from the SEO audit). */}
+      {moreFromFamily.length > 0 && color.color_family && (
+        <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+          <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">More {color.color_family} colors from other brands</h2>
+          <p className="mt-2 text-sm text-on-surface-variant">Cross-brand colors in the {color.color_family} family — useful when you want a similar look from a different brand.</p>
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+            {moreFromFamily.map((c) => <ColorCard key={c.id} name={c.name} hex={c.hex} brandName={c.brand.name} brandSlug={c.brand.slug} colorSlug={c.slug} colorNumber={c.color_number} />)}
           </div>
         </section>
       )}
