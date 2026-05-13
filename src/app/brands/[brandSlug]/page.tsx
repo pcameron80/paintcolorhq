@@ -310,10 +310,18 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             if (currentPage < totalPages - 2) pages.push("ellipsis");
             addPage(totalPages);
 
+            // Pagination beyond page 2 gets rel="nofollow". Brand pages 2+ are
+            // noindex; pages 3+ are deep noindex pages that burn crawl budget
+            // every recrawl cycle. Sitemap covers color discovery for these
+            // deeper pages. Page 2 stays followed so its 60 colors (positions
+            // 61-120) still receive link signal from the brand.
+            const nofollowProps = (target: number) =>
+              target >= 3 ? { rel: "nofollow" as const } : {};
+
             return (
               <nav className="mt-12 flex items-center justify-center gap-2">
                 {currentPage > 1 && (
-                  <Link href={pageUrl(currentPage - 1)} className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors">
+                  <Link href={pageUrl(currentPage - 1)} {...nofollowProps(currentPage - 1)} className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors">
                     Previous
                   </Link>
                 )}
@@ -321,13 +329,13 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
                   page === "ellipsis" ? (
                     <span key={`e${i}`} className="px-2 text-outline">...</span>
                   ) : (
-                    <Link key={page} href={pageUrl(page)}
+                    <Link key={page} href={pageUrl(page)} {...nofollowProps(page)}
                       className={`rounded-xl px-4 py-2.5 text-sm font-headline font-bold transition-all ${page === currentPage ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant border border-outline-variant/15 hover:text-primary"}`}
                     >{page}</Link>
                   )
                 )}
                 {currentPage < totalPages && (
-                  <Link href={pageUrl(currentPage + 1)} className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors">
+                  <Link href={pageUrl(currentPage + 1)} {...nofollowProps(currentPage + 1)} className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors">
                     Next
                   </Link>
                 )}
