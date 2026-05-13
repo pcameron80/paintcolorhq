@@ -469,6 +469,44 @@ export async function getSimilarColorsFromSameBrand(
     .slice(0, limit) as unknown as Color[];
 }
 
+// Returns colors from the same color_family but a different brand, with a
+// deterministic offset based on the source color id so every long-tail
+// color page surfaces a different 6-color subset. This is the cross-color
+// link distribution fix from the H2 internal-link audit: long-tail colors
+// only get 3-6 incoming links today (RGB neighbors via similar-from-same-
+// brand); this carousel adds ~6 cross-brand HTML anchors per page, pulling
+// equity from the popular pre-rendered 47 into the rest of the 23k corpus.
+export async function getMoreFromFamily(
+  color: { id: string; color_family: string | null; brand_id: string },
+  limit = 6,
+  poolSize = 60
+): Promise<ColorWithBrand[]> {
+  if (!color.color_family) return [];
+
+  const { data, error } = await supabase
+    .from("colors")
+    .select(COLOR_CARD_FIELDS_WITH_BRAND)
+    .eq("color_family", color.color_family)
+    .neq("brand_id", color.brand_id)
+    .neq("id", color.id)
+    .order("id")
+    .limit(poolSize);
+
+  if (error) throw error;
+  const pool = (data ?? []) as unknown as ColorWithBrand[];
+  if (pool.length <= limit) return pool;
+
+  // Hash the source id to a stable offset. Same source color always returns
+  // the same 6 candidates, but adjacent source colors return overlapping-but-
+  // different subsets — spreads incoming links across the family pool.
+  let hash = 0;
+  for (let i = 0; i < color.id.length; i++) {
+    hash = ((hash << 5) - hash + color.id.charCodeAt(i)) | 0;
+  }
+  const start = Math.abs(hash) % Math.max(1, pool.length - limit);
+  return pool.slice(start, start + limit);
+}
+
 export async function getTopCrossBrandMatches(
   sourceBrandSlug: string,
   targetBrandSlug: string,
