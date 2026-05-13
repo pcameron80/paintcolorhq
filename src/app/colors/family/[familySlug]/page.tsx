@@ -1,9 +1,11 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ColorCard } from "@/components/color-card";
+import { FamilyColorLibrary } from "@/components/family-color-library";
+import { FamilyColorLibraryFallback } from "@/components/family-color-library-fallback";
 import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/queries";
 import { getFamilyContent } from "@/lib/family-content";
 import { TrackPage } from "@/components/track-page";
@@ -25,31 +27,25 @@ const familyColors: Record<string, { hex: string; border?: boolean }> = {
   tan: { hex: "#D2B48C" }, neutral: { hex: "#C7C1B7" },
 };
 
-const undertoneColors: Record<string, string> = {
-  warm: "#E8B87D", cool: "#7DA8CC", neutral: "#B8B4AC",
-};
-
 interface PageProps {
   params: Promise<{ familySlug: string }>;
-  searchParams: Promise<{ brand?: string; undertone?: string; page?: string }>;
 }
 
 export async function generateStaticParams() {
   return validFamilies.map((f) => ({ familySlug: f }));
 }
 
-export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { familySlug } = await params;
-  const { brand, undertone, page: pageParam } = await searchParams;
   const name = familySlug.replace(/-/g, " ");
   const url = `https://www.paintcolorhq.com/colors/family/${familySlug}`;
-  const currentPage = parseInt(pageParam ?? "1", 10) || 1;
-  const shouldNoindex = currentPage > 1 || !!brand || !!undertone;
+  // Canonical always points to the unfiltered base URL. Filter/pagination
+  // variants now share the same static HTML and refetch client-side, so the
+  // canonical consolidates them for Google.
   return {
     title: `${capitalize(name)} Paint Colors - All Brands`,
     description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Compare colors with hex codes and LRV values.`,
     alternates: { canonical: url },
-    ...(shouldNoindex && { robots: { index: false, follow: true } }),
     openGraph: { title: `${capitalize(name)} Paint Colors`, description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more.`, url },
   };
 }
@@ -63,23 +59,22 @@ function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-export default async function ColorFamilyPage({ params, searchParams }: PageProps) {
+export default async function ColorFamilyPage({ params }: PageProps) {
   const { familySlug } = await params;
-  const { brand: brandFilter, undertone: undertoneFilter, page: pageParam } = await searchParams;
 
   if (!validFamilies.includes(familySlug)) notFound();
 
-  const requestedPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
   const perPage = 60;
 
-  const totalCount = await getColorsByFamilyCount(familySlug, { brandSlug: brandFilter ?? undefined, undertone: undertoneFilter ?? undefined });
-  const totalPages = Math.max(1, Math.ceil(totalCount / perPage));
-  if (requestedPage > totalPages) notFound();
-  const currentPage = requestedPage;
-
-  const [colors, brands] = await Promise.all([
-    getColorsByFamily(familySlug, { brandSlug: brandFilter ?? undefined, undertone: undertoneFilter ?? undefined, limit: perPage, offset: (currentPage - 1) * perPage }),
+  // Server renders the canonical (unfiltered, page 1) variant. Filters and
+  // pagination are handled client-side by FamilyColorLibrary, which refetches
+  // from /api/family/[slug]/colors when URL params are present. Reading
+  // searchParams on the server here would force dynamic rendering and kill
+  // ISR caching for the canonical URL.
+  const [colors, brands, totalCount] = await Promise.all([
+    getColorsByFamily(familySlug, { limit: perPage, offset: 0 }),
     getAllBrands(),
+    getColorsByFamilyCount(familySlug),
   ]);
 
   const familyName = capitalize(familySlug.replace(/-/g, " "));
@@ -102,7 +97,7 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
           ]},
         ],
       }} />
-      <TrackPage eventName="page_view_enriched" params={{ page_type: "family", color_family: familySlug, brand_filter: brandFilter ?? "all", undertone_filter: undertoneFilter ?? "all", page_number: currentPage, result_count: totalCount }} />
+      <TrackPage eventName="page_view_enriched" params={{ page_type: "family", color_family: familySlug, result_count: totalCount }} />
       <Header />
 
       {/* Hero */}
@@ -140,110 +135,32 @@ export default async function ColorFamilyPage({ params, searchParams }: PageProp
         </section>
       )}
 
-      {/* Color Library */}
+      {/* Color Library \u2014 client-driven for filter/pagination interactivity.
+          Suspense fallback renders the static unfiltered page-1 state, which
+          is what Googlebot sees. useSearchParams in the client component
+          requires the Suspense boundary so the rest of the page can still
+          be statically prerendered. */}
       <section className="py-24 px-6 md:px-12 bg-surface-container-low">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
-            <div>
-              <h2 className="font-headline text-4xl font-bold tracking-tight text-on-surface">{familyName} Color Library</h2>
-              <p className="text-outline mt-2">{totalCount.toLocaleString()} colors{brandFilter ? ` from ${brandFilter}` : ""}{undertoneFilter ? ` \u00B7 ${undertoneFilter} undertone` : ""}.</p>
-            </div>
-          </div>
-
-          {/* Brand filter */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            <Link
-              href={`/colors/family/${familySlug}${undertoneFilter ? `?undertone=${undertoneFilter}` : ""}`}
-              className={`rounded-full px-4 py-2 text-sm font-headline font-bold transition-all ${!brandFilter ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant hover:text-primary"}`}
-            >
-              All Brands
-            </Link>
-            {brands.map((b) => {
-              const p = new URLSearchParams();
-              p.set("brand", b.slug);
-              if (undertoneFilter) p.set("undertone", undertoneFilter);
-              return (
-                <Link key={b.slug} href={`/colors/family/${familySlug}?${p.toString()}`}
-                  className={`rounded-full px-4 py-2 text-sm font-headline font-bold transition-all ${brandFilter === b.slug ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant hover:text-primary"}`}
-                >{b.name}</Link>
-              );
-            })}
-          </div>
-
-          {/* Undertone filter */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            <Link
-              href={`/colors/family/${familySlug}${brandFilter ? `?brand=${brandFilter}` : ""}`}
-              className={`rounded-full px-4 py-2 text-sm transition-all flex items-center gap-2 ${!undertoneFilter ? "bg-secondary text-on-secondary font-bold" : "bg-surface-container-lowest text-on-surface-variant hover:text-secondary"}`}
-            >
-              All Undertones
-            </Link>
-            {(["warm", "cool", "neutral"] as const).map((tone) => {
-              const p = new URLSearchParams();
-              if (brandFilter) p.set("brand", brandFilter);
-              p.set("undertone", tone);
-              return (
-                <Link key={tone} href={`/colors/family/${familySlug}?${p.toString()}`}
-                  className={`rounded-full px-4 py-2 text-sm capitalize transition-all flex items-center gap-2 ${undertoneFilter === tone ? "bg-secondary text-on-secondary font-bold" : "bg-surface-container-lowest text-on-surface-variant hover:text-secondary"}`}
-                >
-                  <span className="inline-block h-3.5 w-3.5 rounded-full shrink-0" style={{ backgroundColor: undertoneColors[tone] }} />
-                  {tone}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Color grid */}
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {colors.map((color) => (
-              <ColorCard key={color.id} name={color.name} hex={color.hex} brandName={color.brand.name} brandSlug={color.brand.slug} colorSlug={color.slug} colorNumber={color.color_number} />
-            ))}
-          </div>
-
-          {colors.length === 0 && (
-            <p className="mt-12 text-center text-on-surface-variant">No {familyName.toLowerCase()} colors found{brandFilter ? ` from this brand` : ""}.</p>
-          )}
-
-          {/* Pagination */}
-          {totalPages > 1 && (() => {
-            function pageUrl(page: number) {
-              const p = new URLSearchParams();
-              if (brandFilter) p.set("brand", brandFilter);
-              if (undertoneFilter) p.set("undertone", undertoneFilter);
-              if (page > 1) p.set("page", String(page));
-              const qs = p.toString();
-              return `/colors/family/${familySlug}${qs ? `?${qs}` : ""}`;
+          <Suspense
+            fallback={
+              <FamilyColorLibraryFallback
+                familySlug={familySlug}
+                familyName={familyName}
+                brands={brands}
+                initialColors={colors}
+                initialTotalCount={totalCount}
+              />
             }
-            const pages: (number | "ellipsis")[] = [];
-            const addPage = (n: number) => { if (n >= 1 && n <= totalPages && !pages.includes(n)) pages.push(n); };
-            addPage(1);
-            if (currentPage > 3) pages.push("ellipsis");
-            addPage(currentPage - 1);
-            addPage(currentPage);
-            addPage(currentPage + 1);
-            if (currentPage < totalPages - 2) pages.push("ellipsis");
-            addPage(totalPages);
-
-            return (
-              <nav className="mt-12 flex items-center justify-center gap-2">
-                {currentPage > 1 && (
-                  <Link href={pageUrl(currentPage - 1)} className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors">Previous</Link>
-                )}
-                {pages.map((page, i) =>
-                  page === "ellipsis" ? (
-                    <span key={`e${i}`} className="px-2 text-outline">...</span>
-                  ) : (
-                    <Link key={page} href={pageUrl(page)}
-                      className={`rounded-xl px-4 py-2.5 text-sm font-headline font-bold transition-all ${page === currentPage ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant border border-outline-variant/15 hover:text-primary"}`}
-                    >{page}</Link>
-                  )
-                )}
-                {currentPage < totalPages && (
-                  <Link href={pageUrl(currentPage + 1)} className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors">Next</Link>
-                )}
-              </nav>
-            );
-          })()}
+          >
+            <FamilyColorLibrary
+              familySlug={familySlug}
+              familyName={familyName}
+              brands={brands}
+              initialColors={colors}
+              initialTotalCount={totalCount}
+            />
+          </Suspense>
         </div>
       </section>
 
