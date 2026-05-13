@@ -51,9 +51,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const shortTitle = `${targetBrand.name} Equivalent of ${sourceColor.brand.name} ${sourceColor.name}${colorNum}${variant}`;
   // Index only matches close enough to be useful answers. At Delta E >= 3 the
   // "match" carries a visible difference and the page reads as a low-quality
-  // doorway at scale (~150k crawlable pairs total).
+  // doorway at scale (~150k crawlable pairs total). Also noindex when the
+  // source slug is a variant (e.g. agreeable-gray-7029-2-to-behr) — the base
+  // match page already covers the query.
   const deltaScore = best ? Number(best.delta_e_score) : null;
-  const shouldIndex = deltaScore !== null && deltaScore < 3;
+  const isVariantSource = variant !== "";
+  const shouldIndex = deltaScore !== null && deltaScore < 3 && !isVariantSource;
   return {
     title: { absolute: shortTitle },
     description: `Find the closest ${targetBrand.name} match for ${sourceColor.brand.name} ${sourceColor.name}${colorNum}${variant} (${sourceColor.hex.toUpperCase()}). ${note}. Compare hex, LRV, and undertone side by side.`,

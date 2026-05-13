@@ -109,6 +109,14 @@ function extractVariantSuffix(slug: string, colorNumber: string | null | undefin
   return ` (variant ${digit})`;
 }
 
+// A slug like `agreeable-gray-7029-2` is a variant of `agreeable-gray-7029`.
+// 49 such pages exist across Behr, Kilz, and Benjamin Moore — many cannibalize
+// the primary slug because their generated copy differs only by "(variant 2)"
+// in the title. Treat them as noindex so the primary keeps the ranking.
+export function isVariantSlug(slug: string, colorNumber: string | null | undefined): boolean {
+  return extractVariantSuffix(slug, colorNumber) !== "";
+}
+
 // Thin-content gate. Two paths to noindex:
 //   1. Code-only name: when the color name has no alphabetic run of 3+
 //      letters (e.g. Behr "YL-W15", "PPU5-16"). These can't rank for
@@ -164,7 +172,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const titleSuffix = familyForTitle
     ? ` | ${lrvForTitle != null ? `LRV ${lrvForTitle} ` : ""}${familyForTitle} Paint Color`
     : ` | ${color.hex.toUpperCase()}`; // fall back to hex if family unavailable
-  const shouldIndex = !isCodeOnlyName(color.name) && dataQualityScore(color) >= 2;
+  const shouldIndex = !isCodeOnlyName(color.name) && dataQualityScore(color) >= 2 && !isVariantSlug(colorSlug, color.color_number);
   return {
     title: `${color.name}${colorNum} by ${color.brand.name}${variant}${titleSuffix}`,
     description: generateMetaDescription(color) + variant,
