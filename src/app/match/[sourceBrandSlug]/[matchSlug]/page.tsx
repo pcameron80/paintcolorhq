@@ -121,7 +121,7 @@ export default async function MatchPage({ params }: PageProps) {
       <JsonLd data={{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
         { "@type": "ListItem", position: 2, name: sourceColor.name, item: `https://www.paintcolorhq.com/colors/${sourceColor.brand.slug}/${sourceColor.slug}` },
-        { "@type": "ListItem", position: 3, name: `Match in ${targetBrand.name}` },
+        { "@type": "ListItem", position: 3, name: `${targetBrand.name} Equivalent`, item: `https://www.paintcolorhq.com/match/${sourceBrandSlug}/${parsed.colorSlug}-to-${parsed.targetBrandSlug}` },
       ]}} />
       {bestMatch && <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: [
         { "@type": "Question", name: `What is the ${targetBrand.name} equivalent of ${sourceColor.brand.name} ${sourceColor.name}?`,

@@ -202,6 +202,30 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
           { "@type": "ListItem", position: 4, name: `${sourceBrand.name} to ${targetBrand.name}`, item: `https://www.paintcolorhq.com/match/${sourceBrandSlug}/to/${targetBrandSlug}` },
         ],
       }} />
+      {/* FAQPage for AI engine citation. Data-grounded answers from values
+          already in scope — match count for this brand pair, plus the
+          Delta E methodology explainer. */}
+      <JsonLd data={{
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `How many ${sourceBrand.name} colors have a ${targetBrand.name} equivalent?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `Paint Color HQ has identified ${matches.length} close ${sourceBrand.name}-to-${targetBrand.name} color matches ranked by CIEDE2000 Delta E score. Colors with a Delta E under 2.0 are virtually identical on a finished wall; under 5.0 are visibly similar.`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: `What is the best way to match ${sourceBrand.name} paint colors to ${targetBrand.name}?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `Use the Delta E color difference score. A Delta E under 2.0 means the colors are nearly identical on a finished wall; under 5.0 means visibly similar but distinguishable. Always verify with physical paint samples in your room's actual lighting before committing — small differences amplify at scale.`,
+            },
+          },
+        ],
+      }} />
 
       <AdSenseScript />
       <Footer />
