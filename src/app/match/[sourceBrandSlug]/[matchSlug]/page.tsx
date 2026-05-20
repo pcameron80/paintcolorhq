@@ -7,8 +7,29 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { ColorSwatch } from "@/components/color-swatch";
 import { TrackPage } from "@/components/track-page";
 import { getColorBySlug, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
+import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 
 export const revalidate = 3600;
+
+// Without generateStaticParams Next.js 16 falls back to fully dynamic SSR for
+// dynamic route segments — `revalidate` alone doesn't opt the route into ISR.
+// Pre-render the curated POPULAR × MAJOR combinations (same set the sitemap's
+// match-individual shard emits). All other match URLs render on demand and
+// then cache via ISR.
+// https://nextjs.org/docs/app/api-reference/functions/generate-static-params#dynamic-segments-without-generatestaticparams
+export async function generateStaticParams() {
+  const params: { sourceBrandSlug: string; matchSlug: string }[] = [];
+  for (const { brandSlug, colorSlug } of POPULAR_COLOR_SLUGS) {
+    for (const target of MAJOR_MATCH_BRANDS) {
+      if (target === brandSlug) continue;
+      params.push({
+        sourceBrandSlug: brandSlug,
+        matchSlug: `${colorSlug}-to-${target}`,
+      });
+    }
+  }
+  return params;
+}
 
 interface PageProps { params: Promise<{ sourceBrandSlug: string; matchSlug: string }>; }
 
