@@ -528,6 +528,18 @@ export default async function ColorPage({ params }: PageProps) {
           ...(color.undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: color.undertone }] : []),
           ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
         ],
+        // Minimal Offer block — `price` deliberately omitted because paint
+        // pricing varies by store, region, and sheen (a wrong price triggers
+        // Google manual actions). InStoreOnly availability + named seller
+        // is enough to unlock Product rich-result eligibility across all
+        // ~23k color pages.
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStoreOnly",
+          priceCurrency: "USD",
+          seller: { "@type": "Organization", name: color.brand.name },
+          url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
+        },
         ...(matches.length > 0 && {
           isSimilarTo: matches
             .filter((m) => Number(m.delta_e_score) < 2)

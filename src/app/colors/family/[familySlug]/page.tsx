@@ -240,6 +240,49 @@ export default async function ColorFamilyPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* FAQ — rendered as visible HTML in addition to the FAQPage JSON-LD
+          above. Perplexity, AI Overviews, and ChatGPT primarily extract
+          from visible DOM text rather than schema, so the family-specific
+          undertone copy (M1) plus count and matching guidance need to be
+          on-page, not schema-only. */}
+      <section className="py-20 px-6 md:px-12 bg-surface">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">
+            {familyName} Paint Colors — Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            <details className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10">
+              <summary className="flex cursor-pointer items-center justify-between px-6 py-5 font-headline font-bold text-on-surface hover:text-primary transition-colors">
+                How many {familyName.toLowerCase()} paint colors are catalogued?
+                <svg className="h-5 w-5 shrink-0 text-outline transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+              </summary>
+              <div className="px-6 pb-5 text-on-surface-variant leading-relaxed">
+                Paint Color HQ catalogs {totalCount.toLocaleString()} {familyName.toLowerCase()} paint colors across {brandCount} major brands, including Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, and Farrow & Ball.
+              </div>
+            </details>
+            <details className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10">
+              <summary className="flex cursor-pointer items-center justify-between px-6 py-5 font-headline font-bold text-on-surface hover:text-primary transition-colors">
+                What undertones do {familyName.toLowerCase()} paint colors have?
+                <svg className="h-5 w-5 shrink-0 text-outline transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+              </summary>
+              <div className="px-6 pb-5 text-on-surface-variant leading-relaxed">
+                {FAMILY_UNDERTONE_ANSWERS[familySlug] ??
+                  `${familyName} paint colors come in warm undertones (leaning yellower, redder, or browner), cool undertones (leaning bluer or greener), and balanced neutrals. Use the undertone filter above to narrow your search.`}
+              </div>
+            </details>
+            <details className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10">
+              <summary className="flex cursor-pointer items-center justify-between px-6 py-5 font-headline font-bold text-on-surface hover:text-primary transition-colors">
+                How do I find a {familyName.toLowerCase()} paint color that matches across brands?
+                <svg className="h-5 w-5 shrink-0 text-outline transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+              </summary>
+              <div className="px-6 pb-5 text-on-surface-variant leading-relaxed">
+                Every color page on Paint Color HQ shows cross-brand matches ranked by CIEDE2000 Delta E score. Colors with a Delta E under 2.0 are virtually identical on a finished wall. Click any color in the grid above to see its closest matches across all {brandCount} brands.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
       {/* Inspiration Featuring [Family] — closes the family -> inspiration
           cluster gap the audit flagged. Cards link to curated palettes that
           prominently feature this color family. */}
