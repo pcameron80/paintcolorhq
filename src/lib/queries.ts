@@ -94,6 +94,36 @@ export async function getColorBySlug(
   return { ...(data as unknown as Color), brand };
 }
 
+// Batch fetch — same return shape as N parallel getColorBySlug calls but
+// uses one `.in("slug", ...)` round-trip. Used by the brand-page popular
+// mini-index where N goes up to 11 (BM) per render. The order of the
+// returned array matches the `colorSlugs` input order so consuming code
+// can iterate predictably.
+export async function getColorsBySlugList(
+  brandSlug: string,
+  colorSlugs: string[]
+): Promise<ColorWithBrand[]> {
+  if (colorSlugs.length === 0) return [];
+  const brand = await getBrandBySlug(brandSlug);
+  if (!brand) return [];
+
+  const { data, error } = await supabase
+    .from("colors")
+    .select(COLOR_DETAIL_FIELDS)
+    .eq("brand_id", brand.id)
+    .in("slug", colorSlugs);
+
+  if (error || !data) return [];
+
+  const bySlug = new Map<string, Color>(
+    (data as unknown as Color[]).map((c) => [c.slug, c]),
+  );
+  return colorSlugs
+    .map((slug) => bySlug.get(slug))
+    .filter((c): c is Color => c !== undefined)
+    .map((c) => ({ ...c, brand }));
+}
+
 export async function getColorSlugByNumber(
   brandSlug: string,
   colorNumber: string
