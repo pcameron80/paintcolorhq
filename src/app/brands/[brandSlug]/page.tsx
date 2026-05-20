@@ -1,9 +1,12 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
+import { BrandColorLibrary } from "@/components/brand-color-library";
+import { BrandColorLibraryFallback } from "@/components/brand-color-library-fallback";
 import { getBrandBySlug, getColorBySlug, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
 import { getBrandContent } from "@/lib/brand-content";
 import { POPULAR_COLOR_SLUGS } from "@/lib/popular-colors";
@@ -22,12 +25,15 @@ export async function generateStaticParams() {
 
 interface PageProps {
   params: Promise<{ brandSlug: string }>;
-  searchParams: Promise<{ family?: string; undertone?: string; page?: string }>;
 }
 
-export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
+// generateMetadata intentionally does NOT read searchParams — doing so
+// opts the route into fully dynamic rendering. Filter/pagination URLs
+// (?family=blue, ?page=2) share the same canonical URL and indexable
+// metadata as the base; the canonical consolidates them server-side
+// and the client component handles the filtered UI on hydration.
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { brandSlug } = await params;
-  const { family, undertone, page: pageParam } = await searchParams;
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) return { title: "Brand Not Found" };
   const count = brand.color_count.toLocaleString();
@@ -47,9 +53,8 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     .slice(0, 3);
   const colorsWord = brandHasPaintWord ? "colors" : "paint colors";
   const description = `All ${count} ${brand.name} ${colorsWord} with hex codes, LRV values, and undertone tags. Side-by-side matches to ${compareTo.join(", ")}, and 10 more brands.`;
-  const currentPage = parseInt(pageParam ?? "1", 10) || 1;
   const brandContent = getBrandContent(brandSlug);
-  const shouldNoindex = currentPage > 1 || !brandContent || !!family || !!undertone;
+  const shouldNoindex = !brandContent;
   return {
     title, description,
     alternates: { canonical: url },
@@ -79,33 +84,30 @@ function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-export default async function BrandPage({ params, searchParams }: PageProps) {
+export default async function BrandPage({ params }: PageProps) {
   const { brandSlug } = await params;
-  const { family, undertone: undertoneFilter, page: pageParam } = await searchParams;
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) notFound();
 
-  const currentPage = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
   const perPage = 60;
 
-  // H2.2: surface this brand's POPULAR_COLOR_SLUGS as a featured section
-  // above the paginated grid on page 1. Without this the popular slugs only
-  // benefit from generateStaticParams (pre-render cache) but get the same
-  // brand-page link signal as any other color buried on page 4.
+  // Server-rendered canonical: page 1, no filters. Filter and pagination
+  // state lives in the client component (BrandColorLibrary) and refetches
+  // via /api/brand/[brandSlug]/colors when URL params change.
+  // Reading searchParams here would force the route into dynamic
+  // rendering — see reference_searchparams-forces-dynamic.md memory note.
   const popularSlugsForBrand = POPULAR_COLOR_SLUGS
     .filter((p) => p.brandSlug === brandSlug)
     .map((p) => p.colorSlug);
-  const showPopularSection = currentPage === 1 && !family && !undertoneFilter && popularSlugsForBrand.length > 0;
 
   const [colors, totalCount, popularColorsResults] = await Promise.all([
-    getColorsByBrand(brand.id, { family: family ?? undefined, undertone: undertoneFilter ?? undefined, limit: perPage, offset: (currentPage - 1) * perPage }),
-    getColorsByBrandCount(brand.id, { family: family ?? undefined, undertone: undertoneFilter ?? undefined }),
-    showPopularSection
+    getColorsByBrand(brand.id, { limit: perPage, offset: 0 }),
+    getColorsByBrandCount(brand.id),
+    popularSlugsForBrand.length > 0
       ? Promise.all(popularSlugsForBrand.map((slug) => getColorBySlug(brandSlug, slug)))
       : Promise.resolve([] as Awaited<ReturnType<typeof getColorBySlug>>[]),
   ]);
   const popularColors = popularColorsResults.filter((c): c is NonNullable<typeof c> => c !== null);
-  const totalPages = Math.ceil(totalCount / perPage);
 
   const families: { name: string; hex: string; border?: boolean }[] = [
     { name: "white", hex: "#FFFFFF", border: true },
@@ -125,19 +127,13 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
     { name: "black", hex: "#1F2937" },
   ];
 
-  const undertoneColors: Record<string, string> = {
-    warm: "#E8B87D",
-    cool: "#7DA8CC",
-    neutral: "#B8B4AC",
-  };
-
   const brandContent = getBrandContent(brand.slug);
   const subtitle = brandContent?.subtitle ?? `Browse every ${brand.name} color with undertone tags, LRV values, and cross-brand matches`;
   const orgData = brandOrgData[brand.slug];
 
   return (
     <div className="min-h-screen bg-surface">
-      <TrackPage eventName="page_view_enriched" params={{ page_type: "brand", color_brand: brandSlug, color_family: family, undertone_filter: undertoneFilter, page_number: currentPage }} />
+      <TrackPage eventName="page_view_enriched" params={{ page_type: "brand", color_brand: brandSlug }} />
       <Header />
 
       {/* Brand Hero */}
@@ -256,127 +252,31 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         </section>
       )}
 
-      {/* Color Library */}
+      {/* Color Library \u2014 Suspense-wrapped client component handles filter +
+          pagination via URL params. Server renders the canonical page-1
+          unfiltered state via BrandColorLibraryFallback so the route stays
+          ISR-cacheable. Same pattern as the family-page refactor. */}
       <section id="colors" className="py-24 px-6 md:px-12 bg-surface-container-low scroll-mt-20">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
-            <div>
-              <h2 className="font-headline text-4xl font-bold tracking-tight text-on-surface">{brand.name} Color Library</h2>
-              <p className="text-outline mt-2">{totalCount.toLocaleString()} colors{family ? ` in ${family}` : ""}{undertoneFilter ? ` \u00B7 ${undertoneFilter} undertone` : ""}.</p>
-            </div>
-          </div>
-
-          {/* Family filter */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            <Link
-              href={`/brands/${brandSlug}${undertoneFilter ? `?undertone=${undertoneFilter}` : ""}`}
-              className={`rounded-full px-4 py-2 text-sm font-headline font-bold transition-all ${!family ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant hover:text-primary"}`}
-            >
-              All
-            </Link>
-            {families.map((f) => {
-              const p = new URLSearchParams();
-              p.set("family", f.name);
-              if (undertoneFilter) p.set("undertone", undertoneFilter);
-              return (
-                <Link key={f.name} href={`/brands/${brandSlug}?${p.toString()}`}
-                  className={`rounded-full px-4 py-2 text-sm font-headline font-bold capitalize transition-all flex items-center gap-2 ${family === f.name ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant hover:text-primary"}`}
-                >
-                  <span className={`inline-block h-3.5 w-3.5 rounded-full shrink-0 ${f.border ? "border border-outline-variant/30" : ""}`} style={{ backgroundColor: f.hex }} />
-                  {f.name}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Undertone filter */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            <Link
-              href={`/brands/${brandSlug}${family ? `?family=${family}` : ""}`}
-              className={`rounded-full px-4 py-2 text-sm transition-all ${!undertoneFilter ? "bg-secondary text-on-secondary font-bold" : "bg-surface-container-lowest text-on-surface-variant hover:text-secondary"}`}
-            >
-              All Undertones
-            </Link>
-            {(["warm", "cool", "neutral"] as const).map((tone) => {
-              const p = new URLSearchParams();
-              if (family) p.set("family", family);
-              p.set("undertone", tone);
-              return (
-                <Link key={tone} href={`/brands/${brandSlug}?${p.toString()}`}
-                  className={`rounded-full px-4 py-2 text-sm capitalize transition-all flex items-center gap-2 ${undertoneFilter === tone ? "bg-secondary text-on-secondary font-bold" : "bg-surface-container-lowest text-on-surface-variant hover:text-secondary"}`}
-                >
-                  <span className="inline-block h-3.5 w-3.5 rounded-full shrink-0" style={{ backgroundColor: undertoneColors[tone] }} />
-                  {tone}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Color grid */}
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {colors.map((color) => (
-              <ColorCard key={color.id} name={color.name} hex={color.hex} brandName={brand.name} brandSlug={brand.slug} colorSlug={color.slug} colorNumber={color.color_number} />
-            ))}
-          </div>
-
-          {colors.length === 0 && (
-            <p className="mt-12 text-center text-on-surface-variant">No colors found{family ? ` in the ${family} family` : ""}.</p>
-          )}
-
-          {/* Pagination */}
-          {totalPages > 1 && (() => {
-            function pageUrl(page: number) {
-              const p = new URLSearchParams();
-              if (family) p.set("family", family);
-              if (undertoneFilter) p.set("undertone", undertoneFilter);
-              if (page > 1) p.set("page", String(page));
-              const qs = p.toString();
-              return `/brands/${brandSlug}${qs ? `?${qs}` : ""}`;
+          <Suspense
+            fallback={
+              <BrandColorLibraryFallback
+                brandSlug={brandSlug}
+                brandName={brand.name}
+                families={families}
+                initialColors={colors}
+                initialTotalCount={totalCount}
+              />
             }
-
-            // Build truncated page list: 1 ... (current-1) current (current+1) ... last
-            const pages: (number | "ellipsis")[] = [];
-            const addPage = (n: number) => { if (n >= 1 && n <= totalPages && !pages.includes(n)) pages.push(n); };
-            addPage(1);
-            if (currentPage > 3) pages.push("ellipsis");
-            addPage(currentPage - 1);
-            addPage(currentPage);
-            addPage(currentPage + 1);
-            if (currentPage < totalPages - 2) pages.push("ellipsis");
-            addPage(totalPages);
-
-            // Pagination beyond page 2 gets rel="nofollow". Brand pages 2+ are
-            // noindex; pages 3+ are deep noindex pages that burn crawl budget
-            // every recrawl cycle. Sitemap covers color discovery for these
-            // deeper pages. Page 2 stays followed so its 60 colors (positions
-            // 61-120) still receive link signal from the brand.
-            const nofollowProps = (target: number) =>
-              target >= 3 ? { rel: "nofollow" as const } : {};
-
-            return (
-              <nav className="mt-12 flex items-center justify-center gap-2">
-                {currentPage > 1 && (
-                  <Link href={pageUrl(currentPage - 1)} {...nofollowProps(currentPage - 1)} className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors">
-                    Previous
-                  </Link>
-                )}
-                {pages.map((page, i) =>
-                  page === "ellipsis" ? (
-                    <span key={`e${i}`} className="px-2 text-outline">...</span>
-                  ) : (
-                    <Link key={page} href={pageUrl(page)} {...nofollowProps(page)}
-                      className={`rounded-xl px-4 py-2.5 text-sm font-headline font-bold transition-all ${page === currentPage ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant border border-outline-variant/15 hover:text-primary"}`}
-                    >{page}</Link>
-                  )
-                )}
-                {currentPage < totalPages && (
-                  <Link href={pageUrl(currentPage + 1)} {...nofollowProps(currentPage + 1)} className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors">
-                    Next
-                  </Link>
-                )}
-              </nav>
-            );
-          })()}
+          >
+            <BrandColorLibrary
+              brandSlug={brandSlug}
+              brandName={brand.name}
+              families={families}
+              initialColors={colors}
+              initialTotalCount={totalCount}
+            />
+          </Suspense>
         </div>
       </section>
 
@@ -435,7 +335,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
           { "@type": "ListItem", position: 3, name: brand.name, item: `https://www.paintcolorhq.com/brands/${brand.slug}` },
         ]},
         mainEntity: { "@type": "ItemList", numberOfItems: totalCount,
-          itemListElement: colors.map((color, i) => ({ "@type": "ListItem", position: (currentPage - 1) * perPage + i + 1, url: `https://www.paintcolorhq.com/colors/${brand.slug}/${color.slug}`, name: color.name })),
+          itemListElement: colors.map((color, i) => ({ "@type": "ListItem", position: i + 1, url: `https://www.paintcolorhq.com/colors/${brand.slug}/${color.slug}`, name: color.name })),
         },
       }} />
       {orgData && <JsonLd data={{
