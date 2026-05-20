@@ -65,12 +65,10 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "paintcolorhq.com" }],
-        destination: "https://www.paintcolorhq.com/:path*",
-        permanent: true,
-      },
+      // Non-www → www redirect lives in vercel.json (the Vercel edge layer
+      // processes those before Next.js rewrites, so a redirect here is dead
+      // code). Keeping the path-level redirects below since vercel.json
+      // doesn't carry them.
       {
         source: "/colors/family/taupe",
         destination: "/colors/family/beige",
