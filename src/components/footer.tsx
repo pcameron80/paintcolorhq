@@ -63,6 +63,7 @@ export function Footer() {
           <h4 className="font-headline text-[10px] uppercase font-bold text-on-surface mb-6 tracking-widest">Company</h4>
           <ul className="space-y-3 text-xs text-on-surface-variant">
             <li><Link href="/about" className="hover:text-primary underline-offset-4 hover:underline transition-all">About</Link></li>
+            <li><Link href="/methodology" className="hover:text-primary underline-offset-4 hover:underline transition-all">Methodology</Link></li>
             <li><Link href="/contact" className="hover:text-primary underline-offset-4 hover:underline transition-all">Contact</Link></li>
             <li><Link href="/privacy" className="hover:text-primary underline-offset-4 hover:underline transition-all">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-primary underline-offset-4 hover:underline transition-all">Terms of Service</Link></li>
