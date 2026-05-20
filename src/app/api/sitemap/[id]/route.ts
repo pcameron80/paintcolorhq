@@ -59,6 +59,7 @@ export async function GET(
         { url: "/tools/room-visualizer", lastmod: SITE_BUILD_DATE },
         { url: "/tools/palette-generator", lastmod: SITE_BUILD_DATE },
         { url: "/about", lastmod: SITE_BUILD_DATE },
+        { url: "/methodology", lastmod: SITE_BUILD_DATE },
         { url: "/contact", lastmod: SITE_BUILD_DATE },
         { url: "/faq", lastmod: SITE_BUILD_DATE },
         { url: "/privacy", lastmod: SITE_BUILD_DATE },
