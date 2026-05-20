@@ -400,7 +400,23 @@ export async function getColorById(id: string): Promise<ColorWithBrand | null> {
   return data as unknown as ColorWithBrand;
 }
 
+// Module-level cache for unbrand-filtered findClosestColor results. The
+// resolveHarmonies path on every color page kicks off up to ~10 sequential
+// findClosestColor lookups per cold render — caching the no-brand-filter
+// case collapses these to Map lookups on warm serverless instances.
+// Color data is effectively immutable between deploys, so a stale entry
+// can only mismatch if a new brand import lands between cache miss and
+// the next deploy — acceptable for the cosmetic "closest color" use case.
+// Bounded at 5k entries with simple FIFO eviction to cap memory.
+const findClosestColorCache = new Map<string, ColorWithBrand | null>();
+const FIND_CLOSEST_CACHE_MAX = 5000;
+
 export async function findClosestColor(hex: string, brandId?: string): Promise<ColorWithBrand | null> {
+  if (!brandId) {
+    const cached = findClosestColorCache.get(hex);
+    if (cached !== undefined) return cached;
+  }
+
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
@@ -440,7 +456,10 @@ export async function findClosestColor(hex: string, brandId?: string): Promise<C
     candidates = (wideData ?? []) as unknown as ColorWithBrand[];
   }
 
-  if (candidates.length === 0) return null;
+  if (candidates.length === 0) {
+    if (!brandId) findClosestColorCache.set(hex, null);
+    return null;
+  }
 
   let best = candidates[0];
   let bestDist = Infinity;
@@ -453,6 +472,14 @@ export async function findClosestColor(hex: string, brandId?: string): Promise<C
       bestDist = dist;
       best = c;
     }
+  }
+
+  if (!brandId) {
+    if (findClosestColorCache.size >= FIND_CLOSEST_CACHE_MAX) {
+      const firstKey = findClosestColorCache.keys().next().value;
+      if (firstKey !== undefined) findClosestColorCache.delete(firstKey);
+    }
+    findClosestColorCache.set(hex, best);
   }
 
   return best;

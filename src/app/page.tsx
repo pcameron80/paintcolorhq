@@ -384,7 +384,10 @@ export default async function Home() {
         description: "Free paint color database with 23,000+ colors from 14 brands. Cross-brand matching uses CIEDE2000 Delta E scoring.",
         potentialAction: {
           "@type": "SearchAction",
-          target: { "@type": "EntryPoint", urlTemplate: "https://www.paintcolorhq.com/search?q={search_term_string}" },
+          // Plain URL string is the current Sitelinks Searchbox spec — the
+          // older `EntryPoint` object form still works but triggers a Rich
+          // Results Test warning.
+          target: "https://www.paintcolorhq.com/search?q={search_term_string}",
           "query-input": "required name=search_term_string",
         },
       }} />
