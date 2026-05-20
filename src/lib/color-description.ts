@@ -5,10 +5,12 @@ import { hexToHsl } from "./palettes";
 
 type Temperature = "warm" | "cool" | "neutral";
 type LightnessCategory = "very light" | "light" | "medium" | "deep" | "dark";
+type SaturationBand = "muted" | "mid" | "saturated";
 
 interface DerivedProps {
   temperature: Temperature;
   lightness: LightnessCategory;
+  saturation: SaturationBand;
   isAchromatic: boolean;
   hue: number;
 }
@@ -69,7 +71,18 @@ function deriveProps(color: ColorWithBrand): DerivedProps {
   else if (lightnessVal >= 12) lightness = "deep";
   else lightness = "dark";
 
-  return { temperature, lightness, isAchromatic, hue: h };
+  // Saturation band — second axis on pairing + lighting copy so the same
+  // hue family + LRV bucket can render distinct paragraphs depending on
+  // whether the color is muted (dusty/desaturated), mid (balanced), or
+  // saturated (vivid). Pre-fix, every red shared one pairing sentence
+  // across ~250 pages. Post-fix, hue × saturation × LRV cardinality
+  // multiplies that surface roughly 3x.
+  let saturation: SaturationBand;
+  if (isAchromatic || s < 20) saturation = "muted";
+  else if (s > 55) saturation = "saturated";
+  else saturation = "mid";
+
+  return { temperature, lightness, saturation, isAchromatic, hue: h };
 }
 
 // ---------- Hue name helper ----------
@@ -189,6 +202,33 @@ function getPairingSentence(name: string, family: HueFamily): string {
   }
 }
 
+// Saturation modifier appended to pairing sentence. Adds a second axis so
+// hue family × saturation × LRV bucket multiplies the unique tail-string
+// surface ~3x. For achromatic-* families saturation is always "muted" so
+// only that branch fires there.
+function getPairingSaturationModifier(saturation: SaturationBand, isAchromatic: boolean): string {
+  if (isAchromatic) return "";
+  if (saturation === "muted") {
+    return ` Because this version is on the desaturated side, it pairs forgivingly with both warm and cool accent palettes — and reads especially calm in north-facing rooms where high-chroma versions can feel intrusive.`;
+  }
+  if (saturation === "saturated") {
+    return ` As a fully saturated example, it reads as a confident statement color — best deployed as a single accent wall or large architectural feature rather than a whole-room dominant.`;
+  }
+  return ` At mid saturation, this color sits at a flexible mid-point — bold enough to anchor a room without dominating, and pairs cleanly with both crisp and creamy whites.`;
+}
+
+// Saturation modifier appended to lighting sentence.
+function getLightingSaturationModifier(saturation: SaturationBand, isAchromatic: boolean): string {
+  if (isAchromatic) return "";
+  if (saturation === "muted") {
+    return ` Desaturated versions shift least under different lighting — they hold their character whether the room runs warm or cool.`;
+  }
+  if (saturation === "saturated") {
+    return ` Saturated colors amplify lighting effects more than muted ones: warm bulbs deepen and enrich, cool daylight sharpens and slightly cools the same hex.`;
+  }
+  return ` At mid saturation the lighting shift is moderate but real — sample under both warm-bulb evening light and cool-daylight morning light before committing.`;
+}
+
 // Hue-family → lighting-behavior sentence. Bulb-color guidance is one of the
 // most-asked questions about residential paint. Hue-keyed variants give
 // concrete per-family advice (purples shift mauve under 2700K, blues read
@@ -253,12 +293,18 @@ function getQueryTargetingSentences(
   const lrv = color.lrv != null ? Math.round(Number(color.lrv)) : null;
   const lrvSentence = lrv != null ? getLrvApplicationSentence(color.name, lrv) : "";
 
-  // Trim/hardware pairing recommendation, varied by hue family (11 variants)
+  // Trim/hardware pairing — hue family (11) × saturation band (3) for
+  // chromatic colors. Achromatic flavors collapse to the base sentence
+  // since saturation is constant there.
   const hueFamily = getHueFamily(color, props);
-  const pairingSentence = getPairingSentence(color.name, hueFamily);
+  const pairingSentence =
+    getPairingSentence(color.name, hueFamily) +
+    getPairingSaturationModifier(props.saturation, props.isAchromatic);
 
-  // Lighting-behavior guidance — concrete bulb-temperature advice, hue-keyed
-  const lightingSentence = getLightingBehaviorSentence(color.name, hueFamily);
+  // Lighting-behavior guidance — same hue × saturation composition.
+  const lightingSentence =
+    getLightingBehaviorSentence(color.name, hueFamily) +
+    getLightingSaturationModifier(props.saturation, props.isAchromatic);
 
   return [
     whatColorIs,
