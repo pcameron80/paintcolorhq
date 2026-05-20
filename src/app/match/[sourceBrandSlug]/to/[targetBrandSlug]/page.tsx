@@ -187,6 +187,61 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Related reading — closes the cluster gap the audit flagged:
+          /match/[a]/to/[b] pages had zero outbound editorial links into the
+          blog cluster despite being high-intent commercial pages. Methodology
+          post is universal; the brand-comparison post is conditional on the
+          pair containing SW, BM, or Behr. */}
+      <section className="py-16 px-6 md:px-12 bg-surface-container-low">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-6">
+            Related Reading
+          </h2>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <Link
+              href="/blog/how-to-find-perfect-color-match-across-brands"
+              className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all"
+            >
+              <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Methodology</p>
+              <p className="font-headline text-lg font-bold text-on-surface group-hover:text-primary transition-colors">
+                How to find the perfect paint color match across brands
+              </p>
+              <p className="mt-2 text-sm text-on-surface-variant">
+                The CIEDE2000 Delta E score, how to read the verdict labels, and what changes between cross-brand pairs.
+              </p>
+            </Link>
+            {(() => {
+              const pair = `${sourceBrandSlug}|${targetBrandSlug}`;
+              if (pair === "sherwin-williams|benjamin-moore" || pair === "benjamin-moore|sherwin-williams") {
+                return (
+                  <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all">
+                    <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Comparison</p>
+                    <p className="font-headline text-lg font-bold text-on-surface group-hover:text-primary transition-colors">Sherwin-Williams vs. Benjamin Moore: full brand comparison</p>
+                    <p className="mt-2 text-sm text-on-surface-variant">Price, color depth, finish quality, and where each brand wins.</p>
+                  </Link>
+                );
+              }
+              if ([sourceBrandSlug, targetBrandSlug].every((s) => ["sherwin-williams", "benjamin-moore", "behr"].includes(s))) {
+                return (
+                  <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all">
+                    <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Comparison</p>
+                    <p className="font-headline text-lg font-bold text-on-surface group-hover:text-primary transition-colors">Behr vs. Sherwin-Williams vs. Benjamin Moore</p>
+                    <p className="mt-2 text-sm text-on-surface-variant">Three-way comparison of the most cross-shopped consumer paint brands.</p>
+                  </Link>
+                );
+              }
+              return (
+                <Link href="/blog/understanding-paint-color-undertones" className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all">
+                  <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Color Theory</p>
+                  <p className="font-headline text-lg font-bold text-on-surface group-hover:text-primary transition-colors">Understanding paint color undertones</p>
+                  <p className="mt-2 text-sm text-on-surface-variant">Why a perfect Delta E match can still look wrong on the wall — and how to read undertones before you commit.</p>
+                </Link>
+              );
+            })()}
+          </div>
+        </div>
+      </section>
+
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "ItemList",
         name: `${sourceBrand.name} to ${targetBrand.name} Equivalent Colors`,

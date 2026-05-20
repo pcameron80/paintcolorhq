@@ -69,8 +69,11 @@ export function Footer() {
           </ul>
 
           <h4 className="font-headline text-[10px] uppercase font-bold text-on-surface mb-4 mt-8 tracking-widest">Color Families</h4>
-          <div className="flex flex-wrap gap-2">
-            {["White", "Gray", "Beige", "Blue", "Green", "Red", "Yellow", "Black"].map((family) => (
+          <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+            {[
+              "White", "Off-White", "Gray", "Beige", "Neutral", "Brown", "Tan",
+              "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Black",
+            ].map((family) => (
               <Link
                 key={family}
                 href={`/colors/family/${family.toLowerCase()}`}
