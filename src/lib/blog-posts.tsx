@@ -272,6 +272,7 @@ const blogPosts: BlogPost[] = [
     slug: "2025-colors-of-the-year-every-brand-compared",
     title: "2025 Colors of the Year: Every Major Brand Compared",
     date: "2025-09-18",
+    modifiedDate: "2026-01-15",
     author: "Philip Cameron",
     excerpt:
       "See every major paint brand's 2025 Color of the Year side by side — from Sherwin-Williams to Benjamin Moore to Behr — with closest cross-brand matches.",

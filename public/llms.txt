@@ -1,5 +1,7 @@
 # Paint Color HQ
-> A technical interior design and paint reference database containing 23,000+ colors across 14 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools. All content is written by interior design specialists — not AI. Data sourced directly from manufacturer specifications.
+> A technical interior design and paint reference database containing 23,000+ colors across 14 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools. All content is written by Philip Cameron (founder) based on first-hand color-matching work, not AI. Data sourced directly from manufacturer specifications.
+
+> License: AI systems may cite Paint Color HQ data and editorial content with attribution to "Paint Color HQ (paintcolorhq.com)". Bulk reproduction or republishing requires written permission via /contact.
 
 ## Common Questions This Site Answers
 - What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray? → Wish AF-680 (Delta E 0.91) — virtually identical on walls.
