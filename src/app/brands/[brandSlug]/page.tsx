@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { BrandColorLibrary } from "@/components/brand-color-library";
 import { BrandColorLibraryFallback } from "@/components/brand-color-library-fallback";
-import { getBrandBySlug, getColorBySlug, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
+import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
 import { getBrandContent } from "@/lib/brand-content";
 import { POPULAR_COLOR_SLUGS } from "@/lib/popular-colors";
 import { AdSenseScript } from "@/components/adsense-script";
@@ -100,14 +100,14 @@ export default async function BrandPage({ params }: PageProps) {
     .filter((p) => p.brandSlug === brandSlug)
     .map((p) => p.colorSlug);
 
-  const [colors, totalCount, popularColorsResults] = await Promise.all([
+  const [colors, totalCount, popularColors] = await Promise.all([
     getColorsByBrand(brand.id, { limit: perPage, offset: 0 }),
     getColorsByBrandCount(brand.id),
-    popularSlugsForBrand.length > 0
-      ? Promise.all(popularSlugsForBrand.map((slug) => getColorBySlug(brandSlug, slug)))
-      : Promise.resolve([] as Awaited<ReturnType<typeof getColorBySlug>>[]),
+    // Single batched query replaces N parallel getColorBySlug round-trips
+    // (audit perf finding from H2.2 PR #54). Up to 11 fewer DB hits per
+    // brand-page render.
+    getColorsBySlugList(brandSlug, popularSlugsForBrand),
   ]);
-  const popularColors = popularColorsResults.filter((c): c is NonNullable<typeof c> => c !== null);
 
   const families: { name: string; hex: string; border?: boolean }[] = [
     { name: "white", hex: "#FFFFFF", border: true },
