@@ -52,12 +52,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="impact-site-verification" content="dc26e305-732b-490f-9212-85e5f25c94b7" />
-        <link
-          rel="preload"
-          as="image"
-          href="/hero.webp"
-          fetchPriority="high"
-        />
+        {/* hero.webp preload removed from root layout — Next.js auto-generates
+            it from the <Image priority> on the homepage only. Keeping the manual
+            preload here fired the LCP hint on every page in the app, including
+            color/brand/family routes that never render hero.webp. */}
         <link rel="help" type="text/plain" href="/llms.txt" />
       </head>
       <body className={`${inter.variable} ${manrope.variable} font-sans antialiased`}>
