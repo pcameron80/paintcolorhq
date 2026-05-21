@@ -12,7 +12,7 @@ import { ShareButton } from "@/components/share-button";
 import { PinterestSaveButton } from "@/components/pinterest-save-button";
 import { redirect } from "next/navigation";
 import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand, getMoreFromFamily } from "@/lib/queries";
-import { generateColorDescription, generateMetaDescription } from "@/lib/color-description";
+import { generateColorDescription, generateEditorialVerdict, generateMetaDescription } from "@/lib/color-description";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
 import { TrackPage } from "@/components/track-page";
@@ -217,6 +217,7 @@ export default async function ColorPage({ params }: PageProps) {
     getMoreFromFamily({ id: color.id, color_family: color.color_family, brand_id: color.brand_id }),
   ]);
   const description = generateColorDescription(color, matches);
+  const editorialVerdict = generateEditorialVerdict(color);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
   const harmonies = await resolveHarmonies(color.hex);
   const light = isLightColor(color.hex);
@@ -321,6 +322,19 @@ export default async function ColorPage({ params }: PageProps) {
             mediaUrl={pinImageUrl}
             description={pinDescription}
           />
+        </div>
+      </section>
+
+      {/* Editorial verdict — rendered immediately after the hero so the page
+          reads as an opinion-style "is this color right for me?" answer
+          rather than a spec readout. SERP for branded color queries
+          (Agreeable Gray, Hale Navy, etc.) is dominated by editorial color
+          reviews — this paragraph nudges PCHQ toward that page type. Copy
+          composes from hue family × LRV bucket × saturation band so it
+          varies meaningfully across the corpus without per-color hand-writing. */}
+      <section className="bg-surface-container-low border-b border-outline-variant/10">
+        <div className="max-w-4xl mx-auto px-6 md:px-12 py-10">
+          <p className="text-lg text-on-surface leading-relaxed">{editorialVerdict}</p>
         </div>
       </section>
 

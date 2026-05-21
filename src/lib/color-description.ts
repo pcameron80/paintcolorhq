@@ -328,6 +328,82 @@ export function generateColorDescription(
   return getQueryTargetingSentences(color, matches, props);
 }
 
+// Short editorial-style verdict rendered immediately below the hero on the
+// color detail page. Top SERP competitors (Kylie M Interiors, Daily Splendor)
+// open with a verdict in the first 40-60 words ("Agreeable Gray is the best
+// all-around neutral if you have mixed lighting"). PCHQ historically opened
+// with a spec readout, which is the wrong page-type signal — SERP ranks
+// editorial reviews for branded color queries.
+//
+// The verdict here is composed from the color's derived properties so it
+// reads as opinion-style without requiring per-color hand-writing. It varies
+// across hue family × LRV bucket × saturation band so the page-type pattern
+// holds even without a hand-written verdict per color.
+export function generateEditorialVerdict(color: ColorWithBrand): string {
+  const props = deriveProps(color);
+  const family = getHueFamily(color, props);
+  const lrv = color.lrv != null ? Math.round(Number(color.lrv)) : null;
+  const useCase = getUseCaseFromLrv(lrv, props.lightness);
+  const familyVerdict = getFamilyVerdict(color.name, family);
+  const saturationCaveat = getSaturationCaveat(props.saturation, props.isAchromatic);
+  return `${familyVerdict} ${useCase}${saturationCaveat}`;
+}
+
+function getUseCaseFromLrv(lrv: number | null, lightness: LightnessCategory): string {
+  if (lrv == null) {
+    return `Sample at scale in your room's actual lighting before committing — the on-screen swatch is approximate.`;
+  }
+  if (lrv >= 70) {
+    return `At LRV ${lrv} it reflects plenty of light, which makes it well-suited for north-facing rooms and smaller spaces that benefit from extra brightness.`;
+  }
+  if (lrv >= 50) {
+    return `At LRV ${lrv} it sits in the comfortable mid-light range — bright enough for living areas, soft enough for bedrooms, and adaptable across most lighting conditions.`;
+  }
+  if (lrv >= 25) {
+    return `At LRV ${lrv} it carries real depth without going dark — a good choice for accent walls, libraries, and rooms with abundant natural light.`;
+  }
+  void lightness;
+  return `At LRV ${lrv} it reads as a deep, enveloping shade — best on accent walls, dining rooms, and spaces where atmosphere matters more than reflected light.`;
+}
+
+function getFamilyVerdict(name: string, family: HueFamily): string {
+  switch (family) {
+    case "red":
+      return `${name} works as a confident anchor color — best in rooms that can carry visual weight (dining rooms, libraries, accent walls) rather than as a whole-room palette.`;
+    case "orange":
+      return `${name} reads as warm and grounded — strong in kitchens, family rooms, and any space where warmth is the dominant mood you're after.`;
+    case "yellow":
+      return `${name} adds visible warmth and energy — works well in north-facing rooms that need a lift and in spaces where cheerful is the goal.`;
+    case "green":
+      return `${name} is the most flexible accent family in residential paint — works as both a whole-room neutral when desaturated and a confident statement when saturated.`;
+    case "teal":
+      return `${name} reads as crisp and modern — strong in bathrooms, kitchens, and any space that benefits from a cool, slightly architectural mood.`;
+    case "blue":
+      return `${name} is a calming choice — works as both a whole-house neutral when lightened and a dramatic anchor when deepened to navy.`;
+    case "purple":
+      return `${name} is the most lighting-sensitive family in paint — best chosen in the actual room you'll use it in, sampled at multiple times of day.`;
+    case "magenta":
+      return `${name} reads as warm and personal — works in bedrooms, nurseries, and any space where softness and warmth are the goal.`;
+    case "achromatic-warm":
+      return `${name} works as a warm neutral anchor — pairs cleanly with most existing palettes and reads forgiving across lighting conditions.`;
+    case "achromatic-cool":
+      return `${name} reads as crisp and architectural — strong in modern spaces, with natural fixed elements (chrome, stone, glass), or as a quiet anchor.`;
+    case "achromatic-neutral":
+      return `${name} is a true neutral — the rare paint color that doesn't push warm or cool, which makes it forgiving across mixed-lighting rooms and existing palettes.`;
+  }
+}
+
+function getSaturationCaveat(saturation: SaturationBand, isAchromatic: boolean): string {
+  if (isAchromatic) return "";
+  if (saturation === "saturated") {
+    return ` Because it's a fully saturated example, it lands strongest as a single accent wall or large architectural feature rather than the dominant whole-room color.`;
+  }
+  if (saturation === "muted") {
+    return ` Because it sits on the desaturated side, it pairs forgivingly with both warm and cool accents and reads calm in lower-light rooms.`;
+  }
+  return "";
+}
+
 const TOP_BRANDS_FOR_COMPARE = ["Sherwin-Williams", "Benjamin Moore", "Behr", "PPG"];
 
 export function generateMetaDescription(color: ColorWithBrand): string {
