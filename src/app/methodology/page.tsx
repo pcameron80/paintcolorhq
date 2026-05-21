@@ -79,7 +79,16 @@ export default function MethodologyPage() {
         <section className="px-6 md:px-12 py-12 bg-surface-container-low">
           <div className="max-w-4xl mx-auto">
             <p className="text-base text-on-surface-variant leading-relaxed">
-              <strong className="text-on-surface">Short version:</strong> every color in our database has a hex code, RGB triplet, and (when available) an LRV value. To find cross-brand matches we compute the CIEDE2000 Delta E score between two colors — a perceptual color-difference standard published by the International Commission on Illumination in 2001 and widely used in paint, fabric, and ink manufacturing for quality control. Pairs with Delta E under 2.0 are virtually identical on a finished wall. Pairs under 5.0 are visibly similar but distinguishable. Pairs above 5.0 are visibly different.
+              <strong className="text-on-surface">Short version:</strong> every color in our database has a hex code, RGB triplet, and (when available) an LRV value. To find cross-brand matches we compute the CIEDE2000 Delta E score between two colors — a perceptual color-difference standard published by the{" "}
+              <a
+                href="https://www.cie.co.at/publications/colorimetry-part-6-ciede2000-colour-difference-formula"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline underline-offset-4"
+              >
+                International Commission on Illumination in 2001 (CIE Publication 142)
+              </a>{" "}
+              and widely used in paint, fabric, and ink manufacturing for quality control. Pairs with Delta E under 2.0 are virtually identical on a finished wall. Pairs under 5.0 are visibly similar but distinguishable. Pairs above 5.0 are visibly different.
             </p>
           </div>
         </section>
@@ -93,7 +102,16 @@ export default function MethodologyPage() {
             <ol className="space-y-6 text-on-surface-variant leading-relaxed">
               <li><strong className="text-on-surface">1. RGB pre-filter.</strong> For each source color, candidates are narrowed to colors whose RGB channels fall within ±30 of the source. This Euclidean filter is cheap and runs on indexed columns; it eliminates 99%+ of the database before any Delta E math is performed.</li>
               <li><strong className="text-on-surface">2. LAB conversion.</strong> The pre-filtered candidates are converted from sRGB to CIE LAB color space — the perceptual color space CIEDE2000 operates on. LAB is designed so that equal distances correspond (approximately) to equal perceived differences, unlike RGB where two visually distinct colors can be numerically close.</li>
-              <li><strong className="text-on-surface">3. CIEDE2000 calculation.</strong> The 2001 CIE formula computes Delta E using LAB lightness, chroma, and hue with chroma-dependent weighting. We use the standard implementation with kL=kC=kH=1, which is the default for surface coatings (paint, fabric, ink).</li>
+              <li><strong className="text-on-surface">3. CIEDE2000 calculation.</strong> The{" "}
+                <a
+                  href="https://onlinelibrary.wiley.com/doi/10.1002/col.1049"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline underline-offset-4"
+                >
+                  2001 CIE formula (Luo, Cui, Rigg)
+                </a>{" "}
+                computes Delta E using LAB lightness, chroma, and hue with chroma-dependent weighting. We use the standard implementation with kL=kC=kH=1, which is the default for surface coatings (paint, fabric, ink) per ISO 11664-6:2008.</li>
               <li><strong className="text-on-surface">4. Ranking and storage.</strong> For each source color we keep the top 50 matches per target brand, ordered by Delta E ascending. These pre-computed matches are what the color detail and match listing pages read at runtime, so the cross-brand pages serve from the cache rather than re-computing.</li>
             </ol>
           </div>
