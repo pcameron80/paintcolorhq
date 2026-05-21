@@ -235,7 +235,16 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Benjamin Moore: Silhouette</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /> is a sophisticated dark gray-brown from the Affinity collection — BM&apos;s designer-leaning curated set. LRV sits around 9-10, putting it firmly in accent-wall and architectural-trim territory rather than whole-room dominant. The undertone is the differentiator: warm enough to read brown-leaning under 2700K bulbs, neutral enough to read as a deep neutral under cool daylight.
+          <Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /> is a sophisticated dark gray-brown from the Affinity collection — BM&apos;s designer-leaning curated set.{" "}
+          <a
+            href="https://www.benjaminmoore.com/en-us/paint-colors/color-of-the-year-2026"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue hover:underline"
+          >
+            Benjamin Moore describes it
+          </a>{" "}
+          as &ldquo;burnt umber with delicate notes of charcoal,&rdquo; with inspiration drawn from classic tailoring and fine suiting fabrics. LRV sits around 9-10, putting it firmly in accent-wall and architectural-trim territory rather than whole-room dominant. The undertone is the differentiator: warm enough to read brown-leaning under 2700K bulbs, neutral enough to read as a deep neutral under cool daylight.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Benjamin Moore tends to alternate moody anchors with brighter cheerful picks year-over-year. 2025&apos;s <Link href="/colors/benjamin-moore/cinnamon-slate-2113-40" className="text-brand-blue hover:underline">Cinnamon Slate</Link> tested chromatic depth with a heathered plum; Silhouette doubles down on the depth and strips out the chroma. This is the most architectural of the five 2026 picks — a color that signals BM is leaning hard into &ldquo;cocooning spaces&rdquo; (libraries, dining rooms, primary bedrooms) as a major 2026 design force.
@@ -268,7 +277,16 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Warm Eucalyptus</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> is a gray-green with LRV ~20, sitting between sage and olive without fully committing to either. The &ldquo;warm&rdquo; suffix is the meaningful part: it leans yellow-green rather than blue-green, which keeps it from reading cold in north-facing rooms. Available exclusively at Lowe&apos;s through Valspar&apos;s consumer line.
+          <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> is a gray-green with LRV ~20, sitting between sage and olive without fully committing to either. The &ldquo;warm&rdquo; suffix is the meaningful part: it leans yellow-green rather than blue-green, which keeps it from reading cold in north-facing rooms.{" "}
+          <a
+            href="https://www.prnewswire.com/news-releases/valspar-announces-warm-eucalyptus-as-2026-color-of-the-year-302522300.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue hover:underline"
+          >
+            Announced in August 2025
+          </a>{" "}
+          and available exclusively at Lowe&apos;s through Valspar&apos;s consumer line; the comparable independent-retailer color is Sage Slate V143-5.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Of the five 2026 picks, this is the most &ldquo;livable&rdquo; — usable as a whole-room color in most lighting, not just accent territory. Valspar typically picks crowd-friendly colors over designer statements, and Warm Eucalyptus fits that pattern. The closest counterpart on this list is Hidden Gem (also green, also LRV-low-teens), but where Hidden Gem reads architectural Warm Eucalyptus reads domestic. Pairs especially well with warm wood tones (oak, maple, walnut), natural stone, brass, and cream or off-white trim. Pure white trim would create too much contrast.
@@ -308,7 +326,16 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Sherwin-Williams: Grounded</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> is a warm, earthy brown with LRV ~16 — Sherwin-Williams&apos; first true brown CoY in years. The choice marked SW&apos;s explicit shift away from the light blue-green palette of recent picks (Renaissance, Quietude, Aleutian) toward deeper earth tones. The cultural read at the time was &ldquo;post-pandemic warmth&rdquo; — colors that anchor and ground rather than colors that brighten and energize.
+          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> is a warm, earthy brown with LRV ~16 — Sherwin-Williams&apos; first true brown CoY in years. SW restructured their 2025 announcement into a{" "}
+          <a
+            href="https://www.sherwin-williams.com/en-us/color/color-of-the-year/2025"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue hover:underline"
+          >
+            nine-color Color Capsule
+          </a>{" "}
+          rather than a single pick, with Grounded as the lead. The shift away from the light blue-green palette of recent picks (Renaissance, Quietude, Aleutian) toward deeper earth tones was deliberate — the cultural read at the time was &ldquo;post-pandemic warmth,&rdquo; colors that anchor and ground rather than brighten and energize.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Grounded reads most clearly as an accent or architectural color rather than a whole-room neutral. At LRV 16, it absorbs light quickly in north-facing rooms and can read muddy under cool LED bulbs. Most effective applications: front doors, kitchen islands, cabinetry, exterior trim, accent walls in libraries or dining rooms. Pairs especially well with warm wood floors, brass hardware, leather, and terracotta or cream-toned trim. Avoid pairing with cool grays or pure white trim — the temperature mismatch flattens the warmth that makes Grounded work.
@@ -330,7 +357,16 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Behr: Rumors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#744347" name="Rumors" brand="Behr" href="/colors/behr/rumors-mq1-15" /> is a dynamic ruby red — warm, slightly muted, alluring rather than aggressive. Behr&apos;s pick was the most extroverted of the 2025 lineup: red is the most-debated paint color category, and Behr noted at announcement that roughly three quarters of Americans would at least consider painting a room red. Rumors specifically is calibrated to deliver drama without going clown-bright.
+          <Swatch hex="#744347" name="Rumors" brand="Behr" href="/colors/behr/rumors-mq1-15" /> is a dynamic ruby red — warm, slightly muted, alluring rather than aggressive. Behr&apos;s pick was the most extroverted of the 2025 lineup: red is the most-debated paint color category, and{" "}
+          <a
+            href="https://corporate.behr.com/news/behr-paint-company-announces-2025-color-of-the-year-rumors-a-deep-ruby-red-that-makes-a-statement-in-every-space"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue hover:underline"
+          >
+            Behr&apos;s announcement
+          </a>{" "}
+          included survey data showing 76% of Americans would consider painting a room red (n=1,000, July 2024). Rumors specifically is calibrated to deliver drama without going clown-bright.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           The strategic read: Behr leans toward crowd-friendly picks that move retail volume at Home Depot. Rumors plays to the &ldquo;maybe I&apos;ll be brave this year&rdquo; impulse without committing buyers to a screaming primary red. The execution gotcha is that reds intensify dramatically under 2700K warm bulbs (the standard residential bulb temperature) and can shift toward pink or wash out under 4000K cool daylight. Sample at multiple times of day in the room where it&apos;ll actually live.
@@ -447,7 +483,16 @@ const blogPosts: BlogPost[] = [
           You picked a gorgeous gray from the paint chip wall. You painted the whole living room. And now it looks… blue. Or purple. Or green. Welcome to the world of undertones — the hidden pigments lurking beneath every &ldquo;neutral&rdquo; color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed italic">
-          Based on our analysis of 23,000+ paint colors across 14 brands using CIEDE2000 color science, we&apos;ve found that the majority of grays carry hidden blue undertones — here&apos;s how to spot them before you buy.
+          Based on our analysis of 23,000+ paint colors across 14 brands using{" "}
+          <a
+            href="https://www.cie.co.at/publications/colorimetry-part-6-ciede2000-colour-difference-formula"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue hover:underline"
+          >
+            CIEDE2000 color science
+          </a>
+          {" "}(the CIE 142-2001 industry-standard color-difference formula), we&apos;ve found that the majority of grays carry hidden blue undertones — here&apos;s how to spot them before you buy.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">What Are Undertones?</h2>

@@ -50,7 +50,10 @@ export default function PhilipCameronPage() {
           name: "Paint Color HQ",
           url: "https://www.paintcolorhq.com",
         },
-        sameAs: ["https://github.com/pcameron80"],
+        sameAs: [
+          "https://www.linkedin.com/in/philip-a-cameron/",
+          "https://github.com/pcameron80",
+        ],
         description: "Philip Cameron is the founder of Paint Color HQ, an independent cross-brand paint color reference site grounded in CIEDE2000 color science. He built the site after a personal renovation project ran into the cross-brand matching problem most homeowners hit.",
         knowsAbout: [
           "Cross-brand paint color matching",
