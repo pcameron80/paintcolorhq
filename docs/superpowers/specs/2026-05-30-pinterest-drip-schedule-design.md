@@ -38,6 +38,9 @@ automatically.
 - **Blog post schedule** — separate subsystem, separate future spec. Same
   stock→drip shape will apply (draft + Claude reads/QAs + approve → scheduled
   publish), but blog "publish" is a git commit/deploy, so it needs its own design.
+  That spec will include **Nano Banana hero/cover image generation** for each
+  post, reusing the `gemini-3-pro-image` pipeline so one run produces both the
+  blog hero image and a matching Pinterest pin.
 - **The programmatic Vercel cron** (`/api/cron/pinterest-seed`) — stays OFF.
   Curated room-scenes are the brand's edge; plain `/api/pin` swatch pins would
   dilute the boards. Left intact in the codebase, simply not scheduled. May be
@@ -67,9 +70,13 @@ generate → Claude QA → approve            launchd timer (9am + 5pm ET)
 **1. Approved queue — `scripts/pinterest/queue.ts`**
 - Aggregates every approved batch array (starting with `batch-may26.ts`) into a
   single ordered `QUEUE: PinSpec[]` in intended publish order.
-- `PinSpec` gains a stable, globally-unique `key: string` (e.g. `"may26-01"`),
-  used for the published-state lookup. (Today the may26 entries are keyed
-  `may26-01`…`may26-10`.)
+- `PinSpec` gains:
+  - a stable, globally-unique `key: string` (e.g. `"may26-01"`) for the
+    published-state lookup;
+  - a `theme: string` variety tag (e.g. `"navy"`, `"warm-white"`, `"sage"`,
+    `"exterior"`, `"coty-2026"`, `"comparison"`) used by the variety rotation.
+  - (`board` already exists.) Both `board` and `theme` are assigned by Claude at
+    **stock** time when each batch is built — there is no auto-assignment.
 - New batches are added as new files and concatenated here. The queue file is
   the single source of "what is approved to publish."
 
@@ -81,12 +88,27 @@ generate → Claude QA → approve            launchd timer (9am + 5pm ET)
 - Gitignored (runtime state; pin IDs, not secrets).
 
 **3. Drip publisher — extend `scripts/pinterest-publish.ts`**
-- New mode `--drip=N`: select the first N entries in `QUEUE` whose `key` is not
-  in `published.json`, publish them, append results, exit. Reuses the existing
-  publish path (base64 upload, content-type sniff, 401→refresh, board mapping).
-- Existing `--only` / `--dry-run` retained for manual use and stock-time testing.
+- New mode `--drip=N`: publish N unpublished pins selected by the **variety
+  rotation** (below), append results, exit. Reuses the existing publish path
+  (base64 upload, content-type sniff, 401→refresh, board→ID mapping).
+- Existing `--only` / `--dry-run` retained for manual use and stock-time testing
+  (`--dry-run --drip=N` shows what *would* be selected, in order).
 - If 0 unpublished entries remain, publish nothing and emit the empty-queue
   signal (component 5).
+
+**Variety rotation (selection logic).** Instead of walking the queue linearly,
+each pick maximizes variety so the feed reads as human-curated:
+1. Candidates = unpublished entries in `QUEUE`.
+2. Read the `theme` and `board` of the most recent publishes from
+   `published.json` (look back over the last `LOOKBACK = 3` publishes).
+3. Prefer a candidate whose `theme` is NOT in that recent window; among those,
+   prefer one whose `board` differs from the immediately previous publish.
+4. Tie-break by `QUEUE` order (deterministic — same state always yields the same
+   choice; no `Math.random`, which keeps the script resumable/testable).
+5. If every remaining candidate repeats a recent theme (small queue), relax the
+   theme constraint and fall back to queue order.
+For `--drip=N>1`, each pick within the run also counts toward "recent" so a
+single run won't post two of the same theme either.
 
 **4. Schedule — `launchd` + wrapper**
 - `scripts/pinterest/drip.sh`: `cd` to the repo, run
@@ -114,7 +136,8 @@ generate → Claude QA → approve            launchd timer (9am + 5pm ET)
 
 1. launchd fires `drip.sh` at the scheduled time.
 2. Wrapper runs `pinterest-publish.ts --drip=1`.
-3. Script loads `QUEUE` + `published.json`, computes unpublished, takes the first 1.
+3. Script loads `QUEUE` + `published.json`, computes unpublished, and picks 1 via
+   the variety rotation (different theme/board from the last few publishes).
 4. Reads the local image, base64-encodes, `POST /v5/pins` (401→refresh→retry).
 5. Appends `{key: {pinId, publishedAt}}` to `published.json`.
 6. If nothing was unpublished, fires the empty-queue notification instead.
