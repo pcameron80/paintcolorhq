@@ -72,3 +72,6 @@ client_secret_*.json
 scripts/drift/*.db
 scripts/drift/*.db-shm
 scripts/drift/*.db-wal
+
+# Pinterest runtime publish state (pin IDs, not secrets, but runtime-only)
+scripts/pinterest/published-*.json
