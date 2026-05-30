@@ -17,7 +17,20 @@ export const runtime = "edge";
  */
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-  const hex = searchParams.get("hex") || "#4A90D9";
+
+  // Require a valid #RRGGBB hex — do NOT fall back to a default color.
+  // A param-less hit used to render a believable blue "#4A90D9 / Paint Color"
+  // swatch, which Pinterest then froze on its CDN as a wrong-but-plausible pin
+  // (the Adams Gold fossil). Failing loudly means a bad request produces no
+  // image instead of a misleading one that can never be un-cached.
+  const normalizedHex = searchParams.get("hex")?.trim().replace(/^#/, "");
+  if (!normalizedHex || !/^[0-9a-fA-F]{6}$/.test(normalizedHex)) {
+    return new Response("Missing or invalid 'hex' parameter (expected #RRGGBB)", {
+      status: 400,
+    });
+  }
+  const hex = `#${normalizedHex}`;
+
   const name = searchParams.get("name") || "Paint Color";
   const brand = searchParams.get("brand") || "";
   const code = searchParams.get("code") || "";
