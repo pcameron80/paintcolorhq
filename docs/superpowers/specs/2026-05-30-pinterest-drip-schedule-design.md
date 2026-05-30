@@ -25,6 +25,28 @@ while keeping the human/Claude quality gate on every pin.
 The user stocks the shelf with Claude occasionally; the schedule empties it
 automatically.
 
+## Stocking guidance (supply)
+
+The variety rotation can only shuffle what's stocked — it can't create variety
+the queue lacks. So stocking is treated as building a **backlog, not a batch**:
+
+- **Target a deep, multi-axis backlog (~20–30 approved pins)** per stocking
+  session rather than just enough for a few days. Generation is pennies; the
+  real cost is QA time, which is batched. A deep backlog gives the rotation
+  months of runway and the room to actually vary.
+- **Deliberately spread across all three axes** — `theme` (color/subject),
+  `format` (room/scene type), and `board` — so consecutive drips can differ.
+  Two supply sources feed this, both growable:
+  - **Pin scenes** — effectively unlimited: any color × any room/format is a new
+    pin via the `gemini-3-pro-image` pipeline.
+  - **Inspiration palettes** — the `/inspiration` pages (`src/lib/palettes.ts`,
+    18 today). New palettes double as new indexable site content AND new
+    pinnable source material; growing them widens the pool. (Drafting new
+    palettes is a parallel content task, tracked separately.)
+- **Cadence flexes to supply.** Default 2/day, but drop to 1/day when the
+  backlog is thin so a stocked set lasts longer. A deep backlog is the better
+  answer than a slow drip.
+
 ## Constraints
 
 - Runs on the user's Mac, which is on ~24/7 but often unattended.
@@ -73,10 +95,13 @@ generate → Claude QA → approve            launchd timer (9am + 5pm ET)
 - `PinSpec` gains:
   - a stable, globally-unique `key: string` (e.g. `"may26-01"`) for the
     published-state lookup;
-  - a `theme: string` variety tag (e.g. `"navy"`, `"warm-white"`, `"sage"`,
-    `"exterior"`, `"coty-2026"`, `"comparison"`) used by the variety rotation.
-  - (`board` already exists.) Both `board` and `theme` are assigned by Claude at
-    **stock** time when each batch is built — there is no auto-assignment.
+  - a `theme: string` tag = the color/subject (e.g. `"navy"`, `"warm-white"`,
+    `"sage"`, `"coty-2026"`);
+  - a `format: string` tag = the scene/room type (e.g. `"living-room"`,
+    `"kitchen"`, `"exterior"`, `"nursery"`, `"bathroom"`, `"comparison"`,
+    `"color-drench"`).
+  - (`board` already exists.) `board`, `theme`, and `format` are all assigned by
+    Claude at **stock** time when each batch is built — there is no auto-assignment.
 - New batches are added as new files and concatenated here. The queue file is
   the single source of "what is approved to publish."
 
@@ -99,16 +124,20 @@ generate → Claude QA → approve            launchd timer (9am + 5pm ET)
 **Variety rotation (selection logic).** Instead of walking the queue linearly,
 each pick maximizes variety so the feed reads as human-curated:
 1. Candidates = unpublished entries in `QUEUE`.
-2. Read the `theme` and `board` of the most recent publishes from
+2. Read the `theme`, `format`, and `board` of the most recent publishes from
    `published.json` (look back over the last `LOOKBACK = 3` publishes).
-3. Prefer a candidate whose `theme` is NOT in that recent window; among those,
-   prefer one whose `board` differs from the immediately previous publish.
+3. **Score each candidate by axis collisions** — count how many of its three
+   axes (`theme`, `format`, `board`) appear in that recent window. Pick the
+   lowest-collision candidate (most "different" from what just went out).
 4. Tie-break by `QUEUE` order (deterministic — same state always yields the same
    choice; no `Math.random`, which keeps the script resumable/testable).
-5. If every remaining candidate repeats a recent theme (small queue), relax the
-   theme constraint and fall back to queue order.
+5. This degrades gracefully: with a thin or homogeneous queue, every candidate
+   may collide, and the lowest-collision pick is simply taken in queue order.
+   The rotation *minimizes* repetition; it cannot manufacture variety the queue
+   doesn't contain (see Stocking guidance). Back-to-back similar pins are an
+   accepted, rare outcome, not a failure.
 For `--drip=N>1`, each pick within the run also counts toward "recent" so a
-single run won't post two of the same theme either.
+single run won't post two of the same theme/format either.
 
 **4. Schedule — `launchd` + wrapper**
 - `scripts/pinterest/drip.sh`: `cd` to the repo, run
