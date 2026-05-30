@@ -317,6 +317,57 @@ The very light taupe (LRV around 70–75) is the secondary neutral — lighter t
 
 Vintage Charm works in homes with period architectural features (original moldings, plaster medallions, transom windows, wainscoting) that already have historical character to build on. It also works in more modern spaces where the vintage quality is introduced entirely through furnishings and textiles rather than architecture.`,
   },
+  {
+    name: "Mid-Century Modern",
+    slug: "mid-century-modern",
+    description: "Warm walnut neutrals with mustard, teal, and olive — clean lines and confident, earthy color.",
+    colors: ["#efe7d6", "#b9a98b", "#c68a33", "#3c4a40", "#3f6f6b"],
+    editorial: `Mid-century modern color works on a simple split: keep the architecture neutral and let one or two earthy accent tones do the talking. The mistake people make is treating mid-century as a free pass for bright primary color — fire-engine red, school-bus yellow. The actual palette of the era was more muted and more confident: mustard rather than yellow, teal rather than blue, olive rather than green. Every accent here has been pulled back toward earth.
+
+The warm wheat-greige walls (LRV around 52–58) are deliberately quiet. In a mid-century scheme the walls are not the event — the walnut furniture, the accent color, and the clean lines of the room are. A neutral wall with a faint warm undertone keeps the wood from looking orange and gives the saturated accents somewhere to sit without competing. Bright white walls tend to make mid-century furniture look like it is floating in a gallery; the warmer neutral grounds it.
+
+Mustard (LRV around 40) is the signature accent and the one to lead with. It belongs on a single element rather than spread around: a credenza, a reading chair, a run of built-in shelving, or one accent wall behind a low-slung sofa. Used as textile color — a throw, a rug field, drapery — it warms the whole room without committing a permanent surface to it.
+
+Teal and olive are the cooler counterweights, and the rule is to pick one as secondary rather than running all three accents at full strength. A teal lamp base or a pair of olive lounge chairs against the mustard reads as collected and intentional. All three saturated at once tips the room from mid-century into novelty. Let two of the four colors lead and keep the rest to small objects.
+
+Walnut is the load-bearing material, and here the wood tone matters as much as the paint. Mid-century furniture in walnut or teak carries the warmth the neutral walls hold back. Pair it with unlacquered brass, cane webbing, tanned leather, and wool. Avoid red-toned cherry and gray-washed woods — both fight the warm, earthy logic of the scheme.
+
+The strongest rooms are living rooms, dining rooms, and home offices, where furniture does most of the design work. Walls take flat or eggshell to stay recessive; reserve satin for trim, which in true mid-century homes is minimal anyway. The palette is forgiving across light directions because the walls are neutral, but the mustard and teal come alive in warm afternoon light — west-facing rooms show this scheme at its best.`,
+  },
+  {
+    name: "Japandi",
+    slug: "japandi",
+    description: "Warm white, soft black, clay, and muted sage — wabi-sabi calm meets Scandinavian restraint.",
+    colors: ["#eee8de", "#d7ccba", "#33312c", "#9aa08c", "#b7977e"],
+    editorial: `Japandi is often described as Scandinavian plus Japanese, but the more useful way to think about it is restraint plus warmth. Where Scandinavian minimalism leans cool and crisp, Japandi pulls everything toward earth and accepts a little imperfection — the wabi-sabi idea that a slightly uneven, handmade, weathered quality is part of the beauty. The palette reflects that: warm rather than bright, muted rather than clean.
+
+Oatmeal (LRV around 68–74) is the primary wall color, and the warmth is the whole point. It is a near-neutral with a soft tan undertone that reads calm in almost any light. Unlike a true Scandinavian off-white, it does not go cold in north-facing rooms, which makes it a safer choice for bedrooms and spaces that do not get strong sun. Walls, and often the trim, can carry the same oatmeal to keep the envelope quiet and seamless.
+
+Soft black (LRV around 6–8) is the structural accent, and the discipline is using very little of it. This is not a black-walls scheme. It belongs on a single piece of joinery, a window frame, the legs of a table, a slim shelf bracket — the lines that give an otherwise soft room its definition. A true jet black is too hard here; a warm, slightly brown-black sits better against the oatmeal.
+
+Muted sage (LRV around 45) is the only thing approaching a color, and even it is grayed almost to neutral. It appears on a low cabinet, a ceramic vase, a linen cushion — never as a bold statement. The clay-taupe is the fourth tone and the warm bridge: unglazed pottery, a jute rug, a stoneware lamp.
+
+Material and object discipline matters more than paint in Japandi. The look fails when a room is too full. Light oak and black-stained accents, raw linen, paper shades, handmade ceramics, and a small number of well-chosen objects do the work. Leave surfaces deliberately bare — a Japandi room with five things on the console reads wrong no matter how good the colors are.
+
+Bedrooms, living rooms, and dining rooms are the natural fits, and the palette is unusually good in flat, indirect light where bolder schemes go dull. Keep finishes matte across the board — flat or dead-flat on walls, matte on trim. Sheen reads as modern and slick, which is the opposite of the soft, handled quality this palette is built for.`,
+  },
+  {
+    name: "Organic Modern",
+    slug: "organic-modern",
+    description: "Warm whites and mushroom greige with terracotta and charcoal — minimalism with warmth and texture.",
+    colors: ["#f1ebe0", "#cdbfad", "#b0673f", "#34302b", "#a89684"],
+    editorial: `Organic modern keeps the clean structure of minimalism but adds back the warmth and texture that pure minimalism strips out. The architecture stays simple and the palette stays neutral, but every surface is chosen for tactility — plaster instead of flat drywall, boucle instead of smooth cotton, oak instead of lacquer. The color scheme is built to recede so the textures and materials carry the room.
+
+Mushroom greige (LRV around 64–70) is the primary wall color: a warm gray-brown that sits exactly between gray and beige. It is the workhorse of the palette because it reads as a soft neutral in cool light and a warm one in golden light, which makes it reliable in rooms facing any direction. Carried wall-to-wall in a limewash or matte finish, it produces the soft, slightly cloudy depth that defines the organic-modern look — flat paint reads too uniform for this style.
+
+The warm white (LRV around 84) goes on ceilings, trim, and built-ins. The contrast against the mushroom walls is gentle on purpose; sharp white trim would introduce the crispness the style is trying to avoid. Keeping trim only a few steps lighter than the walls is what makes the envelope feel calm and continuous.
+
+Terracotta (LRV around 30) is the single earthy accent, and the key is that it stays clay rather than orange. It belongs on a small number of surfaces and objects: a stoneware lamp, a section of plaster fireplace, pottery, a leather chair in a related cognac tone. As a textile or ceramic color it warms the neutrals without turning the room into a color scheme. Charcoal is the fourth tone and the anchor — a dark that grounds the lighter neutrals through cabinet hardware, a steel window, or a low media unit.
+
+Texture does the heavy lifting here, so material choices matter more than in most palettes. White oak, travertine and limestone, boucle and linen upholstery, jute and wool underfoot, aged brass, and unglazed clay all reinforce the look. Anything high-gloss — polished marble, lacquered cabinetry, chrome — works against it.
+
+Open-plan living spaces, primary bedrooms, and bathrooms are the strongest candidates, especially where natural materials already appear in flooring or stone. Walls take limewash or a matte/flat finish to get the soft depth; trim and millwork take matte or eggshell. The palette is forgiving across light directions thanks to the balanced neutrals, but it looks its best in rooms with generous, soft daylight that rakes across the textured surfaces.`,
+  },
 ];
 
 export function getPaletteBySlug(slug: string): InspirationPalette | undefined {
