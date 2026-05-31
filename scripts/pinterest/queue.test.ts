@@ -49,5 +49,5 @@ test("selectForDrip(N=2) does not pick two of the same theme back-to-back", () =
   const picks = selectForDrip(Q, {}, 2).map((p) => p.key);
   assert.equal(picks[0], "a");
   assert.notEqual(picks[1], "b");
-  assert.equal(picks[1], "c");
+  assert.equal(picks[1], "d");
 });

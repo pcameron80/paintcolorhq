@@ -70,14 +70,8 @@ export function selectForDrip(
   const prior = recentlyPublished(queue, published, lookback); // newest first
   let pool = unpublished(queue, published);
   for (let i = 0; i < count; i++) {
-    // Variety context: prior published items (external history) drives collision scoring.
-    const window = prior.slice(0, lookback);
-    // Hard-block same theme as the immediately preceding pick to prevent back-to-back
-    // repeats; fall back to the full pool only if every remaining pin shares that theme.
-    const lastTheme = chosen.length > 0 ? chosen[chosen.length - 1].theme : null;
-    const themePool = lastTheme ? pool.filter((p) => p.theme !== lastTheme) : pool;
-    const effectivePool = themePool.length > 0 ? themePool : pool;
-    const next = pickNext(effectivePool, window);
+    const window = [...chosen].reverse().concat(prior).slice(0, lookback);
+    const next = pickNext(pool, window);
     if (!next) break;
     chosen.push(next);
     pool = pool.filter((p) => p.key !== next.key);
