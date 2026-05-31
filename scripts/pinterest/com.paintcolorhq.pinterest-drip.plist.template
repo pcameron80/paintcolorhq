@@ -3,8 +3,13 @@
 <plist version="1.0">
 <dict>
   <key>Label</key><string>__LABEL__</string>
+  <!-- Invoke /bin/bash DIRECTLY (not the script via its shebang): macOS TCC
+       attributes file access to the launchd program, so the FDA-granted
+       /bin/bash must be the program — otherwise runs fail with "Operation not
+       permitted" reading the repo (~/Documents) / images (~/Desktop). -->
   <key>ProgramArguments</key>
   <array>
+    <string>/bin/bash</string>
     <string>__DRIPSH__</string>
   </array>
   <key>EnvironmentVariables</key>
