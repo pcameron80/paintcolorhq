@@ -73,3 +73,41 @@ test("swatchPins: all swatch-type, on Colors board, /api/pin imageUrl, unique ke
   assert.ok(s.every((p) => p.link.includes("/colors/")));
   assert.equal(new Set(s.map((p) => p.key)).size, s.length);
 });
+
+import { quotasForWeekday, selectDailyMix, DRIP_CONFIG } from "./queue.ts";
+
+function mkT(key: string, type: PinSpec["type"]): PinSpec {
+  return { key, type, board: "x", theme: type, format: type } as unknown as PinSpec;
+}
+
+test("quotasForWeekday merges daily + weekday extras", () => {
+  assert.deepEqual(quotasForWeekday(DRIP_CONFIG, 1), { swatch: 3, palette: 1, guide: 1 }); // Mon
+  assert.deepEqual(quotasForWeekday(DRIP_CONFIG, 2), { swatch: 3, palette: 1 });            // Tue
+});
+
+test("selectDailyMix fills each type's quota from fresh", () => {
+  const q = [mkT("s1","swatch"),mkT("s2","swatch"),mkT("s3","swatch"),mkT("s4","swatch"),mkT("p1","palette"),mkT("p2","palette")];
+  const picks = selectDailyMix(q, {}, { swatch: 3, palette: 1 }, 0, 35);
+  assert.equal(picks.filter((p) => p.type === "swatch").length, 3);
+  assert.equal(picks.filter((p) => p.type === "palette").length, 1);
+});
+
+test("selectDailyMix re-pins only after cooldown, oldest first", () => {
+  const DAY = 86400_000, now = 100 * DAY;
+  const q = [mkT("p1","palette"), mkT("p2","palette")];
+  const log = {
+    p1: { pinId: "1", publishedAt: new Date(now - 40 * DAY).toISOString() }, // eligible
+    p2: { pinId: "2", publishedAt: new Date(now - 5 * DAY).toISOString() },  // in cooldown
+  };
+  const picks = selectDailyMix(q, log, { palette: 1 }, now, 35);
+  assert.equal(picks.length, 1);
+  assert.equal(picks[0].key, "p1");
+});
+
+test("selectDailyMix prefers fresh over re-pin", () => {
+  const DAY = 86400_000, now = 100 * DAY;
+  const q = [mkT("p1","palette"), mkT("p2","palette")];
+  const log = { p1: { pinId: "1", publishedAt: new Date(now - 40 * DAY).toISOString() } }; // p2 fresh
+  const picks = selectDailyMix(q, log, { palette: 1 }, now, 35);
+  assert.equal(picks[0].key, "p2");
+});
