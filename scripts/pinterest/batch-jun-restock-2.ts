@@ -160,7 +160,7 @@ export const BATCH: PinSpec[] = [
     description:
       "Benjamin Moore Caliente AF-290 (LRV 7.2) — the 2018 Color of the Year — is the confident lipstick red that makes a front door the focal point of the whole facade. Set against Alabaster siding with brass hardware and topiaries. See cross-brand red matches at PaintColorHQ.",
     link: `${SITE}/colors/benjamin-moore/caliente-af-290${UTM}`,
-    board: "Paint Color Guides",
+    board: "Color Palettes",
   },
   {
     id: 25, key: "restock-25", theme: "blue-green", format: "screened-porch",
@@ -230,7 +230,7 @@ export const BATCH: PinSpec[] = [
     description:
       "The three most-specified navies compared: Benjamin Moore Hale Navy HC-154 (LRV 7.1, the warm standard), Sherwin-Williams Naval SW 6244 (LRV 4.5, the deepest), and Benjamin Moore Newburyport Blue HC-155 (LRV 9, a touch more slate). Choose by depth and undertone. Full blue paint guide at PaintColorHQ.",
     link: `${SITE}/blog/best-blue-paint-colors${UTM}`,
-    board: "Paint Color Guides",
+    board: "Color Comparisons",
   },
   {
     id: 30, key: "restock-30", theme: "green", format: "comparison",
@@ -244,6 +244,6 @@ export const BATCH: PinSpec[] = [
     description:
       "Three designer greens compared: Sherwin-Williams Evergreen Fog SW 9130 (LRV 30, soft gray-sage), Pewter Green SW 6208 (LRV 11.8, deep and moody), and Benjamin Moore Saybrook Sage HC-114 (LRV 46.4, the lightest). From whole-room calm to a dramatic island. Browse the full green collection at PaintColorHQ.",
     link: `${SITE}/colors/family/green${UTM}`,
-    board: "Paint Color Guides",
+    board: "Color Comparisons",
   },
 ];

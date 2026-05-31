@@ -16,6 +16,24 @@ export const BOARD_IDS: Record<BoardName, string> = {
   "Color Comparisons": "1116681738796524226",
 };
 
+/** Pin category — each maps 1:1 to a board. */
+export type PinType = "swatch" | "palette" | "guide" | "comparison";
+
+export const BOARD_FOR_TYPE: Record<PinType, BoardName> = {
+  swatch: "Paint Colors",
+  palette: "Color Palettes",
+  guide: "Paint Color Guides",
+  comparison: "Color Comparisons",
+};
+
+/** Inverse of BOARD_FOR_TYPE — derive a curated pin's type from its board. */
+export const TYPE_FOR_BOARD: Record<BoardName, PinType> = {
+  "Paint Colors": "swatch",
+  "Color Palettes": "palette",
+  "Paint Color Guides": "guide",
+  "Color Comparisons": "comparison",
+};
+
 export interface PinSpec {
   /** 1-based position in the batch. */
   id: number;
@@ -39,6 +57,11 @@ export interface PinSpec {
   link: string;
   /** Target board. */
   board: BoardName;
+  /** Pin category. Optional on curated literals (derived from board at
+   *  aggregation); set explicitly by the swatch/guide programmatic sources. */
+  type?: PinType;
+  /** When set, publish via Pinterest image_url instead of a local image file. */
+  imageUrl?: string;
 }
 
 /** Where the generated / source PNGs live. */
@@ -90,7 +113,7 @@ export const BATCH: PinSpec[] = [
     description:
       "Sherwin-Williams Iron Ore SW 7069 is the off-black favorite for modern farmhouse and craftsman front doors. LRV 6 — deep enough to anchor the exterior without going pure black. Paired with Alabaster siding for the cleanest contrast. See the full PaintColorHQ guide to Iron Ore including 14-brand cross-matches.",
     link: "https://www.paintcolorhq.com/colors/sherwin-williams/iron-ore-7069" + UTM,
-    board: "Paint Color Guides",
+    board: "Color Palettes",
   },
   {
     id: 4,
@@ -105,7 +128,7 @@ export const BATCH: PinSpec[] = [
     description:
       "The three most-specified residential whites compared side-by-side: Benjamin Moore Chantilly Lace (LRV 92.3, true white), Sherwin-Williams Pure White (LRV 83.7, warm), Benjamin Moore White Dove (LRV 83, warmest of the three). Choose by undertone — full guide and cross-brand matches at PaintColorHQ.",
     link: "https://www.paintcolorhq.com/blog/best-white-paint-colors-guide" + UTM,
-    board: "Paint Color Guides",
+    board: "Color Comparisons",
   },
   {
     id: 5,

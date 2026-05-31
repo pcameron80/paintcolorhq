@@ -208,7 +208,7 @@ export const BATCH: PinSpec[] = [
     description:
       "Behr Cracked Pepper PPU18-01 (LRV 8.2) on the door, window sashes, and fixtures of an Alabaster modern-farmhouse exterior — a soft black that's deep enough to frame the house without the harshness of true black. Behr's most popular black-neutral. See cross-brand matches across 14 brands at PaintColorHQ.",
     link: `${SITE}/colors/behr/cracked-pepper-ppu18-01${UTM}`,
-    board: "Paint Color Guides",
+    board: "Color Palettes",
   },
   {
     id: 12, key: "restock-12", theme: "blue", format: "powder-room",
@@ -250,7 +250,7 @@ export const BATCH: PinSpec[] = [
     description:
       "The three most-specified Sherwin-Williams warm whites side-by-side: Alabaster (LRV 82.2, soft warm white), Greek Villa (LRV 84, the brightest), and Shoji White (LRV 74.3, the warmest, with the most depth). Choose by how much warmth and softness you want. Full white paint guide at PaintColorHQ.",
     link: `${SITE}/blog/best-white-paint-colors-guide${UTM}`,
-    board: "Paint Color Guides",
+    board: "Color Comparisons",
   },
   {
     id: 15, key: "restock-15", theme: "greige", format: "comparison",
@@ -264,6 +264,6 @@ export const BATCH: PinSpec[] = [
     description:
       "The three most-searched greiges compared: Sherwin-Williams Agreeable Gray (LRV 60, the balanced standard), Repose Gray (LRV 58.4, a touch cooler), and Benjamin Moore Revere Pewter (LRV 55.1, the warmest and deepest). The whole-house neutrals designers reach for. Browse the full gray & greige collection with cross-brand matches at PaintColorHQ.",
     link: `${SITE}/colors/family/gray${UTM}`,
-    board: "Paint Color Guides",
+    board: "Color Comparisons",
   },
 ];
