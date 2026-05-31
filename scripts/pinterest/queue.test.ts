@@ -62,3 +62,14 @@ test("guidePins: all guide-type, on Guides board, with imageUrl + unique keys", 
   assert.ok(g.every((p) => p.link.includes("/blog/")));
   assert.equal(new Set(g.map((p) => p.key)).size, g.length);
 });
+
+import { swatchPins } from "./sources/swatches.ts";
+
+test("swatchPins: all swatch-type, on Colors board, /api/pin imageUrl, unique keys", () => {
+  const s = swatchPins();
+  assert.ok(s.length > 0);
+  assert.ok(s.every((p) => p.type === "swatch" && p.board === "Paint Colors"));
+  assert.ok(s.every((p) => p.imageUrl!.includes("/api/pin?")));
+  assert.ok(s.every((p) => p.link.includes("/colors/")));
+  assert.equal(new Set(s.map((p) => p.key)).size, s.length);
+});
