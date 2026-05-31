@@ -139,6 +139,7 @@ async function publishPin(pin: PinSpec, log: PublishedLog) {
     console.log(`     board:  ${pin.board} (${boardId})`);
     console.log(`     title:  ${pin.title}  [${pin.title.length} chars]`);
     console.log(`     link:   ${pin.link}`);
+    // base64 inflates raw bytes by ~4/3 (1.37), so divide it back out for the raw-size estimate
     console.log(`     image:  ${pin.image} (${media.content_type}, ${(media.data.length / 1.37 / 1024 / 1024).toFixed(1)}MB)`);
     return;
   }
@@ -180,7 +181,13 @@ async function main() {
     try {
       await publishPin(pin, log);
     } catch (e) {
-      console.error(`❌ ${pin.key} ${pin.name}: ${e instanceof Error ? e.message : e}`);
+      const msg = e instanceof Error ? e.message : String(e);
+      console.error(`❌ ${pin.key} ${pin.name}: ${msg}`);
+      // Surface auth/token failures — the drip runs unattended, so a silent
+      // log entry would never reach the user.
+      if (!DRY_RUN && /refresh|token|\b401\b|sufficient permissions/i.test(msg)) {
+        notify("Pinterest auth failed — re-run pinterest-auth.ts");
+      }
     }
     // gentle spacing to stay clear of rate limits
     if (!DRY_RUN) await new Promise((r) => setTimeout(r, 2500));
