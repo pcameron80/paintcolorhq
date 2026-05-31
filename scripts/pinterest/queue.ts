@@ -3,12 +3,13 @@
 
 import { BATCH as MAY26 } from "./batch-may26.ts";
 import { BATCH as JUN_RESTOCK } from "./batch-jun-restock.ts";
+import { BATCH as JUN_RESTOCK_2 } from "./batch-jun-restock-2.ts";
 export { BOARD_IDS, IMAGE_DIR } from "./batch-may26.ts";
 export type { PinSpec, BoardName } from "./batch-may26.ts";
 import type { PinSpec } from "./batch-may26.ts";
 
 /** All approved batches, concatenated in intended publish order. */
-export const QUEUE: PinSpec[] = [...MAY26, ...JUN_RESTOCK];
+export const QUEUE: PinSpec[] = [...MAY26, ...JUN_RESTOCK, ...JUN_RESTOCK_2];
 
 export type PublishedLog = Record<string, { pinId: string; publishedAt: string }>;
 

@@ -8,7 +8,7 @@
 
 import type { PinSpec } from "./batch-may26.ts";
 
-interface Swatch {
+export interface Swatch {
   name: string;
   hex: string;
   rgb: string;
@@ -37,7 +37,7 @@ const C = {
   agreeableGray: { name: "Agreeable Gray", hex: "#D1CBC1", rgb: "209, 203, 193", lrv: "60", undertone: "Warm Neutral" },
 } satisfies Record<string, Swatch>;
 
-function buildPrompt(scene: string, swatches: Swatch[]): string {
+export function buildPrompt(scene: string, swatches: Swatch[]): string {
   const list = swatches
     .map((s) => `${s.name} (HEX ${s.hex}, RGB ${s.rgb}, LRV ${s.lrv}, Undertone ${s.undertone})`)
     .join(", ");
