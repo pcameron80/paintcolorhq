@@ -51,3 +51,14 @@ test("selectForDrip(N=2) does not pick two of the same theme back-to-back", () =
   assert.notEqual(picks[1], "b");
   assert.equal(picks[1], "d");
 });
+
+import { guidePins } from "./sources/guides.ts";
+
+test("guidePins: all guide-type, on Guides board, with imageUrl + unique keys", () => {
+  const g = guidePins();
+  assert.ok(g.length >= 20, `expected >=20 guide pins, got ${g.length}`);
+  assert.ok(g.every((p) => p.type === "guide" && p.board === "Paint Color Guides"));
+  assert.ok(g.every((p) => typeof p.imageUrl === "string" && p.imageUrl!.startsWith("https://")));
+  assert.ok(g.every((p) => p.link.includes("/blog/")));
+  assert.equal(new Set(g.map((p) => p.key)).size, g.length);
+});
