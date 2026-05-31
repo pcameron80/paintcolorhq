@@ -28,7 +28,12 @@ sed -e "s|__LABEL__|$LABEL|g" \
     "$REPO/scripts/pinterest/com.paintcolorhq.pinterest-drip.plist.template" > "$PLIST"
 launchctl unload "$PLIST" 2>/dev/null || true
 launchctl load "$PLIST"
-echo "Installed $LABEL — drips 1 pin at 13:00 and 21:00 UTC (9am/5pm EDT)."
+echo "Installed $LABEL — runs the daily multi-board mix once at 14:00 UTC (10am EDT)."
 echo "Repo: $REPO"
 echo "Logs: $REPO/scripts/pinterest/drip.log"
 echo "Uninstall: ./scripts/pinterest/install-drip-schedule.sh uninstall"
+echo ""
+echo "REQUIRED ONE-TIME: grant Full Disk Access (System Settings → Privacy &"
+echo "Security → Full Disk Access) to /bin/bash AND $(command -v node), or"
+echo "scheduled runs fail with 'Operation not permitted' (repo is in ~/Documents,"
+echo "images in ~/Desktop — both TCC-protected for background agents)."
