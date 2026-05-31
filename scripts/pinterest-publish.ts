@@ -27,6 +27,9 @@ import {
   BOARD_IDS,
   IMAGE_DIR,
   selectForDrip,
+  selectDailyMix,
+  quotasForWeekday,
+  DRIP_CONFIG,
   type PinSpec,
   type PublishedLog,
 } from "./pinterest/queue.ts";
@@ -49,6 +52,7 @@ const API = "https://api.pinterest.com/v5";
 // ---- CLI args ----
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes("--dry-run");
+const DAILY = args.includes("--daily");
 const dripArg = args.find((a) => a.startsWith("--drip="));
 const DRIP = dripArg ? Math.max(1, parseInt(dripArg.replace("--drip=", ""), 10) || 1) : null;
 const onlyArg = args.find((a) => a.startsWith("--only="));
@@ -113,7 +117,11 @@ async function pinterest(pathname: string, init: RequestInit, retry = true): Pro
   return data;
 }
 
-function imagePayload(pin: PinSpec) {
+function mediaSource(pin: PinSpec) {
+  // Programmatic pins (swatch/guide) publish by URL; curated pins by local file.
+  if (pin.imageUrl) {
+    return { source_type: "image_url" as const, url: pin.imageUrl };
+  }
   const file = path.join(IMAGE_DIR, pin.image);
   if (!fs.existsSync(file)) throw new Error(`Image not found: ${file}`);
   const buf = fs.readFileSync(file);
@@ -132,15 +140,14 @@ async function publishPin(pin: PinSpec, log: PublishedLog) {
     return;
   }
   const boardId = BOARD_IDS[pin.board];
-  const media = imagePayload(pin); // validates file exists + reads bytes
+  const media = mediaSource(pin); // validates local file exists / or uses imageUrl
 
   if (DRY_RUN) {
-    console.log(`🧪 ${tag}`);
+    console.log(`🧪 [${pin.type}] ${tag}`);
     console.log(`     board:  ${pin.board} (${boardId})`);
     console.log(`     title:  ${pin.title}  [${pin.title.length} chars]`);
     console.log(`     link:   ${pin.link}`);
-    // base64 inflates raw bytes by ~4/3 (1.37), so divide it back out for the raw-size estimate
-    console.log(`     image:  ${pin.image} (${media.content_type}, ${(media.data.length / 1.37 / 1024 / 1024).toFixed(1)}MB)`);
+    console.log(`     image:  ${pin.imageUrl ?? pin.image}`);
     return;
   }
 
@@ -163,7 +170,17 @@ async function publishPin(pin: PinSpec, log: PublishedLog) {
 async function main() {
   const log = loadLog();
   let targets: PinSpec[];
-  if (DRIP) {
+  if (DAILY) {
+    const isoWeekday = ((new Date().getDay() + 6) % 7) + 1; // 1=Mon … 7=Sun
+    const quotas = quotasForWeekday(DRIP_CONFIG, isoWeekday);
+    targets = selectDailyMix(QUEUE, log, quotas, Date.now(), DRIP_CONFIG.cooldownDays);
+    console.log(`Daily mix (ISO weekday ${isoWeekday}):`, JSON.stringify(quotas));
+    if (targets.length === 0) {
+      console.log("Nothing to post today.");
+      if (!DRY_RUN) notify("Pinterest drip: nothing to post — stock more with Claude.");
+      return;
+    }
+  } else if (DRIP) {
     targets = selectForDrip(QUEUE, log, DRIP);
     if (targets.length === 0) {
       console.log("Drip: queue empty — nothing unpublished to post.");
@@ -175,7 +192,7 @@ async function main() {
   }
   console.log(
     `${DRY_RUN ? "DRY RUN — " : ""}Publishing ${targets.length} pin(s)` +
-      `${DRIP ? " (drip, variety rotation)" : onlyKeys ? ` (--only=${[...onlyKeys].join(",")})` : ""}\n`
+      `${DAILY ? " (daily mix)" : DRIP ? " (drip, variety rotation)" : onlyKeys ? ` (--only=${[...onlyKeys].join(",")})` : ""}\n`,
   );
   for (const pin of targets) {
     try {
