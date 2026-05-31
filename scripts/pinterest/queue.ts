@@ -1,15 +1,24 @@
 // Aggregated, approved Pinterest pin queue + variety-rotation selection.
 // Pure functions only — no I/O — so the drip logic is unit-testable.
 
-import { BATCH as MAY26 } from "./batch-may26.ts";
+import { BATCH as MAY26, TYPE_FOR_BOARD } from "./batch-may26.ts";
 import { BATCH as JUN_RESTOCK } from "./batch-jun-restock.ts";
 import { BATCH as JUN_RESTOCK_2 } from "./batch-jun-restock-2.ts";
-export { BOARD_IDS, IMAGE_DIR } from "./batch-may26.ts";
-export type { PinSpec, BoardName } from "./batch-may26.ts";
+export { BOARD_IDS, IMAGE_DIR, BOARD_FOR_TYPE, TYPE_FOR_BOARD } from "./batch-may26.ts";
+export type { PinSpec, BoardName, PinType } from "./batch-may26.ts";
 import type { PinSpec } from "./batch-may26.ts";
 
+/** Fill `type` on curated pins from their board (board↔type is 1:1). */
+function typed(pins: PinSpec[]): PinSpec[] {
+  return pins.map((p) => ({ ...p, type: p.type ?? TYPE_FOR_BOARD[p.board] }));
+}
+
 /** All approved batches, concatenated in intended publish order. */
-export const QUEUE: PinSpec[] = [...MAY26, ...JUN_RESTOCK, ...JUN_RESTOCK_2];
+export const QUEUE: PinSpec[] = [
+  ...typed(MAY26),
+  ...typed(JUN_RESTOCK),
+  ...typed(JUN_RESTOCK_2),
+];
 
 export type PublishedLog = Record<string, { pinId: string; publishedAt: string }>;
 
