@@ -1,32 +1,46 @@
 /**
- * Pinterest publisher — creates pins from the batch definition + local images.
+ * Pinterest publisher — creates pins from the approved queue + local images.
  *
- * Reads scripts/pinterest/batch-may26.ts, matches each pin to its PNG in
+ * Reads scripts/pinterest/queue.ts (QUEUE), matches each pin to its PNG in
  * IMAGE_DIR, base64-encodes it, and POSTs to /v5/pins on the correct board
  * with title / description / UTM link.
  *
  * Requires an OAuth access token with pins:write (run pinterest-auth.ts first).
  * Auto-refreshes the access token on 401 using PINTEREST_REFRESH_TOKEN.
  *
- * A publish log (scripts/pinterest/published-may26.json) records pin id ->
+ * A global publish log (scripts/pinterest/published.json) records key ->
  * Pinterest pin id so re-runs never double-post.
  *
  * Usage:
- *   npx tsx scripts/pinterest-publish.ts --dry-run     # validate, no POST
- *   npx tsx scripts/pinterest-publish.ts --only=1,3    # publish pins 1 and 3
- *   npx tsx scripts/pinterest-publish.ts               # publish all unpublished
+ *   npx tsx scripts/pinterest-publish.ts --dry-run --drip=2  # show drip selection
+ *   npx tsx scripts/pinterest-publish.ts --drip=1            # publish next pin (variety rotation)
+ *   npx tsx scripts/pinterest-publish.ts --only=may26-01     # publish specific key(s)
+ *   npx tsx scripts/pinterest-publish.ts                     # publish all unpublished
  */
 import * as path from "path";
 import * as fs from "fs";
+import { execFile } from "child_process";
 import { fileURLToPath } from "url";
 import * as dotenv from "dotenv";
-import { BATCH, BOARD_IDS, IMAGE_DIR, type PinSpec } from "./pinterest/batch-may26.ts";
+import {
+  QUEUE,
+  BOARD_IDS,
+  IMAGE_DIR,
+  selectForDrip,
+  type PinSpec,
+  type PublishedLog,
+} from "./pinterest/queue.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ENV_PATH = path.resolve(__dirname, "../.env.local");
-const LOG_PATH = path.resolve(__dirname, "pinterest/published-may26.json");
+const LOG_PATH = path.resolve(__dirname, "pinterest/published.json");
 dotenv.config({ path: ENV_PATH });
+
+/** macOS local notification — best-effort, never throws. */
+function notify(message: string) {
+  execFile("osascript", ["-e", `display notification "${message.replace(/"/g, "'")}" with title "PaintColorHQ"`], () => {});
+}
 
 const APP_ID = process.env.PINTEREST_APP_ID!;
 const APP_SECRET = process.env.PINTEREST_APP_SECRET_KEY!;
@@ -35,10 +49,10 @@ const API = "https://api.pinterest.com/v5";
 // ---- CLI args ----
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes("--dry-run");
+const dripArg = args.find((a) => a.startsWith("--drip="));
+const DRIP = dripArg ? Math.max(1, parseInt(dripArg.replace("--drip=", ""), 10) || 1) : null;
 const onlyArg = args.find((a) => a.startsWith("--only="));
-const onlyIds = onlyArg
-  ? new Set(onlyArg.replace("--only=", "").split(",").map((n) => parseInt(n, 10)))
-  : null;
+const onlyKeys = onlyArg ? new Set(onlyArg.replace("--only=", "").split(",")) : null;
 
 // ---- env + log helpers ----
 function upsertEnv(updates: Record<string, string>) {
@@ -52,15 +66,14 @@ function upsertEnv(updates: Record<string, string>) {
   fs.writeFileSync(ENV_PATH, lines.join("\n"));
 }
 
-type PublishLog = Record<string, { pinId: string; publishedAt: string }>;
-function loadLog(): PublishLog {
+function loadLog(): PublishedLog {
   try {
     return JSON.parse(fs.readFileSync(LOG_PATH, "utf8"));
   } catch {
     return {};
   }
 }
-function saveLog(log: PublishLog) {
+function saveLog(log: PublishedLog) {
   fs.writeFileSync(LOG_PATH, JSON.stringify(log, null, 2) + "\n");
 }
 
@@ -112,10 +125,10 @@ function imagePayload(pin: PinSpec) {
   return { source_type: "image_base64" as const, content_type: contentType, data: buf.toString("base64") };
 }
 
-async function publishPin(pin: PinSpec, log: PublishLog) {
-  const tag = `#${pin.id} ${pin.name}`;
-  if (log[pin.id]) {
-    console.log(`⏭️  ${tag} — already published (pin ${log[pin.id].pinId})`);
+async function publishPin(pin: PinSpec, log: PublishedLog) {
+  const tag = `${pin.key} ${pin.name}`;
+  if (log[pin.key]) {
+    console.log(`⏭️  ${tag} — already published (pin ${log[pin.key].pinId})`);
     return;
   }
   const boardId = BOARD_IDS[pin.board];
@@ -141,22 +154,33 @@ async function publishPin(pin: PinSpec, log: PublishLog) {
       media_source: media,
     }),
   });
-  log[pin.id] = { pinId: result.id, publishedAt: new Date().toISOString() };
+  log[pin.key] = { pinId: result.id, publishedAt: new Date().toISOString() };
   saveLog(log);
   console.log(`✅ ${tag} → pin ${result.id} on ${pin.board}`);
 }
 
 async function main() {
   const log = loadLog();
-  const targets = BATCH.filter((p) => (onlyIds ? onlyIds.has(p.id) : true));
+  let targets: PinSpec[];
+  if (DRIP) {
+    targets = selectForDrip(QUEUE, log, DRIP);
+    if (targets.length === 0) {
+      console.log("Drip: queue empty — nothing unpublished to post.");
+      if (!DRY_RUN) notify("Pinterest queue empty — stock more with Claude.");
+      return;
+    }
+  } else {
+    targets = QUEUE.filter((p) => (onlyKeys ? onlyKeys.has(p.key) : true));
+  }
   console.log(
-    `${DRY_RUN ? "DRY RUN — " : ""}Publishing ${targets.length} pin(s)${onlyIds ? ` (--only=${[...onlyIds].join(",")})` : ""}\n`
+    `${DRY_RUN ? "DRY RUN — " : ""}Publishing ${targets.length} pin(s)` +
+      `${DRIP ? " (drip, variety rotation)" : onlyKeys ? ` (--only=${[...onlyKeys].join(",")})` : ""}\n`
   );
   for (const pin of targets) {
     try {
       await publishPin(pin, log);
     } catch (e) {
-      console.error(`❌ #${pin.id} ${pin.name}: ${e instanceof Error ? e.message : e}`);
+      console.error(`❌ ${pin.key} ${pin.name}: ${e instanceof Error ? e.message : e}`);
     }
     // gentle spacing to stay clear of rate limits
     if (!DRY_RUN) await new Promise((r) => setTimeout(r, 2500));
