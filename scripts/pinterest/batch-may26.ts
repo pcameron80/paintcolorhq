@@ -19,6 +19,12 @@ export const BOARD_IDS: Record<BoardName, string> = {
 export interface PinSpec {
   /** 1-based position in the batch. */
   id: number;
+  /** Stable, globally-unique key across all batches (e.g. "may26-01"). */
+  key: string;
+  /** Variety axis — color/subject (e.g. "navy", "white", "sage"). */
+  theme: string;
+  /** Variety axis — scene/room type (e.g. "living-room", "kitchen", "exterior"). */
+  format: string;
   /** Human label. */
   name: string;
   /** Image filename inside IMAGE_DIR (matches the existing Desktop PNGs). */
@@ -43,6 +49,9 @@ const UTM = "?utm_source=Pinterest&utm_medium=organic&utm_campaign=may26-pin-bat
 export const BATCH: PinSpec[] = [
   {
     id: 1,
+    key: "may26-01",
+    theme: "navy",
+    format: "living-room",
     name: "Hale Navy Living Room",
     image: "Hale Navy Living Room.png",
     prompt:
@@ -55,6 +64,9 @@ export const BATCH: PinSpec[] = [
   },
   {
     id: 2,
+    key: "may26-02",
+    theme: "warm-gray",
+    format: "kitchen",
     name: "Agreeable Gray Open-Plan Kitchen",
     image: "Agreeable Gray Open-Plan Kitchen.png",
     prompt:
@@ -67,6 +79,9 @@ export const BATCH: PinSpec[] = [
   },
   {
     id: 3,
+    key: "may26-03",
+    theme: "soft-black",
+    format: "exterior",
     name: "Iron Ore Front Door",
     image: "Iron Ore Front Door.png",
     prompt:
@@ -79,6 +94,9 @@ export const BATCH: PinSpec[] = [
   },
   {
     id: 4,
+    key: "may26-04",
+    theme: "white",
+    format: "comparison",
     name: "Best Whites Side-by-Side",
     image: "Best Whites Side-by-Side.png",
     prompt:
@@ -91,6 +109,9 @@ export const BATCH: PinSpec[] = [
   },
   {
     id: 5,
+    key: "may26-05",
+    theme: "sage",
+    format: "bathroom",
     name: "Sage Bathroom",
     image: "Sage Bathroom.png",
     prompt:
@@ -103,6 +124,9 @@ export const BATCH: PinSpec[] = [
   },
   {
     id: 6,
+    key: "may26-06",
+    theme: "navy",
+    format: "kitchen",
     name: "Naval Kitchen Cabinets",
     image: "Naval Kitchen Cabinets.png",
     prompt:
@@ -115,6 +139,9 @@ export const BATCH: PinSpec[] = [
   },
   {
     id: 7,
+    key: "may26-07",
+    theme: "pink",
+    format: "nursery",
     name: "Pink Hydrangea Nursery",
     image: "Pink Hydrangea Nursery.png",
     prompt:
@@ -127,6 +154,9 @@ export const BATCH: PinSpec[] = [
   },
   {
     id: 8,
+    key: "may26-08",
+    theme: "plum-brown",
+    format: "dining-room",
     name: "Cinnamon Slate Dining Room",
     image: "Cinnamon Slate Dining Room.png",
     prompt:
@@ -139,6 +169,9 @@ export const BATCH: PinSpec[] = [
   },
   {
     id: 9,
+    key: "may26-09",
+    theme: "green",
+    format: "color-drench",
     name: "Hidden Gem Mudroom (Color-Drenched)",
     image: "Hidden Gem Mudroom (Color-Drenched).png",
     prompt:
@@ -151,6 +184,9 @@ export const BATCH: PinSpec[] = [
   },
   {
     id: 10,
+    key: "may26-10",
+    theme: "blue-green",
+    format: "kitchen",
     name: "Sea Salt Cottage Kitchen",
     image: "Sea Salt Cottage Kitchen.png",
     prompt:
