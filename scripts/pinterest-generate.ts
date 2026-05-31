@@ -21,7 +21,7 @@ import * as path from "path";
 import * as fs from "fs";
 import { fileURLToPath } from "url";
 import * as dotenv from "dotenv";
-import { BATCH, IMAGE_DIR, type PinSpec } from "./pinterest/batch-may26.ts";
+import { QUEUE, IMAGE_DIR, type PinSpec } from "./pinterest/queue.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,14 +38,12 @@ if (!API_KEY) {
 const args = process.argv.slice(2);
 const FORCE = args.includes("--force");
 const onlyArg = args.find((a) => a.startsWith("--only="));
-const onlyIds = onlyArg
-  ? new Set(onlyArg.replace("--only=", "").split(",").map((n) => parseInt(n, 10)))
-  : null;
+const onlyKeys = onlyArg ? new Set(onlyArg.replace("--only=", "").split(",")) : null;
 
 async function generate(pin: PinSpec) {
   const out = path.join(IMAGE_DIR, pin.image);
-  if (fs.existsSync(out) && !FORCE && !onlyIds) {
-    console.log(`⏭️  #${pin.id} ${pin.name} — exists (use --force to overwrite)`);
+  if (fs.existsSync(out) && !FORCE && !onlyKeys) {
+    console.log(`⏭️  ${pin.key} ${pin.name} — exists (use --force to overwrite)`);
     return;
   }
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
@@ -71,17 +69,17 @@ async function generate(pin: PinSpec) {
   fs.mkdirSync(IMAGE_DIR, { recursive: true });
   fs.writeFileSync(out, Buffer.from(img.data, "base64"));
   const mb = (Buffer.from(img.data, "base64").length / 1024 / 1024).toFixed(1);
-  console.log(`✅ #${pin.id} ${pin.name} → ${pin.image} (${img.mimeType}, ${mb}MB)`);
+  console.log(`✅ ${pin.key} ${pin.name} → ${pin.image} (${img.mimeType}, ${mb}MB)`);
 }
 
 async function main() {
-  const targets = BATCH.filter((p) => (onlyIds ? onlyIds.has(p.id) : true));
+  const targets = QUEUE.filter((p) => (onlyKeys ? onlyKeys.has(p.key) : true));
   console.log(`Generating ${targets.length} image(s) with ${MODEL} at 2:3\n`);
   for (const pin of targets) {
     try {
       await generate(pin);
     } catch (e) {
-      console.error(`❌ #${pin.id} ${pin.name}: ${e instanceof Error ? e.message : e}`);
+      console.error(`❌ ${pin.key} ${pin.name}: ${e instanceof Error ? e.message : e}`);
     }
   }
   console.log("\nDone. Next: have Claude QA the images, then publish.");
