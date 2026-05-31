@@ -2,12 +2,13 @@
 // Pure functions only — no I/O — so the drip logic is unit-testable.
 
 import { BATCH as MAY26 } from "./batch-may26.ts";
+import { BATCH as JUN_RESTOCK } from "./batch-jun-restock.ts";
 export { BOARD_IDS, IMAGE_DIR } from "./batch-may26.ts";
 export type { PinSpec, BoardName } from "./batch-may26.ts";
 import type { PinSpec } from "./batch-may26.ts";
 
 /** All approved batches, concatenated in intended publish order. */
-export const QUEUE: PinSpec[] = [...MAY26];
+export const QUEUE: PinSpec[] = [...MAY26, ...JUN_RESTOCK];
 
 export type PublishedLog = Record<string, { pinId: string; publishedAt: string }>;
 
