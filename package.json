@@ -13,7 +13,8 @@
     "compute-matches": "tsx scripts/compute-matches.ts",
     "seed-matches": "tsx scripts/seed-matches.ts",
     "populate-undertones": "tsx scripts/populate-undertones.ts",
-    "build-match-data": "tsx scripts/build-match-data.ts"
+    "build-match-data": "tsx scripts/build-match-data.ts",
+    "test:pinterest": "node --import tsx --test scripts/pinterest/queue.test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",
