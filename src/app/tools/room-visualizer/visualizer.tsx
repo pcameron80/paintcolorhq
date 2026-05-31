@@ -28,8 +28,8 @@ interface PaintMatch {
 // ---------------------------------------------------------------------------
 
 const REGIONS: { id: RegionId; label: string }[] = [
-  { id: "walls", label: "Walls" },
-  { id: "accentWall", label: "Accent Wall" },
+  { id: "walls", label: "Main" },
+  { id: "accentWall", label: "Accent" },
   { id: "trim", label: "Trim" },
 ];
 
@@ -268,9 +268,9 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
         </div>
 
         {/* Swatch palette.
-            Wall regions (Walls + Accent Wall) share one pooled set — Color,
-            Accent, and Pop are all applicable to either wall. Trim is isolated
-            to its own color so it can't be overwritten by wall swatches. */}
+            Wall regions (Main + Accent) share one pooled set — Main, Accent,
+            and Pop are all applicable to either wall. Trim is isolated to its
+            own color so it can't be overwritten by wall swatches. */}
         {(() => {
           const norm = (h: string) => (h.startsWith("#") ? h : `#${h}`);
           const isWallRegion = POP_REGIONS.includes(selected);
@@ -287,10 +287,10 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
           };
 
           if (isWallRegion) {
-            // Color + Accent are both available to both walls.
-            push(merged.walls, "Color");
+            // Main + Accent are both available to both walls.
+            push(merged.walls, "Main");
             push(merged.accentWall, "Accent");
-            (colorOptions?.walls ?? []).forEach((h) => push(h, "Color"));
+            (colorOptions?.walls ?? []).forEach((h) => push(h, "Main"));
             (colorOptions?.accentWall ?? []).forEach((h) => push(h, "Accent"));
           } else {
             // Trim: only its own color(s).
