@@ -1,0 +1,522 @@
+[
+  {
+    "brandSlug": "vista-paint",
+    "slug": "mystic-fog-c-18",
+    "brandName": "Vista Paint",
+    "name": "Mystic Fog",
+    "hex": "#eae8df",
+    "code": "C-18",
+    "lrv": 80.5,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "mortar-cc-574",
+    "brandName": "Benjamin Moore",
+    "name": "Mortar",
+    "hex": "#8f826b",
+    "code": "CC-574",
+    "lrv": 22.9,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "passive-7064",
+    "brandName": "Sherwin-Williams",
+    "name": "Passive",
+    "hex": "#cbccc9",
+    "code": "7064",
+    "lrv": 60.1,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "vapor-af-35",
+    "brandName": "Benjamin Moore",
+    "name": "Vapor",
+    "hex": "#f0ede0",
+    "code": "AF-35",
+    "lrv": 81.6,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "faded-gray-dew382",
+    "brandName": "Dunn-Edwards",
+    "name": "Faded Gray",
+    "hex": "#eae8e4",
+    "code": "DEW382",
+    "lrv": 80.8,
+    "family": "white"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "inukshuk-cc-460",
+    "brandName": "Benjamin Moore",
+    "name": "Inukshuk",
+    "hex": "#cec5b6",
+    "code": "CC-460",
+    "lrv": 56.4,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "silhouette-af-655",
+    "brandName": "Benjamin Moore",
+    "name": "Silhouette",
+    "hex": "#58514d",
+    "code": "AF-655",
+    "lrv": 8.5,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "hirshfields",
+    "slug": "desert-mirage-231",
+    "brandName": "Hirshfield's",
+    "name": "Desert Mirage",
+    "hex": "#d2cabc",
+    "code": "231",
+    "lrv": 59.6,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "mourning-dove-or-w12",
+    "brandName": "Behr",
+    "name": "Mourning Dove",
+    "hex": "#f1efdf",
+    "code": "OR-W12",
+    "lrv": 81,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "lambskin-1051",
+    "brandName": "Benjamin Moore",
+    "name": "Lambskin",
+    "hex": "#e9ddc9",
+    "code": "1051",
+    "lrv": 71.2,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "scotch-mist-14-07",
+    "brandName": "PPG",
+    "name": "Scotch Mist",
+    "hex": "#e0dbcd",
+    "code": "14-07",
+    "lrv": 70.9,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "ral",
+    "slug": "pearl-dark-grey-9023",
+    "brandName": "RAL",
+    "name": "Pearl Dark Grey",
+    "hex": "#828282",
+    "code": "9023",
+    "lrv": 22.3,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "bachelor-blue-de5878",
+    "brandName": "Dunn-Edwards",
+    "name": "Bachelor Blue",
+    "hex": "#8faaca",
+    "code": "DE5878",
+    "lrv": 38.9,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "buttermilk-919",
+    "brandName": "Benjamin Moore",
+    "name": "Buttermilk",
+    "hex": "#f4ebd1",
+    "code": "919",
+    "lrv": 79.7,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "vista-paint",
+    "slug": "muted-mulberry-c-1381",
+    "brandName": "Vista Paint",
+    "name": "Muted Mulberry",
+    "hex": "#67626e",
+    "code": "C-1381",
+    "lrv": 12.7,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "early-snow-dew313",
+    "brandName": "Dunn-Edwards",
+    "name": "Early Snow",
+    "hex": "#fdf3e4",
+    "code": "DEW313",
+    "lrv": 90.6,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "dress-rehearsal-7001-20",
+    "brandName": "Valspar",
+    "name": "Dress Rehearsal",
+    "hex": "#f8ebee",
+    "code": "7001-20",
+    "lrv": 85.5,
+    "family": "red"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "galveston-tan-de6101",
+    "brandName": "Dunn-Edwards",
+    "name": "Galveston Tan",
+    "hex": "#e8c8b8",
+    "code": "DE6101",
+    "lrv": 61.9,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "warm-onyx-hdc-cl-14a",
+    "brandName": "Behr",
+    "name": "Warm Onyx",
+    "hex": "#4c4846",
+    "code": "HDC-CL-14A",
+    "lrv": 6.6,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "mpc",
+    "slug": "black-hole-met-mp19952",
+    "brandName": "MPC",
+    "name": "Black Hole Met.",
+    "hex": "#3b4145",
+    "code": "MP19952",
+    "lrv": 5.1,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "almond-beige-2101-40",
+    "brandName": "Benjamin Moore",
+    "name": "Almond Beige",
+    "hex": "#a68076",
+    "code": "2101-40",
+    "lrv": 24.9,
+    "family": "red"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "agreeable-gray-7029",
+    "brandName": "Sherwin-Williams",
+    "name": "Agreeable Gray",
+    "hex": "#d1cbc1",
+    "code": "7029",
+    "lrv": 60.1,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "repose-gray-7015",
+    "brandName": "Sherwin-Williams",
+    "name": "Repose Gray",
+    "hex": "#ccc9c0",
+    "code": "7015",
+    "lrv": 58.4,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "tricorn-black-6258",
+    "brandName": "Sherwin-Williams",
+    "name": "Tricorn Black",
+    "hex": "#2f2f30",
+    "code": "6258",
+    "lrv": 2.9,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "sea-salt-6204",
+    "brandName": "Sherwin-Williams",
+    "name": "Sea Salt",
+    "hex": "#cdd2ca",
+    "code": "6204",
+    "lrv": 63.3,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "iron-ore-7069",
+    "brandName": "Sherwin-Williams",
+    "name": "Iron Ore",
+    "hex": "#434341",
+    "code": "7069",
+    "lrv": 5.6,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "alabaster-7008",
+    "brandName": "Sherwin-Williams",
+    "name": "Alabaster",
+    "hex": "#edeae0",
+    "code": "7008",
+    "lrv": 82.2,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "naval-6244",
+    "brandName": "Sherwin-Williams",
+    "name": "Naval",
+    "hex": "#2f3d4c",
+    "code": "6244",
+    "lrv": 4.5,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "urbane-bronze-7048",
+    "brandName": "Sherwin-Williams",
+    "name": "Urbane Bronze",
+    "hex": "#54504a",
+    "code": "7048",
+    "lrv": 8.1,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "gauntlet-gray-7019",
+    "brandName": "Sherwin-Williams",
+    "name": "Gauntlet Gray",
+    "hex": "#78736e",
+    "code": "7019",
+    "lrv": 17.4,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "drift-of-mist-9166",
+    "brandName": "Sherwin-Williams",
+    "name": "Drift of Mist",
+    "hex": "#dcd8d0",
+    "code": "9166",
+    "lrv": 68.9,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "oyster-bay-6206",
+    "brandName": "Sherwin-Williams",
+    "name": "Oyster Bay",
+    "hex": "#aeb3a9",
+    "code": "6206",
+    "lrv": 44.1,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "rainwashed-6211",
+    "brandName": "Sherwin-Williams",
+    "name": "Rainwashed",
+    "hex": "#c2cdc5",
+    "code": "6211",
+    "lrv": 59.2,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "pewter-green-6208",
+    "brandName": "Sherwin-Williams",
+    "name": "Pewter Green",
+    "hex": "#5e6259",
+    "code": "6208",
+    "lrv": 11.8,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "cavern-clay-7701",
+    "brandName": "Sherwin-Williams",
+    "name": "Cavern Clay",
+    "hex": "#ac6b53",
+    "code": "7701",
+    "lrv": 19.9,
+    "family": "brown"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "greek-villa-7551",
+    "brandName": "Sherwin-Williams",
+    "name": "Greek Villa",
+    "hex": "#f0ece2",
+    "code": "7551",
+    "lrv": 84,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "shoji-white-7042",
+    "brandName": "Sherwin-Williams",
+    "name": "Shoji White",
+    "hex": "#e6dfd3",
+    "code": "7042",
+    "lrv": 74.3,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "revere-pewter-hc-172",
+    "brandName": "Benjamin Moore",
+    "name": "Revere Pewter",
+    "hex": "#ccc7b9",
+    "code": "HC-172",
+    "lrv": 55.1,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "manchester-tan-hc-81",
+    "brandName": "Benjamin Moore",
+    "name": "Manchester Tan",
+    "hex": "#dcd3bd",
+    "code": "HC-81",
+    "lrv": 63.2,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "kendall-charcoal-hc-166",
+    "brandName": "Benjamin Moore",
+    "name": "Kendall Charcoal",
+    "hex": "#686763",
+    "code": "HC-166",
+    "lrv": 13.5,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "palladian-blue-hc-144",
+    "brandName": "Benjamin Moore",
+    "name": "Palladian Blue",
+    "hex": "#c2d2ca",
+    "code": "HC-144",
+    "lrv": 61.8,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "gentlemans-gray-2062-20",
+    "brandName": "Benjamin Moore",
+    "name": "Gentleman's Gray",
+    "hex": "#314757",
+    "code": "2062-20",
+    "lrv": 5.8,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "newburyport-blue-hc-155",
+    "brandName": "Benjamin Moore",
+    "name": "Newburyport Blue",
+    "hex": "#475667",
+    "code": "HC-155",
+    "lrv": 9,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "first-light-2102-70",
+    "brandName": "Benjamin Moore",
+    "name": "First Light",
+    "hex": "#f0e3df",
+    "code": "2102-70",
+    "lrv": 75.9,
+    "family": "red"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "hawthorne-yellow-hc-4",
+    "brandName": "Benjamin Moore",
+    "name": "Hawthorne Yellow",
+    "hex": "#f6e2a5",
+    "code": "HC-4",
+    "lrv": 71.3,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "shaker-beige-hc-45",
+    "brandName": "Benjamin Moore",
+    "name": "Shaker Beige",
+    "hex": "#d2c3a8",
+    "code": "HC-45",
+    "lrv": 53.5,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "caliente-af-290",
+    "brandName": "Benjamin Moore",
+    "name": "Caliente",
+    "hex": "#8b2829",
+    "code": "AF-290",
+    "lrv": 7.2,
+    "family": "red"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "cracked-pepper-ppu18-01",
+    "brandName": "Behr",
+    "name": "Cracked Pepper",
+    "hex": "#4f5152",
+    "code": "PPU18-01",
+    "lrv": 8.2,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "chinese-porcelain-1160-6",
+    "brandName": "PPG",
+    "name": "Chinese Porcelain",
+    "hex": "#3a5f7d",
+    "code": "1160-6",
+    "lrv": 10.6,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "olive-sprig-1125-4",
+    "brandName": "PPG",
+    "name": "Olive Sprig",
+    "hex": "#acaf95",
+    "code": "1125-4",
+    "lrv": 41.6,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "filtered-shade-4003-1b",
+    "brandName": "Valspar",
+    "name": "Filtered Shade",
+    "hex": "#cdcbc8",
+    "code": "4003-1B",
+    "lrv": 59.9,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "bay-fog-de5934",
+    "brandName": "Dunn-Edwards",
+    "name": "Bay Fog",
+    "hex": "#9899b0",
+    "code": "DE5934",
+    "lrv": 32.6,
+    "family": "gray"
+  }
+]

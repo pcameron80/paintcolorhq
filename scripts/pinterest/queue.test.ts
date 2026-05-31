@@ -51,3 +51,63 @@ test("selectForDrip(N=2) does not pick two of the same theme back-to-back", () =
   assert.notEqual(picks[1], "b");
   assert.equal(picks[1], "d");
 });
+
+import { guidePins } from "./sources/guides.ts";
+
+test("guidePins: all guide-type, on Guides board, with imageUrl + unique keys", () => {
+  const g = guidePins();
+  assert.ok(g.length >= 20, `expected >=20 guide pins, got ${g.length}`);
+  assert.ok(g.every((p) => p.type === "guide" && p.board === "Paint Color Guides"));
+  assert.ok(g.every((p) => typeof p.imageUrl === "string" && p.imageUrl!.startsWith("https://")));
+  assert.ok(g.every((p) => p.link.includes("/blog/")));
+  assert.equal(new Set(g.map((p) => p.key)).size, g.length);
+});
+
+import { swatchPins } from "./sources/swatches.ts";
+
+test("swatchPins: all swatch-type, on Colors board, /api/pin imageUrl, unique keys", () => {
+  const s = swatchPins();
+  assert.ok(s.length > 0);
+  assert.ok(s.every((p) => p.type === "swatch" && p.board === "Paint Colors"));
+  assert.ok(s.every((p) => p.imageUrl!.includes("/api/pin?")));
+  assert.ok(s.every((p) => p.link.includes("/colors/")));
+  assert.equal(new Set(s.map((p) => p.key)).size, s.length);
+});
+
+import { quotasForWeekday, selectDailyMix, DRIP_CONFIG } from "./queue.ts";
+
+function mkT(key: string, type: PinSpec["type"]): PinSpec {
+  return { key, type, board: "x", theme: type, format: type } as unknown as PinSpec;
+}
+
+test("quotasForWeekday merges daily + weekday extras", () => {
+  assert.deepEqual(quotasForWeekday(DRIP_CONFIG, 1), { swatch: 3, palette: 1, guide: 1 }); // Mon
+  assert.deepEqual(quotasForWeekday(DRIP_CONFIG, 2), { swatch: 3, palette: 1 });            // Tue
+});
+
+test("selectDailyMix fills each type's quota from fresh", () => {
+  const q = [mkT("s1","swatch"),mkT("s2","swatch"),mkT("s3","swatch"),mkT("s4","swatch"),mkT("p1","palette"),mkT("p2","palette")];
+  const picks = selectDailyMix(q, {}, { swatch: 3, palette: 1 }, 0, 35);
+  assert.equal(picks.filter((p) => p.type === "swatch").length, 3);
+  assert.equal(picks.filter((p) => p.type === "palette").length, 1);
+});
+
+test("selectDailyMix re-pins only after cooldown, oldest first", () => {
+  const DAY = 86400_000, now = 100 * DAY;
+  const q = [mkT("p1","palette"), mkT("p2","palette")];
+  const log = {
+    p1: { pinId: "1", publishedAt: new Date(now - 40 * DAY).toISOString() }, // eligible
+    p2: { pinId: "2", publishedAt: new Date(now - 5 * DAY).toISOString() },  // in cooldown
+  };
+  const picks = selectDailyMix(q, log, { palette: 1 }, now, 35);
+  assert.equal(picks.length, 1);
+  assert.equal(picks[0].key, "p1");
+});
+
+test("selectDailyMix prefers fresh over re-pin", () => {
+  const DAY = 86400_000, now = 100 * DAY;
+  const q = [mkT("p1","palette"), mkT("p2","palette")];
+  const log = { p1: { pinId: "1", publishedAt: new Date(now - 40 * DAY).toISOString() } }; // p2 fresh
+  const picks = selectDailyMix(q, log, { palette: 1 }, now, 35);
+  assert.equal(picks[0].key, "p2");
+});
