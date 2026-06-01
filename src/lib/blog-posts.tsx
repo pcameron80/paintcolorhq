@@ -54,6 +54,116 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 const blogPosts: BlogPost[] = [
   /* ──────────────── Post 0 (newest) ──────────────── */
   {
+    slug: "best-dunn-edwards-paint-colors",
+    title: "The Best Dunn-Edwards Paint Colors for Every Room (2026)",
+    date: "2026-05-31",
+    author: "Philip Cameron",
+    excerpt:
+      "The best Dunn-Edwards paint colors by category — whites, greiges, grays, and blues — each with its LRV and its closest Sherwin-Williams, Benjamin Moore, and Behr match.",
+    coverColor: "#BFC9D0",
+    coverImage: "/blog/best-dunn-edwards-paint-colors.webp",
+    tags: ["Guide", "Dunn-Edwards", "Brand"],
+    faq: [
+      {
+        question: "What are the best Dunn-Edwards paint colors?",
+        answer:
+          "Dunn-Edwards' most popular warm neutrals are Crisp Muslin (DE6212) and Fine Grain (DE6213). For whites, Whisper (DEW340) is the bright pick, Milk Glass (DEW358) the designer trim white, and Swiss Coffee (DEW341) the warm creamy classic. Fossil (DE6225) and Foggy Day (DE6226) lead the grays, and Midnight Garden (DE5657) is the 2026 Color of the Year.",
+      },
+      {
+        question: "Where can I buy Dunn-Edwards paint?",
+        answer:
+          "Dunn-Edwards is a Southwest regional brand — about 130 company stores plus authorized dealers across California, Arizona, Nevada, New Mexico, and Texas, plus online ordering. It has been owned by Nippon Paint since 2017. If you live outside the Southwest, the practical move is to match the Dunn-Edwards color to a Sherwin-Williams, Benjamin Moore, or Behr equivalent — every color below lists its closest match.",
+      },
+      {
+        question: "Can I get Dunn-Edwards colors in Sherwin-Williams or Behr?",
+        answer:
+          "Yes — most Dunn-Edwards colors have a near-identical match in the national brands. For example, Dunn-Edwards Bay of Hope (DE6331) is a virtually exact match for Sherwin-Williams Upward (SW 6239), and Crisp Muslin (DE6212) is nearly identical to PPG Indian Muslin and very close to Sherwin-Williams White Heron. Each color in this guide links to its closest cross-brand match.",
+      },
+      {
+        question: "Is Dunn-Edwards a good paint brand?",
+        answer:
+          "Dunn-Edwards is a premium paint maker with a strong zero-VOC reputation — its flagship Everest line is ultra-premium, zero-VOC, and self-priming. It has been the leading paint brand in the Southwestern US since 1925 and is a designer favorite for Spanish-colonial, midcentury, and desert-modern interiors.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The most popular Dunn-Edwards color for most homes is{" "}
+          <Swatch hex="#E9E2D7" name="Crisp Muslin" brand="Dunn-Edwards" href="/colors/dunn-edwards/crisp-muslin-de6212" /> (DE6212, LRV 77), the brand&apos;s top-selling warm neutral. But there&apos;s a catch worth knowing up front: Dunn-Edwards is a <strong>Southwest regional brand</strong>, sold mainly across California, Arizona, Nevada, New Mexico, and Texas. So unless you live in its footprint, the practical question isn&apos;t only &ldquo;which Dunn-Edwards color is best&rdquo; — it&apos;s &ldquo;which Sherwin-Williams, Benjamin Moore, or Behr color gets me the same look.&rdquo; This guide answers both: 14 of Dunn-Edwards&apos; best colors by category, each with its exact LRV and its closest cross-brand match from our database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines, Availability &amp; the Regional Catch</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Dunn-Edwards has been the leading paint maker in the Southwestern US since 1925 and has been owned by Nippon Paint since 2017. It&apos;s sold through about 130 company-owned <Link href="/brands/dunn-edwards" className="text-brand-blue hover:underline">Dunn-Edwards</Link> stores and authorized dealers — heavily concentrated in CA, AZ, NV, NM, and TX — plus online. Outside that footprint it&apos;s far less convenient than Sherwin-Williams or Behr, which is exactly why the cross-brand matches below matter.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          On the can, the premium interior line is <strong>Everest</strong> — ultra-premium, zero-VOC, and self-priming, which is the brand&apos;s real calling card. <strong>Suprema</strong> is the ultra-low-VOC step down, and <strong>Aristoshield</strong> is the oil-like enamel for doors, trim, and cabinets. Dunn-Edwards&apos; zero-VOC reputation is genuine and a fair reason to seek it out if air quality matters to you.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Whites &amp; Off-Whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#FDFAF1" name="Whisper" brand="Dunn-Edwards" href="/colors/dunn-edwards/whisper-dew340" /> — DEW340, LRV 96. A bright, soft warm white that stays clean without going stark. Excellent on trim, ceilings, and full walls in bright rooms. It is a near-exact match for <Link href="/colors/behr/sleek-white-or-w15" className="text-brand-blue hover:underline">Behr Sleek White</Link> and close to <Link href="/colors/sherwin-williams/cheviot-9503" className="text-brand-blue hover:underline">Sherwin-Williams Cheviot</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#FAF7F0" name="Milk Glass" brand="Dunn-Edwards" href="/colors/dunn-edwards/milk-glass-dew358" /> — DEW358, LRV 93. A designer-favorite warm bright white for trim and ceilings. Closest matches are <Link href="/colors/behr/simply-white-bwc-01" className="text-brand-blue hover:underline">Behr Simply White</Link> and <Link href="/colors/sherwin-williams/white-snow-9541" className="text-brand-blue hover:underline">Sherwin-Williams White Snow</Link>. Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F8F5E9" name="Swiss Coffee" brand="Dunn-Edwards" href="/colors/dunn-edwards/swiss-coffee-dew341" /> — DEW341, LRV 91. The brand&apos;s signature warm, creamy white — soft and enveloping rather than bright. It matches <Link href="/colors/benjamin-moore/capitol-white-cw-10" className="text-brand-blue hover:underline">Benjamin Moore Capitol White</Link> and <Link href="/colors/behr/white-veil-or-w14" className="text-brand-blue hover:underline">Behr White Veil</Link> closely.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Warm Neutrals &amp; Greiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E9E2D7" name="Crisp Muslin" brand="Dunn-Edwards" href="/colors/dunn-edwards/crisp-muslin-de6212" /> — DE6212, LRV 77. The brand&apos;s most popular warm neutral: a light, soft off-white with the faintest brown-gray warmth that avoids looking stark. It is nearly identical to <Link href="/colors/ppg/indian-muslin-1075-2" className="text-brand-blue hover:underline">PPG Indian Muslin</Link> and very close to <Link href="/colors/sherwin-williams/white-heron-7627" className="text-brand-blue hover:underline">Sherwin-Williams White Heron</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D8CFC1" name="Fine Grain" brand="Dunn-Edwards" href="/colors/dunn-edwards/fine-grain-de6213" /> — DE6213, LRV 63. A light greige that works in contemporary, farmhouse, and transitional rooms alike. Its closest matches are <Link href="/colors/benjamin-moore/cedar-key-982" className="text-brand-blue hover:underline">Benjamin Moore Cedar Key</Link> and <Link href="/colors/behr/aged-beige-ppu7-09" className="text-brand-blue hover:underline">Behr Aged Beige</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8DECE" name="Stucco Tan" brand="Dunn-Edwards" href="/colors/dunn-edwards/stucco-tan-de6205" /> — DE6205, LRV 74. A warm, light tan that suits Southwest and Mediterranean interiors and reads especially well in warm natural light. It matches <Link href="/colors/sherwin-williams/aged-white-9180" className="text-brand-blue hover:underline">Sherwin-Williams Aged White</Link> and <Link href="/colors/benjamin-moore/first-crush-csp-310" className="text-brand-blue hover:underline">Benjamin Moore First Crush</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CCBEAC" name="Birchwood" brand="Dunn-Edwards" href="/colors/dunn-edwards/birchwood-dec752" /> — DEC752, LRV 53. A deeper warm greige for cozy, grounded rooms and transitional spaces. Closest matches are <Link href="/colors/behr/bungalow-beige-hdc-ac-10" className="text-brand-blue hover:underline">Behr Bungalow Beige</Link> and <Link href="/colors/sherwin-williams/minimalist-9611" className="text-brand-blue hover:underline">Sherwin-Williams Minimalist</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C1B4A0" name="Pigeon Gray" brand="Dunn-Edwards" href="/colors/dunn-edwards/pigeon-gray-de6214" /> — DE6214, LRV 47. A mid-tone taupe-gray with a sophisticated, slightly mauve cast — good for accent walls and moodier neutrals. It lands close to <Link href="/colors/sherwin-williams/loggia-7506" className="text-brand-blue hover:underline">Sherwin-Williams Loggia</Link> and <Link href="/colors/benjamin-moore/gallery-buff-csp-225" className="text-brand-blue hover:underline">Benjamin Moore Gallery Buff</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Grays</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F4F1EB" name="Fossil" brand="Dunn-Edwards" href="/colors/dunn-edwards/fossil-de6225" /> — DE6225, LRV 88. The brand&apos;s most popular light, airy neutral — a barely-there gray that works whole-home. Closest matches are <Link href="/colors/benjamin-moore/gardenia-af-10" className="text-brand-blue hover:underline">Benjamin Moore Gardenia</Link> and <Link href="/colors/sherwin-williams/arcade-white-7100" className="text-brand-blue hover:underline">Sherwin-Williams Arcade White</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E7E3DB" name="Foggy Day" brand="Dunn-Edwards" href="/colors/dunn-edwards/foggy-day-de6226" /> — DE6226, LRV 77. A balanced medium-light gray with no obvious blue or brown cast — the reliable greige-gray for full rooms. It matches <Link href="/colors/sherwin-williams/sanctuary-9583" className="text-brand-blue hover:underline">Sherwin-Williams Sanctuary</Link> and <Link href="/colors/benjamin-moore/classic-gray-1548" className="text-brand-blue hover:underline">Benjamin Moore Classic Gray</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#DBDBDA" name="Porpoise" brand="Dunn-Edwards" href="/colors/dunn-edwards/porpoise-de6373" /> — DE6373, LRV 71. A silvery light gray that stays neutral and clean. It is a near-exact match for <Link href="/colors/sherwin-williams/spatial-white-6259" className="text-brand-blue hover:underline">Sherwin-Williams Spatial White</Link> and <Link href="/colors/benjamin-moore/graytint-1611" className="text-brand-blue hover:underline">Benjamin Moore Graytint</Link>. See the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Blues</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#BFC9D0" name="Bay of Hope" brand="Dunn-Edwards" href="/colors/dunn-edwards/bay-of-hope-de6331" /> — DE6331, LRV 57. A soft, airy gray-blue that reads serene in bedrooms and bathrooms. It is a virtually exact match for{" "}
+          <Swatch hex="#BFC9D0" name="Upward" brand="Sherwin-Williams" href="/colors/sherwin-williams/upward-6239" /> (SW 6239) — same hex, same LRV — so the look travels to any Sherwin-Williams store. It&apos;s also close to <Link href="/colors/benjamin-moore/iced-slate-2130-60" className="text-brand-blue hover:underline">Benjamin Moore Iced Slate</Link>. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for more.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#343B4E" name="Old Mill" brand="Dunn-Edwards" href="/colors/dunn-edwards/old-mill-dea185" /> — DEA185, LRV 4. A deep, near-black navy for cabinetry, islands, front doors, and dramatic accent walls. Its closest matches are <Link href="/colors/benjamin-moore/old-navy-2063-10" className="text-brand-blue hover:underline">Benjamin Moore Old Navy</Link> and <Link href="/colors/behr/limo-scene-n560-7" className="text-brand-blue hover:underline">Behr Limo-scene</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dunn-Edwards Color of the Year: Midnight Garden</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#637057" name="Midnight Garden" brand="Dunn-Edwards" href="/colors/dunn-edwards/midnight-garden-de5657" /> — DE5657, LRV 15. Dunn-Edwards&apos; 2026 Color of the Year: a deep, muted, earthy green that works on walls, cabinetry, and exteriors. It is a near-exact match for <Link href="/colors/behr/willow-leaf-qe-39" className="text-brand-blue hover:underline">Behr Willow Leaf</Link> and close to <Link href="/colors/sherwin-williams/greenfield-6439" className="text-brand-blue hover:underline">Sherwin-Williams Greenfield</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Match a Dunn-Edwards Color to Another Brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Because Dunn-Edwards is regional, the most common request we see is the reverse of this guide: someone has a Dunn-Edwards chip and needs the Sherwin-Williams, Benjamin Moore, or Behr equivalent because that&apos;s what their store stocks. Every match above comes from our cross-brand database, computed with the CIEDE2000 color-difference formula. To run it yourself, see the{" "}
+          <Link href="/match/dunn-edwards/to/sherwin-williams" className="text-brand-blue hover:underline">Dunn-Edwards to Sherwin-Williams</Link>,{" "}
+          <Link href="/match/dunn-edwards/to/benjamin-moore" className="text-brand-blue hover:underline">Dunn-Edwards to Benjamin Moore</Link>, and{" "}
+          <Link href="/match/dunn-edwards/to/behr" className="text-brand-blue hover:underline">Dunn-Edwards to Behr</Link> conversion charts, or drop any two colors into our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see exactly how close they are. If you are weighing undertones first, our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to undertones</Link> covers the test that saves you from a wrong color on the wall.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "best-valspar-paint-colors",
     title: "The Best Valspar Paint Colors for Every Room (2026)",
     date: "2026-05-31",
