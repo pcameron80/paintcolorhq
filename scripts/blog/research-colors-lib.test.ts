@@ -50,4 +50,5 @@ test("formatResearchMarkdown includes topic, color facts, and a match table row"
   assert.match(md, /#3B444B/);
   assert.match(md, /LRV.*8/);
   assert.match(md, /Behr.*Composed.*1\.8/s);
+  assert.match(md, /\/colors\/behr\/composed/); // match rows carry a link target
 });
