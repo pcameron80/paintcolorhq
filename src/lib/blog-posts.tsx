@@ -749,7 +749,7 @@ const blogPosts: BlogPost[] = [
           <strong>Best-selling gray:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> — all warm greiges with Delta E under 2.0 between them. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Best-selling white:</strong> <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#F5F2ED" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-ul170-13" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
+          <strong>Best-selling white:</strong> <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#F5F2ED" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to check the exact Delta E between any two colors, and read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore deep dive</Link> for a more detailed head-to-head. For a systematic view of the closest matches across each pair, see the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM</Link>, <Link href="/match/sherwin-williams/to/behr" className="text-brand-blue hover:underline">SW to Behr</Link>, and <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">BM to Behr</Link> conversion charts.
@@ -957,7 +957,7 @@ const blogPosts: BlogPost[] = [
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Finding the Behr equivalent of Agreeable Gray.</strong>{" "}
-          <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (LRV 60, hex #D0C8B5) is America&apos;s most popular paint color. The closest Behr equivalent is <Swatch hex="#D4CCBB" name="Wheat Bread" brand="Behr" href="/colors/behr/wheat-bread-n300-3" /> (N300-3) — a warm greige with a CIEDE2000 Delta E of approximately 1.8, meaning the two colors are virtually indistinguishable on a wall.
+          <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (LRV 60, hex #D0C8B5) is America&apos;s most popular paint color. The closest Behr equivalent is <Swatch hex="#D4CCBB" name="Wheat Bread" brand="Behr" href="/colors/behr/wheat-bread-720c-3" /> (720C-3) — a warm greige with a CIEDE2000 Delta E of approximately 1.8, meaning the two colors are virtually indistinguishable on a wall.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Matching Edgecomb Gray across brands.</strong>{" "}
@@ -1070,9 +1070,9 @@ const blogPosts: BlogPost[] = [
           <strong>Undertone:</strong> Warm (slight cream). <strong>LRV:</strong> 84. <strong>Best for:</strong> Trim, cabinets, kitchens, bathrooms. <strong>Pair with:</strong> Agreeable Gray (SW 7029) on walls.
         </p>
 
-        <h3 className="mt-8 text-xl font-semibold text-gray-900">4. Swiss Coffee (OC-45) — Benjamin Moore</h3>
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">4. Swiss Coffee — Behr</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EFE4CE" name="Swiss Coffee" brand="Benjamin Moore" href="/colors/benjamin-moore/swiss-coffee-oc-45" /> is a rich, warm off-white with noticeable cream-yellow undertones. It&apos;s warmer and deeper than White Dove, making it an excellent choice when you want walls that feel soft and enveloping rather than bright. Studio McGee helped popularize it as a whole-house neutral.
+          <Swatch hex="#F3F2E6" name="Swiss Coffee" brand="Behr" href="/colors/behr/swiss-coffee-12" /> is a rich, warm off-white with noticeable cream-yellow undertones. It&apos;s warmer than a stark white, making it an excellent choice when you want walls that feel soft and enveloping rather than bright. Studio McGee helped popularize it as a whole-house neutral.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Warm cream-yellow. <strong>LRV:</strong> 84. <strong>Best for:</strong> Living rooms, bedrooms, Mediterranean and California-casual style. <strong>Pair with:</strong> White Dove on trim for a layered warm palette.
@@ -1117,7 +1117,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">9. Ultra Pure White — Behr</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F2ECE0" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-50" /> is Behr&apos;s standard base white — clean, bright, and affordable. It&apos;s available at every Home Depot and serves as the default ceiling white for budget-conscious projects. No hidden undertones to worry about. See more from <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>.
+          <Swatch hex="#F2ECE0" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-ppu18-06" /> is Behr&apos;s standard base white — clean, bright, and affordable. It&apos;s available at every Home Depot and serves as the default ceiling white for budget-conscious projects. No hidden undertones to worry about. See more from <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> True neutral. <strong>LRV:</strong> 94. <strong>Best for:</strong> Ceilings, trim, rentals, budget projects.
@@ -1146,7 +1146,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">12. Paper White (OC-55) — Benjamin Moore</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E8E8E0" name="Paper White" brand="Benjamin Moore" href="/colors/benjamin-moore/paper-white-oc-55" /> is a cool white with a green-gray undertone. In bright light it reads as a crisp neutral white; in low light, the green whispers through. It&apos;s a sophisticated choice for dining rooms and hallways where you want white with quiet complexity.
+          <Swatch hex="#E8E8E0" name="Paper White" brand="Benjamin Moore" href="/colors/benjamin-moore/paper-white-1590" /> is a cool white with a green-gray undertone. In bright light it reads as a crisp neutral white; in low light, the green whispers through. It&apos;s a sophisticated choice for dining rooms and hallways where you want white with quiet complexity.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Cool (green-gray). <strong>LRV:</strong> 83. <strong>Best for:</strong> Dining rooms, hallways, offices.
@@ -1723,7 +1723,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — the gentlest green option, almost neutral. Perfect for video calls where you want a warm, professional backdrop. See all options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6B8068" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n420-6" /> — <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr&apos;s</Link> 2026 Color of the Year. This smoky jade green-gray was specifically cited for reducing digital eye strain during long screen sessions. It works beautifully as a full-room color or an accent wall behind your desk.
+          <Swatch hex="#6B8068" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> — <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr&apos;s</Link> 2026 Color of the Year. This smoky jade green-gray was specifically cited for reducing digital eye strain during long screen sessions. It works beautifully as a full-room color or an accent wall behind your desk.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals That Actually Work</h2>
@@ -1883,7 +1883,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#3B3B3B" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black door works on every house style and makes hardware stand out.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8E7462" name="Universal Khaki SW 6149" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6149" /> — the Sherwin-Williams 2026 Color of the Year translates well to front doors. Its warm sandy-brown tone reads as welcoming rather than bold, making it a good middle ground between a neutral door and a statement door. Pairs with both warm stone and cool concrete surrounds. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
+          <Swatch hex="#8E7462" name="Universal Khaki SW 6150" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — the Sherwin-Williams 2026 Color of the Year translates well to front doors. Its warm sandy-brown tone reads as welcoming rather than bold, making it a good middle ground between a neutral door and a statement door. Pairs with both warm stone and cool concrete surrounds. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Exterior Painting Tips</h2>
@@ -2092,7 +2092,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#4A5D4F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that creates a rich, library-like dining room. Pair with brass light fixtures and a wood table for old-world sophistication. Essex Green is one of Benjamin Moore&apos;s Historical Collection colors, which means it has been used in American homes for centuries. See more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6B3A3A" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1013-1" /> — a sumptuous red-brown with earthy undertones that PPG highlighted as a 2026 trend color. It brings warmth and depth to formal dining rooms without the intensity of a pure red. Pair with cream linens and natural wood for a grounded, inviting feel.
+          <Swatch hex="#6B3A3A" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> — a sumptuous red-brown with earthy undertones that PPG highlighted as a 2026 trend color. It brings warmth and depth to formal dining rooms without the intensity of a pure red. Pair with cream linens and natural wood for a grounded, inviting feel.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Earth Tones (The 2026 Trend)</h2>
@@ -2477,7 +2477,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#F0E8D8" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — a warm white with subtle cream undertones. It&apos;s bright and open without feeling harsh — the Behr equivalent of Benjamin Moore White Dove (OC-17). LRV 79.4 makes it an excellent choice for small bedrooms that need to feel larger.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F2ECE0" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-50" /> — Behr&apos;s cleanest, crispest white with virtually no undertone. Use it for trim and ceilings to keep the bedroom feeling airy. Pair it with any wall color above for guaranteed contrast. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+          <Swatch hex="#F2ECE0" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-ppu18-06" /> — Behr&apos;s cleanest, crispest white with virtually no undertone. Use it for trim and ceilings to keep the bedroom feeling airy. Pair it with any wall color above for guaranteed contrast. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Which Behr Paint Line for Bedrooms?</h2>
@@ -2700,7 +2700,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#D0C8B5" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> ↔ <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — Both warm greiges that have replaced cool gray for whole-home neutral applications. Edgecomb has slightly more green; Accessible Beige reads slightly warmer.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C2BFB8" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> ↔ <Swatch hex="#C6BFA3" name="Classic Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/classic-gray-oc-23" /> — The most-specified true mid-grays. Repose has more brown; Classic Gray reads slightly cooler. Both are reliable in any direction of natural light.
+          <Swatch hex="#C2BFB8" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> ↔ <Swatch hex="#C6BFA3" name="Classic Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/classic-gray-1548" /> — The most-specified true mid-grays. Repose has more brown; Classic Gray reads slightly cooler. Both are reliable in any direction of natural light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#1F1F1F" name="Tricorn Black" brand="Sherwin-Williams" href="/colors/sherwin-williams/tricorn-black-6258" /> ↔ <Swatch hex="#2A2A28" name="Black Beauty" brand="Benjamin Moore" href="/colors/benjamin-moore/black-beauty-2128-10" /> — The reliable blacks for trim, doors, and accent walls. Tricorn is a true neutral black; Black Beauty has the faintest blue cast that designers prize for sophistication.
@@ -3216,7 +3216,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#C2C5B4" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — barely green, almost gray. This whisper of color adapts to changing light without ever looking wrong. LRV 49.3.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A8B5A0" name="Crystalline" brand="Sherwin-Williams" href="/colors/sherwin-williams/crystalline-6642" /> — a slightly cooler sage that stays crisp in morning sun and turns moody-sophisticated in the afternoon. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link> for more.
+          <Swatch hex="#A8B5A0" name="Crystalline" brand="Sherwin-Williams" href="/colors/sherwin-williams/crystalline-9691" /> — a slightly cooler sage that stays crisp in morning sun and turns moody-sophisticated in the afternoon. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Whites</h2>
@@ -3362,7 +3362,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#D8E1E2" name="Iceberg" brand="Benjamin Moore" href="/colors/benjamin-moore/iceberg-2122-50" /> — 2122-50, LRV 65. A pale icy blue. Best for north-facing bathrooms and powder rooms where you want a hint of color without committing to a deep blue. Pairs naturally with white subway tile, polished nickel, and bright white trim.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E5EDED" name="Constellation" brand="Sherwin-Williams" href="/colors/sherwin-williams/constellation-6532" /> — SW 6532, LRV 70. Nearly white with a subtle blue cast. Reads as &ldquo;white with a hint of blue&rdquo; in most lighting. Ideal for primary bedrooms in south-facing homes, where warm sunlight balances the cool undertone.
+          <Swatch hex="#C3DFE8" name="Soar" brand="Sherwin-Williams" href="/colors/sherwin-williams/soar-6799" /> — SW 6799, LRV 70. Nearly white with a subtle blue cast. Reads as &ldquo;white with a hint of blue&rdquo; in most lighting. Ideal for primary bedrooms in south-facing homes, where warm sunlight balances the cool undertone.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D7DDDD" name="Misty" brand="Sherwin-Williams" href="/colors/sherwin-williams/misty-6232" /> — SW 6232, LRV 64. A pale blue-gray that reads more atmospheric than colorful. Works exceptionally well on ceilings — adds dimension without competing with wall colors.
@@ -3370,7 +3370,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Blue Paint by Room</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Bedrooms.</strong> Aim for LRV 45-65 for primary bedrooms. Quiet Moments, Sleepy Blue, and Indigo Batik (slightly darker, more sophisticated) are top picks. For kids&apos; rooms and nurseries, go higher LRV (Iceberg, Constellation) to keep the room energizing without overstimulation. Read our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom paint colors guide</Link> for the full LRV-driven approach.
+          <strong>Bedrooms.</strong> Aim for LRV 45-65 for primary bedrooms. Quiet Moments, Sleepy Blue, and Indigo Batik (slightly darker, more sophisticated) are top picks. For kids&apos; rooms and nurseries, go higher LRV (Iceberg, Soar) to keep the room energizing without overstimulation. Read our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom paint colors guide</Link> for the full LRV-driven approach.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Kitchens (cabinets).</strong> Navy blues dominate. Hale Navy is the safe default for islands or lower cabinets, paired with white upper cabinets and brass or polished chrome hardware. For a more contemporary look, Naval (SW) provides slightly more saturation. Use Benjamin Moore Advance (waterborne alkyd) for cabinet durability — read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">SW vs BM brand comparison</Link> for the cabinet paint specifics.
