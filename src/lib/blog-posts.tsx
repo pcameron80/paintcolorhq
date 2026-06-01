@@ -55,6 +55,111 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 const blogPosts: BlogPost[] = [
   /* ──────────────── Post 0 (newest) ──────────────── */
   {
+    slug: "best-behr-paint-colors",
+    title: "The Best Behr Paint Colors for Every Room (2026)",
+    date: "2026-06-10",
+    author: "Philip Cameron",
+    excerpt:
+      "The best Behr paint colors by category — whites, greiges, grays, blues, and bold shades — each with its LRV and its closest Sherwin-Williams and Benjamin Moore match.",
+    coverColor: "#596D69",
+    coverImage: "/blog/best-behr-paint-colors.webp",
+    tags: ["Guide", "Behr", "Brand"],
+    faq: [
+      {
+        question: "What are the best Behr paint colors?",
+        answer:
+          "Swiss Coffee (12) is Behr's best-selling warm white. Polar Bear (75), Whisper White (HDC-MD-08), and Ultra Pure White (PPU18-06) round out the whites; Sculptor Clay (PPU5-08) is the go-to greige and Silver City (MQ2-59) the reliable light gray. Watery (HDC-CT-26) leads the blues, and Hidden Gem (N430-6A) is the 2026 Color of the Year.",
+      },
+      {
+        question: "Where can I buy Behr paint?",
+        answer:
+          "Behr is sold exclusively at The Home Depot (and homedepot.com), and has been since 1978. It's owned by Masco and is known for strong value — GREENGUARD Gold certified, low/zero-VOC lines, and consistently high Consumer Reports ratings. That wide availability is part of why Behr is an easy brand to standardize a whole house on.",
+      },
+      {
+        question: "What is the Behr equivalent of a Sherwin-Williams or Benjamin Moore color?",
+        answer:
+          "Most popular national-brand colors have a close Behr match. Behr Polar Bear (75) is nearly identical to Benjamin Moore Chantilly Lace, and Behr Swiss Coffee (12) is very close to Benjamin Moore Cloud White. Each color in this guide links to its closest cross-brand match, and our compare tool gives the exact Delta E between any two.",
+      },
+      {
+        question: "What is Behr's best paint line?",
+        answer:
+          "Behr Dynasty is the top tier (most stain- and scuff-resistant, one-coat); Marquee is the one-coat-guaranteed line below it; Ultra is the durable mid-tier; Premium Plus is the value option. All carry the same colors — the line affects durability and price, not the color.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Behr is the most widely available premium paint in the country — sold exclusively at The Home Depot — which makes it an easy brand to standardize a whole house on. Its best-selling color is{" "}
+          <Swatch hex="#F3F2E6" name="Swiss Coffee" brand="Behr" href="/colors/behr/swiss-coffee-12" /> (12, LRV 84), a warm creamy white that has stayed popular for decades. Below are 13 of Behr&apos;s best colors by category, each with its exact LRV and its closest Sherwin-Williams and Benjamin Moore match — handy whether you&apos;re buying Behr or matching a Behr chip to another brand.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines &amp; Where to Find Behr</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Behr is a <Link href="/brands/behr" className="text-brand-blue hover:underline">Home Depot</Link> exclusive (since 1978) and is owned by Masco. It has a strong value reputation — GREENGUARD Gold certified, low- and zero-VOC lines, and consistently high Consumer Reports ratings. On the can, <strong>Dynasty</strong> is the top tier (most stain- and scuff-resistant), <strong>Marquee</strong> is the one-coat-guaranteed line, <strong>Ultra</strong> is the durable mid-tier, and <strong>Premium Plus</strong> is the value option. The line changes durability and price, not the color.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Behr Whites &amp; Off-Whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F3F2E6" name="Swiss Coffee" brand="Behr" href="/colors/behr/swiss-coffee-12" /> — 12, LRV 84. Behr&apos;s signature warm, creamy white — soft and enveloping rather than stark. It is a near-exact match for <Link href="/colors/benjamin-moore/cloud-white-cc-40" className="text-brand-blue hover:underline">Benjamin Moore Cloud White</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F8F9F3" name="Polar Bear" brand="Behr" href="/colors/behr/polar-bear-75" /> — 75, LRV 94. A bright, milky white that works on walls, trim, and ceilings. It is nearly identical to <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Benjamin Moore Chantilly Lace</Link> and <Link href="/colors/sherwin-williams/high-reflective-white-7757" className="text-brand-blue hover:underline">Sherwin-Williams High Reflective White</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F5F3ED" name="Whisper White" brand="Behr" href="/colors/behr/whisper-white-hdc-md-08" /> — HDC-MD-08, LRV 90. A warm off-white that sits between white and cream with no yellow — it pairs with almost anything. Closest matches are <Link href="/colors/sherwin-williams/white-snow-9541" className="text-brand-blue hover:underline">Sherwin-Williams White Snow</Link> and <Link href="/colors/benjamin-moore/gardenia-af-10" className="text-brand-blue hover:underline">Benjamin Moore Gardenia</Link>. Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F8F8F4" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-ppu18-06" /> — PPU18-06, LRV 94. Behr&apos;s flagship bright, neutral white and the default ceiling/trim white. It matches <Link href="/colors/sherwin-williams/ultrawhite-9500" className="text-brand-blue hover:underline">Sherwin-Williams UltraWhite</Link> and <Link href="/colors/benjamin-moore/distant-gray-2124-70" className="text-brand-blue hover:underline">Benjamin Moore Distant Gray</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Behr Warm Neutrals &amp; Greiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CCC3B6" name="Sculptor Clay" brand="Behr" href="/colors/behr/sculptor-clay-ppu5-08" /> — PPU5-08, LRV 55. Frequently called Behr&apos;s &ldquo;perfect greige&rdquo;: an earthy gray-beige that leans faintly green and grounds a whole-home palette. Closest matches are <Link href="/colors/benjamin-moore/smokey-taupe-983" className="text-brand-blue hover:underline">Benjamin Moore Smokey Taupe</Link> and <Link href="/colors/sherwin-williams/soft-suede-9577" className="text-brand-blue hover:underline">Sherwin-Williams Soft Suede</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CACEBF" name="Wheat Bread" brand="Behr" href="/colors/behr/wheat-bread-720c-3" /> — 720C-3, LRV 56. A soft greige with a gentle green cast that reads calm and organic. Its closest match is <Link href="/colors/sherwin-williams/frostwork-59" className="text-brand-blue hover:underline">Sherwin-Williams Frostwork</Link>, with <Link href="/colors/benjamin-moore/tea-light-cc-610" className="text-brand-blue hover:underline">Benjamin Moore Tea Light</Link> nearby.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Behr Grays</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C6C4C0" name="Silver City" brand="Behr" href="/colors/behr/silver-city-mq2-59" /> — MQ2-59, LRV 55. A near-neutral light gray with minimal undertone — a safe whole-home gray that pairs cleanly with white trim. It is a near-exact match for <Link href="/colors/sherwin-williams/fortitude-9562" className="text-brand-blue hover:underline">Sherwin-Williams Fortitude</Link> and <Link href="/colors/benjamin-moore/smoke-embers-1466" className="text-brand-blue hover:underline">Benjamin Moore Smoke Embers</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CCD6CA" name="Dolphin Fin" brand="Behr" href="/colors/behr/dolphin-fin-790c-3" /> — 790C-3, LRV 59. A soft, light gray with a whisper of green that stays gentle in most light. It is a near-exact match for <Link href="/colors/benjamin-moore/crystalline-af-485" className="text-brand-blue hover:underline">Benjamin Moore Crystalline</Link>. See the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Behr Blues</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#AFBEBE" name="Watery" brand="Behr" href="/colors/behr/watery-hdc-ct-26" /> — HDC-CT-26, LRV 50. A soft, calming spa-blue that brings a sense of openness to bathrooms and bedrooms. Closest matches are <Link href="/colors/sherwin-williams/rain-6219" className="text-brand-blue hover:underline">Sherwin-Williams Rain</Link> and <Link href="/colors/benjamin-moore/wedgewood-gray-hc-146" className="text-brand-blue hover:underline">Benjamin Moore Wedgewood Gray</Link>. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for more.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#334C59" name="Nocturne Blue" brand="Behr" href="/colors/behr/nocturne-blue-hdc-cl-28" /> — HDC-CL-28, LRV 7. An inky deep blue with real depth without reading black — excellent on a study, island, or accent wall. It is close to <Link href="/colors/sherwin-williams/seaworthy-7620" className="text-brand-blue hover:underline">Sherwin-Williams Seaworthy</Link> and <Link href="/colors/benjamin-moore/gentlemans-gray-2062-20" className="text-brand-blue hover:underline">Benjamin Moore Gentleman&apos;s Gray</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Behr Color of the Year: Hidden Gem</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> — N430-6A, LRV 14. Behr&apos;s 2026 Color of the Year: a smoky jade that sits on the balance between blue and green, grounded but alive. It works as a full-room color, on cabinetry, or behind a desk. Explore more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Behr Statement Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#4F5152" name="Cracked Pepper" brand="Behr" href="/colors/behr/cracked-pepper-ppu18-01" /> — PPU18-01, LRV 8. Behr&apos;s 2024 Color of the Year: a soft charcoal-black that grounds lighter palettes — ideal for trim, doors, cabinetry, and powder rooms. It is close to <Link href="/colors/benjamin-moore/cheating-heart-1617" className="text-brand-blue hover:underline">Benjamin Moore Cheating Heart</Link> and <Link href="/colors/sherwin-williams/peppercorn-7674" className="text-brand-blue hover:underline">Sherwin-Williams Peppercorn</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#744347" name="Rumors" brand="Behr" href="/colors/behr/rumors-mq1-15" /> — MQ1-15, LRV 8. Behr&apos;s 2025 Color of the Year: a deep ruby red for a dramatic dining room or a bold front door. Its closest match is <Link href="/colors/benjamin-moore/ruby-dusk-1267" className="text-brand-blue hover:underline">Benjamin Moore Ruby Dusk</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Match a Behr Color to Another Brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Behr only sells at Home Depot, so if your painter prefers another supplier — or you want the Behr version of a Sherwin-Williams or Benjamin Moore color — the matches above come from our cross-brand database, computed with the CIEDE2000 color-difference formula. Run it with the{" "}
+          <Link href="/match/behr/to/sherwin-williams" className="text-brand-blue hover:underline">Behr to Sherwin-Williams</Link>,{" "}
+          <Link href="/match/behr/to/benjamin-moore" className="text-brand-blue hover:underline">Behr to Benjamin Moore</Link>, and{" "}
+          <Link href="/match/behr/to/valspar" className="text-brand-blue hover:underline">Behr to Valspar</Link> conversion charts, or drop any two colors into our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link>. If you are weighing undertones first, our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to undertones</Link> covers the test that saves you from a wrong color on the wall.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "best-ppg-paint-colors",
     title: "The Best PPG Paint Colors for Every Room (2026)",
     date: "2026-06-07",
