@@ -55,6 +55,121 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 const blogPosts: BlogPost[] = [
   /* ──────────────── Post 0 (newest) ──────────────── */
   {
+    slug: "best-ppg-paint-colors",
+    title: "The Best PPG Paint Colors for Every Room (2026)",
+    date: "2026-06-07",
+    author: "Philip Cameron",
+    excerpt:
+      "The best PPG paint colors by category — whites, greiges, grays, blues, and greens — each with its LRV and its closest Sherwin-Williams and Benjamin Moore match.",
+    coverColor: "#3A5F7D",
+    coverImage: "/blog/best-ppg-paint-colors.webp",
+    tags: ["Guide", "PPG", "Brand"],
+    faq: [
+      {
+        question: "What are the best PPG paint colors?",
+        answer:
+          "PPG's most popular neutral is Whiskers (1025-3), a warm greige. For whites, Commercial White (1025-1) is the clean pick and Antique White (1024-2) the warm cream. Gray Stone (1009-4) leads the true grays, Chinese Porcelain (1160-6) is the signature deep blue, and Secret Safari (1110-4) is the 2026 Color of the Year.",
+      },
+      {
+        question: "Where can I buy PPG paint?",
+        answer:
+          "PPG colors are carried at The Home Depot (alongside Glidden), at PPG and Pittsburgh Paints stores, and through independent dealers. As of late 2024, PPG's US architectural-paint business operates as The Pittsburgh Paints Company — the PPG color names and codes are unchanged, so the colors below match what's on the shelf and in the fan deck.",
+      },
+      {
+        question: "Can I match a PPG color to Sherwin-Williams or Benjamin Moore?",
+        answer:
+          "Yes — most PPG colors have a near-identical match in the national brands. PPG Commercial White (1025-1) is a virtually exact match for Sherwin-Williams Pure White, and PPG Cavalry (1041-7) is close to Benjamin Moore Hale Navy. Each color in this guide links to its closest cross-brand match.",
+      },
+      {
+        question: "What is PPG's best paint line?",
+        answer:
+          "PPG UltraLast and Manor Hall are the premium interior lines (best durability and hide); Diamond is the washable mid-tier; Timeless is the value step-up. All carry the same colors — the line affects durability and price, not the color.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          PPG is one of the easiest premium paint brands to actually buy — its colors sit on the shelf at The Home Depot next to Glidden, plus PPG and Pittsburgh Paints stores. The most popular PPG neutral for whole-home use is{" "}
+          <Swatch hex="#D1CCC2" name="Whiskers" brand="PPG" href="/colors/ppg/whiskers-1025-3" /> (1025-3, LRV 61), a warm greige. Below are 15 of PPG&apos;s best colors by category, each with its exact LRV and its closest Sherwin-Williams, Benjamin Moore, and Behr match — useful whether you&apos;re buying PPG or trying to recreate a PPG color somewhere else.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines, Availability &amp; the Brand Name</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          PPG colors are sold at <Link href="/brands/ppg" className="text-brand-blue hover:underline">The Home Depot</Link> (along with Glidden, a PPG-family brand), at PPG / Pittsburgh Paints stores, and through independent dealers. One naming note: as of late 2024, PPG&apos;s US architectural-paint business operates as The Pittsburgh Paints Company — but the PPG color names and codes are unchanged, so everything below matches the current fan deck.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          On the can, <strong>UltraLast</strong> and <strong>Manor Hall</strong> are the premium interior lines (best hide and durability), <strong>Diamond</strong> is the washable mid-tier, and <strong>Timeless</strong> is the value step-up. The line changes durability and price, not the color, so every shade below is available across the range.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Whites &amp; Off-Whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDECE6" name="Commercial White" brand="PPG" href="/colors/ppg/commercial-white-1025-1" /> — 1025-1, LRV 84. A clean, balanced white with the faintest warm gray to keep it from feeling clinical. It is a virtually exact match for{" "}
+          <Swatch hex="#EDEDE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> (SW 7005) — one of the most-specified whites in the country — so this is the PPG route to that look. Also close to <Link href="/colors/behr/gallery-white-ppu12-12" className="text-brand-blue hover:underline">Behr Gallery White</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F1F2EE" name="Delicate White" brand="PPG" href="/colors/ppg/delicate-white-1001-1" /> — 1001-1, LRV 88. A bright, soft white for trim, ceilings, and modern rooms that want crisp contrast. Closest matches are <Link href="/colors/sherwin-williams/extra-white-7006" className="text-brand-blue hover:underline">Sherwin-Williams Extra White</Link> and <Link href="/colors/benjamin-moore/white-christmas-872" className="text-brand-blue hover:underline">Benjamin Moore White Christmas</Link>. Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E1DACA" name="Antique White" brand="PPG" href="/colors/ppg/antique-white-1024-2" /> — 1024-2, LRV 70. A warm, creamy classic for traditional and farmhouse rooms. It matches <Link href="/colors/benjamin-moore/white-sand-964" className="text-brand-blue hover:underline">Benjamin Moore White Sand</Link> and <Link href="/colors/behr/vintage-linen-ppu7-16" className="text-brand-blue hover:underline">Behr Vintage Linen</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Warm Neutrals &amp; Greiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D1CCC2" name="Whiskers" brand="PPG" href="/colors/ppg/whiskers-1025-3" /> — 1025-3, LRV 61. PPG&apos;s go-to warm greige: soft enough to read neutral, warm enough to play with oak and brass. It is nearly identical to <Link href="/colors/benjamin-moore/collingwood-859" className="text-brand-blue hover:underline">Benjamin Moore Collingwood</Link> and <Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D0D3D3" name="Elemental" brand="PPG" href="/colors/ppg/elemental-1011-2" /> — 1011-2, LRV 65. A soft, light gray that stays calm and neutral rather than cold. Its closest match is <Link href="/colors/behr/sterling-780e-3-2" className="text-brand-blue hover:underline">Behr Sterling</Link>, with <Link href="/colors/sherwin-williams/misty-6232" className="text-brand-blue hover:underline">Sherwin-Williams Misty</Link> nearby.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A79D8D" name="Stonehenge Greige" brand="PPG" href="/colors/ppg/stonehenge-greige-1024-5" /> — 1024-5, LRV 34. A deeper greige-taupe for cozy rooms, accent walls, and exteriors. It is a near-exact match for <Link href="/colors/behr/chic-taupe-n230-4" className="text-brand-blue hover:underline">Behr Chic Taupe</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Grays</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B7B9B5" name="Gray Stone" brand="PPG" href="/colors/ppg/gray-stone-1009-4" /> — 1009-4, LRV 48. A balanced, true mid-gray with no strong blue or green cast — the reliable whole-room gray. It is a near-exact match for <Link href="/colors/benjamin-moore/coventry-gray-hc-169" className="text-brand-blue hover:underline">Benjamin Moore Coventry Gray</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#ACADAD" name="Flagstone" brand="PPG" href="/colors/ppg/flagstone-1001-4" /> — 1001-4, LRV 42. A deeper neutral gray that works indoors and out, especially on exteriors and trim. Closest matches are <Link href="/colors/behr/soft-pebble-hdc-nt-27a" className="text-brand-blue hover:underline">Behr Soft Pebble</Link> and <Link href="/colors/sherwin-williams/gris-7659" className="text-brand-blue hover:underline">Sherwin-Williams Gris</Link>. See the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> for more.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#5C5D5D" name="Knight's Armor" brand="PPG" href="/colors/ppg/knights-armor-1001-6" /> — 1001-6, LRV 11. A deep charcoal for moody walls, islands, and cabinetry. It lands close to <Link href="/colors/benjamin-moore/ambler-slate-cw-685" className="text-brand-blue hover:underline">Benjamin Moore Ambler Slate</Link> and <Link href="/colors/sherwin-williams/forged-steel-9565" className="text-brand-blue hover:underline">Sherwin-Williams Forged Steel</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#89928A" name="Gray Heron" brand="PPG" href="/colors/ppg/gray-heron-1033-5" /> — 1033-5, LRV 28. A muted gray-green that reads sophisticated and quiet — good for studies and cabinetry. Closest matches are <Link href="/colors/behr/creek-bend-790f-4" className="text-brand-blue hover:underline">Behr Creek Bend</Link> and <Link href="/colors/benjamin-moore/rushing-river-1574" className="text-brand-blue hover:underline">Benjamin Moore Rushing River</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3C504F" name="Night Watch" brand="PPG" href="/colors/ppg/night-watch-1145-7" /> — 1145-7, LRV 7. PPG&apos;s well-known deep, moody green (a former Color of the Year) — dramatic on full walls or color-drenched rooms. It is close to <Link href="/colors/benjamin-moore/hidden-falls-714" className="text-brand-blue hover:underline">Benjamin Moore Hidden Falls</Link> and <Link href="/colors/behr/black-evergreen-mq6-44" className="text-brand-blue hover:underline">Behr Black Evergreen</Link>. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Blues</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3A5F7D" name="Chinese Porcelain" brand="PPG" href="/colors/ppg/chinese-porcelain-1160-6" /> — 1160-6, LRV 11. PPG&apos;s signature deep blue and a past Color of the Year: a rich, slightly grayed navy-blue for cabinetry, islands, and accent walls. Closest matches are <Link href="/colors/benjamin-moore/prussian-blue-cw-625" className="text-brand-blue hover:underline">Benjamin Moore Prussian Blue</Link> and <Link href="/colors/behr/mood-indigo-570f-6" className="text-brand-blue hover:underline">Behr Mood Indigo</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3F4C5A" name="Cavalry" brand="PPG" href="/colors/ppg/cavalry-1041-7" /> — 1041-7, LRV 7. A deep, slightly slate navy for a classic statement. It is close to <Link href="/colors/benjamin-moore/hale-navy-hc-154" className="text-brand-blue hover:underline">Benjamin Moore Hale Navy</Link> — the most-specified navy in the country — and <Link href="/colors/behr/club-navy-qe-56" className="text-brand-blue hover:underline">Behr Club Navy</Link>. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Statement Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#414040" name="Black Magic" brand="PPG" href="/colors/ppg/black-magic-1001-7" /> — 1001-7, LRV 5. A soft true black for front doors, trim, and cabinetry. It is a near-exact match for <Link href="/colors/benjamin-moore/black-jack-2133-20" className="text-brand-blue hover:underline">Benjamin Moore Black Jack</Link> and close to <Link href="/colors/sherwin-williams/iron-ore-7069" className="text-brand-blue hover:underline">Sherwin-Williams Iron Ore</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C6BB68" name="Secret Safari" brand="PPG" href="/colors/ppg/secret-safari-1110-4" /> — 1110-4, LRV 49. PPG&apos;s 2026 Color of the Year: a versatile yellow-green that brings warmth and personality to an accent wall or built-ins. Its closest match is <Link href="/colors/behr/dry-sea-grass-360f-4" className="text-brand-blue hover:underline">Behr Dry Sea Grass</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Match a PPG Color to Another Brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If your painter buys somewhere other than Home Depot, every match above comes from our cross-brand database, computed with the CIEDE2000 color-difference formula. Run it yourself with the{" "}
+          <Link href="/match/ppg/to/sherwin-williams" className="text-brand-blue hover:underline">PPG to Sherwin-Williams</Link>,{" "}
+          <Link href="/match/ppg/to/benjamin-moore" className="text-brand-blue hover:underline">PPG to Benjamin Moore</Link>, and{" "}
+          <Link href="/match/ppg/to/behr" className="text-brand-blue hover:underline">PPG to Behr</Link> conversion charts, or drop any two colors into our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link>. If you are weighing undertones first, our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to undertones</Link> covers the test that saves you from a wrong color on the wall.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "best-dunn-edwards-paint-colors",
     title: "The Best Dunn-Edwards Paint Colors for Every Room (2026)",
     date: "2026-06-03",
