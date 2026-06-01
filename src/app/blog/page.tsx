@@ -7,6 +7,10 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { getAllPosts } from "@/lib/blog-posts";
 import { TagFilter } from "@/components/tag-filter";
 
+// ISR: re-render hourly so scheduled (future-dated) posts appear on their date
+// without a redeploy. See src/lib/blog-publish.ts.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Paint Color Blog — Guides, Trends & Color Theory",
   description:

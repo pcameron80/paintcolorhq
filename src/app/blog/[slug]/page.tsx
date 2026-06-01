@@ -11,6 +11,11 @@ import { TableOfContents } from "@/components/table-of-contents";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 import { PinterestSaveButton } from "@/components/pinterest-save-button";
 
+// ISR: re-render hourly so a scheduled post becomes reachable on its date
+// (and 404s before it). dynamicParams (default true) renders not-yet-prebuilt
+// slugs on demand once they go live. See src/lib/blog-publish.ts.
+export const revalidate = 3600;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }

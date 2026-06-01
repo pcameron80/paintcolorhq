@@ -73,6 +73,10 @@ auto-appears in the sitemap, related-posts, and the Pinterest **guide** drip lan
 - Philip reviews **voice / usefulness / topic fit / images** — NOT paint facts
   (those are verified in Stage 3).
 - Merge → post is live + becomes a Pinterest guide pin on the next drip.
+- **Scheduling:** set the post's `date` to a future day to pre-stock it. It stays
+  hidden from the live site, sitemap, and the pin drip until that date, then
+  reveals itself (within ~1h, via ISR) — no second merge needed. Reviewable on the
+  PR's Vercel preview by URL even while scheduled. See `src/lib/blog-publish.ts`.
 
 ---
 

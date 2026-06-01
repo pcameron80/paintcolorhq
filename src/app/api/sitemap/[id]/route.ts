@@ -4,6 +4,9 @@ import { getAllBlogSlugs, getPostBySlug } from "@/lib/blog-posts";
 import { inspirationPalettes } from "@/lib/palettes";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 
+// ISR: refresh hourly so a scheduled post enters its sitemap shard on its date.
+export const revalidate = 3600;
+
 const BASE_URL = "https://www.paintcolorhq.com";
 const COLORS_PER_SITEMAP = 5000;
 
