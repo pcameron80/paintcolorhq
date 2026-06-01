@@ -22,9 +22,11 @@ to the DB or a crawled primary source, and cut anything that isn't.
    target query (what ranks, "people also ask", angles to beat) and the relevant
    **official brand pages** for any factual claims (codes, COTY, brand facts).
 3. **DB pull** (the moat): for every color the post will name, fetch exact data —
-   `getColorBySlug(brand, slug)` → hex, LRV, undertone, color_family, color_number;
-   plus **cross-brand matches** (the closest match in each other brand + Delta-E).
-   This is what makes the post uniquely data-backed.
+   hex, LRV, undertone, color_family, color_number — plus **cross-brand matches**
+   (the closest match in each other brand + Delta-E). This is what makes the post
+   uniquely data-backed. Run:
+   `npm run research-colors -- --topic="..." --colors="brand/slug,brand/slug" --out=docs/superpowers/content/research/<topic>.md`
+   to produce the verified color table the writer drafts from.
 4. Output a **research brief**: validated facts (each with its source), the angle,
    an outline, and a verified color-data table the writer pulls from.
 
@@ -42,7 +44,9 @@ to the DB or a crawled primary source, and cut anything that isn't.
 Re-check the draft against sources, independent of the writer:
 - Every color code / LRV / undertone / family → matches the DB exactly.
 - "warmer/cooler/lighter than", COTY years, brand facts → matches a crawled source.
-- Every internal link resolves (color slugs exist, pages return 200).
+- Every internal link resolves: run `npm run verify-links -- --file=<draft path>`.
+  It confirms every color/family/brand/match link resolves against the DB and exits
+  non-zero on any 404 risk.
 - **Cut or soften any claim that can't be verified.** Flag residual uncertainty.
 
 ## Stage 4 — Voice + slop QA
@@ -77,7 +81,8 @@ Optimize `/brands/[slug]` pages for **"[brand] color chart"** + **"all [brand]
 colors"** (top branded-lookup queries they rank for but don't target).
 
 ## Automation notes
-- A small helper (`scripts/blog/research-colors.ts`) can dump the Stage-1 DB color
-  table (hex/LRV/undertone + cross-brand matches) for a list of slugs — build it
-  when first useful; it operationalizes both the data-moat and Stage-3 verification.
+- Built: `npm run research-colors` (Stage 1 DB color table — hex/LRV/undertone +
+  cross-brand matches) and `npm run verify-links` (Stage 3 link 404 gate). Pure
+  cores unit-tested via `npm run test:blog`. The hero/pin step is
+  `scripts/generate-blog-hero.ts` (Stage 5).
 - Per-post work runs inline with Claude; the human gate is the PR. Two posts/week.

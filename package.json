@@ -14,7 +14,10 @@
     "seed-matches": "tsx scripts/seed-matches.ts",
     "populate-undertones": "tsx scripts/populate-undertones.ts",
     "build-match-data": "tsx scripts/build-match-data.ts",
-    "test:pinterest": "node --import tsx --test scripts/pinterest/queue.test.ts"
+    "research-colors": "tsx scripts/blog/research-colors.ts",
+    "verify-links": "tsx scripts/blog/verify-links.ts",
+    "test:pinterest": "node --import tsx --test scripts/pinterest/queue.test.ts",
+    "test:blog": "node --import tsx --test scripts/blog/*.test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",
