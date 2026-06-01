@@ -54,6 +54,126 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 const blogPosts: BlogPost[] = [
   /* ──────────────── Post 0 (newest) ──────────────── */
   {
+    slug: "best-valspar-paint-colors",
+    title: "The Best Valspar Paint Colors for Every Room (2026)",
+    date: "2026-05-31",
+    author: "Philip Cameron",
+    excerpt:
+      "The best Valspar paint colors by category — whites, greiges, grays, blues, and greens — each with its LRV and its closest Sherwin-Williams and Benjamin Moore match.",
+    coverColor: "#99B6B3",
+    coverImage: "/blog/best-valspar-paint-colors.webp",
+    tags: ["Guide", "Valspar", "Brand"],
+    faq: [
+      {
+        question: "What are the best Valspar paint colors?",
+        answer:
+          "For a whole-house neutral, Valspar Heritage Gray (7007-24, LRV 60) is the standout — it's a near-exact match for Sherwin-Williams Agreeable Gray, the most popular paint color in the US, at Lowe's prices. For whites, Ultra White (7006-24) is the clean bright pick and Swiss Coffee (7002-16) the warm one. Renew Blue (8003-37D) and Sparkling Sage (5005-3B) lead the colors. All are stocked at Lowe's.",
+      },
+      {
+        question: "What is the Valspar equivalent of Agreeable Gray?",
+        answer:
+          "Valspar Heritage Gray (7007-24) is a virtually identical match for Sherwin-Williams Agreeable Gray (SW 7029) — both share the hex #D1CBC1 and an LRV of 60, a CIEDE2000 Delta E of essentially zero. If you love Agreeable Gray but buy paint at Lowe's, Heritage Gray is the color to ask for.",
+      },
+      {
+        question: "Where can I buy Valspar paint?",
+        answer:
+          "Valspar is sold primarily at Lowe's, plus independent paint retailers across the US. Note that Valspar uses two color-code systems — a Lowe's code (like 7006-24) and an independent-retailer code — so the same color can carry two numbers depending on where you buy it. Valspar has been owned by Sherwin-Williams since 2017.",
+      },
+      {
+        question: "What is Valspar's best paint line?",
+        answer:
+          "Valspar Reserve is the premium interior line (best coverage and fade resistance); Signature is the best-selling mid-tier line with built-in scuff resistance, and the one most homeowners should default to; Ultra is the budget option. All carry the same colors — the line affects durability and price, not the color itself.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best Valspar paint color for most homes is{" "}
+          <Swatch hex="#D1CBC1" name="Heritage Gray" brand="Valspar" href="/colors/valspar/heritage-gray-7007-24" /> (7007-24, LRV 60) — a warm greige that happens to be a near-exact match for Sherwin-Williams Agreeable Gray, the most-specified neutral in the country. That match is the theme of this guide: Valspar is sold almost entirely at Lowe&apos;s, so the practical question isn&apos;t just &ldquo;which Valspar color is good&rdquo; but &ldquo;which Valspar color gets me the look I&apos;ve seen in Sherwin-Williams or Benjamin Moore.&rdquo; Below are 15 of Valspar&apos;s best colors by category, each with its exact LRV and its closest cross-brand match from our database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines, Codes &amp; Where to Find Valspar</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Valspar has been owned by <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> since 2017, but it remains a distinct brand sold mainly at <Link href="/brands/valspar" className="text-brand-blue hover:underline">Lowe&apos;s</Link> and at independent paint dealers. One quirk to know: Valspar runs two color-code systems — a Lowe&apos;s code (like 7006-24) and a separate independent-retailer code — so the same color can show up under two different numbers. Match by name and chip, not just the number.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          On the can, there are three interior tiers. <strong>Signature</strong> is the best-selling mid-tier line with built-in scuff resistance — the sensible default for most rooms. <strong>Reserve</strong> is the premium line with the best coverage and fade resistance. <strong>Ultra</strong> is the budget option for rentals, ceilings, and low-traffic spaces. The line changes durability and price, not the color, so every shade below is available across all three.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Whites &amp; Off-Whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F6F7F4" name="Ultra White" brand="Valspar" href="/colors/valspar/ultra-white-7006-24" /> — 7006-24, LRV 93. Valspar&apos;s clean, bright benchmark white with no obvious undertone. Use it for trim, ceilings, and modern rooms that want crisp contrast. Its closest match across brands is <Link href="/colors/sherwin-williams/ultrawhite-9500" className="text-brand-blue hover:underline">Sherwin-Williams UltraWhite</Link>, with <Link href="/colors/benjamin-moore/distant-gray-2124-70" className="text-brand-blue hover:underline">Benjamin Moore Distant Gray</Link> and <Link href="/colors/behr/ultra-pure-white-ppu18-06" className="text-brand-blue hover:underline">Behr Ultra Pure White</Link> nearly as close — so this is an easy color to source anywhere.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F2F0EA" name="Swiss Coffee" brand="Valspar" href="/colors/valspar/swiss-coffee-7002-16" /> — 7002-16, LRV 87. The warm, soft white for walls that should feel inviting rather than stark. It is a near-exact match for <Link href="/colors/benjamin-moore/alabaster-876" className="text-brand-blue hover:underline">Benjamin Moore Alabaster</Link> (and <Link href="/colors/behr/whisper-white-hdc-md-08" className="text-brand-blue hover:underline">Behr Whisper White</Link>) — useful, because Alabaster is one of the most popular warm whites in the country and this is the Lowe&apos;s route to the same look.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#F1EEE4" name="Dove White" brand="Valspar" href="/colors/valspar/dove-white-7002-7" /> — 7002-7, LRV 86. A soft creamy white that sits between Ultra White and a true off-white. It matches <Link href="/colors/ppg/atrium-white-1020-1" className="text-brand-blue hover:underline">PPG Atrium White</Link> almost exactly and lands close to <Link href="/colors/benjamin-moore/dune-white-968" className="text-brand-blue hover:underline">Benjamin Moore Dune White</Link>. Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Warm Neutrals &amp; Greiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D1CBC1" name="Heritage Gray" brand="Valspar" href="/colors/valspar/heritage-gray-7007-24" /> — 7007-24, LRV 60. The headline pick. Heritage Gray is a virtually identical match for{" "}
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029) — same hex, same LRV, a Delta E of essentially zero. If you have been sold on Agreeable Gray but buy your paint at Lowe&apos;s, this is the color. It works in nearly any direction of natural light, which is exactly why Agreeable Gray became the default whole-house neutral.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E6DECF" name="Cream in my Coffee" brand="Valspar" href="/colors/valspar/cream-in-my-coffee-3003-10c" /> — 3003-10C, LRV 74. A warm, creamy greige for living rooms and bedrooms that want softness without going beige. It matches <Link href="/colors/benjamin-moore/sonnet-af-55" className="text-brand-blue hover:underline">Benjamin Moore Sonnet</Link> closely and pairs naturally with white trim and warm wood.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#DAD4C8" name="Warm Putty" brand="Valspar" href="/colors/valspar/warm-putty-6006-1a" /> — 6006-1A, LRV 66. A balanced putty neutral that reads warm but never yellow. Its closest cross-brand neighbors include <Link href="/colors/sherwin-williams/limewash-9589" className="text-brand-blue hover:underline">Sherwin-Williams Limewash</Link> and <Link href="/colors/benjamin-moore/sea-salt-csp-95" className="text-brand-blue hover:underline">Benjamin Moore Sea Salt</Link>, making it a flexible whole-home color for open-plan spaces.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Grays</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CDCBC8" name="Filtered Shade" brand="Valspar" href="/colors/valspar/filtered-shade-4003-1b" /> — 4003-1B, LRV 60. A soft, near-neutral gray that stays calm instead of turning cold or blue. Good for bedrooms and hallways where you want gray without a steely cast. Closest matches include <Link href="/colors/sherwin-williams/zircon-7667" className="text-brand-blue hover:underline">Sherwin-Williams Zircon</Link> and <Link href="/colors/benjamin-moore/cement-gray-2112-60" className="text-brand-blue hover:underline">Benjamin Moore Cement Gray</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#87837B" name="Mountain Smoke" brand="Valspar" href="/colors/valspar/mountain-smoke-6004-2b" /> — 6004-2B, LRV 23. A deep, warm griege-gray for moody accent walls, islands, and built-ins. It is a near-exact match for <Link href="/colors/benjamin-moore/tweed-coat-csp-85" className="text-brand-blue hover:underline">Benjamin Moore Tweed Coat</Link>. Explore more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CBD0C5" name="Sparkling Sage" brand="Valspar" href="/colors/valspar/sparkling-sage-5005-3b" /> — 5005-3B, LRV 62. One of Valspar&apos;s long-running best-sellers: a pale, gentle sage that pairs with reclaimed wood and white trim. It matches <Link href="/colors/behr/shy-green-mq3-48" className="text-brand-blue hover:underline">Behr Shy Green</Link> closely and lands near <Link href="/colors/sherwin-williams/frostwork-59" className="text-brand-blue hover:underline">Sherwin-Williams Frostwork</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> — 8004-28F, LRV 21. Valspar&apos;s 2026 Color of the Year (sold as Sage Slate at independent retailers): a restorative green-gray for a serene, grounded room. Its closest cross-brand match is <Link href="/colors/sherwin-williams/dried-thyme-6186" className="text-brand-blue hover:underline">Sherwin-Williams Dried Thyme</Link>. See how it compares to the rest of the field in our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Blues</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#A0B0B1" name="Blue Arrow" brand="Valspar" href="/colors/valspar/blue-arrow-5001-3c" /> — 5001-3C, LRV 42. A soft, cooled-down blue-gray with a coastal feel — calm enough for a full room. It is a near-exact match for <Link href="/colors/sherwin-williams/breezy-7616" className="text-brand-blue hover:underline">Sherwin-Williams Breezy</Link>. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for more.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#99B6B3" name="Renew Blue" brand="Valspar" href="/colors/valspar/renew-blue-8003-37d" /> — 8003-37D, LRV 44. Valspar&apos;s 2024 Color of the Year: a balanced blue with a grayed sea-green cast that reads spa-like in a bathroom or bedroom. Closest matches are <Link href="/colors/benjamin-moore/kensington-green-710" className="text-brand-blue hover:underline">Benjamin Moore Kensington Green</Link> and <Link href="/colors/behr/opal-silk-ppu12-08" className="text-brand-blue hover:underline">Behr Opal Silk</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3D5872" name="Indigo Cloth" brand="Valspar" href="/colors/valspar/indigo-cloth-4009-7" /> — 4009-7, LRV 9. A rich, saturated deep blue for cabinetry, islands, and dramatic accent walls. It lands close to <Link href="/colors/behr/velvet-rope-mq5-58" className="text-brand-blue hover:underline">Behr Velvet Rope</Link> and <Link href="/colors/benjamin-moore/new-york-state-of-mind-805" className="text-brand-blue hover:underline">Benjamin Moore New York State of Mind</Link> — a versatile navy alternative.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Statement Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#3F4043" name="Dark Kettle Black" brand="Valspar" href="/colors/valspar/dark-kettle-black-4011-2" /> — 4011-2, LRV 5. A soft, near-true black for front doors, trim, and cabinetry. Used in a low sheen it reads architectural rather than harsh. It is a near-exact match for <Link href="/colors/behr/totally-black-hdc-md-04" className="text-brand-blue hover:underline">Behr Totally Black</Link> and close to <Link href="/colors/benjamin-moore/black-jack-2133-20" className="text-brand-blue hover:underline">Benjamin Moore Black Jack</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#AE373F" name="Classic Red" brand="Valspar" href="/colors/valspar/classic-red-1009-2" /> — 1009-2, LRV 12. Valspar&apos;s iconic saturated red for a front door or a dining-room statement wall. Its closest cross-brand match is <Link href="/colors/ppg/red-gumball-1187-7" className="text-brand-blue hover:underline">PPG Red Gumball</Link>, with <Link href="/colors/benjamin-moore/lyons-red-cc-68" className="text-brand-blue hover:underline">Benjamin Moore Lyons Red</Link> close behind.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar Colors of the Year</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Valspar&apos;s recent Colors of the Year skew calm and nature-led: <strong>2024</strong> was <Swatch hex="#99B6B3" name="Renew Blue" brand="Valspar" href="/colors/valspar/renew-blue-8003-37d" /> (8003-37D), a grayed sea-green blue; <strong>2025</strong> was <Swatch hex="#0F456E" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" />, a deep blue with a hint of violet that works beautifully on trim and built-ins; and <strong>2026</strong> is <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> (8004-28F, sold as Sage Slate at independent retailers), a restorative green-gray.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Match a Valspar Color to Another Brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Because Valspar is Lowe&apos;s-only, the most common question we see is the reverse of this guide: someone has a Valspar chip and needs the Sherwin-Williams, Benjamin Moore, or Behr equivalent (or vice versa) because their painter buys somewhere else. Every match above comes from our cross-brand database, computed with the CIEDE2000 color-difference formula. To run it yourself, see the{" "}
+          <Link href="/match/valspar/to/sherwin-williams" className="text-brand-blue hover:underline">Valspar to Sherwin-Williams</Link>,{" "}
+          <Link href="/match/valspar/to/benjamin-moore" className="text-brand-blue hover:underline">Valspar to Benjamin Moore</Link>, and{" "}
+          <Link href="/match/valspar/to/behr" className="text-brand-blue hover:underline">Valspar to Behr</Link> conversion charts, or drop any two colors into our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see exactly how close they are. If you are weighing undertones before you commit, our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to undertones</Link> walks through the test that saves you from a wrong color on the wall.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "best-paint-colors-for-laundry-rooms",
     title: "The Best Paint Colors for Laundry Rooms (12 Picks That Actually Work Under Cool LEDs)",
     date: "2026-04-29",

@@ -86,10 +86,10 @@ export function formatResearchMarkdown(topic: string, colors: ResearchColor[], g
     lines.push(`- URL: /colors/${c.brandSlug}/${c.colorSlug}`);
     if (c.matches.length > 0) {
       lines.push("");
-      lines.push("| Closest match in | Color | Hex | Delta E |");
-      lines.push("|---|---|---|---|");
+      lines.push("| Closest match in | Color | Hex | Delta E | Link |");
+      lines.push("|---|---|---|---|---|");
       for (const m of c.matches) {
-        lines.push(`| ${m.brandName} | ${m.name} | ${m.hex} | ${m.deltaE.toFixed(1)} |`);
+        lines.push(`| ${m.brandName} | ${m.name} | ${m.hex} | ${m.deltaE.toFixed(1)} | /colors/${m.brandSlug}/${m.slug} |`);
       }
     }
     lines.push("");
