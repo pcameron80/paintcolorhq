@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { getAllColorSlugs } from "@/lib/queries";
 import { getAllBlogSlugs } from "@/lib/blog-posts";
 
+// ISR: refresh hourly so a scheduled post enters the sitemap index on its date.
+export const revalidate = 3600;
+
 const BASE_URL = "https://www.paintcolorhq.com";
 const COLORS_PER_SITEMAP = 5000;
 

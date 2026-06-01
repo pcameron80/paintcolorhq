@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import Link from "next/link";
+import { isLive, canRender } from "./blog-publish";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -3538,24 +3539,27 @@ const blogPosts: BlogPost[] = [
 /*  Exports                                                            */
 /* ------------------------------------------------------------------ */
 
-/** All posts, newest first */
+/** All published posts, newest first. Excludes future-dated (scheduled) posts. */
 export function getAllPosts(): BlogPost[] {
-  return [...blogPosts].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return [...blogPosts]
+    .filter((p) => isLive(p.date))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-/** Single post by slug */
+/** Single post by slug. Scheduled (future-dated) posts return undefined on
+ *  production — so the page 404s — but render on preview/dev for review. */
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
+  const post = blogPosts.find((p) => p.slug === slug);
+  return post && canRender(post.date) ? post : undefined;
 }
 
-/** All slugs — for generateStaticParams and sitemap. Excludes noindexed posts. */
+/** All slugs — for generateStaticParams and sitemap. Excludes noindexed and
+ *  not-yet-published (future-dated) posts. */
 export function getAllBlogSlugs(): string[] {
-  return blogPosts.filter((p) => !p.noindex).map((p) => p.slug);
+  return blogPosts.filter((p) => !p.noindex && isLive(p.date)).map((p) => p.slug);
 }
 
-/** Related posts: same-tag posts excluding the current one, newest first */
+/** Related posts: same-tag published posts excluding the current one, newest first */
 export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
   const current = blogPosts.find((p) => p.slug === slug);
   if (!current) return [];
@@ -3564,7 +3568,7 @@ export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
 
   // Score each post by number of shared tags
   const scored = blogPosts
-    .filter((p) => p.slug !== slug)
+    .filter((p) => p.slug !== slug && isLive(p.date))
     .map((p) => ({
       post: p,
       shared: p.tags.filter((t) => currentTags.has(t)).length,
@@ -3591,6 +3595,7 @@ export function getPostsByBrand(brandName: string, limit = 3): BlogPost[] {
   const terms = [lower, ...(aliases[lower] ?? [])];
 
   const matches = blogPosts.filter((p) => {
+    if (!isLive(p.date)) return false;
     const searchable = `${p.title} ${p.excerpt} ${p.tags.join(" ")}`.toLowerCase();
     return terms.some((t) => searchable.includes(t));
   });
