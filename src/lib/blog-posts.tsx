@@ -56,7 +56,7 @@ const blogPosts: BlogPost[] = [
   {
     slug: "best-dunn-edwards-paint-colors",
     title: "The Best Dunn-Edwards Paint Colors for Every Room (2026)",
-    date: "2026-05-31",
+    date: "2026-06-03",
     author: "Philip Cameron",
     excerpt:
       "The best Dunn-Edwards paint colors by category — whites, greiges, grays, and blues — each with its LRV and its closest Sherwin-Williams, Benjamin Moore, and Behr match.",
