@@ -11,9 +11,15 @@
  * outbound clicks, so the drip's daily mix can shift toward the winner.
  *
  * Usage:
- *   npx tsx scripts/pinterest/analytics-by-type.ts            # last 30 days
+ *   npx tsx scripts/pinterest/analytics-by-type.ts            # last 30 days → stdout
  *   npx tsx scripts/pinterest/analytics-by-type.ts --days=7
  *   npx tsx scripts/pinterest/analytics-by-type.ts --start=2026-05-27 --end=2026-06-02
+ *   npx tsx scripts/pinterest/analytics-by-type.ts --days=7 --email   # also email via Resend
+ *
+ * --email sends the report through Resend IF RESEND_API_KEY is set in .env.local
+ * (to REPORT_EMAIL_TO, default philip@theorphanshands.org). If the key is absent
+ * it prints a notice and skips — the report still prints/returns for the caller
+ * (the launchd wrapper writes it to a file + macOS notification regardless).
  */
 import "../blog/load-env.ts"; // loads .env.local before anything reads process.env
 import * as path from "path";
@@ -32,11 +38,12 @@ let accessToken = process.env.PINTEREST_ACCESS_TOKEN!;
 const METRICS = ["IMPRESSION", "PIN_CLICK", "OUTBOUND_CLICK", "SAVE"] as const;
 type Metric = (typeof METRICS)[number];
 
+const args = process.argv.slice(2);
+const EMAIL = args.includes("--email");
 function arg(name: string): string | undefined {
-  return process.argv.slice(2).find((a) => a.startsWith(`--${name}=`))?.replace(`--${name}=`, "");
+  return args.find((a) => a.startsWith(`--${name}=`))?.replace(`--${name}=`, "");
 }
 
-/** YYYY-MM-DD, n days before today (UTC). */
 function daysAgo(n: number): string {
   const d = new Date();
   d.setUTCDate(d.getUTCDate() - n);
@@ -69,7 +76,6 @@ async function refreshAccessToken(): Promise<void> {
   const updates: Record<string, string> = { PINTEREST_ACCESS_TOKEN: data.access_token };
   if (data.refresh_token) updates.PINTEREST_REFRESH_TOKEN = data.refresh_token;
   upsertEnv(updates);
-  console.log("   ↻ refreshed access token");
 }
 
 async function pinterest(pathname: string, retry = true): Promise<any> {
@@ -84,11 +90,9 @@ async function pinterest(pathname: string, retry = true): Promise<any> {
   return data;
 }
 
-/** Sum a single pin's summary metrics over the window. Returns zeros on failure. */
 async function pinSummary(pinId: string, start: string, end: string): Promise<Record<Metric, number>> {
   const q = `start_date=${start}&end_date=${end}&metric_types=${METRICS.join(",")}`;
   const data = await pinterest(`/pins/${pinId}/analytics?${q}`);
-  // Pinterest shape: { all: { summary_metrics: {IMPRESSION: n, ...}, daily_metrics: [...] } }
   const all = data.all ?? data;
   const summary = all.summary_metrics ?? {};
   const out = {} as Record<Metric, number>;
@@ -96,12 +100,30 @@ async function pinSummary(pinId: string, start: string, end: string): Promise<Re
   return out;
 }
 
+/** Email the report via Resend (same provider the site uses). No-op if no key. */
+async function emailReport(body: string, window: string): Promise<string> {
+  const key = process.env.RESEND_API_KEY;
+  const to = process.env.REPORT_EMAIL_TO || "philip@theorphanshands.org";
+  if (!key) return "✉️  skipped email — no RESEND_API_KEY in .env.local (report saved + notified instead).";
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from: "Paint Color HQ <delivered@resend.dev>",
+      to,
+      subject: `PaintColorHQ — Pinterest reach by pin type (${window})`,
+      text: body,
+    }),
+  });
+  if (!res.ok) return `✉️  email failed (${res.status}): ${(await res.text()).slice(0, 160)}`;
+  return `✉️  emailed to ${to}`;
+}
+
 async function main() {
   const start = arg("start") ?? daysAgo(arg("days") ? Number(arg("days")) : 30);
   const end = arg("end") ?? daysAgo(1); // yesterday — today isn't finalized
 
   const keyToType = new Map<string, string>(QUEUE.map((p) => [p.key, p.type]));
-
   const published: Record<string, { pinId?: string; publishedAt?: string }> = JSON.parse(
     fs.readFileSync(PUBLISHED_PATH, "utf8"),
   );
@@ -109,19 +131,15 @@ async function main() {
     .filter(([, v]) => v.pinId)
     .map(([key, v]) => ({ key, pinId: v.pinId!, type: keyToType.get(key) ?? key.split(/[-_]/)[0] }));
 
-  console.log(`Pinterest analytics by type — ${start} → ${end} (${pins.length} published pins)\n`);
-
   type Agg = { pins: number; IMPRESSION: number; PIN_CLICK: number; OUTBOUND_CLICK: number; SAVE: number };
   const byType = new Map<string, Agg>();
   let failures = 0;
-
   for (const pin of pins) {
     let s: Record<Metric, number>;
     try {
       s = await pinSummary(pin.pinId, start, end);
-    } catch (e) {
+    } catch {
       failures++;
-      console.error(`  ⚠️  ${pin.key} (${pin.pinId}): ${e instanceof Error ? e.message : e}`);
       continue;
     }
     const a = byType.get(pin.type) ?? { pins: 0, IMPRESSION: 0, PIN_CLICK: 0, OUTBOUND_CLICK: 0, SAVE: 0 };
@@ -130,21 +148,36 @@ async function main() {
     byType.set(pin.type, a);
   }
 
-  const rows = [...byType.entries()].sort((x, y) => y[1].IMPRESSION - x[1].IMPRESSION);
+  // Build the report (returned as text so the caller can email/file it).
+  const L: string[] = [];
   const pad = (v: string | number, n: number) => String(v).padStart(n);
-  console.log(`${"type".padEnd(12)}${pad("pins", 5)}${pad("impr", 8)}${pad("pinClk", 8)}${pad("outClk", 8)}${pad("saves", 7)}${pad("out%", 8)}`);
-  console.log("-".repeat(56));
+  L.push(`Pinterest analytics by pin type — ${start} → ${end} (${pins.length} drip pins)`);
+  L.push("");
+  L.push(`${"type".padEnd(12)}${pad("pins", 5)}${pad("impr", 8)}${pad("pinClk", 8)}${pad("outClk", 8)}${pad("saves", 7)}${pad("out%", 8)}`);
+  L.push("-".repeat(56));
+  const rows = [...byType.entries()].sort((x, y) => y[1].IMPRESSION - x[1].IMPRESSION);
   const tot: Agg = { pins: 0, IMPRESSION: 0, PIN_CLICK: 0, OUTBOUND_CLICK: 0, SAVE: 0 };
   for (const [type, a] of rows) {
     const outRate = a.IMPRESSION ? ((a.OUTBOUND_CLICK / a.IMPRESSION) * 100).toFixed(2) : "0.00";
-    console.log(`${type.padEnd(12)}${pad(a.pins, 5)}${pad(a.IMPRESSION, 8)}${pad(a.PIN_CLICK, 8)}${pad(a.OUTBOUND_CLICK, 8)}${pad(a.SAVE, 7)}${pad(outRate + "%", 8)}`);
-    tot.pins += a.pins; for (const m of METRICS) tot[m] += a[m];
+    L.push(`${type.padEnd(12)}${pad(a.pins, 5)}${pad(a.IMPRESSION, 8)}${pad(a.PIN_CLICK, 8)}${pad(a.OUTBOUND_CLICK, 8)}${pad(a.SAVE, 7)}${pad(outRate + "%", 8)}`);
+    tot.pins += a.pins;
+    for (const m of METRICS) tot[m] += a[m];
   }
-  console.log("-".repeat(56));
+  L.push("-".repeat(56));
   const totRate = tot.IMPRESSION ? ((tot.OUTBOUND_CLICK / tot.IMPRESSION) * 100).toFixed(2) : "0.00";
-  console.log(`${"TOTAL".padEnd(12)}${pad(tot.pins, 5)}${pad(tot.IMPRESSION, 8)}${pad(tot.PIN_CLICK, 8)}${pad(tot.OUTBOUND_CLICK, 8)}${pad(tot.SAVE, 7)}${pad(totRate + "%", 8)}`);
-  if (failures) console.log(`\n${failures} pin(s) failed to fetch (new pins may have no analytics yet).`);
-  console.log(`\nout% = outbound clicks ÷ impressions (the click-through-to-site rate — the lever to optimize).`);
+  L.push(`${"TOTAL".padEnd(12)}${pad(tot.pins, 5)}${pad(tot.IMPRESSION, 8)}${pad(tot.PIN_CLICK, 8)}${pad(tot.OUTBOUND_CLICK, 8)}${pad(tot.SAVE, 7)}${pad(totRate + "%", 8)}`);
+  if (failures) L.push(`\n${failures} pin(s) had no analytics yet (new pins).`);
+  L.push("");
+  L.push(`out% = outbound clicks ÷ impressions — the click-through-to-site rate (the lever to optimize).`);
+  L.push(`Note: these are the drip's own pins only; account-wide reach includes older/manual pins.`);
+
+  const report = L.join("\n");
+  console.log(report);
+
+  if (EMAIL) {
+    const status = await emailReport(report, `${start} → ${end}`);
+    console.log("\n" + status);
+  }
 }
 
 main().catch((e) => {
