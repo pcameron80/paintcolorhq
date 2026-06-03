@@ -76,3 +76,5 @@ scripts/drift/*.db-wal
 # Pinterest runtime state (pin IDs + drip log; not secrets, but runtime-only)
 scripts/pinterest/published*.json
 scripts/pinterest/drip.log
+scripts/pinterest/analytics.log
+scripts/pinterest/reports/
