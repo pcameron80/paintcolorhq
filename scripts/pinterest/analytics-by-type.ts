@@ -96,6 +96,7 @@ async function refreshAccessToken(): Promise<void> {
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Pinterest JSON shapes vary by endpoint
 async function pinterest(pathname: string, retry = true): Promise<any> {
   const res = await fetch(`${API}${pathname}`, { headers: { Authorization: `Bearer ${accessToken}` } });
   // Rate limited — wait (honor Retry-After) and retry a few times.
