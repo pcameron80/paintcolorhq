@@ -1,31 +1,34 @@
 /**
- * Pinterest analytics, broken down by PIN TYPE.
+ * Pinterest reach by PIN TYPE — across ALL owned pins on the account.
  *
- * Joins published.json (pinId + key) → the QUEUE's key→type map → per-pin
- * Pinterest analytics, and aggregates impressions / pin-clicks / outbound-clicks
- * / saves by type (swatch, guide, palette/room-scene, comparison). This is the
- * Pinterest-REACH view the cloud Monday digest can't produce (no API access in
- * the cloud agent) — the digest covers the GA4 site-traffic view via UTM campaign.
+ * Enumerates every owned pin (GET /v5/pins, paginated — old + manual + drip),
+ * buckets each by its BOARD (boards map 1:1 to our types: swatch / palette /
+ * guide / comparison; anything else → "other"), pulls per-pin analytics, and
+ * aggregates impressions / pin-clicks / outbound-clicks / saves by type. Also
+ * flags how many pins in each type came from the automated drip (published.json)
+ * and the drip's share of impressions — so you see total account reach AND the
+ * drip-tuning signal in one table.
  *
- * The decision it informs: which pin TYPE converts reach into engagement +
- * outbound clicks, so the drip's daily mix can shift toward the winner.
+ * (Third-party REPINS can't be included — Pinterest only exposes analytics for
+ * pins the account owns.)
+ *
+ * This is the Pinterest-reach view the cloud Monday GA4 digest can't produce.
  *
  * Usage:
  *   npx tsx scripts/pinterest/analytics-by-type.ts            # last 30 days → stdout
  *   npx tsx scripts/pinterest/analytics-by-type.ts --days=7
  *   npx tsx scripts/pinterest/analytics-by-type.ts --start=2026-05-27 --end=2026-06-02
- *   npx tsx scripts/pinterest/analytics-by-type.ts --days=7 --email   # also email via Resend
+ *   npx tsx scripts/pinterest/analytics-by-type.ts --days=7 --email   # styled HTML via Resend
  *
- * --email sends a styled HTML report through Resend IF RESEND_API_KEY is set in
- * .env.local (to REPORT_EMAIL_TO, default philip@theorphanshands.org). If the key
- * is absent it prints a notice and skips — the plain-text report still prints for
- * the launchd wrapper, which writes it to a file + macOS notification regardless.
+ * --email sends through Resend IF RESEND_API_KEY is set in .env.local (to
+ * REPORT_EMAIL_TO, default philip@theorphanshands.org); otherwise it's a no-op
+ * and the launchd wrapper still writes the report file + a macOS notification.
  */
 import "../blog/load-env.ts"; // loads .env.local before anything reads process.env
 import * as path from "path";
 import * as fs from "fs";
 import { fileURLToPath } from "url";
-import { QUEUE } from "./queue.ts";
+import { BOARD_IDS, TYPE_FOR_BOARD } from "./queue.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ENV_PATH = path.resolve(__dirname, "../../.env.local");
@@ -38,13 +41,18 @@ let accessToken = process.env.PINTEREST_ACCESS_TOKEN!;
 const METRICS = ["IMPRESSION", "PIN_CLICK", "OUTBOUND_CLICK", "SAVE"] as const;
 type Metric = (typeof METRICS)[number];
 
-/** Friendly labels for the pin types stored in the queue. */
 const TYPE_LABEL: Record<string, string> = {
   swatch: "Swatch",
   guide: "Guide / blog",
   palette: "Room scene",
   comparison: "Comparison",
+  other: "Other / older",
 };
+
+// boardId → our pin type (invert BOARD_IDS, then TYPE_FOR_BOARD by board name).
+const BOARD_ID_TO_TYPE: Record<string, string> = Object.fromEntries(
+  Object.entries(BOARD_IDS).map(([name, id]) => [id, TYPE_FOR_BOARD[name as keyof typeof TYPE_FOR_BOARD]]),
+);
 
 const args = process.argv.slice(2);
 const EMAIL = args.includes("--email");
@@ -86,8 +94,16 @@ async function refreshAccessToken(): Promise<void> {
   upsertEnv(updates);
 }
 
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 async function pinterest(pathname: string, retry = true): Promise<any> {
   const res = await fetch(`${API}${pathname}`, { headers: { Authorization: `Bearer ${accessToken}` } });
+  // Rate limited — wait (honor Retry-After) and retry a few times.
+  if (res.status === 429 && retry) {
+    const wait = Number(res.headers.get("retry-after")) * 1000 || 3000;
+    await sleep(wait);
+    return pinterest(pathname, true);
+  }
   const data = await res.json().catch(() => ({}));
   const isScopeError = typeof data?.message === "string" && /scope|Missing:/i.test(data.message);
   if (res.status === 401 && retry && !isScopeError) {
@@ -96,6 +112,19 @@ async function pinterest(pathname: string, retry = true): Promise<any> {
   }
   if (!res.ok) throw new Error(`${res.status} ${pathname}: ${JSON.stringify(data).slice(0, 200)}`);
   return data;
+}
+
+/** Every owned pin: id + board_id, following pagination bookmarks. */
+async function fetchOwnedPins(): Promise<{ id: string; boardId: string }[]> {
+  const out: { id: string; boardId: string }[] = [];
+  let bookmark = "";
+  do {
+    const qs = `page_size=100&pin_fields=id,board_id${bookmark ? `&bookmark=${encodeURIComponent(bookmark)}` : ""}`;
+    const data = await pinterest(`/pins?${qs}`);
+    for (const it of data.items ?? []) out.push({ id: it.id, boardId: it.board_id ?? "" });
+    bookmark = data.bookmark ?? "";
+  } while (bookmark);
+  return out;
 }
 
 async function pinSummary(pinId: string, start: string, end: string): Promise<Record<Metric, number>> {
@@ -108,66 +137,74 @@ async function pinSummary(pinId: string, start: string, end: string): Promise<Re
   return out;
 }
 
-interface Agg { pins: number; IMPRESSION: number; PIN_CLICK: number; OUTBOUND_CLICK: number; SAVE: number }
+interface Agg { pins: number; dripPins: number; IMPRESSION: number; PIN_CLICK: number; OUTBOUND_CLICK: number; SAVE: number; dripImpr: number }
 interface Row extends Agg { type: string }
 
 const num = (n: number) => n.toLocaleString("en-US");
 const rate = (a: Agg) => (a.IMPRESSION ? ((a.OUTBOUND_CLICK / a.IMPRESSION) * 100).toFixed(2) : "0.00") + "%";
 
-/** Plain-text table — for the terminal and the saved report file. */
-function buildText(rows: Row[], tot: Agg, start: string, end: string, pinCount: number): string {
+/** Plain-text table — terminal + saved report file. */
+function buildText(rows: Row[], tot: Agg, start: string, end: string): string {
   const L: string[] = [];
   const pad = (v: string | number, n: number) => String(v).padStart(n);
-  L.push(`Pinterest reach by pin type — ${start} → ${end} (${pinCount} drip pins)`);
+  L.push(`Pinterest reach by pin type — ${start} → ${end}`);
+  L.push(`${tot.pins} owned pins (${tot.dripPins} from the drip)`);
   L.push("");
-  L.push(`${"type".padEnd(13)}${pad("pins", 5)}${pad("impr", 8)}${pad("pinClk", 8)}${pad("outClk", 8)}${pad("saves", 7)}${pad("out%", 8)}`);
-  L.push("-".repeat(57));
+  L.push(`${"type".padEnd(15)}${pad("pins", 5)}${pad("drip", 5)}${pad("impr", 8)}${pad("pinClk", 7)}${pad("outClk", 7)}${pad("saves", 6)}${pad("out%", 7)}`);
+  L.push("-".repeat(60));
   for (const r of rows) {
-    L.push(`${(TYPE_LABEL[r.type] ?? r.type).padEnd(13)}${pad(r.pins, 5)}${pad(r.IMPRESSION, 8)}${pad(r.PIN_CLICK, 8)}${pad(r.OUTBOUND_CLICK, 8)}${pad(r.SAVE, 7)}${pad(rate(r), 8)}`);
+    L.push(`${(TYPE_LABEL[r.type] ?? r.type).padEnd(15)}${pad(r.pins, 5)}${pad(r.dripPins, 5)}${pad(num(r.IMPRESSION), 8)}${pad(num(r.PIN_CLICK), 7)}${pad(num(r.OUTBOUND_CLICK), 7)}${pad(num(r.SAVE), 6)}${pad(rate(r), 7)}`);
   }
-  L.push("-".repeat(57));
-  L.push(`${"TOTAL".padEnd(13)}${pad(tot.pins, 5)}${pad(tot.IMPRESSION, 8)}${pad(tot.PIN_CLICK, 8)}${pad(tot.OUTBOUND_CLICK, 8)}${pad(tot.SAVE, 7)}${pad(rate(tot), 8)}`);
+  L.push("-".repeat(60));
+  L.push(`${"TOTAL".padEnd(15)}${pad(tot.pins, 5)}${pad(tot.dripPins, 5)}${pad(num(tot.IMPRESSION), 8)}${pad(num(tot.PIN_CLICK), 7)}${pad(num(tot.OUTBOUND_CLICK), 7)}${pad(num(tot.SAVE), 6)}${pad(rate(tot), 7)}`);
+  const share = tot.IMPRESSION ? ((tot.dripImpr / tot.IMPRESSION) * 100).toFixed(1) : "0.0";
   L.push("");
+  L.push(`Drip pins account for ${share}% of impressions (${num(tot.dripImpr)} of ${num(tot.IMPRESSION)}); the rest is older/manual pins.`);
   L.push(`out% = outbound clicks ÷ impressions — the click-through-to-site rate (the lever to optimize).`);
-  L.push(`Note: the drip's own pins only; account-wide reach also includes older/manual pins.`);
+  L.push(`Excludes third-party repins (analytics only available for owned pins).`);
   return L.join("\n");
 }
 
 /** Styled HTML table — inline CSS only (email clients strip <style>). */
-function buildHtml(rows: Row[], tot: Agg, start: string, end: string, pinCount: number): string {
+function buildHtml(rows: Row[], tot: Agg, start: string, end: string): string {
   const wrap = "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1a1a1a;";
-  const th = "padding:8px 12px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#ffffff;background:#2b2b2b;text-align:right;";
+  const th = "padding:8px 10px;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#ffffff;background:#2b2b2b;text-align:right;";
   const thL = th.replace("text-align:right;", "text-align:left;");
-  const td = "padding:8px 12px;font-size:14px;text-align:right;border-bottom:1px solid #ececec;font-variant-numeric:tabular-nums;";
-  const tdL = td.replace("text-align:right;", "text-align:left;font-weight:600;");
-  const cell = (r: Row | Agg, key: Metric) => `<td style="${td}">${num(r[key])}</td>`;
+  const td = "padding:8px 10px;font-size:14px;text-align:right;border-bottom:1px solid #ececec;font-variant-numeric:tabular-nums;";
+  const tdL = "padding:8px 10px;font-size:14px;text-align:left;font-weight:600;border-bottom:1px solid #ececec;";
+  const tot_ = "border-top:2px solid #2b2b2b;border-bottom:none;font-weight:700;";
 
-  const bodyRows = rows
-    .map((r, i) => {
-      const bg = i % 2 ? "background:#fafafa;" : "";
-      const label = TYPE_LABEL[r.type] ?? r.type;
-      return `<tr style="${bg}">
-        <td style="${tdL}${bg}">${label}</td>
-        <td style="${td}${bg}">${num(r.pins)}</td>
-        ${cell(r, "IMPRESSION")}${cell(r, "PIN_CLICK")}${cell(r, "OUTBOUND_CLICK")}${cell(r, "SAVE")}
-        <td style="${td}${bg}font-weight:600;color:#0a66c2;">${rate(r)}</td>
-      </tr>`;
-    })
-    .join("");
+  const row = (r: Row, i: number) => {
+    const bg = i % 2 ? "background:#fafafa;" : "";
+    const pinsCell = r.dripPins
+      ? `${num(r.pins)} <span style="color:#999;font-size:12px;">(${r.dripPins} drip)</span>`
+      : num(r.pins);
+    return `<tr>
+      <td style="${tdL}${bg}">${TYPE_LABEL[r.type] ?? r.type}</td>
+      <td style="${td}${bg}">${pinsCell}</td>
+      <td style="${td}${bg}">${num(r.IMPRESSION)}</td>
+      <td style="${td}${bg}">${num(r.PIN_CLICK)}</td>
+      <td style="${td}${bg}">${num(r.OUTBOUND_CLICK)}</td>
+      <td style="${td}${bg}">${num(r.SAVE)}</td>
+      <td style="${td}${bg}font-weight:600;color:#0a66c2;">${rate(r)}</td>
+    </tr>`;
+  };
 
   const totRow = `<tr>
-    <td style="${tdL}border-top:2px solid #2b2b2b;border-bottom:none;">Total</td>
-    <td style="${td}border-top:2px solid #2b2b2b;border-bottom:none;font-weight:700;">${num(tot.pins)}</td>
-    <td style="${td}border-top:2px solid #2b2b2b;border-bottom:none;font-weight:700;">${num(tot.IMPRESSION)}</td>
-    <td style="${td}border-top:2px solid #2b2b2b;border-bottom:none;font-weight:700;">${num(tot.PIN_CLICK)}</td>
-    <td style="${td}border-top:2px solid #2b2b2b;border-bottom:none;font-weight:700;">${num(tot.OUTBOUND_CLICK)}</td>
-    <td style="${td}border-top:2px solid #2b2b2b;border-bottom:none;font-weight:700;">${num(tot.SAVE)}</td>
-    <td style="${td}border-top:2px solid #2b2b2b;border-bottom:none;font-weight:700;color:#0a66c2;">${rate(tot)}</td>
+    <td style="${tdL}${tot_}">Total</td>
+    <td style="${td}${tot_}">${num(tot.pins)}${tot.dripPins ? ` <span style="color:#bbb;font-size:12px;">(${tot.dripPins} drip)</span>` : ""}</td>
+    <td style="${td}${tot_}">${num(tot.IMPRESSION)}</td>
+    <td style="${td}${tot_}">${num(tot.PIN_CLICK)}</td>
+    <td style="${td}${tot_}">${num(tot.OUTBOUND_CLICK)}</td>
+    <td style="${td}${tot_}">${num(tot.SAVE)}</td>
+    <td style="${td}${tot_}color:#0a66c2;">${rate(tot)}</td>
   </tr>`;
 
-  return `<div style="${wrap}max-width:640px;margin:0 auto;padding:8px 4px;">
+  const share = tot.IMPRESSION ? ((tot.dripImpr / tot.IMPRESSION) * 100).toFixed(1) : "0.0";
+
+  return `<div style="${wrap}max-width:680px;margin:0 auto;padding:8px 4px;">
     <h2 style="font-size:18px;margin:0 0 2px;">Pinterest reach by pin type</h2>
-    <p style="margin:0 0 16px;color:#666;font-size:13px;">${start} → ${end} · ${pinCount} drip pins</p>
+    <p style="margin:0 0 16px;color:#666;font-size:13px;">${start} → ${end} · ${num(tot.pins)} owned pins (${tot.dripPins} from the drip)</p>
     <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;border:1px solid #ececec;border-radius:8px;overflow:hidden;">
       <thead><tr>
         <th style="${thL}">Pin type</th>
@@ -178,13 +215,14 @@ function buildHtml(rows: Row[], tot: Agg, start: string, end: string, pinCount: 
         <th style="${th}">Saves</th>
         <th style="${th}">Out&nbsp;rate</th>
       </tr></thead>
-      <tbody>${bodyRows}${totRow}</tbody>
+      <tbody>${rows.map(row).join("")}${totRow}</tbody>
     </table>
-    <p style="margin:16px 0 4px;color:#666;font-size:12px;line-height:1.5;">
-      <strong>Out rate</strong> = outbound clicks ÷ impressions — the click-through-to-site rate, the lever to optimize.
+    <p style="margin:16px 0 4px;color:#444;font-size:12px;line-height:1.5;">
+      Drip pins account for <strong>${share}%</strong> of impressions; the rest is older / manual pins.
     </p>
     <p style="margin:0;color:#999;font-size:12px;line-height:1.5;">
-      The drip's own pins only; account-wide reach also includes older/manual pins. PaintColorHQ weekly.
+      <strong>Out rate</strong> = outbound clicks ÷ impressions (click-through-to-site, the lever to optimize).
+      Excludes third-party repins — analytics are only available for owned pins. PaintColorHQ weekly.
     </p>
   </div>`;
 }
@@ -212,41 +250,54 @@ async function main() {
   const start = arg("start") ?? daysAgo(arg("days") ? Number(arg("days")) : 30);
   const end = arg("end") ?? daysAgo(1); // yesterday — today isn't finalized
 
-  const keyToType = new Map<string, string>(QUEUE.map((p) => [p.key, p.type] as [string, string]));
-  const published: Record<string, { pinId?: string; publishedAt?: string }> = JSON.parse(
-    fs.readFileSync(PUBLISHED_PATH, "utf8"),
+  const dripIds = new Set<string>(
+    Object.values(JSON.parse(fs.readFileSync(PUBLISHED_PATH, "utf8")) as Record<string, { pinId?: string }>)
+      .map((v) => v.pinId)
+      .filter(Boolean) as string[],
   );
-  const pins = Object.entries(published)
-    .filter(([, v]) => v.pinId)
-    .map(([key, v]) => ({ key, pinId: v.pinId!, type: keyToType.get(key) ?? key.split(/[-_]/)[0] }));
+
+  const owned = await fetchOwnedPins();
+  console.error(`Fetching analytics for ${owned.length} owned pins…`);
 
   const byType = new Map<string, Agg>();
   let failures = 0;
-  for (const pin of pins) {
+  let firstError = "";
+  for (const pin of owned) {
     let s: Record<Metric, number>;
     try {
-      s = await pinSummary(pin.pinId, start, end);
-    } catch {
+      s = await pinSummary(pin.id, start, end);
+      await sleep(120); // gentle throttle — stay under Pinterest's per-pin rate limit
+    } catch (e) {
       failures++;
+      if (!firstError) firstError = e instanceof Error ? e.message : String(e);
       continue;
     }
-    const a = byType.get(pin.type) ?? { pins: 0, IMPRESSION: 0, PIN_CLICK: 0, OUTBOUND_CLICK: 0, SAVE: 0 };
+    const type = BOARD_ID_TO_TYPE[pin.boardId] ?? "other";
+    const a = byType.get(type) ?? { pins: 0, dripPins: 0, IMPRESSION: 0, PIN_CLICK: 0, OUTBOUND_CLICK: 0, SAVE: 0, dripImpr: 0 };
     a.pins += 1;
     for (const m of METRICS) a[m] += s[m];
-    byType.set(pin.type, a);
+    if (dripIds.has(pin.id)) {
+      a.dripPins += 1;
+      a.dripImpr += s.IMPRESSION;
+    }
+    byType.set(type, a);
   }
 
   const rows: Row[] = [...byType.entries()]
     .map(([type, a]) => ({ type, ...a }))
     .sort((x, y) => y.IMPRESSION - x.IMPRESSION);
-  const tot: Agg = { pins: 0, IMPRESSION: 0, PIN_CLICK: 0, OUTBOUND_CLICK: 0, SAVE: 0 };
-  for (const r of rows) { tot.pins += r.pins; for (const m of METRICS) tot[m] += r[m]; }
+  const tot: Agg = { pins: 0, dripPins: 0, IMPRESSION: 0, PIN_CLICK: 0, OUTBOUND_CLICK: 0, SAVE: 0, dripImpr: 0 };
+  for (const r of rows) {
+    tot.pins += r.pins; tot.dripPins += r.dripPins; tot.dripImpr += r.dripImpr;
+    for (const m of METRICS) tot[m] += r[m];
+  }
 
-  const text = buildText(rows, tot, start, end, pins.length) + (failures ? `\n(${failures} pin(s) had no analytics yet.)` : "");
+  if (failures) console.error(`${failures} pin(s) failed${firstError ? ` — first: ${firstError}` : ""}`);
+  const text = buildText(rows, tot, start, end) + (failures ? `\n(${failures} pin(s) had no analytics for this window.)` : "");
   console.log(text);
 
   if (EMAIL) {
-    const html = buildHtml(rows, tot, start, end, pins.length);
+    const html = buildHtml(rows, tot, start, end);
     console.log("\n" + (await emailReport(text, html, `${start} → ${end}`)));
   }
 }
