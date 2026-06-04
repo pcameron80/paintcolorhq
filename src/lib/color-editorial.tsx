@@ -1530,6 +1530,188 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
+  "sherwin-williams/smoky-blue-7604": (
+    <>
+      <p>
+        Smoky Blue is a rich, smoldering slate-blue at LRV 15 — deep and a little dusky, with enough gray
+        to feel sophisticated rather than bright. It&apos;s a strong mid-dark blue for cabinetry, a front
+        door, or an accent wall when you want moody color without going all the way to navy.
+      </p>
+      <p>
+        As a deeper blue it reads its richest with good light and deepens toward charcoal-blue in shadow.
+        It pairs beautifully with warm whites, brass, and natural wood. Behr Rush Hour and Benjamin Moore
+        Blue Spruce are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/moody-blue-6221": (
+    <>
+      <p>
+        Moody Blue lives up to the name — a deep, dusky mid-tone blue at LRV 27 with a slightly grayed,
+        teal-leaning character. It&apos;s lighter than a navy but darker than a soft powder blue, which makes
+        it a flexible statement color for a bedroom, a study, or cabinetry.
+      </p>
+      <p>
+        It shifts a touch greener or grayer with the light, so sample in place. It pairs with crisp and
+        warm whites, wood, and brass. Behr Raindance is its closest cross-brand match, with Benjamin Moore
+        Aegean Teal very similar.
+      </p>
+    </>
+  ),
+  "sherwin-williams/stardew-9138": (
+    <>
+      <p>
+        Stardew is a soft, light blue-gray at LRV 43 — a gentle, grayed blue that behaves more like a
+        cool neutral than a color. It brings a quiet, airy calm to bedrooms and bathrooms and reads as a
+        sophisticated gray with just a whisper of blue.
+      </p>
+      <p>
+        Its cool base reads slightly bluer in north light. It pairs with crisp whites and pale wood for a
+        serene, modern feel. Behr Flint Smoke and Benjamin Moore Nimbus Gray are its closest cross-brand
+        matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/underseas-6214": (
+    <>
+      <p>
+        Underseas is a deep, complex blue-green at LRV 25 — a grayed teal with real depth that reads
+        between blue and green depending on the light. It&apos;s a sophisticated choice for cabinetry, a
+        powder room, or an accent wall where you want immersive, watery color.
+      </p>
+      <p>
+        At this depth it needs light to show its blue-green character rather than going near-charcoal. It
+        pairs beautifully with brass, warm wood, and creamy whites. Benjamin Moore Garden Oasis is its
+        closest cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/acacia-haze-9132": (
+    <>
+      <p>
+        Acacia Haze is a muted, mid-tone green-gray at LRV 32 — a soft, dusty sage with enough gray to
+        feel grounded and enough depth to register as a color. It&apos;s in the same restful sage family as
+        Evergreen Fog but lighter and grayer, a calm choice for bedrooms, studies, and cabinetry.
+      </p>
+      <p>
+        Its grayed quality keeps it earthy rather than vivid, shifting a little greener or grayer with the
+        light. It pairs with creamy whites and warm wood. Benjamin Moore Heather Gray is its closest
+        cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/garden-gate-6167": (
+    <>
+      <p>
+        Garden Gate is a deep, earthy forest green at LRV 10 — a rich, slightly olive green with real
+        depth that anchors a room with drama. It&apos;s the choice for moody cabinetry, a library, or an
+        exterior, in the deep-green family with Pewter Green but warmer and more olive.
+      </p>
+      <p>
+        At this depth it reads clearly as green only with light, deepening toward near-black in shadow. It
+        pairs beautifully with brass, warm wood, and creamy whites. Benjamin Moore Aegean Olive is its
+        closest cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/mega-greige-7031": (
+    <>
+      <p>
+        Mega Greige is a deeper, mid-tone greige at LRV 37 — a warm gray-beige with genuine presence,
+        darker than the popular light greiges. It&apos;s the choice when you want a greige that grounds a
+        room and gives it definition rather than a pale, recede-into-the-background neutral.
+      </p>
+      <p>
+        At this depth it darkens noticeably in low light, so sample in place. It anchors a room against
+        white trim and pairs with warm wood. Behr Smoked Tan and Benjamin Moore Quicksand are its closest
+        cross-brand matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/natural-tan-7567": (
+    <>
+      <p>
+        Natural Tan is a soft, light tan-beige at LRV 65 — a warm, easygoing neutral with a gentle
+        earthiness that reads cozy without going yellow. It&apos;s a flexible whole-house color for homes
+        that lean warm, sitting a touch more tan than the gray-greiges.
+      </p>
+      <p>
+        Its warmth makes it forgiving in cooler rooms, though it can edge slightly gold in strong warm
+        light. It pairs with creamy whites and wood. Benjamin Moore Cedar Key is its near-identical match,
+        with Behr Roman Plaster close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/tony-taupe-7038": (
+    <>
+      <p>
+        Tony Taupe is a warm, mid-tone taupe-greige at LRV 37 — a deeper, browner neutral with a soft,
+        sophisticated warmth. It&apos;s the choice when you want a greige with real depth and a taupe lean
+        rather than a pale, cool one, grounding a room with cozy warmth.
+      </p>
+      <p>
+        At this depth it can go quite dark in low light, so check it in your space. It pairs with creamy
+        whites, wood, and warm metals. Behr Sierra Sand is a near-identical match, with Benjamin Moore
+        Cotswold close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/north-star-6246": (
+    <>
+      <p>
+        North Star is a light, cool blue-gray at LRV 62 — a soft gray with a clear blue whisper that
+        keeps a room feeling fresh and serene. It&apos;s a gentle, airy choice for bedrooms and bathrooms
+        where you want a hint of blue without committing to a real blue.
+      </p>
+      <p>
+        Its cool base reads slightly bluer in north light. It pairs with crisp whites and pale wood for a
+        calm, modern feel. Benjamin Moore Early Frost is its near-identical match, with Behr Chicago Fog
+        close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/latte-6108": (
+    <>
+      <p>
+        Latte is a warm, mid-tone tan at LRV 38 — a soft mocha-beige with genuine warmth and depth, like
+        its namesake. It&apos;s the choice for a cozy, grounded neutral that brings real warmth to a room,
+        deeper than the light tans and greiges.
+      </p>
+      <p>
+        At this depth it reads richer in warm light and can go quite dark in low light, so sample in
+        place. It pairs with creamy whites, wood, and brass. Behr Craft Brown is a near-identical
+        cross-brand match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/healing-aloe-1562": (
+    <>
+      <p>
+        Healing Aloe is a pale, soft green at LRV 70 — a gentle, barely-there sage-gray that reads almost
+        like a tinted neutral. Its restful, healing quality (the name fits) made it a favorite for
+        bedrooms, bathrooms, and nurseries where you want the calm of green without much color.
+      </p>
+      <p>
+        Its softness means it shifts subtly between green and gray with the light, reading nearly neutral
+        in some rooms. It pairs with crisp whites and warm wood. Its near-identical Sherwin-Williams match
+        is Kingston.
+      </p>
+    </>
+  ),
+  "benjamin-moore/wedgewood-gray-hc-146": (
+    <>
+      <p>
+        Wedgewood Gray is a soft, historic blue-gray at LRV 50 — a gentle mid-tone with a clear blue cast
+        that has a timeless, slightly coastal character. It has enough color to feel intentional while
+        still behaving like a calm, livable neutral, popular for bedrooms, bathrooms, and trim accents.
+      </p>
+      <p>
+        Its blue base reads stronger in cool light, so it&apos;s strongest with warm or balanced light. It
+        pairs with crisp whites and natural materials. Behr Sparrow is a near-identical match, with
+        Sherwin-Williams Rain close behind.
+      </p>
+    </>
+  ),
 };
 
 export function getColorEditorial(brandSlug: string, colorSlug: string): ReactNode | null {
