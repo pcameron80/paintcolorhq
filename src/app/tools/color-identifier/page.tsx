@@ -54,7 +54,7 @@ export default function ColorIdentifierPage() {
         <div className="max-w-7xl mx-auto">
           <span className="text-primary font-bold text-xs uppercase tracking-widest">Tool</span>
           <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
-            Photo Color Identifier
+            Photo Color Identifier <span className="text-primary">— Match Across 14 Brands</span>
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
             Upload any photo and click a spot to find the closest matching paint
