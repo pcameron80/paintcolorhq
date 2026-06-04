@@ -78,6 +78,15 @@ auto-appears in the sitemap, related-posts, and the Pinterest **guide** drip lan
   reveals itself (within ~1h, via ISR) — no second merge needed. Reviewable on the
   PR's Vercel preview by URL even while scheduled. See `src/lib/blog-publish.ts`.
 
+## Stage 8 — Ping IndexNow (after the post is live)
+- Once the post is **live** (merged with a current `date`, or the day a scheduled
+  `date` reveals), run `npm run indexnow-blog` — it submits only blog posts that
+  went live in the last 2 days to Bing/Yandex (use `--slug=<slug>` to target one,
+  or `--days=N` for a wider window; `--dry` to preview).
+- **Targeted on purpose.** This only ever pings a handful of NEW blog URLs. Do
+  **not** resurrect the whole-sitemap `/api/cron/indexnow` daily submission — it
+  floods the engines (killed for that reason). The script hard-caps at 25 URLs.
+
 ---
 
 ## Parallel quick win (separate from posts)
