@@ -1337,6 +1337,199 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
+  "sherwin-williams/creamy-7012": (
+    <>
+      <p>
+        Creamy is exactly what it sounds like — a soft, warm white at LRV 81 with a gentle cream tone
+        that reads cozy and inviting rather than stark. It&apos;s a go-to for trim, cabinets, and whole rooms
+        in homes that lean warm and traditional, the antidote to the cool, gallery-clean whites.
+      </p>
+      <p>
+        Its warmth glows under lamplight but can look soft beside a bright white, so keep the whites
+        consistent. It pairs naturally with wood, warm greiges, and brass. Benjamin Moore Collector&apos;s
+        Item is a near-identical cross-brand match, with Behr Ivory Palace close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/origami-white-7636": (
+    <>
+      <p>
+        Origami White is a soft, light off-white at LRV 76 with a barely-there greige warmth — clean
+        enough to feel fresh, soft enough to avoid the chill of a true white. It&apos;s a flexible whole-house
+        choice that works on walls and trim alike, especially in rooms with good light.
+      </p>
+      <p>
+        Its faint warmth keeps it livable but can show slightly beside a stark white. It&apos;s a
+        near-identical match for Benjamin Moore Classic Gray, which makes it a familiar soft neutral by
+        another name; Behr Weathered White is also very close.
+      </p>
+    </>
+  ),
+  "sherwin-williams/nuance-7049": (
+    <>
+      <p>
+        Nuance is a soft, warm light greige-white at LRV 74 — the subtle in-between for people who find a
+        true white too plain and a greige too gray. It reads as a gentle, barely-there warm neutral that
+        keeps a room feeling soft and open.
+      </p>
+      <p>
+        Like any light warm neutral it can look faintly creamy next to a stark white, so keep companions
+        warm. It&apos;s forgiving across most lighting. Benjamin Moore Classic Gray is its near-identical
+        cross-brand match, with Behr Coconut Ice close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/perfect-greige-6073": (
+    <>
+      <p>
+        Perfect Greige is a mid-tone greige at LRV 42 with a distinct taupe base — deeper and a touch
+        more purple-brown than the lighter greiges, which gives a room real warmth and grounding. It&apos;s
+        the choice when you want a greige with genuine presence rather than a pale wash.
+      </p>
+      <p>
+        That taupe-violet base can surface in cool light, so sample it against your trim. It anchors a
+        room well against white trim and pairs with warm wood. Benjamin Moore Evening Gown is its
+        near-identical match, with Behr Perfect Taupe close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/colonnade-gray-7641": (
+    <>
+      <p>
+        Colonnade Gray is a warm, mid-light greige at LRV 53 — a balanced gray-beige with a soft, neutral
+        warmth that makes it a reliable whole-house color. It sits comfortably between the lighter
+        greiges and the deeper ones, giving a room gentle definition without going dark.
+      </p>
+      <p>
+        It&apos;s forgiving across lighting, though it can show a faint green base in cool light. It pairs
+        with white trim and most wood tones. Behr Armadillo is a near-identical cross-brand match, with
+        Benjamin Moore Cumulus Cloud close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/big-chill-7648": (
+    <>
+      <p>
+        Big Chill is a light, cool gray at LRV 62 — a clean true gray with a soft blue base and none of
+        the greige warmth, ideal for a crisp, contemporary room. It&apos;s the choice when you want gray to
+        read as a fresh, airy gray rather than a warm greige.
+      </p>
+      <p>
+        Its cool base reads stronger in north light, so it&apos;s happiest with warm or balanced light. It
+        pairs with cool whites and modern finishes. Behr Mexican Silver is a near-identical cross-brand
+        match, with Benjamin Moore Barren Plain close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/inkwell-6992": (
+    <>
+      <p>
+        Inkwell is a soft, deep near-black at LRV 4 with a subtle blue-gray base that keeps it from
+        reading as a flat true black. It&apos;s the dramatic choice for doors, trim, cabinetry, and accent
+        walls when you want depth with a hint of cool character rather than a stark black.
+      </p>
+      <p>
+        Like any near-black it reads essentially black in shadow and shows its blue depth in good light.
+        It pairs crisply with cool whites or warms up with brass and wood. Behr Spade Black is its
+        closest cross-brand match, with Benjamin Moore After Midnight close.
+      </p>
+    </>
+  ),
+  "sherwin-williams/caviar-6990": (
+    <>
+      <p>
+        Caviar is a true, deep black at LRV 3 — a clean, neutral black without an obvious blue or brown
+        cast, which makes it the choice for sharp, graphic trim, doors, and cabinetry. Where Inkwell
+        leans cool, Caviar is about as dark and pure as Sherwin-Williams&apos; line goes.
+      </p>
+      <p>
+        On trim against light walls it reads crisp; on a whole surface it&apos;s a soft, deep black rather
+        than a void. It pairs with anything. Its near-identical cross-brand match is Benjamin Moore Black.
+      </p>
+    </>
+  ),
+  "sherwin-williams/indigo-batik-7602": (
+    <>
+      <p>
+        Indigo Batik is a deep, denim-toned blue at LRV 8 — a rich indigo with a slightly grayed,
+        washed-denim quality that feels more relaxed than a formal navy. It&apos;s a strong choice for
+        cabinetry, islands, and accent walls where you want depth with a softer, lived-in character.
+      </p>
+      <p>
+        As a deep blue it needs light to keep from going near-black, and it looks great with warm whites,
+        wood, and brass. Benjamin Moore Hudson Bay is its near-identical cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/retreat-6207": (
+    <>
+      <p>
+        Retreat is a deep, muted green-gray at LRV 21 — a grayed forest green with real depth that&apos;s
+        become popular for moody cabinetry, libraries, and accent walls. It&apos;s in the deep-green family
+        with Pewter Green but reads a touch cooler and grayer.
+      </p>
+      <p>
+        At this depth it needs light to read clearly as green rather than near-charcoal, and it pairs
+        beautifully with brass, warm wood, and creamy whites. Behr Cedar Forest is its closest
+        cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/softened-green-6177": (
+    <>
+      <p>
+        Softened Green is a gentle, mid-tone sage at LRV 49 — a calm, grayed green that reads as a restful
+        near-neutral rather than a vivid color. It&apos;s a close cousin of the popular Benjamin Moore October
+        Mist, making it the SW pick for that soft, dusty-sage look.
+      </p>
+      <p>
+        Its muted quality means it plays well with creamy whites and warm wood, shifting a little greener
+        or grayer with the light. Benjamin Moore Tree Moss is its near-identical cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/black-fox-7020": (
+    <>
+      <p>
+        Black Fox is a warm, deep charcoal-brown at LRV 7 — a near-black with a distinct brown warmth
+        that sits between a true charcoal and Urbane Bronze. It&apos;s a sophisticated choice for exteriors,
+        cabinetry, and accent walls where you want depth with an earthy, warm character.
+      </p>
+      <p>
+        In good light its warm brown-charcoal shows; in shadow it deepens toward black. It pairs with
+        warm whites, wood, and brass. Benjamin Moore Midsummer Night is its closest cross-brand match,
+        with Behr Espresso Beans close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/peppercorn-7674": (
+    <>
+      <p>
+        Peppercorn is a deep, true charcoal-gray at LRV 4 — a clean, slightly soft dark gray that reads
+        as a sophisticated near-black without a strong blue or brown cast. It&apos;s a versatile choice for
+        trim, doors, cabinetry, and exterior accents when you want charcoal rather than full black.
+      </p>
+      <p>
+        It holds its neutral character well across lighting, deepening toward black in shadow. It pairs
+        with crisp whites for contrast or warm metals for softness. It&apos;s a dead-on match for Benjamin
+        Moore Gray, with Behr Maximum Gray very close.
+      </p>
+    </>
+  ),
+  "benjamin-moore/boothbay-gray-hc-165": (
+    <>
+      <p>
+        Boothbay Gray is a mid-tone blue-gray at LRV 44 — a soft, coastal gray with a clear blue cast
+        that gives a room a calm, nautical character. It has enough depth to register as a color while
+        still behaving like a serene neutral, popular for exteriors, shutters, and tranquil interiors.
+      </p>
+      <p>
+        Its blue base reads stronger in cool light, so it&apos;s strongest with warm or balanced light, or
+        where you want the coastal feel deliberately. It pairs with crisp whites and natural materials.
+        Sherwin-Williams Mineral Deposit is its closest cross-brand match.
+      </p>
+    </>
+  ),
 };
 
 export function getColorEditorial(brandSlug: string, colorSlug: string): ReactNode | null {
