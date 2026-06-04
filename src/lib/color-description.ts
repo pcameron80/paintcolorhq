@@ -390,7 +390,42 @@ export function generateEditorialVerdict(color: ColorWithBrand): string {
   const useCase = getUseCaseFromLrv(lrv, props.lightness);
   const familyVerdict = getFamilyVerdict(color.name, family);
   const saturationCaveat = getSaturationCaveat(props.saturation, props.isAchromatic);
-  return `${familyVerdict} ${useCase}${saturationCaveat}`;
+  // "Avoid if" decision line — the one review-style element the color page
+  // lacked. Every ranking color review carries a "skip this if…" caveat;
+  // this gives the verdict that decision framing without duplicating the
+  // pairing/lighting detail already in the description below.
+  const avoidIf = getAvoidIfCaveat(family);
+  return `${familyVerdict} ${useCase}${saturationCaveat}${avoidIf}`;
+}
+
+// Per-family "avoid if / skip it if" caveat. Decision guidance, not spec or
+// pairing detail (those live in the description), so it adds review depth
+// without on-page duplication.
+function getAvoidIfCaveat(family: HueFamily): string {
+  switch (family) {
+    case "red":
+      return ` Skip it where you want a calm, restful feel — red raises visual energy, so it fights bedrooms and small home offices.`;
+    case "orange":
+      return ` Skip it in rooms that already run warm or get strong afternoon sun, where it can tip into an overpowering glow.`;
+    case "yellow":
+      return ` Skip it in north-facing rooms with cool light, where yellows can read acidic or greenish rather than cheerful.`;
+    case "green":
+      return ` Skip it only if your fixed finishes (flooring, stone, tile) already lean hard warm or cool enough to clash — otherwise it's one of the most forgiving families.`;
+    case "teal":
+      return ` Skip it if you want a cozy, enveloping room — teal reads cool and architectural rather than warm.`;
+    case "blue":
+      return ` Skip it in low-light north-facing rooms unless you want a deliberately cool, cocooning effect, since blue can read chilly there.`;
+    case "purple":
+      return ` Skip it unless you can sample in the actual room at several times of day — purple shifts more than any other family under changing light.`;
+    case "magenta":
+      return ` Skip it as a whole-room color in spaces meant to feel neutral or understated — it reads soft and personal, best as an accent.`;
+    case "achromatic-warm":
+      return ` Skip it if you want a crisp, cool-modern look, or in rooms with heavy north light that can pull its warmth slightly muddy.`;
+    case "achromatic-cool":
+      return ` Skip it if you want a cozy, warm room — cool neutrals can feel sterile under warm bulbs or in low light.`;
+    case "achromatic-neutral":
+      return ` Skip it only if you specifically want a clear warm or cool bias — a true neutral stays intentionally undecided, which is the whole point.`;
+  }
 }
 
 function getUseCaseFromLrv(lrv: number | null, lightness: LightnessCategory): string {
