@@ -9,7 +9,7 @@ import { BrandColorLibrary } from "@/components/brand-color-library";
 import { BrandColorLibraryFallback } from "@/components/brand-color-library-fallback";
 import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
 import { getBrandContent } from "@/lib/brand-content";
-import { POPULAR_COLOR_SLUGS } from "@/lib/popular-colors";
+import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
@@ -97,14 +97,25 @@ export default async function BrandPage({ params }: PageProps) {
     .filter((p) => p.brandSlug === brandSlug)
     .map((p) => p.colorSlug);
 
-  const [colors, totalCount, popularColors] = await Promise.all([
+  const [colors, totalCount, popularColors, allBrands] = await Promise.all([
     getColorsByBrand(brand.id, { limit: perPage, offset: 0 }),
     getColorsByBrandCount(brand.id),
     // Single batched query replaces N parallel getColorBySlug round-trips
     // (audit perf finding from H2.2 PR #54). Up to 11 fewer DB hits per
     // brand-page render.
     getColorsBySlugList(brandSlug, popularSlugsForBrand),
+    getAllBrands(),
   ]);
+
+  // Cross-brand match targets: drive off MAJOR_MATCH_BRANDS (the canonical list
+  // the /match routes + sitemap use) so every brand-pair listing has an internal
+  // link. A stale hardcoded list previously orphaned dunn-edwards & farrow-ball.
+  // Names resolved from the DB so display strings stay correct (e.g. "Farrow & Ball").
+  const matchTargets = MAJOR_MATCH_BRANDS
+    .filter((slug) => slug !== brandSlug)
+    .map((slug) => allBrands.find((b) => b.slug === slug))
+    .filter((b): b is NonNullable<typeof b> => Boolean(b))
+    .map((b) => ({ slug: b.slug, name: b.name }));
 
   const families: { name: string; hex: string; border?: boolean }[] = [
     { name: "white", hex: "#FFFFFF", border: true },
@@ -299,14 +310,7 @@ export default async function BrandPage({ params }: PageProps) {
 
       {/* Cross-Brand Matching */}
       {(() => {
-        const majorBrands = [
-          { slug: "sherwin-williams", name: "Sherwin-Williams" },
-          { slug: "benjamin-moore", name: "Benjamin Moore" },
-          { slug: "behr", name: "Behr" },
-          { slug: "ppg", name: "PPG" },
-          { slug: "valspar", name: "Valspar" },
-        ];
-        const targets = majorBrands.filter((b) => b.slug !== brandSlug).slice(0, 5);
+        const targets = matchTargets;
         if (targets.length === 0) return null;
         return (
           <section className="py-20 px-6 md:px-12 bg-surface">

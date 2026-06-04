@@ -229,7 +229,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           width: 1200,
           height: 630,
         },
-        author: { "@type": "Person", name: post.author, url: "https://www.paintcolorhq.com/authors/paint-color-hq-staff", jobTitle: "Founder, Paint Color HQ", worksFor: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" } },
+        author: { "@type": "Person", name: post.author, url: "https://www.paintcolorhq.com/authors/paint-color-hq-staff", jobTitle: "Founder, Paint Color HQ", sameAs: ["https://www.linkedin.com/in/philip-a-cameron/", "https://github.com/pcameron80"], worksFor: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" } },
         publisher: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com", logo: { "@type": "ImageObject", url: "https://www.paintcolorhq.com/logo.webp", width: 600, height: 60 } },
       }} />
       <JsonLd data={{
