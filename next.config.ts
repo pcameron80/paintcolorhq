@@ -22,10 +22,8 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: contentSecurityPolicy,
   },
-  {
-    key: "X-Frame-Options",
-    value: "SAMEORIGIN",
-  },
+  // X-Frame-Options removed — the CSP `frame-ancestors 'self'` directive is the
+  // modern equivalent and supersedes it in all current browsers.
   {
     key: "X-Content-Type-Options",
     value: "nosniff",
