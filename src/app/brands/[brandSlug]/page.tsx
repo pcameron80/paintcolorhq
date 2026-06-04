@@ -185,9 +185,9 @@ export default async function BrandPage({ params }: PageProps) {
               <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface">About {brand.name}</h2>
               <div className="bg-primary h-1 w-12 mt-4" />
             </div>
-            <div id="brand-intro" className="max-w-4xl text-on-surface-variant leading-relaxed">
+            <article id="brand-intro" className="max-w-4xl text-on-surface-variant leading-relaxed">
               {brandContent.intro}
-            </div>
+            </article>
             <ColorLinkEnhancer containerRef="brand-intro" />
           </div>
         </section>
@@ -300,9 +300,9 @@ export default async function BrandPage({ params }: PageProps) {
       {brandContent?.details && (
         <section className="py-16 px-6 md:px-12 bg-tertiary-fixed">
           <div className="max-w-7xl mx-auto">
-            <div id="brand-details" className="max-w-4xl text-on-surface-variant">
+            <article id="brand-details" className="max-w-4xl text-on-surface-variant">
               {brandContent.details}
-            </div>
+            </article>
             <ColorLinkEnhancer containerRef="brand-details" />
           </div>
         </section>

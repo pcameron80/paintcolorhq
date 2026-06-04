@@ -196,6 +196,24 @@ export default async function MatchPage({ params }: PageProps) {
               </Link>
             </div>
 
+            {/* Methodology — gives match pages real, extractable prose (they were
+                ~70 words to content/AI extractors) grounded in the actual pair. */}
+            <article id="match-methodology" className="max-w-3xl mb-12 text-on-surface-variant leading-relaxed">
+              <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-4">How this match is calculated</h2>
+              <p className="mb-4">
+                Every {sourceColor.brand.name} and {targetBrand.name} color in our database is converted to CIELAB coordinates, then scored with the CIEDE2000 formula — the current ISO standard for how different two colors look to the human eye. It corrects for the fact that the eye notices small shifts in some hue ranges far more than others, so it predicts real-world appearance more reliably than comparing hex codes directly.
+              </p>
+              <p>
+                {bestMatch.match_color.name} ranks as the closest {targetBrand.name} equivalent to {sourceColor.name} because it sits nearest in that perceptual space.{" "}
+                {Number(bestMatch.delta_e_score) < 2
+                  ? "The two are near-identical — most people won't read them as different colors once they're on a wall."
+                  : Number(bestMatch.delta_e_score) < 5
+                  ? "The two are very similar — the difference shows side by side but is rarely noticeable across a room."
+                  : "There is a visible difference between them, so treat this as the closest available option rather than an exact dupe."}{" "}
+                Sheen, lighting, and the existing wall color all shift perceived color, so order a sample of {bestMatch.match_color.name} and check it in your actual room before committing.
+              </p>
+            </article>
+
             {targetMatches.length > 1 && (
               <section className="mb-12">
                 <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-6">Other Close Matches in {targetBrand.name}</h2>
