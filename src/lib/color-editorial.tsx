@@ -1712,6 +1712,202 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
+  "sherwin-williams/incredible-white-7028": (
+    <>
+      <p>
+        Incredible White is a soft, warm white-greige at LRV 74 — light enough to read as a white in
+        bright rooms, warm enough to show a gentle greige in softer light. It&apos;s a flexible whole-house
+        color for people who want a barely-there warm neutral on walls and a soft white on trim.
+      </p>
+      <p>
+        Its faint greige warmth keeps it from feeling stark but can look soft beside a true white. It&apos;s
+        most flattering in natural light. Behr Castle Beige is its near-identical cross-brand match, with
+        Benjamin Moore White Winged Dove close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/spare-white-6203": (
+    <>
+      <p>
+        Spare White is a soft, light off-white at LRV 77 with a subtle warmth — clean and gentle, the
+        kind of white that frames a room without drawing attention. It works on walls and trim alike and
+        suits homes that want a soft, livable white over a crisp, cool one.
+      </p>
+      <p>
+        Its gentle warmth keeps it easy to live with, though it can read faintly soft next to a bright
+        white. Benjamin Moore Silver Satin is its near-identical cross-brand match, with Behr Spun Wool
+        very close.
+      </p>
+    </>
+  ),
+  "sherwin-williams/functional-gray-7024": (
+    <>
+      <p>
+        Functional Gray is a mid-tone greige at LRV 37 with a soft violet-taupe base — a deeper, moodier
+        neutral than the light greiges, with real warmth and presence. It&apos;s the choice when you want a
+        greige that grounds a room and reads as an intentional color rather than a pale backdrop.
+      </p>
+      <p>
+        That violet-taupe base can surface in cool light, so sample against your trim. At this depth it
+        darkens in low light. It pairs with white trim and warm wood. Behr Abbey Stone is its closest
+        cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/versatile-gray-6072": (
+    <>
+      <p>
+        Versatile Gray is a warm, mid-tone greige-taupe at LRV 48 — a balanced gray-brown that lives up to
+        its name, working across a wide range of rooms and lighting. It has enough warmth to feel cozy
+        and enough depth to give a room definition.
+      </p>
+      <p>
+        Like most warm greiges it can show a faint green or taupe base in cool light, so sample in place.
+        It pairs with white trim and most wood tones. Behr Smokestack is a near-identical match, with
+        Benjamin Moore Hazelwood close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/argos-7065": (
+    <>
+      <p>
+        Argos is a clean, cool mid-gray at LRV 51 — a true gray with a soft, balanced character that
+        avoids both the warmth of a greige and the chill of a steely blue-gray. It&apos;s the choice for a
+        no-nonsense, modern gray that gives a room gentle definition.
+      </p>
+      <p>
+        It holds its neutral character fairly well across lighting, leaning slightly cool in north light.
+        It pairs with white trim and both warm and cool accents. Behr Gull Gray is a near-identical
+        cross-brand match, with Benjamin Moore Coventry Gray close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/web-gray-7075": (
+    <>
+      <p>
+        Web Gray is a deep, cool charcoal-gray at LRV 13 with a subtle blue-green base — a mid-dark gray
+        with real depth that reads sophisticated rather than flat. It&apos;s a strong choice for exteriors,
+        cabinetry, and accent walls when you want charcoal with a hint of cool character.
+      </p>
+      <p>
+        At this depth it darkens toward near-black in low light and shows its cool base in good light. It
+        pairs with crisp whites and black hardware. Benjamin Moore Stormy Sky is its closest cross-brand
+        match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/krypton-6247": (
+    <>
+      <p>
+        Krypton is a light, cool blue-gray at LRV 52 — a soft gray with a clear blue base that gives a
+        room a calm, slightly architectural feel. It&apos;s the choice for a cool gray with a touch of blue,
+        a step toward color without committing to a real blue.
+      </p>
+      <p>
+        Its blue base reads stronger in north light, so it&apos;s happiest with warm or balanced light. It
+        pairs with cool whites and modern finishes. Behr Distant Star is its near-identical cross-brand
+        match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/jasper-6216": (
+    <>
+      <p>
+        Jasper is a very deep, earthy forest green at LRV 4 — a near-black green with rich, dramatic depth
+        that anchors a room. It&apos;s the choice for the moodiest green cabinetry, a library, or an
+        exterior, deeper and darker than Pewter Green or Garden Gate.
+      </p>
+      <p>
+        At this depth it reads as green only with good light, going essentially black in shadow. It pairs
+        strikingly with brass, warm wood, and creamy whites. Behr Stealth Jet is its closest cross-brand
+        match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/honest-blue-6520": (
+    <>
+      <p>
+        Honest Blue is a soft, mid-tone blue at LRV 55 — a gentle, slightly grayed blue that&apos;s clearly a
+        blue without being bright or saturated. It brings a calm, classic color to bedrooms, bathrooms,
+        and studies while staying easy to live with.
+      </p>
+      <p>
+        It reads a touch cooler in north light and softer under warm bulbs. It pairs with crisp whites and
+        natural wood. Behr English Hollyhock is its near-identical cross-brand match, with Benjamin Moore
+        Sea View close behind.
+      </p>
+    </>
+  ),
+  "benjamin-moore/mascarpone-af-20": (
+    <>
+      <p>
+        Mascarpone is a soft, creamy white at LRV 89 — bright and clean, but with a gentle warmth that
+        keeps it from the chill of a stark white. It&apos;s a bright white you can live with, working on walls,
+        trim, and cabinets without reading cold or clinical.
+      </p>
+      <p>
+        Its subtle warmth means it can look faintly creamy beside a true cool white, so keep the whites
+        consistent. It&apos;s a versatile all-rounder for bright rooms. Behr Spun Cotton is its near-identical
+        cross-brand match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/grant-beige-hc-83": (
+    <>
+      <p>
+        Grant Beige is a warm, classic greige-beige at LRV 57 — a soft, balanced neutral that helped
+        bridge the beige and greige eras. It has enough gray to feel current and enough warmth to feel
+        inviting, a reliable whole-house color for warm and transitional homes.
+      </p>
+      <p>
+        It can show a faint green or pink base depending on the light, so sample in place. It pairs with
+        warm and cool whites alike and most wood tones. Behr Yuma Sand is a near-identical match, and
+        Sherwin-Williams Cargo Pants is very close.
+      </p>
+    </>
+  ),
+  "benjamin-moore/nimbus-1465": (
+    <>
+      <p>
+        Nimbus is a soft, light gray at LRV 61 — a gentle, balanced gray with a faint warm-green
+        steadiness that keeps it from reading cold. It&apos;s an easygoing, livable gray for whole rooms, the
+        kind that stays quietly in the background.
+      </p>
+      <p>
+        It holds its neutral character well across lighting, leaning only slightly cool. It pairs with
+        white trim and both warm and cool accents. Its near-identical Sherwin-Williams match is On the
+        Rocks, with Behr Dolphin Fin close behind.
+      </p>
+    </>
+  ),
+  "benjamin-moore/cushing-green-hc-125": (
+    <>
+      <p>
+        Cushing Green is a deep, historic green at LRV 17 — a rich, slightly grayed forest green with a
+        timeless, colonial character. It has real depth for moody cabinetry, a study, or an exterior,
+        reading as a sophisticated dark green rather than a bright or olive one.
+      </p>
+      <p>
+        At this depth it needs light to show its green character clearly, deepening toward near-black in
+        shadow. It pairs beautifully with creamy whites, brass, and wood. Behr Pepper Mill is its closest
+        cross-brand match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/buxton-blue-hc-149": (
+    <>
+      <p>
+        Buxton Blue is a soft, historic blue with a green whisper at LRV 45 — a gentle, slightly grayed
+        blue-green with a vintage, coastal character. It has enough color to feel intentional while
+        staying calm and livable, popular for bedrooms, bathrooms, and exteriors.
+      </p>
+      <p>
+        It swings a touch between blue and green with the light, so sample in place. It pairs with crisp
+        whites and natural materials for a classic, collected look. Behr Harmonious is its near-identical
+        cross-brand match.
+      </p>
+    </>
+  ),
 };
 
 export function getColorEditorial(brandSlug: string, colorSlug: string): ReactNode | null {
