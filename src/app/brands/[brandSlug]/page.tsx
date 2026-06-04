@@ -36,7 +36,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { brandSlug } = await params;
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) return { title: "Brand Not Found" };
-  const count = brand.color_count.toLocaleString();
+  // Live count, not the stored brand.color_count (which is stale — undercounts
+  // the actual indexable color pages; the grid, sitemap, and schema all use the
+  // live count, so display + title must too).
+  const count = (await getColorsByBrandCount(brand.id)).toLocaleString();
   const url = `https://www.paintcolorhq.com/brands/${brandSlug}`;
   // Lead with "[Brand] Color Chart" + "all [count] colors" — the two big
   // under-captured Bing queries (the page already ranks pos 3-8 for them).
@@ -146,7 +149,7 @@ export default async function BrandPage({ params }: PageProps) {
   const brandFaqs: { q: string; a: string }[] = [
     {
       q: `How many ${brand.name} paint colors are there?`,
-      a: `${brand.name} has ${brand.color_count.toLocaleString()} paint colors catalogued on Paint Color HQ, each listed with its hex code, RGB values, LRV, and undertone.`,
+      a: `${brand.name} has ${totalCount.toLocaleString()} paint colors catalogued on Paint Color HQ, each listed with its hex code, RGB values, LRV, and undertone.`,
     },
     ...(popularColors.length >= 3
       ? [{
@@ -180,7 +183,7 @@ export default async function BrandPage({ params }: PageProps) {
           </nav>
 
           <span className="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold mb-4 block">
-            {brand.color_count.toLocaleString()} Colors
+            {totalCount.toLocaleString()} Colors
             {orgData?.foundingDate && ` \u00B7 Est. ${orgData.foundingDate}`}
             {orgData?.headquarters && ` \u00B7 ${orgData.headquarters}`}
           </span>
@@ -292,7 +295,7 @@ export default async function BrandPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto">
           <div className="mb-10">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface">
-              All {brand.color_count.toLocaleString()} {brand.name} Colors
+              All {totalCount.toLocaleString()} {brand.name} Colors
             </h2>
             <p className="mt-2 text-on-surface-variant max-w-2xl leading-relaxed">
               The complete {brand.name} color chart — every shade with its hex code, LRV, and undertone. Filter by family or search, and open any color for its cross-brand matches.
@@ -378,7 +381,7 @@ export default async function BrandPage({ params }: PageProps) {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "CollectionPage",
         name: `${brand.name} Color Chart`,
-        description: `The complete ${brand.name} color chart — all ${brand.color_count.toLocaleString()} ${brand.name} colors with hex codes, RGB values, LRV, and cross-brand matches.`,
+        description: `The complete ${brand.name} color chart — all ${totalCount.toLocaleString()} ${brand.name} colors with hex codes, RGB values, LRV, and cross-brand matches.`,
         url: `https://www.paintcolorhq.com/brands/${brand.slug}`,
         breadcrumb: { "@type": "BreadcrumbList", itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
