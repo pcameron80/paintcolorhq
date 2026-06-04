@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ColorSwatch } from "@/components/color-swatch";
 import { TrackPage } from "@/components/track-page";
+import { MatchColorSearch } from "@/components/match-color-search";
 import { getBrandBySlug, getTopCrossBrandMatches } from "@/lib/queries";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { getBrandPairIntro } from "@/lib/brand-pair-intros";
@@ -82,7 +83,14 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
             {getBrandPairIntro(sourceBrandSlug, targetBrandSlug) ??
               `Switching from ${sourceBrand.name} to ${targetBrand.name}? These are the closest matches between the two brands, ranked by how similar they actually look.`}
           </p>
-          <p className="text-sm text-outline">
+          <MatchColorSearch
+            sourceBrandSlug={sourceBrandSlug}
+            targetBrandSlug={targetBrandSlug}
+            sourceBrandName={sourceBrand.name}
+            targetBrandName={targetBrand.name}
+          />
+
+          <p className="mt-6 text-sm text-outline">
             Looking for{" "}
             <Link href={`/match/${targetBrandSlug}/to/${sourceBrandSlug}`} className="text-primary hover:underline underline-offset-4">
               {targetBrand.name} to {sourceBrand.name}
