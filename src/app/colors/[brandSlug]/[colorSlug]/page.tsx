@@ -13,6 +13,7 @@ import { PinterestSaveButton } from "@/components/pinterest-save-button";
 import { redirect } from "next/navigation";
 import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand, getMoreFromFamily } from "@/lib/queries";
 import { generateColorDescription, generateEditorialVerdict, generateMetaDescription } from "@/lib/color-description";
+import { getColorEditorial } from "@/lib/color-editorial";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
 import { TrackPage } from "@/components/track-page";
@@ -218,6 +219,8 @@ export default async function ColorPage({ params }: PageProps) {
   ]);
   const description = generateColorDescription(color, matches);
   const editorialVerdict = generateEditorialVerdict(color);
+  // Curated, hand-written review for high-demand colors (null for the long tail).
+  const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
   const harmonies = await resolveHarmonies(color.hex);
   const light = isLightColor(color.hex);
@@ -352,10 +355,20 @@ export default async function ColorPage({ params }: PageProps) {
           composes from hue family × LRV bucket × saturation band so it
           varies meaningfully across the corpus without per-color hand-writing. */}
       <section className="bg-surface-container-low border-b border-outline-variant/10">
-        <div className="max-w-4xl mx-auto px-6 md:px-12 py-10">
+        <article className="max-w-4xl mx-auto px-6 md:px-12 py-10">
           <p className="text-lg text-on-surface leading-relaxed">{editorialVerdict}</p>
-        </div>
+        </article>
       </section>
+
+      {/* Curated review — only on high-demand colors (null for the long tail). */}
+      {curatedEditorial && (
+        <section className="bg-surface border-b border-outline-variant/10">
+          <article className="max-w-4xl mx-auto px-6 md:px-12 py-12 space-y-4 text-on-surface-variant leading-relaxed">
+            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">More about {color.name}</h2>
+            {curatedEditorial}
+          </article>
+        </section>
+      )}
 
       {/* Technical Profile + Matches */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-24">
@@ -370,8 +383,10 @@ export default async function ColorPage({ params }: PageProps) {
                 <span className="text-on-surface">{color.name}</span>
               </nav>
               <div className="bg-surface-container-high h-1 w-12 mb-6" />
-              <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">{color.name} Technical Profile</h2>
-              <p className="text-on-surface-variant leading-relaxed mb-8">{description}</p>
+              <article>
+                <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">{color.name} Technical Profile</h2>
+                <p className="text-on-surface-variant leading-relaxed mb-8">{description}</p>
+              </article>
             </div>
             <div className="space-y-0">
               {[
