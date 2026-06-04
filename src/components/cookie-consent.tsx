@@ -78,26 +78,27 @@ export function CookieConsent() {
       )}
 
       {visible && (
-        <div className="fixed bottom-0 inset-x-0 z-[100] p-4 sm:p-6">
-          <div className="mx-auto max-w-2xl rounded-2xl border border-outline-variant/20 bg-surface-container-lowest p-5 shadow-xl sm:flex sm:items-center sm:gap-6">
-            <p className="text-sm text-on-surface-variant leading-relaxed sm:flex-1">
-              We use cookies for analytics and to improve your experience. See
-              our{" "}
+        <div className="fixed bottom-0 inset-x-0 z-[100] p-2 sm:p-6">
+          {/* Compact single-row bar on mobile so it doesn't cover CTAs / editorial
+              above the fold (audit visual finding). Roomier card on >= sm. */}
+          <div className="mx-auto flex max-w-2xl items-center gap-3 rounded-xl border border-outline-variant/20 bg-surface-container-lowest px-3 py-2.5 shadow-xl sm:gap-6 sm:rounded-2xl sm:p-5">
+            <p className="flex-1 text-xs leading-snug text-on-surface-variant sm:text-sm sm:leading-relaxed">
+              We use cookies for analytics.{" "}
               <a href="/privacy" className="text-primary underline">
                 Privacy Policy
               </a>
               .
             </p>
-            <div className="mt-4 flex gap-3 sm:mt-0 sm:shrink-0">
+            <div className="flex shrink-0 gap-2 sm:gap-3">
               <button
                 onClick={handleDecline}
-                className="rounded-lg px-4 py-2 text-sm font-medium text-on-surface-variant transition-colors hover:bg-surface-container"
+                className="rounded-lg px-3 py-1.5 text-xs font-medium text-on-surface-variant transition-colors hover:bg-surface-container sm:px-4 sm:py-2 sm:text-sm"
               >
                 Decline
               </button>
               <button
                 onClick={handleAccept}
-                className="rounded-lg bg-primary px-5 py-2 text-sm font-bold text-on-primary transition-colors hover:bg-primary/90"
+                className="rounded-lg bg-primary px-4 py-1.5 text-xs font-bold text-on-primary transition-colors hover:bg-primary/90 sm:px-5 sm:py-2 sm:text-sm"
               >
                 Accept
               </button>

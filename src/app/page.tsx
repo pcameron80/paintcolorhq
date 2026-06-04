@@ -401,6 +401,13 @@ export default async function Home() {
         logo: "https://www.paintcolorhq.com/logo.webp",
         description: "Paint Color HQ helps you discover, preview, and compare 23,000+ paint colors across 14 brands, then find your color in the brand you can buy. Cross-brand matches use the CIEDE2000 Delta E formula. Free, no signup.",
         sameAs: ["https://www.pinterest.com/paintcolorhq"],
+        founder: {
+          "@type": "Person",
+          name: "Philip Cameron",
+          url: "https://www.paintcolorhq.com/authors/paint-color-hq-staff",
+          jobTitle: "Founder, Paint Color HQ",
+          sameAs: ["https://www.linkedin.com/in/philip-a-cameron/", "https://github.com/pcameron80"],
+        },
         contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: "https://www.paintcolorhq.com/contact" },
       }} />
 
