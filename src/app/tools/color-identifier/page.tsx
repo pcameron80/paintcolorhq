@@ -7,7 +7,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 
 export const metadata: Metadata = {
-  title: "Photo Color Identifier - Find Paint Colors from Photos",
+  title: "Photo Color Identifier: Match to 14 Brands",
   description:
     "Upload a photo and click any spot to find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Free, instant, cross-brand results.",
   alternates: {
