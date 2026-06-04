@@ -533,6 +533,209 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
+  "sherwin-williams/evergreen-fog-9130": (
+    <>
+      <p>
+        Evergreen Fog is the color that signaled the shift away from gray — a soft, complex
+        sage that sits between green, gray, and blue, which is exactly why Sherwin-Williams named it a
+        Color of the Year. At LRV 30 it&apos;s a true mid-tone with real presence: enough depth to feel
+        intentional on cabinetry, an accent wall, or a whole moody room, without going dark.
+      </p>
+      <p>
+        Its complexity is the thing to respect — it reads greener in some light and grayer in others,
+        so sample it where it&apos;s going. It pairs beautifully with warm whites, brass, and natural wood.
+        Behr Hunters Hollow is a near-identical cross-brand match, with Benjamin Moore Storm Cloud Gray
+        close behind.
+      </p>
+    </>
+  ),
+  "benjamin-moore/october-mist-cc-550": (
+    <>
+      <p>
+        October Mist is Benjamin Moore&apos;s gently grayed sage — a 2022 Color of the Year that reads as a
+        calm, dusty green at LRV 47. It&apos;s soft enough to use across a whole room yet has enough body to
+        feel like a real color rather than a tinted neutral, which is the balance that made it a
+        designer favorite for bedrooms and quiet living spaces.
+      </p>
+      <p>
+        It leans muted rather than vivid, so it plays well with creamy whites, warm wood, and other
+        earthy tones. In cool light its gray side shows; in warm light the green warms up. Its
+        near-identical Sherwin-Williams match is Softened Green.
+      </p>
+    </>
+  ),
+  "benjamin-moore/saybrook-sage-hc-114": (
+    <>
+      <p>
+        Saybrook Sage is the classic, slightly deeper sage — a mid-tone muted green at LRV 46 with a
+        timeless, almost colonial quality. Where October Mist is misty and soft, Saybrook Sage is a
+        touch richer and more grounded, which makes it a strong exterior color as well as an interior
+        one.
+      </p>
+      <p>
+        Its muted depth reads as a sophisticated neutral-green rather than a statement, and it pairs
+        naturally with warm whites and stone. Behr Environmental is a near-identical match; Sherwin-Williams
+        Cascade Green is in the same family.
+      </p>
+    </>
+  ),
+  "benjamin-moore/quiet-moments-1563": (
+    <>
+      <p>
+        Quiet Moments is one of the great chameleons — a soft blue-green-gray at LRV 62 that reads more
+        blue in some rooms, more green in others, and almost gray in low light. That shape-shifting
+        quality is the whole appeal: it brings color to a space while staying calm and livable, which is
+        why it&apos;s a perennial favorite for bathrooms and bedrooms.
+      </p>
+      <p>
+        Because it moves so much with light, it&apos;s a color you genuinely cannot judge from the chip —
+        sample it where it&apos;s going. It pairs with crisp whites and warm wood. Its near-identical
+        Sherwin-Williams match is Sea Spray, and Behr Shy Green is close.
+      </p>
+    </>
+  ),
+  "sherwin-williams/oyster-bay-6206": (
+    <>
+      <p>
+        Oyster Bay is Sea Salt&apos;s deeper, more saturated sibling — a green-gray at LRV 44 with more body
+        and a slightly bluer cast. It&apos;s the choice when Sea Salt feels too pale to register, giving a
+        room a soft, sea-glass color that still behaves like a sophisticated neutral.
+      </p>
+      <p>
+        Like all of this family it shifts between green and gray-blue with the light, so sample before
+        committing. It&apos;s lovely in kitchens, bathrooms, and studies, and pairs with white trim and warm
+        metals. Benjamin Moore Sea Haze is its closest cross-brand match.
+      </p>
+    </>
+  ),
+  "ppg/olive-sprig-1125-4": (
+    <>
+      <p>
+        Olive Sprig is PPG&apos;s soft sage Color of the Year — a gentle, grayed green at LRV 42 in the same
+        family as Evergreen Fog and October Mist. It rode the sage-green wave for good reason: it&apos;s
+        restful and organic, equally at home in a bedroom, a kitchen island, or a built-in.
+      </p>
+      <p>
+        As a muted mid-tone it reads as a calm color rather than a bold one, and it pairs naturally with
+        warm whites and wood. Benjamin Moore Estate Sale is a near-identical match, with Sherwin-Williams
+        Clary Sage close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/gauntlet-gray-7019": (
+    <>
+      <p>
+        Gauntlet Gray is the deep, confident gray people reach for when a light gray feels like nothing.
+        At LRV 17 it&apos;s a true mid-dark — a warm-leaning charcoal-gray with enough depth for exteriors,
+        cabinetry, and dramatic accent walls, but not so dark it reads black.
+      </p>
+      <p>
+        It&apos;s a popular exterior body color precisely because it holds its character in full sun without
+        washing out. Indoors it needs decent light to avoid going heavy. It pairs with crisp white trim
+        and black hardware for a modern look. Behr Unpredictable Hue is a near-identical cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/dorian-gray-7017": (
+    <>
+      <p>
+        Dorian Gray is the mid-tone greige in Sherwin-Williams&apos; gray family — at LRV 39 it&apos;s
+        noticeably deeper than Repose or Agreeable, with a warm griege base that keeps it from feeling
+        cold. It&apos;s the choice for rooms that want real contrast and a grounded, slightly dramatic
+        neutral rather than a pale wash.
+      </p>
+      <p>
+        In bright rooms it reads as a rich greige; in dim light it can go quite dark, so check it in
+        your own space. It anchors a room well against white trim and works on exteriors too. Behr
+        Moleskin is a near-identical match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/drift-of-mist-9166": (
+    <>
+      <p>
+        Drift of Mist is a light, soft greige at LRV 69 — brighter and airier than Agreeable Gray, with
+        a gentle warmth that keeps it from going cold. It&apos;s the pick for people who want a barely-there
+        neutral that still has a little color to it, especially in rooms that need to feel open.
+      </p>
+      <p>
+        Its lightness makes it forgiving across lighting, though a faint violet base can show in cool
+        light. It pairs with both warm and cool whites. Its closest cross-brand match is Behr Silver
+        Drop, and it&apos;s very close to Benjamin Moore Balboa Mist.
+      </p>
+    </>
+  ),
+  "sherwin-williams/eider-white-7014": (
+    <>
+      <p>
+        Eider White straddles the line between a light greige and an off-white — at LRV 73 it&apos;s soft
+        and pale, reading nearly white in bright light and showing a gentle greige warmth in shadow.
+        It&apos;s the choice when a true white feels too clinical but a greige feels too committal.
+      </p>
+      <p>
+        That in-between quality makes it a flexible whole-house color, though its subtle warmth means it
+        can look slightly soft beside a stark white. It pairs with warm whites and natural materials.
+        Benjamin Moore White Winged Dove is its near-identical match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/kendall-charcoal-hc-166": (
+    <>
+      <p>
+        Kendall Charcoal is the rich, slightly warm charcoal that gives a room depth without the
+        finality of black. At LRV 14 it&apos;s a true dark, but its warmth keeps it from feeling cold or
+        severe, which is why it&apos;s a favorite for exteriors, cabinetry, libraries, and accent walls.
+      </p>
+      <p>
+        In good light its warm charcoal character shows; in shadow it deepens toward near-black. It pairs
+        with warm whites, brass, and wood. Its near-identical Sherwin-Williams match is Storm Warning,
+        with Behr Mined Coal close behind.
+      </p>
+    </>
+  ),
+  "benjamin-moore/coventry-gray-hc-169": (
+    <>
+      <p>
+        Coventry Gray is a classic mid-tone gray with a soft blue base — at LRV 49 it&apos;s a clean,
+        even-handed gray that gives a room definition without the warmth of a greige. It&apos;s the choice
+        for a crisp, traditional gray that still feels current.
+      </p>
+      <p>
+        Its cool blue base reads more strongly in north light, so it&apos;s happiest with warm or ample
+        light, or where you want that crisp quality on purpose. It pairs cleanly with white trim and
+        cool-toned finishes. Sherwin-Williams Argos is a close cross-brand match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/collingwood-859": (
+    <>
+      <p>
+        Collingwood is one of Benjamin Moore&apos;s most popular soft greiges — a light, gentle gray-beige
+        at LRV 63 with a barely-there violet warmth that keeps it soft and livable. It&apos;s the easygoing,
+        can&apos;t-go-wrong neutral for people who find Revere Pewter too deep or too green.
+      </p>
+      <p>
+        Its lightness makes it forgiving in most rooms, though the faint violet base can surface in cool
+        light. It pairs with warm and cool whites alike. It&apos;s a near-exact match for Sherwin-Williams
+        Gossamer Veil, and very close to Behr Toasty Gray.
+      </p>
+    </>
+  ),
+  "behr/toasty-gray-n320-2": (
+    <>
+      <p>
+        Toasty Gray is Behr&apos;s warm greige — and the color most people land on when they want Sherwin-Williams
+        Agreeable Gray at Home Depot. At LRV 61 it&apos;s a near-identical stand-in for Agreeable Gray
+        (a barely-perceptible difference on the wall), which makes it the practical pick if Behr is the
+        brand your store carries.
+      </p>
+      <p>
+        Everything true of a warm greige applies: it holds steady across mixed light, pairs with a crisp
+        white trim, and can show a faint cool undertone in heavy north light. Within Behr it&apos;s a
+        flexible whole-house neutral; its closest Benjamin Moore relative is Night Mist.
+      </p>
+    </>
+  ),
 };
 
 export function getColorEditorial(brandSlug: string, colorSlug: string): ReactNode | null {
