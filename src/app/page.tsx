@@ -9,9 +9,9 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { getAllPosts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
-  title: "Match Any Paint Color Across 14 Brands",
+  title: "Find & Compare Paint Colors Across 14 Brands",
   description:
-    "Free paint color cross-reference tool. Match 23,000+ colors across 14 brands — Sherwin-Williams, Benjamin Moore, Behr, PPG, and more.",
+    "Discover paint colors you love from 23,000+ shades across 14 brands, preview them on a wall, and find your color in the brand you can buy — free, no signup.",
   alternates: { canonical: "https://www.paintcolorhq.com/" },
 };
 
@@ -121,12 +121,11 @@ export default async function Home() {
             23,000+ colors &middot; 14 brands &middot; 100% free
           </span>
           <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-8">
-            Match Any Color<br />
-            <span className="text-primary italic">Across Brands.</span>
+            Find a Paint Color You Love<br />
+            <span className="text-primary italic">in Any Brand.</span>
           </h1>
           <p className="text-lg text-on-surface-variant max-w-md mb-10 leading-relaxed">
-            Your designer picked one brand but your store carries another?
-            Search 23,000+ colors and find the closest match instantly.
+            Browse 23,000+ shades across 14 brands, preview your favorites on a real wall, then find that exact color in the brand you can actually buy.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
