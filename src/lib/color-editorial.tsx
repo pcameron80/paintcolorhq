@@ -736,6 +736,205 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
+  "sherwin-williams/shoji-white-7042": (
+    <>
+      <p>
+        Shoji White is one of Sherwin-Williams&apos; most-used warm off-whites — at LRV 74 it&apos;s the
+        in-between people reach for when a true white feels too cold and a greige feels too gray. It has
+        a soft, warm linen quality that flatters cabinetry, trim, and whole rooms, and it&apos;s a natural
+        partner for the warm-greige walls that replaced the gray era.
+      </p>
+      <p>
+        Because it&apos;s warm, it can read slightly creamy beside a stark white, so keep the whites in a
+        room consistent. It&apos;s most forgiving in soft, natural light. Behr Crisp Linen is a
+        near-identical cross-brand match, with Benjamin Moore Etiquette close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/modern-gray-7632": (
+    <>
+      <p>
+        Modern Gray is a light, warm greige at LRV 62 with a subtle taupe-mauve base — the warmest of
+        Sherwin-Williams&apos; popular light neutrals. It&apos;s the choice when Agreeable Gray feels too cool
+        or too gray; it brings genuine warmth to a room without going full beige.
+      </p>
+      <p>
+        That faint violet-taupe undertone is the thing to sample for — in some light it can lean
+        slightly pink, so keep its companions warm. It&apos;s lovely in bedrooms and living rooms with soft
+        light. Behr Mineral is a near-identical match, with Benjamin Moore Rocking Chair close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/useful-gray-7050": (
+    <>
+      <p>
+        Useful Gray lives up to its name — a flexible warm greige at LRV 59 that sits comfortably between
+        gray and beige. It&apos;s a close cousin of Benjamin Moore Revere Pewter (a near-identical match),
+        which makes it the SW pick for that same grounded, organic greige look.
+      </p>
+      <p>
+        Its balance is the appeal: enough warmth to feel inviting, enough gray to stay current, and a
+        light-mid LRV that works in most rooms. Like its greige siblings it can show a faint green base
+        in cool light. Behr Coliseum Marble is also a close cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/anew-gray-7030": (
+    <>
+      <p>
+        Anew Gray is a mid-tone greige at LRV 47 — deeper and warmer than Agreeable Gray, with enough
+        body to give a room real definition. It&apos;s the choice when you want a greige that reads as an
+        actual color rather than a pale backdrop, especially in well-lit rooms.
+      </p>
+      <p>
+        At this depth it can go noticeably darker in low light, so check it in your own space before a
+        whole-house commit. It pairs well with white trim and warm wood. Behr Grey Mist and Benjamin
+        Moore Silver Fox are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/amazing-gray-7044": (
+    <>
+      <p>
+        Amazing Gray is a mid-tone greige at LRV 47 in the same depth range as Anew Gray, with a warm,
+        slightly earthy base. It&apos;s a strong choice for open-plan spaces that want a grounded neutral
+        with presence — deep enough to anchor a room, warm enough to stay welcoming.
+      </p>
+      <p>
+        As with any mid-tone greige, it darkens in low light and shows its warmth in bright light, so
+        sample in place. It pairs with crisp white trim and natural materials. Behr Grey Mist and
+        Benjamin Moore Silver Fox are its closest matches.
+      </p>
+    </>
+  ),
+  "benjamin-moore/natural-linen-966": (
+    <>
+      <p>
+        Natural Linen is a warm, soft greige-tan at LRV 60 — the kind of light earth-tone that reads
+        cozy and organic without going yellow. It&apos;s a versatile whole-house neutral for people who
+        lean warm, sitting a touch more beige than the popular gray-greiges.
+      </p>
+      <p>
+        Its warmth makes it forgiving in north-facing rooms where cooler neutrals can feel flat, but it
+        can look creamy beside a stark white. It pairs naturally with wood and warm whites. Its
+        near-identical Sherwin-Williams match is Wool Skein.
+      </p>
+    </>
+  ),
+  "sherwin-williams/white-heron-7627": (
+    <>
+      <p>
+        White Heron is a soft, clean white at LRV 76 with just a whisper of warmth — crisp enough to feel
+        fresh, soft enough to avoid the chill of a true cool white. It&apos;s a flexible choice for trim,
+        walls, and cabinets, especially in rooms that get good light.
+      </p>
+      <p>
+        Its gentle warmth keeps it livable, but like any soft white it can look faintly creamy beside a
+        bright white, so keep the whites consistent. Behr Cinnamon Cake is a near-identical match, with
+        Benjamin Moore Etiquette close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/sleepy-blue-6225": (
+    <>
+      <p>
+        Sleepy Blue is the soft, calming powder blue-gray its name promises — at LRV 58 it&apos;s light and
+        restful, the kind of gentle blue that works beautifully in bedrooms, nurseries, and bathrooms
+        without feeling juvenile. It&apos;s a muted, grayed blue rather than a bright one.
+      </p>
+      <p>
+        Because it&apos;s soft and grayed, it reads as a serene near-neutral, though it can lean cooler in
+        north light. It pairs with crisp whites and natural wood. Behr High Speed Access and Benjamin
+        Moore Smoke are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/rainwashed-6211": (
+    <>
+      <p>
+        Rainwashed is Sherwin-Williams&apos; soft spa blue-green — a cousin of Sea Salt, a touch bluer and
+        at a similar LRV 59. It has the same chameleon quality, shifting between pale aqua, soft green,
+        and gray depending on the light, which is why it&apos;s a perennial favorite for bathrooms and
+        coastal-feeling rooms.
+      </p>
+      <p>
+        That shape-shifting means you can&apos;t judge it from the chip — sample it where it&apos;s going. It
+        pairs with crisp whites and warm wood and fights cool grays. Benjamin Moore Silver Marlin and
+        Behr Frosted Jade are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "benjamin-moore/van-deusen-blue-hc-156": (
+    <>
+      <p>
+        Van Deusen Blue is a deep, historic navy with a slate-gray softness — at LRV 10 it&apos;s dark and
+        dramatic, but its grayed base keeps it from reading as a bright or primary blue. It&apos;s a
+        sophisticated choice for cabinetry, libraries, and statement walls in traditional homes.
+      </p>
+      <p>
+        Like any deep blue it needs light to keep from collapsing toward black, and it looks richest
+        with warm whites, brass, and wood. It sits in the same deep-blue family as Hale Navy but reads a
+        touch grayer. Behr Harbour is its closest cross-brand match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/newburyport-blue-hc-155": (
+    <>
+      <p>
+        Newburyport Blue is the navy that sits right beside Hale Navy in Benjamin Moore&apos;s Historical
+        Collection — at LRV 9 it&apos;s a rich, classic navy with a slightly cooler, bluer character than
+        Hale Navy&apos;s gray-green softness. It&apos;s the pick when you want a navy that reads a little more
+        true-blue.
+      </p>
+      <p>
+        As a deep color it&apos;s best with good light or used deliberately for drama on doors, islands, and
+        built-ins. It pairs with crisp and warm whites alike. Behr Harbour is a near-identical
+        cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/distance-6243": (
+    <>
+      <p>
+        Distance is a deep, moody blue-gray slate at LRV 15 — darker and grayer than a true navy, which
+        gives it a sophisticated, almost stormy quality. It&apos;s a strong choice for an accent wall,
+        cabinetry, or a study you want to feel enveloping and a little dramatic.
+      </p>
+      <p>
+        At this depth it shifts noticeably with light — bluer in daylight, grayer and darker in shadow —
+        so sample it in place. It pairs with warm metals and crisp whites. Behr Hypnotic is a very close
+        cross-brand match, with Benjamin Moore Thousand Oceans very similar.
+      </p>
+    </>
+  ),
+  "sherwin-williams/sea-serpent-7615": (
+    <>
+      <p>
+        Sea Serpent is a deep, complex teal that lives between blue and green — at LRV 7 it&apos;s rich and
+        saturated, the kind of jewel tone that turns a powder room, a built-in, or an accent wall into a
+        focal point. It reads more blue in some light, more green in others.
+      </p>
+      <p>
+        As a deep, saturated color it amplifies lighting and needs some daylight to show its depth
+        rather than going near-black. It looks striking with brass, warm wood, and creamy whites. Behr
+        Orion Gray and Benjamin Moore Blue Note are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/rosemary-6187": (
+    <>
+      <p>
+        Rosemary is a deep, earthy green at LRV 14 — a grayed, herbal green with real depth that brings
+        a grounded, natural drama to a room. It&apos;s the choice for a moody green on cabinetry, a library,
+        or an accent wall, in the family of the deep-sage trend but darker and more saturated.
+      </p>
+      <p>
+        At this depth it needs light to read as green rather than near-black, and it pairs beautifully
+        with warm whites, brass, and natural wood. Benjamin Moore Rainy Afternoon and Behr Gray Owl are
+        its closest cross-brand matches.
+      </p>
+    </>
+  ),
 };
 
 export function getColorEditorial(brandSlug: string, colorSlug: string): ReactNode | null {
