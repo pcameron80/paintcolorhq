@@ -1135,6 +1135,208 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
+  "sherwin-williams/cavern-clay-7701": (
+    <>
+      <p>
+        Sherwin-Williams&apos; 2019 Color of the Year, Cavern Clay is the warm terracotta that helped bring
+        earthy, sun-baked color back into style. At LRV 20 it&apos;s a rich, grounded clay — orange-brown
+        with a weathered, Southwestern warmth — that feels organic rather than loud, especially on an
+        accent wall, a powder room, or built-ins.
+      </p>
+      <p>
+        As a deep warm tone it glows under warm light and deepens in shadow. It pairs naturally with
+        creamy whites, rattan, leather, and greenery. Benjamin Moore Audubon Russet is its
+        near-identical cross-brand match, with Behr Orange Flambe very close.
+      </p>
+    </>
+  ),
+  "benjamin-moore/caliente-af-290": (
+    <>
+      <p>
+        Caliente, Benjamin Moore&apos;s 2018 Color of the Year, is a bold, vibrant red with real depth — at
+        LRV 7 it&apos;s saturated and dramatic without tipping orange or pink. It&apos;s a statement color: a
+        front door, a dining room, an accent wall, or cabinetry where you want energy and confidence.
+      </p>
+      <p>
+        Reds intensify under warm light and can read slightly different across the day, so sample before
+        committing a whole room. It pairs strikingly with crisp whites, warm wood, and black. Behr New
+        Brick is a near-identical cross-brand match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/hawthorne-yellow-hc-4": (
+    <>
+      <p>
+        Hawthorne Yellow is the soft, golden yellow people reach for when they want warmth and cheer
+        without a high-energy primary. At LRV 71 it&apos;s light and buttery — sunny in a north-facing room
+        but never acidic — which is why it&apos;s a long-running favorite for kitchens, entries, and
+        traditional spaces.
+      </p>
+      <p>
+        Yellows read more golden under warm bulbs and truer in daylight; the higher LRV keeps it gentle
+        rather than vivid. It pairs with crisp whites and warm wood. Its near-identical Sherwin-Williams
+        match is Optimistic Yellow, with Behr Wickerware close behind.
+      </p>
+    </>
+  ),
+  "benjamin-moore/shadow-2117-30": (
+    <>
+      <p>
+        Shadow, Benjamin Moore&apos;s 2017 Color of the Year, is a deep, smoky amethyst — a purple with so
+        much gray and depth (LRV 8) that it reads as a sophisticated near-neutral rather than a bold
+        violet. It brings drama and a velvety quality to bedrooms, dining rooms, and accent walls.
+      </p>
+      <p>
+        Purple is the most lighting-sensitive family in paint: Shadow can pull more mauve under warm
+        bulbs and more blue-violet in daylight, so sampling at several times of day is essential. It
+        pairs with brass, deep wood, and soft whites. Behr Extravagance and Sherwin-Williams Quixotic
+        Plum are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "benjamin-moore/first-light-2102-70": (
+    <>
+      <p>
+        First Light, Benjamin Moore&apos;s 2020 Color of the Year, is a soft, barely-there blush — a pink so
+        gentle (LRV 76) that it reads almost as a warm neutral. It signaled the move toward warmer,
+        softer palettes and works as a whole-room color in bedrooms and nurseries without reading sweet
+        or childish.
+      </p>
+      <p>
+        Its faint pink warmth can surface more against cool whites, so keep companions warm. It&apos;s most
+        flattering in soft natural light. Behr Victorian Pearl is its closest cross-brand match, with
+        Sherwin-Williams Intimate White very similar.
+      </p>
+    </>
+  ),
+  "sherwin-williams/pier-7545": (
+    <>
+      <p>
+        Pier is a deep, sophisticated brown at LRV 9 — a rich, slightly cool-leaning chocolate that
+        reads modern rather than dated, which is the trick most dark browns miss. It&apos;s a confident
+        choice for cabinetry, an accent wall, or an exterior body where you want warmth and depth without
+        going to black.
+      </p>
+      <p>
+        As a deep tone it needs some light to show its brown character and reads nearly black in shadow.
+        It pairs beautifully with warm whites, brass, and natural materials. Behr Melted Chocolate is its
+        closest cross-brand match, with Benjamin Moore Char Brown very similar.
+      </p>
+    </>
+  ),
+  "benjamin-moore/manchester-tan-hc-81": (
+    <>
+      <p>
+        Manchester Tan is the classic warm tan — a soft, light beige at LRV 63 with a gentle greige
+        balance that keeps it from going yellow. It&apos;s the timeless &ldquo;warm neutral&rdquo; for traditional
+        homes, the tan equivalent of a safe, can&apos;t-go-wrong greige.
+      </p>
+      <p>
+        Its warmth makes it forgiving in cooler rooms, though in strong warm light it can edge toward
+        gold. It pairs with both warm and cool whites and most wood tones. Its near-identical
+        Sherwin-Williams match is Warm Oats, with Behr Natural Almond close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/pewter-green-6208": (
+    <>
+      <p>
+        Pewter Green is the deep, muted green that became a go-to for moody kitchen cabinets and
+        built-ins. At LRV 12 it&apos;s a rich gray-green with real depth — saturated enough to feel like a
+        statement, grayed enough to behave like a sophisticated neutral rather than a bold green.
+      </p>
+      <p>
+        It reads greener in good light and nearly charcoal in shadow, so it&apos;s strongest where there&apos;s
+        daylight or where you want the drama. It pairs beautifully with brass, warm wood, and creamy
+        whites. Behr Pastoral is its closest cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/clary-sage-6178": (
+    <>
+      <p>
+        Clary Sage is a muted, mid-tone sage green at LRV 41 — a soft, grayed herbal green that sits in
+        the same family as the popular sages but with a touch more gray, which keeps it calm and
+        livable. It works as a whole-room color in bedrooms, kitchens, and studies.
+      </p>
+      <p>
+        Its grayed quality means it reads as a gentle, earthy neutral-green rather than a vivid one, and
+        it pairs naturally with warm whites and wood. It shifts a little greener or grayer with the
+        light. Benjamin Moore Nature and Behr Dill Seed are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/dried-thyme-6186": (
+    <>
+      <p>
+        Dried Thyme is a deep, earthy herb-green at LRV 21 — richer and darker than the soft sages, with
+        a grounded, slightly olive character. It&apos;s the choice for a moody but natural green on
+        cabinetry, an accent wall, or an exterior, in the deep-green family with Pewter Green but warmer
+        and more olive.
+      </p>
+      <p>
+        At this depth it needs light to read clearly as green rather than near-brown, and it pairs
+        beautifully with creamy whites, brass, and wood. Behr Cactus Garden is its closest cross-brand
+        match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/light-french-gray-55": (
+    <>
+      <p>
+        Light French Gray is a cool, sophisticated mid-light gray at LRV 53 — a true gray with a soft
+        blue base and none of the greige warmth, which gives it a crisp, slightly European elegance. It&apos;s
+        the choice for a clean, cool gray that still has enough depth to register on a wall.
+      </p>
+      <p>
+        That cool blue base reads more strongly in north light, so it&apos;s happiest with warm or balanced
+        light, or where you want the crispness on purpose. It pairs with cool whites and stone. It&apos;s a
+        dead-on match for Benjamin Moore Smoke, and very close to Behr Gull Gray.
+      </p>
+    </>
+  ),
+  "sherwin-williams/kilim-beige-6106": (
+    <>
+      <p>
+        Kilim Beige is a warm, classic tan-beige at LRV 57 — a soft earth tone with a gentle pink-tan
+        warmth that defined the warm-neutral look before the greige era. It&apos;s making a comeback as warm
+        tones return, working as a cozy whole-house color in traditional and transitional homes.
+      </p>
+      <p>
+        Its warmth can edge slightly peachy in strong warm light, so keep companions warm and sample in
+        place. It pairs with creamy whites and wood. Benjamin Moore Adobe Beige is its near-identical
+        cross-brand match, with Behr Riviera Retreat close behind.
+      </p>
+    </>
+  ),
+  "benjamin-moore/shaker-beige-hc-45": (
+    <>
+      <p>
+        Shaker Beige is a warm, classic beige at LRV 54 — a soft, slightly golden tan with a timeless,
+        traditional quality. It&apos;s the kind of warm neutral that anchored countless living rooms before
+        gray took over, and it&apos;s a reliable choice for homes that lean warm and classic.
+      </p>
+      <p>
+        In strong warm light it can read more golden, so it&apos;s worth sampling against your trim and
+        floors. It pairs with creamy whites and wood tones. Behr Coco is a near-identical cross-brand
+        match, with Sherwin-Williams Sand Beach close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/roycroft-copper-red-2839": (
+    <>
+      <p>
+        Roycroft Copper Red is a deep, brick-toned red with an Arts &amp; Crafts heritage — at LRV 7 it&apos;s a
+        rich, earthy red-brown rather than a bright red, which gives it a warm, grounded, almost leather
+        quality. It&apos;s a sophisticated statement color for dining rooms, studies, and front doors.
+      </p>
+      <p>
+        Its depth and brick undertone keep it from feeling loud, and it reads richest with some light. It
+        pairs with warm whites, wood, and brass for a classic, collected look. Benjamin Moore Rustique is
+        its closest cross-brand match.
+      </p>
+    </>
+  ),
 };
 
 export function getColorEditorial(brandSlug: string, colorSlug: string): ReactNode | null {
