@@ -230,16 +230,35 @@ export default async function ColorPage({ params }: PageProps) {
   const undertone = color.undertone ?? "";
   const undertoneLower = undertone.toLowerCase();
 
-  // Only include FAQs with genuinely unique, data-specific answers
+  // FAQ answers are written long enough (~50-65 words) to clear the AI-citation
+  // window so each can be quoted as a standalone passage by AI Overviews /
+  // Perplexity / Copilot — every sentence is per-color data, not padding. Delta E
+  // is expressed in plain language, never raw numbers.
+  const closenessPhrase = (de: number) => (de < 2 ? "a near-identical match" : de < 5 ? "a very close match" : "a close match");
   if (color.undertone) {
-    faqItems.push({ question: `What undertone does ${color.name} have?`, answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and belongs to the ${color.color_family} color family` : ""}.` });
+    faqItems.push({
+      question: `What undertone does ${color.name} have?`,
+      answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and sits in the ${color.color_family} color family` : ""}. Undertone is the subtle cast that emerges once the color is on a wall — it drives how ${color.name} pairs with trim, flooring, and adjacent rooms, and it shifts with light: warmer under 2700K bulbs, cleaner and cooler under 4000K daylight. Always sample it in your own space before committing.`,
+    });
   }
   if (matches.length > 0) {
-    const top = matches.slice(0, 3).map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (${m.match_color.hex.toUpperCase()})`).join(", ");
-    faqItems.push({ question: `What colors match ${color.name} from other brands?`, answer: `The closest matches are ${top}. Always verify with physical samples.` });
+    const top3 = matches.slice(0, 3);
+    const topList = top3.map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (${closenessPhrase(Number(m.delta_e_score))})`).join(", ");
+    faqItems.push({
+      question: `What colors match ${color.name} from other brands?`,
+      answer: `The closest cross-brand equivalents to ${color.name} are ${topList}. These are ranked with the CIEDE2000 color-difference formula, which scores how similar two colors actually look to the eye rather than matching them by name — so they're the best options for getting ${color.name}'s look in a brand your local store carries. Always confirm with a physical sample, since sheen and lighting shift the final result.`,
+    });
   }
   if (lrv != null) {
-    faqItems.push({ question: `What is the LRV of ${color.name}?`, answer: `${color.name} has an LRV of ${lrv.toFixed(1)}, where 0 is pure black and 100 is pure white.` });
+    const lrvBand =
+      lrv >= 70 ? "a light, reflective color that bounces plenty of light back into a room — well-suited to north-facing spaces, hallways, and smaller rooms that need to feel brighter"
+      : lrv >= 50 ? "a mid-light color — bright enough for living areas yet soft enough for bedrooms, and adaptable across most lighting conditions"
+      : lrv >= 25 ? "a mid-depth color with real presence — strong on accent walls, libraries, and rooms with good natural light"
+      : "a deep, dramatic color best saved for accent walls, dining rooms, and cozy spaces where atmosphere matters more than reflected light";
+    faqItems.push({
+      question: `What is the LRV of ${color.name}?`,
+      answer: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white. That makes it ${lrvBand}. LRV is the most reliable guide to how light or dark a paint will read in a real room — more dependable than the swatch on your screen, which varies by monitor.`,
+    });
   }
 
   const matchesByBrand = matches.reduce((acc, match) => {
