@@ -935,6 +935,206 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
+  "sherwin-williams/urbane-bronze-7048": (
+    <>
+      <p>
+        A 2021 Color of the Year, Urbane Bronze is the warm, earthy near-black that anchored the move
+        toward cozy-dark interiors. At LRV 8 it&apos;s deep, but it&apos;s a bronze-charcoal — a gray with real
+        brown warmth — rather than a flat black, which is why it feels enveloping instead of severe on
+        accent walls, fireplaces, cabinetry, and front doors.
+      </p>
+      <p>
+        It comes alive against warm whites, wood, and brass, and reads richest where there&apos;s some light
+        to bring out the bronze; in shadow it goes nearly black. Its near-identical cross-brand match is
+        Benjamin Moore Dragon&apos;s Breath, with Behr Underground close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/redend-point-9081": (
+    <>
+      <p>
+        Redend Point — a 2023 Color of the Year — captured the shift toward warm, earthy color. At LRV 30
+        it&apos;s a soft clay-rose: a blush-beige with terracotta warmth that reads sophisticated rather than
+        pink, and brings a grounded, organic glow to a room without the weight of a true terracotta.
+      </p>
+      <p>
+        It&apos;s lovely on bedroom and living-room walls and in spaces that get warm afternoon light, where
+        its rosy warmth deepens. Pair it with creamy whites, natural wood, and unlacquered brass. Behr
+        Caramel Cream is its closest cross-brand match, with Benjamin Moore Gaucho Brown very similar.
+      </p>
+    </>
+  ),
+  "benjamin-moore/aegean-teal-2136-40": (
+    <>
+      <p>
+        Benjamin Moore&apos;s 2021 Color of the Year, Aegean Teal is a mid-tone blue-green with a grayed,
+        earthy quality — at LRV 24 it has enough depth to feel immersive without going dark. It&apos;s the
+        teal that works as a whole-room color rather than just an accent, which is what set it apart from
+        brighter teals.
+      </p>
+      <p>
+        It leans more green or more blue depending on the light, so sample it in place. It pairs
+        beautifully with warm whites, wood, and brass for a layered, natural look. Behr Polaris Blue is a
+        near-identical cross-brand match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/metropolitan-af-690-2": (
+    <>
+      <p>
+        Metropolitan, Benjamin Moore&apos;s 2019 Color of the Year, is a calm, balanced mid gray at LRV 51 —
+        a true gray with a soft, slightly warm steadiness that never reads cold or stark. It&apos;s the
+        &ldquo;perfect neutral gray&rdquo; the gray era was always chasing: enough presence to feel intentional,
+        enough restraint to disappear behind your furnishings.
+      </p>
+      <p>
+        It holds its character well across lighting, which is part of why it became a go-to for whole
+        rooms and even exteriors. It pairs cleanly with white trim and both warm and cool accents. Behr
+        Keystone Gray is a near-identical cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/watery-6478": (
+    <>
+      <p>
+        Watery is exactly what the name suggests — a soft, airy blue with a green whisper, like sea glass
+        at LRV 57. It&apos;s light enough to feel calm and spacious, which made it a staple for bathrooms,
+        bedrooms, and laundry rooms where you want a touch of color without commitment.
+      </p>
+      <p>
+        Like all soft blue-greens it shifts with the light, reading more blue in cool daylight and softer
+        under warm bulbs, so sample where it&apos;s going. It pairs with crisp whites and natural wood. Behr
+        Meteor Shower and Benjamin Moore Heavenly Blue are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/tradewind-6218": (
+    <>
+      <p>
+        Tradewind is a serene, light blue-gray at LRV 61 — barely-there blue with enough gray to behave
+        like a soft neutral. It&apos;s the choice for a tranquil, coastal-leaning room that still feels
+        grown-up, popular in bedrooms and bathrooms for its spa-like calm.
+      </p>
+      <p>
+        Its gentle, grayed quality keeps it from reading juvenile, though it can lean cooler in north
+        light. It pairs with crisp whites and pale wood. Behr Silver Bullet is a near-identical match,
+        with Benjamin Moore Brittany Blue close behind.
+      </p>
+    </>
+  ),
+  "benjamin-moore/wythe-blue-hc-143": (
+    <>
+      <p>
+        Wythe Blue is a historic mid-tone blue-green at LRV 49 — a muted, slightly dusty aqua with a
+        vintage character that reads more sophisticated than a bright aqua. It has enough body to make a
+        statement on cabinetry, a kitchen, or a whole room without going dark.
+      </p>
+      <p>
+        It swings between blue and green with the light, so it&apos;s worth sampling in place. It pairs
+        beautifully with warm whites, brass, and natural wood for a classic, collected look. Behr Urban
+        Putty is its closest cross-brand match, with Sherwin-Williams Hazel close.
+      </p>
+    </>
+  ),
+  "sherwin-williams/passive-7064": (
+    <>
+      <p>
+        Passive is the cool counterpart to the warm greiges — a light, true gray at LRV 60 with a clean
+        blue base and none of the beige that defines Agreeable or Repose. It&apos;s the pick for a crisp,
+        modern, cool-gray room, especially where you want gray to read as gray rather than greige.
+      </p>
+      <p>
+        That cool base is the consideration: in north light it can lean slightly blue, so it&apos;s strongest
+        with warm or ample light, or where you want that crisp quality on purpose. Behr Mexican Silver is
+        a near-identical match, with Benjamin Moore Perspective very close.
+      </p>
+    </>
+  ),
+  "sherwin-williams/network-gray-7073": (
+    <>
+      <p>
+        Network Gray is a mid-tone gray with a warm, slightly green-brown base at LRV 37 — deep enough to
+        give a room contrast and definition, warm enough to avoid feeling cold. It&apos;s a popular exterior
+        body color and a strong interior choice for accent walls and rooms with good light.
+      </p>
+      <p>
+        At this depth it reads darker in low light, so check it in your own space. It pairs with white
+        trim and black accents for a grounded, modern look. Behr Silent Film and Benjamin Moore Delray
+        Gray are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "benjamin-moore/abalone-2108-60": (
+    <>
+      <p>
+        Abalone is a soft, warm greige-taupe at LRV 63 with a faint violet-gray shimmer that gives it a
+        quiet elegance. It&apos;s a light, livable neutral for people who want something a little more
+        nuanced than a plain greige — gentle enough for bedrooms, refined enough for a whole house.
+      </p>
+      <p>
+        Its subtle violet base can surface in cool light, so it&apos;s worth sampling against your trim. It
+        pairs with both warm and cool whites. Its near-identical Sherwin-Williams match is Grey Heron,
+        with Behr Toasty Gray close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/aesthetic-white-7035": (
+    <>
+      <p>
+        Aesthetic White is a soft, warm off-white at LRV 73 — gentler than a true white, with a subtle
+        greige warmth that keeps it from feeling stark. It&apos;s a flexible whole-house choice for people
+        who want a barely-there warm neutral on walls and a soft white on trim.
+      </p>
+      <p>
+        Its warmth means it can look slightly soft beside a bright white, so keep the whites consistent.
+        It&apos;s most flattering in soft, natural light. Behr Cotton Knit is a near-identical match, with
+        Benjamin Moore Etiquette close behind.
+      </p>
+    </>
+  ),
+  "benjamin-moore/wickham-gray-hc-171": (
+    <>
+      <p>
+        Wickham Gray is a light, cool gray with a faint green base at LRV 68 — airy and fresh, the kind
+        of pale gray that keeps a room feeling open and crisp. It&apos;s a favorite for modern spaces and for
+        making small or low-light rooms feel larger and cleaner.
+      </p>
+      <p>
+        Its cool, slightly green base reads more strongly in north light, so it&apos;s happiest with warm or
+        balanced light. It pairs with cool whites and stays quietly in the background. Behr Ground Fog is
+        a near-identical match, with Sherwin-Williams Opaline close.
+      </p>
+    </>
+  ),
+  "sherwin-williams/cyberspace-7076": (
+    <>
+      <p>
+        Cyberspace is a deep blue-black at LRV 6 — a near-black with a distinct cool, slate-blue
+        character that separates it from a true neutral black. It&apos;s the dramatic choice for cabinetry,
+        accent walls, and exteriors when you want depth with a hint of blue rather than warm or pure
+        black.
+      </p>
+      <p>
+        Like any near-black it reads essentially black in low light and shows its blue depth where
+        there&apos;s daylight. It pairs crisply with cool whites and chrome, or warms up with brass. Its
+        near-identical cross-brand match is Benjamin Moore Black Horizon.
+      </p>
+    </>
+  ),
+  "benjamin-moore/chelsea-gray-hc-168": (
+    <>
+      <p>
+        Chelsea Gray is a deep, confident mid-dark gray at LRV 23 — a true gray with enough depth to read
+        almost charcoal, which made it a defining color of the modern gray-cabinet and gray-exterior
+        look. It gives a kitchen island or a built-in real weight without going to black.
+      </p>
+      <p>
+        It needs good light to avoid reading flat-dark, and it looks sharp against crisp white trim and
+        marble. In softer light its depth deepens. Behr Pier is a near-identical cross-brand match, with
+        Sherwin-Williams Classic French Gray close behind.
+      </p>
+    </>
+  ),
 };
 
 export function getColorEditorial(brandSlug: string, colorSlug: string): ReactNode | null {
