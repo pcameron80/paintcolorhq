@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer";
 import { FamilyColorLibrary } from "@/components/family-color-library";
 import { FamilyColorLibraryFallback } from "@/components/family-color-library-fallback";
 import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/queries";
-import { getFamilyContent, getFamilyRelatedPalettes } from "@/lib/family-content";
+import { getFamilyContent, getFamilyRelatedPalettes, getFamilyAnchor } from "@/lib/family-content";
 import { getPostsByFamily } from "@/lib/blog-posts";
 import { FAMILY_UNDERTONE_ANSWERS } from "@/lib/family-undertone-copy";
 import { getPaletteBySlug } from "@/lib/palettes";
@@ -175,6 +175,9 @@ export default async function ColorFamilyPage({ params }: PageProps) {
             <div className="bg-primary h-1 w-12 mb-8" />
             <article id="family-intro" className="max-w-4xl text-on-surface-variant leading-relaxed">
               {familyContent.intro}
+              {getFamilyAnchor(familySlug) && (
+                <p className="mt-3">{getFamilyAnchor(familySlug)}</p>
+              )}
             </article>
             <ColorLinkEnhancer containerRef="family-intro" />
           </div>

@@ -725,3 +725,44 @@ export function getFamilyRelatedPalettes(slug: string): string[] {
 export function getFamilyContent(slug: string): FamilyContent | undefined {
   return content[slug];
 }
+
+// One verified, specific anchor sentence per family, rendered after the intro so
+// the family-page intro <article> clears the AI-citation length floor with real
+// data (named color + DB-verified LRV) rather than padding. Plain strings —
+// apostrophes render correctly through React; do not HTML-escape.
+const FAMILY_ANCHORS: Record<string, string> = {
+  white:
+    "As reference points: Chantilly Lace sits at LRV 90 (the crispest bright white), while White Dove (LRV 83) and Pure White (LRV 84) read softer and warmer — proof that two whites can share a brightness yet feel completely different on the wall.",
+  gray:
+    "Repose Gray (LRV 58) is the light, true-gray benchmark and Gray Owl (LRV 66) the cooler, airier option; drop to a mid-tone like Mindful Gray (LRV 48) when a room needs real contrast rather than a wash.",
+  blue:
+    "The family spans a huge range: Naval (LRV 5) and Hale Navy (LRV 7) anchor the dramatic deep end, while soft blue-greens like Palladian Blue (LRV 62) read almost like tinted neutrals.",
+  green:
+    "Soft, low-chroma greens like Sea Salt (LRV 63) work as whole-room neutrals, while a saturated jewel-tone such as PPG Vining Ivy (LRV 15) is best reserved for an accent wall or a powder room.",
+  beige:
+    "Accessible Beige (LRV 58) is the warm-greige benchmark here — light enough to brighten a room, warm enough to avoid the cold, steely look of a true gray.",
+  red:
+    "Reds run deep and high-energy: a dramatic anchor like Behr Caliente (LRV 14) carries a dining room or a front door far better than it would a whole bright space.",
+  orange:
+    "The most livable oranges are earthy and muted rather than vivid — a terracotta-leaning tone like Behr Cavern Clay (LRV 33) is the kind people actually paint a room.",
+  yellow:
+    "Soft, sunny yellows like Benjamin Moore Hawthorne Yellow (LRV 71) lift north-facing rooms; the higher the LRV, the more cheerful and the less acidic the result.",
+  purple:
+    "Purples range from pale lilacs to deep amethysts like Benjamin Moore Shadow (LRV 8) — and because they shift more than any other family under changing light, sampling is non-negotiable.",
+  pink:
+    "Today's pinks lean soft and grown-up: a barely-there blush like Benjamin Moore First Light (LRV 76) reads almost neutral rather than sweet.",
+  "off-white":
+    "Off-whites carry a faint greige that keeps them from reading stark — Snowbound (LRV 82) and the softer Classic Gray (LRV 75) are the go-to's when a pure white feels too clinical.",
+  black:
+    "Tricorn Black (LRV 3) is the true, neutral black for crisp trim and doors; a softer near-black like Behr Cracked Pepper (LRV 8) gives the same drama with a touch of warmth.",
+  brown:
+    "Browns work best with real depth — a sophisticated dark brown like Sherwin-Williams Pier (LRV 9) reads rich and modern rather than dated.",
+  tan:
+    "A warm, classic tan like Benjamin Moore Manchester Tan (LRV 63) is the safe, light earth-tone that pairs with almost any wood or stone.",
+  neutral:
+    "Agreeable Gray (LRV 60) is the most popular true-neutral greige in the US for a reason — it holds steady across north, south, and lamplight without committing to warm or cool.",
+};
+
+export function getFamilyAnchor(slug: string): string | null {
+  return FAMILY_ANCHORS[slug] ?? null;
+}
