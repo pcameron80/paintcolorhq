@@ -41,12 +41,20 @@ const colorFamilies = [
   { name: "Black", slug: "black", color: "#1F2937" },
 ];
 
+// Ordered discover-first: find a color → expand it → see it on a wall →
+// refine → find it in a buyable brand (the closer) → calculate how much.
 const tools = [
   {
-    name: "Cross-Brand Matching",
-    description: "Love a Sherwin-Williams color but shopping at Home Depot? Find the closest Behr, PPG, or Benjamin Moore match in seconds.",
-    href: "/search",
-    cta: "Find a match",
+    name: "Photo Color Identifier",
+    description: "Snap a photo of any color you love — a pillow, a sunset, a Pinterest pin — and find the closest paint match.",
+    href: "/tools/color-identifier",
+    cta: "Upload a photo",
+  },
+  {
+    name: "Palette Generator",
+    description: "Pick one color you love and get a designer-quality palette — all mapped to real paints you can buy at the store.",
+    href: "/tools/palette-generator",
+    cta: "Build a palette",
   },
   {
     name: "Room Visualizer",
@@ -55,28 +63,22 @@ const tools = [
     cta: "Try it free",
   },
   {
-    name: "Photo Color Identifier",
-    description: "Snap a photo of any color you love — a pillow, a sunset, a Pinterest pin — and find the closest paint match.",
-    href: "/tools/color-identifier",
-    cta: "Upload a photo",
-  },
-  {
-    name: "Paint Calculator",
-    description: "Enter your room dimensions and get the exact number of gallons you need. Accounts for doors, windows, and coats.",
-    href: "/tools/paint-calculator",
-    cta: "Calculate now",
-  },
-  {
     name: "Undertone Analysis",
     description: "Every color tagged warm, cool, or neutral — so your new paint won't clash with your trim or cabinets.",
     href: "/colors",
     cta: "Browse colors",
   },
   {
-    name: "Palette Generator",
-    description: "Pick one color you love and get a designer-quality palette — all mapped to real paints you can buy at the store.",
-    href: "/tools/palette-generator",
-    cta: "Build a palette",
+    name: "Cross-Brand Matching",
+    description: "Found the one but it's the wrong brand for your store? Find the closest Sherwin-Williams, Behr, PPG, or Benjamin Moore match in seconds.",
+    href: "/search",
+    cta: "Find a match",
+  },
+  {
+    name: "Paint Calculator",
+    description: "Enter your room dimensions and get the exact number of gallons you need. Accounts for doors, windows, and coats.",
+    href: "/tools/paint-calculator",
+    cta: "Calculate now",
   },
 ];
 
@@ -380,7 +382,7 @@ export default async function Home() {
         "@type": "WebSite",
         name: "Paint Color HQ",
         url: "https://www.paintcolorhq.com",
-        description: "Free paint color database with 23,000+ colors from 14 brands. Cross-brand matching uses CIEDE2000 Delta E scoring.",
+        description: "Discover, preview, and compare 23,000+ paint colors across 14 brands — find a color you love, see it on a wall, and get it in the brand you can buy. Cross-brand matches use CIEDE2000 Delta E. Free, no signup.",
         potentialAction: {
           "@type": "SearchAction",
           // Plain URL string is the current Sitelinks Searchbox spec — the
@@ -397,7 +399,7 @@ export default async function Home() {
         name: "Paint Color HQ",
         url: "https://www.paintcolorhq.com",
         logo: "https://www.paintcolorhq.com/logo.webp",
-        description: "Free paint color reference database with 23,000+ colors from 14 brands. Uses the CIEDE2000 Delta E formula for cross-brand matching.",
+        description: "Paint Color HQ helps you discover, preview, and compare 23,000+ paint colors across 14 brands, then find your color in the brand you can buy. Cross-brand matches use the CIEDE2000 Delta E formula. Free, no signup.",
         sameAs: ["https://www.pinterest.com/paintcolorhq"],
         contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: "https://www.paintcolorhq.com/contact" },
       }} />
