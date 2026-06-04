@@ -13,6 +13,7 @@ import { PinterestSaveButton } from "@/components/pinterest-save-button";
 import { redirect } from "next/navigation";
 import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand, getMoreFromFamily } from "@/lib/queries";
 import { generateColorDescription, generateEditorialVerdict, generateMetaDescription } from "@/lib/color-description";
+import { getColorEditorial } from "@/lib/color-editorial";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
 import { TrackPage } from "@/components/track-page";
@@ -218,6 +219,8 @@ export default async function ColorPage({ params }: PageProps) {
   ]);
   const description = generateColorDescription(color, matches);
   const editorialVerdict = generateEditorialVerdict(color);
+  // Curated, hand-written review for high-demand colors (null for the long tail).
+  const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
   const harmonies = await resolveHarmonies(color.hex);
   const light = isLightColor(color.hex);
@@ -356,6 +359,16 @@ export default async function ColorPage({ params }: PageProps) {
           <p className="text-lg text-on-surface leading-relaxed">{editorialVerdict}</p>
         </article>
       </section>
+
+      {/* Curated review — only on high-demand colors (null for the long tail). */}
+      {curatedEditorial && (
+        <section className="bg-surface border-b border-outline-variant/10">
+          <article className="max-w-4xl mx-auto px-6 md:px-12 py-12 space-y-4 text-on-surface-variant leading-relaxed">
+            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">More about {color.name}</h2>
+            {curatedEditorial}
+          </article>
+        </section>
+      )}
 
       {/* Technical Profile + Matches */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-24">
