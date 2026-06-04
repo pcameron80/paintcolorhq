@@ -137,6 +137,30 @@ export default async function BrandPage({ params }: PageProps) {
 
   const brandContent = getBrandContent(brand.slug);
   const subtitle = brandContent?.subtitle ?? `Browse every ${brand.name} color with undertone tags, LRV values, and cross-brand matches`;
+
+  // Data-grounded FAQ (rendered visibly below + as FAQPage schema). Brand pages
+  // are the biggest impression earner; visible FAQ adds SERP/AI surface. Answers
+  // vary per brand (count, most-searched colors, match targets) so they aren't
+  // templated. Rendered in the DOM because JSON-LD-only FAQ gets ignored.
+  const matchTargetNames = matchTargets.slice(0, 3).map((t) => t.name);
+  const brandFaqs: { q: string; a: string }[] = [
+    {
+      q: `How many ${brand.name} paint colors are there?`,
+      a: `${brand.name} has ${brand.color_count.toLocaleString()} paint colors catalogued on Paint Color HQ, each listed with its hex code, RGB values, LRV, and undertone.`,
+    },
+    ...(popularColors.length >= 3
+      ? [{
+          q: `What are the most popular ${brand.name} paint colors?`,
+          a: `Among the most-searched ${brand.name} colors on Paint Color HQ are ${popularColors.slice(0, 3).map((c) => c.name).join(", ")} — ranked by cross-brand match demand rather than marketing.`,
+        }]
+      : []),
+    ...(matchTargetNames.length >= 2
+      ? [{
+          q: `Can I match ${brand.name} colors to other brands?`,
+          a: `Yes. Every ${brand.name} color has its closest equivalents in ${matchTargetNames.join(", ")} and other brands, computed with the CIEDE2000 color-difference formula so the matches reflect how similar the colors actually look.`,
+        }]
+      : []),
+  ];
   const orgData = brandOrgData[brand.slug];
 
   return (
@@ -332,6 +356,24 @@ export default async function BrandPage({ params }: PageProps) {
         );
       })()}
 
+      {/* FAQ — rendered visibly (JSON-LD-only FAQ gets ignored) + FAQPage schema below */}
+      {brandFaqs.length > 0 && (
+        <section className="max-w-4xl mx-auto px-6 md:px-12 py-16">
+          <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">{brand.name} colors — frequently asked</h2>
+          <div className="space-y-3">
+            {brandFaqs.map((f) => (
+              <details key={f.q} className="group rounded-xl border border-outline-variant/10 bg-surface-container-lowest p-5">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-headline font-bold text-on-surface">
+                  {f.q}
+                  <span className="text-outline transition-transform group-open:rotate-180">&#9662;</span>
+                </summary>
+                <p className="mt-3 text-on-surface-variant leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* JSON-LD */}
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "CollectionPage",
@@ -353,6 +395,13 @@ export default async function BrandPage({ params }: PageProps) {
         ...(orgData.foundingDate && { foundingDate: orgData.foundingDate }),
         ...(orgData.headquarters && { address: { "@type": "PostalAddress", addressLocality: orgData.headquarters } }),
         ...(orgData.sameAs && orgData.sameAs.length > 0 && { sameAs: orgData.sameAs }),
+      }} />}
+      {brandFaqs.length > 0 && <JsonLd data={{
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: brandFaqs.map((f) => ({
+          "@type": "Question", name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
       }} />}
 
       <AdSenseScript />

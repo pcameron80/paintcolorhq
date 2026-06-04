@@ -532,6 +532,9 @@ export default async function ColorPage({ params }: PageProps) {
         name: `${color.name}${color.color_number ? ` ${color.color_number}` : ""}`,
         description: description,
         url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
+        // Recommended for Product rich results — reuse the generated swatch OG
+        // image so color pages are eligible for image-enriched SERP formats.
+        image: `https://www.paintcolorhq.com/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`,
         ...(color.color_number ? { sku: color.color_number, mpn: color.color_number } : {}),
         color: color.hex.toUpperCase(),
         brand: { "@type": "Brand", name: color.brand.name },

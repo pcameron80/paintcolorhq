@@ -49,6 +49,12 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Frozen at build time (this file evaluates once per build) so sitemap
+  // lastmod values reflect the actual deploy date instead of resetting to
+  // "today" on every ISR cold-start — which Googlebot reads as false freshness.
+  env: {
+    SITE_BUILD_DATE: new Date().toISOString().split("T")[0],
+  },
   // Suppress the X-Powered-By: Next.js fingerprinting header.
   poweredByHeader: false,
   htmlLimitedBots:

@@ -8,6 +8,7 @@ import { FamilyColorLibrary } from "@/components/family-color-library";
 import { FamilyColorLibraryFallback } from "@/components/family-color-library-fallback";
 import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/queries";
 import { getFamilyContent, getFamilyRelatedPalettes } from "@/lib/family-content";
+import { getPostsByFamily } from "@/lib/blog-posts";
 import { FAMILY_UNDERTONE_ANSWERS } from "@/lib/family-undertone-copy";
 import { getPaletteBySlug } from "@/lib/palettes";
 import { TrackPage } from "@/components/track-page";
@@ -81,6 +82,9 @@ export default async function ColorFamilyPage({ params }: PageProps) {
 
   const familyName = capitalize(familySlug.replace(/-/g, " "));
   const familyContent = getFamilyContent(familySlug);
+  // Reciprocal family→blog links — close the one-way link gap the cluster audit
+  // flagged (round-up posts link into family pages but not back).
+  const relatedPosts = getPostsByFamily(familySlug);
   const brandCount = brands.length;
   const baseUrl = `https://www.paintcolorhq.com/colors/family/${familySlug}`;
   const fc = familyColors[familySlug] ?? { hex: "#9CA3AF" };
@@ -214,6 +218,25 @@ export default async function ColorFamilyPage({ params }: PageProps) {
               {familyContent.guide}
             </article>
             <ColorLinkEnhancer containerRef="family-guide" />
+          </div>
+        </section>
+      )}
+
+      {/* Related reading — reciprocal links to the family's round-up posts */}
+      {relatedPosts.length > 0 && (
+        <section className="py-16 px-6 md:px-12 bg-surface">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-6">Related reading</h2>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {relatedPosts.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`}
+                  className="group block rounded-xl border border-outline-variant/10 bg-surface-container-lowest p-6 hover:shadow-lg transition-all">
+                  <h3 className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">{post.title}</h3>
+                  <p className="mt-2 text-sm text-on-surface-variant line-clamp-2">{post.excerpt}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-primary font-bold text-sm group-hover:gap-2 transition-all">Read the guide <span>&rarr;</span></span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       )}
