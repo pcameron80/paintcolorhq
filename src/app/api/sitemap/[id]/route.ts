@@ -16,7 +16,13 @@ const COLORS_PER_SITEMAP = 5000;
 // starts this is effectively "deploy time," which is what we want
 // Googlebot to see as the recency signal. Blog posts use their own
 // post.date and override this.
-const SITE_BUILD_DATE = new Date().toISOString().split("T")[0];
+//
+// Frozen at build time via next.config.ts `env` so it reflects the actual
+// deploy date instead of resetting to "today" on every hourly ISR cold-start
+// (uniform "updated today" across thousands of URLs reads as false freshness
+// and erodes Googlebot's crawl-scheduling trust). Falls back to runtime date.
+const SITE_BUILD_DATE =
+  process.env.SITE_BUILD_DATE ?? new Date().toISOString().split("T")[0];
 
 interface SitemapEntry {
   url: string;
