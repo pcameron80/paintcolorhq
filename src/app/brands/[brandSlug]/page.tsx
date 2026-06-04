@@ -38,21 +38,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!brand) return { title: "Brand Not Found" };
   const count = brand.color_count.toLocaleString();
   const url = `https://www.paintcolorhq.com/brands/${brandSlug}`;
-  // Lead with the head-query phrase ("[Brand] Paint Colors"). The unique
-  // color count carries SERP differentiation against Behr.com / Home Depot.
-  // Avoid "Vista Paint Paint Colors" doubling when the brand name already
-  // contains "Paint".
+  // Lead with "[Brand] Color Chart" + "all [count] colors" — the two big
+  // under-captured Bing queries (the page already ranks pos 3-8 for them).
+  // De-double "Paint" when the brand name already contains it.
   const brandHasPaintWord = /\bpaint(s)?\b/i.test(brand.name);
-  const headerPhrase = brandHasPaintWord
-    ? `${brand.name} Colors`
-    : `${brand.name} Paint Colors`;
-  const title = `${headerPhrase}: All ${count} Shades with Cross-Brand Matches`;
+  const colorsWordCap = brandHasPaintWord ? "Colors" : "Paint Colors";
+  const title = `${brand.name} Color Chart: All ${count} ${colorsWordCap}`;
   // Pick 3 well-known compare brands different from the source.
   const compareTo = ["Sherwin-Williams", "Benjamin Moore", "Behr", "PPG"]
     .filter((b) => b !== brand.name)
     .slice(0, 3);
   const colorsWord = brandHasPaintWord ? "colors" : "paint colors";
-  const description = `All ${count} ${brand.name} ${colorsWord} with hex codes, LRV values, and undertone tags. Side-by-side matches to ${compareTo.join(", ")}, and 10 more brands.`;
+  const description = `The complete ${brand.name} color chart — all ${count} ${colorsWord} with hex codes, LRV & undertones, plus matches to ${compareTo.join(", ")} & more.`;
   const brandContent = getBrandContent(brandSlug);
   const shouldNoindex = !brandContent;
   return {
@@ -153,7 +150,7 @@ export default async function BrandPage({ params }: PageProps) {
             {orgData?.headquarters && ` \u00B7 ${orgData.headquarters}`}
           </span>
           <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-8">
-            {brand.name}
+            {brand.name} Color Chart
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">{subtitle}</p>
           <div className="flex flex-wrap gap-4">
@@ -258,6 +255,14 @@ export default async function BrandPage({ params }: PageProps) {
           ISR-cacheable. Same pattern as the family-page refactor. */}
       <section id="colors" className="py-24 px-6 md:px-12 bg-surface-container-low scroll-mt-20">
         <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface">
+              All {brand.color_count.toLocaleString()} {brand.name} Colors
+            </h2>
+            <p className="mt-2 text-on-surface-variant max-w-2xl leading-relaxed">
+              The complete {brand.name} color chart — every shade with its hex code, LRV, and undertone. Filter by family or search, and open any color for its cross-brand matches.
+            </p>
+          </div>
           <Suspense
             fallback={
               <BrandColorLibraryFallback
@@ -326,8 +331,8 @@ export default async function BrandPage({ params }: PageProps) {
       {/* JSON-LD */}
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "CollectionPage",
-        name: `${brand.name} Paint Colors`,
-        description: `Browse all ${brand.color_count.toLocaleString()} ${brand.name} paint colors with hex codes, RGB values, and cross-brand matches.`,
+        name: `${brand.name} Color Chart`,
+        description: `The complete ${brand.name} color chart — all ${brand.color_count.toLocaleString()} ${brand.name} colors with hex codes, RGB values, LRV, and cross-brand matches.`,
         url: `https://www.paintcolorhq.com/brands/${brand.slug}`,
         breadcrumb: { "@type": "BreadcrumbList", itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
