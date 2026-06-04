@@ -352,9 +352,9 @@ export default async function ColorPage({ params }: PageProps) {
           composes from hue family × LRV bucket × saturation band so it
           varies meaningfully across the corpus without per-color hand-writing. */}
       <section className="bg-surface-container-low border-b border-outline-variant/10">
-        <div className="max-w-4xl mx-auto px-6 md:px-12 py-10">
+        <article className="max-w-4xl mx-auto px-6 md:px-12 py-10">
           <p className="text-lg text-on-surface leading-relaxed">{editorialVerdict}</p>
-        </div>
+        </article>
       </section>
 
       {/* Technical Profile + Matches */}
@@ -370,8 +370,10 @@ export default async function ColorPage({ params }: PageProps) {
                 <span className="text-on-surface">{color.name}</span>
               </nav>
               <div className="bg-surface-container-high h-1 w-12 mb-6" />
-              <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">{color.name} Technical Profile</h2>
-              <p className="text-on-surface-variant leading-relaxed mb-8">{description}</p>
+              <article>
+                <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">{color.name} Technical Profile</h2>
+                <p className="text-on-surface-variant leading-relaxed mb-8">{description}</p>
+              </article>
             </div>
             <div className="space-y-0">
               {[
