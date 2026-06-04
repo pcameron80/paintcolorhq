@@ -1908,6 +1908,200 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
+  "sherwin-williams/dovetail-7018": (
+    <>
+      <p>
+        Dovetail is a deep, sophisticated greige-gray at LRV 26 — a warm-leaning mid-dark neutral that
+        became a favorite for exteriors, islands, and accent walls. It&apos;s in the same family as the light
+        greiges but with real depth, giving a room contrast and a grounded, modern weight.
+      </p>
+      <p>
+        At this depth it reads darker in low light, so sample in place. It pairs beautifully with crisp
+        white trim and black hardware, and works as an exterior body color. Benjamin Moore Castle Gate is
+        its near-identical cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/gray-matters-7066": (
+    <>
+      <p>
+        Gray Matters is a balanced mid-tone gray at LRV 39 — a true gray with a soft, even character that
+        avoids leaning too warm or too cool. It gives a room real definition and a modern, grounded feel
+        without the warmth of a greige or the chill of a blue-gray.
+      </p>
+      <p>
+        At this depth it darkens in low light, so check it in your own space. It pairs with white trim and
+        both warm and cool accents. Benjamin Moore Platinum Gray is its near-identical cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/online-7072": (
+    <>
+      <p>
+        Online is a clean, true mid-gray at LRV 46 — a balanced, no-nonsense gray with a soft warm-green
+        steadiness that keeps it from reading cold. It&apos;s a versatile choice for a modern gray that gives
+        a room gentle definition and pairs easily with most finishes.
+      </p>
+      <p>
+        It holds its neutral character fairly well across lighting. It pairs with white trim and warm or
+        cool accents. Benjamin Moore Marina Gray is its near-identical cross-brand match, with Behr Lunar
+        Surface close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/sands-of-time-6101": (
+    <>
+      <p>
+        Sands of Time is a warm, mid-tone tan-greige at LRV 39 — a soft, earthy neutral with a gentle
+        depth that reads cozy and grounded. It&apos;s the choice for a warm whole-house color with a touch
+        more presence than a pale tan, suited to homes that lean warm and traditional.
+      </p>
+      <p>
+        At this depth it can go a touch deeper in low light and warmer in warm light, so sample in place.
+        It pairs with creamy whites and wood. Behr Basketry and Benjamin Moore Broken Arrow are its
+        closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/macadamia-6142": (
+    <>
+      <p>
+        Macadamia is a soft, warm mid-tan at LRV 49 — a creamy, nutty beige with a gentle warmth that
+        reads inviting without going yellow. It&apos;s a comfortable whole-house neutral for warm and
+        transitional homes, a tan with enough depth to feel like a color.
+      </p>
+      <p>
+        Its warmth can edge slightly gold in strong warm light, so keep companions warm. It pairs with
+        creamy whites and wood. Benjamin Moore Warm is its near-identical match, with Behr Elemental Tan
+        close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/sealskin-7675": (
+    <>
+      <p>
+        Sealskin is a deep, rich brown-black at LRV 6 — a dark, sophisticated chocolate-charcoal with a
+        warm undertone that reads expensive rather than heavy. It&apos;s a dramatic choice for cabinetry, an
+        accent wall, or an exterior where you want depth with an earthy, warm character.
+      </p>
+      <p>
+        At this depth it reads nearly black in shadow and shows its warm brown in good light. It pairs
+        beautifully with warm whites, brass, and natural wood. Behr French Roast is its closest cross-brand
+        match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/anonymous-7046": (
+    <>
+      <p>
+        Anonymous is a deep, warm greige-brown at LRV 20 — a grounded, mid-dark neutral with a soft taupe
+        depth. It&apos;s the choice when you want a greige with real weight and warmth for an accent wall,
+        cabinetry, or an exterior, rather than a light, recede-into-the-wall neutral.
+      </p>
+      <p>
+        At this depth it darkens in low light and shows its taupe warmth in good light. It pairs with
+        creamy whites, wood, and warm metals. Benjamin Moore River Silt is its closest cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/magnetic-gray-7058": (
+    <>
+      <p>
+        Magnetic Gray is a mid-tone gray at LRV 46 with a soft warm-green base — a balanced gray that
+        gives a room definition while staying easy to live with. It&apos;s a versatile choice for a gray with
+        a hint of warmth, popular for both interiors and exteriors.
+      </p>
+      <p>
+        It holds a fairly steady character across lighting, leaning a touch warm or green in some light.
+        It pairs with white trim and warm or cool accents. Behr Keystone Gray and Benjamin Moore Sea Haze
+        are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/rest-assured-9061": (
+    <>
+      <p>
+        Rest Assured is a soft, mid-tone blue-gray at LRV 48 — a gentle, grayed blue that brings a calm,
+        restful color to a room without going bold. It&apos;s a flexible choice for bedrooms and bathrooms
+        where you want a soothing blue that still reads as a sophisticated near-neutral.
+      </p>
+      <p>
+        Its blue base reads a touch stronger in cool light. It pairs with crisp whites and natural wood
+        for a serene feel. Behr Blue Willow is its closest cross-brand match, with Benjamin Moore Marlboro
+        Blue close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/slow-green-6456": (
+    <>
+      <p>
+        Slow Green is a soft, light blue-green at LRV 64 — a gentle aqua-sage that reads cool and calm,
+        shifting between green and blue with the light. It&apos;s a restful choice for bathrooms, bedrooms,
+        and kitchens where you want a watery, spa-like color that stays light and airy.
+      </p>
+      <p>
+        Like all soft blue-greens it&apos;s hard to predict from the chip, so sample where it&apos;s going. It
+        pairs with crisp whites and natural wood. Benjamin Moore Turquoise Mist is its near-identical
+        cross-brand match, with Behr Heath Gray close behind.
+      </p>
+    </>
+  ),
+  "benjamin-moore/pashmina-af-100": (
+    <>
+      <p>
+        Pashmina is a warm, mid-tone taupe-greige at LRV 46 — a soft, sophisticated neutral with a gentle
+        gray-brown depth that reads cozy and refined. It&apos;s the choice for a greige with real warmth and
+        body, grounding a room without going dark or cold.
+      </p>
+      <p>
+        At this depth it can show its taupe warmth in good light and deepen in low light, so sample in
+        place. It pairs with creamy whites and wood. Its near-identical Sherwin-Williams match is
+        Outrigger.
+      </p>
+    </>
+  ),
+  "benjamin-moore/bennington-gray-hc-82": (
+    <>
+      <p>
+        Bennington Gray is a warm, mid-tone tan-greige at LRV 47 — a soft, historic neutral with a gentle
+        golden-beige warmth that bridges the beige and greige looks. It&apos;s a classic whole-house color for
+        traditional and transitional homes, warm and easy to live with.
+      </p>
+      <p>
+        It can edge a touch gold in strong warm light, so sample against your trim and floors. It pairs
+        with creamy whites and wood. Its closest Sherwin-Williams match is Woolen Mittens, with Behr
+        Windsor Tan close.
+      </p>
+    </>
+  ),
+  "benjamin-moore/beach-glass-1564": (
+    <>
+      <p>
+        Beach Glass is a soft, light sea-glass color at LRV 51 — a gentle blue-green-gray that reads more
+        green, blue, or gray depending on the light, exactly like its namesake. It&apos;s a perennial favorite
+        for bathrooms and bedrooms for that calm, coastal quality.
+      </p>
+      <p>
+        Its chameleon nature means a sample is essential — it can look quite different across rooms and
+        bulbs. It pairs with crisp whites and natural wood. Behr Dew is its near-identical cross-brand
+        match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/yarmouth-blue-hc-150": (
+    <>
+      <p>
+        Yarmouth Blue is a soft, historic powder blue at LRV 56 — a gentle, slightly grayed light blue
+        with a timeless, coastal charm. It&apos;s clearly a blue but soft enough to behave like a serene
+        near-neutral, popular for bedrooms, bathrooms, and traditional exteriors.
+      </p>
+      <p>
+        Its soft blue reads a touch cooler in north light and gentler under warm bulbs. It pairs with
+        crisp whites and natural materials. Behr Dayflower is its near-identical cross-brand match, with
+        Sherwin-Williams Sleepy Blue in the same family.
+      </p>
+    </>
+  ),
 };
 
 export function getColorEditorial(brandSlug: string, colorSlug: string): ReactNode | null {
