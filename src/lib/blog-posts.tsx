@@ -3926,11 +3926,46 @@ export function getPostsByBrand(brandName: string, limit = 3): BlogPost[] {
 
   const matches = blogPosts.filter((p) => {
     if (!isLive(p.date)) return false;
-    const searchable = `${p.title} ${p.excerpt} ${p.tags.join(" ")}`.toLowerCase();
+    // Match on title + tags only (not excerpt) — a post genuinely about a brand
+    // names it in one of those. Excerpt matching pulled in OTHER brands' posts
+    // that merely mention this brand in a cross-brand comparison (e.g. a
+    // Dunn-Edwards round-up surfacing on /brands/behr).
+    const searchable = `${p.title} ${p.tags.join(" ")}`.toLowerCase();
     return terms.some((t) => searchable.includes(t));
   });
 
-  // Sort newest first
-  matches.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // THIS brand's own general round-up ranks first — the right primary companion
+  // for a brand page over a room-specific post. It's identified by the "Brand"
+  // tag AND a tag matching the brand itself (so a *different* brand's round-up
+  // that merely mentions this brand in its body isn't wrongly promoted). Then
+  // newest first. (Cluster audit flagged the wrong post leading on /brands/behr.)
+  const isOwnRoundup = (p: BlogPost) =>
+    p.tags.includes("Brand") && p.tags.some((t) => terms.includes(t.toLowerCase()));
+  matches.sort((a, b) => {
+    const rank = (isOwnRoundup(b) ? 1 : 0) - (isOwnRoundup(a) ? 1 : 0);
+    if (rank !== 0) return rank;
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+  return matches.slice(0, limit);
+}
+
+// Live posts associated with a color family, for reciprocal family→blog links
+// (family pages historically linked nowhere back to their round-up posts —
+// cluster audit finding). Matches the capitalized family name as a tag, or a
+// "{family} paint colors" phrase in the title. Round-up "Guide" posts first.
+export function getPostsByFamily(familySlug: string, limit = 2): BlogPost[] {
+  const fam = familySlug.toLowerCase();
+  const famCap = fam.charAt(0).toUpperCase() + fam.slice(1);
+  const matches = blogPosts.filter((p) => {
+    if (!isLive(p.date)) return false;
+    const titleHasFamily = p.title.toLowerCase().includes(`${fam} paint colors`);
+    return p.tags.includes(famCap) || titleHasFamily;
+  });
+  matches.sort((a, b) => {
+    const aGuide = a.tags.includes("Guide") ? 1 : 0;
+    const bGuide = b.tags.includes("Guide") ? 1 : 0;
+    if (aGuide !== bGuide) return bGuide - aGuide;
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
   return matches.slice(0, limit);
 }
