@@ -169,9 +169,9 @@ export default async function ColorFamilyPage({ params }: PageProps) {
         <section className="bg-tertiary-fixed py-16 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="bg-primary h-1 w-12 mb-8" />
-            <div id="family-intro" className="max-w-4xl text-on-surface-variant leading-relaxed">
+            <article id="family-intro" className="max-w-4xl text-on-surface-variant leading-relaxed">
               {familyContent.intro}
-            </div>
+            </article>
             <ColorLinkEnhancer containerRef="family-intro" />
           </div>
         </section>
@@ -210,9 +210,9 @@ export default async function ColorFamilyPage({ params }: PageProps) {
       {familyContent?.guide && (
         <section className="py-16 px-6 md:px-12 bg-tertiary-fixed">
           <div className="max-w-7xl mx-auto">
-            <div id="family-guide" className="max-w-4xl text-on-surface-variant">
+            <article id="family-guide" className="max-w-4xl text-on-surface-variant">
               {familyContent.guide}
-            </div>
+            </article>
             <ColorLinkEnhancer containerRef="family-guide" />
           </div>
         </section>

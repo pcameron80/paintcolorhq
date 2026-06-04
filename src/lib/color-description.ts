@@ -202,12 +202,27 @@ function getPairingSentence(name: string, family: HueFamily): string {
   }
 }
 
-// Saturation modifier appended to pairing sentence. Adds a second axis so
-// hue family × saturation × LRV bucket multiplies the unique tail-string
-// surface ~3x. For achromatic-* families saturation is always "muted" so
-// only that branch fires there.
-function getPairingSaturationModifier(saturation: SaturationBand, isAchromatic: boolean): string {
-  if (isAchromatic) return "";
+// Pairing modifier. Two regimes:
+//  - Chromatic: keyed on saturation band (muted / mid / saturated).
+//  - Achromatic: keyed on LRV/lightness band AND interpolates the color name,
+//    because the 3 base achromatic pairing sentences otherwise collapsed across
+//    ~3,000 pages each. Light/mid/deep neutrals genuinely behave differently, so
+//    this adds a real (not cosmetic) third axis on the largest page segment.
+function getPairingSaturationModifier(
+  saturation: SaturationBand,
+  isAchromatic: boolean,
+  lightness: LightnessCategory,
+  name: string
+): string {
+  if (isAchromatic) {
+    if (lightness === "very light" || lightness === "light") {
+      return ` As a lighter neutral, ${name} works as a whole-room or trim color and keeps adjoining colors reading clean — pair it with crisper whites a step brighter than itself so the trim still separates.`;
+    }
+    if (lightness === "medium") {
+      return ` At mid depth, ${name} grounds a space without darkening it — it holds up on lower walls, kitchen islands, and as a wraparound where a lighter neutral would feel washed out.`;
+    }
+    return ` As a deeper neutral, ${name} reads as a confident anchor — strongest on accent walls, cabinetry, and moody whole rooms that get enough natural light to keep it from going flat.`;
+  }
   if (saturation === "muted") {
     return ` Because this version is on the desaturated side, it pairs forgivingly with both warm and cool accent palettes — and reads especially calm in north-facing rooms where high-chroma versions can feel intrusive.`;
   }
@@ -217,9 +232,24 @@ function getPairingSaturationModifier(saturation: SaturationBand, isAchromatic: 
   return ` At mid saturation, this color sits at a flexible mid-point — bold enough to anchor a room without dominating, and pairs cleanly with both crisp and creamy whites.`;
 }
 
-// Saturation modifier appended to lighting sentence.
-function getLightingSaturationModifier(saturation: SaturationBand, isAchromatic: boolean): string {
-  if (isAchromatic) return "";
+// Lighting modifier — same two regimes as the pairing modifier. The achromatic
+// branch interpolates the name + lightness so the lighting guidance no longer
+// repeats verbatim across thousands of neutral pages.
+function getLightingSaturationModifier(
+  saturation: SaturationBand,
+  isAchromatic: boolean,
+  lightness: LightnessCategory,
+  name: string
+): string {
+  if (isAchromatic) {
+    if (lightness === "very light" || lightness === "light") {
+      return ` Lighter neutrals reveal their undertone most, so ${name} can swing warmer under 2700K bulbs and cleaner under 4000K daylight — sample it against your trim before committing.`;
+    }
+    if (lightness === "medium") {
+      return ` At mid depth ${name} holds its character across bulb temperatures, shifting only slightly warm under 2700K and slightly crisper under cool daylight.`;
+    }
+    return ` Deeper neutrals can read close to black in low light, so preview ${name} in the room's actual evening lighting, not just at midday.`;
+  }
   if (saturation === "muted") {
     return ` Desaturated versions shift least under different lighting — they hold their character whether the room runs warm or cool.`;
   }
@@ -269,23 +299,38 @@ function getQueryTargetingSentences(
   const hex = color.hex.toUpperCase();
   const tempWord = props.temperature === "neutral" ? "neutral" : props.temperature;
 
-  // "What color is X" — directly answers the most common query pattern
-  const whatColorIs = `What color is ${color.name}? It's a ${props.lightness} ${tempWord} ${family} with the hex code ${hex}.`;
+  // Guaranteed-unique lead fact: brand + name + number + hex + LRV + undertone.
+  // Every one of these is per-color data, so this sentence can never collapse to
+  // a near-duplicate across pages. Undertone is stated here (not in a separate
+  // generic callout) and is skipped when it would just echo the temperature word
+  // (avoids "a neutral … neutral undertone").
+  const colorNum = color.color_number ? ` (${color.color_number})` : "";
+  const lrvNum = color.lrv != null ? Math.round(Number(color.lrv)) : null;
+  const lrvClause = lrvNum != null ? `, LRV ${lrvNum}` : "";
+  const undertoneLower = color.undertone ? color.undertone.toLowerCase() : "";
+  const undertoneClause =
+    undertoneLower && undertoneLower !== tempWord ? `, ${undertoneLower} undertone` : "";
+  const whatColorIs = `What color is ${color.brand.name} ${color.name}${colorNum}? It's a ${props.lightness} ${tempWord} ${family} — hex ${hex}${lrvClause}${undertoneClause}.`;
 
-  // "Colors similar to X" — answers "colors similar to" / "colors close to" queries
+  // Nearest cross-brand match — leads with the single closest equivalent (real,
+  // per-color match name) using plain-language closeness, NOT a raw Delta E
+  // number (house rule: Delta E is always shown in words in user-facing copy).
   const closeMatches = matches.filter((m) => Number(m.delta_e_score) < 3).slice(0, 3);
   let similarColors = "";
-  if (closeMatches.length >= 2) {
-    const names = closeMatches.map(
-      (m) => `${m.match_color.brand.name} ${m.match_color.name}`
-    );
-    similarColors = `Colors similar to ${color.name} include ${names.join(", ")}.`;
+  if (closeMatches.length >= 1) {
+    const closest = closeMatches[0];
+    const closestName = `${closest.match_color.brand.name} ${closest.match_color.name}`;
+    const closeness =
+      Number(closest.delta_e_score) < 2 ? "a near-identical match on the wall" : "a very close match";
+    if (closeMatches.length >= 2) {
+      const others = closeMatches
+        .slice(1)
+        .map((m) => `${m.match_color.brand.name} ${m.match_color.name}`);
+      similarColors = `The closest cross-brand equivalent to ${color.name} is ${closestName} — ${closeness}, with ${others.join(" and ")} also close.`;
+    } else {
+      similarColors = `The closest cross-brand equivalent to ${color.name} is ${closestName} — ${closeness}.`;
+    }
   }
-
-  // Undertone callout for "{color} undertones" queries
-  const undertoneCallout = color.undertone
-    ? `${color.name} has a ${color.undertone.toLowerCase()} undertone, which affects how it pairs with trim, flooring, and adjacent wall colors.`
-    : "";
 
   // LRV-driven room application context — adds use-case framing that lifts
   // the description into the 134-167 word citation window the GEO audit
@@ -293,23 +338,22 @@ function getQueryTargetingSentences(
   const lrv = color.lrv != null ? Math.round(Number(color.lrv)) : null;
   const lrvSentence = lrv != null ? getLrvApplicationSentence(color.name, lrv) : "";
 
-  // Trim/hardware pairing — hue family (11) × saturation band (3) for
-  // chromatic colors. Achromatic flavors collapse to the base sentence
-  // since saturation is constant there.
+  // Trim/hardware pairing — chromatic: hue family (11) × saturation (3).
+  // Achromatic: hue flavor (3) × LRV band (3), name-interpolated, so neutrals
+  // no longer share a single pairing tail across thousands of pages.
   const hueFamily = getHueFamily(color, props);
   const pairingSentence =
     getPairingSentence(color.name, hueFamily) +
-    getPairingSaturationModifier(props.saturation, props.isAchromatic);
+    getPairingSaturationModifier(props.saturation, props.isAchromatic, props.lightness, color.name);
 
-  // Lighting-behavior guidance — same hue × saturation composition.
+  // Lighting-behavior guidance — same composition.
   const lightingSentence =
     getLightingBehaviorSentence(color.name, hueFamily) +
-    getLightingSaturationModifier(props.saturation, props.isAchromatic);
+    getLightingSaturationModifier(props.saturation, props.isAchromatic, props.lightness, color.name);
 
   return [
     whatColorIs,
     similarColors,
-    undertoneCallout,
     lrvSentence,
     pairingSentence,
     lightingSentence,
