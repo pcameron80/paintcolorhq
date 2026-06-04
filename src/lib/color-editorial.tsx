@@ -331,6 +331,208 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
+  "sherwin-williams/snowbound-7004": (
+    <>
+      <p>
+        Snowbound is the off-white for people who find Pure White a touch too plain and Alabaster a
+        touch too creamy. At LRV 82 it&apos;s bright, but a faint greige in the base gives it a soft,
+        slightly sophisticated edge — it reads as a &ldquo;designed&rdquo; white rather than a builder white.
+      </p>
+      <p>
+        That subtle gray is the thing to watch: against a stark white it can look faintly dirty, and in
+        cool north light the greige can surface more than you expect, so pair it with warmer companions.
+        It&apos;s a strong whole-house white and a clean trim partner for greige walls. PPG Silver Feather
+        is its near-identical cross-brand match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/greek-villa-7551": (
+    <>
+      <p>
+        Greek Villa is the warmest of Sherwin-Williams&apos; popular whites — a soft, creamy white at LRV 84
+        that&apos;s a half-step warmer than Alabaster without tipping into yellow. It&apos;s the right call when
+        you want a white that feels cozy and a little old-world rather than crisp and modern.
+      </p>
+      <p>
+        Its warmth means it glows in lamplight but can look slightly creamy beside cooler whites, so
+        commit to the warm direction throughout. It&apos;s a favorite for trim, millwork, and whole rooms in
+        traditional homes. Dutch Boy Child of Heaven and Behr Salt Crystal are both near-identical matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/extra-white-7006": (
+    <>
+      <p>
+        Extra White is Sherwin-Williams&apos; crisp, bright white with a slight cool edge — at LRV 86 it&apos;s
+        about as clean as their whites get. It&apos;s the pick for contemporary spaces and for trim where you
+        want a sharp, modern line rather than a soft, creamy one.
+      </p>
+      <p>
+        Because it leans cool, it can read slightly blue-gray in north light and will make any warm white
+        nearby look dingy, so don&apos;t mix it with creamier whites. It&apos;s excellent against warm wood and
+        deep colors, where its crispness adds contrast. Benjamin Moore White Christmas is its
+        near-identical cross-brand match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/cloud-white-oc-130": (
+    <>
+      <p>
+        Cloud White is Benjamin Moore&apos;s soft, creamy white for trim, millwork, and cabinetry — warmer
+        than Chantilly Lace, a classic that predates the current bright-white era. At LRV 85 it&apos;s bright
+        but gentle, the kind of white that reads timeless on detailed trim and traditional cabinets.
+      </p>
+      <p>
+        Its warmth is the point, but it means it can look creamy beside a stark white ceiling, so keep
+        the whites consistent. It&apos;s a natural trim partner for warm greiges and creamy walls. Behr Swiss
+        Coffee is its near-identical match, which makes the look easy to get at Home Depot.
+      </p>
+    </>
+  ),
+  "benjamin-moore/classic-gray-1548": (
+    <>
+      <p>
+        Classic Gray is barely a gray at all — a light, warm almost-white at LRV 75 that reads as the
+        softest possible neutral. People reach for it when even a light greige like Edgecomb Gray feels
+        too committal: it gives walls a faint warmth and depth without looking like a color at all.
+      </p>
+      <p>
+        In bright rooms it can read nearly white; in softer light its gentle warmth shows. It&apos;s a
+        beautiful whole-house choice for people who want &ldquo;not quite white&rdquo; and nothing more. Its
+        Sherwin-Williams match Heron Plume is near-identical.
+      </p>
+    </>
+  ),
+  "benjamin-moore/stonington-gray-hc-170": (
+    <>
+      <p>
+        Stonington Gray is the classic mid-light gray with a cool blue base — at LRV 60 it&apos;s the
+        even-keeled, slightly architectural gray that anchored the gray era and still works for clean,
+        calm rooms. It&apos;s a true gray, not a greige, so it won&apos;t bring warmth to a room.
+      </p>
+      <p>
+        That cool base is the consideration: in north light it leans bluer, so it&apos;s strongest in rooms
+        with warm or ample light, or where you want a crisp, cool feel deliberately. It pairs cleanly
+        with white trim and cool-toned finishes. Behr Road Runner and Sherwin-Williams Sweater Weather
+        are both close cross-brand matches.
+      </p>
+    </>
+  ),
+  "benjamin-moore/balboa-mist-oc-27": (
+    <>
+      <p>
+        Balboa Mist is the cooler, grayer member of Benjamin Moore&apos;s greige family — at LRV 66 it&apos;s a
+        light, soft greige that leans gray rather than beige, which makes it the pick when Revere Pewter
+        feels too warm or too deep. It&apos;s a quiet, elegant neutral that reads almost like a warm gray.
+      </p>
+      <p>
+        Its faint warmth keeps it from going cold, but in some light a subtle violet base can surface, so
+        sample before a whole-house commit. It&apos;s lovely in bedrooms and living rooms with soft light.
+        Behr Ginger Sugar is a dead-on hex match, and Sherwin-Williams Winter Walk is very close.
+      </p>
+    </>
+  ),
+  "benjamin-moore/wrought-iron-2124-10": (
+    <>
+      <p>
+        Wrought Iron is the soft near-black designers reach for instead of a true black — a deep charcoal
+        at LRV 7 with a gentle warmth that keeps it from feeling stark. It&apos;s the choice for doors, trim,
+        and cabinetry when you want depth and drama without the hard edge of a pure black.
+      </p>
+      <p>
+        In bright light its soft charcoal character shows; in shadow it reads essentially black. It pairs
+        beautifully with warm whites, brass, and natural wood. Behr Timber Brown is its closest
+        cross-brand match.
+      </p>
+    </>
+  ),
+  "behr/swiss-coffee-12": (
+    <>
+      <p>
+        Swiss Coffee is Behr&apos;s warm, creamy white and one of the most-bought whites at Home Depot — a
+        soft white at LRV 84 with a gentle cream cast that flatters trim, walls, and cabinets without
+        reading yellow. It&apos;s the warm-white default for people who find bright whites cold.
+      </p>
+      <p>
+        As with any creamy white, it can look slightly soft beside a stark bright white, so keep the
+        whites consistent through a space. It pairs naturally with warm woods and greige walls. It&apos;s a
+        near-identical match for Benjamin Moore Cloud White, so it&apos;s the easy way to get that classic
+        creamy white at Home Depot prices.
+      </p>
+    </>
+  ),
+  "behr/cracked-pepper-ppu18-01": (
+    <>
+      <p>
+        Cracked Pepper is Behr&apos;s soft black — a 2022 Color of the Year that reads as a deep, slightly
+        warm near-black at LRV 8 rather than a flat true black. It&apos;s the accessible choice for doors,
+        accent walls, and cabinetry at Home Depot, with enough softness to feel modern rather than severe.
+      </p>
+      <p>
+        Like any near-black it needs light to show its character and will read essentially black in
+        shadow. It pairs well with warm whites, wood, and brass. Its closest cross-brand match is
+        Benjamin Moore Cheating Heart, with Sherwin-Williams Peppercorn in the same family.
+      </p>
+    </>
+  ),
+  "behr/silver-drop-790c-2": (
+    <>
+      <p>
+        Silver Drop is one of Behr&apos;s most popular light neutrals — a soft greige-white at LRV 70 that
+        sits between a warm white and a light greige. It&apos;s bright enough to keep a room open but warm
+        enough to feel soft, which makes it a low-risk whole-house pick for Home Depot shoppers.
+      </p>
+      <p>
+        Its light, gentle character means it can read nearly white in bright rooms and show a faint
+        greige in softer light. It&apos;s forgiving across most lighting and pairs with both warm and cool
+        accents. Benjamin Moore Woodland White is a close cross-brand match.
+      </p>
+    </>
+  ),
+  "behr/ultra-pure-white-w-b-500": (
+    <>
+      <p>
+        Ultra Pure White is Behr&apos;s brightest, cleanest white — at LRV 97 it&apos;s a true, crisp white with
+        no obvious undertone, and it doubles as Behr&apos;s tint base, so it&apos;s everywhere at Home Depot. It&apos;s
+        the pick for a sharp, modern, gallery-clean look on walls, trim, and ceilings.
+      </p>
+      <p>
+        That brightness is its strength and its caution: in low light it can feel stark or slightly cool,
+        and it makes any warmer white nearby look dingy. It&apos;s stunning in bright rooms and as crisp trim
+        against deep colors. Benjamin Moore Chantilly Lace is its closest cross-brand equivalent.
+      </p>
+    </>
+  ),
+  "ppg/vining-ivy-1148-6": (
+    <>
+      <p>
+        Vining Ivy is PPG&apos;s 2023 Color of the Year — a rich blue-green teal at LRV 15 that lands between
+        deep teal and emerald depending on the light. It&apos;s a confident, saturated color, best used as a
+        statement: an accent wall, a vanity, built-ins, or a powder room you want to feel jewel-box rich.
+      </p>
+      <p>
+        As a saturated mid-dark color it amplifies lighting — warmer bulbs deepen it, cool daylight
+        sharpens its green, so sample it where it&apos;s going. It pairs beautifully with brass, warm wood,
+        and creamy whites. Behr Myth and Benjamin Moore Fair Isle Blue are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "valspar/heritage-gray-7007-24": (
+    <>
+      <p>
+        Heritage Gray is, for practical purposes, Agreeable Gray at Lowe&apos;s. It shares the same hex and
+        the same LRV 60, and scores a CIEDE2000 difference of essentially zero against Sherwin-Williams&apos;
+        most popular color — a dead-on match. If you love Agreeable Gray but buy paint at Lowe&apos;s, this is
+        the color to ask for by name.
+      </p>
+      <p>
+        Everything true of Agreeable Gray applies: a warm greige that holds steady across mixed light,
+        pairs with a crisp white trim, and can show a faint green-violet base in cool north light. The
+        practical win is purely about where you shop — same look, Valspar can. Behr Toasty Gray and
+        Benjamin Moore Wish are the equivalents at their stores.
+      </p>
+    </>
+  ),
 };
 
 export function getColorEditorial(brandSlug: string, colorSlug: string): ReactNode | null {
