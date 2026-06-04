@@ -149,18 +149,18 @@ export default async function BrandPage({ params }: PageProps) {
   const brandFaqs: { q: string; a: string }[] = [
     {
       q: `How many ${brand.name} paint colors are there?`,
-      a: `${brand.name} has ${totalCount.toLocaleString()} paint colors catalogued on Paint Color HQ, each listed with its hex code, RGB values, LRV, and undertone.`,
+      a: `${brand.name} has ${totalCount.toLocaleString()} paint colors catalogued on Paint Color HQ, each with its exact hex code, RGB values, LRV (light reflectance value), and undertone. You can filter the full ${brand.name} color chart by color family or undertone, and open any color to see its closest cross-brand matches — the equivalent shade in Sherwin-Williams, Benjamin Moore, Behr, and 11 other brands.`,
     },
     ...(popularColors.length >= 3
       ? [{
           q: `What are the most popular ${brand.name} paint colors?`,
-          a: `Among the most-searched ${brand.name} colors on Paint Color HQ are ${popularColors.slice(0, 3).map((c) => c.name).join(", ")} — ranked by cross-brand match demand rather than marketing.`,
+          a: `The most-searched ${brand.name} colors on Paint Color HQ are ${popularColors.slice(0, 3).map((c) => c.name).join(", ")} — ranked by actual cross-brand match demand on the site rather than marketing claims. Each links to a detail page with its hex code, LRV, undertone, and the closest matching shades in other brands, so you can compare them side by side before you buy.`,
         }]
       : []),
     ...(matchTargetNames.length >= 2
       ? [{
           q: `Can I match ${brand.name} colors to other brands?`,
-          a: `Yes. Every ${brand.name} color has its closest equivalents in ${matchTargetNames.join(", ")} and other brands, computed with the CIEDE2000 color-difference formula so the matches reflect how similar the colors actually look.`,
+          a: `Yes — every ${brand.name} color has its closest equivalents in ${matchTargetNames.join(", ")}, and 13 brands in total, computed with the CIEDE2000 color-difference formula. That's the ISO standard for how similar two colors look to the human eye, rather than matching by name or code, so it's the reliable way to get a ${brand.name} look in whatever brand your local store carries.`,
         }]
       : []),
   ];
