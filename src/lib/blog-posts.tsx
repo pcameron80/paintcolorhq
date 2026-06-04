@@ -53,6 +53,96 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  {
+    slug: "best-sherwin-williams-paint-colors",
+    title: "The Best Sherwin-Williams Paint Colors for Every Room (2026)",
+    date: "2026-06-13",
+    author: "Philip Cameron",
+    excerpt:
+      "The best Sherwin-Williams paint colors — whites, greiges, grays, a navy, and blacks — each with its LRV and its closest match in the brand you can buy.",
+    coverColor: "#D1CBC1",
+    coverImage: "/blog/best-sherwin-williams-paint-colors.webp",
+    tags: ["Guide", "Sherwin-Williams", "Brand"],
+    faq: [
+      {
+        question: "What is the most popular Sherwin-Williams paint color?",
+        answer:
+          "Agreeable Gray (SW 7029) is the most-specified Sherwin-Williams color and the most popular paint color in the US — a warm greige at LRV 60 that reads neutral across almost any lighting. Alabaster (SW 7008) is the most popular white, and Repose Gray (SW 7015) the most popular true gray.",
+      },
+      {
+        question: "What is the Behr or Benjamin Moore equivalent of Agreeable Gray?",
+        answer:
+          "The closest Behr equivalent to Sherwin-Williams Agreeable Gray is Toasty Gray (N320-2) — a near-identical match on the wall. The closest Benjamin Moore equivalent is Wish (AF-680). Both land within a barely-perceptible difference of Agreeable Gray's #D1CBC1, so if you love the color but don't shop at a Sherwin-Williams store, either gets you the same look.",
+      },
+      {
+        question: "Where do you buy Sherwin-Williams paint?",
+        answer:
+          "Sherwin-Williams paint is sold through Sherwin-Williams' own stores nationwide rather than at Home Depot or Lowe's. That is exactly why cross-brand matching matters: if your nearest store carries Behr (Home Depot) or your contractor buys Benjamin Moore, you can match any SW color to the brand you can actually buy.",
+      },
+      {
+        question: "Which Sherwin-Williams paint line is best?",
+        answer:
+          "Emerald is the premium interior line (best coverage and washability); Duration and SuperPaint are the mid-tier workhorses most homeowners use; Cashmere is prized for its smooth finish. The line affects durability and price, not the color — every shade below is available across all of them.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best Sherwin-Williams paint color for most homes is{" "}
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60) — a warm greige that has become the default neutral on American walls for a reason: it holds steady across north light, south light, and lamplight without turning purple, green, or pink. Sherwin-Williams is the brand professionals reach for first, so this guide does something a paint-chip rack can&apos;t — it pairs each of these 14 colors with its closest match in the brand you actually buy at, whether that&apos;s Behr at Home Depot, Valspar at Lowe&apos;s, or Benjamin Moore at an independent dealer. Every LRV and every cross-brand match below comes straight from our color database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines &amp; Where to Find Sherwin-Williams</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> sells through its own stores rather than the big-box aisles, which is the single most useful thing to know before you fall for a color. If your nearest store carries Behr or your painter buys Benjamin Moore, you don&apos;t have to give up the SW shade you wanted — you match it. On the can, <strong>Emerald</strong> is the premium line, <strong>Duration</strong> and <strong>SuperPaint</strong> are the everyday workhorses, and <strong>Cashmere</strong> is the smooth-finish favorite. The line changes durability and price, not the color, so every shade below is the same hex whichever you choose.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (SW 7008, LRV 82) is the warm white that made the category — soft, creamy, and forgiving on trim and whole rooms alike. Its near-identical Benjamin Moore match is Dune White (CC-70), with Behr Salt Crystal a close second. For a cleaner, brighter white, <Swatch hex="#EEEFEA" name="Extra White" brand="Sherwin-Williams" href="/colors/sherwin-williams/extra-white-7006" /> (SW 7006, LRV 86) reads crisp and slightly cool — its closest match is Benjamin Moore White Christmas.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> (SW 7005, LRV 84) is the no-fuss trim white designers default to — it matches PPG Commercial White almost exactly and sits a hair from Dunn-Edwards Frostbite. <Swatch hex="#EDEAE5" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> (SW 7004, LRV 82) is the slightly greige-leaning white for homes that want warmth without cream; PPG Silver Feather is its closest twin. And <Swatch hex="#F0ECE2" name="Greek Villa" brand="Sherwin-Williams" href="/colors/sherwin-williams/greek-villa-7551" /> (SW 7551, LRV 84) is the warmest of the set — its Dutch Boy match Child of Heaven and Valspar Dove White are both near-identical. Browse more in <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Greiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Agreeable Gray (SW 7029, LRV 60) leads here too — its Behr equivalent is{" "}
+          <Link href="/match/sherwin-williams/agreeable-gray-7029-to-behr" className="text-brand-blue hover:underline">Toasty Gray</Link>, its Benjamin Moore equivalent{" "}
+          <Link href="/match/sherwin-williams/agreeable-gray-7029-to-benjamin-moore" className="text-brand-blue hover:underline">Wish</Link>, and its Valspar match Heritage Gray is a dead-on hex match at Lowe&apos;s prices. Half a step beige-r, <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (SW 7036, LRV 58) is the greige for warmer rooms — Behr Shoreline Haze and PPG Synchronicity are near-identical. <Swatch hex="#CEC6BB" name="Worldly Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/worldly-gray-7043" /> (SW 7043, LRV 57) splits the difference between the two, matching Behr Wheat Bread almost exactly.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Grays</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a true gray with no beige in it, <Swatch hex="#CCC9C0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> (SW 7015, LRV 58) is the standard — light, calm, and a near-identical match for Benjamin Moore Apparition and PPG Swirling Smoke. When you want more depth, <Swatch hex="#BCB7AD" name="Mindful Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/mindful-gray-7016" /> (SW 7016, LRV 48) drops into mid-tone territory — its PPG match Ghost Writer is exact, with Benjamin Moore Thunder a close second. See the full range in <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Blue-Green: Sea Salt</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CDD2CA" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63) is the soft, spa-like green-gray that reads differently in every room — sage in some light, pale gray-blue in others. It&apos;s the most-loved SW color for bathrooms and bedrooms for exactly that reason. PPG Bay of Fundy is its near-identical match, and Valspar Three Wishes is a very close second.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Navy: Naval</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> (SW 6244, LRV 5) is the deep, classic navy behind half the moody dining rooms and front doors on the internet. Its closest cross-brand match is Benjamin Moore North Sea — near-identical — making it easy to get the look on either side of the BM/SW divide.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Blacks &amp; Charcoals</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#2F2F30" name="Tricorn Black" brand="Sherwin-Williams" href="/colors/sherwin-williams/tricorn-black-6258" /> (SW 6258, LRV 3) is a true, neutral black — no blue or brown cast — ideal for doors, trim, and cabinetry. Valspar Tomcat is its near-identical match. If you want black with a touch more softness, <Swatch hex="#434341" name="Iron Ore" brand="Sherwin-Williams" href="/colors/sherwin-williams/iron-ore-7069" /> (SW 7069, LRV 6) is the warm charcoal that reads almost-black indoors and softer outside; Behr Broadway and Hirshfield&apos;s Subway are both near-identical.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Your Sherwin-Williams Color in Another Brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every color above carries its closest equivalents in 13 other brands, scored by how similar they actually look rather than by name. If you found the SW shade you want but buy paint somewhere else, drop both colors into the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> to see the difference in plain language, or start from a photo with the{" "}
+          <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">photo color identifier</Link>. For the full catalog, the{" "}
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color chart</Link> lists every shade with its hex, LRV, and cross-brand matches — and if you&apos;re weighing the two big names against each other, our{" "}
+          <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore</Link> breakdown is the place to start.
+        </p>
+      </>
+    ),
+  },
   /* ──────────────── Post 0 (newest) ──────────────── */
   {
     slug: "best-behr-paint-colors",
