@@ -437,23 +437,22 @@ export default async function ColorPage({ params }: PageProps) {
                 <div className="pt-5 border-t border-outline-variant/15">
                   <p className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant mb-3">Get this color</p>
                   <div className="flex flex-wrap gap-3">
-                    {/* Sample-purchase CTAs (affiliate when configured) — highest-intent
-                        next step for a color page. rel="sponsored nofollow" per FTC/SEO. */}
-                    {sampleLinks.map((link) => (
-                      <a
-                        key={link.label}
-                        href={link.url}
-                        target="_blank"
-                        rel="sponsored nofollow noopener noreferrer"
-                        className={
-                          link.primary
-                            ? "bg-secondary text-on-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-secondary/20 hover:shadow-xl transition-all"
-                            : "bg-surface-container-highest text-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-secondary/25 hover:shadow-md transition-all"
-                        }
-                      >
-                        {link.primary ? `${link.label} of ${color.name}` : link.label}
-                      </a>
-                    ))}
+                    {/* Order by monetization priority: Samplize hero (filled) →
+                        retailer (Home Depot/Lowe's, affiliate once live) → Amazon
+                        last. rel="sponsored nofollow" per FTC/SEO. */}
+                    {sampleLinks
+                      .filter((link) => link.primary)
+                      .map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.url}
+                          target="_blank"
+                          rel="sponsored nofollow noopener noreferrer"
+                          className="bg-secondary text-on-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-secondary/20 hover:shadow-xl transition-all"
+                        >
+                          {`${link.label} of ${color.name}`}
+                        </a>
+                      ))}
                     {retailerLinks.map((link) => {
                       const a = affiliatizeRetailer(link.url);
                       return (
@@ -462,6 +461,19 @@ export default async function ColorPage({ params }: PageProps) {
                         </a>
                       );
                     })}
+                    {sampleLinks
+                      .filter((link) => !link.primary)
+                      .map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.url}
+                          target="_blank"
+                          rel="sponsored nofollow noopener noreferrer"
+                          className="bg-surface-container-highest text-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-secondary/25 hover:shadow-md transition-all"
+                        >
+                          {link.label}
+                        </a>
+                      ))}
                   </div>
                   {AFFILIATE_ENABLED && (
                     <p className="mt-4 text-xs text-on-surface-variant">
