@@ -130,7 +130,7 @@ export const BATCH: PinSpec[] = [
     ),
     title: "Bay Fog Craft Room — Dunn-Edwards Soft Blue-Gray",
     description:
-      "Dunn-Edwards Bay Fog DE5934 (LRV 32.6) is a soft blue-violet gray that makes a craft room feel focused and calm — a quiet backdrop that lets colorful supplies pop. Paired with Swiss Coffee cabinetry and quartz. Cross-brand matches across 14 brands at PaintColorHQ.",
+      "Dunn-Edwards Bay Fog DE5934 (LRV 32.6) is a soft blue-violet gray that makes a craft room feel focused and calm — a quiet backdrop that lets colorful supplies pop. Paired with Swiss Coffee cabinetry and quartz. Discover it and find where to buy it at PaintColorHQ.",
     link: `${SITE}/colors/dunn-edwards/bay-fog-de5934${UTM}`,
     board: "Color Palettes",
   },
@@ -186,7 +186,7 @@ export const BATCH: PinSpec[] = [
     ),
     title: "Palladian Blue Guest Bedroom — BM HC-144 Soft Blue-Green",
     description:
-      "Benjamin Moore Palladian Blue HC-144 (LRV 61.8) is the soft blue-green that shifts gently between blue and green with the light — a restful, welcoming guest-bedroom color. Paired with Greek Villa trim, linen, white oak, and brass. Full cross-brand matches at PaintColorHQ.",
+      "Benjamin Moore Palladian Blue HC-144 (LRV 61.8) is the soft blue-green that shifts gently between blue and green with the light — a restful, welcoming guest-bedroom color. Paired with Greek Villa trim, linen, white oak, and brass. Find these colors and where to buy them at PaintColorHQ.",
     link: `${SITE}/colors/benjamin-moore/palladian-blue-hc-144${UTM}`,
     board: "Color Palettes",
   },
@@ -200,7 +200,7 @@ export const BATCH: PinSpec[] = [
     ),
     title: "Pale Taupe Entryway — PPG Warm Greige-Taupe",
     description:
-      "PPG Pale Taupe 1073-3 (LRV 66.1) gives an entryway an immediate warmth — a soft greige-taupe that flatters wood floors and brass and sets a welcoming first impression. Paired with Alabaster trim and walnut. Cross-brand matches across 14 brands at PaintColorHQ.",
+      "PPG Pale Taupe 1073-3 (LRV 66.1) gives an entryway an immediate warmth — a soft greige-taupe that flatters wood floors and brass and sets a welcoming first impression. Paired with Alabaster trim and walnut. Discover it and find where to buy it at PaintColorHQ.",
     link: `${SITE}/colors/ppg/pale-taupe-1073-3${UTM}`,
     board: "Color Palettes",
   },
@@ -214,7 +214,7 @@ export const BATCH: PinSpec[] = [
     ),
     title: "Shaker Beige Hallway — BM HC-45 Warm Classic Beige",
     description:
-      "Benjamin Moore Shaker Beige HC-45 (LRV 53.5) is the warm classic beige that makes a windowless hallway feel sunlit and inviting rather than dim. Paired with Alabaster trim and doors, white oak floors, and a gallery of framed photos. Full cross-brand matches at PaintColorHQ.",
+      "Benjamin Moore Shaker Beige HC-45 (LRV 53.5) is the warm classic beige that makes a windowless hallway feel sunlit and inviting rather than dim. Paired with Alabaster trim and doors, white oak floors, and a gallery of framed photos. Find these colors and where to buy them at PaintColorHQ.",
     link: `${SITE}/colors/benjamin-moore/shaker-beige-hc-45${UTM}`,
     board: "Color Palettes",
   },

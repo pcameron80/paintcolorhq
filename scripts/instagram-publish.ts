@@ -73,23 +73,67 @@ function igImageUrl(p: PinSpec): string {
   return `${p.imageUrl}&ar=4:5`;
 }
 
-/** Build the IG caption: title, body, link-in-bio nudge, hashtags. */
-function buildCaption(p: PinSpec): string {
+/**
+ * LRV → plain-language character, in the site's no-raw-numbers voice. Gives each
+ * swatch caption a warm, human line instead of a data dump.
+ */
+function characterNoun(lrv: number | null, family: string): string {
+  // High-LRV warm families (yellow/orange/red/brown) are off-whites & creams in
+  // practice — Alabaster is family "yellow" but reads as a warm white. Don't
+  // call those by their underlying family; it undercuts the data we show.
+  const warm = ["yellow", "orange", "red", "brown", "gold", "beige", "tan"];
+  if (lrv != null && lrv >= 73 && warm.includes(family)) return "warm white";
+  if (lrv != null && lrv >= 80 && ["gray", "neutral", "white", "", "color"].includes(family)) {
+    return "soft white";
+  }
+  return family && !["color", "guide", "swatch"].includes(family) ? family : "shade";
+}
+
+function colorCharacter(lrv: number | null, family: string): string {
+  const f = characterNoun(lrv, family);
+  if (lrv == null) return `a beautiful ${f}`;
+  if (lrv >= 70) return `a light, airy ${f}`;
+  if (lrv >= 55) return `a soft, versatile ${f}`;
+  if (lrv >= 40) return `a warm mid-tone ${f}`;
+  if (lrv >= 25) return `a rich, grounded ${f}`;
+  return `a deep, dramatic ${f}`;
+}
+
+function hashtagsFor(p: PinSpec): string {
   const generic = ["paintcolors", "paint", "interiordesign", "homedecor", "homeimprovement", "colorinspiration"];
   const themeTag = (p.theme || "").replace(/[^a-z0-9]/gi, "").toLowerCase();
   const skip = new Set(["", "color", "swatch", "guide", "paint"]);
   const tags = [...generic];
   if (!skip.has(themeTag)) tags.push(`${themeTag}paint`);
-  const hashtags = tags.map((t) => `#${t}`).join(" ");
-  return [
-    p.title,
-    "",
-    p.description,
-    "",
-    "🔗 Cross-brand matches at paintcolorhq.com (link in bio)",
-    "",
-    hashtags,
-  ].join("\n");
+  return tags.map((t) => `#${t}`).join(" ");
+}
+
+/**
+ * Build the IG caption around the site's real arc — discover the color you love,
+ * see it in your room, find where to buy it. Never "match across brands."
+ */
+function buildCaption(p: PinSpec): string {
+  let lead: string;
+  let body: string;
+  let cta: string;
+  if (p.type === "swatch") {
+    const params = new URL(p.imageUrl!).searchParams;
+    const name = params.get("name") ?? p.name;
+    const code = params.get("code") ?? "";
+    const lrvRaw = params.get("lrv");
+    const lrv = lrvRaw ? parseInt(lrvRaw, 10) : null;
+    const family = params.get("family") ?? p.theme;
+    lead = [params.get("brand") ?? "", name, code].filter(Boolean).join(" ");
+    const character = colorCharacter(lrv, family);
+    body = `${character.charAt(0).toUpperCase()}${character.slice(1)}${lrv != null ? ` (LRV ${lrv})` : ""}.`;
+    cta = "✨ See it in a real room and find the best place to buy it 👇\npaintcolorhq.com (link in bio)";
+  } else {
+    // guide (or other): the post title + excerpt already read as prose.
+    lead = p.name;
+    body = p.description;
+    cta = "✨ Discover the colors, picture them in your space, and find where to buy 👇\npaintcolorhq.com (link in bio)";
+  }
+  return [lead, "", body, "", cta, "", hashtagsFor(p)].join("\n");
 }
 
 // ---- log helpers ----
@@ -143,9 +187,10 @@ async function publishOne(pin: PinSpec, log: IgPublishedLog) {
   const caption = buildCaption(pin);
 
   if (DRY_RUN) {
-    console.log(`🧪 [${pin.type}] ${tag}`);
-    console.log(`     image:   ${imageUrl}`);
-    console.log(`     caption: ${caption.split("\n")[0]}  [${caption.length} chars]`);
+    console.log(`🧪 [${pin.type}] ${tag}  [${caption.length} chars]`);
+    console.log(`     image: ${imageUrl}`);
+    console.log(caption.split("\n").map((l) => `     | ${l}`).join("\n"));
+    console.log("");
     return;
   }
 
