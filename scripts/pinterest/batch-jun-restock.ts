@@ -80,7 +80,7 @@ export const BATCH: PinSpec[] = [
     ),
     title: "Repose Gray Living Room — SW 7015 Warm Greige Paint Color",
     description:
-      "Sherwin-Williams Repose Gray SW 7015 (LRV 58.4) is the warm greige that stays neutral without going cold — a reliable whole-room wall color in north- and south-facing light alike. Paired with Alabaster trim, walnut, and cream linen. Full cross-brand matches at PaintColorHQ.",
+      "Sherwin-Williams Repose Gray SW 7015 (LRV 58.4) is the warm greige that stays neutral without going cold — a reliable whole-room wall color in north- and south-facing light alike. Paired with Alabaster trim, walnut, and cream linen. Find these colors and where to buy them at PaintColorHQ.",
     link: `${SITE}/colors/sherwin-williams/repose-gray-7015${UTM}`,
     board: "Color Palettes",
   },
@@ -136,7 +136,7 @@ export const BATCH: PinSpec[] = [
     ),
     title: "Manchester Tan Bedroom — BM HC-81 Warm Neutral",
     description:
-      "Benjamin Moore Manchester Tan HC-81 (LRV 63.2) is the warm light tan that makes a bedroom feel restful and grounded — soft enough for walls, warm enough to flatter both linen and wood. Paired with Alabaster trim and brass. Full cross-brand matches at PaintColorHQ.",
+      "Benjamin Moore Manchester Tan HC-81 (LRV 63.2) is the warm light tan that makes a bedroom feel restful and grounded — soft enough for walls, warm enough to flatter both linen and wood. Paired with Alabaster trim and brass. Find these colors and where to buy them at PaintColorHQ.",
     link: `${SITE}/colors/benjamin-moore/manchester-tan-hc-81${UTM}`,
     board: "Color Palettes",
   },
@@ -178,7 +178,7 @@ export const BATCH: PinSpec[] = [
     ),
     title: "First Light Nursery — BM 2102-70 Soft Blush Paint Color",
     description:
-      "Benjamin Moore First Light 2102-70 (LRV 75.9) — the 2020 Color of the Year — is the soft, barely-there blush that suits a gender-neutral nursery and grows with the room from baby to big-kid. Paired with Greek Villa trim, blonde wood, and brass. Full cross-brand matches at PaintColorHQ.",
+      "Benjamin Moore First Light 2102-70 (LRV 75.9) — the 2020 Color of the Year — is the soft, barely-there blush that suits a gender-neutral nursery and grows with the room from baby to big-kid. Paired with Greek Villa trim, blonde wood, and brass. Find these colors and where to buy them at PaintColorHQ.",
     link: `${SITE}/colors/benjamin-moore/first-light-2102-70${UTM}`,
     board: "Color Palettes",
   },
@@ -206,7 +206,7 @@ export const BATCH: PinSpec[] = [
     ),
     title: "Cracked Pepper Exterior — Behr Soft Black Trim & Door",
     description:
-      "Behr Cracked Pepper PPU18-01 (LRV 8.2) on the door, window sashes, and fixtures of an Alabaster modern-farmhouse exterior — a soft black that's deep enough to frame the house without the harshness of true black. Behr's most popular black-neutral. See cross-brand matches across 14 brands at PaintColorHQ.",
+      "Behr Cracked Pepper PPU18-01 (LRV 8.2) on the door, window sashes, and fixtures of an Alabaster modern-farmhouse exterior — a soft black that's deep enough to frame the house without the harshness of true black. Behr's most popular black-neutral. Discover it and find where to buy it at PaintColorHQ.",
     link: `${SITE}/colors/behr/cracked-pepper-ppu18-01${UTM}`,
     board: "Color Palettes",
   },
@@ -234,7 +234,7 @@ export const BATCH: PinSpec[] = [
     ),
     title: "Hawthorne Yellow Breakfast Nook — BM HC-4 Warm Yellow",
     description:
-      "Benjamin Moore Hawthorne Yellow HC-4 (LRV 71.3) is the warm, buttery yellow that makes a breakfast nook feel sunny even on gray mornings — historic and cheerful without going neon. Paired with Alabaster trim, white oak, and brass. Full cross-brand matches at PaintColorHQ.",
+      "Benjamin Moore Hawthorne Yellow HC-4 (LRV 71.3) is the warm, buttery yellow that makes a breakfast nook feel sunny even on gray mornings — historic and cheerful without going neon. Paired with Alabaster trim, white oak, and brass. Find these colors and where to buy them at PaintColorHQ.",
     link: `${SITE}/colors/benjamin-moore/hawthorne-yellow-hc-4${UTM}`,
     board: "Color Palettes",
   },
@@ -262,7 +262,7 @@ export const BATCH: PinSpec[] = [
     ),
     title: "Best Greige Paint Colors — Agreeable Gray vs Repose Gray vs Revere Pewter",
     description:
-      "The three most-searched greiges compared: Sherwin-Williams Agreeable Gray (LRV 60, the balanced standard), Repose Gray (LRV 58.4, a touch cooler), and Benjamin Moore Revere Pewter (LRV 55.1, the warmest and deepest). The whole-house neutrals designers reach for. Browse the full gray & greige collection with cross-brand matches at PaintColorHQ.",
+      "The three most-searched greiges compared: Sherwin-Williams Agreeable Gray (LRV 60, the balanced standard), Repose Gray (LRV 58.4, a touch cooler), and Benjamin Moore Revere Pewter (LRV 55.1, the warmest and deepest). The whole-house neutrals designers reach for. Browse the full gray & greige collection and find where to buy at PaintColorHQ.",
     link: `${SITE}/colors/family/gray${UTM}`,
     board: "Color Comparisons",
   },

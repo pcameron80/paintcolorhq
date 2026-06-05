@@ -44,7 +44,7 @@ export function swatchPins(): PinSpec[] {
       imageUrl: `${SITE}/api/pin?${params.toString()}`,
       prompt: "",
       title: `${c.name}${c.code ? ` ${c.code}` : ""} — ${c.brandName} Paint Color`,
-      description: `${c.brandName} ${c.name}${c.code ? ` (${c.code})` : ""} — ${c.family ?? "paint"} paint color${lrvNote}. See cross-brand matches across 14 brands at PaintColorHQ.`,
+      description: `${c.brandName} ${c.name}${c.code ? ` (${c.code})` : ""} — ${c.family ?? "paint"} paint color${lrvNote}. See it in a real room and find the best place to buy it at PaintColorHQ.`,
       link: `${SITE}/colors/${c.brandSlug}/${c.slug}${UTM}`,
     } as PinSpec;
   });
