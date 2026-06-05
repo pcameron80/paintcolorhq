@@ -16,8 +16,14 @@
   <dict>
     <key>PATH</key><string>__NODE_DIR__:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
   </dict>
+  <!-- Spread ~6 pins/day across 3 runs (9am / 1pm / 5pm EDT) instead of one
+       burst — looks organic on Pinterest and catches more of the feed cycle. -->
   <key>StartCalendarInterval</key>
-  <dict><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+  <array>
+    <dict><key>Hour</key><integer>13</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>17</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Hour</key><integer>21</integer><key>Minute</key><integer>0</integer></dict>
+  </array>
   <key>StandardErrorPath</key><string>__REPO__/scripts/pinterest/drip.log</string>
   <key>RunAtLoad</key><false/>
 </dict>
