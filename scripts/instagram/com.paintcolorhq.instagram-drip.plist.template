@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>__LABEL__</string>
+  <!-- Invoke /bin/bash DIRECTLY (not the script via its shebang): macOS TCC
+       attributes file access to the launchd program, so the FDA-granted
+       /bin/bash must be the program — otherwise runs fail with "Operation not
+       permitted" reading the repo (~/Documents). -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>__DRIPSH__</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key><string>__NODE_DIR__:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+  <!-- 16:00 UTC (noon EDT) — offset from the Pinterest drip's 14:00 so the two
+       don't hammer the network at once. -->
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>16</integer><key>Minute</key><integer>0</integer></dict>
+  <key>StandardErrorPath</key><string>__REPO__/scripts/instagram/drip.log</string>
+  <key>RunAtLoad</key><false/>
+</dict>
+</plist>

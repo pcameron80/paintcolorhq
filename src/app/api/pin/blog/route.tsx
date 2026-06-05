@@ -22,6 +22,13 @@ export async function GET(request: NextRequest) {
   const fallbackColor = searchParams.get("color") || "#e5e7eb";
   const tag = searchParams.get("tag") || "";
 
+  // Output size. Default is the Pinterest 2:3 (1000×1500). Instagram's feed only
+  // accepts 4:5–1.91:1, so the IG drip requests ?ar=4:5 (1080×1350). The layout
+  // below is percentage-based, so it reflows to either ratio unchanged.
+  const ar = searchParams.get("ar");
+  const [imgW, imgH] =
+    ar === "4:5" ? [1080, 1350] : ar === "1:1" ? [1080, 1080] : [1000, 1500];
+
   // @vercel/og (the engine behind ImageResponse) decodes JPG/PNG/GIF but
   // not WebP. Cover images on disk are WebP for site performance — convert
   // the path to the JPG sibling for pin generation. Both formats are
@@ -118,8 +125,8 @@ export async function GET(request: NextRequest) {
       </div>
     ),
     {
-      width: 1000,
-      height: 1500,
+      width: imgW,
+      height: imgH,
       headers: {
         "Cache-Control": "public, max-age=2592000, s-maxage=2592000, immutable",
       },
