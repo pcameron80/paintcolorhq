@@ -223,7 +223,7 @@ export default async function ColorPage({ params }: PageProps) {
   // Curated, hand-written review for high-demand colors (null for the long tail).
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
-  const sampleLinks = getSampleLinks({ brandName: color.brand.name, colorName: color.name, colorNumber: color.color_number });
+  const sampleLinks = getSampleLinks({ brandSlug: color.brand.slug, colorSlug: color.slug, brandName: color.brand.name, colorName: color.name, colorNumber: color.color_number });
   const harmonies = await resolveHarmonies(color.hex);
   const light = isLightColor(color.hex);
   const textClass = light ? "text-on-surface" : "text-on-primary";

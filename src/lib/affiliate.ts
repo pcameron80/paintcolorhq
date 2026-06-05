@@ -12,7 +12,8 @@
 //     "https://shareasale.com/r.cfm?b=<bannerId>&u=<yourAffId>&m=<samplizeMerchantId>&urllink="
 //     The encoded Samplize URL is appended to it.
 //   NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG
-//     Your Amazon Associates store tag, e.g. "paintcolorhq-20".
+//     Amazon Associates store tag. Optional — defaults to the portfolio's
+//     active "greatpickdeal-20" when unset.
 //   NEXT_PUBLIC_HOMEDEPOT_AFFILIATE_PREFIX
 //     Home Depot affiliate (Impact) deep-link prefix ending right before the
 //     target URL — the existing homedepot.com link is appended, URL-encoded.
@@ -32,13 +33,19 @@ export interface SampleLink {
 }
 
 interface SampleInfo {
+  brandSlug: string;
+  colorSlug: string;
   brandName: string;
   colorName: string;
   colorNumber?: string | null;
 }
 
+/** Brands Samplize actually stocks peel-and-stick samples for. */
+const SAMPLIZE_BRANDS = new Set(["sherwin-williams", "benjamin-moore", "farrow-ball"]);
+
 const SAMPLIZE_PREFIX = process.env.NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX;
-const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG;
+// Amazon Associates tag. Defaults to the portfolio's active greatpickdeal-20.
+const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || "greatpickdeal-20";
 const HOMEDEPOT_PREFIX = process.env.NEXT_PUBLIC_HOMEDEPOT_AFFILIATE_PREFIX;
 const LOWES_PREFIX = process.env.NEXT_PUBLIC_LOWES_AFFILIATE_PREFIX;
 
@@ -70,24 +77,27 @@ export function getSampleLinks(info: SampleInfo): SampleLink[] {
   const query = [info.brandName, info.colorName].filter(Boolean).join(" ");
   const links: SampleLink[] = [];
 
-  // Samplize — peel-and-stick paint samples. The highest-intent action on a
-  // color page: someone researching a color wants to see it on their own wall.
-  const samplizeTarget = `https://www.samplize.com/search?q=${encodeURIComponent(query)}`;
-  links.push({
-    label: "Order a peel-and-stick sample",
-    url: SAMPLIZE_PREFIX ? `${SAMPLIZE_PREFIX}${encodeURIComponent(samplizeTarget)}` : samplizeTarget,
-    affiliate: Boolean(SAMPLIZE_PREFIX),
-    primary: true,
-  });
+  // Samplize — peel-and-stick samples. Only Sherwin-Williams, Benjamin Moore,
+  // and Farrow & Ball are stocked, and we deep-link straight to the color's
+  // product page (e.g. agreeable-gray-7029-12x12) — the highest-intent next
+  // step. The slug matches our colorSlug exactly (verified across all 3 brands).
+  if (SAMPLIZE_BRANDS.has(info.brandSlug) && info.colorSlug) {
+    const samplizeTarget = `https://samplize.com/products/${info.colorSlug}-12x12`;
+    links.push({
+      label: "Order a peel-and-stick sample",
+      url: SAMPLIZE_PREFIX ? `${SAMPLIZE_PREFIX}${encodeURIComponent(samplizeTarget)}` : samplizeTarget,
+      affiliate: Boolean(SAMPLIZE_PREFIX),
+      primary: true,
+    });
+  }
 
-  // Amazon — sample pots, swatch cards, and painting supplies.
-  const amazonUrl = `https://www.amazon.com/s?k=${encodeURIComponent(`${query} paint sample`)}${
-    AMAZON_TAG ? `&tag=${AMAZON_TAG}` : ""
-  }`;
+  // Amazon — sample pots, swatch cards, and painting supplies (all brands),
+  // tagged with the portfolio's active greatpickdeal-20 Associates tag.
+  const amazonUrl = `https://www.amazon.com/s?k=${encodeURIComponent(`${query} paint sample`)}&tag=${AMAZON_TAG}`;
   links.push({
     label: "Samples & supplies on Amazon",
     url: amazonUrl,
-    affiliate: Boolean(AMAZON_TAG),
+    affiliate: true,
   });
 
   return links;
