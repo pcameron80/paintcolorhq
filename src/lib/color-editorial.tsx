@@ -2102,6 +2102,118 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
+  "sherwin-williams/comfort-gray-6205": (
+    <>
+      <p>
+        Comfort Gray (since renamed Quietude) is a soft, spa-like green-gray at LRV 54 — a gentle, grayed
+        sage-blue that reads more green or more gray depending on the light. It&apos;s a close relative of Sea
+        Salt, a touch grayer and more muted, beloved for calm bedrooms and bathrooms.
+      </p>
+      <p>
+        Like all of this family it shifts with the light, so a sample is essential. It pairs with crisp
+        whites and natural wood and fights cool grays. Behr Rhino is its near-identical cross-brand match,
+        with Benjamin Moore Picnic Basket close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/earl-grey-7660": (
+    <>
+      <p>
+        Earl Grey is a deeper, cool mid-gray at LRV 32 with a soft blue base — a mid-tone gray with real
+        depth and a slightly moody, sophisticated character. It&apos;s the choice for a cool gray with genuine
+        presence on an accent wall, cabinetry, or an exterior.
+      </p>
+      <p>
+        At this depth it reads darker and bluer in low light, so sample in place. It pairs with crisp
+        white trim and cool-toned finishes. Benjamin Moore Rainstorm is its closest cross-brand match,
+        with Behr Puddle close.
+      </p>
+    </>
+  ),
+  "sherwin-williams/gray-screen-7071": (
+    <>
+      <p>
+        Gray Screen is a light, cool gray at LRV 59 — a soft true gray with a gentle blue base that keeps
+        a room feeling fresh and modern. It&apos;s a clean, low-commitment gray for people who want gray to
+        read as gray, not greige, without going dark.
+      </p>
+      <p>
+        Its cool base reads slightly bluer in north light, so it&apos;s happiest with warm or balanced light.
+        It pairs with cool whites and modern finishes. Behr Burnished Metal and Benjamin Moore Pelican
+        Gray are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "sherwin-williams/rookwood-dark-green-2816": (
+    <>
+      <p>
+        Rookwood Dark Green is a deep, classic forest green at LRV 10 — a rich, slightly grayed green with
+        an Arts &amp; Crafts heritage and real historic depth. It&apos;s a sophisticated choice for moody
+        cabinetry, a library, or a traditional exterior, reading as a deep, timeless green.
+      </p>
+      <p>
+        At this depth it needs light to read clearly as green rather than near-black. It pairs beautifully
+        with creamy whites, brass, and warm wood. Behr River Forest is its closest cross-brand match, with
+        Benjamin Moore Vintage Vogue close behind.
+      </p>
+    </>
+  ),
+  "sherwin-williams/toque-white-7003": (
+    <>
+      <p>
+        Toque White is a soft, warm off-white at LRV 76 with a faint greige cast — light enough to read
+        as a white in bright rooms, soft enough to avoid the chill of a true white. It&apos;s a flexible
+        whole-house color that suits walls and trim alike in warm-leaning homes.
+      </p>
+      <p>
+        Its gentle warmth keeps it livable but can look soft beside a stark white. It&apos;s a near-identical
+        match for Behr Weathered White, and close to Benjamin Moore Classic Gray, making it a familiar
+        soft neutral by another name.
+      </p>
+    </>
+  ),
+  "benjamin-moore/cotton-balls-2145-70": (
+    <>
+      <p>
+        Cotton Balls is a soft, clean white at LRV 89 — bright and fresh, with just enough warmth to keep
+        it from feeling stark or icy. It&apos;s a versatile bright white for walls, trim, and ceilings,
+        reading crisp without the cool edge of a true blue-white.
+      </p>
+      <p>
+        Its subtle warmth means it can look faintly soft beside a stark cool white, so keep the whites
+        consistent. It&apos;s lovely in bright, airy rooms. Behr Resort White is its near-identical cross-brand
+        match.
+      </p>
+    </>
+  ),
+  "benjamin-moore/steam-af-15": (
+    <>
+      <p>
+        Steam is a soft, airy white at LRV 84 with the faintest warm-gray whisper — a gentle, misty white
+        that reads clean and calm rather than stark. It&apos;s a flexible choice for walls and trim in rooms
+        that want a soft, restful white over a crisp, bright one.
+      </p>
+      <p>
+        Its softness keeps it easy to live with, though it can look gentle beside a true bright white. It
+        pairs with warm and cool neutrals alike. Behr Nude is its near-identical cross-brand match, with
+        Sherwin-Williams Cold Foam close behind.
+      </p>
+    </>
+  ),
+  "benjamin-moore/stratton-blue-hc-142": (
+    <>
+      <p>
+        Stratton Blue is a mid-tone historic blue-green at LRV 38 — a soft, slightly grayed teal with a
+        vintage, refined character. It has enough depth to make a statement on cabinetry or a whole room
+        while staying calm and collected rather than bold.
+      </p>
+      <p>
+        It swings between blue and green with the light, so sample in place. It pairs beautifully with
+        warm whites, brass, and natural wood for a classic look. Sherwin-Williams Marine and Behr Lotus
+        Leaf are its closest cross-brand matches.
+      </p>
+    </>
+  ),
 };
 
 export function getColorEditorial(brandSlug: string, colorSlug: string): ReactNode | null {
