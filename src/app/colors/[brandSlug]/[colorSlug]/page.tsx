@@ -448,7 +448,7 @@ export default async function ColorPage({ params }: PageProps) {
                         className={
                           link.primary
                             ? "bg-secondary text-on-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-secondary/20 hover:shadow-xl transition-all"
-                            : "bg-surface-container-lowest text-on-surface px-6 py-3 rounded-xl font-headline font-bold text-sm border border-outline-variant/30 hover:shadow-md transition-all"
+                            : "bg-surface-container-highest text-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-secondary/25 hover:shadow-md transition-all"
                         }
                       >
                         {link.primary ? `${link.label} of ${color.name}` : link.label}
@@ -457,7 +457,7 @@ export default async function ColorPage({ params }: PageProps) {
                     {retailerLinks.map((link) => {
                       const a = affiliatizeRetailer(link.url);
                       return (
-                        <a key={link.retailerName} href={a.url} target="_blank" rel={`${a.affiliate ? "sponsored " : ""}nofollow noopener noreferrer`} className="bg-surface-container-lowest text-on-surface px-6 py-3 rounded-xl font-headline font-bold text-sm border border-outline-variant/30 hover:shadow-md transition-all">
+                        <a key={link.retailerName} href={a.url} target="_blank" rel={`${a.affiliate ? "sponsored " : ""}nofollow noopener noreferrer`} className="bg-surface-container-highest text-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-secondary/25 hover:shadow-md transition-all">
                           Buy at {link.retailerName}
                         </a>
                       );
