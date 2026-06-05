@@ -6,7 +6,8 @@
  * Instagram's Content Publishing API needs a public image_url — it can't take
  * a base64 upload — so the curated local-file pins (palette/comparison) are not
  * IG-eligible yet. Each eligible image is requested at ?ar=4:5 (1080×1350)
- * because IG rejects the 2:3 Pinterest ratio.
+ * because IG rejects the 2:3 Pinterest ratio. Caption logic is shared with the
+ * Facebook publisher in social-content.ts.
  *
  * Publish is a 2-step container flow against the Graph API:
  *   1. POST /{IG_ID}/media        (image_url + caption)  -> creation id
@@ -25,7 +26,7 @@
  * Usage:
  *   npx tsx scripts/instagram-publish.ts --dry-run --drip=1   # show selection
  *   npx tsx scripts/instagram-publish.ts --drip=1             # post next (variety rotation)
- *   npx tsx scripts/instagram-publish.ts --only=swatch-sherwin-williams-agreeable-gray-7029
+ *   npx tsx scripts/instagram-publish.ts --only=<queue-key>
  */
 import * as path from "path";
 import * as fs from "fs";
@@ -33,6 +34,7 @@ import { execFile } from "child_process";
 import { fileURLToPath } from "url";
 import * as dotenv from "dotenv";
 import { QUEUE, selectForDrip, unpublished, type PinSpec, type PublishedLog } from "./pinterest/queue.ts";
+import { eligible, imageUrl4x5, buildCaption } from "./social-content.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -61,80 +63,6 @@ const dripArg = args.find((a) => a.startsWith("--drip="));
 const DRIP = dripArg ? Math.max(1, parseInt(dripArg.replace("--drip=", ""), 10) || 1) : null;
 const onlyArg = args.find((a) => a.startsWith("--only="));
 const onlyKeys = onlyArg ? new Set(onlyArg.replace("--only=", "").split(",")) : null;
-
-// ---- IG-eligible lanes ----
-/** Only pins whose image is a public /api/pin* URL can be cross-posted to IG. */
-function igEligible(p: PinSpec): boolean {
-  return Boolean(p.imageUrl && p.imageUrl.includes("/api/pin"));
-}
-
-/** Force the Instagram 4:5 render of a /api/pin* image (it already has a query). */
-function igImageUrl(p: PinSpec): string {
-  return `${p.imageUrl}&ar=4:5`;
-}
-
-/**
- * LRV → plain-language character, in the site's no-raw-numbers voice. Gives each
- * swatch caption a warm, human line instead of a data dump.
- */
-function characterNoun(lrv: number | null, family: string): string {
-  // High-LRV warm families (yellow/orange/red/brown) are off-whites & creams in
-  // practice — Alabaster is family "yellow" but reads as a warm white. Don't
-  // call those by their underlying family; it undercuts the data we show.
-  const warm = ["yellow", "orange", "red", "brown", "gold", "beige", "tan"];
-  if (lrv != null && lrv >= 73 && warm.includes(family)) return "warm white";
-  if (lrv != null && lrv >= 80 && ["gray", "neutral", "white", "", "color"].includes(family)) {
-    return "soft white";
-  }
-  return family && !["color", "guide", "swatch"].includes(family) ? family : "shade";
-}
-
-function colorCharacter(lrv: number | null, family: string): string {
-  const f = characterNoun(lrv, family);
-  if (lrv == null) return `a beautiful ${f}`;
-  if (lrv >= 70) return `a light, airy ${f}`;
-  if (lrv >= 55) return `a soft, versatile ${f}`;
-  if (lrv >= 40) return `a warm mid-tone ${f}`;
-  if (lrv >= 25) return `a rich, grounded ${f}`;
-  return `a deep, dramatic ${f}`;
-}
-
-function hashtagsFor(p: PinSpec): string {
-  const generic = ["paintcolors", "paint", "interiordesign", "homedecor", "homeimprovement", "colorinspiration"];
-  const themeTag = (p.theme || "").replace(/[^a-z0-9]/gi, "").toLowerCase();
-  const skip = new Set(["", "color", "swatch", "guide", "paint"]);
-  const tags = [...generic];
-  if (!skip.has(themeTag)) tags.push(`${themeTag}paint`);
-  return tags.map((t) => `#${t}`).join(" ");
-}
-
-/**
- * Build the IG caption around the site's real arc — discover the color you love,
- * see it in your room, find where to buy it. Never "match across brands."
- */
-function buildCaption(p: PinSpec): string {
-  let lead: string;
-  let body: string;
-  let cta: string;
-  if (p.type === "swatch") {
-    const params = new URL(p.imageUrl!).searchParams;
-    const name = params.get("name") ?? p.name;
-    const code = params.get("code") ?? "";
-    const lrvRaw = params.get("lrv");
-    const lrv = lrvRaw ? parseInt(lrvRaw, 10) : null;
-    const family = params.get("family") ?? p.theme;
-    lead = [params.get("brand") ?? "", name, code].filter(Boolean).join(" ");
-    const character = colorCharacter(lrv, family);
-    body = `${character.charAt(0).toUpperCase()}${character.slice(1)}${lrv != null ? ` (LRV ${lrv})` : ""}.`;
-    cta = "✨ See it in a real room and find the best place to buy it 👇\npaintcolorhq.com (link in bio)";
-  } else {
-    // guide (or other): the post title + excerpt already read as prose.
-    lead = p.name;
-    body = p.description;
-    cta = "✨ Discover the colors, picture them in your space, and find where to buy 👇\npaintcolorhq.com (link in bio)";
-  }
-  return [lead, "", body, "", cta, "", hashtagsFor(p)].join("\n");
-}
 
 // ---- log helpers ----
 type IgPublishedLog = Record<string, { mediaId: string; publishedAt: string }>;
@@ -183,8 +111,8 @@ async function publishOne(pin: PinSpec, log: IgPublishedLog) {
     console.log(`⏭️  ${tag} — already posted (media ${log[pin.key].mediaId})`);
     return;
   }
-  const imageUrl = igImageUrl(pin);
-  const caption = buildCaption(pin);
+  const imageUrl = imageUrl4x5(pin);
+  const caption = buildCaption(pin, "instagram");
 
   if (DRY_RUN) {
     console.log(`🧪 [${pin.type}] ${tag}  [${caption.length} chars]`);
@@ -194,7 +122,6 @@ async function publishOne(pin: PinSpec, log: IgPublishedLog) {
     return;
   }
 
-  // 1. create container, 2. wait, 3. publish
   const { id: creationId } = await graph(`${IG_ID}/media`, { image_url: imageUrl, caption }, "POST");
   await waitForContainer(creationId);
   const { id: mediaId } = await graph(`${IG_ID}/media_publish`, { creation_id: creationId }, "POST");
@@ -209,21 +136,20 @@ async function main() {
     throw new Error("Missing META_PAGE_ACCESS_TOKEN or IG_BUSINESS_ACCOUNT_ID in .env.local");
   }
   const log = loadLog();
-  const eligible = QUEUE.filter(igEligible);
+  const pool = QUEUE.filter(eligible);
 
   let targets: PinSpec[];
   if (DRIP) {
-    targets = selectForDrip(eligible, log as unknown as PublishedLog, DRIP);
+    targets = selectForDrip(pool, log as unknown as PublishedLog, DRIP);
     if (targets.length === 0) {
       console.log("Drip: no unpublished IG-eligible pins left.");
       if (!DRY_RUN) notify("Instagram queue empty — stock more pins with Claude.");
       return;
     }
   } else if (onlyKeys) {
-    targets = eligible.filter((p) => onlyKeys.has(p.key));
+    targets = pool.filter((p) => onlyKeys.has(p.key));
   } else {
-    // No flag: post every unpublished eligible pin (manual backfill).
-    targets = unpublished(eligible, log as unknown as PublishedLog);
+    targets = unpublished(pool, log as unknown as PublishedLog);
   }
 
   console.log(
@@ -237,7 +163,6 @@ async function main() {
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
       console.error(`❌ ${pin.key} ${pin.name}: ${msg}`);
-      // The drip runs unattended — surface auth failures so they don't die silently.
       if (!DRY_RUN && /OAuth|token|\b190\b|permission/i.test(msg)) {
         notify("Instagram auth failed — regenerate the Meta system-user token.");
       }
