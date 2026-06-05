@@ -16,6 +16,7 @@ import { generateColorDescription, generateEditorialVerdict, generateMetaDescrip
 import { getColorEditorial } from "@/lib/color-editorial";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
+import { getSampleLinks, affiliatizeRetailer, AFFILIATE_ENABLED } from "@/lib/affiliate";
 import { TrackPage } from "@/components/track-page";
 import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
@@ -222,6 +223,7 @@ export default async function ColorPage({ params }: PageProps) {
   // Curated, hand-written review for high-demand colors (null for the long tail).
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
+  const sampleLinks = getSampleLinks({ brandName: color.brand.name, colorName: color.name, colorNumber: color.color_number });
   const harmonies = await resolveHarmonies(color.hex);
   const light = isLightColor(color.hex);
   const textClass = light ? "text-on-surface" : "text-on-primary";
@@ -421,12 +423,37 @@ export default async function ColorPage({ params }: PageProps) {
               <TrackedLink href={`/compare?color1=${color.id}`} className="bg-surface-container-highest text-primary px-6 py-3 rounded-xl font-headline font-bold text-sm" eventName="cta_click" eventParams={{ cta_label: "compare", color_name: color.name, color_brand: color.brand.slug }}>
                 Compare
               </TrackedLink>
-              {retailerLinks.map((link) => (
-                <a key={link.retailerName} href={link.url} target="_blank" rel="noopener noreferrer" className="bg-surface-container-lowest text-on-surface px-6 py-3 rounded-xl font-headline font-bold text-sm border border-outline-variant/15 hover:shadow-md transition-all">
-                  Buy at {link.retailerName}
+              {/* Sample-purchase CTAs (affiliate when configured) — highest-intent
+                  next step for a color page. rel="sponsored nofollow" per FTC/SEO. */}
+              {sampleLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.url}
+                  target="_blank"
+                  rel="sponsored nofollow noopener noreferrer"
+                  className={
+                    link.primary
+                      ? "bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:shadow-xl transition-all"
+                      : "bg-surface-container-lowest text-on-surface px-6 py-3 rounded-xl font-headline font-bold text-sm border border-outline-variant/15 hover:shadow-md transition-all"
+                  }
+                >
+                  {link.primary ? `${link.label} of ${color.name}` : link.label}
                 </a>
               ))}
+              {retailerLinks.map((link) => {
+                const a = affiliatizeRetailer(link.url);
+                return (
+                  <a key={link.retailerName} href={a.url} target="_blank" rel={`${a.affiliate ? "sponsored " : ""}nofollow noopener noreferrer`} className="bg-surface-container-lowest text-on-surface px-6 py-3 rounded-xl font-headline font-bold text-sm border border-outline-variant/15 hover:shadow-md transition-all">
+                    Buy at {link.retailerName}
+                  </a>
+                );
+              })}
             </div>
+            {AFFILIATE_ENABLED && (
+              <p className="mt-4 text-xs text-on-surface-variant">
+                Some sample and supply links are affiliate links — if you buy through them, Paint Color HQ may earn a small commission at no extra cost to you. It helps keep the site free.
+              </p>
+            )}
           </div>
 
           <div className="lg:col-span-7">
