@@ -159,10 +159,20 @@ export function getRetailerLinks(
   if (!configs) return [];
 
   const info: ColorInfo = { brandName, colorName, colorNumber, colorFamily };
-  return configs
+  const links = configs
     .map((c) => ({
       retailerName: c.name,
       url: c.url(info),
     }))
     .filter((link) => link.url !== "");
+
+  // When a color is sold at Home Depot or Lowe's (our affiliate marketplaces),
+  // drop the manufacturer's own-site link — it's not an affiliate channel, so
+  // we send buyers to where we earn. Brands sold only at their own stores
+  // (SW, BM, Farrow & Ball, etc.) keep their link.
+  const MARKETPLACES = new Set(["Home Depot", "Lowe's"]);
+  if (links.some((l) => MARKETPLACES.has(l.retailerName))) {
+    return links.filter((l) => MARKETPLACES.has(l.retailerName));
+  }
+  return links;
 }
