@@ -416,44 +416,73 @@ export default async function ColorPage({ params }: PageProps) {
                 <Link href={`/brands/${color.brand.slug}`} className="font-headline font-bold text-primary hover:underline">{color.brand.name}</Link>
               </div>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <TrackedLink href={`/tools/palette-generator?hex=${encodeURIComponent(color.hex)}`} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20" eventName="cta_click" eventParams={{ cta_label: "generate_palette", color_name: color.name, color_brand: color.brand.slug }}>
-                Generate Palette
-              </TrackedLink>
-              <TrackedLink href={`/compare?color1=${color.id}`} className="bg-surface-container-highest text-primary px-6 py-3 rounded-xl font-headline font-bold text-sm" eventName="cta_click" eventParams={{ cta_label: "compare", color_name: color.name, color_brand: color.brand.slug }}>
-                Compare
-              </TrackedLink>
-              {/* Sample-purchase CTAs (affiliate when configured) — highest-intent
-                  next step for a color page. rel="sponsored nofollow" per FTC/SEO. */}
-              {sampleLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.url}
-                  target="_blank"
-                  rel="sponsored nofollow noopener noreferrer"
-                  className={
-                    link.primary
-                      ? "bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:shadow-xl transition-all"
-                      : "bg-surface-container-lowest text-on-surface px-6 py-3 rounded-xl font-headline font-bold text-sm border border-outline-variant/15 hover:shadow-md transition-all"
-                  }
-                >
-                  {link.primary ? `${link.label} of ${color.name}` : link.label}
-                </a>
-              ))}
-              {retailerLinks.map((link) => {
-                const a = affiliatizeRetailer(link.url);
-                return (
-                  <a key={link.retailerName} href={a.url} target="_blank" rel={`${a.affiliate ? "sponsored " : ""}nofollow noopener noreferrer`} className="bg-surface-container-lowest text-on-surface px-6 py-3 rounded-xl font-headline font-bold text-sm border border-outline-variant/15 hover:shadow-md transition-all">
-                    Buy at {link.retailerName}
-                  </a>
-                );
-              })}
+            {/* Two labeled groups so the color language reads cleanly:
+                blue = explore (site tools), teal = the primary buy action,
+                outlined-neutral = secondary buy options. One filled hero per
+                group. */}
+            <div className="space-y-5">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant mb-3">Use this color</p>
+                <div className="flex flex-wrap gap-3">
+                  <TrackedLink href={`/tools/palette-generator?hex=${encodeURIComponent(color.hex)}`} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:shadow-xl transition-all" eventName="cta_click" eventParams={{ cta_label: "generate_palette", color_name: color.name, color_brand: color.brand.slug }}>
+                    Generate Palette
+                  </TrackedLink>
+                  <TrackedLink href={`/compare?color1=${color.id}`} className="bg-surface-container-highest text-primary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-primary/20 hover:shadow-md transition-all" eventName="cta_click" eventParams={{ cta_label: "compare", color_name: color.name, color_brand: color.brand.slug }}>
+                    Compare
+                  </TrackedLink>
+                </div>
+              </div>
+
+              {(sampleLinks.length > 0 || retailerLinks.length > 0) && (
+                <div className="pt-5 border-t border-outline-variant/15">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant mb-3">Get this color</p>
+                  <div className="flex flex-wrap gap-3">
+                    {/* Order by monetization priority: Samplize hero (filled) →
+                        retailer (Home Depot/Lowe's, affiliate once live) → Amazon
+                        last. rel="sponsored nofollow" per FTC/SEO. */}
+                    {sampleLinks
+                      .filter((link) => link.primary)
+                      .map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.url}
+                          target="_blank"
+                          rel="sponsored nofollow noopener noreferrer"
+                          className="bg-secondary text-on-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-secondary/20 hover:shadow-xl transition-all"
+                        >
+                          {`${link.label} of ${color.name}`}
+                        </a>
+                      ))}
+                    {retailerLinks.map((link) => {
+                      const a = affiliatizeRetailer(link.url);
+                      return (
+                        <a key={link.retailerName} href={a.url} target="_blank" rel={`${a.affiliate ? "sponsored " : ""}nofollow noopener noreferrer`} className="bg-surface-container-highest text-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-secondary/25 hover:shadow-md transition-all">
+                          Buy at {link.retailerName}
+                        </a>
+                      );
+                    })}
+                    {sampleLinks
+                      .filter((link) => !link.primary)
+                      .map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.url}
+                          target="_blank"
+                          rel="sponsored nofollow noopener noreferrer"
+                          className="bg-surface-container-highest text-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-secondary/25 hover:shadow-md transition-all"
+                        >
+                          {link.label}
+                        </a>
+                      ))}
+                  </div>
+                  {AFFILIATE_ENABLED && (
+                    <p className="mt-4 text-xs text-on-surface-variant">
+                      Some sample and supply links are affiliate links — if you buy through them, Paint Color HQ may earn a small commission at no extra cost to you. It helps keep the site free.
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
-            {AFFILIATE_ENABLED && (
-              <p className="mt-4 text-xs text-on-surface-variant">
-                Some sample and supply links are affiliate links — if you buy through them, Paint Color HQ may earn a small commission at no extra cost to you. It helps keep the site free.
-              </p>
-            )}
           </div>
 
           <div className="lg:col-span-7">
