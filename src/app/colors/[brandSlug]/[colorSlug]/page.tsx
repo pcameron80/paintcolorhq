@@ -224,6 +224,18 @@ export default async function ColorPage({ params }: PageProps) {
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
   const sampleLinks = getSampleLinks({ brandSlug: color.brand.slug, colorSlug: color.slug, brandName: color.brand.name, colorName: color.name, colorNumber: color.color_number });
+  // Shopping CTAs in monetization-priority order: Samplize hero → retailer
+  // (Home Depot/Lowe's, affiliate once live) → Amazon last. The first one is the
+  // filled darker-teal "buy" hero (so every page has a focal point); the rest
+  // are teal-outlined.
+  const shoppingCtas = [
+    ...sampleLinks.filter((l) => l.primary).map((l) => ({ key: l.label, href: l.url, label: `${l.label} of ${color.name}`, sponsored: true })),
+    ...retailerLinks.map((l) => {
+      const a = affiliatizeRetailer(l.url);
+      return { key: l.retailerName, href: a.url, label: `Buy at ${l.retailerName}`, sponsored: a.affiliate };
+    }),
+    ...sampleLinks.filter((l) => !l.primary).map((l) => ({ key: l.label, href: l.url, label: l.label, sponsored: true })),
+  ];
   const harmonies = await resolveHarmonies(color.hex);
   const light = isLightColor(color.hex);
   const textClass = light ? "text-on-surface" : "text-on-primary";
@@ -437,43 +449,23 @@ export default async function ColorPage({ params }: PageProps) {
                 <div className="pt-5 border-t border-outline-variant/15">
                   <p className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant mb-3">Get this color</p>
                   <div className="flex flex-wrap gap-3">
-                    {/* Order by monetization priority: Samplize hero (filled) →
-                        retailer (Home Depot/Lowe's, affiliate once live) → Amazon
-                        last. rel="sponsored nofollow" per FTC/SEO. */}
-                    {sampleLinks
-                      .filter((link) => link.primary)
-                      .map((link) => (
-                        <a
-                          key={link.label}
-                          href={link.url}
-                          target="_blank"
-                          rel="sponsored nofollow noopener noreferrer"
-                          className="bg-secondary text-on-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-secondary/20 hover:shadow-xl transition-all"
-                        >
-                          {`${link.label} of ${color.name}`}
-                        </a>
-                      ))}
-                    {retailerLinks.map((link) => {
-                      const a = affiliatizeRetailer(link.url);
-                      return (
-                        <a key={link.retailerName} href={a.url} target="_blank" rel={`${a.affiliate ? "sponsored " : ""}nofollow noopener noreferrer`} className="bg-surface-container-highest text-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-secondary/25 hover:shadow-md transition-all">
-                          Buy at {link.retailerName}
-                        </a>
-                      );
-                    })}
-                    {sampleLinks
-                      .filter((link) => !link.primary)
-                      .map((link) => (
-                        <a
-                          key={link.label}
-                          href={link.url}
-                          target="_blank"
-                          rel="sponsored nofollow noopener noreferrer"
-                          className="bg-surface-container-highest text-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-secondary/25 hover:shadow-md transition-all"
-                        >
-                          {link.label}
-                        </a>
-                      ))}
+                    {/* First CTA = filled darker-teal "buy" hero; rest teal-outlined.
+                        rel="sponsored nofollow" per FTC/SEO. */}
+                    {shoppingCtas.map((cta, i) => (
+                      <a
+                        key={cta.key}
+                        href={cta.href}
+                        target="_blank"
+                        rel={`${cta.sponsored ? "sponsored " : ""}nofollow noopener noreferrer`}
+                        className={
+                          i === 0
+                            ? "bg-secondary text-on-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-secondary/20 hover:shadow-xl transition-all"
+                            : "bg-surface-container-highest text-secondary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-secondary/25 hover:shadow-md transition-all"
+                        }
+                      >
+                        {cta.label}
+                      </a>
+                    ))}
                   </div>
                   {AFFILIATE_ENABLED && (
                     <p className="mt-4 text-xs text-on-surface-variant">
