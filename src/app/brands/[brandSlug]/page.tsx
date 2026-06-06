@@ -16,7 +16,7 @@ import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 import { getPostsByBrand } from "@/lib/blog-posts";
 import Image from "next/image";
 
-export const revalidate = 3600;
+export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
 export async function generateStaticParams() {
   const brands = await getAllBrands();

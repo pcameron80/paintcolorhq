@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { getAllBrands, getColorsByBrand } from "@/lib/queries";
 
-export const revalidate = 3600;
+export const revalidate = 604800; // 7d — static index page
 
 export const metadata: Metadata = {
   title: "Paint Brand Directory — 14 Brands, 23,000+ Colors",

@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllColorFamilies } from "@/lib/queries";
 
-export const revalidate = 3600;
+export const revalidate = 604800; // 7d — static index page
 
 export const metadata: Metadata = {
   title: "Browse Paint Colors by Color Family",

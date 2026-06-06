@@ -9,7 +9,7 @@ import { TrackPage } from "@/components/track-page";
 import { getColorBySlug, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 
-export const revalidate = 3600;
+export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
 // Without generateStaticParams Next.js 16 falls back to fully dynamic SSR for
 // dynamic route segments — `revalidate` alone doesn't opt the route into ISR.

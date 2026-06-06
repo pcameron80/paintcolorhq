@@ -82,7 +82,7 @@ const tools = [
   },
 ];
 
-export const revalidate = 3600;
+export const revalidate = 604800; // 7d — static index page
 
 const faqItems = [
   {
