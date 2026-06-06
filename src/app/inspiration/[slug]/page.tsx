@@ -11,7 +11,7 @@ import { getAllBrands, findClosestColor, getBrandBySlug } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
 import { AdSenseScript } from "@/components/adsense-script";
 
-export const revalidate = 3600;
+export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
 export function generateStaticParams() {
   return inspirationPalettes.map((p) => ({ slug: p.slug }));
