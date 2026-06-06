@@ -14,7 +14,7 @@ import { getPaletteBySlug } from "@/lib/palettes";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 
-export const revalidate = 3600;
+export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
 const validFamilies = [
   "red", "orange", "yellow", "green", "blue", "purple", "pink",

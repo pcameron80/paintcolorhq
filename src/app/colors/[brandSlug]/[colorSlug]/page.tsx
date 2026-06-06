@@ -22,7 +22,7 @@ import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
 import { POPULAR_COLOR_SLUGS } from "@/lib/popular-colors";
 
-export const revalidate = 3600;
+export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
 // Pre-render popular colors at build time; all others are generated on
 // demand and cached via ISR (revalidate=3600) on first visit. Without

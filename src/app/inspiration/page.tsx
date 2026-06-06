@@ -7,7 +7,7 @@ import { inspirationPalettes } from "@/lib/palettes";
 import { findClosestColor } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
 
-export const revalidate = 3600;
+export const revalidate = 604800; // 7d — static index page
 
 export const metadata: Metadata = {
   title: "Color Inspiration",

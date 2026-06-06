@@ -11,7 +11,7 @@ import { getBrandBySlug, getTopCrossBrandMatches } from "@/lib/queries";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { getBrandPairIntro } from "@/lib/brand-pair-intros";
 
-export const revalidate = 3600;
+export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
 const MAJOR_BRANDS = MAJOR_MATCH_BRANDS;
 
