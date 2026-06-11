@@ -43,7 +43,8 @@
   --on-surface: #161935;
   --on-surface-variant: #434655;
   --on-background: #161935;
-  --outline: #737686;
+  /* WCAG AA: must hold >=4.5:1 as small text on every surface tier (darkest: surface-container-highest #dfe0ff) */
+  --outline: #5e616e;
   --outline-variant: #c3c6d7;
 
   /* Inverse */
