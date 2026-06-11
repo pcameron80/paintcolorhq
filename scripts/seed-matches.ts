@@ -157,7 +157,7 @@ async function main() {
       .select("id");
 
     if (deleteErr) {
-      console.log("  Delete batch error (continuing):", deleteErr.message);
+      console.error("  Delete batch error:", deleteErr.message);
       break;
     }
     if (!deleted || deleted.length === 0) break;
@@ -165,6 +165,20 @@ async function main() {
     if (deleteTotal % 50000 === 0) console.log(`  Deleted ${deleteTotal} rows...`);
   }
   console.log(`  Cleared ${deleteTotal} existing matches.`);
+
+  // Inserting into a non-empty table stacks fresh matches on top of stale
+  // ones (this happened: a statement timeout cleared 0 of 1.5M rows and the
+  // script kept going). Verify the clear actually worked before inserting.
+  const { count: remaining, error: countErr } = await supabase
+    .from("cross_brand_matches")
+    .select("*", { count: "exact", head: true });
+  if (countErr || (remaining ?? 0) > 0) {
+    console.error(
+      `Table not empty after clear (${remaining ?? "unknown"} rows remain). ` +
+        "Truncate cross_brand_matches manually, then re-run. Aborting before insert.",
+    );
+    process.exit(1);
+  }
 
   // Step 4: Insert in batches
   const BATCH_SIZE = 500;
