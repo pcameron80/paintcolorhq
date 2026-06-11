@@ -14,11 +14,14 @@
     "seed-matches": "tsx scripts/seed-matches.ts",
     "populate-undertones": "tsx scripts/populate-undertones.ts",
     "build-match-data": "tsx scripts/build-match-data.ts",
+    "dedupe-colors": "tsx scripts/dedupe-colors.ts",
+    "export-db-colors": "tsx scripts/export-db-colors.ts",
     "research-colors": "tsx scripts/blog/research-colors.ts",
     "verify-links": "tsx scripts/blog/verify-links.ts",
     "indexnow-blog": "tsx scripts/blog/indexnow-submit.ts",
     "test:pinterest": "node --import tsx --test scripts/pinterest/queue.test.ts",
-    "test:blog": "node --import tsx --test scripts/blog/*.test.ts"
+    "test:blog": "node --import tsx --test scripts/blog/*.test.ts",
+    "test:dedupe": "node --import tsx --test scripts/lib/dedupe-rules.test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",
