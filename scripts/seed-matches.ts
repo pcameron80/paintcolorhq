@@ -78,9 +78,13 @@ async function main() {
   let offset = 0;
   const PAGE_SIZE = 1000;
   while (true) {
+    // ORDER BY is load-bearing: .range() pagination without a stable sort
+    // returns nondeterministic page boundaries, which dropped ~38% of colors
+    // from the lookup and silently skipped ~910K match rows per run.
     const { data: colorPage, error: colorErr } = await supabase
       .from("colors")
       .select("id, slug, brand_id")
+      .order("id", { ascending: true })
       .range(offset, offset + PAGE_SIZE - 1);
 
     if (colorErr) {
@@ -102,6 +106,16 @@ async function main() {
   }
 
   console.log(`  ${colorUuidMap.size} color UUIDs loaded`);
+
+  const { count: colorCount } = await supabase
+    .from("colors")
+    .select("*", { count: "exact", head: true });
+  if (colorCount !== null && colorUuidMap.size !== colorCount) {
+    console.error(
+      `Color lookup incomplete: ${colorUuidMap.size} loaded vs ${colorCount} in DB. Aborting.`,
+    );
+    process.exit(1);
+  }
 
   // Step 2: Resolve slug references to UUIDs
   console.log("Resolving match references...");
