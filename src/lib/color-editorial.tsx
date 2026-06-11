@@ -549,7 +549,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
-  "benjamin-moore/october-mist-cc-550": (
+  "benjamin-moore/october-mist-1495": (
     <>
       <p>
         October Mist is Benjamin Moore&apos;s gently grayed sage — a 2022 Color of the Year that reads as a
@@ -979,7 +979,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
-  "benjamin-moore/metropolitan-af-690-2": (
+  "benjamin-moore/metropolitan-af-690": (
     <>
       <p>
         Metropolitan, Benjamin Moore&apos;s 2019 Color of the Year, is a calm, balanced mid gray at LRV 51 —

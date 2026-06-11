@@ -1,4 +1,14 @@
 import type { NextConfig } from "next";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+// Old-slug → canonical-slug map written by scripts/dedupe-colors.ts when
+// duplicate color rows (dual numbering systems, import dupes) are consolidated.
+// These must stay deployed as long as the old URLs have inbound links/index
+// entries — the rows they pointed at are deleted from the DB.
+const colorRedirects: Record<string, string> = JSON.parse(
+  readFileSync(join(process.cwd(), "src/data/color-redirects.json"), "utf8"),
+);
 
 // Fonts are self-hosted via next/font (Manrope + Inter, see app/layout.tsx),
 // so we don't need to allow fonts.googleapis.com/gstatic.com in CSP. They
@@ -102,6 +112,12 @@ const nextConfig: NextConfig = {
         destination: "/blog?tag=tips",
         permanent: true,
       },
+      // Deduped color rows: old slug → canonical slug (161 entries).
+      ...Object.entries(colorRedirects).map(([from, to]) => ({
+        source: `/colors/${from}`,
+        destination: `/colors/${to}`,
+        permanent: true,
+      })),
     ];
   },
   async rewrites() {
