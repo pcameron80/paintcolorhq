@@ -9,9 +9,9 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { getAllPosts } from "@/lib/blog-posts";
 
 export const metadata: Metadata = {
-  title: "Find & Compare Paint Colors Across 14 Brands",
+  title: "Find & Compare Paint Colors Across 13 Brands",
   description:
-    "Discover paint colors you love from 23,000+ shades across 14 brands, preview them on a wall, and find your color in the brand you can buy — free, no signup.",
+    "Discover paint colors you love from 26,000+ shades across 13 brands, preview them on a wall, and find your color in the brand you can buy — free, no signup.",
   alternates: { canonical: "https://www.paintcolorhq.com/" },
 };
 
@@ -98,7 +98,7 @@ const faqItems = [
   {
     question: "What are paint color undertones?",
     answer:
-      "Every color has a hidden tint — warm (yellow/pink), cool (blue/gray), or neutral — that shows up under different lighting. All 23,000+ colors in our database are tagged so you can filter by undertone and avoid clashing with your existing trim, flooring, or cabinets.",
+      "Every color has a hidden tint — warm (yellow/pink), cool (blue/gray), or neutral — that shows up under different lighting. All 26,000+ colors in our database are tagged so you can filter by undertone and avoid clashing with your existing trim, flooring, or cabinets.",
   },
 ];
 
@@ -120,14 +120,14 @@ export default async function Home() {
       <section className="relative pt-24 px-6 md:px-12 py-20 flex flex-col lg:flex-row gap-12 items-center max-w-7xl mx-auto overflow-hidden">
         <div className="lg:w-1/2 z-10">
           <span className="inline-block px-3 py-1 bg-surface-container-highest text-primary text-[10px] uppercase tracking-[0.2em] font-bold mb-6 rounded">
-            23,000+ colors &middot; 14 brands &middot; 100% free
+            26,000+ colors &middot; 13 brands &middot; 100% free
           </span>
           <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-8">
             Find a Paint Color You Love<br />
             <span className="text-primary italic">in Any Brand.</span>
           </h1>
           <p className="text-lg text-on-surface-variant max-w-md mb-10 leading-relaxed">
-            Browse 23,000+ shades across 14 brands, preview your favorites on a real wall, then find that exact color in the brand you can actually buy.
+            Browse 26,000+ shades across 13 brands, preview your favorites on a real wall, then find that exact color in the brand you can actually buy.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
@@ -382,7 +382,7 @@ export default async function Home() {
         "@type": "WebSite",
         name: "Paint Color HQ",
         url: "https://www.paintcolorhq.com",
-        description: "Discover, preview, and compare 23,000+ paint colors across 14 brands — find a color you love, see it on a wall, and get it in the brand you can buy. Cross-brand matches use CIEDE2000 Delta E. Free, no signup.",
+        description: "Discover, preview, and compare 26,000+ paint colors across 13 brands — find a color you love, see it on a wall, and get it in the brand you can buy. Cross-brand matches use CIEDE2000 Delta E. Free, no signup.",
         potentialAction: {
           "@type": "SearchAction",
           // Plain URL string is the current Sitelinks Searchbox spec — the
@@ -399,7 +399,7 @@ export default async function Home() {
         name: "Paint Color HQ",
         url: "https://www.paintcolorhq.com",
         logo: "https://www.paintcolorhq.com/logo.webp",
-        description: "Paint Color HQ helps you discover, preview, and compare 23,000+ paint colors across 14 brands, then find your color in the brand you can buy. Cross-brand matches use the CIEDE2000 Delta E formula. Free, no signup.",
+        description: "Paint Color HQ helps you discover, preview, and compare 26,000+ paint colors across 13 brands, then find your color in the brand you can buy. Cross-brand matches use the CIEDE2000 Delta E formula. Free, no signup.",
         sameAs: ["https://www.pinterest.com/paintcolorhq"],
         founder: {
           "@type": "Person",
@@ -422,8 +422,8 @@ export default async function Home() {
       }} />
 
       <JsonLd data={[
-        { "@context": "https://schema.org", "@type": "WebApplication", name: "Room Color Visualizer", url: "https://www.paintcolorhq.com/tools/room-visualizer", applicationCategory: "DesignApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Preview 23,000+ paint colors on walls, trim, and floor in a realistic room scene." },
-        { "@context": "https://schema.org", "@type": "WebApplication", name: "Photo Color Identifier", url: "https://www.paintcolorhq.com/tools/color-identifier", applicationCategory: "DesignApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Upload a photo and identify the closest matching paint colors from 14 brands." },
+        { "@context": "https://schema.org", "@type": "WebApplication", name: "Room Color Visualizer", url: "https://www.paintcolorhq.com/tools/room-visualizer", applicationCategory: "DesignApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Preview 26,000+ paint colors on walls, trim, and floor in a realistic room scene." },
+        { "@context": "https://schema.org", "@type": "WebApplication", name: "Photo Color Identifier", url: "https://www.paintcolorhq.com/tools/color-identifier", applicationCategory: "DesignApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Upload a photo and identify the closest matching paint colors from 13 brands." },
         { "@context": "https://schema.org", "@type": "WebApplication", name: "Palette Generator", url: "https://www.paintcolorhq.com/tools/palette-generator", applicationCategory: "DesignApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Generate coordinated color palettes mapped to real purchasable paint colors." },
         { "@context": "https://schema.org", "@type": "WebApplication", name: "Paint Calculator", url: "https://www.paintcolorhq.com/tools/paint-calculator", applicationCategory: "UtilityApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Calculate how many gallons of paint you need based on room dimensions." },
       ]} />

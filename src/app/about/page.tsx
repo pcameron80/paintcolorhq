@@ -7,12 +7,12 @@ import { AdSenseScript } from "@/components/adsense-script";
 export const metadata: Metadata = {
   title: "About Paint Color HQ | Our Color Science Methodology",
   description:
-    "Learn how Paint Color HQ uses CIEDE2000 color science to match 23,000+ colors across 14 brands. Independent, data-driven paint color tools.",
+    "Learn how Paint Color HQ uses CIEDE2000 color science to match 26,000+ colors across 13 brands. Independent, data-driven paint color tools.",
   alternates: { canonical: "https://www.paintcolorhq.com/about" },
   openGraph: {
     title: "About Paint Color HQ | Our Color Science Methodology",
     description:
-      "Learn how Paint Color HQ uses CIEDE2000 color science to match 23,000+ colors across 14 brands. Independent, data-driven paint color tools.",
+      "Learn how Paint Color HQ uses CIEDE2000 color science to match 26,000+ colors across 13 brands. Independent, data-driven paint color tools.",
     type: "website",
     url: "https://www.paintcolorhq.com/about",
   },
@@ -40,7 +40,7 @@ export default function AboutPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "AboutPage",
         name: "About Paint Color HQ",
-        description: "Learn how Paint Color HQ uses CIEDE2000 color science to match 23,000+ paint colors across 14 brands.",
+        description: "Learn how Paint Color HQ uses CIEDE2000 color science to match 26,000+ paint colors across 13 brands.",
         url: "https://www.paintcolorhq.com/about",
         mainEntity: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" },
       }} />
@@ -73,7 +73,7 @@ export default function AboutPage() {
               <p>
                 Paint Color HQ is a paint color discovery and cross-brand
                 matching platform. We catalog{" "}
-                <strong className="text-on-surface">over 23,000 colors across 14 major paint brands</strong>{" "}
+                <strong className="text-on-surface">over 26,000 colors across 14 major paint brands</strong>{" "}
                 and provide free tools that help homeowners, interior designers,
                 and painting professionals choose paint colors with confidence.
               </p>
@@ -210,7 +210,7 @@ export default function AboutPage() {
 
             <div className="space-y-5">
               {[
-                { num: "1", title: "Cross-Brand Matching", desc: "Paint brands don't publish cross-references to each other's colors. We compute matches across all 14 brands using CIEDE2000, so you can find an equivalent color no matter which brand your local store carries." },
+                { num: "1", title: "Cross-Brand Matching", desc: "Paint brands don't publish cross-references to each other's colors. We compute matches across all 13 brands using CIEDE2000, so you can find an equivalent color no matter which brand your local store carries." },
                 { num: "2", title: "Data-Driven, Not Opinion-Based", desc: "Every color recommendation on this site is backed by color science. When we say two colors are close, we show you the Delta E score to prove it. No subjective \"these look similar\" guesses." },
                 { num: "3", title: "Completely Free", desc: "All tools, color data, and matching results are free to use with no account or sign-up required. We believe paint color information should be accessible to everyone." },
                 { num: "4", title: "Accuracy Transparency", desc: "All color data is based on digital hex and RGB values published by each manufacturer. We update our database regularly and always recommend verifying with physical paint samples, because real paint looks different depending on finish, lighting, coats, and primer." },
