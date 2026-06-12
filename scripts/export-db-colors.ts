@@ -50,7 +50,7 @@ async function main() {
     const { data, error } = await supabase
       .from("colors")
       .select(
-        "name, slug, color_number, hex, rgb_r, rgb_g, rgb_b, lab_l, lab_a, lab_b_val, lrv, color_family, alternate_numbers, brand_id",
+        "name, slug, color_number, hex, rgb_r, rgb_g, rgb_b, lab_l, lab_a, lab_b_val, lrv, color_family, alternate_numbers, is_archived, brand_id",
       )
       .order("id", { ascending: true })
       .range(from, from + 999);
