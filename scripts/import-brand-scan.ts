@@ -45,6 +45,10 @@ interface BrandRule {
   extract: (parsed: unknown) => ScanColor[];
   /** entry-level filter; default keeps everything with a valid hex */
   keep?: (c: ScanColor) => boolean;
+  /** normalize manufacturer code to the DB color_number convention */
+  normalizeCode?: (code: string) => string;
+  /** imported rows are discontinued colors — flag is_archived */
+  archived?: boolean;
 }
 
 const BRAND_RULES: Record<string, BrandRule> = {
@@ -67,6 +71,23 @@ const BRAND_RULES: Record<string, BrandRule> = {
     extract: (p) => (p as { truly_missing: ScanColor[] }).truly_missing,
     // ES-* are exterior stains — out of scope for the wall-paint dataset.
     keep: (c) => !/^ES-/i.test(c.code),
+  },
+  // SW's live feed marks all 220 of these archived=true (Colonial Revival
+  // etc.) — discontinued colors people still search and need matches FROM.
+  'sherwin-williams': {
+    file: 'sherwin-williams-missing.json',
+    extract: (p) => p as ScanColor[],
+    archived: true,
+  },
+  'farrow-ball': {
+    file: 'farrow-ball-missing.json',
+    extract: (p) => p as ScanColor[],
+    // DB stores F&B numbers bare: "No. 300" -> "300", "No. CB1" -> "CB1"
+    normalizeCode: (code) => code.replace(/^No\.\s*/i, ''),
+  },
+  valspar: {
+    file: 'valspar-missing.json',
+    extract: (p) => p as ScanColor[],
   },
 };
 
@@ -139,7 +160,8 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
   const collisions: string[] = [];
 
   for (const c of candidates) {
-    const code = c.code.toUpperCase().trim();
+    const rawCode = rule.normalizeCode ? rule.normalizeCode(c.code.trim()) : c.code.trim();
+    const code = rawCode.toUpperCase();
     if (seenCodes.has(code)) { skipped.dupInFile++; continue; }
     seenCodes.add(code);
     if (rule.keep && !rule.keep(c)) { skipped.rule++; continue; }
@@ -155,7 +177,7 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
       brand_id: brand.id,
       name,
       slug: colorSlug,
-      color_number: c.code.trim(), // preserve original casing/format (e.g. "50BB 13/104")
+      color_number: rawCode, // normalized to DB convention, original casing (e.g. "50BB 13/104")
       hex: c.hex!.toLowerCase(),
       rgb_r: rgb.r,
       rgb_g: rgb.g,
@@ -165,6 +187,7 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
       lab_b_val: lab.b_val,
       lrv: Math.round(calculateLrv(rgb.r, rgb.g, rgb.b) * 10) / 10,
       color_family: classifyColorFamily(rgb.r, rgb.g, rgb.b),
+      is_archived: rule.archived ?? false,
     });
   }
 
@@ -246,6 +269,52 @@ async function backfillBmAliases(supabase: SupabaseClient) {
   }
 }
 
+/**
+ * Flag existing DB rows as archived when they're absent from the brand's
+ * live palette AND present in its archive list (<brand>-archive.json).
+ * Currently used for farrow-ball (23 Archive-collection rows).
+ */
+async function flagArchived(supabase: SupabaseClient, slug: string) {
+  const rule = BRAND_RULES[slug];
+  const norm = (code: string) =>
+    (rule?.normalizeCode ? rule.normalizeCode(code.trim()) : code.trim()).toUpperCase();
+  const liveFile = path.join(SCAN_DIR, `${slug}-live.json`);
+  const archiveFile = path.join(SCAN_DIR, `${slug}-archive.json`);
+  for (const f of [liveFile, archiveFile]) {
+    if (!fs.existsSync(f)) {
+      console.error(`Required scan file not found: ${f}`);
+      process.exit(1);
+    }
+  }
+  const live = new Set(
+    (JSON.parse(fs.readFileSync(liveFile, 'utf8')) as ScanColor[]).map((c) => norm(c.code)),
+  );
+  const archive = new Set(
+    (JSON.parse(fs.readFileSync(archiveFile, 'utf8')) as { code: string }[]).map((c) => norm(c.code)),
+  );
+  const brand = await fetchBrand(supabase, slug);
+  const { aliasRows } = await fetchExisting(supabase, brand.id);
+
+  const toFlag: { id: string; number: string }[] = [];
+  let inLive = 0;
+  let notInArchive = 0;
+  for (const [number, row] of aliasRows) {
+    if (live.has(number)) { inLive++; continue; }
+    if (!archive.has(number)) { notInArchive++; console.warn(`  not live, not in archive either: ${number}`); continue; }
+    toFlag.push({ id: row.id, number });
+  }
+  console.log(`[${slug} archive flags] live-matched: ${inLive}, to flag: ${toFlag.length}, neither: ${notInArchive}`);
+  if (!APPLY) return;
+  for (const f of toFlag) {
+    const { error } = await supabase.from('colors').update({ is_archived: true }).eq('id', f.id);
+    if (error) {
+      console.error(`Flag failed for ${f.number}:`, error.message);
+      process.exit(1);
+    }
+  }
+  console.log(`  flagged ${toFlag.length} rows is_archived=true`);
+}
+
 async function main() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -265,6 +334,8 @@ async function main() {
       process.exit(1);
     }
     await backfillBmAliases(supabase);
+  } else if (process.argv.includes('--flag-archived')) {
+    await flagArchived(supabase, brandArg);
   } else {
     await importBrand(supabase, brandArg);
   }

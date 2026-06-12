@@ -19,6 +19,7 @@ interface ProcessedColor {
   lab_b_val: number;
   lrv: number;
   color_family: string;
+  is_archived?: boolean;
   brand_slug: string;
 }
 
@@ -123,11 +124,13 @@ function main() {
     const srcIndices = brandGroups.get(srcBrand)!;
     console.log(`\nProcessing source brand: ${srcBrand} (${srcIndices.length} colors)`);
 
-    // Build list of target indices (all other brands)
+    // Build list of target indices (all other brands). Archived colors can
+    // BE matched (their pages need "closest current equivalents") but are
+    // never RECOMMENDED — nobody can buy them.
     const targetIndices: number[] = [];
     for (const [brand, indices] of brandGroups) {
       if (brand !== srcBrand) {
-        targetIndices.push(...indices);
+        targetIndices.push(...indices.filter((i) => !colors[i].is_archived));
       }
     }
 
