@@ -175,7 +175,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
       <section className="py-20 px-6 md:px-12 bg-tertiary-fixed">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-headline text-3xl font-bold text-on-surface mb-4">Looking for a specific color?</h2>
-          <p className="text-on-surface-variant mb-8">Search our database of 27,000+ colors from all major paint brands.</p>
+          <p className="text-on-surface-variant mb-8">Search our database of 26,000+ colors from all major paint brands.</p>
           <Link href="/search" className="inline-block bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-headline font-bold text-base shadow-lg shadow-primary/20">Search Colors</Link>
         </div>
       </section>

@@ -7,7 +7,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 
 export const metadata: Metadata = {
-  title: "Photo Color Identifier: Match to 14 Brands",
+  title: "Photo Color Identifier: Match to 13 Brands",
   description:
     "Upload a photo and click any spot to find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Free, instant, cross-brand results.",
   alternates: {
@@ -26,7 +26,7 @@ export default function ColorIdentifierPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Photo Color Identifier — Find Paint Colors from Any Photo",
-        description: "Upload any photo and click a pixel to match it against 27,000+ paint colors from 14 brands (Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Farrow & Ball) using the CIEDE2000 Delta E 2000 color difference formula.",
+        description: "Upload any photo and click a pixel to match it against 26,000+ paint colors from 13 brands (Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Farrow & Ball) using the CIEDE2000 Delta E 2000 color difference formula.",
         url: "https://www.paintcolorhq.com/tools/color-identifier",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -34,7 +34,7 @@ export default function ColorIdentifierPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: [
-          { "@type": "Question", name: "How does photo color identification work?", acceptedAnswer: { "@type": "Answer", text: "Upload a photo, then click any spot on the image. The tool reads the exact pixel color at that point, converts it to CIELAB color space, and compares it against 27,000+ paint colors from 14 brands using the CIEDE2000 Delta E formula. Results are ranked by perceptual closeness so the top match is always the most visually accurate." } },
+          { "@type": "Question", name: "How does photo color identification work?", acceptedAnswer: { "@type": "Answer", text: "Upload a photo, then click any spot on the image. The tool reads the exact pixel color at that point, converts it to CIELAB color space, and compares it against 26,000+ paint colors from 13 brands using the CIEDE2000 Delta E formula. Results are ranked by perceptual closeness so the top match is always the most visually accurate." } },
           { "@type": "Question", name: "What is Delta E in paint matching?", acceptedAnswer: { "@type": "Answer", text: "Delta E is a measure of perceptual color difference. A Delta E below 1 means colors are visually identical; 1-2 is barely perceptible; 2-5 is noticeable at a glance but still a close match; above 5 means clearly different shades. Paint Color HQ uses the CIEDE2000 formula, the international standard used in paint manufacturing quality control." } },
           { "@type": "Question", name: "What photo formats are supported?", acceptedAnswer: { "@type": "Answer", text: "The Photo Color Identifier supports JPEG, PNG, WebP, and any standard image format your browser can display. You can upload a photo from your device or snap one with your camera. For the most accurate results, photograph the surface in natural daylight without flash." } },
         ],
@@ -54,11 +54,11 @@ export default function ColorIdentifierPage() {
         <div className="max-w-7xl mx-auto">
           <span className="text-primary font-bold text-xs uppercase tracking-widest">Tool</span>
           <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
-            Photo Color Identifier <span className="text-primary">— Match Across 14 Brands</span>
+            Photo Color Identifier <span className="text-primary">— Match Across 13 Brands</span>
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
             Upload any photo and click a spot to find the closest matching paint
-            color from <strong className="text-on-surface">27,000+ colors across 14 brands</strong> —
+            color from <strong className="text-on-surface">26,000+ colors across 13 brands</strong> —
             including Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG,
             Dunn-Edwards, and Farrow &amp; Ball. Results are ranked by how close
             each match looks to the human eye, so the top suggestion is always

@@ -118,7 +118,7 @@ export default function PhilipCameronPage() {
                 I&apos;m not an interior designer or paint industry insider. I&apos;m a homeowner and software builder who got obsessed with the specific problem of matching paint colors accurately across brands. Every color recommendation on the site is grounded in the <strong className="text-on-surface">CIEDE2000 Delta E formula</strong> — the same color-science standard used by paint manufacturers&apos; quality-control labs — not personal opinion alone.
               </p>
               <p>
-                Paint Color HQ is an independent project. It has no paid relationships with paint manufacturers and earns through standard display advertising. The site catalogs over 27,000 paint colors across 14 brands, cross-references each one with the closest matches from every other brand, and tags every color with hex, RGB, LRV, undertone, and family data. If you spot a match that looks off or a brand you&apos;d like to see added, the <Link href="/contact" className="text-primary hover:underline">contact page</Link> goes straight to me.
+                Paint Color HQ is an independent project. It has no paid relationships with paint manufacturers and earns through standard display advertising. The site catalogs over 26,000 paint colors across 13 brands, cross-references each one with the closest matches from every other brand, and tags every color with hex, RGB, LRV, undertone, and family data. If you spot a match that looks off or a brand you&apos;d like to see added, the <Link href="/contact" className="text-primary hover:underline">contact page</Link> goes straight to me.
               </p>
             </div>
           </div>

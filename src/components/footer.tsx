@@ -7,7 +7,7 @@ export function Footer() {
         <div>
           <div className="font-headline font-bold text-lg text-on-surface">Paint Color HQ</div>
           <p className="text-xs text-on-surface-variant leading-relaxed mt-4">
-            Architectural precision in every hue. Curating 27,000+ colors across 14 brands for modern spaces.
+            Architectural precision in every hue. Curating 26,000+ colors across 13 brands for modern spaces.
           </p>
         </div>
 
@@ -34,7 +34,7 @@ export function Footer() {
             ))}
             <li>
               <Link href="/brands" className="hover:text-primary underline-offset-4 hover:underline transition-all font-semibold">
-                All 14 Brands
+                All 13 Brands
               </Link>
             </li>
           </ul>

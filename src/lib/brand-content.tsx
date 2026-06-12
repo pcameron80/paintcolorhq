@@ -59,7 +59,7 @@ const content: Record<string, BrandContent> = {
             SW alternatives to BM&apos;s top sellers
           </Link>. Preview any color with our{" "}
           <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
-          or click any color below to see matches from all 14 brands.
+          or click any color below to see matches from all 13 brands.
         </p>
       </div>
     ),
@@ -117,7 +117,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>{" "}
           to preview any color in your space, or try the{" "}
           <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see
-          Delta E matches from all 14 brands.
+          Delta E matches from all 13 brands.
         </p>
       </div>
     ),
@@ -282,7 +282,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>, and{" "}
           <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link> —
           their most popular color families. Found a color from another brand you love? Click any Valspar
-          color below to see the closest equivalents from all 14 brands, ranked by{" "}
+          color below to see the closest equivalents from all 13 brands, ranked by{" "}
           <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
             Delta E accuracy
           </Link>. You can also search by hex code in our{" "}
@@ -517,7 +517,7 @@ const content: Record<string, BrandContent> = {
   },
 
   colorhouse: {
-    subtitle: "Explore Colorhouse's eco-friendly palette — with matches from all 14 brands",
+    subtitle: "Explore Colorhouse's eco-friendly palette — with matches from all 13 brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -538,7 +538,7 @@ const content: Record<string, BrandContent> = {
         <h2 className="text-lg font-semibold text-gray-900">Colorhouse Cross-Brand Matching</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
           Love a Colorhouse shade but want to compare options? Click any color below to see the
-          closest matches from all 14 brands in our database. For nursery-safe color ideas, see our{" "}
+          closest matches from all 13 brands in our database. For nursery-safe color ideas, see our{" "}
           <Link href="/blog/best-nursery-paint-colors" className="text-brand-blue hover:underline">
             nursery paint colors guide
           </Link>.
@@ -611,37 +611,6 @@ const content: Record<string, BrandContent> = {
           <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>,{" "}
           <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>, and 11 other
           brands — ranked by Delta E accuracy.
-        </p>
-      </div>
-    ),
-  },
-
-  mpc: {
-    subtitle: "Match MPC reference colors to retail paint brands — ranked by Delta E accuracy",
-    intro: (
-      <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
-        <p>
-          MPC (Master Paint Colors) is a paint color system offering a wide selection of architectural
-          colors. Their palette provides a comprehensive range of shades organized across every color
-          family, from neutrals and whites to bold accent colors.
-        </p>
-        <p>
-          MPC colors are commonly used as reference standards in the coatings industry, making them
-          useful for color matching and specification. Their systematic naming convention makes it
-          easy to identify colors by family and tone.
-        </p>
-      </div>
-    ),
-    details: (
-      <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
-        <h2 className="text-lg font-semibold text-gray-900">Match MPC Colors to Retail Brands</h2>
-        <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Click any MPC color below to find the closest available paint from retail brands like{" "}
-          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
-          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and{" "}
-          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>. Use our{" "}
-          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check the
-          exact Delta E difference between any two colors.
         </p>
       </div>
     ),

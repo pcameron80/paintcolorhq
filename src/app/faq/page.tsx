@@ -52,7 +52,7 @@ const faqs = [
   {
     question: "How do I identify a paint color from a photo?",
     answer:
-      "Use our Photo Color Identifier tool. Upload any photo — a room you love on Pinterest, a picture of your neighbor's house, or a swatch from a magazine. Click any spot on the image and we'll find the closest matching paint colors from all 14 brands in our database. The tool extracts the exact color value at that pixel and runs it through our CIEDE2000 matching algorithm.",
+      "Use our Photo Color Identifier tool. Upload any photo — a room you love on Pinterest, a picture of your neighbor's house, or a swatch from a magazine. Click any spot on the image and we'll find the closest matching paint colors from all 13 brands in our database. The tool extracts the exact color value at that pixel and runs it through our CIEDE2000 matching algorithm.",
   },
   {
     question: "Are the colors on screen accurate to real paint?",
@@ -62,7 +62,7 @@ const faqs = [
   {
     question: "What paint brands does Paint Color HQ cover?",
     answer:
-      "We currently cover 11 major paint brands: Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, Dunn-Edwards, Farrow & Ball, Colorhouse, Hirshfield's, Kilz, and more. Our database includes over 27,000 individual colors across all brands, and we add new colors regularly.",
+      "We currently cover 11 major paint brands: Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, Dunn-Edwards, Farrow & Ball, Colorhouse, Hirshfield's, Kilz, and more. Our database includes over 26,000 individual colors across all brands, and we add new colors regularly.",
   },
   {
     question: "How do I choose a paint color for my room?",
