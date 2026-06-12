@@ -112,6 +112,28 @@ const nextConfig: NextConfig = {
         destination: "/blog?tag=tips",
         permanent: true,
       },
+      // MPC (Matthews Paint) removed 2026-06: sign/metal coatings, not
+      // homeowner wall paint. ~2 Google clicks in 3 months across 1,419 pages.
+      {
+        source: "/colors/mpc/:path*",
+        destination: "/brands",
+        permanent: true,
+      },
+      {
+        source: "/brands/mpc",
+        destination: "/brands",
+        permanent: true,
+      },
+      {
+        source: "/match/mpc/:path*",
+        destination: "/brands",
+        permanent: true,
+      },
+      {
+        source: "/match/:brand/to/mpc",
+        destination: "/brands",
+        permanent: true,
+      },
       // Deduped color rows: old slug → canonical slug (161 entries).
       ...Object.entries(colorRedirects).map(([from, to]) => ({
         source: `/colors/${from}`,

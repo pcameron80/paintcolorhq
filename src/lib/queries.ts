@@ -718,7 +718,7 @@ export async function getAllColorSlugs(options?: {
 
 // Latest color insertion date per brand (slug → ISO date YYYY-MM-DD). Used
 // for brand-page sitemap lastmod so each brand emits a real "latest activity"
-// signal instead of all 14 brand URLs sharing the same build date.
+// signal instead of all 13 brand URLs sharing the same build date.
 // Paginates through the colors table because Supabase caps single-request
 // returns at 1000 rows by default and the table has 23k+ rows.
 export async function getLatestColorDateByBrand(): Promise<Map<string, string>> {

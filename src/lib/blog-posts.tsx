@@ -690,7 +690,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best paint color for most laundry rooms is <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> (OC-117, LRV 92.5) — bright enough to brighten a windowless space, warm enough to avoid the clinical chill that pure cool whites give a small room, and stable across both warm and cool bulb temperatures. But &ldquo;best&rdquo; depends on whether your laundry room has a window, what the cabinetry looks like, and whether the room connects to a mudroom. This guide ranks 12 specific colors across whites, soft greens, soft blues, warm neutrals, and a few moody picks for confident larger rooms — every pick has been chosen with <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">LRV</Link>, undertone behavior under 4000K LED bulbs, and finish requirements in mind. CIEDE2000 cross-brand matching across our 23,000+ color database confirms that nearly every color below has a near-identical equivalent in another brand, so your painter&apos;s preferred deck is rarely a constraint.
+          The best paint color for most laundry rooms is <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> (OC-117, LRV 92.5) — bright enough to brighten a windowless space, warm enough to avoid the clinical chill that pure cool whites give a small room, and stable across both warm and cool bulb temperatures. But &ldquo;best&rdquo; depends on whether your laundry room has a window, what the cabinetry looks like, and whether the room connects to a mudroom. This guide ranks 12 specific colors across whites, soft greens, soft blues, warm neutrals, and a few moody picks for confident larger rooms — every pick has been chosen with <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">LRV</Link>, undertone behavior under 4000K LED bulbs, and finish requirements in mind. CIEDE2000 cross-brand matching across our 26,000+ color database confirms that nearly every color below has a near-identical equivalent in another brand, so your painter&apos;s preferred deck is rarely a constraint.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Laundry Rooms Break the Usual Color Rules</h2>
@@ -816,7 +816,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cross-Brand Matching for Laundry Rooms</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          If your painter only stocks one brand and you have specified colors from another, every color page on Paint Color HQ shows the closest matches across all 14 brands in our database, ranked by Delta E. For a laundry room — small, mostly artificially lit — a Delta E under 2.5 is generally close enough that you cannot tell the difference between brands on a finished wall. Our <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">cross-brand color matching guide</Link> walks through the full process; for quick checks, the <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> puts any two colors side by side with their CIEDE2000 score.
+          If your painter only stocks one brand and you have specified colors from another, every color page on Paint Color HQ shows the closest matches across all 13 brands in our database, ranked by Delta E. For a laundry room — small, mostly artificially lit — a Delta E under 2.5 is generally close enough that you cannot tell the difference between brands on a finished wall. Our <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">cross-brand color matching guide</Link> walks through the full process; for quick checks, the <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> puts any two colors side by side with their CIEDE2000 score.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Start With One Color, Then Sample</h2>
@@ -1053,7 +1053,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How We Match Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          We use the <strong>Delta E 2000</strong> formula, which measures the perceptible difference between two colors in a way that aligns with human vision. A Delta E under 1.0 is virtually indistinguishable; under 2.0 is a very close match that most people won&apos;t notice. Our database covers <Link href="/brands" className="text-brand-blue hover:underline">14 major paint brands</Link> with over 23,000 colors.
+          We use the <strong>Delta E 2000</strong> formula, which measures the perceptible difference between two colors in a way that aligns with human vision. A Delta E under 1.0 is virtually indistinguishable; under 2.0 is a very close match that most people won&apos;t notice. Our database covers <Link href="/brands" className="text-brand-blue hover:underline">14 major paint brands</Link> with over 26,000 colors.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Revere Pewter → Accessible Beige</h2>
@@ -1106,7 +1106,7 @@ const blogPosts: BlogPost[] = [
           You picked a gorgeous gray from the paint chip wall. You painted the whole living room. And now it looks… blue. Or purple. Or green. Welcome to the world of undertones — the hidden pigments lurking beneath every &ldquo;neutral&rdquo; color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed italic">
-          Based on our analysis of 23,000+ paint colors across 14 brands using{" "}
+          Based on our analysis of 26,000+ paint colors across 13 brands using{" "}
           <a
             href="https://www.cie.co.at/publications/colorimetry-part-6-ciede2000-colour-difference-formula"
             target="_blank"
@@ -1487,7 +1487,7 @@ const blogPosts: BlogPost[] = [
     date: "2025-12-11",
     author: "Philip Cameron",
     excerpt:
-      "The definitive guide to cross-brand paint color matching. Learn how CIEDE2000, Delta E, and a 23,000+ color database find exact equivalents.",
+      "The definitive guide to cross-brand paint color matching. Learn how CIEDE2000, Delta E, and a 26,000+ color database find exact equivalents.",
     coverColor: "#6B8F71",
     coverImage: "/blog/how-to-find-perfect-color-match-across-brands.webp",
     tags: ["How-To", "Cross-Brand Matching", "Color Science"],
@@ -1516,7 +1516,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          To match a paint color across brands, look up the color on Paint Color HQ, where every color page displays CIEDE2000-calculated matches from all 14 brands in our 23,000+ color database, ranked by Delta E score. Any match with a Delta E under 2.0 is virtually indistinguishable to the human eye. For example, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> White Dove (OC-17) matches to <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> Pure White (SW 7005) with a Delta E of approximately 2.4, and <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> Cornforth White (No. 228) matches to SW Repose Gray within Delta E 2.0. This guide explains the science, the tools, and the step-by-step process for finding accurate cross-brand equivalents.
+          To match a paint color across brands, look up the color on Paint Color HQ, where every color page displays CIEDE2000-calculated matches from all 13 brands in our 26,000+ color database, ranked by Delta E score. Any match with a Delta E under 2.0 is virtually indistinguishable to the human eye. For example, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> White Dove (OC-17) matches to <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> Pure White (SW 7005) with a Delta E of approximately 2.4, and <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> Cornforth White (No. 228) matches to SW Repose Gray within Delta E 2.0. This guide explains the science, the tools, and the step-by-step process for finding accurate cross-brand equivalents.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why You Need Cross-Brand Paint Matching</h2>
@@ -1559,7 +1559,7 @@ const blogPosts: BlogPost[] = [
           <strong>Step 1: Identify your original color.</strong> Find the exact name, color code, and brand. Check the lid of the paint can, the receipt, or the designer&apos;s specification sheet. If you only have a photo or a physical sample, use our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier tool</Link> — upload an image and we&apos;ll identify the closest paint color in our database.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Step 2: Look up the color on Paint Color HQ.</strong> Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find it by name, color code, or hex value. You can also browse by brand — for example, the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams catalog</Link> or <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore catalog</Link>. Every color page automatically displays the closest matches from all 14 brands in our 23,000+ color database, ranked by Delta E score.
+          <strong>Step 2: Look up the color on Paint Color HQ.</strong> Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find it by name, color code, or hex value. You can also browse by brand — for example, the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams catalog</Link> or <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore catalog</Link>. Every color page automatically displays the closest matches from all 13 brands in our 26,000+ color database, ranked by Delta E score.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Step 3: Review the Delta E scores.</strong> We display the CIEDE2000 ΔE value for every suggested match. Look for matches under 2.0 for a nearly invisible difference. Under 3.0 is acceptable for most residential projects where the original and the match won&apos;t be seen in the same room.
@@ -1633,7 +1633,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Start Matching Colors Now</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Cross-brand paint color matching is a solved problem. Paint Color HQ&apos;s 23,000+ color database spans 14 brands — Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, and Farrow &amp; Ball among them — and uses the CIEDE2000 formula (the same perceptual color-difference standard used by the International Commission on Illumination) to calculate every match. Start by searching for your color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link>, or use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to evaluate any two colors side by side. If you&apos;re starting from a photo, try the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> — and use the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out how much paint you&apos;ll need once you&apos;ve found your match.
+          Cross-brand paint color matching is a solved problem. Paint Color HQ&apos;s 26,000+ color database spans 13 brands — Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, and Farrow &amp; Ball among them — and uses the CIEDE2000 formula (the same perceptual color-difference standard used by the International Commission on Illumination) to calculate every match. Start by searching for your color in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link>, or use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to evaluate any two colors side by side. If you&apos;re starting from a photo, try the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> — and use the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out how much paint you&apos;ll need once you&apos;ve found your match.
         </p>
       </>
     ),
@@ -1863,7 +1863,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cross-Brand White Equivalents</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Found a white you love from one brand but need to buy from another? Here are the closest cross-brand matches. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find matches across 23,000+ colors from 14 brands, or try the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see the Delta E difference between any two whites.
+          Found a white you love from one brand but need to buy from another? Here are the closest cross-brand matches. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find matches across 26,000+ colors from 13 brands, or try the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see the Delta E difference between any two whites.
         </p>
         <ul className="mt-4 space-y-2 text-gray-700 leading-relaxed">
           <li><strong>White Dove OC-17 (BM, LRV 86, #F3EFE0)</strong> &#8776; Pure White SW 7005 (LRV 84, #edece6) &#8776; Cameo White (Behr, LRV 79, #e9e6e1) — Delta E under 2.5 across all three</li>
@@ -2031,7 +2031,7 @@ const blogPosts: BlogPost[] = [
           Early signals suggest 2026 will continue the warm trend while introducing more saturated colors — think terracotta, olive, and warm plum. The pendulum is swinging from the ultra-neutral 2020s toward more expressive color choices.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Whatever direction you choose, use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to explore 23,000+ colors across 14 brands, and find the perfect match for your next project. Preview any of these popular shades with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> or build a full palette with our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+          Whatever direction you choose, use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to explore 26,000+ colors across 13 brands, and find the perfect match for your next project. Preview any of these popular shades with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> or build a full palette with our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
         </p>
       </>
     ),
@@ -2398,7 +2398,7 @@ const blogPosts: BlogPost[] = [
           <strong>Paint a sample behind your monitor.</strong> Observe the color while working — not just when you walk in. A color that looks great from the doorway might be fatiguing after 8 hours at your desk. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> to avoid surprises with lighting, and our <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">paint sampling guide</Link> for the right technique.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Estimate how much paint you need with our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> — home offices are typically small rooms where a single gallon may be enough. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find any of these colors across all 14 brands in our database.
+          Estimate how much paint you need with our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> — home offices are typically small rooms where a single gallon may be enough. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find any of these colors across all 13 brands in our database.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
@@ -2523,7 +2523,7 @@ const blogPosts: BlogPost[] = [
           <strong>Use flat or matte for siding.</strong> Unlike interiors, flat finish is the standard for exterior siding — it hides surface imperfections. Use satin or semi-gloss only for trim and doors. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to get an accurate gallon estimate for your exterior — it&apos;s typically 8–15 gallons for a full house.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Need to match a specific color from another brand? Search for it in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest equivalent across all 14 brands in our database. Preview any of these exterior colors with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, and for more on choosing the right finish, see our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link>.
+          Need to match a specific color from another brand? Search for it in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest equivalent across all 13 brands in our database. Preview any of these exterior colors with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, and for more on choosing the right finish, see our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link>.
         </p>
       </>
     ),
@@ -2650,7 +2650,7 @@ const blogPosts: BlogPost[] = [
           <strong>Color-drench for a cocoon effect.</strong> The opposite of an accent wall — paint walls, trim, ceiling, and even the door in the same shade. This technique works especially well with warm neutrals like Balboa Mist or Shiitake, creating an enveloping, womb-like calm.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Match across brands.</strong> Found a color you love at one brand but prefer another brand&apos;s paint formula? Paint Color HQ uses the CIEDE2000 color-difference formula to calculate precise perceptual matches across all 14 brands in our 23,000+ color database. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest match — any result with a Delta E under 2.0 is virtually indistinguishable to the human eye. Or use our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> to upload a photo of a nursery you love and identify the exact paint color.
+          <strong>Match across brands.</strong> Found a color you love at one brand but prefer another brand&apos;s paint formula? Paint Color HQ uses the CIEDE2000 color-difference formula to calculate precise perceptual matches across all 13 brands in our 26,000+ color database. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest match — any result with a Delta E under 2.0 is virtually indistinguishable to the human eye. Or use our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> to upload a photo of a nursery you love and identify the exact paint color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           For more room-by-room color advice, see our guides to the <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">best calming bedroom colors</Link> and <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">best living room colors</Link>.
@@ -2944,7 +2944,7 @@ const blogPosts: BlogPost[] = [
           <strong>What is the best Sherwin-Williams color for small kitchens?</strong> Alabaster (SW 7008) opens up small kitchens with its warm glow, while Agreeable Gray (SW 7029) adds depth without closing the space in. Avoid very dark colors on all surfaces in a small kitchen — use them as accents on an island or lower cabinets instead.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Can I find Benjamin Moore equivalents for these colors?</strong> Yes. Click any <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color</Link> on our site to see the closest match from all 14 brands in our database. Use <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find any color by name or code.
+          <strong>Can I find Benjamin Moore equivalents for these colors?</strong> Yes. Click any <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color</Link> on our site to see the closest match from all 13 brands in our database. Use <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find any color by name or code.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           For more kitchen inspiration beyond Sherwin-Williams, see our full <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen color guide</Link> covering all major brands, or check out our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a complete kitchen color scheme from scratch.
@@ -3030,7 +3030,7 @@ const blogPosts: BlogPost[] = [
           For the full breakdown of whites across all brands, read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">definitive white paint guide</Link>. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to put any two whites side by side and see if the Delta E difference is perceptible. Preview any of these whites on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white color family</Link> to see every white from all 14 brands in our database. Understanding <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link> is essential when choosing between whites — it&apos;s the difference between a white that feels right and one that clashes with your trim.
+          Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white color family</Link> to see every white from all 13 brands in our database. Understanding <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link> is essential when choosing between whites — it&apos;s the difference between a white that feels right and one that clashes with your trim.
         </p>
       </>
     ),
@@ -3149,7 +3149,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Cross-Brand Matches</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          See a Benjamin Moore or Sherwin-Williams color you love but want the Behr price? Every color page on Paint Color HQ shows the closest match from all 14 brands, calculated using the CIEDE2000 color-difference formula — the same standard used by paint manufacturers. A Delta E under 2.0 means two colors are virtually indistinguishable to the human eye.
+          See a Benjamin Moore or Sherwin-Williams color you love but want the Behr price? Every color page on Paint Color HQ shows the closest match from all 13 brands, calculated using the CIEDE2000 color-difference formula — the same standard used by paint manufacturers. A Delta E under 2.0 means two colors are virtually indistinguishable to the human eye.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Start by clicking any color on our <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr brand page</Link>, or use <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find matches by name or code. You can also browse our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom paint colors guide</Link> for picks across all major brands.
@@ -3215,7 +3215,7 @@ const blogPosts: BlogPost[] = [
           Warm plum and berry tones are gaining ground after years of absence. Not bright violet, but muted, brown-inflected purples and dusty berry tones that feel sophisticated rather than playful. Dining rooms, bedrooms, and powder rooms are the primary use cases, where drama is welcome and the small square footage makes a saturated color approachable. Homeowners who painted a navy or forest green accent wall two years ago are the most likely candidates to try this next.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          See the <Link href="/colors/family/purple" className="text-brand-blue hover:underline">purple family</Link> for options across all 14 brands.
+          See the <Link href="/colors/family/purple" className="text-brand-blue hover:underline">purple family</Link> for options across all 13 brands.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 4: Butter Yellow Returns</h2>
@@ -3887,7 +3887,7 @@ const blogPosts: BlogPost[] = [
     date: "2026-05-13",
     author: "Philip Cameron",
     excerpt:
-      "Fourteen designer-favorite blues ranked by undertone, LRV, and room application — from airy sky blues to dramatic naval. Every pick verified against our 23,000+ color database with cross-brand matches.",
+      "Fourteen designer-favorite blues ranked by undertone, LRV, and room application — from airy sky blues to dramatic naval. Every pick verified against our 26,000+ color database with cross-brand matches.",
     coverColor: "#4A6B8F",
     coverImage: "/blog/best-blue-paint-colors.webp",
     tags: ["Guide", "Blue", "Trends"],
@@ -4024,7 +4024,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Find a Blue Match Across Brands</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Every color on Paint Color HQ shows cross-brand matches ranked by Delta E score. Click any of the colors above and scroll to the cross-brand matches section — you&apos;ll see the closest equivalents from all 14 brands ranked by perceptual color difference. Delta E under 2.0 means the colors are virtually indistinguishable on a finished wall.
+          Every color on Paint Color HQ shows cross-brand matches ranked by Delta E score. Click any of the colors above and scroll to the cross-brand matches section — you&apos;ll see the closest equivalents from all 13 brands ranked by perceptual color difference. Delta E under 2.0 means the colors are virtually indistinguishable on a finished wall.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           For systematic brand-to-brand conversions, see the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM</Link>, <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">BM to Behr</Link>, and <Link href="/match/sherwin-williams/to/behr" className="text-brand-blue hover:underline">SW to Behr</Link> conversion charts — each shows the 50 closest cross-brand pairs across all color families.
