@@ -8,9 +8,9 @@ import { getAllBrands, getColorsByBrand } from "@/lib/queries";
 export const revalidate = 604800; // 7d — static index page
 
 export const metadata: Metadata = {
-  title: "Paint Brand Directory — 14 Brands, 23,000+ Colors",
+  title: "Paint Brand Directory — 14 Brands, 27,000+ Colors",
   description:
-    "Browse all 14 paint brands on Paint Color HQ, including Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, and Farrow & Ball. Explore 23,000+ colors with cross-brand matches.",
+    "Browse all 14 paint brands on Paint Color HQ, including Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, and Farrow & Ball. Explore 27,000+ colors with cross-brand matches.",
   alternates: { canonical: "https://www.paintcolorhq.com/brands" },
   openGraph: {
     title: "Paint Brands",

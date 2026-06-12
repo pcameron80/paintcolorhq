@@ -7,7 +7,7 @@ export function Footer() {
         <div>
           <div className="font-headline font-bold text-lg text-on-surface">Paint Color HQ</div>
           <p className="text-xs text-on-surface-variant leading-relaxed mt-4">
-            Architectural precision in every hue. Curating 23,000+ colors across 14 brands for modern spaces.
+            Architectural precision in every hue. Curating 27,000+ colors across 14 brands for modern spaces.
           </p>
         </div>
 

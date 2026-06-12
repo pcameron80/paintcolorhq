@@ -7,12 +7,12 @@ import { AdSenseScript } from "@/components/adsense-script";
 export const metadata: Metadata = {
   title: "Methodology: How Paint Color HQ Matches Colors Across Brands",
   description:
-    "How Paint Color HQ uses the CIEDE2000 color difference standard to match 23,000+ paint colors across 14 brands. The pipeline, data sources, Delta E thresholds, and known limitations.",
+    "How Paint Color HQ uses the CIEDE2000 color difference standard to match 27,000+ paint colors across 14 brands. The pipeline, data sources, Delta E thresholds, and known limitations.",
   alternates: { canonical: "https://www.paintcolorhq.com/methodology" },
   openGraph: {
     title: "How We Match Paint Colors Across Brands",
     description:
-      "The CIEDE2000-based pipeline behind 23,000+ cross-brand paint color matches.",
+      "The CIEDE2000-based pipeline behind 27,000+ cross-brand paint color matches.",
     type: "article",
     url: "https://www.paintcolorhq.com/methodology",
   },
@@ -23,7 +23,7 @@ const techArticleJsonLd = {
   "@type": "TechArticle",
   headline: "How Paint Color HQ Matches Colors Across Brands",
   description:
-    "Methodology behind 23,000+ cross-brand paint color matches: CIEDE2000 color science, the matching pipeline, data sources, Delta E thresholds, and known limitations.",
+    "Methodology behind 27,000+ cross-brand paint color matches: CIEDE2000 color science, the matching pipeline, data sources, Delta E thresholds, and known limitations.",
   url: "https://www.paintcolorhq.com/methodology",
   author: {
     "@type": "Person",
@@ -71,7 +71,7 @@ export default function MethodologyPage() {
               How we match paint colors across brands
             </h1>
             <p className="text-lg text-on-surface-variant leading-relaxed max-w-2xl">
-              Paint Color HQ has 23,000+ paint colors from 14 brands and over a million pre-computed cross-brand matches. This page documents how those matches are calculated, what Delta E scores mean, and where the methodology has limits.
+              Paint Color HQ has 27,000+ paint colors from 14 brands and over a million pre-computed cross-brand matches. This page documents how those matches are calculated, what Delta E scores mean, and where the methodology has limits.
             </p>
           </div>
         </section>
@@ -147,7 +147,7 @@ export default function MethodologyPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Data sources</h2>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              The 23,000+ colors in our database come from each manufacturer&apos;s published color chip data: name, color number, hex code, and (where the brand publishes it) LRV. We do not measure paint chips ourselves — the source-of-truth is whatever the brand has chosen to publish. Color names and product codes are trademarks of their respective brands.
+              The 27,000+ colors in our database come from each manufacturer&apos;s published color chip data: name, color number, hex code, and (where the brand publishes it) LRV. We do not measure paint chips ourselves — the source-of-truth is whatever the brand has chosen to publish. Color names and product codes are trademarks of their respective brands.
             </p>
             <p className="text-on-surface-variant leading-relaxed mb-4">
               Undertone and color-family classifications are derived from each color&apos;s LAB position relative to family centroids. The classifier sometimes diverges from a human eye on borderline colors — a famously-warm gray with LAB a* and b* close to neutral may classify as neutral rather than gray. We acknowledge this and use the brand&apos;s own family label (when set) before falling back to the classifier output.

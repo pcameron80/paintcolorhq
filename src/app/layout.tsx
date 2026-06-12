@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     template: "%s | Paint Color HQ",
   },
   description:
-    "Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. 23,000+ colors with room visualizer & photo color identifier.",
+    "Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. 27,000+ colors with room visualizer & photo color identifier.",
   metadataBase: new URL("https://www.paintcolorhq.com"),
   openGraph: {
     type: "website",
     siteName: "Paint Color HQ",
     title: "Match Any Paint Color Across 14 Brands | Paint Color HQ",
     description:
-      "Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. 23,000+ colors with room visualizer, photo color identifier & paint calculator.",
+      "Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. 27,000+ colors with room visualizer, photo color identifier & paint calculator.",
     // Default og:url for pages that don't set their own. Per-page metadata
     // (color, brand, family, blog) overrides this with the canonical URL.
     url: "https://www.paintcolorhq.com",
