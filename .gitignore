@@ -82,3 +82,14 @@ scripts/pinterest/reports/
 # Social drip run logs (runtime-only; the published.json ledgers ARE tracked)
 scripts/facebook/drip.log
 scripts/instagram/drip.log
+
+# Python bytecode (e.g. the drift compare tooling)
+__pycache__/
+*.pyc
+
+# SEO audit derived/binary artifacts — keep the markdown reports tracked,
+# not the heavy PDF/HTML/screenshot/script outputs (4MB+ per full audit).
+seo-audits/**/screenshots/
+seo-audits/**/*.pdf
+seo-audits/**/*.html
+seo-audits/**/*.py
