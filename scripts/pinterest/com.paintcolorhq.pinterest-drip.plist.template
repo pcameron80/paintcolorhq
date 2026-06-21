@@ -16,14 +16,13 @@
   <dict>
     <key>PATH</key><string>__NODE_DIR__:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
   </dict>
-  <!-- Spread ~6 pins/day across 3 runs (9am / 1pm / 5pm EDT) instead of one
-       burst — looks organic on Pinterest and catches more of the feed cycle. -->
+  <!-- Fire ONCE/day at 10:00 local (EDT). drip.sh runs `--daily`, which posts
+       the whole day's quota mix in a single run (selectDailyMix is built to be
+       called once/day). Multiple slots would each re-fill the full quota and
+       overpost — keep this a single interval. StartCalendarInterval is LOCAL
+       time, not UTC. -->
   <key>StartCalendarInterval</key>
-  <array>
-    <dict><key>Hour</key><integer>13</integer><key>Minute</key><integer>0</integer></dict>
-    <dict><key>Hour</key><integer>17</integer><key>Minute</key><integer>0</integer></dict>
-    <dict><key>Hour</key><integer>21</integer><key>Minute</key><integer>0</integer></dict>
-  </array>
+  <dict><key>Hour</key><integer>10</integer><key>Minute</key><integer>0</integer></dict>
   <key>StandardErrorPath</key><string>__REPO__/scripts/pinterest/drip.log</string>
   <key>RunAtLoad</key><false/>
 </dict>
