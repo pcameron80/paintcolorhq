@@ -220,6 +220,7 @@ export default async function ColorPage({ params }: PageProps) {
   ]);
   const colorLede = generateColorLede(color, matches);
   const brandMatrix = nearestMatchesPerBrand(matches);
+  const topMatch = brandMatrix[0]; // nearest equivalent overall, for the side-by-side hero
   // Curated, hand-written review for high-demand colors (null for the long tail).
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
@@ -473,6 +474,27 @@ export default async function ColorPage({ params }: PageProps) {
               <div className="bg-surface-container-low rounded-xl p-8 md:p-10">
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">{color.name} in Every Brand</h2>
                 <p className="text-sm text-on-surface-variant mb-8">The closest equivalent to {color.name} in each major paint brand, ranked by how close the match reads. Always verify with a physical sample.</p>
+                {/* Side-by-side hero — the single nearest equivalent shown large,
+                    so "does this actually match?" is answered visually before
+                    the full per-brand matrix below. Whole block links to it. */}
+                {topMatch && (
+                  <Link
+                    href={`/colors/${topMatch.match_color.brand.slug}/${topMatch.match_color.slug}`}
+                    className="mb-8 grid grid-cols-[1fr_auto_1fr] items-stretch gap-px rounded-xl overflow-hidden bg-outline-variant/20 hover:shadow-md transition-all"
+                  >
+                    <div className="p-6 min-h-32 flex flex-col justify-end" style={{ backgroundColor: color.hex }}>
+                      <span className={`text-[10px] uppercase tracking-wider ${isLightColor(color.hex) ? "text-black/55" : "text-white/70"}`}>{color.brand.name}</span>
+                      <span className={`font-headline font-bold leading-tight ${isLightColor(color.hex) ? "text-black/90" : "text-white"}`}>{color.name}</span>
+                    </div>
+                    <div className="bg-surface-container-lowest flex flex-col items-center justify-center px-4 py-2 text-center">
+                      <span className="text-[10px] uppercase tracking-widest text-outline">{Number(topMatch.delta_e_score) < 2 ? "Nearly identical" : Number(topMatch.delta_e_score) < 5 ? "Very similar" : "Visible difference"}</span>
+                    </div>
+                    <div className="p-6 min-h-32 flex flex-col justify-end" style={{ backgroundColor: topMatch.match_color.hex }}>
+                      <span className={`text-[10px] uppercase tracking-wider ${isLightColor(topMatch.match_color.hex) ? "text-black/55" : "text-white/70"}`}>{topMatch.match_color.brand.name}</span>
+                      <span className={`font-headline font-bold leading-tight ${isLightColor(topMatch.match_color.hex) ? "text-black/90" : "text-white"}`}>{topMatch.match_color.name}</span>
+                    </div>
+                  </Link>
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {brandMatrix.map((match) => (
                     <Link key={match.id} href={`/colors/${match.match_color.brand.slug}/${match.match_color.slug}`} className="bg-surface-container-lowest p-6 rounded-lg group cursor-pointer hover:shadow-md transition-all">
