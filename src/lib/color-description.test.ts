@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { generateColorLede, nearestMatchesPerBrand } from "./color-description.ts";
+import { generateColorLede, nearestMatchesPerBrand } from "./color-description";
 
 function color(over: Record<string, unknown> = {}) {
   return {

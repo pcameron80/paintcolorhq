@@ -12,7 +12,7 @@ import { ShareButton } from "@/components/share-button";
 import { PinterestSaveButton } from "@/components/pinterest-save-button";
 import { redirect } from "next/navigation";
 import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand, getMoreFromFamily } from "@/lib/queries";
-import { generateColorDescription, generateEditorialVerdict, generateMetaDescription } from "@/lib/color-description";
+import { generateColorLede, nearestMatchesPerBrand, generateMetaDescription } from "@/lib/color-description";
 import { getColorEditorial } from "@/lib/color-editorial";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
@@ -218,8 +218,8 @@ export default async function ColorPage({ params }: PageProps) {
     getSimilarColorsFromSameBrand(color),
     getMoreFromFamily({ id: color.id, color_family: color.color_family, brand_id: color.brand_id }),
   ]);
-  const description = generateColorDescription(color, matches);
-  const editorialVerdict = generateEditorialVerdict(color);
+  const colorLede = generateColorLede(color, matches);
+  const brandMatrix = nearestMatchesPerBrand(matches);
   // Curated, hand-written review for high-demand colors (null for the long tail).
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
@@ -277,13 +277,6 @@ export default async function ColorPage({ params }: PageProps) {
       answer: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white. That makes it ${lrvBand}. LRV is the most reliable guide to how light or dark a paint will read in a real room — more dependable than the swatch on your screen, which varies by monitor.`,
     });
   }
-
-  const matchesByBrand = matches.reduce((acc, match) => {
-    const bn = match.match_color.brand.name;
-    if (!acc[bn]) acc[bn] = [];
-    acc[bn].push(match);
-    return acc;
-  }, {} as Record<string, typeof matches>);
 
   // Pinterest pin metadata — the browser extension and Save button look for
   // data-pin-media + data-pin-description on a hidden element to find a
@@ -361,16 +354,15 @@ export default async function ColorPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Editorial verdict — rendered immediately after the hero so the page
-          reads as an opinion-style "is this color right for me?" answer
-          rather than a spec readout. SERP for branded color queries
-          (Agreeable Gray, Hale Navy, etc.) is dominated by editorial color
-          reviews — this paragraph nudges PCHQ toward that page type. Copy
-          composes from hue family × LRV bucket × saturation band so it
-          varies meaningfully across the corpus without per-color hand-writing. */}
+      {/* Data-derived lede — rendered immediately after the hero. Composed from
+          the color's own values (hex/LRV/undertone/family) plus its single
+          nearest cross-brand match, so it's genuinely unique per color instead
+          of the templated family-verdict prose it replaced (two same-family
+          colors used to share ~70% of that). The structured sections below
+          carry the substance; this just leads. */}
       <section className="bg-surface-container-low border-b border-outline-variant/10">
         <article className="max-w-4xl mx-auto px-6 md:px-12 py-10">
-          <p className="text-lg text-on-surface leading-relaxed">{editorialVerdict}</p>
+          <p className="text-lg text-on-surface leading-relaxed">{colorLede}</p>
         </article>
       </section>
 
@@ -399,7 +391,6 @@ export default async function ColorPage({ params }: PageProps) {
               <div className="bg-surface-container-high h-1 w-12 mb-6" />
               <article>
                 <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">{color.name} Technical Profile</h2>
-                <p className="text-on-surface-variant leading-relaxed mb-8">{description}</p>
               </article>
             </div>
             <div className="space-y-0">
@@ -478,12 +469,12 @@ export default async function ColorPage({ params }: PageProps) {
           </div>
 
           <div className="lg:col-span-7">
-            {Object.keys(matchesByBrand).length > 0 && (
+            {brandMatrix.length > 0 && (
               <div className="bg-surface-container-low rounded-xl p-8 md:p-10">
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">Colors Similar to {color.name}</h2>
-                <p className="text-sm text-on-surface-variant mb-8">Closest digital match based on color values. Always verify with physical samples.</p>
+                <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">{color.name} in Every Brand</h2>
+                <p className="text-sm text-on-surface-variant mb-8">The closest equivalent to {color.name} in each major paint brand, ranked by how close the match reads. Always verify with a physical sample.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {Object.values(matchesByBrand).flatMap((bm) => bm.slice(0, 1)).slice(0, 8).map((match) => (
+                  {brandMatrix.map((match) => (
                     <Link key={match.id} href={`/colors/${match.match_color.brand.slug}/${match.match_color.slug}`} className="bg-surface-container-lowest p-6 rounded-lg group cursor-pointer hover:shadow-md transition-all">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-16 h-16 rounded-lg shrink-0" style={{ backgroundColor: match.match_color.hex }} />
@@ -612,7 +603,7 @@ export default async function ColorPage({ params }: PageProps) {
         "@context": "https://schema.org",
         "@type": "Product",
         name: `${color.name}${color.color_number ? ` ${color.color_number}` : ""}`,
-        description: description,
+        description: colorLede,
         url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
         // Recommended for Product rich results — reuse the generated swatch OG
         // image so color pages are eligible for image-enriched SERP formats.
