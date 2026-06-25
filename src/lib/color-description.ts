@@ -372,6 +372,64 @@ export function generateColorDescription(
   return getQueryTargetingSentences(color, matches, props);
 }
 
+// Plain-language closeness from Delta E 2000 — NEVER expose the raw number
+// (project rule). Same thresholds as the page's match cards.
+function closenessPhrase(deltaE: number): string {
+  return deltaE < 2 ? "nearly identical" : deltaE < 5 ? "very similar" : "a visible but close match";
+}
+
+function joinList(items: string[]): string {
+  if (items.length <= 1) return items[0] ?? "";
+  return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+}
+
+// Data-derived lede rendered below the hero. Composed entirely from the color's
+// own values + its single nearest cross-brand match, so it varies per color on
+// hex, LRV, undertone, family AND nearest-match identity — unlike the templated
+// family-verdict prose it replaces (two same-family colors shared ~70% of that).
+// No hand-writing, no LLM: pure data composition.
+export function generateColorLede(
+  color: ColorWithBrand,
+  matches: CrossBrandMatchWithColor[],
+): string {
+  const code = color.color_number ? ` ${color.color_number}` : "";
+  const family = color.color_family ? color.color_family.toLowerCase() : "paint";
+  let lede = `${color.name}${code} is a ${family} paint color from ${color.brand.name}.`;
+
+  const specs: string[] = [`a hex value of ${color.hex.toUpperCase()}`];
+  if (color.lrv != null) specs.push(`LRV ${Math.round(Number(color.lrv))}`);
+  if (color.undertone) specs.push(`a ${color.undertone.toLowerCase()} undertone`);
+  lede += ` It has ${joinList(specs)}.`;
+
+  if (matches.length > 0) {
+    const nearest = matches.reduce((a, b) =>
+      Number(b.delta_e_score) < Number(a.delta_e_score) ? b : a,
+    );
+    lede += ` Its closest cross-brand match is ${nearest.match_color.name} from ${nearest.match_color.brand.name} (${closenessPhrase(Number(nearest.delta_e_score))})`;
+    const more = matches.length - 1;
+    if (more > 0) lede += `, with ${more} more equivalent${more === 1 ? "" : "s"} across other brands`;
+    lede += `.`;
+  }
+  return lede;
+}
+
+// One nearest match per target brand, sorted best-first. Powers the
+// "[Color] in Every Brand" equivalence matrix (replaces the page's inline
+// flatMap/slice(0,8), surfacing every brand instead of a capped 8).
+export function nearestMatchesPerBrand(
+  matches: CrossBrandMatchWithColor[],
+): CrossBrandMatchWithColor[] {
+  const best = new Map<string, CrossBrandMatchWithColor>();
+  for (const m of matches) {
+    const key = m.match_color.brand.slug;
+    const cur = best.get(key);
+    if (!cur || Number(m.delta_e_score) < Number(cur.delta_e_score)) best.set(key, m);
+  }
+  return [...best.values()].sort(
+    (a, b) => Number(a.delta_e_score) - Number(b.delta_e_score),
+  );
+}
+
 // Short editorial-style verdict rendered immediately below the hero on the
 // color detail page. Top SERP competitors (Kylie M Interiors, Daily Splendor)
 // open with a verdict in the first 40-60 words ("Agreeable Gray is the best
