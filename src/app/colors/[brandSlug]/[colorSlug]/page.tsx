@@ -12,7 +12,7 @@ import { ShareButton } from "@/components/share-button";
 import { PinterestSaveButton } from "@/components/pinterest-save-button";
 import { redirect } from "next/navigation";
 import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand, getMoreFromFamily } from "@/lib/queries";
-import { generateColorDescription, generateEditorialVerdict, generateMetaDescription } from "@/lib/color-description";
+import { generateColorLede, nearestMatchesPerBrand, generateMetaDescription } from "@/lib/color-description";
 import { getColorEditorial } from "@/lib/color-editorial";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks } from "@/lib/retailer-links";
@@ -218,8 +218,9 @@ export default async function ColorPage({ params }: PageProps) {
     getSimilarColorsFromSameBrand(color),
     getMoreFromFamily({ id: color.id, color_family: color.color_family, brand_id: color.brand_id }),
   ]);
-  const description = generateColorDescription(color, matches);
-  const editorialVerdict = generateEditorialVerdict(color);
+  const colorLede = generateColorLede(color, matches);
+  const brandMatrix = nearestMatchesPerBrand(matches);
+  const topMatch = brandMatrix[0]; // nearest equivalent overall, for the side-by-side hero
   // Curated, hand-written review for high-demand colors (null for the long tail).
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
@@ -247,15 +248,16 @@ export default async function ColorPage({ params }: PageProps) {
   const undertone = color.undertone ?? "";
   const undertoneLower = undertone.toLowerCase();
 
-  // FAQ answers are written long enough (~50-65 words) to clear the AI-citation
-  // window so each can be quoted as a standalone passage by AI Overviews /
-  // Perplexity / Copilot — every sentence is per-color data, not padding. Delta E
-  // is expressed in plain language, never raw numbers.
+  // FAQ answers lead with per-color DATA (undertone / match list / LRV value) so
+  // each is a citeable standalone passage for AI Overviews / Perplexity / Copilot.
+  // The generic explainer sentences ("Undertone is the subtle cast…", the CIEDE2000
+  // explainer, "LRV is the most reliable guide…") were trimmed — identical across
+  // 26K pages, they added duplication, not citability. Delta E stays plain language.
   const closenessPhrase = (de: number) => (de < 2 ? "a near-identical match" : de < 5 ? "a very close match" : "a close match");
   if (color.undertone) {
     faqItems.push({
       question: `What undertone does ${color.name} have?`,
-      answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and sits in the ${color.color_family} color family` : ""}. Undertone is the subtle cast that emerges once the color is on a wall — it drives how ${color.name} pairs with trim, flooring, and adjacent rooms, and it shifts with light: warmer under 2700K bulbs, cleaner and cooler under 4000K daylight. Always sample it in your own space before committing.`,
+      answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and sits in the ${color.color_family} color family` : ""}. The undertone shifts with light — warmer under 2700K bulbs, cleaner and cooler under 4000K daylight — so sample ${color.name} in your own space before committing.`,
     });
   }
   if (matches.length > 0) {
@@ -263,7 +265,7 @@ export default async function ColorPage({ params }: PageProps) {
     const topList = top3.map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (${closenessPhrase(Number(m.delta_e_score))})`).join(", ");
     faqItems.push({
       question: `What colors match ${color.name} from other brands?`,
-      answer: `The closest cross-brand equivalents to ${color.name} are ${topList}. These are ranked with the CIEDE2000 color-difference formula, which scores how similar two colors actually look to the eye rather than matching them by name — so they're the best options for getting ${color.name}'s look in a brand your local store carries. Always confirm with a physical sample, since sheen and lighting shift the final result.`,
+      answer: `The closest cross-brand equivalents to ${color.name} are ${topList} — the best options for getting ${color.name}'s look from a brand your local store carries. Confirm with a physical sample, since sheen and lighting shift the final result.`,
     });
   }
   if (lrv != null) {
@@ -274,16 +276,9 @@ export default async function ColorPage({ params }: PageProps) {
       : "a deep, dramatic color best saved for accent walls, dining rooms, and cozy spaces where atmosphere matters more than reflected light";
     faqItems.push({
       question: `What is the LRV of ${color.name}?`,
-      answer: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white. That makes it ${lrvBand}. LRV is the most reliable guide to how light or dark a paint will read in a real room — more dependable than the swatch on your screen, which varies by monitor.`,
+      answer: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white — that makes it ${lrvBand}.`,
     });
   }
-
-  const matchesByBrand = matches.reduce((acc, match) => {
-    const bn = match.match_color.brand.name;
-    if (!acc[bn]) acc[bn] = [];
-    acc[bn].push(match);
-    return acc;
-  }, {} as Record<string, typeof matches>);
 
   // Pinterest pin metadata — the browser extension and Save button look for
   // data-pin-media + data-pin-description on a hidden element to find a
@@ -361,16 +356,15 @@ export default async function ColorPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Editorial verdict — rendered immediately after the hero so the page
-          reads as an opinion-style "is this color right for me?" answer
-          rather than a spec readout. SERP for branded color queries
-          (Agreeable Gray, Hale Navy, etc.) is dominated by editorial color
-          reviews — this paragraph nudges PCHQ toward that page type. Copy
-          composes from hue family × LRV bucket × saturation band so it
-          varies meaningfully across the corpus without per-color hand-writing. */}
+      {/* Data-derived lede — rendered immediately after the hero. Composed from
+          the color's own values (hex/LRV/undertone/family) plus its single
+          nearest cross-brand match, so it's genuinely unique per color instead
+          of the templated family-verdict prose it replaced (two same-family
+          colors used to share ~70% of that). The structured sections below
+          carry the substance; this just leads. */}
       <section className="bg-surface-container-low border-b border-outline-variant/10">
         <article className="max-w-4xl mx-auto px-6 md:px-12 py-10">
-          <p className="text-lg text-on-surface leading-relaxed">{editorialVerdict}</p>
+          <p className="text-lg text-on-surface leading-relaxed">{colorLede}</p>
         </article>
       </section>
 
@@ -399,7 +393,6 @@ export default async function ColorPage({ params }: PageProps) {
               <div className="bg-surface-container-high h-1 w-12 mb-6" />
               <article>
                 <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">{color.name} Technical Profile</h2>
-                <p className="text-on-surface-variant leading-relaxed mb-8">{description}</p>
               </article>
             </div>
             <div className="space-y-0">
@@ -478,12 +471,33 @@ export default async function ColorPage({ params }: PageProps) {
           </div>
 
           <div className="lg:col-span-7">
-            {Object.keys(matchesByBrand).length > 0 && (
+            {brandMatrix.length > 0 && (
               <div className="bg-surface-container-low rounded-xl p-8 md:p-10">
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">Colors Similar to {color.name}</h2>
-                <p className="text-sm text-on-surface-variant mb-8">Closest digital match based on color values. Always verify with physical samples.</p>
+                <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">{color.name} in Every Brand</h2>
+                <p className="text-sm text-on-surface-variant mb-8">The closest equivalent to {color.name} in each major paint brand, ranked by how close the match reads. Always verify with a physical sample.</p>
+                {/* Side-by-side hero — the single nearest equivalent shown large,
+                    so "does this actually match?" is answered visually before
+                    the full per-brand matrix below. Whole block links to it. */}
+                {topMatch && (
+                  <Link
+                    href={`/colors/${topMatch.match_color.brand.slug}/${topMatch.match_color.slug}`}
+                    className="mb-8 grid grid-cols-[1fr_auto_1fr] items-stretch gap-px rounded-xl overflow-hidden bg-outline-variant/20 hover:shadow-md transition-all"
+                  >
+                    <div className="p-6 min-h-32 flex flex-col justify-end" style={{ backgroundColor: color.hex }}>
+                      <span className={`text-[10px] uppercase tracking-wider ${isLightColor(color.hex) ? "text-black/55" : "text-white/70"}`}>{color.brand.name}</span>
+                      <span className={`font-headline font-bold leading-tight ${isLightColor(color.hex) ? "text-black/90" : "text-white"}`}>{color.name}</span>
+                    </div>
+                    <div className="bg-surface-container-lowest flex flex-col items-center justify-center px-4 py-2 text-center">
+                      <span className="text-[10px] uppercase tracking-widest text-outline">{Number(topMatch.delta_e_score) < 2 ? "Nearly identical" : Number(topMatch.delta_e_score) < 5 ? "Very similar" : "Visible difference"}</span>
+                    </div>
+                    <div className="p-6 min-h-32 flex flex-col justify-end" style={{ backgroundColor: topMatch.match_color.hex }}>
+                      <span className={`text-[10px] uppercase tracking-wider ${isLightColor(topMatch.match_color.hex) ? "text-black/55" : "text-white/70"}`}>{topMatch.match_color.brand.name}</span>
+                      <span className={`font-headline font-bold leading-tight ${isLightColor(topMatch.match_color.hex) ? "text-black/90" : "text-white"}`}>{topMatch.match_color.name}</span>
+                    </div>
+                  </Link>
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {Object.values(matchesByBrand).flatMap((bm) => bm.slice(0, 1)).slice(0, 8).map((match) => (
+                  {brandMatrix.map((match) => (
                     <Link key={match.id} href={`/colors/${match.match_color.brand.slug}/${match.match_color.slug}`} className="bg-surface-container-lowest p-6 rounded-lg group cursor-pointer hover:shadow-md transition-all">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-16 h-16 rounded-lg shrink-0" style={{ backgroundColor: match.match_color.hex }} />
@@ -612,7 +626,7 @@ export default async function ColorPage({ params }: PageProps) {
         "@context": "https://schema.org",
         "@type": "Product",
         name: `${color.name}${color.color_number ? ` ${color.color_number}` : ""}`,
-        description: description,
+        description: colorLede,
         url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
         // Recommended for Product rich results — reuse the generated swatch OG
         // image so color pages are eligible for image-enriched SERP formats.
