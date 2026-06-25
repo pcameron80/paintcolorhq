@@ -74,6 +74,17 @@ test("swatchPins: all swatch-type, on Colors board, /api/pin imageUrl, unique ke
   assert.equal(new Set(s.map((p) => p.key)).size, s.length);
 });
 
+import { palettePins } from "./sources/palettes.ts";
+
+test("palettePins: all palette-type, on Color Palettes board, /api/pin/palette imageUrl, unique keys", () => {
+  const p = palettePins();
+  assert.ok(p.length >= 15, `expected >=15 palette pins, got ${p.length}`);
+  assert.ok(p.every((x) => x.type === "palette" && x.board === "Color Palettes"));
+  assert.ok(p.every((x) => x.imageUrl!.includes("/api/pin/palette?")));
+  assert.ok(p.every((x) => x.link.includes("/inspiration/")));
+  assert.equal(new Set(p.map((x) => x.key)).size, p.length);
+});
+
 import { quotasForWeekday, selectDailyMix, DRIP_CONFIG } from "./queue.ts";
 
 function mkT(key: string, type: PinSpec["type"]): PinSpec {
@@ -81,8 +92,8 @@ function mkT(key: string, type: PinSpec["type"]): PinSpec {
 }
 
 test("quotasForWeekday merges daily + weekday extras", () => {
-  assert.deepEqual(quotasForWeekday(DRIP_CONFIG, 1), { swatch: 3, palette: 1, guide: 1 }); // Mon
-  assert.deepEqual(quotasForWeekday(DRIP_CONFIG, 2), { swatch: 3, palette: 1 });            // Tue
+  assert.deepEqual(quotasForWeekday(DRIP_CONFIG, 1), { swatch: 2, palette: 1, guide: 1 }); // Mon
+  assert.deepEqual(quotasForWeekday(DRIP_CONFIG, 2), { swatch: 2, palette: 1 });            // Tue
 });
 
 test("selectDailyMix fills each type's quota from fresh", () => {

@@ -5,7 +5,7 @@
     "brandName": "Vista Paint",
     "name": "Mystic Fog",
     "hex": "#eae8df",
-    "code": "C-18",
+    "code": "0019",
     "lrv": 80.5,
     "family": "yellow"
   },
@@ -75,7 +75,7 @@
     "brandName": "Hirshfield's",
     "name": "Desert Mirage",
     "hex": "#d2cabc",
-    "code": "231",
+    "code": "0231",
     "lrv": 59.6,
     "family": "beige"
   },
@@ -145,7 +145,7 @@
     "brandName": "Vista Paint",
     "name": "Muted Mulberry",
     "hex": "#67626e",
-    "code": "C-1381",
+    "code": "H0064",
     "lrv": 12.7,
     "family": "gray"
   },
@@ -187,16 +187,6 @@
     "hex": "#4c4846",
     "code": "HDC-CL-14A",
     "lrv": 6.6,
-    "family": "gray"
-  },
-  {
-    "brandSlug": "mpc",
-    "slug": "black-hole-met-mp19952",
-    "brandName": "MPC",
-    "name": "Black Hole Met.",
-    "hex": "#3b4145",
-    "code": "MP19952",
-    "lrv": 5.1,
     "family": "gray"
   },
   {
@@ -517,6 +507,1776 @@
     "hex": "#9899b0",
     "code": "DE5934",
     "lrv": 32.6,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "accessible-beige-7036",
+    "brandName": "Sherwin-Williams",
+    "name": "Accessible Beige",
+    "hex": "#d1c7b8",
+    "code": "7036",
+    "lrv": 57.9,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "white-dove-oc-17",
+    "brandName": "Benjamin Moore",
+    "name": "White Dove",
+    "hex": "#F3EFE0",
+    "code": "OC-17",
+    "lrv": 83.2,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "bella-pink-210e-1",
+    "brandName": "Behr",
+    "name": "Bella Pink",
+    "hex": "#faeeeb",
+    "code": "210E-1",
+    "lrv": 85,
+    "family": "red"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "edgecomb-gray-hc-173",
+    "brandName": "Benjamin Moore",
+    "name": "Edgecomb Gray",
+    "hex": "#dad4c5",
+    "code": "HC-173",
+    "lrv": 63.1,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "natural-cream-oc-14",
+    "brandName": "Benjamin Moore",
+    "name": "Natural Cream",
+    "hex": "#F0E6D4",
+    "code": "OC-14",
+    "lrv": 64.8,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "greenbrier-beige-hc-79",
+    "brandName": "Benjamin Moore",
+    "name": "Greenbrier Beige",
+    "hex": "#bcac8f",
+    "code": "HC-79",
+    "lrv": 42.2,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "universal-khaki-6150",
+    "brandName": "Sherwin-Williams",
+    "name": "Universal Khaki",
+    "hex": "#b8a992",
+    "code": "6150",
+    "lrv": 40.6,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "cottage-door-8004-38e",
+    "brandName": "Valspar",
+    "name": "Cottage Door",
+    "hex": "#7a8f97",
+    "code": "8004-38E",
+    "lrv": 26,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "bermuda-shell-250c-1",
+    "brandName": "Behr",
+    "name": "Bermuda Shell",
+    "hex": "#fcf2ed",
+    "code": "250C-1",
+    "lrv": 87,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "pale-oak-oc-20",
+    "brandName": "Benjamin Moore",
+    "name": "Pale Oak",
+    "hex": "#E8D8D0",
+    "code": "OC-20",
+    "lrv": 68.6,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "daphne-9151",
+    "brandName": "Sherwin-Williams",
+    "name": "Daphne",
+    "hex": "#899caa",
+    "code": "9151",
+    "lrv": 32,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "soft-suede-9577",
+    "brandName": "Sherwin-Williams",
+    "name": "Soft Suede",
+    "hex": "#d0c6b8",
+    "code": "9577",
+    "lrv": 57.3,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "carlisle-cream-1031",
+    "brandName": "Benjamin Moore",
+    "name": "Carlisle Cream",
+    "hex": "#ddcfbc",
+    "code": "1031",
+    "lrv": 63.6,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "silver-peony-1475",
+    "brandName": "Benjamin Moore",
+    "name": "Silver Peony",
+    "hex": "#C7BFC3",
+    "code": "1475",
+    "lrv": 30.5,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "northgate-green-de6235",
+    "brandName": "Dunn-Edwards",
+    "name": "Northgate Green",
+    "hex": "#aaa388",
+    "code": "DE6235",
+    "lrv": 36.5,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "dutch-boy",
+    "slug": "dove-white-dcp-0018",
+    "brandName": "Dutch Boy",
+    "name": "Dove White",
+    "hex": "#e9e6df",
+    "code": "DCP-0018",
+    "lrv": 79.2,
+    "family": "off-white"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "cocoa-berry-9078",
+    "brandName": "Sherwin-Williams",
+    "name": "Cocoa Berry",
+    "hex": "#a08882",
+    "code": "9078",
+    "lrv": 26.7,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "lush-sage-5003-2b",
+    "brandName": "Valspar",
+    "name": "Lush Sage",
+    "hex": "#788176",
+    "code": "5003-2B",
+    "lrv": 21,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "baby-dreams-2083-70",
+    "brandName": "Benjamin Moore",
+    "name": "Baby Dreams",
+    "hex": "#f6e4eb",
+    "code": "2083-70",
+    "lrv": 78.7,
+    "family": "pink"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "toffee-crunch-1207-4",
+    "brandName": "PPG",
+    "name": "Toffee Crunch",
+    "hex": "#efcea0",
+    "code": "1207-4",
+    "lrv": 65,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "classic-french-gray-77",
+    "brandName": "Sherwin-Williams",
+    "name": "Classic French Gray",
+    "hex": "#888782",
+    "code": "77",
+    "lrv": 24.2,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "sleepy-blue-6225",
+    "brandName": "Sherwin-Williams",
+    "name": "Sleepy Blue",
+    "hex": "#bccbce",
+    "code": "6225",
+    "lrv": 57.9,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "fine-white-250a-1",
+    "brandName": "Behr",
+    "name": "Fine White",
+    "hex": "#fbefe9",
+    "code": "250A-1",
+    "lrv": 86,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "miners-dust-dec786",
+    "brandName": "Dunn-Edwards",
+    "name": "Miner's Dust",
+    "hex": "#d3cec5",
+    "code": "DEC786",
+    "lrv": 62,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "gaia-14-18",
+    "brandName": "PPG",
+    "name": "Gaia",
+    "hex": "#d3bc9e",
+    "code": "14-18",
+    "lrv": 52.3,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "pure-white-7005",
+    "brandName": "Sherwin-Williams",
+    "name": "Pure White",
+    "hex": "#edece6",
+    "code": "7005",
+    "lrv": 83.7,
+    "family": "off-white"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "wallflower-6281",
+    "brandName": "Sherwin-Williams",
+    "name": "Wallflower",
+    "hex": "#dbcfd4",
+    "code": "6281",
+    "lrv": 64.4,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "abalone-pink-7002-17",
+    "brandName": "Valspar",
+    "name": "Abalone Pink",
+    "hex": "#f8e8d9",
+    "code": "7002-17",
+    "lrv": 82.7,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "parasol-n120-1",
+    "brandName": "Behr",
+    "name": "Parasol",
+    "hex": "#ece4ec",
+    "code": "N120-1",
+    "lrv": 76,
+    "family": "off-white"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "abalone-2108-60",
+    "brandName": "Benjamin Moore",
+    "name": "Abalone",
+    "hex": "#d4d0c8",
+    "code": "2108-60",
+    "lrv": 63.3,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "thornton-sage-464",
+    "brandName": "Benjamin Moore",
+    "name": "Thornton Sage",
+    "hex": "#d3dacb",
+    "code": "464",
+    "lrv": 66.3,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "natural-linen-9109",
+    "brandName": "Sherwin-Williams",
+    "name": "Natural Linen",
+    "hex": "#dfd3c3",
+    "code": "9109",
+    "lrv": 66.2,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "shiitake-9173",
+    "brandName": "Sherwin-Williams",
+    "name": "Shiitake",
+    "hex": "#c8bcab",
+    "code": "9173",
+    "lrv": 51.2,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "ultrawhite-9500",
+    "brandName": "Sherwin-Williams",
+    "name": "UltraWhite",
+    "hex": "#f6f7f2",
+    "code": "9500",
+    "lrv": 92.5,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "almost-charcoal-4008-2b",
+    "brandName": "Valspar",
+    "name": "Almost Charcoal",
+    "hex": "#74797a",
+    "code": "4008-2B",
+    "lrv": 18.8,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "rocky-shelter-8006-11c",
+    "brandName": "Valspar",
+    "name": "Rocky Shelter",
+    "hex": "#c0c2c2",
+    "code": "8006-11C",
+    "lrv": 53.7,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "alexandria-beige-hc-77",
+    "brandName": "Benjamin Moore",
+    "name": "Alexandria Beige",
+    "hex": "#a4937d",
+    "code": "HC-77",
+    "lrv": 30.2,
+    "family": "brown"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "batik-af-610",
+    "brandName": "Benjamin Moore",
+    "name": "Batik",
+    "hex": "#cdbab6",
+    "code": "AF-610",
+    "lrv": 51.5,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "black-beauty-2128-10",
+    "brandName": "Benjamin Moore",
+    "name": "Black Beauty",
+    "hex": "#3a3837",
+    "code": "2128-10",
+    "lrv": 4,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "chantilly-lace-2121-70",
+    "brandName": "Benjamin Moore",
+    "name": "Chantilly Lace",
+    "hex": "#f5f7f2",
+    "code": "2121-70",
+    "lrv": 90,
+    "family": "green"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "colonial-verdigris-cw-530",
+    "brandName": "Benjamin Moore",
+    "name": "Colonial Verdigris",
+    "hex": "#3f5034",
+    "code": "CW-530",
+    "lrv": 7,
+    "family": "green"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "almond-latte-de6143",
+    "brandName": "Dunn-Edwards",
+    "name": "Almond Latte",
+    "hex": "#d6c0a4",
+    "code": "DE6143",
+    "lrv": 54.7,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "antique-heather-de5975",
+    "brandName": "Dunn-Edwards",
+    "name": "Antique Heather",
+    "hex": "#cdbacb",
+    "code": "DE5975",
+    "lrv": 52.4,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "preserve-dea193",
+    "brandName": "Dunn-Edwards",
+    "name": "Preserve",
+    "hex": "#4a3c50",
+    "code": "DEA193",
+    "lrv": 5.3,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "monkey-madness-1020-7",
+    "brandName": "PPG",
+    "name": "Monkey Madness",
+    "hex": "#63584c",
+    "code": "1020-7",
+    "lrv": 10.2,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "ral",
+    "slug": "traffic-white-9016",
+    "brandName": "RAL",
+    "name": "Traffic White",
+    "hex": "#f6f6f6",
+    "code": "9016",
+    "lrv": 92.2,
+    "family": "white"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "green-glimpse-9676",
+    "brandName": "Sherwin-Williams",
+    "name": "Green Glimpse",
+    "hex": "#e7eae3",
+    "code": "9676",
+    "lrv": 81.4,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "patience-7555",
+    "brandName": "Sherwin-Williams",
+    "name": "Patience",
+    "hex": "#e2d3bf",
+    "code": "7555",
+    "lrv": 66.5,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "tidewater-6477",
+    "brandName": "Sherwin-Williams",
+    "name": "Tidewater",
+    "hex": "#c3d7d3",
+    "code": "6477",
+    "lrv": 64.9,
+    "family": "green"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "grecian-olive-3008-7a",
+    "brandName": "Valspar",
+    "name": "Grecian Olive",
+    "hex": "#a38759",
+    "code": "3008-7A",
+    "lrv": 25.8,
+    "family": "brown"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "swiss-coffee-7002-16",
+    "brandName": "Valspar",
+    "name": "Swiss Coffee",
+    "hex": "#f2f0ea",
+    "code": "7002-16",
+    "lrv": 87.1,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "castilian-pink-s170-3",
+    "brandName": "Behr",
+    "name": "Castilian Pink",
+    "hex": "#d6b2bc",
+    "code": "S170-3",
+    "lrv": 49.8,
+    "family": "pink"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "silver-drop-790c-2",
+    "brandName": "Behr",
+    "name": "Silver Drop",
+    "hex": "#dde3d7",
+    "code": "790C-2",
+    "lrv": 70,
+    "family": "off-white"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "smoke-bush-rose-s170-5",
+    "brandName": "Behr",
+    "name": "Smoke Bush Rose",
+    "hex": "#a87881",
+    "code": "S170-5",
+    "lrv": 26,
+    "family": "red"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "snowy-pine-ppu10-13",
+    "brandName": "Behr",
+    "name": "Snowy Pine",
+    "hex": "#f0eee5",
+    "code": "PPU10-13",
+    "lrv": 85.3,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "swiss-cream-hdc-ct-27",
+    "brandName": "Behr",
+    "name": "Swiss Cream",
+    "hex": "#edeadc",
+    "code": "HDC-CT-27",
+    "lrv": 82,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "alabaster-876",
+    "brandName": "Benjamin Moore",
+    "name": "Alabaster",
+    "hex": "#f3f0e9",
+    "code": "876",
+    "lrv": 85.1,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "ashwood-moss-1484",
+    "brandName": "Benjamin Moore",
+    "name": "Ashwood Moss",
+    "hex": "#575952",
+    "code": "1484",
+    "lrv": 9.8,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "birds-egg-2051-60",
+    "brandName": "Benjamin Moore",
+    "name": "Bird's Egg",
+    "hex": "#bfddde",
+    "code": "2051-60",
+    "lrv": 68.1,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "black-pepper-2130-40",
+    "brandName": "Benjamin Moore",
+    "name": "Black Pepper",
+    "hex": "#727d87",
+    "code": "2130-40",
+    "lrv": 20,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "cinnamon-slate-2113-40",
+    "brandName": "Benjamin Moore",
+    "name": "Cinnamon Slate",
+    "hex": "#8a7576",
+    "code": "2113-40",
+    "lrv": 19.4,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "hale-navy-hc-154",
+    "brandName": "Benjamin Moore",
+    "name": "Hale Navy",
+    "hex": "#444c57",
+    "code": "HC-154",
+    "lrv": 7.1,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "southwest-pottery-048",
+    "brandName": "Benjamin Moore",
+    "name": "Southwest Pottery",
+    "hex": "#986058",
+    "code": "048",
+    "lrv": 15.7,
+    "family": "red"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "van-courtland-blue-hc-145",
+    "brandName": "Benjamin Moore",
+    "name": "Van Courtland Blue",
+    "hex": "#87999f",
+    "code": "HC-145",
+    "lrv": 30.4,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "hirshfields",
+    "slug": "mirrored-willow-380",
+    "brandName": "Hirshfield's",
+    "name": "Mirrored Willow",
+    "hex": "#8d876d",
+    "code": "0380",
+    "lrv": 24.1,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "pizza-pie-1058-6",
+    "brandName": "PPG",
+    "name": "Pizza Pie",
+    "hex": "#ab6057",
+    "code": "1058-6",
+    "lrv": 17.7,
+    "family": "red"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "tanglewood-1073-5",
+    "brandName": "PPG",
+    "name": "Tanglewood",
+    "hex": "#a58f85",
+    "code": "1073-5",
+    "lrv": 29.3,
+    "family": "brown"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "tawny-mushroom-1054-5",
+    "brandName": "PPG",
+    "name": "Tawny Mushroom",
+    "hex": "#b39997",
+    "code": "1054-5",
+    "lrv": 34.6,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "whiskers-1025-3",
+    "brandName": "PPG",
+    "name": "Whiskers",
+    "hex": "#d1ccc2",
+    "code": "1025-3",
+    "lrv": 60.6,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "ral",
+    "slug": "pure-white-9010",
+    "brandName": "RAL",
+    "name": "Pure White",
+    "hex": "#ffffff",
+    "code": "9010",
+    "lrv": 100,
+    "family": "white"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "alexandrite-60",
+    "brandName": "Sherwin-Williams",
+    "name": "Alexandrite",
+    "hex": "#598c74",
+    "code": "60",
+    "lrv": 22.1,
+    "family": "green"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "favorite-tan-6157",
+    "brandName": "Sherwin-Williams",
+    "name": "Favorite Tan",
+    "hex": "#c1ae91",
+    "code": "6157",
+    "lrv": 43.7,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "honest-blue-6520",
+    "brandName": "Sherwin-Williams",
+    "name": "Honest Blue",
+    "hex": "#b2c7d3",
+    "code": "6520",
+    "lrv": 55,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "neutral-ground-7568",
+    "brandName": "Sherwin-Williams",
+    "name": "Neutral Ground",
+    "hex": "#e2daca",
+    "code": "7568",
+    "lrv": 70.6,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "secret-garden-6181",
+    "brandName": "Sherwin-Williams",
+    "name": "Secret Garden",
+    "hex": "#4f523a",
+    "code": "6181",
+    "lrv": 8,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "dove-white-7002-7",
+    "brandName": "Valspar",
+    "name": "Dove White",
+    "hex": "#f1eee4",
+    "code": "7002-7",
+    "lrv": 85.5,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "olive-branch-gold-3006-7a",
+    "brandName": "Valspar",
+    "name": "Olive Branch Gold",
+    "hex": "#9b7f58",
+    "code": "3006-7A",
+    "lrv": 22.9,
+    "family": "brown"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "tr-s-bien-8001-9g",
+    "brandName": "Valspar",
+    "name": "Très Bien",
+    "hex": "#a82e33",
+    "code": "8001-9G",
+    "lrv": 10.5,
+    "family": "red"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "all-dressed-up-p160-3",
+    "brandName": "Behr",
+    "name": "All Dressed Up",
+    "hex": "#ee87c0",
+    "code": "P160-3",
+    "lrv": 42,
+    "family": "pink"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "carpe-diem-mq1-16",
+    "brandName": "Behr",
+    "name": "Carpe Diem",
+    "hex": "#905859",
+    "code": "MQ1-16",
+    "lrv": 13.6,
+    "family": "red"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "cherry-red-hdc-md-16",
+    "brandName": "Behr",
+    "name": "Cherry Red",
+    "hex": "#b84d48",
+    "code": "HDC-MD-16",
+    "lrv": 16,
+    "family": "red"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "clary-sage-ppu11-07",
+    "brandName": "Behr",
+    "name": "Clary Sage",
+    "hex": "#9fa688",
+    "code": "PPU11-07",
+    "lrv": 36.4,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "crushed-peony-ppu17-06",
+    "brandName": "Behr",
+    "name": "Crushed Peony",
+    "hex": "#e3dcda",
+    "code": "PPU17-06",
+    "lrv": 72.6,
+    "family": "off-white"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "practical-tan-s280-3",
+    "brandName": "Behr",
+    "name": "Practical Tan",
+    "hex": "#d3bfa0",
+    "code": "S280-3",
+    "lrv": 51,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "retro-avocado-ppu9-03",
+    "brandName": "Behr",
+    "name": "Retro Avocado",
+    "hex": "#958c45",
+    "code": "PPU9-03",
+    "lrv": 25.6,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "smoked-oyster-780a-2",
+    "brandName": "Behr",
+    "name": "Smoked Oyster",
+    "hex": "#dcdada",
+    "code": "780A-2",
+    "lrv": 65,
+    "family": "off-white"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "twinberry-mq1-14",
+    "brandName": "Behr",
+    "name": "Twinberry",
+    "hex": "#694447",
+    "code": "MQ1-14",
+    "lrv": 7.6,
+    "family": "red"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "white-w-f-620",
+    "brandName": "Behr",
+    "name": "White",
+    "hex": "#eef2ee",
+    "code": "W-F-620",
+    "lrv": 87.9,
+    "family": "white"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "50s-pink-2086-70",
+    "brandName": "Benjamin Moore",
+    "name": "'50s Pink",
+    "hex": "#fce4eb",
+    "code": "2086-70",
+    "lrv": 78,
+    "family": "pink"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "aberdeen-green-631",
+    "brandName": "Benjamin Moore",
+    "name": "Aberdeen Green",
+    "hex": "#c4d9cd",
+    "code": "631",
+    "lrv": 65.8,
+    "family": "green"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "acadia-green-2034-50",
+    "brandName": "Benjamin Moore",
+    "name": "Acadia Green",
+    "hex": "#afd3b1",
+    "code": "2034-50",
+    "lrv": 56.2,
+    "family": "green"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "dark-olive-2140-30",
+    "brandName": "Benjamin Moore",
+    "name": "Dark Olive",
+    "hex": "#626354",
+    "code": "2140-30",
+    "lrv": 12.2,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "gallery-buff-csp-225",
+    "brandName": "Benjamin Moore",
+    "name": "Gallery Buff",
+    "hex": "#c0b6a4",
+    "code": "CSP-225",
+    "lrv": 47.3,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "glass-slipper-1632",
+    "brandName": "Benjamin Moore",
+    "name": "Glass Slipper",
+    "hex": "#d5dfde",
+    "code": "1632",
+    "lrv": 70.2,
+    "family": "off-white"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "pashmina-af-100",
+    "brandName": "Benjamin Moore",
+    "name": "Pashmina",
+    "hex": "#bcb3a2",
+    "code": "AF-100",
+    "lrv": 45.5,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "saybrook-sage-hc-114",
+    "brandName": "Benjamin Moore",
+    "name": "Saybrook Sage",
+    "hex": "#b2b8a3",
+    "code": "HC-114",
+    "lrv": 46.4,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "swiss-coffee-dew341",
+    "brandName": "Dunn-Edwards",
+    "name": "Swiss Coffee",
+    "hex": "#f8f5e9",
+    "code": "DEW341",
+    "lrv": 91.1,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "farrow-ball",
+    "slug": "light-blue-22",
+    "brandName": "Farrow & Ball",
+    "name": "Light Blue",
+    "hex": "#b8bcb5",
+    "code": "22",
+    "lrv": 49.5,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "farrow-ball",
+    "slug": "light-gray-17",
+    "brandName": "Farrow & Ball",
+    "name": "Light Gray",
+    "hex": "#b4a693",
+    "code": "17",
+    "lrv": 39.1,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "go-to-gray-1004-1",
+    "brandName": "PPG",
+    "name": "Go To Gray",
+    "hex": "#dcd8d7",
+    "code": "1004-1",
+    "lrv": 69.2,
+    "family": "off-white"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "gray-stone-1009-4",
+    "brandName": "PPG",
+    "name": "Gray Stone",
+    "hex": "#b7b9b5",
+    "code": "1009-4",
+    "lrv": 48.1,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "gypsum-1006-1",
+    "brandName": "PPG",
+    "name": "Gypsum",
+    "hex": "#eeede4",
+    "code": "1006-1",
+    "lrv": 84.3,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "magic-moments-1046-2",
+    "brandName": "PPG",
+    "name": "Magic Moments",
+    "hex": "#e9dbe0",
+    "code": "1046-2",
+    "lrv": 73.4,
+    "family": "pink"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "nevergreen-1031-6",
+    "brandName": "PPG",
+    "name": "Nevergreen",
+    "hex": "#666556",
+    "code": "1031-6",
+    "lrv": 12.8,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "suede-leather-1072-6",
+    "brandName": "PPG",
+    "name": "Suede Leather",
+    "hex": "#896757",
+    "code": "1072-6",
+    "lrv": 15.7,
+    "family": "brown"
+  },
+  {
+    "brandSlug": "ral",
+    "slug": "coral-red-3016",
+    "brandName": "RAL",
+    "name": "Coral Red",
+    "hex": "#b32821",
+    "code": "3016",
+    "lrv": 11.2,
+    "family": "red"
+  },
+  {
+    "brandSlug": "ral",
+    "slug": "jet-black-9005",
+    "brandName": "RAL",
+    "name": "Jet Black",
+    "hex": "#0a0a0a",
+    "code": "9005",
+    "lrv": 0.3,
+    "family": "black"
+  },
+  {
+    "brandSlug": "ral",
+    "slug": "moss-green-6005",
+    "brandName": "RAL",
+    "name": "Moss Green",
+    "hex": "#2f4538",
+    "code": "6005",
+    "lrv": 5.1,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "aesthetic-white-7035",
+    "brandName": "Sherwin-Williams",
+    "name": "Aesthetic White",
+    "hex": "#e3ddd3",
+    "code": "7035",
+    "lrv": 72.7,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "aleutian-6241",
+    "brandName": "Sherwin-Williams",
+    "name": "Aleutian",
+    "hex": "#98a9b7",
+    "code": "6241",
+    "lrv": 38.5,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "bungalow-beige-7511",
+    "brandName": "Sherwin-Williams",
+    "name": "Bungalow Beige",
+    "hex": "#cdbfb0",
+    "code": "7511",
+    "lrv": 53.4,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "creamy-7012",
+    "brandName": "Sherwin-Williams",
+    "name": "Creamy",
+    "hex": "#efe8db",
+    "code": "7012",
+    "lrv": 81.2,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "endless-sea-9150",
+    "brandName": "Sherwin-Williams",
+    "name": "Endless Sea",
+    "hex": "#32586e",
+    "code": "9150",
+    "lrv": 8.8,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "gray-clouds-7658",
+    "brandName": "Sherwin-Williams",
+    "name": "Gray Clouds",
+    "hex": "#b7b7b2",
+    "code": "7658",
+    "lrv": 47.1,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "grounded-6089",
+    "brandName": "Sherwin-Williams",
+    "name": "Grounded",
+    "hex": "#785b47",
+    "code": "6089",
+    "lrv": 11.9,
+    "family": "brown"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "hammered-silver-2840",
+    "brandName": "Sherwin-Williams",
+    "name": "Hammered Silver",
+    "hex": "#978a7f",
+    "code": "2840",
+    "lrv": 26.3,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "high-reflective-white-7757",
+    "brandName": "Sherwin-Williams",
+    "name": "High Reflective White",
+    "hex": "#f7f7f1",
+    "code": "7757",
+    "lrv": 92.6,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "rhythmic-blue-6806",
+    "brandName": "Sherwin-Williams",
+    "name": "Rhythmic Blue",
+    "hex": "#ccdbe5",
+    "code": "6806",
+    "lrv": 69.2,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "ritas-rouge-9003",
+    "brandName": "Sherwin-Williams",
+    "name": "Rita's Rouge",
+    "hex": "#ba7176",
+    "code": "9003",
+    "lrv": 23.6,
+    "family": "red"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "silent-ripple-9682",
+    "brandName": "Sherwin-Williams",
+    "name": "Silent Ripple",
+    "hex": "#d7e1e5",
+    "code": "9682",
+    "lrv": 74,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "soft-sage-9647",
+    "brandName": "Sherwin-Williams",
+    "name": "Soft Sage",
+    "hex": "#bcbcae",
+    "code": "9647",
+    "lrv": 49.7,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "softened-green-6177",
+    "brandName": "Sherwin-Williams",
+    "name": "Softened Green",
+    "hex": "#bbbca7",
+    "code": "6177",
+    "lrv": 49.3,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "solstice-9571",
+    "brandName": "Sherwin-Williams",
+    "name": "Solstice",
+    "hex": "#dbd9d2",
+    "code": "9571",
+    "lrv": 69.3,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "watery-6478",
+    "brandName": "Sherwin-Williams",
+    "name": "Watery",
+    "hex": "#b4ccc9",
+    "code": "6478",
+    "lrv": 57.1,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "wavecrest-9672",
+    "brandName": "Sherwin-Williams",
+    "name": "Wavecrest",
+    "hex": "#d3dccd",
+    "code": "9672",
+    "lrv": 69.4,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "whirlpool-9135",
+    "brandName": "Sherwin-Williams",
+    "name": "Whirlpool",
+    "hex": "#80969d",
+    "code": "9135",
+    "lrv": 28.8,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "respite-8004-47a",
+    "brandName": "Valspar",
+    "name": "Respite",
+    "hex": "#dadbde",
+    "code": "8004-47A",
+    "lrv": 70.8,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "warm-eucalyptus-8004-28f",
+    "brandName": "Valspar",
+    "name": "Warm Eucalyptus",
+    "hex": "#7C7F70",
+    "code": "8004-28F",
+    "lrv": 20.6,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "valspar",
+    "slug": "warm-milk-8007-8b",
+    "brandName": "Valspar",
+    "name": "Warm Milk",
+    "hex": "#f6f0e2",
+    "code": "8007-8B",
+    "lrv": 87.4,
+    "family": "white"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "cotton-blossom-bwc-07",
+    "brandName": "Behr",
+    "name": "Cotton Blossom",
+    "hex": "#f8f6ec",
+    "code": "BWC-07",
+    "lrv": 88,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "moxie-mq3-35",
+    "brandName": "Behr",
+    "name": "Moxie",
+    "hex": "#e4d8d7",
+    "code": "MQ3-35",
+    "lrv": 70.5,
+    "family": "off-white"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "pocket-watch-n290-5",
+    "brandName": "Behr",
+    "name": "Pocket Watch",
+    "hex": "#c1ae7a",
+    "code": "N290-5",
+    "lrv": 41,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "recycled-glass-mq6-18",
+    "brandName": "Behr",
+    "name": "Recycled Glass",
+    "hex": "#b4bfb5",
+    "code": "MQ6-18",
+    "lrv": 50.3,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "sandy-clay-bwc-25",
+    "brandName": "Behr",
+    "name": "Sandy Clay",
+    "hex": "#ddd9c5",
+    "code": "BWC-25",
+    "lrv": 64,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "silver-drop-790c-2-2",
+    "brandName": "Behr",
+    "name": "Silver Drop",
+    "hex": "#dddad2",
+    "code": "790C-2",
+    "lrv": 70.2,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "sweet-vanilla-780a-1",
+    "brandName": "Behr",
+    "name": "Sweet Vanilla",
+    "hex": "#f0f1f0",
+    "code": "780A-1",
+    "lrv": 84,
+    "family": "white"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "translucent-silk-mq3-36",
+    "brandName": "Behr",
+    "name": "Translucent Silk",
+    "hex": "#e0d5ca",
+    "code": "MQ3-36",
+    "lrv": 67.7,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "behr",
+    "slug": "whisper-white-hdc-md-08",
+    "brandName": "Behr",
+    "name": "Whisper White",
+    "hex": "#f5f3ed",
+    "code": "HDC-MD-08",
+    "lrv": 89.6,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "aegean-teal-2136-40",
+    "brandName": "Benjamin Moore",
+    "name": "Aegean Teal",
+    "hex": "#708a8c",
+    "code": "2136-40",
+    "lrv": 23.5,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "boothbay-gray-hc-165",
+    "brandName": "Benjamin Moore",
+    "name": "Boothbay Gray",
+    "hex": "#abb3b1",
+    "code": "HC-165",
+    "lrv": 44.1,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "evening-dove-2128-30",
+    "brandName": "Benjamin Moore",
+    "name": "Evening Dove",
+    "hex": "#525b68",
+    "code": "2128-30",
+    "lrv": 10.3,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "fieldstone-1558",
+    "brandName": "Benjamin Moore",
+    "name": "Fieldstone",
+    "hex": "#b1b1a6",
+    "code": "1558",
+    "lrv": 43.5,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "lichen-stone-csp-820",
+    "brandName": "Benjamin Moore",
+    "name": "Lichen Stone",
+    "hex": "#c3bfa0",
+    "code": "CSP-820",
+    "lrv": 51.4,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "oregano-2147-10",
+    "brandName": "Benjamin Moore",
+    "name": "Oregano",
+    "hex": "#8d8940",
+    "code": "2147-10",
+    "lrv": 23.9,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "par-four-470",
+    "brandName": "Benjamin Moore",
+    "name": "Par Four",
+    "hex": "#d2d8c8",
+    "code": "470",
+    "lrv": 64.3,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "quiet-moments-1563",
+    "brandName": "Benjamin Moore",
+    "name": "Quiet Moments",
+    "hex": "#c8d0c9",
+    "code": "1563",
+    "lrv": 61.6,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "quietude-csp-230",
+    "brandName": "Benjamin Moore",
+    "name": "Quietude",
+    "hex": "#b6a391",
+    "code": "CSP-230",
+    "lrv": 38.2,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "shoreline-1471",
+    "brandName": "Benjamin Moore",
+    "name": "Shoreline",
+    "hex": "#dad9d4",
+    "code": "1471",
+    "lrv": 69.3,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "simply-white-2143-70",
+    "brandName": "Benjamin Moore",
+    "name": "Simply White",
+    "hex": "#f7f7ee",
+    "code": "2143-70",
+    "lrv": 89.5,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "sweet-basil-455",
+    "brandName": "Benjamin Moore",
+    "name": "Sweet Basil",
+    "hex": "#57674f",
+    "code": "455",
+    "lrv": 12.3,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "victorian-garden-1531",
+    "brandName": "Benjamin Moore",
+    "name": "Victorian Garden",
+    "hex": "#a9a28a",
+    "code": "1531",
+    "lrv": 36.1,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "benjamin-moore",
+    "slug": "wenge-af-180",
+    "brandName": "Benjamin Moore",
+    "name": "Wenge",
+    "hex": "#3d2e2c",
+    "code": "AF-180",
+    "lrv": 3.1,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "abstract-white-de6232",
+    "brandName": "Dunn-Edwards",
+    "name": "Abstract White",
+    "hex": "#ede9dd",
+    "code": "DE6232",
+    "lrv": 81.5,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "green-mirror-dec784",
+    "brandName": "Dunn-Edwards",
+    "name": "Green Mirror",
+    "hex": "#d7e2d5",
+    "code": "DEC784",
+    "lrv": 73.6,
+    "family": "off-white"
+  },
+  {
+    "brandSlug": "dunn-edwards",
+    "slug": "ridgecrest-de6174",
+    "brandName": "Dunn-Edwards",
+    "name": "Ridgecrest",
+    "hex": "#9d8861",
+    "code": "DE6174",
+    "lrv": 25.6,
+    "family": "brown"
+  },
+  {
+    "brandSlug": "dutch-boy",
+    "slug": "creamy-mint-dcp-0755",
+    "brandName": "Dutch Boy",
+    "name": "Creamy Mint",
+    "hex": "#d4e2c8",
+    "code": "DCP-0755",
+    "lrv": 72.6,
+    "family": "green"
+  },
+  {
+    "brandSlug": "farrow-ball",
+    "slug": "elephants-breath-229",
+    "brandName": "Farrow & Ball",
+    "name": "Elephant's Breath",
+    "hex": "#ccbfb3",
+    "code": "229",
+    "lrv": 53.4,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "farrow-ball",
+    "slug": "inchyra-blue-289",
+    "brandName": "Farrow & Ball",
+    "name": "Inchyra Blue",
+    "hex": "#586768",
+    "code": "289",
+    "lrv": 12.8,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "farrow-ball",
+    "slug": "london-clay-244",
+    "brandName": "Farrow & Ball",
+    "name": "London Clay",
+    "hex": "#786963",
+    "code": "244",
+    "lrv": 15,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "colonial-white-1097-1",
+    "brandName": "PPG",
+    "name": "Colonial White",
+    "hex": "#e9e5d7",
+    "code": "1097-1",
+    "lrv": 78.3,
+    "family": "yellow"
+  },
+  {
+    "brandSlug": "ppg",
+    "slug": "cows-milk-1053-1",
+    "brandName": "PPG",
+    "name": "Cow's Milk",
+    "hex": "#f1ede5",
+    "code": "1053-1",
+    "lrv": 84.9,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "ral",
+    "slug": "cobalt-blue-5013",
+    "brandName": "RAL",
+    "name": "Cobalt Blue",
+    "hex": "#1e213d",
+    "code": "5013",
+    "lrv": 1.7,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "ral",
+    "slug": "light-grey-7035",
+    "brandName": "RAL",
+    "name": "Light Grey",
+    "hex": "#d7d7d7",
+    "code": "7035",
+    "lrv": 68,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "accolade-9516",
+    "brandName": "Sherwin-Williams",
+    "name": "Accolade",
+    "hex": "#d5cebf",
+    "code": "9516",
+    "lrv": 62.1,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "atmospheric-6505",
+    "brandName": "Sherwin-Williams",
+    "name": "Atmospheric",
+    "hex": "#c2dae0",
+    "code": "6505",
+    "lrv": 67,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "audreys-blush-9001",
+    "brandName": "Sherwin-Williams",
+    "name": "Audrey's Blush",
+    "hex": "#ae8087",
+    "code": "9001",
+    "lrv": 26.2,
+    "family": "red"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "bunglehouse-blue-48",
+    "brandName": "Sherwin-Williams",
+    "name": "Bunglehouse Blue",
+    "hex": "#47626f",
+    "code": "48",
+    "lrv": 11.2,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "china-doll-7517",
+    "brandName": "Sherwin-Williams",
+    "name": "China Doll",
+    "hex": "#dbcebd",
+    "code": "7517",
+    "lrv": 62.9,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "honorable-blue-6811",
+    "brandName": "Sherwin-Williams",
+    "name": "Honorable Blue",
+    "hex": "#164576",
+    "code": "6811",
+    "lrv": 5.7,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "indigo-batik-7602",
+    "brandName": "Sherwin-Williams",
+    "name": "Indigo Batik",
+    "hex": "#3e5063",
+    "code": "7602",
+    "lrv": 7.7,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "morning-at-sea-9634",
+    "brandName": "Sherwin-Williams",
+    "name": "Morning at Sea",
+    "hex": "#82979b",
+    "code": "9634",
+    "lrv": 29.2,
+    "family": "neutral"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "paperwhite-7105",
+    "brandName": "Sherwin-Williams",
+    "name": "Paperwhite",
+    "hex": "#f7efde",
+    "code": "7105",
+    "lrv": 86.8,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "peace-yellow-2857",
+    "brandName": "Sherwin-Williams",
+    "name": "Peace Yellow",
+    "hex": "#eecf9e",
+    "code": "2857",
+    "lrv": 65.3,
+    "family": "orange"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "realist-beige-6078",
+    "brandName": "Sherwin-Williams",
+    "name": "Realist Beige",
+    "hex": "#d3c8bd",
+    "code": "6078",
+    "lrv": 58.8,
+    "family": "beige"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "samovar-silver-6233",
+    "brandName": "Sherwin-Williams",
+    "name": "Samovar Silver",
+    "hex": "#b8bebe",
+    "code": "6233",
+    "lrv": 50.7,
+    "family": "gray"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "santorini-blue-7607",
+    "brandName": "Sherwin-Williams",
+    "name": "Santorini Blue",
+    "hex": "#416d83",
+    "code": "7607",
+    "lrv": 13.7,
+    "family": "blue"
+  },
+  {
+    "brandSlug": "sherwin-williams",
+    "slug": "studio-mauve-62",
+    "brandName": "Sherwin-Williams",
+    "name": "Studio Mauve",
+    "hex": "#c6b9b8",
+    "code": "62",
+    "lrv": 50.2,
     "family": "gray"
   }
 ]

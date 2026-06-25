@@ -9,6 +9,7 @@ export type { PinSpec, BoardName, PinType } from "./batch-may26.ts";
 import type { PinSpec, PinType } from "./batch-may26.ts";
 import { guidePins } from "./sources/guides.ts";
 import { swatchPins } from "./sources/swatches.ts";
+import { palettePins } from "./sources/palettes.ts";
 
 /** Fill `type` on curated pins from their board (board↔type is 1:1). */
 function typed(pins: PinSpec[]): PinSpec[] {
@@ -18,13 +19,15 @@ function typed(pins: PinSpec[]): PinSpec[] {
 /**
  * All pins across every lane:
  *  - curated (local images): palette + comparison, from the batch files
- *  - programmatic (image URLs): swatch (catalog) + guide (blog posts)
+ *  - programmatic (image URLs): swatch (/api/pin), palette (/api/pin/palette,
+ *    the multi-color scheme cards), and guide (blog posts)
  */
 export const QUEUE: PinSpec[] = [
   ...typed(MAY26),
   ...typed(JUN_RESTOCK),
   ...typed(JUN_RESTOCK_2),
   ...swatchPins(),
+  ...palettePins(),
   ...guidePins(),
 ];
 
@@ -111,7 +114,9 @@ export interface DripConfig {
 
 export const DRIP_CONFIG: DripConfig = {
   cooldownDays: 35,
-  daily: { swatch: 3, palette: 1 },
+  // swatch 2 (not 3) + palette 1 every day → the feed always carries a
+  // multi-color scheme pin instead of a wall of single colors.
+  daily: { swatch: 2, palette: 1 },
   byWeekday: {
     1: { guide: 1 }, // Mon
     3: { comparison: 1 }, // Wed
