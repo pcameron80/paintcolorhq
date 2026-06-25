@@ -4,12 +4,16 @@
 import { BATCH as MAY26, TYPE_FOR_BOARD } from "./batch-may26.ts";
 import { BATCH as JUN_RESTOCK } from "./batch-jun-restock.ts";
 import { BATCH as JUN_RESTOCK_2 } from "./batch-jun-restock-2.ts";
+import { BATCH as ROOMSCENE_JUL } from "./batch-roomscene-jul.ts";
 export { BOARD_IDS, IMAGE_DIR, BOARD_FOR_TYPE, TYPE_FOR_BOARD } from "./batch-may26.ts";
 export type { PinSpec, BoardName, PinType } from "./batch-may26.ts";
 import type { PinSpec, PinType } from "./batch-may26.ts";
 import { guidePins } from "./sources/guides.ts";
 import { swatchPins } from "./sources/swatches.ts";
-import { palettePins } from "./sources/palettes.ts";
+// NOTE: the programmatic 5-bar palette lane (sources/palettes.ts → /api/pin/palette)
+// is intentionally NOT wired in — Philip wants styled room-scene palettes (the
+// curated Gemini batches), not the utilitarian swatch-stack cards. The source +
+// its test remain for possible future re-enable.
 
 /** Fill `type` on curated pins from their board (board↔type is 1:1). */
 function typed(pins: PinSpec[]): PinSpec[] {
@@ -18,16 +22,16 @@ function typed(pins: PinSpec[]): PinSpec[] {
 
 /**
  * All pins across every lane:
- *  - curated (local images): palette + comparison, from the batch files
- *  - programmatic (image URLs): swatch (/api/pin), palette (/api/pin/palette,
- *    the multi-color scheme cards), and guide (blog posts)
+ *  - curated (local Gemini images): palette (styled room scenes) + comparison,
+ *    from the batch files (may26, jun-restock, jun-restock-2, roomscene-jul)
+ *  - programmatic (image URLs): swatch (/api/pin) + guide (blog posts)
  */
 export const QUEUE: PinSpec[] = [
   ...typed(MAY26),
   ...typed(JUN_RESTOCK),
   ...typed(JUN_RESTOCK_2),
+  ...typed(ROOMSCENE_JUL),
   ...swatchPins(),
-  ...palettePins(),
   ...guidePins(),
 ];
 
