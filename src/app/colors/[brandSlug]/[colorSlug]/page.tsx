@@ -248,15 +248,16 @@ export default async function ColorPage({ params }: PageProps) {
   const undertone = color.undertone ?? "";
   const undertoneLower = undertone.toLowerCase();
 
-  // FAQ answers are written long enough (~50-65 words) to clear the AI-citation
-  // window so each can be quoted as a standalone passage by AI Overviews /
-  // Perplexity / Copilot — every sentence is per-color data, not padding. Delta E
-  // is expressed in plain language, never raw numbers.
+  // FAQ answers lead with per-color DATA (undertone / match list / LRV value) so
+  // each is a citeable standalone passage for AI Overviews / Perplexity / Copilot.
+  // The generic explainer sentences ("Undertone is the subtle cast…", the CIEDE2000
+  // explainer, "LRV is the most reliable guide…") were trimmed — identical across
+  // 26K pages, they added duplication, not citability. Delta E stays plain language.
   const closenessPhrase = (de: number) => (de < 2 ? "a near-identical match" : de < 5 ? "a very close match" : "a close match");
   if (color.undertone) {
     faqItems.push({
       question: `What undertone does ${color.name} have?`,
-      answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and sits in the ${color.color_family} color family` : ""}. Undertone is the subtle cast that emerges once the color is on a wall — it drives how ${color.name} pairs with trim, flooring, and adjacent rooms, and it shifts with light: warmer under 2700K bulbs, cleaner and cooler under 4000K daylight. Always sample it in your own space before committing.`,
+      answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and sits in the ${color.color_family} color family` : ""}. The undertone shifts with light — warmer under 2700K bulbs, cleaner and cooler under 4000K daylight — so sample ${color.name} in your own space before committing.`,
     });
   }
   if (matches.length > 0) {
@@ -264,7 +265,7 @@ export default async function ColorPage({ params }: PageProps) {
     const topList = top3.map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (${closenessPhrase(Number(m.delta_e_score))})`).join(", ");
     faqItems.push({
       question: `What colors match ${color.name} from other brands?`,
-      answer: `The closest cross-brand equivalents to ${color.name} are ${topList}. These are ranked with the CIEDE2000 color-difference formula, which scores how similar two colors actually look to the eye rather than matching them by name — so they're the best options for getting ${color.name}'s look in a brand your local store carries. Always confirm with a physical sample, since sheen and lighting shift the final result.`,
+      answer: `The closest cross-brand equivalents to ${color.name} are ${topList} — the best options for getting ${color.name}'s look from a brand your local store carries. Confirm with a physical sample, since sheen and lighting shift the final result.`,
     });
   }
   if (lrv != null) {
@@ -275,7 +276,7 @@ export default async function ColorPage({ params }: PageProps) {
       : "a deep, dramatic color best saved for accent walls, dining rooms, and cozy spaces where atmosphere matters more than reflected light";
     faqItems.push({
       question: `What is the LRV of ${color.name}?`,
-      answer: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white. That makes it ${lrvBand}. LRV is the most reliable guide to how light or dark a paint will read in a real room — more dependable than the swatch on your screen, which varies by monitor.`,
+      answer: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white — that makes it ${lrvBand}.`,
     });
   }
 
