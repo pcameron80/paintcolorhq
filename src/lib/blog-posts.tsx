@@ -54,6 +54,106 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "best-greige-paint-colors",
+    title: "The Best Greige Paint Colors for Every Room (2026)",
+    date: "2026-06-26",
+    author: "Philip Cameron",
+    excerpt:
+      "The best greige paint colors — from Agreeable Gray to Revere Pewter — each with its exact LRV, its warm-or-cool undertone, and its closest match in every other brand.",
+    coverColor: "#CDC7BB",
+    coverImage: "/blog/best-greige-paint-colors.webp",
+    tags: ["Guide", "Neutrals", "Greige"],
+    faq: [
+      {
+        question: "What is the most popular greige paint color?",
+        answer:
+          "Sherwin-Williams Agreeable Gray (SW 7029, LRV 60) is the most popular greige and arguably the most-specified neutral in the US. It is a balanced greige that holds up in almost any direction of light. Its near-exact matches include Valspar Heritage Gray and Dutch Boy Doves Wings (both a CIEDE2000 Delta E of 0.0), so you can get the same color at Lowe's or wherever you buy paint.",
+      },
+      {
+        question: "What is the difference between greige and gray?",
+        answer:
+          "Greige is gray mixed with beige. It keeps gray's cool, modern steadiness but adds enough warm beige to stop a room from feeling cold or blue. A true gray like Repose Gray leans cooler; a greige like Accessible Beige or Revere Pewter reads warmer and softer. The more beige in the mix, the warmer and more flattering the color is in low or north light.",
+      },
+      {
+        question: "What is the best greige for a north-facing room?",
+        answer:
+          "North light is cool and can pull a greige gray or even slightly purple. Choose a warmer greige with more beige in it: Benjamin Moore Revere Pewter (HC-172), Sherwin-Williams Accessible Beige (7036), or Benjamin Moore Manchester Tan (HC-81) all hold their warmth in north light. Save cooler greiges like Repose Gray for bright south- and west-facing rooms.",
+      },
+      {
+        question: "What is the Benjamin Moore equivalent of Agreeable Gray?",
+        answer:
+          "Benjamin Moore Wish (AF-680) is the closest match to Sherwin-Williams Agreeable Gray, at a CIEDE2000 Delta E of about 0.9 — close enough to read as the same color on a wall. Revere Pewter (HC-172) is a touch warmer and deeper. If you want the exact look at Lowe's instead, Valspar Heritage Gray is a dead-on match.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best greige for most homes is{" "}
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60) — the balanced gray-beige that became America&apos;s default whole-house neutral because it works in almost any light. But &ldquo;greige&rdquo; is a wide family, and the right one for your room depends on how warm you need it and how much light you have. Below are 10 of the best greiges across every major brand, each with its exact LRV, its warm-or-cool lean, and its closest cross-brand match from our database — so you can buy the look wherever you shop.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What &ldquo;Greige&rdquo; Actually Means (and Why Warm vs. Cool Is the Only Thing That Matters)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Greige is exactly what it sounds like: gray plus beige. It keeps gray&apos;s clean, modern steadiness but adds enough warm beige to stop a room from going cold, blue, or institutional. The single decision that makes or breaks a greige is the ratio — how much gray versus how much beige — because that&apos;s what determines its undertone, and the undertone is what you actually live with on the wall.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          More gray reads cooler and more contemporary; more beige reads warmer and softer. A cooler greige like <Link href="/colors/sherwin-williams/repose-gray-7015" className="text-brand-blue hover:underline">Repose Gray</Link> can drift gray or even faintly purple in north light, while a warmer one like <Link href="/colors/sherwin-williams/accessible-beige-7036" className="text-brand-blue hover:underline">Accessible Beige</Link> stays cozy in the same room. If undertones are new to you, our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint undertones</Link> and <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs. cool walkthrough</Link> are worth five minutes before you commit.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Most Popular Greiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — SW 7029, LRV 60. The benchmark. A perfectly balanced greige that&apos;s bright enough for a north room and warm enough to feel inviting, which is exactly why it&apos;s the most-specified neutral in the country. Its closest matches are uncanny: <Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Valspar Heritage Gray</Link> and <Link href="/colors/dutch-boy/doves-wings-443-1db" className="text-brand-blue hover:underline">Dutch Boy Doves Wings</Link> are both a Delta E of 0.0, with <Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Benjamin Moore Wish</Link> and <Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link> close behind.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> — BM HC-172, LRV 55. The greige that launched a thousand renovations: a touch deeper and warmer than Agreeable Gray, with a grounded, slightly olive-tinged warmth that flatters wood floors and brass. Its closest cross-brand neighbors are <Link href="/colors/sherwin-williams/simple-stone-9521" className="text-brand-blue hover:underline">Sherwin-Williams Simple Stone</Link> and <Link href="/colors/behr/coliseum-marble-ppu8-16" className="text-brand-blue hover:underline">Behr Coliseum Marble</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CCC9C0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> — SW 7015, LRV 58. The cooler sibling to Agreeable Gray, for rooms that want a greige reading a little more gray and modern. Keep it to brighter, warmer-lit rooms so it doesn&apos;t tip cold. Its dead-on matches are <Link href="/colors/behr/gratifying-gray-dc-008" className="text-brand-blue hover:underline">Behr Gratifying Gray</Link> and <Link href="/colors/benjamin-moore/apparition-860" className="text-brand-blue hover:underline">Benjamin Moore Apparition</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#CEC6BB" name="Worldly Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/worldly-gray-7043" /> — SW 7043, LRV 57. Splits the difference between Repose Gray and Accessible Beige: a soft, slightly warm greige that&apos;s one of the safest open-plan choices going. <Link href="/colors/behr/wheat-bread-720c-3-2" className="text-brand-blue hover:underline">Behr Wheat Bread</Link> is a near-perfect match (Delta E 0.3).
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Lighter, Softer Greiges for Bright Rooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — BM HC-173, LRV 63. The easygoing, slightly lighter greige for rooms that already get good light and want softness without going dark. Its closest matches are <Link href="/colors/ppg/white-sage-60yy-65-082" className="text-brand-blue hover:underline">PPG White Sage</Link> and <Link href="/colors/behr/stonewashed-ppu8-15" className="text-brand-blue hover:underline">Behr Stonewashed</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#DCD3BD" name="Manchester Tan" brand="Benjamin Moore" href="/colors/benjamin-moore/manchester-tan-hc-81" /> — BM HC-81, LRV 63. At the warm end of the family — more tan than gray — and a brilliant choice for north-facing rooms that need warmth without yellow. <Link href="/colors/dunn-edwards/gunnysack-det674" className="text-brand-blue hover:underline">Dunn-Edwards Gunnysack</Link> matches it almost exactly, with <Link href="/colors/sherwin-williams/warm-oats-9511" className="text-brand-blue hover:underline">Sherwin-Williams Warm Oats</Link> close behind.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> — BM OC-20, LRV 69. The lightest pick here, with a barely-there pink-taupe softness that feels almost like a warm white with substance. <Link href="/colors/behr/bee-s-knees-t13-11" className="text-brand-blue hover:underline">Behr Bee&apos;s Knees</Link> and <Link href="/colors/ppg/sandy-beach-1072-2" className="text-brand-blue hover:underline">PPG Sandy Beach</Link> are its closest twins.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warmer, Beige-Leaning Greiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — SW 7036, LRV 58. The warm-side counterpart to Agreeable Gray: enough beige to feel genuinely cozy, enough gray to stay current. It&apos;s the one to reach for when a room runs cool or you want a hug rather than a backdrop. <Link href="/colors/behr/shoreline-haze-mq6-31" className="text-brand-blue hover:underline">Behr Shoreline Haze</Link> and <Link href="/colors/ppg/synchronicity-1021-2" className="text-brand-blue hover:underline">PPG Synchronicity</Link> match it almost perfectly, with <Link href="/colors/benjamin-moore/inukshuk-cc-460" className="text-brand-blue hover:underline">Benjamin Moore Inukshuk</Link> close. See more in the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Deeper Greiges for Contrast, Islands &amp; Accents</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#C0B2A2" name="Balanced Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/balanced-beige-7037" /> — SW 7037, LRV 46. A deeper greige with real presence, ideal when you want a wrap-around warm neutral with more weight than the mid-tones above — think dens, bedrooms, and accent walls. <Link href="/colors/dutch-boy/grayed-pebble-441-3db" className="text-brand-blue hover:underline">Dutch Boy Grayed Pebble</Link> and <Link href="/colors/ppg/discover-1021-3" className="text-brand-blue hover:underline">PPG Discover</Link> are its closest matches.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#B7AB9F" name="Perfect Greige" brand="Sherwin-Williams" href="/colors/sherwin-williams/perfect-greige-6073" /> — SW 6073, LRV 42. The deepest of the group and the one that wears the name: a rich taupe-greige for moody walls, built-ins, and cabinetry that should feel warm rather than gray. <Link href="/colors/benjamin-moore/evening-gown-csp-375" className="text-brand-blue hover:underline">Benjamin Moore Evening Gown</Link> is a near-exact match (Delta E 0.3). Explore the full range in <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Pick the Right Greige for Your Light</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The same greige is a different color in two different rooms, so match the undertone to the light. <strong>North-facing rooms</strong> get cool, indirect light that exaggerates gray and can surface a purple cast — lean warm (Revere Pewter, Accessible Beige, Manchester Tan). <strong>South- and west-facing rooms</strong> get warm, abundant light that can make a warm greige look yellow by afternoon — a cooler greige like Repose Gray or Worldly Gray balances it. <strong>East-facing rooms</strong> shift most: warm at breakfast, cool by dinner, so a balanced greige like Agreeable Gray is the safe bet.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Whatever the direction, sample before you commit. Paint a large swatch (or a peel-and-stick sample) on two walls and look at it at three times of day — the on-screen hex above is a starting point, not the final answer. You can preview any of these on a wall in our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, or drop two side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see exactly how their undertones differ.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Get the Same Greige in a Different Brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every match in this guide comes from our cross-brand database, computed with the CIEDE2000 color-difference formula — the same standard the industry uses to score how close two colors truly look, not just how similar their names sound. If your painter buys at <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> but you fell for a <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> greige (or you need the Lowe&apos;s or Home Depot version), run it through the <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Benjamin Moore to Sherwin-Williams</Link> or <Link href="/match/sherwin-williams/to/behr" className="text-brand-blue hover:underline">Sherwin-Williams to Behr</Link> chart, or build a full scheme around your pick in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>. For the lightest neutrals on the warm-white border, our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> picks up where greige leaves off.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "best-benjamin-moore-paint-colors",
     title: "The Best Benjamin Moore Paint Colors for Every Room (2026)",
     date: "2026-06-17",
