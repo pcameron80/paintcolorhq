@@ -21,6 +21,7 @@
     "research-colors": "tsx scripts/blog/research-colors.ts",
     "verify-links": "tsx scripts/blog/verify-links.ts",
     "indexnow-blog": "tsx scripts/blog/indexnow-submit.ts",
+    "preview:pinterest": "tsx scripts/pinterest-preview.ts",
     "test:pinterest": "node --import tsx --test scripts/pinterest/queue.test.ts",
     "test:blog": "node --import tsx --test scripts/blog/*.test.ts",
     "test:dedupe": "node --import tsx --test scripts/lib/dedupe-rules.test.ts",

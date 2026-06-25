@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import * as fs from "node:fs";
 import {
   unpublished,
   collisionScore,
@@ -121,4 +122,28 @@ test("selectDailyMix prefers fresh over re-pin", () => {
   const log = { p1: { pinId: "1", publishedAt: new Date(now - 40 * DAY).toISOString() } }; // p2 fresh
   const picks = selectDailyMix(q, log, { palette: 1 }, now, 35);
   assert.equal(picks[0].key, "p2");
+});
+
+// ---- drift guards: catch a silent revert of the once-daily quota schedule ----
+// (June 2026: drip.sh was silently reverted to v1 `--drip=2` at 3 slots/day,
+//  which collapsed the feed to guides for a week before anyone noticed.)
+
+test("drift guard: drip.sh runs --daily, NOT the v1 --drip path", () => {
+  const sh = fs.readFileSync(new URL("./drip.sh", import.meta.url), "utf8");
+  assert.match(sh, /--daily/, "drip.sh must invoke the v2 daily-quota mix (--daily)");
+  assert.doesNotMatch(sh, /--drip=/, "drip.sh must NOT use the v1 --drip= path (collapses the feed)");
+});
+
+test("drift guard: plist fires ONE slot/day (multi-slot + --daily = overpost)", () => {
+  const plist = fs.readFileSync(
+    new URL("./com.paintcolorhq.pinterest-drip.plist.template", import.meta.url),
+    "utf8",
+  );
+  // A single <dict> StartCalendarInterval is required. An <array> of slots would
+  // re-fill the full daily quota on every slot — keep --daily ⇔ one slot.
+  assert.doesNotMatch(
+    plist,
+    /StartCalendarInterval<\/key>\s*<array>/,
+    "plist must use a single StartCalendarInterval dict, not an array of slots",
+  );
 });
