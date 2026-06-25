@@ -54,6 +54,607 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "best-benjamin-moore-bedroom-colors",
+    title: "The Best Benjamin Moore Bedroom Paint Colors (2026)",
+    date: "2026-08-14",
+    author: "Philip Cameron",
+    excerpt:
+      "The best Benjamin Moore bedroom paint colors — restful greiges, soft grays, muted blues and greens, plus a deep navy feature wall — each with its LRV and closest match.",
+    coverColor: "#C8D0C9",
+    coverImage: "/blog/best-benjamin-moore-bedroom-colors.webp",
+    tags: ["Guide", "Benjamin Moore", "Bedroom"],
+    faq: [
+      {
+        question: "What is the best Benjamin Moore color for a bedroom?",
+        answer:
+          "For most bedrooms, Revere Pewter (HC-172) and Quiet Moments (1563) are the safest picks — a warm greige at LRV 55 and a soft green-gray at LRV 62. Both sit in the mid-to-soft brightness range that reads calm in lamplight, and both carry muted, neutral-to-cool undertones that won't fight your bedding. For a feature wall, Hale Navy (HC-154) is the go-to deep navy.",
+      },
+      {
+        question: "What LRV is best for a restful bedroom?",
+        answer:
+          "Bedrooms generally favor mid-to-soft LRVs, roughly 50 to 75. That range absorbs enough light to feel enveloping and restful at night without going dark or cave-like. Colors below that — like Hale Navy at LRV 7 — are best kept to one feature wall. Bright whites above LRV 80, like White Dove (83), suit ceilings, trim, and rooms where you want light over coziness.",
+      },
+      {
+        question: "Is Benjamin Moore sold at Home Depot?",
+        answer:
+          "No. Benjamin Moore is sold through independent paint and hardware dealers, not Home Depot or Lowe's. That is why every color below lists its closest match at Behr (Home Depot) and Sherwin-Williams — so you can get the same look in a brand you can buy more easily.",
+      },
+      {
+        question: "What is the Behr equivalent of Revere Pewter?",
+        answer:
+          "The closest Behr equivalent to Benjamin Moore Revere Pewter (HC-172) is Coliseum Marble (PPU8-16), a near-identical match. The closest Sherwin-Williams equivalent is Simple Stone, which is even closer. Both land within a barely-perceptible difference of Revere Pewter's greige, so either gets you the same restful wall.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best Benjamin Moore bedroom paint color for most people is{" "}
+          <Swatch hex="#c8d0c9" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (1563, LRV 62) — a soft, cool green-gray that reads calm in lamplight and stays restful at night. Bedrooms reward a specific kind of color: mid-to-soft brightness and muted undertones, the opposite of a high-energy kitchen or entry. This guide covers the ten Benjamin Moore colors that fit that brief best — restful greiges, airy grays, muted blues and greens, plus one deep navy for a feature wall. Benjamin Moore is sold through independent dealers, not the big-box aisles, so each color below also lists its closest match at Home Depot (Behr) and Sherwin-Williams. Every LRV and cross-brand match comes straight from our database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Bedrooms Want Mid-to-Soft LRV and Muted Undertones</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          LRV (light reflectance value) is how much light a color bounces back, on a 0–100 scale. For a restful bedroom, the sweet spot is roughly <strong>LRV 50 to 75</strong>: bright enough to feel airy by day, soft enough to wrap the room at night without bouncing harsh light off the walls when a lamp is on. Push much higher and the room reads more energizing than cozy; push much lower and you lose the light you want for a calm space. Just as important is the <strong>undertone</strong>: muted, grayed-down hues sit quietly behind your bedding and furniture, while saturated or warm-leaning colors can feel busy in a room meant for winding down. That is why the picks below cluster in soft greiges, grays, and dusty blues and greens — and why a deep navy works only as a single feature wall, not the whole room. If undertones are new to you, start with{" "}
+          <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding paint color undertones</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Greiges for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#ccc7b9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (HC-172, LRV 55) is the warm, neutral greige that anchors more bedrooms than any other Benjamin Moore color — grounded, flexible, and easy to pair with both warm woods and cool linens. Its closest Sherwin-Williams match is Simple Stone (a barely-perceptible difference) and its Behr match Coliseum Marble is near-identical. A shade lighter and warmer, <Swatch hex="#e1dfd1" name="November Rain" brand="Benjamin Moore" href="/colors/benjamin-moore/november-rain-2142-60" /> (2142-60, LRV 71) is the soft greige-white for bedrooms that want more light without going stark — Behr Chocolate Froth and SW Nonchalant White are both near-identical. If you are weighing brands, the breakdown in{" "}
+          <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Behr vs Sherwin-Williams vs Benjamin Moore</Link> compares the three head to head. More options in{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Grays for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#d4d5cd" name="Gray Owl" brand="Benjamin Moore" href="/colors/benjamin-moore/gray-owl-2137-60" /> (2137-60, LRV 66) is the cool, airy gray with a faint green cast that keeps it from going cold — a designer favorite for light-filled bedrooms. Its Behr match Close Knit is near-identical and SW Silverpointe is a barely-perceptible difference. Slightly deeper and bluer, <Swatch hex="#cbccc6" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> (HC-170, LRV 60) is the classic mid-light blue-gray that reads serene without feeling stark — SW Sweater Weather and Behr Road Runner are both near-identical. For the softest, most light-forward option, <Swatch hex="#d6dcd3" name="Healing Aloe" brand="Benjamin Moore" href="/colors/benjamin-moore/healing-aloe-1562" /> (1562, LRV 70) leans gently green-gray and reads almost like a tinted white — SW Kingston and Behr Nurture are its closest matches.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Soft Blues and Greens for Bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Muted blues and greens are the most restful color you can put in a bedroom — present enough to feel intentional, quiet enough to sleep under. <Swatch hex="#c8d0c9" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> (1563, LRV 62) is the standout: a soft green-gray with a cool undertone that shifts between pale gray and sea glass depending on the light. Its SW match Sea Spray is near-identical and Behr Shy Green is very close. <Swatch hex="#bbc9ca" name="Smoke" brand="Benjamin Moore" href="/colors/benjamin-moore/smoke-2122-40" /> (2122-40, LRV 57) is the dusty, restful blue that designers reach for in bedrooms — Behr Dusted Blue is near-identical and SW Sleepy Blue is very close. For more depth, <Swatch hex="#adc0be" name="Wedgewood Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/wedgewood-gray-hc-146" /> (HC-146, LRV 50) is the soft blue-green that sits at the calm end of the mid-LRV range — Behr Morning Parlor is near-identical, with SW Rain close behind. Browse the full set in{" "}
+          <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Deep Navy Feature Wall: Hale Navy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#444c57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> (HC-154, LRV 7) is the navy benchmark — slightly softer and grayer than a true royal, which is exactly why it works behind a bed without feeling heavy. At LRV 7 it is too dark for all four walls in most bedrooms, but on a single feature wall (usually the headboard wall) it adds depth and a cocooning, hotel-suite quality while the other three walls stay light. Its closest Sherwin-Williams match is Sea Mariner (a barely-perceptible difference) and Behr Dark Night is near-identical. Pair it with crisp white trim and bedding to keep the contrast clean, or warm woods and brass for something softer.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore White for Bedroom Ceilings and Trim</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          When you want a bright, light bedroom rather than a moody one, <Swatch hex="#F3EFE0" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (OC-17, LRV 83) is the warm white to reach for — soft and creamy without going stark, ideal on walls, trim, and ceilings together for a calm, uninterrupted envelope. It is also the perfect trim partner for every color above: a soft white frame keeps the muted wall colors feeling intentional. Behr Polished Marble is a near-identical match and SW Roman Column is very close.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Pairing Colors, Trim, and Bedding</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A bedroom color rarely lives alone. The reliable formula: a soft mid-LRV wall color, a warm white on trim and ceiling (White Dove does both jobs), and bedding that either matches the wall&apos;s undertone or sits one step warmer for contrast. To see how any two of these read side by side before you commit, drop them into the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, build a full room scheme in the{" "}
+          <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>, or preview a shade on real walls in the{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> before you buy a sample.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Getting the Benjamin Moore Look Elsewhere</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every color above carries its closest equivalents in 12 other brands, scored by how similar they actually look. If you love a Benjamin Moore color but the nearest dealer is inconvenient, browse the full{" "}
+          <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Benjamin Moore to Sherwin-Williams</Link> match list, see the complete catalog on the{" "}
+          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore color chart</Link>, or compare the two big names in{" "}
+          <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore</Link>.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "best-sherwin-williams-bathroom-colors",
+    title: "The Best Sherwin-Williams Bathroom Paint Colors (2026)",
+    date: "2026-08-07",
+    author: "Philip Cameron",
+    excerpt:
+      "The best Sherwin-Williams bathroom paint colors — spa-like greens and blues plus clean neutrals — each with its LRV and its closest cross-brand match.",
+    coverColor: "#cdd2ca",
+    coverImage: "/blog/best-sherwin-williams-bathroom-colors.webp",
+    tags: ["Guide", "Sherwin-Williams", "Bathroom"],
+    faq: [
+      {
+        question: "What is the best Sherwin-Williams paint color for a bathroom?",
+        answer:
+          "Sea Salt (SW 6204) is the most-recommended Sherwin-Williams bathroom color — a soft green-gray at LRV 63 that reads spa-like in the warm, even light of most bathrooms. For a brighter, cleaner look, Alabaster (SW 7008) is the go-to warm white. Pick a satin or semi-gloss finish, or a bathroom-specific paint, so the surface stands up to steam and wipes clean.",
+      },
+      {
+        question: "What sheen should you use for bathroom paint?",
+        answer:
+          "Use satin or semi-gloss in a bathroom, or a dedicated bath-and-spa paint. Flat and matte finishes hold moisture and stain in a room that's regularly humid; the slight surface gloss of satin and semi-gloss resists mildew and wipes down without marking. The color is identical across sheens — only the finish changes.",
+      },
+      {
+        question: "Where do you buy Sherwin-Williams bathroom paint?",
+        answer:
+          "Sherwin-Williams sells through its own stores rather than Home Depot or Lowe's. That's why every color below also lists its closest match in a brand you may find easier to buy — Behr at Home Depot, Valspar at Lowe's, or Benjamin Moore at independent dealers — so you can get the same look wherever you shop.",
+      },
+      {
+        question: "Do dark colors work in a small bathroom?",
+        answer:
+          "Yes, with intent. A small bathroom has limited natural light, so a deeper color like Aleutian (SW 6241, LRV 38) reads moodier than it does on the chip. That can be the goal in a windowless powder room, where a darker, enveloping color often looks more deliberate than a washed-out pale one. Always test a sample on the actual wall before committing.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best Sherwin-Williams bathroom color for most homes is{" "}
+          <Swatch hex="#cdd2ca" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63) — the soft green-gray that turned into the default spa color because it shifts between pale green and gray-blue in the warm, even light most bathrooms have. Bathrooms ask more of a color than other rooms: low or no natural light, constant moisture, and tight square footage that makes every shade read deeper than it does on the chip. This guide picks ten Sherwin-Williams colors that hold up to those conditions, splits them into spa-calm and bright-and-clean, and pairs each with its closest match in a brand you can buy — because Sherwin-Williams isn&apos;t stocked at Home Depot or Lowe&apos;s. Every LRV and cross-brand match below comes straight from our color database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Paint: Sheen, Light &amp; Small-Space Behavior</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three things matter more in a bathroom than anywhere else. <strong>Sheen:</strong> use satin or semi-gloss, or a dedicated bath-and-spa paint — flat finishes hold steam and stain, while the slight gloss of satin resists mildew and wipes clean. <strong>Light:</strong> most bathrooms run on warm overhead bulbs with little or no daylight, which pushes greens and blue-greens softer and grays warmer, so test on the actual wall. <strong>Scale:</strong> a small room makes color read deeper — a mid-tone looks darker than the chip, which is why the palest options below are the safest in a windowless space and the deeper ones reward a deliberate, moody choice. <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> sells through its own stores, so each color also carries its closest match at Home Depot, Lowe&apos;s, or an independent dealer.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Spa-Like Greens for the Bathroom</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sea Salt (SW 6204, LRV 63) leads the whole category — its closest matches are Dutch Boy White Rapids (a dead-on hex match) and Benjamin Moore Gray Cashmere, with Behr Silver Setting near-identical for a Home Depot option; see all of them on its <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">color page</Link>. A shade greener and a touch deeper, <Swatch hex="#c2cdc5" name="Rainwashed" brand="Sherwin-Williams" href="/colors/sherwin-williams/rainwashed-6211" /> (SW 6211, LRV 59) is the sea-glass option — its near-identical Valspar match is Ocean Froth, with Dutch Boy Coastal Mist close behind. For more depth on a small powder-room wall, <Swatch hex="#adbbb2" name="Quietude" brand="Sherwin-Williams" href="/colors/sherwin-williams/quietude-6212" /> (SW 6212, LRV 48) drops into a mid-tone green-gray — Behr Zen is its closest match. Browse the full range in <Link href="/colors/family/green" className="text-brand-blue hover:underline">green paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cool Blues &amp; Blue-Grays</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a green-gray with a cooler, more silver cast, <Swatch hex="#b0b8b2" name="Silvermist" brand="Sherwin-Williams" href="/colors/sherwin-williams/silvermist-7621" /> (SW 7621, LRV 47) is the restful mid-tone — its Behr match Verdigris is near-identical, and Dutch Boy Trout Gray is a dead-on hex match. Leaning bluer, <Swatch hex="#c2cfcf" name="Tradewind" brand="Sherwin-Williams" href="/colors/sherwin-williams/tradewind-6218" /> (SW 6218, LRV 61) is the soft coastal blue-gray that stays calm rather than going cold — Dutch Boy Rochester Gray matches it exactly, with Behr Silver Bullet close. <Swatch hex="#cad0d2" name="North Star" brand="Sherwin-Williams" href="/colors/sherwin-williams/north-star-6246" /> (SW 6246, LRV 62) is the palest, airiest blue-gray of the set — its closest match is Benjamin Moore Early Frost. For a genuinely deeper bathroom, <Swatch hex="#98a9b7" name="Aleutian" brand="Sherwin-Williams" href="/colors/sherwin-williams/aleutian-6241" /> (SW 6241, LRV 38) is a dusty slate-blue that reads moody in low light — Behr Heather Gray and Farrow &amp; Ball Kittiwake are its closest cross-brand matches. More options in <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bright &amp; Clean Neutrals</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you want the bathroom to read crisp and bright rather than spa-soft, start with <Swatch hex="#edeae0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (SW 7008, LRV 82) — the warm white that flatters fixtures and trim without going stark. Its near-identical match is Dutch Boy Swan White, with PPG Winter Mood and Behr Arcade White both close. For a warm greige that grounds a bathroom without darkening it, <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60) is the dependable neutral — its Valspar match Heritage Gray and Dutch Boy Doves Wings are both dead-on hex matches. A half-step beige-r, <Swatch hex="#cec6bb" name="Worldly Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/worldly-gray-7043" /> (SW 7043, LRV 57) is the warmer greige for rooms that want a little more softness — Behr Wheat Bread matches it almost exactly. See more in <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>, and for the full neutral lineup our <Link href="/blog/best-sherwin-williams-paint-colors" className="text-brand-blue hover:underline">best Sherwin-Williams paint colors</Link> guide goes deeper on greiges.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Spa-Calm or Bright-and-Clean: Picking a Direction</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The split is simple. For a spa feel — the look that softens a tiled, brightly lit room — go to the green-grays and blue-grays: Sea Salt, Rainwashed, Silvermist, and Tradewind. For a clean, bright bathroom that makes white fixtures pop, the neutrals do it: Alabaster for crisp, Agreeable Gray for warm. The undertone is what makes or breaks the result, since bathroom lighting exaggerates it — our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to undertones</Link> explains why a green-gray can swing toward blue under cool bulbs. Whichever way you lean, test a sample on the wall first.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">See It in Your Bathroom — and Get the Look Elsewhere</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Before you commit, preview a color on real walls with the{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, or build a full bathroom scheme — wall, trim, and vanity — in the{" "}
+          <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>. Every color above carries its closest equivalents in 13 other brands, scored by how similar they actually look, so if your nearest store carries Behr or Valspar you don&apos;t have to give up the Sherwin-Williams shade — see the side-by-side in the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> or browse the full{" "}
+          <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> match list. For colors beyond this brand, see our broader{" "}
+          <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">best bathroom paint colors</Link> guide.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "best-black-paint-colors",
+    title: "The Best Black Paint Colors for Doors, Trim & Walls (2026)",
+    date: "2026-07-31",
+    author: "Philip Cameron",
+    excerpt:
+      "The best black paint colors for front doors, trim, cabinets, and walls — true black, soft black, and blue-black — each with its LRV and closest cross-brand match.",
+    coverColor: "#2f2f30",
+    coverImage: "/blog/best-black-paint-colors.webp",
+    tags: ["Guide", "Black", "Color Family"],
+    faq: [
+      {
+        question: "What is the best black paint color?",
+        answer:
+          "Tricorn Black (SW 6258) is the most-specified true black — a clean, near-neutral black at LRV 2.9 that holds up on doors, trim, and cabinets. Its Benjamin Moore twin is Black (HC-190), a near-identical match. For a softer, warmer black designers prefer on whole walls, Iron Ore (SW 7069) and Wrought Iron (BM 2124-10) read as charcoal-blacks rather than absolute black.",
+      },
+      {
+        question: "What does LRV mean for a black paint color?",
+        answer:
+          "LRV (Light Reflectance Value) measures how much light a color bounces back, from 0 (pure black) to 100 (pure white). True blacks sit around LRV 3, soft or charcoal-blacks land between 5 and 8, and anything above 10 starts reading as dark gray. A lower LRV looks deeper and absorbs more light, which matters most on large walls in low-light rooms.",
+      },
+      {
+        question: "Should you paint a front door, trim, or whole walls black?",
+        answer:
+          "Black is lowest-risk on a front door, where it reads as crisp and classic against any siding. On interior trim, doors, and cabinets it adds contrast without taking over a room. Black walls are higher-commitment: they absorb light, so they work best as an accent wall or in a room you want to feel cocooning rather than bright. A soft black (LRV 5-8) is more forgiving on full walls than a true black.",
+      },
+      {
+        question: "What sheen should you use for black paint?",
+        answer:
+          "Sheen choice matters more with black than with any other color because gloss exaggerates every flaw and reflection. Matte or eggshell hides surface imperfections on walls and is the modern default for a deep, velvety black. Satin or semi-gloss suits trim, doors, and cabinets, where the slight sheen reads as crisp and is easier to wipe clean. Glossy black is dramatic on a front door but shows brushstrokes and dents.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best black paint color for most projects is{" "}
+          <Swatch hex="#2f2f30" name="Tricorn Black" brand="Sherwin-Williams" href="/colors/sherwin-williams/tricorn-black-6258" /> (SW 6258, LRV 2.9) — a clean, near-neutral true black that designers reach for on front doors, interior trim, and cabinets because it stays black without drifting blue, brown, or green. But &ldquo;black&rdquo; isn&apos;t one color. There&apos;s true black, soft or charcoal-black, and blue-black, and the right pick depends on where it&apos;s going and how much light the room gets. This guide sorts ten well-known blacks by exactly that, and every LRV and cross-brand match below comes straight from our database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">First, Understand LRV: Why a Black Isn&apos;t Just Black</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Light Reflectance Value (LRV) runs from 0 (pure black) to 100 (pure white), and for blacks the useful range is roughly 3 to 8. True blacks sit near LRV 3 — they absorb almost all light and read as absolute black. Soft or charcoal-blacks land between LRV 5 and 8: still unmistakably dark, but they show a hint of depth and dimension in daylight instead of flattening into a void. Above LRV 10, a color starts reading as dark gray rather than black. The lower the LRV, the more light the color swallows — which is why a true black feels dramatic on a small front door but can make a whole room feel smaller. If undertones are new to you, our guide to{" "}
+          <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding paint color undertones</Link> explains how even a near-neutral black can lean warm or cool.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best True Blacks (LRV ~3)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#2f2f30" name="Tricorn Black" brand="Sherwin-Williams" href="/colors/sherwin-williams/tricorn-black-6258" /> (SW 6258, LRV 2.9) is the benchmark true black — neutral, crisp, and the safest choice when you want black to actually look black. Its closest match is{" "}
+          <Swatch hex="#323233" name="Black" brand="Benjamin Moore" href="/colors/benjamin-moore/black-hc-190" /> (HC-190, LRV 3.2), a near-identical twin, so the two are interchangeable across the Sherwin-Williams / Benjamin Moore divide. Both pair beautifully with Dutch Boy True Black, a dead-on hex match for big-box shoppers.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#313031" name="Caviar" brand="Sherwin-Williams" href="/colors/sherwin-williams/caviar-6990" /> (SW 6990, LRV 3) is Sherwin-Williams&apos; other true black — a hair warmer than Tricorn Black and a near-identical match for Benjamin Moore Black (HC-190). Use Caviar when you want the faintest warmth so the black doesn&apos;t feel clinical. All three of these read as absolute black on a front door or cabinet; on a full wall they create the deepest, most enveloping effect.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Soft &amp; Warm Blacks (LRV 4&ndash;8)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Soft blacks are the designer&apos;s secret for walls and large surfaces — they carry the drama of black but show subtle dimension instead of going flat. <Swatch hex="#434341" name="Iron Ore" brand="Sherwin-Williams" href="/colors/sherwin-williams/iron-ore-7069" /> (SW 7069, LRV 5.6) is the most popular of the group: a warm charcoal-black that reads black indoors but softens to deep gray in bright light, which makes it far more forgiving on whole walls and exteriors. Its closest match is{" "}
+          <Link href="/colors/behr/broadway-ppu18-20" className="text-brand-blue hover:underline">Behr Broadway</Link> (a near-identical match at Home Depot), with Benjamin Moore Notre Dame close behind.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#4a4b4c" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> (BM 2124-10, LRV 7) is the soft black designers use instead of pure black when they want depth without harshness — it&apos;s the warmer, grayer cousin to Iron Ore. Behr Timber Brown is its closest match, with Farrow &amp; Ball Liquorice nearly identical. <Swatch hex="#3a3837" name="Black Beauty" brand="Benjamin Moore" href="/colors/benjamin-moore/black-beauty-2128-10" /> (BM 2128-10, LRV 4) splits the difference — deeper than Wrought Iron but warmer than a true black, with a faint brown softness. Its closest match is{" "}
+          <Swatch hex="#3b3938" name="Pitch Black" brand="Farrow & Ball" href="/colors/farrow-ball/pitch-black-256" /> (F&amp;B 256, LRV 4.1), an almost-perfect twin — so if you love the Farrow &amp; Ball name but want it tinted at a US store, Black Beauty gets you there.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For the lightest pick here, <Swatch hex="#4f5152" name="Cracked Pepper" brand="Behr" href="/colors/behr/cracked-pepper-ppu18-01" /> (Behr PPU18-01, LRV 8.2) is technically the edge of black — almost a charcoal — which makes it the most livable on full walls in rooms that don&apos;t get much light. Its closest match is Benjamin Moore Cheating Heart, with Sherwin-Williams Peppercorn close behind.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Blue-Black: Inkwell</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#31363a" name="Inkwell" brand="Sherwin-Williams" href="/colors/sherwin-williams/inkwell-6992" /> (SW 6992, LRV 3.6) is the one black here with a deliberate cool cast — a near-black with a navy-blue undertone that reads almost black in low light and reveals its blue in daylight. It&apos;s the move when you want black&apos;s depth but a cooler, moodier feel, and it pairs especially well with brass and warm woods. Its closest match is{" "}
+          <Link href="/colors/behr/spade-black-bnc-38" className="text-brand-blue hover:underline">Behr Spade Black</Link>, with Benjamin Moore After Midnight a close second. Compare it side-by-side with a true black like Tricorn Black in the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> to see the blue cast clearly before you commit.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Where to Use Black: Doors, Trim &amp; Walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A <strong>front door</strong> is the lowest-risk place to go black — a true black like Tricorn Black or Caviar reads as crisp and timeless against almost any siding, and the small surface keeps it from overwhelming. On interior <strong>trim, doors, and cabinets</strong>, black adds high-contrast definition without taking over the room; a true black or a soft black both work, with{" "}
+          <Swatch hex="#363535" name="Onyx" brand="Benjamin Moore" href="/colors/benjamin-moore/onyx-2133-10" /> (BM 2133-10, LRV 3.6) a popular cabinet pick. <strong>Whole walls</strong> are the bigger commitment: black absorbs light, so it shrinks a room and reads best as an accent wall or in a space you want to feel cocooning. Reach for a soft black (Iron Ore, Wrought Iron, Cracked Pepper) on full walls — the slightly higher LRV keeps the room from feeling like a cave. See the full range in our{" "}
+          <Link href="/colors/family/black" className="text-brand-blue hover:underline">black paint colors</Link> and{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link> families, and preview any of them on a real room with the{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Sheen Matters More with Black</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Black exaggerates sheen, so the finish you pick changes the look as much as the color does. <strong>Matte or eggshell</strong> hides surface flaws and gives walls a deep, velvety black — the modern default. <strong>Satin or semi-gloss</strong> suits trim, doors, and cabinets, where the slight reflection reads as crisp and wipes clean. <strong>High gloss</strong> is dramatic on a front door but shows every brushstroke and dent, so it demands a smooth surface and a careful hand. Whatever the sheen, build a full scheme around your black in the{" "}
+          <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> so the trim, walls, and accents work together before you buy a gallon.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Getting the Look in the Brand You Buy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every black above carries its closest equivalents across 13 other brands, scored by how similar they actually look — so if you love a Sherwin-Williams or Benjamin Moore black but shop somewhere else, you don&apos;t have to settle. Browse the full{" "}
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color chart</Link>, see the side-by-side cross-brand list in the{" "}
+          <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> matches, or pin down whether your black leans warm or cool first with our{" "}
+          <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">guide to paint color undertones</Link> — the test that keeps a true black from drifting blue or brown on the wall.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "best-beige-paint-colors",
+    title: "The Best Beige & Warm Neutral Paint Colors (2026)",
+    date: "2026-07-24",
+    author: "Philip Cameron",
+    excerpt:
+      "The best beige and warm-neutral paint colors — Accessible Beige, Manchester Tan, Pale Oak and more — each with its LRV, undertone, and closest match.",
+    coverColor: "#D1C7B8",
+    coverImage: "/blog/best-beige-paint-colors.webp",
+    tags: ["Guide", "Beige", "Neutral"],
+    faq: [
+      {
+        question: "What is the difference between beige and greige?",
+        answer:
+          "Beige is the warmer of the two: it leans yellow, gold, or tan and reads cozy. Greige is beige cut with gray — cooler, more neutral, and better at hiding undertones. Accessible Beige (SW 7036, LRV 58) sits right on the line; Kilim Beige (SW 6106) and Shaker Beige (HC-45) are true warm beiges, while Revere Pewter is a greige. If a color looks too yellow on your wall, you want greige; if it looks too cold, you want beige.",
+      },
+      {
+        question: "Do beige paint colors look dated?",
+        answer:
+          "The flat, pinkish builder-beige of the early 2000s looks dated; today's warm neutrals do not. The fix is undertone control. Pick a beige with a neutral or gray-tempered undertone (Accessible Beige, Natural Linen, Bleeker Beige) rather than one that swings hard yellow or pink, pair it with clean white trim, and test it on the wall before committing. Warm neutrals are back specifically because the gray era went too cold.",
+      },
+      {
+        question: "What is the most popular beige paint color?",
+        answer:
+          "Accessible Beige (SW 7036, LRV 58) is the most-specified warm neutral in the US — a near-balanced beige that holds steady across lighting. Manchester Tan (HC-81, LRV 63) is Benjamin Moore's equivalent benchmark, and Pale Oak (OC-20, LRV 69) is the popular soft, near-white warm neutral. Each has a near-identical match in every other major brand.",
+      },
+      {
+        question: "What trim color goes with beige walls?",
+        answer:
+          "A clean, slightly cool white keeps beige from reading muddy. Crisp whites give the contrast that makes warm walls look intentional rather than dated. Avoid creamy whites with strong yellow undertones — paired with beige they blur together and flatten the room. The goal is enough difference that the trim reads as trim.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best beige paint color for most homes is{" "}
+          <Swatch hex="#d1c7b8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (SW 7036, LRV 57.9) — a near-balanced warm neutral that reads cozy without going yellow or pink. Beige is back because the gray era went too cold, but the version winning now is disciplined: warm, not muddy; tan, not builder-pink. The difference between a beige that looks current and one that looks dated is undertone control. This guide ranks 10 specific warm neutrals across the warmth scale — each with its exact LRV, undertone, and closest cross-brand match straight from our 26,000-color database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Beige vs. Greige: Know the Difference Before You Buy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Beige and greige get used interchangeably, and that&apos;s how rooms go wrong. <strong>Beige is warmer</strong> — it leans yellow, gold, or tan and feels cozy. <strong>Greige is beige cut with gray</strong> — cooler, more neutral, better at hiding awkward undertones. If your last gray room felt cold and steely, beige is the correction. If a warm neutral keeps reading too yellow on the wall, you actually want a greige — the cooler, gray-tempered neutrals in our{" "}
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link> family. This guide is the beige end of the scale. Browse the full set in <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige paint colors</Link> and the warmer{" "}
+          <Link href="/colors/family/tan" className="text-brand-blue hover:underline">tan paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best All-Around Beiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#d1c7b8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (SW 7036, LRV 57.9) is the benchmark — a neutral-undertone warm neutral that holds steady across north light, south light, and lamplight. Its closest matches are near-identical: Behr Shoreline Haze (Delta E 0.5) and PPG Synchronicity (0.5), with Benjamin Moore Inukshuk (0.7) close behind. <Swatch hex="#dcd3bd" name="Manchester Tan" brand="Benjamin Moore" href="/colors/benjamin-moore/manchester-tan-hc-81" /> (HC-81, LRV 63.2) is the Benjamin Moore equivalent — a soft, light beige that brightens a room without losing warmth; Dunn-Edwards Gunnysack is a dead-on match (0.4) and SW Warm Oats is very close (1.0). Both are safe whole-home picks. See every cross-brand equivalent on the <Link href="/colors/sherwin-williams/accessible-beige-7036" className="text-brand-blue hover:underline">Accessible Beige color page</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Warm, Tan-Leaning Beiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          When you want unmistakable warmth, these lean tan. <Swatch hex="#d7c5ae" name="Kilim Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/kilim-beige-6106" /> (SW 6106, LRV 57.4) is the cozy, earthy beige that anchored a generation of Tuscan kitchens — used with clean trim today it reads grounded rather than dated. Dutch Boy Westwood is an exact match (Delta E 0.0) and Benjamin Moore Adobe Beige is near-identical (0.9). <Swatch hex="#d2c3a8" name="Shaker Beige" brand="Benjamin Moore" href="/colors/benjamin-moore/shaker-beige-hc-45" /> (HC-45, LRV 53.5) is a slightly deeper, honeyed beige — Behr Brown Bread (0.6) and SW Sand Beach (1.3) are its closest twins. For the richest of the set, <Swatch hex="#ccb79b" name="Macadamia" brand="Sherwin-Williams" href="/colors/sherwin-williams/macadamia-6142" /> (SW 6142, LRV 49.1) drops into mid-tone tan territory and adds real depth; Benjamin Moore Warm is a near-identical match (0.5) with PPG Bonjour Beige close behind (0.8).
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Soft, Light Warm Neutrals</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For rooms that need brightness with a hint of warmth, these sit at the pale end. <Swatch hex="#e8d8d0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> (OC-20, LRV 68.6) is the soft, barely-there warm neutral with a faint pink-taupe softness — light and flexible, with Behr Bee&apos;s Knees (0.6) and PPG Sandy Beach (0.6) as near-identical matches. <Swatch hex="#dfd3c3" name="Natural Linen" brand="Sherwin-Williams" href="/colors/sherwin-williams/natural-linen-9109" /> (SW 9109, LRV 66.2) is the clean, linen-toned neutral that avoids both yellow and pink; Behr Parisian Taupe and PPG Wheat Sheaf both match at Delta E 0.5. <Swatch hex="#e3ded0" name="Natural Choice" brand="Sherwin-Williams" href="/colors/sherwin-williams/natural-choice-7011" /> (SW 7011, LRV 73.1) is the lightest here — an almost-white warm neutral with multiple dead-on matches: Benjamin Moore Strand of Pearls (0.2), PPG Southern Breeze (0.2), and Valspar Gracious (0.2).
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Deeper Beiges for Depth &amp; Trim</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A deeper warm neutral grounds a room or carries an accent wall. <Swatch hex="#cec1a9" name="Bleeker Beige" brand="Benjamin Moore" href="/colors/benjamin-moore/bleeker-beige-hc-80" /> (HC-80, LRV 51.7) is a true mid-tone beige with no pink — its SW match Threaded Loom is near-identical (0.5), with Farrow &amp; Ball Old White (0.9) close behind. For a soft, creamy off-white that still belongs in the warm-neutral family, <Swatch hex="#e6dfcf" name="Maritime White" brand="Benjamin Moore" href="/colors/benjamin-moore/maritime-white-963" /> (963, LRV 71.6) works on trim, cabinets, and whole rooms — SW Arrowroot (0.6) and Valspar Foxtrot (0.7) are its closest matches. See more in <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutral paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Keep Beige From Reading Dated, Pink, or Yellow</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Builder-beige earned its bad reputation by swinging hard pink or flat yellow under bad light. Three rules keep a warm neutral looking current. <strong>First, control the undertone.</strong> A neutral-undertone beige (Accessible Beige, Natural Linen, Bleeker Beige) stays balanced; the ones that drift pink or gold are the ones that date. <strong>Second, pair it with clean white trim.</strong> A crisp, slightly cool white gives the contrast that makes warm walls look deliberate — a creamy yellow trim blurs into beige and flattens the room. <strong>Third, mind light direction.</strong> South- and west-facing rooms pump warm light in and push beige toward yellow, so choose a touch cooler or use a higher-LRV pick like Pale Oak or Natural Choice. North- and east-facing rooms drain warmth, so a warmer, tan-leaning beige like Kilim Beige or Shaker Beige reads correct rather than gray. Always test on the actual wall, in the actual light, before you commit.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Your Beige in Another Brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every color above carries its closest equivalents in 12 other brands, scored by how similar they actually look rather than by name. If you found the beige you want but buy paint somewhere else, drop both colors into the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> to see the difference in plain language, preview a shade on your own walls with the{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, or build a whole scheme around one with the{" "}
+          <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>. The full catalog lives on the{" "}
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color chart</Link>, the complete cross-brand list is on the{" "}
+          <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Benjamin Moore to Sherwin-Williams</Link> match page, and if a warm neutral still reads too yellow, the cooler{" "}
+          <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint colors guide</Link> is the next stop.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "best-gray-paint-colors",
+    title: "The Best Gray Paint Colors for Every Room (2026)",
+    date: "2026-07-17",
+    author: "Philip Cameron",
+    excerpt:
+      "The best true gray paint colors, light to charcoal — each with its LRV, undertone, and closest cross-brand match, plus a guide to choosing gray by room light.",
+    coverColor: "#CCC9C0",
+    coverImage: "/blog/best-gray-paint-colors.webp",
+    tags: ["Guide", "Gray", "Color Family"],
+    faq: [
+      {
+        question: "What is the most popular gray paint color?",
+        answer:
+          "Repose Gray (SW 7015) is the most-specified true gray — a light, balanced gray at LRV 58 that reads clean without a strong cool or warm cast. Gray Owl (BM 2137-60) is the most popular cooler, airy gray, and Chelsea Gray (BM HC-168) the most popular deep charcoal-gray for cabinets and accent walls.",
+      },
+      {
+        question: "What is the difference between a true gray and a greige?",
+        answer:
+          "A true gray is built on a neutral or cool base, so it reads clean and crisp — think Repose Gray (SW 7015) or Gray Owl (BM 2137-60). A greige is gray plus beige; it carries a warm tan undertone that makes it read softer and cozier, like Agreeable Gray or Revere Pewter. Cool grays suit modern rooms; greiges suit warm, lived-in ones. If you want warmth, read our greige guide instead.",
+      },
+      {
+        question: "Why does my gray paint look blue or purple?",
+        answer:
+          "Cool grays pick up the blue cast of north-facing light, which has no warm sun to balance it. The same gray that looks neutral in a south-facing room can read blue, purple, or icy in a north-facing one. To avoid it in north light, pick a gray with a warm or neutral undertone (a greige, or a neutral gray like Repose Gray) rather than a cool blue-gray like Network Gray. Always test a large sample on the actual wall before committing.",
+      },
+      {
+        question: "What LRV should a gray paint color be?",
+        answer:
+          "LRV (light reflectance value) runs 0 (black) to 100 (white). Light grays for whole rooms sit around 55-75 (Repose Gray is 58, Classic Gray 75); mid-tone grays for feature walls sit around 38-50 (Dorian Gray 39, Coventry Gray 49); charcoal grays for cabinets and accents sit below 25 (Chelsea Gray 23, Gauntlet Gray 17). In darker or north-facing rooms, go lighter than you think.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best true gray for most rooms is{" "}
+          <Swatch hex="#ccc9c0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> (SW 7015, LRV 58) — a light, balanced gray with a neutral undertone, which is exactly why it stays gray instead of drifting blue or pink as the light changes. This guide covers 10 of the best true grays, light to charcoal, each with its exact LRV and undertone and its closest match in the brand you actually buy at. One thing up front: these are <em>true grays</em> — cool and clean — not greiges. If you want the warm, tan-leaning kind, that&apos;s a different post (linked below). Every LRV, undertone, and cross-brand match here comes straight from our color database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">True Gray vs. Greige: Know Which One You Want</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The single biggest gray mistake is picking the wrong base. A <strong>true gray</strong> is built on a neutral or cool foundation, so it reads clean and a little crisp — modern, architectural, calm. A <strong>greige</strong> is gray with beige mixed in; it carries a warm tan undertone that reads softer and cozier. Same family, opposite mood. Every color in this guide is a true gray. If your room runs cold or you want a cleaner look, stay here. If you want warmth — or your room already feels chilly — read our breakdown of <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool paint colors</Link> before you settle on gray. And if you&apos;re unsure why a color you love keeps shifting, our guide to <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link> explains what&apos;s happening underneath.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Choosing Gray by the Light in Your Room</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Gray is the most light-sensitive neutral there is, so match the color to the window direction before anything else:
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>North-facing rooms</strong> get cool, indirect light with no warm sun to balance it. This is where cool grays turn blue, purple, or icy. Lean toward a neutral or slightly warm gray — Repose Gray holds up here — and avoid the cool blue-grays. <strong>South-facing rooms</strong> get warm, bright light all day, which softens grays and lets you use cooler shades like <Swatch hex="#d4d5cd" name="Gray Owl" brand="Benjamin Moore" href="/colors/benjamin-moore/gray-owl-2137-60" /> without them going flat. <strong>East-facing rooms</strong> are warm in the morning, cooler by afternoon — a balanced neutral gray reads most consistent. <strong>West-facing rooms</strong> are cool in the morning and warm-to-golden at night, which can pull warmth out of a gray after dark; a neutral gray with a touch of depth handles the swing best. Whatever the direction, test a large sample on the actual wall and look at it morning, noon, and night.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Light Grays (LRV 55+)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Light grays are the safest whole-room choice — bright enough to keep a space open, gray enough to feel intentional. <Swatch hex="#ccc9c0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> (SW 7015, LRV 58, neutral) is the benchmark: a clean light gray that doesn&apos;t commit to a cast. Its closest Benjamin Moore match is <Link href="/colors/benjamin-moore/apparition-860" className="text-brand-blue hover:underline">Apparition</Link> and its closest Behr match Gratifying Gray — both near-identical on the wall. <Swatch hex="#d4d5cd" name="Gray Owl" brand="Benjamin Moore" href="/colors/benjamin-moore/gray-owl-2137-60" /> (BM 2137-60, LRV 66, neutral) is the cooler, airier alternative with a faint green-gray quality — its Sherwin-Williams match is <Link href="/colors/sherwin-williams/silverpointe-7653" className="text-brand-blue hover:underline">Silverpointe</Link> and Behr Close Knit is a dead-on match. <Swatch hex="#cbccc6" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> (BM HC-170, LRV 60, neutral) is the classic mid-light gray with a hint of blue — SW Sweater Weather and Behr Road Runner are both close. See the full range in <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Lightest Gray of All: Classic Gray</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#e4e1d8" name="Classic Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/classic-gray-1548" /> (BM 1548, LRV 75, neutral) is so light it&apos;s really a gray-tinted off-white — the choice when you want the calm of gray without darkening the room at all. It works beautifully in north-facing spaces where a true gray would go heavy, and on whole open floor plans that need to stay bright. Its Sherwin-Williams match <Link href="/colors/sherwin-williams/heron-plume-6070" className="text-brand-blue hover:underline">Heron Plume</Link> is near-identical, and Valspar Wispy White is an almost-exact match. At this LRV it sits on the edge of the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link> family — the bridge between gray and white.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Mid-Tone Grays (LRV 38–50)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Mid-tone grays give a room more depth and weight — strong enough for a feature wall, still livable across a whole room with good light. <Swatch hex="#bcb7ad" name="Mindful Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/mindful-gray-7016" /> (SW 7016, LRV 48, neutral) is the most popular step-up from Repose Gray — same family, more presence. Its PPG match Ghost Writer is exact (Delta E 0.0) and Benjamin Moore <Link href="/colors/benjamin-moore/thunder-af-685" className="text-brand-blue hover:underline">Thunder</Link> is a near-identical second. <Swatch hex="#b9bbb7" name="Coventry Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/coventry-gray-hc-169" /> (BM HC-169, LRV 49, neutral) is the cooler, cleaner mid-gray — its Sherwin-Williams match is <Link href="/colors/sherwin-williams/argos-7065" className="text-brand-blue hover:underline">Argos</Link> and PPG Gray Stone is dead-on. <Swatch hex="#aca79e" name="Dorian Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/dorian-gray-7017" /> (SW 7017, LRV 39, warm) leans a touch warm, which makes it the most forgiving mid-gray in cool north light — its Benjamin Moore match is Upper West Side, with Behr Stingray Gray close behind.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Charcoal Grays (LRV under 25)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Charcoals are for impact — cabinets, islands, accent walls, exterior trim, and moody dining rooms. <Swatch hex="#87857d" name="Chelsea Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/chelsea-gray-hc-168" /> (BM HC-168, LRV 23, warm) is the designer favorite for kitchen cabinetry — deep and grounded, with a warm undertone that keeps it from going cold. Behr Barnwood Gray is a near-identical match and SW Classic French Gray is close. <Swatch hex="#78736e" name="Gauntlet Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/gauntlet-gray-7019" /> (SW 7019, LRV 17, warm) is the deeper warm charcoal — dramatic on an accent wall or front door without reading pure black. Behr Unpredictable Hue is its closest match, with Benjamin Moore <Link href="/colors/benjamin-moore/windy-city-csp-150" className="text-brand-blue hover:underline">Windy City</Link> a close second.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The One Cool Blue-Gray: Network Gray</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#a0a5a7" name="Network Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/network-gray-7073" /> (SW 7073, LRV 37, neutral) is the gray on this list that reads coolest — there&apos;s a quiet blue-gray quality to it, which is exactly why it&apos;s striking in a south- or west-facing room with plenty of warm light. The same trait is a warning, though: in a north-facing room it will pull noticeably blue. Its closest match is Behr Iron Wood, with Benjamin Moore <Link href="/colors/benjamin-moore/delray-gray-1614" className="text-brand-blue hover:underline">Delray Gray</Link> — itself a blue-gray — confirming where this one leans. Use it where the light is warm; skip it where the light is cool.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Picking and Matching Your Gray</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every color above carries its closest equivalents across 13 brands, scored by how similar they actually look rather than by name. To test a gray on your own walls before buying, drop a room photo into the{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, or build a full scheme around one shade in the{" "}
+          <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>. To check exactly how close two grays are, put them side by side in the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>. The full catalog lives on the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color chart</Link>, and if you&apos;re matching a gray between the two big names, the{" "}
+          <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> match list does it for every shade. And if your room faces north, our guide to the{" "}
+          <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">best paint colors for north-facing rooms</Link> is the next read before you commit.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "best-sage-green-paint-colors",
+    title: "The Best Sage Green Paint Colors for Every Room (2026)",
+    date: "2026-07-10",
+    author: "Philip Cameron",
+    excerpt:
+      "The best sage green paint colors — from gray-green Evergreen Fog to true-green Back to Nature — each with its LRV, undertone, and closest cross-brand match.",
+    coverColor: "#B7B9A6",
+    coverImage: "/blog/best-sage-green-paint-colors.webp",
+    tags: ["Guide", "Green", "Sage"],
+    faq: [
+      {
+        question: "What is the most popular sage green paint color?",
+        answer:
+          "Evergreen Fog (SW 9130) is the most-specified sage green — a deeper gray-green at LRV 30.4 with a warm golden undertone. October Mist (BM 1495) is the softer, mid-tone sage at LRV 47.5, and Sea Salt (SW 6204) is the lightest, near-neutral option at LRV 63.3 for those who want only a hint of green.",
+      },
+      {
+        question: "Is sage green warm or cool?",
+        answer:
+          "It depends on the specific color. Sage greens split into three groups: warm gray-greens with a golden undertone (Evergreen Fog, Pewter Green, Oyster Bay), neutral gray-greens that read balanced (October Mist, Softened Green, Clary Sage, Sea Salt), and cooler green-leaning sages (Saybrook Sage, Back to Nature). The undertone is what decides whether a sage warms up a room or cools it down.",
+      },
+      {
+        question: "What is the Benjamin Moore equivalent of Sherwin-Williams Evergreen Fog?",
+        answer:
+          "The closest Benjamin Moore match to Evergreen Fog (SW 9130) is Storm Cloud Gray (2140-40) — a near-identical gray-green on the wall. The closest Behr match is Shady Willow (ECC-36-1). Every sage below lists its closest match in the brand you can actually buy.",
+      },
+      {
+        question: "What sheen is best for sage green walls?",
+        answer:
+          "For most sage green walls, an eggshell or matte finish is the standard — it keeps the color soft and hides imperfections, which matters because mid-tone greens show wall texture more than pale neutrals. Use satin or semi-gloss only on trim, doors, and high-touch surfaces.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best sage green for most rooms is{" "}
+          <Swatch hex="#b7b9a6" name="October Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/october-mist-1495" /> (1495, LRV 47.5) — a soft, neutral gray-green that stays calm in north light and lamplight without tipping toward gray or olive. But &quot;sage&quot; covers a wide band: some reads gray-green, some reads true green, and the undertone is what decides which. This guide sorts ten well-known sages by how green they actually read, with the exact LRV and undertone from our database, and pairs each one with its closest match in the brand you can buy. More options live in <Link href="/colors/family/green" className="text-brand-blue hover:underline">green paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">First, What &quot;Sage&quot; Actually Means</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sage is a muted, grayed-down green — and the trap is that two colors both sold as &quot;sage&quot; can land in very different places. The deciding factor is undertone. A warm, golden-undertone sage reads earthy and grounded; a neutral one reads quiet and flexible; a cooler, green-leaning sage reads fresher and more obviously green. Light direction shifts it further: north-facing rooms pull a sage cooler and grayer, while warm afternoon light pulls the green and gold forward. If you want the full mechanics, see <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding paint color undertones</Link> and <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool paint colors</Link>. Worth knowing: most of these sages sit in our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link>, not green — which tells you how much gray is doing the work.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Deep Sage Greens (Best for Accent Walls &amp; Cabinets)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#95978a" name="Evergreen Fog" brand="Sherwin-Williams" href="/colors/sherwin-williams/evergreen-fog-9130" /> (SW 9130, LRV 30.4) is the sage that put the whole category on the map — a deeper gray-green with a warm golden undertone that works on walls, islands, and built-ins. Its closest Behr match is <Link href="/colors/behr/shady-willow-ecc-36-1" className="text-brand-blue hover:underline">Shady Willow</Link> and its Benjamin Moore match is <Link href="/colors/benjamin-moore/storm-cloud-gray-2140-40" className="text-brand-blue hover:underline">Storm Cloud Gray</Link>. For something darker and more dramatic, <Swatch hex="#5e6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> (SW 6208, LRV 11.8) is the moody, near-charcoal sage that designers love for kitchen islands and front doors — also warm-undertoned, with Behr <Link href="/colors/behr/woodland-moss-ppf-45" className="text-brand-blue hover:underline">Woodland Moss</Link> its closest match.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Mid-Tone Sage Greens (Best for Whole Rooms)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This is the heart of the category — sages with enough depth to read as color but soft enough to live with. <Swatch hex="#b7b9a6" name="October Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/october-mist-1495" /> (1495, LRV 47.5) is the neutral benchmark, near-identical to Sherwin-Williams <Link href="/colors/sherwin-williams/softened-green-6177" className="text-brand-blue hover:underline">Softened Green</Link> and PPG <Link href="/colors/ppg/pine-crush-1028-3" className="text-brand-blue hover:underline">Pine Crush</Link>. <Swatch hex="#bbbca7" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> (SW 6177, LRV 49.3) is its SW twin — neutral, a hair lighter — matching Farrow &amp; Ball <Link href="/colors/farrow-ball/vert-de-terre-234" className="text-brand-blue hover:underline">Vert de Terre</Link> almost exactly. <Swatch hex="#b2b8a3" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (HC-114, LRV 46.4) is the one that reads most clearly green of this group — its undertone is cool (green), which is why it looks fresher; Behr <Link href="/colors/behr/environmental-ppu11-09" className="text-brand-blue hover:underline">Environmental</Link> is its closest match. And <Swatch hex="#acad97" name="Clary Sage" brand="Sherwin-Williams" href="/colors/sherwin-williams/clary-sage-6178" /> (SW 6178, LRV 40.9) is the earthier, slightly olive sage — neutral-undertoned, with Valspar <Link href="/colors/valspar/cool-pine-8003-30d" className="text-brand-blue hover:underline">Cool Pine</Link> a dead-on match at Lowe&apos;s.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Light Sage Greens (Best for Bathrooms &amp; Trim)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          When you want only a whisper of green, these pale sages read almost neutral until the light catches them. <Swatch hex="#cdd2ca" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63.3) is the famous spa color — a pale green-gray that shifts toward blue-green in bright light, which is why it&apos;s a bathroom default; its Benjamin Moore match is <Link href="/colors/benjamin-moore/gray-cashmere-2138-60" className="text-brand-blue hover:underline">Gray Cashmere</Link> and Behr <Link href="/colors/behr/silver-setting-pwl-89" className="text-brand-blue hover:underline">Silver Setting</Link>. <Swatch hex="#cbd0c5" name="Sparkling Sage" brand="Valspar" href="/colors/valspar/sparkling-sage-5005-3b" /> (5005-3B, LRV 61.8) is the Lowe&apos;s answer — a light, clean sage matching Behr <Link href="/colors/behr/shy-green-mq3-48" className="text-brand-blue hover:underline">Shy Green</Link> closely. <Swatch hex="#aeb3a9" name="Oyster Bay" brand="Sherwin-Williams" href="/colors/sherwin-williams/oyster-bay-6206" /> (SW 6206, LRV 44.1) sits a step deeper — a warm gray-green that flexes between sage and greige depending on the room; Dutch Boy <Link href="/colors/dutch-boy/woodsy-gray-425-3db" className="text-brand-blue hover:underline">Woodsy Gray</Link> is near-identical.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">True-Green Sage (When You Want the Green to Show)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Not every &quot;sage&quot; is grayed down. <Swatch hex="#b8cc84" name="Back to Nature" brand="Behr" href="/colors/behr/back-to-nature-s340-4" /> (S340-4, LRV 48) is a brighter, yellow-leaning green — a former Behr Color of the Year that reads far more clearly green than the gray-greens above, and the only color here in our true green family. Its closest Benjamin Moore match is <Link href="/colors/benjamin-moore/stem-green-2029-40" className="text-brand-blue hover:underline">Stem Green</Link>, with Sherwin-Williams <Link href="/colors/sherwin-williams/dancing-green-6716" className="text-brand-blue hover:underline">Dancing Green</Link> in the same range. If your &quot;sage&quot; reference photo looks vivid and fresh rather than soft and grayed, this is the lane you actually want.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Pick the Right Sage</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Start with how green you want it to read: gray-green and grounded (Evergreen Fog, October Mist, Clary Sage), barely-there and airy (Sea Salt, Sparkling Sage), or unmistakably green (Saybrook Sage, Back to Nature). Then check the room&apos;s light — north-facing spaces deepen the gray, so size up in depth; bright south-facing rooms pull the green forward, so a softer pick keeps it from going lime. See any two side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, preview a shade on real walls with the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, or build a full scheme around your favorite with the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Getting the Sage You Love in the Brand You Buy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every color above carries its closest equivalents across 13 brands, scored by how similar they actually look — so a sage you fell for at one store is rarely more than a drive to the right match. Browse the full range from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, or see the side-by-side options in the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> match list. For more on the full green spectrum, start with <Link href="/colors/family/green" className="text-brand-blue hover:underline">green paint colors</Link>.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "best-dutch-boy-paint-colors",
+    title: "The Best Dutch Boy Paint Colors for Every Room (2026)",
+    date: "2026-07-03",
+    author: "Philip Cameron",
+    excerpt:
+      "The best Dutch Boy paint colors — whites, a greige, beiges, a navy, and blacks — each with its LRV and its closest match in Sherwin-Williams or Behr.",
+    coverColor: "#D1CBC1",
+    coverImage: "/blog/best-dutch-boy-paint-colors.webp",
+    tags: ["Guide", "Dutch Boy", "Brand"],
+    faq: [
+      {
+        question: "Where do you buy Dutch Boy paint?",
+        answer:
+          "Dutch Boy is sold at Menards and through independent hardware and paint dealers — not at Home Depot, Lowe's, or Sherwin-Williams stores. If there's no Menards or stocking dealer near you, every color below lists its closest match in a brand you can buy more easily (Sherwin-Williams, Benjamin Moore at independent dealers, or Behr at Home Depot).",
+      },
+      {
+        question: "What is the Sherwin-Williams equivalent of Dutch Boy Doves Wings?",
+        answer:
+          "Doves Wings (443-1DB, LRV 60.1) is an exact match for Sherwin-Williams Agreeable Gray (SW 7029) — they share the hex #d1cbc1, so the two are indistinguishable on the wall. Valspar Heritage Gray is also a 0.0 match. So Doves Wings is the budget route to the most popular greige in the country.",
+      },
+      {
+        question: "Is Dutch Boy a good paint brand?",
+        answer:
+          "Dutch Boy is a value brand: lower price than Sherwin-Williams or Benjamin Moore, sold mainly at Menards and independent dealers. The paint film and durability sit below the premium lines, but the colors are well-formulated and most of them match a premium-brand shade almost exactly — which is why this guide pairs each one with its closest SW, BM, or Behr equivalent.",
+      },
+      {
+        question: "How do I match a Dutch Boy color to another brand?",
+        answer:
+          "Use the cross-brand match data on each color's page, or the color comparison tool, which scores how similar two colors actually look. Every Dutch Boy color below already lists its closest match in Sherwin-Williams, Benjamin Moore, Behr, and ten other brands, ranked by how close the match is.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best Dutch Boy paint color for most homes is{" "}
+          <Swatch hex="#d1cbc1" name="Doves Wings" brand="Dutch Boy" href="/colors/dutch-boy/doves-wings-443-1db" /> (443-1DB, LRV 60.1) — a warm greige that is an exact, hex-for-hex match for Sherwin-Williams Agreeable Gray, the most popular paint color in the country. That pairing is the whole point of Dutch Boy: it&apos;s a value brand sold at Menards and independent dealers, priced below the premium names, and many of its colors land right on top of a designer-favorite shade. This guide pairs each of these 10 colors with its closest match in Sherwin-Williams, Benjamin Moore, or Behr — so you can buy the cheaper can, or get the same look at a store you already shop. Every LRV and cross-brand match below comes straight from our database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Where to Find Dutch Boy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Link href="/brands/dutch-boy" className="text-brand-blue hover:underline">Dutch Boy</Link> is carried at Menards across the Midwest and through independent hardware and paint dealers — it isn&apos;t stocked at Home Depot, Lowe&apos;s, or Sherwin-Williams stores. That regional footprint is the catch: if there&apos;s no Menards or stocking dealer near you, the brand is hard to get. The fix runs both ways. If you love a premium color but want to save, buy the Dutch Boy equivalent. If you love a Dutch Boy color but can&apos;t find the brand, buy its match at Home Depot (Behr) or a Sherwin-Williams store instead. Every color below gives you both options. The full catalog and its closest matches in 13 other brands live on the <Link href="/match/dutch-boy/to/sherwin-williams" className="text-brand-blue hover:underline">Dutch Boy to Sherwin-Williams</Link> match list.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#edeae0" name="Swan White" brand="Dutch Boy" href="/colors/dutch-boy/swan-white-024w" /> (024W, LRV 82.2) is the soft warm white to reach for first — bright but not stark, with a faint cream warmth that keeps trim and walls from feeling clinical. It&apos;s an exact match for Sherwin-Williams Alabaster, the most-used white in America, with Benjamin Moore Glacier White a near-twin. For a cooler, cleaner white, <Swatch hex="#eceae3" name="Crisped White" brand="Dutch Boy" href="/colors/dutch-boy/crisped-white-022w" /> (022W, LRV 82.2) drops the cream — its closest matches are Behr First Snow and Sherwin-Williams Pure White, both within a barely-perceptible difference. Use Swan White in north-facing rooms where cool light can turn a stark white gray, and Crisped White in bright, south-facing rooms that can carry a crisper tone. More options in <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link>, and a deeper breakdown in our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">guide to the best white paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Greige: Doves Wings</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Doves Wings (443-1DB, LRV 60.1) is the color most people should start with. At hex #d1cbc1 it is a <em>perfect</em> match for <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Sherwin-Williams Agreeable Gray</Link> — same hex, indistinguishable on the wall — and an equally exact match for Valspar Heritage Gray. Benjamin Moore Wish and Behr Toasty Gray round out the close field. A greige holds steady across changing light without lurching purple or green, which is why this one suits open-plan main rooms, hallways, and whole-house schemes. It also lands among the <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">most popular paint colors</Link>, by way of its Agreeable Gray twin.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Beiges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#d4c9b9" name="Sandstone Tint" brand="Dutch Boy" href="/colors/dutch-boy/sandstone-tint-441-2db" /> (441-2DB, LRV 59.3) is the warm, flexible beige for living rooms and bedrooms — soft enough to read neutral, warm enough to feel inviting. Its closest match is Behr Even Better Beige, with Sherwin-Williams Accessible Beige and Benjamin Moore Litchfield Gray right behind. <Swatch hex="#d8d0bc" name="Elemental White" brand="Dutch Boy" href="/colors/dutch-boy/elemental-white-421-1db" /> (421-1DB, LRV 63.3) is the lighter, creamier option that sits between white and beige — its closest matches are Sherwin-Williams Warm Oats and Benjamin Moore Jute. For a deeper, earthier tone, <Swatch hex="#c0b2a1" name="Grayed Pebble" brand="Dutch Boy" href="/colors/dutch-boy/grayed-pebble-441-3db" /> (441-3DB, LRV 45.6) is a mid-tone greige-beige that grounds a room — it matches Sherwin-Williams Balanced Beige most closely, with Behr Pasha Brown a near-twin. Browse the full range in <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Soft Gray: White Rapids</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#cdd2ca" name="White Rapids" brand="Dutch Boy" href="/colors/dutch-boy/white-rapids-425-1db" /> (425-1DB, LRV 63.3) is the airy green-gray that has quietly become a bathroom and bedroom favorite — it shifts between pale gray and sea-glass green with the light. It&apos;s an exact match for <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sherwin-Williams Sea Salt</Link>, one of the most-loved colors of the last decade, with Benjamin Moore Gray Cashmere and Behr Silver Setting close behind. See more in <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Navy: Ocean&apos;s Depth</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#2f3d4c" name="Ocean's Depth" brand="Dutch Boy" href="/colors/dutch-boy/ocean-s-depth-337-7db" /> (337-7DB, LRV 4.5) is the navy for islands, accent walls, and front doors — deep and saturated without going to true black. It&apos;s an exact match for <Link href="/colors/sherwin-williams/naval-6244" className="text-brand-blue hover:underline">Sherwin-Williams Naval</Link>, a Color of the Year, with Benjamin Moore North Sea a near-identical alternative and Behr Ink Black close behind. A navy this dark needs strong daylight or warm artificial light to read as blue rather than near-black, so save it for rooms with good light or commit to the dramatic effect in a powder room.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Blacks &amp; Charcoals</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#2f2f30" name="True Black" brand="Dutch Boy" href="/colors/dutch-boy/true-black-438-7db" /> (438-7DB, LRV 2.9) is the near-black for doors, trim, and statement walls — soft enough to avoid the flatness of a pure black. It&apos;s an exact match for <Link href="/colors/sherwin-williams/tricorn-black-6258" className="text-brand-blue hover:underline">Sherwin-Williams Tricorn Black</Link>, the designer benchmark, with Valspar Tomcat and Benjamin Moore Black both very close. For a softer charcoal that reads less stark, <Swatch hex="#41403e" name="Cauldron" brand="Dutch Boy" href="/colors/dutch-boy/cauldron-437-7db" /> (437-7DB, LRV 5.1) is the warm near-black designers use instead of true black — its closest matches are Sherwin-Williams Iron Ore and Behr Evening Canyon.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Getting the Dutch Boy Look Elsewhere</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every color above carries its closest equivalents in 13 other brands, scored by how similar they actually look. If Dutch Boy is hard to find where you live, or you want to compare a value can against a premium one, see the side-by-side in the{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, test a shade on real walls with the{" "}
+          <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, or build a whole scheme around one of these colors in the{" "}
+          <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>. The complete catalog lives on the{" "}
+          <Link href="/brands/dutch-boy" className="text-brand-blue hover:underline">Dutch Boy color chart</Link>, and if undertones are what trip you up, start with{" "}
+          <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding paint color undertones</Link>.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "best-greige-paint-colors",
     title: "The Best Greige Paint Colors for Every Room (2026)",
     date: "2026-06-26",
