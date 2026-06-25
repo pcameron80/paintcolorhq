@@ -78,6 +78,7 @@ scripts/pinterest/published*.json
 scripts/pinterest/drip.log
 scripts/pinterest/analytics.log
 scripts/pinterest/reports/
+scripts/pinterest/preview.html
 
 # Social drip run logs (runtime-only; the published.json ledgers ARE tracked)
 scripts/facebook/drip.log
