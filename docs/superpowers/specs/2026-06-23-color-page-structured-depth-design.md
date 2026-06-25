@@ -102,12 +102,22 @@ re-deploying. Steps:
 
 ## Success criteria
 
-- Two similar colors share **< ~40%** templated sentences (down from 68%) after the prose trim +
-  structured sections.
-- Each page renders the cross-brand matrix, ≥1 visual side-by-side, a rendered pairing palette, and
-  collection context — all from real per-color data.
-- Canary pages re-crawled and **indexed** within ~4 weeks (primary outcome signal).
+- **Primary (real gate): canary pages re-crawled and indexed within ~4 weeks.** The only signal
+  that actually reflects Google's quality judgement.
+- Each page renders the data-derived lede, the cross-brand equivalence matrix, the side-by-side
+  hero, and the existing pairing/complementary/sibling sections — all from real per-color data.
 - No regression flagged by `seo-preflight` / `seo-drift`.
+
+> **Retired criterion + finding (2026-06-24):** the original "< 40% shared templated sentences"
+> proxy was dropped. A values-normalized sentence-overlap metric counts *data-composed* sentences
+> (the lede, the `hex/LRV/undertone` line, the matrix subtitle) as "shared template" because it
+> flattens the very per-color values that differentiate them — so a structured-data page scores
+> ~identical to the templated baseline (68% before and after) even though the rendered values
+> differ per page. Google's near-dup detection keys on the real tokens (different names, hex, and
+> match sets per page), so effective duplication is far lower than this proxy implies. The
+> genuinely-identical text remaining is ~4 FAQ explanatory sentences (deliberately GEO/AI-citation
+> sized) plus standard site chrome — trimming the FAQ is a GEO tradeoff left to a human decision,
+> not done in this pass.
 
 ## Files in scope
 
