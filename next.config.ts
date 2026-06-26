@@ -56,6 +56,19 @@ const securityHeaders = [
   },
 ];
 
+// The /embed/* routes are meant to be iframed on third-party sites (the free
+// cross-brand match widget — a link/citation engine). Loosen ONLY the
+// frame-ancestors directive to `*` for those routes; every other security header
+// stays identical. The global rule below excludes /embed/ so this is the only
+// CSP that applies there (duplicate CSP headers would intersect to the strictest).
+const embedContentSecurityPolicy = contentSecurityPolicy.replace(
+  "frame-ancestors 'self'",
+  "frame-ancestors *",
+);
+const embedSecurityHeaders = securityHeaders.map((h) =>
+  h.key === "Content-Security-Policy" ? { ...h, value: embedContentSecurityPolicy } : h,
+);
+
 const nextConfig: NextConfig = {
   // Frozen at build time (this file evaluates once per build) so sitemap
   // lastmod values reflect the actual deploy date instead of resetting to
@@ -157,8 +170,14 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/((?!api/|_next/static/|_next/image/|favicon.ico).*)",
+        // Embed routes excluded here — they get the permissive frame-ancestors
+        // CSP below so they can be iframed on third-party sites.
+        source: "/((?!api/|_next/static/|_next/image/|favicon.ico|embed/).*)",
         headers: securityHeaders,
+      },
+      {
+        source: "/embed/:path*",
+        headers: embedSecurityHeaders,
       },
     ];
   },
