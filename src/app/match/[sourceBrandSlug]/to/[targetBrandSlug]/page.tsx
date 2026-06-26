@@ -207,15 +207,15 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
           </h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <Link
-              href="/blog/how-to-find-perfect-color-match-across-brands"
+              href="/methodology"
               className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all"
             >
               <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Methodology</p>
               <p className="font-headline text-lg font-bold text-on-surface group-hover:text-primary transition-colors">
-                How to find the perfect paint color match across brands
+                How we match paint colors across brands
               </p>
               <p className="mt-2 text-sm text-on-surface-variant">
-                The CIEDE2000 Delta E score, how to read the verdict labels, and what changes between cross-brand pairs.
+                The CIEDE2000 pipeline, what the Delta E verdict labels mean on a wall, and the known limits of a hex-based match.
               </p>
             </Link>
             {(() => {

@@ -501,7 +501,7 @@ export default async function ColorPage({ params }: PageProps) {
             {brandMatrix.length > 0 && (
               <div className="bg-surface-container-low rounded-xl p-8 md:p-10">
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">{color.name} in Every Brand</h2>
-                <p className="text-sm text-on-surface-variant mb-8">The closest equivalent to {color.name} in each major paint brand, ranked by how close the match reads. Always verify with a physical sample.</p>
+                <p className="text-sm text-on-surface-variant mb-8">The closest equivalent to {color.name} in each major paint brand, ranked by how close the match reads. Always verify with a physical sample. <Link href="/methodology" className="text-primary underline-offset-4 hover:underline whitespace-nowrap">How we calculate match accuracy →</Link></p>
                 {/* Side-by-side hero — the single nearest equivalent shown large,
                     so "does this actually match?" is answered visually before
                     the full per-brand matrix below. Whole block links to it. */}

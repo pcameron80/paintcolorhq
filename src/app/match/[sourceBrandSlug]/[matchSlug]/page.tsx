@@ -174,7 +174,7 @@ export default async function MatchPage({ params }: PageProps) {
 
             <div className="bg-surface-container-low rounded-xl p-6 mb-12 text-center">
               <p className="font-headline font-bold text-on-surface">{Number(bestMatch.delta_e_score) < 2 ? "Nearly identical" : Number(bestMatch.delta_e_score) < 5 ? "Very similar" : "Visible difference"}</p>
-              <p className="text-sm text-on-surface-variant mt-1">Based on CIEDE2000 color difference analysis</p>
+              <p className="text-sm text-on-surface-variant mt-1">Based on <Link href="/methodology" className="text-primary underline-offset-4 hover:underline">CIEDE2000 color difference analysis</Link></p>
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 mb-12">
