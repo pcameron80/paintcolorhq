@@ -148,6 +148,17 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
   ],
 };
 
+/**
+ * Retailers we can monetize through an affiliate program (the big-box
+ * marketplaces). The color page uses this to pick which retailer becomes the
+ * single "buy" CTA; the brand's own $0 .com is demoted to a small reference link.
+ */
+export const AFFILIATE_RETAILERS = new Set(["Home Depot", "Lowe's"]);
+
+export function isAffiliateRetailer(retailerName: string): boolean {
+  return AFFILIATE_RETAILERS.has(retailerName);
+}
+
 export function getRetailerLinks(
   brandSlug: string,
   brandName: string,
@@ -159,20 +170,13 @@ export function getRetailerLinks(
   if (!configs) return [];
 
   const info: ColorInfo = { brandName, colorName, colorNumber, colorFamily };
-  const links = configs
-    .map((c) => ({
-      retailerName: c.name,
-      url: c.url(info),
-    }))
+  // Return every available link in config order (the brand's own .com is listed
+  // first). The color page owns presentation: for brands stocked at an affiliate
+  // big-box it promotes Home Depot / Lowe's to the single buy CTA and demotes the
+  // brand's own page to a "View official color" reference link (see
+  // isAffiliateRetailer). Brands with no marketplace keep their .com as the buy CTA;
+  // Amazon is their monetizable fallback (added separately in getSampleLinks).
+  return configs
+    .map((c) => ({ retailerName: c.name, url: c.url(info) }))
     .filter((link) => link.url !== "");
-
-  // When a color is sold at Home Depot or Lowe's (our affiliate marketplaces),
-  // drop the manufacturer's own-site link — it's not an affiliate channel, so
-  // we send buyers to where we earn. Brands sold only at their own stores
-  // (SW, BM, Farrow & Ball, etc.) keep their link.
-  const MARKETPLACES = new Set(["Home Depot", "Lowe's"]);
-  if (links.some((l) => MARKETPLACES.has(l.retailerName))) {
-    return links.filter((l) => MARKETPLACES.has(l.retailerName));
-  }
-  return links;
 }
