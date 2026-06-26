@@ -166,13 +166,24 @@ export function getRetailerLinks(
     }))
     .filter((link) => link.url !== "");
 
-  // When a color is sold at Home Depot or Lowe's (our affiliate marketplaces),
-  // drop the manufacturer's own-site link — it's not an affiliate channel, so
-  // we send buyers to where we earn. Brands sold only at their own stores
-  // (SW, BM, Farrow & Ball, etc.) keep their link.
-  const MARKETPLACES = new Set(["Home Depot", "Lowe's"]);
-  if (links.some((l) => MARKETPLACES.has(l.retailerName))) {
-    return links.filter((l) => MARKETPLACES.has(l.retailerName));
-  }
-  return links;
+  // Rank the monetizable big-box marketplaces (Home Depot / Lowe's) ahead of the
+  // manufacturer's own $0 .com so the hero "Get this color" button monetizes the
+  // dominant buy-intent click. Keep the brand's own page as a DEMOTED secondary
+  // option — some buyers want the official manufacturer page — so we sort, not
+  // drop. Brands sold only at their own stores (SW, BM, Dunn-Edwards, Farrow &
+  // Ball, etc.) have no marketplace, so their .com simply stays first; Amazon is
+  // their monetizable fallback (added separately in getSampleLinks). Sort by
+  // "is a monetizable retailer," not by the affiliate flag (the flag is false
+  // until the Vercel env prefixes are set, but the hero should already point at
+  // the big-box retailer so it earns the day the IDs go in). Stable: preserves
+  // each group's original order.
+  const MONETIZABLE_RETAILERS = new Set(["Home Depot", "Lowe's"]);
+  return links
+    .map((link, i) => ({ link, i }))
+    .sort(
+      (a, b) =>
+        (MONETIZABLE_RETAILERS.has(b.link.retailerName) ? 1 : 0) -
+          (MONETIZABLE_RETAILERS.has(a.link.retailerName) ? 1 : 0) || a.i - b.i,
+    )
+    .map((x) => x.link);
 }
