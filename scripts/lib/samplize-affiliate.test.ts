@@ -34,6 +34,17 @@ test("available stocked color: renders CTA with CJ prefix + encoded dest + sid",
   assert.ok(link!.url.endsWith("&sid=agreeable-gray-7029"), "url should append &sid=<colorSlug>");
 });
 
+test("available with exact-handle override: CTA uses the feed handle, not <slug>-12x12", () => {
+  const link = sampleLink({ ...base, colorSlug: "carambola-9667", samplizeAvailable: true, samplizeHandle: "carambola-9667-9x1475" });
+  assert.ok(link, "expected a Samplize sample link");
+  assert.ok(
+    link!.url.includes(encodeURIComponent("https://samplize.com/products/carambola-9667-9x1475")),
+    "url should use the exact feed handle"
+  );
+  assert.ok(!link!.url.includes(encodeURIComponent("carambola-9667-12x12")), "url should NOT use the default -12x12 handle");
+  assert.ok(link!.url.endsWith("&sid=carambola-9667"), "sid stays the colorSlug");
+});
+
 test("unavailable color (404): no Samplize CTA", () => {
   assert.equal(sampleLink({ ...base, samplizeAvailable: false }), undefined);
 });

@@ -53,6 +53,13 @@ interface SampleInfo {
    * unchecked → CTA hidden (fail safe, no 404). Populated by check-samplize-availability.ts.
    */
   samplizeAvailable?: boolean | null;
+  /**
+   * Exact samplize.com product handle, used verbatim when it differs from the
+   * default `<colorSlug>-12x12` (size-variant `-9x1475` or accent/spelling colors
+   * the URL crawl couldn't guess — recovered from the CJ feed). When null/absent,
+   * the CTA falls back to `<colorSlug>-12x12`. From colors.samplize_handle.
+   */
+  samplizeHandle?: string | null;
 }
 
 /** Brands Samplize actually stocks peel-and-stick samples for. */
@@ -105,7 +112,9 @@ export function getSampleLinks(info: SampleInfo): SampleLink[] {
   // otherwise the page falls back to its Amazon/brand CTAs instead of deep-linking
   // to a 404. See colors.samplize_available / check-samplize-availability.ts.
   if (SAMPLIZE_BRANDS.has(info.brandSlug) && info.colorSlug && info.samplizeAvailable === true) {
-    const samplizeTarget = `https://samplize.com/products/${info.colorSlug}-12x12`;
+    // Use the exact feed handle when present, else the default `<slug>-12x12`.
+    const handle = info.samplizeHandle || `${info.colorSlug}-12x12`;
+    const samplizeTarget = `https://samplize.com/products/${handle}`;
     // CJ deep link: prefix ends in "?url=", so append the encoded destination,
     // then "&sid=<colorSlug>" so CJ Insights shows which colors drive sales.
     const url = SAMPLIZE_PREFIX

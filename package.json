@@ -14,6 +14,7 @@
     "seed-matches": "tsx scripts/seed-matches.ts",
     "populate-undertones": "tsx scripts/populate-undertones.ts",
     "check-samplize": "tsx scripts/check-samplize-availability.ts",
+    "sync-samplize": "tsx scripts/sync-samplize-feed.ts",
     "build-match-data": "tsx scripts/build-match-data.ts",
     "dedupe-colors": "tsx scripts/dedupe-colors.ts",
     "export-db-colors": "tsx scripts/export-db-colors.ts",

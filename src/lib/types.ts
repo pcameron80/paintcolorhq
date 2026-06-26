@@ -30,6 +30,9 @@ export interface Color {
   // True if a live Samplize peel-and-stick product page exists for this color
   // (gates the affiliate sample CTA). null = unchecked. Only set for SW/BM/F&B.
   samplize_available?: boolean | null;
+  // Exact samplize.com handle when it differs from `<slug>-12x12` (size-variant or
+  // accent/spelling colors recovered from the CJ feed). null = use `<slug>-12x12`.
+  samplize_handle?: string | null;
   created_at: string;
 }
 
