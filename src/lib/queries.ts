@@ -17,7 +17,7 @@ const COLOR_CARD_FIELDS_WITH_BRAND =
 // Fields the color detail page + color-description.ts utilities consume.
 // rgb_* and lab_* are used by the description generator + nearest-color logic.
 const COLOR_DETAIL_FIELDS =
-  "id, brand_id, name, slug, color_number, hex, rgb_r, rgb_g, rgb_b, lab_a, lab_b_val, lrv, color_family, undertone";
+  "id, brand_id, name, slug, color_number, hex, rgb_r, rgb_g, rgb_b, lab_a, lab_b_val, lrv, color_family, undertone, samplize_available, samplize_handle";
 const COLOR_DETAIL_FIELDS_WITH_BRAND =
   COLOR_DETAIL_FIELDS + ", brand:brand_id (id, name, slug)";
 
