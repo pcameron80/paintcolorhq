@@ -13,6 +13,8 @@
     "compute-matches": "tsx scripts/compute-matches.ts",
     "seed-matches": "tsx scripts/seed-matches.ts",
     "populate-undertones": "tsx scripts/populate-undertones.ts",
+    "check-samplize": "tsx scripts/check-samplize-availability.ts",
+    "sync-samplize": "tsx scripts/sync-samplize-feed.ts",
     "build-match-data": "tsx scripts/build-match-data.ts",
     "dedupe-colors": "tsx scripts/dedupe-colors.ts",
     "export-db-colors": "tsx scripts/export-db-colors.ts",
@@ -25,7 +27,8 @@
     "test:pinterest": "node --import tsx --test scripts/pinterest/queue.test.ts",
     "test:blog": "node --import tsx --test scripts/blog/*.test.ts",
     "test:dedupe": "node --import tsx --test scripts/lib/dedupe-rules.test.ts",
-    "test:behr-import": "node --import tsx --test scripts/lib/behr-import-rules.test.ts"
+    "test:behr-import": "node --import tsx --test scripts/lib/behr-import-rules.test.ts",
+    "test:samplize": "NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX='https://www.jdoqocy.com/click-101771405-15496318?url=' node --import tsx --test scripts/lib/samplize-affiliate.test.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",

@@ -224,7 +224,7 @@ export default async function ColorPage({ params }: PageProps) {
   // Curated, hand-written review for high-demand colors (null for the long tail).
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
-  const sampleLinks = getSampleLinks({ brandSlug: color.brand.slug, colorSlug: color.slug, brandName: color.brand.name, colorName: color.name, colorNumber: color.color_number });
+  const sampleLinks = getSampleLinks({ brandSlug: color.brand.slug, colorSlug: color.slug, brandName: color.brand.name, colorName: color.name, colorNumber: color.color_number, samplizeAvailable: color.samplize_available, samplizeHandle: color.samplize_handle });
   // For brands stocked at an affiliate big-box (Behr/PPG/Valspar/Kilz/Glidden),
   // the big-box is the SINGLE buy CTA and the brand's own $0 .com is demoted to a
   // small "View official color" reference link below the buttons — not a competing
