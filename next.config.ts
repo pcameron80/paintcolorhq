@@ -61,10 +61,13 @@ const securityHeaders = [
 // frame-ancestors directive to `*` for those routes; every other security header
 // stays identical. The global rule below excludes /embed/ so this is the only
 // CSP that applies there (duplicate CSP headers would intersect to the strictest).
-const embedContentSecurityPolicy = contentSecurityPolicy.replace(
-  "frame-ancestors 'self'",
-  "frame-ancestors *",
-);
+// frame-ancestors * → third-party sites can iframe the widget.
+// frame-src adds 'self' → the /embed landing page can iframe its own
+// /embed/match live preview (the global frame-src lists only ad domains, no
+// 'self', which would otherwise block the same-origin preview).
+const embedContentSecurityPolicy = contentSecurityPolicy
+  .replace("frame-ancestors 'self'", "frame-ancestors *")
+  .replace("frame-src ", "frame-src 'self' ");
 const embedSecurityHeaders = securityHeaders.map((h) =>
   h.key === "Content-Security-Policy" ? { ...h, value: embedContentSecurityPolicy } : h,
 );

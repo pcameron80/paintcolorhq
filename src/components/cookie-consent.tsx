@@ -16,6 +16,9 @@ export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // The embeddable widget runs inside third-party iframes — never show a cookie
+    // banner or load GA/Pinterest there (no consent surface; it's someone else's page).
+    if (typeof window !== "undefined" && window.location.pathname.startsWith("/embed/match")) return;
     const stored = getStoredConsent();
     if (stored) {
       setConsent(stored);
