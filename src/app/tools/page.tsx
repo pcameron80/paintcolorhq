@@ -96,6 +96,27 @@ const tools = [
       </svg>
     ),
   },
+  {
+    title: "Embed the Match Widget",
+    description:
+      "Run a site or blog? Drop our free cross-brand paint matcher into your page with one line of HTML — your readers match any color across 13 brands.",
+    href: "/embed",
+    icon: (
+      <svg
+        className="h-8 w-8 text-primary"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+        />
+      </svg>
+    ),
+  },
 ];
 
 // JSON-LD helper - all content is server-generated from trusted static values
@@ -110,12 +131,13 @@ export default function ToolsPage() {
         "@context": "https://schema.org", "@type": "ItemList",
         name: "Paint Tools",
         description: "Free paint tools: palette generator, room color visualizer, photo color identifier, and paint calculator.",
-        numberOfItems: 4,
+        numberOfItems: 5,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Paint Calculator", url: "https://www.paintcolorhq.com/tools/paint-calculator" },
           { "@type": "ListItem", position: 2, name: "Photo Color Identifier", url: "https://www.paintcolorhq.com/tools/color-identifier" },
           { "@type": "ListItem", position: 3, name: "Room Color Visualizer", url: "https://www.paintcolorhq.com/tools/room-visualizer" },
           { "@type": "ListItem", position: 4, name: "Paint Color Palette Generator", url: "https://www.paintcolorhq.com/tools/palette-generator" },
+          { "@type": "ListItem", position: 5, name: "Embed the Match Widget", url: "https://www.paintcolorhq.com/embed" },
         ],
       }} />
       <JsonLd data={{
