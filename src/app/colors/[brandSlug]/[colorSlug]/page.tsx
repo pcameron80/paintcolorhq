@@ -648,45 +648,64 @@ export default async function ColorPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* JSON-LD — Product schema for color detail */}
+      {/* JSON-LD — WebPage + DefinedTerm (NOT Product). A paint color is a
+          reference/glossary entity, not a product for sale: PaintColorHQ doesn't
+          sell paint. The old Product type mis-signaled commerce and pulled pages
+          toward Google's Merchant surfaces (#129 stripped the priceless `offers`;
+          this drops the Product type itself). WebPage/DefinedTerm is the type-fit
+          entity and aids AI/Bing entity comprehension — hygiene, not a rich-results
+          play (structured data doesn't lift rankings). Per-color facts stay
+          machine-readable via additionalProperty; cross-brand matches stay as
+          related DefinedTerms. BreadcrumbList + FAQPage are unchanged below. */}
       <JsonLd data={{
         "@context": "https://schema.org",
-        "@type": "Product",
-        name: `${color.name}${color.color_number ? ` ${color.color_number}` : ""}`,
-        description: colorLede,
+        "@type": "WebPage",
+        name: `${color.name}${color.color_number ? ` ${color.color_number}` : ""} Paint Color by ${color.brand.name}`,
         url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
-        // Recommended for Product rich results — reuse the generated swatch OG
-        // image so color pages are eligible for image-enriched SERP formats.
-        image: `https://www.paintcolorhq.com/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`,
-        ...(color.color_number ? { sku: color.color_number, mpn: color.color_number } : {}),
-        color: color.hex.toUpperCase(),
-        brand: { "@type": "Brand", name: color.brand.name },
-        additionalProperty: [
-          { "@type": "PropertyValue", name: "Hex", value: color.hex.toUpperCase() },
-          { "@type": "PropertyValue", name: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
-          ...(lrv != null ? [{ "@type": "PropertyValue", name: "LRV", value: lrv.toFixed(1) }] : []),
-          ...(color.undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: color.undertone }] : []),
-          ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
-        ],
-        // No `offers` block: PaintColorHQ does not sell paint. A priceless
-        // Offer (priceCurrency + InStoreOnly, seller = the paint brand) pulled
-        // every color page into GSC's Merchant listings report — a shopping
-        // surface that can never validate without a real price/shipping/return
-        // policy — and marked up a buy option not visible on the page. Removed
-        // to eliminate that misrepresentation risk under the active HCU
-        // suppression. Pages remain valid Product entities (brand, color,
-        // additionalProperty, isSimilarTo). Earn Product-snippet richness only
-        // via genuine, visible review/aggregateRating on curated colors.
+        description: colorLede,
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `https://www.paintcolorhq.com/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`,
+          caption: `Color swatch of ${color.brand.name} ${color.name}`,
+          representativeOfPage: true,
+        },
+        mainEntity: {
+          "@type": "DefinedTerm",
+          name: `${color.name}${color.color_number ? ` ${color.color_number}` : ""}`,
+          ...(color.color_number ? { termCode: color.color_number } : {}),
+          description: colorLede,
+          url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
+          image: `https://www.paintcolorhq.com/api/og?hex=${encodeURIComponent(color.hex)}&name=${encodeURIComponent(color.name)}&brand=${encodeURIComponent(color.brand.name)}`,
+          inDefinedTermSet: {
+            "@type": "DefinedTermSet",
+            name: `${color.brand.name} Paint Colors`,
+            url: `https://www.paintcolorhq.com/brands/${brandSlug}`,
+          },
+          // Per-color facts — kept machine-readable for AI/entity comprehension.
+          additionalProperty: [
+            { "@type": "PropertyValue", name: "Hex", value: color.hex.toUpperCase() },
+            { "@type": "PropertyValue", name: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
+            ...(lrv != null ? [{ "@type": "PropertyValue", name: "LRV", value: lrv.toFixed(1) }] : []),
+            ...(color.undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: color.undertone }] : []),
+            ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
+          ],
+        },
+        // Near-identical cross-brand equivalents (ΔE < 2) — the moat data, kept as
+        // related DefinedTerms so the cross-brand graph stays machine-readable.
         ...(matches.length > 0 && {
-          isSimilarTo: matches
+          mentions: matches
             .filter((m) => Number(m.delta_e_score) < 2)
             .slice(0, 5)
             .map((m) => ({
-              "@type": "Product",
+              "@type": "DefinedTerm",
               name: `${m.match_color.name}${m.match_color.color_number ? ` ${m.match_color.color_number}` : ""}`,
+              ...(m.match_color.color_number ? { termCode: m.match_color.color_number } : {}),
               url: `https://www.paintcolorhq.com/colors/${m.match_color.brand.slug}/${m.match_color.slug}`,
-              brand: { "@type": "Brand", name: m.match_color.brand.name },
-              color: m.match_color.hex.toUpperCase(),
+              inDefinedTermSet: {
+                "@type": "DefinedTermSet",
+                name: `${m.match_color.brand.name} Paint Colors`,
+                url: `https://www.paintcolorhq.com/brands/${m.match_color.brand.slug}`,
+              },
             })),
         }),
       }} />
