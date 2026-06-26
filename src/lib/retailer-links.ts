@@ -99,6 +99,12 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
       const slug = slugify(i.colorName);
       return `https://www.benjaminmoore.com/en-us/paint-colors/color/${num}/${slug}`;
     }},
+    // BM is sold through Ace Hardware (a monetizable affiliate channel), so the
+    // color page promotes "Buy at Ace Hardware" and demotes the BM .com page to
+    // the "View official color" reference link — same pattern as Behr→Home Depot
+    // and Valspar→Lowe's. Earns once NEXT_PUBLIC_ACE_AFFILIATE_PREFIX is set.
+    { name: "Ace Hardware", url: (i) =>
+      `https://www.acehardware.com/search?query=${encodeURIComponent(`Benjamin Moore ${i.colorName} paint`)}` },
   ],
   "farrow-ball": [
     { name: "Farrow & Ball", url: () => "https://www.farrow-ball.com" },
@@ -153,7 +159,7 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
  * marketplaces). The color page uses this to pick which retailer becomes the
  * single "buy" CTA; the brand's own $0 .com is demoted to a small reference link.
  */
-export const AFFILIATE_RETAILERS = new Set(["Home Depot", "Lowe's"]);
+export const AFFILIATE_RETAILERS = new Set(["Home Depot", "Lowe's", "Ace Hardware"]);
 
 export function isAffiliateRetailer(retailerName: string): boolean {
   return AFFILIATE_RETAILERS.has(retailerName);

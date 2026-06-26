@@ -3,6 +3,20 @@ import { supabase } from "@/lib/supabase";
 import { hexToRgb, rgbToLab, deltaE2000 } from "@/lib/color-utils";
 import type { Lab } from "@/lib/color-utils";
 
+// Public read-only cross-brand match API. CORS-open so it can be called from
+// any origin — the embeddable widget, third-party integrations, and an eventual
+// RapidAPI listing (the cross-brand equivalence API). No auth/keys: the data is
+// already public on the color pages; rate-limiting/keys come with the paid tier.
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: CORS_HEADERS });
+}
+
 export async function GET(request: NextRequest) {
   const hex = request.nextUrl.searchParams.get("hex");
   const brand = request.nextUrl.searchParams.get("brand");
@@ -10,7 +24,7 @@ export async function GET(request: NextRequest) {
   if (!hex || !/^#?[0-9a-fA-F]{6}$/.test(hex)) {
     return NextResponse.json(
       { error: "Invalid hex parameter. Use format: AABBCC or #AABBCC" },
-      { status: 400 },
+      { status: 400, headers: CORS_HEADERS },
     );
   }
 
@@ -64,6 +78,7 @@ export async function GET(request: NextRequest) {
     { matches: scored.slice(0, 10) },
     {
       headers: {
+        ...CORS_HEADERS,
         "Cache-Control":
           "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800",
       },

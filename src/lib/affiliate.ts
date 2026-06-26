@@ -19,9 +19,12 @@
 //     target URL — the existing homedepot.com link is appended, URL-encoded.
 //   NEXT_PUBLIC_LOWES_AFFILIATE_PREFIX
 //     Lowe's affiliate (Impact/CJ) deep-link prefix, same format.
-// Note: Sherwin-Williams and Benjamin Moore have no consumer affiliate program
-// (they sell through their own stores / dealers) — those brand links stay plain;
-// Samplize captures that purchase intent instead.
+//   NEXT_PUBLIC_ACE_AFFILIATE_PREFIX
+//     Ace Hardware affiliate deep-link prefix, same format. Ace stocks Benjamin
+//     Moore, so BM colors route their buy CTA to an Ace search (BM .com stays as
+//     the "View official color" reference).
+// Note: Sherwin-Williams has no consumer affiliate program (own stores) — its
+// brand link stays plain and Samplize captures that purchase intent instead.
 
 export interface SampleLink {
   label: string;
@@ -48,10 +51,11 @@ const SAMPLIZE_PREFIX = process.env.NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX;
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || "greatpickdeal-20";
 const HOMEDEPOT_PREFIX = process.env.NEXT_PUBLIC_HOMEDEPOT_AFFILIATE_PREFIX;
 const LOWES_PREFIX = process.env.NEXT_PUBLIC_LOWES_AFFILIATE_PREFIX;
+const ACE_PREFIX = process.env.NEXT_PUBLIC_ACE_AFFILIATE_PREFIX;
 
 /** True when at least one affiliate program is configured — gates the FTC disclosure. */
 export const AFFILIATE_ENABLED = Boolean(
-  SAMPLIZE_PREFIX || AMAZON_TAG || HOMEDEPOT_PREFIX || LOWES_PREFIX
+  SAMPLIZE_PREFIX || AMAZON_TAG || HOMEDEPOT_PREFIX || LOWES_PREFIX || ACE_PREFIX
 );
 
 /**
@@ -65,6 +69,9 @@ export function affiliatizeRetailer(url: string): { url: string; affiliate: bool
   }
   if (LOWES_PREFIX && url.includes("lowes.com")) {
     return { url: `${LOWES_PREFIX}${encodeURIComponent(url)}`, affiliate: true };
+  }
+  if (ACE_PREFIX && url.includes("acehardware.com")) {
+    return { url: `${ACE_PREFIX}${encodeURIComponent(url)}`, affiliate: true };
   }
   if (AMAZON_TAG && url.includes("amazon.com")) {
     const sep = url.includes("?") ? "&" : "?";
