@@ -15,7 +15,7 @@ import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosest
 import { generateColorLede, nearestMatchesPerBrand, generateMetaDescription } from "@/lib/color-description";
 import { getColorEditorial } from "@/lib/color-editorial";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
-import { getRetailerLinks } from "@/lib/retailer-links";
+import { getRetailerLinks, isAffiliateRetailer } from "@/lib/retailer-links";
 import { getSampleLinks, affiliatizeRetailer, AFFILIATE_ENABLED } from "@/lib/affiliate";
 import { TrackPage } from "@/components/track-page";
 import { TrackedLink } from "@/components/tracked-link";
@@ -225,13 +225,22 @@ export default async function ColorPage({ params }: PageProps) {
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
   const sampleLinks = getSampleLinks({ brandSlug: color.brand.slug, colorSlug: color.slug, brandName: color.brand.name, colorName: color.name, colorNumber: color.color_number });
-  // Shopping CTAs in monetization-priority order: Samplize hero → retailer
+  // For brands stocked at an affiliate big-box (Behr/PPG/Valspar/Kilz/Glidden),
+  // the big-box is the SINGLE buy CTA and the brand's own $0 .com is demoted to a
+  // small "View official color" reference link below the buttons — not a competing
+  // buy button (it leaks the click to a dead end). Brands with no marketplace
+  // (SW/BM/Dunn-Edwards/Dutch Boy/specialty) keep every link as a buy button —
+  // their own .com IS the buy CTA; Amazon is the monetizable fallback.
+  const hasAffiliateRetailer = retailerLinks.some((l) => isAffiliateRetailer(l.retailerName));
+  const buyRetailerLinks = hasAffiliateRetailer ? retailerLinks.filter((l) => isAffiliateRetailer(l.retailerName)) : retailerLinks;
+  const officialColorLinks = hasAffiliateRetailer ? retailerLinks.filter((l) => !isAffiliateRetailer(l.retailerName)) : [];
+  // Shopping CTAs in monetization-priority order: Samplize hero → buy retailer
   // (Home Depot/Lowe's, affiliate once live) → Amazon last. The first one is the
   // filled darker-teal "buy" hero (so every page has a focal point); the rest
   // are teal-outlined.
   const shoppingCtas = [
     ...sampleLinks.filter((l) => l.primary).map((l) => ({ key: l.label, href: l.url, label: `${l.label} of ${color.name}`, sponsored: true })),
-    ...retailerLinks.map((l) => {
+    ...buyRetailerLinks.map((l) => {
       const a = affiliatizeRetailer(l.url);
       return { key: l.retailerName, href: a.url, label: `Buy at ${l.retailerName}`, sponsored: a.affiliate };
     }),
@@ -460,6 +469,24 @@ export default async function ColorPage({ params }: PageProps) {
                       </a>
                     ))}
                   </div>
+                  {/* Brand's own color page — demoted to a plain reference link (not a
+                      buy button) so the affiliate retailer stays the single buy CTA.
+                      Plain <a> keeps GA4 linkDomain outbound tracking; not sponsored. */}
+                  {officialColorLinks.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+                      {officialColorLinks.map((l) => (
+                        <a
+                          key={l.retailerName}
+                          href={l.url}
+                          target="_blank"
+                          rel="nofollow noopener noreferrer"
+                          className="text-sm text-on-surface-variant underline underline-offset-2 hover:text-on-surface transition-colors"
+                        >
+                          View official color on {l.retailerName} →
+                        </a>
+                      ))}
+                    </div>
+                  )}
                   {AFFILIATE_ENABLED && (
                     <p className="mt-4 text-xs text-on-surface-variant">
                       Some sample and supply links are affiliate links — if you buy through them, Paint Color HQ may earn a small commission at no extra cost to you. It helps keep the site free.
