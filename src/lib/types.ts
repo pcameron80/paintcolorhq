@@ -27,6 +27,9 @@ export interface Color {
   collections: string[];
   undertone: string | null;
   is_discontinued: boolean;
+  // True if a live Samplize peel-and-stick product page exists for this color
+  // (gates the affiliate sample CTA). null = unchecked. Only set for SW/BM/F&B.
+  samplize_available?: boolean | null;
   created_at: string;
 }
 

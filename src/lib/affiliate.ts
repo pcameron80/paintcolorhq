@@ -7,10 +7,15 @@
 //
 // Env (set in Vercel → Project → Settings → Environment Variables; NOT committed):
 //   NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX
-//     Your ShareASale (or other network) deep-link prefix, ending right before
-//     the target URL — e.g.
-//     "https://shareasale.com/r.cfm?b=<bannerId>&u=<yourAffId>&m=<samplizeMerchantId>&urllink="
-//     The encoded Samplize URL is appended to it.
+//     Samplize runs on CJ Affiliate (Commission Junction), 12% commission,
+//     30-day cookie. This is your CJ deep-link prefix, ending in "?url=" — e.g.
+//     "https://www.jdoqocy.com/click-<PID>-<AID>?url="
+//     (the CJ redirect domain — jdoqocy/anrdoezrs/kqzyfj/tkqlhce — is
+//     interchangeable; PID = your website ID, AID = a deep-link-enabled link).
+//     The URL-encoded Samplize product URL is appended, then "&sid=<colorSlug>"
+//     for per-color attribution in CJ Insights. Pull a real link from CJ → Links
+//     → Tools → Deep Link Generator (or Links → Search → Samplize → Get Code →
+//     Click URL).
 //   NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG
 //     Amazon Associates store tag. Optional — defaults to the portfolio's
 //     active "greatpickdeal-20" when unset.
@@ -41,6 +46,13 @@ interface SampleInfo {
   brandName: string;
   colorName: string;
   colorNumber?: string | null;
+  /**
+   * Whether a live Samplize product page exists for this color (colors.samplize_available).
+   * Samplize's catalog is not a superset of ours — ~1/3 of our SW colors 404 — so the
+   * sample CTA is rendered only when this is true, never blindly. null/undefined =
+   * unchecked → CTA hidden (fail safe, no 404). Populated by check-samplize-availability.ts.
+   */
+  samplizeAvailable?: boolean | null;
 }
 
 /** Brands Samplize actually stocks peel-and-stick samples for. */
@@ -84,15 +96,24 @@ export function getSampleLinks(info: SampleInfo): SampleLink[] {
   const query = [info.brandName, info.colorName].filter(Boolean).join(" ");
   const links: SampleLink[] = [];
 
-  // Samplize — peel-and-stick samples. Only Sherwin-Williams, Benjamin Moore,
-  // and Farrow & Ball are stocked, and we deep-link straight to the color's
-  // product page (e.g. agreeable-gray-7029-12x12) — the highest-intent next
-  // step. The slug matches our colorSlug exactly (verified across all 3 brands).
-  if (SAMPLIZE_BRANDS.has(info.brandSlug) && info.colorSlug) {
+  // Samplize — peel-and-stick samples (CJ Affiliate, 12%). Only Sherwin-Williams,
+  // Benjamin Moore, and Farrow & Ball are stocked, and the product slug matches
+  // our colorSlug exactly (verified across all 3 brands), so we deep-link straight
+  // to the color's page (e.g. agreeable-gray-7029-12x12) — the highest-intent next
+  // step. BUT Samplize's catalog is not a superset of ours, so we render this CTA
+  // ONLY when a live product page is confirmed (samplizeAvailable === true);
+  // otherwise the page falls back to its Amazon/brand CTAs instead of deep-linking
+  // to a 404. See colors.samplize_available / check-samplize-availability.ts.
+  if (SAMPLIZE_BRANDS.has(info.brandSlug) && info.colorSlug && info.samplizeAvailable === true) {
     const samplizeTarget = `https://samplize.com/products/${info.colorSlug}-12x12`;
+    // CJ deep link: prefix ends in "?url=", so append the encoded destination,
+    // then "&sid=<colorSlug>" so CJ Insights shows which colors drive sales.
+    const url = SAMPLIZE_PREFIX
+      ? `${SAMPLIZE_PREFIX}${encodeURIComponent(samplizeTarget)}&sid=${encodeURIComponent(info.colorSlug)}`
+      : samplizeTarget;
     links.push({
       label: "Order a peel-and-stick sample",
-      url: SAMPLIZE_PREFIX ? `${SAMPLIZE_PREFIX}${encodeURIComponent(samplizeTarget)}` : samplizeTarget,
+      url,
       affiliate: Boolean(SAMPLIZE_PREFIX),
       primary: true,
     });
