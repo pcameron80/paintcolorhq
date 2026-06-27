@@ -139,3 +139,29 @@ export function getSampleLinks(info: SampleInfo): SampleLink[] {
 
   return links;
 }
+
+/**
+ * Samplize's evergreen tiered bundle offer (CJ link 15736719). Surfaced on
+ * multi-color pages (compare, inspiration, palette generator, room visualizer) to
+ * nudge sampling several colors at once — bigger basket, and genuinely better for
+ * comparing. Single source of truth: update the copy here, or remove this export's
+ * usages, if Samplize changes the offer. Factual/no-urgency by design.
+ */
+export const SAMPLIZE_OFFER = {
+  short: "buy 8 peel-and-stick samples, get 2 free",
+  tiers: "8 samples → 2 free · 12 → 3 free · 20 → 3 free + free shipping",
+};
+
+/**
+ * Generic Samplize "shop all samples" link for multi-color contexts (where we
+ * can't deep-link one specific color), with a per-surface SID for CJ attribution.
+ * Affiliate-wrapped when NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX is set, else plain.
+ */
+export function getSamplizeShopLink(sid: string): { url: string; affiliate: boolean } {
+  const target = "https://samplize.com/pages/shop/samples/";
+  if (!SAMPLIZE_PREFIX) return { url: target, affiliate: false };
+  return {
+    url: `${SAMPLIZE_PREFIX}${encodeURIComponent(target)}&sid=${encodeURIComponent(sid)}`,
+    affiliate: true,
+  };
+}

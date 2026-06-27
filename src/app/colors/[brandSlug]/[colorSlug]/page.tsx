@@ -14,6 +14,7 @@ import { redirect } from "next/navigation";
 import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand, getMoreFromFamily } from "@/lib/queries";
 import { generateColorLede, nearestMatchesPerBrand, generateMetaDescription } from "@/lib/color-description";
 import { getColorEditorial } from "@/lib/color-editorial";
+import { SamplizeOffer } from "@/components/samplize-offer";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks, isAffiliateRetailer } from "@/lib/retailer-links";
 import { getSampleLinks, affiliatizeRetailer, AFFILIATE_ENABLED } from "@/lib/affiliate";
@@ -539,6 +540,9 @@ export default async function ColorPage({ params }: PageProps) {
                       </div>
                     </Link>
                   ))}
+                </div>
+                <div className="mt-8 pt-6 border-t border-outline-variant/15">
+                  <SamplizeOffer sid="color-match" intro="Comparing these brands?" compact />
                 </div>
               </div>
             )}

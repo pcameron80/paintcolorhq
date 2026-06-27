@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { BrandPicker } from "@/components/brand-picker";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
 import { PinterestSaveButton } from "@/components/pinterest-save-button";
+import { SamplizeOffer } from "@/components/samplize-offer";
 import { getPaletteBySlug, assignPaletteRoles, inspirationPalettes } from "@/lib/palettes";
 import { getAllBrands, findClosestColor, getBrandBySlug } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
@@ -234,6 +235,10 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
               </Link>
             );
           })}
+        </div>
+
+        <div className="mt-12 max-w-2xl">
+          <SamplizeOffer sid="inspiration" intro="Love this palette?" />
         </div>
       </main>
 
