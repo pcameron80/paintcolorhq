@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { getColorById } from "@/lib/queries";
 import { CompareClient } from "./compare-client";
+import { SamplizeOffer } from "@/components/samplize-offer";
 
 interface PageProps { searchParams: Promise<{ color1?: string; color2?: string }>; }
 
@@ -69,6 +70,12 @@ export default async function ComparePage({ searchParams }: PageProps) {
       <section className="px-6 md:px-12 pb-16">
         <div className="max-w-7xl mx-auto">
           <CompareClient initialColor1={color1} initialColor2={color2} />
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 pb-8">
+        <div className="max-w-7xl mx-auto">
+          <SamplizeOffer sid="compare" intro="Deciding between these two?" />
         </div>
       </section>
 

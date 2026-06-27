@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { RoomVisualizer } from "./visualizer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
+import { SamplizeOffer } from "@/components/samplize-offer";
 
 export const metadata: Metadata = {
   title: "Room Color Visualizer - Preview Paint Colors in a Room",
@@ -246,6 +247,10 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
               </Link>{" "}
               breaks down what to look for.
             </p>
+          </div>
+
+          <div className="mt-12">
+            <SamplizeOffer sid="room-visualizer" intro="Found a color you love on the wall?" />
           </div>
 
           <div className="mt-12">
