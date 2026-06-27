@@ -400,7 +400,7 @@ export default async function Home() {
         url: "https://www.paintcolorhq.com",
         logo: "https://www.paintcolorhq.com/logo.webp",
         description: "Paint Color HQ helps you discover, preview, and compare 26,000+ paint colors across 13 brands, then find your color in the brand you can buy. Cross-brand matches use the CIEDE2000 Delta E formula. Free, no signup.",
-        sameAs: ["https://www.pinterest.com/paintcolorhq"],
+        sameAs: ["https://www.pinterest.com/paintcolorhq", "https://www.linkedin.com/company/paint-color-hq"],
         founder: {
           "@type": "Person",
           name: "Philip Cameron",
