@@ -54,6 +54,94 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "paint-color-matching-api",
+    title: "A Free Paint Color Matching API and Embeddable Widget",
+    date: "2026-06-30",
+    author: "Philip Cameron",
+    excerpt:
+      "Send any hex and get the closest cross-brand paint matches across 13 brands, scored with CIEDE2000 — a free embeddable widget (one line of HTML) and a REST API with a free tier.",
+    coverColor: "#7F9B8E",
+    tags: ["API", "Developers", "Tools"],
+    faq: [
+      {
+        question: "Is the paint color matching API really free?",
+        answer:
+          "Yes. The embeddable widget is free with a small attribution link, and the API has a free tier with no key required for the open endpoint. Paid RapidAPI plans add higher volume and extra color-science fields.",
+      },
+      {
+        question: "How accurate are the cross-brand matches?",
+        answer:
+          "Matches are scored with CIEDE2000 (Delta E 2000), the industry standard for perceptual color difference. Light and mid-tone colors match very closely; deep, saturated colors are harder to reproduce across brands' colorant systems, so we show closeness in plain language and recommend confirming with a physical sample.",
+      },
+      {
+        question: "Can I use the paint color API commercially?",
+        answer:
+          "Yes, within the plan limits. The widget is free with the credit line, and the API's commercial terms scale with the RapidAPI tier you choose.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          If you build anything that touches paint — a design tool, a room visualizer, a retailer site, a home-improvement app — you have probably hit the same wall: a customer has a color from one brand and needs its equivalent in another. There has never been a clean, programmatic way to do that. We built the cross-brand matching engine behind Paint Color HQ, and we now expose it two ways: a one-line embeddable widget and a REST API. Both have a free tier, and the widget needs no signup and no key.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What It Does</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Send a hex value and get back the closest paint colors across <strong>13 brands</strong> — Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, Farrow &amp; Ball, Dunn-Edwards, and more — ranked by how close each match actually reads to the eye. Matches are scored with <strong>CIEDE2000 (Delta E 2000)</strong>, the industry standard for perceptual color difference, over a database of 26,000+ colors. A Delta E under 1.0 is effectively indistinguishable; under 2.0 is a very close match; above 5 the difference is clearly visible.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Free Widget: One Line of HTML</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you do not want to write code, drop the matcher straight into any page. Your visitors pick a color and instantly see the closest match in every brand — no key, no signup. Keep the small credit line and it is free.
+        </p>
+        <pre className="mt-4 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm leading-relaxed text-gray-100"><code>{`<iframe src="https://www.paintcolorhq.com/embed/match"
+  width="100%" height="480" loading="lazy"
+  style="border:0;border-radius:12px;max-width:600px"
+  title="Cross-brand paint color matcher"></iframe>`}</code></pre>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Grab it on the <Link href="/embed" className="text-brand-blue hover:underline">embeddable widget page</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The API: Free Endpoint</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For programmatic use, call the endpoint directly. It is CORS-open and cached at the edge, so it is fast and works from the browser or your backend.
+        </p>
+        <pre className="mt-4 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm leading-relaxed text-gray-100"><code>{`GET https://www.paintcolorhq.com/api/color-match?hex=7F9B8E`}</code></pre>
+        <p className="mt-4 text-gray-700 leading-relaxed">A trimmed response:</p>
+        <pre className="mt-4 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm leading-relaxed text-gray-100"><code>{`{
+  "matches": [
+    {
+      "name": "Comfort Gray",
+      "hex": "#9C9B8E",
+      "brandName": "Sherwin-Williams",
+      "colorSlug": "comfort-gray-6205",
+      "colorNumber": "6205",
+      "deltaE": 1.84
+    }
+  ]
+}`}</code></pre>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Parameters: <code>hex</code> (required, 6-digit, with or without <code>#</code>), <code>brand</code> (optional — restrict to one brand such as <code>benjamin-moore</code>), and <code>limit</code> (optional). Full reference and live examples are on the <Link href="/api" className="text-brand-blue hover:underline">API docs page</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Paid Tier, for Heavier Use</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The free endpoint covers most needs. For production integrations, the paid tier on RapidAPI adds up to 50 results per call, batch lookups (several hex values at once), and per-match color-science fields — LAB, RGB, undertone, LRV, and color family — useful for palette engines and lighting-aware design tools. RapidAPI handles keys, rate limits, and billing, so you can start on the free plan and scale without touching our infrastructure. See the <a href="https://rapidapi.com/support-weGRmXmTU/api/paint-color-match-api1" target="_blank" rel="nofollow noopener noreferrer" className="text-brand-blue hover:underline">listing on RapidAPI</a>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Cross-Brand Matching Is the Hard Part</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Plenty of color APIs generate palettes, convert hex to RGB, or name a single color. Almost none answer the question that actually comes up in paint workflows: what is the nearest equivalent to this exact color in a brand my store carries? That is a data problem, not a formula problem. CIEDE2000 is public math; the moat is a maintained, normalized catalog of 26,000+ colors across 13 brands, kept current as palettes change, with one canonical match per brand instead of a noisy list. The consumer match tools that exist are web pages, not endpoints.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How the Matching Works</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Each color is converted to CIELAB, candidates within range are scored against your input with CIEDE2000, and the closest equivalent per brand is surfaced. The full pipeline, thresholds, and known limitations are documented on our <Link href="/methodology" className="text-brand-blue hover:underline">methodology page</Link>. As with any color match, the honest advice is to confirm a final choice with a physical sample before buying gallons. You can also explore matches by hand in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, build a scheme in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>, browse any <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">brand color chart</Link>, or read how we map <Link href="/blog/best-sherwin-williams-alternatives-to-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams alternatives to Benjamin Moore</Link>.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "best-benjamin-moore-bedroom-colors",
     title: "The Best Benjamin Moore Bedroom Paint Colors (2026)",
     date: "2026-08-14",
