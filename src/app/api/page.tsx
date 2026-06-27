@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
-// Update once the RapidAPI listing is live (RapidAPI → your listing URL).
-const RAPIDAPI_URL = "https://rapidapi.com/search/paint%20color";
+// Public RapidAPI listing for the cross-brand color-match API.
+const RAPIDAPI_URL = "https://rapidapi.com/support-weGRmXmTU/api/paint-color-match-api1";
 
 export const metadata: Metadata = {
   title: "Paint Color Match API — Cross-Brand Equivalents by Hex | Paint Color HQ",
