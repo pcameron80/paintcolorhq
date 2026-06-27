@@ -34,7 +34,7 @@ export default function AboutPage() {
         logo: "https://www.paintcolorhq.com/logo.webp",
         description: "Paint Color HQ is an independent paint color discovery and cross-brand matching platform. We use CIEDE2000 color science to help homeowners and professionals choose paint colors with confidence.",
         contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: "https://www.paintcolorhq.com/contact" },
-        sameAs: [],
+        sameAs: ["https://www.pinterest.com/paintcolorhq", "https://www.linkedin.com/company/paint-color-hq"],
         knowsAbout: ["Paint color matching", "CIEDE2000 color difference", "Cross-brand paint color comparison", "Color science", "Interior paint selection"],
       }} />
       <JsonLd data={{
