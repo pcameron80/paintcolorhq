@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { PaletteGenerator } from "./generator";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
+import { SamplizeOffer } from "@/components/samplize-offer";
 
 export const metadata: Metadata = {
   title: "Paint Color Palette Generator - Build a Coordinated Color Scheme",
@@ -86,6 +87,7 @@ export default function PaletteGeneratorPage() {
 
       <section className="py-20 px-6 md:px-12">
         <div className="max-w-4xl mx-auto">
+          <SamplizeOffer sid="palette-generator" intro="Like this palette?" />
           <div className="mt-12">
             <ToolCrossSell exclude="palette-generator" />
           </div>
