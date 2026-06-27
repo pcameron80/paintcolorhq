@@ -50,6 +50,7 @@ export function Footer() {
             <li><Link href="/tools/palette-generator" className="hover:text-primary underline-offset-4 hover:underline transition-all">Palette Generator</Link></li>
             <li><Link href="/tools/paint-calculator" className="hover:text-primary underline-offset-4 hover:underline transition-all">Paint Calculator</Link></li>
             <li><Link href="/embed" className="hover:text-primary underline-offset-4 hover:underline transition-all">Embed Widget</Link></li>
+            <li><Link href="/api" className="hover:text-primary underline-offset-4 hover:underline transition-all">Developer API</Link></li>
           </ul>
 
           <h4 className="font-headline text-[10px] uppercase font-bold text-on-surface mb-4 mt-8 tracking-widest">Resources</h4>
