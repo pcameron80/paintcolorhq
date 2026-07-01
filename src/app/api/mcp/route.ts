@@ -140,7 +140,12 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
-    const res = await fetch(url, { signal: controller.signal, headers: { accept: "application/json" } });
+    // x-pchq-internal tells /api/color-match to skip its own usage log — this
+    // call is already counted as source=mcp, so we don't double-count it.
+    const res = await fetch(url, {
+      signal: controller.signal,
+      headers: { accept: "application/json", "x-pchq-internal": "mcp" },
+    });
     clearTimeout(timer);
     if (!res.ok) throw new Error(`upstream ${res.status}`);
     payload = await res.json();
