@@ -68,14 +68,18 @@ export async function GET(request: NextRequest) {
   // response flushes, swallows its own errors, and only fires on a cache MISS
   // (the free body is edge-cached, so repeat lookups aren't re-logged). `tier`
   // separates RapidAPI/paid usage (Stream C) from free distribution (Stream A).
-  after(() =>
-    logUsageEvent({
-      source: "color-match",
-      tier: paid ? "paid" : "free",
-      hex: hexes[0] ?? null,
-      ...usageMetaFromRequest(request),
-    }),
-  );
+  // Skip when the MCP server calls us internally (it sets x-pchq-internal and
+  // already logs source=mcp) so one agent call isn't double-counted here too.
+  if (!request.headers.get("x-pchq-internal")) {
+    after(() =>
+      logUsageEvent({
+        source: "color-match",
+        tier: paid ? "paid" : "free",
+        hex: hexes[0] ?? null,
+        ...usageMetaFromRequest(request),
+      }),
+    );
+  }
 
   // Paid responses must not be shared-cached (would leak paid fields to free, or
   // serve a stale free body to a paid caller). Free stays CDN-cached for 24h.
