@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { hexToRgb, rgbToLab, deltaE2000 } from "@/lib/color-utils";
 import type { Lab } from "@/lib/color-utils";
+import { logUsageEvent, usageMetaFromRequest } from "@/lib/usage-log";
 
 // Public read-only cross-brand match API. CORS-open so it can be called from any
 // origin — the embeddable widget, the on-site tools, third-party integrations,
@@ -62,6 +63,19 @@ export async function GET(request: NextRequest) {
       { status: 400, headers: CORS_HEADERS },
     );
   }
+
+  // Adoption telemetry (docs/api-adoption-plan-2026-06-27.md §1) — runs after the
+  // response flushes, swallows its own errors, and only fires on a cache MISS
+  // (the free body is edge-cached, so repeat lookups aren't re-logged). `tier`
+  // separates RapidAPI/paid usage (Stream C) from free distribution (Stream A).
+  after(() =>
+    logUsageEvent({
+      source: "color-match",
+      tier: paid ? "paid" : "free",
+      hex: hexes[0] ?? null,
+      ...usageMetaFromRequest(request),
+    }),
+  );
 
   // Paid responses must not be shared-cached (would leak paid fields to free, or
   // serve a stale free body to a paid caller). Free stays CDN-cached for 24h.

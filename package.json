@@ -13,6 +13,7 @@
     "compute-matches": "tsx scripts/compute-matches.ts",
     "seed-matches": "tsx scripts/seed-matches.ts",
     "populate-undertones": "tsx scripts/populate-undertones.ts",
+    "adoption-report": "tsx scripts/adoption-report.ts",
     "check-samplize": "tsx scripts/check-samplize-availability.ts",
     "sync-samplize": "tsx scripts/sync-samplize-feed.ts",
     "build-match-data": "tsx scripts/build-match-data.ts",

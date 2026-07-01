@@ -129,6 +129,22 @@ export default function ApiDocsPage() {
         </section>
 
         <section className="mt-10">
+          <h2 className="font-headline text-2xl font-bold text-on-surface">For AI agents (MCP server)</h2>
+          <p className="mt-2 text-sm text-on-surface-variant">
+            The same cross-brand matcher is exposed as a{" "}
+            <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-secondary underline underline-offset-2 hover:no-underline">Model Context Protocol</a>{" "}
+            (MCP) tool, so AI assistants and agents can call it directly. Point any MCP client at the
+            stateless Streamable HTTP endpoint — no key required:
+          </p>
+          <Code>https://www.paintcolorhq.com/api/mcp</Code>
+          <p className="mt-3 text-sm text-on-surface-variant">
+            Tool <code className="font-mono">match_paint_color</code> — pass a <code className="font-mono">hex</code> value and
+            get the closest real, purchasable paint colors across 13 brands, scored with CIEDE2000. Optional
+            <code className="font-mono"> brand</code> and <code className="font-mono">limit</code> arguments.
+          </p>
+        </section>
+
+        <section className="mt-10">
           <h2 className="font-headline text-2xl font-bold text-on-surface">Notes</h2>
           <ul className="mt-3 space-y-2 text-sm text-on-surface-variant list-disc pl-5">
             <li>Match accuracy uses CIEDE2000 — see our <Link href="/methodology" className="text-secondary underline underline-offset-2 hover:no-underline">methodology</Link>. Always confirm a final choice with a physical sample.</li>
