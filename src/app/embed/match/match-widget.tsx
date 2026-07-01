@@ -63,6 +63,25 @@ export function MatchWidget() {
     lookup(hex);
   }, [hex, lookup]);
 
+  // Best-effort, once per load: tell the site which external page embedded this
+  // widget (Stream A distribution signal — see /api/embed-event). Fully isolated
+  // in try/catch so it can never affect rendering. Skips our own preview iframe.
+  useEffect(() => {
+    try {
+      if (window.parent === window) return; // not embedded in another page
+      const ancestor = (window.location as unknown as { ancestorOrigins?: DOMStringList })
+        .ancestorOrigins?.[0];
+      const source = ancestor || document.referrer;
+      if (!source) return;
+      const parent = new URL(source);
+      if (parent.hostname.endsWith("paintcolorhq.com")) return; // our own /embed preview
+      const payload = JSON.stringify({ host: parent.origin });
+      navigator.sendBeacon?.("/api/embed-event", new Blob([payload], { type: "application/json" }));
+    } catch {
+      // ignore — telemetry is best-effort
+    }
+  }, []);
+
   const onText = (v: string) => {
     setText(v);
     const n = normalizeHex(v);
