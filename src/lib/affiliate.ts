@@ -112,18 +112,11 @@ export function getSampleLinks(info: SampleInfo): SampleLink[] {
   // otherwise the page falls back to its Amazon/brand CTAs instead of deep-linking
   // to a 404. See colors.samplize_available / check-samplize-availability.ts.
   if (SAMPLIZE_BRANDS.has(info.brandSlug) && info.colorSlug && info.samplizeAvailable === true) {
-    // Use the exact feed handle when present, else the default `<slug>-12x12`.
-    const handle = info.samplizeHandle || `${info.colorSlug}-12x12`;
-    const samplizeTarget = `https://samplize.com/products/${handle}`;
-    // CJ deep link: prefix ends in "?url=", so append the encoded destination,
-    // then "&sid=<colorSlug>" so CJ Insights shows which colors drive sales.
-    const url = SAMPLIZE_PREFIX
-      ? `${SAMPLIZE_PREFIX}${encodeURIComponent(samplizeTarget)}&sid=${encodeURIComponent(info.colorSlug)}`
-      : samplizeTarget;
+    const { url, affiliate } = getSamplizeProductLink(info.colorSlug, info.samplizeHandle, info.colorSlug);
     links.push({
       label: "Order a peel-and-stick sample",
       url,
-      affiliate: Boolean(SAMPLIZE_PREFIX),
+      affiliate,
       primary: true,
     });
   }
@@ -151,6 +144,32 @@ export const SAMPLIZE_OFFER = {
   short: "buy 8 peel-and-stick samples, get 2 free",
   tiers: "8 samples → 2 free · 12 → 3 free · 20 → 3 free + free shipping",
 };
+
+/** Brands Samplize stocks — exported for surfaces that pre-filter before hitting
+ *  the availability check (e.g. the color-identifier match results). */
+export const SAMPLIZE_BRAND_SLUGS = SAMPLIZE_BRANDS;
+
+/**
+ * Direct Samplize product link for one color — the single source of truth for
+ * building the peel-and-stick deep link (used by getSampleLinks on color pages
+ * and by /api/samplize-check for tool surfaces). Callers MUST have verified
+ * samplize_available first; this builds the URL, it does not gate it.
+ * CJ deep link: prefix ends in "?url=", so append the encoded destination, then
+ * "&sid=…" so CJ Insights shows which colors/surfaces drive sales.
+ */
+export function getSamplizeProductLink(
+  colorSlug: string,
+  handle?: string | null,
+  sid?: string,
+): { url: string; affiliate: boolean } {
+  // Use the exact feed handle when present, else the default `<slug>-12x12`.
+  const target = `https://samplize.com/products/${handle || `${colorSlug}-12x12`}`;
+  if (!SAMPLIZE_PREFIX) return { url: target, affiliate: false };
+  return {
+    url: `${SAMPLIZE_PREFIX}${encodeURIComponent(target)}&sid=${encodeURIComponent(sid || colorSlug)}`,
+    affiliate: true,
+  };
+}
 
 /**
  * Generic Samplize "shop all samples" link for multi-color contexts (where we

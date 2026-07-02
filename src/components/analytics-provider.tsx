@@ -53,6 +53,16 @@ export function AnalyticsProvider() {
           "amazon.com",
           "homedepot.com",
           "lowes.com",
+          "acehardware.com",
+          // Samplize — both direct and via the CJ Affiliate redirect domains the
+          // deep links actually point at. Without these, the MONETIZED clicks are
+          // exactly the ones missing from retailer_click.
+          "samplize.com",
+          "jdoqocy.com",
+          "anrdoezrs.net",
+          "kqzyfj.com",
+          "tkqlhce.com",
+          "dpbolvw.net",
         ];
 
         const isRetailer = retailerDomains.some((d) => link.hostname.includes(d));

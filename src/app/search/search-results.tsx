@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ColorCard } from "@/components/color-card";
+import { SamplizeOffer } from "@/components/samplize-offer";
 import type { ColorWithBrand } from "@/lib/types";
 import { trackColorSearch } from "@/lib/analytics";
 
@@ -194,6 +195,11 @@ export function SearchResults() {
               />
             ))}
           </div>
+          <SamplizeOffer
+            sid="search"
+            intro="Torn between a few?"
+            className="mt-10 max-w-2xl"
+          />
         </div>
       )}
 

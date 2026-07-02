@@ -15,6 +15,14 @@ interface ColorMatch {
   deltaE: number;
 }
 
+// Plain-language closeness — site convention: never show the raw Delta E number
+// in the UI (same thresholds as the compare tool and embed widget).
+function closeness(deltaE: number): string {
+  if (deltaE < 2) return "Near-identical";
+  if (deltaE < 5) return "Very similar";
+  return "Visible difference";
+}
+
 type Stage = "upload" | "pick" | "results";
 
 export function ColorIdentifier() {
@@ -22,6 +30,9 @@ export function ColorIdentifier() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [pickedColor, setPickedColor] = useState<string | null>(null);
   const [matches, setMatches] = useState<ColorMatch[]>([]);
+  // Ready-to-render Samplize sample links, keyed by color id — only for matches
+  // with a crawl-confirmed live product page (never deep-link to a 404).
+  const [sampleLinks, setSampleLinks] = useState<Record<string, { url: string; affiliate: boolean }>>({});
   const [loading, setLoading] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
@@ -96,8 +107,26 @@ export function ColorIdentifier() {
           `/api/color-match?hex=${encodeURIComponent(hex)}`,
         );
         const data = await res.json();
-        setMatches(data.matches ?? []);
+        const found: ColorMatch[] = data.matches ?? [];
+        setMatches(found);
         setStage("results");
+
+        // Best-effort: check which matches have a live Samplize sample page so
+        // the results can offer the "order a sample" next step. Never blocks or
+        // breaks results — no links is a fine outcome.
+        setSampleLinks({});
+        const ids = found.map((m) => m.id).slice(0, 10);
+        if (ids.length > 0) {
+          try {
+            const check = await fetch(
+              `/api/samplize-check?ids=${ids.join(",")}&sid=color-identifier`,
+            );
+            const payload = await check.json();
+            setSampleLinks(payload.links ?? {});
+          } catch {
+            // enhancement only
+          }
+        }
       } catch {
         setMatches([]);
       } finally {
@@ -239,37 +268,54 @@ export function ColorIdentifier() {
 
           {matches.length > 0 ? (
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {matches.map((match) => (
-                <Link
-                  key={match.id}
-                  href={`/colors/${match.brandSlug}/${match.colorSlug}`}
-                  className="flex items-center gap-4 rounded-lg border border-gray-200 p-4 transition-shadow hover:shadow-md"
-                >
+              {matches.map((match) => {
+                const sample = sampleLinks[match.id];
+                return (
                   <div
-                    className="h-12 w-12 shrink-0 rounded-lg border border-gray-200"
-                    style={{ backgroundColor: match.hex }}
-                  />
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate font-medium text-gray-900">
-                      {match.name}
-                    </p>
-                    <p className="text-sm text-gray-500">{match.brandName}</p>
-                    <p className="mt-1 text-xs text-gray-400">
-                      {match.hex.toUpperCase()} &middot; Delta E:{" "}
-                      {match.deltaE.toFixed(2)}
-                      {match.deltaE < 2
-                        ? " (very close)"
-                        : match.deltaE < 5
-                          ? " (close)"
-                          : ""}
-                    </p>
+                    key={match.id}
+                    className="flex flex-col rounded-lg border border-gray-200 transition-shadow hover:shadow-md"
+                  >
+                    <Link
+                      href={`/colors/${match.brandSlug}/${match.colorSlug}`}
+                      className="flex flex-1 items-center gap-4 p-4"
+                    >
+                      <div
+                        className="h-12 w-12 shrink-0 rounded-lg border border-gray-200"
+                        style={{ backgroundColor: match.hex }}
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate font-medium text-gray-900">
+                          {match.name}
+                        </p>
+                        <p className="text-sm text-gray-500">{match.brandName}</p>
+                        <p className="mt-1 text-xs text-gray-400">
+                          {match.hex.toUpperCase()} &middot; {closeness(match.deltaE)}
+                        </p>
+                      </div>
+                    </Link>
+                    {sample && (
+                      <a
+                        href={sample.url}
+                        target="_blank"
+                        rel={`${sample.affiliate ? "sponsored " : ""}nofollow noopener noreferrer`}
+                        className="border-t border-gray-100 px-4 py-2.5 text-xs font-semibold text-blue-700 hover:bg-blue-50/50"
+                      >
+                        Order a peel-and-stick sample →
+                      </a>
+                    )}
                   </div>
-                </Link>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <p className="text-sm text-gray-500">
               No close paint matches found for this color.
+            </p>
+          )}
+          {matches.length > 0 && Object.keys(sampleLinks).length > 0 && (
+            <p className="mt-4 text-xs text-gray-400">
+              Sample links are affiliate links — if you buy through them, Paint
+              Color HQ may earn a small commission at no extra cost to you.
             </p>
           )}
         </div>
