@@ -14,8 +14,9 @@ https://www.paintcolorhq.com/api/mcp
 - Transport: **Streamable HTTP**, stateless (JSON-RPC 2.0 over POST; no SSE, no
   sessions, no auth, no key).
 - Source: `src/app/api/mcp/route.ts` (hand-rolled, zero new dependencies).
-- It proxies the **free** tier of `/api/color-match`, so it inherits the 24h edge
-  cache and the single source of truth for matching.
+- It calls the shared matcher in `src/lib/color-match.ts` **directly** (free tier)
+  — the same function the REST route uses, so there's one source of truth and no
+  self-HTTP. DB reads are still cached via the shared Supabase client.
 
 ## Tool
 

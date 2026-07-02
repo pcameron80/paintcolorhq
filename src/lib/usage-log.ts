@@ -60,6 +60,21 @@ export async function logUsageEvent(event: UsageEvent): Promise<void> {
   }
 }
 
+// True when the Referer is our own site. The on-site tools and the embedded widget
+// call /api/color-match on every color-picker change; at drag rates that would
+// swamp api_usage_events with same-origin noise. It's on-site engagement (already
+// in GA4), not API *adoption*, so the color-match logger skips it and keeps the
+// table focused on external consumers (Stream A). Embeds themselves are captured
+// separately by the /api/embed-event beacon, not by these picker calls.
+export function isOnSiteReferer(referer: string | null): boolean {
+  if (!referer) return false;
+  try {
+    return /(^|\.)paintcolorhq\.com$/i.test(new URL(referer).hostname);
+  } catch {
+    return false;
+  }
+}
+
 // Pull the request-level metadata we log on every API surface. `x-vercel-ip-country`
 // is injected by Vercel's edge; it's absent in local dev (→ null).
 export function usageMetaFromRequest(request: Request): {

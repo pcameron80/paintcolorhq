@@ -58,9 +58,12 @@ export function MatchWidget() {
     }
   }, []);
 
-  // Initial lookup + whenever the chosen hex changes.
+  // Initial lookup + whenever the chosen hex changes. Debounced: the native color
+  // picker fires continuously while dragging, so wait until the user settles —
+  // one API call per chosen color, not dozens of cache-miss calls per drag.
   useEffect(() => {
-    lookup(hex);
+    const t = setTimeout(() => lookup(hex), 250);
+    return () => clearTimeout(t);
   }, [hex, lookup]);
 
   // Best-effort, once per load: tell the site which external page embedded this
