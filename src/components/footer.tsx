@@ -70,6 +70,7 @@ export function Footer() {
           <ul className="space-y-3 text-xs text-on-surface-variant">
             <li><Link href="/blog" className="hover:text-primary underline-offset-4 hover:underline transition-all">Blog</Link></li>
             <li><Link href="/inspiration" className="hover:text-primary underline-offset-4 hover:underline transition-all">Inspiration Palettes</Link></li>
+            <li><Link href="/discontinued" className="hover:text-primary underline-offset-4 hover:underline transition-all">Discontinued Colors</Link></li>
             <li><Link href="/faq" className="hover:text-primary underline-offset-4 hover:underline transition-all">FAQ</Link></li>
           </ul>
         </div>

@@ -54,6 +54,198 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "most-duplicated-paint-color",
+    title: "One Color, Two Dozen Names: The Most Duplicated Paint Color in America",
+    date: "2026-07-06",
+    author: "Philip Cameron",
+    excerpt:
+      "We compared all 26,597 colors across 13 paint brands with CIEDE2000. Two-thirds have a near-identical twin at another brand — and one warm off-white is sold under two dozen different names.",
+    coverColor: "#F7F1E2",
+    tags: ["Data", "Design"],
+    faq: [
+      {
+        question: "What counts as the same color in this analysis?",
+        answer:
+          "Two colors are treated as near-identical when their CIEDE2000 (Delta E 2000) difference is below 1.0 — a gap most people cannot see even with the two swatches side by side. CIEDE2000 is the perceptual color-difference standard used in paint manufacturing quality control. Note that paint formulas, sheens, and bases still differ between brands even when the color target is effectively the same.",
+      },
+      {
+        question: "Are cheaper paint brands copying expensive ones?",
+        answer:
+          "The data shows convergence, not intent. Popular neutrals cluster in a small region of color space, brands routinely match competitors' bestsellers on request, and regional brands often track the national palettes closely. Whether any given twin is imitation or coincidence, the numbers alone can't say.",
+      },
+      {
+        question: "How do I find another brand's version of a paint color?",
+        answer:
+          "Open any color on Paint Color HQ and its page lists the closest equivalent in every brand we track, ranked by perceptual closeness. You can also compare any two colors side by side with the compare tool. Because formulas and sheens differ, always confirm the final choice with a physical sample on your wall.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          We ran a simple question against our full database: how much of the American paint
+          aisle is the same paint wearing different names? The dataset is every color we track —{" "}
+          <strong>26,597 colors across 13 brands</strong> — and the measure is CIEDE2000 (Delta E
+          2000), the color-difference standard paint manufacturers use for quality control. A
+          Delta E below 1.0 means two colors are near-identical: most people cannot tell them
+          apart even side by side. The answer:{" "}
+          <strong>
+            17,702 colors — 66.6% of everything on the market we track — have at least one
+            near-identical twin at a competing brand.
+          </strong>
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Most Duplicated Color in America</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The single most duplicated color is a warm, slightly creamy off-white. Benjamin Moore
+          sells it as <Swatch hex="#F7F1E2" name="Flurry (CC-100)" href="/colors/benjamin-moore/flurry-cc-100" />.
+          Dunn-Edwards sells the <em>numerically identical</em> color — the same hex value, a
+          Delta E of exactly zero — as{" "}
+          <Swatch hex="#F7F1E2" name="Swan White (DEW346)" href="/colors/dunn-edwards/swan-white-dew346" />.
+          In total, <strong>12 of the 13 brands we track</strong> sell a version of this shade
+          close enough that you could swap one for another mid-wall and never spot the seam — at
+          least two dozen named colors in all. That list includes one of the most famous designer
+          whites in the world: Farrow &amp; Ball&apos;s{" "}
+          <Swatch hex="#F7F1E3" name="Pointing (2003)" href="/colors/farrow-ball/pointing-2003" />, a
+          premium-priced classic that is, colorimetrically, the same shade as the big-box
+          versions below.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Brand</th>
+                <th className="py-2 pr-4 font-semibold">Their name for it</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              {[
+                { brand: "Benjamin Moore", swatch: { hex: "#F7F1E2", name: "Flurry CC-100", href: "/colors/benjamin-moore/flurry-cc-100" }, close: "the reference" },
+                { brand: "Dunn-Edwards", swatch: { hex: "#F7F1E2", name: "Swan White DEW346", href: "/colors/dunn-edwards/swan-white-dew346" }, close: "identical (ΔE 0.00)" },
+                { brand: "Vista Paint", swatch: { hex: "#F7F1E1", name: "Abstract White 1027", href: "/colors/vista-paint/abstract-white-c-1026" }, close: "ΔE 0.41" },
+                { brand: "Farrow & Ball", swatch: { hex: "#F7F1E3", name: "Pointing 2003", href: "/colors/farrow-ball/pointing-2003" }, close: "ΔE 0.42" },
+                { brand: "Sherwin-Williams", swatch: { hex: "#F6F0E2", name: "Roman Column 7562", href: "/colors/sherwin-williams/roman-column-7562" }, close: "ΔE 0.46" },
+                { brand: "Valspar", swatch: { hex: "#F6F0E2", name: "Warm Milk 8007-8B", href: "/colors/valspar/warm-milk-8007-8b" }, close: "ΔE 0.46" },
+                { brand: "Dutch Boy", swatch: { hex: "#F6F0E2", name: "Aged Marble 006W", href: "/colors/dutch-boy/aged-marble-006w" }, close: "ΔE 0.46" },
+                { brand: "Hirshfield's", swatch: { hex: "#F8F2E4", name: "Abstract White 1027", href: "/colors/hirshfields/abstract-white-1027" }, close: "ΔE 0.48" },
+                { brand: "Behr", swatch: { hex: "#F7F2E3", name: "Spun Cotton YL-W09", href: "/colors/behr/spun-cotton-yl-w09" }, close: "ΔE 0.51" },
+                { brand: "PPG", swatch: { hex: "#F5F0E2", name: "White Chip 15-06", href: "/colors/ppg/white-chip-15-06" }, close: "ΔE 0.58" },
+                { brand: "Kilz", swatch: { hex: "#F7EFDF", name: "Mayo LD200-01", href: "/colors/kilz/mayo-ld200-01" }, close: "ΔE 0.98" },
+                { brand: "RAL (standard)", swatch: { hex: "#FAF4E3", name: "9001 Cream", href: "/colors/ral/cream-9001" }, close: "ΔE 0.99" },
+              ].map((row) => (
+                <tr key={row.brand} className="border-b border-gray-100">
+                  <td className="py-2 pr-4 whitespace-nowrap">{row.brand}</td>
+                  <td className="py-2 pr-4"><Swatch hex={row.swatch.hex} name={row.swatch.name} href={row.swatch.href} /></td>
+                  <td className="py-2 whitespace-nowrap text-gray-600">{row.close}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-3 text-sm text-gray-500">
+          One near-identical twin shown per brand (Delta E 2000 vs. Flurry; under 1.0 is not
+          distinguishable side by side). Colorhouse is the only tracked brand without one.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">749 Colors Are Literally Identical Across Brands</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Near-identical undersells some of it. <strong>749 exact color values</strong> — same hex,
+          digit for digit — are sold by two or more brands under different names, covering 1,555
+          named paint colors. In the most extreme cases, <strong>four brands</strong> sell the
+          same exact value. Flurry and Swan White above are one of those pairs: not close, not
+          similar — the same color target with two names and two price tags.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Most (and Least) Original Palettes</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Flip the question: what share of each brand&apos;s palette exists <em>nowhere else</em> —
+          no near-identical twin at any other tracked brand?
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Brand</th>
+                <th className="py-2 pr-4 font-semibold">Palette size</th>
+                <th className="py-2 font-semibold">Colors unique to the brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              {[
+                ["Behr", "5,786", "48.5%"],
+                ["Dunn-Edwards", "2,230", "35.6%"],
+                ["Kilz", "827", "34.8%"],
+                ["Valspar", "2,358", "34.5%"],
+                ["Benjamin Moore", "3,904", "34.0%"],
+                ["PPG", "3,259", "32.8%"],
+                ["Colorhouse", "128", "27.3%"],
+                ["Sherwin-Williams", "1,951", "26.6%"],
+                ["Farrow & Ball", "167", "26.3%"],
+                ["Dutch Boy", "1,441", "26.1%"],
+                ["Vista Paint", "2,864", "19.7%"],
+                ["Hirshfield's", "1,469", "8.2%"],
+              ].map(([brand, size, pct]) => (
+                <tr key={brand} className="border-b border-gray-100">
+                  <td className="py-2 pr-4">{brand}</td>
+                  <td className="py-2 pr-4 text-gray-600">{size}</td>
+                  <td className="py-2 font-medium">{pct}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-3 text-sm text-gray-500">
+          RAL is excluded here — it is an industrial color standard, not a decorative paint line.
+          Two honest caveats: a bigger palette naturally claims more unique territory, which
+          flatters Behr&apos;s number; and regional brands like Hirshfield&apos;s and Vista Paint
+          serve customers who ask for national colors by name, so tracking those palettes closely
+          is part of the job, not a knock on them.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Even the premium end converges: about three-quarters of Sherwin-Williams and Farrow
+          &amp; Ball colors have a near-identical twin somewhere else. The most intertwined pair
+          of brands is <strong>Behr and Benjamin Moore</strong> — roughly 2,400 colors in each
+          palette have a near-identical counterpart in the other.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why the Paint Aisle Converges</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three forces push palettes together. First, demand piles up in a small corner of color
+          space — whites, off-whites, greiges, and soft grays dominate what people put on walls,
+          so every brand needs dense coverage exactly there. Second, matching a competitor&apos;s
+          bestseller is normal practice: paint stores field &ldquo;can you make Agreeable
+          Gray?&rdquo; requests every day, and brands answer by shipping their own version. Third,
+          regional brands maintain equivalents of the national palettes their customers name-check.
+          The result is a market where the name and the can are brand-specific, but the color
+          itself often is not.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What This Means When You&apos;re Buying Paint</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          You are less locked in than the sample-card racks suggest. If you love a color but
+          prefer another brand&apos;s price, availability, or a specific product line, there is a
+          two-in-three chance a near-identical version exists — every color page on this site
+          lists them, and the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>{" "}
+          shows any two candidates side by side. The one thing the math cannot standardize is the
+          paint itself: formulas, sheens, and coverage differ between brands even when the color
+          target is the same, so confirm the winner with a physical sample on your own wall before
+          buying gallons.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Methodology</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We computed CIEDE2000 (Delta E 2000) differences across all 26,597 colors in the Paint
+          Color HQ database — 12 decorative paint brands plus the RAL classic standard — as of
+          July 2026, treating pairs under Delta E 1.0 as near-identical. Color values come from
+          each brand&apos;s published palette data; the conversion pipeline and thresholds are
+          documented on our <Link href="/methodology" className="text-brand-blue hover:underline">methodology page</Link>.
+          Brand palettes change, so counts shift slightly as we import updates. If you cite these
+          findings, please link to this page so readers can check the current numbers.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "paint-color-matching-api",
     title: "A Free Paint Color Matching API and Embeddable Widget",
     date: "2026-06-30",
