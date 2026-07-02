@@ -17,7 +17,7 @@ import { getColorEditorial } from "@/lib/color-editorial";
 import { SamplizeOffer } from "@/components/samplize-offer";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
 import { getRetailerLinks, isAffiliateRetailer } from "@/lib/retailer-links";
-import { getSampleLinks, affiliatizeRetailer, AFFILIATE_ENABLED } from "@/lib/affiliate";
+import { getSampleLinks, getSamplizeProductLink, getSamplizeShopLink, SAMPLIZE_OFFER, affiliatizeRetailer, AFFILIATE_ENABLED } from "@/lib/affiliate";
 import { TrackPage } from "@/components/track-page";
 import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
@@ -226,6 +226,13 @@ export default async function ColorPage({ params }: PageProps) {
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
   const sampleLinks = getSampleLinks({ brandSlug: color.brand.slug, colorSlug: color.slug, brandName: color.brand.name, colorName: color.name, colorNumber: color.color_number, samplizeAvailable: color.samplize_available, samplizeHandle: color.samplize_handle });
+  // Samplize is stocked + confirmed live for this color (getSampleLinks sets
+  // primary only in that branch). Powers the two extra placements added for the
+  // CTA-visibility pass — hero pill chip (sid=hero) and matrix-foot line
+  // (sid=matrix) — each with its own SID so CJ Insights can rank placements.
+  const samplizeStocked = sampleLinks.some((l) => l.primary);
+  const heroSampleLink = samplizeStocked ? getSamplizeProductLink(color.slug, color.samplize_handle, "hero") : null;
+  const matrixSampleLink = samplizeStocked ? getSamplizeProductLink(color.slug, color.samplize_handle, "matrix") : null;
   // For brands stocked at an affiliate big-box (Behr/PPG/Valspar/Kilz/Glidden),
   // the big-box is the SINGLE buy CTA and the brand's own $0 .com is demoted to a
   // small "View official color" reference link below the buttons — not a competing
@@ -356,6 +363,23 @@ export default async function ColorPage({ params }: PageProps) {
           </div>
         </div>
         <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 ${light ? "bg-on-surface/10" : "bg-white/10"} backdrop-blur-xl px-6 py-3 rounded-full border ${light ? "border-on-surface/10" : "border-white/10"}`}>
+          {/* Above-the-fold buy affordance — only on Samplize-stocked colors
+              (availability-gated upstream via sampleLinks' primary entry).
+              sid=hero so CJ Insights can compare placements (hero vs matrix
+              vs the mid-page primary CTA, which keeps sid=colorSlug). */}
+          {heroSampleLink && (
+            <>
+              <a
+                href={heroSampleLink.url}
+                target="_blank"
+                rel={`${heroSampleLink.affiliate ? "sponsored " : ""}nofollow noopener noreferrer`}
+                className={`text-sm font-headline font-bold whitespace-nowrap hover:opacity-70 transition-opacity ${light ? "text-on-surface" : "text-white"}`}
+              >
+                Order a sample
+              </a>
+              <div className={`w-px h-4 ${light ? "bg-on-surface/20" : "bg-white/20"}`} />
+            </>
+          )}
           <SaveToProject colorId={color.id} currentPath={`/colors/${brandSlug}/${colorSlug}`} />
           <ShareButton title={`${color.name} by ${color.brand.name}`} url={`/colors/${brandSlug}/${colorSlug}`} />
           <PinterestSaveButton
@@ -542,7 +566,36 @@ export default async function ColorPage({ params }: PageProps) {
                   ))}
                 </div>
                 <div className="mt-8 pt-6 border-t border-outline-variant/15">
-                  <SamplizeOffer sid="color-match" intro="Comparing these brands?" compact />
+                  {/* When this color is Samplize-stocked, lead with the direct
+                      per-color sample link at the moment of highest attention
+                      (users just studied the matches); the bundle shop link
+                      covers sampling the matches alongside it. Falls back to
+                      the generic bundle line otherwise. */}
+                  {matrixSampleLink ? (
+                    <p className="text-sm text-on-surface-variant">
+                      Seeing a close call?{" "}
+                      <a
+                        href={matrixSampleLink.url}
+                        target="_blank"
+                        rel={`${matrixSampleLink.affiliate ? "sponsored " : ""}nofollow noopener noreferrer`}
+                        className="text-secondary font-semibold underline underline-offset-2 hover:no-underline"
+                      >
+                        Order a peel-and-stick sample of {color.name}
+                      </a>{" "}
+                      — or{" "}
+                      <a
+                        href={getSamplizeShopLink("matrix-bundle").url}
+                        target="_blank"
+                        rel={`${getSamplizeShopLink("matrix-bundle").affiliate ? "sponsored " : ""}nofollow noopener noreferrer`}
+                        className="text-secondary font-semibold underline underline-offset-2 hover:no-underline"
+                      >
+                        sample it next to its top matches
+                      </a>{" "}
+                      — Samplize {SAMPLIZE_OFFER.short}.
+                    </p>
+                  ) : (
+                    <SamplizeOffer sid="color-match" intro="Comparing these brands?" compact />
+                  )}
                 </div>
               </div>
             )}
