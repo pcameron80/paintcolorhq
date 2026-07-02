@@ -4,11 +4,16 @@ import type { Lab } from "@/lib/color-utils";
 
 // Core cross-brand color matcher. Extracted so BOTH the public REST route
 // (src/app/api/color-match/route.ts) and the MCP agent tool (src/app/api/mcp)
-// call it directly. The MCP tool previously proxied the REST endpoint over HTTP,
-// which self-logged a duplicate usage row and made an internal call impossible to
-// tell apart from an external one without a spoofable trust header. One function,
-// no self-HTTP. DB reads still hit Next's Data Cache via the shared `supabase`
-// client's `revalidate` wrapper, so calling it directly costs nothing extra.
+// call it directly — no self-HTTP proxy.
+//
+// Candidate selection is deterministic: the nearest_colors_by_lab RPC (migration
+// 010) orders ALL colors by squared CIE LAB distance (ΔE76) and returns the k
+// nearest; we then refine those k with the exact CIEDE2000 (ΔE2000) formula and
+// take the final top-N. This replaced an unordered RGB bounding box + .limit(500),
+// which silently dropped the true closest color in dense color regions (a ±40 RGB
+// box around a common greige holds 6,000+ of our ~26.6k colors), so the "closest"
+// match could vary run to run. The RPC is called over GET so it stays cacheable by
+// Next's Data Cache.
 //
 // FREE tier (paid = false): base fields only — the shape the widget/tools depend
 // on; do NOT change it. PAID tier adds the color-science fields.
@@ -30,6 +35,27 @@ export interface PaintMatch {
   colorFamily?: string | null;
 }
 
+// One row from nearest_colors_by_lab (flat brand columns; numeric fields may
+// arrive as strings from PostgREST, so everything numeric is coerced below).
+interface CandidateRow {
+  id: string;
+  name: string;
+  hex: string;
+  slug: string;
+  color_number: string | null;
+  rgb_r: number;
+  rgb_g: number;
+  rgb_b: number;
+  lab_l: number | string | null;
+  lab_a: number | string | null;
+  lab_b_val: number | string | null;
+  undertone: string | null;
+  lrv: number | string | null;
+  color_family: string | null;
+  brand_name: string;
+  brand_slug: string;
+}
+
 export async function findColorMatches(
   hex: string,
   brand: string | null,
@@ -40,23 +66,41 @@ export async function findColorMatches(
   const { r, g, b } = hexToRgb(normalizedHex);
   const inputLab = rgbToLab(r, g, b);
 
-  let candidates = await fetchCandidates(r, g, b, 40, brand);
-  if (candidates.length < limit) {
-    candidates = await fetchCandidates(r, g, b, 80, brand);
-  }
+  // Over-fetch a candidate pool so the exact ΔE2000 top-N is guaranteed within the
+  // ΔE76-ranked pool, then refine. 6× the requested count (min 200, cap 500) is
+  // ample — ΔE76 and ΔE2000 rank near-identical colors the same way.
+  const poolSize = Math.min(Math.max(limit * 6, 200), 500);
+
+  // Omit in_brand entirely when unfiltered so the SQL DEFAULT (NULL) applies. Over
+  // a GET RPC, passing null serializes to the string "null", which would match no
+  // brand slug and return zero rows.
+  const args: Record<string, unknown> = {
+    in_l: inputLab.L,
+    in_a: inputLab.a,
+    in_b: inputLab.b,
+    in_limit: poolSize,
+  };
+  if (brand) args.in_brand = brand;
+
+  const { data, error } = await supabase.rpc("nearest_colors_by_lab", args, { get: true });
+  if (error) throw error;
+  const candidates = (data ?? []) as CandidateRow[];
 
   const scored = candidates.map((c): PaintMatch => {
+    const labL = num(c.lab_l);
+    const labA = num(c.lab_a);
+    const labBVal = num(c.lab_b_val);
     const candidateLab: Lab =
-      c.lab_l != null && c.lab_a != null && c.lab_b_val != null
-        ? { L: Number(c.lab_l), a: Number(c.lab_a), b: Number(c.lab_b_val) }
+      labL != null && labA != null && labBVal != null
+        ? { L: labL, a: labA, b: labBVal }
         : rgbToLab(c.rgb_r, c.rgb_g, c.rgb_b);
 
     const base: PaintMatch = {
       id: c.id,
       name: c.name,
       hex: c.hex,
-      brandName: c.brand.name,
-      brandSlug: c.brand.slug,
+      brandName: c.brand_name,
+      brandSlug: c.brand_slug,
       colorSlug: c.slug,
       colorNumber: c.color_number,
       deltaE: Number(deltaE2000(inputLab, candidateLab).toFixed(2)),
@@ -73,7 +117,7 @@ export async function findColorMatches(
       },
       rgb: { r: c.rgb_r, g: c.rgb_g, b: c.rgb_b },
       undertone: c.undertone ?? null,
-      lrv: c.lrv != null ? Number(c.lrv) : null,
+      lrv: num(c.lrv),
       colorFamily: c.color_family ?? null,
     };
   });
@@ -82,43 +126,9 @@ export async function findColorMatches(
   return scored.slice(0, limit);
 }
 
-async function fetchCandidates(r: number, g: number, b: number, range: number, brand?: string | null) {
-  const brandJoin = brand ? "brand:brand_id!inner (name, slug)" : "brand:brand_id (name, slug)";
-
-  let query = supabase
-    .from("colors")
-    .select(
-      `id, name, hex, slug, color_number, rgb_r, rgb_g, rgb_b, lab_l, lab_a, lab_b_val, undertone, lrv, color_family, ${brandJoin}`,
-    )
-    .gte("rgb_r", Math.max(0, r - range))
-    .lte("rgb_r", Math.min(255, r + range))
-    .gte("rgb_g", Math.max(0, g - range))
-    .lte("rgb_g", Math.min(255, g + range))
-    .gte("rgb_b", Math.max(0, b - range))
-    .lte("rgb_b", Math.min(255, b + range));
-
-  if (brand) {
-    query = query.eq("brand.slug", brand);
-  }
-
-  const { data, error } = await query.limit(500);
-  if (error) throw error;
-
-  return (data ?? []) as unknown as Array<{
-    id: string;
-    name: string;
-    hex: string;
-    slug: string;
-    color_number: string | null;
-    rgb_r: number;
-    rgb_g: number;
-    rgb_b: number;
-    lab_l: number | null;
-    lab_a: number | null;
-    lab_b_val: number | null;
-    undertone: string | null;
-    lrv: number | null;
-    color_family: string | null;
-    brand: { name: string; slug: string };
-  }>;
+// PostgREST may serialize numeric columns as strings; coerce to number | null.
+function num(value: number | string | null | undefined): number | null {
+  if (value == null) return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
 }
