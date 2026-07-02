@@ -1,5 +1,6 @@
 import { NextResponse, after } from "next/server";
 import { logUsageEvent, usageMetaFromRequest } from "@/lib/usage-log";
+import { findColorMatches, type PaintMatch } from "@/lib/color-match";
 
 // Model Context Protocol (MCP) server — the agent-facing surface of the
 // cross-brand color-match API (Stream B in docs/api-adoption-plan-2026-06-27.md:
@@ -11,9 +12,11 @@ import { logUsageEvent, usageMetaFromRequest } from "@/lib/usage-log";
 // transitive packages (express/hono/jose/…) for a one-tool proxy. The protocol
 // surface we need is small and stable: initialize, tools/list, tools/call, ping.
 //
-// The single tool proxies the live FREE /api/color-match, so it inherits the 24h
-// edge cache and stays a thin wrapper over the canonical matcher (one source of
-// truth). Validate with the MCP Inspector before listing on agent registries.
+// The single tool calls the shared matcher (src/lib/color-match.ts) DIRECTLY — no
+// self-HTTP proxy — so one agent call logs exactly one usage row (source=mcp) and
+// there's no internal traffic to tell apart from external callers. DB reads still
+// hit Next's Data Cache via the shared supabase client. Validate with the MCP
+// Inspector before listing on agent registries.
 //
 // Public endpoint: https://www.paintcolorhq.com/api/mcp
 export const runtime = "nodejs";
@@ -24,7 +27,6 @@ const SUPPORTED_PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
 const DEFAULT_PROTOCOL_VERSION = "2025-06-18";
 const API_BASE = "https://www.paintcolorhq.com";
 const HEX_RE = /^#?[0-9a-fA-F]{6}$/;
-const UPSTREAM_TIMEOUT_MS = 8000;
 
 const CORS_HEADERS: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
@@ -85,16 +87,6 @@ interface JsonRpcMessage {
   params?: Record<string, unknown>;
 }
 
-interface UpstreamMatch {
-  name: string;
-  hex: string;
-  brandName: string;
-  brandSlug: string;
-  colorSlug: string;
-  colorNumber: string | null;
-  deltaE: number;
-}
-
 function rpcResult(id: JsonRpcId, result: unknown) {
   return { jsonrpc: "2.0", id, result };
 }
@@ -132,23 +124,13 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
       ? Math.min(Math.max(args.limit, 1), 10)
       : 10;
 
-  const url = new URL(`${API_BASE}/api/color-match`);
-  url.searchParams.set("hex", hexRaw);
-  if (brand) url.searchParams.set("brand", brand);
-
-  let payload: { matches?: UpstreamMatch[] };
+  // When cross-brand (no brand filter), over-fetch so the per-brand dedupe below
+  // still yields ~limit distinct brands; when brand-filtered, take limit directly.
+  const fetchLimit = brand ? limit : Math.max(limit, 10);
+  let raw: PaintMatch[];
   try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
-    // x-pchq-internal tells /api/color-match to skip its own usage log — this
-    // call is already counted as source=mcp, so we don't double-count it.
-    const res = await fetch(url, {
-      signal: controller.signal,
-      headers: { accept: "application/json", "x-pchq-internal": "mcp" },
-    });
-    clearTimeout(timer);
-    if (!res.ok) throw new Error(`upstream ${res.status}`);
-    payload = await res.json();
+    // Call the shared matcher directly (free tier). No self-HTTP → no double-log.
+    raw = await findColorMatches(hexRaw, brand, fetchLimit, false);
   } catch {
     return {
       content: [
@@ -161,34 +143,41 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
   // Stream B telemetry — runs after the response flushes (zero added latency).
   after(() => logUsageEvent({ source: "mcp", tier: "free", hex: hexRaw, ...usageMetaFromRequest(request) }));
 
-  const raw = Array.isArray(payload.matches) ? payload.matches : [];
-  // Dedupe to the single closest match per brand — the cross-brand spread is the
-  // whole point — then take the requested count. Upstream is sorted by ΔE asc.
-  const seen = new Set<string>();
-  const matches = raw
-    .filter((m) => {
-      if (seen.has(m.brandSlug)) return false;
-      seen.add(m.brandSlug);
-      return true;
-    })
-    .slice(0, limit)
-    .map((m) => ({
-      brand: m.brandName,
-      brandSlug: m.brandSlug,
-      name: m.name,
-      colorNumber: m.colorNumber,
-      hex: m.hex,
-      closeness: closeness(m.deltaE),
-      deltaE: m.deltaE,
-      url: `${API_BASE}/colors/${m.brandSlug}/${m.colorSlug}`,
-    }));
+  // Cross-brand: keep the single closest match per brand (the spread is the
+  // point). Brand-filtered: the caller wants that brand's closest N, so no dedupe.
+  let selected: PaintMatch[];
+  if (brand) {
+    selected = raw.slice(0, limit);
+  } else {
+    const seen = new Set<string>();
+    selected = raw
+      .filter((m) => {
+        if (seen.has(m.brandSlug)) return false;
+        seen.add(m.brandSlug);
+        return true;
+      })
+      .slice(0, limit);
+  }
+
+  const matches = selected.map((m) => ({
+    brand: m.brandName,
+    brandSlug: m.brandSlug,
+    name: m.name,
+    colorNumber: m.colorNumber,
+    hex: m.hex,
+    closeness: closeness(m.deltaE),
+    deltaE: m.deltaE,
+    url: `${API_BASE}/colors/${m.brandSlug}/${m.colorSlug}`,
+  }));
 
   const cleanHex = hexRaw.replace(/^#/, "");
   if (matches.length === 0) {
     return { content: [{ type: "text", text: `No close paint matches found for #${cleanHex.toUpperCase()}.` }] };
   }
 
-  const header = `Closest cross-brand paint matches for #${cleanHex.toUpperCase()}${brand ? ` (brand: ${brand})` : ""}:`;
+  const header = brand
+    ? `Closest ${brand} paint matches for #${cleanHex.toUpperCase()}:`
+    : `Closest cross-brand paint matches for #${cleanHex.toUpperCase()}:`;
   const lines = matches.map(
     (m, i) =>
       `${i + 1}. ${m.name} — ${m.brand}${m.colorNumber ? ` ${m.colorNumber}` : ""} (${m.hex}) — ${m.closeness} [ΔE ${m.deltaE}]`,
