@@ -1,6 +1,6 @@
 # Paint Color HQ — Complete Reference
 
-> A technical interior design and paint reference database containing 25,000+ colors across 14 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools.
+> A technical interior design and paint reference database containing 26,000+ colors across 13 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools.
 
 ## Master Color Profiles
 - [Sherwin-Williams Agreeable Gray (SW 7029)](https://www.paintcolorhq.com/colors/sherwin-williams/agreeable-gray-7029): Hex #D1CBC1, RGB 209/203/193, LRV 60. America's best-selling paint color — a warm greige with balanced neutral undertones. Closest BM match: Wish AF-680 (Delta E 0.91).
