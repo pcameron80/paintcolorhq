@@ -95,19 +95,34 @@ const blogPosts: BlogPost[] = [
         </p>
 
         <figure className="mt-8">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/blog/most-duplicated-paint-color-chart.webp"
-            alt="Data visualization: every color sold by 12 paint brands shown as hue-sorted color strips with each brand's unique share, and the most duplicated color in America — one warm off-white sold by 12 of 13 brands under different names"
-            width={1200}
-            height={1593}
-            loading="lazy"
-            className="w-full rounded-xl border border-gray-200"
-          />
+          <a
+            href="/blog/most-duplicated-paint-color-chart-full.png"
+            target="_blank"
+            rel="noopener"
+            title="Open the full-resolution chart (3300×4380)"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/blog/most-duplicated-paint-color-chart.webp"
+              alt="Data visualization: every color sold by 12 paint brands shown as hue-sorted color strips with each brand's unique share, and the most duplicated color in America — one warm off-white sold by 12 of 13 brands under different names"
+              width={1200}
+              height={1593}
+              loading="lazy"
+              className="w-full rounded-xl border border-gray-200 transition-shadow hover:shadow-md"
+            />
+          </a>
           <figcaption className="mt-2 text-sm text-gray-500">
             Every color each brand sells, sorted by hue, with the share of its palette no other
-            brand duplicates. Full-resolution chart — feel free to share it with a link back to
-            this study.
+            brand duplicates.{" "}
+            <a
+              href="/blog/most-duplicated-paint-color-chart-full.png"
+              target="_blank"
+              rel="noopener"
+              className="text-brand-blue hover:underline"
+            >
+              View the full-resolution chart (3300&times;4380)
+            </a>{" "}
+            — free to share and republish with a link back to this study.
           </figcaption>
         </figure>
 
