@@ -78,6 +78,11 @@ const blogPosts: BlogPost[] = [
         answer:
           "Open any color on Paint Color HQ and its page lists the closest equivalent in every brand we track, ranked by perceptual closeness. You can also compare any two colors side by side with the compare tool. Because formulas and sheens differ, always confirm the final choice with a physical sample on your wall.",
       },
+      {
+        question: "How many distinct paint colors are there in America?",
+        answer:
+          "The 13 brands Paint Color HQ tracks publish 26,597 named colors, but merging near-identical duplicates (every group member within Delta E 1.0 of its reference color) collapses that to about 14,700 genuinely distinct colors — roughly 55% of the catalog. The exact figure depends on where you draw the 'same color' line, since near-identity chains: two colors can each match a third without matching each other.",
+      },
     ],
     content: () => (
       <>
@@ -273,6 +278,30 @@ const blogPosts: BlogPost[] = [
           documented on our <Link href="/methodology" className="text-brand-blue hover:underline">methodology page</Link>.
           Brand palettes change, so counts shift slightly as we import updates. If you cite these
           findings, please link to this page so readers can check the current numbers.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Addendum: How Many Distinct Colors Are There, Really?</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A sharp reader question after publication: does &ldquo;two-thirds are duplicates&rdquo;
+          mean only a third of the catalog is unique, or that the whole catalog collapses to a
+          third of its size once you merge duplicates? Those are different numbers, and the
+          headline stat is the first one: 66.6% of catalog entries have at least one
+          near-identical counterpart at a competing brand, and 33.4% (8,853 colors) have none.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The second question — how many <em>distinct</em> colors the market actually contains —
+          is trickier, because near-identity is not transitive: color A can be a twin of B, and B
+          of C, while A and C are visibly different. Merge every chain naively and you get 11,879
+          &ldquo;distinct&rdquo; colors, but one chained mega-cluster of 6,947 whites, off-whites,
+          and greiges forms along the way, and its endpoints are clearly not the same color. A
+          more defensible answer uses representative-based clustering, where every member of a
+          group must be near-identical (Delta E under 1.0) to that group&apos;s reference color.
+          On that definition, the 26,597 catalog entries collapse to{" "}
+          <strong>about 14,700 genuinely distinct colors — roughly 55% of the catalog</strong>.
+          Tighten the radius to Delta E 0.5 and it&apos;s about 22,050 (83%). So the honest
+          summary: a third of entries are duplicated nowhere, two-thirds are duplicated
+          somewhere, and deduplicating the whole market leaves you with a little over half as
+          many real colors as names.
         </p>
       </>
     ),
