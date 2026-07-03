@@ -54,6 +54,192 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "famous-white-paints-compared",
+    title: "Alabaster vs. White Dove — and 15 Other Famous Whites, Measured",
+    date: "2026-07-03",
+    author: "Philip Cameron",
+    excerpt:
+      "We measured the 17 most-searched white paints with CIEDE2000. Alabaster and White Dove are NOT interchangeable — but a $30 Behr staple is a near-perfect twin of a Benjamin Moore classic.",
+    coverColor: "#F3EFE0",
+    tags: ["Data", "Design"],
+    faq: [
+      {
+        question: "Is Sherwin-Williams Alabaster the same as Benjamin Moore White Dove?",
+        answer:
+          "No. Measured with CIEDE2000, they differ by Delta E 2.27 — a visible difference side by side. White Dove is noticeably warmer (creamier) and slightly lighter than Alabaster. They fill a similar role as soft warm whites, but they are not interchangeable on the same project.",
+      },
+      {
+        question: "What is the whitest white paint you can buy?",
+        answer:
+          "Among the brands we track, Behr Ultra Pure White has the highest light reflectance (LRV 97.3) — it is the brightest true white on the market and a common benchmark base white. Every brand's ceiling differs: PPG's lightest white measures LRV 88.7, a full nine points lower.",
+      },
+      {
+        question: "Which paint brand has the warmest whites?",
+        answer:
+          "Averaged across every white each brand sells (LRV 75+), Sherwin-Williams' whites run the coolest and Hirshfield's the warmest. Benjamin Moore sits mid-pack but sells the warmest famous white: White Dove. If you want creamy whites, Benjamin Moore and Farrow & Ball's classics lean warm; if you want crisp gallery whites, Sherwin-Williams and Valspar lean cool.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          White is where paint decisions go to stall. It is the best-selling color family, the
+          one with the fiercest brand loyalties, and the one where the internet argues hardest
+          about whether two names are &ldquo;basically the same.&rdquo; So we measured it: the 17
+          most-searched whites in America, compared with CIEDE2000 (Delta E 2000), the
+          color-difference standard paint manufacturers use for quality control. The results
+          settle some long-running debates — and start at least one new one.
+        </p>
+
+        <figure className="mt-8">
+          <a
+            href="/blog/famous-whites-map-full.png"
+            target="_blank"
+            rel="noopener"
+            title="Open the full-resolution chart"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/blog/famous-whites-map.webp"
+              alt="Scatter chart mapping 17 famous white paints by warmth (LAB b*) and light reflectance value, showing Alabaster and White Dove visibly different while Cloud White and Behr Swiss Coffee are near-identical twins"
+              width={1200}
+              height={864}
+              loading="lazy"
+              className="w-full rounded-xl border border-gray-200 transition-shadow hover:shadow-md"
+            />
+          </a>
+          <figcaption className="mt-2 text-sm text-gray-500">
+            The famous whites by warmth and lightness.{" "}
+            <a href="/blog/famous-whites-map-full.png" target="_blank" rel="noopener" className="text-brand-blue hover:underline">
+              View full resolution
+            </a>{" "}
+            — free to share with a link back to this comparison.
+          </figcaption>
+        </figure>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Alabaster vs. White Dove: Not the Same Color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The most-asked white-paint question there is, and the data gives a clean answer:{" "}
+          <Swatch hex="#EDEAE0" name="Alabaster (SW 7008)" href="/colors/sherwin-williams/alabaster-7008" /> and{" "}
+          <Swatch hex="#F3EFE0" name="White Dove (OC-17)" href="/colors/benjamin-moore/white-dove-oc-17" />{" "}
+          measure <strong>Delta E 2.27 apart — a visible difference</strong> with the two side by
+          side. White Dove is the warmest famous white on the market (LAB b* 7.7 to
+          Alabaster&apos;s 5.2 — noticeably creamier) and slightly lighter (LRV 83.2 vs 82.2).
+          They play the same role — a soft, warm, forgiving white — but swapping one for the
+          other mid-project is not a safe substitution. Pick by the light in your room: White
+          Dove leans cream, Alabaster stays closer to neutral.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Secret Twins</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Meanwhile, pairs almost nobody compares turn out to be nearly the same color:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Pair</th>
+                <th className="py-2 pr-4 font-semibold">Difference</th>
+                <th className="py-2 font-semibold">What it means</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#F3F2E7" name="BM Cloud White" href="/colors/benjamin-moore/cloud-white-oc-130" /> + <Swatch hex="#F3F2E6" name="Behr Swiss Coffee" href="/colors/behr/swiss-coffee-12" /></td>
+                <td className="py-2 pr-4 whitespace-nowrap">ΔE 0.43</td>
+                <td className="py-2">Near-identical — a premium classic and a big-box staple, effectively one color</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EDEAE0" name="SW Alabaster" href="/colors/sherwin-williams/alabaster-7008" /> + <Swatch hex="#F0ECE2" name="SW Greek Villa" href="/colors/sherwin-williams/greek-villa-7551" /></td>
+                <td className="py-2 pr-4 whitespace-nowrap">ΔE 0.68</td>
+                <td className="py-2">Same brand, near-identical — if you are agonizing between these two, stop</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#F5F7F2" name="BM Chantilly Lace" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> + <Swatch hex="#F8F9F3" name="Behr Polar Bear" href="/colors/behr/polar-bear-75" /></td>
+                <td className="py-2 pr-4 whitespace-nowrap">ΔE 0.73</td>
+                <td className="py-2">Near-identical crisp whites across a large price gap</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EDEAE0" name="SW Alabaster" href="/colors/sherwin-williams/alabaster-7008" /> + <Swatch hex="#EEECE1" name="BM Swiss Coffee" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4 whitespace-nowrap">ΔE 0.83</td>
+                <td className="py-2">The cross-brand swap for Alabaster loyalists in a Benjamin Moore store</td>
+              </tr>
+              <tr>
+                <td className="py-2 pr-4"><Swatch hex="#F3EFE0" name="BM White Dove" href="/colors/benjamin-moore/white-dove-oc-17" /> + <Swatch hex="#F7F1E3" name="F&B Pointing" href="/colors/farrow-ball/pointing-2003" /></td>
+                <td className="py-2 pr-4 whitespace-nowrap">ΔE 1.29</td>
+                <td className="py-2">Very similar — the two premium warm whites are chasing the same target</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Same Name, Different Color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Six of the thirteen brands we track sell a color named &ldquo;Swiss Coffee&rdquo; — and
+          they are not the same paint. Benjamin Moore&apos;s{" "}
+          <Swatch hex="#EEECE1" name="Swiss Coffee (OC-45)" href="/colors/benjamin-moore/swiss-coffee-oc-45" /> and Behr&apos;s{" "}
+          <Swatch hex="#F3F2E6" name="Swiss Coffee (12)" href="/colors/behr/swiss-coffee-12" /> differ by
+          Delta E 1.39: close, but Behr&apos;s runs lighter. The name is a category, not a
+          formula — the same trap as &ldquo;Antique White,&rdquo; which eight brands sell under
+          that exact name. (More of these in our{" "}
+          <Link href="/paint-color-statistics" className="text-brand-blue hover:underline">paint color statistics</Link>.)
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Whitest White You Can Buy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every brand has a ceiling — the lightest white it sells — and the ceilings differ more
+          than you would expect. <Swatch hex="#FAFDF7" name="Behr Ultra Pure White" href="/colors/behr/ultra-pure-white-w-b-500" />{" "}
+          tops the market at LRV 97.3. Sherwin-Williams&apos; brightest,{" "}
+          <Swatch hex="#F7F7F1" name="High Reflective White" href="/colors/sherwin-williams/high-reflective-white-7757" />, reaches 92.6.
+          PPG&apos;s lightest white measures just 88.7 — nearly nine points below Behr&apos;s. And
+          if what you want is white with <em>no</em> undertone at all, the truest whites we
+          measured are <Swatch hex="#F3F4F4" name="Dunn-Edwards Lighthouse" href="/colors/dunn-edwards/lighthouse-dew385" /> and{" "}
+          <Swatch hex="#F9F8F7" name="Behr Smart White" href="/colors/behr/smart-white-730a-1" /> — both nearly
+          chroma-free at LRV 90.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Which Brand&apos;s Whites Run Warmest</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Averaging the warmth of every white each brand sells (4,268 colors at LRV 75+), a brand
+          personality shows up. <strong>Sherwin-Williams&apos; whites run the coolest of any
+          brand</strong> (average b* 7.8) — despite Alabaster&apos;s warm reputation, the SW white
+          wall leans crisp. Hirshfield&apos;s (11.8) and Vista Paint (11.4) run warmest, with
+          Benjamin Moore mid-pack (9.8) — though BM sells the warmest famous white of all in White
+          Dove. Practical version: if you keep landing on whites that feel too cold, shop the
+          warm half of the market; if your whites keep going cream on you, Sherwin-Williams and
+          Valspar&apos;s cooler ranges are where to look.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Use This</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Treat the map above as a shortlist tool: pick the warmth-and-lightness neighborhood
+          your room needs, take the two or three names that live there, and{" "}
+          <Link href="/compare" className="text-brand-blue hover:underline">compare them side by side</Link>.
+          Then order physical samples of the finalists and look at them on your wall morning and
+          evening — whites shift with window direction and bulb temperature more than any other
+          color family. Our guide to{" "}
+          <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">
+            paint undertones
+          </Link>{" "}
+          covers how to read what a white is doing in your light.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Methodology</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Color differences are CIEDE2000 (Delta E 2000) computed from each brand&apos;s published
+          color values; warmth is LAB b*; the whites universe is every color at LRV 75 or above
+          across the 13 brands we track (4,268 colors) as of July 2026. Method details are on our{" "}
+          <Link href="/methodology" className="text-brand-blue hover:underline">methodology page</Link>;
+          the cross-brand duplication analysis this builds on is in{" "}
+          <Link href="/blog/most-duplicated-paint-color" className="text-brand-blue hover:underline">
+            our study of duplicated paint colors
+          </Link>. Published values describe the color target, not the liquid paint — sheen,
+          texture, and pigment recipe still differ between brands, so confirm finalists with
+          physical samples. If you cite this comparison, please link to this page.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "most-duplicated-paint-color",
     title: "One Color, Two Dozen Names: The Most Duplicated Paint Color in America",
     date: "2026-07-02",
