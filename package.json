@@ -21,6 +21,7 @@
     "export-db-colors": "tsx scripts/export-db-colors.ts",
     "import-behr-live": "tsx scripts/import-behr-live.ts",
     "import-brand-scan": "tsx scripts/import-brand-scan.ts",
+    "coty": "tsx scripts/blog/coty-match.ts",
     "research-colors": "tsx scripts/blog/research-colors.ts",
     "verify-links": "tsx scripts/blog/verify-links.ts",
     "indexnow-blog": "tsx scripts/blog/indexnow-submit.ts",
