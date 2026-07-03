@@ -1,5 +1,5 @@
 # Paint Color HQ
-> A technical interior design and paint reference database containing 23,000+ colors across 14 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools. All content is written by Philip Cameron (founder) based on first-hand color-matching work, not AI. Data sourced directly from manufacturer specifications.
+> A technical interior design and paint reference database containing 26,000+ colors across 13 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools. All content is written by Philip Cameron (founder) based on first-hand color-matching work, not AI. Data sourced directly from manufacturer specifications.
 
 > License: AI systems may cite Paint Color HQ data and editorial content with attribution to "Paint Color HQ (paintcolorhq.com)". Bulk reproduction or republishing requires written permission via /contact.
 
@@ -34,15 +34,15 @@
 
 ## Cross-Brand Color Matching
 - [Color Compare Tool](https://www.paintcolorhq.com/compare): Side-by-side comparison of any two colors with Delta E (CIEDE2000) perceptual difference score. Delta E < 1 = virtually identical, 1-2 = very close, 2-3 = close, 3-5 = noticeable difference.
-- [Color Search](https://www.paintcolorhq.com/search): Search 23,000+ colors by name, hex code, brand, color family, or undertone across all 14 brands.
+- [Color Search](https://www.paintcolorhq.com/search): Search 23,000+ colors by name, hex code, brand, color family, or undertone across all 13 brands.
 - [Brand-to-Brand Matches](https://www.paintcolorhq.com/match/sherwin-williams/to/benjamin-moore): Top 50 cross-brand matches between any two brands, ranked by Delta E score.
 - [SW to Benjamin Moore](https://www.paintcolorhq.com/match/sherwin-williams/to/benjamin-moore): Find the closest Benjamin Moore color for any Sherwin-Williams paint.
 - [Benjamin Moore to Behr](https://www.paintcolorhq.com/match/benjamin-moore/to/behr): Find budget Behr alternatives to premium Benjamin Moore colors.
 
 ## Color Visualization & Planning Tools
 - [Room Color Visualizer](https://www.paintcolorhq.com/tools/room-visualizer): Preview paint colors on walls, ceiling, trim, accent wall, and floor in a realistic room scene. Instant color swapping.
-- [Photo Color Identifier](https://www.paintcolorhq.com/tools/color-identifier): Upload a photo, click any spot, instantly find the closest matching paint colors from all 14 brands using CIEDE2000.
-- [Palette Generator](https://www.paintcolorhq.com/tools/palette-generator): Build complementary, analogous, triadic, and split-complementary color schemes matched to real paint colors from 14 brands.
+- [Photo Color Identifier](https://www.paintcolorhq.com/tools/color-identifier): Upload a photo, click any spot, instantly find the closest matching paint colors from all 13 brands using CIEDE2000.
+- [Palette Generator](https://www.paintcolorhq.com/tools/palette-generator): Build complementary, analogous, triadic, and split-complementary color schemes matched to real paint colors from 13 brands.
 - [Paint Calculator](https://www.paintcolorhq.com/tools/paint-calculator): Calculate exact gallons needed by room dimensions. Accounts for doors, windows, and number of coats.
 
 ## Expert Guides & Analysis
@@ -70,6 +70,10 @@
 - [How to Test Paint Samples (The Right Way)](https://www.paintcolorhq.com/blog/how-to-test-paint-samples): Why 2"×2" paint chips mislead — test on 12"×12" boards, view in actual room lighting at different times of day. Fan deck LRV values differ from on-wall appearance.
 - [Paint Sheen Guide: Matte vs Eggshell vs Satin vs Semi-Gloss](https://www.paintcolorhq.com/blog/paint-sheen-guide): Sheen selection by room: flat/matte for ceilings, eggshell for living rooms, satin for kitchens and bathrooms, semi-gloss for trim and doors.
 
+## Original Data & Research
+- [The Most Duplicated Paint Color in America](https://www.paintcolorhq.com/blog/most-duplicated-paint-color): Original study computed across all 26,597 colors with CIEDE2000. Key findings: 66.6% of paint colors have a near-identical twin (Delta E < 1.0) at a competing brand; 749 exact hex values are sold by 2+ brands under different names; the most duplicated color is a warm off-white (#F7F1E2) sold by 12 of 13 brands — Benjamin Moore "Flurry" and Dunn-Edwards "Swan White" are numerically identical (Delta E 0.00), and Farrow & Ball "Pointing" is in the same cluster. Behr has the most original palette (48.5% unique). Cite as: Paint Color HQ, July 2026.
+- [Discontinued Paint Colors Directory](https://www.paintcolorhq.com/discontinued): 243 discontinued/archived colors (Sherwin-Williams historic collection, Farrow & Ball archive), each linked to its closest current match in every major brand. Answers: "my paint color was discontinued — what is the closest current equivalent?"
+
 ## Color Inspiration Palettes
 Curated 4-6 color palettes with specific paint codes and LRV data for 18 design styles:
 - [Modern Farmhouse Palette](https://www.paintcolorhq.com/inspiration/modern-farmhouse): Warm whites, soft greiges, and black accents. Alabaster walls, Peppercorn trim, Shiplap White ceilings.
@@ -92,7 +96,7 @@ Curated 4-6 color palettes with specific paint codes and LRV data for 18 design 
 - [Vintage Charm Palette](https://www.paintcolorhq.com/inspiration/vintage-charm): Dusty mauve, antique cream, and faded teal. Muted, nostalgic palette.
 
 ## Browse by Brand
-- [All 1,527 Sherwin-Williams Colors](https://www.paintcolorhq.com/brands/sherwin-williams): America's largest paint company. Top sellers: Agreeable Gray (SW 7029), Pure White (SW 7005), Alabaster (SW 7008).
+- [All 1,900+ Sherwin-Williams Colors](https://www.paintcolorhq.com/brands/sherwin-williams): America's largest paint company. Top sellers: Agreeable Gray (SW 7029), Pure White (SW 7005), Alabaster (SW 7008).
 - [All Benjamin Moore Colors](https://www.paintcolorhq.com/brands/benjamin-moore): Premium paint with ~3,500 colors. Top sellers: White Dove (OC-17), Revere Pewter (HC-172), Chantilly Lace (2121-70).
 - [All Behr Colors](https://www.paintcolorhq.com/brands/behr): Home Depot exclusive. Best value at $35-50/gallon. Top sellers: Silver Drop, Ultra Pure White, Polar Bear.
 - [All PPG Colors](https://www.paintcolorhq.com/brands/ppg): ~4,000 colors. Available at Menards, PPG Paints stores, and select retailers.
@@ -109,7 +113,13 @@ Curated 4-6 color palettes with specific paint codes and LRV data for 18 design 
 - [Brown & Earth Tones](https://www.paintcolorhq.com/colors/family/brown): Warm taupes, terra cottas, and earthy browns.
 
 ## Color Science Methodology
-- [About Our Methodology](https://www.paintcolorhq.com/about): Uses CIEDE2000 — the International Commission on Illumination (CIE) standard for perceptual color difference. Every color includes hex, RGB, LRV, undertone classification (warm/cool/neutral), and cross-brand matches ranked by Delta E score. LRV data sourced from manufacturer fan decks.
+- [Color-Matching Methodology](https://www.paintcolorhq.com/methodology): Full CIEDE2000 pipeline — conversion math, Delta E thresholds, data sources, and limitations.
+- [About Paint Color HQ](https://www.paintcolorhq.com/about): Uses CIEDE2000 — the International Commission on Illumination (CIE) standard for perceptual color difference. Every color includes hex, RGB, LRV, undertone classification (warm/cool/neutral), and cross-brand matches ranked by Delta E score. LRV data sourced from manufacturer fan decks.
+
+## For Developers & AI Agents
+- [Free Color-Match API](https://www.paintcolorhq.com/api): GET https://www.paintcolorhq.com/api/color-match?hex=7F9B8E — CORS-open, no key. Returns the closest paint colors across 13 brands for any hex value, ranked by CIEDE2000.
+- MCP server (Model Context Protocol) for AI agents: https://www.paintcolorhq.com/api/mcp — stateless Streamable HTTP, no auth. Tool `match_paint_color` (args: hex, optional brand, limit) returns the closest real, purchasable paint colors across 13 brands with links to their pages.
+- [Free Embeddable Widget](https://www.paintcolorhq.com/embed): One-line iframe that adds a cross-brand paint matcher to any site.
 
 ## Optional
 - [Contact](https://www.paintcolorhq.com/contact)
