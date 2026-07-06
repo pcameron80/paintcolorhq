@@ -108,6 +108,9 @@ export function Footer() {
         <p className="text-xs text-outline">
           &copy; {new Date().getFullYear()} Paint Color HQ. Color data is approximate. Always verify with physical samples before purchasing.
         </p>
+        <p className="text-xs text-outline mt-2">
+          As an Amazon Associate, Paint Color HQ earns from qualifying purchases.
+        </p>
       </div>
     </footer>
   );
