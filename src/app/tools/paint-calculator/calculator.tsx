@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { trackToolEngagement } from "@/lib/analytics";
+import { SuppliesList } from "./supplies-list";
 
 export function PaintCalculator() {
   const tracked = useRef(false);
@@ -215,6 +216,18 @@ export function PaintCalculator() {
             Enter room length and width to see your estimate.
           </p>
         </div>
+      )}
+
+      {canCalculate && (
+        <SuppliesList
+          lengthFt={lengthNum}
+          widthFt={widthNum}
+          heightFt={heightNum}
+          doors={doorsNum}
+          windows={windowsNum}
+          coats={coatsNum}
+          gallons={gallons}
+        />
       )}
     </div>
   );

@@ -78,6 +78,15 @@ export const AFFILIATE_ENABLED = Boolean(
 );
 
 /**
+ * Tagged Amazon search link. Search links (not ASINs) by design — product
+ * listings churn, searches don't, so these never rot. Used by the color-page
+ * sample links and the paint-calculator supply list.
+ */
+export function getAmazonSearchUrl(query: string): string {
+  return `https://www.amazon.com/s?k=${encodeURIComponent(query)}&tag=${AMAZON_TAG}`;
+}
+
+/**
  * Wrap an existing retailer URL in an affiliate deep-link when a program is
  * configured for that retailer. Returns the plain URL + affiliate:false otherwise,
  * so a missing ID never breaks a link. Used on the "Buy at …" retailer links.
@@ -121,9 +130,8 @@ export function getSampleLinks(info: SampleInfo): SampleLink[] {
     });
   }
 
-  // Amazon — sample pots, swatch cards, and painting supplies (all brands),
-  // tagged with the portfolio's active greatpickdeal-20 Associates tag.
-  const amazonUrl = `https://www.amazon.com/s?k=${encodeURIComponent(`${query} paint sample`)}&tag=${AMAZON_TAG}`;
+  // Amazon — sample pots, swatch cards, and painting supplies (all brands).
+  const amazonUrl = getAmazonSearchUrl(`${query} paint sample`);
   links.push({
     label: "Samples & supplies on Amazon",
     url: amazonUrl,
