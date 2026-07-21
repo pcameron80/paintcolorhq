@@ -6,6 +6,7 @@ import { BATCH as JUN_RESTOCK } from "./batch-jun-restock.ts";
 import { BATCH as JUN_RESTOCK_2 } from "./batch-jun-restock-2.ts";
 import { BATCH as ROOMSCENE_JUL } from "./batch-roomscene-jul.ts";
 import { BATCH as ROOMSCENE_AUG } from "./batch-roomscene-aug.ts";
+import { BATCH as COMPARISON_AUG } from "./batch-comparison-aug.ts";
 export { BOARD_IDS, IMAGE_DIR, BOARD_FOR_TYPE, TYPE_FOR_BOARD } from "./batch-may26.ts";
 export type { PinSpec, BoardName, PinType } from "./batch-may26.ts";
 import type { PinSpec, PinType } from "./batch-may26.ts";
@@ -33,6 +34,7 @@ export const QUEUE: PinSpec[] = [
   ...typed(JUN_RESTOCK_2),
   ...typed(ROOMSCENE_JUL),
   ...typed(ROOMSCENE_AUG),
+  ...typed(COMPARISON_AUG),
   ...swatchPins(),
   ...guidePins(),
 ];
