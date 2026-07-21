@@ -29,6 +29,7 @@ import {
   selectForDrip,
   selectDailyMix,
   quotasForWeekday,
+  shouldSkip,
   DRIP_CONFIG,
   type PinSpec,
   type PublishedLog,
@@ -135,7 +136,7 @@ function mediaSource(pin: PinSpec) {
 
 async function publishPin(pin: PinSpec, log: PublishedLog) {
   const tag = `${pin.key} ${pin.name}`;
-  if (log[pin.key]) {
+  if (shouldSkip(pin, log)) {
     console.log(`⏭️  ${tag} — already published (pin ${log[pin.key].pinId})`);
     return;
   }
@@ -164,7 +165,7 @@ async function publishPin(pin: PinSpec, log: PublishedLog) {
   });
   log[pin.key] = { pinId: result.id, publishedAt: new Date().toISOString() };
   saveLog(log);
-  console.log(`✅ ${tag} → pin ${result.id} on ${pin.board}`);
+  console.log(`${pin.repin ? "🔁" : "✅"} ${tag} → pin ${result.id} on ${pin.board}${pin.repin ? " (re-pin)" : ""}`);
 }
 
 async function main() {

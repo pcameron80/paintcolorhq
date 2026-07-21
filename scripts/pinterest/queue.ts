@@ -105,6 +105,13 @@ export function selectForDrip(
   return chosen;
 }
 
+/** Publish gate: an already-published key is skipped UNLESS the selector
+ *  flagged it as a deliberate cooldown re-pin. Without the repin escape hatch
+ *  a lane that runs out of fresh pins goes silent forever (July 2026). */
+export function shouldSkip(pin: PinSpec, published: PublishedLog): boolean {
+  return pin.key in published && !pin.repin;
+}
+
 // ---- v2: per-type daily quotas + cooldown re-pin ----
 
 export type Quotas = Partial<Record<PinType, number>>;
@@ -172,7 +179,7 @@ export function selectDailyMix(
         );
       for (const p of repinnable) {
         if (picks.length >= n) break;
-        picks.push(p);
+        picks.push({ ...p, repin: true });
       }
     }
     chosen.push(...picks);

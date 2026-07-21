@@ -124,6 +124,31 @@ test("selectDailyMix prefers fresh over re-pin", () => {
   assert.equal(picks[0].key, "p2");
 });
 
+// ---- re-pin annotation + publish gate ----
+// (July 2026: every lane that ran out of fresh pins went SILENT — selectDailyMix
+//  correctly chose cooldown re-pins, but publishPin's already-published guard
+//  skipped them every day, forever. The repin flag is how the selector tells the
+//  publisher "yes, this one is in the log on purpose — post it again".)
+
+test("selectDailyMix marks cooldown re-pins with repin:true, fresh picks not", () => {
+  const DAY = 86400_000, now = 100 * DAY;
+  const q = [mkT("p1","palette"), mkT("s1","swatch")];
+  const log = { p1: { pinId: "1", publishedAt: new Date(now - 40 * DAY).toISOString() } };
+  const picks = selectDailyMix(q, log, { swatch: 1, palette: 1 }, now, 35);
+  const byKey = Object.fromEntries(picks.map((p) => [p.key, p]));
+  assert.equal(byKey.p1.repin, true, "cooldown pick must carry repin:true");
+  assert.ok(!byKey.s1.repin, "fresh pick must not carry repin");
+});
+
+import { shouldSkip } from "./queue.ts";
+
+test("shouldSkip: skips published pins unless the selector flagged a re-pin", () => {
+  const log: PublishedLog = { a: { pinId: "1", publishedAt: "2026-05-30T00:00:00Z" } };
+  assert.equal(shouldSkip(mk("a", "navy", "living-room", "Color Palettes"), log), true);
+  assert.equal(shouldSkip({ ...mk("a", "navy", "living-room", "Color Palettes"), repin: true }, log), false);
+  assert.equal(shouldSkip(mk("b", "navy", "kitchen", "Color Palettes"), log), false);
+});
+
 // ---- drift guards: catch a silent revert of the once-daily quota schedule ----
 // (June 2026: drip.sh was silently reverted to v1 `--drip=2` at 3 slots/day,
 //  which collapsed the feed to guides for a week before anyone noticed.)
