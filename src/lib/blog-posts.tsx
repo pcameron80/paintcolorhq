@@ -54,6 +54,298 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "sea-salt-sw-6204",
+    title: "Sea Salt (SW 6204): Undertones, Coordinating Colors & Cross-Brand Matches",
+    date: "2026-09-11",
+    author: "Philip Cameron",
+    excerpt:
+      "Sea Salt (SW 6204) is a light green-gray at LRV 63.3 that shifts between green, gray and blue by the light — plus its undertones and cross-brand matches.",
+    coverColor: "#cdd2ca",
+    coverImage: "/blog/sea-salt-sw-6204.webp",
+    tags: ["Deep Dive", "Green", "Sherwin-Williams"],
+    faq: [
+      {
+        question: "Is Sherwin-Williams Sea Salt green or blue?",
+        answer:
+          "Both, depending on the light. Sea Salt (SW 6204) is a light green-gray at LRV 63.3 with a neutral undertone, which means it carries green, blue, and gray at close to equal weight and lets the room decide which one shows. In warm, bright light it reads green; in cool north light or artificial light it reads more blue-gray. That color-shifting is why it is the most famous chameleon neutral in the Sherwin-Williams line.",
+      },
+      {
+        question: "What is the Benjamin Moore equivalent of Sherwin-Williams Sea Salt?",
+        answer:
+          "The closest Benjamin Moore match to Sea Salt (SW 6204) is Gray Cashmere (2138-60), a near-identical green-gray. Benjamin Moore's Palladian Blue (HC-144, LRV 61.8) is often called the Sea Salt equivalent, but it reads a shade bluer and cooler — a close cousin rather than a true match. If you want Sea Salt's green side, choose Gray Cashmere; if you want it pushed toward blue, Palladian Blue is the better pick.",
+      },
+      {
+        question: "What is the difference between Sea Salt and Rainwashed?",
+        answer:
+          "Sea Salt (SW 6204, LRV 63.3) is lighter and more balanced; Rainwashed (SW 6211, LRV 59.2) is a step deeper and leans a touch more blue-green. Both have neutral undertones and both sit in the gray family in our database. Pick Rainwashed if you want the coastal blue-green to read more clearly, and Sea Salt if you want it lighter and more flexible. Comfort Gray (SW 6205, LRV 53.6) is the darker, warmer third sibling.",
+      },
+      {
+        question: "Is Sea Salt a good color for a bathroom?",
+        answer:
+          "Yes — the bathroom is Sea Salt's most popular use. At LRV 63.3 it is light enough to keep a small bathroom feeling open, and its green-blue-gray shift reads calm and spa-like under both daylight and vanity lighting. Pair it with a soft white trim like Alabaster (SW 7008, LRV 82.2) rather than a stark white, which would make the green-gray look dingy by contrast.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Sea Salt (SW 6204) is a light green-gray at LRV 63.3 with a neutral undertone — and it is the most famous chameleon in the Sherwin-Williams deck, a color that reads green in one room, gray in another, and blue-green by lamplight. That shape-shifting is the whole appeal in a spa-like bathroom or a calm bedroom, and the whole problem anywhere you need a color to hold still. This guide breaks down what Sea Salt actually is, how it behaves by window direction, how it splits from its two sisters Rainwashed and Comfort Gray, and its closest match in every brand you can buy. Every hex, LRV, and undertone here comes straight from our color database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Numbers</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#cdd2ca" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> is Sherwin-Williams 6204. Its hex value is #cdd2ca, its LRV is 63.3, and its undertone reads neutral. One detail explains a lot of its behavior: in our database Sea Salt classifies in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link>, not green — which is exactly why it can drop its green and read as a soft gray when the light goes flat. At LRV 63.3 it is light enough to keep a small room open, but it has enough body to register as a real color instead of a tinted white.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Chameleon Effect: Why Sea Salt Never Looks the Same Twice</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sea Salt carries green, blue, and gray at close to equal weight, and the room decides which one wins. That is the neutral undertone at work — nothing in the mix dominates, so the light does. In a bright, sun-filled space the green and a hint of blue come forward and it reads coastal and fresh. In flat or artificial light it lets the gray take over and can look almost like a pale greige. Neither is a defect; it is the color doing what a balanced blue-green-gray does. If undertones are new to you, our guide to <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding paint color undertones</Link> explains why a neutral mix like this one is the most light-sensitive kind there is.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          By window direction: <strong>north-facing rooms</strong> get cool, indirect light that pulls Sea Salt toward its gray and blue side — spa-like if you want cool, muddy if you were hoping for green. <strong>South-facing rooms</strong> get warm light all day, which brings the green forward and keeps it lively. <strong>East-facing rooms</strong> read greener in the warm morning and cooler by afternoon. <strong>West-facing rooms</strong> lean cool and gray in the morning, then warm toward green as the evening light turns golden. Test a large sample on the actual wall and look at it morning, noon, and night before you commit — with a mover like this one, that step is not optional.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Sea Salt vs. Rainwashed (and Comfort Gray)</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These three Sherwin-Williams greens get cross-shopped constantly because they are close relatives, so here is the split. <Swatch hex="#cdd2ca" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63.3, neutral) is the lightest and the most balanced — the safe middle. <Swatch hex="#c2cdc5" name="Rainwashed" brand="Sherwin-Williams" href="/colors/sherwin-williams/rainwashed-6211" /> (SW 6211, LRV 59.2, neutral) is a step deeper and leans a touch more blue-green; it reads a little more obviously colored and a little less gray. If you want the coastal blue-green to be clearer, pick Rainwashed; if you want it to whisper and stay flexible, pick Sea Salt. The third sibling, <Swatch hex="#bec3bb" name="Comfort Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/comfort-gray-6205" /> (SW 6205, LRV 53.6, warm golden undertone), is the darkest and the only warm one of the three — it grounds toward a green-gray sage rather than staying cool, which makes it the right call when Sea Salt reads too pale or too cool for the room.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Sea Salt in Every Brand: The Closest Cross-Brand Matches</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sea Salt is a Sherwin-Williams color, but the same green-gray exists under a different name in almost every line — matched by how close it actually looks, not by name. The single closest is <Swatch hex="#cdd2ca" name="White Rapids" brand="Dutch Boy" href="/colors/dutch-boy/white-rapids-425-1db" /> from Dutch Boy, which shares Sea Salt&apos;s exact hex for a dead-on match (Delta E 0.0). In Benjamin Moore, <Swatch hex="#d0d6ce" name="Gray Cashmere" brand="Benjamin Moore" href="/colors/benjamin-moore/gray-cashmere-2138-60" /> (2138-60) is the near-identical equivalent. In Behr it is <Swatch hex="#cacec7" name="Silver Setting" brand="Behr" href="/colors/behr/silver-setting-pwl-89" />, also near-identical, and PPG <Link href="/colors/ppg/bay-of-fundy-10-07" className="text-brand-blue hover:underline">Bay of Fundy</Link>, Valspar <Link href="/colors/valspar/three-wishes-8004-32b" className="text-brand-blue hover:underline">Three Wishes</Link>, and Hirshfield&apos;s <Link href="/colors/hirshfields/pale-loden-440" className="text-brand-blue hover:underline">Pale Loden</Link> are all close enough to swap in. The one to watch is Farrow &amp; Ball <Link href="/colors/farrow-ball/skylight-205" className="text-brand-blue hover:underline">Skylight</Link> — it is in the same family but visibly different on the wall (Delta E 2.6), so treat it as a cousin, not a substitute.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The match people ask about most is Benjamin Moore <Swatch hex="#c2d2ca" name="Palladian Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/palladian-blue-hc-144" /> (HC-144, LRV 61.8) — the famous blue-green that gets pitched as the Sea Salt of Benjamin Moore. They are close cousins, not twins. Palladian Blue reads a shade bluer and a hair cooler than Sea Salt, and its own closest Sherwin-Williams match is <Link href="/colors/sherwin-williams/waterscape-6470" className="text-brand-blue hover:underline">Waterscape</Link> (SW 6470), not Sea Salt. If you love Sea Salt&apos;s green side, the honest Benjamin Moore equivalent is Gray Cashmere; if you want the same idea pushed further toward blue, that is when Palladian Blue is the better call.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Coordinating Colors: Trim, Companions, and What to Pair</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For trim and ceilings against Sea Salt, reach for a soft white rather than a stark one — a bright white makes the green-gray look dingy by contrast. <Swatch hex="#edeae0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (SW 7008, LRV 82.2) is the standard partner: warm enough to flatter Sea Salt without competing with it. For a tonal, layered scheme, <Swatch hex="#c8cbc4" name="Silver Strand" brand="Sherwin-Williams" href="/colors/sherwin-williams/silver-strand-7057" /> (SW 7057, LRV 59, warm golden) is Sea Salt&apos;s closest cabinet-and-trim companion — a hair warmer and slightly deeper, so it grounds a room built on Sea Salt walls. And when you want more color weight in the same family, <Swatch hex="#bec3bb" name="Comfort Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/comfort-gray-6205" /> (SW 6205, LRV 53.6) steps the green-gray up for a vanity, island, or accent wall. Sea Salt&apos;s most common home is the bathroom — see our <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">best bathroom paint colors</Link> guide for where it lands against the field, and if you are deciding between it and a true sage, our <Link href="/blog/best-sage-green-paint-colors" className="text-brand-blue hover:underline">best sage green paint colors</Link> post covers the greener end of the family.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Testing Sea Salt in Your Own Room</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Because Sea Salt moves so much with the light, testing it where it will live matters more than it does for a stable neutral. Drop a photo of your actual room into the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to see the green-gray on your own walls before you buy a sample. To check exactly how far Sea Salt sits from Rainwashed, Palladian Blue, or any match above, put them side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>. The full Sherwin-Williams range lives on the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color chart</Link>, and you can browse the neighbors in our <Link href="/colors/family/green" className="text-brand-blue hover:underline">green paint colors</Link> and <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link> families — Sea Salt sits right on the line between them.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "hale-navy-bm-hc-154",
+    title: "Hale Navy (BM HC-154): Undertones, Coordinating Colors & Cross-Brand Matches",
+    date: "2026-09-04",
+    author: "Philip Cameron",
+    excerpt:
+      "Hale Navy (BM HC-154), a grayed navy at LRV 7.1: its undertones, the Naval head-to-head, and its closest cross-brand match in every brand.",
+    coverColor: "#444C57",
+    coverImage: "/blog/hale-navy-bm-hc-154.webp",
+    tags: ["Deep Dive", "Blue", "Benjamin Moore"],
+    faq: [
+      {
+        question: "Is Hale Navy blue or gray?",
+        answer:
+          "Hale Navy (BM HC-154) is a grayed navy — a deep blue with a neutral, gray undertone at LRV 7.1. Our color database files it in the gray family rather than blue, because that gray base mutes its saturation, which is why it reads as a soft, near-neutral navy instead of an electric one. In bright light the blue shows through; in dim or north-facing light it flattens toward near-black.",
+      },
+      {
+        question: "What is the closest Sherwin-Williams color to Hale Navy?",
+        answer:
+          "Sherwin-Williams Sea Mariner (SW 9640, #434a54) is the closest match to Hale Navy, at a Delta E of 0.8 — near-identical on the wall. Naval (SW 6244) is the more famous comparison, but it is not the closest: Naval sits at LRV 4.5 in the blue family, darker and bluer than Hale Navy at LRV 7.1.",
+      },
+      {
+        question: "Hale Navy vs. Naval — which should I use?",
+        answer:
+          "Both are deep navies, but Hale Navy (BM HC-154, LRV 7.1, gray family) is the softer, more flexible one — its gray undertone keeps it near-neutral, so it holds up across changing light and suits cabinets, trim, and whole walls. Naval (SW 6244, LRV 4.5, blue family) is darker and reads as a truer, more saturated blue; pick it when you want a navy that commits, like a front door or a moody accent wall.",
+      },
+      {
+        question: "What colors go with Hale Navy?",
+        answer:
+          "For trim and contrast, Benjamin Moore White Dove (OC-17, LRV 83.2) is the standard warm white against Hale Navy. For adjacent walls, Repose Gray (SW 7015, LRV 58.4) is a light neutral that keeps the scheme calm. If you want a moodier tonal partner rather than a contrast, Gentleman's Gray (BM 2062-20, LRV 5.8) is a bluer deep navy that layers beside Hale Navy without competing.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          <Swatch hex="#444c57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> (BM HC-154) is a grayed navy at LRV 7.1 — a deep blue with a neutral, gray undertone that keeps it muted instead of electric. That gray base is why our database files it in the gray family, not blue, and it is exactly what makes Hale Navy easy to live with: it excels on cabinets, front doors, exteriors, and accent walls, where its depth reads as classic rather than loud. The one place to be careful is a dim or north-facing room — at LRV 7.1 it flattens toward near-black when the light is low. Every hex, LRV, undertone, and cross-brand match below comes straight from our color database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Numbers</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Hale Navy&apos;s exact values, straight from the database: hex #444c57, LRV 7.1, a neutral undertone, and — the detail most guides skip — a gray-family classification. LRV runs 0 (black) to 100 (white); at 7.1 Hale Navy sits near the bottom, which is why it behaves like a dark neutral rather than a bright color. The code is BM HC-154. That gray-family filing is not a quirk of our system — it is the single fact that explains how the color acts on a wall, which the next section gets into.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Undertones and How the Light Changes It</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The undertone is neutral, and that is the whole story with Hale Navy. A saturated navy carries an obvious blue, sometimes a violet edge; Hale Navy&apos;s gray base pulls that saturation down, so instead of a bold blue you get a deep, slightly smoky navy that stays composed. In bright, south-facing light it shows its blue more clearly and gains a little depth. In dim or north-facing light — the kind with no warm sun to lift it — it loses the blue and flattens toward charcoal or near-black. That is the trade with any LRV-7 color: depth in exchange for light-hunger. On a small feature like a door, an island, or cabinetry, that depth is the point. On a large wall in a low-light room it can close the space in, so test a big sample on the actual wall and look at it morning and night before committing. If your room faces north, our guide to the <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">best paint colors for north-facing rooms</Link> is worth reading first.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Hale Navy vs. Naval</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The comparison people search for most is Hale Navy against Sherwin-Williams <Swatch hex="#2f3d4c" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> (SW 6244), and the two are genuinely different despite both getting called &quot;deep navy.&quot; Naval sits at LRV 4.5 in the blue family; Hale Navy is LRV 7.1 in the gray family. In plain terms, Naval is darker and reads as a truer, more saturated blue, while Hale Navy is a touch lighter and grayer. Pick Naval when you want a navy that commits — a front door, a moody accent wall, a small room you want to feel like a jewel box. Pick Hale Navy when you want a navy that stays flexible across changing light and plays almost like a dark neutral, on cabinets, trim, and whole walls in rooms with decent light. And if even Naval is not deep enough, <Swatch hex="#283849" name="In the Navy" brand="Sherwin-Williams" href="/colors/sherwin-williams/in-the-navy-9178" /> (SW 9178, LRV 3.8) is the darker step again.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Closest Match in Every Brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you love Hale Navy but buy a different brand, here are its closest equivalents — scored by how similar they actually look rather than by name. The nearest of all is Sherwin-Williams <Swatch hex="#434a54" name="Sea Mariner" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-mariner-9640" /> (SW 9640) at a Delta E of 0.8: near-identical, and a much closer Sherwin-Williams match than the better-known Naval. Valspar <Swatch hex="#414a55" name="Royal Navy" brand="Valspar" href="/colors/valspar/royal-navy-4011-4" /> and Kilz <Swatch hex="#444d5a" name="Prussian Blue" brand="Kilz" href="/colors/kilz/prussian-blue-rd100-02" /> are also near-identical. Behr <Swatch hex="#404b57" name="Dark Night" brand="Behr" href="/colors/behr/dark-night-ppf-58" /> and Dunn-Edwards <Swatch hex="#444d56" name="Deepest Sea" brand="Dunn-Edwards" href="/colors/dunn-edwards/deepest-sea-de5825" /> both land close enough to read as the same color in a room. PPG <Swatch hex="#3f4c5a" name="Cavalry" brand="PPG" href="/colors/ppg/cavalry-1041-7" /> and Dutch Boy <Swatch hex="#3e4b54" name="Navigation" brand="Dutch Boy" href="/colors/dutch-boy/navigation-432-7db" /> are the nearest their lines offer, but both drift a visible step cooler and grayer — worth a side-by-side check before you treat either as a swap. The one to watch is Farrow &amp; Ball <Swatch hex="#45484b" name="Railings" brand="Farrow & Ball" href="/colors/farrow-ball/railings-31" />: it is a visible difference from Hale Navy, reading more charcoal than navy, so do not treat the two as interchangeable. The full deep-navy range lives in <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue paint colors</Link>, and — for the gray-undertone reason above — Hale Navy itself files under <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Coordinating Colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For trim, ceilings, and cabinetry contrast, the standard partner is Benjamin Moore <Swatch hex="#F3EFE0" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (OC-17, LRV 83.2) — a soft warm white that sharpens Hale Navy without the hard edge a stark white would give. For adjacent walls, <Swatch hex="#ccc9c0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> (SW 7015, LRV 58.4) is a light, balanced neutral that keeps the rest of the room calm so the navy stays the feature. And if you want a tonal partner instead of a contrast — two deep colors layered rather than dark against light — <Swatch hex="#314757" name="Gentleman's Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/gentlemans-gray-2062-20" /> (BM 2062-20, LRV 5.8) is a bluer, moodier deep navy that sits beside Hale Navy without competing. Build a full scheme around any of these in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Try It, Then Match It</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          To see Hale Navy on your own walls before you buy a sample, drop a room photo into the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. To check exactly how close two navies are — Hale Navy against Naval, or against its Sea Mariner match — put them side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>. The full Benjamin Moore catalog, including every color named here, lives on the <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore color chart</Link>. If you are weighing navy for the outside of the house, our guide to the <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">best exterior paint colors</Link> covers where a deep navy holds up and where it fades, and the <Link href="/blog/best-blue-paint-colors" className="text-brand-blue hover:underline">best blue paint colors</Link> guide sets Hale Navy against the rest of the blue range.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "accessible-beige-sw-7036",
+    title: "Accessible Beige (SW 7036): Undertones, Coordinating Colors & Cross-Brand Matches",
+    date: "2026-08-28",
+    author: "Philip Cameron",
+    excerpt:
+      "Accessible Beige (SW 7036): its exact LRV and undertone, how it differs from Agreeable Gray, its closest cross-brand matches, and the colors that pair with it.",
+    coverColor: "#d1c7b8",
+    coverImage: "/blog/accessible-beige-sw-7036.webp",
+    tags: ["Deep Dive", "Beige", "Sherwin-Williams"],
+    faq: [
+      {
+        question: "Is Accessible Beige warm or cool?",
+        answer:
+          "Accessible Beige (SW 7036) is a warm neutral. Our color database classes its undertone as neutral, not warm or cool, which is why it reads as a soft beige without tipping yellow or gray. At LRV 57.9 it sits in the light-to-mid range and holds its beige character in most light, though cool north light can pull a faint gray cast out of any neutral this soft.",
+      },
+      {
+        question: "What is the difference between Accessible Beige and Agreeable Gray?",
+        answer:
+          "They are close, but they sit in different families. Accessible Beige (SW 7036) is LRV 57.9 and lives in our beige family, so it reads warm and soft. Agreeable Gray (SW 7029) is LRV 60.1 and lives in our gray family, so it reads as a true greige — gray with a touch of warmth. Both are classed neutral in undertone. Pick Accessible Beige when you want a room to feel warmer and cozier; pick Agreeable Gray when you want it a shade lighter and more gray.",
+      },
+      {
+        question: "What white trim goes with Accessible Beige?",
+        answer:
+          "Alabaster (SW 7008) is the standard trim white for Accessible Beige. It is a soft warm white at LRV 82.2, so it gives roughly 24 points of contrast against Accessible Beige at LRV 57.9 — enough to define trim cleanly without the hard edge a bright cool white would create. Its neutral undertone shares Accessible Beige's warmth, so the two never clash.",
+      },
+      {
+        question: "What is the closest Benjamin Moore color to Accessible Beige?",
+        answer:
+          "The closest Benjamin Moore match to Accessible Beige (SW 7036) in our database is Inukshuk (CC-460), hex #cec5b6, at a Delta E of 0.7 — a near-identical match you would struggle to tell apart on the wall. Benjamin Moore's Edgecomb Gray (HC-173) is often suggested as a swap, but at LRV 63.1 it is noticeably lighter and a step more gray, so it reads as a lighter cousin rather than a true match.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          <Swatch hex="#d1c7b8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (SW 7036) is a warm neutral beige at LRV 57.9 with a neutral undertone — light enough to keep a room open, warm enough to feel grounded, and balanced enough that it doesn&apos;t swing yellow or gray the way most beiges do. Use it when you want a whole-room neutral that reads soft and lived-in; skip it if you want a clean, cool, modern gray, because this one is built to feel warm. Every LRV, undertone, and cross-brand match below comes straight from our color database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Numbers</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#d1c7b8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> is Sherwin-Williams code <strong>SW 7036</strong>, hex <strong>#d1c7b8</strong>, <strong>LRV 57.9</strong>, undertone <strong>neutral</strong>, in the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link>. The LRV is the number that matters most here: at 57.9 it reflects a little over half the light that hits it, which puts it firmly in light-to-mid territory. That is bright enough for a main living space without washing out, and dark enough to hold a visible warmth against white trim. It sits close to the boundary between beige and greige, which is exactly why it gets used in so many rooms — it is a beige that behaves like a warm neutral rather than a tan.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Undertones and How It Behaves in Light</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Our data classes Accessible Beige as a <strong>neutral</strong> undertone, and that is the whole point of the color: it carries warmth without committing to yellow, pink, or green the way a lot of beiges do under real light. A soft warm neutral at this LRV still shifts with the window direction, though, so test a large sample on the actual wall before you commit. In <strong>north-facing rooms</strong>, cool indirect light can pull a faint gray-green cast out of a neutral this soft, so it reads more greige than beige. In <strong>south-facing rooms</strong>, bright warm light all day brings the warmth forward and it looks its softest and most inviting. <strong>East-facing rooms</strong> are warm in the morning and cooler by afternoon, so it reads a touch more neutral as the day goes on. <strong>West-facing rooms</strong> are cool early and golden at night, which can deepen the warmth after dark. If you want to understand exactly why a neutral shifts like this, our guide to <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link> explains what is happening underneath.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Accessible Beige vs. Agreeable Gray</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This is the comparison people actually search for, because the two colors look almost like twins on a fan deck. The difference comes down to which side of the beige-greige line each one lands on. <Swatch hex="#d1c7b8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (SW 7036, LRV 57.9, neutral) sits in our <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> and leans warm — it is the cozier of the two. <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60.1, neutral) sits in our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> and reads as a true greige, a touch lighter and a step more gray. Both are classed neutral, so neither one throws a strong cast, and the LRV gap is small. Pick Accessible Beige when you want a room to feel warmer and softer; pick Agreeable Gray when you want it slightly lighter and cooler. If you are torn between the two, our roundup of the <Link href="/blog/best-greige-paint-colors" className="text-brand-blue hover:underline">best greige paint colors</Link> covers where each one wins.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Accessible Beige in Every Brand: The Closest Matches</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Accessible Beige is a Sherwin-Williams color, but you don&apos;t have to buy Sherwin-Williams to get it. Our database scores its closest equivalent in every brand by how similar the two actually look, not by name. The matches are unusually tight for a neutral this popular. In Behr, <Link href="/colors/behr/shoreline-haze-mq6-31" className="text-brand-blue hover:underline">Shoreline Haze</Link> (#d0c7b8) is near-identical at a Delta E of 0.5 — close enough that you would not spot the difference on a wall. Benjamin Moore&apos;s <Link href="/colors/benjamin-moore/inukshuk-cc-460" className="text-brand-blue hover:underline">Inukshuk</Link> (CC-460, #cec5b6) is near-identical too, as is PPG <Link href="/colors/ppg/synchronicity-1021-2" className="text-brand-blue hover:underline">Synchronicity</Link> (#cfc5b6) and Dutch Boy <Link href="/colors/dutch-boy/sandstone-tint-441-2db" className="text-brand-blue hover:underline">Sandstone Tint</Link> (#d4c9b9). Step out one ring and the matches are very close rather than exact: Dunn-Edwards <Link href="/colors/dunn-edwards/go-quietly-debn29" className="text-brand-blue hover:underline">Go Quietly</Link> (#d2cabc) and Valspar <Link href="/colors/valspar/oatbran-6006-1b" className="text-brand-blue hover:underline">Oatbran</Link> (#cec4b3) both read as the same color with a hair more or less warmth. The one to watch is Farrow &amp; Ball <Link href="/colors/farrow-ball/stirabout-300" className="text-brand-blue hover:underline">Stirabout</Link> (#d9cfc2) at a Delta E of 2.2 — the nearest F&amp;B color, but a visible difference: lighter and softer, not a true swap. To put any two of these side by side and see the gap for yourself, drop them into the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Coordinating Colors: Trim, Depth, and Companions</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Accessible Beige is a base color, so build a scheme around it rather than pairing it one-to-one. For <strong>trim and ceilings</strong>, reach for <Swatch hex="#edeae0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (SW 7008, LRV 82.2) — a soft warm white that gives roughly 24 points of contrast against the walls, clean enough to define edges without the cold snap of a bright white. For a <strong>darker step</strong> on an island, a feature wall, or lower cabinets, <Swatch hex="#c0b2a2" name="Balanced Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/balanced-beige-7037" /> (SW 7037, LRV 45.7) is the natural partner — it is the next code down the same Sherwin-Williams strip, a deeper version of the same neutral, so the two are guaranteed to relate. For <strong>companions</strong> in adjoining rooms, <Swatch hex="#dad4c5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (BM HC-173, LRV 63.1) is the lighter, slightly grayer greige that opens a space up, while <Swatch hex="#d7c5ae" name="Kilim Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/kilim-beige-6106" /> (SW 6106, LRV 57.4) brings a warmer, sandier tone at almost the same lightness. All four sit in the same <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutral</Link> range, which is why the palette holds together. For the wider field of options, our guide to the <Link href="/blog/best-beige-paint-colors" className="text-brand-blue hover:underline">best beige paint colors</Link> maps out where each one fits.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Seeing It on Your Own Walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A beige this light-sensitive is worth testing before you buy a gallon. Drop a photo of your room into the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to see Accessible Beige on your actual walls in your actual light, then use the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> to check it against Agreeable Gray or any of the cross-brand matches above. The full catalog of related shades lives on the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color chart</Link>, and the complete <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige paint colors</Link> family is there when you want to see what else sits in this range.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "agreeable-gray-sw-7029",
+    title: "Agreeable Gray (SW 7029): Undertones, Coordinating Colors & Cross-Brand Matches",
+    date: "2026-08-21",
+    author: "Philip Cameron",
+    excerpt:
+      "Agreeable Gray (SW 7029) is a warm greige at LRV 60. Its undertones, coordinating colors, cross-brand matches, and how it differs from Repose Gray.",
+    coverColor: "#d1cbc1",
+    coverImage: "/blog/agreeable-gray-sw-7029.webp",
+    tags: ["Deep Dive", "Gray", "Sherwin-Williams"],
+    faq: [
+      {
+        question: "Is Agreeable Gray warm or cool?",
+        answer:
+          "Agreeable Gray (SW 7029) is a warm greige — gray with beige mixed in. Our database lists its undertone as neutral, its LRV as 60.1, and its hex as #d1cbc1, in the gray family. The neutral classification means it has no dominant green, pink, or blue cast, but the beige in its base makes it read warmer than a true gray like Repose Gray (SW 7015). In warm south or west light it reads warmest; in cool north light the beige recedes and it reads closer to a soft gray.",
+      },
+      {
+        question: "What is the difference between Agreeable Gray and Repose Gray?",
+        answer:
+          "Both are neutral-undertone Sherwin-Williams greige-grays, and they look similar on a chip. The measured difference is lightness: Agreeable Gray (SW 7029) sits at LRV 60.1 and Repose Gray (SW 7015) at LRV 58.4, so Agreeable is slightly lighter. Agreeable Gray carries more beige and reads as a warmer greige; Repose Gray reads cleaner and a touch cooler, closer to a true light gray. Choose Agreeable Gray for warmth and north-facing rooms, Repose Gray for a crisper look or a room that already runs warm.",
+      },
+      {
+        question: "What white trim goes with Agreeable Gray?",
+        answer:
+          "Alabaster (SW 7008) is the natural trim white for Agreeable Gray. It is a soft warm white at LRV 82.2 (hex #edeae0), so it complements Agreeable Gray's beige warmth instead of fighting it the way a stark bright white would. The LRV gap — 82.2 for Alabaster against 60.1 for Agreeable Gray — gives clean contrast between trim and wall without going harsh.",
+      },
+      {
+        question: "What is the closest Benjamin Moore color to Agreeable Gray?",
+        answer:
+          "The closest Benjamin Moore match to Agreeable Gray (SW 7029, #d1cbc1) in our database is Wish (AF-680, #d0cbc3) — near-identical on the wall. If you want a slightly deeper greige in the same spirit, Revere Pewter (HC-172, #ccc7b9) is Benjamin Moore's best-known version of the Agreeable Gray idea, though it reads a step darker at LRV 55.1 versus 60.1.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029) is a warm greige — gray with beige mixed in — that sits at LRV 60.1 with a neutral undertone, which is exactly why it reads soft and balanced instead of cold. Use it when you want a whole-home neutral that stays warm in most light; skip it if you&apos;re after a crisp, modern gray, because the beige in its base will read too soft for that. This guide covers its exact numbers, how the light in your room changes it, how it stacks up against Repose Gray, its closest match in every brand we track, and the colors that coordinate with it. Every hex, LRV, and cross-brand match here comes straight from our color database.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Numbers</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Agreeable Gray&apos;s exact specs: hex <strong>#d1cbc1</strong>, <strong>LRV 60.1</strong>, neutral undertone, code <strong>SW 7029</strong>, and it lives in our gray family. LRV 60 is the sweet spot for a whole-room neutral — light enough to keep a space open, deep enough to still read as a color on the wall rather than an off-white. Our database classifies the undertone as neutral, which is the technical read: it doesn&apos;t commit hard to green, pink, or blue. What makes it a greige rather than a true gray is the beige folded into that neutral base, and that beige is where the warmth comes from.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How Agreeable Gray Changes with the Light</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A greige is more light-sensitive than a flat gray because it carries two things at once — the gray and the beige — and different light pulls one forward. Because Agreeable Gray is classified neutral, it has no strong cast to exaggerate, so it swings less than a cool blue-gray would. It still moves, though, and the direction your windows face decides which way.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>North-facing rooms</strong> get cool, indirect light with no warm sun; the beige recedes and Agreeable Gray reads its grayest and coolest here. It stays warm enough to avoid going icy, which is why it holds up in north light better than most greiges. <strong>South-facing rooms</strong> get warm light all day, which brings the beige forward — this is where it reads warmest and softest, sometimes close to a warm taupe by afternoon. <strong>East-facing rooms</strong> are warm at breakfast and cooler by afternoon, so the color reads warm early and settles grayer as the day goes on. <strong>West-facing rooms</strong> are cool in the morning and warm-to-golden after sunset, and under that low evening light the greige can pull noticeably warm, occasionally a touch pink. Test a large sample on the actual wall and look at it morning, noon, and night before you commit — with a greige, the chip is never the whole story.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Agreeable Gray vs. Repose Gray</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This is the comparison almost everyone runs into, because <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> and <Swatch hex="#ccc9c0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> are the two most-specified Sherwin-Williams greige-grays and they look nearly the same on a chip. The measurable difference in our database is light: Agreeable Gray sits at LRV 60.1, Repose Gray at LRV 58.4, so Agreeable reads a hair lighter. Both are classified neutral undertone. The practical difference is warmth — Agreeable Gray carries more beige and reads as a true greige, while Repose Gray reads cleaner and a touch cooler, closer to a true light gray.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Pick Agreeable Gray if you want warmth, a cozier whole-home neutral, or a color that holds up in cool north light. Pick Repose Gray if you want a crisper, more modern gray, or your room already runs warm and you don&apos;t want it tipping beige. If you&apos;re stuck between the two, put them side by side in our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> — the difference is real but subtle, and seeing them together settles it faster than a paint chip does.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Agreeable Gray in Every Brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The value of a color like this is knowing what to buy when your store doesn&apos;t carry Sherwin-Williams. Agreeable Gray has unusually tight matches across the board, which tells you the greige recipe is close to universal. The nearest are effectively the same paint: <Link href="/colors/dutch-boy/doves-wings-443-1db" className="text-brand-blue hover:underline">Dutch Boy Doves Wings</Link> (#d1cbc1) and <Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Valspar Heritage Gray</Link> (#d1cbc1) are hex-identical to it, and <Link href="/colors/ppg/whiskers-1025-3" className="text-brand-blue hover:underline">PPG Whiskers</Link> (#d1ccc2) and <Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link> (#d2ccc3) are near-identical. Benjamin Moore&apos;s closest is <Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (AF-680, #d0cbc3) — near-identical and the color to ask for at a BM counter. <Link href="/colors/farrow-ball/cornforth-white-228" className="text-brand-blue hover:underline">Farrow &amp; Ball Cornforth White</Link> (#d1cbc3) is very close if you&apos;re speccing British paint. The one visible-difference match in the set is <Link href="/colors/kilz/starched-linen-lk210" className="text-brand-blue hover:underline">Kilz Starched Linen</Link> (#dad2c7), which sits a shade lighter and warmer. If you&apos;re matching between the two big names specifically, the full <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> match list does this for every SW shade.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors That Coordinate with Agreeable Gray</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Start with trim. <Swatch hex="#edeae0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (SW 7008, LRV 82.2) is the natural white here — a soft warm white that matches Agreeable Gray&apos;s warmth instead of fighting it, which is what a stark bright white would do. For a darker step in the same line, <Swatch hex="#bcb7ad" name="Mindful Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/mindful-gray-7016" /> (SW 7016, LRV 47.6) is the deeper greige-gray built on the same base — a controlled 12-and-a-half-point drop in LRV that works for an accent wall, an island, or the dark half of a two-tone scheme. For a warm companion in an adjoining room, <Swatch hex="#d1c7b8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (SW 7036, LRV 57.9) sits at nearly the same lightness but in the beige family, so it reads as a warmer sibling rather than a clash. And if you&apos;re already in a Benjamin Moore house, <Swatch hex="#ccc7b9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (HC-172, LRV 55.1) is that brand&apos;s answer to the same greige idea, a step deeper than Agreeable Gray but the same warm, grounded feel.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Testing and Matching Agreeable Gray</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Before you commit, drop a photo of your actual room into the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to see Agreeable Gray on your own walls in your own light. Build the full scheme around it — trim, accent, companion — in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>. If you&apos;re torn between it and Repose Gray, or want to check how close a cross-brand match really is, put two colors side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>. The complete catalog lives on the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams color chart</Link>, and you can browse the rest of the family in <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link> or its warmer neighbors in <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige paint colors</Link>. If the undertone talk here raised more questions than it answered, our guide to <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link> explains what&apos;s happening underneath, and the <Link href="/blog/best-greige-paint-colors" className="text-brand-blue hover:underline">best greige paint colors</Link> and <Link href="/blog/best-gray-paint-colors" className="text-brand-blue hover:underline">best gray paint colors</Link> guides cover the wider field.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "famous-white-paints-compared",
     title: "Alabaster vs. White Dove — and 15 Other Famous Whites, Measured",
     date: "2026-07-03",
