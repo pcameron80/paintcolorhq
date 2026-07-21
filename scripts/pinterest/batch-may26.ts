@@ -62,6 +62,9 @@ export interface PinSpec {
   type?: PinType;
   /** When set, publish via Pinterest image_url instead of a local image file. */
   imageUrl?: string;
+  /** Set by selectDailyMix on cooldown picks: this key is in the published log
+   *  on purpose — publish it again (as a new pin) instead of skipping. */
+  repin?: boolean;
 }
 
 /** Where the generated / source PNGs live. */
