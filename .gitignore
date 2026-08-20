@@ -94,3 +94,10 @@ seo-audits/**/screenshots/
 seo-audits/**/*.pdf
 seo-audits/**/*.html
 seo-audits/**/*.py
+
+# Session records and roast outputs live in the Brain, not in this PUBLIC repo.
+# See brain/projects/paintcolorhq/records/. Committing them here on 2026-08-19
+# published revenue and strategy detail by accident.
+HANDOFF.md
+docs/roast-*.md
+docs/research/
