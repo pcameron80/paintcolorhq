@@ -1,6 +1,6 @@
 # PaintColorHQ — Claude Code repo context
 
-> **Portfolio context.** This file augments the global identity at `~/.claude/CLAUDE.md` (laptop scope, tone, preferences, tool rules). Read both. Project knowledge / daily logs for this site live in `~/Brain-Personal/10-projects/paintcolorhq/`.
+> **Portfolio context.** This file augments the global identity at `~/.claude/CLAUDE.md` (laptop scope, tone, preferences, tool rules). Read both. Project knowledge lives in the Brain at `~/Documents/GitHub/brain/projects/paintcolorhq/` — `index.md` (status, verified against live GA4/GSC/Bing), `revenue-plan.md` and `api-launch-playbook.md`. Write there ONLY via the `mcp__open-knowledge__*` tools. The old Obsidian vault is a read-only archive at `~/Documents/GitHub/_archive/brain-personal-vault/10-projects/paintcolorhq/` — daily logs and the hi-res chart asset only, nothing current.
 
 ## Role in the portfolio
 
