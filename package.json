@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "tsx scripts/build-match-data.ts",
+    "prebuild": "tsx scripts/build-match-data.ts && tsx scripts/build-sitemap-data.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -31,7 +31,11 @@
     "test:dedupe": "node --import tsx --test scripts/lib/dedupe-rules.test.ts",
     "test:behr-import": "node --import tsx --test scripts/lib/behr-import-rules.test.ts",
     "test:samplize": "NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX='https://www.jdoqocy.com/click-101771405-15496318?url=' node --import tsx --test scripts/lib/samplize-affiliate.test.ts",
-    "test:supplies": "node --import tsx --test scripts/lib/painting-supplies.test.ts"
+    "test:supplies": "node --import tsx --test scripts/lib/painting-supplies.test.ts",
+    "predev": "tsx scripts/build-sitemap-data.ts",
+    "build:sitemap": "tsx scripts/build-sitemap-data.ts",
+    "test:seo": "node --import tsx --test src/lib/indexing.test.ts src/lib/catalog-pagination.test.ts src/lib/color-description.test.ts",
+    "check:sitemap": "tsx scripts/check-sitemap-data.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",

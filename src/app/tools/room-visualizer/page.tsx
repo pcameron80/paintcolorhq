@@ -10,7 +10,7 @@ import { SamplizeOffer } from "@/components/samplize-offer";
 export const metadata: Metadata = {
   title: "Room Color Visualizer - Preview Paint Colors in a Room",
   description:
-    "Preview paint colors in a room before you buy. Works with Sherwin-Williams, Benjamin Moore, Behr, PPG, and 10 more brands. Choose walls, ceiling, trim, accent.",
+    "Preview paint colors in a room before you buy. Explore main-wall, accent-wall and trim colors in the provided room photograph. Find digital paint matches across our catalog.",
   alternates: {
     canonical: "https://www.paintcolorhq.com/tools/room-visualizer",
   },
@@ -61,7 +61,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Room Color Visualizer",
-        description: "Preview paint colors on walls, ceiling, trim, and more in a realistic room scene. Free tool from Paint Color HQ.",
+        description: "Preview paint colors on main walls, accent wall, and trim in a realistic room scene. Free tool from Paint Color HQ.",
         url: "https://www.paintcolorhq.com/tools/room-visualizer",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -69,8 +69,8 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: [
-          { "@type": "Question", name: "What is a room color visualizer?", acceptedAnswer: { "@type": "Answer", text: "A room color visualizer is a free online tool that lets you preview paint colors on walls, ceiling, trim, accent wall, and floor in a realistic room scene before you buy paint. Paint Color HQ's visualizer updates instantly as you pick colors and supports all major paint brands." } },
-          { "@type": "Question", name: "Can I match visualizer colors to real paint?", acceptedAnswer: { "@type": "Answer", text: "Yes. After choosing a color in the visualizer, use the \"Find Paint Match\" feature to see which real-world paints from 14 major brands — including Sherwin-Williams, Benjamin Moore, Behr, Valspar, and PPG — are the closest match. Every suggestion links to its full color detail page." } },
+          { "@type": "Question", name: "What is a room color visualizer?", acceptedAnswer: { "@type": "Answer", text: "A room color visualizer is a free online tool that lets you preview paint colors on main walls, accent wall, and trim in a realistic room scene before you buy paint. Paint Color HQ's visualizer updates instantly as you pick colors and supports all major paint brands." } },
+          { "@type": "Question", name: "Can I match visualizer colors to real paint?", acceptedAnswer: { "@type": "Answer", text: "Yes. After choosing a color in the visualizer, use the \"Find Paint Match\" feature to see which real-world paints from catalogued brands — including Sherwin-Williams, Benjamin Moore, Behr, Valspar, and PPG — are the closest match. Every suggestion links to its full color detail page." } },
           { "@type": "Question", name: "Is the room visualizer free?", acceptedAnswer: { "@type": "Answer", text: "Yes. The Paint Color HQ Room Visualizer is completely free with no sign-up required. You can preview unlimited color combinations on walls, trim, accent walls, and floors." } },
           { "@type": "Question", name: "Why does paint look different on my wall than in the room visualizer?", acceptedAnswer: { "@type": "Answer", text: "The preview paints your color over one photo's fixed lighting, while your room has its own. Three things move between screen and wall: your monitor or phone's brightness and calibration, your room's light (warm 2700K bulbs push a color yellower, cool 4000K bulbs push it bluer, and north-facing windows run cooler than south-facing ones), and sheen — flat, eggshell, and semi-gloss all reflect light differently. Use the visualizer to narrow your choices, then confirm the winner with a physical sample on the actual wall, viewed in both morning and evening light." } },
           { "@type": "Question", name: "How do I pick a trim color to go with my wall color?", acceptedAnswer: { "@type": "Answer", text: "Trim usually contrasts the wall — a clean white or off-white frames a colored wall and makes molding and window casings stand out. The wider the gap in lightness (LRV) between wall and trim, the crisper the edges look; a narrow gap reads soft and understated. Keep the wall and trim in the same undertone family so they don't clash: two grays can look near-identical yet pull in opposite directions, one warm toward pink and the other cool toward green. Check the undertone tag on each color's page before you buy." } },
@@ -94,7 +94,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             Room Color Visualizer
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Preview paint colors on walls, ceiling, trim, and more. Click a region
+            Preview paint colors on main walls, accent wall, and trim. Click a region
             or select it below, then pick a color to see it applied instantly.
           </p>
         </div>
@@ -146,7 +146,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
                 variation; a real wall shows it, and so does the preview. Painting the color over
                 the photo&apos;s lighting instead of covering it is what makes the result closer to
                 a finished wall than a solid block of color would be. When a shade looks right,
-                select &ldquo;Find Paint Match&rdquo; to pull the closest real paints from 13
+                select &ldquo;Find Paint Match&rdquo; to pull the closest real paints from catalogued
                 brands — each result links to its full color page, where you can read its undertone
                 and see cross-brand equivalents.
               </p>
@@ -308,14 +308,14 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             <p>
               The Paint Color HQ Room Visualizer lets you preview paint colors on
               every surface in a room before you commit to a single can of paint.
-              Click on any region — walls, ceiling, trim, accent wall, or floor —
+              Click on any region — main walls, accent wall, or trim —
               to select it, then choose a color from the picker or type in a
               specific hex code. The room updates instantly so you can experiment
               freely without any waiting.
             </p>
             <p>
               Once you find a color you love, use the &quot;Find Paint
-              Match&quot; feature to see which real-world paints from 14 major
+              Match&quot; feature to see which real-world paints from catalogued
               brands — including Sherwin-Williams, Benjamin Moore, Behr, Valspar,
               PPG, Dunn-Edwards, and Farrow &amp; Ball — are the closest match.
               Every suggestion links to its full color detail page so you can

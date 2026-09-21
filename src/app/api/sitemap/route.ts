@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAllColorSlugs } from "@/lib/queries";
+import sitemapSnapshot from "@/generated/sitemap.json";
 import { getAllBlogSlugs, getAllPosts } from "@/lib/blog-posts";
 
 // ISR: refresh hourly so a scheduled post enters the sitemap index on its date.
@@ -15,7 +15,7 @@ const SITE_BUILD_DATE =
 
 export async function GET() {
   try {
-    const colorSlugs = await getAllColorSlugs();
+    const colorSlugs = sitemapSnapshot.colors;
     const totalColorSitemaps = Math.ceil(colorSlugs.length / COLORS_PER_SITEMAP);
 
     const sitemapNames: string[] = [
@@ -51,7 +51,7 @@ ${sitemapNames
   .map(
     (name) => `  <sitemap>
     <loc>${BASE_URL}/sitemap/${name}.xml</loc>
-    <lastmod>${lastmodFor(name)}</lastmod>
+    ${name === "blog" ? `<lastmod>${lastmodFor(name)}</lastmod>` : ""}
   </sitemap>`
   )
   .join("\n")}
@@ -61,7 +61,7 @@ ${sitemapNames
       headers: {
         "Content-Type": "application/xml",
         "Cache-Control":
-          "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800",
+          "public, max-age=0, s-maxage=3600",
       },
     });
   } catch {

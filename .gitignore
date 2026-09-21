@@ -101,3 +101,7 @@ seo-audits/**/*.py
 HANDOFF.md
 docs/roast-*.md
 docs/research/
+
+# Validated sitemap snapshot generated before dev/build
+/src/generated/sitemap.json
+/src/generated/sitemap.json.tmp

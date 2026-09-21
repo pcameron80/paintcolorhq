@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
-import { ColorSwatch } from "@/components/color-swatch";
 import { TrackPage } from "@/components/track-page";
 import { MatchColorSearch } from "@/components/match-color-search";
 import { getBrandBySlug, getTopCrossBrandMatches } from "@/lib/queries";
@@ -276,7 +275,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
             name: `How many ${sourceBrand.name} colors have a ${targetBrand.name} equivalent?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `Paint Color HQ has identified ${matches.length} close ${sourceBrand.name}-to-${targetBrand.name} color matches ranked by CIEDE2000 Delta E score. Colors with a Delta E under 2.0 are virtually identical on a finished wall; under 5.0 are visibly similar.`,
+              text: `Paint Color HQ has identified ${matches.length} close ${sourceBrand.name}-to-${targetBrand.name} color matches ranked by CIEDE2000 Delta E score. These scores compare digital values; confirm with physical samples.`,
             },
           },
           {
@@ -284,7 +283,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
             name: `What is the best way to match ${sourceBrand.name} paint colors to ${targetBrand.name}?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `Use the Delta E color difference score. A Delta E under 2.0 means the colors are nearly identical on a finished wall; under 5.0 means visibly similar but distinguishable. Always verify with physical paint samples in your room's actual lighting before committing — small differences amplify at scale.`,
+              text: `Use the Delta E color difference score. A lower score means a closer digital approximation, not a guaranteed physical match. Always verify with physical paint samples in your room's actual lighting before committing — small differences amplify at scale.`,
             },
           },
         ],

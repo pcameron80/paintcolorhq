@@ -1,8 +1,4 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { ColorCard } from "./color-card";
 
 interface BrandColor {
@@ -25,6 +21,9 @@ interface Props {
   families: FamilyOption[];
   initialColors: BrandColor[];
   initialTotalCount: number;
+  currentPage: number;
+  familyFilter: string;
+  undertoneFilter: string;
 }
 
 const UNDERTONE_COLORS: Record<string, string> = {
@@ -40,67 +39,11 @@ export function BrandColorLibrary({
   brandName,
   families,
   initialColors,
-  initialTotalCount,
+  initialTotalCount, currentPage, familyFilter, undertoneFilter,
 }: Props) {
-  const searchParams = useSearchParams();
-  const familyFilter = searchParams.get("family") ?? "";
-  const undertoneFilter = searchParams.get("undertone") ?? "";
-  const pageParam = parseInt(searchParams.get("page") ?? "1", 10) || 1;
-  const currentPage = Math.max(1, pageParam);
-
-  const hasFilters = !!familyFilter || !!undertoneFilter || currentPage > 1;
-  const signature = `${familyFilter}|${undertoneFilter}|${currentPage}`;
-
-  const [fetched, setFetched] = useState<{
-    colors: BrandColor[];
-    total: number;
-    signature: string;
-  } | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  // Mirror the family-color-library pattern: show fetched data only when its
-  // signature matches current URL filters, otherwise fall back to the
-  // server-rendered canonical (page 1, no filter) data.
-  const usingFetched = hasFilters && fetched?.signature === signature;
-  const colors = usingFetched ? fetched.colors : initialColors;
-  const totalCount = usingFetched ? fetched.total : initialTotalCount;
+  const colors = initialColors;
+  const totalCount = initialTotalCount;
   const totalPages = Math.max(1, Math.ceil(totalCount / PER_PAGE));
-
-  /* eslint-disable react-hooks/set-state-in-effect */
-  useEffect(() => {
-    if (!hasFilters) {
-      setLoading(false);
-      return;
-    }
-    setLoading(true);
-    const p = new URLSearchParams();
-    if (familyFilter) p.set("family", familyFilter);
-    if (undertoneFilter) p.set("undertone", undertoneFilter);
-    if (currentPage > 1) p.set("page", String(currentPage));
-
-    let cancelled = false;
-    fetch(`/api/brand/${brandSlug}/colors?${p.toString()}`)
-      .then((r) => r.json())
-      .then((data) => {
-        if (cancelled) return;
-        if (Array.isArray(data?.colors)) {
-          setFetched({
-            colors: data.colors,
-            total: data.totalCount ?? 0,
-            signature,
-          });
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        if (!cancelled) setLoading(false);
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [brandSlug, hasFilters, signature, familyFilter, undertoneFilter, currentPage]);
-  /* eslint-enable react-hooks/set-state-in-effect */
 
   function makeHref(opts: {
     family?: string | null;
@@ -131,12 +74,6 @@ export function BrandColorLibrary({
     if (currentPage < totalPages - 2) pages.push("ellipsis");
     addPage(totalPages);
   }
-
-  // Pagination ≥ page 3 gets rel="nofollow" (same M4 rule as before the
-  // refactor). Brand pages 2+ are noindex; deep pagination just burns
-  // crawl budget. Sitemap covers color discovery.
-  const nofollowProps = (target: number) =>
-    target >= 3 ? { rel: "nofollow" as const } : {};
 
   return (
     <>
@@ -201,7 +138,7 @@ export function BrandColorLibrary({
 
       {/* Color grid */}
       <div
-        className={`grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 transition-opacity ${loading ? "opacity-50" : ""}`}
+        className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
       >
         {colors.map((color) => (
           <ColorCard
@@ -216,7 +153,7 @@ export function BrandColorLibrary({
         ))}
       </div>
 
-      {colors.length === 0 && !loading && (
+      {colors.length === 0 && (
         <p className="mt-12 text-center text-on-surface-variant">
           No colors found{familyFilter ? ` in the ${familyFilter} family` : ""}.
         </p>
@@ -224,11 +161,10 @@ export function BrandColorLibrary({
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <nav className="mt-12 flex items-center justify-center gap-2">
+        <nav aria-label="Color library pages" className="mt-12 flex flex-wrap items-center justify-center gap-2">
           {currentPage > 1 && (
             <Link
               href={makeHref({ page: currentPage - 1 })}
-              {...nofollowProps(currentPage - 1)}
               className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors"
             >
               Previous
@@ -243,7 +179,7 @@ export function BrandColorLibrary({
               <Link
                 key={page}
                 href={makeHref({ page })}
-                {...nofollowProps(page)}
+                aria-current={page === currentPage ? "page" : undefined}
                 className={`rounded-xl px-4 py-2.5 text-sm font-headline font-bold transition-all ${page === currentPage ? "bg-primary text-on-primary" : "bg-surface-container-lowest text-on-surface-variant border border-outline-variant/15 hover:text-primary"}`}
               >
                 {page}
@@ -253,7 +189,6 @@ export function BrandColorLibrary({
           {currentPage < totalPages && (
             <Link
               href={makeHref({ page: currentPage + 1 })}
-              {...nofollowProps(currentPage + 1)}
               className="rounded-xl bg-surface-container-lowest px-5 py-2.5 text-sm font-headline font-bold text-on-surface-variant border border-outline-variant/15 hover:text-primary transition-colors"
             >
               Next

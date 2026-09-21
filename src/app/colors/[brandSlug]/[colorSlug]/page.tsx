@@ -1,10 +1,12 @@
+import { ColorDecisionGuide } from "@/components/color-decision-guide";
+import { REVIEWED_COLOR_PAGES } from "@/lib/color-review";
+import { extractVariantSuffix, isColorIndexable } from "@/lib/indexing";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
-import { ColorSwatch } from "@/components/color-swatch";
 import { ComplementaryColors } from "@/components/complementary-colors";
 import { CuratedPalettes } from "@/components/curated-palettes";
 import { SaveToProject } from "@/components/save-to-project";
@@ -81,7 +83,8 @@ function isLightColor(hex: string): boolean {
   return l > 55;
 }
 
-async function resolveHarmonies(hex: string) {
+async function resolveHarmonies(color: Awaited<ReturnType<typeof getColorBySlug>> & {}) {
+  const hex = color.hex;
   const [h, s, l] = hexToHsl(hex);
   const rawHarmonies = [
     { name: "Complementary", description: "Opposite on the color wheel \u2014 creates vibrant contrast", colors: [{ hex, label: "Base" }, { hex: hslToHex(h + 180, s, l), label: "Complement" }] },
@@ -96,55 +99,13 @@ async function resolveHarmonies(hex: string) {
   return rawHarmonies.map((harmony) => ({
     name: harmony.name, description: harmony.description,
     colors: harmony.colors.map((c) => {
-      const match = resolved.get(c.hex);
+      const match = c.label === "Base" ? color : resolved.get(c.hex);
       return { label: c.label, paletteHex: c.hex, matchHex: match?.hex ?? c.hex, matchName: match?.name ?? null, matchBrandSlug: match?.brand.slug ?? null, matchColorSlug: match?.slug ?? null };
     }),
   }));
 }
 
 interface PageProps { params: Promise<{ brandSlug: string; colorSlug: string }>; }
-
-function extractVariantSuffix(slug: string, colorNumber: string | null | undefined): string {
-  const m = slug.match(/-([2-9])$/);
-  if (!m) return "";
-  const digit = m[1];
-  if (colorNumber && colorNumber.toLowerCase().endsWith(digit)) return "";
-  return ` (variant ${digit})`;
-}
-
-// A slug like `agreeable-gray-7029-2` is a variant of `agreeable-gray-7029`.
-// 49 such pages exist across Behr, Kilz, and Benjamin Moore — many cannibalize
-// the primary slug because their generated copy differs only by "(variant 2)"
-// in the title. Treat them as noindex so the primary keeps the ranking.
-export function isVariantSlug(slug: string, colorNumber: string | null | undefined): boolean {
-  return extractVariantSuffix(slug, colorNumber) !== "";
-}
-
-// Thin-content gate. Two paths to noindex:
-//   1. Code-only name: when the color name has no alphabetic run of 3+
-//      letters (e.g. Behr "YL-W15", "PPU5-16"). These can't rank for
-//      natural-language queries — no one searches "YL-W15 paint." Colors
-//      with real-word names like "Red", "Tan", or "Imagine .04" still
-//      pass even when name overlaps with color_number.
-//   2. Data quality score < 2: missing two or more of {LRV, undertone,
-//      family, has-name}. Today every color has score >= 3 so this is
-//      future-proofing for sparse imports.
-function isCodeOnlyName(name: string): boolean {
-  if (!name.trim()) return true;
-  // Unicode-aware so "Crème" reads as a 5-letter word, not "Cr" + "me".
-  const runs = name.match(/\p{L}+/gu);
-  if (!runs) return true;
-  return runs.every((r) => r.length < 3);
-}
-
-function dataQualityScore(color: { lrv: number | string | null; undertone: string | null; color_family: string | null; name: string }): number {
-  let score = 0;
-  if (color.lrv !== null && color.lrv !== undefined) score++;
-  if (color.undertone) score++;
-  if (color.color_family) score++;
-  if (!isCodeOnlyName(color.name)) score++;
-  return score;
-}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { brandSlug, colorSlug } = await params;
@@ -175,9 +136,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const titleSuffix = familyForTitle
     ? ` | ${lrvForTitle != null ? `LRV ${lrvForTitle} ` : ""}${familyForTitle} Paint Color`
     : ` | ${color.hex.toUpperCase()}`; // fall back to hex if family unavailable
-  const shouldIndex = !isCodeOnlyName(color.name) && dataQualityScore(color) >= 2 && !isVariantSlug(colorSlug, color.color_number);
+  const shouldIndex = isColorIndexable(color);
   return {
-    title: `${color.name}${colorNum} by ${color.brand.name}${variant}${titleSuffix}`,
+    title: REVIEWED_COLOR_PAGES[`${brandSlug}/${colorSlug}`] ? { absolute: `${color.brand.name} ${color.name}${colorNum}: Color Matches` } : `${color.name}${colorNum} by ${color.brand.name}${variant}${titleSuffix}`,
     description: generateMetaDescription(color) + variant,
     alternates: { canonical: url },
     robots: shouldIndex ? undefined : { index: false, follow: true },
@@ -254,7 +215,7 @@ export default async function ColorPage({ params }: PageProps) {
     }),
     ...sampleLinks.filter((l) => !l.primary).map((l) => ({ key: l.label, href: l.url, label: l.label, sponsored: true })),
   ];
-  const harmonies = await resolveHarmonies(color.hex);
+  const harmonies = await resolveHarmonies(color);
   const light = isLightColor(color.hex);
   const textClass = light ? "text-on-surface" : "text-on-primary";
   const textMutedClass = light ? "text-on-surface-variant" : "text-on-primary/80";
@@ -270,11 +231,11 @@ export default async function ColorPage({ params }: PageProps) {
   // The generic explainer sentences ("Undertone is the subtle cast…", the CIEDE2000
   // explainer, "LRV is the most reliable guide…") were trimmed — identical across
   // 26K pages, they added duplication, not citability. Delta E stays plain language.
-  const closenessPhrase = (de: number) => (de < 2 ? "a near-identical match" : de < 5 ? "a very close match" : "a close match");
+  const closenessPhrase = (de: number) => (de < 2 ? "a close digital match" : de < 5 ? "a very close match" : "a close match");
   if (color.undertone) {
     faqItems.push({
       question: `What undertone does ${color.name} have?`,
-      answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and sits in the ${color.color_family} color family` : ""}. The undertone shifts with light — warmer under 2700K bulbs, cleaner and cooler under 4000K daylight — so sample ${color.name} in your own space before committing.`,
+      answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and sits in the ${color.color_family} color family` : ""}. This is a digital classification, not a prediction of physical paint under every light. Compare samples in your own space.`,
     });
   }
   if (matches.length > 0) {
@@ -293,7 +254,7 @@ export default async function ColorPage({ params }: PageProps) {
       : "a deep, dramatic color best saved for accent walls, dining rooms, and cozy spaces where atmosphere matters more than reflected light";
     faqItems.push({
       question: `What is the LRV of ${color.name}?`,
-      answer: `${color.name} has a Light Reflectance Value (LRV) of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white — that makes it ${lrvBand}.`,
+      answer: `${color.name} has a estimated lightness value of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white — that makes it ${lrvBand}.`,
     });
   }
 
@@ -335,11 +296,11 @@ export default async function ColorPage({ params }: PageProps) {
       <Header />
 
       {/* Immersive Color Hero */}
-      <section className="relative w-full min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden pt-20" style={{ backgroundColor: color.hex }}>
+      <section className="relative w-full min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-center overflow-hidden pt-20" style={{ backgroundColor: color.hex }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
-        <div className="relative z-10 text-center px-6 py-16">
+        <div className="relative z-10 w-full max-w-5xl text-center px-6 pt-16 pb-8">
           <p className={`font-headline uppercase tracking-[0.4em] text-xs mb-4 opacity-80 ${textMutedClass}`}>
-            Ref. {color.hex.toUpperCase()}{color.color_number ? ` \u00B7 ${color.color_number}` : ""}
+            {color.brand.name} · {color.hex.toUpperCase()}{color.color_number ? ` \u00B7 ${color.color_number}` : ""}
           </p>
           <h1 className={`font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-8 drop-shadow-2xl ${textClass}`}>
             {color.name}
@@ -362,7 +323,7 @@ export default async function ColorPage({ params }: PageProps) {
             )}
           </div>
         </div>
-        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 ${light ? "bg-on-surface/10" : "bg-white/10"} backdrop-blur-xl px-6 py-3 rounded-full border ${light ? "border-on-surface/10" : "border-white/10"}`}>
+        <div className={`relative z-10 mb-8 mx-4 w-[calc(100%_-_2rem)] max-w-3xl flex flex-wrap justify-center items-center gap-3 ${light ? "bg-on-surface/10" : "bg-white/10"} backdrop-blur-xl px-4 py-3 rounded-2xl border ${light ? "border-on-surface/10" : "border-white/10"}`}>
           {/* Above-the-fold buy affordance — only on Samplize-stocked colors
               (availability-gated upstream via sampleLinks' primary entry).
               sid=hero so CJ Insights can compare placements (hero vs matrix
@@ -380,6 +341,7 @@ export default async function ColorPage({ params }: PageProps) {
               <div className={`w-px h-4 ${light ? "bg-on-surface/20" : "bg-white/20"}`} />
             </>
           )}
+          <Link href="#color-matches" className={`text-sm font-bold underline underline-offset-4 ${textClass}`}>Find matching colors</Link>
           <SaveToProject colorId={color.id} currentPath={`/colors/${brandSlug}/${colorSlug}`} />
           <ShareButton title={`${color.name} by ${color.brand.name}`} url={`/colors/${brandSlug}/${colorSlug}`} />
           <PinterestSaveButton
@@ -401,6 +363,8 @@ export default async function ColorPage({ params }: PageProps) {
           <p className="text-lg text-on-surface leading-relaxed">{colorLede}</p>
         </article>
       </section>
+
+      <ColorDecisionGuide color={color} matches={matches} />
 
       {/* Curated review — only on high-demand colors (null for the long tail). */}
       {curatedEditorial && (
@@ -433,7 +397,7 @@ export default async function ColorPage({ params }: PageProps) {
               {[
                 { label: "HEX Code", value: color.hex.toUpperCase() },
                 { label: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
-                ...(lrv != null ? [{ label: "LRV", value: lrv.toFixed(1) }] : []),
+                ...(lrv != null ? [{ label: "Estimated LRV", value: lrv.toFixed(1) }] : []),
                 ...(color.undertone ? [{ label: "Undertone", value: color.undertone, dot: getUndertoneDotClass(color.undertone) }] : []),
               ].map((spec) => (
                 <div key={spec.label} className="flex justify-between items-center py-4 border-b border-outline-variant/15">
@@ -444,6 +408,7 @@ export default async function ColorPage({ params }: PageProps) {
                   </span>
                 </div>
               ))}
+              <p className="py-4 text-sm text-on-surface-variant">Digital swatches and calculated matches are approximations. Catalog LRV values may be calculated estimates, not manufacturer measurements. <Link href="/methodology" className="text-primary underline">Data and matching method</Link>. Check the brand reference and physical samples before purchase.</p>
               {color.color_family && (
                 <div className="flex justify-between items-center py-4 border-b border-outline-variant/15">
                   <span className="text-xs uppercase tracking-widest font-semibold text-outline">Color Family</span>
@@ -522,7 +487,7 @@ export default async function ColorPage({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="lg:col-span-7">
+          <div id="color-matches" className="lg:col-span-7 scroll-mt-24">
             {brandMatrix.length > 0 && (
               <div className="bg-surface-container-low rounded-xl p-8 md:p-10">
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">{color.name} in Every Brand</h2>

@@ -88,7 +88,7 @@ export default function MethodologyPage() {
               >
                 International Commission on Illumination in 2001 (CIE Publication 142)
               </a>{" "}
-              and widely used in paint, fabric, and ink manufacturing for quality control. Pairs with Delta E under 2.0 are virtually identical on a finished wall. Pairs under 5.0 are visibly similar but distinguishable. Pairs above 5.0 are visibly different.
+              and widely used in paint, fabric, and ink manufacturing for quality control. Lower scores indicate closer digital colors. They do not guarantee that two paints will match on a finished wall or work for touch-ups. Compare physical samples in the intended finish and lighting.
             </p>
           </div>
         </section>
@@ -97,10 +97,10 @@ export default function MethodologyPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">The matching pipeline</h2>
             <p className="text-on-surface-variant leading-relaxed mb-6">
-              Computing CIEDE2000 across the full database in real time would be prohibitively expensive (~250 million comparisons for a single color), so the pipeline runs offline and stores results in a cross-brand matches table.
+              Comparing one color with the catalog requires at most one comparison per candidate color. Comparing every color with every other color is much larger, so we pre-compute cross-brand candidates for the color and match pages.
             </p>
             <ol className="space-y-6 text-on-surface-variant leading-relaxed">
-              <li><strong className="text-on-surface">1. RGB pre-filter.</strong> For each source color, candidates are narrowed to colors whose RGB channels fall within ±30 of the source. This Euclidean filter is cheap and runs on indexed columns; it eliminates 99%+ of the database before any Delta E math is performed.</li>
+              <li><strong className="text-on-surface">1. RGB pre-filter.</strong> For each source color, candidates are narrowed to colors whose RGB channels fall within ±30 of the source. This Euclidean filter is cheap and runs on indexed columns; it reduces the candidate set before Delta E scoring, so the stored shortlist is not a physical paint test.</li>
               <li><strong className="text-on-surface">2. LAB conversion.</strong> The pre-filtered candidates are converted from sRGB to CIE LAB color space — the perceptual color space CIEDE2000 operates on. LAB is designed so that equal distances correspond (approximately) to equal perceived differences, unlike RGB where two visually distinct colors can be numerically close.</li>
               <li><strong className="text-on-surface">3. CIEDE2000 calculation.</strong> The{" "}
                 <a
@@ -112,16 +112,16 @@ export default function MethodologyPage() {
                   2001 CIE formula (Luo, Cui, Rigg)
                 </a>{" "}
                 computes Delta E using LAB lightness, chroma, and hue with chroma-dependent weighting. We use the standard implementation with kL=kC=kH=1, which is the default for surface coatings (paint, fabric, ink) per ISO 11664-6:2008.</li>
-              <li><strong className="text-on-surface">4. Ranking and storage.</strong> For each source color we keep the top 50 matches per target brand, ordered by Delta E ascending. These pre-computed matches are what the color detail and match listing pages read at runtime, so the cross-brand pages serve from the cache rather than re-computing.</li>
+              <li><strong className="text-on-surface">4. Ranking and storage.</strong> For each source color we keep a limited ranked shortlist of cross-brand matches, ordered by Delta E ascending. These pre-computed matches are what the color detail and match listing pages read at runtime, so the cross-brand pages serve from the cache rather than re-computing.</li>
             </ol>
           </div>
         </section>
 
         <section className="px-6 md:px-12 py-16 bg-surface-container-low">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">What Delta E thresholds mean on a wall</h2>
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">How we label digital similarity</h2>
             <p className="text-on-surface-variant leading-relaxed mb-8">
-              The plain-language verdict labels you see on color and match pages come from this table. The thresholds are calibrated against published CIE guidance for surface-coating color tolerance.
+              The plain-language verdict labels you see on color and match pages come from this table. These are shortlist labels for digital values, not certified paint tolerances.
             </p>
             <div className="overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/10">
               <table className="w-full text-sm">
@@ -129,14 +129,14 @@ export default function MethodologyPage() {
                   <tr>
                     <th className="text-left px-6 py-4 w-32">Delta E</th>
                     <th className="text-left px-6 py-4">Verdict</th>
-                    <th className="text-left px-6 py-4">What you see on the wall</th>
+                    <th className="text-left px-6 py-4">How to use the digital result</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-outline-variant/10 text-on-surface-variant">
-                  <tr><td className="px-6 py-4 font-mono text-on-surface">&lt; 1.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Virtually identical</td><td className="px-6 py-4">Imperceptible to the human eye even side-by-side under controlled light.</td></tr>
-                  <tr><td className="px-6 py-4 font-mono text-on-surface">1.0–2.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Near-identical</td><td className="px-6 py-4">Indistinguishable on a finished wall. A trained color professional may detect a difference under direct comparison.</td></tr>
-                  <tr><td className="px-6 py-4 font-mono text-on-surface">2.0–5.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Close match / Same family</td><td className="px-6 py-4">Visible but small difference. Most viewers wouldn&apos;t notice unless the colors were placed next to each other.</td></tr>
-                  <tr><td className="px-6 py-4 font-mono text-on-surface">&gt; 5.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Visible difference</td><td className="px-6 py-4">Distinguishable side-by-side even without training. Useful as an &ldquo;in the same neighborhood&rdquo; reference but not as a swap.</td></tr>
+                  <tr><td className="px-6 py-4 font-mono text-on-surface">&lt; 1.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Virtually identical</td><td className="px-6 py-4">A very small difference in the stored digital values. Verify with physical samples.</td></tr>
+                  <tr><td className="px-6 py-4 font-mono text-on-surface">1.0–2.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Near-identical</td><td className="px-6 py-4">A close digital approximation, not a guarantee of identical paint.</td></tr>
+                  <tr><td className="px-6 py-4 font-mono text-on-surface">2.0–5.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Close match / Same family</td><td className="px-6 py-4">A broader digital shortlist. Compare hue and lightness before sampling.</td></tr>
+                  <tr><td className="px-6 py-4 font-mono text-on-surface">&gt; 5.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Visible difference</td><td className="px-6 py-4">A less similar digital result. Treat it as an alternative to evaluate, not a substitute.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -147,7 +147,7 @@ export default function MethodologyPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Data sources</h2>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              The 26,000+ colors in our database come from each manufacturer&apos;s published color chip data: name, color number, hex code, and (where the brand publishes it) LRV. We do not measure paint chips ourselves — the source-of-truth is whatever the brand has chosen to publish. Color names and product codes are trademarks of their respective brands.
+              The 26,000+ colors in our database come from each manufacturer&apos;s published color chip data: name, color number, hex code, and digital color values. Our importers also calculate lightness estimates; those estimates are not manufacturer-measured LRV. We do not measure paint chips ourselves — check the manufacturer reference for current specifications. Unless explicitly sourced as manufacturer LRV, treat catalog lightness values as estimates. Color names and product codes are trademarks of their respective brands.
             </p>
             <p className="text-on-surface-variant leading-relaxed mb-4">
               Undertone and color-family classifications are derived from each color&apos;s LAB position relative to family centroids. The classifier sometimes diverges from a human eye on borderline colors — a famously-warm gray with LAB a* and b* close to neutral may classify as neutral rather than gray. We acknowledge this and use the brand&apos;s own family label (when set) before falling back to the classifier output.
