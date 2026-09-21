@@ -23,7 +23,7 @@ export function ColorCard({
       className="group block overflow-hidden rounded-xl bg-surface-container-lowest hover:shadow-md transition-all duration-500"
     >
       <div
-        className="h-28 w-full rounded-t-xl"
+        className="h-36 sm:h-44 w-full rounded-t-xl border-b border-black/10"
         style={{ backgroundColor: hex }}
       />
       <div className="p-4">
@@ -34,12 +34,12 @@ export function ColorCard({
           />
           {name}
         </p>
-        <p className="mt-0.5 text-[10px] uppercase tracking-wider text-outline">
+        <p className="mt-0.5 text-xs text-on-surface-variant">
           {brandName}
           {colorNumber && ` \u00B7 ${colorNumber}`}
         </p>
         <div className="h-4" />
-        <p className="font-mono text-[10px] text-outline">
+        <p className="font-mono text-xs text-on-surface-variant">
           {hex.toUpperCase()}
         </p>
       </div>

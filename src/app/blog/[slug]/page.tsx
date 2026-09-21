@@ -1,3 +1,4 @@
+import { Children, isValidElement, type ReactNode } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -55,11 +56,28 @@ function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
+// Reuse explicitly authored swatch data; never infer a paint from a photo.
+function articleSwatches(node: ReactNode): {name: string; brand?: string; hex: string; href: string}[] {
+  const found = new Map<string, {name: string; brand?: string; hex: string; href: string}>();
+  function visit(children: ReactNode) {
+    Children.forEach(children, child => {
+      if (!isValidElement<{children?: ReactNode; name?: string; brand?: string; hex?: string; href?: string}>(child)) return;
+      const p = child.props;
+      if (p.name && p.hex && /^#[0-9a-f]{6}$/i.test(p.hex) && p.href?.startsWith("/colors/")) found.set(p.href, {name:p.name, brand:p.brand, hex:p.hex, href:p.href});
+      if (p.children) visit(p.children);
+    });
+  }
+  visit(node);
+  return [...found.values()].slice(0, 6);
+}
+
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const articleContent = post.content();
+  const swatches = articleSwatches(articleContent);
   const allPosts = getAllPosts();
   const relatedPosts = getRelatedPosts(slug, 3);
   const currentIndex = allPosts.findIndex((p) => p.slug === slug);
@@ -144,9 +162,18 @@ export default async function BlogPostPage({ params }: PageProps) {
               />
             </div>
 
+            {swatches.length > 0 && <section aria-label="Colors in this guide" className="mt-8 rounded-xl border border-outline-variant/30 p-4">
+              <h2 className="font-headline text-xl font-bold">Explore colors in this guide</h2>
+              <p className="mt-2 text-sm text-on-surface-variant">Open a color for its details and cross-brand alternatives. Read on for the context behind each choice.</p>
+              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">{swatches.map(c => <Link key={c.href} href={c.href} className="rounded-lg overflow-hidden border border-outline-variant/20">
+                <div className="h-24 border-b border-black/10" style={{backgroundColor:c.hex}} />
+                <div className="p-3"><p className="font-semibold text-sm">{c.name}</p>{c.brand && <p className="text-xs mt-1">{c.brand}</p>}</div>
+              </Link>)}</div>
+            </section>}
+
             <div id="blog-content" className="prose prose-gray max-w-none mt-10 text-on-surface-variant leading-relaxed">
               <TableOfContents />
-              {post.content()}
+              {articleContent}
             </div>
             <ColorLinkEnhancer containerRef="blog-content" />
           </article>

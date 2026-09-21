@@ -201,6 +201,24 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         </div>
       </section>
 
+      <section id="colors" className="py-24 px-6 md:px-12 bg-surface-container-low scroll-mt-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface">
+              All {totalCount.toLocaleString()} {brand.name} Colors
+            </h2>
+            <p className="mt-2 text-on-surface-variant max-w-2xl leading-relaxed">
+              The complete {brand.name} color chart — every shade with its hex code, LRV, and undertone. Filter by family or search, and open any color for its cross-brand matches.
+            </p>
+          </div>
+          <BrandColorLibrary
+            brandSlug={brandSlug} brandName={brand.name} families={families}
+            initialColors={colors} initialTotalCount={filteredCount}
+            currentPage={page} familyFilter={family} undertoneFilter={undertone}
+          />
+        </div>
+      </section>
+
       {/* Editorial Content */}
       {brandContent?.intro && (
         <section className="bg-tertiary-fixed py-20 px-6 md:px-12">
@@ -285,23 +303,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
       )}
 
       {/* Crawlable server-rendered color library */}
-      <section id="colors" className="py-24 px-6 md:px-12 bg-surface-container-low scroll-mt-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-10">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface">
-              All {totalCount.toLocaleString()} {brand.name} Colors
-            </h2>
-            <p className="mt-2 text-on-surface-variant max-w-2xl leading-relaxed">
-              The complete {brand.name} color chart — every shade with its hex code, LRV, and undertone. Filter by family or search, and open any color for its cross-brand matches.
-            </p>
-          </div>
-          <BrandColorLibrary
-            brandSlug={brandSlug} brandName={brand.name} families={families}
-            initialColors={colors} initialTotalCount={filteredCount}
-            currentPage={page} familyFilter={family} undertoneFilter={undertone}
-          />
-        </div>
-      </section>
+
 
       {/* Popular Colors / Brand Details */}
       {brandContent?.details && (

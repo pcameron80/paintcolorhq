@@ -90,6 +90,15 @@ export function BrandColorLibrary({
         </div>
       </div>
 
+      <form action="/search" role="search" className="mb-6 flex flex-wrap gap-3">
+        <label htmlFor="brand-search" className="w-full text-sm font-semibold">Search paint names or numbers across the catalog</label>
+        <input id="brand-search" name="q" required placeholder={`Try a ${brandName} color name`} className="min-w-0 flex-1 rounded-xl border border-outline-variant bg-white p-3" />
+        <button className="rounded-xl bg-primary text-on-primary px-5 py-3 font-bold">Search</button>
+      </form>
+      {(familyFilter || undertoneFilter) && <div className="flex flex-wrap gap-3 mb-6">
+        {familyFilter && <Link className="rounded-full px-4 py-3 bg-primary-fixed text-primary" href={makeHref({family: null, page: 1})} aria-label="Remove color family filter">{familyFilter} ×</Link>}
+        {undertoneFilter && <Link className="rounded-full px-4 py-3 bg-primary-fixed text-primary" href={makeHref({undertone: null, page: 1})} aria-label="Remove undertone filter">{undertoneFilter} ×</Link>}
+      </div>}
       {/* Family filter */}
       <div className="flex flex-wrap gap-2 mb-4">
         <Link
