@@ -182,7 +182,6 @@ export default async function ColorPage({ params }: PageProps) {
   ]);
   const colorLede = generateColorLede(color, matches);
   const brandMatrix = nearestMatchesPerBrand(matches);
-  const topMatch = brandMatrix[0]; // nearest equivalent overall, for the side-by-side hero
   // Curated, hand-written review for high-demand colors (null for the long tail).
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
@@ -192,7 +191,6 @@ export default async function ColorPage({ params }: PageProps) {
   // CTA-visibility pass — hero pill chip (sid=hero) and matrix-foot line
   // (sid=matrix) — each with its own SID so CJ Insights can rank placements.
   const samplizeStocked = sampleLinks.some((l) => l.primary);
-  const heroSampleLink = samplizeStocked ? getSamplizeProductLink(color.slug, color.samplize_handle, "hero") : null;
   const matrixSampleLink = samplizeStocked ? getSamplizeProductLink(color.slug, color.samplize_handle, "matrix") : null;
   // For brands stocked at an affiliate big-box (Behr/PPG/Valspar/Kilz/Glidden),
   // the big-box is the SINGLE buy CTA and the brand's own $0 .com is demoted to a
@@ -296,7 +294,7 @@ export default async function ColorPage({ params }: PageProps) {
       <Header />
 
       {/* Immersive Color Hero */}
-      <section className="relative w-full min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-center overflow-hidden pt-20" style={{ backgroundColor: color.hex }}>
+      <section id="color-preview" className="scroll-mt-24 relative w-full min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-center overflow-hidden pt-20" style={{ backgroundColor: color.hex }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
         <div className="relative z-10 w-full max-w-5xl text-center px-6 pt-16 pb-8">
           <p className={`font-headline uppercase tracking-[0.4em] text-xs mb-4 opacity-80 ${textMutedClass}`}>
@@ -310,7 +308,7 @@ export default async function ColorPage({ params }: PageProps) {
               <>
                 <div className={textClass}>
                   <span className="block font-headline text-2xl md:text-3xl font-bold">{lrv.toFixed(0)}%</span>
-                  <span className={`text-[10px] uppercase tracking-widest opacity-60 ${textMutedClass}`}>LRV Value</span>
+                  <span className={`text-[10px] uppercase tracking-widest opacity-60 ${textMutedClass}`}>Estimated LRV</span>
                 </div>
                 <div className={`w-px h-12 ${light ? "bg-on-surface/20" : "bg-on-primary/20"}`} />
               </>
@@ -324,33 +322,18 @@ export default async function ColorPage({ params }: PageProps) {
           </div>
         </div>
         <div className={`relative z-10 mb-8 mx-4 w-[calc(100%_-_2rem)] max-w-3xl flex flex-wrap justify-center items-center gap-3 ${light ? "bg-on-surface/10" : "bg-white/10"} backdrop-blur-xl px-4 py-3 rounded-2xl border ${light ? "border-on-surface/10" : "border-white/10"}`}>
-          {/* Above-the-fold buy affordance — only on Samplize-stocked colors
-              (availability-gated upstream via sampleLinks' primary entry).
-              sid=hero so CJ Insights can compare placements (hero vs matrix
-              vs the mid-page primary CTA, which keeps sid=colorSlug). */}
-          {heroSampleLink && (
-            <>
-              <a
-                href={heroSampleLink.url}
-                target="_blank"
-                rel={`${heroSampleLink.affiliate ? "sponsored " : ""}nofollow noopener noreferrer`}
-                className={`text-sm font-headline font-bold whitespace-nowrap hover:opacity-70 transition-opacity ${light ? "text-on-surface" : "text-white"}`}
-              >
-                Order a sample
-              </a>
-              <div className={`w-px h-4 ${light ? "bg-on-surface/20" : "bg-white/20"}`} />
-            </>
-          )}
-          <Link href="#color-matches" className={`text-sm font-bold underline underline-offset-4 ${textClass}`}>Find matching colors</Link>
+          <Link href="#color-matches" className="bg-white text-slate-900 rounded-xl px-5 py-3 text-sm font-bold">Compare alternatives</Link>
+          <Link href="#sample-options" className={`px-3 py-3 text-sm font-bold underline underline-offset-4 ${textClass}`}>Test a sample</Link>
           <SaveToProject colorId={color.id} currentPath={`/colors/${brandSlug}/${colorSlug}`} />
-          <ShareButton title={`${color.name} by ${color.brand.name}`} url={`/colors/${brandSlug}/${colorSlug}`} />
-          <PinterestSaveButton
-            pageUrl={`/colors/${brandSlug}/${colorSlug}`}
-            mediaUrl={pinImageUrl}
-            description={pinDescription}
-          />
+
         </div>
       </section>
+
+      <nav aria-label="Choose your paint" className="max-w-5xl mx-auto px-6 py-6 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+        <Link href="#color-preview" className="rounded-xl border border-outline-variant/30 p-4"><strong>1. See the color</strong><span className="block mt-1 text-on-surface-variant">A digital starting point</span></Link>
+        <Link href="#color-matches" className="rounded-xl border border-outline-variant/30 p-4"><strong>2. Compare alternatives</strong><span className="block mt-1 text-on-surface-variant">Find options across brands</span></Link>
+        <Link href="#sample-options" className="rounded-xl border border-outline-variant/30 p-4"><strong>3. Test a sample</strong><span className="block mt-1 text-on-surface-variant">Check it in your own room</span></Link>
+      </nav>
 
       {/* Data-derived lede — rendered immediately after the hero. Composed from
           the color's own values (hex/LRV/undertone/family) plus its single
@@ -379,7 +362,7 @@ export default async function ColorPage({ params }: PageProps) {
       {/* Technical Profile + Matches */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
-          <div className="lg:col-span-5 space-y-12">
+          <div className="lg:col-span-5 space-y-12 order-2 lg:order-1">
             <div>
               <nav className="mb-8 text-sm text-on-surface-variant">
                 <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -424,12 +407,14 @@ export default async function ColorPage({ params }: PageProps) {
                 blue = explore (site tools), teal = the primary buy action,
                 outlined-neutral = secondary buy options. One filled hero per
                 group. */}
-            <div className="space-y-5">
+            <div id="sample-options" className="space-y-5 scroll-mt-24">
+              <h2 className="font-headline text-2xl font-bold">Test it in your room</h2>
+              <p className="text-sm text-on-surface-variant">Place physical samples beside your flooring and trim. Check them in daylight and with your evening lights before buying paint.</p>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant mb-3">Use this color</p>
                 <div className="flex flex-wrap gap-3">
-                  <TrackedLink href={`/tools/palette-generator?hex=${encodeURIComponent(color.hex)}`} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:shadow-xl transition-all" eventName="cta_click" eventParams={{ cta_label: "generate_palette", color_name: color.name, color_brand: color.brand.slug }}>
-                    Generate Palette
+                  <TrackedLink href={`/tools/palette-generator?hex=${encodeURIComponent(color.hex)}`} className="text-primary underline underline-offset-4 px-2 py-3 font-bold text-sm" eventName="cta_click" eventParams={{ cta_label: "generate_palette", color_name: color.name, color_brand: color.brand.slug }}>
+                    Build a palette
                   </TrackedLink>
                   <TrackedLink href={`/compare?color1=${color.id}`} className="bg-surface-container-highest text-primary px-6 py-3 rounded-xl font-headline font-bold text-sm border border-primary/20 hover:shadow-md transition-all" eventName="cta_click" eventParams={{ cta_label: "compare", color_name: color.name, color_brand: color.brand.slug }}>
                     Compare
@@ -487,44 +472,27 @@ export default async function ColorPage({ params }: PageProps) {
             </div>
           </div>
 
-          <div id="color-matches" className="lg:col-span-7 scroll-mt-24">
+          <div id="color-matches" className="lg:col-span-7 scroll-mt-24 order-1 lg:order-2">
             {brandMatrix.length > 0 && (
               <div className="bg-surface-container-low rounded-xl p-8 md:p-10">
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">{color.name} in Every Brand</h2>
-                <p className="text-sm text-on-surface-variant mb-8">The closest equivalent to {color.name} in each major paint brand, ranked by how close the match reads. Always verify with a physical sample. <Link href="/methodology" className="text-primary underline-offset-4 hover:underline whitespace-nowrap">How we calculate match accuracy →</Link></p>
+                <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">Compare alternatives to {color.name}</h2>
+                <p className="text-sm text-on-surface-variant mb-8">Digital candidates from other paint brands, ranked by color similarity. Always verify with a physical sample. <Link href="/methodology" className="text-primary underline-offset-4 hover:underline whitespace-nowrap">How we calculate match accuracy →</Link></p>
                 {/* Side-by-side hero — the single nearest equivalent shown large,
                     so "does this actually match?" is answered visually before
                     the full per-brand matrix below. Whole block links to it. */}
-                {topMatch && (
-                  <Link
-                    href={`/colors/${topMatch.match_color.brand.slug}/${topMatch.match_color.slug}`}
-                    className="mb-8 grid grid-cols-[1fr_auto_1fr] items-stretch gap-px rounded-xl overflow-hidden bg-outline-variant/20 hover:shadow-md transition-all"
-                  >
-                    <div className="p-6 min-h-32 flex flex-col justify-end" style={{ backgroundColor: color.hex }}>
-                      <span className={`text-[10px] uppercase tracking-wider ${isLightColor(color.hex) ? "text-black/55" : "text-white/70"}`}>{color.brand.name}</span>
-                      <span className={`font-headline font-bold leading-tight ${isLightColor(color.hex) ? "text-black/90" : "text-white"}`}>{color.name}</span>
-                    </div>
-                    <div className="bg-surface-container-lowest flex flex-col items-center justify-center px-4 py-2 text-center">
-                      <span className="text-[10px] uppercase tracking-widest text-outline">{Number(topMatch.delta_e_score) < 2 ? "Nearly identical" : Number(topMatch.delta_e_score) < 5 ? "Very similar" : "Visible difference"}</span>
-                    </div>
-                    <div className="p-6 min-h-32 flex flex-col justify-end" style={{ backgroundColor: topMatch.match_color.hex }}>
-                      <span className={`text-[10px] uppercase tracking-wider ${isLightColor(topMatch.match_color.hex) ? "text-black/55" : "text-white/70"}`}>{topMatch.match_color.brand.name}</span>
-                      <span className={`font-headline font-bold leading-tight ${isLightColor(topMatch.match_color.hex) ? "text-black/90" : "text-white"}`}>{topMatch.match_color.name}</span>
-                    </div>
-                  </Link>
-                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {brandMatrix.map((match) => (
-                    <Link key={match.id} href={`/colors/${match.match_color.brand.slug}/${match.match_color.slug}`} className="bg-surface-container-lowest p-6 rounded-lg group cursor-pointer hover:shadow-md transition-all">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-16 h-16 rounded-lg shrink-0" style={{ backgroundColor: match.match_color.hex }} />
+                    <Link key={match.id} href={`/colors/${match.match_color.brand.slug}/${match.match_color.slug}`} className="bg-surface-container-lowest p-4 rounded-xl group hover:shadow-md transition-all border border-outline-variant/20">
+                      <div className="space-y-4 mb-4">
+                        <div className="w-full h-36 rounded-lg border border-black/10" style={{ backgroundColor: match.match_color.hex }} />
                         <div className="min-w-0">
-                          <h3 className="font-headline font-bold text-on-surface truncate">{match.match_color.name}</h3>
-                          <p className="text-[10px] uppercase text-outline tracking-wider">{match.match_color.brand.name}</p>
+                          <h3 className="font-headline font-bold text-on-surface break-words">{match.match_color.name}</h3>
+                          <p className="text-xs text-on-surface-variant mt-1">{match.match_color.brand.name}</p>
+                          <p className="text-xs text-on-surface-variant mt-1">{match.match_color.hex.toUpperCase()}</p>
                         </div>
                       </div>
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-on-surface-variant">{Number(match.delta_e_score) < 2 ? "Nearly identical" : Number(match.delta_e_score) < 5 ? "Very similar" : "Visible difference"}</span>
+                        <span className="text-on-surface-variant">{Number(match.delta_e_score) < 2 ? "Close digital match" : Number(match.delta_e_score) < 5 ? "Similar digital color" : "Visible digital difference"}</span>
                         <svg className="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
                       </div>
                     </Link>
@@ -567,6 +535,15 @@ export default async function ColorPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pb-8 flex flex-wrap items-center gap-4">
+          <ShareButton title={`${color.name} by ${color.brand.name}`} url={`/colors/${brandSlug}/${colorSlug}`} />
+          <PinterestSaveButton
+            pageUrl={`/colors/${brandSlug}/${colorSlug}`}
+            mediaUrl={pinImageUrl}
+            description={pinDescription}
+          />
+      </div>
 
       {/* Recommended Pairings — Room Preview */}
       <PairingSelector colorHex={color.hex} colorName={color.name} />
