@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { parseCatalogSearch, catalogCanonical, type CatalogSearch } from "@/lib/catalog-pagination";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -6,7 +6,6 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { BrandColorLibrary } from "@/components/brand-color-library";
-import { BrandColorLibraryFallback } from "@/components/brand-color-library-fallback";
 import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
 import { getBrandContent } from "@/lib/brand-content";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
@@ -25,14 +24,10 @@ export async function generateStaticParams() {
 
 interface PageProps {
   params: Promise<{ brandSlug: string }>;
+  searchParams: Promise<CatalogSearch>;
 }
 
-// generateMetadata intentionally does NOT read searchParams — doing so
-// opts the route into fully dynamic rendering. Filter/pagination URLs
-// (?family=blue, ?page=2) share the same canonical URL and indexable
-// metadata as the base; the canonical consolidates them server-side
-// and the client component handles the filtered UI on hydration.
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { brandSlug } = await params;
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) return { title: "Brand Not Found" };
@@ -40,7 +35,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // the actual indexable color pages; the grid, sitemap, and schema all use the
   // live count, so display + title must too).
   const count = (await getColorsByBrandCount(brand.id)).toLocaleString();
-  const url = `https://www.paintcolorhq.com/brands/${brandSlug}`;
+  const state = parseCatalogSearch(await searchParams);
+  const url = catalogCanonical(brandSlug, state);
   // Lead with "[Brand] Color Chart" + "all [count] colors" — the two big
   // under-captured Bing queries (the page already ranks pos 3-8 for them).
   // De-double "Paint" when the brand name already contains it.
@@ -84,24 +80,23 @@ function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-export default async function BrandPage({ params }: PageProps) {
+export default async function BrandPage({ params, searchParams }: PageProps) {
   const { brandSlug } = await params;
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) notFound();
 
   const perPage = 60;
+  const { page, family, undertone } = parseCatalogSearch(await searchParams);
 
-  // Server-rendered canonical: page 1, no filters. Filter and pagination
-  // state lives in the client component (BrandColorLibrary) and refetches
-  // via /api/brand/[brandSlug]/colors when URL params change.
-  // Reading searchParams here would force the route into dynamic
-  // rendering — see reference_searchparams-forces-dynamic.md memory note.
+  // Render the requested page on the server. Database fetches remain cached;
+  // distinct HTML and canonical URLs make the whole catalog discoverable.
   const popularSlugsForBrand = POPULAR_COLOR_SLUGS
     .filter((p) => p.brandSlug === brandSlug)
     .map((p) => p.colorSlug);
 
-  const [colors, totalCount, popularColors, allBrands] = await Promise.all([
-    getColorsByBrand(brand.id, { limit: perPage, offset: 0 }),
+  const [colors, filteredCount, totalCount, popularColors, allBrands] = await Promise.all([
+    getColorsByBrand(brand.id, { limit: perPage, offset: (page - 1) * perPage, family, undertone }),
+    getColorsByBrandCount(brand.id, { family, undertone }),
     getColorsByBrandCount(brand.id),
     // Single batched query replaces N parallel getColorBySlug round-trips
     // (audit perf finding from H2.2 PR #54). Up to 11 fewer DB hits per
@@ -109,6 +104,8 @@ export default async function BrandPage({ params }: PageProps) {
     getColorsBySlugList(brandSlug, popularSlugsForBrand),
     getAllBrands(),
   ]);
+
+  if (page > Math.max(1, Math.ceil(filteredCount / perPage))) notFound();
 
   // Cross-brand match targets: drive off MAJOR_MATCH_BRANDS (the canonical list
   // the /match routes + sitemap use) so every brand-pair listing has an internal
@@ -149,18 +146,18 @@ export default async function BrandPage({ params }: PageProps) {
   const brandFaqs: { q: string; a: string }[] = [
     {
       q: `How many ${brand.name} paint colors are there?`,
-      a: `${brand.name} has ${totalCount.toLocaleString()} paint colors catalogued on Paint Color HQ, each with its exact hex code, RGB values, LRV (light reflectance value), and undertone. You can filter the full ${brand.name} color chart by color family or undertone, and open any color to see its closest cross-brand matches — the equivalent shade in Sherwin-Williams, Benjamin Moore, Behr, and 11 other brands.`,
+      a: `${brand.name} has ${totalCount.toLocaleString()} paint colors catalogued on Paint Color HQ, each with its exact hex code, RGB values, LRV (light reflectance value), and undertone. You can filter the full ${brand.name} color chart by color family or undertone, and open any color to see its closest cross-brand matches — the equivalent shade in Sherwin-Williams, Benjamin Moore, Behr, and other catalogued brands.`,
     },
     ...(popularColors.length >= 3
       ? [{
           q: `What are the most popular ${brand.name} paint colors?`,
-          a: `The most-searched ${brand.name} colors on Paint Color HQ are ${popularColors.slice(0, 3).map((c) => c.name).join(", ")} — ranked by actual cross-brand match demand on the site rather than marketing claims. Each links to a detail page with its hex code, LRV, undertone, and the closest matching shades in other brands, so you can compare them side by side before you buy.`,
+          a: `Selected ${brand.name} colors on Paint Color HQ include ${popularColors.slice(0, 3).map((c) => c.name).join(", ")}. Each links to a detail page with its hex code, LRV, undertone, and the closest matching shades in other brands, so you can compare them side by side before you buy.`,
         }]
       : []),
     ...(matchTargetNames.length >= 2
       ? [{
           q: `Can I match ${brand.name} colors to other brands?`,
-          a: `Yes — every ${brand.name} color has its closest equivalents in ${matchTargetNames.join(", ")}, and 13 brands in total, computed with the CIEDE2000 color-difference formula. That's the ISO standard for how similar two colors look to the human eye, rather than matching by name or code, so it's the reliable way to get a ${brand.name} look in whatever brand your local store carries.`,
+          a: `Yes — every ${brand.name} color has its closest equivalents in ${matchTargetNames.join(", ")}, and ${allBrands.length} brands in total, computed with the CIEDE2000 color-difference formula. That's the ISO standard for how similar two colors look to the human eye, rather than matching by name or code, so it's the reliable way to get a ${brand.name} look in whatever brand your local store carries.`,
         }]
       : []),
   ];
@@ -201,6 +198,24 @@ export default async function BrandPage({ params }: PageProps) {
               </a>
             )}
           </div>
+        </div>
+      </section>
+
+      <section id="colors" className="py-24 px-6 md:px-12 bg-surface-container-low scroll-mt-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface">
+              All {totalCount.toLocaleString()} {brand.name} Colors
+            </h2>
+            <p className="mt-2 text-on-surface-variant max-w-2xl leading-relaxed">
+              The complete {brand.name} color chart — every shade with its hex code, LRV, and undertone. Filter by family or search, and open any color for its cross-brand matches.
+            </p>
+          </div>
+          <BrandColorLibrary
+            brandSlug={brandSlug} brandName={brand.name} families={families}
+            initialColors={colors} initialTotalCount={filteredCount}
+            currentPage={page} familyFilter={family} undertoneFilter={undertone}
+          />
         </div>
       </section>
 
@@ -287,41 +302,8 @@ export default async function BrandPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* Color Library \u2014 Suspense-wrapped client component handles filter +
-          pagination via URL params. Server renders the canonical page-1
-          unfiltered state via BrandColorLibraryFallback so the route stays
-          ISR-cacheable. Same pattern as the family-page refactor. */}
-      <section id="colors" className="py-24 px-6 md:px-12 bg-surface-container-low scroll-mt-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-10">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface">
-              All {totalCount.toLocaleString()} {brand.name} Colors
-            </h2>
-            <p className="mt-2 text-on-surface-variant max-w-2xl leading-relaxed">
-              The complete {brand.name} color chart — every shade with its hex code, LRV, and undertone. Filter by family or search, and open any color for its cross-brand matches.
-            </p>
-          </div>
-          <Suspense
-            fallback={
-              <BrandColorLibraryFallback
-                brandSlug={brandSlug}
-                brandName={brand.name}
-                families={families}
-                initialColors={colors}
-                initialTotalCount={totalCount}
-              />
-            }
-          >
-            <BrandColorLibrary
-              brandSlug={brandSlug}
-              brandName={brand.name}
-              families={families}
-              initialColors={colors}
-              initialTotalCount={totalCount}
-            />
-          </Suspense>
-        </div>
-      </section>
+      {/* Crawlable server-rendered color library */}
+
 
       {/* Popular Colors / Brand Details */}
       {brandContent?.details && (

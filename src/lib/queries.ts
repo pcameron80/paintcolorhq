@@ -1,3 +1,4 @@
+import { isColorIndexable } from "./indexing";
 import { supabase } from "./supabase";
 import type { Brand, Color, ColorWithBrand, CrossBrandMatchWithColor, ColorFamily } from "./types";
 import { expandUndertoneFilter, UNDERTONE_CATEGORIES } from "./undertone-utils";
@@ -51,7 +52,7 @@ export async function getColorsByBrand(
     .from("colors")
     .select(COLOR_CARD_FIELDS)
     .eq("brand_id", brandId)
-    .order("name");
+    .order("name").order("id");
 
   if (options?.family) {
     query = query.eq("color_family", options.family);
@@ -297,7 +298,7 @@ export async function getColorsByFamily(
     .from("colors")
     .select(COLOR_CARD_FIELDS_WITH_BRAND)
     .or(familyMatchFilter(familySlug))
-    .order("name");
+    .order("name").order("id");
 
   if (options?.brandSlug) {
     const brand = await getBrandBySlug(options.brandSlug);
@@ -635,85 +636,35 @@ export async function getTopCrossBrandMatches(
   return allMatches.slice(0, limit);
 }
 
-// Paginated fetch for sitemaps - handles Supabase 1000-row limit
-export async function getAllColorSlugs(options?: {
-  perBrand?: number;
-  brandSlugs?: string[];
-}): Promise<{ brandSlug: string; colorSlug: string; createdAt: string }[]> {
-  const perBrand = options?.perBrand;
-  const brandSlugs = options?.brandSlugs;
-
-  if (perBrand || brandSlugs) {
-    // Fetch limited/filtered colors per brand for sitemap prioritization
-    const allBrands = await getAllBrands();
-    const brands = brandSlugs
-      ? allBrands.filter((b) => brandSlugs.includes(b.slug))
-      : allBrands;
-    const results: { brandSlug: string; colorSlug: string; createdAt: string }[] = [];
-
-    for (const brand of brands) {
-      let query = supabase
-        .from("colors")
-        .select("slug, created_at, brand:brand_id (slug)")
-        .eq("brand_id", brand.id)
-        .order("name");
-
-      if (perBrand) {
-        query = query.limit(perBrand);
-      }
-
-      const { data, error } = await query;
-
-      if (error) throw error;
-      if (data) {
-        for (const color of data) {
-          const brandData = color.brand as unknown as { slug: string };
-          results.push({
-            brandSlug: brandData.slug,
-            colorSlug: color.slug,
-            createdAt: color.created_at,
-          });
-        }
-      }
-    }
-
-    return results;
-  }
-
-  // Fetch all colors (no limit)
-  const results: { brandSlug: string; colorSlug: string; createdAt: string }[] = [];
-  const batchSize = 1000;
-  let offset = 0;
-  let hasMore = true;
-
-  while (hasMore) {
-    const { data, error } = await supabase
-      .from("colors")
-      .select("slug, created_at, brand:brand_id (slug)")
-      .range(offset, offset + batchSize - 1);
-
+// Keyset pagination avoids overlapping ranges; shared eligibility preserves
+// the existing metadata policy. A build snapshot keeps all shards consistent.
+export async function getAllColorSlugs(options?: { perBrand?: number; brandSlugs?: string[] }): Promise<{ brandSlug: string; colorSlug: string; createdAt: string }[]> {
+  const results = new Map<string, { brandSlug: string; colorSlug: string; createdAt: string }>();
+  const counts = new Map<string, number>();
+  let after: string | undefined;
+  while (true) {
+    let query = supabase.from("colors")
+      .select("id, slug, name, color_number, lrv, undertone, color_family, created_at, brand:brand_id (slug)")
+      .order("id", { ascending: true }).limit(1000);
+    if (after) query = query.gt("id", after);
+    const { data, error } = await query;
     if (error) throw error;
-    if (!data || data.length === 0) {
-      hasMore = false;
-      break;
-    }
-
+    if (!data?.length) break;
     for (const color of data) {
-      const brandData = color.brand as unknown as { slug: string };
-      results.push({
-        brandSlug: brandData.slug,
-        colorSlug: color.slug,
-        createdAt: color.created_at,
-      });
+      const brand = color.brand as unknown as { slug: string } | null;
+      if (!brand || !isColorIndexable(color)) continue;
+      if (options?.brandSlugs && !options.brandSlugs.includes(brand.slug)) continue;
+      if (options?.perBrand && (counts.get(brand.slug) ?? 0) >= options.perBrand) continue;
+      const key = `${brand.slug}/${color.slug}`;
+      if (results.has(key)) throw new Error(`Duplicate catalog URL: ${key}`);
+      results.set(key, { brandSlug: brand.slug, colorSlug: color.slug, createdAt: color.created_at });
+      counts.set(brand.slug, (counts.get(brand.slug) ?? 0) + 1);
     }
-
-    if (data.length < batchSize) {
-      hasMore = false;
-    }
-    offset += batchSize;
+    const next = data[data.length - 1].id as string;
+    if (next === after) throw new Error("Color pagination did not advance");
+    after = next;
   }
-
-  return results;
+  return [...results.values()].sort((a, b) => `${a.brandSlug}/${a.colorSlug}`.localeCompare(`${b.brandSlug}/${b.colorSlug}`, "en"));
 }
 
 // Latest color insertion date per brand (slug → ISO date YYYY-MM-DD). Used

@@ -11,7 +11,7 @@ import { getAllPosts } from "@/lib/blog-posts";
 export const metadata: Metadata = {
   title: "Find & Compare Paint Colors Across 13 Brands",
   description:
-    "Discover paint colors you love from 26,000+ shades across 13 brands, preview them on a wall, and find your color in the brand you can buy — free, no signup.",
+    "Discover paint colors you love from 26,000+ shades across our paint catalog, preview them on a wall, and find your color in the brand you can buy — free, no signup.",
   alternates: { canonical: "https://www.paintcolorhq.com/" },
 };
 
@@ -58,7 +58,7 @@ const tools = [
   },
   {
     name: "Room Visualizer",
-    description: "Preview any color on walls, trim, and floor in a realistic room scene before you buy a single sample pot.",
+    description: "Preview any color on main walls, accent walls, and trim in a realistic room scene before you buy a single sample pot.",
     href: "/tools/room-visualizer",
     cta: "Try it free",
   },
@@ -76,7 +76,7 @@ const tools = [
   },
   {
     name: "Paint Calculator",
-    description: "Enter your room dimensions and get the exact number of gallons you need. Accounts for doors, windows, and coats.",
+    description: "Enter your room dimensions and get an estimate of the gallons you need. Accounts for doors, windows, and coats.",
     href: "/tools/paint-calculator",
     cta: "Calculate now",
   },
@@ -88,12 +88,12 @@ const faqItems = [
   {
     question: "How does cross-brand color matching work?",
     answer:
-      "We use the same color-matching formula that professional labs use (CIEDE2000) to find the closest equivalent across brands. Each match comes with an accuracy score — the lower the number, the closer the match. Most of ours score under 2.0, which means the difference is barely noticeable.",
+      "We use CIEDE2000 to compare digital color values across brands. A lower score means closer digital values. Paint formulas, finishes, and room lighting can change the result, so always test physical samples.",
   },
   {
     question: "How much paint do I need?",
     answer:
-      "The Paint Calculator computes the exact number of gallons needed based on your room dimensions, number of coats, and door/window cutouts. One gallon of paint covers approximately 350–400 square feet.",
+      "The Paint Calculator computes an estimate of the gallons needed based on your room dimensions, number of coats, and door/window cutouts. One gallon of paint covers approximately 350–400 square feet.",
   },
   {
     question: "What are paint color undertones?",
@@ -120,32 +120,23 @@ export default async function Home() {
       <section className="relative pt-24 px-6 md:px-12 py-20 flex flex-col lg:flex-row gap-12 items-center max-w-7xl mx-auto overflow-hidden">
         <div className="lg:w-1/2 z-10">
           <span className="inline-block px-3 py-1 bg-surface-container-highest text-primary text-[10px] uppercase tracking-[0.2em] font-bold mb-6 rounded">
-            26,000+ colors &middot; 13 brands &middot; 100% free
+            26,000+ colors &middot; multiple brands &middot; 100% free
           </span>
           <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-8">
             Find a Paint Color You Love<br />
             <span className="text-primary italic">in Any Brand.</span>
           </h1>
           <p className="text-lg text-on-surface-variant max-w-md mb-10 leading-relaxed">
-            Browse 26,000+ shades across 13 brands, preview your favorites on a real wall, then find that exact color in the brand you can actually buy.
+            Browse 26,000+ shades across our paint catalog, explore digital room previews, then find a close digital match in the brand you can actually buy.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/search"
-              className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-headline font-bold text-base flex items-center gap-2 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
-            >
-              Find a Color
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </Link>
-            <Link
-              href="/tools/palette-generator"
-              className="bg-surface-container-highest text-primary px-8 py-4 rounded-xl font-headline font-bold text-base hover:bg-surface-container-high transition-colors"
-            >
-              Build a Palette
-            </Link>
-          </div>
+          <form action="/search" role="search" className="max-w-xl">
+            <label htmlFor="home-color-search" className="block text-sm font-semibold mb-3">Enter a paint name, number, or hex code</label>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input id="home-color-search" name="q" type="search" required maxLength={120} placeholder="Try Sea Salt or SW 6204" className="min-w-0 flex-1 bg-white border border-outline-variant rounded-xl px-4 py-4 text-base text-on-surface focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2" />
+              <button type="submit" className="bg-primary text-on-primary px-6 py-4 rounded-xl font-bold focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">Find colors</button>
+            </div>
+            <p className="mt-4 text-sm text-on-surface-variant">Just exploring? <Link href="/brands" className="text-primary underline underline-offset-4">Browse by brand</Link> or <Link href="/colors" className="text-primary underline underline-offset-4">explore color families</Link>.</p>
+          </form>
         </div>
 
         <div className="lg:w-1/2 relative h-[400px] sm:h-[500px] lg:h-[600px] w-full">
@@ -169,12 +160,7 @@ export default async function Home() {
               className="object-cover"
             />
           </div>
-          <div className="absolute -right-2 sm:right-4 bottom-8 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-xl z-30 w-44 border border-white/20">
-            <div className="w-full h-28 bg-secondary rounded-lg mb-6" />
-            <p className="font-headline text-xs font-bold text-on-surface tracking-widest uppercase">Cerulean Dusk</p>
-            <div className="h-8" />
-            <p className="text-[10px] text-outline">#1C6584</p>
-          </div>
+          <p className="absolute bottom-0 right-0 max-w-[55%] text-right text-xs text-on-surface-variant">Room inspiration. Paint colors in these photos are not identified.</p>
         </div>
       </section>
 
@@ -220,31 +206,10 @@ export default async function Home() {
               All brands <span>&rarr;</span>
             </Link>
           </div>
-          {/* Top row: 4 major brands */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {brands.slice(0, 4).map((brand) => (
-              <Link
-                key={brand.slug}
-                href={`/brands/${brand.slug}`}
-                className="flex flex-col items-center justify-center p-8 bg-surface-container-lowest rounded-xl group hover:shadow-lg transition-all duration-500"
-              >
-                <span className="font-headline font-extrabold text-xl text-outline group-hover:text-primary transition-colors text-center">
-                  {brand.name}
-                </span>
-              </Link>
-            ))}
-          </div>
-          {/* Bottom row: 3 brands, centered */}
-          <div className="mt-8 flex justify-center gap-8">
-            {brands.slice(4).map((brand) => (
-              <Link
-                key={brand.slug}
-                href={`/brands/${brand.slug}`}
-                className="flex flex-col items-center justify-center p-8 bg-surface-container-lowest rounded-xl group hover:shadow-lg transition-all duration-500 w-full max-w-[calc(25%-1.5rem)]"
-              >
-                <span className="font-headline font-extrabold text-xl text-outline group-hover:text-primary transition-colors text-center">
-                  {brand.name}
-                </span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {brands.map((brand) => (
+              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="flex items-center justify-center p-5 min-h-24 bg-surface-container-lowest rounded-xl hover:shadow-md transition-shadow">
+                <span className="font-headline font-bold text-base text-on-surface text-center">{brand.name}</span>
               </Link>
             ))}
           </div>
@@ -333,7 +298,7 @@ export default async function Home() {
           <div className="md:w-1/2">
             <h2 className="font-headline text-3xl font-bold mb-6 text-on-surface">Side-by-Side Color Comparison</h2>
             <p className="text-on-surface-variant mb-8">
-              See how any two colors look next to each other. Get an instant accuracy verdict and find out if a cross-brand match truly works for your space.
+              See how any two colors look next to each other. Compare their digital values, then test physical samples in your own lighting.
             </p>
             <Link
               href="/compare"
@@ -382,7 +347,7 @@ export default async function Home() {
         "@type": "WebSite",
         name: "Paint Color HQ",
         url: "https://www.paintcolorhq.com",
-        description: "Discover, preview, and compare 26,000+ paint colors across 13 brands — find a color you love, see it on a wall, and get it in the brand you can buy. Cross-brand matches use CIEDE2000 Delta E. Free, no signup.",
+        description: "Discover, preview, and compare 26,000+ paint colors across our paint catalog — find a color you love, see it on a wall, and get it in the brand you can buy. Cross-brand matches use CIEDE2000 Delta E. Free, no signup.",
         potentialAction: {
           "@type": "SearchAction",
           // Plain URL string is the current Sitelinks Searchbox spec — the
@@ -399,7 +364,7 @@ export default async function Home() {
         name: "Paint Color HQ",
         url: "https://www.paintcolorhq.com",
         logo: "https://www.paintcolorhq.com/logo.webp",
-        description: "Paint Color HQ helps you discover, preview, and compare 26,000+ paint colors across 13 brands, then find your color in the brand you can buy. Cross-brand matches use the CIEDE2000 Delta E formula. Free, no signup.",
+        description: "Paint Color HQ helps you discover, preview, and compare 26,000+ paint colors across our paint catalog, then find your color in the brand you can buy. Cross-brand matches use the CIEDE2000 Delta E formula. Free, no signup.",
         sameAs: ["https://www.pinterest.com/paintcolorhq", "https://www.linkedin.com/company/paint-color-hq"],
         founder: {
           "@type": "Person",
@@ -422,8 +387,8 @@ export default async function Home() {
       }} />
 
       <JsonLd data={[
-        { "@context": "https://schema.org", "@type": "WebApplication", name: "Room Color Visualizer", url: "https://www.paintcolorhq.com/tools/room-visualizer", applicationCategory: "DesignApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Preview 26,000+ paint colors on walls, trim, and floor in a realistic room scene." },
-        { "@context": "https://schema.org", "@type": "WebApplication", name: "Photo Color Identifier", url: "https://www.paintcolorhq.com/tools/color-identifier", applicationCategory: "DesignApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Upload a photo and identify the closest matching paint colors from 13 brands." },
+        { "@context": "https://schema.org", "@type": "WebApplication", name: "Room Color Visualizer", url: "https://www.paintcolorhq.com/tools/room-visualizer", applicationCategory: "DesignApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Preview 26,000+ paint colors on main walls, accent walls, and trim in a realistic room scene." },
+        { "@context": "https://schema.org", "@type": "WebApplication", name: "Photo Color Identifier", url: "https://www.paintcolorhq.com/tools/color-identifier", applicationCategory: "DesignApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Upload a photo and identify the closest matching paint colors from our catalog." },
         { "@context": "https://schema.org", "@type": "WebApplication", name: "Palette Generator", url: "https://www.paintcolorhq.com/tools/palette-generator", applicationCategory: "DesignApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Generate coordinated color palettes mapped to real purchasable paint colors." },
         { "@context": "https://schema.org", "@type": "WebApplication", name: "Paint Calculator", url: "https://www.paintcolorhq.com/tools/paint-calculator", applicationCategory: "UtilityApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Calculate how many gallons of paint you need based on room dimensions." },
       ]} />

@@ -1,3 +1,4 @@
+import { seaSaltFacts } from "./color-facts";
 import type { ReactNode } from "react";
 
 /**
@@ -86,18 +87,11 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   ),
   "sherwin-williams/sea-salt-6204": (
     <>
-      <p>
-        Sea Salt is the color that won&apos;t hold still — and that&apos;s the appeal. It&apos;s a soft, low-chroma
-        green that reads sage in some light, pale gray-blue in others, and almost gray in a dim room.
-        At LRV 63 it&apos;s light enough to feel airy, which is why it became the default &ldquo;spa&rdquo; color
-        for bathrooms and bedrooms.
-      </p>
-      <p>
-        The flip side of that chameleon quality: you genuinely cannot predict Sea Salt from the chip, so
-        a sample is non-negotiable here more than with any neutral. It leans greener in north light and
-        bluer under warm bulbs. Pair it with crisp whites and natural wood; it fights cool grays. The
-        closest cross-brand match is PPG Bay of Fundy, with Valspar Three Wishes a very close second.
-      </p>
+      <p>{seaSaltFacts.overview}</p>
+      <p>{seaSaltFacts.lighting}</p>
+      <p>{seaSaltFacts.pairing}</p>
+      <p>Use the calculated cross-brand shortlist below for current matches, then compare physical samples before substituting brands.</p>
+      <p><a href={seaSaltFacts.source} className="text-primary underline">Manufacturer color reference</a> · Reviewed {seaSaltFacts.reviewed}</p>
     </>
   ),
   "benjamin-moore/hale-navy-hc-154": (

@@ -50,7 +50,7 @@ function generatePairings(hex: string): Pairing[] {
       description: "Timeless pairing with clean white trim and a tonal accent wall",
       trim: {
         hex: "#FFFFFF",
-        label: "Pure White",
+        label: "Digital white",
         desc: "Crisp white trim for a clean, traditional look.",
       },
       accent: {
@@ -120,13 +120,14 @@ export function PairingSelector({ colorHex, colorName }: PairingSelectorProps) {
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <span className="inline-block px-4 py-1 bg-on-secondary-container/10 text-on-surface text-[10px] font-bold uppercase tracking-widest rounded-full mb-6">
-            Recommended Pairings
+            Generated palette previews
           </span>
           <h2 className="font-headline text-4xl font-extrabold text-on-surface tracking-tight leading-tight">
             Colors That Work With {colorName}
           </h2>
         </div>
 
+        <p className="mb-6 text-sm text-on-surface-variant">These are generated digital colors, not named manufacturer paints. Use the palette tools to find paint candidates, then compare physical samples.</p>
         {/* Pairing tabs */}
         <div className="flex flex-wrap gap-2 mb-8">
           {pairings.map((p, i) => (

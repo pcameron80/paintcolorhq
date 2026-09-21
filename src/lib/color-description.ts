@@ -397,7 +397,7 @@ export function generateColorLede(
   let lede = `${color.name}${code} is a ${family} paint color from ${color.brand.name}.`;
 
   const specs: string[] = [`a hex value of ${color.hex.toUpperCase()}`];
-  if (color.lrv != null) specs.push(`LRV ${Math.round(Number(color.lrv))}`);
+  if (color.lrv != null) specs.push(`estimated LRV ${Math.round(Number(color.lrv))}`);
   if (color.undertone) specs.push(`a ${color.undertone.toLowerCase()} undertone`);
   lede += ` It has ${joinList(specs)}.`;
 

@@ -1,13 +1,13 @@
+import { isMatchIndexable } from "@/lib/indexing";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
-import { ColorSwatch } from "@/components/color-swatch";
 import { TrackPage } from "@/components/track-page";
 import { getColorBySlug, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
-import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
+import sitemapSnapshot from "@/generated/sitemap.json";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -18,17 +18,10 @@ export const revalidate = 2592000; // 30d — static color/match/brand data; red
 // then cache via ISR.
 // https://nextjs.org/docs/app/api-reference/functions/generate-static-params#dynamic-segments-without-generatestaticparams
 export async function generateStaticParams() {
-  const params: { sourceBrandSlug: string; matchSlug: string }[] = [];
-  for (const { brandSlug, colorSlug } of POPULAR_COLOR_SLUGS) {
-    for (const target of MAJOR_MATCH_BRANDS) {
-      if (target === brandSlug) continue;
-      params.push({
-        sourceBrandSlug: brandSlug,
-        matchSlug: `${colorSlug}-to-${target}`,
-      });
-    }
-  }
-  return params;
+  return sitemapSnapshot.matches.map((url) => {
+    const [, , sourceBrandSlug, matchSlug] = url.split("/");
+    return { sourceBrandSlug, matchSlug };
+  });
 }
 
 interface PageProps { params: Promise<{ sourceBrandSlug: string; matchSlug: string }>; }
@@ -40,8 +33,8 @@ function parseParams(raw: string): { colorSlug: string; targetBrandSlug: string 
 }
 
 function deltaELabel(score: number): string {
-  if (score < 1) return "virtually identical";
-  if (score < 2) return "near-identical match";
+  if (score < 1) return "very close digital match";
+  if (score < 2) return "close digital match";
   if (score < 5) return "close match";
   return "noticeable difference";
 }
@@ -76,8 +69,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // source slug is a variant (e.g. agreeable-gray-7029-2-to-behr) — the base
   // match page already covers the query.
   const deltaScore = best ? Number(best.delta_e_score) : null;
-  const isVariantSource = variant !== "";
-  const shouldIndex = deltaScore !== null && deltaScore < 3 && !isVariantSource;
+  const shouldIndex = isMatchIndexable(sourceColor, deltaScore);
   return {
     title: { absolute: shortTitle },
     description: `Find the closest ${targetBrand.name} match for ${sourceColor.brand.name} ${sourceColor.name}${colorNum}${variant} (${sourceColor.hex.toUpperCase()}). ${note}. Compare hex, LRV, and undertone side by side.`,
@@ -89,7 +81,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-// JSON-LD helper \u2014 content is server-generated from trusted database values only
+// JSON-LD helper — content is server-generated from trusted database values only
 function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
@@ -125,12 +117,12 @@ export default async function MatchPage({ params }: PageProps) {
       ]}} />
       {bestMatch && <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: [
         { "@type": "Question", name: `What is the ${targetBrand.name} equivalent of ${sourceColor.brand.name} ${sourceColor.name}?`,
-          acceptedAnswer: { "@type": "Answer", text: `The closest ${targetBrand.name} equivalent to ${sourceColor.brand.name} ${sourceColor.name} is ${bestMatch.match_color.name} (${bestMatch.match_color.hex.toUpperCase()}) \u2014 ${deltaELabel(Number(bestMatch.delta_e_score))} on the wall. The match is computed with the CIEDE2000 color-difference formula, which measures how close two colors look to the human eye rather than comparing their hex codes.${targetMatches.length > 1 ? ` If you want a backup, ${targetMatches[1].match_color.name} is the next-closest ${targetBrand.name} option.` : ""} Order a sample before painting \u2014 sheen and lighting shift the result.` } },
+          acceptedAnswer: { "@type": "Answer", text: `The closest ${targetBrand.name} equivalent to ${sourceColor.brand.name} ${sourceColor.name} is ${bestMatch.match_color.name} (${bestMatch.match_color.hex.toUpperCase()}) — ${deltaELabel(Number(bestMatch.delta_e_score))} on the wall. The match is computed with the CIEDE2000 color-difference formula, which measures how close two colors look to the human eye rather than comparing their hex codes.${targetMatches.length > 1 ? ` If you want a backup, ${targetMatches[1].match_color.name} is the next-closest ${targetBrand.name} option.` : ""} Order a sample before painting — sheen and lighting shift the result.` } },
         { "@type": "Question", name: `Will ${bestMatch.match_color.name} look exactly like ${sourceColor.name}?`,
-          acceptedAnswer: { "@type": "Answer", text: `${bestMatch.match_color.name} is ${Number(bestMatch.delta_e_score) < 2 ? "near-identical" : Number(bestMatch.delta_e_score) < 5 ? "very close" : "a close but visibly different alternative"} to ${sourceColor.brand.name} ${sourceColor.name}, but no cross-brand match is ever perfectly identical \u2014 paint bases, sheens, and tinting systems differ between brands. ${Number(bestMatch.delta_e_score) < 2 ? "Most people won't read the two as different colors once they're on a wall." : Number(bestMatch.delta_e_score) < 5 ? "The difference shows side by side but is rarely noticeable across a room." : "The difference is visible up close, so treat it as the closest available option rather than an exact dupe."} For a high-stakes room, buy a sample pot and compare it against ${sourceColor.name} in your actual lighting first.` } },
+          acceptedAnswer: { "@type": "Answer", text: `${bestMatch.match_color.name} is the closest stored digital candidate from ${targetBrand.name}. This is not a physical match or touch-up guarantee. Compare samples in your room and intended finish before substituting paint.` } },
       ]}} />}
 
-      {/* Hero \u2014 side by side */}
+      {/* Hero — side by side */}
       {bestMatch ? (
         <section className="pt-[65px]">
           <div className="grid grid-cols-2 h-48 md:h-64">
@@ -169,11 +161,11 @@ export default async function MatchPage({ params }: PageProps) {
         {bestMatch ? (
           <>
             <p className="text-on-surface-variant leading-relaxed max-w-3xl mb-10">
-              The closest {targetBrand.name} equivalent to {sourceColor.brand.name} {sourceColor.name} ({sourceColor.hex.toUpperCase()}) is {bestMatch.match_color.name} ({bestMatch.match_color.hex.toUpperCase()}) \u2014 {deltaELabel(Number(bestMatch.delta_e_score))}. Always verify with physical paint samples.
+              The closest {targetBrand.name} equivalent to {sourceColor.brand.name} {sourceColor.name} ({sourceColor.hex.toUpperCase()}) is {bestMatch.match_color.name} ({bestMatch.match_color.hex.toUpperCase()}) — {deltaELabel(Number(bestMatch.delta_e_score))}. Always verify with physical paint samples.
             </p>
 
             <div className="bg-surface-container-low rounded-xl p-6 mb-12 text-center">
-              <p className="font-headline font-bold text-on-surface">{Number(bestMatch.delta_e_score) < 2 ? "Nearly identical" : Number(bestMatch.delta_e_score) < 5 ? "Very similar" : "Visible difference"}</p>
+              <p className="font-headline font-bold text-on-surface">{Number(bestMatch.delta_e_score) < 2 ? "Close digital match" : Number(bestMatch.delta_e_score) < 5 ? "Very similar" : "Visible difference"}</p>
               <p className="text-sm text-on-surface-variant mt-1">Based on <Link href="/methodology" className="text-primary underline-offset-4 hover:underline">CIEDE2000 color difference analysis</Link></p>
             </div>
 
@@ -203,15 +195,11 @@ export default async function MatchPage({ params }: PageProps) {
             <article id="match-methodology" className="max-w-3xl mb-12 text-on-surface-variant leading-relaxed">
               <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-4">How this match is calculated</h2>
               <p className="mb-4">
-                Every {sourceColor.brand.name} and {targetBrand.name} color in our database is converted to CIELAB coordinates, then scored with the CIEDE2000 formula — the current ISO standard for how different two colors look to the human eye. It corrects for the fact that the eye notices small shifts in some hue ranges far more than others, so it predicts real-world appearance more reliably than comparing hex codes directly.
+                Every {sourceColor.brand.name} and {targetBrand.name} color in our database is converted to CIELAB coordinates, then scored with the CIEDE2000 formula — the current ISO standard for how different two colors look to the human eye. It corrects for the fact that the eye notices small shifts in some hue ranges far more than others, so it compares digital colors in perceptual space instead of treating RGB channel differences equally.
               </p>
               <p>
                 {bestMatch.match_color.name} ranks as the closest {targetBrand.name} equivalent to {sourceColor.name} because it sits nearest in that perceptual space.{" "}
-                {Number(bestMatch.delta_e_score) < 2
-                  ? "The two are near-identical — most people won't read them as different colors once they're on a wall."
-                  : Number(bestMatch.delta_e_score) < 5
-                  ? "The two are very similar — the difference shows side by side but is rarely noticeable across a room."
-                  : "There is a visible difference between them, so treat this as the closest available option rather than an exact dupe."}{" "}
+                This ranking compares stored digital values, not measured paint samples. It is not a physical match or touch-up guarantee.{" "}
                 Sheen, lighting, and the existing wall color all shift perceived color, so order a sample of {bestMatch.match_color.name} and check it in your actual room before committing.
               </p>
             </article>

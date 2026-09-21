@@ -233,6 +233,11 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
       )}
 
       {/* ---- Room photo + paint overlay ---- */}
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-surface-container-low p-4">
+        <p aria-live="polite" className="text-sm"><strong>Editing: {REGIONS.find(r => r.id === selected)?.label}</strong><span className="block mt-1">Digital color: {colors[selected].toUpperCase()}</span></p>
+        <button type="button" onClick={resetColors} className="rounded-xl bg-primary text-on-primary px-4 py-3 font-semibold">Reset all colors</button>
+        <p className="w-full text-xs text-on-surface-variant">Digital room preview only. Lighting, screens, and paint finish affect appearance. Confirm your choice with a physical sample.</p>
+      </div>
       <div className="overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container">
         <RoomCanvas room={room} colors={colors} onSelectRegion={selectRegion} />
       </div>
@@ -245,6 +250,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
           {REGIONS.map((r) => (
             <button
               key={r.id}
+              aria-pressed={selected === r.id}
               onClick={() => selectRegion(r.id)}
               className={`flex items-center gap-2.5 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-all ${
                 selected === r.id

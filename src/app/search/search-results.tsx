@@ -106,6 +106,7 @@ export function SearchResults() {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
   const [results, setResults] = useState<ColorWithBrand[]>([]);
+  const [brandFilter, setBrandFilter] = useState("");
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const trackingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -152,6 +153,9 @@ export function SearchResults() {
     setQuery(term);
   }, []);
 
+  const visibleResults = results.filter(c => !brandFilter || c.brand.slug === brandFilter);
+  const resultBrands = Array.from(new Map(results.map(c => [c.brand.slug, c.brand.name])).entries());
+
   const showEmptyState = !loading && !hasSearched && query.length < 2;
   const showNoResults = !loading && hasSearched && results.length === 0 && query.length >= 2;
   const showResults = !loading && results.length > 0;
@@ -166,7 +170,8 @@ export function SearchResults() {
         <input
           type="text"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => { setQuery(e.target.value); setBrandFilter(""); }}
+          aria-label="Search paint colors"
           placeholder="Try 'Agreeable Gray', 'SW 7029', or '#D6D0C4'..."
           className="w-full rounded-xl bg-surface-container-lowest pl-14 pr-6 py-5 text-lg text-on-surface shadow-lg border border-outline-variant/15 placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
           autoFocus
@@ -180,10 +185,17 @@ export function SearchResults() {
       {showResults && (
         <div className="mt-10">
           <p className="mb-6 text-sm text-on-surface-variant">
-            {results.length} result{results.length !== 1 ? "s" : ""} found
+            {visibleResults.length} of {results.length} returned colors
           </p>
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <label htmlFor="result-brand" className="text-sm font-semibold">Filter returned colors</label>
+            <select id="result-brand" value={brandFilter} onChange={e => setBrandFilter(e.target.value)} className="rounded-xl border border-outline-variant p-3 bg-white text-on-surface">
+              <option value="">All brands</option>{resultBrands.map(([slug, name]) => <option key={slug} value={slug}>{name}</option>)}
+            </select>
+            {brandFilter && <button onClick={() => setBrandFilter("")} className="rounded-full bg-primary-fixed text-primary px-4 py-3" aria-label="Remove brand filter">{resultBrands.find(([slug]) => slug === brandFilter)?.[1]} ×</button>}
+          </div>
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {results.map((color) => (
+            {visibleResults.map((color) => (
               <ColorCard
                 key={color.id}
                 name={color.name}
