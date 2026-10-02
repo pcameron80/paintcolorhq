@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PrivacyChoicesLink } from "@/components/privacy-choices-link";
 
 export function Footer() {
   return (
@@ -83,6 +84,7 @@ export function Footer() {
             <li><Link href="/methodology" className="hover:text-primary underline-offset-4 hover:underline transition-all">Methodology</Link></li>
             <li><Link href="/contact" className="hover:text-primary underline-offset-4 hover:underline transition-all">Contact</Link></li>
             <li><Link href="/privacy" className="hover:text-primary underline-offset-4 hover:underline transition-all">Privacy Policy</Link></li>
+            <li><PrivacyChoicesLink className="hover:text-primary underline-offset-4 hover:underline transition-all" /></li>
             <li><Link href="/terms" className="hover:text-primary underline-offset-4 hover:underline transition-all">Terms of Service</Link></li>
           </ul>
 

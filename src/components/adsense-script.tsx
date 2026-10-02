@@ -2,23 +2,34 @@
 
 import { useState, useEffect } from "react";
 import Script from "next/script";
+import {
+  CONSENT_CHANGE_EVENT,
+  adsAllowed,
+  fetchConsentRegion,
+  getStoredConsent,
+} from "@/lib/consent";
 
 export function AdSenseScript() {
-  const [consented, setConsented] = useState(false);
+  const [allowed, setAllowed] = useState(false);
 
   useEffect(() => {
-    setConsented(localStorage.getItem("cookie_consent") === "granted");
+    let active = true;
+    fetchConsentRegion().then((region) => {
+      if (active) setAllowed(adsAllowed(getStoredConsent(), region));
+    });
 
-    function onStorage(e: StorageEvent) {
-      if (e.key === "cookie_consent") {
-        setConsented(e.newValue === "granted");
-      }
+    async function onChange() {
+      const region = await fetchConsentRegion();
+      if (active) setAllowed(adsAllowed(getStoredConsent(), region));
     }
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
+    window.addEventListener(CONSENT_CHANGE_EVENT, onChange);
+    return () => {
+      active = false;
+      window.removeEventListener(CONSENT_CHANGE_EVENT, onChange);
+    };
   }, []);
 
-  if (!consented) return null;
+  if (!allowed) return null;
 
   return (
     <Script
