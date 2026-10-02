@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
             <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
               Privacy Policy
             </h1>
-            <p className="text-sm text-outline">Effective date: February 2025</p>
+            <p className="text-sm text-outline">Effective date: October 2026</p>
           </div>
         </section>
 
@@ -57,6 +57,7 @@ export default function PrivacyPolicyPage() {
                 <li><strong className="text-on-surface">Analytics cookies:</strong> Google Analytics uses cookies to collect anonymous usage data. You can opt out using the{" "}<a href="https://tools.google.com/dlpage/gaoptout" className="text-primary underline hover:text-primary/80" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</li>
                 <li><strong className="text-on-surface">Advertising cookies:</strong> We use Google AdSense to display advertisements. Google and its partners may use cookies to serve ads based on your prior visits to this site or other websites. You can opt out of personalized advertising by visiting{" "}<a href="https://www.google.com/settings/ads" className="text-primary underline hover:text-primary/80" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</li>
               </ul>
+              <p className="mt-4"><strong className="text-on-surface">Your choices by location:</strong> If you visit from the European Economic Area, the United Kingdom or Switzerland, analytics and advertising cookies stay off until you click Accept on the cookie banner. Everywhere else, they are on by default, and you can turn them off at any time with the &ldquo;Your Privacy Choices&rdquo; link in the site footer. That link is how California and other US-state residents opt out of the sale or sharing of personal information for targeted advertising. We also honor the Global Privacy Control (GPC) browser signal as an opt-out of advertising cookies and the Pinterest tag.</p>
             </div>
 
             <div>
@@ -80,6 +81,7 @@ export default function PrivacyPolicyPage() {
               <ul className="mt-3 list-disc space-y-2 pl-5">
                 <li><strong className="text-on-surface">Google Analytics</strong> &mdash; website usage analytics</li>
                 <li><strong className="text-on-surface">Google AdSense</strong> &mdash; advertising</li>
+                <li><strong className="text-on-surface">Pinterest Tag</strong> &mdash; measuring visits that come from Pinterest</li>
                 <li><strong className="text-on-surface">Supabase</strong> &mdash; authentication and database services</li>
                 <li><strong className="text-on-surface">Google OAuth</strong> &mdash; sign-in authentication</li>
               </ul>
