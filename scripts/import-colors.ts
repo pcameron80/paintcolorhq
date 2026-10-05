@@ -1,3 +1,4 @@
+import { refineColorFamily } from "./lib/color-math";
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -314,7 +315,7 @@ function main() {
         lab_a: lab.a,
         lab_b_val: lab.b_val,
         lrv: Math.round(calculateLrv(parsed.r, parsed.g, parsed.b) * 100) / 100,
-        color_family: classifyColorFamily(parsed.r, parsed.g, parsed.b),
+        color_family: refineColorFamily(classifyColorFamily(parsed.r, parsed.g, parsed.b), parsed.r, parsed.g, parsed.b),
         brand_slug: brandInfo.slug,
       });
 

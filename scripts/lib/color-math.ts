@@ -35,6 +35,10 @@ export function rgbToHsl(
 }
 
 export function classifyColorFamily(r: number, g: number, b: number): string {
+  return refineColorFamily(classifyColorFamilyHsl(r, g, b), r, g, b);
+}
+
+function classifyColorFamilyHsl(r: number, g: number, b: number): string {
   const { h, s, l } = rgbToHsl(r, g, b);
 
   if (l > 90 && s < 15) return 'white';
@@ -57,6 +61,40 @@ export function classifyColorFamily(r: number, g: number, b: number): string {
   if (h >= 290 && h < 345) return 'pink';
 
   return 'neutral';
+}
+
+const HUE_FAMILIES = new Set(['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink']);
+
+function lchHueFamily(h: number, c: number): string {
+  if (h < 20 || h >= 345) return c >= 30 ? 'red' : 'pink';
+  if (h < 60) return 'orange';
+  if (h < 100) return 'yellow';
+  if (h < 200) return 'green';
+  if (h < 295) return 'blue';
+  if (h < 330) return 'purple';
+  return 'pink';
+}
+
+// Perceptual correction applied on top of any family source (the HSL
+// classifier above, or a brand API's own family list). HSL saturation is
+// inflated for very light colors, which put creamy whites such as Swiss
+// Coffee, Alabaster and White Dove into yellow/orange. CIELAB lightness and
+// chroma are closer to what a person sees. Thresholds from the 2026-10-05
+// family audit: warm creams (LCh hue 55-115) tolerate more chroma before
+// they stop reading as white than cool tints do.
+export function refineColorFamily(family: string, r: number, g: number, b: number): string {
+  const lab = rgbToLab(r, g, b);
+  const c = Math.hypot(lab.a, lab.b_val);
+  let h = (Math.atan2(lab.b_val, lab.a) * 180) / Math.PI;
+  if (h < 0) h += 360;
+  const warm = h >= 55 && h < 115;
+
+  if (HUE_FAMILIES.has(family) && lab.l >= 88 && c < (warm ? 10 : 6)) {
+    return lab.l >= 92 && c <= (warm ? 8 : 4) ? 'white' : 'off-white';
+  }
+  if (family === 'neutral' && c > 25) return lchHueFamily(h, c);
+  if (family === 'blue' && c >= 15 && h >= 295 && h < 345) return 'purple';
+  return family;
 }
 
 export function calculateLrv(r: number, g: number, b: number): number {
