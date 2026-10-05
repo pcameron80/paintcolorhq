@@ -25,6 +25,7 @@ import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
 import { POPULAR_COLOR_SLUGS } from "@/lib/popular-colors";
 import { COTY_BY_COLOR } from "@/lib/color-of-the-year";
+import { titleArm, matchesArmTitle, matchesArmDescription } from "@/lib/title-test";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -141,9 +142,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? ` | ${lrvForTitle != null ? `LRV ${lrvForTitle} ` : ""}${familyForTitle} Paint Color`
     : ` | ${color.hex.toUpperCase()}`; // fall back to hex if family unavailable
   const shouldIndex = isColorIndexable(color);
+  const reviewed = Boolean(REVIEWED_COLOR_PAGES[`${brandSlug}/${colorSlug}`]);
+  let title: Metadata["title"] = reviewed
+    ? { absolute: `${color.brand.name} ${color.name}${colorNum}: Color Matches` }
+    : `${color.name}${colorNum} by ${color.brand.name}${variant}${titleSuffix}`;
+  let description = generateMetaDescription(color) + variant;
+  // Split test (src/lib/title-test.ts): half of unreviewed pages lead with
+  // the cross-brand match instead of LRV + family.
+  if (!reviewed && titleArm(brandSlug, colorSlug) === "matches") {
+    title = { absolute: matchesArmTitle(color.name, colorNum, color.brand.name, variant) };
+    const nearest = nearestMatchesPerBrand(await getCrossBrandMatches(color.id));
+    description = matchesArmDescription(color.name, lrvForTitle, nearest) ?? description;
+  }
   return {
-    title: REVIEWED_COLOR_PAGES[`${brandSlug}/${colorSlug}`] ? { absolute: `${color.brand.name} ${color.name}${colorNum}: Color Matches` } : `${color.name}${colorNum} by ${color.brand.name}${variant}${titleSuffix}`,
-    description: generateMetaDescription(color) + variant,
+    title,
+    description,
     alternates: { canonical: url },
     robots: shouldIndex ? undefined : { index: false, follow: true },
     openGraph: {
