@@ -184,6 +184,7 @@ function detectPageType(): string {
   if (path.startsWith("/match")) return "match";
   if (path.startsWith("/inspiration")) return "inspiration";
   if (path.startsWith("/compare")) return "compare";
+  if (path.startsWith("/color-of-the-year")) return "color_of_the_year";
   if (path.startsWith("/search")) return "search";
   if (path === "/") return "homepage";
   return "other";
