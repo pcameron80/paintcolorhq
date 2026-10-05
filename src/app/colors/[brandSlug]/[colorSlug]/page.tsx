@@ -121,7 +121,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       const correctSlug = await getColorSlugByNumber(brandSlug, colorNumber);
       if (correctSlug && correctSlug !== colorSlug) redirect(`/colors/${brandSlug}/${correctSlug}`);
     }
-    return { title: "Color Not Found" };
+    // notFound() here, not only in the page body: once the page starts
+    // streaming the status is locked at 200, which Google records as a
+    // soft 404. Metadata resolves first, so this returns a real 404.
+    notFound();
   }
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
   const colorNum = color.color_number ? ` ${color.color_number}` : "";

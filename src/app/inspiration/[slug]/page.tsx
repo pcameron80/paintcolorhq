@@ -14,6 +14,9 @@ import { AdSenseScript } from "@/components/adsense-script";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
+// Palettes are a fixed set, so any other slug is a hard 404 at the router.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return inspirationPalettes.map((p) => ({ slug: p.slug }));
 }
