@@ -9,6 +9,7 @@
 
 import { createClient } from "@supabase/supabase-js";
 import * as dotenv from "dotenv";
+import { refineColorFamily } from "./lib/color-math";
 
 dotenv.config({ path: ".env.local" });
 
@@ -182,7 +183,7 @@ async function main() {
       lab_a: Math.round(c.lab.A * 100) / 100,
       lab_b_val: Math.round(c.lab.B * 100) / 100,
       lrv: Math.round(lrv * 100) / 100,
-      color_family: mapColorFamily(c.colorFamilyNames),
+      color_family: refineColorFamily(mapColorFamily(c.colorFamilyNames), c.red, c.green, c.blue),
     };
   });
 
