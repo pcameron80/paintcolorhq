@@ -24,6 +24,7 @@ import { TrackPage } from "@/components/track-page";
 import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
 import { POPULAR_COLOR_SLUGS } from "@/lib/popular-colors";
+import { COTY_BY_COLOR } from "@/lib/color-of-the-year";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -306,6 +307,14 @@ export default async function ColorPage({ params }: PageProps) {
           <h1 className={`font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-8 drop-shadow-2xl ${textClass}`}>
             {color.name}
           </h1>
+          {COTY_BY_COLOR[`${brandSlug}/${colorSlug}`] && (
+            <Link
+              href="/color-of-the-year"
+              className={`mb-8 -mt-4 inline-block rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest ring-1 hover:underline ${light ? "ring-on-surface/30" : "ring-on-primary/40"} ${textClass}`}
+            >
+              {COTY_BY_COLOR[`${brandSlug}/${colorSlug}`].brandName} {COTY_BY_COLOR[`${brandSlug}/${colorSlug}`].year} Color of the Year · See every brand&apos;s pick
+            </Link>
+          )}
           <div className="flex justify-center items-center gap-8 md:gap-12">
             {lrv != null && (
               <>

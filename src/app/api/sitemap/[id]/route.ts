@@ -58,6 +58,7 @@ export async function GET(
         { url: "/blog", lastmod: SITE_BUILD_DATE },
         { url: "/inspiration", lastmod: SITE_BUILD_DATE },
         { url: "/discontinued", lastmod: SITE_BUILD_DATE },
+        { url: "/color-of-the-year", lastmod: SITE_BUILD_DATE },
         { url: "/paint-color-statistics", lastmod: SITE_BUILD_DATE },
         { url: "/tools", lastmod: SITE_BUILD_DATE },
         { url: "/tools/paint-calculator", lastmod: SITE_BUILD_DATE },
