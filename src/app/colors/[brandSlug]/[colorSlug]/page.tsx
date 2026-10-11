@@ -28,6 +28,7 @@ import { COTY_BY_COLOR } from "@/lib/color-of-the-year";
 import { FORMER_NAMES } from "@/lib/former-names";
 import { titleArm, matchesArmTitle, matchesArmDescription } from "@/lib/title-test";
 import { closenessLabel, closenessLabelLower } from "@/lib/closeness";
+import { availabilityStatus, RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -204,6 +205,7 @@ export default async function ColorPage({ params }: PageProps) {
   ]);
   const colorLede = generateColorLede(color, matches);
   const brandMatrix = nearestMatchesPerBrand(matches);
+  const availabilityNote = availabilityStatus(color.brand.slug, color.brand.name, color.color_number, color.availability);
   // Curated, hand-written review for high-demand colors (null for the long tail).
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
   const retailerLinks = getRetailerLinks(color.brand.slug, color.brand.name, color.name, color.color_number ?? undefined, color.color_family ?? undefined);
@@ -325,6 +327,12 @@ export default async function ColorPage({ params }: PageProps) {
           <h1 className={`font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-8 drop-shadow-2xl ${textClass}`}>
             {color.name}
           </h1>
+          {availabilityNote && (
+            <p className={`-mt-4 mb-8 mx-auto max-w-xl text-sm ${textMutedClass}`}>
+              {availabilityNote}{" "}
+              <Link href="/discontinued" className="underline underline-offset-4">About retired and discontinued colors</Link>
+            </p>
+          )}
           {FORMER_NAMES[`${brandSlug}/${colorSlug}`] && FORMER_NAMES[`${brandSlug}/${colorSlug}`] !== color.name && (
             <p className={`-mt-4 mb-8 text-sm ${textMutedClass}`}>
               Previously listed as {FORMER_NAMES[`${brandSlug}/${colorSlug}`]}
@@ -521,7 +529,12 @@ export default async function ColorPage({ params }: PageProps) {
                       <div className="space-y-4 mb-4">
                         <div className="w-full h-36 rounded-lg border border-black/10" style={{ backgroundColor: match.match_color.hex }} />
                         <div className="min-w-0">
-                          <h3 className="font-headline font-bold text-on-surface break-words">{match.match_color.name}</h3>
+                          <h3 className="font-headline font-bold text-on-surface break-words">
+                            {match.match_color.name}
+                            {match.match_color.availability === "retired" && (
+                              <span title={RETIRED_MATCH_TOOLTIP} className="ml-2 align-middle rounded-full bg-surface-container px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-outline">Retired</span>
+                            )}
+                          </h3>
                           <p className="text-xs text-on-surface-variant mt-1">{match.match_color.brand.name}</p>
                           <p className="text-xs text-on-surface-variant mt-1">{match.match_color.hex.toUpperCase()}</p>
                         </div>

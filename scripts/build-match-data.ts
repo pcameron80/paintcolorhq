@@ -87,6 +87,7 @@ interface ColorRow {
   slug: string;
   hex: string;
   brand_id: string;
+  availability: string | null;
 }
 interface BrandRow {
   id: string;
@@ -106,6 +107,7 @@ interface OutputMatch {
     name: string;
     slug: string;
     hex: string;
+    availability: string;
     brand: { name: string; slug: string };
   };
 }
@@ -163,7 +165,7 @@ async function main() {
   while (true) {
     const { data, error } = await supabase
       .from("colors")
-      .select("id, name, slug, hex, brand_id")
+      .select("id, name, slug, hex, brand_id, availability")
       .order("id", { ascending: true })
       .range(from, from + 999);
     if (error) {
@@ -214,6 +216,7 @@ async function main() {
           name: color.name,
           slug: color.slug,
           hex: color.hex,
+          availability: color.availability ?? "current",
           brand: { name: brand.name, slug: brand.slug },
         },
       });

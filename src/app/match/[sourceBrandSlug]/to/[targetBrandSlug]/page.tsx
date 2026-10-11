@@ -9,6 +9,7 @@ import { MatchColorSearch } from "@/components/match-color-search";
 import { getBrandBySlug, getTopCrossBrandMatches } from "@/lib/queries";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { closenessLabel } from "@/lib/closeness";
+import { RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
 import { getBrandPairIntro } from "@/lib/brand-pair-intros";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
@@ -143,7 +144,12 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg shrink-0" style={{ backgroundColor: m.match.hex }} />
                           <div>
-                            <p className="font-headline font-bold text-on-surface">{m.match.name}</p>
+                            <p className="font-headline font-bold text-on-surface">
+                              {m.match.name}
+                              {m.match.availability === "retired" && (
+                                <span title={RETIRED_MATCH_TOOLTIP} className="ml-2 align-middle rounded-full bg-surface-container px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-outline">Retired</span>
+                              )}
+                            </p>
                             {m.match.color_number && <p className="text-[10px] text-outline">{m.match.color_number}</p>}
                           </div>
                         </div>

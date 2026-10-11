@@ -9,6 +9,8 @@ export interface Brand {
   created_at: string;
 }
 
+export type ColorAvailability = "current" | "retired" | "discontinued";
+
 export interface Color {
   id: string;
   brand_id: string;
@@ -27,6 +29,8 @@ export interface Color {
   collections: string[];
   undertone: string | null;
   is_discontinued: boolean;
+  // Brand availability. Missing (older match-data JSON, narrow selects) means 'current'.
+  availability?: ColorAvailability;
   // True if a live Samplize peel-and-stick product page exists for this color
   // (gates the affiliate sample CTA). null = unchecked. Only set for SW/BM/F&B.
   samplize_available?: boolean | null;

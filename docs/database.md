@@ -41,7 +41,13 @@ Individual paint colors with color science data.
 | color_family | text | e.g. "gray", "blue" |
 | collections | jsonb | Array of collection names |
 | undertone | text | Optional: warm/cool/neutral |
-| is_discontinued | boolean | Default false |
+| is_discontinued | boolean | Legacy, unused; availability supersedes it |
+| alternate_numbers | text[] | Other codes for the same color (BM dual numbers, legacy codes) |
+| availability | text | `current` / `retired` / `discontinued` (migration 012). Retired = the brand retired it but it can still be mixed by code; stays a match target. Discontinued = positive evidence it cannot be bought; excluded as a match target |
+| availability_source | text | What evidence set the state (feed flag, retailer spot check) |
+| availability_checked_on | date | When that evidence was checked |
+| last_seen_live_on | date | Last palette scan that found the color in the brand's live palette; internal only |
+| is_archived | boolean | GENERATED: `availability = 'discontinued'`. Read-only; write `availability` instead |
 | created_at | timestamptz | Auto-set |
 
 **Unique constraint:** `(brand_id, slug)` - no duplicate slugs within a brand.
