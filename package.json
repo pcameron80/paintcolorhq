@@ -35,7 +35,7 @@
     "test:supplies": "node --import tsx --test scripts/lib/painting-supplies.test.ts",
     "predev": "tsx scripts/build-sitemap-data.ts",
     "build:sitemap": "tsx scripts/build-sitemap-data.ts",
-    "test:seo": "node --import tsx --test src/lib/indexing.test.ts src/lib/catalog-pagination.test.ts src/lib/color-description.test.ts",
+    "test:seo": "node --import tsx --test src/lib/indexing.test.ts src/lib/catalog-pagination.test.ts src/lib/color-description.test.ts src/lib/hue-bands.test.ts",
     "check:sitemap": "tsx scripts/check-sitemap-data.ts"
   },
   "dependencies": {

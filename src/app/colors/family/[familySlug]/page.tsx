@@ -11,6 +11,7 @@ import { getFamilyContent, getFamilyRelatedPalettes, getFamilyAnchor } from "@/l
 import { getPostsByFamily } from "@/lib/blog-posts";
 import { FAMILY_UNDERTONE_ANSWERS } from "@/lib/family-undertone-copy";
 import { getPaletteBySlug } from "@/lib/palettes";
+import { HUE_BANDS_BY_FAMILY, getHueBand } from "@/lib/hue-bands";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 
@@ -256,6 +257,24 @@ export default async function ColorFamilyPage({ params }: PageProps) {
                   <h3 className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">{post.title}</h3>
                   <p className="mt-2 text-sm text-on-surface-variant line-clamp-2">{post.excerpt}</p>
                   <span className="mt-4 inline-flex items-center gap-1 text-primary font-bold text-sm group-hover:gap-2 transition-all">Read the guide <span>&rarr;</span></span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Blended-hue collections that overlap this family */}
+      {(HUE_BANDS_BY_FAMILY[familySlug] ?? []).length > 0 && (
+        <section className="py-12 px-6 md:px-12 bg-surface">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-4">Related color ranges</h2>
+            <div className="flex flex-wrap gap-3">
+              {(HUE_BANDS_BY_FAMILY[familySlug] ?? []).map((slug) => getHueBand(slug)).filter((b) => b !== undefined).map((b) => (
+                <Link key={b.slug} href={`/colors/hue/${b.slug}`}
+                  className="flex items-center gap-2 rounded-full bg-surface-container-lowest px-5 py-2.5 text-sm font-medium text-on-surface-variant transition-all hover:shadow-md hover:text-primary">
+                  <span className="inline-block h-5 w-5 rounded-full" style={{ backgroundColor: b.swatch }} />
+                  {b.name} paint colors
                 </Link>
               ))}
             </div>
