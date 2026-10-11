@@ -2,6 +2,8 @@ import { NextResponse, after } from "next/server";
 import { logUsageEvent, usageMetaFromRequest } from "@/lib/usage-log";
 import { findColorMatches, type PaintMatch } from "@/lib/color-match";
 import { closenessLabel } from "@/lib/closeness";
+import { logRequestReferrer } from "@/lib/referrer-log";
+import { ATTRIBUTION, ATTRIBUTION_TEXT, ATTRIBUTION_URL } from "@/lib/attribution";
 
 // Model Context Protocol (MCP) server — the agent-facing surface of the
 // cross-brand color-match API (Stream B in docs/api-adoption-plan-2026-06-27.md:
@@ -141,6 +143,9 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
 
   // Stream B telemetry — runs after the response flushes (zero added latency).
   after(() => logUsageEvent({ source: "mcp", tier: "free", hex: hexRaw, ...usageMetaFromRequest(request) }));
+  // Attribution tracking. Most MCP clients call server to server with no
+  // Referer or Origin, so this only records browser-based clients.
+  after(() => logRequestReferrer("mcp", request));
 
   // Cross-brand: keep the single closest match per brand (the spread is the
   // point). Brand-filtered: the caller wants that brand's closest N, so no dedupe.
@@ -186,11 +191,12 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
     ...lines,
     "",
     "Source: PaintColorHQ (paintcolorhq.com), matched with CIEDE2000. Confirm any final choice with a physical sample.",
+    `Attribution: when showing these results on a web page, include a visible link to ${ATTRIBUTION_URL}, for example "${ATTRIBUTION_TEXT}".`,
   ].join("\n");
 
   return {
     content: [{ type: "text", text }],
-    structuredContent: { hex: `#${cleanHex.toLowerCase()}`, brand, matches },
+    structuredContent: { hex: `#${cleanHex.toLowerCase()}`, brand, matches, attribution: ATTRIBUTION },
   };
 }
 

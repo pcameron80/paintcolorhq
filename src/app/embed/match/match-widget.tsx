@@ -84,7 +84,17 @@ export function MatchWidget() {
       if (!source) return;
       const parent = new URL(source);
       if (parent.hostname.endsWith("paintcolorhq.com")) return; // our own /embed preview
-      const payload = JSON.stringify({ host: parent.origin });
+      // Full embedding page URL when the parent's referrer policy exposes it
+      // (attribution checks need the page, not just the site). Most browsers
+      // send only the origin cross-origin, so `host` stays the fallback.
+      let page: string | undefined;
+      try {
+        const ref = document.referrer ? new URL(document.referrer) : null;
+        if (ref && ref.origin === parent.origin) page = ref.origin + ref.pathname;
+      } catch {
+        // no page URL
+      }
+      const payload = JSON.stringify(page ? { host: parent.origin, page } : { host: parent.origin });
       navigator.sendBeacon?.("/api/embed-event", new Blob([payload], { type: "application/json" }));
     } catch {
       // ignore — telemetry is best-effort
