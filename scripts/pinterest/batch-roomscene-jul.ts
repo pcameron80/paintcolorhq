@@ -17,7 +17,7 @@ const C = {
   tricornBlack: { name: "Tricorn Black", hex: "#2F2F30", rgb: "47, 47, 48", lrv: "2.9", undertone: "Neutral" },
   reverePewter: { name: "Revere Pewter", hex: "#CCC7B9", rgb: "204, 199, 185", lrv: "55.1", undertone: "Neutral" },
   chinesePorcelain: { name: "Chinese Porcelain", hex: "#3A5F7D", rgb: "58, 95, 125", lrv: "10.6", undertone: "Neutral" },
-  whiteDove: { name: "White Dove", hex: "#F3EFE0", rgb: "243, 239, 224", lrv: "83.2", undertone: "Neutral" },
+  whiteDove: { name: "White Dove", hex: "#EFEEE5", rgb: "239, 238, 229", lrv: "83.2", undertone: "Neutral" },
   accessibleBeige: { name: "Accessible Beige", hex: "#D1C7B8", rgb: "209, 199, 184", lrv: "57.9", undertone: "Neutral" },
   crackedPepper: { name: "Cracked Pepper", hex: "#4F5152", rgb: "79, 81, 82", lrv: "8.2", undertone: "Neutral" },
   // supporting (trim / accent)

@@ -23,7 +23,7 @@ const C = {
   canyonDusk: { name: "Canyon Dusk", hex: "#C19A86", rgb: "193, 154, 134", lrv: "36.2", undertone: "Warm Golden" },
   // supporting (trim / walls / ceiling)
   pureWhite: { name: "Pure White", hex: "#EDECE6", rgb: "237, 236, 230", lrv: "83.7", undertone: "Neutral" },
-  whiteDove: { name: "White Dove", hex: "#F3EFE0", rgb: "243, 239, 224", lrv: "83.2", undertone: "Neutral" },
+  whiteDove: { name: "White Dove", hex: "#EFEEE5", rgb: "239, 238, 229", lrv: "83.2", undertone: "Neutral" },
   greekVilla: { name: "Greek Villa", hex: "#F0ECE2", rgb: "240, 236, 226", lrv: "84", undertone: "Neutral" },
   shojiWhite: { name: "Shoji White", hex: "#E6DFD3", rgb: "230, 223, 211", lrv: "74.3", undertone: "Neutral" },
   driftOfMist: { name: "Drift of Mist", hex: "#DCD8D0", rgb: "220, 216, 208", lrv: "68.9", undertone: "Neutral" },
