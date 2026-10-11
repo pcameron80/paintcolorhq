@@ -120,7 +120,7 @@ This palette pairs well with plants and greenery — the warm beige and terracot
 
 Blush pink wall color (LRV around 65–70) reads very differently in person than it does on a sample card. On a small chip, it looks distinctly pink. On four walls, with daylight bouncing off the surfaces, it often reads as a warm off-white with just enough pink to feel different from cream. This makes it more versatile than people expect — it can work in guest bedrooms, primary bathrooms, and dining rooms without the room feeling themed.
 
-The warm cream at LRV 90+ is the natural trim and ceiling color. Avoid true white here — the cool undertone in pure white will clash visibly with the warm pink walls. Stick to warm whites with yellow-pink undertones: Benjamin Moore White Dove, Sherwin-Williams Alabaster, or similar warm neutrals.
+The warm cream at LRV 90+ is the natural trim and ceiling color. Avoid true white here — the cool undertone in pure white will clash visibly with the warm pink walls. Stick to soft whites that lean warm: Benjamin Moore White Dove, Sherwin-Williams Alabaster, or similar warm neutrals.
 
 The dusty mauve is the depth color — it functions like the deep tone in any palette, adding dimension without drama. Good applications include an upholstered headboard in a bedroom, a velvet accent chair in a living room, bedside lamp shades, and decorative pillows. As a wall color, use it sparingly: one wall in a bedroom behind the bed, or the full walls of a small powder room.
 

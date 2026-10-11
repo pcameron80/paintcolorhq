@@ -106,5 +106,5 @@ docs/research/
 /src/generated/sitemap.json
 /src/generated/sitemap.json.tmp
 
-# description_extended backup (local only, never commit)
+# DB row backups from one-off fix scripts (local only, never commit)
 scripts/backups/

@@ -98,9 +98,9 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         Glacier White (OC-37), Behr Arcade White (GR-W08) and PPG Winter Mood (14-16) are nearly
         identical digital matches, and so is Benjamin Moore Swiss Coffee (OC-45). Inside
         Sherwin-Williams, Greek Villa (SW 7551) is nearly identical and slightly lighter at LRV 84.0.
-        Benjamin Moore White Dove (OC-17) is often called its equivalent, but in our famous-whites
-        comparison White Dove measured creamier (LAB b* 7.7 against 5.2) and lighter (LRV 83.2), so it
-        is not a safe mid-project swap. Our guides use Alabaster as the trim white for Agreeable Gray
+        Benjamin Moore White Dove (OC-17) is often called its equivalent, and on Benjamin Moore&apos;s
+        published values it rates nearly identical: White Dove is slightly lighter (LRV 83.2) and a
+        touch less yellow (LAB b* 4.5 against 5.2). Our guides use Alabaster as the trim white for Agreeable Gray
         (LRV 60.1) and Accessible Beige (LRV 57.9). These are digital matches, so compare physical
         samples before substituting.
       </p>
@@ -263,21 +263,20 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/white-dove-oc-17": (
     <>
       <p>
-        White Dove (OC-17) is hex #F3EFE0 with an estimated LRV of 83.2, and it
-        sits in our white family. Its nearest Sherwin-Williams color is Roman Column (SW 7562), a nearly
-        identical digital match. Behr Polished Marble (GR-W13), PPG Queen Anne&apos;s Lace (30YY
-        83/006), Valspar December Starlight (7003-7) and Dunn-Edwards Daydreaming (DET678) are nearly
-        identical as well. Sherwin-Williams Alabaster (SW 7008) is the swap people ask about most, and
-        it is not a close one: in our famous-whites comparison White Dove measured the creamier of the
-        two (LAB b* 7.7 against 5.2) and slightly lighter (LRV 83.2 against 82.2). Sample both side by
-        side rather than treating one as a replacement for the other. Every match here compares digital
-        values, not wet paint.
+        White Dove (OC-17) is hex #EFEEE5 with an LRV of 83.2 (Benjamin Moore publishes 83.16), and it
+        sits in our white family. Its nearest Sherwin-Williams color is Cold Foam (SW 9504), a nearly
+        identical digital match. Behr Harmonious White (DC-013), PPG Gypsum (1006-1), Valspar Paramount
+        White (7006-22) and Dunn-Edwards Almond Milk (DEHW01) are nearly identical as well.
+        Sherwin-Williams Alabaster (SW 7008) is the swap people ask about most, and it also rates nearly
+        identical: White Dove is slightly lighter (LRV 83.2 against 82.2) and a touch less yellow (LAB b*
+        4.5 against 5.2). Sample both side by side before treating one as a replacement for the other.
+        Every match here compares digital values, not wet paint.
       </p>
       <p>
-        White Dove is the most popular Benjamin Moore color, full stop — a soft warm white at LRV 83
-        that has become the default for trim, cabinets, and whole rooms. What makes it the safe pick is
-        restraint: it&apos;s warm enough to feel inviting but not so creamy that it reads yellow, so it
-        flatters both warm and cool palettes.
+        White Dove is one of Benjamin Moore&apos;s best-selling colors, a soft white at LRV 83 that has
+        become the default for trim, cabinets, and whole rooms. What makes it the safe pick is
+        restraint: Benjamin Moore calls it a softly shaded white, and it leans only slightly warm, so it
+        feels inviting without reading yellow and flatters both warm and cool palettes.
       </p>
       <p>
         It&apos;s especially loved on kitchen cabinets, where a brighter white can look cold and a creamier
@@ -306,7 +305,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/chantilly-lace-2121-70": (
     <>
       <p>
-        Chantilly Lace (2121-70) is hex #F5F7F2 with an estimated LRV of 90, and
+        Chantilly Lace (2121-70) is hex #F4F6F1 with an LRV of 90 (Benjamin Moore publishes 90.04), and
         it sits in our white family. Benjamin Moore also sells it under the code OC-65; our catalog
         stores it as 2121-70. Behr Snow Fall (W-F-600) is its closest digital match. The nearest
         Sherwin-Williams color in our data is UltraWhite (SW 9500), nearly identical and sharing a hex

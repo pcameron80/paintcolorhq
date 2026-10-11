@@ -17,8 +17,8 @@ const content: Record<string, FamilyContent> = {
           jarring clash that&apos;s hard to pinpoint but easy to feel.
         </p>
         <p>
-          Designer favorites like Benjamin Moore White Dove (warm), Sherwin-Williams Pure White (warm),
-          and Benjamin Moore Chantilly Lace (true white) dominate for good reason — they&apos;re
+          Designer favorites like Benjamin Moore White Dove (soft, slightly warm), Sherwin-Williams Pure White (warm),
+          and Benjamin Moore Chantilly Lace (crisp, close to neutral) dominate for good reason — they&apos;re
           versatile across lighting conditions. Use the undertone filter below to narrow your search
           to warm, cool, or neutral whites.
         </p>
