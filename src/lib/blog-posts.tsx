@@ -5981,7 +5981,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#BBBCA7" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — barely green, almost gray. This whisper of color adapts to changing light without ever looking wrong. LRV 49.3.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E9E3DE" name="Crystalline" brand="Sherwin-Williams" href="/colors/sherwin-williams/crystalline-9691" /> — a slightly cooler sage that stays crisp in morning sun and turns moody-sophisticated in the afternoon. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link> for more.
+          <Swatch hex="#CDD2CA" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63.3). A lighter, cooler green-gray than Softened Green that stays crisp in morning sun and softens in afternoon shade. See the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Whites</h2>
