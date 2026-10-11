@@ -8,6 +8,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 import { getColorBySlug, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
 import sitemapSnapshot from "@/generated/sitemap.json";
+import { isMatchTitleTestPair, matchTestDescription, matchTestTitle } from "@/lib/match-title-test";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -70,12 +71,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // match page already covers the query.
   const deltaScore = best ? Number(best.delta_e_score) : null;
   const shouldIndex = isMatchIndexable(sourceColor, deltaScore);
+  // Click-through test arm (src/lib/match-title-test.ts): fixed pair list,
+  // every other pair keeps the control title and description.
+  const testDescription = best && isMatchTitleTestPair(sourceBrandSlug, matchSlug)
+    ? matchTestDescription(
+        sourceColor.brand.name, sourceColor.name, sourceColor.color_number, targetBrand.name,
+        allMatches
+          .filter((m) => m.match_color.brand.slug === parsed.targetBrandSlug)
+          .map((m) => ({ name: m.match_color.name, colorNumber: m.match_color.color_number, deltaE: Number(m.delta_e_score) })),
+      )
+    : null;
+  const finalTitle = testDescription ? matchTestTitle(sourceColor.name, sourceColor.color_number, targetBrand.name) : shortTitle;
   return {
-    title: { absolute: shortTitle },
-    description: `Find the closest ${targetBrand.name} match for ${sourceColor.brand.name} ${sourceColor.name}${colorNum}${variant} (${sourceColor.hex.toUpperCase()}). ${note}. Compare hex, LRV, and undertone side by side.`,
+    title: { absolute: finalTitle },
+    description: testDescription ?? `Find the closest ${targetBrand.name} match for ${sourceColor.brand.name} ${sourceColor.name}${colorNum}${variant} (${sourceColor.hex.toUpperCase()}). ${note}. Compare hex, LRV, and undertone side by side.`,
     alternates: { canonical: url },
     robots: shouldIndex ? undefined : { index: false, follow: true },
-    openGraph: { title: shortTitle, description: `Find the closest ${targetBrand.name} equivalent.`, url,
+    openGraph: { title: finalTitle, description: `Find the closest ${targetBrand.name} equivalent.`, url,
       images: [{ url: `/api/og?hex=${encodeURIComponent(sourceColor.hex)}&name=${encodeURIComponent(sourceColor.name)}&brand=${encodeURIComponent(`${sourceColor.brand.name} \u2192 ${targetBrand.name}`)}`, width: 1200, height: 630 }],
     },
   };
