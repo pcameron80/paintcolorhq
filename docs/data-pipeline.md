@@ -236,6 +236,24 @@ Both write a JSON backup to `scripts/data/backups/` before any write and take `-
 
 - **LRV:** matches on `color_number`, then `alternate_numbers`. It skips rows listed in `<brand>-hex-changed.json` (owned by `apply-hex-corrections.ts`), rows whose name does not match the feed, feed LRVs of 0, and Benjamin Moore `PM-` codes. The BM API gives premixed `PM-` codes their own LRV, which disagrees with BM's color pages (PM-1 Super White: feed 89.1, page 87.36). LRV does not feed Delta E, so matches need no recompute. Sherwin-Williams and Dutch Boy were left at their computed values on 2026-10-11: they differ from the feed by less than 1 point on all but 13 rows, and Dutch Boy publishes whole numbers.
 - **Names:** fixes only names that lost characters at import. Manufacturer renames (BM's "Gypsy Love" is now "Fascinator Rose") need `--renames`. When you apply renames, add each true former name to `src/lib/former-names.ts`; the color page then shows "Previously listed as ..." and adds it to the meta description, so the old name still finds the page. `SKIP_RENAME` in the script holds feed misspellings that must never be written. A code whose swatch disagrees with ours (CIEDE2000 > 5) is never written. Slugs are never changed.
-- **Blog copy prints LRVs.** After an LRV change, grep `src/lib/blog-posts.tsx` for the colors that moved and recompute any gap, range or ordering claim built on them.
+- **Blog copy prints LRVs.** After an LRV change, run `npm run audit-colors` (below). It catches a printed LRV that no longer matches; gap, range and ordering claims built on the moved colors still need a read.
 
 `scrape-bm-lrv.ts` and `scrape-behr-lrv.ts` are superseded. They only overwrote differences of 2 or more, which left about 1,250 BM rows 1 to 2 points off (Hale Navy HC-154 held 7.1; BM publishes 8.36). They also depend on the NAS crawl4ai server, which now requires `CRAWL4AI_TOKEN`.
+
+## Content color-fact audit
+
+Content files quote color data by hand: Swatch hexes, printed LRVs, "hex #..." in editorial, and match claims such as "Behr X is nearly identical". A swatch correction or an LRV update changes the DB underneath them without touching the copy. On 2026-10-11 the drift correction left about 70 such claims stale across the blog and editorial (PRs #200 and #202). Run the audit after any of `apply-hex-corrections.ts`, `apply-published-lrv.ts`, `compute-matches`, and before publishing a post:
+
+```bash
+npm run audit-colors
+npm run audit-colors -- --changed=scripts/data/backups/hex-corrections-<ts>.json   # also list every mention of a corrected color
+npm run audit-colors -- --files=docs/superpowers/content/drafts/<post>.tsx          # a draft
+```
+
+It reads every color from Supabase and checks the content files (`src/lib/blog-posts.tsx`, `color-editorial.tsx`, `brand-content.tsx`, `family-content.tsx`, `family-undertone-copy.ts`, `palettes.ts`, `src/app/not-found.tsx`):
+
+- **error:** a `<Swatch hex>` that differs from the DB hex for its `href`; a `/colors/<brand>/<slug>` link not in the DB; the editorial opener "X is hex #..." disagreeing with its keyed color.
+- **warn:** a printed LRV next to a Swatch or in the editorial opener that disagrees beyond display rounding; a match whose closeness label is wrong for CIEDE2000 on current hexes (labels from `src/lib/closeness.ts`); a match called "closest" or a "twin" when the brand has a color more than 1 ΔE nearer; banned closeness wording; links to archived colors.
+- **info** (with `--changed`): every mention of a corrected color, because descriptive words ("pink-beige", "soft blue-gray") can't be checked by number and need a read.
+
+It exits 1 on any error, so it can gate a deploy; `--strict` also fails on warnings. Matching runs on the copy's own words: a brand name followed by the full color name ("Behr Shy Green", "its SW match Simple Stone"), `/colors/` links, Swatches, and table cells under a "Closest <brand>" header. A color mentioned without its brand is not checked. Logic and tests: `scripts/blog/audit-color-facts-lib.ts`.
