@@ -1,3 +1,4 @@
+import { HUE_BAND_SLUGS } from "@/lib/hue-bands";
 import { getBrandContent } from "@/lib/brand-content";
 import sitemapSnapshot from "@/generated/sitemap.json";
 import { NextRequest, NextResponse } from "next/server";
@@ -128,6 +129,8 @@ export async function GET(
         url: `/colors/family/${f.slug}`,
         lastmod: latestByFamily.get(f.slug) ?? SITE_BUILD_DATE,
       }));
+      // Blended-hue collections (blue gray, blue green, rust).
+      entries.push(...HUE_BAND_SLUGS.map((slug) => ({ url: `/colors/hue/${slug}`, lastmod: SITE_BUILD_DATE })));
     } else if (id === "inspiration") {
       entries = inspirationPalettes.map((p) => ({
         url: `/inspiration/${p.slug}`,

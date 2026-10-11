@@ -2,6 +2,7 @@ import { isColorIndexable } from "./indexing";
 import { supabase } from "./supabase";
 import type { Brand, Color, ColorWithBrand, CrossBrandMatchWithColor, ColorFamily } from "./types";
 import { expandUndertoneFilter, UNDERTONE_CATEGORIES } from "./undertone-utils";
+import { getHueBand, inHueBand, labPrefilter } from "./hue-bands";
 
 // Egress reduction: explicitly narrow SELECTs to the fields actually rendered.
 // Migration 004 + the SEO push (Apr 2026) made egress the project's #1 cost
@@ -719,4 +720,47 @@ export async function getLatestColorDateByFamily(): Promise<Map<string, string>>
     offset += batchSize;
   }
   return map;
+}
+
+// ---------------------------------------------------------------------------
+// Hue-band collections (blue gray, blue green, rust). Membership is computed
+// from stored LAB values; see src/lib/hue-bands.ts for the ranges. PostgREST
+// cannot filter on hue/chroma, so the read is narrowed with an a/b rectangle
+// and the exact test runs here. Callers should cache the result (the page
+// wraps this in unstable_cache).
+// ---------------------------------------------------------------------------
+export interface HueBandColor {
+  id: string;
+  name: string;
+  slug: string;
+  hex: string;
+  color_number: string | null;
+  brand: { id: string; name: string; slug: string };
+}
+
+export async function getHueBandColors(bandSlug: string): Promise<HueBandColor[]> {
+  const band = getHueBand(bandSlug);
+  if (!band) return [];
+  const f = labPrefilter(band);
+  const rows: HueBandColor[] = [];
+  const PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase
+      .from("colors")
+      .select("id, name, slug, hex, color_number, lab_l, lab_a, lab_b_val, brand:brand_id (id, name, slug)")
+      .or("is_archived.is.null,is_archived.eq.false")
+      .gte("lab_l", f.lMin).lte("lab_l", f.lMax)
+      .gte("lab_a", f.aMin).lte("lab_a", f.aMax)
+      .gte("lab_b_val", f.bMin).lte("lab_b_val", f.bMax)
+      .order("id")
+      .range(from, from + PAGE - 1);
+    if (error) throw error;
+    for (const r of (data ?? []) as unknown as Array<HueBandColor & { lab_l: number; lab_a: number; lab_b_val: number }>) {
+      const lab = { l: Number(r.lab_l), a: Number(r.lab_a), b: Number(r.lab_b_val) };
+      if (!inHueBand(band, lab)) continue;
+      rows.push({ id: r.id, name: r.name, slug: r.slug, hex: r.hex, color_number: r.color_number, brand: r.brand });
+    }
+    if (!data || data.length < PAGE) break;
+  }
+  return rows.sort((x, y) => x.name.localeCompare(y.name) || x.id.localeCompare(y.id));
 }
