@@ -185,7 +185,7 @@ const blogPosts: BlogPost[] = [
           This is the option between white and an exact match, and it has the most manufacturer support. Benjamin Moore says a ceiling in a lighter shade, &quot;often a variant of the wall color,&quot; can visually raise the roof. Sherwin-Williams gives a recipe: dilute the wall paint with white at about 80 percent white to 20 percent wall color, and explains that because ceilings sit in shadow, the lighter shade relates to the wall color and makes the ceiling look higher. Farrow &amp; Ball says decorators traditionally mixed 25 percent of the wall color into the ceiling white.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          A custom mix works, but a catalog color is easier to buy again for touch-ups. So we searched our database for each popular wall color&apos;s lighter twin: a color from the same brand, 10 to 30 LRV points lighter, with nearly the same hue as the wall.
+          A custom mix works, but a catalog color is easier to buy again for touch-ups. So we searched our database for each popular wall color&apos;s lighter twin: a color from the same brand, roughly 8 to 30 LRV points lighter, with nearly the same hue as the wall.
         </p>
         <div className="mt-6 overflow-x-auto">
           <table className="w-full text-sm border-collapse">
@@ -210,7 +210,7 @@ const blogPosts: BlogPost[] = [
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (63.1)</td>
-                <td className="py-2"><Swatch hex="#e4decf" name="Fossil" brand="BM AF-65" href="/colors/benjamin-moore/fossil-af-65" /> (73.2)</td>
+                <td className="py-2"><Swatch hex="#e4decf" name="Fossil" brand="BM AF-65" href="/colors/benjamin-moore/fossil-af-65" /> (71.6)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (55.1)</td>
@@ -224,12 +224,12 @@ const blogPosts: BlogPost[] = [
           </table>
         </div>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Aesthetic White, Divine White and Fossil are the subtlest steps, 10 to 15 points lighter, and each still rates very similar to its wall color. White Down, Cold Foam and Bridal Pink are bigger steps, 16 to 26 points lighter, closer to a tinted white. Bridal Pink sounds unlikely next to Pale Oak, but by the numbers it is the closest lighter hue in Benjamin Moore&apos;s catalog. Put any pair side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, then test a sample on the ceiling itself: as Sherwin-Williams points out, ceilings often appear in shadow.
+          Aesthetic White, Divine White and Fossil are the subtlest steps, 8 to 15 points lighter, and each still rates very similar to its wall color. White Down, Cold Foam and Bridal Pink are bigger steps, 16 to 26 points lighter, closer to a tinted white. Bridal Pink sounds unlikely next to Pale Oak, but by the numbers it is the closest lighter hue in Benjamin Moore&apos;s catalog. Put any pair side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, then test a sample on the ceiling itself: as Sherwin-Williams points out, ceilings often appear in shadow.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Darker than the walls</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          A darker ceiling lowers a room on purpose. Sherwin-Williams suggests navy, chocolate or charcoal to bring the ceiling down in a white-walled room, and says dark ceilings suit large rooms or high ceilings you want to feel more intimate. Benjamin Moore suggests a color two to three shades darker than the walls, and Farrow &amp; Ball recommends a darker tone on a very high ceiling. A deep navy such as <Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (LRV 7.1) is the kind of color Benjamin Moore means when it says a navy ceiling can make a room look &quot;endless yet intimate.&quot; More deep options are in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
+          A darker ceiling lowers a room on purpose. Sherwin-Williams suggests navy, chocolate or charcoal to bring the ceiling down in a white-walled room, and says dark ceilings suit large rooms or high ceilings you want to feel more intimate. Benjamin Moore suggests a color two to three shades darker than the walls, and Farrow &amp; Ball recommends a darker tone on a very high ceiling. A deep navy such as <Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (LRV 8.4) is the kind of color Benjamin Moore means when it says a navy ceiling can make a room look &quot;endless yet intimate.&quot; More deep options are in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Ceiling paint and sheen</h2>
