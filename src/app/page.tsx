@@ -7,6 +7,7 @@ import { InspirationSection } from "@/components/inspiration-section";
 import { TrackPage } from "@/components/track-page";
 import { AdSenseScript } from "@/components/adsense-script";
 import { getAllPosts } from "@/lib/blog-posts";
+import { ORG_ID, FOUNDER_PERSON } from "@/lib/entity-schema";
 
 export const metadata: Metadata = {
   title: "Find & Compare Paint Colors Across 13 Brands",
@@ -361,18 +362,13 @@ export default async function Home() {
       <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": ORG_ID,
         name: "Paint Color HQ",
         url: "https://www.paintcolorhq.com",
         logo: "https://www.paintcolorhq.com/logo.webp",
         description: "Paint Color HQ helps you discover, preview, and compare 26,000+ paint colors across our paint catalog, then find your color in the brand you can buy. Cross-brand matches use the CIEDE2000 Delta E formula. Free, no signup.",
         sameAs: ["https://www.pinterest.com/paintcolorhq", "https://www.linkedin.com/company/paint-color-hq"],
-        founder: {
-          "@type": "Person",
-          name: "Philip Cameron",
-          url: "https://www.paintcolorhq.com/authors/paint-color-hq-staff",
-          jobTitle: "Founder, Paint Color HQ",
-          sameAs: ["https://www.linkedin.com/in/philip-a-cameron/", "https://github.com/pcameron80"],
-        },
+        founder: FOUNDER_PERSON,
         contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: "https://www.paintcolorhq.com/contact" },
       }} />
 

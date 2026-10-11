@@ -4,6 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllPosts } from "@/lib/blog-posts";
 import { AdSenseScript } from "@/components/adsense-script";
+import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
 
 export const metadata: Metadata = {
   title: "Philip Cameron | Founder of Paint Color HQ",
@@ -41,19 +42,8 @@ export default function PhilipCameronPage() {
 
       <JsonLd data={{
         "@context": "https://schema.org",
-        "@type": "Person",
-        name: "Philip Cameron",
-        url: "https://www.paintcolorhq.com/authors/paint-color-hq-staff",
-        jobTitle: "Founder, Paint Color HQ",
-        worksFor: {
-          "@type": "Organization",
-          name: "Paint Color HQ",
-          url: "https://www.paintcolorhq.com",
-        },
-        sameAs: [
-          "https://www.linkedin.com/in/philip-a-cameron/",
-          "https://github.com/pcameron80",
-        ],
+        ...FOUNDER_PERSON,
+        worksFor: ORG_REF,
         description: "Philip Cameron is the founder of Paint Color HQ, an independent cross-brand paint color reference site grounded in CIEDE2000 color science. He built the site after a personal renovation project ran into the cross-brand matching problem most homeowners hit.",
         knowsAbout: [
           "Cross-brand paint color matching",
