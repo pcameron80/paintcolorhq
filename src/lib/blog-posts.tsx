@@ -54,6 +54,289 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Front door paint colors (2026-10-20) ──────────────── */
+  {
+    slug: "front-door-paint-colors",
+    title: "Front Door Paint Colors for Siding and Brick",
+    date: "2026-10-20",
+    author: "Philip Cameron",
+    excerpt:
+      "15 front door colors with their closest Behr and Valspar matches, the colors paint makers pair with each, door paint specs, and the storm-door rule for dark doors.",
+    coverColor: "#2f3d4c",
+    coverImage: "/blog/front-door-paint-colors.webp",
+    tags: ["Exterior", "Cross-Brand Matching", "Tips"],
+    faq: [
+      {
+        question: "What is the most popular front door color?",
+        answer:
+          "Black, navy, deep green and red are the classic front door colors. Benjamin Moore names Black HC-190 and Caliente AF-290 among its popular front door picks, and Sherwin-Williams says Tricorn Black complements nearly any exterior, from crisp white siding to warm red brick.",
+      },
+      {
+        question: "Can you paint a front door black if it has a storm door?",
+        answer:
+          "Check the door's warranty first. Several door makers exclude heat damage when a dark-painted door sits behind a non-vented storm door. Masonite's warranties exclude it, MMI Door says the space behind a storm door can exceed 200°F, and JELD-WEN advises a vented storm door if the entry door is dark.",
+      },
+      {
+        question: "What LRV is too dark for a door behind a storm door?",
+        answer:
+          "There is no industry-wide number. Door makers that set one differ: RealCraft does not cover doors finished below LRV 25, Simpson treats any paint below LRV 55 as a dark paint, and ProVia requires LRV 57 or higher on painted frames and brickmold. Every classic front door color is far below all three.",
+      },
+      {
+        question: "What color front door goes with red brick?",
+        answer:
+          "Sherwin-Williams says Tricorn Black complements warm red brick, and that dark blues such as Naval create a striking contrast against brick or stone.",
+      },
+      {
+        question: "What paint should you use on a front door?",
+        answer:
+          "A door and trim enamel. Benjamin Moore suggests its Advance Interior/Exterior High Gloss for a smooth, shiny door, and Sherwin-Williams makes SnapDry Door & Trim Paint, which it says lets you close the door the same day. Check the data sheet for the minimum application temperature, usually 50°F for these enamels.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The classic front door colors are black, navy, deep green, red and dark bronze, and the right one depends on the siding, brick and trim around it. Pick a door color that contrasts with the body of the house and coordinates with the trim, then check two practical things before you paint: whether a storm door will cover it, because several door makers do not warranty dark doors behind non-vented storm doors, and whether the weather is warm enough for the paint. Below are 15 front door colors, the closest match for each in other brands, and the colors Sherwin-Williams and Benjamin Moore pair with them.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">15 front door colors and their closest matches</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Each color below links to its color page. The matches come from our database of manufacturer colors, rated in plain language. A digital match is a starting point, so paint a sample of the substitute before buying a quart.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Door color</th>
+                <th className="py-2 pr-4 font-semibold">Closest SW or BM</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 font-semibold">Closest Valspar</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#2f2f30" name="Tricorn Black" brand="SW 6258" href="/colors/sherwin-williams/tricorn-black-6258" /></td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/black-hc-190" className="text-brand-blue hover:underline">Black</Link> (nearly identical)</td>
+                <td className="py-2 pr-4">Bitter Chocolate (very similar)</td>
+                <td className="py-2">Tomcat (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#323233" name="Black" brand="BM HC-190" href="/colors/benjamin-moore/black-hc-190" /></td>
+                <td className="py-2 pr-4">Black Magic (nearly identical)</td>
+                <td className="py-2 pr-4">Limousine Leather (very similar)</td>
+                <td className="py-2">Tomcat (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#2f3d4c" name="Naval" brand="SW 6244" href="/colors/sherwin-williams/naval-6244" /></td>
+                <td className="py-2 pr-4">North Sea (nearly identical)</td>
+                <td className="py-2 pr-4">Ink Black (very similar)</td>
+                <td className="py-2">Royal Navy (visible difference)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
+                <td className="py-2 pr-4">Sea Mariner (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/royal-navy-4011-4" className="text-brand-blue hover:underline">Royal Navy</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#3d4450" name="Charcoal Blue" brand="SW 2739" href="/colors/sherwin-williams/charcoal-blue-2739" /></td>
+                <td className="py-2 pr-4">Hale Navy (very similar)</td>
+                <td className="py-2 pr-4">Stiletto (nearly identical)</td>
+                <td className="py-2">Blue Coal (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#475667" name="Newburyport Blue" brand="BM HC-155" href="/colors/benjamin-moore/newburyport-blue-hc-155" /></td>
+                <td className="py-2 pr-4">Indigo Batik (very similar)</td>
+                <td className="py-2 pr-4">Distant Thunder (nearly identical)</td>
+                <td className="py-2">Moon Shade (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#28372f" name="Essex Green" brand="BM HC-188" href="/colors/benjamin-moore/essex-green-hc-188" /></td>
+                <td className="py-2 pr-4">Roycroft Bottle Green (very similar)</td>
+                <td className="py-2 pr-4">Black Swan (very similar)</td>
+                <td className="py-2">Midsummer Night (visible difference)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#5e6259" name="Pewter Green" brand="SW 6208" href="/colors/sherwin-williams/pewter-green-6208" /></td>
+                <td className="py-2 pr-4">Dark Olive (very similar)</td>
+                <td className="py-2 pr-4">Woodland Moss (very similar)</td>
+                <td className="py-2">Flora (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#64695c" name="Rosemary" brand="SW 6187" href="/colors/sherwin-williams/rosemary-6187" /></td>
+                <td className="py-2 pr-4">Rainy Afternoon (nearly identical)</td>
+                <td className="py-2 pr-4">Gray Owl (very similar)</td>
+                <td className="py-2">Flora (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#8b2829" name="Caliente" brand="BM AF-290" href="/colors/benjamin-moore/caliente-af-290" /></td>
+                <td className="py-2 pr-4">Red Bay (very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/new-brick-s-h-200" className="text-brand-blue hover:underline">New Brick</Link> (nearly identical)</td>
+                <td className="py-2">Cut Ruby (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#9a0b15" name="Heritage Red" brand="BM HC-181" href="/colors/benjamin-moore/heritage-red-hc-181" /></td>
+                <td className="py-2 pr-4">Heartthrob (visible difference)</td>
+                <td className="py-2 pr-4">Rodeo Red (very similar)</td>
+                <td className="py-2">Très Bien (visible difference)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#622f2d" name="Rookwood Red" brand="SW 2802" href="/colors/sherwin-williams/rookwood-red-2802" /></td>
+                <td className="py-2 pr-4">Cottage Red (very similar)</td>
+                <td className="py-2 pr-4">Wine Barrel (very similar)</td>
+                <td className="py-2">Spanish Tile (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /></td>
+                <td className="py-2 pr-4">Dragon&apos;s Breath (nearly identical)</td>
+                <td className="py-2 pr-4">Underground (nearly identical)</td>
+                <td className="py-2">Dark Oasis (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
+                <td className="py-2 pr-4">Notre Dame (very similar)</td>
+                <td className="py-2 pr-4">Broadway (nearly identical)</td>
+                <td className="py-2">Caviar (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#4a4b4c" name="Wrought Iron" brand="BM 2124-10" href="/colors/benjamin-moore/wrought-iron-2124-10" /></td>
+                <td className="py-2 pr-4">Cyberspace (very similar)</td>
+                <td className="py-2 pr-4">Timber Brown (nearly identical)</td>
+                <td className="py-2">Noir (very similar)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Some of these hold up across brands better than others. Hale Navy and Urbane Bronze have nearly identical matches in every brand listed, so you can buy either wherever is convenient. Heritage Red is the hardest to substitute: its closest Sherwin-Williams and Valspar colors are a visible difference away, so if you want that exact red, buy it from Benjamin Moore. Every color page has the full list of matches across all brands.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What each color family pairs with</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Black.</strong> Sherwin-Williams says Tricorn Black complements nearly any exterior, &quot;from crisp white siding to warm red brick,&quot; and Benjamin Moore lists its Black among its popular front door picks. Tricorn Black and Benjamin Moore Black rate nearly identical, so the choice between them is about which store is closer. For softer blacks and black for trim, see our guide to <Link href="/blog/best-black-paint-colors" className="text-brand-blue hover:underline">the best black paint colors</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Navy and blue.</strong> Sherwin-Williams says its dark blues pair with light-colored homes and natural wood, and create a striking contrast against brick or stone. Naval (LRV 4.5) is the darker and more saturated of the two navies here. Hale Navy is a step lighter and grayer. More options are in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Green.</strong> Essex Green is a very dark green, while Pewter Green (LRV 11.8) and Rosemary (LRV 13.6) are lighter, grayer greens. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link> for lighter options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Red.</strong> Benjamin Moore names Caliente among its popular front door colors. Rookwood Red (LRV 4.8) is the deepest of the three reds here, and Heritage Red is the lightest and most saturated. The <Link href="/colors/family/red" className="text-brand-blue hover:underline">red family</Link> has the full range.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Bronze and charcoal.</strong> Sherwin-Williams calls Urbane Bronze (LRV 8.1) a sophisticated anchor, and says Iron Ore (LRV 5.6) particularly complements homes with gray or cool-toned exteriors. Both are lighter than a true black like Tricorn Black (LRV 2.9). Compare any two side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors the paint makers pair with each door color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s advice is to look to the other colors on your exterior, including the landscape, when choosing a door color. Both companies publish coordinating colors for each shade, and those lists make a ready-made exterior scheme: use the lightest color on the trim and a mid-tone or light color on the siding.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Door color</th>
+                <th className="py-2 font-semibold">Coordinating colors from the manufacturer</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Tricorn Black</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/ice-cube-6252" className="text-brand-blue hover:underline">Ice Cube</Link>, Classic Light Buff, <Link href="/colors/sherwin-williams/blithe-blue-9052" className="text-brand-blue hover:underline">Blithe Blue</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Naval</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/icicle-6238" className="text-brand-blue hover:underline">Icicle</Link>, <Link href="/colors/sherwin-williams/ramie-6156" className="text-brand-blue hover:underline">Ramie</Link>, <Link href="/colors/sherwin-williams/roycroft-suede-2842" className="text-brand-blue hover:underline">Roycroft Suede</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Hale Navy</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>, <Link href="/colors/benjamin-moore/coventry-gray-hc-169" className="text-brand-blue hover:underline">Coventry Gray</Link>, <Link href="/colors/benjamin-moore/lenox-tan-hc-44" className="text-brand-blue hover:underline">Lenox Tan</Link>, <Link href="/colors/benjamin-moore/glacier-white-oc-37" className="text-brand-blue hover:underline">Glacier White</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Essex Green</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/monterey-white-hc-27" className="text-brand-blue hover:underline">Monterey White</Link>, <Link href="/colors/benjamin-moore/simply-white-2143-70" className="text-brand-blue hover:underline">Simply White</Link>, <Link href="/colors/benjamin-moore/powell-buff-hc-35" className="text-brand-blue hover:underline">Powell Buff</Link>, <Link href="/colors/benjamin-moore/overcast-oc-43" className="text-brand-blue hover:underline">Overcast</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pewter Green</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/spare-white-6203" className="text-brand-blue hover:underline">Spare White</Link>, <Link href="/colors/sherwin-williams/shoji-white-7042" className="text-brand-blue hover:underline">Shoji White</Link>, <Link href="/colors/sherwin-williams/silvermist-7621" className="text-brand-blue hover:underline">Silvermist</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Caliente</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/frostine-af-5" className="text-brand-blue hover:underline">Frostine</Link>, <Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link>, White Diamond, <Link href="/colors/benjamin-moore/harbor-haze-2136-60" className="text-brand-blue hover:underline">Harbor Haze</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Urbane Bronze</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/shoji-white-7042" className="text-brand-blue hover:underline">Shoji White</Link>, <Link href="/colors/sherwin-williams/extra-white-7006" className="text-brand-blue hover:underline">Extra White</Link>, <Link href="/colors/sherwin-williams/ivoire-6127" className="text-brand-blue hover:underline">Ivoire</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Iron Ore</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/nebulous-white-7063" className="text-brand-blue hover:underline">Nebulous White</Link>, Extra White, <Link href="/colors/sherwin-williams/cityscape-7067" className="text-brand-blue hover:underline">Cityscape</Link></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams lists coordinating colors for its colors, and Benjamin Moore groups each color into expert-picked combinations. Neither labels a color as siding or trim, so the roles above are our suggestion. Preview the colors in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, or build a scheme around your door color in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>. For body colors, see our guide to <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">the best exterior paint colors</Link>, and for the trim white, <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">how to choose a trim color</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark doors behind a storm door</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Check this before painting a door any of the colors above. Sunlight through a full-glass storm door heats the space between the two doors, and a dark door absorbs more of that heat. MMI Door&apos;s care guide says the temperature behind a storm door can exceed 200°F in many applications. Door makers respond in their warranties:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Masonite</strong> excludes damage from a product installed behind a non-vented storm door, or from excessive heat because it was finished a dark color.</li>
+          <li><strong>JELD-WEN</strong> warns that a storm door in front of a dark exterior door accelerates heat buildup, and says storm doors in that situation should be vented.</li>
+          <li><strong>ProVia</strong> covers its composite frame and brickmold only if no storm door is installed in the same opening, and if painted, only with paint of LRV 57 or higher.</li>
+          <li><strong>RealCraft</strong> does not cover doors finished in colors below LRV 25, including black, because of surface heat from the sun.</li>
+          <li><strong>Simpson</strong> treats any exterior paint below LRV 55 as dark. Its dark doors keep the 10-year warranty without overhang requirements only when ordered to a specific spec.</li>
+          <li><strong>Pacific Entries</strong> says a storm door installed in front of its doors voids the warranty.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every door color in this post is below LRV 15, far under every threshold above. That does not rule them out. It means you should read your own door&apos;s warranty before painting it dark behind a storm door, and if you go ahead, use a vented storm door or keep its vent open on sunny days. The storm-door warranties and guides we read from Andersen, Pella and Larson set no color limit on the entry door behind them.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What paint to use on a front door</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use a door and trim enamel rather than wall paint. Benjamin Moore points front door buyers to its Advance Interior/Exterior High Gloss, and Sherwin-Williams to its SnapDry Door &amp; Trim Paint. The details that matter for a door are how soon you can close it and how cold it can be when you paint. From the manufacturer data sheets and product pages:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Paint</th>
+                <th className="py-2 pr-4 font-semibold">Recoat</th>
+                <th className="py-2 pr-4 font-semibold">Close the door</th>
+                <th className="py-2 font-semibold">Minimum temperature</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams SnapDry Door &amp; Trim</td><td className="py-2 pr-4">2 hours</td><td className="py-2 pr-4">Same day</td><td className="py-2">50°F</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Valspar Door &amp; Trim Acrylic Enamel</td><td className="py-2 pr-4">2 hours</td><td className="py-2 pr-4">After 2 hours</td><td className="py-2">50°F</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams Emerald Urethane Trim Enamel</td><td className="py-2 pr-4">4 hours</td><td className="py-2 pr-4">Not stated</td><td className="py-2">50°F</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Benjamin Moore Advance High Gloss</td><td className="py-2 pr-4">16 hours</td><td className="py-2 pr-4">Not stated</td><td className="py-2">50°F</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Glidden Door &amp; Trim Gel Paint High Gloss</td><td className="py-2 pr-4">24 hours</td><td className="py-2 pr-4">24 hours after the final coat</td><td className="py-2">40°F</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These are best-case figures: Benjamin Moore notes that high humidity or cooler temperatures prolong dry and recoat times. Benjamin Moore says Advance can take up to 30 days to reach optimum hardness and final sheen, so expect a newly painted door to stay a little soft for a few weeks. Sherwin-Williams also notes that Emerald Urethane Trim Enamel is for doors, trim and other small exterior areas, not the main body of a house. For the wait between coats on other paints, see <Link href="/blog/how-many-coats-of-paint" className="text-brand-blue hover:underline">how long to wait between coats of paint</Link>, and for finishes, our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to choose</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Note the fixed colors: siding, brick or stone, roof and trim.</li>
+          <li>Pick a family that contrasts with the body: black or navy against white siding or red brick, a softer green or bronze against stone and wood.</li>
+          <li>Check the manufacturer&apos;s coordinating colors for your pick against your siding and trim.</li>
+          <li>Storm door? Read the door&apos;s warranty before choosing a dark color.</li>
+          <li>Paint a large sample board and look at it on the door in morning and afternoon light. Buy from whichever brand is convenient using the matches above.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          All the colors here are available from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> or <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and their color pages list the closest match in every other brand we track.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── How long to wait between coats (2026-10-15) ──────────────── */
   {
     slug: "how-many-coats-of-paint",
