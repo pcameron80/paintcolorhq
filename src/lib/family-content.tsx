@@ -162,10 +162,9 @@ const content: Record<string, FamilyContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Beige is back, and it never really left. After a decade of gray dominance, warm beige and
-          greige (gray-beige) tones have reclaimed their place as the go-to neutral for whole-home
-          color. Modern beiges are more nuanced than the builder-beige of the 2000s: they often carry
-          subtle gray or taupe undertones that keep them feeling current.
+          Beige covers warm, light-to-mid neutrals, plus greige (gray-beige) tones that sit between
+          beige and gray. Many of the beiges people choose today carry a gray or taupe undertone,
+          which reads less yellow than the builder-beige of the 2000s.
         </p>
         <p>
           Two widely used neutrals in this family are{" "}

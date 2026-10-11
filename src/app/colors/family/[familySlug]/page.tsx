@@ -35,7 +35,7 @@ const FAMILY_META_OVERRIDES: Record<string, { title: string; description: string
   beige: {
     title: "Beige Paint Colors: Best Beiges from Every Brand",
     description:
-      "Browse 700+ beige paint colors from 13 brands, from Accessible Beige (LRV 58) to Baja Dunes (LRV 42), with hex codes, LRV and undertones.",
+      "Browse 850+ beige paint colors from 13 brands, from Accessible Beige (LRV 58) to Baja Dunes (LRV 42), with hex codes, LRV and undertones.",
     ogTitle: "Beige Paint Colors: Best Beiges from Every Brand",
   },
 };
