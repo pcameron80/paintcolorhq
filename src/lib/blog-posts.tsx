@@ -4114,7 +4114,7 @@ const blogPosts: BlogPost[] = [
           Lavender has natural associations with relaxation (think lavender essential oil), and very muted purples can be surprisingly calming.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C7BFC3" name="Silver Peony" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-peony-1475" /> — not quite purple, not quite gray. A subtle, sophisticated choice for a serene bedroom.
+          <Swatch hex="#c5bcc1" name="Iced Mauve" brand="Benjamin Moore" href="/colors/benjamin-moore/iced-mauve-2115-50" /> — not quite purple, not quite gray. A subtle, sophisticated choice for a serene bedroom.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Tips for Bedroom Colors</h2>
@@ -5261,7 +5261,7 @@ const blogPosts: BlogPost[] = [
           Pink and lavender can work beautifully in nurseries — the key is choosing muted, sophisticated versions rather than bubblegum or cotton candy. The best pink nursery colors have enough gray or beige in them that they read as neutral-adjacent.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C7BFC3" name="Silver Peony" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-peony-1475" /> (LRV 53.3) — a barely-there mauve-gray that reads as sophisticated pink in warm light and neutral gray in cool light. It transitions from nursery to teen room without repainting.
+          <Swatch hex="#c5bcc1" name="Iced Mauve" brand="Benjamin Moore" href="/colors/benjamin-moore/iced-mauve-2115-50" /> (LRV 50.6) — a soft mauve-gray that reads as sophisticated pink in warm light and neutral gray in cool light. It transitions from nursery to teen room without repainting.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> (LRV 68.6) — a warm blush-beige with a pink-beige undertone that is the softest hint of pink without being identifiably pink. It is one of Benjamin Moore&apos;s top 5 nursery colors. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
@@ -5373,7 +5373,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral that represents the definitive move away from cool grays. It works beautifully in dining rooms because it flatters skin tones under warm lighting and pairs with virtually any wood table or chair.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> — a warm terracotta that brings Mediterranean warmth to any dining space. It glows beautifully under pendant lighting and pairs with white dishes, terracotta serveware, and linen table runners.
+          <Swatch hex="#b0785c" name="Spiced Cider" brand="Sherwin-Williams" href="/colors/sherwin-williams/spiced-cider-7702" /> — a warm terracotta that brings Mediterranean warmth to any dining space. It glows beautifully under pendant lighting and pairs with white dishes, terracotta serveware, and linen table runners.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C8BCAB" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — a mushroom tone that&apos;s having a moment in dining rooms. It&apos;s warm, grounding, and sophisticated without being dark — the dining room equivalent of a cashmere sweater. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more earthy options.
@@ -5412,7 +5412,7 @@ const blogPosts: BlogPost[] = [
           <strong>Consider your dining style.</strong> If you host formal dinner parties, lean toward jewel tones or soft formal shades that create atmosphere. If your dining room is where kids eat cereal and you work on your laptop, a warm neutral or earth tone handles daily life better.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Match your room&apos;s exposure.</strong> North-facing dining rooms get cool, bluish light — choose warmer colors like Wholesome, Universal Khaki, or Accessible Beige to counteract it. South-facing rooms can handle cooler tones like Quiet Moments or Pewter Green without feeling cold. Read our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link> for more.
+          <strong>Match your room&apos;s exposure.</strong> North-facing dining rooms get cool, bluish light — choose warmer colors like Spiced Cider, Universal Khaki, or Accessible Beige to counteract it. South-facing rooms can handle cooler tones like Quiet Moments or Pewter Green without feeling cold. Read our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link> for more.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Coordinate with your table and chairs.</strong> Dark walls with a light table create contrast and drama. Dark walls with a dark table create a moody, enveloping cocoon. Both work — just be intentional about the effect you want.
@@ -5719,7 +5719,7 @@ const blogPosts: BlogPost[] = [
           Green is the color the human eye processes most easily, which is why sage and muted greens feel instantly restful. The 2026 trend toward earthy greens — confirmed by Behr&apos;s own <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> Color of the Year — makes these picks especially current.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C0C5B1" name="Sage Green" brand="Behr" href="/colors/behr/sage-green-ppu11-07" /> (LRV 36) — a true sage that pairs with natural wood furniture and linen textiles. Its warm undertone keeps bedrooms from feeling clinical, and at LRV 36 it is a mid-tone that wants decent natural light in a smaller bedroom.
+          <Swatch hex="#b9c4ae" name="Whitewater Bay" brand="Behr" href="/colors/behr/whitewater-bay-ppu11-10" /> (LRV 53) — a light, grayed sage that pairs with natural wood furniture and linen textiles. At LRV 53 it reflects enough light for a smaller bedroom, and its gray cast keeps the green from reading minty.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#77966E" name="Botanical Green" brand="Behr" href="/colors/behr/botanical-green-ppu11-03" /> (LRV 27) — a slightly warmer, dustier sage that reads almost neutral. Sherwin-Williams Evergreen Fog (SW 9130) is the usual comparison, but it shows a visible difference, so treat it as a cousin rather than a swap. See the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
@@ -6298,7 +6298,7 @@ const blogPosts: BlogPost[] = [
           Colors directly opposite each other on the wheel are complementary: blue and orange, red and green, yellow and purple. Used together, they create vibrant, energetic contrast. In home decor, this works best when one color dominates and the other accents.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Example:</strong> <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> (blue) walls with <Swatch hex="#A4785F" name="Wholesome" brand="Sherwin-Williams" href="/colors/sherwin-williams/wholesome-sw-6980" /> (orange-brown) leather furniture and throw pillows. The contrast is dynamic without being chaotic. Every color page on Paint Color HQ shows you <Link href="/search" className="text-brand-blue hover:underline">complementary paint matches</Link> automatically.
+          <strong>Example:</strong> <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> (blue) walls with <Swatch hex="#b0785c" name="Spiced Cider" brand="Sherwin-Williams" href="/colors/sherwin-williams/spiced-cider-7702" /> (orange-brown) leather furniture and throw pillows. The contrast is dynamic without being chaotic. Every color page on Paint Color HQ shows you <Link href="/search" className="text-brand-blue hover:underline">complementary paint matches</Link> automatically.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Analogous Colors: Easy Harmony</h2>
