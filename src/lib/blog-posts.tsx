@@ -54,6 +54,242 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── How to choose trim color (2026-10-13) ──────────────── */
+  {
+    slug: "how-to-choose-trim-color",
+    title: "How to Choose a Trim Color for White Walls",
+    date: "2026-10-13",
+    author: "Philip Cameron",
+    excerpt:
+      "Pick trim for white walls by yellowness and sheen, and for colored walls by LRV gap. Measured wall and trim pairs, plus when to paint trim the wall color.",
+    coverColor: "#EDEAE0",
+    coverImage: "/blog/how-to-choose-trim-color.webp",
+    tags: ["How-To", "White Paint", "Tips"],
+    faq: [
+      {
+        question: "What color trim goes with white walls?",
+        answer:
+          "Use a white that carries the same amount of yellow as the wall or less, in a higher sheen. Two whites are usually only a few LRV points apart, so lightness barely separates them. A cleaner white such as Extra White or Chantilly Lace gives a crisp edge against a warm white wall, while the wall color itself in semi-gloss gives a soft, seamless look.",
+      },
+      {
+        question: "Should trim be lighter or darker than the walls?",
+        answer:
+          "Most trim is lighter than the walls, and the size of the gap in light reflectance value (LRV) decides how much the trim stands out. The whites that Sherwin-Williams and Benjamin Moore pair with their popular light and mid-tone wall colors sit about 9 to 28 LRV points above the wall. Dark trim, such as a near-black, flips the relationship and works best when the walls are light.",
+      },
+      {
+        question: "Should I paint trim the same color as the walls?",
+        answer:
+          "It works when you want the trim to recede, in small rooms, rooms with plain or dated trim, and color-drenched schemes. Use a different sheen on the trim if you want the profile to show: Sherwin-Williams suggests flat walls with satin trim. Keep everything in one sheen if you want the room to read as one continuous color.",
+      },
+      {
+        question: "How much contrast should trim have?",
+        answer:
+          "There is no residential standard. The one published number is from the UK's Approved Document M, which asks for a door frame to differ from the surrounding wall by more than 30 LRV points in non-domestic buildings so people with impaired sight can find it. At home it is a matter of taste. In the manufacturer pairings we measured, soft tonal trim whites sit 9 to 15 points above the wall and bright trim whites 22 to 35 points above it.",
+      },
+      {
+        question: "What sheen should trim be?",
+        answer:
+          "Satin, semi-gloss or high gloss. Benjamin Moore lists those three as the popular trim sheens and notes that higher sheens are more durable and stand up to repeated washing. Semi-gloss is the most common choice, and a higher sheen than the wall is also what separates trim from a wall in the same color.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          For white walls, choose a trim white that carries the same amount of yellow as the wall or less, and put it in a higher sheen. Two whites are rarely more than a few LRV points apart, so brightness alone will not separate them. For colored walls, the gap in light reflectance value (LRV) between wall and trim decides how much the trim stands out: the whites that paint makers pair with their popular light and mid-tone wall colors sit about 9 to 28 points above the wall, and a classic bright trim white on a mid-tone wall lands 22 to 35 points above it. Painting trim the same color as the walls is a third option, and it works when you want the trim to disappear.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The two numbers that decide a trim color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>LRV</strong> is the percentage of light a color reflects, from 0 (black) to 100 (pure white). Every color page on Paint Color HQ lists it. The difference between the wall&apos;s LRV and the trim&apos;s LRV is the clearest single measure of how much the trim will stand out.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Yellowness</strong> matters most when the walls are white. We measure it as the b* value of each color&apos;s published color data, which is the yellow-to-blue axis of the CIELAB color space. A higher number means a yellower, creamier white. A lower number means a cleaner one.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          There is no residential rule for trim contrast. The one published figure comes from accessibility rules: the UK&apos;s Approved Document M asks that door frames in non-domestic buildings &quot;contrast visually with the surrounding wall,&quot; and defines visual contrast as an LRV difference greater than 30 points. That is a useful reference for what a clearly visible outline looks like, not a requirement for a house.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trim color for white walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Popular whites sit within a few LRV points of each other, so on white walls the trim is separated by yellowness and sheen rather than by lightness. Here are the common trim whites, measured:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">White</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7f1" name="High Reflective White" brand="SW 7757" href="/colors/sherwin-williams/high-reflective-white-7757" /></td>
+                <td className="py-2 pr-4">92.6</td>
+                <td className="py-2">2.9</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f5f7f2" name="Chantilly Lace" brand="BM 2121-70" href="/colors/benjamin-moore/chantilly-lace-2121-70" /></td>
+                <td className="py-2 pr-4">90.0</td>
+                <td className="py-2">2.2</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7ee" name="Simply White" brand="BM 2143-70" href="/colors/benjamin-moore/simply-white-2143-70" /></td>
+                <td className="py-2 pr-4">89.5</td>
+                <td className="py-2">4.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /></td>
+                <td className="py-2 pr-4">85.9</td>
+                <td className="py-2">2.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">83.7</td>
+                <td className="py-2">3.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#F3EFE0" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2">7.7</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">82.2</td>
+                <td className="py-2">5.2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams puts the effect plainly on its blog: cooler whites on trim &quot;bring more contrast, sharpening and defining lines,&quot; while warm whites feel &quot;more blended and casual.&quot; Benjamin Moore&apos;s advice is to look at the undertone of the wall color first. In practice that gives three choices for white walls.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>A cleaner white for a crisp edge.</strong> Take <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link> walls. Extra White is only 3.7 LRV points brighter, but it carries less than half the yellow, and the two rate very similar rather than nearly identical. That is enough for the trim to read as a clean line. Chantilly Lace goes further: 7.8 points brighter and cleaner still. The same logic applies to <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>, the yellowest white in the table, where Extra White, Simply White or Chantilly Lace all sharpen the trim. On <Link href="/colors/sherwin-williams/greek-villa-7551" className="text-brand-blue hover:underline">Greek Villa</Link> or <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> walls, Extra White is about 2 points brighter and carries less than half the yellow, and Chantilly Lace is about 6 points brighter.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>The wall white in a higher sheen.</strong> Pure White and Alabaster rate nearly identical, and so do Greek Villa and Alabaster. If the trim white is that close to the wall, you are effectively painting trim the same color, and only the sheen will separate it. That is a deliberate soft look, and Benjamin Moore&apos;s own white guide suggests painting all the trim in a home one white for continuity.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Avoid a trim white yellower than the wall.</strong> White Dove trim on <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> walls reverses the usual order: the trim carries more than three times the yellow, so the molding reads as the creamier, older surface. If you love a warm trim white, choose walls at least as warm.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Dark trim on white walls</strong> is the opposite choice. Tricorn Black against Alabaster is a 79-point gap, the strongest outline a white room can have. Our <Link href="/blog/best-black-paint-colors" className="text-brand-blue hover:underline">guide to black paint colors</Link> covers the black shortlist, and the <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> compares the whites themselves in more depth.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trim picks for popular wall colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For each wall color below, the first trim is a white the manufacturer itself pairs with that color: from Sherwin-Williams&apos; coordinating colors, or from Benjamin Moore&apos;s expert-picked combinations. The second is an alternative. The gap is the trim&apos;s LRV minus the wall&apos;s.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Wall (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">Manufacturer&apos;s white (gap)</th>
+                <th className="py-2 font-semibold">Alternative (gap)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /> (60.1)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e3ded7" name="Incredible White" brand="SW 7028" href="/colors/sherwin-williams/incredible-white-7028" /> (+13.4)</td>
+                <td className="py-2"><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /> (+25.8), also a Sherwin-Williams coordinating color</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc9c0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" /> (58.4)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e2ded8" name="Eider White" brand="SW 7014" href="/colors/sherwin-williams/eider-white-7014" /> (+15.0)</td>
+                <td className="py-2">Extra White (+27.5)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1c7b8" name="Accessible Beige" brand="SW 7036" href="/colors/sherwin-williams/accessible-beige-7036" /> (57.9)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e3ddd3" name="Aesthetic White" brand="SW 7035" href="/colors/sherwin-williams/aesthetic-white-7035" /> (+14.8)</td>
+                <td className="py-2">Alabaster (+24.3)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /> (63.3)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e4e4dd" name="Spare White" brand="SW 6203" href="/colors/sherwin-williams/spare-white-6203" /> (+13.9)</td>
+                <td className="py-2">Extra White (+22.6)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> (74.3)</td>
+                <td className="py-2 pr-4">Pure White (+9.4)</td>
+                <td className="py-2">Extra White (+11.6)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (55.1)</td>
+                <td className="py-2 pr-4">White Dove (+28.1)</td>
+                <td className="py-2">Chantilly Lace (+34.9)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (63.1)</td>
+                <td className="py-2 pr-4"><Swatch hex="#f0f1ea" name="White Heron" brand="BM OC-57" href="/colors/benjamin-moore/white-heron-oc-57" /> (+24.3)</td>
+                <td className="py-2">Chantilly Lace (+26.9)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#E8D8D0" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)</td>
+                <td className="py-2 pr-4">Chantilly Lace (+21.4)</td>
+                <td className="py-2">White Dove (+14.6), a softer edge</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (7.1)</td>
+                <td className="py-2 pr-4">White Dove (+76.1)</td>
+                <td className="py-2">Chantilly Lace (+82.9)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /> (5.6)</td>
+                <td className="py-2 pr-4">Extra White (+80.3)</td>
+                <td className="py-2"><Swatch hex="#dedfdc" name="Nebulous White" brand="SW 7063" href="/colors/sherwin-williams/nebulous-white-7063" /> (+67.9), also a Sherwin-Williams coordinating color</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two patterns stand out. First, the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> coordinating whites for its mid-tone neutrals are soft off-whites, all 13 to 15 points above the wall. Incredible White and Agreeable Gray even rate very similar to each other. Those are tonal pairings, and the trim reads as a lighter step of the wall. Second, the classic bright trim whites land 22 to 35 points above mid-tone walls, which gives the familiar crisp outline. Revere Pewter with Chantilly Lace is the only light-wall pair here that clears the 30-point accessibility mark.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Neither approach is wrong. Pick the tonal white for a calm room where the trim should not compete with furniture or art, and the bright white when the trim has detail you want to show. Sherwin-Williams names Eider White as the complementary trim for Repose Gray, so on that wall the soft option is the manufacturer&apos;s own first choice. Note that <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> does not label any color in its combinations as trim, so its pairings above are whites it groups with the wall rather than trim instructions.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For dark walls like Hale Navy and Iron Ore, any white gives a strong outline, so the choice is about warmth. White Dove keeps the room softer. Extra White and Chantilly Lace look sharper. To check any other pair, put the wall and trim colors side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, which shows both LRVs and how close the two read.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Painting trim the same color as the walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Painting the trim the wall color makes the trim recede. It suits small rooms, rooms with plain or builder-grade trim you would rather not highlight, and color-drenched schemes where walls, trim and sometimes the ceiling all share one color. Sherwin-Williams has a whole project on it: &quot;painting the walls, doors and trim the same color in different sheens,&quot; with flat walls, satin trim and semi-gloss doors.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The sheen decides how it reads. Sherwin-Williams&apos; color team notes that you need a broad sheen difference for the eye to notice it, and that if you want the room to appear as one continuous color you should paint everything in the same sheen. Farrow &amp; Ball, which calls the approach color drenching, recommends a single finish across every surface.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Pros and cons of painting trim the same color as the walls:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Pro: no contrast line to cut in.</strong> A slightly wavy edge where trim meets wall is invisible when both are one color, which makes the job more forgiving.</li>
+          <li><strong>Pro: one color to buy and touch up.</strong> You still need the trim in its own sheen, but the color is the same.</li>
+          <li><strong>Pro: fewer outlines.</strong> Doors and windows stop breaking up the walls, which is the point of a color-drenched room.</li>
+          <li><strong>Con: detailed trim disappears.</strong> Benjamin Moore notes that painting crown molding the wall color may hide its details. If you have good millwork, a contrasting trim shows it off.</li>
+          <li><strong>Con: one sheen means less durable trim.</strong> Benjamin Moore points out that higher sheens offer more durability and stain resistance. Trim in a flat wall finish is harder to wipe clean.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Whatever color the trim ends up, its finish matters as much as the color. Benjamin Moore lists satin, semi-gloss and high gloss as the popular trim sheens. Our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> explains which finish suits which surface.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to test a trim color before you commit</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Look up the wall color&apos;s LRV on its color page, then the LRV of each trim white you are considering. Work out the gap.</li>
+          <li>Decide what you want: tonal (about 9 to 15 points), crisp (20 to 35), or a strong outline (dark trim or a dark wall).</li>
+          <li>For white walls, compare yellowness instead. Pick a trim that is as clean as the wall or cleaner.</li>
+          <li>Preview the wall and trim pairing in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, or build the whole scheme, including an accent and a door color, in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.</li>
+          <li>Paint a sample of the trim color on a board and hold it against the actual wall and molding, in daylight and at night.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Browse more options in our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link>, <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link> and <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> color families. Every color page shows its LRV and its closest equivalent in other brands, so a trim white you like in one brand can be bought in another.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── How to match paint color (2026-10-11) ──────────────── */
   {
     slug: "how-to-match-paint-color",
