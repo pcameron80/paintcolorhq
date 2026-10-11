@@ -30,6 +30,16 @@ const familyColors: Record<string, { hex: string; border?: boolean }> = {
   tan: { hex: "#D2B48C" }, neutral: { hex: "#C7C1B7" },
 };
 
+// Per-family metadata overrides. Families not listed here use the default template.
+const FAMILY_META_OVERRIDES: Record<string, { title: string; description: string; ogTitle: string }> = {
+  beige: {
+    title: "Beige Paint Colors: Best Beiges from Every Brand",
+    description:
+      "Browse 700+ beige paint colors from 13 brands, from Accessible Beige (LRV 58) to Baja Dunes (LRV 42), with hex codes, LRV and undertones.",
+    ogTitle: "Beige Paint Colors: Best Beiges from Every Brand",
+  },
+};
+
 interface PageProps {
   params: Promise<{ familySlug: string }>;
 }
@@ -45,6 +55,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // Canonical always points to the unfiltered base URL. Filter/pagination
   // variants now share the same static HTML and refetch client-side, so the
   // canonical consolidates them for Google.
+  const override = FAMILY_META_OVERRIDES[familySlug];
+  if (override) {
+    return {
+      title: { absolute: override.title },
+      description: override.description,
+      alternates: { canonical: url },
+      openGraph: { title: override.ogTitle, description: override.description, url },
+    };
+  }
   return {
     title: `${capitalize(name)} Paint Colors - All Brands`,
     description: `Browse ${name} paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Compare colors with hex codes and LRV values.`,

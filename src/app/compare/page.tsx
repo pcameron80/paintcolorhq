@@ -13,12 +13,12 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   const hasParams = Boolean(color1 || color2);
   return {
     title: "Compare Paint Colors Side by Side",
-    description: "Compare any two paint colors side by side with hex codes, RGB values, LRV, and visual swatches.",
+    description: "Put two paint colors side by side: swatches, hex, RGB and LRV, plus a plain-language verdict on how close they are. Works across brands.",
     alternates: { canonical: "https://www.paintcolorhq.com/compare" },
     // Parametric compare URLs are combinatorial thin-content — keep them out of the index
     // (robots.txt Disallow blocks crawl, not indexing). Mirrors /search behaviour.
     ...(hasParams && { robots: { index: false, follow: true } }),
-    openGraph: { title: "Compare Paint Colors Side by Side", description: "Compare any two paint colors side by side.", url: "https://www.paintcolorhq.com/compare" },
+    openGraph: { title: "Compare Paint Colors Side by Side", description: "Put two paint colors side by side: swatches, hex, RGB and LRV, plus a plain-language verdict on how close they are. Works across brands.", url: "https://www.paintcolorhq.com/compare" },
   };
 }
 
