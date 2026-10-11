@@ -8,8 +8,13 @@
  * dual-numbers (e.g. OC-1 for the row stored as 950) into
  * colors.alternate_numbers instead of inserting duplicate rows.
  *
+ * --scan-dir points at a dated folder written by scan-brand-palettes.ts
+ * (data/brand-scans/<YYYY-MM-DD>/); it reads <brand>-missing.json there.
+ * Without it, the 2026-06 files in data/brand-scans/ are used.
+ *
  * Usage:
  *   tsx scripts/import-brand-scan.ts --brand=dutch-boy            # dry run
+ *   tsx scripts/import-brand-scan.ts --brand=behr --scan-dir=data/brand-scans/2026-10-11
  *   tsx scripts/import-brand-scan.ts --brand=dutch-boy --apply
  *   tsx scripts/import-brand-scan.ts --brand=benjamin-moore --backfill-aliases [--apply]
  *
@@ -26,7 +31,10 @@ import { classifyColorFamily, calculateLrv, rgbToLab, hexToRgb } from './lib/col
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
-const SCAN_DIR = path.resolve(__dirname, '../data/brand-scans');
+const scanDirArg = process.argv.find((a) => a.startsWith('--scan-dir='))?.split('=')[1];
+const SCAN_DIR = scanDirArg
+  ? path.resolve(process.cwd(), scanDirArg)
+  : path.resolve(__dirname, '../data/brand-scans');
 const APPLY = process.argv.includes('--apply');
 const BACKFILL = process.argv.includes('--backfill-aliases');
 const brandArg = process.argv.find((a) => a.startsWith('--brand='))?.split('=')[1];
@@ -59,16 +67,30 @@ const BRAND_RULES: Record<string, BrandRule> = {
   ppg: {
     file: 'ppg-missing.json',
     extract: (p) => p as ScanColor[],
-    // MTL metallics have no published hex; ST-/SOL- are stains, not wall paint.
-    keep: (c) => !/^(MTL|ST-|SOL-)/i.test(c.code),
+    // MTL metallics have no published hex; ST-/SOL- are stains, not wall paint;
+    // PPG-SS- is the SIDINGSAFE vinyl-siding line (held out 2026-10: niche, no search demand).
+    keep: (c) => !/^(MTL|ST-|SOL-|PPG-SS-)/i.test(c.code),
   },
   'dunn-edwards': {
     file: 'dunn-edwards-missing.json',
     extract: (p) => p as ScanColor[],
+    // DESS = solid-color deck/fence/siding stain, DEPF = porch & floor stain,
+    // DEB = bronze (metallic) line — all out of scope for wall paint (2026-10 scan).
+    keep: (c) => !/^(DESS|DEPF|DEB)/i.test(c.code),
+  },
+  // Live palette from behr.com's query index (scan-brand-palettes.ts). Spray
+  // and GLOSS entries are already filtered by the scan.
+  behr: {
+    file: 'behr-missing.json',
+    extract: (p) => p as ScanColor[],
+  },
+  'vista-paint': {
+    file: 'vista-paint-missing.json',
+    extract: (p) => p as ScanColor[],
   },
   'benjamin-moore': {
-    file: 'benjamin-moore-missing-classified.json',
-    extract: (p) => (p as { truly_missing: ScanColor[] }).truly_missing,
+    file: scanDirArg ? 'benjamin-moore-missing.json' : 'benjamin-moore-missing-classified.json',
+    extract: (p) => (Array.isArray(p) ? (p as ScanColor[]) : (p as { truly_missing: ScanColor[] }).truly_missing),
     // ES-* are exterior stains — out of scope for the wall-paint dataset.
     keep: (c) => !/^ES-/i.test(c.code),
   },
@@ -168,8 +190,11 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
     const rgb = c.hex ? hexToRgb(c.hex) : null;
     if (!rgb) { skipped.badHex++; continue; }
     if (numbers.has(code)) { skipped.existing++; continue; }
-    const name = titleCaseName(c.name);
-    const colorSlug = makeSlug(name, code);
+    // Straight apostrophes in names; slugs drop them ("jays-new-toy", not "jay-s-new-toy").
+    // titleCaseName is for ALL-CAPS feeds; mixed-case names are already the brand's styling.
+    const rawName = c.name.replace(/[\u2018\u2019]/g, "'").trim();
+    const name = rawName === rawName.toUpperCase() ? titleCaseName(rawName) : rawName;
+    const colorSlug = makeSlug(name.replace(/'/g, ''), code);
     if (slugs.has(colorSlug)) { skipped.slugCollision++; collisions.push(colorSlug); continue; }
     slugs.add(colorSlug);
     const lab = rgbToLab(rgb.r, rgb.g, rgb.b);
@@ -222,11 +247,16 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
 }
 
 async function backfillBmAliases(supabase: SupabaseClient) {
-  const file = path.join(SCAN_DIR, 'benjamin-moore-missing-classified.json');
-  const parsed = JSON.parse(fs.readFileSync(file, 'utf8')) as {
-    dual_numbered_unrecorded: { code: string; name: string; db_number: string }[];
-  };
-  const entries = parsed.dual_numbered_unrecorded;
+  type Alias = { code: string; name: string; db_number: string };
+  // A dated scan marks dual numbers as missing entries carrying dbCodeForName
+  // (same name, different number). Confirm the swatches agree before running.
+  const entries: Alias[] = scanDirArg
+    ? (JSON.parse(fs.readFileSync(path.join(SCAN_DIR, 'benjamin-moore-missing.json'), 'utf8')) as (ScanColor & { dbCodeForName?: string })[])
+        .filter((c) => c.dbCodeForName)
+        .map((c) => ({ code: c.code, name: c.name, db_number: c.dbCodeForName! }))
+    : (JSON.parse(fs.readFileSync(path.join(SCAN_DIR, 'benjamin-moore-missing-classified.json'), 'utf8')) as {
+        dual_numbered_unrecorded: Alias[];
+      }).dual_numbered_unrecorded;
   const brand = await fetchBrand(supabase, 'benjamin-moore');
   const { aliasRows } = await fetchExisting(supabase, brand.id);
 
