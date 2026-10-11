@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>__LABEL__</string>
+  <!-- Invoke /bin/bash directly (not the script via its shebang): macOS TCC
+       attributes file access to the launchd program, and the repo's git data is
+       in ~/Documents, so /bin/bash and node need Full Disk Access (already
+       granted for the Pinterest drip). -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>__SCRIPT__</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key><string>__NODE_DIR__:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+  <!-- Twice a day, LOCAL time. Posts reveal at 00:00 UTC (8pm EDT / 7pm EST the
+       evening before), so 21:30 catches a post on its first evening and 09:30 is
+       the retry and the daily Google index-status check. A run missed while the
+       Mac sleeps fires once on wake. -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Hour</key><integer>21</integer><key>Minute</key><integer>30</integer></dict>
+    <dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>30</integer></dict>
+  </array>
+  <key>StandardErrorPath</key><string>__LOG__</string>
+  <key>RunAtLoad</key><false/>
+</dict>
+</plist>
