@@ -40,7 +40,10 @@ fi
 
 sed -e "s|__REPO__|$REPO|g" -e "s|__WT__|$WT|g" -e "s|__DIR__|$DIR|g" -e "s|__BRANCH__|$BRANCH|g" \
   "$HERE/publish-check.sh" > "$DIR/run.sh"
-NODE_DIR="$(dirname "$(command -v node)")"
+# Prefer /usr/local/bin/node: it is the binary the launchd drips already use and
+# the one granted Full Disk Access. The interactive shell's node can be a symlink
+# into another tool's private install (on this Mac, ~/.hermes/node).
+if [[ -x /usr/local/bin/node ]]; then NODE_DIR=/usr/local/bin; else NODE_DIR="$(dirname "$(command -v node)")"; fi
 sed -e "s|__LABEL__|$LABEL|g" -e "s|__SCRIPT__|$DIR/run.sh|g" \
     -e "s|__NODE_DIR__|$NODE_DIR|g" -e "s|__LOG__|$DIR/publish-check.log|g" \
   "$HERE/com.paintcolorhq.blog-publish-check.plist.template" > "$PLIST"
