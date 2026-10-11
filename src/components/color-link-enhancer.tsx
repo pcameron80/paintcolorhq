@@ -37,22 +37,29 @@ export function ColorLinkEnhancer({ containerRef }: { containerRef: string }) {
       if (match[1] === "family") return;
 
       try {
-        // Fetch the hex from our search API using the color slug
-        const slug = match[2];
-        const res = await fetch(`/api/color-hex?brand=${match[1]}&slug=${slug}`);
-        if (!res.ok) return;
-        const data = await res.json();
-        if (!data.hex) return;
+        // Blog <Swatch> links render their own chip and carry their hex, so they
+        // need neither a dot nor an API call.
+        const ownHex = link.dataset.swatchHex;
+        let hex: string;
+        if (ownHex) {
+          hex = ownHex;
+        } else {
+          // Fetch the hex from our search API using the color slug
+          const slug = match[2];
+          const res = await fetch(`/api/color-hex?brand=${match[1]}&slug=${slug}`);
+          if (!res.ok) return;
+          const data = await res.json();
+          if (!data.hex) return;
+          hex = data.hex;
 
-        const hex = data.hex;
-
-        // Add inline swatch dot before link text
-        const dot = document.createElement("span");
-        dot.className = "inline-block h-2.5 w-2.5 rounded-full shrink-0 shadow-sm align-middle mr-1";
-        dot.style.backgroundColor = hex;
-        dot.style.display = "inline-block";
-        dot.style.verticalAlign = "middle";
-        link.insertBefore(dot, link.firstChild);
+          // Add inline swatch dot before link text
+          const dot = document.createElement("span");
+          dot.className = "inline-block h-2.5 w-2.5 rounded-full shrink-0 shadow-sm align-middle mr-1";
+          dot.style.backgroundColor = hex;
+          dot.style.display = "inline-block";
+          dot.style.verticalAlign = "middle";
+          link.insertBefore(dot, link.firstChild);
+        }
 
         // Make the link position relative for tooltip
         link.style.position = "relative";
