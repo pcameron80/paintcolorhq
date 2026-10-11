@@ -25,6 +25,14 @@ export const POPULAR_COLOR_SLUGS: Array<{
   { brandSlug: "sherwin-williams", colorSlug: "grounded-6089" },
   { brandSlug: "sherwin-williams", colorSlug: "iron-ore-7069" },
   { brandSlug: "sherwin-williams", colorSlug: "tricorn-black-6258" },
+  // Head-color push 2026-10-11 (see src/lib/head-colors.ts): appended so the
+  // brand page's "Most Popular" grid links every head color. Appended, not
+  // inserted, so the brand-page FAQ (first three entries) is unchanged.
+  { brandSlug: "sherwin-williams", colorSlug: "accessible-beige-7036" },
+  { brandSlug: "sherwin-williams", colorSlug: "greek-villa-7551" },
+  { brandSlug: "sherwin-williams", colorSlug: "shoji-white-7042" },
+  { brandSlug: "sherwin-williams", colorSlug: "natural-linen-9109" },
+  { brandSlug: "sherwin-williams", colorSlug: "urbane-bronze-7048" },
   // Benjamin Moore
   { brandSlug: "benjamin-moore", colorSlug: "chantilly-lace-2121-70" },
   { brandSlug: "benjamin-moore", colorSlug: "edgecomb-gray-hc-173" },
@@ -37,6 +45,9 @@ export const POPULAR_COLOR_SLUGS: Array<{
   { brandSlug: "benjamin-moore", colorSlug: "cinnamon-slate-2113-40" },
   { brandSlug: "benjamin-moore", colorSlug: "hawthorne-yellow-hc-4" },
   { brandSlug: "benjamin-moore", colorSlug: "wrought-iron-2124-10" },
+  // Head-color push 2026-10-11 (see src/lib/head-colors.ts).
+  { brandSlug: "benjamin-moore", colorSlug: "swiss-coffee-oc-45" },
+  { brandSlug: "benjamin-moore", colorSlug: "pale-oak-oc-20" },
   // Behr
   { brandSlug: "behr", colorSlug: "cameo-white-w-d-200" },
   { brandSlug: "behr", colorSlug: "dolphin-fin-790c-3" },

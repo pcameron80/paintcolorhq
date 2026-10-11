@@ -17,6 +17,17 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/agreeable-gray-7029": (
     <>
       <p>
+        Agreeable Gray (SW 7029) is hex #D1CBC1 with an estimated LRV of 60.1 and a neutral undertone,
+        and it sits in our gray family. Two colors share its exact hex: Dutch Boy Doves Wings (443-1DB)
+        and Valspar Heritage Gray (7007-24). Behr Toasty Gray (N320-2), PPG Whiskers (1025-3), Benjamin
+        Moore Wish (AF-680) and Farrow &amp; Ball Cornforth White (228) are nearly identical digital
+        matches. Its most-compared Sherwin-Williams neighbors are Repose Gray (SW 7015, LRV 58.4), a
+        slightly darker gray, and Accessible Beige (SW 7036, LRV 57.9), which falls in the beige family
+        instead. Mindful Gray (SW 7016, LRV 47.6) is the deeper step on the same base, and Alabaster (SW
+        7008, LRV 82.2) is the trim white our guides pair with it. Digital matches are not paint
+        samples, so test in your room before switching brands.
+      </p>
+      <p>
         Agreeable Gray is the color that made &ldquo;greige&rdquo; a household word — a gray with
         just enough warm beige in it to avoid the cold, steely look that dated the all-gray era. At
         LRV 60 it sits right in the middle of the light scale, which is the practical reason it works
@@ -54,6 +65,17 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/accessible-beige-7036": (
     <>
       <p>
+        Accessible Beige (SW 7036) is hex #D1C7B8 with an estimated LRV of 57.9 and a neutral undertone,
+        and it sits in our beige family. Its nearly identical digital matches include PPG Synchronicity
+        (1021-2), Behr Shoreline Haze (MQ6-31), Dutch Boy Sandstone Tint (441-2DB) and two Benjamin
+        Moore colors that share one hex, Smokey Taupe (983) and Inukshuk (CC-460). Benjamin Moore
+        Edgecomb Gray (HC-173) is often suggested as a swap, but at LRV 63.1 it is noticeably lighter, a
+        cousin rather than a match. Agreeable Gray (SW 7029) is 2.2 points lighter and sits in the gray
+        family. For a deeper step, Balanced Beige (SW 7037, LRV 45.7) is the next color down the same
+        Sherwin-Williams strip, and Alabaster (SW 7008, LRV 82.2) gives about 24 points of LRV contrast
+        as trim. Confirm any match with a physical sample.
+      </p>
+      <p>
         Accessible Beige is the greige for people who actually want to see the beige. At LRV 58 it&apos;s
         the same brightness as Agreeable Gray, but with noticeably more warmth and a faint gray that
         keeps it from going yellow or &ldquo;builder beige.&rdquo; It&apos;s the right call for rooms that run
@@ -71,6 +93,18 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/alabaster-7008": (
     <>
       <p>
+        Alabaster (SW 7008) is hex #EDEAE0 with an estimated LRV of 82.2 and a neutral undertone, and it
+        sits in our white family. Dutch Boy Swan White (024W) shares its exact hex. Benjamin Moore
+        Glacier White (OC-37), Behr Arcade White (GR-W08) and PPG Winter Mood (14-16) are nearly
+        identical digital matches, and so is Benjamin Moore Swiss Coffee (OC-45). Inside
+        Sherwin-Williams, Greek Villa (SW 7551) is nearly identical and slightly lighter at LRV 84.0.
+        Benjamin Moore White Dove (OC-17) is often called its equivalent, but in our famous-whites
+        comparison White Dove measured creamier (LAB b* 7.7 against 5.2) and lighter (LRV 83.2), so it
+        is not a safe mid-project swap. Our guides use Alabaster as the trim white for Agreeable Gray
+        (LRV 60.1) and Accessible Beige (LRV 57.9). These are digital matches, so compare physical
+        samples before substituting.
+      </p>
+      <p>
         Alabaster is the warm white that quietly took over from the cooler grays. At LRV 82 it&apos;s soft
         and creamy without reading yellow, which is the hard balance most warm whites miss. It works
         three ways at once — walls, trim, and cabinets — which is why whole-house painters reach for
@@ -87,6 +121,17 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   ),
   "sherwin-williams/sea-salt-6204": (
     <>
+      <p>
+        In our data, Sea Salt (SW 6204) is hex #CDD2CA with an estimated LRV of 63.3 and a neutral
+        undertone. Dutch Boy White Rapids (425-1DB) shares its exact hex. Benjamin Moore Gray Cashmere
+        (2138-60), Behr Silver Setting (PWL-89), PPG Bay of Fundy (10-07) and Valspar Three Wishes
+        (8004-32B) are nearly identical digital matches, while Farrow &amp; Ball Skylight (205) is very
+        similar but not a direct swap. Benjamin Moore Palladian Blue (HC-144, LRV 61.8) is often named
+        as the equivalent, but it is not Sea Salt&apos;s closest Benjamin Moore match, and its own
+        nearest Sherwin-Williams color is Waterscape (SW 6470). Within Sherwin-Williams, Rainwashed (SW
+        6211, LRV 59.2) and Comfort Gray (SW 6205, LRV 53.6) are the deeper relatives people compare it
+        with.
+      </p>
       <p>{seaSaltFacts.overview}</p>
       <p>{seaSaltFacts.lighting}</p>
       <p>{seaSaltFacts.pairing}</p>
@@ -163,6 +208,17 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/iron-ore-7069": (
     <>
       <p>
+        Iron Ore (SW 7069) is hex #434341 with an estimated LRV of 5.6 and a neutral undertone, and it
+        sits in our gray family. Its nearly identical digital matches are Behr Broadway (PPU18-20),
+        Hirshfield&apos;s Subway (0536), Dutch Boy Cauldron (437-7DB) and PPG Onyx (1011-7). The nearest
+        Benjamin Moore color, Notre Dame (CSP-570), is also nearly identical but the loosest of that
+        group, while Farrow &amp; Ball Off-Black (57) and Valspar Caviar (8006-4G) are very similar
+        rather than direct swaps. Inside Sherwin-Williams, Tricorn Black (SW 6258, LRV 3) is the true
+        black; our black-paint guide describes Iron Ore as the softer option that reads black indoors
+        and deep gray in bright light. Our guides use it on cabinets, accent walls and exteriors.
+        Digital values cannot show sheen, so sample it first.
+      </p>
+      <p>
         Iron Ore is the warm charcoal that reads almost-black indoors and softer outside — the
         in-between people choose when true black feels too severe. At LRV 6 it has real depth, but its
         warm gray base keeps it from the hard edge of a pure black, which is why it&apos;s a favorite for
@@ -207,6 +263,17 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/white-dove-oc-17": (
     <>
       <p>
+        White Dove (OC-17) is hex #F3EFE0 with an estimated LRV of 83.2 and a neutral undertone, and it
+        sits in our white family. Its nearest Sherwin-Williams color is Roman Column (SW 7562), a nearly
+        identical digital match. Behr Polished Marble (GR-W13), PPG Queen Anne&apos;s Lace (30YY
+        83/006), Valspar December Starlight (7003-7) and Dunn-Edwards Daydreaming (DET678) are nearly
+        identical as well. Sherwin-Williams Alabaster (SW 7008) is the swap people ask about most, and
+        it is not a close one: in our famous-whites comparison White Dove measured the creamier of the
+        two (LAB b* 7.7 against 5.2) and slightly lighter (LRV 83.2 against 82.2). Sample both side by
+        side rather than treating one as a replacement for the other. Every match here compares digital
+        values, not wet paint.
+      </p>
+      <p>
         White Dove is the most popular Benjamin Moore color, full stop — a soft warm white at LRV 83
         that has become the default for trim, cabinets, and whole rooms. What makes it the safe pick is
         restraint: it&apos;s warm enough to feel inviting but not so creamy that it reads yellow, so it
@@ -237,6 +304,17 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   ),
   "benjamin-moore/chantilly-lace-2121-70": (
     <>
+      <p>
+        Chantilly Lace (2121-70) is hex #F5F7F2 with an estimated LRV of 90 and a neutral undertone, and
+        it sits in our white family. Benjamin Moore also sells it under the code OC-65; our catalog
+        stores it as 2121-70. Behr Snow Fall (W-F-600) is its closest digital match. The nearest
+        Sherwin-Williams color in our data is UltraWhite (SW 9500), nearly identical and sharing a hex
+        with Dutch Boy Super White (001W). Valspar Cuddle Down (8007-6F), Kilz Ultra Bright White
+        (TB-01) and PPG Delicate White (1001-1) round out the nearly identical group. Our
+        north-facing-room guide lists Chantilly Lace among the pure whites that can feel stark in cool
+        north light, so test a sample in the room before committing. All of these matches compare
+        digital values, not wet paint.
+      </p>
       <p>
         Chantilly Lace is the modern bright white — at LRV 90 it&apos;s about as clean and crisp as paint
         gets, with no obvious warm or cool cast. It&apos;s the white behind the contemporary, gallery-clean
@@ -282,6 +360,17 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/pale-oak-oc-20": (
     <>
       <p>
+        Pale Oak (OC-20) is hex #E8D8D0 with an estimated LRV of 68.6 and a neutral undertone. Our
+        database files it in the orange family because of its hue, even though it is used as a light
+        neutral. Behr Bee&apos;s Knees (T13-11) and PPG Sandy Beach (1072-2) are nearly identical
+        digital matches, followed by Dunn-Edwards Gallery Gray (DE6072) and Valspar Mosaic Pink
+        (7001-13). The nearest Sherwin-Williams color is Faint Coral (SW 6329), also nearly identical.
+        At LRV 68.6 it is 14.6 points darker than White Dove (OC-17, LRV 83.2), and our white-paint
+        guide describes it as carrying more color than White Dove while still reading as a white. Our
+        beige guide groups it with the light neutrals. Compare physical samples before switching brands,
+        since these matches are calculated from digital values.
+      </p>
+      <p>
         Pale Oak is the warmest and softest of Benjamin Moore&apos;s popular greiges — a light
         oatmeal-taupe at LRV 69 with a barely-there pink-beige softness that reads almost white in
         bright light and gently warm in shadow. It&apos;s the choice when you want warmth without any
@@ -290,8 +379,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         That subtle warmth is also the catch: next to a cool gray or a stark white it can look slightly
         pink, so keep its companions warm. It&apos;s lovely in bedrooms and living rooms that get soft
-        light, and it makes a gentle whole-house neutral. Check its closest cross-brand matches on its
-        color page.
+        light, and it makes a gentle whole-house neutral.
       </p>
     </>
   ),
@@ -342,6 +430,17 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   ),
   "sherwin-williams/greek-villa-7551": (
     <>
+      <p>
+        Greek Villa (SW 7551) is hex #F0ECE2 with an estimated LRV of 84.0 and a neutral undertone, and
+        it sits in our white family. Hirshfield&apos;s Queen Anne&apos;s Lace (0558) shares its exact
+        hex. Behr Salt Crystal (QE-25), PPG Winter Mood (14-16), Valspar Dove White (7002-7) and Dutch
+        Boy Child of Heaven (DCP-0004) are nearly identical digital matches, and Benjamin Moore Glacier
+        (AC-40), the nearest Benjamin Moore color, is nearly identical too. Its closest relative inside
+        Sherwin-Williams is Alabaster (SW 7008): our famous-whites comparison found the two nearly
+        identical, with Greek Villa slightly lighter at LRV 84.0 against 82.2. If you are stuck between
+        those two, the gap is small. Our white-paint guide pairs Greek Villa with Urbane Bronze (SW
+        7048) for high contrast. Confirm any match with a physical sample.
+      </p>
       <p>
         Greek Villa is the warmest of Sherwin-Williams&apos; popular whites — a soft, creamy white at LRV 84
         that&apos;s a half-step warmer than Alabaster without tipping into yellow. It&apos;s the right call when
@@ -733,6 +832,17 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/shoji-white-7042": (
     <>
       <p>
+        Shoji White (SW 7042) is hex #E6DFD3 with an estimated LRV of 74.3 and a neutral undertone, and
+        our database files it in the off-white family rather than with the whites. That placement fits
+        how our guides use it: a color that splits the difference between a white and a beige, for walls
+        that should stay bright without reading as stark white. Behr Crisp Linen (MQ3-13) and PPG Water
+        Chestnut (1078-2) are nearly identical digital matches, as are Valspar Totten&apos;s Inlet
+        (7006-9) and Farrow &amp; Ball School House White (291). The nearest Benjamin Moore color is
+        Etiquette (AF-50), also nearly identical but the furthest of this group. Our warm-versus-cool
+        guide pairs Shoji White in a living room with Accessible Beige (SW 7036, LRV 57.9) in the dining
+        room. Sample before you switch brands.
+      </p>
+      <p>
         Shoji White is one of Sherwin-Williams&apos; most-used warm off-whites — at LRV 74 it&apos;s the
         in-between people reach for when a true white feels too cold and a greige feels too gray. It has
         a soft, warm linen quality that flatters cabinetry, trim, and whole rooms, and it&apos;s a natural
@@ -931,6 +1041,17 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   ),
   "sherwin-williams/urbane-bronze-7048": (
     <>
+      <p>
+        Urbane Bronze (SW 7048) is hex #54504A with an estimated LRV of 8.1, and our database classifies
+        its undertone as warm (golden). It sits in our gray family. Benjamin Moore Dragon&apos;s Breath
+        (1547) is its closest digital match and nearly identical, followed by Behr Underground (N200-7),
+        Dunn-Edwards Renwick Brown (DET630) and Valspar Dark Oasis (6011-4), all nearly identical. PPG
+        Deepest Earth Green (30YY 07/041) and Dutch Boy Charred (440-7DB) are very similar rather than
+        direct swaps. Against Iron Ore (SW 7069, LRV 5.6, neutral undertone), Urbane Bronze is 2.5
+        points lighter and carries the warm classification. Our white-paint guide pairs it with Greek
+        Villa (SW 7551, LRV 84.0) for high contrast. These are digital matches, so check a physical
+        sample of any substitute before buying.
+      </p>
       <p>
         A 2021 Color of the Year, Urbane Bronze is the warm, earthy near-black that anchored the move
         toward cozy-dark interiors. At LRV 8 it&apos;s deep, but it&apos;s a bronze-charcoal — a gray with real
@@ -2205,6 +2326,36 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         It swings between blue and green with the light, so sample in place. It pairs beautifully with
         warm whites, brass, and natural wood for a classic look. Sherwin-Williams Marine and Behr Lotus
         Leaf are its closest cross-brand matches.
+      </p>
+    </>
+  ),
+  "benjamin-moore/swiss-coffee-oc-45": (
+    <>
+      <p>
+        Swiss Coffee (OC-45) is hex #EEECE1 with an estimated LRV of 83.6 and a neutral undertone, and
+        it sits in our white family. Its nearest Sherwin-Williams color is Cotton (SW 9581), a nearly
+        identical digital match, and Sherwin-Williams Alabaster (SW 7008) is nearly identical too, which
+        makes Swiss Coffee the Benjamin Moore route for Alabaster loyalists. PPG Bubble Mint (83YY
+        85/056), Valspar Polar White (7003-16) and Behr Sail Cloth (N300-1) are also nearly identical.
+        Six of the 13 brands we track sell a color named Swiss Coffee, and they are not the same paint:
+        Behr Swiss Coffee (12) is close to this one but lighter at LRV 84.0, and Dunn-Edwards Swiss
+        Coffee (DEW341) sits far higher at LRV 91.1. Order by code (OC-45), not by name. Compare
+        physical samples before substituting any match.
+      </p>
+    </>
+  ),
+  "sherwin-williams/natural-linen-9109": (
+    <>
+      <p>
+        Natural Linen (SW 9109) is hex #DFD3C3 with an estimated LRV of 66.2 and a neutral undertone.
+        Our database files it in the orange family because of its hue, and our beige guide groups it
+        with the neutral-undertone beiges that avoid swinging yellow or pink. Behr Parisian Taupe
+        (PWN-42) and PPG Wheat Sheaf (14-21) share one hex value and are nearly identical digital
+        matches. Benjamin Moore Dusty Road (1017), Valspar Gentle Shadows (8005-5A), Dunn-Edwards
+        Sandcastle (DEC740) and Farrow &amp; Ball Stirabout (300) are nearly identical as well. Benjamin
+        Moore sells a different color with the same name, Natural Linen (966, hex #D8CEB8, LRV 59.8), so
+        check the code when you order. At LRV 66.2 this Sherwin-Williams shade is 8.3 points lighter
+        than Accessible Beige (SW 7036). Compare physical samples before substituting.
       </p>
     </>
   ),
