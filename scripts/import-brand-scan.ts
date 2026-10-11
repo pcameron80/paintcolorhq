@@ -8,8 +8,13 @@
  * dual-numbers (e.g. OC-1 for the row stored as 950) into
  * colors.alternate_numbers instead of inserting duplicate rows.
  *
+ * --scan-dir points at a dated folder written by scan-brand-palettes.ts
+ * (data/brand-scans/<YYYY-MM-DD>/); it reads <brand>-missing.json there.
+ * Without it, the 2026-06 files in data/brand-scans/ are used.
+ *
  * Usage:
  *   tsx scripts/import-brand-scan.ts --brand=dutch-boy            # dry run
+ *   tsx scripts/import-brand-scan.ts --brand=behr --scan-dir=data/brand-scans/2026-10-11
  *   tsx scripts/import-brand-scan.ts --brand=dutch-boy --apply
  *   tsx scripts/import-brand-scan.ts --brand=benjamin-moore --backfill-aliases [--apply]
  *
@@ -26,7 +31,10 @@ import { classifyColorFamily, calculateLrv, rgbToLab, hexToRgb } from './lib/col
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
-const SCAN_DIR = path.resolve(__dirname, '../data/brand-scans');
+const scanDirArg = process.argv.find((a) => a.startsWith('--scan-dir='))?.split('=')[1];
+const SCAN_DIR = scanDirArg
+  ? path.resolve(process.cwd(), scanDirArg)
+  : path.resolve(__dirname, '../data/brand-scans');
 const APPLY = process.argv.includes('--apply');
 const BACKFILL = process.argv.includes('--backfill-aliases');
 const brandArg = process.argv.find((a) => a.startsWith('--brand='))?.split('=')[1];
@@ -67,8 +75,8 @@ const BRAND_RULES: Record<string, BrandRule> = {
     extract: (p) => p as ScanColor[],
   },
   'benjamin-moore': {
-    file: 'benjamin-moore-missing-classified.json',
-    extract: (p) => (p as { truly_missing: ScanColor[] }).truly_missing,
+    file: scanDirArg ? 'benjamin-moore-missing.json' : 'benjamin-moore-missing-classified.json',
+    extract: (p) => (Array.isArray(p) ? (p as ScanColor[]) : (p as { truly_missing: ScanColor[] }).truly_missing),
     // ES-* are exterior stains — out of scope for the wall-paint dataset.
     keep: (c) => !/^ES-/i.test(c.code),
   },
