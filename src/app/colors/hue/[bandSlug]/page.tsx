@@ -77,8 +77,7 @@ function ColorLink({ c }: { c: HueBandColor }) {
   );
 }
 
-function Intro({ band, colors, brandCount }: { band: HueBand; colors: HueBandColor[]; brandCount: number }) {
-  const n = colors.length.toLocaleString();
+function Intro({ band, colors }: { band: HueBand; colors: HueBandColor[] }) {
   const f = featuredMembers(band, colors);
   const pick = (slug: string) => f.find((c) => c.slug === slug);
   const L = (slug: string) => {
@@ -194,7 +193,7 @@ export default async function HueBandPage({ params, searchParams }: PageProps) {
         <div className="max-w-7xl mx-auto">
           <div className="bg-primary h-1 w-12 mb-6" />
           <article className="max-w-4xl text-on-surface-variant leading-relaxed">
-            <Intro band={band} colors={colors} brandCount={brands.length} />
+            <Intro band={band} colors={colors} />
           </article>
         </div>
       </section>
