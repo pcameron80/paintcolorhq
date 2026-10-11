@@ -54,6 +54,205 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── How long to wait between coats (2026-10-15) ──────────────── */
+  {
+    slug: "how-many-coats-of-paint",
+    title: "How Long to Wait Between Coats of Paint",
+    date: "2026-10-15",
+    author: "Philip Cameron",
+    excerpt:
+      "Recoat times for 16 paints, taken from each maker's data sheet, plus how many coats you need, when to sand, and when a color change calls for primer.",
+    coverColor: "#2f3d4c",
+    coverImage: "/blog/how-many-coats-of-paint.webp",
+    tags: ["How-To", "Tips"],
+    faq: [
+      {
+        question: "How long should you wait between coats of paint?",
+        answer:
+          "Follow the recoat time on the product's data sheet. For interior latex wall paint it ranges from 1 hour (Benjamin Moore Aura) to 4 hours (every Sherwin-Williams interior line we checked), measured at 77°F and 50% relative humidity. Waterborne alkyd trim enamels take much longer: Benjamin Moore ADVANCE needs 16 hours.",
+      },
+      {
+        question: "Does cold or humidity change the wait between coats?",
+        answer:
+          "Yes. Data sheet recoat times apply at 77°F and 50% relative humidity, and Benjamin Moore states that high humidity and cool temperatures result in longer dry and recoat times. Sherwin-Williams gives a hard figure for its exterior paints: 4 hours above 45°F, but 24 to 48 hours between 35°F and 45°F. In a cool or damp room, wait past the printed time and check that the first coat is dry everywhere before the second.",
+      },
+      {
+        question: "How many coats of paint do you need?",
+        answer:
+          "Two is the manufacturer default. Benjamin Moore recommends two coats for full color development, and on bare surfaces two coats are required. Sherwin-Williams' self-priming interior paints call for two coats on new drywall. One coat can be enough when repainting a sound surface in a similar color, which several data sheets allow.",
+      },
+      {
+        question: "Do you need primer when changing paint color?",
+        answer:
+          "For a drastic color change, yes. Sherwin-Williams, Benjamin Moore and Valspar all recommend primer for dramatic color changes, and Glidden notes they may require primer or more than one coat. Tint the primer toward the new color, or use the gray primer shade Sherwin-Williams prints as a P-code on the color chip for colors that need one.",
+      },
+      {
+        question: "Should you sand between coats of paint?",
+        answer:
+          "Not for ordinary wall paint, where none of the wall-paint data sheets we read call for it. Sanding between coats is a trim and cabinet step: Benjamin Moore's ADVANCE data sheet says light sanding between coats allows a smoother finish on cabinetry, as long as all dust is cleaned off.",
+      },
+      {
+        question: "How long until paint is fully cured?",
+        answer:
+          "Much longer than the recoat time. Benjamin Moore says ADVANCE can take up to 30 days to reach optimum hardness, Glidden lists a 30-day full cure for Diamond, and Sherwin-Williams advises waiting at least 14 days before washing Duration Home.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Wait for the recoat time printed on your paint&apos;s data sheet, which for interior latex wall paint is between 1 and 4 hours at 77°F and 50% relative humidity. Every Sherwin-Williams interior line we checked says 4 hours. Benjamin Moore ranges from 1 hour for Aura to 2 hours for Regal Select and ben. Valspar and Glidden say 2 to 4 hours. Trim enamel is the exception: Benjamin Moore ADVANCE needs 16 hours. Cool or humid rooms stretch all of these, and most manufacturers recommend two coats, with primer first for a drastic color change.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Recoat times by paint, from the manufacturer data sheets</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every figure below comes from the manufacturer&apos;s own product data sheet or product page, read in October 2026. All are rated at 77°F and 50% relative humidity. We left out any paint we could not confirm from an official source, which is why Behr and KILZ are missing: their data sheets were not reachable for us to read.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Paint</th>
+                <th className="py-2 pr-4 font-semibold">Dry to touch</th>
+                <th className="py-2 font-semibold">Recoat</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams Emerald Interior</td><td className="py-2 pr-4">1 hour</td><td className="py-2">4 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams Duration Home Interior</td><td className="py-2 pr-4">1 hour</td><td className="py-2">4 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams SuperPaint Interior</td><td className="py-2 pr-4">1 hour</td><td className="py-2">4 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams Cashmere Interior</td><td className="py-2 pr-4">1 hour</td><td className="py-2">4 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams ProMar 200 Zero VOC</td><td className="py-2 pr-4">1 hour</td><td className="py-2">4 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams Captivate Interior</td><td className="py-2 pr-4">1 hour</td><td className="py-2">4 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams Emerald Urethane Trim Enamel</td><td className="py-2 pr-4">1 hour</td><td className="py-2">4 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Benjamin Moore Aura Interior</td><td className="py-2 pr-4">1 hour</td><td className="py-2">1 hour</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Benjamin Moore Regal Select Interior</td><td className="py-2 pr-4">1 hour</td><td className="py-2">1 to 2 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Benjamin Moore ben Interior</td><td className="py-2 pr-4">1 hour</td><td className="py-2">2 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Benjamin Moore ULTRA SPEC 500</td><td className="py-2 pr-4">2 hours</td><td className="py-2">2 to 3 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Benjamin Moore ADVANCE (trim and cabinets)</td><td className="py-2 pr-4">4 to 6 hours</td><td className="py-2">16 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Valspar Signature Interior</td><td className="py-2 pr-4">30 to 60 minutes</td><td className="py-2">2 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Valspar Ultra Interior</td><td className="py-2 pr-4">30 to 60 minutes</td><td className="py-2">2 to 4 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Glidden Premium Interior</td><td className="py-2 pr-4">30 to 60 minutes</td><td className="py-2">2 to 4 hours</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Glidden Diamond Interior</td><td className="py-2 pr-4">30 to 60 minutes</td><td className="py-2">2 to 4 hours</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sources: Sherwin-Williams product data sheets (one sheen per line, with other sheens spot-checked and matching), Benjamin Moore technical data sheets, and Valspar product pages, and Glidden technical data sheets. The Sherwin-Williams times hold across the interior lines, so 4 hours is a safe rule for any of them. Benjamin Moore&apos;s are shorter and vary by line, so check the can. For example, the{" "}
+          <a
+            href="https://media.benjaminmoore.com/WebServices/prod/assets/production/datasheets/TDS_0548/N548_TDS_US.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue hover:underline"
+          >
+            Regal Select data sheet
+          </a>{" "}
+          lists 1 to 2 hours, and the{" "}
+          <a
+            href="https://www.sherwin-williams.com/document/PDS/en/035777359259"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue hover:underline"
+          >
+            Emerald Interior data sheet
+          </a>{" "}
+          lists 4 hours.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Primer recoat times</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Primer times vary as much as paint times do. Sherwin-Williams Premium Wall &amp; Wood Primer is dry to the touch in 30 minutes and ready to recoat, or sand, in 2 hours. Benjamin Moore Fresh Start Multi-Purpose Latex Primer is 1 hour to touch and 3 hours to recoat, and Fresh Start High-Hiding All-Purpose Primer is 30 minutes and 1 hour.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why your room may need longer</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every time above assumes 77°F and 50% relative humidity. Real rooms are often cooler or damper, and the manufacturers say so directly. Benjamin Moore&apos;s data sheets state that high humidity and cool temperatures result in longer dry, recoat and service times. Sherwin-Williams writes that drying and recoat times depend on temperature, humidity and film thickness. Glidden adds air movement and color to the list.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The only hard cold-weather figures we found are for exterior paint. Sherwin-Williams Emerald Exterior and Duration Exterior recoat in 4 hours above 45°F, but between 35°F and 45°F the wait is 24 to 48 hours. No interior data sheet we read gives an adjusted time, so in a cool or humid room, treat the printed figure as a minimum. Before the second coat, touch the first coat in a corner, along the ceiling line and anywhere it went on thick. It should feel dry, not cool or tacky.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sheen does not change the recoat time in these lines. Each Sherwin-Williams sheen sheet we compared gave the same 4 hours, and Benjamin Moore&apos;s Regal Select matte and eggshell both say 1 to 2 hours. For choosing a sheen in the first place, see our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dry, recoat and cure are three different clocks</h2>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Dry to touch</strong> means the surface no longer feels wet. It is not ready for another coat.</li>
+          <li><strong>Recoat</strong> is the minimum wait before the next coat, under the rated conditions.</li>
+          <li><strong>Cure</strong> is when the film reaches full hardness, and it takes days or weeks. Benjamin Moore says ADVANCE can take up to 30 days to reach optimum hardness and final sheen. Glidden lists a 30-day full cure for Diamond. Sherwin-Williams advises waiting at least 14 days before washing Duration Home, and Benjamin Moore says ULTRA SPEC 500 can be washed after two weeks.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Until the paint reaches full hardness, treat it gently. Hold off on scrubbing walls and on loading cabinets and shelves, even though they look finished the same day.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How many coats of paint you need</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two coats is the manufacturer default. Benjamin Moore&apos;s Regal Select data sheet puts it plainly: one coat is sometimes achievable, but the company recommends two coats to achieve full color development and optimize performance. On bare surfaces, Benjamin Moore says two coats are required. Sherwin-Williams&apos; self-priming interior paints, including Emerald, Duration Home, SuperPaint and Captivate, call for two coats on new drywall.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          One coat is allowed in specific cases. Benjamin Moore&apos;s data sheets say previously painted surfaces can be finished with one or two coats, and Sherwin-Williams&apos; exterior Emerald and Duration call for one coat on repaint work and two on bare surfaces. One coat is realistic only when the old paint is sound and the new color is close to it.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Deep and bright colors often need more. Valspar notes that some deep or bright colors may require an additional coat to obtain complete hide, and Benjamin Moore says certain deep Aura colors need its Color Foundation basecoat for full hide.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Use the color change to judge the job</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The bigger the change in lightness between the old color and the new one, the harder the new paint has to work to hide what is underneath. Light reflectance value (LRV), listed on every color page on Paint Color HQ, measures lightness from 0 (black) to 100 (white), so the gap between the old and new LRV shows how big the change is. Some real examples:
+        </p>
+        <ul className="mt-4 list-disc space-y-3 pl-6 text-gray-700 leading-relaxed">
+          <li>
+            <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /> (LRV 60.1) to <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> (LRV 82.2): a 22-point step between two light neutrals. A typical two-coat repaint.
+          </li>
+          <li>
+            Agreeable Gray to <Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (LRV 7.1): a 53-point drop to a deep color.
+          </li>
+          <li>
+            Alabaster to <Swatch hex="#2f3d4c" name="Naval" brand="SW 6244" href="/colors/sherwin-williams/naval-6244" /> (LRV 4.5) or <Swatch hex="#2f2f30" name="Tricorn Black" brand="SW 6258" href="/colors/sherwin-williams/tricorn-black-6258" /> (LRV 2.9): a 78- to 79-point drop.
+          </li>
+          <li>
+            <Swatch hex="#8b2829" name="Caliente" brand="BM AF-290" href="/colors/benjamin-moore/caliente-af-290" /> (LRV 7.2) to <Swatch hex="#f5f7f2" name="Chantilly Lace" brand="BM 2121-70" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> (LRV 90): an 83-point climb from a deep red to a bright white, the hardest kind of change to cover.
+          </li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          No manufacturer publishes a coats-per-LRV-gap rule, so we won&apos;t invent one. What they do agree on is that a drastic color change calls for primer. Sherwin-Williams&apos; data sheets say a coat of primer will improve the hiding performance of the topcoat when repainting involves a drastic color change. Benjamin Moore lists dramatic color changes among the cases where it highly recommends primer, Valspar recommends priming for drastic color changes, and Glidden notes they may require primer or more than one coat. The last three examples above are clearly in that territory.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Tinted and gray primers</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A primer works better when it is tinted. Benjamin Moore recommends tinting Fresh Start primer to the approximate finish color for best hiding. For deep colors, Sherwin-Williams uses gray primer shades labeled P1 to P6, printed on the back of the color chip. Its{" "}
+          <a
+            href="https://www.sherwin-williams.com/home-builders/color/color-education/sw-article-pro-coveryourbases"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue hover:underline"
+          >
+            color guidance
+          </a>{" "}
+          says about 20 percent of the colors in its system look their best over a gray-tinted basecoat, and that if you see a P-code you should use that shade of gray. Before buying primer for a deep color like Naval or Hale Navy, check the chip or ask the store for the recommended primer shade.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore also says a previously painted surface in good condition most likely does not need primer. Primer is for the big jumps, bare or patched surfaces, and stains, not for every repaint.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Sanding between coats</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For walls, skip it. None of the wall-paint data sheets we read call for sanding between coats of latex. Sanding between coats is a trim and cabinet step: the Benjamin Moore ADVANCE data sheet says light sanding between coats allows a smoother finish on cabinetry, and that all dust must be cleaned off first. Primer is the other place sanding comes in. Sherwin-Williams says its Premium Wall &amp; Wood Primer is designed to sand quickly, to a powder, in 2 hours.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Plan the job around the clock</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          With a 4-hour recoat, a first coat that finishes at 10 a.m. can take its second coat at 2 p.m. in a warm, dry room, so two coats fit in one day. A primer coat adds 1 to 3 hours, depending on the primer. ADVANCE on trim or cabinets is a different schedule: one coat a day, with 16 hours between them.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Number of coats also decides how much paint to buy. Our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> lets you choose one, two or three coats and assumes 350 square feet per gallon, the low end of the 350 to 400 square feet that Sherwin-Williams lists for its interior lines. Benjamin Moore lists 400 to 450 for Regal Select.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Before you commit gallons to a big color change, preview it in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> and test a sample on the wall with two coats, as our <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">guide to testing paint samples</Link> describes. A sample also shows you how many coats the new color needs over the old one. Browse deep options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/red" className="text-brand-blue hover:underline">red</Link> color families, or compare <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> colors side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── How to choose trim color (2026-10-13) ──────────────── */
   {
     slug: "how-to-choose-trim-color",
