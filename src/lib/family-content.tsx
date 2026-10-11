@@ -421,8 +421,8 @@ const content: Record<string, FamilyContent> = {
           beige and gray simply can&apos;t achieve.
         </p>
         <p>
-          Benjamin Moore Pale Oak (a pink-beige that designers can&apos;t stop recommending) barely
-          reads as pink but adds warmth that pure whites miss. For something more intentionally pink,{" "}
+          Benjamin Moore First Light, its 2020 Color of the Year, is a blush so pale (LRV 76) that it
+          reads almost as a warm white. For something more intentionally pink,{" "}
           <Link href="/colors/sherwin-williams/quaint-coral-6536" className="text-brand-blue hover:underline">
             Sherwin-Williams Quaint Coral
           </Link>{" "}
