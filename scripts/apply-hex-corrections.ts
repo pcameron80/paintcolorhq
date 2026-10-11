@@ -21,6 +21,8 @@
  *
  * Afterwards, matches are stale until recomputed:
  *   npm run export-db-colors && npm run compute-matches && npm run seed-matches
+ * and content that quotes the old swatches needs checking:
+ *   npm run audit-colors -- --changed=scripts/data/backups/hex-corrections-<ts>.json
  */
 
 import * as fs from 'fs';
