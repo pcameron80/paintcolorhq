@@ -26,6 +26,17 @@ export function AnalyticsProvider() {
       // Color swatch click: links matching /colors/{brand}/{slug}
       const colorMatch = href.match(/^\/colors\/([^/]+)\/([^/]+)$/);
       if (colorMatch) {
+        // Blog swatches carry their data in data-* attributes
+        if (link.dataset.swatchSource) {
+          trackSwatchClick(
+            link.dataset.swatchName ?? "",
+            colorMatch[1],
+            link.dataset.swatchHex ?? "",
+            undefined,
+            link.dataset.swatchSource,
+          );
+          return;
+        }
         // Extract color info from the card's text content
         const card = link.closest(".group") ?? link;
         const nameEl = card.querySelector("p.font-medium, p:first-child");

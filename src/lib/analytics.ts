@@ -47,8 +47,10 @@ export function trackSwatchClick(
   brand: string,
   hexCode: string,
   colorCode?: string,
+  source?: string,
 ) {
   trackEvent("color_swatch_click", {
+    swatch_source: source,
     color_name: colorName,
     color_brand: brand,
     color_code: colorCode,

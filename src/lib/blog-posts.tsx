@@ -32,19 +32,40 @@ export interface BlogPost {
 /* ------------------------------------------------------------------ */
 
 function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?: string; href?: string }) {
+  const linked = Boolean(href);
   const inner = (
     <span className="my-1 inline-flex items-center gap-2">
       <span
-        className="inline-block h-5 w-5 rounded border border-gray-200"
+        className={`inline-block rounded border border-gray-200 ${linked ? "h-6 w-6" : "h-5 w-5"}`}
         style={{ backgroundColor: hex }}
         aria-hidden="true"
       />
-      <span className="text-sm font-medium text-gray-800">{name}</span>
+      <span
+        className={
+          linked
+            ? "text-sm font-medium text-brand-blue underline decoration-brand-blue/40 decoration-1 underline-offset-2 group-hover:decoration-brand-blue"
+            : "text-sm font-medium text-gray-800"
+        }
+      >
+        {name}
+      </span>
       {brand && <span className="text-sm text-gray-500">({brand})</span>}
     </span>
   );
   if (href) {
-    return <Link href={href} className="hover:underline">{inner}</Link>;
+    // data-* attributes are read by the click delegation in analytics-provider.tsx
+    // (color_swatch_click with swatch_source "blog"), so no client component is needed.
+    return (
+      <Link
+        href={href}
+        className="group"
+        data-swatch-source="blog"
+        data-swatch-name={name}
+        data-swatch-hex={hex}
+      >
+        {inner}
+      </Link>
+    );
   }
   return inner;
 }
