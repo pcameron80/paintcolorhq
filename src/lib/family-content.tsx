@@ -180,7 +180,7 @@ const content: Record<string, FamilyContent> = {
           <Link href="/colors/benjamin-moore/baja-dunes-997" className="text-brand-blue hover:underline">
             Benjamin Moore Baja Dunes (997)
           </Link>{" "}
-          at LRV 42, and for a lighter, creamier option,{" "}
+          at LRV 41, and for a lighter, creamier option,{" "}
           <Link href="/colors/benjamin-moore/natural-linen-966" className="text-brand-blue hover:underline">
             Benjamin Moore Natural Linen (966)
           </Link>{" "}
@@ -421,8 +421,8 @@ const content: Record<string, FamilyContent> = {
           beige and gray simply can&apos;t achieve.
         </p>
         <p>
-          Benjamin Moore Pale Oak (a pink-beige that designers can&apos;t stop recommending) barely
-          reads as pink but adds warmth that pure whites miss. For something more intentionally pink,{" "}
+          Benjamin Moore First Light, its 2020 Color of the Year, is a blush so pale (LRV 76) that it
+          reads almost as a warm white. For something more intentionally pink,{" "}
           <Link href="/colors/sherwin-williams/quaint-coral-6536" className="text-brand-blue hover:underline">
             Sherwin-Williams Quaint Coral
           </Link>{" "}
@@ -748,9 +748,9 @@ const FAMILY_ANCHORS: Record<string, string> = {
   white:
     "As reference points: Chantilly Lace sits at LRV 90 (the crispest bright white), while White Dove (LRV 83) and Pure White (LRV 84) read softer and warmer — proof that two whites can share a brightness yet feel completely different on the wall.",
   gray:
-    "Repose Gray (LRV 58) is the light, true-gray benchmark and Gray Owl (LRV 66) the cooler, airier option; drop to a mid-tone like Mindful Gray (LRV 48) when a room needs real contrast rather than a wash.",
+    "Repose Gray (LRV 58) is the light, true-gray benchmark and Gray Owl (LRV 65) the cooler, airier option; drop to a mid-tone like Mindful Gray (LRV 48) when a room needs real contrast rather than a wash.",
   blue:
-    "The family spans a huge range: Naval (LRV 5) and Hale Navy (LRV 7) anchor the dramatic deep end, while soft blue-greens like Palladian Blue (LRV 62) read almost like tinted neutrals.",
+    "The family spans a huge range: Naval (LRV 5) and Hale Navy (LRV 8) anchor the dramatic deep end, while soft blue-greens like Palladian Blue (LRV 60) read almost like tinted neutrals.",
   green:
     "Soft, low-chroma greens like Sea Salt (LRV 63) work as whole-room neutrals, while a saturated jewel-tone such as PPG Vining Ivy (LRV 15) is best reserved for an accent wall or a powder room.",
   beige:
@@ -758,15 +758,15 @@ const FAMILY_ANCHORS: Record<string, string> = {
   red:
     "Reds run deep and high-energy: a dramatic anchor like Behr Caliente (LRV 14) carries a dining room or a front door far better than it would a whole bright space.",
   orange:
-    "The most livable oranges are earthy and muted rather than vivid — a terracotta-leaning tone like Behr Cavern Clay (LRV 33) is the kind people actually paint a room.",
+    "The most livable oranges are earthy and muted rather than vivid — a terracotta-leaning tone like Behr Cavern Clay (LRV 34) is the kind people actually paint a room.",
   yellow:
     "Soft, sunny yellows like Benjamin Moore Hawthorne Yellow (LRV 71) lift north-facing rooms; the higher the LRV, the more cheerful and the less acidic the result.",
   purple:
-    "Purples range from pale lilacs to deep amethysts like Benjamin Moore Shadow (LRV 8) — and because they shift more than any other family under changing light, sampling is non-negotiable.",
+    "Purples range from pale lilacs to deep amethysts like Benjamin Moore Shadow (LRV 9) — and because they shift more than any other family under changing light, sampling is non-negotiable.",
   pink:
     "Today's pinks lean soft and grown-up: a barely-there blush like Benjamin Moore First Light (LRV 76) reads almost neutral rather than sweet.",
   "off-white":
-    "Off-whites carry a faint greige that keeps them from reading stark — Snowbound (LRV 82) and the softer Classic Gray (LRV 75) are the go-to's when a pure white feels too clinical.",
+    "Off-whites carry a faint greige that keeps them from reading stark — Snowbound (LRV 83) and the softer Classic Gray (LRV 74) are the go-to's when a pure white feels too clinical.",
   black:
     "Tricorn Black (LRV 3) is the true, neutral black for crisp trim and doors; a softer near-black like Behr Cracked Pepper (LRV 8) gives the same drama with a touch of warmth.",
   brown:

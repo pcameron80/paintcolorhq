@@ -1,0 +1,42 @@
+// Names a color was listed under on PaintColorHQ before it was updated to the
+// manufacturer's current name (2026-10-11, scripts/apply-published-names.ts
+// --renames). Slugs kept the old name, so these pages are still found by it;
+// the color page shows "Previously listed as ..." so the old name stays on the
+// page. Spelling fixes and names that were import truncations are not listed.
+export const FORMER_NAMES: Record<string, string> = {
+  "behr/canyon-ouvert-n300-4": "Canyon Ouvert",
+  "behr/williamsburg-blue-610c-3": "Williamsburg Blue",
+  "benjamin-moore/american-white-2112-70": "American White",
+  "benjamin-moore/buttermilk-919": "Buttermilk",
+  "benjamin-moore/champion-cobalt-2061-20": "Champion Cobalt",
+  "benjamin-moore/ebony-king-2132-20": "Ebony King",
+  "benjamin-moore/gypsy-love-2085-30": "Gypsy Love",
+  "benjamin-moore/gypsy-pink-2077-20": "Gypsy Pink",
+  "benjamin-moore/gypsy-rose-1327": "Gypsy Rose",
+  "benjamin-moore/ice-blue-2052-70": "Ice Blue",
+  "benjamin-moore/indian-summer-cc-186": "Indian Summer",
+  "benjamin-moore/louisiana-cc-124": "Louisiana",
+  "benjamin-moore/mexicana-2172-30": "Mexicana",
+  "benjamin-moore/moonlight-2020-60": "Moonlight",
+  "benjamin-moore/navajo-red-2171-10": "Navajo Red",
+  "benjamin-moore/newborn-baby-002": "Newborn Baby",
+  "benjamin-moore/nimbus-gray-2131-50": "Nimbus Gray",
+  "benjamin-moore/old-navy-2063-10": "Old Navy",
+  "benjamin-moore/patriot-blue-2064-20": "Patriot Blue",
+  "benjamin-moore/patriot-red-2080-20": "Patriot Red",
+  "benjamin-moore/patriotic-white-2135-70": "Patriotic White",
+  "benjamin-moore/pernod-316": "Pernod",
+  "benjamin-moore/pink-cadillac-2002-70": "Pink Cadillac",
+  "benjamin-moore/pink-starburst-2004-40": "Pink Starburst",
+  "benjamin-moore/polo-blue-2062-10": "Polo Blue",
+  "benjamin-moore/saddle-brown-2164-10": "Saddle Brown",
+  "benjamin-moore/sandy-hook-gray-hc-108": "Sandy Hook Gray",
+  "benjamin-moore/seminole-brown-1183": "Seminole Brown",
+  "benjamin-moore/silver-half-dollar-2121-40": "Silver Half Dollar",
+  "benjamin-moore/starburst-orange-2010-30": "Starburst Orange",
+  "benjamin-moore/timber-wolf-1600": "Timber Wolf",
+  "benjamin-moore/whale-gray-2134-40": "Whale Gray",
+  "benjamin-moore/white-cloud-2159-70": "White Cloud",
+  "benjamin-moore/white-opulence-879": "White Opulence",
+  "benjamin-moore/wildflowers-325": "Wildflowers",
+};
