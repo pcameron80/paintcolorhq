@@ -217,14 +217,14 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2"><Swatch hex="#ece7d8" name="White Down" brand="BM 970" href="/colors/benjamin-moore/white-down-970" /> (76.7)</td>
               </tr>
               <tr className="border-b border-gray-100">
-                <td className="py-2 pr-4"><Swatch hex="#E8D8D0" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)</td>
-                <td className="py-2"><Swatch hex="#feeee6" name="Bridal Pink" brand="BM 2013-70" href="/colors/benjamin-moore/bridal-pink-2013-70" /> (85.0)</td>
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)</td>
+                <td className="py-2"><Swatch hex="#eceae0" name="Glacier White" brand="BM OC-37" href="/colors/benjamin-moore/glacier-white-oc-37" /> (80.2)</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Aesthetic White, Divine White and Fossil are the subtlest steps, 10 to 15 points lighter, and each still rates very similar to its wall color. White Down, Cold Foam and Bridal Pink are bigger steps, 16 to 26 points lighter, closer to a tinted white. Bridal Pink sounds unlikely next to Pale Oak, but by the numbers it is the closest lighter hue in Benjamin Moore&apos;s catalog. Put any pair side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, then test a sample on the ceiling itself: as Sherwin-Williams points out, ceilings often appear in shadow.
+          Aesthetic White, Divine White, Fossil and Glacier White are the subtlest steps, 8 to 15 points lighter, and each still rates very similar to its wall color. White Down and Cold Foam are bigger steps, 21 to 26 points lighter, closer to a tinted white. Put any pair side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, then test a sample on the ceiling itself: as Sherwin-Williams points out, ceilings often appear in shadow.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Darker than the walls</h2>
@@ -338,20 +338,20 @@ const blogPosts: BlogPost[] = [
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#2f2f30" name="Tricorn Black" brand="SW 6258" href="/colors/sherwin-williams/tricorn-black-6258" /></td>
                 <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/black-hc-190" className="text-brand-blue hover:underline">Black</Link> (nearly identical)</td>
-                <td className="py-2 pr-4">Bitter Chocolate (very similar)</td>
+                <td className="py-2 pr-4">Limousine Leather (very similar)</td>
                 <td className="py-2">Tomcat (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
-                <td className="py-2 pr-4"><Swatch hex="#323233" name="Black" brand="BM HC-190" href="/colors/benjamin-moore/black-hc-190" /></td>
-                <td className="py-2 pr-4">Black Magic (nearly identical)</td>
+                <td className="py-2 pr-4"><Swatch hex="#313132" name="Black" brand="BM HC-190" href="/colors/benjamin-moore/black-hc-190" /></td>
+                <td className="py-2 pr-4">Tricorn Black (nearly identical)</td>
                 <td className="py-2 pr-4">Limousine Leather (very similar)</td>
                 <td className="py-2">Tomcat (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#2f3d4c" name="Naval" brand="SW 6244" href="/colors/sherwin-williams/naval-6244" /></td>
                 <td className="py-2 pr-4">North Sea (nearly identical)</td>
-                <td className="py-2 pr-4">Ink Black (very similar)</td>
-                <td className="py-2">Royal Navy (visible difference)</td>
+                <td className="py-2 pr-4">Midnight Dream (very similar)</td>
+                <td className="py-2">Gotham Gray (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
@@ -363,73 +363,73 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2 pr-4"><Swatch hex="#3d4450" name="Charcoal Blue" brand="SW 2739" href="/colors/sherwin-williams/charcoal-blue-2739" /></td>
                 <td className="py-2 pr-4">Hale Navy (very similar)</td>
                 <td className="py-2 pr-4">Stiletto (nearly identical)</td>
-                <td className="py-2">Blue Coal (very similar)</td>
+                <td className="py-2">Royal Navy (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#475667" name="Newburyport Blue" brand="BM HC-155" href="/colors/benjamin-moore/newburyport-blue-hc-155" /></td>
                 <td className="py-2 pr-4">Indigo Batik (very similar)</td>
-                <td className="py-2 pr-4">Distant Thunder (nearly identical)</td>
+                <td className="py-2 pr-4">Night Tide (very similar)</td>
                 <td className="py-2">Moon Shade (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#28372f" name="Essex Green" brand="BM HC-188" href="/colors/benjamin-moore/essex-green-hc-188" /></td>
                 <td className="py-2 pr-4">Roycroft Bottle Green (very similar)</td>
-                <td className="py-2 pr-4">Black Swan (very similar)</td>
-                <td className="py-2">Midsummer Night (visible difference)</td>
+                <td className="py-2 pr-4">Trellised Ivy (visible difference)</td>
+                <td className="py-2">Aged Pine (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#5e6259" name="Pewter Green" brand="SW 6208" href="/colors/sherwin-williams/pewter-green-6208" /></td>
                 <td className="py-2 pr-4">Dark Olive (very similar)</td>
-                <td className="py-2 pr-4">Woodland Moss (very similar)</td>
-                <td className="py-2">Flora (nearly identical)</td>
+                <td className="py-2 pr-4">Painted Turtle (nearly identical)</td>
+                <td className="py-2">Quaking Bog (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#64695c" name="Rosemary" brand="SW 6187" href="/colors/sherwin-williams/rosemary-6187" /></td>
                 <td className="py-2 pr-4">Rainy Afternoon (nearly identical)</td>
-                <td className="py-2 pr-4">Gray Owl (very similar)</td>
-                <td className="py-2">Flora (very similar)</td>
+                <td className="py-2 pr-4">Pinecone Hill (nearly identical)</td>
+                <td className="py-2">Cosmopolitan Olive (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#8b2829" name="Caliente" brand="BM AF-290" href="/colors/benjamin-moore/caliente-af-290" /></td>
                 <td className="py-2 pr-4">Red Bay (very similar)</td>
-                <td className="py-2 pr-4"><Link href="/colors/behr/new-brick-s-h-200" className="text-brand-blue hover:underline">New Brick</Link> (nearly identical)</td>
-                <td className="py-2">Cut Ruby (very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/cherry-tree-ecc-32-3" className="text-brand-blue hover:underline">Cherry Tree</Link> (very similar)</td>
+                <td className="py-2">Fabulous Red (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#9a0b15" name="Heritage Red" brand="BM HC-181" href="/colors/benjamin-moore/heritage-red-hc-181" /></td>
                 <td className="py-2 pr-4">Heartthrob (visible difference)</td>
-                <td className="py-2 pr-4">Rodeo Red (very similar)</td>
-                <td className="py-2">Très Bien (visible difference)</td>
+                <td className="py-2 pr-4">Bijou Red (visible difference)</td>
+                <td className="py-2"><Link href="/colors/valspar/quite-red-1011-3" className="text-brand-blue hover:underline">Quite Red</Link> (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#622f2d" name="Rookwood Red" brand="SW 2802" href="/colors/sherwin-williams/rookwood-red-2802" /></td>
                 <td className="py-2 pr-4">Cottage Red (very similar)</td>
-                <td className="py-2 pr-4">Wine Barrel (very similar)</td>
-                <td className="py-2">Spanish Tile (very similar)</td>
+                <td className="py-2 pr-4">Tuscan Russet (very similar)</td>
+                <td className="py-2">Royal Garnet (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /></td>
                 <td className="py-2 pr-4">Dragon&apos;s Breath (nearly identical)</td>
-                <td className="py-2 pr-4">Underground (nearly identical)</td>
-                <td className="py-2">Dark Oasis (nearly identical)</td>
+                <td className="py-2 pr-4">Black Bean (nearly identical)</td>
+                <td className="py-2">Semi-Sweet (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
                 <td className="py-2 pr-4">Notre Dame (very similar)</td>
-                <td className="py-2 pr-4">Broadway (nearly identical)</td>
+                <td className="py-2 pr-4">Black Suede (nearly identical)</td>
                 <td className="py-2">Caviar (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#4a4b4c" name="Wrought Iron" brand="BM 2124-10" href="/colors/benjamin-moore/wrought-iron-2124-10" /></td>
                 <td className="py-2 pr-4">Cyberspace (very similar)</td>
-                <td className="py-2 pr-4">Timber Brown (nearly identical)</td>
-                <td className="py-2">Noir (very similar)</td>
+                <td className="py-2 pr-4">Night Club (nearly identical)</td>
+                <td className="py-2">Muskeg Grey (nearly identical)</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Some of these hold up across brands better than others. Hale Navy and Urbane Bronze have nearly identical matches in every brand listed, so you can buy either wherever is convenient. Heritage Red is the hardest to substitute: its closest Sherwin-Williams and Valspar colors are a visible difference away, so if you want that exact red, buy it from Benjamin Moore. Every color page has the full list of matches across all brands.
+          Some of these hold up across brands better than others. Hale Navy and Urbane Bronze have nearly identical matches in every brand listed, so you can buy either wherever is convenient. Heritage Red is the hardest to substitute: its closest Sherwin-Williams and Behr colors are a visible difference away, and the nearest stand-in is Valspar Quite Red, rated very similar. If you want that exact red, buy it from Benjamin Moore. Every color page has the full list of matches across all brands.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">What each color family pairs with</h2>
