@@ -92,6 +92,9 @@ export default function EmbedPage() {
               <p className="mt-3 text-sm text-on-surface-variant">
                 Paste it anywhere in your page&apos;s HTML — a blog post, a sidebar, a resources page. Keep the credit line so your readers (and you) can find the full tool. That&apos;s the only condition: the widget is free.
               </p>
+              <p className="mt-3 text-sm text-on-surface">
+                <strong>Attribution:</strong> free use requires a visible link to https://www.paintcolorhq.com on the page that shows the widget. Keep the embed code unmodified, including the credit line inside the widget and the &ldquo;Cross-brand paint matching by PaintColorHQ&rdquo; line under it.
+              </p>
               <ul className="mt-6 space-y-3 text-sm text-on-surface">
                 <li className="flex gap-3"><span className="font-bold text-primary">1.</span> Copy the snippet above.</li>
                 <li className="flex gap-3"><span className="font-bold text-primary">2.</span> Paste it into your site&apos;s HTML where you want the matcher to appear.</li>

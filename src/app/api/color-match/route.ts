@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse, after } from "next/server";
 import { findColorMatches } from "@/lib/color-match";
 import { logUsageEvent, usageMetaFromRequest, isOnSiteReferer } from "@/lib/usage-log";
+import { logRequestReferrer } from "@/lib/referrer-log";
+import { ATTRIBUTION } from "@/lib/attribution";
 
 // Public read-only cross-brand match API. CORS-open so it can be called from any
 // origin — the embeddable widget, the on-site tools, third-party integrations,
@@ -9,6 +11,8 @@ import { logUsageEvent, usageMetaFromRequest, isOnSiteReferer } from "@/lib/usag
 // FREE tier (no/invalid proxy secret): top-10 matches with numeric Delta E. This
 // is the response the free widget + on-site tools depend on — do NOT change its
 // shape. The data is already public on the color pages, so it's open + CDN-cached.
+// Free use requires visible credit; the free body carries an `attribution` field
+// (added alongside `matches`, nothing renamed) stating the required link.
 //
 // PAID tier (valid X-RapidAPI-Proxy-Secret, set via RAPIDAPI_PROXY_SECRET): the
 // enhanced response — up to 50 matches, optional batch (comma-separated hex), and
@@ -83,6 +87,11 @@ export async function GET(request: NextRequest) {
     );
   }
 
+  // Attribution tracking: record the external page using the free API so
+  // scripts/check-attribution.ts can confirm it credits us. Same cache-MISS-only
+  // caveat as above. Paid (RapidAPI) callers owe no credit, so they are skipped.
+  if (!paid) after(() => logRequestReferrer("api", request));
+
   // Paid responses must not be shared-cached (would leak paid fields to free, or
   // serve a stale free body to a paid caller). Free stays CDN-cached for 24h.
   const cacheHeader = paid
@@ -98,5 +107,6 @@ export async function GET(request: NextRequest) {
   }
 
   const matches = await findColorMatches(hexes[0], brand, limit, paid);
-  return NextResponse.json({ matches }, { headers });
+  if (paid) return NextResponse.json({ matches }, { headers });
+  return NextResponse.json({ matches, attribution: ATTRIBUTION }, { headers });
 }

@@ -82,6 +82,41 @@ Reference table for color categories.
 
 Pre-seeded with 15 families: Red, Orange, Yellow, Green, Blue, Purple, Pink, White, Off-White, Black, Gray, Brown, Beige, Tan, Neutral.
 
+### `api_referrers`
+
+External pages that use the free color-match API, the MCP tool or the embed widget, and whether they credit us. Free use requires a visible link to https://www.paintcolorhq.com. Migration: `supabase/migrations/013_api_referrers.sql`.
+
+| Column | Type | Notes |
+|--------|------|-------|
+| id | bigint | Identity primary key |
+| kind | text | `api`, `embed` or `mcp` (CHECK) |
+| referrer_url | text | Normalized page URL: scheme, host, path; no query, fragment or credentials; max 500 chars |
+| referrer_host | text | Lowercase hostname |
+| first_seen | timestamptz | Default now() |
+| last_seen | timestamptz | Updated on every logged hit |
+| hits | bigint | Default 1, incremented per logged hit |
+| last_checked | timestamptz | Null until `scripts/check-attribution.ts --write` runs |
+| has_credit | boolean | Null = unchecked or unreachable |
+| check_note | text | Checker's reason, e.g. "link found", "unreachable: HTTP 403" |
+
+**Unique constraint:** `(kind, referrer_url)`
+
+**Access:** RLS enabled with no policies; anon and authenticated have no table privileges. Writes go through `log_api_referrer(p_kind, p_url, p_host)`, a SECURITY DEFINER upsert (insert, or `hits + 1` and `last_seen = now()`) executable by `service_role` only.
+
+**Writers:** `src/lib/referrer-log.ts`, called inside `after()` (never blocks or fails a response) from:
+- `/api/color-match` (free tier only, `kind = 'api'`): Referer, Origin as fallback.
+- `/api/mcp` tool calls (`kind = 'mcp'`): Referer, Origin as fallback.
+- `/api/embed-event`, the widget's load beacon (`kind = 'embed'`): the parent page URL the widget reports. `/embed/match` itself is a static CDN page, so no server code sees its Referer.
+
+Our own hosts (`paintcolorhq.com`, `*.vercel.app`), localhost and private/LAN addresses are dropped (`src/lib/attribution.ts`).
+
+**Blind spots:**
+- Server-to-server API and MCP calls send no Referer or Origin and cannot be attributed. Most MCP clients fall here.
+- Browsers send only the origin on most cross-origin requests, so many rows are a site root, not the page that uses us.
+- The free API response is edge-cached for 24h, so only cache misses reach the function and get logged. `hits` undercounts.
+
+**Reader:** `npm run check-attribution` (dry run, rows unchecked for 7 days), `-- --all` for every row, `-- --write` to save `last_checked`, `has_credit`, `check_note`. It fetches static HTML only, so a link injected by JavaScript is missed: treat "no" as "check by hand".
+
 ## Indexes
 
 | Index | Table | Columns | Type |

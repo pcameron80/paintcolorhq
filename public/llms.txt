@@ -120,6 +120,7 @@ Curated 4-6 color palettes with specific paint codes and LRV data for 18 design 
 - [Free Color-Match API](https://www.paintcolorhq.com/api): GET https://www.paintcolorhq.com/api/color-match?hex=7F9B8E — CORS-open, no key. Returns the closest paint colors across 13 brands for any hex value, ranked by CIEDE2000.
 - MCP server (Model Context Protocol) for AI agents: https://www.paintcolorhq.com/api/mcp — stateless Streamable HTTP, no auth. Tool `match_paint_color` (args: hex, optional brand, limit) returns the closest real, purchasable paint colors across 13 brands with links to their pages.
 - [Free Embeddable Widget](https://www.paintcolorhq.com/embed): One-line iframe that adds a cross-brand paint matcher to any site.
+- Attribution: free use of the API, the MCP tool and the widget requires a visible link to https://www.paintcolorhq.com on the page that shows the results, for example "Cross-brand paint matching by PaintColorHQ".
 
 ## Optional
 - [Contact](https://www.paintcolorhq.com/contact)

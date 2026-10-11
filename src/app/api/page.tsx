@@ -47,6 +47,13 @@ export default function ApiDocsPage() {
           <p className="mt-3 text-sm text-on-surface-variant">
             CORS-open, no key required for the free tier. Responses are cached at the edge for 24 hours.
           </p>
+          <p className="mt-3 text-sm text-on-surface">
+            <strong>Attribution:</strong> free use requires a visible link to{" "}
+            <a href="https://www.paintcolorhq.com" className="text-secondary underline underline-offset-2 hover:no-underline">https://www.paintcolorhq.com</a>{" "}
+            on the page that shows the results, for example &ldquo;Cross-brand paint matching by PaintColorHQ&rdquo;. Every
+            free response includes an <code className="font-mono">attribution</code> field with the text and URL. The paid
+            tier has no attribution requirement.
+          </p>
         </section>
 
         <section className="mt-10">
@@ -95,7 +102,12 @@ export default function ApiDocsPage() {
       "colorNumber": "6205",
       "deltaE": 1.84
     }
-  ]
+  ],
+  "attribution": {
+    "text": "Cross-brand paint matching by PaintColorHQ",
+    "url": "https://www.paintcolorhq.com",
+    "required": "Free use requires a visible link to https://www.paintcolorhq.com on the page that shows these results."
+  }
 }`}</Code>
         </section>
 
@@ -141,6 +153,10 @@ export default function ApiDocsPage() {
             Tool <code className="font-mono">match_paint_color</code> — pass a <code className="font-mono">hex</code> value and
             get the closest real, purchasable paint colors across 13 brands, scored with CIEDE2000. Optional
             <code className="font-mono"> brand</code> and <code className="font-mono">limit</code> arguments.
+          </p>
+          <p className="mt-3 text-sm text-on-surface-variant">
+            The same attribution rule applies: if an app or site shows these results on a web page, that page needs a
+            visible link to https://www.paintcolorhq.com.
           </p>
         </section>
 
