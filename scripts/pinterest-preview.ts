@@ -25,9 +25,10 @@ import {
   type PinSpec,
   type PublishedLog,
 } from "./pinterest/queue.ts";
+import { ledgerPath, readLedger } from "./social/ledger.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const LOG_PATH = path.resolve(__dirname, "pinterest/published.json");
+const LOG_PATH = ledgerPath("pinterest");
 const OUT_PATH = path.resolve(__dirname, "pinterest/preview.html");
 
 const daysArg = process.argv.find((a) => a.startsWith("--days="));
@@ -42,11 +43,8 @@ const TYPE_COLOR: Record<string, string> = {
 };
 
 function loadLog(): PublishedLog {
-  try {
-    return JSON.parse(fs.readFileSync(LOG_PATH, "utf8"));
-  } catch {
-    return {};
-  }
+  // Preview only: a missing ledger just means "nothing posted yet".
+  return readLedger(LOG_PATH, { allowMissing: true }) as PublishedLog;
 }
 
 /** Real pin image: live URL for programmatic pins, local file for curated. */

@@ -15,8 +15,9 @@
  *   3. POST /{IG_ID}/media_publish (creation_id)          -> media id
  *
  * Auth is a never-expiring Business system-user token (no refresh needed).
- * A separate log (scripts/instagram/ig-published.json) keyed by queue key means
- * a pin can post to both Pinterest and Instagram, and re-runs never double-post.
+ * A separate log (instagram-published.json in the shared state folder, see
+ * scripts/social/ledger.ts) keyed by queue key means a pin can post to both
+ * Pinterest and Instagram, and re-runs never double-post.
  *
  * Env (.env.local, untracked):
  *   META_PAGE_ACCESS_TOKEN   system-user token with instagram_content_publish
@@ -29,17 +30,17 @@
  *   npx tsx scripts/instagram-publish.ts --only=<queue-key>
  */
 import * as path from "path";
-import * as fs from "fs";
 import { execFile } from "child_process";
 import { fileURLToPath } from "url";
 import * as dotenv from "dotenv";
 import { QUEUE, selectForDrip, unpublished, type PinSpec, type PublishedLog } from "./pinterest/queue.ts";
 import { eligible, imageUrl4x5, buildCaption } from "./social-content.ts";
+import { ledgerPath, readLedger, writeLedger } from "./social/ledger.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ENV_PATH = path.resolve(__dirname, "../.env.local");
-const LOG_PATH = path.resolve(__dirname, "instagram/ig-published.json");
+const LOG_PATH = ledgerPath("instagram");
 dotenv.config({ path: ENV_PATH });
 
 const TOKEN = process.env.META_PAGE_ACCESS_TOKEN;
@@ -67,14 +68,10 @@ const onlyKeys = onlyArg ? new Set(onlyArg.replace("--only=", "").split(",")) : 
 // ---- log helpers ----
 type IgPublishedLog = Record<string, { mediaId: string; publishedAt: string }>;
 function loadLog(): IgPublishedLog {
-  try {
-    return JSON.parse(fs.readFileSync(LOG_PATH, "utf8"));
-  } catch {
-    return {};
-  }
+  return readLedger(LOG_PATH) as IgPublishedLog;
 }
 function saveLog(log: IgPublishedLog) {
-  fs.writeFileSync(LOG_PATH, JSON.stringify(log, null, 2) + "\n");
+  writeLedger(LOG_PATH, log);
 }
 
 // ---- Graph API ----

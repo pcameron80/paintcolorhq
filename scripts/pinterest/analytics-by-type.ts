@@ -29,10 +29,10 @@ import * as path from "path";
 import * as fs from "fs";
 import { fileURLToPath } from "url";
 import { BOARD_IDS, TYPE_FOR_BOARD } from "./queue.ts";
+import { ledgerPath, readLedger } from "../social/ledger.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ENV_PATH = path.resolve(__dirname, "../../.env.local");
-const PUBLISHED_PATH = path.resolve(__dirname, "published.json");
 const API = "https://api.pinterest.com/v5";
 const APP_ID = process.env.PINTEREST_APP_ID!;
 const APP_SECRET = process.env.PINTEREST_APP_SECRET_KEY!;
@@ -252,7 +252,7 @@ async function main() {
   const end = arg("end") ?? daysAgo(1); // yesterday — today isn't finalized
 
   const dripIds = new Set<string>(
-    Object.values(JSON.parse(fs.readFileSync(PUBLISHED_PATH, "utf8")) as Record<string, { pinId?: string }>)
+    Object.values(readLedger(ledgerPath("pinterest")) as Record<string, { pinId?: string }>)
       .map((v) => v.pinId)
       .filter(Boolean) as string[],
   );

@@ -12,8 +12,9 @@
  * (A system-user token can't post to a Page directly — Graph returns #200 — but
  *  the Page token derived from it can.)
  *
- * Separate log (scripts/facebook/fb-published.json) so a pin can post to
- * Pinterest, Instagram, AND Facebook independently without double-posting.
+ * Separate log (facebook-published.json in the shared state folder, see
+ * scripts/social/ledger.ts) so a pin can post to Pinterest, Instagram, AND
+ * Facebook independently without double-posting.
  *
  * Env (.env.local, untracked):
  *   META_PAGE_ACCESS_TOKEN   system-user token with pages_manage_posts
@@ -26,17 +27,17 @@
  *   npx tsx scripts/facebook-publish.ts --only=<queue-key>
  */
 import * as path from "path";
-import * as fs from "fs";
 import { execFile } from "child_process";
 import { fileURLToPath } from "url";
 import * as dotenv from "dotenv";
 import { QUEUE, selectForDrip, unpublished, type PinSpec, type PublishedLog } from "./pinterest/queue.ts";
 import { eligible, imageUrl4x5, buildCaption } from "./social-content.ts";
+import { ledgerPath, readLedger, writeLedger } from "./social/ledger.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ENV_PATH = path.resolve(__dirname, "../.env.local");
-const LOG_PATH = path.resolve(__dirname, "facebook/fb-published.json");
+const LOG_PATH = ledgerPath("facebook");
 dotenv.config({ path: ENV_PATH });
 
 const TOKEN = process.env.META_PAGE_ACCESS_TOKEN;
@@ -64,14 +65,10 @@ const onlyKeys = onlyArg ? new Set(onlyArg.replace("--only=", "").split(",")) : 
 // ---- log helpers ----
 type FbPublishedLog = Record<string, { postId: string; publishedAt: string }>;
 function loadLog(): FbPublishedLog {
-  try {
-    return JSON.parse(fs.readFileSync(LOG_PATH, "utf8"));
-  } catch {
-    return {};
-  }
+  return readLedger(LOG_PATH) as FbPublishedLog;
 }
 function saveLog(log: FbPublishedLog) {
-  fs.writeFileSync(LOG_PATH, JSON.stringify(log, null, 2) + "\n");
+  writeLedger(LOG_PATH, log);
 }
 
 /** A system-user token can't post to a Page; derive the Page token once. */
