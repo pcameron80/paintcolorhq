@@ -181,7 +181,7 @@ const blogPosts: BlogPost[] = [
           </li>
         </ul>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          To check any pair yourself, put both colors in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>. To scan a whole brand at once, the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> and <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Benjamin Moore to Sherwin-Williams</Link> charts list the top crossovers, and the <Link href="/match" className="text-brand-blue hover:underline">paint color match</Link> page links every brand pair. Neutrals like these sit in our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link>, <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families. For a deeper walkthrough of cross-brand matching, read <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">how to match paint colors across brands</Link>.
+          To check any pair yourself, put both colors in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>. To scan a whole brand at once, the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> and <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Benjamin Moore to Sherwin-Williams</Link> charts list the top crossovers, and the <Link href="/match" className="text-brand-blue hover:underline">paint color match</Link> page links every brand pair. Neutrals like these sit in our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link>, <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families. For a deeper walkthrough of cross-brand matching, read <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">how to find the equivalent of a paint color in another brand</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           You can also ask most paint counters to mix another brand&apos;s color in their own paint. That is still an approximation in a different base, so it needs the same test as a catalog substitute.
@@ -3194,11 +3194,11 @@ const blogPosts: BlogPost[] = [
   {
     slug: "how-to-find-perfect-color-match-across-brands",
     modifiedDate: "2026-09-20",
-    title: "How to Match Paint Colors Across Brands",
+    title: "How to Find the Equivalent of a Paint Color in Another Brand",
     date: "2025-12-11",
     author: "Philip Cameron",
     excerpt:
-      "The definitive guide to cross-brand paint color matching. Learn how CIEDE2000, Delta E, and a 26,000+ color database find the closest equivalents.",
+      "Find the closest Benjamin Moore color for a Sherwin-Williams color, or any other brand pair. How CIEDE2000 closeness labels work, with real examples from a 26,000+ color database.",
     coverColor: "#6B8F71",
     coverImage: "/blog/how-to-find-perfect-color-match-across-brands.webp",
     tags: ["How-To", "Cross-Brand Matching", "Color Science"],
@@ -3226,8 +3226,11 @@ const blogPosts: BlogPost[] = [
     ],
     content: () => (
       <>
-        <p className="text-lg leading-relaxed text-gray-800">
-          To match a paint color across brands, look up the color on Paint Color HQ, where every color page displays CIEDE2000-calculated matches from all 13 brands in our 26,000+ color database, ranked from closest to farthest. A match labeled Nearly identical is hard to tell apart by eye. For example, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove (OC-17)</Link> matches to <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> Pure White (SW 7005) as Very similar, and <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> Cornforth White (No. 228) matches to SW Repose Gray as Nearly identical. This guide explains the science, the tools, and the step-by-step process for finding accurate cross-brand equivalents.
+        <p className="text-base leading-relaxed text-gray-600">
+          Trying to match a paint that is already on your wall? Start with <Link href="/blog/how-to-match-paint-color" className="text-brand-blue hover:underline">how to match paint color on a wall</Link>. This guide covers the other case: you know the brand and color name and want its equivalent in a different brand.
+        </p>
+        <p className="mt-4 text-lg leading-relaxed text-gray-800">
+          To find a color&apos;s equivalent in another brand, look up the color on Paint Color HQ, where every color page displays CIEDE2000-calculated matches from all 13 brands in our 26,000+ color database, ranked from closest to farthest. A match labeled Nearly identical is hard to tell apart by eye. For example, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove (OC-17)</Link> matches to <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> Pure White (SW 7005) as Very similar, and <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> Cornforth White (No. 228) matches to SW Repose Gray as Nearly identical. This guide explains the science, the tools, and the step-by-step process for finding accurate cross-brand equivalents.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why You Need Cross-Brand Paint Matching</h2>

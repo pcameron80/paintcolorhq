@@ -36,7 +36,7 @@ export function AuthButton() {
   return (
     <a
       href="/auth/login"
-      className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-lg font-headline text-sm font-bold tracking-tight"
+      className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-lg whitespace-nowrap font-headline text-sm font-bold tracking-tight"
     >
       Sign in
     </a>

@@ -6,8 +6,8 @@ import { MobileNav } from "./mobile-nav";
 export function Header() {
   return (
     <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm" suppressHydrationWarning>
-      <div className="flex justify-between items-center px-6 md:px-12 py-4 max-w-full">
-        <Link href="/" className="flex items-center gap-2">
+      <div className="flex justify-between items-center gap-4 px-6 md:px-12 py-4 max-w-full">
+        <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
             src="/logo.webp"
             alt="Paint Color HQ"
@@ -17,8 +17,8 @@ export function Header() {
           />
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center space-x-8">
+        {/* Desktop nav: lg (1024px) and up. Below that the mobile menu carries every link. */}
+        <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
           <Link
             href="/brands"
             className="font-headline tracking-tight text-sm uppercase font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300"
@@ -27,7 +27,7 @@ export function Header() {
           </Link>
           <Link
             href="/match"
-            className="hidden lg:inline font-headline tracking-tight text-sm uppercase font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300"
+            className="font-headline tracking-tight text-sm uppercase font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300"
           >
             Match
           </Link>
@@ -57,7 +57,7 @@ export function Header() {
           </Link>
         </nav>
 
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden lg:flex shrink-0 items-center gap-4 xl:gap-6 whitespace-nowrap">
           <Link
             href="/search"
             className="flex items-center bg-surface-container-low px-4 py-2 rounded-xl group hover:bg-surface-container-lowest transition-all"
