@@ -236,9 +236,9 @@ export default function ColorIdentifierPage() {
                 sq ft/gallon coverage rate.
               </li>
               <li>
-                <strong className="text-on-surface">Understand undertones</strong> — a gray with a Delta E
-                of 2 from another gray can still have completely different
-                undertones (warm pink vs. cool blue). Our guide on{" "}
+                <strong className="text-on-surface">Understand undertones</strong>: two grays that rate
+                very similar can still lean in different directions (warm pink
+                vs. cool blue). Our guide on{" "}
                 <Link href="/blog/understanding-paint-color-undertones" className="text-primary underline hover:text-primary/80">
                   understanding paint color undertones
                 </Link>{" "}
