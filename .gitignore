@@ -73,15 +73,17 @@ scripts/drift/*.db
 scripts/drift/*.db-shm
 scripts/drift/*.db-wal
 
-# Pinterest runtime state (pin IDs + drip log; not secrets, but runtime-only)
+# Social drip runtime state. The ledgers, logs and reports now live in
+# ~/Library/Application Support/PaintColorHQ/social/ (scripts/social/ledger.ts);
+# these patterns cover copies left in older checkouts.
 scripts/pinterest/published*.json
 scripts/pinterest/drip.log
 scripts/pinterest/analytics.log
 scripts/pinterest/reports/
 scripts/pinterest/preview.html
-
-# Social drip run logs (runtime-only; the published.json ledgers ARE tracked)
+scripts/facebook/fb-published.json
 scripts/facebook/drip.log
+scripts/instagram/ig-published.json
 scripts/instagram/drip.log
 
 # Python bytecode (e.g. the drift compare tooling)

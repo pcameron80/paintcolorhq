@@ -10,7 +10,9 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>__REPORTSH__</string>
+    <string>__RUNSH__</string>
+    <string>__JOB__</string>
+    <string>__SCRIPT__</string>
   </array>
   <key>EnvironmentVariables</key>
   <dict>
@@ -24,7 +26,7 @@
     <key>Hour</key><integer>9</integer>
     <key>Minute</key><integer>0</integer>
   </dict>
-  <key>StandardErrorPath</key><string>__REPO__/scripts/pinterest/analytics.log</string>
+  <key>StandardErrorPath</key><string>__LOG__</string>
   <key>RunAtLoad</key><false/>
 </dict>
 </plist>

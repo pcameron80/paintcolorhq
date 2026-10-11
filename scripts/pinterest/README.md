@@ -79,11 +79,16 @@ can't load `file://`; open it in a real browser.)
 ## Key files
 
 - `queue.ts` — QUEUE assembly + `selectDailyMix`/`DRIP_CONFIG` (pure, unit-tested)
-- `drip.sh` + `*.plist.template` + `install-drip-schedule.sh` — the launchd agent
+- `drip.sh` + `*.plist.template` — the launchd agent's job and schedule; install all four
+  social agents with `scripts/social/install-schedules.sh` (they run from a detached
+  worktree of the latest `origin/main`, never from the main checkout's branch)
 - `pinterest-publish.ts` — `--daily` (drip), `--dry-run`, `--only=`
 - `pinterest-generate.ts` — Gemini image gen (`--only=`, `--force`)
 - `pinterest-preview.ts` — the N-day contact-sheet preview
-- `published.json` — **load-bearing** global publish log (gitignored); deleting it
-  re-posts everything
-- TCC: launchd needs Full Disk Access on `/bin/bash` AND node to read `~/Documents`
-  (repo) + `~/Desktop` (images), else runs exit "Operation not permitted".
+- `pinterest-published.json` in `~/Library/Application Support/PaintColorHQ/social/` —
+  **load-bearing** global publish log, shared by every checkout (`scripts/social/ledger.ts`).
+  The publishers refuse to run without it rather than re-post everything. Drip logs are
+  in `logs/` and the weekly reports in `pinterest-reports/` beside it.
+- TCC: launchd needs Full Disk Access on `/bin/bash` AND `/usr/local/bin/node` to read
+  `~/Documents` (node_modules, .env.local) + `~/Desktop` (images), else runs exit
+  "Operation not permitted".

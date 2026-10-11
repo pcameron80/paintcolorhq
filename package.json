@@ -28,6 +28,7 @@
     "indexnow-blog": "tsx scripts/blog/indexnow-submit.ts",
     "preview:pinterest": "tsx scripts/pinterest-preview.ts",
     "test:pinterest": "node --import tsx --test scripts/pinterest/queue.test.ts",
+    "test:social": "node --import tsx --test scripts/social/*.test.ts",
     "test:blog": "node --import tsx --test scripts/blog/*.test.ts",
     "test:dedupe": "node --import tsx --test scripts/lib/dedupe-rules.test.ts",
     "test:behr-import": "node --import tsx --test scripts/lib/behr-import-rules.test.ts",

@@ -8,8 +8,9 @@
  * Requires an OAuth access token with pins:write (run pinterest-auth.ts first).
  * Auto-refreshes the access token on 401 using PINTEREST_REFRESH_TOKEN.
  *
- * A global publish log (scripts/pinterest/published.json) records key ->
- * Pinterest pin id so re-runs never double-post.
+ * A global publish log (pinterest-published.json in the shared state folder,
+ * see scripts/social/ledger.ts) records key -> Pinterest pin id so re-runs
+ * never double-post.
  *
  * Usage:
  *   npx tsx scripts/pinterest-publish.ts --dry-run --drip=2  # show drip selection
@@ -34,11 +35,12 @@ import {
   type PinSpec,
   type PublishedLog,
 } from "./pinterest/queue.ts";
+import { ledgerPath, readLedger, writeLedger } from "./social/ledger.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ENV_PATH = path.resolve(__dirname, "../.env.local");
-const LOG_PATH = path.resolve(__dirname, "pinterest/published.json");
+const LOG_PATH = ledgerPath("pinterest");
 dotenv.config({ path: ENV_PATH });
 
 /** macOS local notification — best-effort, never throws. */
@@ -72,14 +74,10 @@ function upsertEnv(updates: Record<string, string>) {
 }
 
 function loadLog(): PublishedLog {
-  try {
-    return JSON.parse(fs.readFileSync(LOG_PATH, "utf8"));
-  } catch {
-    return {};
-  }
+  return readLedger(LOG_PATH) as PublishedLog;
 }
 function saveLog(log: PublishedLog) {
-  fs.writeFileSync(LOG_PATH, JSON.stringify(log, null, 2) + "\n");
+  writeLedger(LOG_PATH, log);
 }
 
 let accessToken = process.env.PINTEREST_ACCESS_TOKEN!;
