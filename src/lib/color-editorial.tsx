@@ -361,21 +361,20 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/pale-oak-oc-20": (
     <>
       <p>
-        Pale Oak (OC-20) is hex #E8D8D0 with an estimated LRV of 68.6. Our
-        database files it in the orange family because of its hue, even though it is used as a light
-        neutral. Behr Bee&apos;s Knees (T13-11) and PPG Sandy Beach (1072-2) are nearly identical
-        digital matches, followed by Dunn-Edwards Gallery Gray (DE6072) and Valspar Mosaic Pink
-        (7001-13). The nearest Sherwin-Williams color is Faint Coral (SW 6329), also nearly identical.
+        Pale Oak (OC-20) is hex #DDD9CE with an estimated LRV of 68.6. Our
+        database files it in the beige family. Behr Campfire Ash (N320-1) is a nearly identical
+        digital match, followed by Valspar Glass Pebble (8004-26A), Dunn-Edwards Shady (DEC774) and
+        PPG Silent Smoke (1025-2). The nearest Sherwin-Williams color is Oat Milk (SW 9501), also
+        nearly identical.
         At LRV 68.6 it is 14.6 points darker than White Dove (OC-17, LRV 83.2), and our white-paint
         guide describes it as carrying more color than White Dove while still reading as a white. Our
         beige guide groups it with the light neutrals. Compare physical samples before switching brands,
         since these matches are calculated from digital values.
       </p>
       <p>
-        Pale Oak is the warmest and softest of Benjamin Moore&apos;s popular greiges — a light
-        oatmeal-taupe at LRV 69 with a barely-there pink-beige softness that reads almost white in
-        bright light and gently warm in shadow. It&apos;s the choice when you want warmth without any
-        yellow.
+        Pale Oak is one of the lightest and softest of Benjamin Moore&apos;s popular greiges, a light
+        oatmeal-taupe at LRV 69 that reads almost white in bright light and gently warm in shadow.
+        It&apos;s the choice when you want warmth without obvious yellow.
       </p>
       <p>
         That subtle warmth is also the catch: next to a cool gray or a stark white it can look slightly
@@ -410,7 +409,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         The cool base is the thing to respect: in north light it can lean slightly blue or green, so
         it&apos;s strongest in rooms with warm or balanced light, or where you want that crisp, cool
         quality on purpose. It pairs with cool whites and stays out of the way of bold furnishings.
-        Sherwin-Williams Silverpointe is a nearly identical match; Behr Ashen Tan is close.
+        Sherwin-Williams Silverpointe is a nearly identical match, and Behr Mortar is nearly identical too.
       </p>
     </>
   ),
@@ -507,7 +506,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         That cool base is the consideration: in north light it leans bluer, so it&apos;s strongest in rooms
         with warm or ample light, or where you want a crisp, cool feel deliberately. It pairs cleanly
-        with white trim and cool-toned finishes. Behr Road Runner and Sherwin-Williams Sweater Weather
+        with white trim and cool-toned finishes. Behr Paving Stones and Sherwin-Williams Sweater Weather
         are both close cross-brand matches.
       </p>
     </>
@@ -536,7 +535,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         In bright light its soft charcoal character shows; in shadow it reads essentially black. It pairs
-        beautifully with warm whites, brass, and natural wood. Behr Timber Brown is its closest
+        beautifully with warm whites, brass, and natural wood. Behr Night Club is its closest
         cross-brand match.
       </p>
     </>
@@ -608,7 +607,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         As a saturated mid-dark color it amplifies lighting — warmer bulbs deepen it, cool daylight
         sharpens its green, so sample it where it&apos;s going. It pairs beautifully with brass, warm wood,
-        and creamy whites. Behr Myth and Benjamin Moore Fair Isle Blue are its closest cross-brand matches.
+        and creamy whites. Benjamin Moore Fair Isle Blue and Behr River Rapids are its closest cross-brand matches.
       </p>
     </>
   ),
@@ -742,7 +741,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         In bright rooms it reads as a rich greige; in dim light it can go quite dark, so check it in
         your own space. It anchors a room well against white trim and works on exteriors too. Behr
-        Moleskin is a nearly identical match.
+        Downtown Gray is a nearly identical match.
       </p>
     </>
   ),
@@ -936,7 +935,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its gentle warmth keeps it livable, but like any soft white it can look faintly creamy beside a
-        bright white, so keep the whites consistent. Behr Cinnamon Cake is a nearly identical match, with
+        bright white, so keep the whites consistent. Behr Shoelace is a nearly identical match, with
         Benjamin Moore Etiquette close behind.
       </p>
     </>
@@ -950,8 +949,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Because it&apos;s soft and grayed, it reads as a serene near-neutral, though it can lean cooler in
-        north light. It pairs with crisp whites and natural wood. Behr High Speed Access and Benjamin
-        Moore Smoke are its closest cross-brand matches.
+        north light. It pairs with crisp whites and natural wood. Behr Cloudy Day and Benjamin Moore
+        Smoke are its closest cross-brand matches.
       </p>
     </>
   ),
@@ -1023,7 +1022,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         As a deep, saturated color it amplifies lighting and needs some daylight to show its depth
         rather than going near-black. It looks striking with brass, warm wood, and creamy whites. Behr
-        Orion Gray and Benjamin Moore Blue Note are its closest cross-brand matches.
+        New Navy Blue and Benjamin Moore Blue Note are its closest cross-brand matches.
       </p>
     </>
   ),
@@ -1036,7 +1035,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         At this depth it needs light to read as green rather than near-black, and it pairs beautifully
-        with warm whites, brass, and natural wood. Benjamin Moore Rainy Afternoon and Behr Gray Owl are
+        with warm whites, brass, and natural wood. Benjamin Moore Rainy Afternoon and Behr Pinecone Hill are
         its closest cross-brand matches.
       </p>
     </>
@@ -1046,8 +1045,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Urbane Bronze (SW 7048) is hex #54504A with an estimated LRV of 8.1, and our database classifies
         its undertone as warm (golden). It sits in our gray family. Benjamin Moore Dragon&apos;s Breath
-        (1547) is its closest digital match and nearly identical, followed by Behr Underground (N200-7),
-        Dunn-Edwards Renwick Brown (DET630) and Valspar Dark Oasis (6011-4), all nearly identical. PPG
+        (1547) is its closest digital match and nearly identical, followed by Valspar Semi-Sweet (4003-2C),
+        Dunn-Edwards Renwick Brown (DET630) and Behr Black Bean (790D-7), all nearly identical. PPG
         Deepest Earth Green (30YY 07/041) and Dutch Boy Charred (440-7DB) are very similar rather than
         direct swaps. Against Iron Ore (SW 7069, LRV 5.6), Urbane Bronze is 2.5
         points lighter and reads warm. Our white-paint guide pairs it with Greek
@@ -1063,7 +1062,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         It comes alive against warm whites, wood, and brass, and reads richest where there&apos;s some light
         to bring out the bronze; in shadow it goes nearly black. Its nearly identical cross-brand match is
-        Benjamin Moore Dragon&apos;s Breath, with Behr Underground close behind.
+        Benjamin Moore Dragon&apos;s Breath, with Valspar Semi-Sweet close behind.
       </p>
     </>
   ),
@@ -1121,7 +1120,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Like all soft blue-greens it shifts with the light, reading more blue in cool daylight and softer
         under warm bulbs, so sample where it&apos;s going. It pairs with crisp whites and natural wood. Behr
-        Meteor Shower and Benjamin Moore Heavenly Blue are its closest cross-brand matches.
+        Malaysian Mist and Benjamin Moore Heavenly Blue are its closest cross-brand matches.
       </p>
     </>
   ),
@@ -1218,7 +1217,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its cool, slightly green base reads more strongly in north light, so it&apos;s happiest with warm or
-        balanced light. It pairs with cool whites and stays quietly in the background. Behr Ground Fog is
+        balanced light. It pairs with cool whites and stays quietly in the background. Behr Pensive Sky is
         a nearly identical match, with Sherwin-Williams Opaline close.
       </p>
     </>
@@ -1292,7 +1291,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Yellows read more golden under warm bulbs and truer in daylight; the higher LRV keeps it gentle
         rather than vivid. It pairs with crisp whites and warm wood. Its nearly identical Sherwin-Williams
-        match is Optimistic Yellow, with Behr Wickerware close behind.
+        match is Optimistic Yellow, with Behr Lily Bulb close behind.
       </p>
     </>
   ),
@@ -1321,7 +1320,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its faint pink warmth can surface more against cool whites, so keep companions warm. It&apos;s most
-        flattering in soft natural light. Behr Victorian Pearl is its closest cross-brand match, with
+        flattering in soft natural light. Behr Pastel China is its closest cross-brand match, with
         Sherwin-Williams Intimate White very similar.
       </p>
     </>
@@ -1336,7 +1335,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         As a deep tone it needs some light to show its brown character and reads nearly black in shadow.
-        It pairs beautifully with warm whites, brass, and natural materials. Behr Melted Chocolate is its
+        It pairs beautifully with warm whites, brass, and natural materials. Behr Hickory Grove is its
         closest cross-brand match, with Benjamin Moore Char Brown very similar.
       </p>
     </>
@@ -1435,8 +1434,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         In strong warm light it can read more golden, so it&apos;s worth sampling against your trim and
-        floors. It pairs with creamy whites and wood tones. Behr Coco is a nearly identical cross-brand
-        match, with Sherwin-Williams Sand Beach close behind.
+        floors. It pairs with creamy whites and wood tones. Behr Brown Bread is a nearly identical
+        cross-brand match, with Sherwin-Williams Sand Beach close behind.
       </p>
     </>
   ),
@@ -1520,7 +1519,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It&apos;s forgiving across lighting, though it can show a faint green base in cool light. It pairs
-        with white trim and most wood tones. Behr Armadillo is a nearly identical cross-brand match, with
+        with white trim and most wood tones. Behr Pavestone is a nearly identical cross-brand match, with
         Benjamin Moore Cumulus Cloud close behind.
       </p>
     </>
@@ -1548,8 +1547,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Like any near-black it reads essentially black in shadow and shows its blue depth in good light.
-        It pairs crisply with cool whites or warms up with brass and wood. Behr Spade Black is its
-        closest cross-brand match, with Benjamin Moore After Midnight close.
+        It pairs crisply with cool whites or warms up with brass and wood. Benjamin Moore After Midnight is
+        its closest cross-brand match and nearly identical; the closest Behr is Obsidian Stone, very similar.
       </p>
     </>
   ),
@@ -1783,7 +1782,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its cool base reads slightly bluer in north light. It pairs with crisp whites and pale wood for a
-        calm, modern feel. Benjamin Moore Early Frost is its nearly identical match, with Behr Chicago Fog
+        calm, modern feel. Benjamin Moore Early Frost is its nearly identical match, with Behr Absolute Zero
         close behind.
       </p>
     </>
@@ -1825,7 +1824,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its blue base reads stronger in cool light, so it&apos;s strongest with warm or balanced light. It
-        pairs with crisp whites and natural materials. Behr Sparrow is a nearly identical match, with
+        pairs with crisp whites and natural materials. Behr Morning Parlor is a nearly identical match, with
         Sherwin-Williams Rain close behind.
       </p>
     </>
@@ -1839,7 +1838,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its faint greige warmth keeps it from feeling stark but can look soft beside a true white. It&apos;s
-        most flattering in natural light. Behr Castle Beige is its nearly identical cross-brand match, with
+        most flattering in natural light. Behr Poetic Light is its nearly identical cross-brand match, with
         Benjamin Moore White Winged Dove close behind.
       </p>
     </>
@@ -1853,7 +1852,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its gentle warmth keeps it easy to live with, though it can read faintly soft next to a bright
-        white. Benjamin Moore Silver Satin is its nearly identical cross-brand match, with Behr Spun Wool
+        white. Benjamin Moore Silver Satin is its nearly identical cross-brand match, with Behr Maritime White
         also nearly identical.
       </p>
     </>
@@ -1937,8 +1936,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         At this depth it reads as green only with good light, going essentially black in shadow. It pairs
-        strikingly with brass, warm wood, and creamy whites. Behr Stealth Jet is its closest cross-brand
-        match.
+        strikingly with brass, warm wood, and creamy whites. Dutch Boy Rugged Green is its closest
+        cross-brand match, with Benjamin Moore Waller Green very similar.
       </p>
     </>
   ),
@@ -2008,8 +2007,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         At this depth it needs light to show its green character clearly, deepening toward near-black in
-        shadow. It pairs beautifully with creamy whites, brass, and wood. Behr Pepper Mill is its closest
-        cross-brand match.
+        shadow. It pairs beautifully with creamy whites, brass, and wood. Dutch Boy Homegrown Sage and PPG
+        English Ivy are its closest cross-brand matches, both nearly identical.
       </p>
     </>
   ),
@@ -2146,7 +2145,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its blue base reads a touch stronger in cool light. It pairs with crisp whites and natural wood
-        for a serene feel. Behr Blue Willow is its closest cross-brand match, with Benjamin Moore Marlboro
+        for a serene feel. Behr Alluring Blue is its closest cross-brand match, with Benjamin Moore Marlboro
         Blue close behind.
       </p>
     </>
@@ -2161,7 +2160,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Like all soft blue-greens it&apos;s hard to predict from the chip, so sample where it&apos;s going. It
         pairs with crisp whites and natural wood. Benjamin Moore Turquoise Mist is its nearly identical
-        cross-brand match, with Behr Heath Gray close behind.
+        cross-brand match, with Behr Frosted Jade close behind.
       </p>
     </>
   ),
@@ -2245,7 +2244,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         At this depth it reads darker and bluer in low light, so sample in place. It pairs with crisp
         white trim and cool-toned finishes. Benjamin Moore Rainstorm is its closest cross-brand match,
-        with Behr Puddle close.
+        with Behr Dusk Blue close.
       </p>
     </>
   ),
@@ -2314,7 +2313,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its softness keeps it easy to live with, though it can look gentle beside a true bright white. It
-        pairs with warm and cool neutrals alike. Behr Nude is its nearly identical cross-brand match, with
+        pairs with warm and cool neutrals alike. Behr Aspen Snow is its nearly identical cross-brand match, with
         Sherwin-Williams Cold Foam close behind.
       </p>
     </>
@@ -2340,7 +2339,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         it sits in our white family. Its nearest Sherwin-Williams color is Cotton (SW 9581), a nearly
         identical digital match, and Sherwin-Williams Alabaster (SW 7008) is nearly identical too, which
         makes Swiss Coffee the Benjamin Moore route for Alabaster loyalists. PPG Bubble Mint (83YY
-        85/056), Valspar Polar White (7003-16) and Behr Sail Cloth (N300-1) are also nearly identical.
+        85/056), Valspar Polar White (7003-16) and Behr Silver Leaf (W-F-720) are also nearly identical.
         Six of the 13 brands we track sell a color named Swiss Coffee, and they are not the same paint:
         Behr Swiss Coffee (12) is close to this one but lighter at LRV 84.0, and Dunn-Edwards Swiss
         Coffee (DEW341) sits far higher at LRV 91.1. Order by code (OC-45), not by name. Compare
