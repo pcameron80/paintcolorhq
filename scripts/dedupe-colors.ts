@@ -6,7 +6,7 @@
  * For each group this script:
  *   1. Folds the dupes' color numbers into canonical.alternate_numbers
  *   2. Backfills canonical fields that are null but present on a dupe
- *      (lrv, undertone, description_extended, collections)
+ *      (lrv, undertone, collections)
  *   3. Re-points any project_colors rows from dupes to the canonical
  *   4. Deletes the dupes' cross_brand_matches rows (both directions) —
  *      matches are fully recomputed afterwards anyway (compute-matches +
@@ -47,7 +47,6 @@ interface ColorRow {
   hex: string;
   lrv: number | null;
   undertone: string | null;
-  description_extended: string | null;
   collections: unknown;
   alternate_numbers: string[] | null;
   created_at: string;
@@ -89,7 +88,7 @@ async function main() {
     const { data, error } = await supabase
       .from("colors")
       .select(
-        "id, brand_id, name, slug, color_number, hex, lrv, undertone, description_extended, collections, alternate_numbers, created_at",
+        "id, brand_id, name, slug, color_number, hex, lrv, undertone, collections, alternate_numbers, created_at",
       )
       .order("id", { ascending: true })
       .range(from, from + 999);
@@ -180,7 +179,7 @@ async function main() {
     const existingAlts = p.canonical.alternate_numbers ?? [];
     const mergedAlts = [...new Set([...existingAlts, ...p.alternates])];
     if (mergedAlts.length > 0) patch.alternate_numbers = mergedAlts;
-    for (const field of ["lrv", "undertone", "description_extended", "collections"] as const) {
+    for (const field of ["lrv", "undertone", "collections"] as const) {
       if (p.canonical[field] == null) {
         const donor = p.dupes.find((d) => d[field] != null);
         if (donor) patch[field] = donor[field];

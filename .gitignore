@@ -106,5 +106,5 @@ docs/research/
 /src/generated/sitemap.json
 /src/generated/sitemap.json.tmp
 
-# DB row backups written by one-off fix scripts (e.g. scripts/fix-bm-whites.ts --apply)
-/scripts/backups/
+# DB row backups from one-off fix scripts (local only, never commit)
+scripts/backups/
