@@ -54,6 +54,511 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Ceiling paint color (2026-10-22) ──────────────── */
+  {
+    slug: "ceiling-paint-color",
+    title: "Ceiling Paint Color: Same as the Walls or White?",
+    date: "2026-10-22",
+    author: "Philip Cameron",
+    excerpt:
+      "When to paint the ceiling the wall color, when white works better, and the lighter-step colors and mixing ratios paint makers suggest, with whites by LRV.",
+    coverColor: "#EEEFEA",
+    coverImage: "/blog/ceiling-paint-color.webp",
+    tags: ["How-To", "White Paint", "Tips"],
+    faq: [
+      {
+        question: "Should you paint the ceiling the same color as the walls?",
+        answer:
+          "It works well in small rooms, rooms with vaulted or angled ceilings, and color-drenched schemes, because it removes the line where wall meets ceiling. Sherwin-Williams recommends it for smooth ceilings only: a textured ceiling in the wall color becomes the focal point of the room.",
+      },
+      {
+        question: "Does a white ceiling make a room look bigger?",
+        answer:
+          "Sherwin-Williams and Benjamin Moore both say light ceilings make a room feel taller and larger, and Sherwin-Williams calls white the most effective color for reflecting light back into a room. Farrow & Ball adds a caveat: over colored walls, a bright white ceiling draws the eye to the ceiling line and can make the walls look darker.",
+      },
+      {
+        question: "What is the best white for a ceiling?",
+        answer:
+          "For the most reflected light, pick a high-LRV white such as Sherwin-Williams High Reflective White (LRV 92.6) or Benjamin Moore Chantilly Lace (LRV 90). Benjamin Moore suggests choosing a ceiling white with a similar undertone to the walls, so a warmer white suits warm walls. Sherwin-Williams Premium Ceiling Paint lists an LRV of 92 on its data sheet.",
+      },
+      {
+        question: "How do you make a lighter version of the wall color for the ceiling?",
+        answer:
+          "Sherwin-Williams describes diluting the wall paint with white at about 80 percent white to 20 percent wall color. Farrow & Ball says decorators traditionally mixed 25 percent of the wall color into the ceiling white. A ready-made catalog color with nearly the same hue at a higher LRV does the same job and can be reordered by name.",
+      },
+      {
+        question: "What sheen should ceiling paint be?",
+        answer:
+          "Flat. Sherwin-Williams' sheen chart marks only flat for ceilings, and Benjamin Moore says flat paint is more forgiving of flaws because it does not reflect light. Benjamin Moore Waterborne Ceiling Paint is its flattest paint.",
+      },
+      {
+        question: "How does color-changing ceiling paint work?",
+        answer:
+          "It goes on tinted so you can see where you have rolled, then dries white. Benjamin Moore's Insl-X Color-Changing Ceiling Paint and Glidden's Pink to White Ceiling Paint go on pink. Valspar Skylight Color-Changing Ceiling Paint goes on light purple. These are ready-mixed whites and are not meant to be tinted.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Paint the ceiling the same color as the walls when you want the room to feel continuous: small rooms, vaulted or angled ceilings, and color-drenched schemes all benefit, as long as the ceiling is smooth. Choose white when the room needs light, because white reflects the most of it back into the room. The middle option is a lighter version of the wall color, which Sherwin-Williams mixes at about 80 percent white to 20 percent wall color. Whatever color you choose, ceilings are almost always painted flat.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">When to paint the ceiling the same color as the walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The paint makers agree on where this works. Sherwin-Williams says that in a small room a one-color treatment &quot;evokes a restful, soothing mood,&quot; and that in a room with a vaulted or angled ceiling, continuing the wall color across the ceiling &quot;can simplify the shape and help unify the room.&quot; Farrow &amp; Ball makes the same point about oddly angled ceilings and notes that one color leaves &quot;no sharp lines or harsh contrasts.&quot; It calls the full version, with walls, woodwork and ceiling in one shade, color drenching.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two limits are worth knowing before you commit:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Smooth ceilings only.</strong> Sherwin-Williams&apos; color team recommends the same-color ceiling for smooth ceilings, and warns that a textured ceiling in the wall color becomes the focal point of the room.</li>
+          <li><strong>Dark colors pull the ceiling down.</strong> Benjamin Moore says a monochromatic room in jewel tones makes even a large room feel intimate. That is the effect you want in a dining room or den, not in a small, low-ceilinged room you want to feel open.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Light and mid tones behave differently. Farrow &amp; Ball says a light or mid shade carried across the whole space can make a room feel bigger and airier by blurring the line where the walls and ceiling meet, and Sherwin-Williams says one color in a room that already has high ceilings creates an even loftier look.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Same color, same sheen?</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The advice splits here. An older Sherwin-Williams color article says to use the same sheen throughout to keep the room cohesive, and Farrow &amp; Ball recommends one flat finish everywhere for color drenching. Other Sherwin-Williams color guidance and Benjamin Moore suggest varying it: flat or ultra-flat on the ceiling, with a higher sheen on the walls. Both work. One sheen gives the most unbroken look. A flat ceiling over eggshell walls is more practical, because walls get touched and ceilings do not.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">When white is the better ceiling</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams calls white &quot;the most effective color for reflecting light back into the room,&quot; and stresses it for rooms with few or no sources of natural light. Its ceiling guide adds that light ceiling colors make ceilings appear higher and rooms appear larger, and Benjamin Moore says the same of white ceilings in small spaces. White is also simply the default: Sherwin-Williams notes it is the most common ceiling color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Farrow &amp; Ball offers the counterpoint. Over colored walls, a bright white ceiling makes you &quot;immediately aware of the ceiling height,&quot; and &quot;the lighter the ceiling, the darker the walls will appear.&quot; If your walls are a mid-tone color, that is the case for the lighter-step ceiling below rather than a stark white.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s advice for choosing which white is to match the warmth of the walls: pick a ceiling white that shares a similar undertone. Here are the common ceiling whites with their LRV and a measured yellowness score (the b* value of each published color, where a higher number means a creamier white):
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">White</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7f1" name="High Reflective White" brand="SW 7757" href="/colors/sherwin-williams/high-reflective-white-7757" /></td>
+                <td className="py-2 pr-4">92.6</td>
+                <td className="py-2">2.9</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#F4F6F1" name="Chantilly Lace" brand="BM 2121-70" href="/colors/benjamin-moore/chantilly-lace-2121-70" /></td>
+                <td className="py-2 pr-4">90.0</td>
+                <td className="py-2">2.2</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7ee" name="Simply White" brand="BM 2143-70" href="/colors/benjamin-moore/simply-white-2143-70" /></td>
+                <td className="py-2 pr-4">89.5</td>
+                <td className="py-2">4.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /></td>
+                <td className="py-2 pr-4">85.9</td>
+                <td className="py-2">2.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">83.7</td>
+                <td className="py-2">3.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e9ebe7" name="Ceiling Bright White" brand="SW 7007" href="/colors/sherwin-williams/ceiling-bright-white-7007" /></td>
+                <td className="py-2 pr-4">82.5</td>
+                <td className="py-2">1.7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two things stand out. First, despite its name, Ceiling Bright White reflects less light than Extra White or Pure White. What sets it apart is that it carries the least yellow of the group, and Sherwin-Williams describes it as having a clean, blue undertone, so it suits cool walls. Second, the brightest choices are High Reflective White, which Sherwin-Williams calls the brightest, cleanest white among its colors, and Chantilly Lace, which Benjamin Moore names, along with Simply White, as a pick for low ceilings. Sherwin-Williams also says Extra White&apos;s high reflectivity makes it an ideal choice for trim and ceilings. For warm walls in <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link> or <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>, Simply White is the warmest of the high-LRV options. Our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> compares the whites in more depth, and the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> lists every one.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">A lighter version of the wall color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This is the option between white and an exact match, and it has the most manufacturer support. Benjamin Moore says a ceiling in a lighter shade, &quot;often a variant of the wall color,&quot; can visually raise the roof. Sherwin-Williams gives a recipe: dilute the wall paint with white at about 80 percent white to 20 percent wall color, and explains that because ceilings sit in shadow, the lighter shade relates to the wall color and makes the ceiling look higher. Farrow &amp; Ball says decorators traditionally mixed 25 percent of the wall color into the ceiling white.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A custom mix works, but a catalog color is easier to buy again for touch-ups. So we searched our database for each popular wall color&apos;s lighter twin: a color from the same brand, 10 to 30 LRV points lighter, with nearly the same hue as the wall.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Wall color (LRV)</th>
+                <th className="py-2 font-semibold">Lighter ceiling color (LRV)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /> (60.1)</td>
+                <td className="py-2"><Swatch hex="#e3ddd3" name="Aesthetic White" brand="SW 7035" href="/colors/sherwin-williams/aesthetic-white-7035" /> (72.7)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1c7b8" name="Accessible Beige" brand="SW 7036" href="/colors/sherwin-williams/accessible-beige-7036" /> (57.9)</td>
+                <td className="py-2"><Swatch hex="#e6dccd" name="Divine White" brand="SW 6105" href="/colors/sherwin-williams/divine-white-6105" /> (72.4)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc9c0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" /> (58.4)</td>
+                <td className="py-2"><Swatch hex="#efece3" name="Cold Foam" brand="SW 9504" href="/colors/sherwin-williams/cold-foam-9504" /> (83.9)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (63.1)</td>
+                <td className="py-2"><Swatch hex="#e4decf" name="Fossil" brand="BM AF-65" href="/colors/benjamin-moore/fossil-af-65" /> (73.2)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (55.1)</td>
+                <td className="py-2"><Swatch hex="#ece7d8" name="White Down" brand="BM 970" href="/colors/benjamin-moore/white-down-970" /> (76.7)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#E8D8D0" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)</td>
+                <td className="py-2"><Swatch hex="#feeee6" name="Bridal Pink" brand="BM 2013-70" href="/colors/benjamin-moore/bridal-pink-2013-70" /> (85.0)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Aesthetic White, Divine White and Fossil are the subtlest steps, 10 to 15 points lighter, and each still rates very similar to its wall color. White Down, Cold Foam and Bridal Pink are bigger steps, 16 to 26 points lighter, closer to a tinted white. Bridal Pink sounds unlikely next to Pale Oak, but by the numbers it is the closest lighter hue in Benjamin Moore&apos;s catalog. Put any pair side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, then test a sample on the ceiling itself: as Sherwin-Williams points out, ceilings often appear in shadow.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Darker than the walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A darker ceiling lowers a room on purpose. Sherwin-Williams suggests navy, chocolate or charcoal to bring the ceiling down in a white-walled room, and says dark ceilings suit large rooms or high ceilings you want to feel more intimate. Benjamin Moore suggests a color two to three shades darker than the walls, and Farrow &amp; Ball recommends a darker tone on a very high ceiling. A deep navy such as <Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (LRV 7.1) is the kind of color Benjamin Moore means when it says a navy ceiling can make a room look &quot;endless yet intimate.&quot; More deep options are in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Ceiling paint and sheen</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Flat is the ceiling standard. Sherwin-Williams&apos; sheen chart marks only flat for ceilings, and Benjamin Moore explains why: a flat finish does not reflect light, so it is more forgiving of flaws. Our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers the other surfaces.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Dedicated ceiling paints are ultra-flat, and several can be tinted, which matters if you are painting the ceiling a color. From the manufacturer pages and data sheets:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Sherwin-Williams Premium Ceiling Paint:</strong> flat, lists an LRV of 92 on its data sheet, 350 to 400 square feet per gallon, recoat in 4 hours.</li>
+          <li><strong>Sherwin-Williams ProMar Ceiling Paint:</strong> super-flat, and Sherwin-Williams says it is tintable to hundreds of colors.</li>
+          <li><strong>Benjamin Moore Waterborne Ceiling Paint:</strong> ultra flat, which Benjamin Moore calls its flattest paint, available in 3,500+ colors, 400 to 450 square feet per gallon, recoat in 1 to 2 hours.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          To work out how much you need, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> handles walls, and a flat ceiling is roughly the room&apos;s length times its width. Recoat times for other paints are in our guide to <Link href="/blog/how-many-coats-of-paint" className="text-brand-blue hover:underline">how long to wait between coats</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Color-changing ceiling paint</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          White on white is hard to see while you roll, so some ceiling paints go on tinted and dry white:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Benjamin Moore Insl-X Color-Changing Ceiling Paint</strong> goes on pink and turns white as it dries. Benjamin Moore&apos;s data sheet says humidity will not bring the pink back once dry. Its product page listed it as unavailable in October 2026.</li>
+          <li><strong>Valspar Skylight Color-Changing Ceiling Paint</strong> applies light purple and dries to a white matte finish.</li>
+          <li><strong>Glidden Pink to White Ceiling Paint</strong> goes on pink to show missed spots. Glidden notes that rewetting the dry paint can make the pink reappear until it dries again.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These are ready-mixed whites, and the Benjamin Moore and Glidden data sheets say not to tint them, so they only suit a white ceiling.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to decide</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Textured ceiling? Keep it white or a lighter step. Smooth ceiling? Any option works.</li>
+          <li>Dark room or low ceiling? Use a high-LRV white, matched in warmth to the walls.</li>
+          <li>Small room, angled ceiling, or a color-drenched look? Use the wall color, in flat.</li>
+          <li>Mid-tone walls where a white ceiling looks stark? Use a lighter step of the wall color.</li>
+          <li>Very high ceiling you want to bring down? Go darker than the walls.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Preview the room in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, then test a sample on the ceiling in both daylight and lamplight before buying gallons. The same contrast logic applies to trim, which our guide to <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">choosing a trim color</Link> covers. Every color named here is available in <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> or <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and each color page lists its closest match in other brands.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Front door paint colors (2026-10-20) ──────────────── */
+  {
+    slug: "front-door-paint-colors",
+    title: "Front Door Paint Colors for Siding and Brick",
+    date: "2026-10-20",
+    author: "Philip Cameron",
+    excerpt:
+      "15 front door colors with their closest Behr and Valspar matches, the colors paint makers pair with each, door paint specs, and the storm-door rule for dark doors.",
+    coverColor: "#2f3d4c",
+    coverImage: "/blog/front-door-paint-colors.webp",
+    tags: ["Exterior", "Cross-Brand Matching", "Tips"],
+    faq: [
+      {
+        question: "What is the most popular front door color?",
+        answer:
+          "Black, navy, deep green and red are the classic front door colors. Benjamin Moore names Black HC-190 and Caliente AF-290 among its popular front door picks, and Sherwin-Williams says Tricorn Black complements nearly any exterior, from crisp white siding to warm red brick.",
+      },
+      {
+        question: "Can you paint a front door black if it has a storm door?",
+        answer:
+          "Check the door's warranty first. Several door makers exclude heat damage when a dark-painted door sits behind a non-vented storm door. Masonite's warranties exclude it, MMI Door says the space behind a storm door can exceed 200°F, and JELD-WEN advises a vented storm door if the entry door is dark.",
+      },
+      {
+        question: "What LRV is too dark for a door behind a storm door?",
+        answer:
+          "There is no industry-wide number. Door makers that set one differ: RealCraft does not cover doors finished below LRV 25, Simpson treats any paint below LRV 55 as a dark paint, and ProVia requires LRV 57 or higher on painted frames and brickmold. Every classic front door color is far below all three.",
+      },
+      {
+        question: "What color front door goes with red brick?",
+        answer:
+          "Sherwin-Williams says Tricorn Black complements warm red brick, and that dark blues such as Naval create a striking contrast against brick or stone.",
+      },
+      {
+        question: "What paint should you use on a front door?",
+        answer:
+          "A door and trim enamel. Benjamin Moore suggests its Advance Interior/Exterior High Gloss for a smooth, shiny door, and Sherwin-Williams makes SnapDry Door & Trim Paint, which it says lets you close the door the same day. Check the data sheet for the minimum application temperature, usually 50°F for these enamels.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The classic front door colors are black, navy, deep green, red and dark bronze, and the right one depends on the siding, brick and trim around it. Pick a door color that contrasts with the body of the house and coordinates with the trim, then check two practical things before you paint: whether a storm door will cover it, because several door makers do not warranty dark doors behind non-vented storm doors, and whether the weather is warm enough for the paint. Below are 15 front door colors, the closest match for each in other brands, and the colors Sherwin-Williams and Benjamin Moore pair with them.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">15 front door colors and their closest matches</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Each color below links to its color page. The matches come from our database of manufacturer colors, rated in plain language. A digital match is a starting point, so paint a sample of the substitute before buying a quart.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Door color</th>
+                <th className="py-2 pr-4 font-semibold">Closest SW or BM</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 font-semibold">Closest Valspar</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#2f2f30" name="Tricorn Black" brand="SW 6258" href="/colors/sherwin-williams/tricorn-black-6258" /></td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/black-hc-190" className="text-brand-blue hover:underline">Black</Link> (nearly identical)</td>
+                <td className="py-2 pr-4">Bitter Chocolate (very similar)</td>
+                <td className="py-2">Tomcat (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#323233" name="Black" brand="BM HC-190" href="/colors/benjamin-moore/black-hc-190" /></td>
+                <td className="py-2 pr-4">Black Magic (nearly identical)</td>
+                <td className="py-2 pr-4">Limousine Leather (very similar)</td>
+                <td className="py-2">Tomcat (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#2f3d4c" name="Naval" brand="SW 6244" href="/colors/sherwin-williams/naval-6244" /></td>
+                <td className="py-2 pr-4">North Sea (nearly identical)</td>
+                <td className="py-2 pr-4">Ink Black (very similar)</td>
+                <td className="py-2">Royal Navy (visible difference)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
+                <td className="py-2 pr-4">Sea Mariner (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/royal-navy-4011-4" className="text-brand-blue hover:underline">Royal Navy</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#3d4450" name="Charcoal Blue" brand="SW 2739" href="/colors/sherwin-williams/charcoal-blue-2739" /></td>
+                <td className="py-2 pr-4">Hale Navy (very similar)</td>
+                <td className="py-2 pr-4">Stiletto (nearly identical)</td>
+                <td className="py-2">Blue Coal (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#475667" name="Newburyport Blue" brand="BM HC-155" href="/colors/benjamin-moore/newburyport-blue-hc-155" /></td>
+                <td className="py-2 pr-4">Indigo Batik (very similar)</td>
+                <td className="py-2 pr-4">Distant Thunder (nearly identical)</td>
+                <td className="py-2">Moon Shade (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#28372f" name="Essex Green" brand="BM HC-188" href="/colors/benjamin-moore/essex-green-hc-188" /></td>
+                <td className="py-2 pr-4">Roycroft Bottle Green (very similar)</td>
+                <td className="py-2 pr-4">Black Swan (very similar)</td>
+                <td className="py-2">Midsummer Night (visible difference)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#5e6259" name="Pewter Green" brand="SW 6208" href="/colors/sherwin-williams/pewter-green-6208" /></td>
+                <td className="py-2 pr-4">Dark Olive (very similar)</td>
+                <td className="py-2 pr-4">Woodland Moss (very similar)</td>
+                <td className="py-2">Flora (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#64695c" name="Rosemary" brand="SW 6187" href="/colors/sherwin-williams/rosemary-6187" /></td>
+                <td className="py-2 pr-4">Rainy Afternoon (nearly identical)</td>
+                <td className="py-2 pr-4">Gray Owl (very similar)</td>
+                <td className="py-2">Flora (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#8b2829" name="Caliente" brand="BM AF-290" href="/colors/benjamin-moore/caliente-af-290" /></td>
+                <td className="py-2 pr-4">Red Bay (very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/new-brick-s-h-200" className="text-brand-blue hover:underline">New Brick</Link> (nearly identical)</td>
+                <td className="py-2">Cut Ruby (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#9a0b15" name="Heritage Red" brand="BM HC-181" href="/colors/benjamin-moore/heritage-red-hc-181" /></td>
+                <td className="py-2 pr-4">Heartthrob (visible difference)</td>
+                <td className="py-2 pr-4">Rodeo Red (very similar)</td>
+                <td className="py-2">Très Bien (visible difference)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#622f2d" name="Rookwood Red" brand="SW 2802" href="/colors/sherwin-williams/rookwood-red-2802" /></td>
+                <td className="py-2 pr-4">Cottage Red (very similar)</td>
+                <td className="py-2 pr-4">Wine Barrel (very similar)</td>
+                <td className="py-2">Spanish Tile (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /></td>
+                <td className="py-2 pr-4">Dragon&apos;s Breath (nearly identical)</td>
+                <td className="py-2 pr-4">Underground (nearly identical)</td>
+                <td className="py-2">Dark Oasis (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
+                <td className="py-2 pr-4">Notre Dame (very similar)</td>
+                <td className="py-2 pr-4">Broadway (nearly identical)</td>
+                <td className="py-2">Caviar (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#4a4b4c" name="Wrought Iron" brand="BM 2124-10" href="/colors/benjamin-moore/wrought-iron-2124-10" /></td>
+                <td className="py-2 pr-4">Cyberspace (very similar)</td>
+                <td className="py-2 pr-4">Timber Brown (nearly identical)</td>
+                <td className="py-2">Noir (very similar)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Some of these hold up across brands better than others. Hale Navy and Urbane Bronze have nearly identical matches in every brand listed, so you can buy either wherever is convenient. Heritage Red is the hardest to substitute: its closest Sherwin-Williams and Valspar colors are a visible difference away, so if you want that exact red, buy it from Benjamin Moore. Every color page has the full list of matches across all brands.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What each color family pairs with</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Black.</strong> Sherwin-Williams says Tricorn Black complements nearly any exterior, &quot;from crisp white siding to warm red brick,&quot; and Benjamin Moore lists its Black among its popular front door picks. Tricorn Black and Benjamin Moore Black rate nearly identical, so the choice between them is about which store is closer. For softer blacks and black for trim, see our guide to <Link href="/blog/best-black-paint-colors" className="text-brand-blue hover:underline">the best black paint colors</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Navy and blue.</strong> Sherwin-Williams says its dark blues pair with light-colored homes and natural wood, and create a striking contrast against brick or stone. Naval (LRV 4.5) is the darker and more saturated of the two navies here. Hale Navy is a step lighter and grayer. More options are in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Green.</strong> Essex Green is a very dark green, while Pewter Green (LRV 11.8) and Rosemary (LRV 13.6) are lighter, grayer greens. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link> for lighter options.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Red.</strong> Benjamin Moore names Caliente among its popular front door colors. Rookwood Red (LRV 4.8) is the deepest of the three reds here, and Heritage Red is the lightest and most saturated. The <Link href="/colors/family/red" className="text-brand-blue hover:underline">red family</Link> has the full range.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Bronze and charcoal.</strong> Sherwin-Williams calls Urbane Bronze (LRV 8.1) a sophisticated anchor, and says Iron Ore (LRV 5.6) particularly complements homes with gray or cool-toned exteriors. Both are lighter than a true black like Tricorn Black (LRV 2.9). Compare any two side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors the paint makers pair with each door color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s advice is to look to the other colors on your exterior, including the landscape, when choosing a door color. Both companies publish coordinating colors for each shade, and those lists make a ready-made exterior scheme: use the lightest color on the trim and a mid-tone or light color on the siding.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Door color</th>
+                <th className="py-2 font-semibold">Coordinating colors from the manufacturer</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Tricorn Black</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/ice-cube-6252" className="text-brand-blue hover:underline">Ice Cube</Link>, Classic Light Buff, <Link href="/colors/sherwin-williams/blithe-blue-9052" className="text-brand-blue hover:underline">Blithe Blue</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Naval</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/icicle-6238" className="text-brand-blue hover:underline">Icicle</Link>, <Link href="/colors/sherwin-williams/ramie-6156" className="text-brand-blue hover:underline">Ramie</Link>, <Link href="/colors/sherwin-williams/roycroft-suede-2842" className="text-brand-blue hover:underline">Roycroft Suede</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Hale Navy</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>, <Link href="/colors/benjamin-moore/coventry-gray-hc-169" className="text-brand-blue hover:underline">Coventry Gray</Link>, <Link href="/colors/benjamin-moore/lenox-tan-hc-44" className="text-brand-blue hover:underline">Lenox Tan</Link>, <Link href="/colors/benjamin-moore/glacier-white-oc-37" className="text-brand-blue hover:underline">Glacier White</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Essex Green</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/monterey-white-hc-27" className="text-brand-blue hover:underline">Monterey White</Link>, <Link href="/colors/benjamin-moore/simply-white-2143-70" className="text-brand-blue hover:underline">Simply White</Link>, <Link href="/colors/benjamin-moore/powell-buff-hc-35" className="text-brand-blue hover:underline">Powell Buff</Link>, <Link href="/colors/benjamin-moore/overcast-oc-43" className="text-brand-blue hover:underline">Overcast</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pewter Green</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/spare-white-6203" className="text-brand-blue hover:underline">Spare White</Link>, <Link href="/colors/sherwin-williams/shoji-white-7042" className="text-brand-blue hover:underline">Shoji White</Link>, <Link href="/colors/sherwin-williams/silvermist-7621" className="text-brand-blue hover:underline">Silvermist</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Caliente</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/frostine-af-5" className="text-brand-blue hover:underline">Frostine</Link>, <Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link>, White Diamond, <Link href="/colors/benjamin-moore/harbor-haze-2136-60" className="text-brand-blue hover:underline">Harbor Haze</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Urbane Bronze</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/shoji-white-7042" className="text-brand-blue hover:underline">Shoji White</Link>, <Link href="/colors/sherwin-williams/extra-white-7006" className="text-brand-blue hover:underline">Extra White</Link>, <Link href="/colors/sherwin-williams/ivoire-6127" className="text-brand-blue hover:underline">Ivoire</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Iron Ore</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/nebulous-white-7063" className="text-brand-blue hover:underline">Nebulous White</Link>, Extra White, <Link href="/colors/sherwin-williams/cityscape-7067" className="text-brand-blue hover:underline">Cityscape</Link></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams lists coordinating colors for its colors, and Benjamin Moore groups each color into expert-picked combinations. Neither labels a color as siding or trim, so the roles above are our suggestion. Preview the colors in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, or build a scheme around your door color in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>. For body colors, see our guide to <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">the best exterior paint colors</Link>, and for the trim white, <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">how to choose a trim color</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark doors behind a storm door</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Check this before painting a door any of the colors above. Sunlight through a full-glass storm door heats the space between the two doors, and a dark door absorbs more of that heat. MMI Door&apos;s care guide says the temperature behind a storm door can exceed 200°F in many applications. Door makers respond in their warranties:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Masonite</strong> excludes damage from a product installed behind a non-vented storm door, or from excessive heat because it was finished a dark color.</li>
+          <li><strong>JELD-WEN</strong> warns that a storm door in front of a dark exterior door accelerates heat buildup, and says storm doors in that situation should be vented.</li>
+          <li><strong>ProVia</strong> covers its composite frame and brickmold only if no storm door is installed in the same opening, and if painted, only with paint of LRV 57 or higher.</li>
+          <li><strong>RealCraft</strong> does not cover doors finished in colors below LRV 25, including black, because of surface heat from the sun.</li>
+          <li><strong>Simpson</strong> treats any exterior paint below LRV 55 as dark. Its dark doors keep the 10-year warranty without overhang requirements only when ordered to a specific spec.</li>
+          <li><strong>Pacific Entries</strong> says a storm door installed in front of its doors voids the warranty.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every door color in this post is below LRV 15, far under every threshold above. That does not rule them out. It means you should read your own door&apos;s warranty before painting it dark behind a storm door, and if you go ahead, use a vented storm door or keep its vent open on sunny days. The storm-door warranties and guides we read from Andersen, Pella and Larson set no color limit on the entry door behind them.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What paint to use on a front door</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Use a door and trim enamel rather than wall paint. Benjamin Moore points front door buyers to its Advance Interior/Exterior High Gloss, and Sherwin-Williams to its SnapDry Door &amp; Trim Paint. The details that matter for a door are how soon you can close it and how cold it can be when you paint. From the manufacturer data sheets and product pages:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Paint</th>
+                <th className="py-2 pr-4 font-semibold">Recoat</th>
+                <th className="py-2 pr-4 font-semibold">Close the door</th>
+                <th className="py-2 font-semibold">Minimum temperature</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams SnapDry Door &amp; Trim</td><td className="py-2 pr-4">2 hours</td><td className="py-2 pr-4">Same day</td><td className="py-2">50°F</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Valspar Door &amp; Trim Acrylic Enamel</td><td className="py-2 pr-4">2 hours</td><td className="py-2 pr-4">After 2 hours</td><td className="py-2">50°F</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams Emerald Urethane Trim Enamel</td><td className="py-2 pr-4">4 hours</td><td className="py-2 pr-4">Not stated</td><td className="py-2">50°F</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Benjamin Moore Advance High Gloss</td><td className="py-2 pr-4">16 hours</td><td className="py-2 pr-4">Not stated</td><td className="py-2">50°F</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Glidden Door &amp; Trim Gel Paint High Gloss</td><td className="py-2 pr-4">24 hours</td><td className="py-2 pr-4">24 hours after the final coat</td><td className="py-2">40°F</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These are best-case figures: Benjamin Moore notes that high humidity or cooler temperatures prolong dry and recoat times. Benjamin Moore says Advance can take up to 30 days to reach optimum hardness and final sheen, so expect a newly painted door to stay a little soft for a few weeks. Sherwin-Williams also notes that Emerald Urethane Trim Enamel is for doors, trim and other small exterior areas, not the main body of a house. For the wait between coats on other paints, see <Link href="/blog/how-many-coats-of-paint" className="text-brand-blue hover:underline">how long to wait between coats of paint</Link>, and for finishes, our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to choose</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Note the fixed colors: siding, brick or stone, roof and trim.</li>
+          <li>Pick a family that contrasts with the body: black or navy against white siding or red brick, a softer green or bronze against stone and wood.</li>
+          <li>Check the manufacturer&apos;s coordinating colors for your pick against your siding and trim.</li>
+          <li>Storm door? Read the door&apos;s warranty before choosing a dark color.</li>
+          <li>Paint a large sample board and look at it on the door in morning and afternoon light. Buy from whichever brand is convenient using the matches above.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          All the colors here are available from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> or <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and their color pages list the closest match in every other brand we track.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── How long to wait between coats (2026-10-15) ──────────────── */
   {
     slug: "how-many-coats-of-paint",
@@ -350,7 +855,7 @@ const blogPosts: BlogPost[] = [
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
                 <td className="py-2 pr-4">83.2</td>
-                <td className="py-2">7.7</td>
+                <td className="py-2">4.5</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
@@ -364,13 +869,13 @@ const blogPosts: BlogPost[] = [
           Sherwin-Williams puts the effect plainly on its blog: cooler whites on trim &quot;bring more contrast, sharpening and defining lines,&quot; while warm whites feel &quot;more blended and casual.&quot; Benjamin Moore&apos;s advice is to look at the undertone of the wall color first. In practice that gives three choices for white walls.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>A cleaner white for a crisp edge.</strong> Take <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link> walls. Extra White is only 3.7 LRV points brighter, but it carries less than half the yellow, and the two rate very similar rather than nearly identical. That is enough for the trim to read as a clean line. Chantilly Lace goes further: 7.8 points brighter and cleaner still. The same logic applies to <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>, the yellowest white in the table, where Extra White, Simply White or Chantilly Lace all sharpen the trim. On <Link href="/colors/sherwin-williams/greek-villa-7551" className="text-brand-blue hover:underline">Greek Villa</Link> or <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> walls, Extra White is about 2 to 4 points brighter and carries less than half the yellow, and Chantilly Lace is about 6 to 8 points brighter.
+          <strong>A cleaner white for a crisp edge.</strong> Take <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link> walls. Extra White is only 3.7 LRV points brighter, but it carries less than half the yellow, and the two rate very similar rather than nearly identical. That is enough for the trim to read as a clean line. Chantilly Lace goes further: 7.8 points brighter and cleaner still. <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link> walls are a different case: White Dove rates nearly identical to Extra White, Pure White and Simply White, so on White Dove walls those whites separate mainly by sheen. Chantilly Lace, 6.8 points brighter with about half the yellow, is the one that reads as a clearly cleaner edge. On <Link href="/colors/sherwin-williams/greek-villa-7551" className="text-brand-blue hover:underline">Greek Villa</Link> or <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> walls, Extra White is about 2 to 4 points brighter and carries less than half the yellow, and Chantilly Lace is about 6 to 8 points brighter.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>The wall white in a higher sheen.</strong> Pure White and Alabaster rate nearly identical, and so do Greek Villa and Alabaster. If the trim white is that close to the wall, you are effectively painting trim the same color, and only the sheen will separate it. That is a deliberate soft look, and Benjamin Moore&apos;s own white guide suggests painting all the trim in a home one white for continuity.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Avoid a trim white yellower than the wall.</strong> White Dove trim on <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> walls reverses the usual order: the trim carries more than three times the yellow, so the molding reads as the creamier, older surface. If you love a warm trim white, choose walls at least as warm.
+          <strong>Avoid a trim white yellower than the wall.</strong> White Dove trim on <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> walls reverses the usual order: the trim carries about twice the yellow, so the molding reads as the creamier, older surface. If you love a warm trim white, choose walls at least as warm.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Dark trim on white walls</strong> is the opposite choice. Tricorn Black against Alabaster is a 79-point gap, the strongest outline a white room can have. Our <Link href="/blog/best-black-paint-colors" className="text-brand-blue hover:underline">guide to black paint colors</Link> covers the black shortlist, and the <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> compares the whites themselves in more depth.
@@ -450,7 +955,7 @@ const blogPosts: BlogPost[] = [
           Neither approach is wrong. Pick the tonal white for a calm room where the trim should not compete with furniture or art, and the bright white when the trim has detail you want to show. Sherwin-Williams names Eider White as the complementary trim for Repose Gray, so on that wall the soft option is the manufacturer&apos;s own first choice. Note that <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> does not label any color in its combinations as trim, so its pairings above are whites it groups with the wall rather than trim instructions.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For dark walls like Hale Navy and Iron Ore, any white gives a strong outline, so the choice is about warmth. White Dove keeps the room softer. Extra White and Chantilly Lace look sharper. To check any other pair, put the wall and trim colors side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, which shows both LRVs and how close the two read.
+          For dark walls like Hale Navy and Iron Ore, any of these whites sits 76 to 83 LRV points above the wall, so every option gives a strong outline. Pick the white that already runs on the trim in the rest of the house. To check any other pair, put the wall and trim colors side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, which shows both LRVs and how close the two read.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Painting trim the same color as the walls</h2>
