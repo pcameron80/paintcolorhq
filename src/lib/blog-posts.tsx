@@ -54,6 +54,184 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── How to match paint color (2026-10-11) ──────────────── */
+  {
+    slug: "how-to-match-paint-color",
+    title: "How to Match Paint Color on a Wall",
+    date: "2026-10-11",
+    author: "Philip Cameron",
+    excerpt:
+      "Identify the paint already on your wall, match it in any brand, and decide between a touch-up and a full repaint. Lid labels, store scans, photos and sheen.",
+    coverColor: "#D1CBC1",
+    coverImage: "/blog/how-to-match-paint-color.webp",
+    tags: ["How-To", "Cross-Brand Matching", "Tips"],
+    faq: [
+      {
+        question: "How do I find out what paint color is on my wall?",
+        answer:
+          "Check the lid of any leftover can first, since tinted paint usually carries a label with the color name or number. If there is no can, cut a small chip from a hidden spot and have a paint store scan it, or photograph the wall in daylight and run the photo through a color identifier to get a shortlist.",
+      },
+      {
+        question: "Can a paint store match a color from a chip?",
+        answer:
+          "Yes. Most paint counters can scan a dry chip with a spectrophotometer and mix a custom formula from it. The chip needs to be flat, clean and large enough to cover the scanner's opening, and the result is an approximation that you should test before buying gallons.",
+      },
+      {
+        question: "Can you match paint color from a photo?",
+        answer:
+          "A photo gives you a starting shortlist, not a final match. Camera white balance, room lighting and shadows all shift the pixels, so shoot in indirect daylight without flash, sample several spots, and confirm the result with a physical sample on the wall.",
+      },
+      {
+        question: "Why does my paint touch-up look different?",
+        answer:
+          "Usually because of sheen, not color. A patch reflects light differently from paint that was rolled on years ago, especially in satin and gloss finishes, and the old paint may have faded or yellowed. Unprimed spackle and a different brush or roller texture make it worse.",
+      },
+      {
+        question: "Should I touch up or repaint the whole wall?",
+        answer:
+          "Touch up small spots on flat or matte walls when you have the original paint. Repaint the wall from corner to corner when the finish is eggshell or shinier, when the paint is a new mix rather than the original can, or when the patch is larger than a few inches.",
+      },
+      {
+        question: "Can I match a paint color in a different brand?",
+        answer:
+          "Yes. Look up the original color on Paint Color HQ and its page lists the closest equivalent in each other brand, rated in plain language from virtually identical to visible difference. The rating compares published digital color values, so paint a sample of the substitute next to the original before committing.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          To match paint color on a wall, first find out exactly what is there: the color name and number from the can lid or a store record, or a store scan of a small chip when no record exists. Then confirm the sheen, buy the same color in the same finish, and test it on the wall before you commit. If you want the color in a different brand, look up its closest equivalent on Paint Color HQ and test a sample of that too. Whether a small touch-up will blend or the whole wall needs repainting depends mostly on the sheen and the age of the existing paint.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 1: Find the color you already have</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Work through these sources in order. The first ones name the exact color, so they beat any scan or photo.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>The can lid.</strong> Paint tinted at a store usually leaves with a printed label on the lid that shows the color name or number, and often the base and the tint formula. Check the garage, the basement and the utility closet. Even a nearly empty can is worth finding, because the label is the record.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Receipts and store accounts.</strong> If you bought the paint yourself on a store account or loyalty number, the store may be able to look up the purchase and the formula. An emailed receipt or a contractor&apos;s invoice can also name the color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>The builder, previous owner or painter.</strong> In a newer home, the builder or HOA may have a paint schedule listing the wall, trim and ceiling colors. If a painter did the work, ask them. Painters often keep records by address.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Once you have a name or number, look it up in our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to see the swatch, its color family and its closest equivalents in other brands. If you have nothing to go on, move to a physical scan.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 2: Get a chip scanned at a paint store</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Paint counters use a spectrophotometer, a small device that measures the color of a sample and suggests a formula to mix it. It works best on a clean, flat, dry piece of the actual paint.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Cut the chip from a spot nobody will see: inside a closet, behind a large piece of furniture, or low on a wall that a sofa covers. Score a square about an inch or more across with a sharp utility knife, then lift it with the blade so it comes away flat. Bigger and flatter is better, because the scanner needs its opening fully covered by paint. Patch the hole afterward with spackle.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Store scanners have real limits, and knowing them saves a second trip:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>The scanner reads color, not sheen. You still have to tell the store which finish you need.</li>
+          <li>It reads the paint as it is now. If the wall is dirty, sun-faded or yellowed, the scan matches that surface, which is useful for a touch-up but not if you want the original color back.</li>
+          <li>Small, curved, textured or very glossy chips read poorly. So can deep, saturated colors.</li>
+          <li>A custom formula is mixed in that store&apos;s own base, so it is an approximation of your paint rather than a copy of it.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Ask the store for a sample size of the scanned formula first. Paint a patch, let it dry fully (wet paint usually looks darker), and compare it with the wall before you buy gallons.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 3: Match paint color from a photo</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          When you cannot cut a chip, or you are matching a color you saw somewhere else, a photo gets you a shortlist. Upload it to our <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">photo color identifier</Link>, click a spot on the wall, and the tool compares that pixel against our catalog of manufacturer colors and ranks the closest paints.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Treat the result as a starting point, because photos shift color before you ever see them. The camera&apos;s auto white balance pushes the whole image warmer or cooler. Bulbs tint walls yellow or blue. Shadows read darker and cooler than the paint, and glossy patches sample lighter. Two photos of the same wall taken an hour apart can give different results.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          You can reduce the error. Shoot in indirect daylight with the flash off, face the wall straight on, avoid shadow edges and shiny spots, and click three or four places on the same surface. If the same few paints keep coming up, the shortlist is reliable. If every click returns something different, the lighting is uneven and you should reshoot.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 4: Identify the sheen</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The right color in the wrong finish will not blend. Look at the wall at a low angle toward a window or lamp. Flat and matte paint show almost no reflection. Eggshell has a faint glow. Satin has a soft, visible sheen. Semi-gloss and gloss are clearly shiny and usually belong on trim, doors and cabinets rather than walls.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sheen names are not standardized across brands, so one brand&apos;s eggshell can be shinier than another&apos;s. If you are switching brands, compare the new paint&apos;s finish against the wall on a sample patch. Our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers where each finish works.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to match paint across brands</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Knowing the name of your color does not mean you have to buy that brand. Every color page on Paint Color HQ lists the closest equivalent in each other brand. We calculate those matches with CIEDE2000, a standard color-difference formula, using the digital color values each manufacturer publishes for its colors. The result appears in plain language, from virtually identical to visible difference, so you can see at a glance whether a substitute is close or only in the same family. Our <Link href="/methodology" className="text-brand-blue hover:underline">methodology page</Link> explains how those labels are set.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Some real examples from our database:
+        </p>
+        <ul className="mt-4 list-disc space-y-3 pl-6 text-gray-700 leading-relaxed">
+          <li>
+            <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" />: the closest <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> color is <Swatch hex="#D0CBC3" name="Wish" brand="AF-680" href="/colors/benjamin-moore/wish-af-680" />, and the closest Behr color is <Swatch hex="#D2CCC3" name="Toasty Gray" brand="N320-2" href="/colors/behr/toasty-gray-n320-2-2" />. Both rate as virtually identical in digital values. The full side-by-side is on the <Link href="/match/sherwin-williams/agreeable-gray-7029-to-benjamin-moore" className="text-brand-blue hover:underline">Agreeable Gray to Benjamin Moore match page</Link>.
+          </li>
+          <li>
+            <Swatch hex="#F3EFE0" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" />: the closest Sherwin-Williams color is <Swatch hex="#F6F0E2" name="Roman Column" brand="SW 7562" href="/colors/sherwin-williams/roman-column-7562" />, rated near-identical rather than virtually identical. Behr <Swatch hex="#F2EEDE" name="Polished Marble" brand="GR-W13" href="/colors/behr/polished-marble-gr-w13" /> is closer still. See the <Link href="/match/benjamin-moore/white-dove-oc-17-to-sherwin-williams" className="text-brand-blue hover:underline">White Dove to Sherwin-Williams match page</Link>.
+          </li>
+          <li>
+            <Swatch hex="#CCC9C0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" />: the closest Benjamin Moore color is <Swatch hex="#CDC9BF" name="Apparition" brand="860" href="/colors/benjamin-moore/apparition-860" />, rated virtually identical.
+          </li>
+          <li>
+            <Swatch hex="#CCC7B9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" />: the closest Sherwin-Williams color is <Swatch hex="#CDC7B7" name="Simple Stone" brand="SW 9521" href="/colors/sherwin-williams/simple-stone-9521" />, rated virtually identical.
+          </li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          To check any pair yourself, put both colors in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>. To scan a whole brand at once, the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> and <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Benjamin Moore to Sherwin-Williams</Link> charts list the top crossovers. Neutrals like these sit in our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link>, <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families. For a deeper walkthrough of cross-brand matching, read <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">how to match paint colors across brands</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          You can also ask most paint counters to mix another brand&apos;s color in their own paint. That is still an approximation in a different base, so it needs the same test as a catalog substitute.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why a digital match still needs a physical test</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A close digital match tells you two colors have nearly the same published color values. It does not promise that the two paints will look the same on your wall, because the wall adds variables the numbers do not cover:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Finish.</strong> Higher sheens reflect more light and can make the same color read lighter or richer.</li>
+          <li><strong>Base and pigments.</strong> Each brand builds its colors in its own bases and colorants, so two paints with the same target can render slightly differently, especially deep colors.</li>
+          <li><strong>Surface.</strong> Texture, fresh drywall compound and the color underneath all affect the first coat.</li>
+          <li><strong>Lighting.</strong> Warm bulbs, cool bulbs and window direction shift every color, and they do not shift two different paints by exactly the same amount.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Buy a sample of the match, paint a patch next to the existing color with two coats, and look at it in morning, afternoon and evening light once it is fully dry. Our <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">guide to testing paint samples</Link> covers the process, and <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding paint undertones</Link> explains why two close colors can still pull in different directions.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Touch-up or repaint the whole wall?</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A perfect color match can still leave a visible patch. The usual cause is sheen flashing: the touched-up area reflects light differently from the paint around it, so it shows as a dull or shiny spot when light hits the wall at an angle. Flashing is most visible in eggshell, satin and gloss finishes, and least visible in flat paint.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Age matters too. Paint that has been on a wall for years may have faded in sunlight or yellowed, especially oil-based paint, so even fresh paint from the original can may not blend. A different tool adds a different texture: a brush patch on a rolled wall shows.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The practical rule:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Touch up</strong> small spots, such as nail holes or a scuff, on flat or matte walls when you have the original paint. Prime any spackle first, apply a thin coat with the same type of tool used originally, and feather the edges.</li>
+          <li><strong>Repaint the wall</strong> from corner to corner when the finish is eggshell or shinier, when you are using a new mix or a different brand, or when the damaged area is more than a few inches across. Stopping at an inside corner hides the transition, because the light changes there anyway.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you end up repainting, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> will tell you how much to buy for one wall or the whole room.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">A quick checklist</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Find the color name or number from the lid, a store record, or the builder.</li>
+          <li>No record? Get a flat chip scanned, or start with a daylight photo in the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link>.</li>
+          <li>Identify the sheen and buy the same finish.</li>
+          <li>Switching brands? Check the closest equivalent on the color page or in the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>.</li>
+          <li>Test a dried sample next to the existing paint in several kinds of light.</li>
+          <li>Touch up only small spots on flat walls. Repaint corner to corner otherwise.</li>
+        </ol>
+      </>
+    ),
+  },
+
   {
     slug: "sea-salt-sw-6204",
     modifiedDate: "2026-09-20",
