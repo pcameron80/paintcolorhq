@@ -25,6 +25,7 @@ import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
 import { POPULAR_COLOR_SLUGS } from "@/lib/popular-colors";
 import { COTY_BY_COLOR } from "@/lib/color-of-the-year";
+import { FORMER_NAMES } from "@/lib/former-names";
 import { titleArm, matchesArmTitle, matchesArmDescription } from "@/lib/title-test";
 import { closenessLabel, closenessLabelLower } from "@/lib/closeness";
 
@@ -155,6 +156,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const nearest = nearestMatchesPerBrand(await getCrossBrandMatches(color.id));
     description = matchesArmDescription(color.name, lrvForTitle, nearest) ?? description;
   }
+  // Renamed colors keep their old name on the page and in the snippet.
+  const formerName = FORMER_NAMES[`${brandSlug}/${colorSlug}`];
+  if (formerName && formerName !== color.name) description = `${description} Previously listed as ${formerName}.`;
   return {
     title,
     description,
@@ -321,6 +325,11 @@ export default async function ColorPage({ params }: PageProps) {
           <h1 className={`font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-8 drop-shadow-2xl ${textClass}`}>
             {color.name}
           </h1>
+          {FORMER_NAMES[`${brandSlug}/${colorSlug}`] && FORMER_NAMES[`${brandSlug}/${colorSlug}`] !== color.name && (
+            <p className={`-mt-4 mb-8 text-sm ${textMutedClass}`}>
+              Previously listed as {FORMER_NAMES[`${brandSlug}/${colorSlug}`]}
+            </p>
+          )}
           {COTY_BY_COLOR[`${brandSlug}/${colorSlug}`] && (
             <Link
               href="/color-of-the-year"

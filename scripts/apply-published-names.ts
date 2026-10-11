@@ -52,10 +52,13 @@ const MANUAL: Record<string, Record<string, string>> = {
   },
 };
 
+// Renames never written: the feed itself is misspelled.
+const SKIP_RENAME = new Set(['behr/frosted-pomegranate-140b-7']); // Behr's feed says "Frosted Pomgranate"
+
 interface Row { id: string; slug: string; name: string; color_number: string | null; hex: string }
 interface LiveColor { code: string; name: string; hex: string }
 type Group = 'artifact' | 'rename' | 'conflict';
-interface Change { id: string; slug: string; from: string; to: string; group: Group; note?: string }
+interface Change { id: string; brand: string; slug: string; from: string; to: string; group: Group; note?: string }
 
 const code = (s: string | null | undefined) => (s ?? '').trim().toUpperCase();
 // Feed names carry HTML entities ("Strand of Pearls&reg;"). Trademark marks
@@ -152,7 +155,7 @@ async function main() {
     const changes: Change[] = [];
     for (const r of await loadBrandRows(supabase, b.id)) {
       if (manual[r.slug] && manual[r.slug] !== r.name) {
-        changes.push({ id: r.id, slug: r.slug, from: r.name, to: manual[r.slug], group: 'artifact', note: 'manual' });
+        changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to: manual[r.slug], group: 'artifact', note: 'manual' });
         continue;
       }
       const c = byCode.get(code(r.color_number));
@@ -163,7 +166,7 @@ async function main() {
       if (letters(to) === letters(r.name) && !/[^\x20-\x7e]/.test(r.name.replace(/[‐’]/g, ''))) continue;
       const dE = deltaE2000(lab(r.hex), lab(c.hex));
       const group: Group = dE > 5 ? 'conflict' : classify(r.name, to, c.code);
-      changes.push({ id: r.id, slug: r.slug, from: r.name, to, group, note: `${c.code}, dE ${dE.toFixed(1)}` });
+      changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to, group, note: `${c.code}, dE ${dE.toFixed(1)}` });
     }
     for (const g of ['artifact', 'rename', 'conflict'] as Group[]) {
       const list = changes.filter((c) => c.group === g);
@@ -174,7 +177,9 @@ async function main() {
     all.push(...changes);
   }
 
-  const toWrite = all.filter((c) => c.group === 'artifact' || (RENAMES && c.group === 'rename'));
+  const toWrite = all.filter(
+    (c) => c.group === 'artifact' || (RENAMES && c.group === 'rename' && !SKIP_RENAME.has(`${c.brand}/${c.slug}`)),
+  );
   console.log(`\nWould write ${toWrite.length} names (${RENAMES ? 'artifacts + renames' : 'artifacts only; add --renames for renames'}).`);
   if (!APPLY) {
     console.log('Dry run — no DB changes. Re-run with --apply.');
