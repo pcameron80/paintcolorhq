@@ -69,7 +69,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What color trim goes with white walls?",
         answer:
-          "Use a white that carries the same amount of yellow as the wall or less, in a higher sheen. Two whites are usually only a few LRV points apart, so lightness barely separates them. A cleaner white such as Extra White or Chantilly Lace gives a crisp edge against a warm white wall, while the wall color itself in semi-gloss gives a soft, seamless look.",
+          "Use a white that carries the same amount of yellow as the wall or less, in a higher sheen. Two whites are usually only a few LRV points apart, so lightness barely separates them. A cleaner white such as Extra White or Chantilly Lace gives a crisp edge against a warm white wall, while the wall color itself in semi-gloss gives a soft, unbroken look.",
       },
       {
         question: "Should trim be lighter or darker than the walls?",
