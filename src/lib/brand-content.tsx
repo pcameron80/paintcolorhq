@@ -395,7 +395,7 @@ const content: Record<string, BrandContent> = {
         <h2 className="text-lg font-semibold text-gray-900">Budget Alternatives to Farrow &amp; Ball</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
           Love a Farrow &amp; Ball color but not the $100+ price tag? Click any color below to see the
-          closest matches from more affordable brands. Our Delta E matching finds near-identical shades
+          closest matches from more affordable brands. Our color matching finds the closest shades
           from{" "}
           <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>,{" "}
           <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,

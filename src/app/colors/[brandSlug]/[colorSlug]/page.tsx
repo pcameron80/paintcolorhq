@@ -26,6 +26,7 @@ import { PairingSelector } from "@/components/pairing-selector";
 import { POPULAR_COLOR_SLUGS } from "@/lib/popular-colors";
 import { COTY_BY_COLOR } from "@/lib/color-of-the-year";
 import { titleArm, matchesArmTitle, matchesArmDescription } from "@/lib/title-test";
+import { closenessLabel, closenessLabelLower } from "@/lib/closeness";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -246,7 +247,7 @@ export default async function ColorPage({ params }: PageProps) {
   // The generic explainer sentences ("Undertone is the subtle cast…", the CIEDE2000
   // explainer, "LRV is the most reliable guide…") were trimmed — identical across
   // 26K pages, they added duplication, not citability. Delta E stays plain language.
-  const closenessPhrase = (de: number) => (de < 2 ? "a close digital match" : de < 5 ? "a very close match" : "a close match");
+  const closenessPhrase = (de: number) => `${closenessLabelLower(de)} in our digital data`;
   if (color.undertone) {
     faqItems.push({
       question: `What undertone does ${color.name} have?`,
@@ -517,7 +518,7 @@ export default async function ColorPage({ params }: PageProps) {
                         </div>
                       </div>
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-on-surface-variant">{Number(match.delta_e_score) < 2 ? "Close digital match" : Number(match.delta_e_score) < 5 ? "Similar digital color" : "Visible digital difference"}</span>
+                        <span className="text-on-surface-variant">{closenessLabel(Number(match.delta_e_score))}</span>
                         <svg className="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
                       </div>
                     </Link>
@@ -714,7 +715,7 @@ export default async function ColorPage({ params }: PageProps) {
             ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
           ],
         },
-        // Near-identical cross-brand equivalents (ΔE < 2) — the moat data, kept as
+        // Nearly identical cross-brand equivalents (closeness tier 1) — the moat data, kept as
         // related DefinedTerms so the cross-brand graph stays machine-readable.
         ...(matches.length > 0 && {
           mentions: matches

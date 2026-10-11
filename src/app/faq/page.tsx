@@ -22,12 +22,12 @@ const faqs = [
   {
     question: "How do I match a paint color from one brand to another?",
     answer:
-      "Search for any color on Paint Color HQ and we'll show you the closest matches from every other brand in our database. We use CIEDE2000, the industry-standard formula for measuring perceptual color difference, to compute how close each match is. Every result includes a Delta E score — below 1.0 means the difference is invisible to most people, and below 3.0 means it's very close. You can also use our Color Search to find a specific color by name, number, or hex code.",
+      "Search for any color on Paint Color HQ and we'll show you the closest matches from every other brand in our database. We use CIEDE2000, the industry-standard formula for measuring perceptual color difference, to compute how close each match is. Every result gets one of three labels: Nearly identical, Very similar, or Visible difference. These are digital matches, so confirm with a physical sample. You can also use our Color Search to find a specific color by name, number, or hex code.",
   },
   {
-    question: "What is Delta E and what do the numbers mean?",
+    question: "What is Delta E and what do the closeness labels mean?",
     answer:
-      "Delta E (ΔE) is a number that represents the perceptual difference between two colors. A Delta E of 0 means the colors are identical. Below 1.0, most people can't see any difference. Between 1.0 and 3.0, a trained eye might notice. Above 3.0, the difference is clearly visible. Above 5.0, the colors are noticeably different. Paint Color HQ uses the CIEDE2000 formula, which is the most accurate version of Delta E for how humans actually perceive color differences.",
+      "Delta E is a measure of the perceptual difference between two colors. We turn it into three plain labels. Nearly identical means the difference is hard to spot even side by side. Very similar means a close digital match you may notice side by side. Visible difference means the colors are clearly different. Paint Color HQ calculates it with the CIEDE2000 formula, which is the most accurate version of Delta E for how humans actually perceive color differences. Labels describe digital values, so confirm any substitute with a physical sample.",
   },
   {
     question: "What paint undertone should I choose?",
@@ -42,7 +42,7 @@ const faqs = [
   {
     question: "Can I match Sherwin-Williams colors to Benjamin Moore?",
     answer:
-      "Yes. Paint Color HQ has the complete color libraries for both Sherwin-Williams and Benjamin Moore (plus 12 other brands). Search for any Sherwin-Williams color and you'll see the closest Benjamin Moore equivalents ranked by Delta E accuracy — and vice versa. For example, Sherwin-Williams Agreeable Gray (SW 7029) has very close matches in the Benjamin Moore lineup that we'll surface automatically.",
+      "Yes. Paint Color HQ has the complete color libraries for both Sherwin-Williams and Benjamin Moore (plus 12 other brands). Search for any Sherwin-Williams color and you'll see the closest Benjamin Moore equivalents ranked from closest to farthest, and vice versa. For example, Sherwin-Williams Agreeable Gray (SW 7029) has close digital matches in the Benjamin Moore lineup that we'll surface automatically.",
   },
   {
     question: "What's the difference between paint sheen levels?",

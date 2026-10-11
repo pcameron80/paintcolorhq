@@ -113,7 +113,7 @@ export default function AboutPage() {
                   { href: "/tools/color-identifier", name: "Color Identifier", desc: "Upload a photo, click any spot, and find matching paint colors." },
                   { href: "/tools/palette-generator", name: "Palette Generator", desc: "Build coordinated palettes using color harmony rules mapped to real paints." },
                   { href: "/tools/paint-calculator", name: "Paint Calculator", desc: "Estimate gallons needed based on room dimensions, doors, and windows." },
-                  { href: "/compare", name: "Compare Tool", desc: "Place two or more colors side by side with Delta E scores." },
+                  { href: "/compare", name: "Compare Tool", desc: "Place two or more colors side by side with a plain-language closeness verdict." },
                   { href: "/search", name: "Color Search", desc: "Search by name, code, hex value, or browse by color family and brand." },
                 ].map((tool) => (
                   <Link
@@ -151,8 +151,8 @@ export default function AboutPage() {
               <p>
                 For every color in our database, we compute the perceptual
                 distance — called <strong className="text-on-surface">Delta E</strong> — to every color from
-                every other brand. This score tells you exactly how close two
-                colors are to the human eye:
+                every other brand. We turn that distance into one of three
+                labels that describe how close two colors look to the human eye:
               </p>
             </div>
 
@@ -160,26 +160,22 @@ export default function AboutPage() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-outline-variant/20">
-                    <th className="px-4 py-3 text-left font-semibold text-on-surface">Delta E Range</th>
+                    <th className="px-4 py-3 text-left font-semibold text-on-surface">Label</th>
                     <th className="px-4 py-3 text-left font-semibold text-on-surface">What It Means</th>
                   </tr>
                 </thead>
                 <tbody className="text-on-surface-variant">
                   <tr className="border-b border-outline-variant/10">
-                    <td className="px-4 py-3 font-semibold text-on-surface">&lt; 1.0</td>
-                    <td className="px-4 py-3">Virtually identical — the difference is imperceptible to most people</td>
+                    <td className="px-4 py-3 font-semibold text-on-surface">Nearly identical</td>
+                    <td className="px-4 py-3">The difference is hard to spot, even side by side</td>
                   </tr>
                   <tr className="border-b border-outline-variant/10">
-                    <td className="px-4 py-3 font-semibold text-on-surface">1.0 &ndash; 2.0</td>
-                    <td className="px-4 py-3">Very close — most people cannot tell them apart</td>
-                  </tr>
-                  <tr className="border-b border-outline-variant/10">
-                    <td className="px-4 py-3 font-semibold text-on-surface">2.0 &ndash; 3.0</td>
-                    <td className="px-4 py-3">Close — a slight difference may be visible when placed side by side</td>
+                    <td className="px-4 py-3 font-semibold text-on-surface">Very similar</td>
+                    <td className="px-4 py-3">Close, but you may notice a slight difference side by side</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-semibold text-on-surface">3.0 &ndash; 5.0</td>
-                    <td className="px-4 py-3">Noticeable difference — clearly distinguishable to most observers</td>
+                    <td className="px-4 py-3 font-semibold text-on-surface">Visible difference</td>
+                    <td className="px-4 py-3">Clearly distinguishable to most observers</td>
                   </tr>
                 </tbody>
               </table>
@@ -195,7 +191,7 @@ export default function AboutPage() {
                   { bold: "Hex and RGB values", text: "the exact digital color representation" },
                   { bold: "LRV (Light Reflectance Value)", text: "how much light a color reflects, useful for choosing colors for different room sizes and lighting conditions" },
                   { bold: "Undertone classification", text: "whether a color reads warm, cool, or neutral, which affects how it pairs with other elements in your space" },
-                  { bold: "Cross-brand matches", text: "the closest equivalent colors from every other brand, ranked by Delta E accuracy" },
+                  { bold: "Cross-brand matches", text: "the closest equivalent colors from every other brand, ranked from closest to farthest" },
                 ].map((item) => (
                   <li key={item.bold} className="flex items-start gap-3">
                     <span className="mt-2 h-2 w-2 rounded-full bg-primary shrink-0" />
@@ -225,7 +221,7 @@ export default function AboutPage() {
             <div className="space-y-5">
               {[
                 { num: "1", title: "Cross-Brand Matching", desc: "Paint brands don't publish cross-references to each other's colors. We compute matches across the catalogued brands using CIEDE2000, so you can find an equivalent color no matter which brand your local store carries." },
-                { num: "2", title: "Data-Driven, Not Opinion-Based", desc: "Every color recommendation on this site is backed by color science. When we say two colors are close, we show you the Delta E score to prove it. No subjective \"these look similar\" guesses." },
+                { num: "2", title: "Data-Driven, Not Opinion-Based", desc: "Every color recommendation on this site is backed by color science. When we say two colors are close, we label how close it is: nearly identical, very similar, or a visible difference. No subjective \"these look similar\" guesses." },
                 { num: "3", title: "Completely Free", desc: "All tools, color data, and matching results are free to use with no account or sign-up required. We believe paint color information should be accessible to everyone." },
                 { num: "4", title: "Accuracy Transparency", desc: "All color data is based on digital hex and RGB values published by each manufacturer. We update our database regularly and always recommend verifying with physical paint samples, because real paint looks different depending on finish, lighting, coats, and primer." },
               ].map((item) => (

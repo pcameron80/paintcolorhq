@@ -39,8 +39,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         different in every house. In strong warm light it leans taupe; under cool LED or heavy north
         light its faint green-violet base can surface. Pair it with a crisp white trim like Pure White
         rather than a creamy one — a too-warm trim makes the walls look dingy by comparison. If you
-        want the identical look without a Sherwin-Williams store, Behr Toasty Gray and Benjamin Moore
-        Wish are near-identical, and Valspar Heritage Gray is a dead-on hex match at Lowe&apos;s.
+        want the same look without a Sherwin-Williams store, Behr Toasty Gray and Benjamin Moore
+        Wish are nearly identical, and Valspar Heritage Gray is a nearly identical match at Lowe&apos;s.
       </p>
     </>
   ),
@@ -58,7 +58,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         next to colors with a green base — so sample it on the actual wall before committing a whole
         floor. It pairs cleanly with both cool and warm whites, which is part of why it&apos;s such a safe
         whole-house pick. The closest cross-brand matches are Benjamin Moore Apparition and PPG
-        Swirling Smoke, both near-identical on the wall.
+        Swirling Smoke, both nearly identical on the wall.
       </p>
     </>
   ),
@@ -86,7 +86,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         In very warm afternoon light it can push toward tan, so if you want it to stay neutral, keep the
         trim a clean white and avoid pairing it with strongly yellow woods. It anchors a warm,
         earthy palette beautifully — terracotta, olive, aged brass. The nearest matches in other
-        brands are Behr Shoreline Haze and PPG Synchronicity, both near-identical.
+        brands are Behr Shoreline Haze and PPG Synchronicity, both nearly identical.
       </p>
     </>
   ),
@@ -114,7 +114,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         Because it&apos;s warm, Alabaster can look slightly creamy next to a stark, cool white (don&apos;t put
         it beside bright-white ceilings or it&apos;ll look dirty by contrast). In north light it reads its
         softest; in warm light it glows. If your walls are a greige like Agreeable Gray, Alabaster is
-        the trim white that pairs with it most naturally. Benjamin Moore Dune White is its near-identical
+        the trim white that pairs with it most naturally. Benjamin Moore Dune White is its nearly identical
         cross-brand match.
       </p>
     </>
@@ -152,7 +152,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         strongest where there&apos;s good daylight or where you lean into the drama deliberately. It pairs
         with warm brass, white oak, and creamy whites — high-contrast crisp white can make it look
         harsh. The closest cross-brand equivalent is Sherwin-Williams Naval, with Behr Starless Night
-        also near-identical, so the look is easy to get on either side of the BM/SW divide.
+        also nearly identical, so the look is easy to get on either side of the BM/SW divide.
       </p>
     </>
   ),
@@ -168,7 +168,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         It also works as a wall color in well-lit rooms, where it reads as a soft, livable white rather
         than a gallery white. In low light it can flatten slightly, so it&apos;s happiest with good
         daylight. It pairs cleanly with almost any greige or gray, which is why it&apos;s the standard trim
-        partner for Agreeable Gray. PPG Commercial White is an exact cross-brand match, and Dunn-Edwards
+        partner for Agreeable Gray. PPG Commercial White is a nearly identical cross-brand match, and Dunn-Edwards
         Frostbite is nearly identical.
       </p>
     </>
@@ -184,7 +184,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         Like any very dark color it eats light, so it&apos;s best where there&apos;s daylight to give it depth,
         or used deliberately for drama on cabinetry and built-ins. It looks expensive with brass,
         natural wood, and warm whites; against a stark white it can feel a bit harsh. The closest
-        cross-brand equivalent is Benjamin Moore North Sea — near-identical — so the look crosses the
+        cross-brand equivalent is Benjamin Moore North Sea — nearly identical — so the look crosses the
         BM/SW line easily.
       </p>
     </>
@@ -201,7 +201,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         Used on trim against a light wall it reads crisp and graphic; on a whole wall or exterior it
         reads as a soft, deep black rather than a flat void. If you want a black with a little more
         warmth and softness, Iron Ore is the charcoal alternative. Valspar Tomcat is Tricorn&apos;s
-        near-identical cross-brand match.
+        nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -227,7 +227,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         In bright light its brown-gray warmth shows; in shadow it deepens toward black. It pairs
         naturally with warm whites, wood tones, and black hardware. Behr Broadway and PPG Onyx are its
-        closest cross-brand matches, both very close on the wall.
+        closest cross-brand matches, both very similar.
       </p>
     </>
   ),
@@ -242,21 +242,21 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         It&apos;s a strong choice for open-plan spaces where you want warmth without committing to beige,
         and it&apos;s forgiving across mixed lighting. Like its greige siblings it can show a faint green or
         violet base in cool north light, so sample before a whole-house commit. Behr Wheat Bread is a
-        near-identical cross-brand match.
+        nearly identical cross-brand match.
       </p>
     </>
   ),
   "sherwin-williams/mindful-gray-7016": (
     <>
       <p>
-        Mindful Gray is the deeper sibling of Repose Gray — same family, dropped into mid-tone territory
+        Mindful Gray is the deeper sibling of Repose Gray, dropped into mid-tone territory
         at LRV 48. That extra depth is the appeal: it gives a room real contrast and definition where a
         lighter gray would wash out, without going to a heavy charcoal.
       </p>
       <p>
         It works well on accent walls, lower cabinetry, and rooms with strong natural light that can
         carry a mid-tone. In dim rooms it can read darker and cooler than expected, so check it in your
-        own light. PPG Ghost Writer is an exact match; Benjamin Moore Thunder is a very close second.
+        own light. PPG Ghost Writer and Benjamin Moore Thunder are both nearly identical.
       </p>
     </>
   ),
@@ -298,7 +298,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         It&apos;s a touch deeper than the Sherwin-Williams greiges, so it gives a room a bit more presence —
         excellent in open-plan main floors and rooms with good light. In dim or very warm light its
         green undertone can surface, which is the main thing to sample for. Its closest Behr match is
-        Coliseum Marble and its Sherwin-Williams match is Simple Stone, both very close on the wall.
+        Coliseum Marble and its Sherwin-Williams match is Simple Stone, both very similar.
       </p>
     </>
   ),
@@ -324,7 +324,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         That brightness is its strength and its caution: in a low-light room it can read slightly cool
         or clinical, and it makes any warmer white nearby look dingy, so don&apos;t mix it with creamier
         whites. It&apos;s stunning in bright, airy rooms and as a crisp trim against deep colors like Hale
-        Navy. Behr Snow Fall is its near-identical cross-brand match.
+        Navy. Behr Snow Fall is its nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -353,7 +353,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Its lightness makes it forgiving in rooms that don&apos;t get much sun, where deeper greiges can go
         muddy. It pairs with both warm and cool whites and most wood tones. Behr Stonewashed is a
-        near-identical match, and Sherwin-Williams Dumpling is very close.
+        nearly identical match, and Sherwin-Williams Dumpling is very similar.
       </p>
     </>
   ),
@@ -409,7 +409,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         The cool base is the thing to respect: in north light it can lean slightly blue or green, so
         it&apos;s strongest in rooms with warm or balanced light, or where you want that crisp, cool
         quality on purpose. It pairs with cool whites and stays out of the way of bold furnishings.
-        Sherwin-Williams Silverpointe is a near-identical match; Behr Ashen Tan is close.
+        Sherwin-Williams Silverpointe is a nearly identical match; Behr Ashen Tan is close.
       </p>
     </>
   ),
@@ -424,7 +424,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         That subtle gray is the thing to watch: against a stark white it can look faintly dirty, and in
         cool north light the greige can surface more than you expect, so pair it with warmer companions.
         It&apos;s a strong whole-house white and a clean trim partner for greige walls. PPG Silver Feather
-        is its near-identical cross-brand match.
+        is its nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -449,7 +449,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Its warmth means it glows in lamplight but can look slightly creamy beside cooler whites, so
         commit to the warm direction throughout. It&apos;s a favorite for trim, millwork, and whole rooms in
-        traditional homes. Dutch Boy Child of Heaven and Behr Salt Crystal are both near-identical matches.
+        traditional homes. Dutch Boy Child of Heaven and Behr Salt Crystal are both nearly identical matches.
       </p>
     </>
   ),
@@ -464,7 +464,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         Because it leans cool, it can read slightly blue-gray in north light and will make any warm white
         nearby look dingy, so don&apos;t mix it with creamier whites. It&apos;s excellent against warm wood and
         deep colors, where its crispness adds contrast. Benjamin Moore White Christmas is its
-        near-identical cross-brand match.
+        nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -478,7 +478,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Its warmth is the point, but it means it can look creamy beside a stark white ceiling, so keep
         the whites consistent. It&apos;s a natural trim partner for warm greiges and creamy walls. Behr Swiss
-        Coffee is its near-identical match, which makes the look easy to get at Home Depot.
+        Coffee is its nearly identical match, which makes the look easy to get at Home Depot.
       </p>
     </>
   ),
@@ -492,7 +492,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         In bright rooms it can read nearly white; in softer light its gentle warmth shows. It&apos;s a
         beautiful whole-house choice for people who want &ldquo;not quite white&rdquo; and nothing more. Its
-        Sherwin-Williams match Heron Plume is near-identical.
+        Sherwin-Williams match Heron Plume is nearly identical.
       </p>
     </>
   ),
@@ -521,7 +521,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Its faint warmth keeps it from going cold, but in some light a subtle violet base can surface, so
         sample before a whole-house commit. It&apos;s lovely in bedrooms and living rooms with soft light.
-        Behr Ginger Sugar is a dead-on hex match, and Sherwin-Williams Winter Walk is very close.
+        Behr Ginger Sugar is a nearly identical match, and Sherwin-Williams Winter Walk is very similar.
       </p>
     </>
   ),
@@ -549,7 +549,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         As with any creamy white, it can look slightly soft beside a stark bright white, so keep the
         whites consistent through a space. It pairs naturally with warm woods and greige walls. It&apos;s a
-        near-identical match for Benjamin Moore Cloud White, so it&apos;s the easy way to get that classic
+        nearly identical match for Benjamin Moore Cloud White, so it&apos;s the easy way to get that classic
         creamy white at Home Depot prices.
       </p>
     </>
@@ -564,7 +564,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Like any near-black it needs light to show its character and will read essentially black in
         shadow. It pairs well with warm whites, wood, and brass. Its closest cross-brand match is
-        Benjamin Moore Cheating Heart, with Sherwin-Williams Peppercorn in the same family.
+        Benjamin Moore Cheating Heart, with Sherwin-Williams Peppercorn very similar.
       </p>
     </>
   ),
@@ -614,8 +614,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Heritage Gray is, for practical purposes, Agreeable Gray at Lowe&apos;s. It shares the same hex and
-        the same LRV 60, and scores a CIEDE2000 difference of essentially zero against Sherwin-Williams&apos;
-        most popular color — a dead-on match. If you love Agreeable Gray but buy paint at Lowe&apos;s, this is
+        the same LRV 60, and rates nearly identical against Sherwin-Williams&apos;
+        most popular color. If you love Agreeable Gray but buy paint at Lowe&apos;s, this is
         the color to ask for by name.
       </p>
       <p>
@@ -637,7 +637,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Its complexity is the thing to respect — it reads greener in some light and grayer in others,
         so sample it where it&apos;s going. It pairs beautifully with warm whites, brass, and natural wood.
-        Behr Hunters Hollow is a near-identical cross-brand match, with Benjamin Moore Storm Cloud Gray
+        Behr Hunters Hollow is a nearly identical cross-brand match, with Benjamin Moore Storm Cloud Gray
         close behind.
       </p>
     </>
@@ -653,7 +653,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         It leans muted rather than vivid, so it plays well with creamy whites, warm wood, and other
         earthy tones. In cool light its gray side shows; in warm light the green warms up. Its
-        near-identical Sherwin-Williams match is Softened Green.
+        nearly identical Sherwin-Williams match is Softened Green.
       </p>
     </>
   ),
@@ -667,8 +667,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its muted depth reads as a sophisticated neutral-green rather than a statement, and it pairs
-        naturally with warm whites and stone. Behr Environmental is a near-identical match; Sherwin-Williams
-        Cascade Green is in the same family.
+        naturally with warm whites and stone. Behr Environmental and Sherwin-Williams
+        Cascade Green are both nearly identical matches.
       </p>
     </>
   ),
@@ -682,7 +682,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Because it moves so much with light, it&apos;s a color you genuinely cannot judge from the chip —
-        sample it where it&apos;s going. It pairs with crisp whites and warm wood. Its near-identical
+        sample it where it&apos;s going. It pairs with crisp whites and warm wood. Its nearly identical
         Sherwin-Williams match is Sea Spray, and Behr Shy Green is close.
       </p>
     </>
@@ -710,7 +710,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         As a muted mid-tone it reads as a calm color rather than a bold one, and it pairs naturally with
-        warm whites and wood. Benjamin Moore Estate Sale is a near-identical match, with Sherwin-Williams
+        warm whites and wood. Benjamin Moore Estate Sale is a nearly identical match, with Sherwin-Williams
         Clary Sage close behind.
       </p>
     </>
@@ -725,7 +725,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         It&apos;s a popular exterior body color precisely because it holds its character in full sun without
         washing out. Indoors it needs decent light to avoid going heavy. It pairs with crisp white trim
-        and black hardware for a modern look. Behr Unpredictable Hue is a near-identical cross-brand match.
+        and black hardware for a modern look. Behr Unpredictable Hue is a nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -740,7 +740,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         In bright rooms it reads as a rich greige; in dim light it can go quite dark, so check it in
         your own space. It anchors a room well against white trim and works on exteriors too. Behr
-        Moleskin is a near-identical match.
+        Moleskin is a nearly identical match.
       </p>
     </>
   ),
@@ -754,7 +754,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Its lightness makes it forgiving across lighting, though a faint violet base can show in cool
         light. It pairs with both warm and cool whites. Its closest cross-brand match is Behr Silver
-        Drop, and it&apos;s very close to Benjamin Moore Balboa Mist.
+        Drop, and it&apos;s very similar to Benjamin Moore Balboa Mist.
       </p>
     </>
   ),
@@ -768,7 +768,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         That in-between quality makes it a flexible whole-house color, though its subtle warmth means it
         can look slightly soft beside a stark white. It pairs with warm whites and natural materials.
-        Benjamin Moore White Winged Dove is its near-identical match.
+        Benjamin Moore White Winged Dove is its nearly identical match.
       </p>
     </>
   ),
@@ -781,7 +781,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         In good light its warm charcoal character shows; in shadow it deepens toward near-black. It pairs
-        with warm whites, brass, and wood. Its near-identical Sherwin-Williams match is Storm Warning,
+        with warm whites, brass, and wood. Its nearly identical Sherwin-Williams match is Storm Warning,
         with Behr Mined Coal close behind.
       </p>
     </>
@@ -809,8 +809,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its lightness makes it forgiving in most rooms, though the faint violet base can surface in cool
-        light. It pairs with warm and cool whites alike. It&apos;s a near-exact match for Sherwin-Williams
-        Gossamer Veil, and very close to Behr Toasty Gray.
+        light. It pairs with warm and cool whites alike. It&apos;s a nearly identical match for Sherwin-Williams
+        Gossamer Veil, and very similar to Behr Toasty Gray.
       </p>
     </>
   ),
@@ -818,7 +818,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Toasty Gray is Behr&apos;s warm greige — and the color most people land on when they want Sherwin-Williams
-        Agreeable Gray at Home Depot. At LRV 61 it&apos;s a near-identical stand-in for Agreeable Gray
+        Agreeable Gray at Home Depot. At LRV 61 it&apos;s a nearly identical stand-in for Agreeable Gray
         (a barely-perceptible difference on the wall), which makes it the practical pick if Behr is the
         brand your store carries.
       </p>
@@ -851,7 +851,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Because it&apos;s warm, it can read slightly creamy beside a stark white, so keep the whites in a
         room consistent. It&apos;s most forgiving in soft, natural light. Behr Crisp Linen is a
-        near-identical cross-brand match, with Benjamin Moore Etiquette close behind.
+        nearly identical cross-brand match, with Benjamin Moore Etiquette close behind.
       </p>
     </>
   ),
@@ -865,7 +865,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         That faint violet-taupe undertone is the thing to sample for — in some light it can lean
         slightly pink, so keep its companions warm. It&apos;s lovely in bedrooms and living rooms with soft
-        light. Behr Mineral is a near-identical match, with Benjamin Moore Rocking Chair close behind.
+        light. Behr Mineral is a nearly identical match, with Benjamin Moore Rocking Chair close behind.
       </p>
     </>
   ),
@@ -873,7 +873,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Useful Gray lives up to its name — a flexible warm greige at LRV 59 that sits comfortably between
-        gray and beige. It&apos;s a close cousin of Benjamin Moore Revere Pewter (a near-identical match),
+        gray and beige. It&apos;s a close cousin of Benjamin Moore Revere Pewter (a nearly identical match),
         which makes it the SW pick for that same grounded, organic greige look.
       </p>
       <p>
@@ -921,7 +921,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Its warmth makes it forgiving in north-facing rooms where cooler neutrals can feel flat, but it
         can look creamy beside a stark white. It pairs naturally with wood and warm whites. Its
-        near-identical Sherwin-Williams match is Wool Skein.
+        nearly identical Sherwin-Williams match is Wool Skein.
       </p>
     </>
   ),
@@ -934,7 +934,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its gentle warmth keeps it livable, but like any soft white it can look faintly creamy beside a
-        bright white, so keep the whites consistent. Behr Cinnamon Cake is a near-identical match, with
+        bright white, so keep the whites consistent. Behr Cinnamon Cake is a nearly identical match, with
         Benjamin Moore Etiquette close behind.
       </p>
     </>
@@ -992,7 +992,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         As a deep color it&apos;s best with good light or used deliberately for drama on doors, islands, and
-        built-ins. It pairs with crisp and warm whites alike. Behr Harbour is a near-identical
+        built-ins. It pairs with crisp and warm whites alike. Behr Harbour is a nearly identical
         cross-brand match.
       </p>
     </>
@@ -1006,7 +1006,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         At this depth it shifts noticeably with light — bluer in daylight, grayer and darker in shadow —
-        so sample it in place. It pairs with warm metals and crisp whites. Behr Hypnotic is a very close
+        so sample it in place. It pairs with warm metals and crisp whites. Behr Hypnotic is a very similar
         cross-brand match, with Benjamin Moore Thousand Oceans very similar.
       </p>
     </>
@@ -1060,7 +1060,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It comes alive against warm whites, wood, and brass, and reads richest where there&apos;s some light
-        to bring out the bronze; in shadow it goes nearly black. Its near-identical cross-brand match is
+        to bring out the bronze; in shadow it goes nearly black. Its nearly identical cross-brand match is
         Benjamin Moore Dragon&apos;s Breath, with Behr Underground close behind.
       </p>
     </>
@@ -1090,7 +1090,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         It leans more green or more blue depending on the light, so sample it in place. It pairs
         beautifully with warm whites, wood, and brass for a layered, natural look. Behr Polaris Blue is a
-        near-identical cross-brand match.
+        nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -1105,7 +1105,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         It holds its character well across lighting, which is part of why it became a go-to for whole
         rooms and even exteriors. It pairs cleanly with white trim and both warm and cool accents. Behr
-        Keystone Gray is a near-identical cross-brand match.
+        Keystone Gray is a nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -1132,7 +1132,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its gentle, grayed quality keeps it from reading juvenile, though it can lean cooler in north
-        light. It pairs with crisp whites and pale wood. Behr Silver Bullet is a near-identical match,
+        light. It pairs with crisp whites and pale wood. Behr Silver Bullet is a nearly identical match,
         with Benjamin Moore Brittany Blue close behind.
       </p>
     </>
@@ -1161,7 +1161,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         That cool base is the consideration: in north light it can lean slightly blue, so it&apos;s strongest
         with warm or ample light, or where you want that crisp quality on purpose. Behr Mexican Silver is
-        a near-identical match, with Benjamin Moore Perspective very close.
+        a nearly identical match, with Benjamin Moore Perspective very similar.
       </p>
     </>
   ),
@@ -1188,7 +1188,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its subtle violet base can surface in cool light, so it&apos;s worth sampling against your trim. It
-        pairs with both warm and cool whites. Its near-identical Sherwin-Williams match is Grey Heron,
+        pairs with both warm and cool whites. Its nearly identical Sherwin-Williams match is Grey Heron,
         with Behr Toasty Gray close behind.
       </p>
     </>
@@ -1202,7 +1202,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its warmth means it can look slightly soft beside a bright white, so keep the whites consistent.
-        It&apos;s most flattering in soft, natural light. Behr Cotton Knit is a near-identical match, with
+        It&apos;s most flattering in soft, natural light. Behr Cotton Knit is a nearly identical match, with
         Benjamin Moore Etiquette close behind.
       </p>
     </>
@@ -1217,7 +1217,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Its cool, slightly green base reads more strongly in north light, so it&apos;s happiest with warm or
         balanced light. It pairs with cool whites and stays quietly in the background. Behr Ground Fog is
-        a near-identical match, with Sherwin-Williams Opaline close.
+        a nearly identical match, with Sherwin-Williams Opaline close.
       </p>
     </>
   ),
@@ -1232,7 +1232,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Like any near-black it reads essentially black in low light and shows its blue depth where
         there&apos;s daylight. It pairs crisply with cool whites and chrome, or warms up with brass. Its
-        near-identical cross-brand match is Benjamin Moore Black Horizon.
+        nearly identical cross-brand match is Benjamin Moore Black Horizon.
       </p>
     </>
   ),
@@ -1245,7 +1245,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It needs good light to avoid reading flat-dark, and it looks sharp against crisp white trim and
-        marble. In softer light its depth deepens. Behr Pier is a near-identical cross-brand match, with
+        marble. In softer light its depth deepens. Behr Pier is a nearly identical cross-brand match, with
         Sherwin-Williams Classic French Gray close behind.
       </p>
     </>
@@ -1261,7 +1261,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         As a deep warm tone it glows under warm light and deepens in shadow. It pairs naturally with
         creamy whites, rattan, leather, and greenery. Benjamin Moore Audubon Russet is its
-        near-identical cross-brand match, with Behr Orange Flambe very close.
+        nearly identical cross-brand match, with Behr Orange Flambe very similar.
       </p>
     </>
   ),
@@ -1275,7 +1275,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Reds intensify under warm light and can read slightly different across the day, so sample before
         committing a whole room. It pairs strikingly with crisp whites, warm wood, and black. Behr New
-        Brick is a near-identical cross-brand match.
+        Brick is a nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -1289,7 +1289,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Yellows read more golden under warm bulbs and truer in daylight; the higher LRV keeps it gentle
-        rather than vivid. It pairs with crisp whites and warm wood. Its near-identical Sherwin-Williams
+        rather than vivid. It pairs with crisp whites and warm wood. Its nearly identical Sherwin-Williams
         match is Optimistic Yellow, with Behr Wickerware close behind.
       </p>
     </>
@@ -1348,7 +1348,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its warmth makes it forgiving in cooler rooms, though in strong warm light it can edge toward
-        gold. It pairs with both warm and cool whites and most wood tones. Its near-identical
+        gold. It pairs with both warm and cool whites and most wood tones. Its nearly identical
         Sherwin-Williams match is Warm Oats, with Behr Natural Almond close behind.
       </p>
     </>
@@ -1371,7 +1371,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Clary Sage is a muted, mid-tone sage green at LRV 41 — a soft, grayed herbal green that sits in
-        the same family as the popular sages but with a touch more gray, which keeps it calm and
+        the same color family as the popular sages but with a touch more gray, which keeps it calm and
         livable. It works as a whole-room color in bedrooms, kitchens, and studies.
       </p>
       <p>
@@ -1406,7 +1406,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         That cool blue base reads more strongly in north light, so it&apos;s happiest with warm or balanced
         light, or where you want the crispness on purpose. It pairs with cool whites and stone. It&apos;s a
-        dead-on match for Benjamin Moore Smoke, and very close to Behr Gull Gray.
+        nearly identical match for Benjamin Moore Smoke, and very similar to Behr Gull Gray.
       </p>
     </>
   ),
@@ -1419,7 +1419,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its warmth can edge slightly peachy in strong warm light, so keep companions warm and sample in
-        place. It pairs with creamy whites and wood. Benjamin Moore Adobe Beige is its near-identical
+        place. It pairs with creamy whites and wood. Benjamin Moore Adobe Beige is its nearly identical
         cross-brand match, with Behr Riviera Retreat close behind.
       </p>
     </>
@@ -1433,7 +1433,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         In strong warm light it can read more golden, so it&apos;s worth sampling against your trim and
-        floors. It pairs with creamy whites and wood tones. Behr Coco is a near-identical cross-brand
+        floors. It pairs with creamy whites and wood tones. Behr Coco is a nearly identical cross-brand
         match, with Sherwin-Williams Sand Beach close behind.
       </p>
     </>
@@ -1462,7 +1462,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Its warmth glows under lamplight but can look soft beside a bright white, so keep the whites
         consistent. It pairs naturally with wood, warm greiges, and brass. Benjamin Moore Collector&apos;s
-        Item is a near-identical cross-brand match, with Behr Ivory Palace close behind.
+        Item is a nearly identical cross-brand match, with Behr Ivory Palace close behind.
       </p>
     </>
   ),
@@ -1475,8 +1475,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its faint warmth keeps it livable but can show slightly beside a stark white. It&apos;s a
-        near-identical match for Benjamin Moore Classic Gray, which makes it a familiar soft neutral by
-        another name; Behr Weathered White is also very close.
+        nearly identical match for Benjamin Moore Classic Gray, which makes it a familiar soft neutral by
+        another name; Behr Weathered White is also very similar.
       </p>
     </>
   ),
@@ -1489,7 +1489,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Like any light warm neutral it can look faintly creamy next to a stark white, so keep companions
-        warm. It&apos;s forgiving across most lighting. Benjamin Moore Classic Gray is its near-identical
+        warm. It&apos;s forgiving across most lighting. Benjamin Moore Classic Gray is its nearly identical
         cross-brand match, with Behr Coconut Ice close behind.
       </p>
     </>
@@ -1504,7 +1504,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         That taupe-violet base can surface in cool light, so sample it against your trim. It anchors a
         room well against white trim and pairs with warm wood. Benjamin Moore Evening Gown is its
-        near-identical match, with Behr Perfect Taupe close behind.
+        nearly identical match, with Behr Perfect Taupe close behind.
       </p>
     </>
   ),
@@ -1517,7 +1517,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It&apos;s forgiving across lighting, though it can show a faint green base in cool light. It pairs
-        with white trim and most wood tones. Behr Armadillo is a near-identical cross-brand match, with
+        with white trim and most wood tones. Behr Armadillo is a nearly identical cross-brand match, with
         Benjamin Moore Cumulus Cloud close behind.
       </p>
     </>
@@ -1531,7 +1531,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its cool base reads stronger in north light, so it&apos;s happiest with warm or balanced light. It
-        pairs with cool whites and modern finishes. Behr Mexican Silver is a near-identical cross-brand
+        pairs with cool whites and modern finishes. Behr Mexican Silver is a nearly identical cross-brand
         match, with Benjamin Moore Barren Plain close behind.
       </p>
     </>
@@ -1559,7 +1559,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         On trim against light walls it reads crisp; on a whole surface it&apos;s a soft, deep black rather
-        than a void. It pairs with anything. Its near-identical cross-brand match is Benjamin Moore Black.
+        than a void. It pairs with anything. Its nearly identical cross-brand match is Benjamin Moore Black.
       </p>
     </>
   ),
@@ -1572,7 +1572,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         As a deep blue it needs light to keep from going near-black, and it looks great with warm whites,
-        wood, and brass. Benjamin Moore Hudson Bay is its near-identical cross-brand match.
+        wood, and brass. Benjamin Moore Hudson Bay is its nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -1599,7 +1599,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its muted quality means it plays well with creamy whites and warm wood, shifting a little greener
-        or grayer with the light. Benjamin Moore Tree Moss is its near-identical cross-brand match.
+        or grayer with the light. Benjamin Moore Tree Moss is its nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -1626,8 +1626,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It holds its neutral character well across lighting, deepening toward black in shadow. It pairs
-        with crisp whites for contrast or warm metals for softness. It&apos;s a dead-on match for Benjamin
-        Moore Gray, with Behr Maximum Gray very close.
+        with crisp whites for contrast or warm metals for softness. It&apos;s a nearly identical match for Benjamin
+        Moore Gray, with Behr Maximum Gray very similar.
       </p>
     </>
   ),
@@ -1752,7 +1752,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its warmth makes it forgiving in cooler rooms, though it can edge slightly gold in strong warm
-        light. It pairs with creamy whites and wood. Benjamin Moore Cedar Key is its near-identical match,
+        light. It pairs with creamy whites and wood. Benjamin Moore Cedar Key is its nearly identical match,
         with Behr Roman Plaster close behind.
       </p>
     </>
@@ -1766,7 +1766,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         At this depth it can go quite dark in low light, so check it in your space. It pairs with creamy
-        whites, wood, and warm metals. Behr Sierra Sand is a near-identical match, with Benjamin Moore
+        whites, wood, and warm metals. Behr Sierra Sand is a nearly identical match, with Benjamin Moore
         Cotswold close behind.
       </p>
     </>
@@ -1780,7 +1780,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its cool base reads slightly bluer in north light. It pairs with crisp whites and pale wood for a
-        calm, modern feel. Benjamin Moore Early Frost is its near-identical match, with Behr Chicago Fog
+        calm, modern feel. Benjamin Moore Early Frost is its nearly identical match, with Behr Chicago Fog
         close behind.
       </p>
     </>
@@ -1794,7 +1794,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         At this depth it reads richer in warm light and can go quite dark in low light, so sample in
-        place. It pairs with creamy whites, wood, and brass. Behr Craft Brown is a near-identical
+        place. It pairs with creamy whites, wood, and brass. Behr Craft Brown is a nearly identical
         cross-brand match.
       </p>
     </>
@@ -1808,7 +1808,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its softness means it shifts subtly between green and gray with the light, reading nearly neutral
-        in some rooms. It pairs with crisp whites and warm wood. Its near-identical Sherwin-Williams match
+        in some rooms. It pairs with crisp whites and warm wood. Its nearly identical Sherwin-Williams match
         is Kingston.
       </p>
     </>
@@ -1822,7 +1822,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its blue base reads stronger in cool light, so it&apos;s strongest with warm or balanced light. It
-        pairs with crisp whites and natural materials. Behr Sparrow is a near-identical match, with
+        pairs with crisp whites and natural materials. Behr Sparrow is a nearly identical match, with
         Sherwin-Williams Rain close behind.
       </p>
     </>
@@ -1836,7 +1836,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its faint greige warmth keeps it from feeling stark but can look soft beside a true white. It&apos;s
-        most flattering in natural light. Behr Castle Beige is its near-identical cross-brand match, with
+        most flattering in natural light. Behr Castle Beige is its nearly identical cross-brand match, with
         Benjamin Moore White Winged Dove close behind.
       </p>
     </>
@@ -1850,8 +1850,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its gentle warmth keeps it easy to live with, though it can read faintly soft next to a bright
-        white. Benjamin Moore Silver Satin is its near-identical cross-brand match, with Behr Spun Wool
-        very close.
+        white. Benjamin Moore Silver Satin is its nearly identical cross-brand match, with Behr Spun Wool
+        very similar.
       </p>
     </>
   ),
@@ -1878,7 +1878,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Like most warm greiges it can show a faint green or taupe base in cool light, so sample in place.
-        It pairs with white trim and most wood tones. Behr Smokestack is a near-identical match, with
+        It pairs with white trim and most wood tones. Behr Smokestack is a nearly identical match, with
         Benjamin Moore Hazelwood close behind.
       </p>
     </>
@@ -1892,7 +1892,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It holds its neutral character fairly well across lighting, leaning slightly cool in north light.
-        It pairs with white trim and both warm and cool accents. Behr Gull Gray is a near-identical
+        It pairs with white trim and both warm and cool accents. Behr Gull Gray is a nearly identical
         cross-brand match, with Benjamin Moore Coventry Gray close behind.
       </p>
     </>
@@ -1920,7 +1920,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its blue base reads stronger in north light, so it&apos;s happiest with warm or balanced light. It
-        pairs with cool whites and modern finishes. Behr Distant Star is its near-identical cross-brand
+        pairs with cool whites and modern finishes. Behr Distant Star is its nearly identical cross-brand
         match.
       </p>
     </>
@@ -1948,7 +1948,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It reads a touch cooler in north light and softer under warm bulbs. It pairs with crisp whites and
-        natural wood. Behr English Hollyhock is its near-identical cross-brand match, with Benjamin Moore
+        natural wood. Behr English Hollyhock is its nearly identical cross-brand match, with Benjamin Moore
         Sea View close behind.
       </p>
     </>
@@ -1962,7 +1962,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its subtle warmth means it can look faintly creamy beside a true cool white, so keep the whites
-        consistent. It&apos;s a versatile all-rounder for bright rooms. Behr Spun Cotton is its near-identical
+        consistent. It&apos;s a versatile all-rounder for bright rooms. Behr Spun Cotton is its nearly identical
         cross-brand match.
       </p>
     </>
@@ -1976,8 +1976,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It can show a faint green or pink base depending on the light, so sample in place. It pairs with
-        warm and cool whites alike and most wood tones. Behr Yuma Sand is a near-identical match, and
-        Sherwin-Williams Cargo Pants is very close.
+        warm and cool whites alike and most wood tones. Behr Yuma Sand is a nearly identical match, and
+        Sherwin-Williams Cargo Pants is very similar.
       </p>
     </>
   ),
@@ -1990,7 +1990,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It holds its neutral character well across lighting, leaning only slightly cool. It pairs with
-        white trim and both warm and cool accents. Its near-identical Sherwin-Williams match is On the
+        white trim and both warm and cool accents. Its nearly identical Sherwin-Williams match is On the
         Rocks, with Behr Dolphin Fin close behind.
       </p>
     </>
@@ -2018,7 +2018,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It swings a touch between blue and green with the light, so sample in place. It pairs with crisp
-        whites and natural materials for a classic, collected look. Behr Harmonious is its near-identical
+        whites and natural materials for a classic, collected look. Behr Harmonious is its nearly identical
         cross-brand match.
       </p>
     </>
@@ -2027,13 +2027,13 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Dovetail is a deep, sophisticated greige-gray at LRV 26 — a warm-leaning mid-dark neutral that
-        became a favorite for exteriors, islands, and accent walls. It&apos;s in the same family as the light
+        became a favorite for exteriors, islands, and accent walls. It&apos;s in the same color family as the light
         greiges but with real depth, giving a room contrast and a grounded, modern weight.
       </p>
       <p>
         At this depth it reads darker in low light, so sample in place. It pairs beautifully with crisp
         white trim and black hardware, and works as an exterior body color. Benjamin Moore Castle Gate is
-        its near-identical cross-brand match.
+        its nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -2046,7 +2046,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         At this depth it darkens in low light, so check it in your own space. It pairs with white trim and
-        both warm and cool accents. Benjamin Moore Platinum Gray is its near-identical cross-brand match.
+        both warm and cool accents. Benjamin Moore Platinum Gray is its nearly identical cross-brand match.
       </p>
     </>
   ),
@@ -2059,7 +2059,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         It holds its neutral character fairly well across lighting. It pairs with white trim and warm or
-        cool accents. Benjamin Moore Marina Gray is its near-identical cross-brand match, with Behr Lunar
+        cool accents. Benjamin Moore Marina Gray is its nearly identical cross-brand match, with Behr Lunar
         Surface close behind.
       </p>
     </>
@@ -2087,7 +2087,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its warmth can edge slightly gold in strong warm light, so keep companions warm. It pairs with
-        creamy whites and wood. Benjamin Moore Warm is its near-identical match, with Behr Elemental Tan
+        creamy whites and wood. Benjamin Moore Warm is its nearly identical match, with Behr Elemental Tan
         close behind.
       </p>
     </>
@@ -2156,7 +2156,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Like all soft blue-greens it&apos;s hard to predict from the chip, so sample where it&apos;s going. It
-        pairs with crisp whites and natural wood. Benjamin Moore Turquoise Mist is its near-identical
+        pairs with crisp whites and natural wood. Benjamin Moore Turquoise Mist is its nearly identical
         cross-brand match, with Behr Heath Gray close behind.
       </p>
     </>
@@ -2170,7 +2170,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         At this depth it can show its taupe warmth in good light and deepen in low light, so sample in
-        place. It pairs with creamy whites and wood. Its near-identical Sherwin-Williams match is
+        place. It pairs with creamy whites and wood. Its nearly identical Sherwin-Williams match is
         Outrigger.
       </p>
     </>
@@ -2198,7 +2198,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its chameleon nature means a sample is essential — it can look quite different across rooms and
-        bulbs. It pairs with crisp whites and natural wood. Behr Dew is its near-identical cross-brand
+        bulbs. It pairs with crisp whites and natural wood. Behr Dew is its nearly identical cross-brand
         match.
       </p>
     </>
@@ -2212,8 +2212,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its soft blue reads a touch cooler in north light and gentler under warm bulbs. It pairs with
-        crisp whites and natural materials. Behr Dayflower is its near-identical cross-brand match, with
-        Sherwin-Williams Sleepy Blue in the same family.
+        crisp whites and natural materials. Behr Dayflower is its nearly identical cross-brand match, with
+        Sherwin-Williams Sleepy Blue is very similar.
       </p>
     </>
   ),
@@ -2226,7 +2226,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Like all of this family it shifts with the light, so a sample is essential. It pairs with crisp
-        whites and natural wood and fights cool grays. Behr Rhino is its near-identical cross-brand match,
+        whites and natural wood and fights cool grays. Behr Rhino is its nearly identical cross-brand match,
         with Benjamin Moore Picnic Basket close behind.
       </p>
     </>
@@ -2281,7 +2281,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         whole-house color that suits walls and trim alike in warm-leaning homes.
       </p>
       <p>
-        Its gentle warmth keeps it livable but can look soft beside a stark white. It&apos;s a near-identical
+        Its gentle warmth keeps it livable but can look soft beside a stark white. It&apos;s a nearly identical
         match for Behr Weathered White, and close to Benjamin Moore Classic Gray, making it a familiar
         soft neutral by another name.
       </p>
@@ -2296,7 +2296,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its subtle warmth means it can look faintly soft beside a stark cool white, so keep the whites
-        consistent. It&apos;s lovely in bright, airy rooms. Behr Resort White is its near-identical cross-brand
+        consistent. It&apos;s lovely in bright, airy rooms. Behr Resort White is its nearly identical cross-brand
         match.
       </p>
     </>
@@ -2310,7 +2310,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its softness keeps it easy to live with, though it can look gentle beside a true bright white. It
-        pairs with warm and cool neutrals alike. Behr Nude is its near-identical cross-brand match, with
+        pairs with warm and cool neutrals alike. Behr Nude is its nearly identical cross-brand match, with
         Sherwin-Williams Cold Foam close behind.
       </p>
     </>

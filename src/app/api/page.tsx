@@ -83,7 +83,7 @@ export default function ApiDocsPage() {
 
         <section className="mt-10">
           <h2 className="font-headline text-2xl font-bold text-on-surface">Free response</h2>
-          <p className="mt-2 text-sm text-on-surface-variant">Top 10 matches, sorted by Delta E (lower = closer; under 2.0 is near-identical).</p>
+          <p className="mt-2 text-sm text-on-surface-variant">Top 10 matches, sorted by Delta E (lower = closer; under 2 is labeled Nearly identical, under 5 Very similar, 5 and above Visible difference).</p>
           <Code>{`{
   "matches": [
     {

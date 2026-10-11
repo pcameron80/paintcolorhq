@@ -9,6 +9,7 @@ import { nearestMatchesPerBrand } from "@/lib/color-description";
 import { hexToRgb, rgbToLab, deltaE2000 } from "@/lib/color-utils";
 import { COLOR_OF_THE_YEAR, CURRENT_COTY, type ColorOfTheYearPick } from "@/lib/color-of-the-year";
 import type { ColorWithBrand, CrossBrandMatchWithColor } from "@/lib/types";
+import { closenessLabel } from "@/lib/closeness";
 
 export const revalidate = 604800; // 7d — picks change once a year; redeploy on a new announcement
 
@@ -32,10 +33,7 @@ function JsonLd({ data }: { data: object }) {
 }
 
 function matchLabel(score: number): string {
-  if (score < 1) return "Very close digital match";
-  if (score < 2) return "Close digital match";
-  if (score < 5) return "Similar";
-  return "Visible difference";
+  return closenessLabel(score);
 }
 
 function isLight(hex: string): boolean {

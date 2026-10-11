@@ -105,7 +105,7 @@ export default function EmbedPage() {
           <div className="mx-auto max-w-5xl rounded-2xl bg-surface-container-low p-8 md:p-10">
             <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-4">How the matching works</h2>
             <p className="max-w-3xl text-on-surface-variant">
-              Every color is converted to CIE LAB color space, and the widget computes the CIEDE2000 Delta E — a perceptual color-difference standard used in paint and coatings manufacturing — between your color and our 26,000+ colors, then returns the closest match in each brand. The verdict labels (&ldquo;Near-identical,&rdquo; &ldquo;Very similar,&rdquo; &ldquo;Visible difference&rdquo;) map to standard Delta E thresholds. Full details on the{" "}
+              Every color is converted to CIE LAB color space, and the widget computes the CIEDE2000 Delta E — a perceptual color-difference standard used in paint and coatings manufacturing — between your color and our 26,000+ colors, then returns the closest match in each brand. The verdict labels (&ldquo;Nearly identical,&rdquo; &ldquo;Very similar,&rdquo; &ldquo;Visible difference&rdquo;) map to standard Delta E thresholds. Full details on the{" "}
               <Link href="/methodology" className="text-primary underline-offset-4 hover:underline">methodology page</Link>.
             </p>
             <p className="mt-4 text-sm text-on-surface-variant">

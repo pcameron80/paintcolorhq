@@ -65,7 +65,7 @@ export default function MethodologyPage() {
               How we match paint colors across brands
             </h1>
             <p className="text-lg text-on-surface-variant leading-relaxed max-w-2xl">
-              Paint Color HQ has 26,000+ paint colors from 13 brands and over a million pre-computed cross-brand matches. This page documents how those matches are calculated, what Delta E scores mean, and where the methodology has limits.
+              Paint Color HQ has 26,000+ paint colors from 13 brands and over a million pre-computed cross-brand matches. This page documents how those matches are calculated, what the closeness labels mean, and where the methodology has limits.
             </p>
           </div>
         </section>
@@ -127,10 +127,9 @@ export default function MethodologyPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-outline-variant/10 text-on-surface-variant">
-                  <tr><td className="px-6 py-4 font-mono text-on-surface">&lt; 1.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Virtually identical</td><td className="px-6 py-4">A very small difference in the stored digital values. Verify with physical samples.</td></tr>
-                  <tr><td className="px-6 py-4 font-mono text-on-surface">1.0–2.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Near-identical</td><td className="px-6 py-4">A close digital approximation, not a guarantee of identical paint.</td></tr>
-                  <tr><td className="px-6 py-4 font-mono text-on-surface">2.0–5.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Close match / Same family</td><td className="px-6 py-4">A broader digital shortlist. Compare hue and lightness before sampling.</td></tr>
-                  <tr><td className="px-6 py-4 font-mono text-on-surface">&gt; 5.0</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Visible difference</td><td className="px-6 py-4">A less similar digital result. Treat it as an alternative to evaluate, not a substitute.</td></tr>
+                  <tr><td className="px-6 py-4 font-mono text-on-surface">&lt; 2</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Nearly identical</td><td className="px-6 py-4">The difference is hard to spot, even side by side. Still a digital result, so confirm with a physical sample.</td></tr>
+                  <tr><td className="px-6 py-4 font-mono text-on-surface">2 to &lt; 5</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Very similar</td><td className="px-6 py-4">Close, but you may notice a difference side by side. Compare hue and lightness before sampling.</td></tr>
+                  <tr><td className="px-6 py-4 font-mono text-on-surface">&ge; 5</td><td className="px-6 py-4 font-headline font-bold text-on-surface">Visible difference</td><td className="px-6 py-4">The colors are clearly different. Treat it as an alternative to evaluate, not a substitute.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -161,9 +160,9 @@ export default function MethodologyPage() {
             <ul className="space-y-3 text-on-surface-variant leading-relaxed list-disc pl-6">
               <li><strong className="text-on-surface">Sheen and finish.</strong> A flat and a satin in the same hex code will not look identical on a wall. Sheen affects light reflection and apparent value — we recommend matching sheen across rooms before comparing colors.</li>
               <li><strong className="text-on-surface">Base coat.</strong> Paint over a tinted base reads differently than paint over a pure white primer, especially for thin or transparent pigments. Most differences disappear by the second coat, but the first coat can be misleading.</li>
-              <li><strong className="text-on-surface">Lighting.</strong> A color sampled under 2700K warm bulbs looks meaningfully different from the same color under 4000K daylight bulbs. Two colors with Delta E 0.5 under one light source can read as Delta E 3 under another. Always sample in your room&apos;s actual lighting, at multiple times of day.</li>
-              <li><strong className="text-on-surface">Manufacturer batch variation.</strong> Published hex codes are nominal — actual mixed paint has tolerances. The CIE recommends Delta E &lt; 1 as the acceptance threshold for production batches in coatings manufacturing, which is why we treat &lt; 1 as &ldquo;virtually identical.&rdquo;</li>
-              <li><strong className="text-on-surface">Mineral pigments and complex formulations.</strong> Brands like Farrow &amp; Ball use mineral pigments and proprietary base structures that produce a finish character (chalky depth, color shift through the day) that can&apos;t be captured by a single hex code. A perfect Delta E match between an F&amp;B color and a standard latex color can still look different on a wall.</li>
+              <li><strong className="text-on-surface">Lighting.</strong> A color sampled under 2700K warm bulbs looks meaningfully different from the same color under 4000K daylight bulbs. Two colors that look nearly identical under one light source can show a visible difference under another. Always sample in your room&apos;s actual lighting, at multiple times of day.</li>
+              <li><strong className="text-on-surface">Manufacturer batch variation.</strong> Published hex codes are nominal — actual mixed paint has tolerances. Even a nearly identical digital result is a shortlist entry, not a guarantee, because the same tolerances apply when a brand mixes its own batches.</li>
+              <li><strong className="text-on-surface">Mineral pigments and complex formulations.</strong> Brands like Farrow &amp; Ball use mineral pigments and proprietary base structures that produce a finish character (chalky depth, color shift through the day) that can&apos;t be captured by a single hex code. A nearly identical digital match between an F&amp;B color and a standard latex color can still look different on a wall.</li>
             </ul>
             <p className="text-on-surface-variant leading-relaxed mt-6">
               The recommendation across all of these limitations is the same: always sample physically before committing to a full room, at minimum 4×4 inches, on the actual wall, viewed at multiple times of day.
@@ -192,7 +191,7 @@ export default function MethodologyPage() {
               <Link href="/blog/understanding-paint-color-undertones" className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all">
                 <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Color theory</p>
                 <p className="font-headline text-lg font-bold text-on-surface group-hover:text-primary transition-colors">Understanding paint color undertones</p>
-                <p className="mt-2 text-sm text-on-surface-variant">Why a perfect Delta E match can still look wrong on the wall — and how to read undertones before you commit.</p>
+                <p className="mt-2 text-sm text-on-surface-variant">Why a nearly identical match can still look wrong on the wall — and how to read undertones before you commit.</p>
               </Link>
               <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all">
                 <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Guide</p>

@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { trackToolEngagement } from "@/lib/analytics";
+import { closenessLabel } from "@/lib/closeness";
 
 interface ColorMatch {
   id: string;
@@ -18,9 +19,7 @@ interface ColorMatch {
 // Plain-language closeness — site convention: never show the raw Delta E number
 // in the UI (same thresholds as the compare tool and embed widget).
 function closeness(deltaE: number): string {
-  if (deltaE < 2) return "Near-identical";
-  if (deltaE < 5) return "Very similar";
-  return "Visible difference";
+  return closenessLabel(deltaE);
 }
 
 type Stage = "upload" | "pick" | "results";

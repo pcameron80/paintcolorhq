@@ -10,6 +10,8 @@
 // The list is fixed and explicit (not hashed) so the report script can bucket
 // GSC page rows from the URL alone. Keys are "sourceBrandSlug/matchSlug".
 
+import { closenessLabel } from "./closeness";
+
 export const MATCH_TITLE_TEST_START = "2026-10-11";
 export const MATCH_TITLE_TEST_READ_DATE = "2026-10-25";
 
@@ -45,9 +47,7 @@ export function isMatchTitleTestPair(sourceBrandSlug: string, matchSlug: string)
 
 /** Plain-language closeness. Never expose the raw Delta E number. */
 export function matchClosenessLabel(score: number): string {
-  if (score < 1) return "Nearly identical";
-  if (score < 3) return "Very similar";
-  return "Visible difference";
+  return closenessLabel(score);
 }
 
 export interface MatchTestCandidate {

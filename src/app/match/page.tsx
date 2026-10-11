@@ -63,7 +63,7 @@ const FAQS = [
   },
   {
     q: "How close is a digital paint match?",
-    a: "Each match is labeled in plain language: nearly identical, very similar, same family, or test with sample. The label comes from a CIEDE2000 (Delta E 2000) color difference calculated on the digital color values of both paints. It tells you which color is closest on screen, not how the dried paint will look on your wall.",
+    a: "Each match is labeled in plain language: Nearly identical, Very similar, or Visible difference. The label comes from a CIEDE2000 (Delta E 2000) color difference calculated on the digital color values of both paints. It tells you which color is closest on screen, not how the dried paint will look on your wall.",
   },
   {
     q: "Do I still need a physical sample?",
@@ -167,9 +167,9 @@ export default async function MatchHubPage() {
               Each match page lists the closest colors in the other brand, nearest first.
             </p>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              Instead of showing the raw number, each match gets a plain label: <strong>nearly identical</strong>,{" "}
-              <strong>very similar</strong>, <strong>same family</strong>, or <strong>test with sample</strong>. A close digital match
-              between two brands is common, but an exact one is not guaranteed, because each brand mixes from its own bases and colorants.
+              Instead of showing the raw number, each match gets a plain label: <strong>Nearly identical</strong>,{" "}
+              <strong>Very similar</strong>, or <strong>Visible difference</strong>. A nearly identical digital match
+              between two brands is common, but an identical paint is not guaranteed, because each brand mixes from its own bases and colorants.
             </p>
             <p className="text-on-surface-variant leading-relaxed">
               A digital match is a shortlist, not a final answer. Screen calibration, room lighting and sheen all change the result, so

@@ -239,7 +239,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
               </p>
               <p className="mt-3">
                 What holds a scheme together is undertone, not raw hue. Two grays can read as
-                near-identical and still pull in opposite directions once they are on the wall —
+                nearly identical and still pull in opposite directions once they are on the wall —
                 one warm toward pink, the other cool toward green — which is how a wall and its trim
                 end up clashing even when both are called &ldquo;gray.&rdquo; Keep the main wall,
                 accent, and trim in the same undertone family, and check the undertone tag on each

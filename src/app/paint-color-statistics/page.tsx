@@ -33,7 +33,7 @@ const STUDY_URL = "/blog/most-duplicated-paint-color";
 // July 2026" wherever shown, because the live catalog shifts as brand palettes
 // change. Only the market-size table above them is computed live at render.
 
-// Share of each brand's palette with no near-identical match (CIEDE2000 Delta E
+// Share of each brand's palette with no nearly identical match (CIEDE2000 Delta E
 // 1.0) at any other brand. RAL is excluded — it is an industrial color standard,
 // not a consumer paint line, so counting its overlap would distort the ranking.
 const ORIGINALITY_RANKING: { brand: string; uniquePct: number }[] = [
@@ -110,15 +110,15 @@ export default async function PaintColorStatisticsPage() {
   const faqs = [
     {
       q: "How many paint colors are there?",
-      a: `Paint Color HQ tracks ${totalLabel} named paint colors across 13 major brands. That count includes duplicates; once near-identical colors — those within Delta E 1.0 of another under the CIEDE2000 standard — are collapsed into one, roughly 14,700 are genuinely distinct, about 55% of the catalog, based on our July 2026 analysis.`,
+      a: `Paint Color HQ tracks ${totalLabel} named paint colors across 13 major brands. That count includes duplicates; once nearly identical colors — those in the tightest half of our Nearly identical band relative to another under the CIEDE2000 standard — are collapsed into one, roughly 14,700 are genuinely distinct, about 55% of the catalog, based on our July 2026 analysis.`,
     },
     {
       q: "Which paint brand has the most colors?",
-      a: "Behr has the largest catalog of the brands we track, ahead of Benjamin Moore and PPG. The per-brand table on this page shows the current count for each brand and updates as palettes change. Behr also has the most original palette: as of July 2026, 48.5% of its colors have no near-identical match at any other brand.",
+      a: "Behr has the largest catalog of the brands we track, ahead of Benjamin Moore and PPG. The per-brand table on this page shows the current count for each brand and updates as palettes change. Behr also has the most original palette: as of July 2026, 48.5% of its colors have no nearly identical match at any other brand.",
     },
     {
       q: "How many paint colors are duplicates of each other?",
-      a: "As of July 2026, 66.6% of the colors we track (17,702 of 26,597) have a near-identical twin — within Delta E 1.0 — at a competing brand, and 749 exact hex values are sold under different names by two or more brands. The overlap is heaviest between Behr and Benjamin Moore, which share about 2,400 near-identical colors.",
+      a: "As of July 2026, 66.6% of the colors we track (17,702 of 26,597) have a nearly identical twin — in the tightest half of our Nearly identical band — at a competing brand, and 749 exact hex values are sold under different names by two or more brands. The overlap is heaviest between Behr and Benjamin Moore, which share about 2,400 nearly identical colors.",
     },
   ];
 
@@ -189,7 +189,7 @@ export default async function PaintColorStatisticsPage() {
         <section className="px-6 md:px-12 py-12 bg-surface-container-low">
           <div className="max-w-4xl mx-auto">
             <p className="text-base text-on-surface-variant leading-relaxed">
-              <strong className="text-on-surface">Short version:</strong> Paint Color HQ tracks {totalLabel} named paint colors across 13 brands. As of July 2026, two thirds of them — 66.6%, or 17,702 colors — have a near-identical twin within Delta E 1.0 at a competing brand, and 749 exact hex values are sold under different names by two or more brands. Collapse the near-identical overlap and about 14,700 genuinely distinct colors remain, roughly 55% of the catalog. Behr has the most original palette, with 48.5% of its colors unique to it; Hirshfield&apos;s the least, at 8.2%.
+              <strong className="text-on-surface">Short version:</strong> Paint Color HQ tracks {totalLabel} named paint colors across 13 brands. As of July 2026, two thirds of them — 66.6%, or 17,702 colors — have a nearly identical twin (in the tightest half of our Nearly identical band) at a competing brand, and 749 exact hex values are sold under different names by two or more brands. Collapse the nearly identical overlap and about 14,700 genuinely distinct colors remain, roughly 55% of the catalog. Behr has the most original palette, with 48.5% of its colors unique to it; Hirshfield&apos;s the least, at 8.2%.
             </p>
           </div>
         </section>
@@ -236,13 +236,13 @@ export default async function PaintColorStatisticsPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">How many are duplicates?</h2>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              Different brands sell a lot of the same color. We measured every color against every other with the CIEDE2000 standard, where Delta E is the perceptual distance between two colors and anything under 1.0 is a difference the human eye can barely register. As of July 2026, <strong className="text-on-surface">66.6% of colors — 17,702 of 26,597 — have a near-identical twin at a competing brand</strong>. The redundancy runs deeper than lookalikes: <strong className="text-on-surface">749 exact hex values are sold identically by two or more brands</strong>, covering 1,555 named colors, with up to four brands sharing a single hex.
+              Different brands sell a lot of the same color. We measured every color against every other with the CIEDE2000 standard, where Delta E is the perceptual distance between two colors. We count a pair as twins only when the gap sits in the tightest half of our Nearly identical band, a difference the human eye can barely register. As of July 2026, <strong className="text-on-surface">66.6% of colors — 17,702 of 26,597 — have a nearly identical twin at a competing brand</strong>. The redundancy runs deeper than lookalikes: <strong className="text-on-surface">749 exact hex values are sold identically by two or more brands</strong>, covering 1,555 named colors, with up to four brands sharing a single hex.
             </p>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              Strip out the overlap and the catalog shrinks. Collapsing every group of near-identical colors (each member within Delta E 1.0 of its reference) down to one leaves <strong className="text-on-surface">about 14,700 genuinely distinct colors — roughly 55% of the catalog</strong>. Tighten the threshold to Delta E 0.5, a difference almost nobody can see, and about 22,050 colors (around 83%) still stand apart.
+              Strip out the overlap and the catalog shrinks. Collapsing every group of nearly identical colors (each member in the tightest half of our Nearly identical band relative to its reference) down to one leaves <strong className="text-on-surface">about 14,700 genuinely distinct colors — roughly 55% of the catalog</strong>. Tighten the threshold to a quarter of that band, a difference almost nobody can see, and about 22,050 colors (around 83%) still stand apart.
             </p>
             <p className="text-on-surface-variant leading-relaxed">
-              The overlap is not spread evenly. The most intertwined pair is <strong className="text-on-surface">Behr and Benjamin Moore</strong>: roughly 2,400 colors in each brand&apos;s palette have a near-identical counterpart in the other. Separately, we track{" "}
+              The overlap is not spread evenly. The most intertwined pair is <strong className="text-on-surface">Behr and Benjamin Moore</strong>: roughly 2,400 colors in each brand&apos;s palette have a nearly identical counterpart in the other. Separately, we track{" "}
               <Link href="/discontinued" className="text-primary hover:underline underline-offset-4">243 discontinued or archived colors</Link>, each mapped to its closest current match. The full method and the color-by-color breakdown are in the{" "}
               <Link href={STUDY_URL} className="text-primary hover:underline underline-offset-4">most-duplicated paint color study</Link>.
             </p>
@@ -254,7 +254,7 @@ export default async function PaintColorStatisticsPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Which brand has the most original palette?</h2>
             <p className="text-on-surface-variant leading-relaxed mb-8">
-              Originality here is the share of a brand&apos;s colors that have no near-identical match (within Delta E 1.0) at any other brand — colors you can only get from that brand. Behr leads by a wide margin; Hirshfield&apos;s sits at the bottom, with more than nine in ten of its colors matched elsewhere. Figures are as of July 2026. RAL is excluded because it is an industrial color standard rather than a consumer paint line.
+              Originality here is the share of a brand&apos;s colors that have no nearly identical match (in the tightest half of our Nearly identical band) at any other brand — colors you can only get from that brand. Behr leads by a wide margin; Hirshfield&apos;s sits at the bottom, with more than nine in ten of its colors matched elsewhere. Figures are as of July 2026. RAL is excluded because it is an industrial color standard rather than a consumer paint line.
             </p>
 
             <div className="overflow-x-auto">

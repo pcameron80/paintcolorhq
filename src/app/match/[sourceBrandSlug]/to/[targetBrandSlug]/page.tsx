@@ -8,6 +8,7 @@ import { TrackPage } from "@/components/track-page";
 import { MatchColorSearch } from "@/components/match-color-search";
 import { getBrandBySlug, getTopCrossBrandMatches } from "@/lib/queries";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
+import { closenessLabel } from "@/lib/closeness";
 import { getBrandPairIntro } from "@/lib/brand-pair-intros";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
@@ -17,11 +18,14 @@ const MAJOR_BRANDS = MAJOR_MATCH_BRANDS;
 interface PageProps { params: Promise<{ sourceBrandSlug: string; targetBrandSlug: string }>; }
 
 function getDeltaELabel(deltaE: number): { label: string; shortLabel: string; className: string } {
-  if (deltaE < 1) return { label: "Exact Match", shortLabel: "Exact", className: "bg-primary-fixed text-primary" };
-  if (deltaE < 2) return { label: "Nearly identical", shortLabel: "Nearly identical", className: "bg-primary-fixed text-primary" };
-  if (deltaE < 3) return { label: "Very similar", shortLabel: "Very similar", className: "bg-secondary-fixed text-secondary" };
-  if (deltaE < 5) return { label: "Same family", shortLabel: "Same family", className: "bg-tertiary-fixed text-tertiary" };
-  return { label: "Test with sample", shortLabel: "Test first", className: "bg-error-container text-error" };
+  const label = closenessLabel(deltaE);
+  const className =
+    label === "Nearly identical"
+      ? "bg-primary-fixed text-primary"
+      : label === "Very similar"
+        ? "bg-secondary-fixed text-secondary"
+        : "bg-error-container text-error";
+  return { label, shortLabel: label, className };
 }
 
 export async function generateStaticParams() {
@@ -104,8 +108,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto flex flex-wrap gap-3 text-xs">
           <span className="rounded-full bg-primary-fixed px-3 py-1 text-primary font-bold">Nearly identical</span>
           <span className="rounded-full bg-secondary-fixed px-3 py-1 text-secondary font-bold">Very similar</span>
-          <span className="rounded-full bg-tertiary-fixed px-3 py-1 text-tertiary font-bold">Same family</span>
-          <span className="rounded-full bg-error-container px-3 py-1 text-error font-bold">Test with sample</span>
+          <span className="rounded-full bg-error-container px-3 py-1 text-error font-bold">Visible difference</span>
         </div>
       </section>
 
