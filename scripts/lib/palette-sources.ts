@@ -68,16 +68,22 @@ export async function pool<T, R>(items: T[], n: number, fn: (item: T) => Promise
 
 /**
  * Fetch a JS-rendered page through the self-hosted crawl4ai server on the NAS,
- * for sites behind Cloudflare bot checks. Needs CRAWL4AI_TOKEN in .env.local
- * (the server's API token); CRAWL4AI_URL defaults to the NAS address.
+ * for sites behind Cloudflare bot checks. Needs CRAWL4AI_TOKEN in .env.local.
+ * CRAWL4AI_URL is https://crawl.toh.fyi (behind Cloudflare Access, so the
+ * CF_ACCESS_CLIENT_ID/SECRET service token goes along) or the LAN address.
  */
 export async function getRenderedHtml(url: string): Promise<string> {
   const base = process.env.CRAWL4AI_URL ?? 'http://192.168.2.110:11235';
   const token = process.env.CRAWL4AI_TOKEN;
   if (!token) throw new Error('CRAWL4AI_TOKEN not set — this source needs the crawl4ai server (Cloudflare blocks plain fetch)');
+  const headers: Record<string, string> = { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` };
+  if (process.env.CF_ACCESS_CLIENT_ID && process.env.CF_ACCESS_CLIENT_SECRET) {
+    headers['CF-Access-Client-Id'] = process.env.CF_ACCESS_CLIENT_ID;
+    headers['CF-Access-Client-Secret'] = process.env.CF_ACCESS_CLIENT_SECRET;
+  }
   const res = await fetch(`${base}/crawl`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    headers,
     body: JSON.stringify({ urls: [url] }),
     signal: AbortSignal.timeout(120_000),
   });
@@ -97,8 +103,15 @@ interface PrismColor {
   colorNumber: string;
   name: string;
   hex: string;
+  lrv?: number;
   archived?: boolean;
 }
+
+/** Published LRVs are 0-100; anything else is missing data. */
+const validLrv = (v: unknown): number | undefined => {
+  const n = typeof v === 'string' ? Number.parseFloat(v) : typeof v === 'number' ? v : NaN;
+  return Number.isFinite(n) && n >= 0 && n <= 100 ? Math.round(n * 10) / 10 : undefined;
+};
 
 function prism(host: string, brandPath: string, min: number): () => Promise<LiveColor[]> {
   return async () => {
@@ -107,7 +120,7 @@ function prism(host: string, brandPath: string, min: number): () => Promise<Live
     );
     return assertCount(
       brandPath,
-      data.map((c) => ({ code: c.colorNumber, name: c.name, hex: c.hex, archived: c.archived || undefined })),
+      data.map((c) => ({ code: c.colorNumber, name: c.name, hex: c.hex, lrv: validLrv(c.lrv), archived: c.archived || undefined })),
       min,
     );
   };
@@ -176,14 +189,14 @@ async function benjaminMoore(): Promise<LiveColor[]> {
   const key = js.match(/"Ocp-Apim-Subscription-Key":"([0-9a-f]{32})"/)?.[1];
   if (!key) throw new Error('benjamin-moore: subscription key not found in _app bundle');
 
-  type Page = { is_last: boolean; colors: { number: string; name: string; hex: string }[] };
+  type Page = { is_last: boolean; colors: { number: string; name: string; hex: string; lrv?: number }[] };
   const out: LiveColor[] = [];
   for (let offset = 0; ; ) {
     const res = await getJson<Page>(
       `https://api.benjaminmoore.io/colors/colors?version=v1.0&locale=en_US&color_response_type=simple&offset=${offset}&limit=100`,
       { headers: { 'Ocp-Apim-Subscription-Key': key } },
     );
-    out.push(...res.colors.map((c) => ({ code: c.number, name: c.name, hex: `#${c.hex}` })));
+    out.push(...res.colors.map((c) => ({ code: c.number, name: c.name, hex: `#${c.hex}`, lrv: validLrv(c.lrv) })));
     if (res.is_last || res.colors.length === 0) break;
     offset += res.colors.length;
     if (offset > 20_000) throw new Error('benjamin-moore: pagination did not terminate');
@@ -198,7 +211,7 @@ async function benjaminMoore(): Promise<LiveColor[]> {
 // ---------------------------------------------------------------------------
 
 async function behr(): Promise<LiveColor[]> {
-  type Row = { 'color-code': string; 'color-name': string; rgbhex: string; archived: string };
+  type Row = { 'color-code': string; 'color-name': string; rgbhex: string; lrv: string; archived: string };
   const res = await getJson<{ data: Row[]; total: number }>(
     'https://www.behr.com/colors/color-detail/query-index.json?limit=20000',
   );
@@ -209,6 +222,7 @@ async function behr(): Promise<LiveColor[]> {
       code: r['color-code'],
       name: r['color-name'],
       hex: `#${r.rgbhex}`,
+      lrv: validLrv(r.lrv),
       archived: r.archived === 'true' || undefined,
     })),
     4000,

@@ -16,6 +16,8 @@ export interface LiveColor {
   hex: string | null;
   /** manufacturer marks it discontinued but still lists it */
   archived?: boolean;
+  /** manufacturer-published LRV, when the source carries one */
+  lrv?: number;
 }
 
 export interface DbColor {
@@ -33,11 +35,14 @@ export interface MissingColor extends LiveColor {
 }
 
 export interface HexChange {
+  /** DB row the change applies to */
+  slug: string;
   code: string;
   name: string;
   dbHex: string;
   liveHex: string;
   deltaE: number;
+  liveLrv?: number;
 }
 
 export interface PaletteDiff {
@@ -136,7 +141,15 @@ export function diffPalette(
       if (hex && dbHex && hex !== dbHex) {
         const d = deltaE(hex, dbHex);
         if (d >= HEX_CHANGE_THRESHOLD) {
-          hexChanged.push({ code: c.code, name: c.name, dbHex, liveHex: hex, deltaE: Math.round(d * 10) / 10 });
+          hexChanged.push({
+            slug: row.slug,
+            code: c.code,
+            name: c.name,
+            dbHex,
+            liveHex: hex,
+            deltaE: Math.round(d * 10) / 10,
+            ...(c.lrv != null ? { liveLrv: c.lrv } : {}),
+          });
         }
       }
       continue;
