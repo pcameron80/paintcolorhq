@@ -45,7 +45,11 @@ const revertFile = arg('revert');
 
 // Rows the feed no longer lists (discontinued), fixed by hand.
 const MANUAL: Record<string, Record<string, string>> = {
-  behr: { 'grape-cr-me-ul250-10': 'Grape Crème' }, // stored as "Grape CrÃˆme" (UTF-8 read as Latin-1)
+  behr: {
+    'grape-cr-me-ul250-10': 'Grape Crème', // stored as "Grape CrÃˆme" (UTF-8 read as Latin-1)
+    'ultra-pure-white-ppu18-06': 'Ultra Pure White', // "Ultra Pure WhiteÂ®"; the Â defeats the artifact check
+    'ultra-pure-white-ppu18-6': 'Ultra Pure White', // not in the feed; drop ® like the other rows
+  },
 };
 
 interface Row { id: string; slug: string; name: string; color_number: string | null; hex: string }
