@@ -12,6 +12,8 @@ import { TableOfContents } from "@/components/table-of-contents";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
 import { PinterestSaveButton } from "@/components/pinterest-save-button";
+import { TrackedLink } from "@/components/tracked-link";
+import { getColorBySlug } from "@/lib/queries";
 
 // ISR: re-render hourly so a scheduled post becomes reachable on its date
 // (and 404s before it). dynamicParams (default true) renders not-yet-prebuilt
@@ -79,6 +81,19 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const articleContent = post.content();
   const swatches = articleSwatches(articleContent);
+  // Compare CTA: first two distinct swatch colors, resolved to IDs because /compare
+  // takes color1/color2 ids. Only shown when the post has 2+ distinct colors.
+  const compareSwatches = swatches.filter((c, i, a) => a.findIndex((o) => o.hex.toLowerCase() === c.hex.toLowerCase()) === i).slice(0, 2);
+  let compareHref: string | null = null;
+  if (compareSwatches.length === 2) {
+    const resolved = await Promise.all(
+      compareSwatches.map((c) => {
+        const [, , brandSlug, colorSlug] = c.href.split("/");
+        return brandSlug && colorSlug ? getColorBySlug(brandSlug, colorSlug) : null;
+      }),
+    );
+    if (resolved[0] && resolved[1]) compareHref = `/compare?color1=${resolved[0].id}&color2=${resolved[1].id}`;
+  }
   const allPosts = getAllPosts();
   const relatedPosts = getRelatedPosts(slug, 3);
   const currentIndex = allPosts.findIndex((p) => p.slug === slug);
@@ -194,6 +209,23 @@ export default async function BlogPostPage({ params }: PageProps) {
               </Link>
             ) : <div />}
           </nav>
+
+          {compareHref && (
+            <aside className="mt-12 rounded-xl border border-outline-variant/30 bg-surface-container-low p-5 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3 min-w-0">
+                <span className="flex shrink-0">
+                  {compareSwatches.map((c, i) => (
+                    <span key={c.href} className={`h-9 w-9 rounded-full border-2 border-white ${i > 0 ? "-ml-3" : ""}`} style={{ backgroundColor: c.hex }} aria-hidden="true" />
+                  ))}
+                </span>
+                <p className="font-headline font-bold text-on-surface">Compare {compareSwatches[0].name} and {compareSwatches[1].name} side by side</p>
+              </div>
+              <TrackedLink href={compareHref} eventName="cta_click" eventParams={{ cta_label: "blog_compare", blog_slug: slug }}
+                className="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-headline font-bold text-sm hover:shadow-md transition-all">
+                Open comparison
+              </TrackedLink>
+            </aside>
+          )}
 
           {/* Related Posts */}
           {relatedPosts.length > 0 && (

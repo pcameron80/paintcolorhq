@@ -110,11 +110,13 @@ export default async function MatchPage({ params }: PageProps) {
 
   if (!bestMatch) notFound();
 
-  const otherBrandMatches = new Map<string, { brandName: string; brandSlug: string }>();
+  // allMatches is already ordered best-first, so the first row per brand is that
+  // brand's closest color. No extra query needed.
+  const otherBrandMatches = new Map<string, { brandName: string; brandSlug: string; color: (typeof allMatches)[number]["match_color"]; deltaE: number }>();
   for (const m of allMatches) {
     const slug = m.match_color.brand.slug;
     if (slug !== parsed.targetBrandSlug && slug !== sourceBrandSlug && !otherBrandMatches.has(slug))
-      otherBrandMatches.set(slug, { brandName: m.match_color.brand.name, brandSlug: slug });
+      otherBrandMatches.set(slug, { brandName: m.match_color.brand.name, brandSlug: slug, color: m.match_color, deltaE: Number(m.delta_e_score) });
   }
   const otherBrands = Array.from(otherBrandMatches.values()).slice(0, 6);
 
@@ -236,7 +238,7 @@ export default async function MatchPage({ params }: PageProps) {
             <section className="bg-surface-container-low rounded-2xl p-8 md:p-12">
               <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-6">Keep Exploring {sourceColor.name}</h2>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <Link href={`/compare?colors=${sourceColor.hex.slice(1)},${bestMatch.match_color.hex.slice(1)}`}
+                <Link href={`/compare?color1=${sourceColor.id}&color2=${bestMatch.match_color.id}`}
                   className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all">
                   <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Compare Side by Side</p>
                   <p className="mt-1 text-sm text-on-surface-variant">See both colors next to each other</p>
@@ -255,10 +257,16 @@ export default async function MatchPage({ params }: PageProps) {
               {otherBrands.length > 0 && (
                 <div className="mt-8">
                   <h3 className="font-headline font-bold text-on-surface mb-4">Match {sourceColor.name} in other brands</h3>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     {otherBrands.map((b) => (
                       <Link key={b.brandSlug} href={`/match/${sourceBrandSlug}/${sourceColor.slug}-to-${b.brandSlug}`}
-                        className="rounded-full bg-surface-container-lowest px-4 py-2 text-sm font-headline font-bold text-on-surface-variant hover:text-primary transition-all">{b.brandName}</Link>
+                        className="flex items-center gap-3 bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-3 hover:shadow-md transition-all group">
+                        <div className="w-10 h-10 rounded-lg shrink-0 border border-black/10" style={{ backgroundColor: b.color.hex }} />
+                        <div className="min-w-0 flex-1">
+                          <p className="font-headline font-bold text-sm text-on-surface group-hover:text-primary transition-colors truncate">{b.color.name}</p>
+                          <p className="text-xs text-on-surface-variant truncate">{b.brandName} &middot; {closenessLabel(b.deltaE)}</p>
+                        </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
