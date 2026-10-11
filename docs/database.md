@@ -46,6 +46,8 @@ Individual paint colors with color science data.
 
 **Unique constraint:** `(brand_id, slug)` - no duplicate slugs within a brand.
 
+**Dropped column:** `description_extended` (templated boilerplate with wrong LRV values) was dropped by `supabase/migrations/011_drop_description_extended.sql` on 2026-10-11. Backup of the 21,858 non-null rows (id, slug, brand_id, description_extended): `scripts/backups/description-extended-2026-10-11.json` in the main checkout (gitignored; produced by `scripts/backup-description-extended.ts`).
+
 ### `cross_brand_matches`
 
 Pre-computed color matches between brands.

@@ -105,3 +105,6 @@ docs/research/
 # Validated sitemap snapshot generated before dev/build
 /src/generated/sitemap.json
 /src/generated/sitemap.json.tmp
+
+# description_extended backup (local only, never commit)
+scripts/backups/
