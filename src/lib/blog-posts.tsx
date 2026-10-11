@@ -1395,11 +1395,11 @@ const blogPosts: BlogPost[] = [
   },
   {
     slug: "best-dutch-boy-paint-colors",
-    title: "The Best Dutch Boy Paint Colors for Every Room (2026)",
+    title: "10 Best Dutch Boy Paint Colors (2026)",
     date: "2026-07-03",
     author: "Philip Cameron",
     excerpt:
-      "The best Dutch Boy paint colors — whites, a greige, beiges, a navy, and blacks — each with its LRV and its closest match in Sherwin-Williams or Behr.",
+      "10 Dutch Boy picks, from Swan White to Ocean's Depth, each with its LRV and closest Sherwin-Williams or Behr match. Plus where to buy it (hint: Menards).",
     coverColor: "#D1CBC1",
     coverImage: "/blog/best-dutch-boy-paint-colors.webp",
     tags: ["Guide", "Dutch Boy", "Brand"],
@@ -1754,11 +1754,11 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 0 (newest) ──────────────── */
   {
     slug: "best-behr-paint-colors",
-    title: "The Best Behr Paint Colors for Every Room (2026)",
+    title: "13 Best Behr Paint Colors (2026)",
     date: "2026-06-10",
     author: "Philip Cameron",
     excerpt:
-      "The best Behr paint colors by category — whites, greiges, grays, blues, and bold shades — each with its LRV and its closest Sherwin-Williams and Benjamin Moore match.",
+      "13 Behr picks, from Swiss Coffee to Hidden Gem, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
     coverColor: "#596D69",
     coverImage: "/blog/best-behr-paint-colors.webp",
     tags: ["Guide", "Behr", "Brand"],
@@ -1859,11 +1859,11 @@ const blogPosts: BlogPost[] = [
   },
   {
     slug: "best-ppg-paint-colors",
-    title: "The Best PPG Paint Colors for Every Room (2026)",
+    title: "15 Best PPG Paint Colors (2026)",
     date: "2026-06-07",
     author: "Philip Cameron",
     excerpt:
-      "The best PPG paint colors by category — whites, greiges, grays, blues, and greens — each with its LRV and its closest Sherwin-Williams and Benjamin Moore match.",
+      "15 PPG picks, from Commercial White to Night Watch, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
     coverColor: "#3A5F7D",
     coverImage: "/blog/best-ppg-paint-colors.webp",
     tags: ["Guide", "PPG", "Brand"],
@@ -1974,11 +1974,11 @@ const blogPosts: BlogPost[] = [
   },
   {
     slug: "best-dunn-edwards-paint-colors",
-    title: "The Best Dunn-Edwards Paint Colors for Every Room (2026)",
+    title: "14 Best Dunn-Edwards Paint Colors (2026)",
     date: "2026-06-03",
     author: "Philip Cameron",
     excerpt:
-      "The best Dunn-Edwards paint colors by category — whites, greiges, grays, and blues — each with its LRV and its closest Sherwin-Williams, Benjamin Moore, and Behr match.",
+      "14 Dunn-Edwards picks, from Swiss Coffee to Midnight Garden, each with its LRV and closest Sherwin-Williams, Benjamin Moore and Behr match.",
     coverColor: "#BFC9D0",
     coverImage: "/blog/best-dunn-edwards-paint-colors.webp",
     tags: ["Guide", "Dunn-Edwards", "Brand"],
@@ -2084,11 +2084,11 @@ const blogPosts: BlogPost[] = [
   },
   {
     slug: "best-valspar-paint-colors",
-    title: "The Best Valspar Paint Colors for Every Room (2026)",
+    title: "16 Best Valspar Paint Colors (2026)",
     date: "2026-05-31",
     author: "Philip Cameron",
     excerpt:
-      "The best Valspar paint colors by category — whites, greiges, grays, blues, and greens — each with its LRV and its closest Sherwin-Williams and Benjamin Moore match.",
+      "16 Valspar picks, from Ultra White to Renew Blue, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
     coverColor: "#99B6B3",
     coverImage: "/blog/best-valspar-paint-colors.webp",
     tags: ["Guide", "Valspar", "Brand"],
