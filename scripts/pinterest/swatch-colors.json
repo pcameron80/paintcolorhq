@@ -524,10 +524,10 @@
     "slug": "white-dove-oc-17",
     "brandName": "Benjamin Moore",
     "name": "White Dove",
-    "hex": "#F3EFE0",
+    "hex": "#EFEEE5",
     "code": "OC-17",
     "lrv": 83.2,
-    "family": "yellow"
+    "family": "white"
   },
   {
     "brandSlug": "behr",
@@ -904,10 +904,10 @@
     "slug": "chantilly-lace-2121-70",
     "brandName": "Benjamin Moore",
     "name": "Chantilly Lace",
-    "hex": "#f5f7f2",
+    "hex": "#F4F6F1",
     "code": "2121-70",
     "lrv": 90,
-    "family": "green"
+    "family": "white"
   },
   {
     "brandSlug": "benjamin-moore",

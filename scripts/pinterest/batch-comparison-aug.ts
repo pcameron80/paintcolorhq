@@ -9,7 +9,7 @@ import { buildPrompt, type Swatch } from "./batch-jun-restock.ts";
 
 const C = {
   alabaster: { name: "Alabaster", hex: "#EDEAE0", rgb: "237, 234, 224", lrv: "82.2", undertone: "Neutral" },
-  whiteDove: { name: "White Dove", hex: "#F3EFE0", rgb: "243, 239, 224", lrv: "83.2", undertone: "Neutral" },
+  whiteDove: { name: "White Dove", hex: "#EFEEE5", rgb: "239, 238, 229", lrv: "83.2", undertone: "Neutral" },
   reposeGray: { name: "Repose Gray", hex: "#CCC9C0", rgb: "204, 201, 192", lrv: "58.4", undertone: "Neutral" },
   grayOwl: { name: "Gray Owl", hex: "#D4D5CD", rgb: "212, 213, 205", lrv: "66", undertone: "Neutral" },
   classicGray: { name: "Classic Gray", hex: "#E4E1D8", rgb: "228, 225, 216", lrv: "75.3", undertone: "Neutral" },
@@ -39,12 +39,12 @@ export const BATCH: PinSpec[] = [
     name: "Alabaster vs White Dove",
     image: "Alabaster vs White Dove.png",
     prompt: buildPrompt(
-      "Two vertical wall panels side-by-side under soft, even north-facing daylight, each painted a different soft warm white and clearly distinct from its neighbor. Left panel Alabaster (slightly deeper, creamier), right panel White Dove (slightly brighter, cleaner). A thin white oak shelf runs across both with a single ceramic vase.",
+      "Two vertical wall panels side-by-side under soft, even north-facing daylight, each painted a soft white, nearly identical to its neighbor. Left panel Alabaster (a hair deeper), right panel White Dove (a hair brighter). A thin white oak shelf runs across both with a single ceramic vase.",
       [C.alabaster, C.whiteDove],
     ),
-    title: "Alabaster vs White Dove — The Two Most Famous Whites Compared",
+    title: "Alabaster vs White Dove: The Two Most Famous Whites Compared",
     description:
-      "Alabaster (SW 7008, LRV 82.2) and White Dove (BM OC-17, LRV 83.2) get called twins — they are not. We measured them at a Delta E of 2.27: similar, but a visible difference on a wall. Alabaster runs a touch deeper and creamier; White Dove brighter and cleaner. Full measured comparison of 15 famous whites at PaintColorHQ.",
+      "Alabaster (SW 7008, LRV 82.2) and White Dove (BM OC-17, LRV 83.2) get called twins, and by our measurements they nearly are: hard to tell apart on a wall. White Dove is a hair brighter. Full measured comparison of famous whites at PaintColorHQ.",
     link: `${SITE}/blog/famous-white-paints-compared${UTM}`,
     board: "Color Comparisons",
   },
