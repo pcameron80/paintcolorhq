@@ -92,6 +92,20 @@ auto-appears in the sitemap, related-posts, and the Pinterest **guide** drip lan
 
 ---
 
+## Stage 9 — Publish-day check (automatic)
+- `scripts/blog/publish-check.ts` runs from launchd at 09:30 and 21:30 local
+  (`./scripts/blog/install-publish-check.sh` from the main checkout). For each
+  post that revealed in the last 3 days it confirms the page is live (200, own
+  canonical, in `sitemap/blog.xml`), pings IndexNow, and resubmits the sitemap to
+  Google Search Console. It then inspects each post once a day for 14 days and
+  sends a macOS notification when Google reports it indexed, or when anything
+  needs a look. Log: `scripts/blog/publish-check.log`; state:
+  `scripts/blog/publish-check-state.json` (both gitignored).
+- Google has no API for "Request indexing" on blog URLs (the Indexing API is for
+  job postings and livestreams only). For a priority post, click Request
+  indexing in the GSC URL Inspection UI by hand.
+- Manual run: `npx tsx scripts/blog/publish-check.ts --dry` to preview.
+
 ## Parallel quick win (separate from posts)
 Optimize `/brands/[slug]` pages for **"[brand] color chart"** + **"all [brand]
 colors"** (top branded-lookup queries they rank for but don't target).

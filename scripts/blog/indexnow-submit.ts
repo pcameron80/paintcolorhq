@@ -22,13 +22,8 @@
  */
 import { getAllPosts, getPostBySlug } from "../../src/lib/blog-posts.tsx";
 import { checkSlugs } from "./indexnow-lib.ts";
+import { submitIndexNow, BASE } from "./indexnow-client.ts";
 
-const BASE = "https://www.paintcolorhq.com";
-const HOST = "www.paintcolorhq.com";
-// Public IndexNow key (also hosted at /{KEY}.txt) — same one /api/cron/indexnow uses.
-const KEY = "a28e7cd07d004d4b94cfcd6bc2129bda";
-const KEY_LOCATION = `${BASE}/${KEY}.txt`;
-const ENDPOINT = "https://api.indexnow.org/indexnow";
 const MAX_URLS = 25; // flood guard — this tool is for new posts, not bulk re-submission
 
 const args = process.argv.slice(2);
@@ -88,15 +83,11 @@ async function main() {
     return;
   }
 
-  const res = await fetch(ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json; charset=utf-8" },
-    body: JSON.stringify({ host: HOST, key: KEY, keyLocation: KEY_LOCATION, urlList }),
-  });
-  if (res.ok) {
-    console.log(`\n✅ IndexNow accepted (${res.status}) — Bing/Yandex will recrawl these.`);
-  } else {
-    console.error(`\n❌ IndexNow ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  try {
+    const status = await submitIndexNow(urlList);
+    console.log(`\n✅ IndexNow accepted (${status}) — Bing/Yandex will recrawl these.`);
+  } catch (e) {
+    console.error(`\n❌ ${e instanceof Error ? e.message : e}`);
     process.exit(1);
   }
 }
