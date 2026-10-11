@@ -16,7 +16,7 @@
  *
  * What --apply does, per row:
  *   1. Backs up the row, its own matches and every match row that lists it.
- *   2. Rebuilds the top 5 (in the retired row's brand) for every source that
+ *   2. Deletes those match rows, then inserts the rebuilt top 5 (in the retired row's brand) for every source that
  *      listed it, so no list is left one short. Same method as
  *      compute-matches.ts: CIEDE2000, archived colors never targets.
  *   3. Re-points project_colors to the redirect target.
@@ -163,14 +163,33 @@ async function main() {
   fs.writeFileSync(backupPath, JSON.stringify(backup, null, 1));
   console.log(`Backup: ${path.relative(process.cwd(), backupPath)}`);
 
-  // Insert the rebuilt lists first, then delete the old rows, so no source is ever left without matches.
-  for (let i = 0; i < inserts.length; i += 500) {
-    const { error: e } = await supabase.from("cross_brand_matches").insert(inserts.slice(i, i + 500));
-    if (e) throw new Error(`insert failed: ${e.message}`);
-  }
+  // Delete the old rows first: each rebuilt list shares 4 of its 5 entries with the
+  // old one, and (source, match) is unique. If an insert then fails, put the
+  // deleted rows back from the backup before stopping.
+  const deletedRows = Object.values(backup).flatMap((b) => {
+    const { ownMatches, rebuiltLists } = b as { ownMatches: MatchRow[]; rebuiltLists: MatchRow[] };
+    return [...ownMatches, ...rebuiltLists];
+  });
   for (let i = 0; i < deletes.length; i += 200) {
     const { error: e } = await supabase.from("cross_brand_matches").delete().in("id", deletes.slice(i, i + 200));
     if (e) throw new Error(`match delete failed: ${e.message}`);
+  }
+  const insertedIds: string[] = [];
+  for (let i = 0; i < inserts.length; i += 500) {
+    const { data, error: e } = await supabase.from("cross_brand_matches").insert(inserts.slice(i, i + 500)).select("id");
+    if (e) {
+      // A failed batch inserts nothing; remove only the earlier batches' rows, then restore.
+      console.error(`insert failed (${e.message}); restoring the ${deletedRows.length} deleted match rows`);
+      for (let j = 0; j < insertedIds.length; j += 200) {
+        await supabase.from("cross_brand_matches").delete().in("id", insertedIds.slice(j, j + 200));
+      }
+      for (let j = 0; j < deletedRows.length; j += 500) {
+        const { error: r } = await supabase.from("cross_brand_matches").insert(deletedRows.slice(j, j + 500));
+        if (r) throw new Error(`RESTORE FAILED: ${r.message}. Restore by hand from ${backupPath}`);
+      }
+      throw new Error("Restored; nothing retired.");
+    }
+    insertedIds.push(...(data as { id: string }[]).map((d) => d.id));
   }
   for (const r of retiring) {
     if (!r.row) continue;
