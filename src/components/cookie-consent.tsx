@@ -52,7 +52,17 @@ const GTAG_INIT = `
     location.hostname.endsWith('.vercel.app') ||
     location.search.indexOf('debug=true') !== -1
   );
-  gtag('config', 'G-056NR93JLK', isInternal ? { traffic_type: 'internal' } : {});
+  // Headless scrapers that became visible once consent stopped gating gtag
+  // (2026-10-02): Windows Chrome at screen sizes real visitors almost never
+  // have, ~4s sessions, ~0% engagement. Tagged so a GA4 data filter on
+  // traffic_type 'bot' can drop them; nothing else about the page changes.
+  var sr = screen.width + 'x' + screen.height;
+  var ua = navigator.userAgent;
+  var isBot = navigator.webdriver === true ||
+    (/Windows/.test(ua) && ['1280x1200', '800x600', '600x800', '1600x1600'].indexOf(sr) !== -1) ||
+    (/Linux/.test(ua) && !/Android/.test(ua) && sr === '1440x900');
+  var trafficType = isInternal ? 'internal' : isBot ? 'bot' : null;
+  gtag('config', 'G-056NR93JLK', trafficType ? { traffic_type: trafficType } : {});
 `;
 
 export function CookieConsent() {
