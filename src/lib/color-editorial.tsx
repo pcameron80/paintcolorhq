@@ -668,8 +668,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its muted depth reads as a sophisticated neutral-green rather than a statement, and it pairs
-        naturally with warm whites and stone. Behr Environmental and Sherwin-Williams
-        Cascade Green are both nearly identical matches.
+        naturally with warm whites and stone. Behr Environmental is a nearly identical match,
+        and Sherwin-Williams Cascade Green, its closest Sherwin-Williams color, is very similar.
       </p>
     </>
   ),
@@ -1270,13 +1270,13 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Caliente, Benjamin Moore&apos;s 2018 Color of the Year, is a bold, vibrant red with real depth — at
-        LRV 9 it&apos;s saturated and dramatic without tipping orange or pink. It&apos;s a statement color: a
+        LRV 7 it&apos;s saturated and dramatic without tipping orange or pink. It&apos;s a statement color: a
         front door, a dining room, an accent wall, or cabinetry where you want energy and confidence.
       </p>
       <p>
         Reds intensify under warm light and can read slightly different across the day, so sample before
-        committing a whole room. It pairs strikingly with crisp whites, warm wood, and black. Behr New
-        Brick is a nearly identical cross-brand match.
+        committing a whole room. It pairs strikingly with crisp whites, warm wood, and black. Its closest Behr
+        match is Cherry Tree, which rates very similar.
       </p>
     </>
   ),

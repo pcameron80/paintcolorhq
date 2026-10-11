@@ -202,3 +202,12 @@ test("joined matches with codes share the predicate: '<A> (code) and <B> are its
   assert.ok(f.some((x) => /Bee's Knees/.test(x.message) && x.kind === "closeness-label"), JSON.stringify(f));
   assert.ok(!f.some((x) => x.message.startsWith("Behr Campfire Ash")), JSON.stringify(f)); // a true twin is not flagged
 });
+
+test("a label right before a match beats one carried over a ', and' join", () => {
+  const f = auditText(
+    "x.tsx",
+    `<p><Swatch hex="#2f2f30" name="Tricorn Black" href="/colors/sherwin-williams/tricorn-black-6258" /> is crisp. It rates very similar to Behr Limousine Leather, and BM Black is its nearly identical match.</p>`,
+    cat,
+  );
+  assert.deepEqual(f.filter((x) => x.kind === "closeness-label"), []);
+});

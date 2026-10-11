@@ -139,10 +139,10 @@ const content: Record<string, BrandContent> = {
         <p>
           The most popular Behr paint colors include{" "}
           <Link href="/colors/behr/silver-drop-790c-2" className="text-brand-blue hover:underline">Silver Drop 790C-2</Link>,{" "}
-          <Link href="/colors/behr/ultra-pure-white-1850" className="text-brand-blue hover:underline">Ultra Pure White 1850</Link>,{" "}
-          <Link href="/colors/behr/cameo-white-w-d-200" className="text-brand-blue hover:underline">Cameo White W-D-200</Link>,{" "}
+          <Link href="/colors/behr/ultra-pure-white-ppu18-06" className="text-brand-blue hover:underline">Ultra Pure White PPU18-06</Link>,{" "}
+          <Link href="/colors/behr/cameo-white-mq3-32" className="text-brand-blue hover:underline">Cameo White MQ3-32</Link>,{" "}
           <Link href="/colors/behr/dolphin-fin-790c-3" className="text-brand-blue hover:underline">Dolphin Fin 790C-3</Link>, and{" "}
-          <Link href="/colors/behr/whisper-white-w-d-300" className="text-brand-blue hover:underline">Whisper White W-D-300</Link>.
+          <Link href="/colors/behr/whisper-white-hdc-md-08" className="text-brand-blue hover:underline">Whisper White HDC-MD-08</Link>.
           These top sellers are overwhelmingly neutrals and greiges. Use Paint Color HQ&apos;s
           CIEDE2000-based matching to find the closest Sherwin-Williams or Benjamin Moore equivalent
           for any Behr color, with exact Delta E perceptual distance scores.
