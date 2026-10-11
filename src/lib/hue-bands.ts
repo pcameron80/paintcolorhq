@@ -133,6 +133,13 @@ export function inHueBand(band: HueBand, lab: Lab): boolean {
   });
 }
 
+/** The band a color belongs to, using the same test as the band pages. */
+export function findHueBand(lab: { l: number | null; a: number | null; b: number | null }): HueBand | undefined {
+  if (lab.l == null || lab.a == null || lab.b == null) return undefined;
+  const v = { l: Number(lab.l), a: Number(lab.a), b: Number(lab.b) };
+  return HUE_BANDS.find((band) => inHueBand(band, v));
+}
+
 /**
  * Loose a/b rectangle around a band's hue wedge, used to narrow the database
  * read before the exact test above. Chroma is capped at 130 for open bands.

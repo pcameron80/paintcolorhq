@@ -121,7 +121,7 @@ export default async function MatchHubPage() {
             Paint Color Match
           </h1>
           <p className="text-on-surface-variant max-w-2xl leading-relaxed mb-8">
-            Find the closest equivalent of a paint color in another brand. Choose where your color comes from and where you want to buy,
+            Get a paint color match in another brand. Choose where your color comes from and where you want to buy,
             type the color name or number, and get the matches ranked by how similar they look. Covers {brands.length} major brands
             and 26,000+ colors.
           </p>

@@ -17,7 +17,7 @@ interface Props {
  * The listing table only surfaces the top matches; this lets a visitor type
  * their specific source-brand color and go straight to its individual match
  * page (the high-converting page type), instead of scrolling the table.
- * Scopes /api/search results to the source brand client-side.
+ * Searches /api/search scoped to the source brand (?brand=).
  */
 export function MatchColorSearch({ sourceBrandSlug, targetBrandSlug, sourceBrandName, targetBrandName }: Props) {
   const router = useRouter();
@@ -33,8 +33,9 @@ export function MatchColorSearch({ sourceBrandSlug, targetBrandSlug, sourceBrand
       }
       setLoading(true);
       try {
-        const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+        const res = await fetch(`/api/search?q=${encodeURIComponent(q)}&brand=${encodeURIComponent(sourceBrandSlug)}`);
         const data = await res.json();
+        // The API scopes to the brand; the filter stays as a guard.
         const scoped: ColorWithBrand[] = (data.results ?? []).filter(
           (c: ColorWithBrand) => c.brand?.slug === sourceBrandSlug
         );
@@ -78,6 +79,9 @@ export function MatchColorSearch({ sourceBrandSlug, targetBrandSlug, sourceBrand
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && results.length > 0) goToMatch(results[0]);
+          }}
           placeholder={`Type a ${sourceBrandName} color name or number…`}
           className="w-full rounded-xl bg-surface-container-lowest pl-12 pr-4 py-3 text-on-surface shadow-sm border border-outline-variant/15 placeholder:text-outline focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
         />

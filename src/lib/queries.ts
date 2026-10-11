@@ -19,7 +19,7 @@ const COLOR_CARD_FIELDS_WITH_BRAND =
 // Fields the color detail page + color-description.ts utilities consume.
 // rgb_* and lab_* are used by the description generator + nearest-color logic.
 const COLOR_DETAIL_FIELDS =
-  "id, brand_id, name, slug, color_number, hex, rgb_r, rgb_g, rgb_b, lab_a, lab_b_val, lrv, color_family, undertone, samplize_available, samplize_handle, availability";
+  "id, brand_id, name, slug, color_number, hex, rgb_r, rgb_g, rgb_b, lab_l, lab_a, lab_b_val, lrv, color_family, undertone, samplize_available, samplize_handle, availability";
 const COLOR_DETAIL_FIELDS_WITH_BRAND =
   COLOR_DETAIL_FIELDS + ", brand:brand_id (id, name, slug)";
 
@@ -126,6 +126,39 @@ export async function getColorsBySlugList(
     .map((c) => ({ ...c, brand }));
 }
 
+export interface FamilyDemandColor {
+  id: string;
+  name: string;
+  slug: string;
+  hex: string;
+  color_number: string | null;
+  lrv: number | null;
+  brand: { id: string; name: string; slug: string };
+}
+
+// Resolves the static most-searched list in src/lib/family-demand.ts to live
+// rows in one round-trip. Keeps list order, and drops any entry that has left
+// the family or been archived since the list was built.
+export async function getFamilyDemandColors(
+  familySlug: string,
+  entries: { brand: string; slug: string }[],
+): Promise<FamilyDemandColor[]> {
+  if (entries.length === 0) return [];
+  const { data, error } = await supabase
+    .from("colors")
+    .select("id, name, slug, hex, color_number, lrv, color_family, brand:brand_id (id, name, slug)")
+    .in("slug", [...new Set(entries.map((e) => e.slug))])
+    .eq("color_family", familySlug)
+    .or("is_archived.is.null,is_archived.eq.false");
+  if (error || !data) return [];
+  const byKey = new Map(
+    (data as unknown as FamilyDemandColor[]).map((c) => [`${c.brand.slug}/${c.slug}`, c]),
+  );
+  return entries
+    .map((e) => byKey.get(`${e.brand}/${e.slug}`))
+    .filter((c): c is FamilyDemandColor => c !== undefined);
+}
+
 export async function getColorSlugByNumber(
   brandSlug: string,
   colorNumber: string
@@ -206,6 +239,42 @@ function getMatchDataBaseUrl(): string | null {
     return `https://${process.env.VERCEL_URL}`;
   }
   return null;
+}
+
+// Name or number search inside one brand, for the match pickers. The general
+// search caps at 50 rows across all brands, so filtering its results to one
+// brand afterwards often left nothing for common words like "white".
+export async function searchColorsInBrand(
+  query: string,
+  brandSlug: string,
+  limit = 20
+): Promise<ColorWithBrand[]> {
+  const brand = await getBrandBySlug(brandSlug);
+  if (!brand) return [];
+  const q = query.replace(/[%,()]/g, " ").trim();
+  if (q.length < 2) return [];
+  const { data, error } = await supabase
+    .from("colors")
+    .select(COLOR_CARD_FIELDS_WITH_BRAND)
+    .eq("brand_id", brand.id)
+    .or(`name.ilike.%${q}%,color_number.ilike.%${q}%`)
+    .order("name")
+    .limit(limit * 2);
+  if (error) throw error;
+  // Exact name or number first, then names that start with the query.
+  const lower = q.toLowerCase();
+  const score = (c: ColorWithBrand) => {
+    const name = c.name.toLowerCase();
+    const num = (c.color_number ?? "").toLowerCase();
+    if (name === lower || num === lower) return 0;
+    if (name.startsWith(lower) || num.endsWith(lower)) return 1;
+    return 2;
+  };
+  return ((data ?? []) as unknown as ColorWithBrand[])
+    .map((c, i) => ({ c, i, s: score(c) }))
+    .sort((x, y) => x.s - y.s || x.i - y.i)
+    .slice(0, limit)
+    .map((x) => x.c);
 }
 
 export async function searchColors(
