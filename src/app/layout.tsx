@@ -55,6 +55,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="impact-site-verification" content="dc26e305-732b-490f-9212-85e5f25c94b7" />
+        {/* Home Depot (Impact) application, 2026-10-11. Impact's snippet uses a
+            non-standard value= attribute; content= is kept for HTML validity. */}
+        <meta
+          name="impact-site-verification"
+          content="d6fa03b1-639b-4026-9f31-bd376b5dee44"
+          {...{ value: "d6fa03b1-639b-4026-9f31-bd376b5dee44" }}
+        />
         {/* hero.webp preload removed from root layout — Next.js auto-generates
             it from the <Image priority> on the homepage only. Keeping the manual
             preload here fired the LCP hint on every page in the app, including
