@@ -442,11 +442,10 @@ export function auditText(file: string, text: string, cat: Catalog, opts: AuditO
       let last = k;
       while (joined(last)) last++;
       const tailEnd = mentions[last].end;
-      // The label for this mention: the first one in its own stretch of text, or after the last
-      // mention it is joined to — never across "with B very similar".
+      // The label for this mention, most specific first: one in its own stretch of text; one right
+      // before it ("a nearly identical match for <X>", "very similar to <X>"); else the one after
+      // the last mention it is joined to ("A and B are both …") — never across "with B very similar".
       let own = labels.find((l) => l.pos > it.pos && l.pos < (mentions[k + 1]?.pos ?? Infinity));
-      if (!own && last > k) own = labels.find((l) => l.pos > tailEnd && l.pos < (mentions[last + 1]?.pos ?? Infinity));
-      // ...or one right before it: "It is a nearly identical match for <X>", "very similar to <X>".
       if (!own)
         own = labels.find(
           (l) => l.pos < it.pos && l.pos > (mentions[k - 1]?.end ?? -1) &&
@@ -454,6 +453,7 @@ export function auditText(file: string, text: string, cat: Catalog, opts: AuditO
               plain.slice(l.pos + l.label.length, it.pos),
             ),
         );
+      if (!own && last > k) own = labels.find((l) => l.pos > tailEnd && l.pos < (mentions[last + 1]?.pos ?? Infinity));
       // "closest" covers this mention only within its clause: "its closest Behr match is <X>"
       // or "<X> (and <Y>) is/are its closest …", not a later "with Y …" in the same sentence.
       const before = plain.slice(Math.max(0, it.pos - 90), it.pos).split(/[;—]|\bwith\b|\.\s/).pop() ?? "";

@@ -423,8 +423,8 @@ const content: Record<string, FamilyContent> = {
         <p>
           Benjamin Moore First Light, its 2020 Color of the Year, is a blush so pale (LRV 76) that it
           reads almost as a warm white. For something more intentionally pink,{" "}
-          <Link href="/colors/sherwin-williams/quaint-coral-6536" className="text-brand-blue hover:underline">
-            Sherwin-Williams Quaint Coral
+          <Link href="/colors/sherwin-williams/rose-embroidery-6297" className="text-brand-blue hover:underline">
+            Sherwin-Williams Rose Embroidery
           </Link>{" "}
           offers a dusty rose that&apos;s beautiful in bedrooms. Deeper pinks like Benjamin Moore
           Raspberry Blush make bold accent walls. Pink pairs wonderfully with{" "}
@@ -480,7 +480,7 @@ const content: Record<string, FamilyContent> = {
             Sherwin-Williams Alabaster
           </Link>{" "}
           (soft and balanced), and{" "}
-          <Link href="/colors/benjamin-moore/simply-white-oc-117" className="text-brand-blue hover:underline">
+          <Link href="/colors/benjamin-moore/simply-white-2143-70" className="text-brand-blue hover:underline">
             Benjamin Moore Simply White
           </Link>{" "}
           (the barely-there warm white). Off-whites sit between the{" "}

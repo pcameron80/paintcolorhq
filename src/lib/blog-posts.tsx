@@ -415,7 +415,7 @@ const blogPosts: BlogPost[] = [
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
-                <td className="py-2 pr-4">Notre Dame (very similar)</td>
+                <td className="py-2 pr-4">Notre Dame (nearly identical)</td>
                 <td className="py-2 pr-4">Black Suede (nearly identical)</td>
                 <td className="py-2">Caviar (very similar)</td>
               </tr>
@@ -5732,7 +5732,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#dde3d7" name="Silver Drop" brand="Behr" href="/colors/behr/silver-drop-790c-2" /> — A soft, barely-warm off-white that has been a top-5 Behr seller for years. At LRV 70 it stays light enough for rooms with limited natural light while adding a whisper of warmth that pure white can&apos;t deliver.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CCD6CA" name="Dolphin Fin" brand="Behr" href="/colors/behr/dolphin-fin-790c-3" /> (LRV 59) — a slightly cooler greige that works in bedrooms with both warm and cool elements. It rates very similar to <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Sherwin-Williams Agreeable Gray (SW 7029)</Link>, a workable Behr alternative to America&apos;s most popular paint color. Compare it side-by-side with Silver Drop using our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
+          <Swatch hex="#CCD6CA" name="Dolphin Fin" brand="Behr" href="/colors/behr/dolphin-fin-790c-3" /> (LRV 59) — a pale gray with a soft green cast, the coolest pick in this group, for bedrooms that mix warm and cool elements. Its closest matches are <Link href="/colors/benjamin-moore/crystalline-af-485" className="text-brand-blue hover:underline">Benjamin Moore Crystalline (AF-485)</Link> and <Link href="/colors/sherwin-williams/wavecrest-9672" className="text-brand-blue hover:underline">Sherwin-Williams Wavecrest (SW 9672)</Link>, both nearly identical. Compare it side-by-side with Silver Drop using our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Browse our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for more Behr neutral options.
@@ -5743,7 +5743,7 @@ const blogPosts: BlogPost[] = [
           White bedrooms feel serene and spacious when the white has the right undertone for your lighting. Whites with LRV above 80 maximize perceived room size. The wrong white — one whose undertone clashes with your fixed elements — looks sterile or dingy.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E9E6E1" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — a warm white with subtle cream undertones. It&apos;s bright and open without feeling harsh — in the same family as <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove (OC-17)</Link>, which it rates very similar to (Behr Harmonious White is the nearly identical match). LRV 81 makes it an excellent choice for small bedrooms that need to feel larger.
+          <Swatch hex="#E9E6E1" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — a warm white with subtle cream undertones. It&apos;s bright and open without feeling harsh. It rates very similar to <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove (OC-17)</Link>, and Benjamin Moore Lacey Pearl is its nearly identical match. LRV 81 makes it an excellent choice for small bedrooms that need to feel larger.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F8F8F4" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-ppu18-06" /> — Behr&apos;s cleanest, crispest white with virtually no undertone. Use it for trim and ceilings to keep the bedroom feeling airy. Pair it with any wall color above for guaranteed contrast. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
