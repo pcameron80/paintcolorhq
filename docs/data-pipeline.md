@@ -178,3 +178,42 @@ Reads all `retailer-links-{brand}.json` files and generates `src/lib/retailer-ov
 - `{BRAND}_NOT_FOUND: Set<string>` — Color numbers not found on the website (direct link is skipped)
 
 These are imported by `src/lib/retailer-links.ts` and checked before falling back to the default family guess.
+
+## Palette drift scan (new and changed colors)
+
+Brands add colors every year, mostly between late July and mid October around
+their Color of the Year launches. `npm run scan-palettes` pulls each brand's
+live palette from the manufacturer and diffs it against the `colors` table.
+It is read-only on both sides. Run it quarterly and once after the fall launch
+season.
+
+```bash
+npm run scan-palettes                          # all brands (~25 min; Vista and Dunn-Edwards crawl page by page)
+npm run scan-palettes -- --brand=behr,ppg      # subset; merges into the same day's report
+```
+
+Output lands in `data/brand-scans/<YYYY-MM-DD>/` (gitignored): `REPORT.md`,
+`summary.json`, and per brand `-live`, `-missing`, `-not-live` and
+`-hex-changed` JSON files.
+
+- **Missing**: in the live palette, no DB row by code or alternate number. A
+  `dbCodeForName` field means the same name exists under another code, which
+  usually means a renumber or dual number, not a new color.
+- **Not live**: active DB rows the brand no longer lists. Candidates for
+  `is_archived`, never deletion; the URLs keep ranking.
+- **Hex changed**: same code, swatch differs by CIEDE2000 2 or more.
+
+Fetchers live in `scripts/lib/palette-sources.ts`, one per brand, and the
+diff rules (with tests, `npm run test:palette-diff`) in
+`scripts/lib/palette-diff.ts`. A fetcher that returns far fewer colors than
+expected throws, so a broken source reports as failed rather than "0 missing".
+Kilz needs `CRAWL4AI_TOKEN` in `.env.local` because Cloudflare blocks plain
+fetch. Colorhouse (site gone) and RAL (fixed standard) are not scanned.
+
+To import reviewed gaps:
+
+```bash
+tsx scripts/import-brand-scan.ts --brand=<slug> --scan-dir=data/brand-scans/<date>          # dry run
+tsx scripts/import-brand-scan.ts --brand=<slug> --scan-dir=data/brand-scans/<date> --apply
+npm run export-db-colors && npm run compute-matches && npm run seed-matches
+```
