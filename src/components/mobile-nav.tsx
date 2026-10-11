@@ -8,6 +8,7 @@ import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 const NAV_LINKS = [
   { href: "/brands", label: "Brands" },
+  { href: "/match", label: "Match" },
   { href: "/colors", label: "Colors" },
   { href: "/inspiration", label: "Inspiration" },
   { href: "/blog", label: "Blog" },

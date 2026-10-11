@@ -54,6 +54,7 @@ export async function GET(
         { url: "/brands", lastmod: SITE_BUILD_DATE },
         { url: "/colors", lastmod: SITE_BUILD_DATE },
         { url: "/search", lastmod: SITE_BUILD_DATE },
+        { url: "/match", lastmod: SITE_BUILD_DATE },
         { url: "/compare", lastmod: SITE_BUILD_DATE },
         { url: "/blog", lastmod: SITE_BUILD_DATE },
         { url: "/inspiration", lastmod: SITE_BUILD_DATE },

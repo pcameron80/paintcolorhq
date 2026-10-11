@@ -26,6 +26,12 @@ export function Header() {
             Brands
           </Link>
           <Link
+            href="/match"
+            className="font-headline tracking-tight text-sm uppercase font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300"
+          >
+            Match
+          </Link>
+          <Link
             href="/colors"
             className="font-headline tracking-tight text-sm uppercase font-semibold text-on-surface-variant hover:text-primary transition-colors duration-300"
           >
