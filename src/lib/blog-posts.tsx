@@ -171,7 +171,7 @@ const blogPosts: BlogPost[] = [
             <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" />: the closest <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> color is <Swatch hex="#D0CBC3" name="Wish" brand="AF-680" href="/colors/benjamin-moore/wish-af-680" />, and the closest Behr color is <Swatch hex="#D2CCC3" name="Toasty Gray" brand="N320-2" href="/colors/behr/toasty-gray-n320-2-2" />. Both rate as nearly identical in digital values. The full side-by-side is on the <Link href="/match/sherwin-williams/agreeable-gray-7029-to-benjamin-moore" className="text-brand-blue hover:underline">Agreeable Gray to Benjamin Moore match page</Link>.
           </li>
           <li>
-            <Swatch hex="#F3EFE0" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" />: the closest Sherwin-Williams color is <Swatch hex="#F6F0E2" name="Roman Column" brand="SW 7562" href="/colors/sherwin-williams/roman-column-7562" />, rated nearly identical. Behr <Swatch hex="#F2EEDE" name="Polished Marble" brand="GR-W13" href="/colors/behr/polished-marble-gr-w13" /> is closer still. See the <Link href="/match/benjamin-moore/white-dove-oc-17-to-sherwin-williams" className="text-brand-blue hover:underline">White Dove to Sherwin-Williams match page</Link>.
+            <Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" />: the closest Sherwin-Williams color is <Swatch hex="#EFECE3" name="Cold Foam" brand="SW 9504" href="/colors/sherwin-williams/cold-foam-9504" />, rated nearly identical. Behr <Swatch hex="#EEEDE4" name="Harmonious White" brand="DC-013" href="/colors/behr/harmonious-white-dc-013" /> is closer still. See the <Link href="/match/benjamin-moore/white-dove-oc-17-to-sherwin-williams" className="text-brand-blue hover:underline">White Dove to Sherwin-Williams match page</Link>.
           </li>
           <li>
             <Swatch hex="#CCC9C0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" />: the closest Benjamin Moore color is <Swatch hex="#CDC9BF" name="Apparition" brand="860" href="/colors/benjamin-moore/apparition-860" />, rated nearly identical.
@@ -339,7 +339,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What colors go with Hale Navy?",
         answer:
-          "For trim and contrast, Benjamin Moore White Dove (OC-17, LRV 83.2) is the standard warm white against Hale Navy. For adjacent walls, Repose Gray (SW 7015, LRV 58.4) is a light neutral that keeps the scheme calm. If you want a moodier tonal partner rather than a contrast, Gentleman's Gray (BM 2062-20, LRV 5.8) is a bluer deep navy that layers beside Hale Navy without competing.",
+          "For trim and contrast, Benjamin Moore White Dove (OC-17, LRV 83.2) is the standard soft white against Hale Navy. For adjacent walls, Repose Gray (SW 7015, LRV 58.4) is a light neutral that keeps the scheme calm. If you want a moodier tonal partner rather than a contrast, Gentleman's Gray (BM 2062-20, LRV 5.8) is a bluer deep navy that layers beside Hale Navy without competing.",
       },
     ],
     content: () => (
@@ -370,7 +370,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Coordinating Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For trim, ceilings, and cabinetry contrast, the standard partner is Benjamin Moore <Swatch hex="#F3EFE0" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (OC-17, LRV 83.2) — a soft warm white that sharpens Hale Navy without the hard edge a stark white would give. For adjacent walls, <Swatch hex="#ccc9c0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> (SW 7015, LRV 58.4) is a light, balanced neutral that keeps the rest of the room calm so the navy stays the feature. And if you want a tonal partner instead of a contrast — two deep colors layered rather than dark against light — <Swatch hex="#314757" name="Gentleman's Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/gentlemans-gray-2062-20" /> (BM 2062-20, LRV 5.8) is a bluer, moodier deep navy that sits beside Hale Navy without competing. Build a full scheme around any of these in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+          For trim, ceilings, and cabinetry contrast, the standard partner is Benjamin Moore <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (OC-17, LRV 83.2), a soft white that sharpens Hale Navy without the hard edge a stark white would give. For adjacent walls, <Swatch hex="#ccc9c0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> (SW 7015, LRV 58.4) is a light, balanced neutral that keeps the rest of the room calm so the navy stays the feature. And if you want a tonal partner instead of a contrast — two deep colors layered rather than dark against light — <Swatch hex="#314757" name="Gentleman's Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/gentlemans-gray-2062-20" /> (BM 2062-20, LRV 5.8) is a bluer, moodier deep navy that sits beside Hale Navy without competing. Build a full scheme around any of these in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Try It, Then Match It</h2>
@@ -540,14 +540,14 @@ const blogPosts: BlogPost[] = [
     date: "2026-07-03",
     author: "Philip Cameron",
     excerpt:
-      "We measured the 17 most-searched white paints with CIEDE2000. Alabaster and White Dove are NOT interchangeable — but a $30 Behr staple is a near-perfect twin of a Benjamin Moore classic.",
-    coverColor: "#F3EFE0",
+      "We measured the 17 most-searched white paints with CIEDE2000. On the brands' published values, Alabaster and White Dove rate nearly identical, and a $30 Behr staple is a near-perfect twin of a Benjamin Moore classic.",
+    coverColor: "#EFEEE5",
     tags: ["Data", "Design"],
     faq: [
       {
         question: "Is Sherwin-Williams Alabaster the same as Benjamin Moore White Dove?",
         answer:
-          "No. Measured with CIEDE2000, they rate Very similar, not Nearly identical, and the difference shows side by side. White Dove is noticeably warmer (creamier) and slightly lighter than Alabaster. They fill a similar role as soft warm whites, but they are not interchangeable on the same project.",
+          "Not the same paint, but very close. Using each brand's published color values, they rate Nearly identical with CIEDE2000. White Dove is slightly lighter (LRV 83.2 against 82.2) and a touch less yellow than Alabaster. Confirm with physical samples on your own wall before swapping one for the other mid-project.",
       },
       {
         question: "What is the whitest white paint you can buy?",
@@ -557,7 +557,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "Which paint brand has the warmest whites?",
         answer:
-          "Averaged across every white each brand sells (LRV 75+), Sherwin-Williams' whites run the coolest and Hirshfield's the warmest. Benjamin Moore sits mid-pack but sells the warmest famous white: White Dove. If you want creamy whites, Benjamin Moore and Farrow & Ball's classics lean warm; if you want crisp gallery whites, Sherwin-Williams and Valspar lean cool.",
+          "Averaged across every white each brand sells (LRV 75+), Sherwin-Williams' whites run the coolest and Hirshfield's the warmest. Benjamin Moore sits mid-pack. The warmest of the famous whites is Farrow & Ball Pointing. If you want creamy whites, Farrow & Ball's classics lean warm; if you want crisp gallery whites, Sherwin-Williams and Valspar lean cool.",
       },
     ],
     content: () => (
@@ -581,7 +581,7 @@ const blogPosts: BlogPost[] = [
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/blog/famous-whites-map.webp"
-              alt="Scatter chart mapping 17 famous white paints by warmth (LAB b*) and light reflectance value, showing Alabaster and White Dove visibly different while Cloud White and Behr Swiss Coffee are nearly identical twins"
+              alt="Scatter chart mapping 17 famous white paints by warmth (LAB b*) and light reflectance value, showing Alabaster and White Dove nearly identical, and Cloud White and Behr Swiss Coffee nearly identical twins"
               width={1200}
               height={864}
               loading="lazy"
@@ -597,17 +597,17 @@ const blogPosts: BlogPost[] = [
           </figcaption>
         </figure>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Alabaster vs. White Dove: Not the Same Color</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Alabaster vs. White Dove: Closer Than Their Reputations</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           The most-asked white-paint question there is, and the data gives a clean answer:{" "}
           <Swatch hex="#EDEAE0" name="Alabaster (SW 7008)" href="/colors/sherwin-williams/alabaster-7008" /> and{" "}
-          <Swatch hex="#F3EFE0" name="White Dove (OC-17)" href="/colors/benjamin-moore/white-dove-oc-17" />{" "}
-          rate <strong>Very similar, not Nearly identical</strong>: the difference shows with the two side by
-          side. White Dove is the warmest famous white on the market (LAB b* 7.7 to
-          Alabaster&apos;s 5.2 — noticeably creamier) and slightly lighter (LRV 83.2 vs 82.2).
-          They play the same role — a soft, warm, forgiving white — but swapping one for the
-          other mid-project is not a safe substitution. Pick by the light in your room: White
-          Dove leans cream, Alabaster stays closer to neutral.
+          <Swatch hex="#EFEEE5" name="White Dove (OC-17)" href="/colors/benjamin-moore/white-dove-oc-17" />{" "}
+          rate <strong>Nearly identical</strong> on the color values each brand publishes. White
+          Dove is slightly lighter (LRV 83.2 vs 82.2) and a touch less yellow (LAB b* 4.5 to
+          Alabaster&apos;s 5.2). Both are soft whites that lean slightly warm, and both sit in the
+          middle of the famous-white pack for warmth rather than at the creamy end. A digital match
+          is not wet paint, so put physical samples of both on the same wall before swapping one
+          for the other mid-project.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Secret Twins</h2>
@@ -635,19 +635,14 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2">Same brand. If you are agonizing between these two, stop</td>
               </tr>
               <tr className="border-b border-gray-100">
-                <td className="py-2 pr-4"><Swatch hex="#F5F7F2" name="BM Chantilly Lace" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> + <Swatch hex="#F8F9F3" name="Behr Polar Bear" href="/colors/behr/polar-bear-75" /></td>
+                <td className="py-2 pr-4"><Swatch hex="#F4F6F1" name="BM Chantilly Lace" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> + <Swatch hex="#F8F9F3" name="Behr Polar Bear" href="/colors/behr/polar-bear-75" /></td>
                 <td className="py-2 pr-4 whitespace-nowrap">Nearly identical</td>
                 <td className="py-2">Crisp whites across a large price gap</td>
               </tr>
-              <tr className="border-b border-gray-100">
+              <tr>
                 <td className="py-2 pr-4"><Swatch hex="#EDEAE0" name="SW Alabaster" href="/colors/sherwin-williams/alabaster-7008" /> + <Swatch hex="#EEECE1" name="BM Swiss Coffee" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
                 <td className="py-2 pr-4 whitespace-nowrap">Nearly identical</td>
                 <td className="py-2">The cross-brand swap for Alabaster loyalists in a Benjamin Moore store</td>
-              </tr>
-              <tr>
-                <td className="py-2 pr-4"><Swatch hex="#F3EFE0" name="BM White Dove" href="/colors/benjamin-moore/white-dove-oc-17" /> + <Swatch hex="#F7F1E3" name="F&B Pointing" href="/colors/farrow-ball/pointing-2003" /></td>
-                <td className="py-2 pr-4 whitespace-nowrap">Nearly identical</td>
-                <td className="py-2">The two premium warm whites are chasing the same target</td>
               </tr>
             </tbody>
           </table>
@@ -683,8 +678,8 @@ const blogPosts: BlogPost[] = [
           personality shows up. <strong>Sherwin-Williams&apos; whites run the coolest of any
           brand</strong> (average b* 7.8) — despite Alabaster&apos;s warm reputation, the SW white
           wall leans crisp. Hirshfield&apos;s (11.8) and Vista Paint (11.4) run warmest, with
-          Benjamin Moore mid-pack (9.8) — though BM sells the warmest famous white of all in White
-          Dove. Practical version: if you keep landing on whites that feel too cold, shop the
+          Benjamin Moore mid-pack (9.8). Among the famous whites themselves, Farrow &amp; Ball
+          Pointing is the warmest. Practical version: if you keep landing on whites that feel too cold, shop the
           warm half of the market; if your whites keep going cream on you, Sherwin-Williams and
           Valspar&apos;s cooler ranges are where to look.
         </p>
@@ -1128,7 +1123,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore White for Bedroom Ceilings and Trim</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          When you want a bright, light bedroom rather than a moody one, <Swatch hex="#F3EFE0" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (OC-17, LRV 83) is the warm white to reach for — soft and creamy without going stark, ideal on walls, trim, and ceilings together for a calm, uninterrupted envelope. It is also the perfect trim partner for every color above: a soft white frame keeps the muted wall colors feeling intentional. Behr Polished Marble is a nearly identical match and SW Roman Column is nearly identical too.
+          When you want a bright, light bedroom rather than a moody one, <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (OC-17, LRV 83) is the white to reach for: a soft white that leans slightly warm and stays bright without going stark, ideal on walls, trim, and ceilings together for a calm, uninterrupted envelope. It is also the perfect trim partner for every color above: a soft white frame keeps the muted wall colors feeling intentional. Behr Harmonious White is a nearly identical match and SW Cold Foam is nearly identical too.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Pairing Colors, Trim, and Bedding</h2>
@@ -1777,7 +1772,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the most popular Benjamin Moore paint color?",
         answer:
-          "White Dove (OC-17) is Benjamin Moore's most popular color overall — a soft warm white at LRV 83 that works on walls, trim, and cabinets. Revere Pewter (HC-172) is the most popular greige and Hale Navy (HC-154) the most popular dark color. Chantilly Lace (2121-70) is the go-to bright white.",
+          "White Dove (OC-17) is Benjamin Moore's most popular color overall, a soft, slightly warm white at LRV 83 that works on walls, trim, and cabinets. Revere Pewter (HC-172) is the most popular greige and Hale Navy (HC-154) the most popular dark color. Chantilly Lace (2121-70) is the go-to bright white.",
       },
       {
         question: "What is the Behr equivalent of Revere Pewter?",
@@ -1799,7 +1794,7 @@ const blogPosts: BlogPost[] = [
       <>
         <p className="text-lg leading-relaxed text-gray-800">
           The best Benjamin Moore paint color for most homes is{" "}
-          <Swatch hex="#F3EFE0" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (OC-17, LRV 83) — the soft warm white designers reach for on walls, trim, and cabinets alike because it&apos;s bright without going stark. Benjamin Moore is the premium default in the design world, sold through independent dealers rather than the big-box aisles. So this guide does what a fan deck can&apos;t: it pairs each of these 14 colors with its closest match at Home Depot (Behr) or Sherwin-Williams, in case you&apos;d rather buy the look somewhere more convenient. Every LRV and cross-brand match below comes straight from our database.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (OC-17, LRV 83), the soft, slightly warm white designers reach for on walls, trim, and cabinets alike because it&apos;s bright without going stark. Benjamin Moore is the premium default in the design world, sold through independent dealers rather than the big-box aisles. So this guide does what a fan deck can&apos;t: it pairs each of these 14 colors with its closest match at Home Depot (Behr) or Sherwin-Williams, in case you&apos;d rather buy the look somewhere more convenient. Every LRV and cross-brand match below comes straight from our database.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines &amp; Where to Find Benjamin Moore</h2>
@@ -1809,7 +1804,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Whites</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White Dove (OC-17, LRV 83) leads the whole category — see its closest matches across 13 brands on its <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">color page</Link>. For a crisp, bright white instead of a warm one, <Swatch hex="#F5F7F2" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> (2121-70, LRV 90) is the modern standard — its Behr match Snow Fall is a nearly identical match. <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> (2143-70, LRV 90) is the warmer bright white (a former Color of the Year); Behr Palais White is its closest twin. And <Swatch hex="#F3F2E7" name="Cloud White" brand="Benjamin Moore" href="/colors/benjamin-moore/cloud-white-oc-130" /> (OC-130, LRV 85) is the soft creamy white for trim and millwork — nearly identical to Behr Swiss Coffee. More options in <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link>.
+          White Dove (OC-17, LRV 83) leads the whole category — see its closest matches across 13 brands on its <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">color page</Link>. For a crisp, bright white instead of a warm one, <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> (2121-70, LRV 90) is the modern standard — its Behr match Snow Fall is a nearly identical match. <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> (2143-70, LRV 90) is the warmer bright white (a former Color of the Year); Behr Palais White is its closest twin. And <Swatch hex="#F3F2E7" name="Cloud White" brand="Benjamin Moore" href="/colors/benjamin-moore/cloud-white-oc-130" /> (OC-130, LRV 85) is the soft creamy white for trim and millwork — nearly identical to Behr Swiss Coffee. More options in <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Greiges</h2>
@@ -2422,7 +2417,7 @@ const blogPosts: BlogPost[] = [
           If your laundry room is windowless or has only a tiny high window, your first job is to throw as much artificial light back into the room as possible. Whites with LRV above 83 reflect more light than they absorb, which is why nearly every contractor defaults to one of these three.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — LRV 92.3. The cleanest true white in the <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> deck, with virtually no undertone. Chantilly Lace does not flash yellow under warm bulbs or blue under cool ones, which makes it the safest pick for a windowless laundry room where you cannot predict bulb behavior. If you only paint one room in the house with Chantilly Lace, the laundry room is a defensible choice.
+          <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — LRV 90. A clean, bright <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> white that measures close to neutral, with very little tint either way. That restraint makes it a sound pick for a windowless laundry room where you cannot predict bulb behavior. If you only paint one room in the house with Chantilly Lace, the laundry room is a defensible choice.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — LRV 83.7. Slightly warmer than Chantilly Lace, with a faint cream undertone. The right pick if your laundry room has wood cabinetry, butcher-block folding counters, brass hardware, or warm-toned tile — Pure White lets those warm elements stay warm without fighting them. The closest <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore equivalent</Link> rates very similar, so confirm with a sample before committing.
@@ -2788,7 +2783,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Chantilly Lace → High Reflective White</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s crispest, most popular true white. The SW equivalent is <Swatch hex="#F6F0E4" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" />, which is also the whitest shade in their deck. Both have minimal undertones and photograph cleanly.
+          <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s go-to bright white. <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" /> rates nearly identical and is one of the brightest whites in the SW deck (LRV 92.6); SW UltraWhite (SW 9500) is a hair closer. Both measure close to neutral and photograph cleanly.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Your Own Matches</h2>
@@ -2895,7 +2890,7 @@ const blogPosts: BlogPost[] = [
           White is the single most popular paint color in the world — and ironically, it&apos;s where undertones cause the most grief. There is no such thing as a &ldquo;plain white&rdquo; paint. Every white on the market carries an undertone, and on a large wall that undertone becomes the dominant visual characteristic. What looked like a clean white in the store can read as pink, yellow, green, or blue once it covers 200 square feet of drywall. Our analysis of over 800 white paint colors using CIEDE2000 color science confirms this: even whites with nearly identical lightness values can differ dramatically in undertone.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Pink undertones</strong> are common in warm whites. Colors like <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>&apos;s <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> carry a faint rosy warmth that feels soft and traditional. <strong>Yellow undertones</strong> are the hallmark of creamy whites — think of <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>, which has a buttery quality that pairs beautifully with wood tones and earth-toned furnishings. <strong>Blue undertones</strong> appear in cool whites and make a space feel modern and clinical. <Swatch hex="#F1EDE4" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a popular choice that sits close to true white with just the faintest warm cast — it works in nearly any room because its undertone is so restrained. On the cooler side, <Swatch hex="#E8E6DF" name="Decorator's White" brand="Benjamin Moore" href="/colors/benjamin-moore/decorators-white-oc-149" /> carries a subtle blue-gray undertone that reads as bright and contemporary.
+          <strong>Pink undertones</strong> are common in warm whites. Colors like <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>&apos;s <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> carry a faint rosy warmth that feels soft and traditional. <strong>Yellow undertones</strong> are the hallmark of creamy whites. <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link> leans that way only slightly: on Benjamin Moore&apos;s published values it is a soft white with a mild yellow lean, which is why it sits comfortably beside wood tones and earth-toned furnishings. <strong>Blue undertones</strong> appear in cool whites and make a space feel modern and clinical. <Swatch hex="#F1EDE4" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a popular choice that sits close to true white with just the faintest warm cast — it works in nearly any room because its undertone is so restrained. On the cooler side, <Swatch hex="#E8E6DF" name="Decorator's White" brand="Benjamin Moore" href="/colors/benjamin-moore/decorators-white-oc-149" /> carries a subtle blue-gray undertone that reads as bright and contemporary.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Green undertones</strong> in whites are the sneakiest — many off-whites that appear neutral under store fluorescents reveal a greenish cast in rooms with north-facing windows. This is why sampling whites on your actual walls is absolutely critical. Browse our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> to compare hundreds of whites side by side, or read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> for curated picks organized by undertone.
@@ -2963,13 +2958,13 @@ const blogPosts: BlogPost[] = [
           White remains the most-specified kitchen color for one practical reason: it reflects task lighting back into the work area instead of absorbing it. The critical variable is undertone. Blue-white kitchens look clinical under warm incandescent or LED bulbs; yellow-white kitchens look dingy under cool daylight bulbs. The three whites below are chosen specifically because their undertones stay stable across bulb types.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace OC-65" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — LRV 92. The cleanest true white in the Benjamin Moore line with virtually no undertone. It does not read yellow under warm bulbs or blue under cool ones, which is why it has become the go-to for modern kitchens with stainless appliances and quartz countertops. At LRV 92, it maximizes light reflection. Finish: semi-gloss for cabinets, satin for walls.
+          <Swatch hex="#F4F6F1" name="Chantilly Lace OC-65" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — LRV 90. A clean, bright white that measures close to neutral, which is why it has become the go-to for modern kitchens with stainless appliances and quartz countertops. At LRV 90, it reflects most of the light that reaches it. Finish: semi-gloss for cabinets, satin for walls.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F3EEE0" name="Pure White SW 7005" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — LRV 84. A warm white with subtle cream undertones that pairs naturally with butcher block, brass hardware, and warm oak flooring. Where Chantilly Lace is crisp, Pure White is inviting. It is the most popular Sherwin-Williams cabinet color and holds up under both warm and cool lighting without shifting to yellow.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove OC-17" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — LRV 86.2. Crosses into warm white territory with a soft cream-yellow undertone. Best for kitchens with warm-toned countertops (marble with warm veining, soapstone, butcher block) where you want the cabinetry to feel like part of a warm, cohesive palette rather than a stark contrast. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">full white color family</Link>.
+          <Swatch hex="#EFEEE5" name="White Dove OC-17" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — LRV 83. A soft white that leans slightly warm. Best for kitchens with warm-toned countertops (marble with warm veining, soapstone, butcher block) where you want the cabinetry to feel like part of a warm, cohesive palette rather than a stark contrast. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">full white color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens (LRV 3–12) — The 2026 Trend</h2>
@@ -3082,7 +3077,7 @@ const blogPosts: BlogPost[] = [
           <strong>Best-selling gray:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> — all warm greiges that rate Nearly identical or Very similar to one another. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Best-selling white:</strong> <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#F5F2ED" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
+          <strong>Best-selling white:</strong> <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#F5F2ED" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two colors are, and read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore deep dive</Link> for a more detailed head-to-head. For a systematic view of the closest matches across each pair, see the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM</Link>, <Link href="/match/sherwin-williams/to/behr" className="text-brand-blue hover:underline">SW to Behr</Link>, and <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">BM to Behr</Link> conversion charts.
@@ -3227,7 +3222,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          To match a paint color across brands, look up the color on Paint Color HQ, where every color page displays CIEDE2000-calculated matches from all 13 brands in our 26,000+ color database, ranked from closest to farthest. A match labeled Nearly identical is hard to tell apart by eye. For example, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove (OC-17)</Link> matches to <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> Pure White (SW 7005) as Very similar, and <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> Cornforth White (No. 228) matches to SW Repose Gray as Nearly identical. This guide explains the science, the tools, and the step-by-step process for finding accurate cross-brand equivalents.
+          To match a paint color across brands, look up the color on Paint Color HQ, where every color page displays CIEDE2000-calculated matches from all 13 brands in our 26,000+ color database, ranked from closest to farthest. A match labeled Nearly identical is hard to tell apart by eye. For example, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove (OC-17)</Link> matches to <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> Pure White (SW 7005) as Nearly identical, and <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> Cornforth White (No. 228) matches to SW Repose Gray as Nearly identical. This guide explains the science, the tools, and the step-by-step process for finding accurate cross-brand equivalents.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why You Need Cross-Brand Paint Matching</h2>
@@ -3300,7 +3295,7 @@ const blogPosts: BlogPost[] = [
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Matching a classic white.</strong>{" "}
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is the most popular warm white in the country. The Sherwin-Williams equivalent is often <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" />, though the undertones are slightly different — White Dove leans a touch more yellow while Pure White is a bit creamier. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how close they are. For more on choosing whites, read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link>.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is one of the most popular whites in the country. A close Sherwin-Williams equivalent is <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" />, which rates nearly identical; SW Cold Foam (SW 9504) is closer still. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how close they are. For more on choosing whites, read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Navy blues across brands.</strong>{" "}
@@ -3362,7 +3357,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best white paint color for most homes is <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove</Link> (OC-17, hex #F3EFE0, LRV 86) — a warm cream white that works on walls, cabinets, and trim in virtually any lighting condition. For a true, no-undertone white, <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Benjamin Moore Chantilly Lace</Link> (OC-65, LRV 92) is the industry standard. There are over 500 &ldquo;white&rdquo; paints across Sherwin-Williams, Benjamin Moore, Behr, and other major brands, and each carries different undertones that can make or break a room — two whites that rate Very similar rather than Nearly identical are often perceptible side by side. This guide ranks the 15 best white paint colors, explains their undertones and LRV values, and tells you exactly which rooms they work in.
+          The best white paint color for most homes is <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove</Link> (OC-17, hex #EFEEE5, LRV 83), a soft white that leans slightly warm and works on walls, cabinets, and trim in virtually any lighting condition. For a crisp white that measures close to neutral, <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Benjamin Moore Chantilly Lace</Link> (OC-65, LRV 90) is the industry standard. There are over 500 &ldquo;white&rdquo; paints across Sherwin-Williams, Benjamin Moore, Behr, and other major brands, and each carries different undertones that can make or break a room — two whites that rate Very similar rather than Nearly identical are often perceptible side by side. This guide ranks the 15 best white paint colors, explains their undertones and LRV values, and tells you exactly which rooms they work in.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Choosing White Paint Is So Hard</h2>
@@ -3380,10 +3375,10 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">1. White Dove (OC-17) — Benjamin Moore</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is the most popular warm white paint in America. It has soft cream undertones that read as warm and welcoming without ever tipping into yellow territory. Designers reach for it as a whole-house color, cabinet white, and trim color.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is one of the most popular white paints in America. It is a soft white with a slight warm lean that reads welcoming without tipping into yellow territory. Designers reach for it as a whole-house color, cabinet white, and trim color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Undertone:</strong> Warm cream. <strong>LRV:</strong> 85. <strong>Best for:</strong> Cabinets, trim, whole-house color, farmhouse and transitional style. <strong>Pair with:</strong> Chantilly Lace on trim for subtle contrast. See more in our <Link href="/blog/benjamin-moore-most-popular-whites" className="text-brand-blue hover:underline">BM whites ranking</Link>.
+          <strong>Undertone:</strong> Slightly warm. <strong>LRV:</strong> 83. <strong>Best for:</strong> Cabinets, trim, whole-house color, farmhouse and transitional style. <strong>Pair with:</strong> Chantilly Lace on trim for subtle contrast. See more in our <Link href="/blog/benjamin-moore-most-popular-whites" className="text-brand-blue hover:underline">BM whites ranking</Link>.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">2. Alabaster (SW 7008) — Sherwin-Williams</h3>
@@ -3433,7 +3428,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">7. Chantilly Lace (OC-65) — Benjamin Moore</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s cleanest white — virtually no undertone in any lighting condition. When you need white that reads as pure, bright white every time, this is the one. It&apos;s the go-to for trim, ceilings, and modern all-white rooms.
+          <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s go-to crisp white. It measures close to neutral, so it reads as a clean, bright white in most lighting. When you need white that stays white, this is the one. It&apos;s the go-to for trim, ceilings, and modern all-white rooms.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> True neutral. <strong>LRV:</strong> 92. <strong>Best for:</strong> Trim, ceilings, modern interiors, exteriors. <strong>Pair with:</strong> Any wall color — it works as a universal trim white.
@@ -3575,8 +3570,8 @@ const blogPosts: BlogPost[] = [
           Found a white you love from one brand but need to buy from another? Here are the closest cross-brand matches. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find matches across 26,000+ colors from 13 brands, or try the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how close any two whites are.
         </p>
         <ul className="mt-4 space-y-2 text-gray-700 leading-relaxed">
-          <li><strong>White Dove OC-17 (BM, LRV 86, #F3EFE0)</strong> &#8776; Pure White SW 7005 (LRV 84, #edece6) &#8776; Cameo White (Behr, LRV 79, #e9e6e1) — Very similar across all three</li>
-          <li><strong>Chantilly Lace OC-65 (BM, LRV 92, #F5F1EB)</strong> &#8776; High Reflective White SW 7757 (LRV 93, #F6F0E4) &#8776; Ultra Pure White (Behr, LRV 94, #F2ECE0) — Nearly identical</li>
+          <li><strong>White Dove OC-17 (BM, LRV 83, #EFEEE5)</strong> &#8776; Pure White SW 7005 (LRV 84, #EDECE6): Nearly identical. Behr Cameo White (LRV 79, #E9E6E1) rates Very similar to White Dove.</li>
+          <li><strong>Chantilly Lace OC-65 (BM, LRV 90, #F4F6F1)</strong> &#8776; High Reflective White SW 7757 (LRV 93, #F7F7F1) &#8776; Ultra Pure White (Behr, LRV 97, #FAFDF7): Nearly identical</li>
           <li><strong>Alabaster SW 7008 (LRV 82, #F0EAD6)</strong> &#8776; Swiss Coffee OC-45 (BM, LRV 84, #EFE4CE) &#8776; Cottage White (Behr) — Nearly identical to Very similar</li>
           <li><strong>Decorator&apos;s White OC-149 (BM, LRV 85, #eceeeb)</strong> &#8776; Snowbound SW 7004 (LRV 83, #edeae5) — Very similar</li>
           <li><strong>Simply White OC-117 (BM, LRV 92, #f7f7ee)</strong> &#8776; Extra White SW 7006 — Very similar</li>
@@ -3596,7 +3591,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">Is white a warm or cool color?</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Pure white (like fresh snow) is technically neutral — neither warm nor cool. But almost every white paint leans one direction. White Dove and Alabaster are warm whites. Decorator&apos;s White and Snowbound are cool whites. Chantilly Lace and High Reflective White are the closest to truly neutral.
+          Pure white (like fresh snow) is technically neutral — neither warm nor cool. But almost every white paint leans one direction. White Dove and Alabaster lean slightly warm. Decorator&apos;s White and Snowbound are cool whites. Chantilly Lace and High Reflective White are the closest to truly neutral.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">How many shades of white paint are there?</h3>
@@ -3611,7 +3606,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">What is the best white for painting over dark colors?</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          High-LRV true whites like Chantilly Lace (LRV 92) and High Reflective White (LRV 93) provide the best coverage over dark colors. Use a high-quality primer first, then apply two coats. Warm whites with lower LRVs may need three coats to fully cover a dark base. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint and primer you need.
+          High-LRV true whites like Chantilly Lace (LRV 90) and High Reflective White (LRV 93) provide the best coverage over dark colors. Use a high-quality primer first, then apply two coats. Warm whites with lower LRVs may need three coats to fully cover a dark base. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint and primer you need.
         </p>
       </>
     ),
@@ -3661,7 +3656,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Colors for Your Home</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Warm tones feel intimate and grounding. They suit bedrooms, dining rooms, and living spaces where you want people to settle in. For walls, <Swatch hex="#C4A882" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (LRV 58) is one of the most reliable warm neutrals — it holds its warmth under both incandescent and natural light. Pair it with <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (LRV 86.2) on trim for a classic warm palette that works in virtually every lighting condition.
+          Warm tones feel intimate and grounding. They suit bedrooms, dining rooms, and living spaces where you want people to settle in. For walls, <Swatch hex="#C4A882" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (LRV 58) is one of the most reliable warm neutrals — it holds its warmth under both incandescent and natural light. Pair it with <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (LRV 83) on trim for a classic warm palette that works in virtually every lighting condition.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cool Colors for Your Home</h2>
@@ -3702,7 +3697,7 @@ const blogPosts: BlogPost[] = [
           <strong>1.</strong> <Swatch hex="#D0C8B5" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — For the fifth year running, this warm greige remains the single most popular paint color in America. It works in virtually every room and lighting condition.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>2.</strong> <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — The warm white that designers can&apos;t stop specifying. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
+          <strong>2.</strong> <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — The soft white that designers can&apos;t stop specifying. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>3.</strong> <Swatch hex="#D3CBBA" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — A warm greige that holds its ground in the age of beige-is-back.
@@ -3798,7 +3793,7 @@ const blogPosts: BlogPost[] = [
           White bathrooms never go out of style, but the <em>right</em> white matters enormously. A bright white against white tile and white fixtures feels sterile. A warm white adds softness and prevents the clinical look that plagues many bathrooms.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the most forgiving white for bathrooms. Its warm cream undertone prevents the &ldquo;hospital&rdquo; look while still feeling clean and bright. Works with every fixture finish.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the most forgiving white for bathrooms. Its slight warm lean prevents the &ldquo;hospital&rdquo; look while still feeling clean and bright. Works with every fixture finish.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — slightly warmer than a true white, it works beautifully with both chrome and brass fixtures. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for more options.
@@ -3925,7 +3920,7 @@ const blogPosts: BlogPost[] = [
           Modern living rooms thrive on clean lines and restrained color. The walls should recede, letting furniture and art take center stage.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — a clean, true white that&apos;s the gold standard for modern interiors. No yellow, no gray — just pure white that photographs beautifully.
+          <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — a clean, bright white that&apos;s the standard for modern interiors. It measures close to neutral and photographs cleanly.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EEF0EC" name="Decorator's White" brand="Benjamin Moore" href="/colors/benjamin-moore/decorators-white-oc-149" /> — a white with a subtle blue-gray undertone that gives modern rooms a crisp, Scandinavian feel.
@@ -3953,7 +3948,7 @@ const blogPosts: BlogPost[] = [
           Farmhouse style has evolved beyond stark white shiplap. Today&apos;s farmhouse living rooms use creamy whites and soft earth tones that feel collected and lived-in.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the warm white that launched a thousand farmhouse kitchens. It&apos;s creamy without being yellow and works perfectly with natural wood beams and vintage textiles.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the soft white that launched a thousand farmhouse kitchens. It leans slightly warm without reading yellow and works with natural wood beams and vintage textiles.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a warm, slightly sandy off-white that gives walls a hand-plastered, old-world quality. It glows beautifully in candlelight.
@@ -4159,10 +4154,10 @@ const blogPosts: BlogPost[] = [
           A white house is timeless for a reason: it works with every architectural style, every roof color, and every landscape. But exterior whites behave differently from interior whites — bright sun washes them out, so you often need a white with more body than you&apos;d choose indoors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the most specified exterior white. Its warm cream undertone prevents it from looking stark or cold in full sun.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — one of the most specified exterior whites. Its slight warm lean keeps it from looking stark or cold in full sun.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — for homeowners who want a true white with no yellow cast. Best on modern and contemporary homes.
+          <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — for homeowners who want a crisp white that measures close to neutral. Best on modern and contemporary homes.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — a warm white that&apos;s the most popular SW exterior color. It glows golden at sunset. Browse our full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
@@ -4251,7 +4246,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best nursery paint color for most rooms is Benjamin Moore Saybrook Sage (HC-114, hex #b2b8a3, LRV 46) — a warm, gender-neutral sage green that is calming for newborns and still looks stylish at age ten. For parents who prefer a neutral, <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove</Link> (OC-17, hex #F3EFE0, LRV 86) is the safest warm white for nurseries. The 2026 nursery trend has shifted away from pastel pink and baby blue toward earthy, muted tones — mushroom taupes, smoky sages, and warm clays that grow with your child. These 15 nursery paint colors from <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> are ranked by versatility, longevity, and sleep-science research.
+          The best nursery paint color for most rooms is Benjamin Moore Saybrook Sage (HC-114, hex #b2b8a3, LRV 46) — a warm, gender-neutral sage green that is calming for newborns and still looks stylish at age ten. For parents who prefer a neutral, <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove</Link> (OC-17, hex #EFEEE5, LRV 83) is the safest soft white for nurseries. The 2026 nursery trend has shifted away from pastel pink and baby blue toward earthy, muted tones — mushroom taupes, smoky sages, and warm clays that grow with your child. These 15 nursery paint colors from <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> are ranked by versatility, longevity, and sleep-science research.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Baby Pastels Are Out in 2026</h2>
@@ -4295,7 +4290,7 @@ const blogPosts: BlogPost[] = [
           Warm whites, creams, and mushroom taupes create a bright, airy nursery that serves as a blank canvas for colorful bedding, art, and toys. They&apos;re the easiest baby room colors to accessorize and redecorate around as your child grows. In 2026, the trend is moving toward warmer, earthier neutrals rather than the cool grays that dominated nurseries a few years ago.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (LRV 86.2) — the most popular warm white in America. In a nursery, it creates a bright, peaceful space that lets colorful decor pop. Its Sherwin-Williams equivalent is Pure White (SW 7005, LRV 84) which rates very similar. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (LRV 83), one of the most popular whites in America. In a nursery, it creates a bright, peaceful space that lets colorful decor pop. Sherwin-Williams Pure White (SW 7005, LRV 84) rates nearly identical. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D5C8B5" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> (LRV 74.3) — a creamy, sandy white that counteracts the cool blue cast in north-facing nurseries. At LRV 74, it reflects enough light to keep the room bright while adding perceptible warmth. See our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link> for more.
@@ -4681,7 +4676,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">1. White Dove (OC-17)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is the most popular white paint in America. It&apos;s a warm, creamy white with soft yellow undertones that never looks yellow on the wall. Designers use it for everything: cabinets, trim, walls, ceilings, and entire homes. It&apos;s the safe choice that always looks good.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is one of the most popular white paints in America. It&apos;s a soft white with a slight warm lean that never looks yellow on the wall. Designers use it for everything: cabinets, trim, walls, ceilings, and entire homes. It&apos;s the safe choice that always looks good.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Cabinets, trim, whole-house color, farmhouse style.
@@ -4691,7 +4686,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">2. Chantilly Lace (OC-65)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s cleanest, truest white — virtually no undertone. When you want white that reads as pure white in any light, this is the one. It&apos;s the go-to for modern and contemporary interiors where warmth is provided by other elements.
+          <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s go-to crisp white. It measures close to neutral, so it reads as clean white in most light. It&apos;s the go-to for modern and contemporary interiors where warmth is provided by other elements.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Modern interiors, trim against colored walls, ceilings, exteriors.
@@ -4701,7 +4696,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">3. Simply White (OC-117)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> sits between White Dove and Chantilly Lace — it&apos;s warmer than a true white but not as creamy as White Dove. It was BM&apos;s 2016 Color of the Year and remains a top seller. Ideal when you want just a hint of warmth.
+          <Swatch hex="#F1EDE3" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a close neighbor of both White Dove and Chantilly Lace, rating nearly identical to each. It&apos;s warmer than Chantilly Lace and brighter than White Dove. It was BM&apos;s 2016 Color of the Year and remains a top seller. Ideal when you want just a hint of warmth.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Kitchens, bathrooms, transitional style.
@@ -4806,7 +4801,7 @@ const blogPosts: BlogPost[] = [
           White bedrooms feel serene and spacious when the white has the right undertone for your lighting. Whites with LRV above 80 maximize perceived room size. The wrong white — one whose undertone clashes with your fixed elements — looks sterile or dingy.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F0E8D8" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — a warm white with subtle cream undertones. It&apos;s bright and open without feeling harsh — the Behr equivalent of <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove (OC-17)</Link>. LRV 79.4 makes it an excellent choice for small bedrooms that need to feel larger.
+          <Swatch hex="#F0E8D8" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — a warm white with subtle cream undertones. It&apos;s bright and open without feeling harsh — in the same family as <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove (OC-17)</Link>, which it rates very similar to (Behr Harmonious White is the nearly identical match). LRV 79.4 makes it an excellent choice for small bedrooms that need to feel larger.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F2ECE0" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-ppu18-06" /> — Behr&apos;s cleanest, crispest white with virtually no undertone. Use it for trim and ceilings to keep the bedroom feeling airy. Pair it with any wall color above for guaranteed contrast. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
@@ -5020,7 +5015,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> ↔ <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> — America&apos;s two most popular grays. Delta E: 2.4 (close but noticeably different in person). Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> ↔ <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — Both warm whites, but White Dove is slightly creamier. See the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+          <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> ↔ <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — Both soft whites that lean slightly warm, and they rate nearly identical. See the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> ↔ <Swatch hex="#F1ECE0" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> — Warm whites for whole-house color. Very similar in our digital data.
@@ -5038,7 +5033,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#1F1F1F" name="Tricorn Black" brand="Sherwin-Williams" href="/colors/sherwin-williams/tricorn-black-6258" /> ↔ <Swatch hex="#2A2A28" name="Black Beauty" brand="Benjamin Moore" href="/colors/benjamin-moore/black-beauty-2128-10" /> — The reliable blacks for trim, doors, and accent walls. Tricorn is a true neutral black; Black Beauty has the faintest blue cast that designers prize for sophistication.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F5F1EB" name="Extra White" brand="Sherwin-Williams" href="/colors/sherwin-williams/extra-white-7006" /> ↔ <Swatch hex="#F5F2ED" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — The brightest true whites in each brand&apos;s deck. Both read clean and bright with no obvious undertone. Excellent for trim against any wall color.
+          <Swatch hex="#EEEFEA" name="Extra White" brand="Sherwin-Williams" href="/colors/sherwin-williams/extra-white-7006" /> ↔ <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — Two crisp whites that rate nearly identical, with Chantilly Lace the brighter of the two. Both read clean with no obvious undertone. Excellent for trim against any wall color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any SW and BM colors are. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> to understand why similar-looking colors can feel different on your walls. For a systematic view, browse the full <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM conversion chart</Link> or the <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">BM to SW chart</Link> for the 50 closest pairs.
@@ -5440,7 +5435,7 @@ const blogPosts: BlogPost[] = [
           The safest and most effective choice for north-facing rooms. Cool whites will look icy and sterile — you need whites with yellow, pink, or peach undertones.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the go-to warm white for north-facing rooms. Its yellow undertone counteracts blue light perfectly. LRV 86.2.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — a go-to white for north-facing rooms. Its slight warm lean offsets cool north light. LRV 83.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F3EEE0" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — slightly warmer than a true white, with just enough cream to prevent the cold, clinical look. LRV 84.
@@ -5556,7 +5551,7 @@ const blogPosts: BlogPost[] = [
           If you want to keep things light, warm whites handle the east-facing shift gracefully. They glow in the morning without turning cold in the afternoon.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDE6D3" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the warm white standard. In east-facing rooms, it looks creamy and luminous all day long. LRV 86.2.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the soft white standard. In east-facing rooms, it looks soft and luminous all day long. LRV 83.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F0EBE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> — a buttery white that holds its warmth even as the afternoon shade rolls in. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link>.

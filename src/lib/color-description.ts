@@ -181,7 +181,7 @@ function getPairingSentence(name: string, family: HueFamily): string {
     case "red":
       return `Pair it with creamy off-whites like Alabaster for trim, walnut or cherry hardwoods, and brass hardware — the warmth keeps reds from feeling clinical. Deep forest green or navy work as bold accent walls.`;
     case "orange":
-      return `Pair it with warm whites like White Dove, white oak floors, and unlacquered brass or copper hardware. Terracotta tile or deep green plants complete an earthy warm palette.`;
+      return `Pair it with soft whites like White Dove, white oak floors, and unlacquered brass or copper hardware. Terracotta tile or deep green plants complete an earthy warm palette.`;
     case "yellow":
       return `Pair it with crisp whites like Pure White for trim, oak or maple woods, and brass hardware. Navy or deep teal accents balance the brightness without competing for attention.`;
     case "green":
@@ -189,7 +189,7 @@ function getPairingSentence(name: string, family: HueFamily): string {
     case "teal":
       return `Pair it with crisp whites like Decorator's White, white oak floors, and brushed nickel or chrome hardware. Aged brass or copper introduces deliberate warm contrast if you want to break up the cool palette.`;
     case "blue":
-      return `Pair it with cool whites like Chantilly Lace, walnut or rift-cut oak floors, and brushed nickel or polished chrome hardware. Brass accents add warmth for a layered look.`;
+      return `Pair it with crisp whites like Chantilly Lace, walnut or rift-cut oak floors, and brushed nickel or polished chrome hardware. Brass accents add warmth for a layered look.`;
     case "purple":
       return `Pair it with cool whites for trim, walnut floors, and either brass or matte black hardware depending on whether you want warm or grounded contrast. Sage green works as a complementary accent.`;
     case "magenta":

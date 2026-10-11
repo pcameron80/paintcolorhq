@@ -83,9 +83,9 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove OC-17</Link>,{" "}
           <Link href="/colors/benjamin-moore/edgecomb-gray-hc-173" className="text-brand-blue hover:underline">Edgecomb Gray HC-173</Link>,{" "}
           <Link href="/colors/benjamin-moore/revere-pewter-hc-172" className="text-brand-blue hover:underline">Revere Pewter HC-172</Link>,{" "}
-          <Link href="/colors/benjamin-moore/chantilly-lace-oc-65" className="text-brand-blue hover:underline">Chantilly Lace OC-65</Link>,{" "}
+          <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace OC-65</Link>,{" "}
           <Link href="/colors/benjamin-moore/hale-navy-hc-154" className="text-brand-blue hover:underline">Hale Navy HC-154</Link>, and{" "}
-          <Link href="/colors/benjamin-moore/simply-white-oc-117" className="text-brand-blue hover:underline">Simply White OC-117</Link>.
+          <Link href="/colors/benjamin-moore/simply-white-2143-70" className="text-brand-blue hover:underline">Simply White OC-117</Link>.
           These colors have become staples in both residential and commercial design projects.
         </p>
         <p>
