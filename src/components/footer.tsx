@@ -114,6 +114,12 @@ export function Footer() {
         <p className="text-xs text-outline mt-2">
           As an Amazon Associate, Paint Color HQ earns from qualifying purchases.
         </p>
+        <p className="text-xs text-outline mt-2">
+          Built by{" "}
+          <a href="https://pcameron.co/" className="hover:text-primary underline-offset-4 hover:underline transition-all">
+            Philip Cameron
+          </a>
+        </p>
       </div>
     </footer>
   );

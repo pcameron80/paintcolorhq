@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
+import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
 
 export const metadata: Metadata = {
   title: "Methodology: How Paint Color HQ Matches Colors Across Brands",
@@ -25,16 +26,9 @@ const techArticleJsonLd = {
   description:
     "Methodology behind 26,000+ cross-brand paint color matches: CIEDE2000 color science, the matching pipeline, data sources, Delta E thresholds, and known limitations.",
   url: "https://www.paintcolorhq.com/methodology",
-  author: {
-    "@type": "Person",
-    name: "Philip Cameron",
-    url: "https://www.paintcolorhq.com/authors/paint-color-hq-staff",
-    jobTitle: "Founder, Paint Color HQ",
-  },
+  author: FOUNDER_PERSON,
   publisher: {
-    "@type": "Organization",
-    name: "Paint Color HQ",
-    url: "https://www.paintcolorhq.com",
+    ...ORG_REF,
     logo: { "@type": "ImageObject", url: "https://www.paintcolorhq.com/logo.webp", width: 600, height: 60 },
   },
   proficiencyLevel: "Expert",

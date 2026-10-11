@@ -10,6 +10,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 import { TableOfContents } from "@/components/table-of-contents";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
+import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
 import { PinterestSaveButton } from "@/components/pinterest-save-button";
 
 // ISR: re-render hourly so a scheduled post becomes reachable on its date
@@ -256,8 +257,11 @@ export default async function BlogPostPage({ params }: PageProps) {
           width: 1200,
           height: 630,
         },
-        author: { "@type": "Person", name: post.author, url: "https://www.paintcolorhq.com/authors/paint-color-hq-staff", jobTitle: "Founder, Paint Color HQ", sameAs: ["https://www.linkedin.com/in/philip-a-cameron/", "https://github.com/pcameron80"], worksFor: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" } },
-        publisher: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com", logo: { "@type": "ImageObject", url: "https://www.paintcolorhq.com/logo.webp", width: 600, height: 60 } },
+        // Every current post is by the founder; a future guest author gets a plain Person node.
+        author: post.author === FOUNDER_PERSON.name
+          ? { ...FOUNDER_PERSON, worksFor: ORG_REF }
+          : { "@type": "Person", name: post.author },
+        publisher: { ...ORG_REF, logo: { "@type": "ImageObject", url: "https://www.paintcolorhq.com/logo.webp", width: 600, height: 60 } },
       }} />
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "BreadcrumbList",

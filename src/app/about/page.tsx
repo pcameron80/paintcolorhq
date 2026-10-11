@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
+import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
 
 export const metadata: Metadata = {
   title: "About Paint Color HQ | Our Color Science Methodology",
@@ -30,12 +31,12 @@ export default function AboutPage() {
       <Header />
 
       <JsonLd data={{
-        "@context": "https://schema.org", "@type": "Organization",
-        name: "Paint Color HQ", url: "https://www.paintcolorhq.com",
+        "@context": "https://schema.org", ...ORG_REF,
         logo: "https://www.paintcolorhq.com/logo.webp",
         description: "Paint Color HQ is an independent paint color discovery and cross-brand matching platform. We use CIEDE2000 color science to help homeowners and professionals choose paint colors with confidence.",
         contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: "https://www.paintcolorhq.com/contact" },
         sameAs: ["https://www.pinterest.com/paintcolorhq", "https://www.linkedin.com/company/paint-color-hq"],
+        founder: FOUNDER_PERSON,
         knowsAbout: ["Paint color matching", "CIEDE2000 color difference", "Cross-brand paint color comparison", "Color science", "Interior paint selection"],
       }} />
       <JsonLd data={{
@@ -43,7 +44,7 @@ export default function AboutPage() {
         name: "About Paint Color HQ",
         description: "Learn how Paint Color HQ uses CIEDE2000 color science to match 26,000+ paint colors across our paint catalog.",
         url: "https://www.paintcolorhq.com/about",
-        mainEntity: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" },
+        mainEntity: ORG_REF,
       }} />
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -84,6 +85,18 @@ export default function AboutPage() {
                 wondering whether a Sherwin-Williams shade has a Benjamin Moore
                 equivalent, you can find answers instantly with data you can
                 trust.
+              </p>
+              <p>
+                Built by{" "}
+                <a href="https://pcameron.co/" className="text-primary underline hover:text-primary/80">
+                  Philip Cameron
+                </a>
+                , who started the site after a renovation ran into the
+                cross-brand matching problem. His{" "}
+                <Link href="/authors/paint-color-hq-staff" className="text-primary underline hover:text-primary/80">
+                  author page
+                </Link>{" "}
+                has the full story.
               </p>
             </div>
 
