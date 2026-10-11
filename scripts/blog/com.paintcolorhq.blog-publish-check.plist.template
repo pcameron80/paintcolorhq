@@ -4,8 +4,9 @@
 <dict>
   <key>Label</key><string>__LABEL__</string>
   <!-- Invoke /bin/bash directly (not the script via its shebang): macOS TCC
-       attributes file access to the launchd program, and the repo is in
-       ~/Documents, so /bin/bash and node need Full Disk Access. -->
+       attributes file access to the launchd program, and the repo's git data is
+       in ~/Documents, so /bin/bash and node need Full Disk Access (already
+       granted for the Pinterest drip). -->
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
@@ -24,7 +25,7 @@
     <dict><key>Hour</key><integer>21</integer><key>Minute</key><integer>30</integer></dict>
     <dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>30</integer></dict>
   </array>
-  <key>StandardErrorPath</key><string>__REPO__/scripts/blog/publish-check.log</string>
+  <key>StandardErrorPath</key><string>__LOG__</string>
   <key>RunAtLoad</key><false/>
 </dict>
 </plist>

@@ -108,6 +108,3 @@ docs/research/
 
 # DB row backups from one-off fix scripts (local only, never commit)
 scripts/backups/
-# Blog publish-day check runtime state and log (not secrets)
-scripts/blog/publish-check.log
-scripts/blog/publish-check-state.json

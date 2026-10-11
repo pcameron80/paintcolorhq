@@ -7,8 +7,10 @@
  *   2. ping IndexNow (Bing, Yandex)
  *   3. resubmit the sitemap to Google Search Console
  * Then, for up to 14 days, inspect each submitted post once a day and report
- * when Google has indexed it. Results go to a macOS notification and to
- * scripts/blog/publish-check.log; progress is kept in publish-check-state.json.
+ * when Google has indexed it. Results go to a macOS notification and to the log;
+ * progress is kept in one state file shared by scheduled and manual runs:
+ * ~/Library/Application Support/PaintColorHQ/publish-check/ (publish-check.log,
+ * publish-check-state.json). Override the folder with $PUBLISH_CHECK_DIR.
  *
  * Google has no API to request indexing of a blog URL; resubmitting the sitemap
  * and inspecting the URL is the most the API allows (see google-search-console.ts).
@@ -19,9 +21,9 @@
  *   npx tsx scripts/blog/publish-check.ts --no-notify
  */
 import * as fs from "fs";
+import * as os from "os";
 import * as path from "path";
 import { execFileSync } from "child_process";
-import { fileURLToPath } from "url";
 import { getAllPosts } from "../../src/lib/blog-posts.tsx";
 import { submitIndexNow, BASE } from "./indexnow-client.ts";
 import { submitSitemap, inspectUrl } from "./google-search-console.ts";
@@ -42,8 +44,10 @@ const GSC_INSPECT_SITE = "https://www.paintcolorhq.com/";
 const SITEMAP_INDEX = `${BASE}/sitemap.xml`; // the sitemap registered in GSC
 const BLOG_SITEMAP = `${BASE}/sitemap/blog.xml`;
 
-const dir = path.dirname(fileURLToPath(import.meta.url));
-const STATE_PATH = path.join(dir, "publish-check-state.json");
+const DIR =
+  process.env.PUBLISH_CHECK_DIR ??
+  path.join(os.homedir(), "Library/Application Support/PaintColorHQ/publish-check");
+const STATE_PATH = path.join(DIR, "publish-check-state.json");
 const DRY = process.argv.includes("--dry");
 const NOTIFY = !process.argv.includes("--no-notify") && !DRY;
 
@@ -139,7 +143,10 @@ async function main() {
     if (!DRY) state[p.slug] = { ...state[p.slug], lastProblem: "not indexed after 14 days" };
   }
 
-  if (!DRY) fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
+  if (!DRY) {
+    fs.mkdirSync(DIR, { recursive: true });
+    fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
+  }
   if (problems.length > 0) notify("PaintColorHQ blog: check needed", problems.join("; "));
   if (done.length > 0) notify("PaintColorHQ blog", done.join("; "));
   if (problems.length === 0 && done.length === 0 && ready.length === 0) console.log("  nothing to do");
