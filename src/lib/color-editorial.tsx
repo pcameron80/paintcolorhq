@@ -361,11 +361,11 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/pale-oak-oc-20": (
     <>
       <p>
-        Pale Oak (OC-20) is hex #E8D8D0 with an estimated LRV of 68.6. Our
-        database files it in the orange family because of its hue, even though it is used as a light
-        neutral. Behr Bee&apos;s Knees (T13-11) and PPG Sandy Beach (1072-2) are nearly identical
-        digital matches, followed by Dunn-Edwards Gallery Gray (DE6072) and Valspar Mosaic Pink
-        (7001-13). The nearest Sherwin-Williams color is Faint Coral (SW 6329), also nearly identical.
+        Pale Oak (OC-20) is hex #DDD9CE with an estimated LRV of 68.6. Our
+        database files it in the beige family. Behr Campfire Ash (N320-1) is a nearly identical
+        digital match, followed by Valspar Glass Pebble (8004-26A), Dunn-Edwards Shady (DEC774) and
+        PPG Silent Smoke (1025-2). The nearest Sherwin-Williams color is Oat Milk (SW 9501), also
+        nearly identical.
         At LRV 68.6 it is 14.6 points darker than White Dove (OC-17, LRV 83.2), and our white-paint
         guide describes it as carrying more color than White Dove while still reading as a white. Our
         beige guide groups it with the light neutrals. Compare physical samples before switching brands,

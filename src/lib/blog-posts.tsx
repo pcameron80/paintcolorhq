@@ -217,7 +217,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2"><Swatch hex="#ece7d8" name="White Down" brand="BM 970" href="/colors/benjamin-moore/white-down-970" /> (76.7)</td>
               </tr>
               <tr className="border-b border-gray-100">
-                <td className="py-2 pr-4"><Swatch hex="#E8D8D0" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)</td>
+                <td className="py-2 pr-4"><Swatch hex="#DDD9CE" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)</td>
                 <td className="py-2"><Swatch hex="#feeee6" name="Bridal Pink" brand="BM 2013-70" href="/colors/benjamin-moore/bridal-pink-2013-70" /> (85.0)</td>
               </tr>
             </tbody>
@@ -342,8 +342,8 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2">Tomcat (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
-                <td className="py-2 pr-4"><Swatch hex="#323233" name="Black" brand="BM HC-190" href="/colors/benjamin-moore/black-hc-190" /></td>
-                <td className="py-2 pr-4">Black Magic (nearly identical)</td>
+                <td className="py-2 pr-4"><Swatch hex="#313132" name="Black" brand="BM HC-190" href="/colors/benjamin-moore/black-hc-190" /></td>
+                <td className="py-2 pr-4">Tricorn Black (nearly identical)</td>
                 <td className="py-2 pr-4">Limousine Leather (very similar)</td>
                 <td className="py-2">Tomcat (nearly identical)</td>
               </tr>
@@ -392,7 +392,7 @@ const blogPosts: BlogPost[] = [
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#8b2829" name="Caliente" brand="BM AF-290" href="/colors/benjamin-moore/caliente-af-290" /></td>
                 <td className="py-2 pr-4">Red Bay (very similar)</td>
-                <td className="py-2 pr-4"><Link href="/colors/behr/new-brick-s-h-200" className="text-brand-blue hover:underline">New Brick</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/cherry-tree-ecc-32-3" className="text-brand-blue hover:underline">Cherry Tree</Link> (very similar)</td>
                 <td className="py-2">Cut Ruby (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
@@ -931,7 +931,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2">Chantilly Lace (+26.9)</td>
               </tr>
               <tr className="border-b border-gray-100">
-                <td className="py-2 pr-4"><Swatch hex="#E8D8D0" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)</td>
+                <td className="py-2 pr-4"><Swatch hex="#DDD9CE" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)</td>
                 <td className="py-2 pr-4">Chantilly Lace (+21.4)</td>
                 <td className="py-2">White Dove (+14.6), a softer edge</td>
               </tr>
@@ -1606,9 +1606,8 @@ const blogPosts: BlogPost[] = [
           tops the market at LRV 97.3. Sherwin-Williams&apos; brightest,{" "}
           <Swatch hex="#F7F7F1" name="High Reflective White" href="/colors/sherwin-williams/high-reflective-white-7757" />, reaches 92.6.
           PPG&apos;s lightest white measures just 88.7 — nearly nine points below Behr&apos;s. And
-          if what you want is white with <em>no</em> undertone at all, the truest whites we
-          measured are <Swatch hex="#F3F4F4" name="Dunn-Edwards Lighthouse" href="/colors/dunn-edwards/lighthouse-dew385" /> and{" "}
-          <Swatch hex="#F9F8F7" name="Behr Smart White" href="/colors/behr/smart-white-730a-1" /> — both nearly
+          if what you want is white with <em>no</em> undertone at all, the truest white we
+          measured is <Swatch hex="#F3F4F4" name="Dunn-Edwards Lighthouse" href="/colors/dunn-edwards/lighthouse-dew385" />, nearly
           chroma-free at LRV 90.
         </p>
 
@@ -2208,7 +2207,7 @@ const blogPosts: BlogPost[] = [
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best True Blacks (LRV ~3)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#2f2f30" name="Tricorn Black" brand="Sherwin-Williams" href="/colors/sherwin-williams/tricorn-black-6258" /> (SW 6258, LRV 2.9) is the benchmark true black — neutral, crisp, and the safest choice when you want black to actually look black. Its closest match is{" "}
-          <Swatch hex="#323233" name="Black" brand="Benjamin Moore" href="/colors/benjamin-moore/black-hc-190" /> (HC-190, LRV 3.2), a nearly identical twin, so the two are interchangeable across the Sherwin-Williams / Benjamin Moore divide. Both pair beautifully with Dutch Boy True Black, a nearly identical hex match for big-box shoppers.
+          <Swatch hex="#313132" name="Black" brand="Benjamin Moore" href="/colors/benjamin-moore/black-hc-190" /> (HC-190, LRV 4.6), a nearly identical twin, so the two are interchangeable across the Sherwin-Williams / Benjamin Moore divide. Both pair beautifully with Dutch Boy True Black, a nearly identical hex match for big-box shoppers.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#313031" name="Caviar" brand="Sherwin-Williams" href="/colors/sherwin-williams/caviar-6990" /> (SW 6990, LRV 3) is Sherwin-Williams&apos; other true black — a hair warmer than Tricorn Black and a nearly identical match for Benjamin Moore Black (HC-190). Use Caviar when you want the faintest warmth so the black doesn&apos;t feel clinical. All three of these read as absolute black on a front door or cabinet; on a full wall they create the deepest, most enveloping effect.
@@ -2229,8 +2228,8 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Blue-Black: Inkwell</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#31363a" name="Inkwell" brand="Sherwin-Williams" href="/colors/sherwin-williams/inkwell-6992" /> (SW 6992, LRV 3.6) is the one black here with a deliberate cool cast — a near-black with a navy-blue undertone that reads almost black in low light and reveals its blue in daylight. It&apos;s the move when you want black&apos;s depth but a cooler, moodier feel, and it pairs especially well with brass and warm woods. Its closest match is{" "}
-          <Link href="/colors/behr/spade-black-bnc-38" className="text-brand-blue hover:underline">Behr Spade Black</Link>, with Benjamin Moore After Midnight a close second. Compare it side-by-side with a true black like Tricorn Black in the{" "}
+          <Swatch hex="#31363a" name="Inkwell" brand="Sherwin-Williams" href="/colors/sherwin-williams/inkwell-6992" /> (SW 6992, LRV 3.6) is the one black here with a deliberate cool cast — a near-black with a navy-blue undertone that reads almost black in low light and reveals its blue in daylight. It&apos;s the move when you want black&apos;s depth but a cooler, moodier feel, and it pairs especially well with brass and warm woods. Its closest match is Benjamin Moore After Midnight, nearly identical, and its closest Behr match is{" "}
+          <Link href="/colors/behr/obsidian-stone-ecc-25-3" className="text-brand-blue hover:underline">Behr Obsidian Stone</Link>, very similar. Compare it side-by-side with a true black like Tricorn Black in the{" "}
           <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> to see the blue cast clearly before you commit.
         </p>
 
@@ -2319,7 +2318,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Soft, Light Warm Neutrals</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For rooms that need brightness with a hint of warmth, these sit at the pale end. <Swatch hex="#e8d8d0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> (OC-20, LRV 68.6) is the soft, barely-there warm neutral with a faint pink-taupe softness — light and flexible, with Behr Bee&apos;s Knees and PPG Sandy Beach as nearly identical matches. <Swatch hex="#dfd3c3" name="Natural Linen" brand="Sherwin-Williams" href="/colors/sherwin-williams/natural-linen-9109" /> (SW 9109, LRV 66.2) is the clean, linen-toned neutral that avoids both yellow and pink; Behr Parisian Taupe and PPG Wheat Sheaf are both nearly identical. <Swatch hex="#e3ded0" name="Natural Choice" brand="Sherwin-Williams" href="/colors/sherwin-williams/natural-choice-7011" /> (SW 7011, LRV 73.1) is the lightest here — an almost-white warm neutral with multiple nearly identical matches: Benjamin Moore Strand of Pearls, PPG Southern Breeze, and Valspar Gracious.
+          For rooms that need brightness with a hint of warmth, these sit at the pale end. <Swatch hex="#ddd9ce" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> (OC-20, LRV 68.6) is the soft, barely-there warm neutral with a faint pink-taupe softness — light and flexible, with Behr Campfire Ash and PPG Silent Smoke as nearly identical matches. <Swatch hex="#dfd3c3" name="Natural Linen" brand="Sherwin-Williams" href="/colors/sherwin-williams/natural-linen-9109" /> (SW 9109, LRV 66.2) is the clean, linen-toned neutral that avoids both yellow and pink; Behr Parisian Taupe and PPG Wheat Sheaf are both nearly identical. <Swatch hex="#e3ded0" name="Natural Choice" brand="Sherwin-Williams" href="/colors/sherwin-williams/natural-choice-7011" /> (SW 7011, LRV 73.1) is the lightest here — an almost-white warm neutral with multiple nearly identical matches: Benjamin Moore Strand of Pearls, PPG Southern Breeze, and Valspar Gracious.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Deeper Beiges for Depth &amp; Trim</h2>
@@ -2497,7 +2496,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">True-Green Sage (When You Want the Green to Show)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Not every &quot;sage&quot; is grayed down. <Swatch hex="#b8cc84" name="Back to Nature" brand="Behr" href="/colors/behr/back-to-nature-s340-4" /> (S340-4, LRV 48) is a brighter, yellow-leaning green — a former Behr Color of the Year that reads far more clearly green than the gray-greens above, and the only color here in our true green family. Its closest Benjamin Moore match is <Link href="/colors/benjamin-moore/stem-green-2029-40" className="text-brand-blue hover:underline">Stem Green</Link>, with Sherwin-Williams <Link href="/colors/sherwin-williams/dancing-green-6716" className="text-brand-blue hover:underline">Dancing Green</Link> in the same range. If your &quot;sage&quot; reference photo looks vivid and fresh rather than soft and grayed, this is the lane you actually want.
+          Not every &quot;sage&quot; is grayed down. <Swatch hex="#bdb98f" name="Back to Nature" brand="Behr" href="/colors/behr/back-to-nature-s340-4" /> (S340-4, LRV 48) is a brighter, yellow-leaning green — a former Behr Color of the Year that reads far more clearly green than the gray-greens above. Its closest Benjamin Moore match is <Link href="/colors/benjamin-moore/georgian-green-hc-115" className="text-brand-blue hover:underline">Georgian Green</Link>, with Sherwin-Williams <Link href="/colors/sherwin-williams/baby-bok-choy-9037" className="text-brand-blue hover:underline">Baby Bok Choy</Link> also nearly identical. If your &quot;sage&quot; reference photo looks vivid and fresh rather than soft and grayed, this is the lane you actually want.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Pick the Right Sage</h2>
@@ -2667,7 +2666,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#DCD3BD" name="Manchester Tan" brand="Benjamin Moore" href="/colors/benjamin-moore/manchester-tan-hc-81" /> — BM HC-81, LRV 63. At the warm end of the family — more tan than gray — and a brilliant choice for north-facing rooms that need warmth without yellow. <Link href="/colors/dunn-edwards/gunnysack-det674" className="text-brand-blue hover:underline">Dunn-Edwards Gunnysack</Link> matches it almost exactly, with <Link href="/colors/sherwin-williams/warm-oats-9511" className="text-brand-blue hover:underline">Sherwin-Williams Warm Oats</Link> close behind.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> — BM OC-20, LRV 69. The lightest pick here, with a barely-there pink-taupe softness that feels almost like a warm white with substance. <Link href="/colors/behr/bee-s-knees-t13-11" className="text-brand-blue hover:underline">Behr Bee&apos;s Knees</Link> and <Link href="/colors/ppg/sandy-beach-1072-2" className="text-brand-blue hover:underline">PPG Sandy Beach</Link> are its closest twins.
+          <Swatch hex="#DDD9CE" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> — BM OC-20, LRV 69. The lightest pick here, with a barely-there pink-taupe softness that feels almost like a warm white with substance. <Link href="/colors/behr/campfire-ash-n320-1" className="text-brand-blue hover:underline">Behr Campfire Ash</Link> and <Link href="/colors/ppg/silent-smoke-1025-2" className="text-brand-blue hover:underline">PPG Silent Smoke</Link> are its closest twins.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warmer, Beige-Leaning Greiges</h2>
@@ -2749,7 +2748,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Greiges</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (HC-172, LRV 55) is the greige that launched a thousand renovations — warm, grounded, endlessly flexible. Its closest Behr match is Coliseum Marble and its Sherwin-Williams match Simple Stone. A touch lighter and softer, <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (HC-173, LRV 63) is the easygoing greige for brighter rooms — Behr Stonewashed is a nearly identical match. <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> (OC-20, LRV 69) leans the warmest, with a barely-there pink-taupe softness — its cross-brand matches are on its <Link href="/colors/benjamin-moore/pale-oak-oc-20" className="text-brand-blue hover:underline">color page</Link>. <Swatch hex="#DBD7CD" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> (OC-27, LRV 66) is the cooler, grayer greige — its Behr match Ginger Sugar is a nearly identical hex match.
+          <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (HC-172, LRV 55) is the greige that launched a thousand renovations — warm, grounded, endlessly flexible. Its closest Behr match is Coliseum Marble and its Sherwin-Williams match Simple Stone. A touch lighter and softer, <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (HC-173, LRV 63) is the easygoing greige for brighter rooms — Behr Stonewashed is a nearly identical match. <Swatch hex="#DDD9CE" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> (OC-20, LRV 69) is the lightest of the four, and on swatch data it is nearly identical to Balboa Mist — its cross-brand matches are on its <Link href="/colors/benjamin-moore/pale-oak-oc-20" className="text-brand-blue hover:underline">color page</Link>. <Swatch hex="#DBD7CD" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> (OC-27, LRV 66) is the cooler, grayer greige — its Behr match Ginger Sugar is a nearly identical hex match.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Grays</h2>
@@ -3043,7 +3042,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#D0D3D3" name="Elemental" brand="PPG" href="/colors/ppg/elemental-1011-2" /> — 1011-2, LRV 65. A soft, light gray that stays calm and neutral rather than cold. Its closest match is <Link href="/colors/behr/sterling-780e-3-2" className="text-brand-blue hover:underline">Behr Sterling</Link>, with <Link href="/colors/sherwin-williams/misty-6232" className="text-brand-blue hover:underline">Sherwin-Williams Misty</Link> nearby.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#A79D8D" name="Stonehenge Greige" brand="PPG" href="/colors/ppg/stonehenge-greige-1024-5" /> — 1024-5, LRV 34. A deeper greige-taupe for cozy rooms, accent walls, and exteriors. It is a nearly identical match for <Link href="/colors/behr/chic-taupe-n230-4" className="text-brand-blue hover:underline">Behr Chic Taupe</Link>.
+          <Swatch hex="#A79D8D" name="Stonehenge Greige" brand="PPG" href="/colors/ppg/stonehenge-greige-1024-5" /> — 1024-5, LRV 34. A deeper greige-taupe for cozy rooms, accent walls, and exteriors. It is a nearly identical match for <Link href="/colors/behr/ashwood-720d-4" className="text-brand-blue hover:underline">Behr Ashwood</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Grays</h2>
@@ -3067,7 +3066,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Blues</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3A5F7D" name="Chinese Porcelain" brand="PPG" href="/colors/ppg/chinese-porcelain-1160-6" /> — 1160-6, LRV 11. PPG&apos;s signature deep blue and a past Color of the Year: a rich, slightly grayed navy-blue for cabinetry, islands, and accent walls. Closest matches are <Link href="/colors/benjamin-moore/prussian-blue-cw-625" className="text-brand-blue hover:underline">Benjamin Moore Prussian Blue</Link> and <Link href="/colors/behr/mood-indigo-570f-6" className="text-brand-blue hover:underline">Behr Mood Indigo</Link>.
+          <Swatch hex="#3A5F7D" name="Chinese Porcelain" brand="PPG" href="/colors/ppg/chinese-porcelain-1160-6" /> — 1160-6, LRV 11. PPG&apos;s signature deep blue and a past Color of the Year: a rich, slightly grayed navy-blue for cabinetry, islands, and accent walls. Closest matches are <Link href="/colors/benjamin-moore/prussian-blue-cw-625" className="text-brand-blue hover:underline">Benjamin Moore Prussian Blue</Link> and <Link href="/colors/behr/tidal-m510-6" className="text-brand-blue hover:underline">Behr Tidal</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#3F4C5A" name="Cavalry" brand="PPG" href="/colors/ppg/cavalry-1041-7" /> — 1041-7, LRV 7. A deep, slightly slate navy for a classic statement. It is close to <Link href="/colors/benjamin-moore/hale-navy-hc-154" className="text-brand-blue hover:underline">Benjamin Moore Hale Navy</Link> — the most-specified navy in the country — and <Link href="/colors/behr/club-navy-qe-56" className="text-brand-blue hover:underline">Behr Club Navy</Link>. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for more.
@@ -3078,7 +3077,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#414040" name="Black Magic" brand="PPG" href="/colors/ppg/black-magic-1001-7" /> — 1001-7, LRV 5. A soft true black for front doors, trim, and cabinetry. It is a nearly identical match for <Link href="/colors/benjamin-moore/black-jack-2133-20" className="text-brand-blue hover:underline">Benjamin Moore Black Jack</Link> and close to <Link href="/colors/sherwin-williams/iron-ore-7069" className="text-brand-blue hover:underline">Sherwin-Williams Iron Ore</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C6BB68" name="Secret Safari" brand="PPG" href="/colors/ppg/secret-safari-1110-4" /> — 1110-4, LRV 49. PPG&apos;s 2026 Color of the Year: a versatile yellow-green that brings warmth and personality to an accent wall or built-ins. Its closest match is <Link href="/colors/behr/dry-sea-grass-360f-4" className="text-brand-blue hover:underline">Behr Dry Sea Grass</Link>.
+          <Swatch hex="#C6BB68" name="Secret Safari" brand="PPG" href="/colors/ppg/secret-safari-1110-4" /> — 1110-4, LRV 49. PPG&apos;s 2026 Color of the Year: a versatile yellow-green that brings warmth and personality to an accent wall or built-ins. Its closest match is <Link href="/colors/behr/go-go-lime-p350-5" className="text-brand-blue hover:underline">Behr Go Go Lime</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Match a PPG Color to Another Brand</h2>
@@ -3183,7 +3182,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#BFC9D0" name="Upward" brand="Sherwin-Williams" href="/colors/sherwin-williams/upward-6239" /> (SW 6239) — same hex, same LRV — so the look travels to any Sherwin-Williams store. It&apos;s also close to <Link href="/colors/benjamin-moore/iced-slate-2130-60" className="text-brand-blue hover:underline">Benjamin Moore Iced Slate</Link>. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for more.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#343B4E" name="Old Mill" brand="Dunn-Edwards" href="/colors/dunn-edwards/old-mill-dea185" /> — DEA185, LRV 4. A deep, near-black navy for cabinetry, islands, front doors, and dramatic accent walls. Its closest matches are <Link href="/colors/benjamin-moore/old-navy-2063-10" className="text-brand-blue hover:underline">Benjamin Moore Old Navy</Link> and <Link href="/colors/behr/limo-scene-n560-7" className="text-brand-blue hover:underline">Behr Limo-scene</Link>.
+          <Swatch hex="#343B4E" name="Old Mill" brand="Dunn-Edwards" href="/colors/dunn-edwards/old-mill-dea185" /> — DEA185, LRV 4. A deep, near-black navy for cabinetry, islands, front doors, and dramatic accent walls. Its closest matches are <Link href="/colors/benjamin-moore/old-navy-2063-10" className="text-brand-blue hover:underline">Benjamin Moore Old Navy</Link> and <Link href="/colors/behr/indigo-ink-hdc-cl-26a" className="text-brand-blue hover:underline">Behr Indigo Ink</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Dunn-Edwards Color of the Year: Midnight Garden</h2>
@@ -3276,7 +3275,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#CDCBC8" name="Filtered Shade" brand="Valspar" href="/colors/valspar/filtered-shade-4003-1b" /> — 4003-1B, LRV 60. A soft, near-neutral gray that stays calm instead of turning cold or blue. Good for bedrooms and hallways where you want gray without a steely cast. Closest matches include <Link href="/colors/sherwin-williams/zircon-7667" className="text-brand-blue hover:underline">Sherwin-Williams Zircon</Link> and <Link href="/colors/benjamin-moore/cement-gray-2112-60" className="text-brand-blue hover:underline">Benjamin Moore Cement Gray</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#87837B" name="Mountain Smoke" brand="Valspar" href="/colors/valspar/mountain-smoke-6004-2b" /> — 6004-2B, LRV 23. A deep, warm griege-gray for moody accent walls, islands, and built-ins. It is a nearly identical match for <Link href="/colors/benjamin-moore/tweed-coat-csp-85" className="text-brand-blue hover:underline">Benjamin Moore Tweed Coat</Link>. Explore more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+          <Swatch hex="#817B72" name="Mountain Smoke" brand="Valspar" href="/colors/valspar/mountain-smoke-6004-2b" /> — 6004-2B, LRV 20. A deep, warm griege-gray for moody accent walls, islands, and built-ins. It is a very similar match for <Link href="/colors/benjamin-moore/tweed-coat-csp-85" className="text-brand-blue hover:underline">Benjamin Moore Tweed Coat</Link>. Explore more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Greens</h2>
@@ -3295,15 +3294,15 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#99B6B3" name="Renew Blue" brand="Valspar" href="/colors/valspar/renew-blue-8003-37d" /> — 8003-37D, LRV 44. Valspar&apos;s 2024 Color of the Year: a balanced blue with a grayed sea-green cast that reads spa-like in a bathroom or bedroom. Closest matches are <Link href="/colors/benjamin-moore/kensington-green-710" className="text-brand-blue hover:underline">Benjamin Moore Kensington Green</Link> and <Link href="/colors/behr/opal-silk-ppu12-08" className="text-brand-blue hover:underline">Behr Opal Silk</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3D5872" name="Indigo Cloth" brand="Valspar" href="/colors/valspar/indigo-cloth-4009-7" /> — 4009-7, LRV 9. A rich, saturated deep blue for cabinetry, islands, and dramatic accent walls. It lands close to <Link href="/colors/behr/velvet-rope-mq5-58" className="text-brand-blue hover:underline">Behr Velvet Rope</Link> and <Link href="/colors/benjamin-moore/new-york-state-of-mind-805" className="text-brand-blue hover:underline">Benjamin Moore New York State of Mind</Link> — a versatile navy alternative.
+          <Swatch hex="#1F4C68" name="Indigo Cloth" brand="Valspar" href="/colors/valspar/indigo-cloth-4009-7" /> — 4009-7, LRV 6.5. A rich, saturated deep blue for cabinetry, islands, and dramatic accent walls. It is very similar to <Link href="/colors/benjamin-moore/champion-cobalt-2061-20" className="text-brand-blue hover:underline">Benjamin Moore Champion Cobalt</Link> and <Link href="/colors/behr/outerspace-ecc-53-3" className="text-brand-blue hover:underline">Behr Outerspace</Link> — a versatile navy alternative.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Statement Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3F4043" name="Dark Kettle Black" brand="Valspar" href="/colors/valspar/dark-kettle-black-4011-2" /> — 4011-2, LRV 5. A soft, near-true black for front doors, trim, and cabinetry. Used in a low sheen it reads architectural rather than harsh. It is a nearly identical match for <Link href="/colors/behr/totally-black-hdc-md-04" className="text-brand-blue hover:underline">Behr Totally Black</Link> and close to <Link href="/colors/benjamin-moore/black-jack-2133-20" className="text-brand-blue hover:underline">Benjamin Moore Black Jack</Link>.
+          <Swatch hex="#292A2D" name="Dark Kettle Black" brand="Valspar" href="/colors/valspar/dark-kettle-black-4011-2" /> — 4011-2, LRV 2. A true black for front doors, trim, and cabinetry. Used in a low sheen it reads architectural rather than harsh. It is a very similar match for <Link href="/colors/benjamin-moore/black-hc-190" className="text-brand-blue hover:underline">Benjamin Moore Black</Link> and <Link href="/colors/sherwin-williams/tricorn-black-6258" className="text-brand-blue hover:underline">Sherwin-Williams Tricorn Black</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#AE373F" name="Classic Red" brand="Valspar" href="/colors/valspar/classic-red-1009-2" /> — 1009-2, LRV 12. Valspar&apos;s iconic saturated red for a front door or a dining-room statement wall. Its closest cross-brand match is <Link href="/colors/ppg/red-gumball-1187-7" className="text-brand-blue hover:underline">PPG Red Gumball</Link>, with <Link href="/colors/benjamin-moore/lyons-red-cc-68" className="text-brand-blue hover:underline">Benjamin Moore Lyons Red</Link> close behind.
+          <Swatch hex="#B0212A" name="Classic Red" brand="Valspar" href="/colors/valspar/classic-red-1009-2" /> — 1009-2, LRV 10.5. Valspar&apos;s iconic saturated red for a front door or a dining-room statement wall. Its closest Sherwin-Williams match is <Link href="/colors/sherwin-williams/positive-red-6871" className="text-brand-blue hover:underline">Positive Red</Link>, with <Link href="/colors/benjamin-moore/exotic-red-2086-10" className="text-brand-blue hover:underline">Benjamin Moore Exotic Red</Link> close behind; both are very similar.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar Colors of the Year</h2>
@@ -3534,7 +3533,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Warm Mahogany</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is a rich brown-red with LRV ~8 — the deepest, most saturated of all five 2026 picks. The color reads more like a furniture stain than a typical wall color, and that&apos;s likely the point. PPG&apos;s commercial-architectural lineage (Manor Hall, the spec-builder line) shows up in CoY picks that frame the brand as residential-designer-relevant rather than purely transactional.
+          <Swatch hex="#744034" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is a rich brown-red with LRV ~8 — the deepest, most saturated of all five 2026 picks. The color reads more like a furniture stain than a typical wall color, and that&apos;s likely the point. PPG&apos;s commercial-architectural lineage (Manor Hall, the spec-builder line) shows up in CoY picks that frame the brand as residential-designer-relevant rather than purely transactional.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           At LRV 8 it absorbs most of the light in a room — pure white trim against it creates jarring contrast, and north-facing rooms make it read black. Most effective in small high-impact spaces: front doors, dining rooms, library accent walls, powder rooms, cabinetry. Pairs especially well with warm brass, natural walnut, leather, and cream-toned trim. Avoid pairing with cool grays or pure whites; the temperature mismatch makes the mahogany read clay-pot rather than rich.
@@ -4429,7 +4428,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">13. Pale Oak (OC-20) — Benjamin Moore</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> is a warm off-white with a whisper of pink-beige undertone. It reads as a cozy, soft neutral on walls — more color than White Dove but still firmly in white territory. Extremely popular for nurseries and bedrooms. Read more in our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom colors guide</Link>.
+          <Swatch hex="#DDD9CE" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> is a warm off-white with a whisper of pink-beige undertone. It reads as a cozy, soft neutral on walls — more color than White Dove but still firmly in white territory. Extremely popular for nurseries and bedrooms. Read more in our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom colors guide</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Warm (pink-beige). <strong>LRV:</strong> 70. <strong>Best for:</strong> Bedrooms, nurseries, living rooms, whole-house neutral.
@@ -4919,7 +4918,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#ABB3B1" name="Boothbay Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/boothbay-gray-hc-165" /> — a blue-gray that feels like sea mist. It reads as a sophisticated neutral rather than a &ldquo;beach house&rdquo; blue.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8a7e70" name="Safari Beige" brand="Valspar" href="/colors/valspar/safari-beige-6006-2b" /> — a warm sandy beige that brings the warmth of driftwood into your space. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families.
+          <Swatch hex="#857666" name="Safari Beige" brand="Valspar" href="/colors/valspar/safari-beige-6006-2b" /> — a warm sandy beige that brings the warmth of driftwood into your space. See more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Choosing Your Living Room Color</h2>
@@ -5264,7 +5263,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#C7BFC3" name="Silver Peony" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-peony-1475" /> (LRV 53.3) — a barely-there mauve-gray that reads as sophisticated pink in warm light and neutral gray in cool light. It transitions from nursery to teen room without repainting.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> (LRV 70.8) — a warm blush-beige with a pink-beige undertone that is the softest hint of pink without being identifiably pink. It is one of Benjamin Moore&apos;s top 5 nursery colors. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
+          <Swatch hex="#DDD9CE" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> (LRV 70.8) — a warm blush-beige with a pink-beige undertone that is the softest hint of pink without being identifiably pink. It is one of Benjamin Moore&apos;s top 5 nursery colors. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose the Right Nursery Color for Your Room</h2>
@@ -5362,7 +5361,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#28372F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that creates a rich, library-like dining room. Pair with brass light fixtures and a wood table for old-world sophistication. Essex Green is one of Benjamin Moore&apos;s Historical Collection colors, which means it has been used in American homes for centuries. See more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6D4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> — a sumptuous red-brown with earthy undertones that PPG highlighted as a 2026 trend color. It brings warmth and depth to formal dining rooms without the intensity of a pure red. Pair with cream linens and natural wood for a grounded, inviting feel.
+          <Swatch hex="#744034" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> — a sumptuous red-brown with earthy undertones that PPG highlighted as a 2026 trend color. It brings warmth and depth to formal dining rooms without the intensity of a pure red. Pair with cream linens and natural wood for a grounded, inviting feel.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Earth Tones (The 2026 Trend)</h2>
@@ -5379,7 +5378,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#C8BCAB" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — a mushroom tone that&apos;s having a moment in dining rooms. It&apos;s warm, grounding, and sophisticated without being dark — the dining room equivalent of a cashmere sweater. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more earthy options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8a7e70" name="Safari Beige" brand="Valspar" href="/colors/valspar/safari-beige-6006-2b" /> — a sandy, warm beige-brown that creates an organic, earthy dining room. It pairs naturally with ceramic tableware, woven placemats, and natural wood tones. Explore <Link href="/brands/valspar" className="text-brand-blue hover:underline">all Valspar colors</Link> on our site.
+          <Swatch hex="#857666" name="Safari Beige" brand="Valspar" href="/colors/valspar/safari-beige-6006-2b" /> — a sandy, warm beige-brown that creates an organic, earthy dining room. It pairs naturally with ceramic tableware, woven placemats, and natural wood tones. Explore <Link href="/brands/valspar" className="text-brand-blue hover:underline">all Valspar colors</Link> on our site.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Elegant Neutrals for Open Floor Plans</h2>
@@ -5659,7 +5658,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">5. Pale Oak (OC-20)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> is a warm off-white with a whisper of pink-beige undertone. It&apos;s technically a neutral but reads as a warm, cozy white on walls. Extremely popular for nurseries and bedrooms where you want warmth without color.
+          <Swatch hex="#DDD9CE" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> is a warm off-white with a whisper of pink-beige undertone. It&apos;s technically a neutral but reads as a warm, cozy white on walls. Extremely popular for nurseries and bedrooms where you want warmth without color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Bedrooms, nurseries, living rooms, whole-house neutral.
@@ -5705,13 +5704,13 @@ const blogPosts: BlogPost[] = [
           Blue is the most popular bedroom color family for a reason — it lowers heart rate and promotes sleep. These three Behr blues are best sellers that work in bedrooms of any size.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C9DCD9" name="Light French Gray" brand="Behr" href="/colors/behr/light-french-gray-720e-2" /> — don&apos;t let the name fool you. This is actually a soft blue-gray and one of Behr&apos;s all-time top sellers. It reads as a sophisticated blue in north-facing rooms and a balanced gray in south-facing light. LRV 68.6 makes it versatile for both main walls and accent walls.
+          <Swatch hex="#C9CFCC" name="Light French Gray" brand="Behr" href="/colors/behr/light-french-gray-720e-2" /> — don&apos;t let the name fool you. This is actually a soft blue-gray and one of Behr&apos;s all-time top sellers. It reads as a sophisticated blue in north-facing rooms and a balanced gray in south-facing light. LRV 68.6 makes it versatile for both main walls and accent walls.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#AFBEBE" name="Watery" brand="Behr" href="/colors/behr/watery-hdc-ct-26" /> — a soft aqua-blue that creates instant coastal calm. Light enough for small bedrooms (LRV 50), interesting enough to stand alone without an accent color. Its closest Benjamin Moore match is <Link href="/colors/benjamin-moore/wedgewood-gray-hc-146" className="text-brand-blue hover:underline">Wedgewood Gray (HC-146)</Link>, nearly identical in our digital data, and its closest Sherwin-Williams match is <Link href="/colors/sherwin-williams/rain-6219" className="text-brand-blue hover:underline">Rain (SW 6219)</Link>, also nearly identical. <Link href="/colors/benjamin-moore/palladian-blue-hc-144" className="text-brand-blue hover:underline">Palladian Blue (HC-144)</Link> often gets suggested as its twin, but it is lighter and greener and shows a visible difference, so treat it as a cousin, not a swap. Browse more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#6691a0" name="Adirondack Blue" brand="Behr" href="/colors/behr/adirondack-blue-n480-5" /> (LRV 25.6) — a deeper, slate-toned blue that adds sophistication to larger bedrooms. At LRV 25.6, it is best suited for bedrooms over 150 sq ft or as a single accent wall behind the headboard. It pairs with crisp white trim and warm wood nightstands.
+          <Swatch hex="#74858f" name="Adirondack Blue" brand="Behr" href="/colors/behr/adirondack-blue-n480-5" /> (LRV 25.6) — a deeper, slate-toned blue that adds sophistication to larger bedrooms. At LRV 25.6, it is best suited for bedrooms over 150 sq ft or as a single accent wall behind the headboard. It pairs with crisp white trim and warm wood nightstands.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens</h2>
@@ -5854,7 +5853,7 @@ const blogPosts: BlogPost[] = [
           Sherwin-Williams&apos; <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> captures the new neutral perfectly — warm, sandy, and golden rather than the cool grays of the 2010s. Meanwhile, Benjamin Moore&apos;s <Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /> shows that even dark neutrals are getting warmer.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          PPG&apos;s <Swatch hex="#6d4741" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> pushes this further into rich brown-red territory. Browse our <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for the full range.
+          PPG&apos;s <Swatch hex="#744034" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> pushes this further into rich brown-red territory. Browse our <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for the full range.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 3: Warm Plum & Berry</h2>
@@ -6417,7 +6416,7 @@ const blogPosts: BlogPost[] = [
           This might surprise you — warm pinks and blush tones work wonderfully in north-facing rooms because their red and pink undertones counterbalance the cool blue light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E8D8D0" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> — reads as a warm blush-beige in north light. One of BM&apos;s bestsellers for this exact situation. LRV 70.8.
+          <Swatch hex="#DDD9CE" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> — reads as a warm blush-beige in north light. One of BM&apos;s bestsellers for this exact situation. LRV 70.8.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EEE3D3" name="Dimity" brand="Farrow &amp; Ball" href="/colors/farrow-ball/dimity-2008" /> (LRV 77.8) — a warm pink-white that reads as a soft neutral in indirect light rather than distinctly pink. The pink undertone quietly counteracts the blue cast. At LRV 78 it&apos;s solidly in the bright-white range that works well in north-facing rooms; keep ceilings white to compensate. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
