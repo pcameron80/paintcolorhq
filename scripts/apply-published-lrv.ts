@@ -28,7 +28,9 @@ import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
-dotenv.config({ path: path.resolve(__dirname, '../.env.local'), quiet: true });
+// Env, scan dir and backups resolve from the working directory, so the script
+// can be run from the main checkout even when the file lives in a worktree.
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local'), quiet: true });
 
 const arg = (name: string) => process.argv.find((a) => a.startsWith(`--${name}=`))?.split('=')[1];
 const APPLY = process.argv.includes('--apply');
@@ -202,7 +204,7 @@ async function main() {
     console.log('Dry run — no DB changes. Re-run with --apply.');
     return;
   }
-  const backupDir = path.resolve(__dirname, 'data/backups');
+  const backupDir = path.resolve(process.cwd(), 'scripts/data/backups');
   fs.mkdirSync(backupDir, { recursive: true });
   const backupPath = path.join(backupDir, `published-lrv-${new Date().toISOString().replace(/[:.]/g, '-')}.json`);
   fs.writeFileSync(backupPath, JSON.stringify(updates, null, 1));
