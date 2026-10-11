@@ -83,6 +83,9 @@ auto-appears in the sitemap, related-posts, and the Pinterest **guide** drip lan
   `date` reveals), run `npm run indexnow-blog` — it submits only blog posts that
   went live in the last 2 days to Bing/Yandex (use `--slug=<slug>` to target one,
   or `--days=N` for a wider window; `--dry` to preview).
+- `--slug` refuses a post whose `date` hasn't arrived (the engines would crawl a
+  404) and any slug that matches no post. Run it on the reveal day; `--force`
+  overrides the date check only.
 - **Targeted on purpose.** This only ever pings a handful of NEW blog URLs. Do
   **not** resurrect the whole-sitemap `/api/cron/indexnow` daily submission — it
   floods the engines (killed for that reason). The script hard-caps at 25 URLs.

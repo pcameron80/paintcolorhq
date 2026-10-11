@@ -9,13 +9,19 @@
  * Run it after a post goes live (manually, or as the last step of the blog
  * pipeline). Scheduled posts: run it on the day they reveal, or with --days.
  *
+ * --slug only submits LIVE posts. A future-dated (scheduled) slug is refused,
+ * because the engines would crawl a 404; pass --force to override. A slug that
+ * matches no post is always refused.
+ *
  * Usage:
  *   npx tsx scripts/blog/indexnow-submit.ts                       # posts published in the last 2 days
  *   npx tsx scripts/blog/indexnow-submit.ts --days=7
  *   npx tsx scripts/blog/indexnow-submit.ts --slug=best-valspar-paint-colors,best-ppg-paint-colors
  *   npx tsx scripts/blog/indexnow-submit.ts --dry                 # print URLs, don't submit
+ *   npx tsx scripts/blog/indexnow-submit.ts --slug=<scheduled> --force  # submit before the post is live
  */
-import { getAllPosts } from "../../src/lib/blog-posts.tsx";
+import { getAllPosts, getPostBySlug } from "../../src/lib/blog-posts.tsx";
+import { checkSlugs } from "./indexnow-lib.ts";
 
 const BASE = "https://www.paintcolorhq.com";
 const HOST = "www.paintcolorhq.com";
@@ -27,6 +33,7 @@ const MAX_URLS = 25; // flood guard — this tool is for new posts, not bulk re-
 
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry");
+const FORCE = args.includes("--force");
 function arg(name: string): string | undefined {
   return args.find((a) => a.startsWith(`--${name}=`))?.replace(`--${name}=`, "");
 }
@@ -36,7 +43,21 @@ async function main() {
   let slugs: string[];
 
   if (slugArg) {
-    slugs = slugArg.split(",").map((s) => s.trim()).filter(Boolean);
+    const requested = slugArg.split(",").map((s) => s.trim()).filter(Boolean);
+    // getPostBySlug returns scheduled posts too when VERCEL_ENV isn't "production",
+    // which is the case for this local script, so their dates can be checked here.
+    const check = checkSlugs(requested, (s) => getPostBySlug(s)?.date, new Date());
+    if (check.unknown.length > 0) {
+      console.error(`Refusing: no blog post with slug ${check.unknown.map((s) => `"${s}"`).join(", ")}.`);
+      process.exit(1);
+    }
+    if (check.scheduled.length > 0 && !FORCE) {
+      console.error("Refusing: these posts are scheduled and not live yet, so the engines would crawl a 404:");
+      check.scheduled.forEach(({ slug, date }) => console.error(`  ${slug} (reveals ${date})`));
+      console.error("Run this again on or after the reveal date, or pass --force to submit anyway.");
+      process.exit(1);
+    }
+    slugs = requested;
   } else {
     const days = arg("days") ? Number(arg("days")) : 2;
     const cutoff = Date.now() - days * 86_400_000;
