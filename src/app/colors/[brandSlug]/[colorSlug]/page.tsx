@@ -29,6 +29,8 @@ import { FORMER_NAMES } from "@/lib/former-names";
 import { titleArm, matchesArmTitle, matchesArmDescription } from "@/lib/title-test";
 import { closenessLabel, closenessLabelLower } from "@/lib/closeness";
 import { availabilityStatus, RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
+import { findHueBand } from "@/lib/hue-bands";
+import { HEAD_COLOR_PUSH } from "@/lib/head-colors";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -205,6 +207,10 @@ export default async function ColorPage({ params }: PageProps) {
   ]);
   const colorLede = generateColorLede(color, matches);
   const brandMatrix = nearestMatchesPerBrand(matches);
+  // Head-color pages keep their body fixed during the 2026-10-11 push, so the
+  // hue-band and match-hub links below skip them.
+  const isHeadColor = HEAD_COLOR_PUSH.includes(`${brandSlug}/${colorSlug}`);
+  const hueBand = isHeadColor ? undefined : findHueBand({ l: color.lab_l, a: color.lab_a, b: color.lab_b_val });
   const availabilityNote = availabilityStatus(color.brand.slug, color.brand.name, color.color_number, color.availability);
   // Curated, hand-written review for high-demand colors (null for the long tail).
   const curatedEditorial = getColorEditorial(brandSlug, colorSlug);
@@ -441,6 +447,14 @@ export default async function ColorPage({ params }: PageProps) {
                   <Link href={`/colors/family/${color.color_family}`} className="font-headline font-bold text-primary capitalize hover:underline">{color.color_family}</Link>
                 </div>
               )}
+              {hueBand && (
+                <p className="py-4 border-b border-outline-variant/15 text-sm text-on-surface-variant">
+                  <Link href={`/colors/hue/${hueBand.slug}`} className="inline-flex items-center gap-2 font-bold text-primary hover:underline">
+                    <span className="inline-block h-3 w-3 rounded-full" style={{ backgroundColor: hueBand.swatch }} />
+                    Part of the {hueBand.phrase} range
+                  </Link>
+                </p>
+              )}
               <div className="flex justify-between items-center py-4 border-b border-outline-variant/15">
                 <span className="text-xs uppercase tracking-widest font-semibold text-outline">Brand</span>
                 <Link href={`/brands/${color.brand.slug}`} className="font-headline font-bold text-primary hover:underline">{color.brand.name}</Link>
@@ -519,7 +533,7 @@ export default async function ColorPage({ params }: PageProps) {
             {brandMatrix.length > 0 && (
               <div className="bg-surface-container-low rounded-xl p-8 md:p-10">
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">Compare alternatives to {color.name}</h2>
-                <p className="text-sm text-on-surface-variant mb-8">Digital candidates from other paint brands, ranked by color similarity. Always verify with a physical sample. <Link href="/methodology" className="text-primary underline-offset-4 hover:underline whitespace-nowrap">How we calculate match accuracy →</Link></p>
+                <p className="text-sm text-on-surface-variant mb-8">Digital candidates from other paint brands, ranked by color similarity. Always verify with a physical sample. <Link href="/methodology" className="text-primary underline-offset-4 hover:underline whitespace-nowrap">How we calculate match accuracy →</Link>{!isHeadColor && <> Matching a different color? Start a new <Link href="/match" className="text-primary underline-offset-4 hover:underline">paint color match</Link>.</>}</p>
                 {/* Side-by-side hero — the single nearest equivalent shown large,
                     so "does this actually match?" is answered visually before
                     the full per-brand matrix below. Whole block links to it. */}

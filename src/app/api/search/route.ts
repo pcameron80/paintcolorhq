@@ -1,15 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { searchColors } from "@/lib/queries";
+import { searchColors, searchColorsInBrand } from "@/lib/queries";
 
 export async function GET(request: NextRequest) {
   const q = request.nextUrl.searchParams.get("q");
+  // Optional brand scope (brand slug), used by the match pickers.
+  const brand = request.nextUrl.searchParams.get("brand");
 
   if (!q || q.length < 2) {
     return NextResponse.json({ results: [] });
   }
 
   try {
-    const results = await searchColors(q, 50);
+    const results = brand && /^[a-z0-9-]{2,60}$/.test(brand)
+      ? await searchColorsInBrand(q, brand)
+      : await searchColors(q, 50);
     // Cache popular queries at the edge for 1h. Vercel keys cache by
     // full URL including ?q= so each unique query gets its own cache
     // entry. Stale-while-revalidate keeps results snappy even if a

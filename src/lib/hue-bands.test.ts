@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { HUE_BANDS, getHueBand, inHueBand, labPrefilter, toLch } from "./hue-bands";
+import { HUE_BANDS, findHueBand, getHueBand, inHueBand, labPrefilter, toLch } from "./hue-bands";
 import { hueBandCanonical } from "./hue-band-pagination";
 
 // Lab values read from the colors table (2026-10-11).
@@ -56,4 +56,11 @@ test("band definitions are unique and resolvable", () => {
 test("canonical urls: page 1 is bare, later pages are self-canonical", () => {
   assert.equal(hueBandCanonical("rust", 1), "https://www.paintcolorhq.com/colors/hue/rust");
   assert.equal(hueBandCanonical("rust", 3), "https://www.paintcolorhq.com/colors/hue/rust?page=3");
+});
+
+test("findHueBand agrees with the band-page test and handles missing Lab", () => {
+  for (const [name, { band, ...lab }] of Object.entries(KNOWN)) {
+    assert.equal(findHueBand(lab)?.slug ?? null, band, name);
+  }
+  assert.equal(findHueBand({ l: null, a: 1, b: 1 }), undefined);
 });

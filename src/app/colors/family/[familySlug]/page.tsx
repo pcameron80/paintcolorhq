@@ -6,7 +6,9 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { FamilyColorLibrary } from "@/components/family-color-library";
 import { FamilyColorLibraryFallback } from "@/components/family-color-library-fallback";
-import { getColorsByFamily, getColorsByFamilyCount, getAllBrands } from "@/lib/queries";
+import { getColorsByFamily, getColorsByFamilyCount, getAllBrands, getFamilyDemandColors } from "@/lib/queries";
+import { FAMILY_DEMAND } from "@/lib/family-demand";
+import { FamilyMostSearched } from "@/components/family-most-searched";
 import { getFamilyContent, getFamilyRelatedPalettes, getFamilyAnchor } from "@/lib/family-content";
 import { getPostsByFamily } from "@/lib/blog-posts";
 import { FAMILY_UNDERTONE_ANSWERS } from "@/lib/family-undertone-copy";
@@ -94,10 +96,11 @@ export default async function ColorFamilyPage({ params }: PageProps) {
   // from /api/family/[slug]/colors when URL params are present. Reading
   // searchParams on the server here would force dynamic rendering and kill
   // ISR caching for the canonical URL.
-  const [colors, brands, totalCount] = await Promise.all([
+  const [colors, brands, totalCount, mostSearched] = await Promise.all([
     getColorsByFamily(familySlug, { limit: perPage, offset: 0 }),
     getAllBrands(),
     getColorsByFamilyCount(familySlug),
+    getFamilyDemandColors(familySlug, FAMILY_DEMAND[familySlug] ?? []),
   ]);
 
   const familyName = capitalize(familySlug.replace(/-/g, " "));
@@ -203,6 +206,10 @@ export default async function ColorFamilyPage({ params }: PageProps) {
           </div>
         </section>
       )}
+
+      {/* Demand-ranked list (src/lib/family-demand.ts); renders nothing for
+          families without a list, including beige. */}
+      <FamilyMostSearched familyLabel={familyName.toLowerCase()} colors={mostSearched} />
 
       {/* Color Library \u2014 client-driven for filter/pagination interactivity.
           Suspense fallback renders the static unfiltered page-1 state, which
