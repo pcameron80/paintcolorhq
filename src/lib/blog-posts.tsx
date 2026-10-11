@@ -54,6 +54,228 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Ceiling paint color (2026-10-22) ──────────────── */
+  {
+    slug: "ceiling-paint-color",
+    title: "Ceiling Paint Color: Same as the Walls or White?",
+    date: "2026-10-22",
+    author: "Philip Cameron",
+    excerpt:
+      "When to paint the ceiling the wall color, when white works better, and the lighter-step colors and mixing ratios paint makers suggest, with whites by LRV.",
+    coverColor: "#EEEFEA",
+    coverImage: "/blog/ceiling-paint-color.webp",
+    tags: ["How-To", "White Paint", "Tips"],
+    faq: [
+      {
+        question: "Should you paint the ceiling the same color as the walls?",
+        answer:
+          "It works well in small rooms, rooms with vaulted or angled ceilings, and color-drenched schemes, because it removes the line where wall meets ceiling. Sherwin-Williams recommends it for smooth ceilings only: a textured ceiling in the wall color becomes the focal point of the room.",
+      },
+      {
+        question: "Does a white ceiling make a room look bigger?",
+        answer:
+          "Sherwin-Williams and Benjamin Moore both say light ceilings make a room feel taller and larger, and Sherwin-Williams calls white the most effective color for reflecting light back into a room. Farrow & Ball adds a caveat: over colored walls, a bright white ceiling draws the eye to the ceiling line and can make the walls look darker.",
+      },
+      {
+        question: "What is the best white for a ceiling?",
+        answer:
+          "For the most reflected light, pick a high-LRV white such as Sherwin-Williams High Reflective White (LRV 92.6) or Benjamin Moore Chantilly Lace (LRV 90). Benjamin Moore suggests choosing a ceiling white with a similar undertone to the walls, so a warmer white suits warm walls. Sherwin-Williams Premium Ceiling Paint lists an LRV of 92 on its data sheet.",
+      },
+      {
+        question: "How do you make a lighter version of the wall color for the ceiling?",
+        answer:
+          "Sherwin-Williams describes diluting the wall paint with white at about 80 percent white to 20 percent wall color. Farrow & Ball says decorators traditionally mixed 25 percent of the wall color into the ceiling white. A ready-made catalog color with nearly the same hue at a higher LRV does the same job and can be reordered by name.",
+      },
+      {
+        question: "What sheen should ceiling paint be?",
+        answer:
+          "Flat. Sherwin-Williams' sheen chart marks only flat for ceilings, and Benjamin Moore says flat paint is more forgiving of flaws because it does not reflect light. Benjamin Moore Waterborne Ceiling Paint is its flattest paint.",
+      },
+      {
+        question: "How does color-changing ceiling paint work?",
+        answer:
+          "It goes on tinted so you can see where you have rolled, then dries white. Benjamin Moore's Insl-X Color-Changing Ceiling Paint and Glidden's Pink to White Ceiling Paint go on pink. Valspar Skylight Color-Changing Ceiling Paint goes on light purple. These are ready-mixed whites and are not meant to be tinted.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Paint the ceiling the same color as the walls when you want the room to feel continuous: small rooms, vaulted or angled ceilings, and color-drenched schemes all benefit, as long as the ceiling is smooth. Choose white when the room needs light, because white reflects the most of it back into the room. The middle option is a lighter version of the wall color, which Sherwin-Williams mixes at about 80 percent white to 20 percent wall color. Whatever color you choose, ceilings are almost always painted flat.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">When to paint the ceiling the same color as the walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The paint makers agree on where this works. Sherwin-Williams says that in a small room a one-color treatment &quot;evokes a restful, soothing mood,&quot; and that in a room with a vaulted or angled ceiling, continuing the wall color across the ceiling &quot;can simplify the shape and help unify the room.&quot; Farrow &amp; Ball makes the same point about oddly angled ceilings and notes that one color leaves &quot;no sharp lines or harsh contrasts.&quot; It calls the full version, with walls, woodwork and ceiling in one shade, color drenching.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two limits are worth knowing before you commit:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Smooth ceilings only.</strong> Sherwin-Williams&apos; color team recommends the same-color ceiling for smooth ceilings, and warns that a textured ceiling in the wall color becomes the focal point of the room.</li>
+          <li><strong>Dark colors pull the ceiling down.</strong> Benjamin Moore says a monochromatic room in jewel tones makes even a large room feel intimate. That is the effect you want in a dining room or den, not in a small, low-ceilinged room you want to feel open.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Light and mid tones behave differently. Farrow &amp; Ball says a light or mid shade carried across the whole space can make a room feel bigger and airier by blurring the line where the walls and ceiling meet, and Sherwin-Williams says one color in a room that already has high ceilings creates an even loftier look.
+        </p>
+
+        <h3 className="mt-8 text-xl font-semibold text-gray-900">Same color, same sheen?</h3>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The advice splits here. An older Sherwin-Williams color article says to use the same sheen throughout to keep the room cohesive, and Farrow &amp; Ball recommends one flat finish everywhere for color drenching. Other Sherwin-Williams color guidance and Benjamin Moore suggest varying it: flat or ultra-flat on the ceiling, with a higher sheen on the walls. Both work. One sheen gives the most unbroken look. A flat ceiling over eggshell walls is more practical, because walls get touched and ceilings do not.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">When white is the better ceiling</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams calls white &quot;the most effective color for reflecting light back into the room,&quot; and stresses it for rooms with few or no sources of natural light. Its ceiling guide adds that light ceiling colors make ceilings appear higher and rooms appear larger, and Benjamin Moore says the same of white ceilings in small spaces. White is also simply the default: Sherwin-Williams notes it is the most common ceiling color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Farrow &amp; Ball offers the counterpoint. Over colored walls, a bright white ceiling makes you &quot;immediately aware of the ceiling height,&quot; and &quot;the lighter the ceiling, the darker the walls will appear.&quot; If your walls are a mid-tone color, that is the case for the lighter-step ceiling below rather than a stark white.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s advice for choosing which white is to match the warmth of the walls: pick a ceiling white that shares a similar undertone. Here are the common ceiling whites with their LRV and a measured yellowness score (the b* value of each published color, where a higher number means a creamier white):
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">White</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7f1" name="High Reflective White" brand="SW 7757" href="/colors/sherwin-williams/high-reflective-white-7757" /></td>
+                <td className="py-2 pr-4">92.6</td>
+                <td className="py-2">2.9</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#F4F6F1" name="Chantilly Lace" brand="BM 2121-70" href="/colors/benjamin-moore/chantilly-lace-2121-70" /></td>
+                <td className="py-2 pr-4">90.0</td>
+                <td className="py-2">2.2</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7ee" name="Simply White" brand="BM 2143-70" href="/colors/benjamin-moore/simply-white-2143-70" /></td>
+                <td className="py-2 pr-4">89.5</td>
+                <td className="py-2">4.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /></td>
+                <td className="py-2 pr-4">85.9</td>
+                <td className="py-2">2.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">83.7</td>
+                <td className="py-2">3.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e9ebe7" name="Ceiling Bright White" brand="SW 7007" href="/colors/sherwin-williams/ceiling-bright-white-7007" /></td>
+                <td className="py-2 pr-4">82.5</td>
+                <td className="py-2">1.7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two things stand out. First, despite its name, Ceiling Bright White reflects less light than Extra White or Pure White. What sets it apart is that it carries the least yellow of the group, and Sherwin-Williams describes it as having a clean, blue undertone, so it suits cool walls. Second, the brightest choices are High Reflective White, which Sherwin-Williams calls the brightest, cleanest white among its colors, and Chantilly Lace, which Benjamin Moore names, along with Simply White, as a pick for low ceilings. Sherwin-Williams also says Extra White&apos;s high reflectivity makes it an ideal choice for trim and ceilings. For warm walls in <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link> or <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>, Simply White is the warmest of the high-LRV options. Our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> compares the whites in more depth, and the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> lists every one.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">A lighter version of the wall color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This is the option between white and an exact match, and it has the most manufacturer support. Benjamin Moore says a ceiling in a lighter shade, &quot;often a variant of the wall color,&quot; can visually raise the roof. Sherwin-Williams gives a recipe: dilute the wall paint with white at about 80 percent white to 20 percent wall color, and explains that because ceilings sit in shadow, the lighter shade relates to the wall color and makes the ceiling look higher. Farrow &amp; Ball says decorators traditionally mixed 25 percent of the wall color into the ceiling white.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A custom mix works, but a catalog color is easier to buy again for touch-ups. So we searched our database for each popular wall color&apos;s lighter twin: a color from the same brand, 10 to 30 LRV points lighter, with nearly the same hue as the wall.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Wall color (LRV)</th>
+                <th className="py-2 font-semibold">Lighter ceiling color (LRV)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /> (60.1)</td>
+                <td className="py-2"><Swatch hex="#e3ddd3" name="Aesthetic White" brand="SW 7035" href="/colors/sherwin-williams/aesthetic-white-7035" /> (72.7)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1c7b8" name="Accessible Beige" brand="SW 7036" href="/colors/sherwin-williams/accessible-beige-7036" /> (57.9)</td>
+                <td className="py-2"><Swatch hex="#e6dccd" name="Divine White" brand="SW 6105" href="/colors/sherwin-williams/divine-white-6105" /> (72.4)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc9c0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" /> (58.4)</td>
+                <td className="py-2"><Swatch hex="#efece3" name="Cold Foam" brand="SW 9504" href="/colors/sherwin-williams/cold-foam-9504" /> (83.9)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (63.1)</td>
+                <td className="py-2"><Swatch hex="#e4decf" name="Fossil" brand="BM AF-65" href="/colors/benjamin-moore/fossil-af-65" /> (73.2)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (55.1)</td>
+                <td className="py-2"><Swatch hex="#ece7d8" name="White Down" brand="BM 970" href="/colors/benjamin-moore/white-down-970" /> (76.7)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#E8D8D0" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)</td>
+                <td className="py-2"><Swatch hex="#feeee6" name="Bridal Pink" brand="BM 2013-70" href="/colors/benjamin-moore/bridal-pink-2013-70" /> (85.0)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Aesthetic White, Divine White and Fossil are the subtlest steps, 10 to 15 points lighter, and each still rates very similar to its wall color. White Down, Cold Foam and Bridal Pink are bigger steps, 16 to 26 points lighter, closer to a tinted white. Bridal Pink sounds unlikely next to Pale Oak, but by the numbers it is the closest lighter hue in Benjamin Moore&apos;s catalog. Put any pair side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, then test a sample on the ceiling itself: as Sherwin-Williams points out, ceilings often appear in shadow.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Darker than the walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A darker ceiling lowers a room on purpose. Sherwin-Williams suggests navy, chocolate or charcoal to bring the ceiling down in a white-walled room, and says dark ceilings suit large rooms or high ceilings you want to feel more intimate. Benjamin Moore suggests a color two to three shades darker than the walls, and Farrow &amp; Ball recommends a darker tone on a very high ceiling. A deep navy such as <Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (LRV 7.1) is the kind of color Benjamin Moore means when it says a navy ceiling can make a room look &quot;endless yet intimate.&quot; More deep options are in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> families.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Ceiling paint and sheen</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Flat is the ceiling standard. Sherwin-Williams&apos; sheen chart marks only flat for ceilings, and Benjamin Moore explains why: a flat finish does not reflect light, so it is more forgiving of flaws. Our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers the other surfaces.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Dedicated ceiling paints are ultra-flat, and several can be tinted, which matters if you are painting the ceiling a color. From the manufacturer pages and data sheets:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Sherwin-Williams Premium Ceiling Paint:</strong> flat, lists an LRV of 92 on its data sheet, 350 to 400 square feet per gallon, recoat in 4 hours.</li>
+          <li><strong>Sherwin-Williams ProMar Ceiling Paint:</strong> super-flat, and Sherwin-Williams says it is tintable to hundreds of colors.</li>
+          <li><strong>Benjamin Moore Waterborne Ceiling Paint:</strong> ultra flat, which Benjamin Moore calls its flattest paint, available in 3,500+ colors, 400 to 450 square feet per gallon, recoat in 1 to 2 hours.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          To work out how much you need, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> handles walls, and a flat ceiling is roughly the room&apos;s length times its width. Recoat times for other paints are in our guide to <Link href="/blog/how-many-coats-of-paint" className="text-brand-blue hover:underline">how long to wait between coats</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Color-changing ceiling paint</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          White on white is hard to see while you roll, so some ceiling paints go on tinted and dry white:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Benjamin Moore Insl-X Color-Changing Ceiling Paint</strong> goes on pink and turns white as it dries. Benjamin Moore&apos;s data sheet says humidity will not bring the pink back once dry. Its product page listed it as unavailable in October 2026.</li>
+          <li><strong>Valspar Skylight Color-Changing Ceiling Paint</strong> applies light purple and dries to a white matte finish.</li>
+          <li><strong>Glidden Pink to White Ceiling Paint</strong> goes on pink to show missed spots. Glidden notes that rewetting the dry paint can make the pink reappear until it dries again.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These are ready-mixed whites, and the Benjamin Moore and Glidden data sheets say not to tint them, so they only suit a white ceiling.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to decide</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Textured ceiling? Keep it white or a lighter step. Smooth ceiling? Any option works.</li>
+          <li>Dark room or low ceiling? Use a high-LRV white, matched in warmth to the walls.</li>
+          <li>Small room, angled ceiling, or a color-drenched look? Use the wall color, in flat.</li>
+          <li>Mid-tone walls where a white ceiling looks stark? Use a lighter step of the wall color.</li>
+          <li>Very high ceiling you want to bring down? Go darker than the walls.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Preview the room in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, then test a sample on the ceiling in both daylight and lamplight before buying gallons. The same contrast logic applies to trim, which our guide to <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">choosing a trim color</Link> covers. Every color named here is available in <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> or <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and each color page lists its closest match in other brands.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Front door paint colors (2026-10-20) ──────────────── */
   {
     slug: "front-door-paint-colors",
