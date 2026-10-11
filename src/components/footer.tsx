@@ -58,6 +58,7 @@ export function Footer() {
           <h4 className="font-headline text-[10px] uppercase font-bold text-on-surface mb-6 tracking-widest">Tools</h4>
           <ul className="space-y-3 text-xs text-on-surface-variant">
             <li><Link href="/search" className="hover:text-primary underline-offset-4 hover:underline transition-all">Color Search</Link></li>
+            <li><Link href="/match" className="hover:text-primary underline-offset-4 hover:underline transition-all">Paint Color Match</Link></li>
             <li><Link href="/compare" className="hover:text-primary underline-offset-4 hover:underline transition-all">Compare Colors</Link></li>
             <li><Link href="/tools/room-visualizer" className="hover:text-primary underline-offset-4 hover:underline transition-all">Room Visualizer</Link></li>
             <li><Link href="/tools/color-identifier" className="hover:text-primary underline-offset-4 hover:underline transition-all">Photo Color Identifier</Link></li>
