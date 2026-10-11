@@ -55,8 +55,13 @@ interface BrandRule {
   keep?: (c: ScanColor) => boolean;
   /** normalize manufacturer code to the DB color_number convention */
   normalizeCode?: (code: string) => string;
-  /** imported rows are discontinued colors — flag is_archived */
-  archived?: boolean;
+  /**
+   * Availability for imported rows (migration 012). Brand-flagged archives
+   * go in as 'discontinued' until a retailer spot check moves them to 'retired'.
+   */
+  availability?: 'retired' | 'discontinued';
+  /** recorded in availability_source */
+  availabilitySource?: string;
 }
 
 const BRAND_RULES: Record<string, BrandRule> = {
@@ -99,7 +104,8 @@ const BRAND_RULES: Record<string, BrandRule> = {
   'sherwin-williams': {
     file: 'sherwin-williams-missing.json',
     extract: (p) => p as ScanColor[],
-    archived: true,
+    availability: 'discontinued',
+    availabilitySource: "Sherwin-Williams prism feed archived=true",
   },
   'farrow-ball': {
     file: 'farrow-ball-missing.json',
@@ -212,7 +218,13 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
       lab_b_val: lab.b_val,
       lrv: Math.round(calculateLrv(rgb.r, rgb.g, rgb.b) * 10) / 10,
       color_family: classifyColorFamily(rgb.r, rgb.g, rgb.b),
-      is_archived: rule.archived ?? false,
+      ...(rule.availability
+        ? {
+            availability: rule.availability,
+            availability_source: rule.availabilitySource ?? `${slug} feed`,
+            availability_checked_on: new Date().toISOString().slice(0, 10),
+          }
+        : {}),
     });
   }
 
@@ -336,13 +348,20 @@ async function flagArchived(supabase: SupabaseClient, slug: string) {
   console.log(`[${slug} archive flags] live-matched: ${inLive}, to flag: ${toFlag.length}, neither: ${notInArchive}`);
   if (!APPLY) return;
   for (const f of toFlag) {
-    const { error } = await supabase.from('colors').update({ is_archived: true }).eq('id', f.id);
+    const { error } = await supabase
+      .from('colors')
+      .update({
+        availability: 'discontinued',
+        availability_source: `${slug} archive list (${slug}-archive.json)`,
+        availability_checked_on: new Date().toISOString().slice(0, 10),
+      })
+      .eq('id', f.id);
     if (error) {
       console.error(`Flag failed for ${f.number}:`, error.message);
       process.exit(1);
     }
   }
-  console.log(`  flagged ${toFlag.length} rows is_archived=true`);
+  console.log(`  flagged ${toFlag.length} rows availability=discontinued`);
 }
 
 async function main() {

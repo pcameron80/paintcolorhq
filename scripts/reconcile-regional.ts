@@ -254,7 +254,6 @@ async function main() {
       lab_l: lab.l, lab_a: lab.a, lab_b_val: lab.b_val,
       lrv: Math.round(calculateLrv(rgb.r, rgb.g, rgb.b) * 10) / 10,
       color_family: classifyColorFamily(rgb.r, rgb.g, rgb.b),
-      is_archived: false,
     });
   }
   for (let i = 0; i < inserts.length; i += 500) {
