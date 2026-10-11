@@ -1,0 +1,85 @@
+{
+  "command": "pages",
+  "match": "/brands/",
+  "days": 28,
+  "savedAt": "2026-10-11T02:41:27.099Z",
+  "rows": [
+    {
+      "key": "https://www.paintcolorhq.com/brands/sherwin-williams",
+      "impressions": 13675,
+      "clicks": 106,
+      "ctr": 0.007751371115173674,
+      "position": 5
+    },
+    {
+      "key": "https://www.paintcolorhq.com/brands/benjamin-moore",
+      "impressions": 9936,
+      "clicks": 79,
+      "ctr": 0.007950885668276973,
+      "position": 4.737117552334944
+    },
+    {
+      "key": "https://www.paintcolorhq.com/brands/behr",
+      "impressions": 4709,
+      "clicks": 46,
+      "ctr": 0.009768528349968147,
+      "position": 5
+    },
+    {
+      "key": "https://www.paintcolorhq.com/brands/farrow-ball",
+      "impressions": 4065,
+      "clicks": 90,
+      "ctr": 0.02214022140221402,
+      "position": 3.67380073800738
+    },
+    {
+      "key": "https://www.paintcolorhq.com/brands/valspar",
+      "impressions": 3041,
+      "clicks": 64,
+      "ctr": 0.0210457086484709,
+      "position": 5
+    },
+    {
+      "key": "https://www.paintcolorhq.com/brands/dunn-edwards",
+      "impressions": 2337,
+      "clicks": 22,
+      "ctr": 0.009413778348309799,
+      "position": 4.689345314505776
+    },
+    {
+      "key": "https://www.paintcolorhq.com/brands/ppg",
+      "impressions": 1484,
+      "clicks": 34,
+      "ctr": 0.022911051212938006,
+      "position": 5.339622641509434
+    },
+    {
+      "key": "https://www.paintcolorhq.com/brands/dutch-boy",
+      "impressions": 447,
+      "clicks": 8,
+      "ctr": 0.017897091722595078,
+      "position": 5.630872483221476
+    },
+    {
+      "key": "https://www.paintcolorhq.com/brands/ral",
+      "impressions": 66,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "key": "https://www.paintcolorhq.com/brands/kilz",
+      "impressions": 30,
+      "clicks": 1,
+      "ctr": 0.03333333333333333,
+      "position": 3
+    },
+    {
+      "key": "https://www.paintcolorhq.com/brands/vista-paint",
+      "impressions": 12,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6
+    }
+  ]
+}
