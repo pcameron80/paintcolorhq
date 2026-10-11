@@ -217,3 +217,25 @@ tsx scripts/import-brand-scan.ts --brand=<slug> --scan-dir=data/brand-scans/<dat
 tsx scripts/import-brand-scan.ts --brand=<slug> --scan-dir=data/brand-scans/<date> --apply
 npm run export-db-colors && npm run compute-matches && npm run seed-matches
 ```
+
+## Published LRVs and names
+
+Most LRVs in `colors` were computed from hex at import (migration 004). Four brands publish LRV in the feeds the palette drift scan pulls: Benjamin Moore, Behr, Sherwin-Williams and Dutch Boy. The scan output is the source for both scripts below. Run them after `scan-brand-palettes` and after `apply-hex-corrections.ts`, names first:
+
+```bash
+# 1. Names mangled at import: "Strand of Pearlsreg", "Jalapeo Pepper", CC/CSP names cut to one word
+npx tsx scripts/apply-published-names.ts --scan-dir=data/brand-scans/<date>            # dry run
+npx tsx scripts/apply-published-names.ts --scan-dir=data/brand-scans/<date> --apply
+
+# 2. LRV, so rows whose names were just fixed pass the name guard
+npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/<date> --brand=benjamin-moore,behr
+npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/<date> --brand=benjamin-moore,behr --apply
+```
+
+Both write a JSON backup to `scripts/data/backups/` before any write and take `--revert=<backup>`. Writes are conditional on the value read, so a concurrent edit is skipped, not overwritten.
+
+- **LRV:** matches on `color_number`, then `alternate_numbers`. It skips rows listed in `<brand>-hex-changed.json` (owned by `apply-hex-corrections.ts`), rows whose name does not match the feed, feed LRVs of 0, and Benjamin Moore `PM-` codes. The BM API gives premixed `PM-` codes their own LRV, which disagrees with BM's color pages (PM-1 Super White: feed 89.1, page 87.36). LRV does not feed Delta E, so matches need no recompute. Sherwin-Williams and Dutch Boy were left at their computed values on 2026-10-11: they differ from the feed by less than 1 point on all but 13 rows, and Dutch Boy publishes whole numbers.
+- **Names:** fixes only names that lost characters at import. Manufacturer renames (BM's "Gypsy Love" is now "Fascinator Rose") need `--renames`. When you apply renames, add each true former name to `src/lib/former-names.ts`; the color page then shows "Previously listed as ..." and adds it to the meta description, so the old name still finds the page. `SKIP_RENAME` in the script holds feed misspellings that must never be written. A code whose swatch disagrees with ours (CIEDE2000 > 5) is never written. Slugs are never changed.
+- **Blog copy prints LRVs.** After an LRV change, grep `src/lib/blog-posts.tsx` for the colors that moved and recompute any gap, range or ordering claim built on them.
+
+`scrape-bm-lrv.ts` and `scrape-behr-lrv.ts` are superseded. They only overwrote differences of 2 or more, which left about 1,250 BM rows 1 to 2 points off (Hale Navy HC-154 held 7.1; BM publishes 8.36). They also depend on the NAS crawl4ai server, which now requires `CRAWL4AI_TOKEN`.

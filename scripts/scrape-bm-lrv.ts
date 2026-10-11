@@ -1,4 +1,8 @@
 /**
+ * SUPERSEDED by scripts/apply-published-lrv.ts (reads the palette scan feed,
+ * no scraping). This script's default threshold of 2 left ~1,250 BM rows 1-2
+ * points off; see docs/data-pipeline.md "Published LRVs and names".
+ *
  * Scrape Benjamin Moore manufacturer-published LRVs and update DB rows
  * where the delta exceeds the threshold.
  *
