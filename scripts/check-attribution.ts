@@ -22,6 +22,9 @@
 import * as dotenv from "dotenv";
 import * as path from "path";
 import { lookup } from "node:dns/promises";
+import dns from "node:dns";
+import http from "node:http";
+import https from "node:https";
 import { createClient } from "@supabase/supabase-js";
 import { isIgnoredHost } from "../src/lib/attribution";
 import { detectCredit, isOriginOnly, type CheckKind } from "./lib/attribution-check";
@@ -61,34 +64,72 @@ async function assertPublic(url: URL): Promise<void> {
   if (addrs.some((a) => isIgnoredHost(a.address))) throw new Error("resolves to a private address");
 }
 
+// The pre-check above can be raced by DNS rebinding (a host that resolves
+// public for the check, private for the request). This lookup runs at connect
+// time, so the address actually dialed is the one validated.
+const safeLookup = ((hostname: string, options: dns.LookupOptions, cb: (...args: unknown[]) => void) => {
+  dns.lookup(hostname, { ...options, all: true }, (err, addrs) => {
+    if (err) return cb(err);
+    const list = addrs as dns.LookupAddress[];
+    if (!list.length || list.some((a) => isIgnoredHost(a.address))) {
+      return cb(new Error("resolves to a private address"));
+    }
+    if (options.all) return cb(null, list);
+    cb(null, list[0].address, list[0].family);
+  });
+}) as unknown as typeof dns.lookup;
+
+interface RawResponse { status: number; location: string | null; body: string }
+
+function request(url: URL): Promise<RawResponse> {
+  const mod = url.protocol === "https:" ? https : http;
+  return new Promise((resolve, reject) => {
+    const req = mod.request(
+      url,
+      {
+        method: "GET",
+        lookup: safeLookup,
+        timeout: TIMEOUT_MS,
+        headers: { "User-Agent": USER_AGENT, Accept: "text/html,application/xhtml+xml" },
+      },
+      (res) => {
+        const status = res.statusCode ?? 0;
+        const location = (res.headers.location as string | undefined) ?? null;
+        if (status >= 300 && status < 400) {
+          res.resume();
+          return resolve({ status, location, body: "" });
+        }
+        const chunks: Buffer[] = [];
+        let total = 0;
+        res.on("data", (c: Buffer) => {
+          chunks.push(c);
+          total += c.byteLength;
+          if (total >= MAX_BYTES) res.destroy();
+        });
+        const done = () => resolve({ status, location, body: Buffer.concat(chunks).toString("utf8") });
+        res.on("end", done);
+        res.on("close", done);
+        res.on("error", reject);
+      },
+    );
+    req.on("timeout", () => req.destroy(new Error("timeout")));
+    req.on("error", reject);
+    req.end();
+  });
+}
+
 async function fetchPage(start: string): Promise<string> {
   let url = new URL(start);
   for (let i = 0; i <= MAX_REDIRECTS; i++) {
     await assertPublic(url);
-    const res = await fetch(url, {
-      redirect: "manual",
-      signal: AbortSignal.timeout(TIMEOUT_MS),
-      headers: { "User-Agent": USER_AGENT, Accept: "text/html,application/xhtml+xml" },
-    });
+    const res = await request(url);
     if (res.status >= 300 && res.status < 400) {
-      const loc = res.headers.get("location");
-      if (!loc) throw new Error(`HTTP ${res.status} without Location`);
-      url = new URL(loc, url);
+      if (!res.location) throw new Error(`HTTP ${res.status} without Location`);
+      url = new URL(res.location, url);
       continue;
     }
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const reader = res.body?.getReader();
-    if (!reader) return "";
-    const chunks: Uint8Array[] = [];
-    let total = 0;
-    while (total < MAX_BYTES) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      chunks.push(value);
-      total += value.byteLength;
-    }
-    await reader.cancel().catch(() => {});
-    return Buffer.concat(chunks).toString("utf8");
+    if (res.status < 200 || res.status >= 300) throw new Error(`HTTP ${res.status}`);
+    return res.body;
   }
   throw new Error("too many redirects");
 }
