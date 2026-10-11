@@ -118,6 +118,11 @@ export function diffPalette(
     if (n && !byName.has(n)) byName.set(n, row);
   }
 
+  // A row can be reachable through its own code AND an alias (BM Black is
+  // HC-190 with premix alias PM-9, and the feed lists both with different
+  // swatches). Only the row's own code may speak for its hex.
+  const allLiveKeys = new Set(live.filter((c) => c.code?.trim()).map((c) => toKey(c.code)));
+
   const liveKeys = new Set<string>();
   const missing: MissingColor[] = [];
   const hexChanged: HexChange[] = [];
@@ -138,7 +143,9 @@ export function diffPalette(
     if (row) {
       matched++;
       const dbHex = normHex(row.hex);
-      if (hex && dbHex && hex !== dbHex) {
+      const viaAlias = !!row.color_number && toKey(row.color_number) !== key;
+      const ownCodeLive = viaAlias && allLiveKeys.has(toKey(row.color_number!));
+      if (hex && dbHex && hex !== dbHex && !ownCodeLive) {
         const d = deltaE(hex, dbHex);
         if (d >= HEX_CHANGE_THRESHOLD) {
           hexChanged.push({

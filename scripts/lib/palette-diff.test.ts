@@ -85,6 +85,17 @@ test('hex drift below threshold is ignored; a real change is reported', () => {
   assert.ok(big.hexChanged[0].deltaE > 2);
 });
 
+test('an alias never overrides the swatch of the row\'s own code', () => {
+  const d = diffPalette(
+    [live({ code: 'HC-190', hex: '#313132' }), live({ code: 'PM-9', hex: '#2b2c2d' })],
+    [row({ color_number: 'HC-190', alternate_numbers: ['PM-9'], hex: '#323233' })],
+  );
+  assert.equal(d.hexChanged.length, 0);
+  // With the own code absent from the feed, the alias is the only evidence and is used.
+  const alone = diffPalette([live({ code: 'PM-9', hex: '#5a6e8c' })], [row({ color_number: 'HC-190', alternate_numbers: ['PM-9'] })]);
+  assert.equal(alone.hexChanged.length, 1);
+});
+
 test('duplicate live codes are counted once', () => {
   const d = diffPalette([live({ code: '12' }), live({ code: '12' })], [row({ color_number: '12' })]);
   assert.equal(d.matched, 1);
