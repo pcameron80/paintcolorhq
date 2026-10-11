@@ -27,6 +27,8 @@ interface PageProps {
   searchParams: Promise<CatalogSearch>;
 }
 
+const BRAND_TITLE_TEST = new Set(["sherwin-williams", "benjamin-moore"]);
+
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { brandSlug } = await params;
   const brand = await getBrandBySlug(brandSlug);
@@ -42,17 +44,29 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   // De-double "Paint" when the brand name already contains it.
   const brandHasPaintWord = /\bpaint(s)?\b/i.test(brand.name);
   const colorsWordCap = brandHasPaintWord ? "Colors" : "Paint Colors";
-  const title = `${brand.name} Color Chart: All ${count} ${colorsWordCap}`;
+  // Title test started 2026-10-11 on the two biggest Bing brand pages. Bing
+  // ranks them ~3 for "[brand] paint colors" / "[brand] colors" but only
+  // 0.4-0.7% click, while "color chart" queries click 2-3%. Test arm leads
+  // with "Paint Colors" and keeps "Color Chart"; it drops the site-name suffix
+  // to stay under ~60 chars. Baseline: scripts/seo/snapshots/bing-2026-10-11-
+  // brands-baseline.json. Read both engines from 2026-10-25.
+  const inTitleTest = BRAND_TITLE_TEST.has(brandSlug);
+  const title = inTitleTest
+    ? `${brand.name} ${colorsWordCap}: Full Color Chart (All ${count})`
+    : `${brand.name} Color Chart: All ${count} ${colorsWordCap}`;
   // Pick 3 well-known compare brands different from the source.
   const compareTo = ["Sherwin-Williams", "Benjamin Moore", "Behr", "PPG"]
     .filter((b) => b !== brand.name)
     .slice(0, 3);
   const colorsWord = brandHasPaintWord ? "colors" : "paint colors";
-  const description = `The complete ${brand.name} color chart — all ${count} ${colorsWord} with hex codes, LRV & undertones, plus matches to ${compareTo.join(", ")} & more.`;
+  const description = inTitleTest
+    ? `Every ${brand.name} color on one page, A to Z, with hex code, LRV and undertone. Open any color for its closest ${compareTo.join(", ").replace(/, ([^,]*)$/, " and $1")} match.`
+    : `The complete ${brand.name} color chart — all ${count} ${colorsWord} with hex codes, LRV & undertones, plus matches to ${compareTo.join(", ")} & more.`;
   const brandContent = getBrandContent(brandSlug);
   const shouldNoindex = !brandContent;
   return {
-    title, description,
+    title: inTitleTest ? { absolute: title } : title,
+    description,
     alternates: { canonical: url },
     ...(shouldNoindex && { robots: { index: false, follow: true } }),
     openGraph: { title, description, url, images: [{ url: "/og-image.webp", width: 1200, height: 630 }] },
