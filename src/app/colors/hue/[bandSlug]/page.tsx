@@ -89,7 +89,7 @@ function Intro({ band, colors, brandCount }: { band: HueBand; colors: HueBandCol
     return (
       <p>
         Blue gray paints are blues with so little chroma that they read as gray until you set them next to a true neutral.
-        {" "}{n} colors from {brandCount} brands fall in this band. Light examples include {L("krypton-6247")} and {L("languid-blue-6226")}.
+        {" "}Light examples include {L("krypton-6247")} and {L("languid-blue-6226")}.
         {" "}{L("smoky-blue-7604")} and {L("georgian-bay-cc-782")} sit in the middle of the range. {L("gale-force-7605")} and {L("hale-navy-hc-154")} are the dark end.
         {" "}Open any color to see its closest match in the other brands.
       </p>
@@ -99,7 +99,7 @@ function Intro({ band, colors, brandCount }: { band: HueBand; colors: HueBandCol
     return (
       <p>
         Blue green covers teal, aqua, turquoise and peacock shades: hues between green and true blue with enough chroma to read as colored rather than gray.
-        {" "}{n} colors from {brandCount} brands qualify. {L("oceanside-6496")} and {L("aquarium-6767")} are the saturated end,
+        {" "}{L("oceanside-6496")} and {L("aquarium-6767")} are the saturated end,
         {" "}{L("peacock-blue-2049-40")} is a mid-tone, and {L("aegean-teal-2136-40")} and {L("tropical-oasis-csp-710")} are muted, grayed teals.
         {" "}Compare any of them against the same shade in another brand from its color page.
       </p>
@@ -107,7 +107,7 @@ function Intro({ band, colors, brandCount }: { band: HueBand; colors: HueBandCol
   }
   return (
     <p>
-      Rust is an orange-brown with a red cast, darker and duller than a true orange. {n} colors from {brandCount} brands fall in this band.
+      Rust is an orange-brown with a red cast, darker and duller than a true orange.
       {" "}{L("rust-2175-30")} is the namesake. {L("hearty-orange-6622")} is the most saturated of the group named here, {L("copper-mountain-6356")} and {L("cavern-clay-7701")} run browner,
       {" "}and {L("rookwood-terra-cotta-2803")} is the clay-pot end. Pale salmon and peach tones and deep chocolate browns fall outside the band.
     </p>
