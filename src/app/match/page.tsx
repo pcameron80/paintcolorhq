@@ -59,7 +59,7 @@ const FAQS = [
   },
   {
     q: "Can I match Sherwin-Williams paint to Benjamin Moore or Behr?",
-    a: "Yes. Every pair among Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, Dunn-Edwards and Farrow & Ball has its own match listing, in both directions. Sherwin-Williams to Benjamin Moore and Sherwin-Williams to Behr are the two most used.",
+    a: "Yes. Every pair among Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, Dunn-Edwards and Farrow & Ball has its own match listing, in both directions. Benjamin Moore to Sherwin-Williams is the most visited, followed by Sherwin-Williams to Benjamin Moore.",
   },
   {
     q: "How close is a digital paint match?",
