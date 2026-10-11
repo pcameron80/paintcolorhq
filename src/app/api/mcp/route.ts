@@ -1,6 +1,7 @@
 import { NextResponse, after } from "next/server";
 import { logUsageEvent, usageMetaFromRequest } from "@/lib/usage-log";
 import { findColorMatches, type PaintMatch } from "@/lib/color-match";
+import { closenessLabel } from "@/lib/closeness";
 
 // Model Context Protocol (MCP) server — the agent-facing surface of the
 // cross-brand color-match API (Stream B in docs/api-adoption-plan-2026-06-27.md:
@@ -99,9 +100,7 @@ function rpcError(id: JsonRpcId, code: number, message: string) {
 // returned here — this is an API/agent surface, not the human UI where the
 // "no raw numbers" rule applies.)
 function closeness(deltaE: number): string {
-  if (deltaE < 2) return "Near-identical";
-  if (deltaE < 5) return "Very similar";
-  return "Visible difference";
+  return closenessLabel(deltaE);
 }
 
 async function callMatchTool(args: Record<string, unknown>, request: Request) {

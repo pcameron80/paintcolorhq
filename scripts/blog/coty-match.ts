@@ -24,6 +24,7 @@ import * as dotenv from "dotenv";
 import * as path from "path";
 import { createClient } from "@supabase/supabase-js";
 import { hexToRgb, rgbToLab, deltaE2000, type Lab } from "../../src/lib/color-utils.ts";
+import { closenessLabel } from "../../src/lib/closeness.ts";
 
 dotenv.config({ path: path.resolve(__dirname, "../../.env.local") });
 
@@ -51,11 +52,7 @@ function normalizeHex(raw: string): string | null {
   return /^[0-9a-fA-F]{6}$/.test(clean) ? `#${clean.toUpperCase()}` : null;
 }
 
-// Site convention (src/app/colors/[brandSlug]/[colorSlug]/page.tsx): plain-language
-// closeness, never a raw number in the UI. <2 nearly identical, <5 very similar.
-function closenessLabel(deltaE: number): string {
-  return deltaE < 2 ? "Nearly identical" : deltaE < 5 ? "Very similar" : "Visible difference";
-}
+// Closeness labels come from the shared helper (src/lib/closeness.ts).
 
 // PostgREST may serialize numeric columns as strings; coerce to number | null.
 function num(value: number | string | null | undefined): number | null {
@@ -232,7 +229,7 @@ function printJsx(
   for (const m of results) {
     const swatchName = m.colorNumber ? `${m.colorName} ${m.colorNumber}` : m.colorName;
     const href = `/colors/${m.brandSlug}/${m.slug}`;
-    const close = `${closenessLabel(m.deltaE)} (ΔE ${m.deltaE.toFixed(2)})`;
+    const close = closenessLabel(m.deltaE);
     rowLines.push(
       `                { brand: ${j(m.brandName)}, swatch: { hex: ${j(m.hex.toUpperCase())}, name: ${j(swatchName)}, href: ${j(href)} }, close: ${j(close)} },`,
     );

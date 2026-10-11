@@ -36,9 +36,9 @@ export default function ColorIdentifierPage() {
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: [
           { "@type": "Question", name: "How does photo color identification work?", acceptedAnswer: { "@type": "Answer", text: "Upload a photo, then click any spot on the image. The tool reads the exact pixel color at that point, converts it to CIELAB color space, and compares it against 26,000+ paint colors from 13 brands using the CIEDE2000 Delta E formula. Results are ranked by perceptual closeness so the top match is always the most visually accurate." } },
-          { "@type": "Question", name: "What is Delta E in paint matching?", acceptedAnswer: { "@type": "Answer", text: "Delta E is a measure of perceptual color difference. A Delta E below 1 means colors are visually identical; 1-2 is barely perceptible; 2-5 is noticeable at a glance but still a close match; above 5 means clearly different shades. Paint Color HQ uses the CIEDE2000 formula, the international standard used in paint manufacturing quality control." } },
+          { "@type": "Question", name: "What is Delta E in paint matching?", acceptedAnswer: { "@type": "Answer", text: "Delta E is a measure of perceptual color difference. We group every result into three plain labels: Nearly identical (the difference is hard to spot even side by side), Very similar (close, but you may notice it side by side), and Visible difference (clearly different shades). These are digital matches, so confirm with a physical sample. Paint Color HQ uses the CIEDE2000 formula, the international standard used in paint manufacturing quality control." } },
           { "@type": "Question", name: "What photo formats are supported?", acceptedAnswer: { "@type": "Answer", text: "The Photo Color Identifier supports JPEG, PNG, WebP, and any standard image format your browser can display. You can upload a photo from your device or snap one with your camera. For the most accurate results, photograph the surface in natural daylight without flash." } },
-          { "@type": "Question", name: "How accurate is paint matching from a photo?", acceptedAnswer: { "@type": "Answer", text: "The color math is exact — the same CIEDE2000 standard paint manufacturers use for quality control. The variable is your photo: lighting, camera white balance, and shadows shift the pixel colors the tool reads. Shoot in indirect daylight without flash, sample several spots, and treat the top matches as a shortlist to confirm with a physical sample — not a final answer." } },
+          { "@type": "Question", name: "How accurate is paint matching from a photo?", acceptedAnswer: { "@type": "Answer", text: "The color math follows the same CIEDE2000 standard paint manufacturers use for quality control. The variable is your photo: lighting, camera white balance, and shadows shift the pixel colors the tool reads. Shoot in indirect daylight without flash, sample several spots, and treat the top matches as a shortlist to confirm with a physical sample — not a final answer." } },
           { "@type": "Question", name: "Why does the matched paint look different on my wall?", acceptedAnswer: { "@type": "Answer", text: "The pixel you clicked reflects the lighting in the photo, not the paint under your lighting. Bulb temperature, north- vs south-facing windows, sheen, and the colors around a wall all change how the same paint reads. That's why the last step is always a physical sample on your actual wall, checked in morning and evening light." } },
         ],
       }} />
@@ -105,10 +105,10 @@ export default function ColorIdentifierPage() {
                 batch matches the master formula.
               </p>
               <p className="mt-3">
-                Every result you see is ranked by that perceptual distance. &ldquo;Near-identical&rdquo;
+                Every result you see is ranked by that perceptual distance. &ldquo;Nearly identical&rdquo;
                 means the difference would be hard to spot even with the two colors side by
-                side; &ldquo;very similar&rdquo; means a close match that most people wouldn&apos;t question
-                on a wall; &ldquo;visible difference&rdquo; means you&apos;d notice. The full pipeline —
+                side; &ldquo;very similar&rdquo; means close, though you may notice the difference side by
+                side; &ldquo;visible difference&rdquo; means you&apos;d notice. The full pipeline —
                 conversion math, thresholds, and its limits — is documented on our{" "}
                 <Link href="/methodology" className="text-primary underline hover:text-primary/80">
                   methodology page
@@ -160,7 +160,7 @@ export default function ColorIdentifierPage() {
                 Treat the results as a ranked shortlist, not a verdict. Closeness measures the
                 overall color distance — it can&apos;t tell you about{" "}
                 <strong className="text-on-surface">undertones</strong>, which is how two grays
-                that measure near-identical can still pull in different directions on your wall:
+                that measure nearly identical can still pull in different directions on your wall:
                 one leans pink next to oak floors, the other leans green next to cool light.
                 Open a match&apos;s color page to check its undertone tag and LRV (how much light it
                 reflects), and see its closest equivalents in other brands. Our guide to{" "}
@@ -236,9 +236,9 @@ export default function ColorIdentifierPage() {
                 sq ft/gallon coverage rate.
               </li>
               <li>
-                <strong className="text-on-surface">Understand undertones</strong> — a gray with a Delta E
-                of 2 from another gray can still have completely different
-                undertones (warm pink vs. cool blue). Our guide on{" "}
+                <strong className="text-on-surface">Understand undertones</strong>: two grays that rate
+                very similar can still lean in different directions (warm pink
+                vs. cool blue). Our guide on{" "}
                 <Link href="/blog/understanding-paint-color-undertones" className="text-primary underline hover:text-primary/80">
                   understanding paint color undertones
                 </Link>{" "}

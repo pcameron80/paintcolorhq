@@ -1,5 +1,6 @@
 import type { ColorWithBrand, CrossBrandMatchWithColor } from "./types";
 import { hexToHsl } from "./palettes";
+import { closenessLabelLower } from "@/lib/closeness";
 
 // ---------- Derived color properties ----------
 
@@ -321,7 +322,7 @@ function getQueryTargetingSentences(
     const closest = closeMatches[0];
     const closestName = `${closest.match_color.brand.name} ${closest.match_color.name}`;
     const closeness =
-      Number(closest.delta_e_score) < 2 ? "a near-identical match on the wall" : "a very close match";
+      `${closenessLabelLower(Number(closest.delta_e_score))} in our digital data`;
     if (closeMatches.length >= 2) {
       const others = closeMatches
         .slice(1)
@@ -375,7 +376,7 @@ export function generateColorDescription(
 // Plain-language closeness from Delta E 2000 — NEVER expose the raw number
 // (project rule). Same thresholds as the page's match cards.
 function closenessPhrase(deltaE: number): string {
-  return deltaE < 2 ? "nearly identical" : deltaE < 5 ? "very similar" : "a visible but close match";
+  return closenessLabelLower(deltaE);
 }
 
 function joinList(items: string[]): string {

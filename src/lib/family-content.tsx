@@ -502,7 +502,7 @@ const content: Record<string, FamilyContent> = {
           </Link>{" "}
           for detailed breakdowns of every popular off-white, or use the{" "}
           <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to
-          see the exact Delta E between two off-whites. Our{" "}
+          see how close two off-whites are. Our{" "}
           <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">
             sample testing guide
           </Link>{" "}

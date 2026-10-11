@@ -24,7 +24,7 @@
 - **Next.js 16 match-page bug:** the `/match/[sourceBrandSlug]/[matchSlug]` route uses a single regex-parsed slug param, NOT compound `[a]-to-[b]` segments. Don't refactor to compound segments — it triggers a Next.js 16 bug.
 - **AnalyticsProvider load order:** it must load AFTER gtag scripts in `layout.tsx`. There was a race-condition fix here — don't reorder.
 - **Brand and family pages use `perPage=60`**, not 200. Going higher hurts LCP and isn't worth the SEO trade-off.
-- **Delta E values must be shown as plain language** in the UI ("Nearly identical" / "Very similar" / "Visible difference"), NOT raw numbers. Don't expose the algorithm output directly.
+- **Delta E values must be shown as plain language**, NOT raw numbers: CIEDE2000 under 2 is "Nearly identical", 2 to under 5 is "Very similar", 5 and above is "Visible difference". Use `closenessLabel()` from `src/lib/closeness.ts` (thresholds live there only); never write a local ternary. Never use "exact", "virtually identical", "near-identical", "same family" or "close match" as a closeness label, and keep a "digital match, confirm with a physical sample" caveat wherever a substitute is recommended.
 
 ---
 
@@ -128,7 +128,7 @@ Defined in `.env.local` (not committed). See `.env.local.example` for required k
 - SEO-focused: pages have generateMetadata, structured data, and sitemap generation
 - GEO-focused: citeable summary paragraphs, server-rendered key facts, FAQPage schema
 - Color matching uses Delta E (CIE2000) color difference algorithm
-- Delta E displayed as plain language ("Nearly identical" / "Very similar" / "Visible difference") — NOT raw numbers
+- Delta E displayed as plain language via `src/lib/closeness.ts` (under 2 Nearly identical, 2 to under 5 Very similar, 5+ Visible difference), NOT raw numbers
 - Slugs are used for all public-facing URLs
 - Match page uses `[matchSlug]` single param parsed via regex (NOT compound `[a]-to-[b]` segments — Next.js 16 bug)
 - Brand/family pages use perPage=60 (not 200)

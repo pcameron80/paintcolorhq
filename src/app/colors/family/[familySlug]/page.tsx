@@ -158,7 +158,7 @@ export default async function ColorFamilyPage({ params }: PageProps) {
             name: `How do I find a ${familyName.toLowerCase()} paint color that matches across brands?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `Every color page on Paint Color HQ shows cross-brand matches ranked by CIEDE2000 Delta E score. Colors with a Delta E under 2.0 are virtually identical on a finished wall. Click any color in the grid above to see its closest matches across all ${brandCount} brands.`,
+              text: `Every color page on Paint Color HQ shows cross-brand matches ranked by CIEDE2000 Delta E score. Each match is labeled Nearly identical, Very similar, or Visible difference, and these are digital matches, so confirm with a physical sample. Click any color in the grid above to see its closest matches across all ${brandCount} brands.`,
             },
           },
         ],
@@ -340,7 +340,7 @@ export default async function ColorFamilyPage({ params }: PageProps) {
                 <svg className="h-5 w-5 shrink-0 text-outline transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
               </summary>
               <div className="px-6 pb-5 text-on-surface-variant leading-relaxed">
-                Every color page on Paint Color HQ shows cross-brand matches ranked by CIEDE2000 Delta E score. Colors with a Delta E under 2.0 are virtually identical on a finished wall. Click any color in the grid above to see its closest matches across all {brandCount} brands.
+                Every color page on Paint Color HQ shows cross-brand matches ranked by CIEDE2000 Delta E score. Each match is labeled Nearly identical, Very similar, or Visible difference, and these are digital matches, so confirm with a physical sample. Click any color in the grid above to see its closest matches across all {brandCount} brands.
               </div>
             </details>
           </div>

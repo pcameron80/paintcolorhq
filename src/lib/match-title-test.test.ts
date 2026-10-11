@@ -16,8 +16,10 @@ test("title uses searcher phrasing and stays within 60 chars", () => {
 
 test("closeness is plain language", () => {
   assert.equal(matchClosenessLabel(0.4), "Nearly identical");
-  assert.equal(matchClosenessLabel(1.8), "Very similar");
-  assert.equal(matchClosenessLabel(4), "Visible difference");
+  assert.equal(matchClosenessLabel(1.8), "Nearly identical");
+  assert.equal(matchClosenessLabel(2.4), "Very similar");
+  assert.equal(matchClosenessLabel(4), "Very similar");
+  assert.equal(matchClosenessLabel(6), "Visible difference");
 });
 
 test("description names match, next options, sample caveat, no raw number", () => {

@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { ColorWithBrand } from "@/lib/types";
 import { trackCompare } from "@/lib/analytics";
 import { rgbToLab, deltaE2000 } from "@/lib/color-utils";
+import { closenessLabel } from "@/lib/closeness";
 
 interface CompareClientProps {
   initialColor1: ColorWithBrand | null;
@@ -263,12 +264,10 @@ function computeDeltaE(c1: ColorWithBrand, c2: ColorWithBrand): number {
 }
 
 function getDeltaEVerdict(de: number): string {
-  if (de < 1) return "These digital colors are very close";
-  if (de < 2) return "Very close digital values — sample both before choosing";
-  if (de < 5)
-    return "Similar digital colors with a visible difference";
-  if (de < 10) return "Noticeably different — test with physical samples";
-  return "Very different colors";
+  const label = closenessLabel(de);
+  if (label === "Nearly identical") return "Nearly identical in our digital data. Sample both before choosing.";
+  if (label === "Very similar") return "Very similar in our digital data. Sample both before choosing.";
+  return "Visible difference: these are different colors.";
 }
 
 function DeltaEVerdict({
@@ -286,7 +285,7 @@ function DeltaEVerdict({
       <p className="text-lg font-medium text-gray-900">{verdict}</p>
       <p className="mt-2 text-sm text-gray-600">Compare physical samples beside your trim and flooring in daylight and evening light. Screens do not predict the finished paint.</p>
       <p className="mt-3 text-sm text-gray-500">
-        Digital similarity score (CIEDE2000): {de.toFixed(2)}
+        Closeness is measured with the CIEDE2000 color-difference formula.
       </p>
     </div>
   );

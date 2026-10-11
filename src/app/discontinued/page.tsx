@@ -89,7 +89,7 @@ export default async function DiscontinuedPage() {
     },
     {
       q: "How do I find the closest match to a discontinued color?",
-      a: "Find the color in the list on this page and open it. Its detail page lists the closest current color in every major brand, matched with the CIEDE2000 standard and labeled in plain language — near-identical, very similar, or same family — so you can see how close each option really is.",
+      a: "Find the color in the list on this page and open it. Its detail page lists the closest current color in every major brand, matched with the CIEDE2000 standard and labeled in plain language — nearly identical, very similar, or visible difference, so you can see how close each option really is.",
     },
     {
       q: "Why do paint brands discontinue colors?",
@@ -183,10 +183,10 @@ export default async function DiscontinuedPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">What a discontinued color still gives you</h2>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              Every color in our catalog — active or retired — carries a hex code, an RGB triplet, and pre-computed cross-brand matches. A discontinued color keeps all of that. Its detail page is still a working bridge: it shows the closest current color in each of the 13 brands we track, so you are not limited to the brand that dropped it. If your discontinued Sherwin-Williams color has a near-identical current color at Benjamin Moore or Behr, the page will show it.
+              Every color in our catalog — active or retired — carries a hex code, an RGB triplet, and pre-computed cross-brand matches. A discontinued color keeps all of that. Its detail page is still a working bridge: it shows the closest current color in each of the 13 brands we track, so you are not limited to the brand that dropped it. If your discontinued Sherwin-Williams color has a nearly identical current color at Benjamin Moore or Behr, the page will show it.
             </p>
             <p className="text-on-surface-variant leading-relaxed">
-              Match closeness is labeled in plain language — near-identical, very similar, or same family — rather than a raw score, so you can judge at a glance which options are true swaps and which are only in the same neighborhood.
+              Match closeness is labeled in plain language (nearly identical, very similar, or visible difference) rather than a raw score, so you can judge at a glance which options are the best swaps and which differ visibly.
             </p>
           </div>
         </section>
@@ -197,13 +197,13 @@ export default async function DiscontinuedPage() {
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">What to do if your color was discontinued</h2>
             <ol className="space-y-6 text-on-surface-variant leading-relaxed">
               <li>
-                <strong className="text-on-surface">1. Open your color below.</strong> Each discontinued color has a full detail page showing its closest current match in every major brand, ranked from near-identical down to same-family.
+                <strong className="text-on-surface">1. Open your color below.</strong> Each discontinued color has a full detail page showing its closest current match in every major brand, ranked from nearly identical down to visible difference.
               </li>
               <li>
                 <strong className="text-on-surface">2. Take it to a paint store.</strong> Bring the match, or the original color name and number, to a paint counter. Most stores can custom-mix from a stored formula, or scan a physical sample — an old chip, a lid, a cut-out from the wall — and mix to it.
               </li>
               <li>
-                <strong className="text-on-surface">3. Confirm with a physical sample.</strong> A close match on screen can read differently on a wall once sheen, lighting, and the coat underneath come into play. Paint a sample in the actual room and check it at a few times of day. The{" "}
+                <strong className="text-on-surface">3. Confirm with a physical sample.</strong> A nearly identical or very similar result on screen can read differently on a wall once sheen, lighting, and the coat underneath come into play. Paint a sample in the actual room and check it at a few times of day. The{" "}
                 <Link href="/methodology" className="text-primary hover:underline underline-offset-4">methodology page</Link>{" "}
                 explains what the match labels mean and where they have limits.
               </li>

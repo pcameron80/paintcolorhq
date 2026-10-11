@@ -128,7 +128,7 @@ export default async function Home() {
             <span className="text-primary italic">in Any Brand.</span>
           </h1>
           <p className="text-lg text-on-surface-variant max-w-md mb-10 leading-relaxed">
-            Browse 26,000+ shades across our paint catalog, explore digital room previews, then find a close digital match in the brand you can actually buy.
+            Browse 26,000+ shades across our paint catalog, explore digital room previews, then find the nearest color in the brand you can actually buy.
           </p>
           <form action="/search" role="search" className="max-w-xl">
             <label htmlFor="home-color-search" className="block text-sm font-semibold mb-3">Enter a paint name, number, or hex code</label>

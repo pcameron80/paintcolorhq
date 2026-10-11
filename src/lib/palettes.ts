@@ -239,7 +239,7 @@ Bathrooms respond particularly well to this palette — the combination of blue 
 
 When the lighting conditions are right, deep navy delivers a quality no lighter color can: it makes a room feel both expansive and intimate at the same time. The deep color absorbs peripheral visual information and focuses attention inward — on the furniture, the art, the people in the room. This is why it's historically used in formal dining rooms, gentlemen's clubs, and high-end hotel bar areas.
 
-The medium steel blue in this palette (LRV around 12–15) is the softer version of the same family. It works in bedrooms where the near-black would be too intense for sleep, or in home offices where a slightly lighter backdrop still reads as focused and sophisticated.
+The medium steel blue in this palette (LRV around 12–15) is the softer version of the same color family. It works in bedrooms where the near-black would be too intense for sleep, or in home offices where a slightly lighter backdrop still reads as focused and sophisticated.
 
 The champagne warm cream (LRV around 75–80) is the contrast element and the most important piece. Against near-black navy, champagne trim reads as warm gold rather than simple off-white — the contrast makes both colors appear more vivid. Painted millwork, ceiling, and trim in champagne against midnight navy walls is one of the most effective high-contrast color combinations in residential design.
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { closenessLabel } from "@/lib/closeness";
 
 const SITE = "https://www.paintcolorhq.com";
 const UTM = "utm_source=embed&utm_medium=widget&utm_campaign=match";
@@ -17,9 +18,14 @@ interface ApiMatch {
 
 // Plain-language closeness — never expose the raw Delta E number (site convention).
 function closeness(deltaE: number): { label: string; cls: string } {
-  if (deltaE < 2) return { label: "Near-identical", cls: "bg-emerald-100 text-emerald-800" };
-  if (deltaE < 5) return { label: "Very similar", cls: "bg-amber-100 text-amber-800" };
-  return { label: "Visible difference", cls: "bg-rose-100 text-rose-800" };
+  const label = closenessLabel(deltaE);
+  const cls =
+    label === "Nearly identical"
+      ? "bg-emerald-100 text-emerald-800"
+      : label === "Very similar"
+        ? "bg-amber-100 text-amber-800"
+        : "bg-rose-100 text-rose-800";
+  return { label, cls };
 }
 
 function normalizeHex(input: string): string | null {
