@@ -236,7 +236,7 @@ async function emailReport(text: string, html: string, window: string): Promise<
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      from: "Paint Color HQ <reports@paintcolorhq.com>",
+      from: "Paint Color HQ <reports@updates.paintcolorhq.com>",
       to,
       subject: `PaintColorHQ — Pinterest reach by pin type (${window})`,
       html,
