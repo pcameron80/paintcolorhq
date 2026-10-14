@@ -19,7 +19,7 @@ const contentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
-  "connect-src 'self' https://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://pagead2.googlesyndication.com https://*.adtrafficquality.google https://vitals.vercel-insights.com https://ct.pinterest.com",
+  "connect-src 'self' https://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://pagead2.googlesyndication.com https://*.adtrafficquality.google https://vitals.vercel-insights.com https://ct.pinterest.com https://challenges.cloudflare.com",
   "frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com https://challenges.cloudflare.com https://*.pinterest.com",
   "object-src 'none'",
   "base-uri 'self'",
