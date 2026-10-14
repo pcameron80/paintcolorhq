@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Script from "next/script";
 
 const categories = [
@@ -10,15 +10,17 @@ const categories = [
   "Privacy & Data Request",
 ];
 
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 declare global {
   interface Window {
-    grecaptcha: {
-      enterprise: {
-        ready: (cb: () => void) => void;
-        execute: (siteKey: string, options: { action: string }) => Promise<string>;
-      };
+    turnstile?: {
+      render: (
+        container: HTMLElement,
+        options: { sitekey: string; action: string; callback: (token: string) => void; "expired-callback": () => void },
+      ) => string;
+      reset: (widgetId: string) => void;
+      remove: (widgetId: string) => void;
     };
   }
 }
@@ -26,17 +28,35 @@ declare global {
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const [recaptchaReady, setRecaptchaReady] = useState(false);
+  const [token, setToken] = useState("");
+  const widgetRef = useRef<HTMLDivElement>(null);
+  const widgetId = useRef<string | null>(null);
 
-  const onRecaptchaLoad = useCallback(() => {
-    window.grecaptcha.enterprise.ready(() => setRecaptchaReady(true));
+  const renderWidget = useCallback(() => {
+    if (!window.turnstile || !widgetRef.current || widgetId.current) return;
+    widgetId.current = window.turnstile.render(widgetRef.current, {
+      sitekey: TURNSTILE_SITE_KEY,
+      action: "contact",
+      callback: setToken,
+      "expired-callback": () => setToken(""),
+    });
   }, []);
 
+  // The form unmounts on success; render the widget again when it comes back.
+  const formVisible = status !== "sent";
   useEffect(() => {
-    if (window.grecaptcha?.enterprise) {
-      window.grecaptcha.enterprise.ready(() => setRecaptchaReady(true));
-    }
-  }, []);
+    if (formVisible) renderWidget();
+    return () => {
+      if (widgetId.current && window.turnstile) window.turnstile.remove(widgetId.current);
+      widgetId.current = null;
+    };
+  }, [formVisible, renderWidget]);
+
+  // Turnstile tokens are single-use, so every attempt needs a fresh one.
+  function resetWidget() {
+    setToken("");
+    if (widgetId.current && window.turnstile) window.turnstile.reset(widgetId.current);
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -45,15 +65,10 @@ export function ContactForm() {
 
     const form = e.currentTarget;
 
-    let token = "";
-    if (recaptchaReady && RECAPTCHA_SITE_KEY) {
-      try {
-        token = await window.grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, { action: "contact" });
-      } catch {
-        setErrorMsg("reCAPTCHA verification failed. Please try again.");
-        setStatus("error");
-        return;
-      }
+    if (!token) {
+      setErrorMsg("Please complete the verification check.");
+      setStatus("error");
+      return;
     }
 
     const data = {
@@ -61,7 +76,7 @@ export function ContactForm() {
       email: (form.elements.namedItem("email") as HTMLInputElement).value.trim(),
       category: (form.elements.namedItem("category") as HTMLSelectElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim(),
-      recaptchaToken: token,
+      turnstileToken: token,
     };
 
     try {
@@ -83,6 +98,7 @@ export function ContactForm() {
       setErrorMsg("Network error. Please try again.");
       setStatus("error");
     }
+    resetWidget();
   }
 
   if (status === "sent") {
@@ -104,12 +120,10 @@ export function ContactForm() {
 
   return (
     <>
-      {RECAPTCHA_SITE_KEY && (
-        <Script
-          src={`https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`}
-          onLoad={onRecaptchaLoad}
-        />
-      )}
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+        onReady={renderWidget}
+      />
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -167,6 +181,8 @@ export function ContactForm() {
           />
         </div>
 
+        <div ref={widgetRef} />
+
         {status === "error" && (
           <p className="text-sm text-red-600">{errorMsg}</p>
         )}
@@ -179,13 +195,6 @@ export function ContactForm() {
           {status === "sending" ? "Sending…" : "Send Message"}
         </button>
 
-        {RECAPTCHA_SITE_KEY && (
-          <p className="text-xs text-gray-400">
-            Protected by reCAPTCHA. Google{" "}
-            <a href="https://policies.google.com/privacy" className="underline" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and{" "}
-            <a href="https://policies.google.com/terms" className="underline" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
-          </p>
-        )}
       </form>
     </>
   );
