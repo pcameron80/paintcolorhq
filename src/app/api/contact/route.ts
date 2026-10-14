@@ -89,13 +89,22 @@ export async function POST(request: NextRequest) {
       ? `[Paint Color HQ] ${category}: ${name}`
       : `[Paint Color HQ] Contact: ${name}`;
 
-    await resend.emails.send({
+    // Resend returns API failures (e.g. 401 invalid key) in `error` rather than throwing.
+    const { error: sendError } = await resend.emails.send({
       from: "Paint Color HQ <delivered@resend.dev>",
       to,
       replyTo: email,
       subject,
       text: `Name: ${name}\nEmail: ${email}\nCategory: ${category || "General"}\n\nMessage:\n${message}`,
     });
+
+    if (sendError) {
+      console.error("Contact form Resend error:", sendError);
+      return NextResponse.json(
+        { error: "Failed to send message. Please try again." },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
