@@ -154,10 +154,12 @@ async function main() {
       `${DRIP ? " (drip, variety rotation)" : onlyKeys ? ` (--only)` : " (all unpublished)"}\n`,
   );
 
+  let failed = 0;
   for (const pin of targets) {
     try {
       await publishOne(pin, log);
     } catch (e) {
+      failed++;
       const msg = e instanceof Error ? e.message : String(e);
       console.error(`❌ ${pin.key} ${pin.name}: ${msg}`);
       if (!DRY_RUN && /OAuth|token|\b190\b|permission/i.test(msg)) {
@@ -167,6 +169,12 @@ async function main() {
     if (!DRY_RUN) await new Promise((r) => setTimeout(r, 3000));
   }
   console.log("\nDone.");
+  // Every attempted post failed: exit non-zero so run.sh notifies and launchd's
+  // last exit status shows it. A partial failure is logged above and exits 0.
+  if (failed > 0 && failed === targets.length) {
+    console.error(`All ${failed} post(s) failed.`);
+    process.exitCode = 1;
+  }
 }
 
 main();
