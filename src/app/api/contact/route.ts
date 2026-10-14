@@ -27,11 +27,23 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
   );
 
   const data = await res.json();
-  return (
+  const passed =
     data.tokenProperties?.valid === true &&
     data.tokenProperties?.action === "contact" &&
-    (data.riskAnalysis?.score ?? 0) >= RECAPTCHA_THRESHOLD
-  );
+    (data.riskAnalysis?.score ?? 0) >= RECAPTCHA_THRESHOLD;
+
+  if (!passed) {
+    console.warn("Contact form reCAPTCHA rejected:", {
+      status: res.status,
+      apiError: data.error?.message,
+      valid: data.tokenProperties?.valid,
+      invalidReason: data.tokenProperties?.invalidReason,
+      hostname: data.tokenProperties?.hostname,
+      action: data.tokenProperties?.action,
+      score: data.riskAnalysis?.score,
+    });
+  }
+  return passed;
 }
 
 export async function POST(request: NextRequest) {
