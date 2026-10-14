@@ -193,10 +193,12 @@ async function main() {
     `${DRY_RUN ? "DRY RUN — " : ""}Publishing ${targets.length} pin(s)` +
       `${DAILY ? " (daily mix)" : DRIP ? " (drip, variety rotation)" : onlyKeys ? ` (--only=${[...onlyKeys].join(",")})` : ""}\n`,
   );
+  let failed = 0;
   for (const pin of targets) {
     try {
       await publishPin(pin, log);
     } catch (e) {
+      failed++;
       const msg = e instanceof Error ? e.message : String(e);
       console.error(`❌ ${pin.key} ${pin.name}: ${msg}`);
       // Surface auth/token failures — the drip runs unattended, so a silent
@@ -209,6 +211,12 @@ async function main() {
     if (!DRY_RUN) await new Promise((r) => setTimeout(r, 2500));
   }
   console.log("\nDone.");
+  // Every attempted post failed: exit non-zero so run.sh notifies and launchd's
+  // last exit status shows it. A partial failure is logged above and exits 0.
+  if (failed > 0 && failed === targets.length) {
+    console.error(`All ${failed} post(s) failed.`);
+    process.exitCode = 1;
+  }
 }
 
 main();
