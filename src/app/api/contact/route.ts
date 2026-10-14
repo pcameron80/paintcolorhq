@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
 
     // Resend returns API failures (e.g. 401 invalid key) in `error` rather than throwing.
     const { error: sendError } = await resend.emails.send({
-      from: "Paint Color HQ <delivered@resend.dev>",
+      from: "Paint Color HQ <contact@paintcolorhq.com>",
       to,
       replyTo: email,
       subject,
