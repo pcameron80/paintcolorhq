@@ -21,7 +21,7 @@
  *   npx tsx scripts/pinterest/analytics-by-type.ts --days=7 --email   # styled HTML via Resend
  *
  * --email sends through Resend IF RESEND_API_KEY is set in .env.local (to
- * REPORT_EMAIL_TO, default philip@theorphanshands.org); otherwise it's a no-op
+ * REPORT_EMAIL_TO, default support@paintcolorhq.com); otherwise it's a no-op
  * and the launchd wrapper still writes the report file + a macOS notification.
  */
 import "../blog/load-env.ts"; // loads .env.local before anything reads process.env
@@ -230,13 +230,13 @@ function buildHtml(rows: Row[], tot: Agg, start: string, end: string): string {
 
 async function emailReport(text: string, html: string, window: string): Promise<string> {
   const key = process.env.RESEND_API_KEY;
-  const to = process.env.REPORT_EMAIL_TO || "philip@theorphanshands.org";
+  const to = process.env.REPORT_EMAIL_TO || "support@paintcolorhq.com";
   if (!key) return "✉️  skipped email — no RESEND_API_KEY in .env.local (report saved + notified instead).";
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      from: "Paint Color HQ <delivered@resend.dev>",
+      from: "Paint Color HQ <reports@updates.paintcolorhq.com>",
       to,
       subject: `PaintColorHQ — Pinterest reach by pin type (${window})`,
       html,
