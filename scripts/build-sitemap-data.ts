@@ -11,7 +11,10 @@ async function main() {
   const { getAllColorSlugs, getColorBySlug, getCrossBrandMatches, getAllBrands } = await import("../src/lib/queries");
   const colors = await getAllColorSlugs();
   if (!colors.length) throw new Error("Refusing an empty sitemap catalog");
+  // A match page shows both colors, so it changed when either one did.
+  const updatedByUrl = new Map(colors.map(c => [`${c.brandSlug}/${c.colorSlug}`, c.contentUpdatedAt]));
   const matches: string[] = [];
+  const matchUpdatedAt: Record<string, string> = {};
   // Sequential sources bound database load. Use the same match resolver and
   // eligibility as the actual page, including missing-target handling.
   for (const { brandSlug, colorSlug } of POPULAR_COLOR_SLUGS) {
@@ -21,12 +24,17 @@ async function main() {
     for (const target of MAJOR_MATCH_BRANDS) {
       if (target === brandSlug) continue;
       const best = candidates.find(m => m.match_color.brand.slug === target);
-      if (best && isMatchIndexable(source, Number(best.delta_e_score))) matches.push(`/match/${brandSlug}/${source.slug}-to-${target}`);
+      if (best && isMatchIndexable(source, Number(best.delta_e_score))) {
+        const url = `/match/${brandSlug}/${source.slug}-to-${target}`;
+        matches.push(url);
+        const dates = [updatedByUrl.get(`${brandSlug}/${source.slug}`), updatedByUrl.get(`${target}/${best.match_color.slug}`)].filter((d): d is string => Boolean(d));
+        if (dates.length) matchUpdatedAt[url] = dates.sort().at(-1)!;
+      }
     }
   }
   if (new Set(matches).size !== matches.length) throw new Error("Duplicate match sitemap URL");
   const brands = (await getAllBrands()).map(({ name, slug }) => ({ name, slug }));
-  const snapshot = { brands, colors, matches: matches.sort() };
+  const snapshot = { brands, colors, matches: matches.sort(), matchUpdatedAt };
   await mkdir("src/generated", { recursive: true });
   await writeFile("src/generated/sitemap.json.tmp", JSON.stringify(snapshot));
   await rename("src/generated/sitemap.json.tmp", "src/generated/sitemap.json");
