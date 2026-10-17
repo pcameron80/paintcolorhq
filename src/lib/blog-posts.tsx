@@ -1938,7 +1938,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "Is the paint color matching API really free?",
         answer:
-          "Yes. The embeddable widget is free with a small attribution link, and the API has a free tier with no key required for the open endpoint. Paid RapidAPI plans add higher volume and extra color-science fields.",
+          "Yes. The embeddable widget is free with a small attribution link, and the API has a free tier with no key required for the open endpoint. Free API use requires a visible link to PaintColorHQ on the page that shows the results. Paid RapidAPI plans add higher volume and extra color-science fields.",
       },
       {
         question: "How accurate are the cross-brand matches?",
@@ -1948,7 +1948,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "Can I use the paint color API commercially?",
         answer:
-          "Yes, within the plan limits. The widget is free with the credit line, and the API's commercial terms scale with the RapidAPI tier you choose.",
+          "Yes, within the plan limits. The widget and the free API endpoint are free with a visible credit link to PaintColorHQ, and the API's commercial terms scale with the RapidAPI tier you choose.",
       },
     ],
     content: () => (
@@ -1998,7 +1998,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Paid Tier, for Heavier Use</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The free endpoint covers most needs. For production integrations, the paid tier on RapidAPI adds up to 50 results per call, batch lookups (several hex values at once), and per-match color-science fields — LAB, RGB, undertone, LRV, and color family — useful for palette engines and lighting-aware design tools. RapidAPI handles keys, rate limits, and billing, so you can start on the free plan and scale without touching our infrastructure. See the <a href="https://rapidapi.com/support-weGRmXmTU/api/paint-color-match-api1" target="_blank" rel="nofollow noopener noreferrer" className="text-brand-blue hover:underline">listing on RapidAPI</a>.
+          The free endpoint covers most needs. Free use requires a visible link to PaintColorHQ (for example, &ldquo;Cross-brand paint matching by PaintColorHQ&rdquo;) on the page that shows the results. For production integrations, the paid tier on RapidAPI adds up to 50 results per call, batch lookups (several hex values at once), and per-match color-science fields — LAB, RGB, undertone, LRV, and color family — useful for palette engines and lighting-aware design tools. RapidAPI handles keys, rate limits, and billing, so you can start on the free plan and scale without touching our infrastructure. See the <a href="https://rapidapi.com/support-weGRmXmTU/api/paint-color-match-api1" target="_blank" rel="nofollow noopener noreferrer" className="text-brand-blue hover:underline">listing on RapidAPI</a>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Cross-Brand Matching Is the Hard Part</h2>
