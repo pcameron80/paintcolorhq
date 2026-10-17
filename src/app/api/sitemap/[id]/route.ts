@@ -16,6 +16,18 @@ const COLORS_PER_SITEMAP = 5000;
 // Omit lastmod when the actual content modification date is unknown.
 const SITE_BUILD_DATE = "";
 
+// Last date the color and match page templates changed visibly on every page
+// (2026-10-11: closeness labels #186, retired labels, swatch/LRV corrections).
+// A page's lastmod is the later of this and its own data change date. Bump
+// these only for a substantive change to every page of that type; a lastmod
+// that moves without content changing teaches Google to ignore it.
+const COLOR_TEMPLATE_DATE = "2026-10-11";
+const MATCH_TEMPLATE_DATE = "2026-10-11";
+
+function latestDate(...dates: (string | null | undefined)[]): string {
+  return dates.map((d) => d?.slice(0, 10) ?? "").sort().at(-1)!;
+}
+
 interface SitemapEntry {
   url: string;
   lastmod: string;
@@ -97,8 +109,7 @@ export async function GET(
       }
       entries = pageColors.map((c) => ({
         url: `/colors/${c.brandSlug}/${c.colorSlug}`,
-        // The color template received substantive content changes on this date.
-        lastmod: [c.createdAt?.split("T")[0] ?? "", "2026-09-20"].sort().at(-1)!,
+        lastmod: latestDate(c.createdAt, c.contentUpdatedAt, COLOR_TEMPLATE_DATE),
       }));
     } else if (id === "matches") {
       // Brand-to-brand match landing pages — only major brand combinations
@@ -108,13 +119,14 @@ export async function GET(
           if (source !== target) {
             entries.push({
               url: `/match/${source}/to/${target}`,
-              lastmod: SITE_BUILD_DATE,
+              lastmod: MATCH_TEMPLATE_DATE,
             });
           }
         }
       }
     } else if (id === "match-individual") {
-      entries = sitemapSnapshot.matches.map((url) => ({ url, lastmod: "" }));
+      const matchUpdatedAt: Record<string, string> = sitemapSnapshot.matchUpdatedAt ?? {};
+      entries = sitemapSnapshot.matches.map((url) => ({ url, lastmod: latestDate(matchUpdatedAt[url], MATCH_TEMPLATE_DATE) }));
     } else if (id === "blog") {
       entries = getAllBlogSlugs().map((s) => {
         const post = getPostBySlug(s);

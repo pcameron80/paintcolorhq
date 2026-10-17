@@ -709,13 +709,13 @@ export async function getTopCrossBrandMatches(
 
 // Keyset pagination avoids overlapping ranges; shared eligibility preserves
 // the existing metadata policy. A build snapshot keeps all shards consistent.
-export async function getAllColorSlugs(options?: { perBrand?: number; brandSlugs?: string[] }): Promise<{ brandSlug: string; colorSlug: string; createdAt: string }[]> {
-  const results = new Map<string, { brandSlug: string; colorSlug: string; createdAt: string }>();
+export async function getAllColorSlugs(options?: { perBrand?: number; brandSlugs?: string[] }): Promise<{ brandSlug: string; colorSlug: string; createdAt: string; contentUpdatedAt: string }[]> {
+  const results = new Map<string, { brandSlug: string; colorSlug: string; createdAt: string; contentUpdatedAt: string }>();
   const counts = new Map<string, number>();
   let after: string | undefined;
   while (true) {
     let query = supabase.from("colors")
-      .select("id, slug, name, color_number, lrv, undertone, color_family, created_at, brand:brand_id (slug)")
+      .select("id, slug, name, color_number, lrv, undertone, color_family, created_at, content_updated_at, brand:brand_id (slug)")
       .order("id", { ascending: true }).limit(1000);
     if (after) query = query.gt("id", after);
     const { data, error } = await query;
@@ -728,7 +728,7 @@ export async function getAllColorSlugs(options?: { perBrand?: number; brandSlugs
       if (options?.perBrand && (counts.get(brand.slug) ?? 0) >= options.perBrand) continue;
       const key = `${brand.slug}/${color.slug}`;
       if (results.has(key)) throw new Error(`Duplicate catalog URL: ${key}`);
-      results.set(key, { brandSlug: brand.slug, colorSlug: color.slug, createdAt: color.created_at });
+      results.set(key, { brandSlug: brand.slug, colorSlug: color.slug, createdAt: color.created_at, contentUpdatedAt: color.content_updated_at });
       counts.set(brand.slug, (counts.get(brand.slug) ?? 0) + 1);
     }
     const next = data[data.length - 1].id as string;
