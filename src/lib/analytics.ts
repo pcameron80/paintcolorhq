@@ -2,14 +2,45 @@ type GtagEvent = {
   [key: string]: string | number | undefined;
 };
 
+type PlausibleFn = ((event: string, options?: { props?: Record<string, string> }) => void) & { q?: unknown[] };
+
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    plausible?: PlausibleFn;
   }
+}
+
+// GA4 events that are also Plausible goals (cookieless, so they count visitors
+// who decline cookies). Plausible goal names must match these exactly.
+const PLAUSIBLE_GOALS: Record<string, string> = {
+  retailer_click: "Retailer Click",
+  color_search: "Color Search",
+  color_compare: "Compare",
+};
+
+function sendToPlausible(eventName: string, params?: GtagEvent) {
+  let goal = PLAUSIBLE_GOALS[eventName];
+  // Only an actual use counts; "open" fires on every tool page load.
+  if (eventName === "tool_use" && params?.tool_action === "use") goal = "Tool Use";
+  if (!goal) return;
+  const props: Record<string, string> = {};
+  if (eventName === "tool_use" && params?.tool_name) props.tool = String(params.tool_name);
+  if (eventName === "retailer_click" && params?.color_brand) props.brand = String(params.color_brand);
+  // Queue until the script loads (it replays window.plausible.q). The script
+  // only loads on the production host, so elsewhere this queue is never sent.
+  const fn: PlausibleFn =
+    window.plausible ??
+    Object.assign((...args: unknown[]) => {
+      (fn.q = fn.q || []).push(args);
+    }, {} as { q?: unknown[] });
+  window.plausible = fn;
+  fn(goal, Object.keys(props).length ? { props } : undefined);
 }
 
 export function trackEvent(eventName: string, params?: GtagEvent) {
   if (typeof window === "undefined") return;
+  sendToPlausible(eventName, params);
   if (window.gtag) {
     window.gtag("event", eventName, params);
   } else {
