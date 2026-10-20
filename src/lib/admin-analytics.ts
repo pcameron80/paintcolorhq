@@ -282,10 +282,11 @@ async function loadDaily(): Promise<DailyData> {
     const date = gaDate(dim(r, 0));
     byDate.set(date, { date, sessions: met(r, 0), engagedSessions: met(r, 1), pageViews: met(r, 2), users: met(r, 3) });
   }
-  // Fill zero days so the trend line has no gaps.
+  // Fill zero days so the trend line has no gaps. Stops at yesterday: GA4's
+  // standard reports lag many hours on today, so a today point always dips.
   const today = todayStr();
   const rows: DailyRow[] = [];
-  for (let i = 28; i >= 0; i--) {
+  for (let i = 28; i >= 1; i--) {
     const date = shiftDate(today, -i);
     rows.push(byDate.get(date) ?? { date, sessions: 0, engagedSessions: 0, pageViews: 0, users: 0 });
   }

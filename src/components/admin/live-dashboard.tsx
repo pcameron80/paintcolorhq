@@ -168,16 +168,12 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
             )}
           </Card>
 
-          <Card className="lg:col-span-12" title="Visits per day" note="Last 28 days. The dashed segment is today, which GA4 is still processing.">
+          <Card className="lg:col-span-12" title="Visits per day" note="The 28 complete days ending yesterday.">
             {reports.daily.ok ? (
               <LineChart
                 ariaLabel="Daily sessions over the last 28 days"
                 unit="visits"
-                points={reports.daily.data.rows.map((r, i, a) => ({
-                  label: shortDate(r.date),
-                  value: r.sessions,
-                  partial: i === a.length - 1,
-                }))}
+                points={reports.daily.data.rows.map((r) => ({ label: shortDate(r.date), value: r.sessions }))}
               />
             ) : (
               <Unavailable what="Analytics data" />
