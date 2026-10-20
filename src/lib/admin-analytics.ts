@@ -2,6 +2,7 @@ import "server-only";
 import { GoogleAuth } from "google-auth-library";
 import cityCoords from "@/generated/city-coords.json";
 import { normalizePlace } from "@/lib/place-key";
+import { plausibleConfigured, plausibleRealtime, plausibleToday } from "@/lib/admin-plausible";
 import type {
   ChannelRow,
   CountryRow,
@@ -18,6 +19,7 @@ import type {
   SearchData,
   Section,
   Summary,
+  TodayData,
 } from "@/lib/admin-analytics-types";
 
 /*
@@ -175,6 +177,34 @@ function resolvePoint(city: string, country: string, users: number): MapPoint | 
 }
 
 async function loadRealtime(): Promise<Section<RealtimeData>> {
+  // Plausible first: it counts visitors who decline cookies. GA4 realtime is
+  // the fallback when Plausible is not configured or the NAS is unreachable.
+  if (plausibleConfigured()) {
+    const p = await safe("plausible realtime", plausibleRealtime);
+    if (p.ok) {
+      const points: MapPoint[] = [];
+      for (const pl of p.data.places) {
+        const pt = resolvePoint(pl.city, pl.country, pl.visitors);
+        if (pt) points.push(pt);
+      }
+      return {
+        ok: true,
+        data: {
+          activeUsers: p.data.visitors,
+          perMinute: p.data.perMinute,
+          points,
+          pages: p.data.pages,
+          devices: p.data.devices,
+          source: "plausible",
+          fetchedAt: Date.now(),
+        },
+      };
+    }
+  }
+  return loadGaRealtime();
+}
+
+async function loadGaRealtime(): Promise<Section<RealtimeData>> {
   return safe("realtime", async () => {
     const metrics = [{ name: "activeUsers" }];
     const [total, geo, minutes, pages, devices] = await Promise.all([
@@ -211,6 +241,7 @@ async function loadRealtime(): Promise<Section<RealtimeData>> {
       points,
       pages: toCounts(pages),
       devices: toCounts(devices),
+      source: "ga4" as const,
       fetchedAt: Date.now(),
     };
   });
@@ -218,6 +249,14 @@ async function loadRealtime(): Promise<Section<RealtimeData>> {
 
 export function getRealtime(): Promise<Section<RealtimeData>> {
   return cached(realtimeCache, 30_000, loadRealtime, (v) => v.ok);
+}
+
+const todayCache: CacheEntry<Section<TodayData>> = { at: 0 };
+
+/** Today so far, from Plausible only; GA4 lags too far behind to be useful here. */
+export function getToday(): Promise<Section<TodayData>> {
+  if (!plausibleConfigured()) return Promise.resolve({ ok: false });
+  return cached(todayCache, 60_000, () => safe("plausible today", plausibleToday), (v) => v.ok);
 }
 
 // ---- reports
@@ -441,9 +480,12 @@ export function getSearch(): Promise<Section<SearchData>> {
 // ---------------------------------------------------------------- public API
 
 export async function getLiveData(part: "realtime" | "reports" | "search" | "all" = "all"): Promise<Partial<LiveResponse>> {
-  if (part === "realtime") return { realtime: await getRealtime() };
+  if (part === "realtime") {
+    const [realtime, today] = await Promise.all([getRealtime(), getToday()]);
+    return { realtime, today };
+  }
   if (part === "reports") return { reports: await getReports() };
   if (part === "search") return { search: await getSearch() };
-  const [realtime, reports, search] = await Promise.all([getRealtime(), getReports(), getSearch()]);
-  return { realtime, reports, search };
+  const [realtime, today, reports, search] = await Promise.all([getRealtime(), getToday(), getReports(), getSearch()]);
+  return { realtime, today, reports, search };
 }

@@ -68,6 +68,27 @@ export type RealtimeData = {
   points: MapPoint[];
   pages: NameCount[];
   devices: NameCount[];
+  /** Plausible (cookieless, counts everyone) when it answers; GA4 realtime otherwise. */
+  source: "plausible" | "ga4";
+  fetchedAt: number;
+};
+
+export type TodayStats = {
+  visitors: number;
+  visits: number;
+  pageViews: number;
+  viewsPerVisit: number;
+  /** Share of visits that viewed one page, 0-1. Lower is better. */
+  bounceRate: number;
+};
+
+/** Today so far from Plausible, compared with yesterday up to the same time of day. */
+export type TodayData = {
+  today: TodayStats;
+  /** Null until Plausible has data from yesterday. */
+  sameTimeYesterday: TodayStats | null;
+  /** Eastern time the numbers run to, e.g. "2:05 PM". */
+  asOf: string;
   fetchedAt: number;
 };
 
@@ -85,6 +106,7 @@ export type SearchData = {
 
 export type LiveResponse = {
   realtime: Section<RealtimeData>;
+  today: Section<TodayData>;
   reports: ReportsData;
   search: Section<SearchData>;
 };
