@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
             <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
               Privacy Policy
             </h1>
-            <p className="text-sm text-outline">Effective date: October 2026</p>
+            <p className="text-sm text-outline">Effective date: October 21, 2026</p>
           </div>
         </section>
 
@@ -43,6 +43,7 @@ export default function PrivacyPolicyPage() {
                 <li><strong className="text-on-surface">Account information:</strong> If you sign in with Google, we receive your name, email address, and profile picture from Google OAuth. This information is stored securely via Supabase Authentication.</li>
                 <li><strong className="text-on-surface">Project data:</strong> If you create color projects or palettes while signed in, we store that data in your account so you can access it across sessions.</li>
                 <li><strong className="text-on-surface">Usage data:</strong> We use Google Analytics to collect anonymous usage information such as pages visited, time on site, browser type, and referring pages. This helps us understand how the site is used and improve it.</li>
+                <li><strong className="text-on-surface">Cookieless visit counts:</strong> We also run our own copy of Plausible Analytics on our own server to count page views. It sets no cookies, stores nothing on your device, and does not track you across sites. It records the page, the referring site, your browser, device type and country. Your IP address is used only to estimate that location and to count unique visitors per day, and it is never stored. This data stays on our server and is not shared.</li>
                 <li><strong className="text-on-surface">Cookies:</strong> We use cookies for authentication sessions, analytics, and advertising. See the Cookies section below for details.</li>
               </ul>
             </div>
