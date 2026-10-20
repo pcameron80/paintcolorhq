@@ -20,20 +20,17 @@ export type PeriodStats = {
 };
 
 /**
- * Today so far vs yesterday and the 7-day average, all cut off at the same
- * hour of the day (America/New_York) so a partial day is compared fairly.
+ * Yesterday (last complete day) vs the average of the 7 complete days before it.
+ * Today is shown without deltas because GA4 standard reports lag by many hours.
  */
 export type Summary = {
-  /** Current hour in the property timezone, e.g. "3 PM". Hours up to and including it are counted. */
-  hourLabel: string;
-  today: PeriodStats;
   yesterday: PeriodStats;
-  /** Average per day over the 7 full days before today. */
+  /** Average per day over the 7 complete days before yesterday. */
   avg7: PeriodStats;
-  todayDate: string;
+  /** Null when GA4 has no rows for today yet. lastHour is the last processed hour (0-23, ET). */
+  today: { sessions: number; pageViews: number; lastHour: number } | null;
 };
 
-/** summary is null when the same-hour comparison query fails; the trend still renders. */
 export type DailyData = { rows: DailyRow[]; summary: Summary | null };
 
 export type NameCount = { name: string; value: number };

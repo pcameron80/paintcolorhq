@@ -234,23 +234,12 @@ function periodStats(rows: DailyRow[]): PeriodStats {
   };
 }
 
-function currentHour(): number {
-  const h = new Intl.DateTimeFormat("en-US", { timeZone: TZ, hour: "numeric", hourCycle: "h23" }).format(new Date());
-  return Number(h) % 24;
-}
-
-function hourLabel(h: number): string {
-  const suffix = h < 12 ? "AM" : "PM";
-  return `${h % 12 === 0 ? 12 : h % 12} ${suffix}`;
-}
-
 /**
- * Today so far, yesterday and the 7-day average, each summed over hours up to
- * and including the current America/New_York hour, so a partial day is not
- * compared against full days.
+ * Yesterday (the last complete day) vs the average of the 7 complete days
+ * before it. GA4 standard reports for today lag by many hours, so today is
+ * reported separately, without deltas, with the last hour GA4 has processed.
  */
 async function loadSummary(): Promise<Summary> {
-  const hour = currentHour();
   const today = todayStr();
   const report = await runReport({
     dateRanges: [{ startDate: "8daysAgo", endDate: "today" }],
@@ -259,25 +248,24 @@ async function loadSummary(): Promise<Summary> {
     limit: 250,
   });
   const byDate = new Map<string, DailyRow>();
+  let lastHour = -1;
   for (const r of report.rows ?? []) {
-    if (Number(dim(r, 1)) > hour) continue;
     const date = gaDate(dim(r, 0));
+    if (date === today) lastHour = Math.max(lastHour, Number(dim(r, 1)));
     const row = byDate.get(date) ?? { date, sessions: 0, engagedSessions: 0, pageViews: 0, users: 0 };
     row.sessions += met(r, 0);
     row.engagedSessions += met(r, 1);
     row.pageViews += met(r, 2);
     byDate.set(date, row);
   }
-  const day = (offset: number): DailyRow =>
-    byDate.get(shiftDate(today, -offset)) ?? { date: shiftDate(today, -offset), sessions: 0, engagedSessions: 0, pageViews: 0, users: 0 };
-  const week = [1, 2, 3, 4, 5, 6, 7].map(day);
-  const weekTotal = periodStats(week);
+  const empty = (date: string): DailyRow => ({ date, sessions: 0, engagedSessions: 0, pageViews: 0, users: 0 });
+  const day = (offset: number): DailyRow => byDate.get(shiftDate(today, -offset)) ?? empty(shiftDate(today, -offset));
+  const weekTotal = periodStats([2, 3, 4, 5, 6, 7, 8].map(day));
+  const t = byDate.get(today);
   return {
-    hourLabel: hourLabel(hour),
-    todayDate: today,
-    today: periodStats([day(0)]),
     yesterday: periodStats([day(1)]),
     avg7: { ...weekTotal, sessions: weekTotal.sessions / 7, pageViews: weekTotal.pageViews / 7 },
+    today: t && lastHour >= 0 ? { sessions: t.sessions, pageViews: t.pageViews, lastHour } : null,
   };
 }
 

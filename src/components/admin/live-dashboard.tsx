@@ -9,6 +9,9 @@ import { ago, fmtDecimal, fmtNum, fmtPct, pointDelta, relDelta, shortDate, type 
 
 const REALTIME_MS = 60_000;
 const FULL_MS = 10 * 60_000;
+// GA4 turned on its bot-traffic data filter on this date. Days before it still
+// include bots, so any comparison across it reads low. Update if the filter changes.
+const BOT_FILTER_DATE = "Oct 20, 2026";
 
 /*
  * Colors follow the dataviz palette (blue slot 1, orange slot 2), stepped for
@@ -145,15 +148,7 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
             )}
           </Card>
 
-          <Card
-            className="lg:col-span-8"
-            title="Today so far"
-            note={
-              reports.daily.ok && reports.daily.data.summary
-                ? `Compared at the same time of day: midnight to ${reports.daily.data.summary.hourLabel} Eastern.`
-                : undefined
-            }
-          >
+          <Card className="lg:col-span-8" title="Yesterday" note="The last complete day, compared with the average of the 7 days before it.">
             {reports.daily.ok && reports.daily.data.summary ? (
               <SummaryTiles summary={reports.daily.data.summary} />
             ) : (
@@ -173,7 +168,7 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
             )}
           </Card>
 
-          <Card className="lg:col-span-12" title="Visits per day" note="Last 28 days. The dashed segment is today so far.">
+          <Card className="lg:col-span-12" title="Visits per day" note="Last 28 days. The dashed segment is today, which GA4 is still processing.">
             {reports.daily.ok ? (
               <LineChart
                 ariaLabel="Daily sessions over the last 28 days"
@@ -187,6 +182,9 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
             ) : (
               <Unavailable what="Analytics data" />
             )}
+            <p className="mt-3 text-xs" style={{ color: "var(--v-muted)" }}>
+              Bot traffic is excluded from {BOT_FILTER_DATE}; earlier days include it, so comparisons across that date read low.
+            </p>
           </Card>
 
           <SearchCards search={data.search} />
@@ -288,41 +286,40 @@ function DeltaText({ delta, label }: { delta: Delta | null; label: string }) {
 }
 
 function SummaryTiles({ summary }: { summary: Summary }) {
-  const { today, yesterday, avg7 } = summary;
-  const tiles: {
-    label: string;
-    value: string;
-    yest: string;
-    avg: string;
-    d1: Delta | null;
-    d2: Delta | null;
-  }[] = [
-    tile("Visits", today, yesterday, avg7, (s) => s.sessions, fmtNum, false),
-    tile("Page views", today, yesterday, avg7, (s) => s.pageViews, fmtNum, false),
-    tile("Pages per visit", today, yesterday, avg7, (s) => s.pagesPerSession, fmtDecimal, false),
-    tile("Engaged visits", today, yesterday, avg7, (s) => s.engagedRate, (n) => fmtPct(n), true),
+  const { yesterday, avg7, today } = summary;
+  const tiles = [
+    tile("Visits", yesterday, avg7, (s) => s.sessions, fmtNum, false),
+    tile("Page views", yesterday, avg7, (s) => s.pageViews, fmtNum, false),
+    tile("Pages per visit", yesterday, avg7, (s) => s.pagesPerSession, fmtDecimal, false),
+    tile("Engaged visits", yesterday, avg7, (s) => s.engagedRate, (n) => fmtPct(n), true),
   ];
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-      {tiles.map((t) => (
-        <div key={t.label}>
-          <div className="text-xs" style={{ color: "var(--v-muted)" }}>
-            {t.label}
+    <>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {tiles.map((t) => (
+          <div key={t.label}>
+            <div className="text-xs" style={{ color: "var(--v-muted)" }}>
+              {t.label}
+            </div>
+            <div className="text-3xl font-semibold tabular-nums">{t.value}</div>
+            <ul className="mt-1 space-y-0.5 text-xs">
+              <DeltaText delta={t.delta} label={`vs 7-day avg (${t.avg})`} />
+            </ul>
           </div>
-          <div className="text-3xl font-semibold tabular-nums">{t.value}</div>
-          <ul className="mt-1 space-y-0.5 text-xs">
-            <DeltaText delta={t.d1} label={`vs yesterday at this time (${t.yest})`} />
-            <DeltaText delta={t.d2} label={`vs 7-day avg at this time (${t.avg})`} />
-          </ul>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+      {today && (
+        <p className="mt-4 text-xs" style={{ color: "var(--v-muted)" }}>
+          Today so far: {fmtNum(today.sessions)} {today.sessions === 1 ? "visit" : "visits"}, {fmtNum(today.pageViews)}{" "}
+          {today.pageViews === 1 ? "page view" : "page views"} (GA4 has processed through {today.lastHour}:00 ET)
+        </p>
+      )}
+    </>
   );
 }
 
 function tile(
   label: string,
-  today: PeriodStats,
   yest: PeriodStats,
   avg: PeriodStats,
   pick: (s: PeriodStats) => number,
@@ -330,14 +327,7 @@ function tile(
   isRate: boolean,
 ) {
   const cmp = isRate ? pointDelta : relDelta;
-  return {
-    label,
-    value: fmt(pick(today)),
-    yest: fmt(pick(yest)),
-    avg: fmt(pick(avg)),
-    d1: cmp(pick(today), pick(yest)),
-    d2: cmp(pick(today), pick(avg)),
-  };
+  return { label, value: fmt(pick(yest)), avg: fmt(pick(avg)), delta: cmp(pick(yest), pick(avg)) };
 }
 
 function EventList({ rows }: { rows: { name: string; label: string; current: number; previous: number }[] }) {
