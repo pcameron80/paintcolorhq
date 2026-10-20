@@ -18,7 +18,7 @@
 - [Brand-to-Brand Matches](https://www.paintcolorhq.com/match/sherwin-williams/to/benjamin-moore): Top 50 cross-brand matches between any two brands, ranked by Delta E score.
 
 ## Color Visualization & Planning Tools
-- [Room Color Visualizer](https://www.paintcolorhq.com/tools/room-visualizer): Preview paint colors on walls, ceiling, trim, accent wall, and floor in a realistic room scene. Instant color swapping.
+- [Room Color Visualizer](https://www.paintcolorhq.com/tools/room-visualizer): Preview paint colors on walls, an accent wall, trim and window frames in 10 photorealistic rooms (living rooms, bedrooms, kitchens, dining rooms, bathrooms). Instant color swapping.
 - [Photo Color Identifier](https://www.paintcolorhq.com/tools/color-identifier): Upload a photo, click any spot, instantly find the closest matching paint colors from all 14 brands using CIEDE2000.
 - [Palette Generator](https://www.paintcolorhq.com/tools/palette-generator): Build complementary, analogous, triadic, and split-complementary color schemes matched to real paint colors from 14 brands.
 - [Paint Calculator](https://www.paintcolorhq.com/tools/paint-calculator): Calculate exact gallons needed by room dimensions. Accounts for doors, windows, and number of coats.
@@ -86,7 +86,7 @@ Our mission is straightforward: eliminate the guesswork from choosing paint colo
 
 Every tool on Paint Color HQ is free to use, with no account required.
 
-- **[Room Visualizer](https://www.paintcolorhq.com/tools/room-visualizer)** — Preview colors on walls, trim, and floors in a realistic room scene.
+- **[Room Visualizer](https://www.paintcolorhq.com/tools/room-visualizer)** — Preview colors on walls, trim and window frames in 10 photorealistic rooms.
 - **[Color Identifier](https://www.paintcolorhq.com/tools/color-identifier)** — Upload a photo, click any spot, and find matching paint colors.
 - **[Palette Generator](https://www.paintcolorhq.com/tools/palette-generator)** — Build coordinated palettes using color harmony rules mapped to real paints.
 - **[Paint Calculator](https://www.paintcolorhq.com/tools/paint-calculator)** — Estimate gallons needed based on room dimensions, doors, and windows.
@@ -1212,7 +1212,7 @@ MPC is a paint color system offering a wide selection of architectural colors. C
 ## Room Color Visualizer
 URL: https://www.paintcolorhq.com/tools/room-visualizer
 
-The Paint Color HQ Room Visualizer lets you preview paint colors on every surface in a room before you commit to a single can of paint. Click on any region — walls, ceiling, trim, accent wall, or floor — to select it, then choose a color from the picker or type in a specific hex code. The room updates instantly so you can experiment freely without any waiting.
+The Paint Color HQ Room Visualizer lets you preview paint colors on the walls, trim and windows of a room before you commit to a single can of paint. Pick one of 10 rooms, then click a surface (main walls, accent wall, trim, or window frames where the room offers them) to select it, then choose a color from the picker or type in a specific hex code. The room updates instantly so you can experiment freely without any waiting.
 
 Once you find a color you love, use the "Find Paint Match" feature to see which real-world paints from 14 major brands — including Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, and Farrow & Ball — are the closest match. Every suggestion links to its full color detail page so you can explore undertones, coordinating colors, and cross-brand alternatives.
 

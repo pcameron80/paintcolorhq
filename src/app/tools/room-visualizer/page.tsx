@@ -10,7 +10,7 @@ import { SamplizeOffer } from "@/components/samplize-offer";
 export const metadata: Metadata = {
   title: "Room Color Visualizer - Preview Paint Colors in a Room",
   description:
-    "Preview paint colors in a room before you buy. Explore main-wall, accent-wall and trim colors in the provided room photograph. Find digital paint matches across our catalog.",
+    "Preview paint colors before you buy. Try wall, accent, trim and window colors in 10 photorealistic rooms, then find digital paint matches across our catalog.",
   alternates: {
     canonical: "https://www.paintcolorhq.com/tools/room-visualizer",
   },
@@ -33,7 +33,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
     walls: "walls",
     trim: "trim",
     accent: "accentWall",
-    floor: "floor",
+    windows: "windows",
   };
   const hexRe = /^[0-9a-fA-F]{6}$/;
   const initialColors: Record<string, string> = {};
@@ -61,7 +61,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Room Color Visualizer",
-        description: "Preview paint colors on main walls, accent wall, and trim in a realistic room scene. Free tool from Paint Color HQ.",
+        description: "Preview paint colors on walls, an accent wall, trim and window frames in 10 photorealistic rooms. Free tool from Paint Color HQ.",
         url: "https://www.paintcolorhq.com/tools/room-visualizer",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -69,9 +69,9 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: [
-          { "@type": "Question", name: "What is a room color visualizer?", acceptedAnswer: { "@type": "Answer", text: "A room color visualizer is a free online tool that lets you preview paint colors on main walls, accent wall, and trim in a realistic room scene before you buy paint. Paint Color HQ's visualizer updates instantly as you pick colors and supports all major paint brands." } },
+          { "@type": "Question", name: "What is a room color visualizer?", acceptedAnswer: { "@type": "Answer", text: "A room color visualizer is a free online tool that lets you preview paint colors on main walls, an accent wall, trim and window frames in photorealistic rooms before you buy paint. Paint Color HQ's visualizer updates instantly as you pick colors and supports all major paint brands." } },
           { "@type": "Question", name: "Can I match visualizer colors to real paint?", acceptedAnswer: { "@type": "Answer", text: "Yes. After choosing a color in the visualizer, use the \"Find Paint Match\" feature to see which real-world paints from catalogued brands — including Sherwin-Williams, Benjamin Moore, Behr, Valspar, and PPG — are the closest match. Every suggestion links to its full color detail page." } },
-          { "@type": "Question", name: "Is the room visualizer free?", acceptedAnswer: { "@type": "Answer", text: "Yes. The Paint Color HQ Room Visualizer is completely free with no sign-up required. You can preview unlimited color combinations on walls, trim, accent walls, and floors." } },
+          { "@type": "Question", name: "Is the room visualizer free?", acceptedAnswer: { "@type": "Answer", text: "Yes. The Paint Color HQ Room Visualizer is completely free with no sign-up required. You can preview unlimited color combinations on walls, accent walls, trim and window frames across 10 rooms." } },
           { "@type": "Question", name: "Why does paint look different on my wall than in the room visualizer?", acceptedAnswer: { "@type": "Answer", text: "The preview paints your color over one photo's fixed lighting, while your room has its own. Three things move between screen and wall: your monitor or phone's brightness and calibration, your room's light (warm 2700K bulbs push a color yellower, cool 4000K bulbs push it bluer, and north-facing windows run cooler than south-facing ones), and sheen — flat, eggshell, and semi-gloss all reflect light differently. Use the visualizer to narrow your choices, then confirm the winner with a physical sample on the actual wall, viewed in both morning and evening light." } },
           { "@type": "Question", name: "How do I pick a trim color to go with my wall color?", acceptedAnswer: { "@type": "Answer", text: "Trim usually contrasts the wall — a clean white or off-white frames a colored wall and makes molding and window casings stand out. The wider the gap in lightness (LRV) between wall and trim, the crisper the edges look; a narrow gap reads soft and understated. Keep the wall and trim in the same undertone family so they don't clash: two grays can look near-identical yet pull in opposite directions, one warm toward pink and the other cool toward green. Check the undertone tag on each color's page before you buy." } },
         ],
@@ -94,8 +94,9 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             Room Color Visualizer
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Preview paint colors on main walls, accent wall, and trim. Click a region
-            or select it below, then pick a color to see it applied instantly.
+            Preview paint colors on walls, an accent wall, trim and window frames in 10
+            rooms. Click a surface or select it below, then pick a color to see it applied
+            instantly.
           </p>
         </div>
       </section>
@@ -123,32 +124,30 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
           <div className="space-y-10 text-on-surface-variant leading-relaxed">
             <div>
               <h3 className="font-headline text-xl font-bold text-on-surface mb-3">
-                How the preview is built: one real photo, three paintable regions
+                How the preview is built: 10 rooms, up to four paintable surfaces
               </h3>
               <p>
-                The visualizer starts from a photograph of an actual room, not a flat
-                illustration or a blank template. Three areas are traced over that photo as
-                paintable regions:{" "}
-                <strong className="text-on-surface">Main</strong> — the largest wall, the field
-                color that fills most of your view;{" "}
-                <strong className="text-on-surface">Accent</strong> — a secondary wall used for
-                contrast; and <strong className="text-on-surface">Trim</strong> — the crown
-                molding, baseboards, and window frames. Select any region by clicking it directly
-                on the room photo or using the Main, Accent, and Trim buttons, then pick a color
-                with the picker or type in a six-digit hex code. The room repaints instantly, so
-                you can try a shade, change your mind, and try another in seconds. The Main region
-                is the color you would buy the most of, so it is worth settling first.
+                Pick one of 10 rooms across five room types: living rooms, bedrooms, kitchens,
+                dining rooms and bathrooms. Each room has up to four paintable surfaces:{" "}
+                <strong className="text-on-surface">Main</strong>, the walls that fill most of the
+                view; <strong className="text-on-surface">Accent</strong>, one wall picked out for
+                contrast; <strong className="text-on-surface">Trim</strong>, the baseboards, crown
+                molding and door and window casings; and, in rooms where the frames can be painted
+                cleanly, <strong className="text-on-surface">Windows</strong>, the sashes and
+                grilles. Select a surface by clicking it in the room or with the buttons below the
+                image, then pick a color with the picker or type in a six-digit hex code. The room
+                repaints instantly, so you can try a shade, change your mind, and try another in
+                seconds. Main is the color you would buy the most of, so it is worth settling first.
               </p>
               <p className="mt-3">
-                The color is not pasted on flat. It is blended into the photo&apos;s own light and
-                shadow, so the same paint reads darker in the corners and where furniture casts
-                shade, and lighter where the window falls across the wall. A swatch card hides that
-                variation; a real wall shows it, and so does the preview. Painting the color over
-                the photo&apos;s lighting instead of covering it is what makes the result closer to
-                a finished wall than a solid block of color would be. When a shade looks right,
-                select &ldquo;Find Paint Match&rdquo; to pull the closest real paints from catalogued
-                brands — each result links to its full color page, where you can read its undertone
-                and see cross-brand equivalents.
+                The room images are computer-generated, photorealistic interiors with plain
+                off-white walls. That starting point is deliberate: the visualizer takes the light
+                and shadow already on each wall and applies it to your color, so the same paint
+                reads darker in the corners and behind furniture, and lighter where daylight lands.
+                A swatch card hides that variation; a real wall shows it, and so does the preview.
+                When a shade looks right, select &ldquo;Find Paint Match&rdquo; to pull the closest
+                real paints from catalogued brands. Each result links to its full color page, where
+                you can read its undertone and see cross-brand equivalents.
               </p>
             </div>
 

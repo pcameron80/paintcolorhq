@@ -40,7 +40,7 @@
 - [Benjamin Moore to Behr](https://www.paintcolorhq.com/match/benjamin-moore/to/behr): Find budget Behr alternatives to premium Benjamin Moore colors.
 
 ## Color Visualization & Planning Tools
-- [Room Color Visualizer](https://www.paintcolorhq.com/tools/room-visualizer): Preview paint colors on walls, ceiling, trim, accent wall, and floor in a realistic room scene. Instant color swapping.
+- [Room Color Visualizer](https://www.paintcolorhq.com/tools/room-visualizer): Preview paint colors on walls, an accent wall, trim and window frames in 10 photorealistic rooms (living rooms, bedrooms, kitchens, dining rooms, bathrooms). Instant color swapping.
 - [Photo Color Identifier](https://www.paintcolorhq.com/tools/color-identifier): Upload a photo, click any spot, instantly find the closest matching paint colors from all 13 brands using CIEDE2000.
 - [Palette Generator](https://www.paintcolorhq.com/tools/palette-generator): Build complementary, analogous, triadic, and split-complementary color schemes matched to real paint colors from 13 brands.
 - [Paint Calculator](https://www.paintcolorhq.com/tools/paint-calculator): Calculate exact gallons needed by room dimensions. Accounts for doors, windows, and number of coats.
