@@ -110,3 +110,10 @@ docs/research/
 
 # DB row backups from one-off fix scripts (local only, never commit)
 scripts/backups/
+
+# visualizer room sources: keep the generated images and settings, not derived output
+# (rebuild with scripts/build-room-masks.py, publish with scripts/export-rooms.py)
+room-src/*/mask-*.png
+room-src/*/render-*.jpg
+room-src/*/preview.jpg
+room-src/*/report.txt

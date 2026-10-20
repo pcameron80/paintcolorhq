@@ -1,0 +1,137 @@
+[
+  {
+    "id": "living-1",
+    "name": "Living room",
+    "category": "living",
+    "width": 1376,
+    "height": 768,
+    "image": "/rooms/living-1/base.webp",
+    "masks": {
+      "main": "/rooms/living-1/mask-main.png",
+      "accent": "/rooms/living-1/mask-accent.png",
+      "trim": "/rooms/living-1/mask-trim.png"
+    }
+  },
+  {
+    "id": "living-2",
+    "name": "Living room with fireplace",
+    "category": "living",
+    "width": 1376,
+    "height": 768,
+    "image": "/rooms/living-2/base.webp",
+    "masks": {
+      "main": "/rooms/living-2/mask-main.png",
+      "accent": "/rooms/living-2/mask-accent.png",
+      "trim": "/rooms/living-2/mask-trim.png",
+      "window": "/rooms/living-2/mask-window.png"
+    }
+  },
+  {
+    "id": "bedroom-1",
+    "name": "Bedroom",
+    "category": "bedroom",
+    "width": 1376,
+    "height": 768,
+    "image": "/rooms/bedroom-1/base.webp",
+    "masks": {
+      "main": "/rooms/bedroom-1/mask-main.png",
+      "accent": "/rooms/bedroom-1/mask-accent.png",
+      "trim": "/rooms/bedroom-1/mask-trim.png",
+      "window": "/rooms/bedroom-1/mask-window.png"
+    }
+  },
+  {
+    "id": "bedroom-2",
+    "name": "Guest bedroom",
+    "category": "bedroom",
+    "width": 1376,
+    "height": 768,
+    "image": "/rooms/bedroom-2/base.webp",
+    "masks": {
+      "main": "/rooms/bedroom-2/mask-main.png",
+      "accent": "/rooms/bedroom-2/mask-accent.png",
+      "trim": "/rooms/bedroom-2/mask-trim.png"
+    }
+  },
+  {
+    "id": "kitchen-1",
+    "name": "Kitchen with breakfast nook",
+    "category": "kitchen",
+    "width": 1376,
+    "height": 768,
+    "image": "/rooms/kitchen-1/base.webp",
+    "masks": {
+      "main": "/rooms/kitchen-1/mask-main.png",
+      "accent": "/rooms/kitchen-1/mask-accent.png",
+      "trim": "/rooms/kitchen-1/mask-trim.png",
+      "window": "/rooms/kitchen-1/mask-window.png"
+    }
+  },
+  {
+    "id": "kitchen-2",
+    "name": "Farmhouse kitchen",
+    "category": "kitchen",
+    "width": 1376,
+    "height": 768,
+    "image": "/rooms/kitchen-2/base.webp",
+    "masks": {
+      "main": "/rooms/kitchen-2/mask-main.png",
+      "accent": "/rooms/kitchen-2/mask-accent.png",
+      "trim": "/rooms/kitchen-2/mask-trim.png"
+    }
+  },
+  {
+    "id": "dining-1",
+    "name": "Dining room",
+    "category": "dining",
+    "width": 1376,
+    "height": 768,
+    "image": "/rooms/dining-1/base.webp",
+    "masks": {
+      "main": "/rooms/dining-1/mask-main.png",
+      "accent": "/rooms/dining-1/mask-accent.png",
+      "trim": "/rooms/dining-1/mask-trim.png"
+    }
+  },
+  {
+    "id": "dining-2",
+    "name": "Farmhouse dining room",
+    "category": "dining",
+    "width": 1376,
+    "height": 768,
+    "image": "/rooms/dining-2/base.webp",
+    "masks": {
+      "main": "/rooms/dining-2/mask-main.png",
+      "accent": "/rooms/dining-2/mask-accent.png",
+      "trim": "/rooms/dining-2/mask-trim.png",
+      "window": "/rooms/dining-2/mask-window.png"
+    }
+  },
+  {
+    "id": "bathroom-1",
+    "name": "Primary bathroom",
+    "category": "bathroom",
+    "width": 1376,
+    "height": 768,
+    "image": "/rooms/bathroom-1/base.webp",
+    "masks": {
+      "main": "/rooms/bathroom-1/mask-main.png",
+      "accent": "/rooms/bathroom-1/mask-accent.png",
+      "trim": "/rooms/bathroom-1/mask-trim.png",
+      "window": "/rooms/bathroom-1/mask-window.png"
+    }
+  },
+  {
+    "id": "bathroom-2",
+    "name": "Powder room",
+    "category": "bathroom",
+    "width": 1376,
+    "height": 768,
+    "image": "/rooms/bathroom-2/base.webp",
+    "masks": {
+      "main": "/rooms/bathroom-2/mask-main.png",
+      "accent": "/rooms/bathroom-2/mask-accent.png",
+      "trim": "/rooms/bathroom-2/mask-trim.png"
+    }
+  }
+]

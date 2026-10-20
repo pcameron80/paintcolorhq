@@ -109,7 +109,7 @@ export default function AboutPage() {
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
                 {[
-                  { href: "/tools/room-visualizer", name: "Room Visualizer", desc: "Preview colors on walls, trim, and floors in a realistic room scene." },
+                  { href: "/tools/room-visualizer", name: "Room Visualizer", desc: "Preview colors on walls, trim and window frames in 10 photorealistic rooms." },
                   { href: "/tools/color-identifier", name: "Color Identifier", desc: "Upload a photo, click any spot, and find matching paint colors." },
                   { href: "/tools/palette-generator", name: "Palette Generator", desc: "Build coordinated palettes using color harmony rules mapped to real paints." },
                   { href: "/tools/paint-calculator", name: "Paint Calculator", desc: "Estimate gallons needed based on room dimensions, doors, and windows." },

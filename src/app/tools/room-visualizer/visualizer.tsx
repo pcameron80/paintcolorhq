@@ -1,16 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { trackToolEngagement } from "@/lib/analytics";
-import { ROOMS, type RoomScene } from "@/lib/rooms";
+import { ROOMS, type Surface } from "@/lib/rooms";
+import { RoomCanvas } from "./room-canvas";
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
-type RegionId = "walls" | "accentWall" | "trim";
+type RegionId = "walls" | "accentWall" | "trim" | "windows";
 
 interface PaintMatch {
   id: string;
@@ -27,115 +28,29 @@ interface PaintMatch {
 // Region metadata
 // ---------------------------------------------------------------------------
 
-const REGIONS: { id: RegionId; label: string }[] = [
-  { id: "walls", label: "Main" },
-  { id: "accentWall", label: "Accent" },
-  { id: "trim", label: "Trim" },
+const REGIONS: { id: RegionId; label: string; surface: Surface }[] = [
+  { id: "walls", label: "Main", surface: "main" },
+  { id: "accentWall", label: "Accent", surface: "accent" },
+  { id: "trim", label: "Trim", surface: "trim" },
+  { id: "windows", label: "Windows", surface: "window" },
 ];
+
+const SURFACE_TO_REGION: Record<Surface, RegionId> = {
+  main: "walls",
+  accent: "accentWall",
+  trim: "trim",
+  window: "windows",
+};
 
 const DEFAULT_COLORS: Record<RegionId, string> = {
   walls: "#D6D0C4",
   accentWall: "#5B7FA5",
   trim: "#FFFFFF",
+  windows: "#F4F3EF",
 };
 
 /** Regions where pop colors can be tried */
 const POP_REGIONS: RegionId[] = ["walls", "accentWall"];
-
-// ---------------------------------------------------------------------------
-// Room rendering — real photo + paint overlay (see src/lib/rooms.ts)
-// ---------------------------------------------------------------------------
-
-interface RoomCanvasProps {
-  room: RoomScene;
-  colors: Record<RegionId, string>;
-  onSelectRegion: (id: RegionId) => void;
-}
-
-/**
- * Renders the room photo with the chosen paint colors blended over the
- * traced wall/accent/trim regions, plus invisible click targets so each
- * region can be selected directly on the image.
- */
-function RoomCanvas({ room, colors, onSelectRegion }: RoomCanvasProps) {
-  const viewBox = `0 0 ${room.width} ${room.height}`;
-  const regionPaths: Record<RegionId, string[]> = {
-    walls: room.wall,
-    accentWall: room.accent,
-    trim: room.trim,
-  };
-
-  return (
-    <div className="relative block w-full overflow-hidden">
-      <Image
-        src={room.image}
-        alt={`${room.name} with applied paint colors`}
-        width={room.width}
-        height={Math.round(room.height)}
-        sizes="(max-width: 768px) 100vw, 900px"
-        className="block h-auto w-full"
-        priority
-      />
-
-      {/* Multiply pass — grounds the color in the photo's shadows */}
-      <svg
-        viewBox={viewBox}
-        xmlns="http://www.w3.org/2000/svg"
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        style={{ mixBlendMode: "multiply" }}
-        aria-hidden="true"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {room.wall.map((p, i) => (
-          <polygon key={`w${i}`} points={p} fill={colors.walls} opacity="0.55" />
-        ))}
-        {room.accent.map((p, i) => (
-          <polygon key={`a${i}`} points={p} fill={colors.accentWall} opacity="0.55" />
-        ))}
-        {room.trim.map((p, i) => (
-          <polygon key={`t${i}`} points={p} fill={colors.trim} opacity="0.45" />
-        ))}
-      </svg>
-
-      {/* Soft-light pass — restores color richness on lit surfaces */}
-      <svg
-        viewBox={viewBox}
-        xmlns="http://www.w3.org/2000/svg"
-        className="pointer-events-none absolute inset-0 h-full w-full"
-        style={{ mixBlendMode: "soft-light" }}
-        aria-hidden="true"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {room.wall.map((p, i) => (
-          <polygon key={`ws${i}`} points={p} fill={colors.walls} opacity="0.35" />
-        ))}
-        {room.accent.map((p, i) => (
-          <polygon key={`as${i}`} points={p} fill={colors.accentWall} opacity="0.35" />
-        ))}
-      </svg>
-
-      {/* Invisible click targets — select a region by clicking the room */}
-      <svg
-        viewBox={viewBox}
-        xmlns="http://www.w3.org/2000/svg"
-        className="absolute inset-0 h-full w-full"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {(Object.keys(regionPaths) as RegionId[]).map((id) =>
-          regionPaths[id].map((p, i) => (
-            <polygon
-              key={`click-${id}-${i}`}
-              points={p}
-              fill="transparent"
-              style={{ cursor: "pointer" }}
-              onClick={() => onSelectRegion(id)}
-            />
-          )),
-        )}
-      </svg>
-    </div>
-  );
-}
 
 // ---------------------------------------------------------------------------
 // Component
@@ -161,6 +76,12 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
   const [loading, setLoading] = useState(false);
 
   const room = ROOMS[roomIdx];
+  // Rooms only offer the surfaces they have (not every room has paintable windows).
+  const regions = REGIONS.filter((r) => room.masks[r.surface]);
+  const surfaceColors = useMemo(
+    () => ({ main: colors.walls, accent: colors.accentWall, trim: colors.trim, window: colors.windows }),
+    [colors],
+  );
 
   useEffect(() => {
     trackToolEngagement("room-visualizer", "open");
@@ -170,6 +91,12 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
     setSelected(id);
     setHexInput(colors[id].replace("#", ""));
     setMatches([]);
+  };
+
+  const changeRoom = (idx: number) => {
+    setRoomIdx(idx);
+    const next = ROOMS[idx];
+    if (!REGIONS.some((r) => r.id === selected && next.masks[r.surface])) selectRegion("walls");
   };
 
   const applyColor = (hex: string) => {
@@ -213,22 +140,37 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
 
   return (
     <div className="mt-8">
-      {/* ---- Room switcher (shown once more than one room exists) ---- */}
+      {/* ---- Room picker ---- */}
       {ROOMS.length > 1 && (
-        <div className="mb-4 flex flex-wrap gap-2">
-          {ROOMS.map((r, idx) => (
-            <button
-              key={r.id}
-              onClick={() => setRoomIdx(idx)}
-              className={`rounded-xl border px-4 py-2 text-sm font-semibold transition-all ${
-                roomIdx === idx
-                  ? "border-primary bg-primary-fixed text-on-primary-fixed shadow-sm"
-                  : "border-outline-variant/30 text-on-surface-variant hover:border-outline hover:bg-surface-container-low"
-              }`}
-            >
-              {r.name}
-            </button>
-          ))}
+        <div className="mb-4">
+          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-primary">Choose a room</p>
+          <div className="-mx-1 flex gap-3 overflow-x-auto px-1 pb-2">
+            {ROOMS.map((r, idx) => (
+              <button
+                key={r.id}
+                type="button"
+                onClick={() => changeRoom(idx)}
+                aria-pressed={roomIdx === idx}
+                className={`w-36 shrink-0 overflow-hidden rounded-xl border-2 text-left transition-all ${
+                  roomIdx === idx
+                    ? "border-primary shadow-sm"
+                    : "border-transparent hover:border-outline-variant"
+                }`}
+              >
+                <Image
+                  src={r.image}
+                  alt=""
+                  width={288}
+                  height={161}
+                  sizes="144px"
+                  className="block h-auto w-full"
+                />
+                <span className="block bg-surface-container-low px-2 py-1.5 text-xs font-semibold text-on-surface">
+                  {r.name}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
@@ -239,7 +181,12 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
         <p className="w-full text-xs text-on-surface-variant">Digital room preview only. Lighting, screens, and paint finish affect appearance. Confirm your choice with a physical sample.</p>
       </div>
       <div className="overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container">
-        <RoomCanvas room={room} colors={colors} onSelectRegion={selectRegion} />
+        <RoomCanvas
+          room={room}
+          colors={surfaceColors}
+          onSelectSurface={(s) => selectRegion(SURFACE_TO_REGION[s])}
+          priority={roomIdx === 0}
+        />
       </div>
 
       {/* ---- Controls ---- */}
@@ -247,7 +194,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
         {/* Region selector */}
         <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Select Region</p>
         <div className="flex flex-wrap gap-2">
-          {REGIONS.map((r) => (
+          {regions.map((r) => (
             <button
               key={r.id}
               aria-pressed={selected === r.id}
@@ -275,8 +222,8 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
 
         {/* Swatch palette.
             Wall regions (Main + Accent) share one pooled set — Main, Accent,
-            and Pop are all applicable to either wall. Trim is isolated to its
-            own color so it can't be overwritten by wall swatches. */}
+            and Pop are all applicable to either wall. Trim and windows keep
+            their own colors so wall swatches can't overwrite them. */}
         {(() => {
           const norm = (h: string) => (h.startsWith("#") ? h : `#${h}`);
           const isWallRegion = POP_REGIONS.includes(selected);
@@ -299,9 +246,10 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomV
             (colorOptions?.walls ?? []).forEach((h) => push(h, "Main"));
             (colorOptions?.accentWall ?? []).forEach((h) => push(h, "Accent"));
           } else {
-            // Trim: only its own color(s).
-            push(merged.trim, "Trim");
-            (colorOptions?.trim ?? []).forEach((h) => push(h, "Trim"));
+            // Trim or windows: only that region's own color(s).
+            const label = REGIONS.find((r) => r.id === selected)?.label ?? "";
+            push(merged[selected], label);
+            (colorOptions?.[selected] ?? []).forEach((h) => push(h, label));
           }
 
           const pops = isWallRegion ? (popColors ?? []) : [];
