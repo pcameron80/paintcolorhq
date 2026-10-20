@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const AUTH_PATH_PREFIXES = ["/dashboard", "/auth", "/account"];
+const AUTH_PATH_PREFIXES = ["/dashboard", "/auth", "/account", "/admin"];
 
 export async function middleware(request: NextRequest) {
   // Enforce www canonical domain (301 redirect)
