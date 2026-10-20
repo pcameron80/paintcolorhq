@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import type { LiveResponse, PeriodStats, Section, Summary } from "@/lib/admin-analytics-types";
+import type { LiveResponse, PeriodStats, Section, Summary, TodayData, TodayStats } from "@/lib/admin-analytics-types";
 import { BarList, LineChart, MinuteBars } from "./charts";
 import { WorldMap } from "./world-map";
 import { ago, fmtDecimal, fmtNum, fmtPct, pointDelta, relDelta, shortDate, type Delta } from "./format";
@@ -60,6 +60,7 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
       setError(null);
       setData((d) => ({
         realtime: json.realtime?.ok ? json.realtime : d.realtime,
+        today: json.today?.ok || !d.today.ok ? (json.today ?? d.today) : d.today,
         reports: json.reports ?? d.reports,
         search: json.search?.ok || !d.search.ok ? (json.search ?? d.search) : d.search,
       }));
@@ -132,7 +133,11 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
         )}
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
-          <Card className="lg:col-span-4" title="Visitors right now" note="Last 30 minutes">
+          <Card
+            className="lg:col-span-4"
+            title="Visitors right now"
+            note={rt.ok && rt.data.source === "ga4" ? "Last 30 minutes, from GA4 (Plausible unavailable)" : "Last 30 minutes, from Plausible (counts everyone)"}
+          >
             {rt.ok ? (
               <>
                 <div className="mb-3 flex items-end gap-3">
@@ -148,7 +153,11 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
             )}
           </Card>
 
-          <Card className="lg:col-span-8" title="Yesterday" note="The last complete day, compared with the average of the 7 days before it.">
+          <Card className="lg:col-span-8" title="Today so far" note="From Plausible, compared with yesterday up to the same time.">
+            {data.today.ok ? <TodayTiles data={data.today.data} /> : <Unavailable what="Plausible data" />}
+          </Card>
+
+          <Card className="lg:col-span-12" title="Yesterday" note="The last complete day in GA4, compared with the average of the 7 days before it.">
             {reports.daily.ok && reports.daily.data.summary ? (
               <SummaryTiles summary={reports.daily.data.summary} />
             ) : (
@@ -282,7 +291,7 @@ function DeltaText({ delta, label }: { delta: Delta | null; label: string }) {
 }
 
 function SummaryTiles({ summary }: { summary: Summary }) {
-  const { yesterday, avg7, today } = summary;
+  const { yesterday, avg7 } = summary;
   const tiles = [
     tile("Visits", yesterday, avg7, (s) => s.sessions, fmtNum, false),
     tile("Page views", yesterday, avg7, (s) => s.pageViews, fmtNum, false),
@@ -304,12 +313,46 @@ function SummaryTiles({ summary }: { summary: Summary }) {
           </div>
         ))}
       </div>
-      {today && (
-        <p className="mt-4 text-xs" style={{ color: "var(--v-muted)" }}>
-          Today so far: {fmtNum(today.sessions)} {today.sessions === 1 ? "visit" : "visits"}, {fmtNum(today.pageViews)}{" "}
-          {today.pageViews === 1 ? "page view" : "page views"} (GA4 has processed through {today.lastHour}:00 ET)
-        </p>
-      )}
+    </>
+  );
+}
+
+function TodayTiles({ data }: { data: TodayData }) {
+  const { today, sameTimeYesterday: y } = data;
+  const row = (label: string, pick: (s: TodayStats) => number, fmt: (n: number) => string, isRate: boolean, lowerIsBetter = false) => {
+    const d = y ? (isRate ? pointDelta : relDelta)(pick(today), pick(y)) : null;
+    // For bounce rate a drop is good news, so flip the arrow color, not the wording.
+    const delta = d && lowerIsBetter && d.dir !== "flat" ? { ...d, dir: (d.dir === "up" ? "down" : "up") as Delta["dir"] } : d;
+    return { label, value: fmt(pick(today)), base: y ? fmt(pick(y)) : "", delta, raw: d };
+  };
+  const tiles = [
+    row("Visitors", (s) => s.visitors, fmtNum, false),
+    row("Page views", (s) => s.pageViews, fmtNum, false),
+    row("Pages per visit", (s) => s.viewsPerVisit, fmtDecimal, false),
+    row("One-page visits", (s) => s.bounceRate, (n) => fmtPct(n), true, true),
+  ];
+  return (
+    <>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {tiles.map((t) => (
+          <div key={t.label}>
+            <div className="text-xs" style={{ color: "var(--v-muted)" }}>
+              {t.label}
+            </div>
+            <div className="text-3xl font-semibold tabular-nums">{t.value}</div>
+            <ul className="mt-1 space-y-0.5 text-xs">
+              {y ? (
+                <DeltaText delta={t.delta && t.raw ? { ...t.delta, text: t.raw.text } : null} label={`vs yesterday at this time (${t.base})`} />
+              ) : (
+                <li style={{ color: "var(--v-muted)" }}>No comparison until Plausible has a full day</li>
+              )}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <p className="mt-4 text-xs" style={{ color: "var(--v-muted)" }}>
+        Midnight to {data.asOf} Eastern. Plausible counts every visitor, including those who decline cookies, so it reads higher than GA4.
+      </p>
     </>
   );
 }
