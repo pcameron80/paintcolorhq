@@ -3,6 +3,7 @@ Allow: /
 Disallow: /dashboard
 Disallow: /dashboard/
 Disallow: /auth/
+Disallow: /admin
 Disallow: /api/
 # Parametric tool URLs are combinatorial (unbounded) and have no SEO value.
 # Bare /tools/palette-generator and /tools/room-visualizer landing pages stay

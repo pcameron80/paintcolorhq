@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { isNonTrackedPath } from "@/lib/consent";
 import {
   initScrollDepthTracking,
   initTimeOnPageTracking,
@@ -11,7 +12,7 @@ import {
 export function AnalyticsProvider() {
   useEffect(() => {
     // Don't run site analytics inside the embeddable widget (third-party iframes).
-    if (window.location.pathname.startsWith("/embed/match")) return;
+    if (isNonTrackedPath(window.location.pathname)) return;
     initScrollDepthTracking();
     initTimeOnPageTracking();
 
