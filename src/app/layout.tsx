@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { CookieConsent } from "@/components/cookie-consent";
+import { PlausibleScript } from "@/components/plausible-script";
 import "./globals.css";
 
 const inter = Inter({
@@ -72,6 +73,7 @@ export default function RootLayout({
         {children}
         <CookieConsent />
         <AnalyticsProvider />
+        <PlausibleScript />
       </body>
     </html>
   );
