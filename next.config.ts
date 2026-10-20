@@ -168,16 +168,6 @@ const nextConfig: NextConfig = {
         source: "/sitemap/:id.xml",
         destination: "/api/sitemap/:id",
       },
-      // Self-hosted Plausible (NAS, via Cloudflare Tunnel) served first-party so
-      // ad blockers don't drop it and visitors never load a third-party host.
-      {
-        source: "/stats/js/script.js",
-        destination: "https://stats.clinchriverweb.com/js/script.js",
-      },
-      {
-        source: "/stats/api/event",
-        destination: "https://stats.clinchriverweb.com/api/event",
-      },
     ];
   },
   async headers() {
