@@ -145,8 +145,20 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
             )}
           </Card>
 
-          <Card className="lg:col-span-8" title="Today so far" note="Today is still in progress, so counts run low until evening.">
-            {reports.daily.ok ? <SummaryTiles summary={reports.daily.data.summary} /> : <Unavailable what="Analytics data" />}
+          <Card
+            className="lg:col-span-8"
+            title="Today so far"
+            note={
+              reports.daily.ok && reports.daily.data.summary
+                ? `Compared at the same time of day: midnight to ${reports.daily.data.summary.hourLabel} Eastern.`
+                : undefined
+            }
+          >
+            {reports.daily.ok && reports.daily.data.summary ? (
+              <SummaryTiles summary={reports.daily.data.summary} />
+            ) : (
+              <Unavailable what="Analytics data" />
+            )}
           </Card>
 
           <Card className="lg:col-span-8" title="Where visitors are">
@@ -299,8 +311,8 @@ function SummaryTiles({ summary }: { summary: Summary }) {
           </div>
           <div className="text-3xl font-semibold tabular-nums">{t.value}</div>
           <ul className="mt-1 space-y-0.5 text-xs">
-            <DeltaText delta={t.d1} label={`vs yesterday (${t.yest})`} />
-            <DeltaText delta={t.d2} label={`vs 7-day avg (${t.avg})`} />
+            <DeltaText delta={t.d1} label={`vs yesterday at this time (${t.yest})`} />
+            <DeltaText delta={t.d2} label={`vs 7-day avg at this time (${t.avg})`} />
           </ul>
         </div>
       ))}

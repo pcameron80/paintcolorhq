@@ -4,6 +4,15 @@
 // by default and can opt out through the footer "Your Privacy Choices" link or
 // a Global Privacy Control signal.
 
+/**
+ * Paths where no cookie banner, GA4 or ad/pixel script may load: the embeddable
+ * widget (third-party iframes) and the private owner dashboard (so the owner's
+ * own views do not count as site traffic).
+ */
+export function isNonTrackedPath(pathname: string): boolean {
+  return pathname.startsWith("/embed/match") || pathname === "/admin" || pathname.startsWith("/admin/");
+}
+
 export type StoredConsent = "granted" | "denied" | null;
 export type ConsentRegion = "regulated" | "other" | "pending";
 

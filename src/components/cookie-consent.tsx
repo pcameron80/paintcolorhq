@@ -8,6 +8,7 @@ import {
   OPEN_PRIVACY_CHOICES_EVENT,
   REGULATED_REGIONS,
   adsAllowed,
+  isNonTrackedPath,
   fetchConsentRegion,
   getStoredConsent,
   setStoredConsent,
@@ -74,7 +75,7 @@ export function CookieConsent() {
   useEffect(() => {
     // The embeddable widget runs inside third-party iframes — never show a cookie
     // banner or load GA/Pinterest there (no consent surface; it's someone else's page).
-    if (window.location.pathname.startsWith("/embed/match")) return;
+    if (isNonTrackedPath(window.location.pathname)) return;
     let active = true;
     fetchConsentRegion().then((r) => {
       if (!active) return;

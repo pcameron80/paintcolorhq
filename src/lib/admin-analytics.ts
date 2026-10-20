@@ -17,6 +17,7 @@ import type {
   ReportsData,
   SearchData,
   Section,
+  Summary,
 } from "@/lib/admin-analytics-types";
 
 /*
@@ -233,6 +234,53 @@ function periodStats(rows: DailyRow[]): PeriodStats {
   };
 }
 
+function currentHour(): number {
+  const h = new Intl.DateTimeFormat("en-US", { timeZone: TZ, hour: "numeric", hourCycle: "h23" }).format(new Date());
+  return Number(h) % 24;
+}
+
+function hourLabel(h: number): string {
+  const suffix = h < 12 ? "AM" : "PM";
+  return `${h % 12 === 0 ? 12 : h % 12} ${suffix}`;
+}
+
+/**
+ * Today so far, yesterday and the 7-day average, each summed over hours up to
+ * and including the current America/New_York hour, so a partial day is not
+ * compared against full days.
+ */
+async function loadSummary(): Promise<Summary> {
+  const hour = currentHour();
+  const today = todayStr();
+  const report = await runReport({
+    dateRanges: [{ startDate: "8daysAgo", endDate: "today" }],
+    dimensions: [{ name: "date" }, { name: "hour" }],
+    metrics: [{ name: "sessions" }, { name: "engagedSessions" }, { name: "screenPageViews" }],
+    limit: 250,
+  });
+  const byDate = new Map<string, DailyRow>();
+  for (const r of report.rows ?? []) {
+    if (Number(dim(r, 1)) > hour) continue;
+    const date = gaDate(dim(r, 0));
+    const row = byDate.get(date) ?? { date, sessions: 0, engagedSessions: 0, pageViews: 0, users: 0 };
+    row.sessions += met(r, 0);
+    row.engagedSessions += met(r, 1);
+    row.pageViews += met(r, 2);
+    byDate.set(date, row);
+  }
+  const day = (offset: number): DailyRow =>
+    byDate.get(shiftDate(today, -offset)) ?? { date: shiftDate(today, -offset), sessions: 0, engagedSessions: 0, pageViews: 0, users: 0 };
+  const week = [1, 2, 3, 4, 5, 6, 7].map(day);
+  const weekTotal = periodStats(week);
+  return {
+    hourLabel: hourLabel(hour),
+    todayDate: today,
+    today: periodStats([day(0)]),
+    yesterday: periodStats([day(1)]),
+    avg7: { ...weekTotal, sessions: weekTotal.sessions / 7, pageViews: weekTotal.pageViews / 7 },
+  };
+}
+
 async function loadDaily(): Promise<DailyData> {
   const report = await runReport({
     dateRanges: [{ startDate: "28daysAgo", endDate: "today" }],
@@ -253,20 +301,8 @@ async function loadDaily(): Promise<DailyData> {
     const date = shiftDate(today, -i);
     rows.push(byDate.get(date) ?? { date, sessions: 0, engagedSessions: 0, pageViews: 0, users: 0 });
   }
-  const at = (offset: number) => rows[rows.length - 1 - offset];
-  return {
-    rows,
-    summary: {
-      todayDate: today,
-      today: periodStats([at(0)]),
-      yesterday: periodStats([at(1)]),
-      avg7: (() => {
-        const week = rows.slice(-8, -1);
-        const total = periodStats(week);
-        return { ...total, sessions: total.sessions / 7, pageViews: total.pageViews / 7 };
-      })(),
-    },
-  };
+  const summary = await safe("summary", loadSummary);
+  return { rows, summary: summary.ok ? summary.data : null };
 }
 
 const AI_SOURCE = /(chatgpt|openai|perplexity|claude\.ai|anthropic|gemini\.google|copilot|bard|you\.com|phind|poe\.com|deepseek|grok|meta\.ai|mistral)/i;
