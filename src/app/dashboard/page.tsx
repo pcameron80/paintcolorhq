@@ -31,7 +31,7 @@ export default async function DashboardPage() {
     <div className="min-h-screen bg-surface">
       <Header />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-7xl px-4 pt-28 pb-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <span className="text-primary font-bold text-xs uppercase tracking-widest">Dashboard</span>

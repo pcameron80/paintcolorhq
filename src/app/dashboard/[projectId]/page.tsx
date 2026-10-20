@@ -52,7 +52,7 @@ export default async function ProjectPage({ params }: PageProps) {
     <div className="min-h-screen bg-surface">
       <Header />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-7xl px-4 pt-28 pb-12 sm:px-6 lg:px-8">
         <nav className="mb-6 text-sm text-on-surface-variant">
           <Link href="/dashboard" className="hover:text-on-surface">
             My Projects
