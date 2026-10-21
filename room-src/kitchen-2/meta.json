@@ -1,5 +1,27 @@
 {
   "name": "Farmhouse kitchen",
   "category": "kitchen",
-  "windows": false
+  "windows": false,
+  "reassign": [
+    {
+      "rect": [
+        747,
+        0,
+        1133,
+        768
+      ],
+      "from": "main",
+      "to": "accent"
+    },
+    {
+      "rect": [
+        1133,
+        0,
+        1376,
+        768
+      ],
+      "from": "accent",
+      "to": "main"
+    }
+  ]
 }

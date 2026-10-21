@@ -11,6 +11,7 @@ frames) and writes:
 
 Optional <dir>/exclude.json: [[x0, y0, x1, y1], ...] rectangles in base-image pixels
 that are never painted (e.g. another room seen through a doorway).
+Optional "reassign" rules in <dir>/meta.json move a surface to another inside a box.
 
 Coverage is soft: it scales with how saturated the key color is, so anti-aliased
 edges and walls seen through sheer curtains get partial paint instead of a hard cut.
@@ -92,6 +93,17 @@ if exclude_file.exists():
     for x0, y0, x1, y1 in json.loads(exclude_file.read_text()):
         keep[round(y0 * scale) : round(y1 * scale), round(x0 * scale) : round(x1 * scale)] = 0
 masks = [m * neutral * keep for m in (main, accent, trim, window)]
+
+# meta.json "reassign": [{"rect": [x0, y0, x1, y1], "from": "main", "to": "accent"}, ...]
+# moves one surface's coverage to another inside a box (base-image pixels). The key
+# pass sometimes splits one wall in two, e.g. where a chandelier crosses it, or picks a
+# less useful accent wall; drawing the box along the real wall corners fixes it.
+for rule in meta.get("reassign", []):
+    x0, y0, x1, y1 = (round(v * scale) for v in rule["rect"])
+    src, dst = SURFACES.index(rule["from"]), SURFACES.index(rule["to"])
+    box = (slice(y0, y1), slice(x0, x1))
+    masks[dst][box] = np.maximum(masks[dst][box], masks[src][box])
+    masks[src][box] = 0
 
 # Seams where two surfaces meet (wall corners, wall/trim joints). Only pixels lying
 # between two different surfaces are touched; an object edge borders a single

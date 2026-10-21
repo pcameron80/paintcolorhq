@@ -1,5 +1,17 @@
 {
   "name": "Farmhouse dining room",
   "category": "dining",
-  "windows": true
+  "windows": true,
+  "reassign": [
+    {
+      "rect": [
+        303,
+        0,
+        1052,
+        768
+      ],
+      "from": "main",
+      "to": "accent"
+    }
+  ]
 }
