@@ -50,6 +50,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
     }
   }
   // Parse pop colors separately (shown on walls + accent wall)
+  const initialRoomId = typeof sp.room === "string" ? sp.room : undefined;
   const popRaw = sp.pop;
   const popColors =
     typeof popRaw === "string"
@@ -111,6 +112,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
               Object.keys(colorOptions).length > 0 ? colorOptions : undefined
             }
             popColors={popColors.length > 0 ? popColors : undefined}
+            initialRoomId={initialRoomId}
           />
         </div>
       </section>

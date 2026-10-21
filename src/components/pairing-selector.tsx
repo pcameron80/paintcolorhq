@@ -105,9 +105,19 @@ function generatePairings(hex: string): Pairing[] {
   ];
 }
 
-// Living room: its side walls take the main color and the back wall the accent,
-// matching the "Side Walls" / "Accent Wall" cards beside the preview.
-const PREVIEW_ROOM = ROOMS.find((r) => r.id === "living-1") ?? ROOMS[0];
+// One room per room type. Each is picked so the main walls (this page's color) are
+// a large share of the painted area; kitchen-1 is skipped because its main walls are
+// slivers beside one big accent wall.
+const PREVIEW_ROOMS = [
+  { id: "living-1", label: "Living room" },
+  { id: "bedroom-1", label: "Bedroom" },
+  { id: "kitchen-2", label: "Kitchen" },
+  { id: "dining-1", label: "Dining room" },
+  { id: "bathroom-1", label: "Bathroom" },
+].flatMap(({ id, label }) => {
+  const room = ROOMS.find((r) => r.id === id);
+  return room ? [{ room, label }] : [];
+});
 
 interface PairingSelectorProps {
   colorHex: string;
@@ -117,12 +127,14 @@ interface PairingSelectorProps {
 export function PairingSelector({ colorHex, colorName }: PairingSelectorProps) {
   const pairings = useMemo(() => generatePairings(colorHex), [colorHex]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [roomIndex, setRoomIndex] = useState(0);
+  const preview = PREVIEW_ROOMS[roomIndex];
   const active = pairings[activeIndex];
   const roomColors = useMemo(
     () => ({ main: colorHex, accent: active.accent.hex, trim: active.trim.hex, window: "#F4F3EF" }),
     [colorHex, active],
   );
-  const vizUrl = `/tools/room-visualizer?walls=${colorHex.slice(1)}&trim=${active.trim.hex.slice(1)}&accent=${active.accent.hex.slice(1)}`;
+  const vizUrl = `/tools/room-visualizer?walls=${colorHex.slice(1)}&trim=${active.trim.hex.slice(1)}&accent=${active.accent.hex.slice(1)}&room=${preview.room.id}`;
 
   return (
     <section className="bg-tertiary-fixed py-24 px-6 md:px-12">
@@ -159,11 +171,28 @@ export function PairingSelector({ colorHex, colorName }: PairingSelectorProps) {
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 items-start">
           {/* Room visualization (landscape, so it stays in view beside the taller cards) */}
           <div className="lg:sticky lg:top-24">
+            <div className="mb-3 flex flex-wrap gap-2" role="group" aria-label="Preview room">
+              {PREVIEW_ROOMS.map((r, i) => (
+                <button
+                  key={r.room.id}
+                  type="button"
+                  onClick={() => setRoomIndex(i)}
+                  aria-pressed={i === roomIndex}
+                  className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
+                    i === roomIndex
+                      ? "bg-on-surface text-surface"
+                      : "bg-surface-container-lowest text-on-surface-variant border border-outline-variant/20 hover:bg-surface-container-low"
+                  }`}
+                >
+                  {r.label}
+                </button>
+              ))}
+            </div>
             <div className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg border-[8px] border-surface-container-lowest">
               <RoomCanvas
-                room={PREVIEW_ROOM}
+                room={preview.room}
                 colors={roomColors}
-                alt={`Living room with ${colorName} side walls, a ${active.accent.label.toLowerCase()} accent wall and ${active.trim.label.toLowerCase()} trim`}
+                alt={`${preview.label} with ${colorName} walls, a ${active.accent.label.toLowerCase()} accent wall and ${active.trim.label.toLowerCase()} trim`}
                 maxWidth={800}
                 deferUntilVisible
                 sizes="(max-width: 1024px) 100vw, 760px"
@@ -177,7 +206,7 @@ export function PairingSelector({ colorHex, colorName }: PairingSelectorProps) {
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-14 h-14 rounded-lg shrink-0 border border-outline-variant/10" style={{ backgroundColor: colorHex }} />
                 <div>
-                  <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Side Walls</p>
+                  <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Main Walls</p>
                   <h4 className="font-headline font-bold text-on-surface">{colorName}</h4>
                 </div>
               </div>
