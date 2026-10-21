@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { trackToolEngagement } from "@/lib/analytics";
 import { ROOMS, type Surface } from "@/lib/rooms";
-import { RoomCanvas } from "./room-canvas";
+import { RoomCanvas } from "@/components/room-canvas";
 
 // ---------------------------------------------------------------------------
 // Types

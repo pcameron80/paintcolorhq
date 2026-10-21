@@ -76,8 +76,10 @@ function median9(v: number[]): number {
   return v[4];
 }
 
-async function prepareScene(room: RoomScene): Promise<PreparedScene> {
-  const { width: w, height: h } = room;
+async function prepareScene(room: RoomScene, maxWidth: number): Promise<PreparedScene> {
+  // Smaller embeds prepare a downscaled scene: a fraction of the pixels to process.
+  const w = Math.min(room.width, maxWidth);
+  const h = Math.round((room.height * w) / room.width);
   const surfaces = SURFACES.filter((s) => room.masks[s]);
   const [baseImg, ...maskImgs] = await Promise.all([
     loadImage(room.image),
@@ -191,8 +193,17 @@ function renderScene(scene: PreparedScene, colors: Record<Surface, string>, out:
 interface RoomCanvasProps {
   room: RoomScene;
   colors: Record<Surface, string>;
-  onSelectSurface: (surface: Surface) => void;
+  /** Called with the surface under the pointer; omit for a view-only preview */
+  onSelectSurface?: (surface: Surface) => void;
   priority?: boolean;
+  /** Alt text for the room photo */
+  alt?: string;
+  /** Render at most this many pixels wide (default: the photo's full width) */
+  maxWidth?: number;
+  /** Don't load masks or process the scene until the room is near the viewport */
+  deferUntilVisible?: boolean;
+  /** next/image sizes hint for the room photo */
+  sizes?: string;
 }
 
 /**
@@ -200,16 +211,43 @@ interface RoomCanvasProps {
  * are loaded, then a canvas with the painted room is laid over it. Clicking the room
  * selects whichever surface is under the pointer.
  */
-export function RoomCanvas({ room, colors, onSelectSurface, priority }: RoomCanvasProps) {
+export function RoomCanvas({
+  room,
+  colors,
+  onSelectSurface,
+  priority,
+  alt,
+  maxWidth = Infinity,
+  deferUntilVisible = false,
+  sizes = "(max-width: 768px) 100vw, 900px",
+}: RoomCanvasProps) {
+  const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [visible, setVisible] = useState(!deferUntilVisible);
   const [scene, setScene] = useState<{ id: string; data: PreparedScene } | null>(null);
   const [failedId, setFailedId] = useState<string | null>(null);
   const ready = scene?.id === room.id;
   const failed = failedId === room.id;
 
   useEffect(() => {
+    if (visible || !wrapRef.current) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px" },
+    );
+    io.observe(wrapRef.current);
+    return () => io.disconnect();
+  }, [visible]);
+
+  useEffect(() => {
+    if (!visible) return;
     let cancelled = false;
-    prepareScene(room)
+    prepareScene(room, maxWidth)
       .then((data) => {
         if (!cancelled) setScene({ id: room.id, data });
       })
@@ -219,7 +257,7 @@ export function RoomCanvas({ room, colors, onSelectSurface, priority }: RoomCanv
     return () => {
       cancelled = true;
     };
-  }, [room]);
+  }, [room, visible, maxWidth]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -232,12 +270,12 @@ export function RoomCanvas({ room, colors, onSelectSurface, priority }: RoomCanv
   }, [ready, scene, colors]);
 
   const handleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    if (!ready) return;
+    if (!ready || !onSelectSurface) return;
+    const { pixels, cover, width, height } = scene.data;
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = Math.floor(((e.clientX - rect.left) / rect.width) * room.width);
-    const y = Math.floor(((e.clientY - rect.top) / rect.height) * room.height);
-    const p = y * room.width + x;
-    const { pixels, cover } = scene.data;
+    const x = Math.floor(((e.clientX - rect.left) / rect.width) * width);
+    const y = Math.floor(((e.clientY - rect.top) / rect.height) * height);
+    const p = y * width + x;
     // Binary search the sorted covered-pixel list.
     let lo = 0;
     let hi = pixels.length - 1;
@@ -262,24 +300,24 @@ export function RoomCanvas({ room, colors, onSelectSurface, priority }: RoomCanv
   };
 
   return (
-    <div className="relative block w-full overflow-hidden">
+    <div ref={wrapRef} className="relative block w-full overflow-hidden">
       <Image
         src={room.image}
-        alt={`${room.name} with the selected paint colors`}
+        alt={alt ?? `${room.name} with the selected paint colors`}
         width={room.width}
         height={room.height}
-        sizes="(max-width: 768px) 100vw, 900px"
+        sizes={sizes}
         className="block h-auto w-full"
         priority={priority}
         unoptimized
       />
       <canvas
         ref={canvasRef}
-        width={room.width}
-        height={room.height}
+        width={scene?.data.width ?? room.width}
+        height={scene?.data.height ?? room.height}
         onClick={handleClick}
         aria-hidden="true"
-        className={`absolute inset-0 h-full w-full cursor-pointer ${
+        className={`absolute inset-0 h-full w-full ${onSelectSurface ? "cursor-pointer " : ""}${
           ready ? "opacity-100 transition-opacity duration-200" : "opacity-0"
         }`}
       />
