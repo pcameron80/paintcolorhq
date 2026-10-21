@@ -62,15 +62,17 @@ interface RoomVisualizerProps {
   colorOptions?: Partial<Record<RegionId, string[]>>;
   /** Pop colors shown as a separate section on walls/accent wall */
   popColors?: string[];
+  /** Room to open on (e.g. passed from a color page's preview) */
+  initialRoomId?: string;
 }
 
-export function RoomVisualizer({ initialColors, colorOptions, popColors }: RoomVisualizerProps) {
+export function RoomVisualizer({ initialColors, colorOptions, popColors, initialRoomId }: RoomVisualizerProps) {
   const merged = initialColors
     ? { ...DEFAULT_COLORS, ...initialColors }
     : DEFAULT_COLORS;
   const [colors, setColors] = useState(merged);
   const [selected, setSelected] = useState<RegionId>("walls");
-  const [roomIdx, setRoomIdx] = useState(0);
+  const [roomIdx, setRoomIdx] = useState(() => Math.max(0, ROOMS.findIndex((r) => r.id === initialRoomId)));
   const [hexInput, setHexInput] = useState(merged.walls.replace("#", ""));
   const [matches, setMatches] = useState<PaintMatch[]>([]);
   const [loading, setLoading] = useState(false);
