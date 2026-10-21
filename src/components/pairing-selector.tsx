@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { RoomPreview } from "@/components/room-preview";
+import { useMemo, useState } from "react";
+import { RoomCanvas } from "@/components/room-canvas";
+import { ROOMS } from "@/lib/rooms";
 import { TrackedLink } from "@/components/tracked-link";
 
 function hexToHsl(hex: string): [number, number, number] {
@@ -104,15 +105,23 @@ function generatePairings(hex: string): Pairing[] {
   ];
 }
 
+// Living room: its side walls take the main color and the back wall the accent,
+// matching the "Side Walls" / "Accent Wall" cards beside the preview.
+const PREVIEW_ROOM = ROOMS.find((r) => r.id === "living-1") ?? ROOMS[0];
+
 interface PairingSelectorProps {
   colorHex: string;
   colorName: string;
 }
 
 export function PairingSelector({ colorHex, colorName }: PairingSelectorProps) {
-  const pairings = generatePairings(colorHex);
+  const pairings = useMemo(() => generatePairings(colorHex), [colorHex]);
   const [activeIndex, setActiveIndex] = useState(0);
   const active = pairings[activeIndex];
+  const roomColors = useMemo(
+    () => ({ main: colorHex, accent: active.accent.hex, trim: active.trim.hex, window: "#F4F3EF" }),
+    [colorHex, active],
+  );
   const vizUrl = `/tools/room-visualizer?walls=${colorHex.slice(1)}&trim=${active.trim.hex.slice(1)}&accent=${active.accent.hex.slice(1)}`;
 
   return (
@@ -147,15 +156,17 @@ export function PairingSelector({ colorHex, colorName }: PairingSelectorProps) {
 
         <p className="text-sm text-on-surface-variant mb-8">{active.description}</p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Room visualization */}
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 items-start">
+          {/* Room visualization (landscape, so it stays in view beside the taller cards) */}
+          <div className="lg:sticky lg:top-24">
             <div className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg border-[8px] border-surface-container-lowest">
-              <RoomPreview
-                wallColor={colorHex}
-                trimColor={active.trim.hex}
-                accentColor={active.accent.hex}
-                className="w-full"
+              <RoomCanvas
+                room={PREVIEW_ROOM}
+                colors={roomColors}
+                alt={`Living room with ${colorName} side walls, a ${active.accent.label.toLowerCase()} accent wall and ${active.trim.label.toLowerCase()} trim`}
+                maxWidth={800}
+                deferUntilVisible
+                sizes="(max-width: 1024px) 100vw, 760px"
               />
             </div>
           </div>
