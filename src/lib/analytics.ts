@@ -21,11 +21,19 @@ const PLAUSIBLE_GOALS: Record<string, string> = {
 
 function sendToPlausible(eventName: string, params?: GtagEvent) {
   let goal = PLAUSIBLE_GOALS[eventName];
-  // Only an actual use counts; "open" fires on every tool page load.
-  if (eventName === "tool_use" && params?.tool_action === "use") goal = "Tool Use";
+  // Only an actual use counts; "open" fires on every tool page load. The
+  // palette generator, color identifier and paint calculator only fire
+  // "complete", so that counts too.
+  if (eventName === "tool_use" && (params?.tool_action === "use" || params?.tool_action === "complete")) goal = "Tool Use";
   if (!goal) return;
   const props: Record<string, string> = {};
   if (eventName === "tool_use" && params?.tool_name) props.tool = String(params.tool_name);
+  // Search terms show what visitors want and cannot find. Lowercased and
+  // capped so the property stays a short, groupable value.
+  if (eventName === "color_search" && params?.search_term) {
+    props.term = String(params.search_term).trim().toLowerCase().slice(0, 50);
+    props.results = Number(params.result_count) > 0 ? "some" : "none";
+  }
   if (eventName === "retailer_click" && params?.color_brand) props.brand = String(params.color_brand);
   // Queue until the script loads (it replays window.plausible.q). The script
   // only loads on the production host, so elsewhere this queue is never sent.

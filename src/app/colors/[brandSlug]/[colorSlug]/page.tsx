@@ -23,7 +23,7 @@ import { getSampleLinks, getSamplizeProductLink, getSamplizeShopLink, SAMPLIZE_O
 import { TrackPage } from "@/components/track-page";
 import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
-import { POPULAR_COLOR_SLUGS } from "@/lib/popular-colors";
+import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { COTY_BY_COLOR } from "@/lib/color-of-the-year";
 import { FORMER_NAMES } from "@/lib/former-names";
 import { titleArm, matchesArmTitle, matchesArmDescription } from "@/lib/title-test";
@@ -207,6 +207,14 @@ export default async function ColorPage({ params }: PageProps) {
   ]);
   const colorLede = generateColorLede(color, matches);
   const brandMatrix = nearestMatchesPerBrand(matches);
+  // The strip under the hero leads with brands most stores carry, then fills
+  // with the rest by closeness. A Kilz or Hirshfield's match first is less use
+  // to someone standing in a Home Depot.
+  const majorRank = (slug: string) => {
+    const i = (MAJOR_MATCH_BRANDS as readonly string[]).indexOf(slug);
+    return i === -1 ? 99 : i;
+  };
+  const brandStrip = [...brandMatrix].sort((a, b) => majorRank(a.match_color.brand.slug) - majorRank(b.match_color.brand.slug)).slice(0, 6);
   // Head-color pages keep their body fixed during the 2026-10-11 push, so the
   // hue-band and match-hub links below skip them.
   const isHeadColor = HEAD_COLOR_PUSH.includes(`${brandSlug}/${colorSlug}`);
@@ -378,11 +386,43 @@ export default async function ColorPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Nearest color in each other brand, directly under the hero. 81% of
+          visits that land on a color page leave after it (Plausible,
+          2026-10-20 to 23), and the full match grid sits a screen and a half
+          down. Head-color pages keep the step nav during their push. */}
+      {!isHeadColor && brandMatrix.length > 0 ? (
+        <nav aria-label={`${color.name} in other brands`} className="max-w-7xl mx-auto px-6 md:px-12 py-6">
+          <div className="flex items-baseline justify-between gap-4 mb-3">
+            <h2 className="font-headline text-sm font-bold uppercase tracking-widest text-on-surface-variant">{color.name} in other brands</h2>
+            <Link href="#color-matches" className="text-sm font-semibold text-primary hover:underline whitespace-nowrap">All alternatives</Link>
+          </div>
+          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {brandStrip.map((m) => (
+              <li key={m.id}>
+                <TrackedLink
+                  href={`/colors/${m.match_color.brand.slug}/${m.match_color.slug}`}
+                  className="flex items-center gap-3 rounded-xl border border-outline-variant/30 p-2 hover:shadow-md transition-all"
+                  eventName="cta_click"
+                  eventParams={{ cta_label: "brand_strip", color_name: color.name, color_brand: color.brand.slug, target_brand: m.match_color.brand.slug }}
+                >
+                  <span className="h-10 w-10 shrink-0 rounded-lg border border-black/10" style={{ backgroundColor: m.match_color.hex }} />
+                  <span className="min-w-0 text-xs leading-tight">
+                    <span className="block font-bold text-on-surface truncate">{m.match_color.brand.name}</span>
+                    <span className="block text-on-surface-variant truncate">{m.match_color.name}</span>
+                    <span className="block text-on-surface-variant">{closenessLabel(Number(m.delta_e_score))}</span>
+                  </span>
+                </TrackedLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ) : (
       <nav aria-label="Choose your paint" className="max-w-5xl mx-auto px-6 py-6 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
         <Link href="#color-preview" className="rounded-xl border border-outline-variant/30 p-4"><strong>1. See the color</strong><span className="block mt-1 text-on-surface-variant">A digital starting point</span></Link>
         <Link href="#color-matches" className="rounded-xl border border-outline-variant/30 p-4"><strong>2. Compare alternatives</strong><span className="block mt-1 text-on-surface-variant">Find options across brands</span></Link>
         <Link href="#sample-options" className="rounded-xl border border-outline-variant/30 p-4"><strong>3. Test a sample</strong><span className="block mt-1 text-on-surface-variant">Check it in your own room</span></Link>
       </nav>
+      )}
 
       {/* Data-derived lede — rendered immediately after the hero. Composed from
           the color's own values (hex/LRV/undertone/family) plus its single

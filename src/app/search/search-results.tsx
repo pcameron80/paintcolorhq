@@ -135,19 +135,19 @@ export function SearchResults() {
     return () => clearTimeout(timer);
   }, [query, search]);
 
+  const latestResultsRef = useRef(results.length);
+  latestResultsRef.current = results.length;
+
   useEffect(() => {
     if (trackingTimerRef.current) clearTimeout(trackingTimerRef.current);
     if (query.length >= 2) {
       trackingTimerRef.current = setTimeout(() => {
-        trackColorSearch(query, results.length);
+        trackColorSearch(query, latestResultsRef.current);
       }, 1500);
     }
     return () => { if (trackingTimerRef.current) clearTimeout(trackingTimerRef.current); };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
-  const latestResultsRef = useRef(results.length);
-  latestResultsRef.current = results.length;
 
   const handlePopularSearchSelect = useCallback((term: string) => {
     setQuery(term);
