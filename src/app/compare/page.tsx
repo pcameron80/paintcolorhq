@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
-import { getColorById } from "@/lib/queries";
+import { getColorById, getColorBySlug } from "@/lib/queries";
+import Link from "next/link";
 import { CompareClient } from "./compare-client";
 import { SamplizeOffer } from "@/components/samplize-offer";
 
@@ -27,12 +28,38 @@ function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
+// Shown on the empty tool so a visitor can see a result in one click. Most
+// visits that landed on bare /compare left without comparing (Plausible,
+// 2026-10-20 to 23). These are the head-term pairs people decide between.
+// Slugs verified against the colors table 2026-10-23.
+const POPULAR_PAIRS: [string, string][] = [
+  ["sherwin-williams/agreeable-gray-7029", "sherwin-williams/accessible-beige-7036"],
+  ["benjamin-moore/white-dove-oc-17", "sherwin-williams/alabaster-7008"],
+  ["sherwin-williams/repose-gray-7015", "sherwin-williams/agreeable-gray-7029"],
+  ["benjamin-moore/chantilly-lace-2121-70", "sherwin-williams/pure-white-7005"],
+  ["benjamin-moore/revere-pewter-hc-172", "benjamin-moore/edgecomb-gray-hc-173"],
+  ["benjamin-moore/hale-navy-hc-154", "sherwin-williams/naval-6244"],
+  ["sherwin-williams/iron-ore-7069", "sherwin-williams/tricorn-black-6258"],
+  ["benjamin-moore/simply-white-2143-70", "sherwin-williams/extra-white-7006"],
+  ["benjamin-moore/pale-oak-oc-20", "benjamin-moore/classic-gray-1548"],
+];
+
+async function loadPopularPairs() {
+  const bySlug = async (key: string) => {
+    const [brand, slug] = key.split("/");
+    return getColorBySlug(brand, slug);
+  };
+  const pairs = await Promise.all(POPULAR_PAIRS.map(async ([a, b]) => [await bySlug(a), await bySlug(b)] as const));
+  return pairs.filter((p): p is readonly [NonNullable<typeof p[0]>, NonNullable<typeof p[1]>] => Boolean(p[0] && p[1]));
+}
+
 export default async function ComparePage({ searchParams }: PageProps) {
   const { color1: color1Id, color2: color2Id } = await searchParams;
   const [color1, color2] = await Promise.all([
     color1Id ? getColorById(color1Id) : null,
     color2Id ? getColorById(color2Id) : null,
   ]);
+  const popularPairs = color1 && color2 ? [] : await loadPopularPairs();
 
   return (
     <div className="min-h-screen bg-surface">
@@ -70,6 +97,28 @@ export default async function ComparePage({ searchParams }: PageProps) {
       <section className="px-6 md:px-12 pb-16">
         <div className="max-w-7xl mx-auto">
           <CompareClient initialColor1={color1} initialColor2={color2} />
+          {popularPairs.length > 0 && (
+            <div className="mt-12">
+              <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface">Popular comparisons</h2>
+              <p className="mt-2 mb-6 text-sm text-on-surface-variant">Colors people often decide between. Open one to see the side-by-side verdict.</p>
+              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {popularPairs.map(([a, b]) => (
+                  <li key={`${a.id}-${b.id}`}>
+                    <Link href={`/compare?color1=${a.id}&color2=${b.id}`} className="flex items-center gap-3 rounded-xl border border-outline-variant/30 p-3 hover:shadow-md transition-all">
+                      <span className="flex shrink-0">
+                        <span className="h-10 w-10 rounded-l-lg border border-black/10" style={{ backgroundColor: a.hex }} />
+                        <span className="h-10 w-10 rounded-r-lg border border-l-0 border-black/10" style={{ backgroundColor: b.hex }} />
+                      </span>
+                      <span className="text-sm leading-tight">
+                        <span className="block font-semibold text-on-surface">{a.name} vs {b.name}</span>
+                        <span className="block text-xs text-on-surface-variant">{a.brand.name === b.brand.name ? a.brand.name : `${a.brand.name} vs ${b.brand.name}`}</span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
 

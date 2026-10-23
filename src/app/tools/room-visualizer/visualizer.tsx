@@ -134,6 +134,27 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
     setLoading(false);
   };
 
+  // Load real paint matches whenever the color settles, so every color a
+  // visitor tries comes with named paints to open. Before this, matches only
+  // appeared after the button, and most visitors left after one page.
+  useEffect(() => {
+    if (hexInput.length !== 6) return;
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/color-match?hex=${hexInput}`, { signal: controller.signal });
+        const data = await res.json();
+        setMatches(data.matches ?? []);
+      } catch {
+        // Aborted by a newer color, or offline: keep the current list.
+      }
+    }, 600);
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+  }, [hexInput]);
+
   const resetColors = () => {
     setColors(DEFAULT_COLORS);
     setHexInput(DEFAULT_COLORS[selected].replace("#", ""));

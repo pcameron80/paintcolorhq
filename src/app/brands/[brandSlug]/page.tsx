@@ -6,7 +6,9 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { BrandColorLibrary } from "@/components/brand-color-library";
-import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getColorsByBrandCount, getAllBrands } from "@/lib/queries";
+import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getColorsByBrandCount, getAllBrands, getCrossBrandMatches } from "@/lib/queries";
+import { PREMIUM_ALTERNATIVES } from "@/lib/premium-alternatives";
+import { closenessLabel } from "@/lib/closeness";
 import { getBrandContent } from "@/lib/brand-content";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { AdSenseScript } from "@/components/adsense-script";
@@ -121,6 +123,27 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
 
   if (page > Math.max(1, Math.ceil(filteredCount / perPage))) notFound();
 
+  // Premium brands: each well-known color with its nearest match in the
+  // brands most US stores carry. Page 1 only, unfiltered.
+  const premium = page === 1 && !family && !undertone ? PREMIUM_ALTERNATIVES[brandSlug] : undefined;
+  const alternatives = premium
+    ? await (async () => {
+        const order = new Map(premium.colorSlugs.map((s, i) => [s, i]));
+        const sourceColors = (await getColorsBySlugList(brandSlug, premium.colorSlugs))
+          .sort((a, b) => (order.get(a.slug) ?? 0) - (order.get(b.slug) ?? 0));
+        return Promise.all(sourceColors.map(async (c) => {
+          const matches = await getCrossBrandMatches(c.id);
+          const byTarget = premium.targets.map((t) => matches
+            .filter((m) => m.match_color.brand.slug === t)
+            .sort((a, b) => Number(a.delta_e_score) - Number(b.delta_e_score))[0]);
+          return { color: c, byTarget };
+        }));
+      })()
+    : [];
+  const alternativeTargets = premium
+    ? premium.targets.map((slug) => allBrands.find((b) => b.slug === slug)?.name ?? slug)
+    : [];
+
   // Cross-brand match targets: drive off MAJOR_MATCH_BRANDS (the canonical list
   // the /match routes + sitemap use) so every brand-pair listing has an internal
   // link. A stale hardcoded list previously orphaned dunn-edwards & farrow-ball.
@@ -212,8 +235,66 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
               </a>
             )}
           </div>
+          {matchTargets.length > 0 && (
+            <div className="mt-8 flex flex-wrap items-center gap-2 text-sm">
+              <span className="font-semibold text-on-surface-variant mr-1">Match {brand.name} to:</span>
+              {matchTargets.map((t) => (
+                <Link key={t.slug} href={`/match/${brandSlug}/to/${t.slug}`} className="rounded-full border border-outline-variant/40 px-3 py-1.5 font-semibold text-primary hover:bg-surface-container-low">
+                  {t.name}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
+
+      {alternatives.length > 0 && (
+        <section id="alternatives" className="pb-20 px-6 md:px-12 scroll-mt-20">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface">
+              Popular {brand.name} colors in other brands
+            </h2>
+            <p className="mt-2 mb-8 text-on-surface-variant max-w-3xl leading-relaxed">
+              The closest digital match to each color in {alternativeTargets.join(", ").replace(/, ([^,]*)$/, " and $1")}. Matches are calculated from color data, so confirm with a physical sample before you buy.
+            </p>
+            <div className="overflow-x-auto rounded-xl border border-outline-variant/20">
+              <table className="w-full min-w-[640px] text-sm">
+                <thead className="bg-surface-container-low text-left">
+                  <tr>
+                    <th className="p-3 font-headline">{brand.name}</th>
+                    {alternativeTargets.map((name) => <th key={name} className="p-3 font-headline">{name}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {alternatives.map(({ color: c, byTarget }) => (
+                    <tr key={c.id} className="border-t border-outline-variant/15">
+                      <td className="p-3">
+                        <Link href={`/colors/${brandSlug}/${c.slug}`} className="flex items-center gap-3 font-bold text-on-surface hover:text-primary">
+                          <span className="h-8 w-8 shrink-0 rounded-md border border-black/10" style={{ backgroundColor: c.hex }} />
+                          {c.name}
+                        </Link>
+                      </td>
+                      {byTarget.map((m, i) => (
+                        <td key={premium!.targets[i]} className="p-3">
+                          {m ? (
+                            <Link href={`/colors/${m.match_color.brand.slug}/${m.match_color.slug}`} className="flex items-center gap-3 hover:text-primary">
+                              <span className="h-8 w-8 shrink-0 rounded-md border border-black/10" style={{ backgroundColor: m.match_color.hex }} />
+                              <span>
+                                <span className="block font-semibold text-on-surface">{m.match_color.name}</span>
+                                <span className="block text-xs text-on-surface-variant">{closenessLabel(Number(m.delta_e_score))}</span>
+                              </span>
+                            </Link>
+                          ) : <span className="text-on-surface-variant">No close match</span>}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section id="colors" className="py-24 px-6 md:px-12 bg-surface-container-low scroll-mt-20">
         <div className="max-w-7xl mx-auto">
