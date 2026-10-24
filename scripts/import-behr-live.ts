@@ -107,7 +107,9 @@ async function main() {
       skippedExisting++;
       continue;
     }
-    const name = titleCaseName(c.name);
+    // titleCaseName is for ALL-CAPS feed names; a mixed-case name is already
+    // Behr's own styling (same guard as import-brand-scan.ts).
+    const name = c.name === c.name.toUpperCase() ? titleCaseName(c.name) : c.name;
     const slug = makeSlug(name, c.id);
     if (existingSlugs.has(slug)) {
       // Same name+number shape already in DB under a different/absent
