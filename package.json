@@ -28,6 +28,7 @@
     "research-colors": "tsx scripts/blog/research-colors.ts",
     "verify-links": "tsx scripts/blog/verify-links.ts",
     "audit-colors": "tsx scripts/blog/audit-color-facts.ts",
+    "check:blog-dates": "tsx scripts/blog/check-modified-dates.ts",
     "study-duplication": "tsx scripts/study-duplication.ts",
     "check-attribution": "tsx scripts/check-attribution.ts",
     "test:attribution": "node --import tsx --test src/lib/attribution.test.ts scripts/lib/attribution-check.test.ts",
