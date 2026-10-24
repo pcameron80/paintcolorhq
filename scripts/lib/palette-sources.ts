@@ -232,15 +232,17 @@ async function behr(): Promise<LiveColor[]> {
 // ---------------------------------------------------------------------------
 // Hirshfield's: the color picker on hirshfields.com is a Chameleon Power
 // iframe that loads static JSON. color-is-historic.json is the full retail
-// book (1,320 "Color Is" + 149 Historic H-codes).
+// book (1,320 "Color Is" + 149 Historic H-codes), LRV included.
 // ---------------------------------------------------------------------------
 
 async function hirshfields(): Promise<LiveColor[]> {
   const text = await getText('https://hirshfieldscolorpicker.chameleonpower.com/data/color-is-historic.json');
-  const data = JSON.parse(text.replace(/^\uFEFF/, '')) as { Master: { Sku: string; Name: string; HexaDecimal: string }[] };
+  const data = JSON.parse(text.replace(/^\uFEFF/, '')) as {
+    Master: { Sku: string; Name: string; HexaDecimal: string; LRV?: string }[];
+  };
   return assertCount(
     'hirshfields',
-    data.Master.map((x) => ({ code: x.Sku.trim(), name: x.Name.trim(), hex: `#${x.HexaDecimal}` })),
+    data.Master.map((x) => ({ code: x.Sku.trim(), name: x.Name.trim(), hex: `#${x.HexaDecimal}`, lrv: validLrv(x.LRV) })),
     1200,
   );
 }
@@ -248,7 +250,8 @@ async function hirshfields(): Promise<LiveColor[]> {
 // ---------------------------------------------------------------------------
 // Vista Paint: colors are WooCommerce products. The Store API lists code and
 // name; hex lives only in each color page's Elementor inline CSS, so this is
-// ~2,900 page fetches (about 15 minutes at 8 concurrent).
+// ~2,900 page fetches (about 15 minutes at 8 concurrent). The same page lists
+// the published LRV ("<b>LRV: </b>74").
 // ---------------------------------------------------------------------------
 
 const decodeEntities = (s: string) =>
@@ -274,10 +277,27 @@ async function vistaPaint(): Promise<LiveColor[]> {
     const hex = html.match(
       /id="elementor-frontend-inline-css">[\s\S]*?elementor-motion-effects-layer\{background-color:(#[0-9a-fA-F]{6})/,
     )?.[1];
-    return { code: x.sku.trim().toUpperCase(), name: decodeEntities(x.name).trim(), hex: hex ?? null };
+    const lrv = validLrv(html.match(/<b>LRV: <\/b>\s*(\d+(?:\.\d+)?)/)?.[1]);
+    return { code: x.sku.trim().toUpperCase(), name: decodeEntities(x.name).trim(), hex: hex ?? null, lrv };
   });
   return assertCount('vista-paint', parsed, 2400);
 }
+
+/**
+ * Behr pads some codes and not others, and the DB holds both forms for the
+ * same color ("PR-W05" next to "PR-W5", "PPU18-06" next to "PPU18-6"). The
+ * canonical form drops leading zeros from every number that follows a
+ * non-digit: PR-W05 -> PR-W5, PPU18-06 -> PPU18-6. 1850 and W-B-500 are
+ * unchanged.
+ */
+export const normalizeBehrCode = (c: string): string => c.trim().replace(/(^|\D)0+(?=\d)/g, '$1');
+
+/**
+ * The site writes "PPG1104-2"; most DB rows store "1104-2" (the June imports
+ * kept the prefix on 56 rows). Some pages carry a "COL" prefix the DB never
+ * stores.
+ */
+export const normalizePpgCode = (c: string): string => c.trim().replace(/^(PPG|COL)[\s-]*/i, '');
 
 const rgbHex = (r: number, g: number, b: number) =>
   '#' + [r, g, b].map((v) => v.toString(16).padStart(2, '0')).join('');
@@ -289,31 +309,50 @@ async function sitemapUrls(url: string, pattern: RegExp): Promise<string[]> {
 }
 
 // ---------------------------------------------------------------------------
-// PPG: ppgpaints.com is Webflow now (the June Algolia index is gone). The
-// sitemap lists every /ppg-colors/<slug> page; each page carries name, code
-// and R/G/B. Sitemap <loc>s point at mulco.ca but the paths serve on ppgpaints.com.
+// PPG: the brand is Pittsburgh Paints now. ppgpaints.com/sitemap.xml is an
+// HTML "PPG Paints is now Pittsburgh Paints" page (0 <loc>s), so the sitemap
+// and the color pages are read from pittsburghpaints.com. Each
+// /ppg-colors/<slug> page carries name and code in <title>
+// ("Aldabra - PPG14-28 Paint Color | PPG Paints"; Voice of Color codes have a
+// space: "Almond Wisp - 20YY 83/075 Paint Color") and R/G/B/LRV as bold labels.
 // ---------------------------------------------------------------------------
 
+/** Pure parser for one pittsburghpaints.com color page, exported for tests. */
+export function parsePpgPage(html: string): LiveColor | null {
+  const title = html.match(/<title>([^<]*)<\/title>/)?.[1];
+  // A few titles carry UTF-8 read as Windows-1252 ("Gigiâ€™s Golden Locket").
+  const clean = title && decodeEntities(title).replace(/â€[™˜]/g, "'").replace(/â€[œ\u009d]/g, '"');
+  const m = clean && clean.match(/^\s*(.+?)\s+-\s+(.+?)\s+Paint Color\s*\|/);
+  if (!m) return null;
+  const rgb = html.match(/<b>R:<\/b>\s*(\d+)\s*<b>G:<\/b>\s*(\d+)\s*<b>B:<\/b>\s*(\d+)/);
+  const lrv = validLrv(html.match(/<b>LRV:<\/b>\s*(\d+(?:\.\d+)?)/)?.[1]);
+  // Metallics (MTL###) publish no R/G/B; keep them with hex null so they are filtered, not lost.
+  return { code: m[2].trim(), name: m[1].trim(), hex: rgb ? rgbHex(+rgb[1], +rgb[2], +rgb[3]) : null, lrv };
+}
+
 async function ppg(): Promise<LiveColor[]> {
-  const urls = await sitemapUrls('https://www.ppgpaints.com/sitemap.xml', /\/ppg-colors\/[^/]+\/?$/);
-  const pages = urls.map((u) => `https://www.ppgpaints.com${new URL(u).pathname}`);
-  const parsed = await pool(pages, 8, async (url): Promise<LiveColor | null> => {
-    const html = await getText(url);
-    const name = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1]?.replace(/<[^>]+>/g, '').trim();
-    const code = html.match(/<\/h1><p[^>]*>([^<]*)<\/p>/)?.[1]?.trim();
-    const rgb = html.match(/<b>R:<\/b>\s*(\d+)\s*<b>G:<\/b>\s*(\d+)\s*<b>B:<\/b>\s*(\d+)/);
-    if (!name || !code) return null;
-    // Metallics (MTL###) publish no R/G/B; keep them with hex null so they are filtered, not lost.
-    return { code, name: decodeEntities(name), hex: rgb ? rgbHex(+rgb[1], +rgb[2], +rgb[3]) : null };
-  });
+  const pages = await sitemapUrls(
+    'https://www.pittsburghpaints.com/sitemap.xml',
+    // Top-level paths only: /mulco/... mirrors the same colors for the Canadian store.
+    /^https:\/\/www\.pittsburghpaints\.com\/ppg-colors\/[^/]+\/?$/,
+  );
+  if (pages.length < 2800) throw new Error(`ppg: sitemap lists ${pages.length} /ppg-colors/ pages, expected at least 2800`);
+  const parsed = await pool(pages, 8, async (url): Promise<LiveColor | null> => parsePpgPage(await getText(url)));
   return assertCount('ppg', parsed.filter((c): c is LiveColor => c !== null), 2800);
 }
 
 // ---------------------------------------------------------------------------
 // Dunn-Edwards: three WordPress color sitemaps list every color page; each
-// page has the code in og:title and the swatch on the hero. The site 503s
+// page has the code in og:title, the swatch on the hero and the published LRV
+// ("Light Reflectance Value: LRV 84" once tags are stripped). The site 503s
 // under load, so this runs 2 at a time with a pause (several minutes).
 // ---------------------------------------------------------------------------
+
+/** The published LRV on a Dunn-Edwards color page, exported for tests. */
+export function parseDunnEdwardsLrv(html: string): number | undefined {
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  return validLrv(text.match(/Light Reflectance Value:\s*LRV\s*(\d+(?:\.\d+)?)/)?.[1]);
+}
 
 async function dunnEdwards(): Promise<LiveColor[]> {
   const pages: string[] = [];
@@ -327,7 +366,7 @@ async function dunnEdwards(): Promise<LiveColor[]> {
     const hex = html.match(/color-detail-hero[^>]*style="background-color:\s*(#[0-9A-Fa-f]{6})/)?.[1]
       ?? html.match(/style="background-color:\s*(#[0-9A-Fa-f]{6})"[^>]*color-detail-hero/)?.[1];
     if (!name || !code) return null;
-    return { code, name: decodeEntities(name), hex: hex ?? null };
+    return { code, name: decodeEntities(name), hex: hex ?? null, lrv: parseDunnEdwardsLrv(html) };
   };
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const failed: string[] = [];
@@ -387,14 +426,14 @@ export const SOURCES: Record<string, PaletteSource> = {
     fetch: behr,
     // Spray-paint line (same ids the live-palette importer excludes).
     keep: (c) => !['6694', '6695', '6794', '6795'].includes(c.code) && !/\bGLOSS\b/i.test(c.name),
+    normalizeCode: normalizeBehrCode,
   },
   ppg: {
-    source: 'ppgpaints.com sitemap + /ppg-colors/ pages (R/G/B on page)',
+    source: 'pittsburghpaints.com sitemap + /ppg-colors/ pages (code in <title>, R/G/B/LRV on page)',
     fetch: ppg,
     // MTL metallics have no published hex; ST-/SOL- are stains, not wall paint.
     keep: (c) => !/^(MTL|ST-|SOL-)/i.test(c.code),
-    // The site writes "PPG1104-2"; most DB rows store "1104-2" (the June imports kept the prefix).
-    normalizeCode: (c) => c.replace(/^PPG\s*/i, ''),
+    normalizeCode: normalizePpgCode,
   },
   'dunn-edwards': {
     source: 'dunnedwards.com colors sitemaps + color pages',

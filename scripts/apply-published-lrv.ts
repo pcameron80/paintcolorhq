@@ -6,19 +6,31 @@
  * 004). scrape-bm-lrv.ts / scrape-behr-lrv.ts only overwrote rows off by 2+,
  * so ~1,250 Benjamin Moore rows stayed 1-2 points off the published value
  * (Hale Navy HC-154: 7.1 stored, 8.4 published). Brands whose feed carries
- * LRV: Benjamin Moore, Behr, Sherwin-Williams, Dutch Boy.
+ * LRV: Benjamin Moore, Behr, Sherwin-Williams, Dutch Boy, and since
+ * 2026-10-24 Dunn-Edwards, Hirshfield's, Vista Paint and PPG (all four read
+ * it off pages the scan already fetches).
  *
  * Scope: LRV only. Rows listed in <brand>-hex-changed.json are skipped;
  * apply-hex-corrections.ts owns those and sets their LRV with the hex.
  * LRV does not feed Delta E, so matches do not need recomputing.
  *
- * Matching: color_number, then alternate_numbers. A row whose name does not
- * match the feed entry's name is reported and skipped, never written.
+ * Matching: color_number, then alternate_numbers, both mapped through the
+ * brand's normalizeCode from scripts/lib/palette-sources.ts (Behr "PR-W05"
+ * and "PR-W5" are one code; PPG's "PPG1104-2" is our "1104-2"). Every DB row
+ * holding the code is updated, so duplicate rows stay in step. A row whose
+ * name does not match the feed entry's name is reported and skipped.
+ *
+ * Guards: a change under --min-diff (default 0.05) is not written. A change
+ * larger than --max-delta (default 10 points) is listed as an outlier for
+ * review and not written: a jump that size usually means the code points at
+ * a different color, not a corrected LRV.
  * Each write is conditional on the row's lrv still holding the value read,
  * so a concurrent edit is skipped rather than overwritten.
  *
  * Usage:
  *   tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/2026-10-11              # dry run
+ *   tsx scripts/apply-published-lrv.ts --scan-dir=... --brand=dunn-edwards --verbose        # every row, per-prefix tally
+ *   tsx scripts/apply-published-lrv.ts --scan-dir=... --min-diff=0.5 --max-delta=10         # thresholds
  *   tsx scripts/apply-published-lrv.ts --scan-dir=... --brand=benjamin-moore --apply       # writes, backup first
  *   tsx scripts/apply-published-lrv.ts --revert=scripts/data/backups/published-lrv-<ts>.json
  */
@@ -27,6 +39,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import { SOURCES } from './lib/palette-sources';
 
 // Env, scan dir and backups resolve from the working directory, so the script
 // can be run from the main checkout even when the file lives in a worktree.
@@ -38,6 +51,15 @@ const VERBOSE = process.argv.includes('--verbose');
 const scanDir = arg('scan-dir');
 const brandArg = arg('brand');
 const revertFile = arg('revert');
+const numArg = (name: string, dflt: number) => {
+  const v = arg(name);
+  if (v === undefined) return dflt;
+  const n = Number(v);
+  if (!Number.isFinite(n) || n < 0) throw new Error(`--${name} must be a non-negative number, got "${v}"`);
+  return n;
+};
+const MIN_DIFF = numArg('min-diff', 0.05);
+const MAX_DELTA = numArg('max-delta', 10);
 
 interface Row {
   id: string;
@@ -65,6 +87,8 @@ interface Update {
 const SKIP_CODES: Record<string, RegExp> = { 'benjamin-moore': /^PM-/ };
 
 const code = (s: string | null | undefined) => (s ?? '').trim().toUpperCase();
+// Leading letters of a code, for the per-prefix tally ("DET477" -> "DET", "0471" -> "#").
+const prefixOf = (c: string) => c.match(/^[A-Z]+/)?.[0] ?? '#';
 // Compare names loosely: case, punctuation, accents and trademark marks differ
 // between feed and DB without being different colors.
 const nameKey = (s: string) =>
@@ -152,24 +176,28 @@ async function main() {
     const live = JSON.parse(fs.readFileSync(liveFile, 'utf8')) as LiveColor[];
     if (!live.some((c) => c.lrv != null)) continue;
 
+    const normalize = SOURCES[b.slug]?.normalizeCode;
+    const key = (s: string | null | undefined) => code(normalize && s ? normalize(s) : s);
     const byCode = new Map<string, LiveColor>();
     // Some feeds encode a missing LRV as 0 (Sherwin-Williams 6995 Superwhite); no paint has a published LRV of 0.
     const skipCode = SKIP_CODES[b.slug];
     for (const c of live) {
-      if (c.lrv == null || c.lrv <= 0 || skipCode?.test(code(c.code)) || byCode.has(code(c.code))) continue;
-      byCode.set(code(c.code), c);
+      if (c.lrv == null || c.lrv <= 0 || skipCode?.test(code(c.code)) || byCode.has(key(c.code))) continue;
+      byCode.set(key(c.code), c);
     }
     const hexFile = path.join(dir, `${b.slug}-hex-changed.json`);
     const hexOwned = new Set(
       fs.existsSync(hexFile) ? (JSON.parse(fs.readFileSync(hexFile, 'utf8')) as { slug?: string }[]).map((h) => h.slug) : [],
     );
 
-    const tally = { rows: 0, matched: 0, hexOwned: 0, nameMismatch: 0, truncatedName: 0, same: 0, update: 0, over1: 0 };
+    const tally = { rows: 0, matched: 0, hexOwned: 0, nameMismatch: 0, truncatedName: 0, same: 0, update: 0, over1: 0, over3: 0, outlier: 0 };
     const mismatches: string[] = [];
+    const outliers: string[] = [];
+    const byPrefix = new Map<string, { update: number; over3: number; outlier: number; sumAbs: number }>();
     const brandUpdates: Update[] = [];
     for (const r of await loadBrandRows(supabase, b.id)) {
       tally.rows++;
-      const c = byCode.get(code(r.color_number)) ?? (r.alternate_numbers ?? []).map((a) => byCode.get(code(a))).find(Boolean);
+      const c = byCode.get(key(r.color_number)) ?? (r.alternate_numbers ?? []).map((a) => byCode.get(key(a))).find(Boolean);
       if (!c) continue;
       tally.matched++;
       if (hexOwned.has(r.slug)) { tally.hexOwned++; continue; }
@@ -183,12 +211,32 @@ async function main() {
       if (dbName !== feedName) tally.truncatedName++;
       const to = Math.round(c.lrv! * 10) / 10;
       const from = r.lrv == null ? null : Number(r.lrv);
-      if (from !== null && Math.abs(from - to) < 0.05) { tally.same++; continue; }
+      const delta = from === null ? null : Math.abs(from - to);
+      if (delta !== null && delta < Math.max(MIN_DIFF, 1e-9)) { tally.same++; continue; }
+      const p = byPrefix.get(prefixOf(key(r.color_number))) ?? { update: 0, over3: 0, outlier: 0, sumAbs: 0 };
+      byPrefix.set(prefixOf(key(r.color_number)), p);
+      if (delta !== null && delta > MAX_DELTA) {
+        tally.outlier++;
+        p.outlier++;
+        outliers.push(`${r.slug.padEnd(40)} ${r.color_number} "${r.name}": ${from} -> ${to} (feed ${c.code} "${c.name}")`);
+        continue;
+      }
       tally.update++;
-      if (from === null || Math.abs(from - to) >= 1) tally.over1++;
+      p.update++;
+      if (delta === null || delta >= 1) tally.over1++;
+      if (delta === null || delta >= 3) { tally.over3++; p.over3++; }
+      p.sumAbs += delta ?? 0;
       brandUpdates.push({ id: r.id, slug: r.slug, from, to });
     }
     console.log(`[${b.slug}]`, tally);
+    console.log('  by prefix (update / off by 3+ / outlier / mean shift):');
+    for (const [pre, p] of [...byPrefix].sort((x, y) => y[1].update - x[1].update)) {
+      console.log(`    ${pre.padEnd(6)} ${String(p.update).padStart(5)} ${String(p.over3).padStart(5)} ${String(p.outlier).padStart(4)}  ${p.update ? (p.sumAbs / p.update).toFixed(2) : '-'}`);
+    }
+    if (outliers.length) {
+      console.log(`  outliers over --max-delta=${MAX_DELTA} (not written; review by hand):`);
+      for (const o of outliers) console.log(`    ${o}`);
+    }
     if (mismatches.length) {
       console.log(`  name mismatches (skipped):`);
       for (const m of VERBOSE ? mismatches : mismatches.slice(0, 15)) console.log(`    ${m}`);
