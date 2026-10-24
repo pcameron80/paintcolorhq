@@ -418,7 +418,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         <section className="py-16 px-6 md:px-12 bg-surface">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-2">
-              Popular {brand.name} Colors
+              Well-Known {brand.name} Colors
             </h2>
             <p className="text-on-surface-variant mb-8">
               {popularColors.length} well-known {brand.name} colors, each with its hex code, LRV and closest matches in other brands.

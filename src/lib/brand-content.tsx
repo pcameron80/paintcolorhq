@@ -47,7 +47,7 @@ const content: Record<string, BrandContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Popular Sherwin-Williams Colors</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Explore Sherwin-Williams&apos; best-selling{" "}
+          Explore Sherwin-Williams&apos; well-known{" "}
           <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>,{" "}
           <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, and{" "}
           <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutrals</Link>.
@@ -144,7 +144,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/behr/cameo-white-mq3-32" className="text-brand-blue hover:underline">Cameo White MQ3-32</Link>,{" "}
           <Link href="/colors/behr/dolphin-fin-790c-3" className="text-brand-blue hover:underline">Dolphin Fin 790C-3</Link>, and{" "}
           <Link href="/colors/behr/whisper-white-hdc-md-08" className="text-brand-blue hover:underline">Whisper White HDC-MD-08</Link>.
-          These top sellers are overwhelmingly neutrals and greiges. Use Paint Color HQ&apos;s
+          These well-known picks are overwhelmingly neutrals and greiges. Use Paint Color HQ&apos;s
           CIEDE2000-based matching to find the closest Sherwin-Williams or Benjamin Moore equivalent
           for any Behr color, with plain-language closeness labels.
         </p>
@@ -199,7 +199,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/ppg/swirling-smoke-1007-2" className="text-brand-blue hover:underline">Swirling Smoke 1007-2</Link>,{" "}
           <Link href="/colors/ppg/stonehenge-greige-1024-5" className="text-brand-blue hover:underline">Stonehenge Greige 1024-5</Link>, and{" "}
           <Link href="/colors/ppg/olive-sprig-1125-4" className="text-brand-blue hover:underline">Olive Sprig 1125-4</Link>.
-          These top sellers reflect the brand&apos;s strength in versatile neutrals, warm greiges, and
+          These well-known picks reflect the brand&apos;s strength in versatile neutrals, warm greiges, and
           nature-inspired accent colors.
         </p>
         <p>
@@ -220,7 +220,7 @@ const content: Record<string, BrandContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Popular PPG Colors</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Explore PPG&apos;s best-selling{" "}
+          Explore PPG&apos;s well-known{" "}
           <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>,{" "}
           <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, and{" "}
           <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link>.
@@ -258,7 +258,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/valspar/notre-dame-5006-1b" className="text-brand-blue hover:underline">Notre Dame 5006-1B</Link>,{" "}
           <Link href="/colors/valspar/gray-silt-6002-1c" className="text-brand-blue hover:underline">Gray Silt 6002-1C</Link>, and{" "}
           <Link href="/colors/valspar/gravity-4005-1b" className="text-brand-blue hover:underline">Gravity 4005-1B</Link>.
-          These top sellers lean heavily toward warm neutrals, earthy tones, and calming greens —
+          These well-known picks lean heavily toward warm neutrals, earthy tones, and calming greens —
           reflecting current design trends.
         </p>
         <p>
