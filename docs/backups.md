@@ -9,6 +9,8 @@ PaintColorHQ has two off-platform backup jobs. Both copy data to the NAS (Tower,
 
 The reason for both: Supabase keeps 7 daily snapshots, with point-in-time recovery off. They cannot be downloaded and are lost if the project or the account goes. Data errors on this project have shown up weeks after the write that caused them, so a 7-day window is too short. The self-hosted Plausible stack had no backup at all.
 
+ClickHouse's stock config in the Plausible image already allows file backups (`<backups><allowed_path>backups</allowed_path></backups>` in `/etc/clickhouse-server/config.xml`, checked on Tower 2026-10-24), so no extra ClickHouse config is needed.
+
 ## Supabase snapshot
 
 Script: `scripts/backup-db-snapshot.ts`. It only reads from Supabase, using the service role key so the RLS-only tables are visible.

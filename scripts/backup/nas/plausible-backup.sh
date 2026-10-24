@@ -19,7 +19,9 @@
 # Not backed up here: ce/.env (SECRET_KEY_BASE, TOTP_VAULT_KEY). Keep a copy of it
 # somewhere safe yourself; a restored plausible_db without the same TOTP_VAULT_KEY
 # cannot decrypt 2FA secrets.
-set -euo pipefail
+# -E so the ERR trap also fires inside functions and subshells (ch_q, psql_q,
+# the sha256sum subshell); without it a failed BACKUP exits silently.
+set -Eeuo pipefail
 
 CH_DATA=/mnt/user/appdata/plausible/data/clickhouse
 DEST=/mnt/user/backups/plausible
@@ -39,6 +41,9 @@ dir="$DEST/$stamp"
 ch_zip="pchq-backup-$stamp.zip"
 
 rdb=""
+# Set once the local backup (and any restore test) has passed. A failure after
+# that point, such as the Drive copy, keeps the good local folder.
+local_ok=0
 fail() {
   trap - ERR
   # Never leave a scratch restore behind (only restore_check_* names are ever dropped).
@@ -49,7 +54,11 @@ fail() {
   # No backup zip may be left inside appdata, and a failed run's folder is renamed
   # so it never counts as one of the 14 good copies.
   rm -f "$CH_DATA/backups/$ch_zip"
-  [ -d "$dir" ] && mv "$dir" "$dir.failed" 2>/dev/null || true
+  if [ "$local_ok" != "1" ]; then
+    [ -d "$dir" ] && mv "$dir" "$dir.failed" 2>/dev/null || true
+  fi
+  # Keep only the 3 newest failed folders so repeated failures cannot fill the share.
+  ls -1d "$DEST"/*.failed 2>/dev/null | sort | head -n -3 | xargs -r rm -rf -- || true
   logger -t plausible-backup "FAILED: $1"
   /usr/local/emhttp/webGui/scripts/notify -e "Plausible backup" -s "Plausible backup failed" -d "$1" -i alert >/dev/null 2>&1 || true
   exit 1
@@ -114,17 +123,19 @@ if [ "$(date +%u)" = "7" ] || [ "${FORCE_RESTORE_TEST:-}" = "1" ]; then
   } > "$dir/restore-test.txt"
 fi
 
+local_ok=1
+
 # Keep the newest 14 nightly folders (by name, so a missed night never deletes early).
 ls -1d "$DEST"/20*Z 2>/dev/null | sort | head -n -"$KEEP_LOCAL_DAYS" | xargs -r rm -rf --
 
-if [ -f "$RCLONE_CONF" ] && rclone --config "$RCLONE_CONF" listremotes | grep -qx 'gdrive:'; then
+if [ -f "$RCLONE_CONF" ] && rclone --config "$RCLONE_CONF" listremotes | grep -x 'gdrive:' >/dev/null; then
   rclone --config "$RCLONE_CONF" copy "$dir" "$REMOTE/$stamp" --quiet
   rclone --config "$RCLONE_CONF" check "$dir" "$REMOTE/$stamp" --one-way --quiet || fail "Drive copy of $stamp does not match the local backup"
   rclone --config "$RCLONE_CONF" delete "$REMOTE" --min-age "${KEEP_REMOTE_DAYS}d" --quiet || true
   rclone --config "$RCLONE_CONF" rmdirs "$REMOTE" --leave-root --quiet || true
   remote_note="copied to Drive"
 else
-  fail "rclone remote gdrive: not configured; backup is local only"
+  fail "rclone remote gdrive: not configured; local backup $stamp kept, Drive copy skipped"
 fi
 
 logger -t plausible-backup "OK $stamp pg [$live_pg] ch [$live_ch] ($remote_note)"
