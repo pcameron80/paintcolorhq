@@ -107,6 +107,8 @@ docs/research/
 # Validated sitemap snapshot generated before dev/build
 /src/generated/sitemap.json
 /src/generated/sitemap.json.tmp
+/src/generated/match-sitemap-pairs.json
+/src/generated/match-sitemap-pairs.json.tmp
 
 # DB row backups from one-off fix scripts (local only, never commit)
 scripts/backups/
