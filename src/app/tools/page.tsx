@@ -7,7 +7,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 export const metadata: Metadata = {
   title: "Free Paint Color Tools — Visualizer & Calculator",
   description:
-    "Free paint tools: hex to paint color matcher, LRV finder, palette generator, room visualizer, photo color identifier and paint calculator, across all major brands.",
+    "Free paint tools: hex to paint matcher, LRV finder, palette generator, room visualizer, photo color identifier and paint calculator for all major brands.",
   alternates: { canonical: "https://www.paintcolorhq.com/tools" },
 };
 

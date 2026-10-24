@@ -19,6 +19,11 @@ export const LRV_FINDER_BRANDS = [
 ] as const;
 
 export const LRV_FINDER_LIMIT = 60;
+// Over-fetch so rows that repeat a color already shown can be dropped and the
+// page still fills 60 cards. Behr carries the same color under several codes
+// (Ultra Pure White appears as W-B-500, PR-W15, UPW and 1850; GR-W5 and GR-W05)
+// until the dedupe tooling retires the extras.
+const FETCH_LIMIT = LRV_FINDER_LIMIT + 40;
 
 export interface LrvFilters {
   brand: string | null; // one of LRV_FINDER_BRANDS, or null for all four
@@ -111,7 +116,7 @@ export async function findColorsByLrv(filters: LrvFilters): Promise<LrvFinderRes
       .order("lrv", { ascending: filters.sort === "low" })
       .order("name")
       .order("id")
-      .limit(LRV_FINDER_LIMIT);
+      .limit(FETCH_LIMIT);
   };
 
   let sourceKnown = !lrvSourceMissing;
@@ -123,7 +128,7 @@ export async function findColorsByLrv(filters: LrvFilters): Promise<LrvFinderRes
   }
   if (error) throw error;
 
-  const colors = ((data ?? []) as unknown as Row[]).map((r): LrvFinderColor => {
+  const all = ((data ?? []) as unknown as Row[]).map((r): LrvFinderColor => {
     const brand = Array.isArray(r.brand) ? r.brand[0] : r.brand;
     const src = r.lrv_source === "manufacturer" || r.lrv_source === "computed" ? r.lrv_source : null;
     return {
@@ -139,6 +144,18 @@ export async function findColorsByLrv(filters: LrvFilters): Promise<LrvFinderRes
       brandSlug: brand?.slug ?? "",
     };
   });
+
+  // Same brand, same name, same hex: one card. The first row wins, which is
+  // the highest (or lowest) LRV in the requested order.
+  const seen = new Set<string>();
+  const colors: LrvFinderColor[] = [];
+  for (const c of all) {
+    const key = `${c.brandSlug}|${c.name.trim().toLowerCase()}|${c.hex.toLowerCase()}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    colors.push(c);
+    if (colors.length === LRV_FINDER_LIMIT) break;
+  }
 
   return { colors, total: count ?? colors.length, sourceKnown };
 }

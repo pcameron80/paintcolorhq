@@ -48,7 +48,7 @@ const FAQ = [
   },
   {
     q: "Why is there no exact paint match for my hex code?",
-    a: "A hex code can describe about 16.7 million colors, and each paint brand sells a few hundred to a few thousand. Most screen colors fall between two paint chips. The closeness label tells you how far off the nearest one is: Nearly identical means the difference is hard to spot side by side, Very similar means close but noticeable side by side, and Visible difference means the brand has nothing close.",
+    a: "A hex code can describe about 16.7 million colors, and each paint brand sells a few hundred to several thousand. Most screen colors fall between two paint chips. The closeness label tells you how far off the nearest one is: Nearly identical means the difference is hard to spot side by side, Very similar means close but noticeable side by side, and Visible difference means the brand has nothing close.",
   },
   {
     q: "Does the paint look the same as the hex color on my screen?",
