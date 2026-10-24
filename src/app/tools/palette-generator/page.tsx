@@ -7,14 +7,19 @@ import { PaletteGenerator } from "./generator";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
+import { ogDefaults } from "@/lib/og";
+import { BRAND_COUNT, moreBrands } from "@/lib/site-facts";
+
+const TITLE = "Paint Color Palette Generator - Build a Coordinated Color Scheme";
+const DESCRIPTION =
+  `Generate coordinated paint palettes from any starting color. Walls, Trim, Accent, and Pop roles matched to Sherwin-Williams, Benjamin Moore, Behr, and ${moreBrands(3)} more.`;
+const URL = "https://www.paintcolorhq.com/tools/palette-generator";
 
 export const metadata: Metadata = {
-  title: "Paint Color Palette Generator - Build a Coordinated Color Scheme",
-  description:
-    "Generate coordinated paint palettes from any starting color. Walls, Trim, Accent, and Pop roles matched to Sherwin-Williams, Benjamin Moore, Behr, and 11 more.",
-  alternates: {
-    canonical: "https://www.paintcolorhq.com/tools/palette-generator",
-  },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: URL },
+  openGraph: { ...ogDefaults, title: TITLE, description: DESCRIPTION, url: URL },
 };
 
 // JSON-LD helper - all content is server-generated from trusted static values
@@ -37,7 +42,7 @@ export default function PaletteGeneratorPage() {
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: [
           { "@type": "Question", name: "What color harmony types does the palette generator use?", acceptedAnswer: { "@type": "Answer", text: "The palette generator creates five schemes based on proven color harmony principles: complementary (opposite colors on the wheel), analogous (adjacent colors), triadic (three evenly spaced colors), split-complementary (base color plus two colors adjacent to its complement), and monochromatic (shades of a single hue)." } },
-          { "@type": "Question", name: "Are the palette colors matched to real paint?", acceptedAnswer: { "@type": "Answer", text: "Yes. Every color in every palette is matched to a real paint color you can buy from our database of over 26,000 colors across 14 major brands including Sherwin-Williams, Benjamin Moore, Behr, Valspar, and PPG. You can also filter results to a single brand." } },
+          { "@type": "Question", name: "Are the palette colors matched to real paint?", acceptedAnswer: { "@type": "Answer", text: `Yes. Every color in every palette is matched to a real paint color you can buy from our database of over 26,000 colors across ${BRAND_COUNT} major brands including Sherwin-Williams, Benjamin Moore, Behr, Valspar, and PPG. You can also filter results to a single brand.` } },
           { "@type": "Question", name: "What are the palette roles?", acceptedAnswer: { "@type": "Answer", text: "Each palette assigns colors to four room roles: Walls (the main color covering the most area), Trim (baseboards, crown molding, door frames), Accent (a feature wall or large furniture piece), and Pop (used sparingly on throw pillows, art, or statement pieces for energy)." } },
           { "@type": "Question", name: "How do I use a generated palette in a real room?", acceptedAnswer: { "@type": "Answer", text: "Give each color a job using the 60-30-10 rule: the Walls color covers about 60 percent of the room as the dominant surface, the Trim and Accent colors carry roughly 30 percent on woodwork and a feature wall, and the Pop color appears in about 10 percent on pillows, art, or a single door. Send any scheme to the room visualizer to preview those proportions on a real room photo before you paint." } },
           { "@type": "Question", name: "What makes the colors in a palette go together?", acceptedAnswer: { "@type": "Answer", text: "Two things: a color-wheel relationship (warm, cool, high-contrast complementary, close analogous neighbors, or grounded earth tones) that sets the overall direction, and consistent undertones so the colors don't quietly clash. A palette reads as settled when its colors share an undertone family — warm with warm, cool with cool — or use a contrast you chose on purpose. Confirm the final combination with physical samples in your own light before buying." } },

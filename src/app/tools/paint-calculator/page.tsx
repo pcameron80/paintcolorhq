@@ -6,6 +6,8 @@ import { PaintCalculator } from "./calculator";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { getAmazonSearchUrl } from "@/lib/affiliate";
+import { ogDefaults } from "@/lib/og";
+import { moreBrands } from "@/lib/site-facts";
 
 /** Inline Amazon link for the guide prose — sponsored, opens in a new tab. */
 function AmazonLink({ query, children }: { query: string; children: React.ReactNode }) {
@@ -21,13 +23,16 @@ function AmazonLink({ query, children }: { query: string; children: React.ReactN
   );
 }
 
+const TITLE = "Paint Calculator - How Much Paint Do I Need?";
+const DESCRIPTION =
+  `Calculate paint for Sherwin-Williams, Benjamin Moore, Behr, PPG, and ${moreBrands(4)} more brands. Enter room dimensions, subtract doors and windows, get gallons needed.`;
+const URL = "https://www.paintcolorhq.com/tools/paint-calculator";
+
 export const metadata: Metadata = {
-  title: "Paint Calculator - How Much Paint Do I Need?",
-  description:
-    "Calculate paint for Sherwin-Williams, Benjamin Moore, Behr, PPG, and 10 more brands. Enter room dimensions, subtract doors and windows, get gallons needed.",
-  alternates: {
-    canonical: "https://www.paintcolorhq.com/tools/paint-calculator",
-  },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: URL },
+  openGraph: { ...ogDefaults, title: TITLE, description: DESCRIPTION, url: URL },
 };
 
 // JSON-LD helper - all content is server-generated from trusted static values

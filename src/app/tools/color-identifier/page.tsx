@@ -6,14 +6,19 @@ import { ColorIdentifier } from "./identifier";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
+import { ogDefaults } from "@/lib/og";
+import { BRAND_COUNT } from "@/lib/site-facts";
+
+const TITLE = `Photo Color Identifier: Match to ${BRAND_COUNT} Brands`;
+const DESCRIPTION =
+  "Upload a photo and click any spot to find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Free, instant, cross-brand results.";
+const URL = "https://www.paintcolorhq.com/tools/color-identifier";
 
 export const metadata: Metadata = {
-  title: "Photo Color Identifier: Match to 13 Brands",
-  description:
-    "Upload a photo and click any spot to find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Free, instant, cross-brand results.",
-  alternates: {
-    canonical: "https://www.paintcolorhq.com/tools/color-identifier",
-  },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: URL },
+  openGraph: { ...ogDefaults, title: TITLE, description: DESCRIPTION, url: URL },
 };
 
 // JSON-LD helper - all content is server-generated from trusted static values
@@ -253,7 +258,7 @@ export default function ColorIdentifierPage() {
                   Palette Generator
                 </Link>{" "}
                 to create coordinating schemes from your identified color
-                across all 13 supported brands.
+                across all {BRAND_COUNT} supported brands.
               </li>
             </ol>
           </div>
