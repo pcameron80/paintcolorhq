@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
+import { capText, normalizeHex } from "@/lib/og-params";
 
 export const runtime = "edge";
 
@@ -15,12 +16,32 @@ export const runtime = "edge";
  *   title (required), excerpt, cover (URL relative to site, e.g.
  *   /blog/foo.webp), color (fallback hex), tag (optional eyebrow extra)
  */
+const SITE = "https://www.paintcolorhq.com";
+const COVER_PATH_RE = /^\/blog\/[a-z0-9-]+\.(webp|jpe?g|png)$/;
+
+// Only our own blog covers may be drawn under PaintColorHQ branding. Accepts a
+// site-relative path ("/blog/foo.webp") or the same path as an absolute
+// https://www.paintcolorhq.com URL (the Pinterest guide lane sends that form).
+// Anything else, including userinfo tricks and other hosts, falls back to the
+// color block.
+function safeCoverPath(raw: string | null): string | null {
+  if (!raw) return null;
+  let url: URL;
+  try {
+    url = new URL(raw, SITE);
+  } catch {
+    return null;
+  }
+  if (url.origin !== SITE || url.username || url.password || url.search || url.hash) return null;
+  return COVER_PATH_RE.test(url.pathname) ? url.pathname : null;
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-  const title = searchParams.get("title") || "Paint Color Guide";
+  const title = capText(searchParams.get("title"), 200) || "Paint Color Guide";
   const cover = searchParams.get("cover");
-  const fallbackColor = searchParams.get("color") || "#e5e7eb";
-  const tag = searchParams.get("tag") || "";
+  const fallbackColor = normalizeHex(searchParams.get("color")) ?? "#e5e7eb";
+  const tag = capText(searchParams.get("tag"), 30);
 
   // Output size. Default is the Pinterest 2:3 (1000×1500). Instagram's feed only
   // accepts 4:5–1.91:1, so the IG drip requests ?ar=4:5 (1080×1350). The layout
@@ -33,12 +54,8 @@ export async function GET(request: NextRequest) {
   // not WebP. Cover images on disk are WebP for site performance — convert
   // the path to the JPG sibling for pin generation. Both formats are
   // shipped in /public/blog/ via scripts/convert-blog-covers-to-jpg.mjs.
-  const coverPath = cover ? cover.replace(/\.webp$/i, ".jpg") : null;
-  const coverUrl = coverPath
-    ? coverPath.startsWith("http")
-      ? coverPath
-      : `https://www.paintcolorhq.com${coverPath}`
-    : null;
+  const coverPath = safeCoverPath(cover);
+  const coverUrl = coverPath ? `${SITE}${coverPath.replace(/\.webp$/i, ".jpg")}` : null;
 
   return new ImageResponse(
     (

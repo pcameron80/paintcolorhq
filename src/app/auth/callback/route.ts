@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { safeNext } from "@/lib/safe-next";
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = request.nextUrl;
   const code = searchParams.get("code");
-  const next = searchParams.get("next") ?? "/dashboard";
+  const next = safeNext(searchParams.get("next"), origin, "/dashboard");
 
   if (code) {
-    const response = NextResponse.redirect(`${origin}${next}`);
+    const response = NextResponse.redirect(new URL(next, origin));
 
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
