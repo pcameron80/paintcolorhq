@@ -21,6 +21,8 @@ const CASES: { name: string; hex: string; stored: string; want: string }[] = [
   { name: "Lime Chiffon", hex: "#eee4ba", stored: "yellow", want: "yellow" },
   // Guard for rule (g): a pale mauve-pink stays pink, not beige.
   { name: "Rose Glow", hex: "#e4cfdc", stored: "pink", want: "pink" },
+  { name: "Abalone Shell", hex: "#dbc7bd", stored: "orange", want: "beige" },
+  { name: "Wisp of Mauve", hex: "#d9c7be", stored: "orange", want: "beige" },
 ];
 
 function rgb(hex: string) {

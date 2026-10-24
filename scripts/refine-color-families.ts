@@ -52,16 +52,31 @@ async function fetchAll(): Promise<Row[]> {
   return rows;
 }
 
-async function writeFamilies(updates: { id: string; family: string }[]): Promise<number> {
+// Each write only lands if the row still holds the family that was read, so an
+// importer or another script editing the row in between is never overwritten.
+async function writeFamilies(updates: { id: string; family: string; expected: string }[]): Promise<number> {
   const supabase = getSupabase();
   let written = 0;
+  const stale: string[] = [];
   for (const u of updates) {
-    const { data, error } = await supabase.from("colors").update({ color_family: u.family }).eq("id", u.id).select("id");
+    const { data, error } = await supabase
+      .from("colors")
+      .update({ color_family: u.family })
+      .eq("id", u.id)
+      .eq("color_family", u.expected)
+      .select("id");
     if (error) throw error;
-    written += data?.length ?? 0;
+    if (data?.length) written += data.length;
+    else stale.push(u.id);
   }
+  if (stale.length) console.warn(`Skipped ${stale.length} rows that changed since they were read: ${stale.slice(0, 10).join(", ")}${stale.length > 10 ? " ..." : ""}`);
   return written;
 }
+
+// Family is in the color-page title and meta of the title test's control arm
+// (src/lib/title-test.ts), which reads on 2026-11-03. Writing earlier would
+// change titles in one arm only.
+const APPLY_NOT_BEFORE = "2026-11-04";
 
 function argValues(args: string[], flag: string): string[] {
   const out: string[] = [];
@@ -101,7 +116,7 @@ async function main() {
 
   if (args[0] === "--revert") {
     const backup: Change[] = JSON.parse(readFileSync(args[1], "utf8"));
-    const written = await writeFamilies(backup.map((c) => ({ id: c.id, family: c.old })));
+    const written = await writeFamilies(backup.map((c) => ({ id: c.id, family: c.old, expected: c.next })));
     console.log(`Reverted ${written} of ${backup.length} rows.`);
     return;
   }
@@ -184,12 +199,17 @@ async function main() {
     return;
   }
 
+  if (new Date().toISOString().slice(0, 10) < APPLY_NOT_BEFORE) {
+    console.error(`Refusing --apply before ${APPLY_NOT_BEFORE}: the color-page title test reads 2026-11-03.`);
+    process.exit(1);
+  }
+
   mkdirSync("scripts/data/backups", { recursive: true });
   const backupPath = `scripts/data/backups/color-family-${new Date().toISOString().replace(/[:.]/g, "-")}.json`;
   writeFileSync(backupPath, JSON.stringify(changes, null, 1));
   console.log(`\nBackup written to ${backupPath}`);
 
-  const written = await writeFamilies(changes.map((c) => ({ id: c.id, family: c.next })));
+  const written = await writeFamilies(changes.map((c) => ({ id: c.id, family: c.next, expected: c.old })));
   console.log(`Updated ${written} of ${changes.length} rows.`);
   if (written !== changes.length) process.exitCode = 1;
 }

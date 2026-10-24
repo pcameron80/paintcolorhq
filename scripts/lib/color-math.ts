@@ -129,6 +129,10 @@ export function refineColorFamily(family: string, r: number, g: number, b: numbe
     // ~340, must not land in beige).
     if ((f === 'red' || f === 'orange' || f === 'pink') && l >= 80 && c < 12) {
       if (warm) return l >= 88 ? 'off-white' : 'beige';
+      // Orange-labeled colors at hue 35-55 are peach-beiges (Abalone Shell,
+      // Wisp of Mauve), not pinks; pink is kept for red/pink labels and for
+      // the true red and mauve hues.
+      if (f === 'orange' && h >= 35 && h < 55) return l >= 88 ? 'off-white' : 'beige';
       if (h < 55 || h >= 300) return 'pink';
     }
     // (e) Tans and khakis: warm and muted reads as beige when light and
