@@ -3,3 +3,12 @@ scripts/*
 !scripts/build-match-data.ts
 
 !scripts/build-sitemap-data.ts
+
+# build-match-data's helper, frozen list and snapshots
+!scripts/lib/
+scripts/lib/*
+!scripts/lib/frozen-match.ts
+!scripts/data/
+scripts/data/*
+!scripts/data/frozen-match-sources.json
+!scripts/data/frozen-match/
