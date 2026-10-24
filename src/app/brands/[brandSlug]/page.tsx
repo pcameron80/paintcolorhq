@@ -264,7 +264,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
                       </td>
                       {byTarget.map((m, i) => (
                         <td key={premium!.targets[i]} className="inline-block w-1/3 p-3 align-top md:table-cell md:w-auto md:align-middle">
-                          <span className="mb-1.5 block text-[11px] font-semibold leading-tight text-on-surface-variant md:hidden">{alternativeTargets[i]}</span>
+                          <span className="mb-1.5 block min-h-7 text-[11px] font-semibold leading-tight text-on-surface-variant md:hidden">{alternativeTargets[i]}</span>
                           {m ? (
                             <Link href={`/colors/${m.match_color.brand.slug}/${m.match_color.slug}`} className="flex flex-col items-start gap-1.5 hover:text-primary md:flex-row md:items-center md:gap-3">
                               <span className="h-8 w-8 shrink-0 rounded-md border border-black/10" style={{ backgroundColor: m.match_color.hex }} />
