@@ -130,31 +130,15 @@ Blog posts additionally set:
 
 Set via root layout: `twitter:card` = "summary_large_image"
 
-## Algorithmic Color Descriptions
+## Color page text (data-derived only)
 
-Each of the 25,000+ color pages gets a unique 2-4 sentence description generated at render time by `src/lib/color-description.ts`. Since pages use ISR, the description is computed once and cached for an hour. No database column or batch script is needed.
+Color pages carry no templated prose. `src/lib/color-description.ts` exports three helpers, all composed from the color's own data:
 
-### How It Works
+- `generateMetaDescription(color)` - the `<meta name="description">`: brand, name, number, family (or a hue name from the hex when the family is missing), LRV and undertone, then the cross-brand compare line. Max 160 characters. Color-page meta is frozen under the title test (`src/lib/title-test.ts`), so any change here must leave its output byte-identical.
+- `generateColorLede(color, matches)` - the one-paragraph lede below the hero: family, hex, LRV, undertone and the single nearest cross-brand match, with closeness in words via `closenessLabel()`.
+- `nearestMatchesPerBrand(matches)` - one nearest match per brand, best first, for the "in every brand" matrix.
 
-- **Deterministic hash**: `hashHex(hex)` produces a 32-bit integer (djb2). A `pick(items, hash, salt)` helper selects from template arrays — same hex always produces the same description (ISR-safe).
-- **Derived properties**: Temperature (warm/cool/neutral), lightness (very light → dark), saturation (muted → vibrant), and undertone (golden/pink/green/blue/violet/balanced) are computed from LAB, HSL, and LRV data.
-- **Achromatic handling**: When saturation < 8% (whites, grays, blacks), hue language is skipped and separate templates emphasize warmth/coolness, LRV, and versatility.
-
-### Sentence Generators
-
-1. **Character statement** (always) — What the color looks/feels like. 15 template frames with synonym pools.
-2. **Room/usage suggestion** (always) — Contextual recommendation branching on lightness + saturation + temperature. Includes LRV data.
-3. **Cross-brand match** (when matches with delta_e < 5 exist) — Mentions 1-2 closest matches. Inherently unique per color.
-4. **Optional extra detail** (~40% of colors) — Extreme LRV commentary, coordination tips.
-
-### Exports
-
-- `generateColorDescription(color, matches)` — 2-4 sentences for the page body (rendered as a `<p>` between the color hero and ComplementaryColors)
-- `generateMetaDescription(color)` — Single sentence, max 160 chars, for the `<meta name="description">` tag
-
-### Example Output
-
-> Agreeable Gray is a light, warm gray with subtle violet-brown undertones that give it a soft, approachable quality. With an LRV of 60, it reflects a comfortable amount of light, making it a versatile whole-home neutral for living rooms, bedrooms, and hallways. The closest match from Benjamin Moore is Revere Pewter, with only a slight difference visible side by side.
+The sentence-bank generators that used to live in this file (`generateColorDescription`, `generateEditorialVerdict` and their per-family pairing, lighting and "skip it if" sentences) were deleted on 2026-10-24. None was rendered any more, and the same sentence repeated across thousands of color pages is the near-duplicate pattern the March 2026 suppression punished. Do not reintroduce them. Per-color text has to come from per-color data or from hand-written editorial (`src/lib/color-editorial.tsx`).
 
 ## Structured Data (JSON-LD)
 

@@ -66,9 +66,11 @@ export async function findColorMatches(
   const { r, g, b } = hexToRgb(normalizedHex);
   const inputLab = rgbToLab(r, g, b);
 
-  // Over-fetch a candidate pool so the exact ΔE2000 top-N is guaranteed within the
-  // ΔE76-ranked pool, then refine. 6× the requested count (min 200, cap 500) is
-  // ample — ΔE76 and ΔE2000 rank near-identical colors the same way.
+  // Over-fetch a ΔE76-ranked candidate pool, then re-rank it by exact ΔE2000.
+  // This is a heuristic, not a guarantee: the two metrics usually agree on the
+  // closest colors, but a color ΔE2000 ranks in the top N can sit outside the
+  // ΔE76 pool, because ΔE2000 weights hue and chroma differently. 6× the
+  // requested count (min 200, cap 500) makes that rare; it does not rule it out.
   const poolSize = Math.min(Math.max(limit * 6, 200), 500);
 
   // Omit in_brand entirely when unfiltered so the SQL DEFAULT (NULL) applies. Over
