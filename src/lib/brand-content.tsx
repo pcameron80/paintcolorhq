@@ -517,19 +517,20 @@ const content: Record<string, BrandContent> = {
   },
 
   colorhouse: {
-    subtitle: "Explore Colorhouse's eco-friendly palette — with matches from all 13 brands",
+    subtitle: "Explore the Colorhouse palette, with matches from 12 other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Colorhouse is a woman-owned, eco-friendly paint company founded in 2005 in Portland, Oregon.
-          Their paints are zero-VOC, low-odor, and free of reproductive toxins and chemical solvents —
-          making them an excellent choice for nurseries, bedrooms, and homes with children or pets.
-          Colorhouse paints are sold online and through select retailers.
+          Their paints are zero-VOC, low-odor, and free of reproductive toxins and chemical solvents,
+          which makes them a good fit for nurseries, bedrooms, and homes with children or pets.
+          Colorhouse&apos;s website has been offline since at least October 2026, so we can&apos;t point
+          you to a place to buy these colors. Each color page lists the closest current colors from
+          other brands.
         </p>
         <p>
           Their artist-crafted palette is organized into unique thematic families like Air, Stone,
-          Clay, Leaf, Water, and Petal. Available in Flat, Eggshell, and Semi-Gloss sheens. Price
-          range: $36–$50 per gallon.
+          Clay, Leaf, Water, and Petal. Available in Flat, Eggshell, and Semi-Gloss sheens.
         </p>
       </div>
     ),
@@ -538,7 +539,7 @@ const content: Record<string, BrandContent> = {
         <h2 className="text-lg font-semibold text-gray-900">Colorhouse Cross-Brand Matching</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
           Love a Colorhouse shade but want to compare options? Click any color below to see the
-          closest matches from all 13 brands in our database. For nursery-safe color ideas, see our{" "}
+          closest matches from the other 12 brands in our database. For nursery-safe color ideas, see our{" "}
           <Link href="/blog/best-nursery-paint-colors" className="text-brand-blue hover:underline">
             nursery paint colors guide
           </Link>.
