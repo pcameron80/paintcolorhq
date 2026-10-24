@@ -4,7 +4,9 @@ import { useState, useCallback, useEffect, useId } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
-import { trackToolEngagement } from "@/lib/analytics";
+import { trackToolEngagement, trackEvent } from "@/lib/analytics";
+import { TrackedLink } from "@/components/tracked-link";
+import { CopyLinkButton } from "@/components/copy-link-button";
 import { RetiredChip } from "@/components/retired-chip";
 import type { ColorAvailability } from "@/lib/types";
 
@@ -216,9 +218,19 @@ export function PaletteGenerator({ brands }: { brands: FilterBrand[] }) {
     return "#5B8C5A";
   })();
 
+  // ?brand= reopens a shared link on the same filter. Unknown slugs fall
+  // back to all brands rather than a filter with no colors.
+  const initialBrand = (() => {
+    const param = searchParams.get("brand");
+    return param && brands.some((b) => b.slug === param) ? param : "";
+  })();
+
   const [inputHex, setInputHex] = useState(initialHex);
   const [hexText, setHexText] = useState(initialHex);
-  const [brandFilter, setBrandFilter] = useState("");
+  const [brandFilter, setBrandFilter] = useState(initialBrand);
+  // The starting color the shown palettes were built from (the picker can
+  // move on before Generate is pressed). The share link uses this one.
+  const [resultHex, setResultHex] = useState(initialHex);
   const [palettes, setPalettes] = useState<GeneratedPalette[]>([]);
   const [matches, setMatches] = useState<Map<string, MatchResult | null>>(
     new Map()
@@ -271,6 +283,7 @@ export function PaletteGenerator({ brands }: { brands: FilterBrand[] }) {
 
   function handleGenerate() {
     trackToolEngagement("palette-generator", "complete", inputHex);
+    setResultHex(inputHex);
     const p = generatePalettes(inputHex);
     setPalettes(p);
     fetchMatches(p, brandFilter);
@@ -286,6 +299,23 @@ export function PaletteGenerator({ brands }: { brands: FilterBrand[] }) {
     if (/^#[0-9a-fA-F]{6}$/.test(value)) {
       setInputHex(value);
     }
+  }
+
+  function shareUrl(): string {
+    const params = new URLSearchParams({ hex: resultHex.replace("#", "").toUpperCase() });
+    if (resultBrand) params.set("brand", resultBrand);
+    return `${window.location.origin}/tools/palette-generator?${params}`;
+  }
+
+  // Walls against Accent is the pairing people second-guess most: the two
+  // biggest areas of color in the room.
+  function compareUrl(palette: GeneratedPalette): string | null {
+    const walls = palette.colors.find((c) => c.role === "Walls");
+    const accent = palette.colors.find((c) => c.role === "Accent");
+    const w = walls && matches.get(walls.hex);
+    const a = accent && matches.get(accent.hex);
+    if (!w || !a || w.id === a.id) return null;
+    return `/compare?${new URLSearchParams({ color1: w.id, color2: a.id })}`;
   }
 
   function roomVisualizerUrl(palette: GeneratedPalette): string {
@@ -368,6 +398,12 @@ export function PaletteGenerator({ brands }: { brands: FilterBrand[] }) {
         >
           {loading ? "Matching..." : "Generate"}
         </button>
+
+        <CopyLinkButton
+          getUrl={shareUrl}
+          onCopied={() => trackEvent("cta_click", { cta_label: "palette_copy_link", hex: resultHex })}
+          className="h-10 rounded-lg border border-gray-300 bg-white px-4 text-sm font-medium text-gray-900 transition-colors hover:border-gray-900"
+        />
       </div>
 
       {/* Palettes grid */}
@@ -423,9 +459,13 @@ export function PaletteGenerator({ brands }: { brands: FilterBrand[] }) {
                         </p>
                       ) : match ? (
                         <>
-                          <p className="line-clamp-2 break-words text-center text-xs leading-tight text-gray-900" title={match.name}>
+                          <Link
+                            href={`/colors/${match.brandSlug}/${match.colorSlug}`}
+                            className="line-clamp-2 break-words text-center text-xs leading-tight text-gray-900 underline decoration-gray-300 underline-offset-2 hover:text-brand-blue hover:decoration-brand-blue"
+                            title={match.name}
+                          >
                             {match.name}
-                          </p>
+                          </Link>
                           <p className="line-clamp-1 break-words text-center text-xs text-gray-600" title={match.brandName}>
                             {match.brandName}
                           </p>
@@ -468,6 +508,19 @@ export function PaletteGenerator({ brands }: { brands: FilterBrand[] }) {
                   </svg>
                   Visualize
                 </Link>
+                {(() => {
+                  const href = loading ? null : compareUrl(palette);
+                  return href ? (
+                    <TrackedLink
+                      href={href}
+                      className="rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-900 transition-colors hover:border-gray-900"
+                      eventName="cta_click"
+                      eventParams={{ cta_label: "palette_compare_walls_accent", palette: palette.name }}
+                    >
+                      Compare walls vs accent
+                    </TrackedLink>
+                  ) : null;
+                })()}
                 <AddPaletteToProject
                   colors={palette.colors
                     .filter((c) => matches.get(c.hex))

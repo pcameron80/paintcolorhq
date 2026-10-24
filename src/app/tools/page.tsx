@@ -97,9 +97,30 @@ const tools = [
     ),
   },
   {
+    title: "Compare Paint Colors",
+    description:
+      "Put any two paint colors side by side with hex, RGB and LRV, plus a plain-language verdict on how close they are. Works across brands.",
+    href: "/compare",
+    icon: (
+      <svg
+        className="h-8 w-8 text-primary"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
+        />
+      </svg>
+    ),
+  },
+  {
     title: "Embed the Match Widget",
     description:
-      "Run a site or blog? Drop our free cross-brand paint matcher into your page with one line of HTML — your readers match any color across 13 brands.",
+      "Run a site or blog? Drop our free cross-brand paint matcher into your page with one line of HTML, and your readers can match any color across 13 brands.",
     href: "/embed",
     icon: (
       <svg
@@ -130,14 +151,15 @@ export default function ToolsPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "ItemList",
         name: "Paint Tools",
-        description: "Free paint tools: palette generator, room color visualizer, photo color identifier, and paint calculator.",
-        numberOfItems: 5,
+        description: "Free paint tools: palette generator, room color visualizer, photo color identifier, paint calculator, and side-by-side color comparison.",
+        numberOfItems: 6,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Paint Calculator", url: "https://www.paintcolorhq.com/tools/paint-calculator" },
           { "@type": "ListItem", position: 2, name: "Photo Color Identifier", url: "https://www.paintcolorhq.com/tools/color-identifier" },
           { "@type": "ListItem", position: 3, name: "Room Color Visualizer", url: "https://www.paintcolorhq.com/tools/room-visualizer" },
           { "@type": "ListItem", position: 4, name: "Paint Color Palette Generator", url: "https://www.paintcolorhq.com/tools/palette-generator" },
-          { "@type": "ListItem", position: 5, name: "Embed the Match Widget", url: "https://www.paintcolorhq.com/embed" },
+          { "@type": "ListItem", position: 5, name: "Compare Paint Colors", url: "https://www.paintcolorhq.com/compare" },
+          { "@type": "ListItem", position: 6, name: "Embed the Match Widget", url: "https://www.paintcolorhq.com/embed" },
         ],
       }} />
       <JsonLd data={{
@@ -183,10 +205,11 @@ export default function ToolsPage() {
       <section className="py-16 px-6 md:px-12 bg-surface-container-low">
         <div className="max-w-3xl mx-auto text-on-surface-variant leading-relaxed">
           <h2 className="font-headline text-3xl font-bold text-on-surface mb-6">When to use each tool</h2>
-          <p className="mb-4"><strong>Paint Calculator</strong> — before ordering. A gallon of interior wall paint covers about 350 to 450 sq ft per coat on primed drywall, depending on the product&apos;s data sheet. Two coats is standard for a color change, and darker colors often need a tinted primer plus two topcoats. The calculator subtracts doors and windows and also handles ceilings, doors, cabinets and exteriors.</p>
-          <p className="mb-4"><strong>Photo Color Identifier</strong> — when you already have a color you love but don&apos;t know its name. Works best on interior walls photographed in natural light. Results are ranked by Delta E distance, so the top match is the closest, not necessarily the one you expected.</p>
-          <p className="mb-4"><strong>Room Color Visualizer</strong> — for testing combinations before buying samples. Tests walls, an accent wall, trim and window frames in 10 reference rooms. Useful for catching clashes before committing to a $60 quart you won&apos;t end up using.</p>
-          <p className="mb-4"><strong>Palette Generator</strong> — when you&apos;re starting from a single color you already like. Builds five palettes (warm, cool, complementary contrast, analogous and earthy), each with Walls, Trim, Accent and Pop colors matched to real paint, not abstract hex values.</p>
+          <p className="mb-4"><strong>Paint Calculator</strong>: before ordering. A gallon of interior wall paint covers about 350 to 450 sq ft per coat on primed drywall, depending on the product&apos;s data sheet. Two coats is standard for a color change, and darker colors often need a tinted primer plus two topcoats. The calculator subtracts doors and windows and also handles ceilings, doors, cabinets and exteriors.</p>
+          <p className="mb-4"><strong>Photo Color Identifier</strong>: when you already have a color you love but don&apos;t know its name. Works best on interior walls photographed in natural light. Results are ranked by Delta E distance, so the top match is the closest, not necessarily the one you expected.</p>
+          <p className="mb-4"><strong>Room Color Visualizer</strong>: for testing combinations before buying samples. Tests walls, an accent wall, trim and window frames in 10 reference rooms. Useful for catching clashes before committing to a $60 quart you won&apos;t end up using.</p>
+          <p className="mb-4"><strong>Palette Generator</strong>: when you&apos;re starting from a single color you already like. Builds five palettes (warm, cool, complementary contrast, analogous and earthy), each with Walls, Trim, Accent and Pop colors matched to real paint, not abstract hex values.</p>
+          <p className="mb-4"><strong>Compare Paint Colors</strong>: when you are down to two candidates, or want to know whether a cheaper brand&apos;s color is a stand-in for the one you picked. It shows both swatches with hex, RGB and LRV and gives one verdict (nearly identical, very similar or visible difference), then links to a room preview of the pair.</p>
           <p>None of these replace physical samples. Paint chips under store lighting read differently than they will on your wall, and any screen preview is limited by your monitor&apos;s calibration. Use these to narrow options, then order actual sample pots before deciding.</p>
         </div>
       </section>

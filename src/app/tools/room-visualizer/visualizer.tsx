@@ -3,7 +3,9 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { trackToolEngagement } from "@/lib/analytics";
+import { trackToolEngagement, trackEvent } from "@/lib/analytics";
+import { CopyLinkButton } from "@/components/copy-link-button";
+import { TrackedLink } from "@/components/tracked-link";
 import { ROOMS, type Surface } from "@/lib/rooms";
 import { RoomCanvas } from "@/components/room-canvas";
 import { RetiredChip } from "@/components/retired-chip";
@@ -218,6 +220,21 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
 
   const brandRows = bigThreeRows(bestPerBrand);
 
+  // Same params page.tsx reads on load, so the link reopens this room with
+  // these colors. Pop colors came in on the URL and are passed back through.
+  const shareUrl = () => {
+    const hex = (h: string) => h.replace("#", "").toUpperCase();
+    const params = new URLSearchParams({
+      walls: hex(colors.walls),
+      accent: hex(colors.accentWall),
+      trim: hex(colors.trim),
+      windows: hex(colors.windows),
+      room: room.id,
+    });
+    if (popColors && popColors.length > 0) params.set("pop", popColors.map(hex).join(","));
+    return `${window.location.origin}/tools/room-visualizer?${params}`;
+  };
+
   return (
     <div className="mt-8">
       {/* ---- Room picker ---- */}
@@ -257,6 +274,12 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
       {/* ---- Room photo + paint overlay ---- */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-surface-container-low p-4">
         <p aria-live="polite" className="text-sm"><strong>Editing: {REGIONS.find(r => r.id === selected)?.label}</strong><span className="block mt-1">Digital color: {colors[selected].toUpperCase()}</span></p>
+        <CopyLinkButton
+          getUrl={shareUrl}
+          label="Copy link to this room"
+          onCopied={() => trackEvent("cta_click", { cta_label: "visualizer_copy_link", room: room.id })}
+          className="rounded-xl border border-outline-variant/30 bg-surface-container-lowest px-4 py-2 text-sm font-semibold text-on-surface hover:border-outline transition-all"
+        />
         <p className="w-full text-xs text-on-surface-variant">Digital room preview only. Lighting, screens, and paint finish affect appearance. Confirm your choice with a physical sample.</p>
       </div>
       <div className="overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container">
@@ -479,6 +502,14 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
                       </span>
                       <RetiredChip availability={m.availability} />
                     </p>
+                    <TrackedLink
+                      href={`/colors/${m.brandSlug}/${m.colorSlug}`}
+                      className="mt-1 inline-block text-xs font-semibold text-primary hover:underline"
+                      eventName="cta_click"
+                      eventParams={{ cta_label: "visualizer_view_paint_brand_row", color_name: m.name, brand: m.brandSlug }}
+                    >
+                      View paint
+                    </TrackedLink>
                   </div>
                 </div>
               ))}
@@ -518,10 +549,19 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
                       {m.name}
                     </Link>
                     <p className="text-xs text-on-surface-variant">{m.brandName}</p>
+                    <p className="text-xs text-on-surface-variant">{closenessLabel(m.deltaE)}</p>
                     <p className="text-xs font-mono text-outline">
                       {m.hex.toUpperCase()}
                     </p>
                     <RetiredChip availability={m.availability} className="mt-1 rounded-full bg-surface-container px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-outline" />
+                    <TrackedLink
+                      href={`/colors/${m.brandSlug}/${m.colorSlug}`}
+                      className="mt-1.5 block text-xs font-semibold text-primary hover:underline"
+                      eventName="cta_click"
+                      eventParams={{ cta_label: "visualizer_view_paint", color_name: m.name, brand: m.brandSlug }}
+                    >
+                      View paint
+                    </TrackedLink>
                   </div>
                 </div>
               ))}
