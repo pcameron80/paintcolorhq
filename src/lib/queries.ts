@@ -639,33 +639,63 @@ export async function getMoreFromFamily(
 
 // Brand-to-brand charts (/match/[a]/to/[b]). Rank 1 is the closest target-
 // brand color for each source color (compute-matches ranks per target brand).
-// Both brands are filtered in SQL through !inner embeds, so the limit counts
-// pairs for THIS target brand. The old version took the top 50 rank-1 rows
-// across every target brand in each 200-color batch and filtered afterward,
-// and its color read stopped at 1,000 rows: SW to F&B came back empty and SW
-// to BM showed 5 rows. Both sides must be in the current palette, because a
-// switching chart lists colors buyers can order. Behr to BM runs in about
-// 45 ms on the database (2026-10-24), so no batching is needed. Errors throw:
-// a blip fails the render instead of caching an empty chart for 30 days.
+// The old version took the top 50 rank-1 rows across every target brand in
+// each batch and filtered to the target afterward, and its color read stopped
+// at 1,000 rows: SW to F&B came back empty and SW to BM showed 5 rows. Now
+// the target brand is filtered in SQL (!inner embed) before each limit.
+//
+// Why batches and not one query: PostgREST wraps every embed in a LATERAL
+// subquery with LIMIT/OFFSET, which Postgres cannot flatten into a join. With
+// both brands filtered only through embeds, it ran the embed lookups for every
+// rank-1 row in the table and hit the 3 s anon statement timeout on the
+// 2026-10-24 preview build (the same SQL as a plain join takes 45 ms). So the
+// source brand goes on the base table: page its current color ids, then query
+// 200 ids at a time (.in() rides in the URL), about 40 ms per batch.
+//
+// Both sides must be in the current palette, because a switching chart lists
+// colors buyers can order. Errors throw: a blip fails the render instead of
+// caching an empty chart for 30 days.
 const BRAND_PAIR_COLOR_FIELDS =
   "id, name, slug, hex, color_number, availability, brand_id, brand:brand_id (id, name, slug)";
+const BRAND_PAIR_BATCH = 200;
 
-function brandPairMatchQuery(
-  colorFields: string,
-  sourceBrandId: string,
-  targetBrandId: string,
-  options?: { count: "exact"; head: true }
-) {
+function brandPairError(what: string, error: { message: string }, status: number): Error {
+  // HEAD responses carry no body, so PostgREST errors arrive with an empty message.
+  return new Error(`${what} failed (HTTP ${status}): ${error.message || "no response body"}`);
+}
+
+async function getCurrentColorIdBatches(brandId: string): Promise<string[][]> {
+  const ids: string[] = [];
+  const PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error, status } = await supabase
+      .from("colors")
+      .select("id")
+      .eq("brand_id", brandId)
+      .eq("availability", "current")
+      .order("id") // unordered pagination drops/repeats rows
+      .range(from, from + PAGE - 1);
+    if (error) throw brandPairError(`Current color ids for brand ${brandId}`, error, status);
+    for (const row of data ?? []) ids.push(row.id as string);
+    if (!data || data.length < PAGE) break;
+  }
+  const batches: string[][] = [];
+  for (let i = 0; i < ids.length; i += BRAND_PAIR_BATCH) batches.push(ids.slice(i, i + BRAND_PAIR_BATCH));
+  return batches;
+}
+
+// Shared filters for the chart rows and the close count, so the FAQ count
+// describes the same population the chart draws from.
+function brandPairBatchQuery(sourceIds: string[], targetBrandId: string, mode: "rows" | "count") {
+  const select = mode === "rows"
+    ? `delta_e_score, source_color:source_color_id (${BRAND_PAIR_COLOR_FIELDS}), match_color:match_color_id!inner (${BRAND_PAIR_COLOR_FIELDS})`
+    : "delta_e_score, match_color:match_color_id!inner (id)";
   return supabase
     .from("cross_brand_matches")
-    .select(
-      `delta_e_score, source_color:source_color_id!inner (${colorFields}), match_color:match_color_id!inner (${colorFields})`,
-      options
-    )
+    .select(select, mode === "count" ? { count: "exact", head: true } : undefined)
+    .in("source_color_id", sourceIds)
     .eq("rank", 1)
-    .eq("source_color.brand_id", sourceBrandId)
     .eq("match_color.brand_id", targetBrandId)
-    .eq("source_color.availability", "current")
     .eq("match_color.availability", "current");
 }
 
@@ -678,42 +708,52 @@ export async function getTopCrossBrandMatches(
   match: ColorWithBrand;
   deltaE: number;
 }[]> {
-  const { data, error } = await brandPairMatchQuery(BRAND_PAIR_COLOR_FIELDS, sourceBrandId, targetBrandId)
-    .order("delta_e_score", { ascending: true })
-    .order("source_color(name)", { ascending: true })
-    .order("source_color_id", { ascending: true })
-    .limit(limit);
+  const all: { source: ColorWithBrand; match: ColorWithBrand; deltaE: number }[] = [];
+  for (const batch of await getCurrentColorIdBatches(sourceBrandId)) {
+    const { data, error, status } = await brandPairBatchQuery(batch, targetBrandId, "rows")
+      .order("delta_e_score", { ascending: true })
+      .order("source_color(name)", { ascending: true })
+      .order("source_color_id", { ascending: true })
+      .limit(limit);
+    if (error) throw brandPairError(`Brand pair rows ${sourceBrandId} to ${targetBrandId}`, error, status);
 
-  if (error) throw error;
+    // PostgREST returns nested embeds with looser types; cast at the boundary.
+    const rows = (data ?? []) as unknown as {
+      delta_e_score: number | string;
+      source_color: ColorWithBrand;
+      match_color: ColorWithBrand;
+    }[];
+    for (const row of rows) {
+      all.push({ source: row.source_color, match: row.match_color, deltaE: Number(row.delta_e_score) });
+    }
+  }
 
-  // PostgREST returns nested embeds with looser types; cast at the boundary.
-  const rows = (data ?? []) as unknown as {
-    delta_e_score: number | string;
-    source_color: ColorWithBrand;
-    match_color: ColorWithBrand;
-  }[];
-  return rows.map((row) => ({
-    source: row.source_color,
-    match: row.match_color,
-    deltaE: Number(row.delta_e_score),
-  }));
+  // Each batch's top N, merged: closest first, then source name, then id, so
+  // ties resolve the same way on every build.
+  all.sort((a, b) =>
+    a.deltaE - b.deltaE ||
+    a.source.name.localeCompare(b.source.name) ||
+    a.source.id.localeCompare(b.source.id)
+  );
+  return all.slice(0, limit);
 }
 
-// How many pairs in the chart's population are nearly identical. Same filters
-// as getTopCrossBrandMatches, so the FAQ count describes what the chart draws
-// from. A head request: PostgREST returns only the count. Callers cache it.
+// How many pairs in the chart's population are nearly identical. Each source
+// color has exactly one rank-1 row per target brand, so batch counts add up.
+// Head requests: PostgREST returns only the count. Callers cache the total.
 export async function getBrandPairCloseCount(
   sourceBrandId: string,
   targetBrandId: string
 ): Promise<number> {
-  const { count, error } = await brandPairMatchQuery("id", sourceBrandId, targetBrandId, {
-    count: "exact",
-    head: true,
-  }).lt("delta_e_score", NEARLY_IDENTICAL_MAX);
-
-  if (error) throw error;
-  if (count === null) throw new Error(`No count returned for brand pair ${sourceBrandId} to ${targetBrandId}`);
-  return count;
+  let total = 0;
+  for (const batch of await getCurrentColorIdBatches(sourceBrandId)) {
+    const { count, error, status } = await brandPairBatchQuery(batch, targetBrandId, "count")
+      .lt("delta_e_score", NEARLY_IDENTICAL_MAX);
+    if (error) throw brandPairError(`Brand pair close count ${sourceBrandId} to ${targetBrandId}`, error, status);
+    if (count === null) throw new Error(`Brand pair close count ${sourceBrandId} to ${targetBrandId} returned no count`);
+    total += count;
+  }
+  return total;
 }
 
 // Keyset pagination avoids overlapping ranges; shared eligibility preserves
