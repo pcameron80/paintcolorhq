@@ -135,8 +135,12 @@ export function SearchResults() {
     return () => clearTimeout(timer);
   }, [query, search]);
 
+  // Synced in an effect, not during render (react-hooks/refs). The tracking
+  // timer below reads it 1.5s later, long after this effect has run.
   const latestResultsRef = useRef(results.length);
-  latestResultsRef.current = results.length;
+  useEffect(() => {
+    latestResultsRef.current = results.length;
+  }, [results.length]);
 
   useEffect(() => {
     if (trackingTimerRef.current) clearTimeout(trackingTimerRef.current);
