@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import Link from "next/link";
+import { CURRENT_COTY } from "./color-of-the-year";
 
 export interface BrandContent {
   subtitle?: string;
@@ -9,7 +10,7 @@ export interface BrandContent {
 
 const content: Record<string, BrandContent> = {
   "sherwin-williams": {
-    subtitle: "Find Sherwin-Williams colors with instant matches to Benjamin Moore, Behr, and 11 other brands",
+    subtitle: "Find Sherwin-Williams colors with instant matches to Benjamin Moore, Behr, and 10 other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -18,7 +19,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">
             Agreeable Gray SW 7029
           </Link>{" "}
-          (LRV 60, warm undertone, hex #D4CDC3) — has been the top-selling paint color in the United
+          (LRV 60, warm undertone, hex #D1CBC1) — has been the top-selling paint color in the United
           States for five consecutive years. Founded in 1866 in Cleveland, Ohio, Sherwin-Williams is
           trusted by contractors, architects, and homeowners for its professional-grade formulas and
           frequent 30&ndash;40% off sales events.
@@ -30,7 +31,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/sherwin-williams/repose-gray-7015" className="text-brand-blue hover:underline">Repose Gray SW 7015</Link>, and{" "}
           <Link href="/colors/sherwin-williams/naval-6244" className="text-brand-blue hover:underline">Naval SW 6244</Link>.
           Use Paint Color HQ&apos;s CIEDE2000-based matching to find the closest Benjamin Moore, Behr, or
-          PPG equivalent for any of these colors, with exact Delta E scores.
+          PPG equivalent for any of these colors, with plain-language closeness labels.
         </p>
         <p>
           Top product lines include <strong>Emerald</strong> (premium, self-leveling, $75&ndash;$85/gallon),{" "}
@@ -46,7 +47,7 @@ const content: Record<string, BrandContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Popular Sherwin-Williams Colors</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Explore Sherwin-Williams&apos; best-selling{" "}
+          Explore Sherwin-Williams&apos; well-known{" "}
           <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>,{" "}
           <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, and{" "}
           <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutrals</Link>.
@@ -129,7 +130,7 @@ const content: Record<string, BrandContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Behr is sold exclusively at Home Depot — the only place to buy it — and offers a palette
-          of 3,000+ colors, making it the largest color selection among the &quot;big three&quot;
+          of 3,000+ current colors, second to Benjamin Moore among the &quot;big three&quot;
           consumer paint brands. Consumer Reports has consistently ranked <strong>Behr Marquee</strong>{" "}
           at or near the top in blind coverage and durability tests, and Behr&apos;s thick, one-coat
           formulas are specifically designed for DIY homeowners. Price range: $35&ndash;$55 per gallon,
@@ -139,13 +140,13 @@ const content: Record<string, BrandContent> = {
         <p>
           The most popular Behr paint colors include{" "}
           <Link href="/colors/behr/silver-drop-790c-2" className="text-brand-blue hover:underline">Silver Drop 790C-2</Link>,{" "}
-          <Link href="/colors/behr/ultra-pure-white-ppu18-06" className="text-brand-blue hover:underline">Ultra Pure White PPU18-06</Link>,{" "}
+          <Link href="/colors/behr/ultra-pure-white-upw" className="text-brand-blue hover:underline">Ultra Pure White UPW</Link>,{" "}
           <Link href="/colors/behr/cameo-white-mq3-32" className="text-brand-blue hover:underline">Cameo White MQ3-32</Link>,{" "}
           <Link href="/colors/behr/dolphin-fin-790c-3" className="text-brand-blue hover:underline">Dolphin Fin 790C-3</Link>, and{" "}
           <Link href="/colors/behr/whisper-white-hdc-md-08" className="text-brand-blue hover:underline">Whisper White HDC-MD-08</Link>.
-          These top sellers are overwhelmingly neutrals and greiges. Use Paint Color HQ&apos;s
+          These well-known picks are overwhelmingly neutrals and greiges. Use Paint Color HQ&apos;s
           CIEDE2000-based matching to find the closest Sherwin-Williams or Benjamin Moore equivalent
-          for any Behr color, with exact Delta E perceptual distance scores.
+          for any Behr color, with plain-language closeness labels.
         </p>
         <p>
           Top product lines include <strong>Dynasty</strong> (premium, one-coat, scuff-resistant —
@@ -153,7 +154,7 @@ const content: Record<string, BrandContent> = {
           technology — $45&ndash;$50/gallon), <strong>Ultra</strong> (solid mid-range —
           $38&ndash;$42/gallon), and <strong>Premium Plus</strong> (budget-friendly —
           $35&ndash;$38/gallon). All Behr paints are available in-store at Home Depot&apos;s
-          2,300+ US locations or online at homedepot.com with free delivery on qualifying orders.
+          more than 2,000 US stores or online at homedepot.com with free delivery on qualifying orders.
         </p>
       </div>
     ),
@@ -172,7 +173,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
           or use the{" "}
           <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to find the
-          closest match from Sherwin-Williams, Benjamin Moore, and 11 other brands.
+          closest match from Sherwin-Williams, Benjamin Moore, and 10 other brands.
         </p>
       </div>
     ),
@@ -184,11 +185,12 @@ const content: Record<string, BrandContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           PPG paints are sold at Home Depot (under the PPG Timeless and PPG Diamond labels), through
-          PPG Paints stores, and at independent dealers nationwide — making PPG one of the most widely
+          Pittsburgh Paints Co. stores, and at independent dealers nationwide — making PPG one of the most widely
           distributed paint brands in the country. Founded in 1883 as Pittsburgh Plate Glass Company, PPG
           now operates in more than 70 countries and is one of the world&apos;s largest coatings
-          manufacturers. PPG also owns the Glidden and Olympic brands, giving it coverage from budget
-          ($35/gallon) to premium ($70/gallon) price points.
+          manufacturers. Since December 2024, PPG&apos;s US and Canadian architectural paint business,
+          including Glidden and Olympic, has been owned by The Pittsburgh Paints Company. PPG color
+          names and codes are unchanged.
         </p>
         <p>
           Popular PPG colors include{" "}
@@ -197,7 +199,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/ppg/swirling-smoke-1007-2" className="text-brand-blue hover:underline">Swirling Smoke 1007-2</Link>,{" "}
           <Link href="/colors/ppg/stonehenge-greige-1024-5" className="text-brand-blue hover:underline">Stonehenge Greige 1024-5</Link>, and{" "}
           <Link href="/colors/ppg/olive-sprig-1125-4" className="text-brand-blue hover:underline">Olive Sprig 1125-4</Link>.
-          These top sellers reflect the brand&apos;s strength in versatile neutrals, warm greiges, and
+          These well-known picks reflect the brand&apos;s strength in versatile neutrals, warm greiges, and
           nature-inspired accent colors.
         </p>
         <p>
@@ -205,7 +207,7 @@ const content: Record<string, BrandContent> = {
           one-coat color guarantee and paint-and-primer-in-one formula, $55&ndash;$70/gallon at Home Depot),{" "}
           <strong>PPG Diamond</strong> (durable mid-range with excellent scuff and stain resistance,
           $40&ndash;$55/gallon), and the classic <strong>Pittsburgh Paints</strong> line sold through
-          PPG Paints stores. PPG&apos;s residential palette covers over 2,000 colors across every color
+          Pittsburgh Paints Co. stores. PPG&apos;s residential palette covers over 2,000 colors across every color
           family. Preview any PPG color in your room with our{" "}
           <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
           or use the{" "}
@@ -218,7 +220,7 @@ const content: Record<string, BrandContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Popular PPG Colors</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Explore PPG&apos;s best-selling{" "}
+          Explore PPG&apos;s well-known{" "}
           <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>,{" "}
           <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, and{" "}
           <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link>.
@@ -256,7 +258,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/valspar/notre-dame-5006-1b" className="text-brand-blue hover:underline">Notre Dame 5006-1B</Link>,{" "}
           <Link href="/colors/valspar/gray-silt-6002-1c" className="text-brand-blue hover:underline">Gray Silt 6002-1C</Link>, and{" "}
           <Link href="/colors/valspar/gravity-4005-1b" className="text-brand-blue hover:underline">Gravity 4005-1B</Link>.
-          These top sellers lean heavily toward warm neutrals, earthy tones, and calming greens —
+          These well-known picks lean heavily toward warm neutrals, earthy tones, and calming greens —
           reflecting current design trends.
         </p>
         <p>
@@ -300,7 +302,7 @@ const content: Record<string, BrandContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Dunn-Edwards is a premium West Coast paint brand founded in 1925 in Los Angeles, California.
-          With over 150 company-owned stores across California, Arizona, Nevada, New Mexico, and Texas,
+          With over 170 company-owned stores across California, Arizona, Nevada, New Mexico, and Texas,
           Dunn-Edwards has built a loyal following among contractors, architects, and designers who
           demand exceptional quality. The brand is particularly known for its zero-VOC and low-VOC
           formulas — their <strong>SUPREMA</strong> line earned GreenWise certification — making them an
@@ -407,7 +409,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>, or
           use our{" "}
           <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check
-          the exact Delta E difference between any two colors.
+          any two colors side by side, with plain-language closeness labels.
         </p>
       </div>
     ),
@@ -509,8 +511,8 @@ const content: Record<string, BrandContent> = {
           <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
           <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and{" "}
           <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>. Use our{" "}
-          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check the
-          exact Delta E difference between any two colors.
+          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to check
+          any two colors side by side, with plain-language closeness labels.
         </p>
       </div>
     ),
@@ -610,7 +612,7 @@ const content: Record<string, BrandContent> = {
           the closest available paint from{" "}
           <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
           <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>,{" "}
-          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>, and 11 other
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>, and 9 other
           brands — ranked by Delta E accuracy.
         </p>
       </div>
@@ -621,4 +623,30 @@ const content: Record<string, BrandContent> = {
 
 export function getBrandContent(slug: string): BrandContent | undefined {
   return content[slug];
+}
+
+// REMOVE IN JANUARY 2027: one-line pointer from each brand page to that
+// brand's 2027 Color of the Year and the /color-of-the-year hub. Driven by
+// CURRENT_COTY so the name and code always match the hub. Once 2027 starts
+// this reads as old news; delete the component and its call in
+// src/app/brands/[brandSlug]/page.tsx.
+const COTY_NOTE_BRANDS = new Set([
+  "sherwin-williams", "benjamin-moore", "behr", "ppg", "dutch-boy", "valspar", "dunn-edwards",
+]);
+
+export function BrandCotyNote({ brandSlug }: { brandSlug: string }) {
+  if (CURRENT_COTY.year !== 2027 || !COTY_NOTE_BRANDS.has(brandSlug)) return null;
+  const pick = CURRENT_COTY.picks.find((p) => p.brandSlug === brandSlug);
+  if (!pick) return null;
+  const name = `${pick.name} (${pick.code})`;
+  return (
+    <p className="mt-4 max-w-4xl text-on-surface-variant leading-relaxed">
+      The {pick.brandName} 2027 Color of the Year is{" "}
+      {pick.colorSlug ? (
+        <Link href={`/colors/${pick.brandSlug}/${pick.colorSlug}`} className="text-brand-blue hover:underline">{name}</Link>
+      ) : name}
+      . See every brand&apos;s 2027 pick on our{" "}
+      <Link href="/color-of-the-year" className="text-brand-blue hover:underline">Color of the Year</Link> page.
+    </p>
+  );
 }
