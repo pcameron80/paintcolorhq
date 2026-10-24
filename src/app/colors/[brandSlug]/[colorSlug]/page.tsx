@@ -25,7 +25,7 @@ import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { COTY_BY_COLOR } from "@/lib/color-of-the-year";
-import { FORMER_NAMES } from "@/lib/former-names";
+import { formerNameFor } from "@/lib/former-names";
 import { titleArm, matchesArmTitle, matchesArmDescription } from "@/lib/title-test";
 import { closenessLabel, closenessLabelLower } from "@/lib/closeness";
 import { availabilityStatus, RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
@@ -164,8 +164,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description = matchesArmDescription(color.name, lrvForTitle, nearest) ?? description;
   }
   // Renamed colors keep their old name on the page and in the snippet.
-  const formerName = FORMER_NAMES[`${brandSlug}/${colorSlug}`];
-  if (formerName && formerName !== color.name) description = `${description} Previously listed as ${formerName}.`;
+  const formerName = formerNameFor(brandSlug, colorSlug, color.name);
+  if (formerName) description = `${description} Previously listed as ${formerName}.`;
   return {
     title,
     description,
@@ -355,9 +355,9 @@ export default async function ColorPage({ params }: PageProps) {
               <Link href="/discontinued" className="underline underline-offset-4">About retired and discontinued colors</Link>
             </p>
           )}
-          {FORMER_NAMES[`${brandSlug}/${colorSlug}`] && FORMER_NAMES[`${brandSlug}/${colorSlug}`] !== color.name && (
+          {formerNameFor(brandSlug, colorSlug, color.name) && (
             <p className={`-mt-4 mb-8 text-sm ${textMutedClass}`}>
-              Previously listed as {FORMER_NAMES[`${brandSlug}/${colorSlug}`]}
+              Previously listed as {formerNameFor(brandSlug, colorSlug, color.name)}
             </p>
           )}
           {COTY_BY_COLOR[`${brandSlug}/${colorSlug}`] && (

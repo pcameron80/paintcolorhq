@@ -12,12 +12,22 @@
  *             dropped accents, ® rendered as "reg"). Written by --apply.
  *   rename    a different name for the same swatch: the manufacturer renamed
  *             it (BM retired "Gypsy Love", "Navajo Red" and others). Written
- *             only with --apply --renames.
+ *             only with --apply --renames, and only when the row is listed in
+ *             APPROVED_RENAMES with that exact new name; anything else prints
+ *             as "rename (not approved)" and is left alone. Every approved
+ *             rename's old name goes in src/lib/former-names.ts in the same
+ *             commit, so the color page keeps "Previously listed as ...".
  *   conflict  the code matches but the swatch does not (CIEDE2000 > 5). Never
  *             written; the row needs a human look.
  *   case      same letters, different capitalization ("Painter'S White" for
  *             "Painter's White"). Written only with --apply --case. Names in
  *             KEEP_STYLED are never touched (O'Reilly Green is BM's own styling).
+ *             Also with --case: non-ASCII hyphens (U+2010, U+2011) become "-",
+ *             so a search for "Forget-Me-Not" finds SW 6824 ("Forget‐Me‐Not").
+ *
+ * A feed that drops accents ("Frappe" for Valspar's "Frappé") is never copied:
+ * when the only difference is diacritics the DB has and the feed lacks, the
+ * row is skipped.
  *
  * PPG codes are matched through normalizePpgCode (the site writes "PPG1104-2",
  * most rows store "1104-2"); before 2026-10-24 none of PPG's renames matched.
@@ -31,6 +41,7 @@
  *   tsx scripts/apply-published-names.ts --scan-dir=... --brand=benjamin-moore,behr --apply      # artifacts only
  *   tsx scripts/apply-published-names.ts --scan-dir=... --apply --renames                        # artifacts + renames
  *   tsx scripts/apply-published-names.ts --scan-dir=... --brand=kilz,ppg,vista-paint --apply --case   # + capitalization and MANUAL rows
+ *   tsx scripts/apply-published-names.ts --scan-dir=... --brand=dutch-boy,ppg,dunn-edwards,kilz,sherwin-williams,valspar,behr,vista-paint,benjamin-moore --case --renames   # MP-45 full dry run
  *   tsx scripts/apply-published-names.ts --revert=scripts/data/backups/published-names-<ts>.json
  *
  * MANUAL rows are written for any brand in --brand (default: benjamin-moore,
@@ -44,6 +55,7 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { deltaE2000, hexToRgb, rgbToLab } from '../src/lib/color-utils';
 import { normalizePpgCode } from './lib/palette-sources';
 import { caseFix } from './lib/palette-diff';
+import { APPROVED_RENAMES } from './lib/approved-renames';
 
 // Env, scan dir and backups resolve from the working directory, so the script
 // can be run from the main checkout even when the file lives in a worktree.
@@ -64,6 +76,7 @@ const MANUAL: Record<string, Record<string, string>> = {
     'ultra-pure-white-ppu18-06': 'Ultra Pure White', // "Ultra Pure WhiteÂ®"; the Â defeats the artifact check
     'ultra-pure-white-ppu18-6': 'Ultra Pure White', // not in the feed; drop ® like the other rows
     'painter-s-white-ppu18-8': "Painter's White", // "Painter'S White"; its twin painters-white-ppu18-08 is right
+    'cest-la-vie-mq4-27': "C'est La Vie", // apostrophe dropped at import ("Cest La Vie")
   },
   // Capitalized after the apostrophe at import ("Lion'S Roar").
   kilz: {
@@ -79,6 +92,14 @@ const MANUAL: Record<string, Record<string, string>> = {
   'vista-paint': {
     'lots-of-lime-ac159': 'Lots of Lime', // "lots of Lime"; its twin lots-of-lime-k-1258 is right
   },
+  // 2026-10-24 (MP-45): leftovers the feed comparison cannot reach.
+  'dunn-edwards': {
+    'you-re-blushing-det446': "You're Blushing", // "You'Re Blushing"; caseFix only lowers a word-final capital
+  },
+  'benjamin-moore': {
+    'allablaze-1304': 'All Ablaze', // same letters as the feed, so the spacing loss is never flagged
+    'frappe-af-85': 'Frappé', // BM publishes AF-85 with the accent; 484 is already "Green Frappé"
+  },
 };
 
 // Names styled on purpose that a case-only comparison would otherwise "fix".
@@ -93,8 +114,11 @@ const KEEP_STYLED = new Set([
 // match on the code as stored.
 const NORMALIZE: Partial<Record<string, (c: string) => string>> = { ppg: normalizePpgCode };
 
-// Renames never written: the feed itself is misspelled.
-const SKIP_RENAME = new Set(['behr/frosted-pomegranate-140b-7']); // Behr's feed says "Frosted Pomgranate"
+// U+2010 HYPHEN and U+2011 NON-BREAKING HYPHEN: they look like "-" but a
+// search for the name typed with "-" does not match them.
+const NON_ASCII_HYPHEN = /[\u2010\u2011]/g;
+// Latin letters with diacritics ("é" in Frappé).
+const ACCENTED = /[\u00c0-\u024f]/;
 
 // Feed names written in the catalog's style instead of the feed's.
 const FEED_NAME_STYLE: Record<string, string> = {
@@ -118,7 +142,12 @@ const ENTITIES: Record<string, string> = {
   '&quot;': '"',
 };
 const cleanName = (s: string) =>
-  s.replace(/&[a-z0-9#]+;/gi, (e) => ENTITIES[e.toLowerCase()] ?? e).replace(/[®™]/g, '').replace(/\s+/g, ' ').trim();
+  s
+    .replace(/&[a-z0-9#]+;/gi, (e) => ENTITIES[e.toLowerCase()] ?? e)
+    .replace(/[®™]/g, '')
+    .replace(NON_ASCII_HYPHEN, '-')
+    .replace(/\s+/g, ' ')
+    .trim();
 const letters = (s: string) =>
   s.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
 // True when every character of `short` appears in `long`, in order.
@@ -135,6 +164,9 @@ function classify(dbName: string, feedName: string, colorCode: string): Group {
   if (db.length >= 3 && db[0] === feed[0] && isSubsequence(db, feed)) return 'artifact';
   return 'rename';
 }
+
+// A rename is written only when approved-renames.ts lists this row with this exact new name.
+const isApproved = (c: Change) => APPROVED_RENAMES[`${c.brand}/${c.slug}`]?.name === c.to;
 
 const lab = (hex: string) => {
   const { r, g, b } = hexToRgb(hex);
@@ -217,23 +249,44 @@ async function main() {
         }
         continue;
       }
+      const dehyphened = r.name.replace(NON_ASCII_HYPHEN, '-');
+      // The name is otherwise right: only swap its hyphens (written with --case).
+      const hyphenOnly = () => {
+        if (dehyphened !== r.name) {
+          changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to: dehyphened, group: 'case', note: 'non-ASCII hyphen' });
+        }
+      };
       const c = byCode.get(key(r.color_number));
-      if (!c) continue;
+      if (!c) {
+        hyphenOnly();
+        continue;
+      }
       const feedName = FEED_NAME_STYLE[`${b.slug}/${r.slug}`] ?? cleanName(c.name);
-      if (feedName === r.name) continue;
+      if (feedName === r.name) {
+        hyphenOnly();
+        continue;
+      }
       const dE = c.hex ? deltaE2000(lab(r.hex), lab(c.hex)) : 0;
       const note = `${c.code}, dE ${dE.toFixed(1)}`;
       // Capitalization only. Feeds title-case every word ("A Touch Of Gold",
       // "Hush-A-Bye"), so the feed's casing is not copied; only the two import
       // artifacts in caseFix() are, and only with --case.
       if (feedName.toLowerCase() === r.name.toLowerCase()) {
-        const fixed = caseFix(r.name, feedName);
+        const fixed = caseFix(dehyphened, feedName);
         if (fixed !== r.name) changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to: fixed, group: 'case', note });
         continue;
       }
+      // The feed lost accents we have ("Frappe" for "Frappé"): keep ours.
+      if (letters(feedName) === letters(r.name) && ACCENTED.test(r.name) && !ACCENTED.test(feedName)) {
+        hyphenOnly();
+        continue;
+      }
       // Straight-vs-curly punctuation only: not worth a write.
-      const asciiClean = !/[^\x20-\x7e]/.test(r.name.replace(/[‐’]/g, ''));
-      if (asciiClean && letters(feedName) === letters(r.name)) continue;
+      const asciiClean = !/[^\x20-\x7e]/.test(r.name.replace(/[‐‑’]/g, ''));
+      if (asciiClean && letters(feedName) === letters(r.name)) {
+        hyphenOnly();
+        continue;
+      }
       const group: Group = dE > 5 ? 'conflict' : classify(r.name, feedName, c.code);
       changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to: feedName, group, note });
     }
@@ -241,7 +294,10 @@ async function main() {
       const list = changes.filter((c) => c.group === g);
       if (!list.length) continue;
       console.log(`\n[${b.slug}] ${g}: ${list.length}`);
-      for (const c of list) console.log(`  ${c.slug.padEnd(36)} "${c.from}" -> "${c.to}"  (${c.note})`);
+      for (const c of list) {
+        const pending = g === 'rename' && !isApproved(c) ? '  [not approved]' : '';
+        console.log(`  ${c.slug.padEnd(36)} "${c.from}" -> "${c.to}"  (${c.note})${pending}`);
+      }
     }
     all.push(...changes);
   }
@@ -250,8 +306,13 @@ async function main() {
     (c) =>
       c.group === 'artifact' ||
       (CASE && c.group === 'case') ||
-      (RENAMES && c.group === 'rename' && !SKIP_RENAME.has(`${c.brand}/${c.slug}`)),
+      (RENAMES && c.group === 'rename' && isApproved(c)),
   );
+  const unapproved = all.filter((c) => c.group === 'rename' && !isApproved(c));
+  if (unapproved.length) {
+    console.log(`\n${unapproved.length} feed renames not in scripts/lib/approved-renames.ts (never written):`);
+    for (const c of unapproved) console.log(`  ${c.brand}/${c.slug} "${c.from}" -> "${c.to}"`);
+  }
   const groups = all.reduce<Record<string, number>>((acc, c) => ({ ...acc, [`${c.brand}/${c.group}`]: (acc[`${c.brand}/${c.group}`] ?? 0) + 1 }), {});
   console.log('\nTally by brand/group:', groups);
   const scope = ['artifacts', ...(RENAMES ? ['renames'] : []), ...(CASE ? ['case'] : [])].join(' + ');
