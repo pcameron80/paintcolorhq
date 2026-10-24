@@ -27,6 +27,20 @@ notify() {
   osascript -e "display notification \"$1\" with title \"PaintColorHQ\"" 2>/dev/null || true
 }
 
+# launchd fires a job it missed during sleep the moment the Mac wakes, often
+# before Wi-Fi is back, and every API call then dies with "fetch failed". Wait
+# up to 2 minutes for github.com to answer; if it never does, run anyway so the
+# failure is logged and notified as usual.
+net_waited=0
+until curl -sS -o /dev/null --max-time 5 -I https://github.com 2>/dev/null; do
+  if (( net_waited >= 120 )); then
+    echo "=== $JOB $(date -u +%Y-%m-%dT%H:%M:%SZ): no network after 2 min; running anyway" >> "$LOG"
+    break
+  fi
+  sleep 5
+  net_waited=$((net_waited + 5))
+done
+
 # The jobs share one worktree, so take a lock before moving it: a checkout under
 # a job that is still running would swap its code mid-run. Schedules are hours
 # apart, so waiting is the rare case; a lock whose owner is gone is stale.
