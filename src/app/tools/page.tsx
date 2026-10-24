@@ -7,7 +7,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 export const metadata: Metadata = {
   title: "Free Paint Color Tools — Visualizer & Calculator",
   description:
-    "Free paint tools: palette generator, room visualizer, photo color identifier, and paint calculator. Preview colors, match from photos, and estimate coverage across all major brands.",
+    "Free paint tools: hex to paint color matcher, LRV finder, palette generator, room visualizer, photo color identifier and paint calculator, across all major brands.",
   alternates: { canonical: "https://www.paintcolorhq.com/tools" },
 };
 
@@ -50,6 +50,48 @@ const tools = [
           strokeLinecap="round"
           strokeLinejoin="round"
           d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Hex to Paint Color",
+    description:
+      "Enter a hex or RGB code and get the closest current paint color from each of 13 brands, with closeness and LRV.",
+    href: "/tools/hex-to-paint-color",
+    icon: (
+      <svg
+        className="h-8 w-8 text-primary"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5-3.9 19.5m-2.1-19.5-3.9 19.5"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "LRV Finder",
+    description:
+      "Find Sherwin-Williams, Benjamin Moore, Behr and Dutch Boy colors by light reflectance value, brand and color family.",
+    href: "/tools/lrv-finder",
+    icon: (
+      <svg
+        className="h-8 w-8 text-primary"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
         />
       </svg>
     ),
@@ -130,14 +172,16 @@ export default function ToolsPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "ItemList",
         name: "Paint Tools",
-        description: "Free paint tools: palette generator, room color visualizer, photo color identifier, and paint calculator.",
-        numberOfItems: 5,
+        description: "Free paint tools: hex to paint color matcher, LRV finder, palette generator, room color visualizer, photo color identifier, and paint calculator.",
+        numberOfItems: 7,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Paint Calculator", url: "https://www.paintcolorhq.com/tools/paint-calculator" },
           { "@type": "ListItem", position: 2, name: "Photo Color Identifier", url: "https://www.paintcolorhq.com/tools/color-identifier" },
-          { "@type": "ListItem", position: 3, name: "Room Color Visualizer", url: "https://www.paintcolorhq.com/tools/room-visualizer" },
-          { "@type": "ListItem", position: 4, name: "Paint Color Palette Generator", url: "https://www.paintcolorhq.com/tools/palette-generator" },
-          { "@type": "ListItem", position: 5, name: "Embed the Match Widget", url: "https://www.paintcolorhq.com/embed" },
+          { "@type": "ListItem", position: 3, name: "Hex to Paint Color", url: "https://www.paintcolorhq.com/tools/hex-to-paint-color" },
+          { "@type": "ListItem", position: 4, name: "LRV Finder", url: "https://www.paintcolorhq.com/tools/lrv-finder" },
+          { "@type": "ListItem", position: 5, name: "Room Color Visualizer", url: "https://www.paintcolorhq.com/tools/room-visualizer" },
+          { "@type": "ListItem", position: 6, name: "Paint Color Palette Generator", url: "https://www.paintcolorhq.com/tools/palette-generator" },
+          { "@type": "ListItem", position: 7, name: "Embed the Match Widget", url: "https://www.paintcolorhq.com/embed" },
         ],
       }} />
       <JsonLd data={{
@@ -185,6 +229,8 @@ export default function ToolsPage() {
           <h2 className="font-headline text-3xl font-bold text-on-surface mb-6">When to use each tool</h2>
           <p className="mb-4"><strong>Paint Calculator</strong> — before ordering. A standard gallon covers about 350 sq ft with one coat on primed drywall. Two coats is standard for a color change, and darker colors often need a tinted primer plus two topcoats. The calculator accounts for doors, windows, and standard trim.</p>
           <p className="mb-4"><strong>Photo Color Identifier</strong> — when you already have a color you love but don&apos;t know its name. Works best on interior walls photographed in natural light. Results are ranked by Delta E distance, so the top match is the closest, not necessarily the one you expected.</p>
+          <p className="mb-4"><strong>Hex to Paint Color</strong>: when a designer, a brand guide or a website gives you a hex or RGB code instead of a paint name. You get the closest current color in each of 13 brands, with a plain-language closeness label, so you can see which brands have a near match and which do not.</p>
+          <p className="mb-4"><strong>LRV Finder</strong>: when you know how light the color needs to be. Filter Sherwin-Williams, Benjamin Moore, Behr and Dutch Boy colors by LRV range, brand and family, for example the brightest whites for a ceiling or a trim white a set number of points above the wall.</p>
           <p className="mb-4"><strong>Room Color Visualizer</strong> — for testing combinations before buying samples. Tests walls, an accent wall, trim and window frames in 10 reference rooms. Useful for catching clashes before committing to a $60 quart you won&apos;t end up using.</p>
           <p className="mb-4"><strong>Palette Generator</strong> — when you&apos;re starting from a single color you already like. Generates complementary, analogous, triadic, and split-complementary schemes using real paint colors, not abstract hex values.</p>
           <p>None of these replace physical samples. Paint chips under store lighting read differently than they will on your wall, and any screen preview is limited by your monitor&apos;s calibration. Use these to narrow options, then order actual sample pots before deciding.</p>

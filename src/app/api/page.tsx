@@ -166,6 +166,7 @@ export default function ApiDocsPage() {
             <li>Match accuracy uses CIEDE2000 — see our <Link href="/methodology" className="text-secondary underline underline-offset-2 hover:no-underline">methodology</Link>. Always confirm a final choice with a physical sample.</li>
             <li>Color data spans 26,000+ colors across 13 brands and is updated as brand palettes change.</li>
             <li>Prefer no code? The same matcher is available as a free <Link href="/embed" className="text-secondary underline underline-offset-2 hover:no-underline">embeddable widget</Link>.</li>
+            <li>Need the single closest current color in every brand instead of a ranked list? <code className="font-mono">GET /api/hex-nearest?hex=A8A29A</code> returns one result per brand with a plain-language closeness label and LRV, under the same free terms. It powers the <Link href="/tools/hex-to-paint-color" className="text-secondary underline underline-offset-2 hover:no-underline">hex to paint color tool</Link>.</li>
           </ul>
         </section>
       </main>

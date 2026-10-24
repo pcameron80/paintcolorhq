@@ -14,6 +14,18 @@ const tools = [
     description: "Find paint matches from any photo",
   },
   {
+    slug: "hex-to-paint-color",
+    title: "Hex to Paint Color",
+    href: "/tools/hex-to-paint-color",
+    description: "Match a hex or RGB code in every brand",
+  },
+  {
+    slug: "lrv-finder",
+    title: "LRV Finder",
+    href: "/tools/lrv-finder",
+    description: "Find paint colors by light reflectance",
+  },
+  {
     slug: "palette-generator",
     title: "Palette Generator",
     href: "/tools/palette-generator",

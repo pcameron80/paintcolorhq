@@ -365,6 +365,17 @@ export function ColorIdentifier() {
               No close paint matches found for this color.
             </p>
           )}
+          {matches.length > 0 && (
+            <p className="mt-4 text-sm text-gray-600">
+              Want one option from every brand?{" "}
+              <Link
+                href={`/tools/hex-to-paint-color?hex=${pickedColor.replace("#", "")}`}
+                className="font-semibold text-blue-700 hover:underline"
+              >
+                See the closest current color in each brand for {pickedColor.toUpperCase()}
+              </Link>
+            </p>
+          )}
           {matches.length > 0 && Object.values(sampleLinks).some((l) => l.affiliate) && (
             <p className="mt-4 text-xs text-gray-400">
               Sample links are affiliate links. If you buy through them, Paint

@@ -70,6 +70,8 @@ export async function GET(
         { url: "/tools/color-identifier", lastmod: NO_LASTMOD },
         { url: "/tools/room-visualizer", lastmod: NO_LASTMOD },
         { url: "/tools/palette-generator", lastmod: NO_LASTMOD },
+        { url: "/tools/hex-to-paint-color", lastmod: NO_LASTMOD },
+        { url: "/tools/lrv-finder", lastmod: NO_LASTMOD },
         { url: "/about", lastmod: NO_LASTMOD },
         { url: "/methodology", lastmod: NO_LASTMOD },
         { url: "/embed", lastmod: NO_LASTMOD },

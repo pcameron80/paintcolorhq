@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
+import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
@@ -57,7 +58,7 @@ export default function SearchPage() {
           <h2 className="font-headline text-3xl font-bold text-on-surface mb-6">Search tips</h2>
           <p className="mb-4"><strong>By name</strong> — partial names work. Typing &ldquo;agreeable&rdquo; returns Agreeable Gray; &ldquo;chantilly&rdquo; returns Chantilly Lace. Brand prefixes are ignored, so you don&apos;t need to know who makes the color.</p>
           <p className="mb-4"><strong>By color number</strong> — brand codes work directly. &ldquo;7029&rdquo; pulls Agreeable Gray (Sherwin-Williams) and any other color ending in 7029 across brands. Dashes are optional: &ldquo;HDC-NT-11&rdquo; and &ldquo;hdcnt11&rdquo; both match.</p>
-          <p className="mb-4"><strong>By hex code</strong> — paste a six-digit hex (with or without the #) to find the closest paint colors across all brands. This is useful when a designer hands you a screen color rather than a paint name, or when you&apos;re matching a fabric or tile.</p>
+          <p className="mb-4"><strong>By hex code</strong> — paste a six-digit hex (with or without the #) to find the closest paint colors across all brands. This is useful when a designer hands you a screen color rather than a paint name, or when you&apos;re matching a fabric or tile. For the single closest current color in every brand, use the <Link href="/tools/hex-to-paint-color" className="text-primary underline hover:text-primary/80">hex to paint color tool</Link>.</p>
           <p>Benjamin Moore colors are indexed under their full name — &ldquo;Nile Green,&rdquo; not &ldquo;Nile&rdquo; — because BM names are frequently truncated in online references. If a search seems to miss a BM color, try the CC or OC number instead.</p>
         </div>
       </section>
