@@ -267,3 +267,10 @@ It reads every color from Supabase and checks the content files (`src/lib/blog-p
 - **info** (with `--changed`): every mention of a corrected color, because descriptive words ("pink-beige", "soft blue-gray") can't be checked by number and need a read.
 
 It exits 1 on any error, so it can gate a deploy; `--strict` also fails on warnings. Matching runs on the copy's own words: a brand name followed by the full color name ("Behr Shy Green", "its SW match Simple Stone"), `/colors/` links, Swatches, and table cells under a "Closest <brand>" header. A color mentioned without its brand is not checked. Logic and tests: `scripts/blog/audit-color-facts-lib.ts`.
+
+## Traffic measurement (Plausible and Bing)
+
+These read analytics, not the color data, but they gate the numbers that go into planning:
+
+- `scripts/analytics/` holds read-only ClickHouse queries against the self-hosted Plausible database on the NAS, run with `scripts/analytics/run-clickhouse.sh <file.sql> <start> <end>`. Run `heavy-hitters.sql` before recording any traffic baseline, then `plausible-engagement.sql` for raw, bot-filtered and sensitivity figures by landing type. The filter definition and a reference run are in `scripts/analytics/README.md`.
+- `npm run bing-stats -- <command>` reads the Bing Webmaster API: `pages` / `queries` in whole weekly buckets (`--weeks`, `--from`, `--to`; top 100 pages a week only), `brands-did` for the SW/BM brand-title test against control brand pages, and `crawl`, `issues`, `feeds`, `url-info` and `links` for Bing's index view. Usage is in the header of `scripts/seo/bing-stats.ts`.
