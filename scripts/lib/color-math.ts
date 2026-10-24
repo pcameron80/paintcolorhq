@@ -1,10 +1,9 @@
 /**
- * Color math shared by import scripts. These are exact copies of the
- * functions in scripts/import-colors.ts — keep them in sync. (import-colors
- * runs main() at module load, so importing from it directly isn't an option;
- * extracting its internals wholesale is a bigger refactor than this batch
- * needs.) Every derived value in the colors table (family, LRV, Lab) must
- * come from these formulas or cross-brand Delta E ranking drifts.
+ * Color math shared by import scripts. scripts/import-colors.ts imports its
+ * family classifier from here; its LRV and Lab functions are still exact
+ * copies of the ones below, so keep those in sync. Every derived value in
+ * the colors table (family, LRV, Lab) must come from these formulas or
+ * cross-brand Delta E ranking drifts.
  */
 
 export function rgbToHsl(
@@ -75,26 +74,76 @@ function lchHueFamily(h: number, c: number): string {
   return 'pink';
 }
 
-// Perceptual correction applied on top of any family source (the HSL
-// classifier above, or a brand API's own family list). HSL saturation is
-// inflated for very light colors, which put creamy whites such as Swiss
-// Coffee, Alabaster and White Dove into yellow/orange. CIELAB lightness and
-// chroma are closer to what a person sees. Thresholds from the 2026-10-05
-// family audit: warm creams (LCh hue 55-115) tolerate more chroma before
-// they stop reading as white than cool tints do.
-export function refineColorFamily(family: string, r: number, g: number, b: number): string {
+const ACHROMATIC_FAMILIES = new Set(['gray', 'neutral', 'white', 'off-white']);
+
+/** CIELAB lightness, chroma and LCh hue (degrees, 0-360) for an sRGB color. */
+export function rgbToLch(r: number, g: number, b: number): { l: number; c: number; h: number } {
   const lab = rgbToLab(r, g, b);
   const c = Math.hypot(lab.a, lab.b_val);
   let h = (Math.atan2(lab.b_val, lab.a) * 180) / Math.PI;
   if (h < 0) h += 360;
-  const warm = h >= 55 && h < 115;
+  return { l: lab.l, c, h };
+}
 
-  if (HUE_FAMILIES.has(family) && lab.l >= 88 && c < (warm ? 10 : 6)) {
-    return lab.l >= 92 && c <= (warm ? 8 : 4) ? 'white' : 'off-white';
+// Perceptual correction applied on top of any family source (the HSL
+// classifier above, or a brand API's own family list). HSL saturation is
+// inflated for very light and very dark colors, so on its own it filed
+// creamy whites (Swiss Coffee, Alabaster) under yellow/orange, near-blacks
+// (Tricorn Black) under gray, tans (Shakespeare Tan) under orange and muted
+// greens (Palace Green) under gray. CIELAB lightness and chroma are closer
+// to what a person sees.
+//
+// History: the 2026-10-05 family audit set the white/off-white cutoffs. The
+// 2026-10-24 rewrite (MP-27) added black, chroma escapes for achromatic
+// labels, tans and khakis to beige/brown, pale tints to pink/beige, and
+// raised the warm off-white cutoff from C<10 to C<14. Pinned examples live
+// in color-math.test.ts; change a threshold and they tell you who moved.
+//
+// "tan" is never produced here: it stays a name-only family.
+export function refineColorFamily(family: string, r: number, g: number, b: number): string {
+  const { l, c, h } = rgbToLch(r, g, b);
+  // Warm creams (LCh hue 55-115) tolerate more chroma before they stop
+  // reading as white than cool tints do.
+  const warm = h >= 55 && h < 115;
+  let f = family;
+
+  // (a) Near-blacks: dark and close to neutral, whatever the source said.
+  if (l < 25 && c < 5) return 'black';
+
+  // (b, c, f) Chroma escapes. A label that says "no hue" on a color that
+  // visibly has one is re-filed by LCh hue, then still passes through the
+  // hue-family rules below, so a muted warm gray can land in beige or brown.
+  const escape =
+    (f === 'black' && c >= 10) ||
+    (f === 'gray' && c >= 18) ||
+    (ACHROMATIC_FAMILIES.has(f) && c >= 20);
+  if (escape) f = lchHueFamily(h, c);
+
+  if (HUE_FAMILIES.has(f)) {
+    // (d) Very light, low-chroma colors read as white or off-white.
+    if (l >= 88 && c < (warm ? 14 : 6)) {
+      return l >= 92 && c <= (warm ? 8 : 4) ? 'white' : 'off-white';
+    }
+    // (g) Pale, barely tinted reds, oranges and pinks: beige or off-white on
+    // the yellow side, pink on the red and mauve side (Rose Glow, LCh hue
+    // ~340, must not land in beige).
+    if ((f === 'red' || f === 'orange' || f === 'pink') && l >= 80 && c < 12) {
+      if (warm) return l >= 88 ? 'off-white' : 'beige';
+      if (h < 55 || h >= 300) return 'pink';
+    }
+    // (e) Tans and khakis: warm and muted reads as beige when light and
+    // brown when dark, not as orange. Source-labeled yellows are left alone:
+    // in the 2026-10-24 dry run the muted ones were mostly pale lime, sage
+    // and butter creams (Lime Chiffon, Tempered Sage), not tans. A yellow
+    // that only got its hue from a chroma escape above is a muted warm gray,
+    // so it does take this rule.
+    if ((f === 'orange' || (f === 'yellow' && escape)) && warm && c < 25) {
+      return l >= 60 ? 'beige' : 'brown';
+    }
   }
-  if (family === 'neutral' && c > 25) return lchHueFamily(h, c);
-  if (family === 'blue' && c >= 15 && h >= 295 && h < 345) return 'purple';
-  return family;
+
+  if (f === 'blue' && c >= 15 && h >= 295 && h < 345) return 'purple';
+  return f;
 }
 
 export function calculateLrv(r: number, g: number, b: number): number {
