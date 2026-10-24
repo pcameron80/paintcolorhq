@@ -271,7 +271,7 @@ async function main() {
       // Capitalization only. Feeds title-case every word ("A Touch Of Gold",
       // "Hush-A-Bye"), so the feed's casing is not copied; only the two import
       // artifacts in caseFix() are, and only with --case.
-      if (feedName.toLowerCase() === r.name.toLowerCase()) {
+      if (feedName.toLowerCase() === dehyphened.toLowerCase()) {
         const fixed = caseFix(dehyphened, feedName);
         if (fixed !== r.name) changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to: fixed, group: 'case', note });
         continue;
