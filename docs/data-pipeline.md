@@ -284,6 +284,22 @@ Run in this order, each step as a dry run first; the `--apply` steps write to pr
 
 `scrape-bm-lrv.ts` and `scrape-behr-lrv.ts` are superseded. They only overwrote differences of 2 or more, which left about 1,250 BM rows 1 to 2 points off (Hale Navy HC-154 held 7.1; BM publishes 8.36). They also depend on the NAS crawl4ai server, which now requires `CRAWL4AI_TOKEN`.
 
+## Duplicate rows
+
+`dedupe-colors.ts` plans; `retire-bad-color-rows.ts` deletes. Grouping rules and the canonical choice are in `scripts/lib/dedupe-rules.ts`: same name and hex, Behr padded and unpadded codes with the same name ("PPU18-01" / "PPU18-1", hex can differ), one code under two slugs, Behr "(HISP)" Spanish-name rows, Sherwin-Williams 35 / 0035, and Benjamin Moore AC- aliases from BM's own API. The canonical is the row in the live feed, then the non-HISP row, then the brand numbering rules (BM: CC- and AC- lose, OC-/HC- beat PM-), then the shorter slug. Availability, LRV and hex are never copied from a loser.
+
+```bash
+npx tsx scripts/fetch-bm-aliases.ts                  # read-only: data/bm-ac-aliases.json
+npx tsx scripts/dedupe-colors.ts                     # plan: scripts/data/dedupe-plan-<date>.json, src/ untouched
+npx tsx scripts/dedupe-colors.ts --write-redirects   # merge the plan's 301s into src/data/color-redirects.json (never drops one)
+# commit and deploy the redirects, then:
+npx tsx scripts/retire-bad-color-rows.ts --pairs=scripts/data/dedupe-plan-<date>.json           # dry run
+npx tsx scripts/retire-bad-color-rows.ts --pairs=scripts/data/dedupe-plan-<date>.json --apply   # backup, then write
+npx tsx scripts/retire-bad-color-rows.ts --revert=scripts/data/backups/retire-<ts>.json --apply # undo
+```
+
+The retire step backs up every deleted row (all columns), its matches, every rebuilt list and every `project_colors` ref, folds the loser's code into the canonical's `alternate_numbers`, rebuilds the top 5 for every source that listed a loser, and re-points projects. It refuses a pair whose canonical is not in the live feed while the loser is, and refuses `--apply` while any redirect is missing from the committed map. `compute-matches` breaks equal Delta E ties the same way (live row first, then id), so re-export with `npm run export-db-colors` first; files exported before 2026-10-24 carry no `last_seen_live_on`.
+
 ## Content color-fact audit
 
 Content files quote color data by hand: Swatch hexes, printed LRVs, "hex #..." in editorial, and match claims such as "Behr X is nearly identical". A swatch correction or an LRV update changes the DB underneath them without touching the copy. On 2026-10-11 the drift correction left about 70 such claims stale across the blog and editorial (PRs #200 and #202). Run the audit after any of `apply-hex-corrections.ts`, `apply-published-lrv.ts`, `compute-matches`, and before publishing a post:

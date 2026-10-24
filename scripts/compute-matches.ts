@@ -20,6 +20,8 @@ interface ProcessedColor {
   lrv: number;
   color_family: string;
   is_archived?: boolean;
+  /** absent in files exported before 2026-10-24; treated as not live */
+  last_seen_live_on?: string | null;
   brand_slug: string;
 }
 
@@ -37,15 +39,32 @@ interface MatchRecord {
 interface Candidate {
   index: number;
   deltaE: number;
+  /** in the brand's live feed (last_seen_live_on set) */
+  live: boolean;
+  /** "brand_slug/color_slug", the final tie-break */
+  id: string;
 }
 
-function insertCandidate(
+/**
+ * True when `a` ranks ahead of `b`. Equal Delta E is common (duplicate rows
+ * share a hex), so ties are decided, not left to input order: a live row
+ * beats a not-live one, then match_color_id sorts. Before this, whichever
+ * row came later won, which is how 139 rank-1 slots went to Behr's
+ * Spanish-name "(HISP)" duplicates.
+ */
+export function ranksAhead(a: Candidate, b: Candidate): boolean {
+  if (a.deltaE !== b.deltaE) return a.deltaE < b.deltaE;
+  if (a.live !== b.live) return a.live;
+  return a.id < b.id;
+}
+
+export function insertCandidate(
   top: Candidate[],
   maxSize: number,
   candidate: Candidate,
 ): void {
-  // If the list is full and this candidate is worse than the worst, skip
-  if (top.length >= maxSize && candidate.deltaE >= top[top.length - 1].deltaE) {
+  // If the list is full and this candidate does not beat the worst, skip
+  if (top.length >= maxSize && !ranksAhead(candidate, top[top.length - 1])) {
     return;
   }
 
@@ -54,7 +73,7 @@ function insertCandidate(
   let hi = top.length;
   while (lo < hi) {
     const mid = (lo + hi) >> 1;
-    if (top[mid].deltaE < candidate.deltaE) {
+    if (ranksAhead(top[mid], candidate)) {
       lo = mid + 1;
     } else {
       hi = mid;
@@ -114,6 +133,12 @@ function main() {
     labB[i] = colors[i].lab_b_val;
   }
 
+  const live = colors.map((c) => !!c.last_seen_live_on);
+  const ids = colors.map((c) => `${c.brand_slug}/${c.slug}`);
+  if (!live.some(Boolean)) {
+    console.warn("No last_seen_live_on in the input; equal-Delta-E ties fall back to slug order. Re-run npm run export-db-colors.");
+  }
+
   const TOP_N = 5;
   const allMatches: MatchRecord[] = [];
   let processed = 0;
@@ -160,7 +185,7 @@ function main() {
             a: labA[tgtIdx],
             b: labB[tgtIdx],
           });
-          insertCandidate(top, TOP_N, { index: tgtIdx, deltaE: de });
+          insertCandidate(top, TOP_N, { index: tgtIdx, deltaE: de, live: live[tgtIdx], id: ids[tgtIdx] });
         }
 
         const srcId = `${colors[srcIdx].brand_slug}/${colors[srcIdx].slug}`;
@@ -200,4 +225,4 @@ function main() {
   console.log(`Output written to: ${outputFile}`);
 }
 
-main();
+if (require.main === module) main();
