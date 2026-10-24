@@ -158,6 +158,11 @@ const nextConfig: NextConfig = {
         destination: "/brands",
         permanent: true,
       },
+      // Journey by Mediavine ads.txt, install day. public/ads.txt is served
+      // unchanged until then. If the dashboard gives an ads.txt URL rather
+      // than a file, add this as the FIRST entry of this list (statusCode,
+      // never permanent: true) and delete public/ads.txt from the repo:
+      //   { source: "/ads.txt", destination: "<ADS_TXT_URL from Journey>", statusCode: 301 },
       // Deduped color rows: old slug → canonical slug (161 entries).
       ...Object.entries(colorRedirects).map(([from, to]) => ({
         source: `/colors/${from}`,

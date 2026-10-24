@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import { AdScripts } from "@/components/ad-scripts";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { CookieConsent } from "@/components/cookie-consent";
 import { PlausibleScript } from "@/components/plausible-script";
@@ -78,6 +79,10 @@ export default function RootLayout({
         <AnalyticsProvider />
         <WebVitalsReporter />
         <PlausibleScript />
+        {/* Journey by Mediavine. Renders nothing until the dashboard values in
+            src/lib/mediavine.ts are filled in, and never on /embed, /admin,
+            /dashboard, /auth or /search. Last so the order above is unchanged. */}
+        <AdScripts />
       </body>
     </html>
   );
