@@ -1,17 +1,13 @@
 import { NextResponse } from "next/server";
 import sitemapSnapshot from "@/generated/sitemap.json";
-import { getAllBlogSlugs, getAllPosts } from "@/lib/blog-posts";
+import { getAllBlogSlugs, getPostBySlug } from "@/lib/blog-posts";
+import { MATCH_TEMPLATE_DATE, colorLastmod, latestDate, matchLastmod } from "@/lib/content-dates";
 
 // ISR: refresh hourly so a scheduled post enters the sitemap index on its date.
 export const revalidate = 3600;
 
 const BASE_URL = "https://www.paintcolorhq.com";
 const COLORS_PER_SITEMAP = 5000;
-
-// Build-time deploy date (frozen via next.config.ts `env`) — index lastmod for
-// static shards, so it doesn't reset to "today" each ISR cycle (false freshness).
-const SITE_BUILD_DATE =
-  process.env.SITE_BUILD_DATE ?? new Date().toISOString().split("T")[0];
 
 export async function GET() {
   try {
@@ -36,22 +32,33 @@ export async function GET() {
       if (idx !== -1) sitemapNames.splice(idx, 1);
     }
 
-    // The blog shard's lastmod is the most-recent live post date (real
-    // freshness); every other shard uses the frozen deploy date.
-    const livePosts = getAllPosts();
-    const blogLastmod =
-      livePosts.length > 0
-        ? livePosts.map((p) => p.date).sort().at(-1)!
-        : SITE_BUILD_DATE;
-    const lastmodFor = (name: string) => (name === "blog" ? blogLastmod : SITE_BUILD_DATE);
+    // Index lastmod is the newest lastmod inside the shard, computed from the
+    // same content dates the shard itself emits. Shards without real content
+    // dates (pages, brands, families, inspiration) omit it: a build date would
+    // move on every deploy without the content moving.
+    const lastmods = new Map<string, string>();
+    for (let i = 0; i < totalColorSitemaps; i++) {
+      const slice = colorSlugs.slice(i * COLORS_PER_SITEMAP, (i + 1) * COLORS_PER_SITEMAP);
+      lastmods.set(`colors-${i}`, latestDate(...slice.map(colorLastmod)));
+    }
+    const matchUpdatedAt: Record<string, string> = sitemapSnapshot.matchUpdatedAt ?? {};
+    if (sitemapSnapshot.matches.length > 0) {
+      lastmods.set("match-individual", latestDate(...sitemapSnapshot.matches.map((url) => matchLastmod(url, matchUpdatedAt))));
+    }
+    lastmods.set("matches", MATCH_TEMPLATE_DATE);
+    // Same posts and dates as the blog shard: indexable live posts, modifiedDate over date.
+    const blogLastmod = latestDate(...blogSlugs.map((s) => {
+      const post = getPostBySlug(s);
+      return post?.modifiedDate ?? post?.date;
+    }));
+    if (blogLastmod) lastmods.set("blog", blogLastmod);
 
     const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapNames
   .map(
     (name) => `  <sitemap>
-    <loc>${BASE_URL}/sitemap/${name}.xml</loc>
-    ${name === "blog" ? `<lastmod>${lastmodFor(name)}</lastmod>` : ""}
+    <loc>${BASE_URL}/sitemap/${name}.xml</loc>${lastmods.get(name) ? `\n    <lastmod>${lastmods.get(name)}</lastmod>` : ""}
   </sitemap>`
   )
   .join("\n")}
