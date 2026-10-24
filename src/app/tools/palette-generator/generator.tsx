@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useId } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
@@ -196,24 +196,18 @@ function generatePalettes(hex: string): GeneratedPalette[] {
 
 // --- Brand list ---
 
-const BRANDS = [
-  { name: "All Brands", slug: "" },
-  { name: "Sherwin-Williams", slug: "sherwin-williams" },
-  { name: "Benjamin Moore", slug: "benjamin-moore" },
-  { name: "Behr", slug: "behr" },
-  { name: "PPG", slug: "ppg" },
-  { name: "Dunn-Edwards", slug: "dunn-edwards" },
-  { name: "Valspar", slug: "valspar" },
-  { name: "Farrow & Ball", slug: "farrow-ball" },
-  { name: "Clark+Kensington", slug: "clark-kensington" },
-  { name: "Olympic", slug: "olympic" },
-  { name: "Dutch Boy", slug: "dutch-boy" },
-];
+export interface FilterBrand {
+  name: string;
+  slug: string;
+}
 
 // --- Component ---
 
-export function PaletteGenerator() {
+export function PaletteGenerator({ brands }: { brands: FilterBrand[] }) {
   const searchParams = useSearchParams();
+  const colorId = useId();
+  const hexId = useId();
+  const brandId = useId();
   const initialHex = (() => {
     const param = searchParams.get("hex");
     if (param && /^#?[0-9a-fA-F]{6}$/.test(param)) {
@@ -230,6 +224,10 @@ export function PaletteGenerator() {
     new Map()
   );
   const [loading, setLoading] = useState(false);
+  // The brand the current results were fetched with (not the dropdown value,
+  // which can change before Generate is pressed).
+  const [resultBrand, setResultBrand] = useState("");
+  const selectedBrand = brands.find((b) => b.slug === resultBrand);
 
   const fetchMatches = useCallback(
     async (generatedPalettes: GeneratedPalette[], brand: string) => {
@@ -241,6 +239,7 @@ export function PaletteGenerator() {
       }
 
       setLoading(true);
+      setResultBrand(brand);
       try {
         const entries = [...uniqueHexes];
         const results = await Promise.all(
@@ -317,36 +316,44 @@ export function PaletteGenerator() {
       {/* Controls */}
       <div className="flex flex-wrap items-end gap-4 rounded-xl border border-gray-200 bg-gray-50 p-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label htmlFor={hexId} className="block text-sm font-medium text-gray-700">
             Starting Color
           </label>
           <div className="mt-1 flex items-center gap-2">
             <input
+              id={colorId}
               type="color"
+              aria-label="Pick a starting color"
               value={inputHex}
               onChange={(e) => handleColorChange(e.target.value)}
               className="h-10 w-14 cursor-pointer rounded border border-gray-300"
             />
             <input
+              id={hexId}
               type="text"
+              inputMode="text"
+              autoCapitalize="characters"
+              spellCheck={false}
               value={hexText}
               onChange={(e) => handleHexTextChange(e.target.value)}
               placeholder="#5B8C5A"
-              className="h-10 w-28 rounded-lg border border-gray-300 px-3 text-sm text-gray-900 focus:border-brand-blue focus:outline-none"
+              className="h-10 w-32 rounded-lg border border-gray-300 px-3 text-base text-gray-900 focus:border-brand-blue focus:outline-none"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label htmlFor={brandId} className="block text-sm font-medium text-gray-700">
             Brand Filter
           </label>
           <select
+            id={brandId}
             value={brandFilter}
             onChange={(e) => setBrandFilter(e.target.value)}
-            className="mt-1 h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 focus:border-brand-blue focus:outline-none"
+            className="mt-1 h-10 max-w-full rounded-lg border border-gray-300 bg-white px-3 text-base text-gray-900 focus:border-brand-blue focus:outline-none"
           >
-            {BRANDS.map((b) => (
+            <option value="">All Brands</option>
+            {brands.map((b) => (
               <option key={b.slug} value={b.slug}>
                 {b.name}
               </option>
@@ -372,7 +379,7 @@ export function PaletteGenerator() {
               className="rounded-xl border border-gray-200 p-5"
             >
               <h3 className="font-semibold text-gray-900">{palette.name}</h3>
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-600">
                 {palette.description}
               </p>
 
@@ -407,19 +414,19 @@ export function PaletteGenerator() {
                           style={{ backgroundColor: displayHex }}
                         />
                       )}
-                      <p className="mt-1.5 text-center text-[10px] font-medium text-gray-400">
+                      <p className="mt-1.5 text-center text-xs font-medium text-gray-600">
                         {color.role}
                       </p>
                       {loading ? (
-                        <p className="truncate text-center text-[10px] text-gray-300">
+                        <p className="text-center text-xs text-gray-600" aria-hidden="true">
                           ...
                         </p>
                       ) : match ? (
                         <>
-                          <p className="truncate text-center text-[10px] text-gray-500">
+                          <p className="line-clamp-2 break-words text-center text-xs leading-tight text-gray-900" title={match.name}>
                             {match.name}
                           </p>
-                          <p className="truncate text-center text-[10px] text-gray-400">
+                          <p className="line-clamp-1 break-words text-center text-xs text-gray-600" title={match.brandName}>
                             {match.brandName}
                           </p>
                           {match.availability && (
@@ -432,8 +439,8 @@ export function PaletteGenerator() {
                           )}
                         </>
                       ) : (
-                        <p className="truncate text-center text-[10px] text-gray-300">
-                          No match
+                        <p className="line-clamp-2 text-center text-xs text-gray-600">
+                          {selectedBrand ? `No ${selectedBrand.name} match` : "No match"}
                         </p>
                       )}
                     </div>
