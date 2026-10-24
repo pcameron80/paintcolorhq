@@ -143,9 +143,16 @@ All scripts use `dotenv` to load `.env.local` for Supabase credentials.
 After the main pipeline, retailer links can be verified against brand websites. This is a separate process because it depends on external website availability and doesn't affect the core color data.
 
 ```
+Step 4b: generate-official-color-urls  Brand sitemaps -> src/lib/official-urls/{brand}.json (quarterly)
 Step 5: check-retailer-links     Probe brand URLs for each color -> retailer-links-{brand}.json
 Step 6: generate-retailer-overrides  Convert JSON results -> src/lib/retailer-overrides.ts
 ```
+
+### Step 4b: Official color URLs from brand sitemaps
+
+**Script:** `scripts/generate-official-color-urls.ts [ppg|valspar|dutch-boy|vista-paint ...] [--dry-run]`
+
+Reads our catalog from the public `/api/brand/<slug>/colors` endpoint and each brand's sitemap, and writes a `color_number -> path` map per brand. Codes join Valspar, Dutch Boy and Vista pages; a page is linked only when its URL name matches ours too (Vista's stock base `49-vista-white` shares its code with `49-auburn-wave`). PPG pages are keyed by name on pittsburghpaints.com, so repeated names are resolved by reading the code from each candidate page's `<title>`, one request per second. Each run refuses to write a map that covers under half the brand's colors. Run quarterly, then `check-retailer-links.ts --sample`.
 
 ### Step 5: Check Retailer Links
 
@@ -170,12 +177,10 @@ Behr, Kilz, Benjamin Moore and the big-box search pages answer scripts with 403 
 - `notFound[]` — Colors not found under any family on the brand's website
 - `checked` / `passed` — Summary counts
 
-**Supported brands:** `valspar`, `ppg`, `sherwin-williams`, `dutch-boy`, `dunn-edwards`, `kilz`, `ral`. Colorhouse was removed on 2026-10-24 because its store domain was hijacked; Colorhouse color pages have no brand link.
+**Supported brands:** `sherwin-williams`, `dunn-edwards`, `kilz`, `ral`. Colorhouse was removed on 2026-10-24 because its store domain was hijacked; Colorhouse color pages have no brand link. PPG, Valspar, Dutch Boy and Vista moved to the sitemap maps (Step 4b) the same day.
 
 **Brand website family categories:**
-- **Valspar** (13): pink, red, orange, yellow, green, teal, blue, white, gray, black, brown, neutral, purple
-- **PPG** (15): reds, oranges, yellows, greens, blues, purples, pinks, browns, neutrals, whites, blacks, grays, beiges, aquas, metallics
-- **Sherwin-Williams** (8): red, orange, yellow, green, blue, purple, neutral, white-and-pastel
+- **Sherwin-Williams** (8, from its sitemap): red, orange, yellow, green, blue, purple, neutral, white. SW serves a color under any of them; `white-and-pastel` now 404s.
 
 ### Step 6: Generate Retailer Overrides
 
