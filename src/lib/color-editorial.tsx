@@ -583,11 +583,11 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
-  "behr/ultra-pure-white-w-b-500": (
+  "behr/ultra-pure-white-upw": (
     <>
       <p>
-        Ultra Pure White is Behr&apos;s brightest, cleanest white — at LRV 97 it&apos;s a true, crisp white with
-        no obvious undertone, and it doubles as Behr&apos;s tint base, so it&apos;s everywhere at Home Depot. It&apos;s
+        Ultra Pure White is Behr&apos;s brightest, cleanest white. At a published LRV of 94 it&apos;s a true, crisp
+        white with no obvious undertone, and it doubles as Behr&apos;s tint base, so it&apos;s everywhere at Home Depot. It&apos;s
         the pick for a sharp, modern, gallery-clean look on walls, trim, and ceilings.
       </p>
       <p>

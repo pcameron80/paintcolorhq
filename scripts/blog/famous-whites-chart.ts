@@ -33,11 +33,12 @@ type Point = { key: string; label: string; dx: number; dy: number; anchor?: "sta
 
 // dx/dy: label offset from the swatch center, in pixels.
 const POINTS: Point[] = [
-  { key: "behr/ultra-pure-white-w-b-500", label: "Behr Ultra Pure White", dx: 0, dy: -42 },
-  { key: "behr/polar-bear-75", label: "Behr Polar Bear", dx: 50, dy: -28, anchor: "start" },
-  { key: "farrow-ball/all-white-2005", label: "F&B All White", dx: 0, dy: 70 },
+  // UPW is the row Behr publishes (LRV 94). W-B-500 (97.3) is not in Behr's live palette.
+  { key: "behr/ultra-pure-white-upw", label: "Behr Ultra Pure White", dx: 50, dy: 9, anchor: "start" },
+  { key: "behr/polar-bear-75", label: "Behr Polar Bear", dx: 50, dy: 9, anchor: "start" },
+  { key: "farrow-ball/all-white-2005", label: "F&B All White", dx: 0, dy: -42 },
   { key: "valspar/ultra-white-7006-24", label: "Valspar Ultra White", dx: 0, dy: -42 },
-  { key: "benjamin-moore/chantilly-lace-2121-70", label: "BM Chantilly Lace", dx: 0, dy: 62 },
+  { key: "benjamin-moore/chantilly-lace-2121-70", label: "BM Chantilly Lace", dx: -40, dy: 9, anchor: "end" },
   { key: "benjamin-moore/simply-white-2143-70", label: "BM Simply White", dx: 0, dy: 62 },
   { key: "farrow-ball/wimborne-white-239", label: "F&B Wimborne White", dx: 0, dy: -42 },
   { key: "farrow-ball/pointing-2003", label: "F&B Pointing", dx: 0, dy: -42 },
@@ -47,17 +48,17 @@ const POINTS: Point[] = [
   { key: "sherwin-williams/greek-villa-7551", label: "SW Greek Villa", dx: -48, dy: -18, anchor: "end" },
   { key: "benjamin-moore/cloud-white-oc-130", label: "BM Cloud White", dx: 0, dy: -42 },
   { key: "behr/swiss-coffee-12", label: "Behr Swiss Coffee", dx: 50, dy: -14, anchor: "start" },
-  { key: "benjamin-moore/swiss-coffee-oc-45", label: "BM Swiss Coffee", dx: 50, dy: 30, anchor: "start" },
-  { key: "sherwin-williams/alabaster-7008", label: "SW Alabaster", dx: 50, dy: 44, anchor: "start" },
+  { key: "benjamin-moore/swiss-coffee-oc-45", label: "BM Swiss Coffee", dx: 50, dy: 12, anchor: "start" },
+  { key: "sherwin-williams/alabaster-7008", label: "SW Alabaster", dx: 0, dy: 66 },
   { key: "benjamin-moore/white-dove-oc-17", label: "BM White Dove", dx: -40, dy: 9, anchor: "end" },
 ];
 
 // Pairs to call out on the chart. Label text comes from closenessLabel();
 // tx/ty offset the label from the connector midpoint, in pixels.
 const PAIRS: { a: string; b: string; tx: number; ty: number; anchor: "start" | "middle" | "end" }[] = [
-  { a: "benjamin-moore/chantilly-lace-2121-70", b: "behr/polar-bear-75", tx: 40, ty: 20, anchor: "start" },
+  { a: "benjamin-moore/chantilly-lace-2121-70", b: "behr/polar-bear-75", tx: 0, ty: 64, anchor: "middle" },
   { a: "benjamin-moore/cloud-white-oc-130", b: "behr/swiss-coffee-12", tx: 24, ty: -24, anchor: "start" },
-  { a: "sherwin-williams/alabaster-7008", b: "benjamin-moore/white-dove-oc-17", tx: -70, ty: 62, anchor: "middle" },
+  { a: "sherwin-williams/alabaster-7008", b: "benjamin-moore/white-dove-oc-17", tx: -130, ty: 58, anchor: "middle" },
 ];
 
 const W = 2000;

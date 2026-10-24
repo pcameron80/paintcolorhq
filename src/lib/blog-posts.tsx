@@ -1499,6 +1499,7 @@ const blogPosts: BlogPost[] = [
     slug: "famous-white-paints-compared",
     title: "Alabaster vs. White Dove and 15 Other Famous Whites, Measured",
     date: "2026-07-03",
+    modifiedDate: "2026-10-24",
     author: "Philip Cameron",
     excerpt:
       "We measured the 17 most-searched white paints with CIEDE2000. On the brands' published values, Alabaster and White Dove rate nearly identical, and a $30 Behr staple is a near-perfect twin of a Benjamin Moore classic.",
@@ -1513,23 +1514,30 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the whitest white paint you can buy?",
         answer:
-          "Among the brands we track, Behr Ultra Pure White has the highest light reflectance (LRV 97.3) — it is the brightest true white on the market and a common benchmark base white. Every brand's ceiling differs: PPG's lightest white measures LRV 88.7, a full nine points lower.",
+          "Among the brands that publish LRV, Behr Ultra Pure White has the highest light reflectance, with a published LRV of 94, and it doubles as Behr's base white. Sherwin-Williams UltraWhite is close behind at 93.5. Every brand's ceiling differs: PPG's lightest white, Soft Candlelight, is published at LRV 89, about five points lower.",
       },
       {
         question: "Which paint brand has the warmest whites?",
         answer:
-          "Averaged across every white each brand sells (LRV 75+), Sherwin-Williams' whites run the coolest and Hirshfield's the warmest. Benjamin Moore sits mid-pack. The warmest of the famous whites is Farrow & Ball Pointing. If you want creamy whites, Farrow & Ball's classics lean warm; if you want crisp gallery whites, Sherwin-Williams and Valspar lean cool.",
+          "Averaged across every white each brand sells (LRV 75+), Sherwin-Williams' whites run the coolest and Hirshfield's the warmest. Benjamin Moore sits in the middle of the pack. The warmest of the famous whites is Farrow & Ball Pointing. If you want creamy whites, look at Hirshfield's and Vista Paint or a warm classic like Pointing; if you want crisp gallery whites, Sherwin-Williams and Behr lean cool.",
       },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          White is where paint decisions go to stall. It is the best-selling color family, the
-          one with the fiercest brand loyalties, and the one where the internet argues hardest
-          about whether two names are &ldquo;basically the same.&rdquo; So we measured it: the 17
-          most-searched whites in America, compared with CIEDE2000 (Delta E 2000), the
-          color-difference standard paint manufacturers use for quality control. The results
-          settle some long-running debates — and start at least one new one.
+          Sherwin-Williams{" "}
+          <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link> and
+          Benjamin Moore{" "}
+          <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>{" "}
+          rate Nearly identical on the color values each brand publishes, but neither is the
+          other&apos;s closest match: White
+          Dove&apos;s closest Sherwin-Williams color is{" "}
+          <Link href="/colors/sherwin-williams/cold-foam-9504" className="text-brand-blue hover:underline">Cold Foam (SW 9504)</Link>.
+          That is one of several answers we got by measuring the 17 most-searched whites in
+          America with CIEDE2000, the color-difference standard paint manufacturers use for
+          quality control. White is the best-selling color family and the one where the internet
+          argues hardest about whether two names are &ldquo;basically the same,&rdquo; so the
+          numbers below settle some long-running debates and start at least one new one.
         </p>
 
         <figure className="mt-8">
@@ -1622,26 +1630,27 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Whitest White You Can Buy</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Every brand has a ceiling — the lightest white it sells — and the ceilings differ more
-          than you would expect. <Swatch hex="#FAFDF7" name="Behr Ultra Pure White" href="/colors/behr/ultra-pure-white-w-b-500" />{" "}
-          tops the market at LRV 97.3. Sherwin-Williams&apos; brightest,{" "}
-          <Swatch hex="#F7F7F1" name="High Reflective White" href="/colors/sherwin-williams/high-reflective-white-7757" />, reaches 92.6.
-          PPG&apos;s lightest white measures just 88.7 — nearly nine points below Behr&apos;s. And
-          if what you want is white with <em>no</em> undertone at all, the truest white we
+          Every brand has a ceiling, the lightest white it sells, and the ceilings differ more
+          than you would expect. Among brands that publish LRV,{" "}
+          <Swatch hex="#F8F9F3" name="Behr Ultra Pure White" href="/colors/behr/ultra-pure-white-upw" />{" "}
+          is the brightest at a published LRV of 94. Sherwin-Williams&apos; brightest,{" "}
+          <Swatch hex="#F6F7F2" name="UltraWhite" href="/colors/sherwin-williams/ultrawhite-9500" />, is published at 93.5.
+          PPG&apos;s lightest white is published at 89, about five points below Behr&apos;s.
+          And if what you want is white with <em>no</em> undertone at all, the truest white we
           measured is <Swatch hex="#F3F4F4" name="Dunn-Edwards Lighthouse" href="/colors/dunn-edwards/lighthouse-dew385" />, nearly
-          chroma-free at LRV 90.
+          chroma-free; Dunn-Edwards publishes LRV 83.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Which Brand&apos;s Whites Run Warmest</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Averaging the warmth of every white each brand sells (4,268 colors at LRV 75+), a brand
+          Averaging the warmth of every white each brand sells (4,244 colors at LRV 75+), a brand
           personality shows up. <strong>Sherwin-Williams&apos; whites run the coolest of any
-          brand</strong> (average b* 7.8) — despite Alabaster&apos;s warm reputation, the SW white
-          wall leans crisp. Hirshfield&apos;s (11.8) and Vista Paint (11.4) run warmest, with
-          Benjamin Moore mid-pack (9.8). Among the famous whites themselves, Farrow &amp; Ball
+          brand</strong> (average b* 7.8): despite Alabaster&apos;s warm reputation, the SW white
+          wall leans crisp. Hirshfield&apos;s (11.8) and Vista Paint (10.9) run warmest, with
+          Benjamin Moore in the middle of the pack (10.0). Among the famous whites themselves, Farrow &amp; Ball
           Pointing is the warmest. Practical version: if you keep landing on whites that feel too cold, shop the
-          warm half of the market; if your whites keep going cream on you, Sherwin-Williams and
-          Valspar&apos;s cooler ranges are where to look.
+          warm half of the market; if your whites keep going cream on you, Sherwin-Williams&apos;
+          and Behr&apos;s cooler ranges are where to look.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Use This</h2>
@@ -1660,14 +1669,15 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Methodology</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Color differences are CIEDE2000 (Delta E 2000) computed from each brand&apos;s published
-          color values; warmth is LAB b*; the whites universe is every color at LRV 75 or above
-          across the 13 brands we track (4,268 colors) as of July 2026. Method details are on our{" "}
+          Color differences are CIEDE2000 computed from each brand&apos;s published color values;
+          warmth is LAB b*; the whites universe is every color at LRV 75 or above across the 13
+          brands we track (4,244 colors) as of October 2026. The brightest-white figures are each
+          manufacturer&apos;s published LRV. Method details are on our{" "}
           <Link href="/methodology" className="text-brand-blue hover:underline">methodology page</Link>;
           the cross-brand duplication analysis this builds on is in{" "}
           <Link href="/blog/most-duplicated-paint-color" className="text-brand-blue hover:underline">
             our study of duplicated paint colors
-          </Link>. Published values describe the color target, not the liquid paint — sheen,
+          </Link>. Published values describe the color target, not the liquid paint: sheen,
           texture, and pigment recipe still differ between brands, so confirm finalists with
           physical samples. If you cite this comparison, please link to this page.
         </p>
@@ -1678,16 +1688,17 @@ const blogPosts: BlogPost[] = [
     slug: "most-duplicated-paint-color",
     title: "One Color, Two Dozen Names: The Most Duplicated Paint Color in America",
     date: "2026-07-02",
+    modifiedDate: "2026-10-24",
     author: "Philip Cameron",
     excerpt:
-      "We compared all 26,597 colors across 13 paint brands with CIEDE2000. Two-thirds have a nearly identical twin at another brand — and one warm off-white is sold under two dozen different names.",
+      "We compared all 26,720 colors across 13 paint brands with CIEDE2000. Seven in ten have a nearly identical twin at another brand, and one warm off-white is sold under two dozen different names.",
     coverColor: "#F7F1E2",
     tags: ["Data", "Design"],
     faq: [
       {
         question: "What counts as the same color in this analysis?",
         answer:
-          "Two colors are treated as twins in this study when their CIEDE2000 (Delta E 2000) difference falls in the tightest half of our Nearly identical band — a gap most people cannot see even with the two swatches side by side. CIEDE2000 is the perceptual color-difference standard used in paint manufacturing quality control. Note that paint formulas, sheens, and bases still differ between brands even when the color target is effectively the same.",
+          "A color counts as twinned in this study when its closest match at another brand has a CIEDE2000 difference in the tightest half of our Nearly identical band, a gap most people cannot see even with the two swatches side by side. CIEDE2000 is the perceptual color-difference standard used in paint manufacturing quality control. Paint formulas, sheens, and bases still differ between brands even when the color target is effectively the same.",
       },
       {
         question: "Are cheaper paint brands copying expensive ones?",
@@ -1702,21 +1713,33 @@ const blogPosts: BlogPost[] = [
       {
         question: "How many distinct paint colors are there in America?",
         answer:
-          "The 13 brands Paint Color HQ tracks publish 26,597 named colors, but merging nearly identical duplicates (every group member inside the tightest half of our Nearly identical band relative to its reference color) collapses that to about 14,700 genuinely distinct colors — roughly 55% of the catalog. The exact figure depends on where you draw the 'same color' line, since near-identity chains: two colors can each match a third without matching each other.",
+          "The 13 brands Paint Color HQ tracks publish 26,720 named colors. As of October 2026, 30.3% of them (8,104) have no nearly identical twin at any other brand, and the other 69.7% do. We do not publish a single count of distinct colors, because near-identity chains: two colors can each be a twin of a third without being twins of each other, so any merged total depends on where you draw the 'same color' line.",
+      },
+      {
+        question: "Which paint brand has the most original palette?",
+        answer:
+          "Dunn-Edwards has the most original palette: 37.8% of its colors have no nearly identical twin at any other brand, followed closely by Valspar, Behr and Benjamin Moore at about 34%. Hirshfield's has the least, at 14.8%. These are October 2026 figures, re-run after we corrected outdated hex values; the July 2026 version of this study ranked Behr first on those outdated values.",
       },
     ],
     content: () => (
       <>
-        <p className="text-lg leading-relaxed text-gray-800">
+        <p className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 leading-relaxed">
+          <strong>Updated October 2026:</strong> the July run used outdated hex values for about
+          3,000 Behr, 1,100 Vista and 500 Valspar colors. We corrected them on 2026-10-11 and
+          re-ran the study, which changed the originality ranking. Every figure below is from the
+          October run.
+        </p>
+
+        <p className="mt-6 text-lg leading-relaxed text-gray-800">
           We ran a simple question against our full database: how much of the American paint
-          aisle is the same paint wearing different names? The dataset is every color we track —{" "}
-          <strong>26,597 colors across 13 brands</strong> — and the measure is CIEDE2000 (Delta E
-          2000), the color-difference standard paint manufacturers use for quality control. A
-          The tightest half of our Nearly identical band means two colors are indistinguishable to most people: most people cannot tell them
-          apart even side by side. The answer:{" "}
+          aisle is the same paint wearing different names? The dataset is every color we track,{" "}
+          <strong>26,720 colors across 13 brands</strong>, and the measure is CIEDE2000, the
+          color-difference standard paint manufacturers use for quality control. We count two
+          colors as twins only when their difference falls in the tightest half of our Nearly
+          identical band: most people cannot tell them apart even side by side. The answer:{" "}
           <strong>
-            17,702 colors — 66.6% of everything on the market we track — have at least one
-            nearly identical twin at a competing brand.
+            18,616 colors, 69.7% of everything we track, have at least one nearly identical
+            twin at a competing brand.
           </strong>
         </p>
 
@@ -1725,12 +1748,12 @@ const blogPosts: BlogPost[] = [
             href="/blog/most-duplicated-paint-color-chart-full.png"
             target="_blank"
             rel="noopener"
-            title="Open the full-resolution chart (3300×4380)"
+            title="Open the full-resolution chart (2400×3186)"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/blog/most-duplicated-paint-color-chart.webp"
-              alt="Data visualization: every color sold by 12 paint brands shown as hue-sorted color strips with each brand's unique share, and the most duplicated color in America — one warm off-white sold by 12 of 13 brands under different names"
+              alt="Data visualization: every color sold by 12 paint brands shown as hue-sorted color strips with each brand's unique share, and the most duplicated color in America, one warm off-white sold by 12 of 13 brands under different names"
               width={1200}
               height={1593}
               loading="lazy"
@@ -1746,9 +1769,9 @@ const blogPosts: BlogPost[] = [
               rel="noopener"
               className="text-brand-blue hover:underline"
             >
-              View the full-resolution chart (3300&times;4380)
-            </a>{" "}
-            — free to share and republish with a link back to this study.
+              View the full-resolution chart (2400&times;3186)
+            </a>
+            . Free to share and republish with a link back to this study.
           </figcaption>
         </figure>
 
@@ -1803,19 +1826,21 @@ const blogPosts: BlogPost[] = [
           One twin shown per brand, each compared with Flurry using CIEDE2000 and rated nearly identical. Colorhouse is the only tracked brand without one.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">749 Colors Share the Same Hex Code Across Brands</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">815 Hex Codes Are Sold by More Than One Brand</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Nearly identical undersells some of it. <strong>749 exact color values</strong> — same hex,
-          digit for digit — are sold by two or more brands under different names, covering 1,555
-          named paint colors. In the most extreme cases, <strong>four brands</strong> sell the
-          same exact value. Flurry and Swan White above are one of those pairs: not close, not
-          similar — the same color target with two names and two price tags.
+          Nearly identical undersells some of it. <strong>815 exact color values</strong>, the same
+          hex digit for digit, are sold by two or more brands under different names, covering 1,698
+          named paint colors. In the most extreme case, <strong>four brands</strong> sell the same
+          exact value. Flurry and Swan White above are one of those pairs: not close, not similar,
+          but the same color target with two names and two price tags.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Most (and Least) Original Palettes</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Flip the question: what share of each brand&apos;s palette exists <em>nowhere else</em> —
-          no nearly identical twin at any other tracked brand?
+          Flip the question: what share of each brand&apos;s palette exists <em>nowhere else</em>,
+          with no nearly identical twin at any other tracked brand? Dunn-Edwards leads at 37.8%.
+          Valspar, Behr and Benjamin Moore are close behind at about 34%, and Hirshfield&apos;s
+          trails at 14.8%.
         </p>
         <div className="mt-6 overflow-x-auto">
           <table className="w-full text-sm border-collapse">
@@ -1827,19 +1852,20 @@ const blogPosts: BlogPost[] = [
               </tr>
             </thead>
             <tbody className="text-gray-800">
+              {/* October 2026 run: src/data/duplication-study.json (scripts/study-duplication.ts). */}
               {[
-                ["Behr", "5,786", "48.5%"],
-                ["Dunn-Edwards", "2,230", "35.6%"],
-                ["Kilz", "827", "34.8%"],
-                ["Valspar", "2,358", "34.5%"],
-                ["Benjamin Moore", "3,904", "34.0%"],
-                ["PPG", "3,259", "32.8%"],
-                ["Colorhouse", "128", "27.3%"],
-                ["Sherwin-Williams", "1,951", "26.6%"],
-                ["Farrow & Ball", "167", "26.3%"],
-                ["Dutch Boy", "1,441", "26.1%"],
-                ["Vista Paint", "2,864", "19.7%"],
-                ["Hirshfield's", "1,469", "8.2%"],
+                ["Dunn-Edwards", "2,230", "37.8%"],
+                ["Valspar", "2,358", "33.9%"],
+                ["Behr", "5,789", "33.6%"],
+                ["Benjamin Moore", "3,903", "33.5%"],
+                ["PPG", "3,261", "30.1%"],
+                ["Colorhouse", "128", "28.1%"],
+                ["Kilz", "827", "27.1%"],
+                ["Sherwin-Williams", "1,950", "25.7%"],
+                ["Farrow & Ball", "167", "25.1%"],
+                ["Dutch Boy", "1,441", "25.1%"],
+                ["Vista Paint", "2,984", "23.7%"],
+                ["Hirshfield's", "1,469", "14.8%"],
               ].map(([brand, size, pct]) => (
                 <tr key={brand} className="border-b border-gray-100">
                   <td className="py-2 pr-4">{brand}</td>
@@ -1851,17 +1877,19 @@ const blogPosts: BlogPost[] = [
           </table>
         </div>
         <p className="mt-3 text-sm text-gray-500">
-          RAL is excluded here — it is an industrial color standard, not a decorative paint line.
-          Two honest caveats: a bigger palette naturally claims more unique territory, which
-          flatters Behr&apos;s number; and regional brands like Hirshfield&apos;s and Vista Paint
-          serve customers who ask for national colors by name, so tracking those palettes closely
-          is part of the job, not a knock on them.
+          Palette size counts retired colors, which can usually still be mixed by code; that is why Behr
+          shows 5,789. RAL is excluded here because it is an industrial color standard, not a
+          decorative paint line. Two honest caveats: a bigger palette naturally claims more unique
+          territory, which helps Behr and Benjamin Moore, the two largest; and regional brands like
+          Hirshfield&apos;s and Vista Paint serve customers who ask for national colors by name, so
+          tracking those palettes closely is part of the job, not a knock on them. Dunn-Edwards
+          tops the ranking with a mid-sized palette of 2,230 colors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Even the premium end converges: about three-quarters of Sherwin-Williams and Farrow
           &amp; Ball colors have a nearly identical twin somewhere else. The most intertwined pair
-          of brands is <strong>Behr and Benjamin Moore</strong> — roughly 2,400 colors in each
-          palette have a nearly identical counterpart in the other.
+          of brands is <strong>Behr and Benjamin Moore</strong>: 1,594 Behr colors have a nearly
+          identical Benjamin Moore counterpart, and 1,412 Benjamin Moore colors have a Behr one.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why the Paint Aisle Converges</h2>
@@ -1879,8 +1907,8 @@ const blogPosts: BlogPost[] = [
         <h2 className="mt-10 text-2xl font-bold text-gray-900">What This Means When You&apos;re Buying Paint</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           You are less locked in than the sample-card racks suggest. If you love a color but
-          prefer another brand&apos;s price, availability, or a specific product line, there is a
-          two-in-three chance a nearly identical version exists — every color page on this site
+          prefer another brand&apos;s price, availability, or a specific product line, there is
+          roughly a 70% chance a nearly identical version exists. Every color page on this site
           lists them, and the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>{" "}
           shows any two candidates side by side. The one thing the math cannot standardize is the
           paint itself: formulas, sheens, and coverage differ between brands even when the color
@@ -1890,37 +1918,39 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Methodology</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          We computed CIEDE2000 (Delta E 2000) differences across all 26,597 colors in the Paint
-          Color HQ database — 12 decorative paint brands plus the RAL classic standard — as of
-          July 2026, treating only pairs in the tightest half of our Nearly identical band as twins. Color values come from
-          each brand&apos;s published palette data; the conversion pipeline and thresholds are
-          documented on our <Link href="/methodology" className="text-brand-blue hover:underline">methodology page</Link>.
+          We computed CIEDE2000 differences across all 26,720 colors in the Paint Color HQ
+          database, 12 decorative paint brands plus the RAL classic standard, as of October 2026.
+          A color counts as twinned when its closest match at any other paint brand falls in the
+          tightest half of our Nearly identical band. A RAL match does not count as a twin, though
+          RAL colors stay in the total, and the exact-hex count includes RAL. Palette sizes include
+          colors a brand has retired but can usually still mix by code. Color values come from each
+          brand&apos;s published palette data; the conversion pipeline and thresholds are
+          documented on our <Link href="/methodology" className="text-brand-blue hover:underline">methodology page</Link>,
+          and the same figures feed our{" "}
+          <Link href="/paint-color-statistics" className="text-brand-blue hover:underline">paint color statistics</Link>.
           Brand palettes change, so counts shift slightly as we import updates. If you cite these
           findings, please link to this page so readers can check the current numbers.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Addendum: How Many Distinct Colors Are There, Really?</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          A sharp reader question after publication: does &ldquo;two-thirds are duplicates&rdquo;
-          mean only a third of the catalog is unique, or that the whole catalog collapses to a
-          third of its size once you merge duplicates? Those are different numbers, and the
-          headline stat is the first one: 66.6% of catalog entries have at least one
-          nearly identical counterpart at a competing brand, and 33.4% (8,853 colors) have none.
+          A sharp reader question after the July publication: does &ldquo;two-thirds are
+          duplicates&rdquo; mean only a third of the catalog is unique, or that the whole catalog
+          collapses to a third of its size once you merge duplicates? Those are different numbers,
+          and the headline stat is the first one. In the October 2026 run, 69.7% of catalog
+          entries have at least one nearly identical counterpart at a competing brand, and 30.3%
+          (8,104 colors) have none.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The second question — how many <em>distinct</em> colors the market actually contains —
-          is trickier, because near-identity is not transitive: color A can be a twin of B, and B
-          of C, while A and C are visibly different. Merge every chain naively and you get 11,879
-          &ldquo;distinct&rdquo; colors, but one chained mega-cluster of 6,947 whites, off-whites,
-          and greiges forms along the way, and its endpoints are clearly not the same color. A
-          more defensible answer uses representative-based clustering, where every member of a
-          group must fall in the tightest half of our Nearly identical band relative to that group&apos;s reference color.
-          On that definition, the 26,597 catalog entries collapse to{" "}
-          <strong>about 14,700 genuinely distinct colors — roughly 55% of the catalog</strong>.
-          Tighten the radius to a quarter of that band and it&apos;s about 22,050 (83%). So the honest
-          summary: a third of entries are duplicated nowhere, two-thirds are duplicated
-          somewhere, and deduplicating the whole market leaves you with a little over half as
-          many real colors as names.
+          The second question, how many <em>distinct</em> colors the market actually contains, is
+          trickier, because near-identity is not transitive: color A can be a twin of B, and B of
+          C, while A and C are visibly different. Merge every chain and one long run of whites,
+          off-whites and greiges forms whose endpoints are clearly not the same color. The July
+          version of this addendum gave a clustered estimate of distinct colors. That figure came
+          from a one-off clustering pass we cannot reproduce on the corrected data, so we have
+          withdrawn it rather than restate it. The honest summary: about 30% of entries are
+          duplicated nowhere, about 70% are duplicated somewhere, and any single count of distinct
+          colors depends on where you draw the line.
         </p>
       </>
     ),
@@ -3704,6 +3734,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-alternatives-to-benjamin-moore",
     title: "Best Sherwin-Williams Alternatives to Benjamin Moore's Most Popular Colors",
     date: "2025-11-20",
+    modifiedDate: "2026-10-24",
     author: "Philip Cameron",
     excerpt:
       "Found the perfect Benjamin Moore shade but prefer Sherwin-Williams? Here are the closest SW matches for BM's top sellers, verified by Delta E 2000.",
@@ -3718,32 +3749,32 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How We Match Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          We use the <strong>Delta E 2000</strong> formula, which measures the perceptible difference between two colors in a way that aligns with human vision. We group results into three labels: Nearly identical, Very similar, and Visible difference. Our database covers <Link href="/brands" className="text-brand-blue hover:underline">14 major paint brands</Link> with over 26,000 colors.
+          We use the <strong>Delta E 2000</strong> formula, which measures the perceptible difference between two colors in a way that aligns with human vision. We group results into three labels: Nearly identical, Very similar, and Visible difference. Our database covers <Link href="/brands" className="text-brand-blue hover:underline">13 major paint brands</Link> with over 26,000 colors. Each pick below is the closest Sherwin-Williams color in our data. These are digital matches, so confirm your choice with a physical sample before buying.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Revere Pewter → Accessible Beige</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Revere Pewter → Simple Stone</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> is one of the most specced neutral colors in residential design. Its warm greige tone has dominated builder-grade homes for a decade. The closest Sherwin-Williams match is <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" />, which leans slightly warmer and lighter but rates very similar in our digital data.
+          <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> is one of the most specced neutral colors in residential design. Its warm greige tone has dominated builder-grade homes for a decade. The closest Sherwin-Williams match is <Swatch hex="#CDC7B7" name="Simple Stone" brand="Sherwin-Williams" href="/colors/sherwin-williams/simple-stone-9521" />, which rates nearly identical. The better-known <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> leans slightly warmer and lighter and rates very similar.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Simply White → Extra White</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Simply White → High Reflective White</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a clean, warm white that avoids going yellow. Sherwin-Williams&apos; <Swatch hex="#EEEFEA" name="Extra White" brand="Sherwin-Williams" href="/colors/sherwin-williams/extra-white-7006" /> is the closest match, though <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> is also worth sampling. Browse our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link> guide for the full rundown.
+          <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a clean, warm white that avoids going yellow. Sherwin-Williams&apos; <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" /> is the closest match and rates nearly identical. Benjamin Moore Simply White rates very similar to <Swatch hex="#EEEFEA" name="Extra White" brand="Sherwin-Williams" href="/colors/sherwin-williams/extra-white-7006" /> and to <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" />, both worth sampling if you want a slightly softer white. Browse our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link> guide for the full rundown.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Hale Navy → Naval</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Hale Navy → Sea Mariner</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> is a rich, sophisticated navy that works on cabinets, accent walls, and front doors. Sherwin-Williams&apos; <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> is deeper and slightly more saturated but occupies the same design niche. For a closer lightness match, also consider <Swatch hex="#3D4450" name="Charcoal Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/charcoal-blue-2739" />.
+          <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> is a rich, sophisticated navy that works on cabinets, accent walls, and front doors. Sherwin-Williams&apos; closest match is <Swatch hex="#434A54" name="Sea Mariner" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-mariner-9640" />, which rates nearly identical. <Swatch hex="#3D4450" name="Charcoal Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/charcoal-blue-2739" /> rates very similar. The popular <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> is deeper and more saturated, a visible difference, but it occupies the same design niche.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Edgecomb Gray → Agreeable Gray</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Edgecomb Gray → Dumpling</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> is a warm gray-beige that has been the go-to neutral for transitional interiors. <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> is remarkably similar and consistently ranks as SW&apos;s best-selling color. View the full <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> to explore alternatives.
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> is a warm gray-beige that has been the go-to neutral for transitional interiors. The closest Sherwin-Williams match is <Swatch hex="#D8D0C1" name="Dumpling" brand="Sherwin-Williams" href="/colors/sherwin-williams/dumpling-9616" />, which rates nearly identical. <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" />, SW&apos;s best-selling color, rates very similar and reads a little grayer. View the full <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> to explore alternatives.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Chantilly Lace → High Reflective White</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Chantilly Lace → UltraWhite</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s go-to bright white. <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" /> rates nearly identical and is one of the brightest whites in the SW deck (LRV 92.6); SW UltraWhite (SW 9500) is a hair closer. Both measure close to neutral and photograph cleanly.
+          <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> is BM&apos;s go-to bright white. <Swatch hex="#F6F7F2" name="UltraWhite" brand="Sherwin-Williams" href="/colors/sherwin-williams/ultrawhite-9500" /> is the closest Sherwin-Williams match and rates nearly identical; it is also the brightest white Sherwin-Williams publishes, at LRV 93.5. <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" /> rates nearly identical too. Both measure close to neutral and photograph cleanly.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Finding Your Own Matches</h2>
@@ -4311,6 +4342,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-white-paint-colors-guide",
     title: "The 15 Best White Paint Colors for Every Room (2026)",
     date: "2025-11-06",
+    modifiedDate: "2026-10-24",
     author: "Philip Cameron",
     excerpt:
       "White is the hardest paint color to choose. This guide ranks 15 warm, cool, and true whites from top brands with room-by-room advice.",
@@ -4399,7 +4431,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">8. High Reflective White (SW 7757) — Sherwin-Williams</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" /> is the whitest white in the Sherwin-Williams deck. It reflects the most light of any SW color, making it the default for ceilings and trim in designer projects. It can feel clinical on walls, so most designers reserve it for architectural details. Explore all SW whites on the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> page.
+          <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" /> is one of the brightest whites in the Sherwin-Williams deck, with a published LRV of 92.7; only UltraWhite (SW 9500, published LRV 93.5) reflects more. That makes it a default for ceilings and trim in designer projects. It can feel clinical on walls, so most designers reserve it for architectural details. Explore all SW whites on the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> page.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> True neutral. <strong>LRV:</strong> 93. <strong>Best for:</strong> Trim, ceilings, crown molding. <strong>Pair with:</strong> Any wall color — its neutrality makes it versatile.
@@ -4530,12 +4562,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cross-Brand White Equivalents</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Found a white you love from one brand but need to buy from another? Here are the closest cross-brand matches. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find matches across 26,000+ colors from 13 brands, or try the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how close any two whites are.
+          Found a white you love from one brand but need to buy from another? Here are close cross-brand matches for popular whites, all digital matches to confirm with a physical sample. Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find matches across 26,000+ colors from 13 brands, or try the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how close any two whites are.
         </p>
         <ul className="mt-4 space-y-2 text-gray-700 leading-relaxed">
           <li><strong>White Dove OC-17 (BM, LRV 83, #EFEEE5)</strong> &#8776; Pure White SW 7005 (LRV 84, #EDECE6): Nearly identical. Behr Cameo White (LRV 81, #E9E6E1) rates Very similar to White Dove.</li>
-          <li><strong>Chantilly Lace OC-65 (BM, LRV 90, #F4F6F1)</strong> &#8776; High Reflective White SW 7757 (LRV 93, #F7F7F1) &#8776; Ultra Pure White (Behr, LRV 97, #FAFDF7): Nearly identical</li>
-          <li><strong>Alabaster SW 7008 (LRV 82, #F0EAD6)</strong> &#8776; Swiss Coffee OC-45 (BM, LRV 82, #EFE4CE) &#8776; Cottage White (Behr) — Nearly identical to Very similar</li>
+          <li><strong>Chantilly Lace OC-65 (BM, LRV 90, #F4F6F1)</strong> &#8776; High Reflective White SW 7757 (LRV 93, #F7F7F1) &#8776; Ultra Pure White UPW (Behr, LRV 94, #F8F9F3): Nearly identical</li>
+          <li><strong>Alabaster SW 7008 (LRV 82, #EDEAE0)</strong> &#8776; Swiss Coffee OC-45 (BM, LRV 82, #EEECE1): Nearly identical. Behr Cottage White (13) rates Very similar to both.</li>
           <li><strong>Decorator&apos;s White OC-149 (BM, LRV 83, #eceeeb)</strong> &#8776; Snowbound SW 7004 (LRV 83, #edeae5) — Very similar</li>
           <li><strong>Simply White OC-117 (BM, LRV 90, #f7f7ee)</strong> &#8776; Extra White SW 7006 — Very similar</li>
         </ul>
@@ -5510,7 +5542,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> — a creamier option with warm yellow undertones. Best for kitchens with warm-toned flooring and brass hardware. In north-facing kitchens, it reads as a soft warm glow rather than stark white.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" /> — the whitest white in the SW deck. Use for trim and ceilings when you want maximum brightness. It can feel clinical on cabinets in small kitchens, so pair it with warm countertops to balance it out. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for more.
+          <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" />: one of the brightest whites in the SW deck. Use for trim and ceilings when you want maximum brightness. It can feel clinical on cabinets in small kitchens, so pair it with warm countertops to balance it out. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for more.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EDEAE5" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> — a soft white with subtle gray undertones. Snowbound hides fingerprints and smudges better than pure whites, making it a smart choice for busy kitchens with kids. Compare it side by side with Pure White using our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>.
