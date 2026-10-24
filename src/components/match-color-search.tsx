@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { trackEvent } from "@/lib/analytics";
+import { useSearchTracking } from "@/lib/use-search-tracking";
 import type { ColorWithBrand } from "@/lib/types";
 
 interface Props {
@@ -24,11 +24,15 @@ export function MatchColorSearch({ sourceBrandSlug, targetBrandSlug, sourceBrand
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<ColorWithBrand[]>([]);
   const [loading, setLoading] = useState(false);
+  // Full scoped count (the list shows at most 6), for the color_search event.
+  const [resultCount, setResultCount] = useState(0);
+  const term = query.trim();
 
   const search = useCallback(
     async (q: string) => {
       if (q.length < 2) {
         setResults([]);
+        setResultCount(0);
         return;
       }
       setLoading(true);
@@ -40,13 +44,10 @@ export function MatchColorSearch({ sourceBrandSlug, targetBrandSlug, sourceBrand
           (c: ColorWithBrand) => c.brand?.slug === sourceBrandSlug
         );
         setResults(scoped.slice(0, 6));
-        trackEvent("color_search", {
-          search_term: q,
-          result_count: String(scoped.length),
-          source: "match_listing",
-        });
+        setResultCount(scoped.length);
       } catch {
         setResults([]);
+        setResultCount(0);
       } finally {
         setLoading(false);
       }
@@ -55,15 +56,17 @@ export function MatchColorSearch({ sourceBrandSlug, targetBrandSlug, sourceBrand
   );
 
   useEffect(() => {
-    const timer = setTimeout(() => search(query), 300);
+    const timer = setTimeout(() => search(term), 300);
     return () => clearTimeout(timer);
-  }, [query, search]);
+  }, [term, search]);
+
+  useSearchTracking(term, loading ? null : resultCount, "match_listing");
 
   function goToMatch(color: ColorWithBrand) {
     router.push(`/match/${sourceBrandSlug}/${color.slug}-to-${targetBrandSlug}`);
   }
 
-  const showPanel = query.length >= 2;
+  const showPanel = term.length >= 2;
 
   return (
     <div className="mt-6 max-w-xl">
@@ -112,7 +115,7 @@ export function MatchColorSearch({ sourceBrandSlug, targetBrandSlug, sourceBrand
           )}
           {!loading && results.length === 0 && (
             <p className="px-4 py-3 text-sm text-on-surface-variant">
-              No {sourceBrandName} colors found for &quot;{query}&quot; — try a different name or number.
+              No {sourceBrandName} colors found for &quot;{term}&quot; — try a different name or number.
             </p>
           )}
         </div>

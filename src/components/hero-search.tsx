@@ -2,13 +2,14 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { ColorCard } from "@/components/color-card";
-import { trackEvent } from "@/lib/analytics";
+import { useSearchTracking } from "@/lib/use-search-tracking";
 import type { ColorWithBrand } from "@/lib/types";
 
 export function HeroSearch() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<ColorWithBrand[]>([]);
   const [loading, setLoading] = useState(false);
+  const term = query.trim();
 
   const search = useCallback(async (q: string) => {
     if (q.length < 2) {
@@ -22,13 +23,6 @@ export function HeroSearch() {
       const data = await res.json();
       const searchResults = data.results ?? [];
       setResults(searchResults);
-
-      // Track hero search
-      trackEvent("color_search", {
-        search_term: q,
-        result_count: String(searchResults.length),
-        source: "homepage_hero",
-      });
     } catch {
       setResults([]);
     } finally {
@@ -37,11 +31,14 @@ export function HeroSearch() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => search(query), 300);
+    const timer = setTimeout(() => search(term), 300);
     return () => clearTimeout(timer);
-  }, [query, search]);
+  }, [term, search]);
 
-  const hasResults = loading || results.length > 0 || (query.length >= 2 && !loading);
+  // HeroSearch only renders on the 404 page (src/app/not-found.tsx).
+  useSearchTracking(term, loading ? null : results.length, "not_found");
+
+  const hasResults = loading || results.length > 0 || (term.length >= 2 && !loading);
 
   return (
     <>
@@ -90,9 +87,9 @@ export function HeroSearch() {
             </div>
           )}
 
-          {!loading && query.length >= 2 && results.length === 0 && (
+          {!loading && term.length >= 2 && results.length === 0 && (
             <p className="text-center text-on-surface-variant">
-              No colors found for &quot;{query}&quot;
+              No colors found for &quot;{term}&quot;
             </p>
           )}
         </div>

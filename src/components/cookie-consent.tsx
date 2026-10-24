@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 import {
   CONSENT_STORAGE_KEY,
@@ -43,11 +44,25 @@ const GTAG_INIT = `
   }
   gtag('ads_data_redaction', true);
   gtag('js', new Date());
+  // ?debug=true marks this browser internal for GA4 and Plausible until
+  // ?debug=false clears it (it used to cover only the one page view).
+  var internalFlag = false;
+  try {
+    if (location.search.indexOf('debug=true') !== -1) {
+      localStorage.setItem('pchq_internal', '1');
+      localStorage.setItem('plausible_ignore', 'true');
+    } else if (location.search.indexOf('debug=false') !== -1) {
+      localStorage.removeItem('pchq_internal');
+      localStorage.removeItem('plausible_ignore');
+    }
+    internalFlag = localStorage.getItem('pchq_internal') === '1';
+  } catch (e) {}
   var isInternal = (
     location.hostname === 'localhost' ||
     location.hostname === '127.0.0.1' ||
     location.hostname.endsWith('.vercel.app') ||
-    location.search.indexOf('debug=true') !== -1
+    location.search.indexOf('debug=true') !== -1 ||
+    internalFlag
   );
   // Headless scrapers that became visible once consent stopped gating gtag
   // (2026-10-02): Windows Chrome at screen sizes real visitors almost never
@@ -63,17 +78,22 @@ const GTAG_INIT = `
 `;
 
 export function CookieConsent() {
-  const [isEmbed, setIsEmbed] = useState(true);
+  // The embeddable widget runs inside third-party iframes, and /admin is the
+  // owner's own traffic: never show a banner or load GA there. Everywhere else
+  // the gtag scripts render immediately, server HTML included, instead of
+  // waiting on the uncached /api/geo lookup (155-171 ms). Regulated visitors
+  // are still covered: GTAG_INIT's region-scoped consent defaults deny them on
+  // gtag's own geo lookup before any hit is sent.
+  const pathname = usePathname();
+  const tracked = !!pathname && !isNonTrackedPath(pathname);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // The embeddable widget runs inside third-party iframes — never show a cookie
-    // banner or load GA there (no consent surface; it's someone else's page).
-    if (isNonTrackedPath(window.location.pathname)) return;
+    if (!tracked) return;
     let active = true;
+    // The geo lookup now only decides whether to show the banner.
     fetchConsentRegion().then((r) => {
       if (!active) return;
-      setIsEmbed(false);
       if (!getStoredConsent() && r === "regulated") setVisible(true);
     });
 
@@ -83,14 +103,14 @@ export function CookieConsent() {
       active = false;
       window.removeEventListener(OPEN_PRIVACY_CHOICES_EVENT, onOpen);
     };
-  }, []);
+  }, [tracked]);
 
   const choose = useCallback((value: "granted" | "denied") => {
     setStoredConsent(value);
     setVisible(false);
   }, []);
 
-  if (isEmbed) return null;
+  if (!tracked) return null;
 
   return (
     <>
