@@ -59,6 +59,12 @@ export function AnalyticsProvider() {
           "benjaminmoore.com",
           "behr.com",
           "ppgpaints.com",
+          // PPG color links moved to pittsburghpaints.com; Dutch Boy, Vista and
+          // Hirshfield's link to their own color pages.
+          "pittsburghpaints.com",
+          "dutchboy.com",
+          "vistapaint.com",
+          "hirshfields.com",
           "dunnedwards.com",
           "valspar.com",
           "farrow-ball.com",

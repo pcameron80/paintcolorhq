@@ -4,6 +4,8 @@
  *   npx tsx scripts/check-retailer-links.ts <brand-slug> [delay-ms]
  *       Every color of one brand from Supabase; writes retailer-links-<brand>.json
  *       for generate-retailer-overrides.ts (needs SUPABASE_SERVICE_ROLE_KEY).
+ *       PPG, Valspar, Dutch Boy and Vista are not brute-forced here: their links
+ *       come from the brands' sitemaps (scripts/generate-official-color-urls.ts).
  *   npx tsx scripts/check-retailer-links.ts --sample [per-brand=20] [delay-ms=1000] [site]
  *       Up to N links per brand, built by getRetailerLinks from colors the site's
  *       public /api/brand/<slug>/colors returns. Prints only; writes nothing.
@@ -13,6 +15,10 @@
  *
  * A link passes only when it ends on a 2xx AND on the host it was sent to
  * (ignoring "www."). Any redirect off-site fails, even when it ends in a 200.
+ * In --sample, a brand's own per-color link must also stay on its path (Valspar
+ * redirects retired colors to the generic browse page with a 200) and carry the
+ * color's name in <title> (ppgpaints.com served a "PPG Paints is now Pittsburgh
+ * Paints" interstitial with a 200 for every color).
  * The --sample, --org and --url modes exit 1 when anything fails.
  */
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
@@ -21,7 +27,7 @@ import * as path from "path";
 import * as fs from "fs";
 import { fileURLToPath } from "url";
 import { BRAND_ORG_DATA } from "../src/lib/brand-org-data";
-import { getRetailerLinks, RETAILER_LINK_BRANDS } from "../src/lib/retailer-links";
+import { getRetailerLinks, isAffiliateRetailer, nameSlug, RETAILER_LINK_BRANDS } from "../src/lib/retailer-links";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -44,20 +50,10 @@ function slugify(name: string): string {
 
 // Each brand's actual website color family categories
 const BRAND_FAMILIES: Record<string, string[]> = {
+  // The eight family segments in SW's sitemap (2026-10-24); "white-and-pastel"
+  // was retired for "white".
   "sherwin-williams": [
-    "red", "orange", "yellow", "green", "blue", "purple", "neutral", "white-and-pastel",
-  ],
-  valspar: [
-    "pink", "red", "orange", "yellow", "green", "teal", "blue",
-    "white", "gray", "black", "brown", "neutral", "purple",
-  ],
-  ppg: [
-    "reds", "oranges", "yellows", "greens", "blues", "purples",
-    "pinks", "browns", "neutrals", "whites", "blacks",
-    "grays", "beiges", "aquas", "metallics",
-  ],
-  "dutch-boy": [
-    "red", "orange", "yellow", "green", "blue", "purple", "gray", "neutral", "white",
+    "red", "orange", "yellow", "green", "blue", "purple", "neutral", "white",
   ],
   "dunn-edwards": ["_none_"],  // No family segment needed — just color number
   kilz: ["_none_"],            // No family segment needed — just color number + name
@@ -70,25 +66,7 @@ const FAMILY_GUESSES: Record<string, Record<string, string>> = {
     red: "red", orange: "orange", yellow: "yellow", green: "green",
     blue: "blue", purple: "purple", pink: "red",
     beige: "yellow", brown: "orange", gray: "neutral", neutral: "neutral",
-    white: "white-and-pastel", "off-white": "white-and-pastel", black: "neutral",
-  },
-  valspar: {
-    red: "red", orange: "orange", yellow: "yellow", green: "green",
-    blue: "blue", purple: "purple", pink: "pink",
-    beige: "brown", brown: "brown", gray: "gray", neutral: "neutral",
-    white: "white", "off-white": "white", black: "black",
-  },
-  ppg: {
-    red: "reds", orange: "oranges", yellow: "yellows", green: "greens",
-    blue: "blues", purple: "purples", pink: "pinks", brown: "browns",
-    gray: "grays", beige: "beiges", neutral: "neutrals",
-    white: "whites", "off-white": "whites", black: "blacks",
-  },
-  "dutch-boy": {
-    red: "red", orange: "orange", yellow: "yellow", green: "green",
-    blue: "blue", purple: "purple", pink: "red",
-    beige: "neutral", brown: "neutral", gray: "gray", neutral: "neutral",
-    white: "white", "off-white": "white", black: "neutral", tan: "neutral",
+    white: "white", "off-white": "white", black: "neutral",
   },
   "dunn-edwards": { _: "_none_" },  // Single URL pattern, no family needed
   kilz: { _: "_none_" },            // Single URL pattern, no family needed
@@ -110,16 +88,6 @@ function buildUrl(brandSlug: string, color: ColorRow, family: string): string {
   switch (brandSlug) {
     case "sherwin-williams":
       return `https://www.sherwin-williams.com/en-us/color/color-family/${family}-paint-colors/SW${num}-${slugify(name)}`;
-    case "ppg":
-      return `https://www.ppgpaints.com/color/color-families/${family}/${slugify(name)}`;
-    case "valspar": {
-      const slug = `${slugify(name)}-${num.toLowerCase()}`;
-      return `https://www.valspar.com/en/colors/browse-colors/lowes/${family}/${slug}`;
-    }
-    case "dutch-boy": {
-      const slug = slugify(name);
-      return `https://www.dutchboy.com/en/colors/color-library/paint/${family}/${slug}-${num.toLowerCase()}`;
-    }
     case "dunn-edwards":
       return `https://www.dunnedwards.com/colors/browser/${num.toLowerCase()}/`;
     case "kilz":
@@ -145,16 +113,33 @@ function bareHost(url: string): string {
   return new URL(url).hostname.toLowerCase().replace(/^www\./, "");
 }
 
-async function checkUrl(url: string): Promise<UrlCheck> {
+function barePath(url: string): string {
+  return new URL(url).pathname.toLowerCase().replace(/\/+$/, "");
+}
+
+/** Lowercase letters and digits only, accents folded, entities decoded. */
+function squash(text: string): string {
+  return nameSlug(
+    text.replace(/&#0*39;|&#x0*27;|&apos;|&rsquo;/gi, "'").replace(/&amp;/gi, "&"),
+  ).replace(/-/g, "");
+}
+
+/**
+ * expectName: the link is a brand's own page for that color, so it must also
+ * end on the same path and name the color in its <title>. That catches a 200
+ * that is not the color: an interstitial, or a redirect to a listing page.
+ */
+async function checkUrl(url: string, expectName?: string): Promise<UrlCheck> {
   const request = (method: "HEAD" | "GET") => fetch(url, {
     method,
     redirect: "follow",
     headers: { "User-Agent": USER_AGENT },
-    signal: AbortSignal.timeout(10000),
+    signal: AbortSignal.timeout(15000),
   });
   try {
-    let res = await request("HEAD");
-    if (res.status === 405 || res.status === 403) {
+    let res = await request(expectName ? "GET" : "HEAD");
+    const body = expectName ? await res.text() : "";
+    if (!expectName && (res.status === 405 || res.status === 403)) {
       res = await request("GET");
       await res.text();
     }
@@ -171,6 +156,15 @@ async function checkUrl(url: string): Promise<UrlCheck> {
       // search pages answer scripts with 403/503 while working in a browser.
       const blocked = [403, 429, 503].includes(res.status) ? " (bot wall or dead; check in a browser)" : "";
       return { ok: false, status: res.status, finalUrl, reason: `HTTP ${res.status}${blocked}` };
+    }
+    if (expectName) {
+      if (barePath(finalUrl) !== barePath(url)) {
+        return { ok: false, status: res.status, finalUrl, reason: `redirects to ${new URL(finalUrl).pathname}` };
+      }
+      const title = body.match(/<title[^>]*>([^<]*)<\/title>/i)?.[1]?.trim() ?? "";
+      if (!squash(title).includes(squash(expectName))) {
+        return { ok: false, status: res.status, finalUrl, reason: `<title> lacks "${expectName}": "${title.slice(0, 80)}"` };
+      }
     }
     return { ok: true, status: res.status, finalUrl };
   } catch (err) {
@@ -397,7 +391,8 @@ async function checkOrgUrls(delayMs: number) {
 }
 
 // The catalog's color families, in brand-page order. Sampling across families
-// exercises the family segment of the SW, PPG and Valspar URLs.
+// exercises the family segment of the SW URLs and the family folders in the
+// sitemap-built PPG, Valspar, Dutch Boy and Vista maps.
 const SAMPLE_FAMILIES = [
   "white", "off-white", "gray", "beige", "neutral", "brown", "tan", "red",
   "orange", "yellow", "green", "blue", "purple", "pink", "black",
@@ -405,13 +400,17 @@ const SAMPLE_FAMILIES = [
 
 interface ApiColor { name: string; slug: string; color_number: string | null }
 
+// Brands whose own link is one library page for every color, so its <title>
+// cannot name the color.
+const STATIC_OFFICIAL_LINK = new Set(["hirshfields"]);
+
 async function sampleBrands(perBrand: number, delayMs: number, site: string) {
   const rows: { brand: string; checked: number; offSite: number; failures: string[] }[] = [];
 
   for (const brandSlug of RETAILER_LINK_BRANDS) {
-    // url -> the color it came from. Brands whose link is one static page
-    // (Farrow & Ball, Vista, Hirshfield's) collapse to a single URL.
-    const urls = new Map<string, string>();
+    // url -> the color it came from. A brand whose link is one static page
+    // (Hirshfield's) collapses to a single URL.
+    const urls = new Map<string, { from: string; expectName?: string }>();
     let inCatalog = true;
 
     for (const family of SAMPLE_FAMILIES) {
@@ -429,7 +428,10 @@ async function sampleBrands(perBrand: number, delayMs: number, site: string) {
         // brandName is not part of any URL pattern, so the slug stands in.
         for (const link of getRetailerLinks(brandSlug, brandSlug, c.name, c.color_number ?? undefined, family)) {
           built++;
-          if (urls.size < perBrand && !urls.has(link.url)) urls.set(link.url, `${c.name} [${family}]`);
+          if (urls.size < perBrand && !urls.has(link.url)) {
+            const own = !isAffiliateRetailer(link.retailerName) && !STATIC_OFFICIAL_LINK.has(brandSlug);
+            urls.set(link.url, { from: `${c.name} [${family}]`, expectName: own ? c.name : undefined });
+          }
         }
       }
       // Links were built but all were already seen: the brand's links are static.
@@ -445,8 +447,8 @@ async function sampleBrands(perBrand: number, delayMs: number, site: string) {
     console.log(`\n${brandSlug}: ${urls.size} URLs`);
     const failures: string[] = [];
     let offSite = 0;
-    for (const [url, from] of urls) {
-      const r = await checkUrl(url);
+    for (const [url, { from, expectName }] of urls) {
+      const r = await checkUrl(url, expectName);
       console.log(`  ${describe(r)}  ${url}  (${from})`);
       if (!r.ok) failures.push(`${r.reason}: ${url}`);
       if (r.offSiteHost) offSite++;

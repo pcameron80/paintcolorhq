@@ -101,7 +101,8 @@ paintcolorhq/
 │       ├── palettes.ts         # Curated inspiration palette data
 │       ├── color-description.ts # Algorithmic SEO descriptions for color pages
 │       ├── retailer-links.ts   # Brand-to-retailer URL mapping with override lookups
-│       └── retailer-overrides.ts # Auto-generated verified family overrides (1,960 entries)
+│       ├── retailer-overrides.ts # Auto-generated SW/Dunn-Edwards/Kilz/RAL not-found sets
+│       └── official-urls/      # Per-color brand URLs from sitemaps (PPG, Valspar, Dutch Boy, Vista)
 ├── scripts/                    # Data pipeline scripts
 │   ├── import-colors.ts        # Parse ColorNerd JSON
 │   ├── seed-database.ts        # Upload colors to Supabase
@@ -109,6 +110,7 @@ paintcolorhq/
 │   ├── seed-matches.ts         # Upload matches to Supabase
 │   ├── check-retailer-links.ts # Verify retailer URLs against brand websites
 │   ├── generate-retailer-overrides.ts # Generate retailer-overrides.ts from check results
+│   ├── generate-official-color-urls.ts # Build official-urls/*.json from brand sitemaps
 │   └── lib/
 │       └── color-utils.ts      # Color math (RGB, Lab, Delta E)
 ├── supabase/
