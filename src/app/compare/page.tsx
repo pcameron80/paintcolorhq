@@ -3,7 +3,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { getColorById, getColorBySlug } from "@/lib/queries";
-import Link from "next/link";
+import { TrackedLink } from "@/components/tracked-link";
 import { CompareClient } from "./compare-client";
 import { SamplizeOffer } from "@/components/samplize-offer";
 
@@ -96,7 +96,14 @@ export default async function ComparePage({ searchParams }: PageProps) {
 
       <section className="px-6 md:px-12 pb-16">
         <div className="max-w-7xl mx-auto">
-          <CompareClient initialColor1={color1} initialColor2={color2} />
+          {/* Keyed on the pair so a popular-pair click (same route, new params)
+              remounts the client with the new colors instead of keeping its
+              old useState values. */}
+          <CompareClient
+            key={`${color1?.id ?? ""}|${color2?.id ?? ""}`}
+            initialColor1={color1}
+            initialColor2={color2}
+          />
           {popularPairs.length > 0 && (
             <div className="mt-12">
               <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface">Popular comparisons</h2>
@@ -104,7 +111,12 @@ export default async function ComparePage({ searchParams }: PageProps) {
               <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {popularPairs.map(([a, b]) => (
                   <li key={`${a.id}-${b.id}`}>
-                    <Link href={`/compare?color1=${a.id}&color2=${b.id}`} className="flex items-center gap-3 rounded-xl border border-outline-variant/30 p-3 hover:shadow-md transition-all">
+                    <TrackedLink
+                      href={`/compare?color1=${a.id}&color2=${b.id}`}
+                      className="flex items-center gap-3 rounded-xl border border-outline-variant/30 p-3 hover:shadow-md transition-all"
+                      eventName="cta_click"
+                      eventParams={{ cta_label: "compare_popular_pair", color_1: a.name, color_2: b.name }}
+                    >
                       <span className="flex shrink-0">
                         <span className="h-10 w-10 rounded-l-lg border border-black/10" style={{ backgroundColor: a.hex }} />
                         <span className="h-10 w-10 rounded-r-lg border border-l-0 border-black/10" style={{ backgroundColor: b.hex }} />
@@ -113,7 +125,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
                         <span className="block font-semibold text-on-surface">{a.name} vs {b.name}</span>
                         <span className="block text-xs text-on-surface-variant">{a.brand.name === b.brand.name ? a.brand.name : `${a.brand.name} vs ${b.brand.name}`}</span>
                       </span>
-                    </Link>
+                    </TrackedLink>
                   </li>
                 ))}
               </ul>
