@@ -17,8 +17,8 @@
 //     → Tools → Deep Link Generator (or Links → Search → Samplize → Get Code →
 //     Click URL).
 //   NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG
-//     Amazon Associates store tag. Optional — defaults to the portfolio's
-//     active "greatpickdeal-20" when unset.
+//     Amazon Associates store tag. Optional — defaults to PaintColorHQ's own
+//     "paintcolorhq-20" tracking ID when unset.
 //   NEXT_PUBLIC_HOMEDEPOT_AFFILIATE_PREFIX
 //     Home Depot affiliate (Impact) deep-link prefix ending right before the
 //     target URL — the existing homedepot.com link is appended, URL-encoded.
@@ -66,13 +66,16 @@ interface SampleInfo {
 const SAMPLIZE_BRANDS = new Set(["sherwin-williams", "benjamin-moore", "farrow-ball"]);
 
 const SAMPLIZE_PREFIX = process.env.NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX;
-// Amazon Associates tag. Defaults to the portfolio's active greatpickdeal-20.
-const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || "greatpickdeal-20";
+// Amazon Associates tag. Defaults to PaintColorHQ's paintcolorhq-20 (the
+// tracking ID set in Vercel 2026-07-05), not the sunset GreatPickDeals tag.
+const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || "paintcolorhq-20";
 const HOMEDEPOT_PREFIX = process.env.NEXT_PUBLIC_HOMEDEPOT_AFFILIATE_PREFIX;
 const LOWES_PREFIX = process.env.NEXT_PUBLIC_LOWES_AFFILIATE_PREFIX;
 const ACE_PREFIX = process.env.NEXT_PUBLIC_ACE_AFFILIATE_PREFIX;
 
-/** True when at least one affiliate program is configured — gates the FTC disclosure. */
+/** True when at least one affiliate program is configured — gates the FTC disclosure.
+ *  The Amazon tag has a fallback, so this is always true; a disclosure that sits
+ *  next to one specific link should check that link's own `affiliate` flag. */
 export const AFFILIATE_ENABLED = Boolean(
   SAMPLIZE_PREFIX || AMAZON_TAG || HOMEDEPOT_PREFIX || LOWES_PREFIX || ACE_PREFIX
 );
@@ -142,15 +145,19 @@ export function getSampleLinks(info: SampleInfo): SampleLink[] {
 }
 
 /**
- * Samplize's evergreen tiered bundle offer (CJ link 15736719). Surfaced on
- * multi-color pages (compare, inspiration, palette generator, room visualizer) to
- * nudge sampling several colors at once — bigger basket, and genuinely better for
+ * Samplize's evergreen bulk offer (CJ link 15736719). Surfaced on multi-color
+ * pages (compare, inspiration, palette generator, room visualizer) to nudge
+ * sampling several colors at once — bigger basket, and genuinely better for
  * comparing. Single source of truth: update the copy here, or remove this export's
  * usages, if Samplize changes the offer. Factual/no-urgency by design.
+ *
+ * Checked 2026-10-24 against samplize.com/pages/tiered-promo: free overnight
+ * shipping on 10+ samples (a bundle counts as 1), then 1 free sample at 13 and
+ * another at 17. The free-sample tiers are left out of the copy; the shipping
+ * threshold is the part a visitor can act on.
  */
 export const SAMPLIZE_OFFER = {
-  short: "buy 8 peel-and-stick samples, get 2 free",
-  tiers: "8 samples → 2 free · 12 → 3 free · 20 → 3 free + free shipping",
+  short: "ships 10 or more samples free overnight",
 };
 
 /** Brands Samplize stocks — exported for surfaces that pre-filter before hitting
