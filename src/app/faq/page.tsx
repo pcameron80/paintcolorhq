@@ -64,7 +64,7 @@ const faqs = [
   {
     question: "What paint brands does Paint Color HQ cover?",
     answer:
-      `We currently cover ${BRAND_COUNT} paint brands: ${new Intl.ListFormat("en-US", { type: "conjunction" }).format(CATALOG_BRANDS.map((b) => b.name))}. Our database includes over 26,000 individual colors across all brands, and we add new colors regularly.`,
+      `We currently cover ${BRAND_COUNT} paint brands: ${new Intl.ListFormat("en-US", { type: "conjunction" }).format(CATALOG_BRANDS.map((b) => b.name).sort((a, b) => a.localeCompare(b)))}. Our database includes over 26,000 individual colors across all brands, and we add new colors regularly.`,
   },
   {
     question: "How do I choose a paint color for my room?",
