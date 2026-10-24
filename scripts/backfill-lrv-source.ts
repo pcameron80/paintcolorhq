@@ -13,9 +13,17 @@
  * published LRV for that code (within --tolerance, default 0.05) and its
  * name matches the feed entry, with the same code and name matching as
  * apply-published-lrv.ts (scripts/lib/lrv-source.ts). lrv_checked_on is the
- * scan's date. Every other row with an LRV is 'computed' with no
- * lrv_checked_on: a row labeled 'manufacturer' earlier whose value no longer
- * matches is demoted. Rows with no LRV get NULL for both.
+ * scan's date. Rows with no LRV get NULL for both, in every brand.
+ *
+ * Demotion is narrow, so a re-run with a partial scan cannot undo earlier
+ * work. A row already labeled 'manufacturer' is demoted to 'computed' only
+ * when the feed has its code, the name agrees, and the value no longer
+ * matches. A 'manufacturer' row whose code is missing from the feed (an
+ * archived color) or whose name disagrees keeps its label and date. A brand
+ * with no live file in the --scan-dir list is left as-is ("no feed"): only
+ * its rows with no LRV are normalized. --demote-missing turns both of those
+ * into demotions (for a brand with no feed, only when --brand names it), for
+ * a deliberate full reset.
  *
  * Only lrv_source and lrv_checked_on are written. migration 014's
  * content_updated_at trigger does not watch them, so the sitemap lastmod of
@@ -26,6 +34,10 @@
  * Also prints the LRV ceiling check: every row above LRV_CEILING (94.5)
  * that would not be labeled 'manufacturer'. That list should be empty once
  * the LRV corrections and apply-lrv-nulls.ts are applied.
+ *
+ * Safe to re-run after any LRV or import step, with any subset of scan dirs:
+ * without --demote-missing it never removes a 'manufacturer' label except
+ * where the feed it was given shows a different value.
  *
  * Usage (from the main checkout, after migration 017):
  *   tsx scripts/backfill-lrv-source.ts --scan-dir=data/brand-scans/2026-10-11,data/brand-scans/2026-10-24   # dry run
@@ -62,6 +74,7 @@ const arg = (name: string) => process.argv.find((a) => a.startsWith(`--${name}=`
 const APPLY = process.argv.includes('--apply');
 const VERBOSE = process.argv.includes('--verbose');
 const INCLUDE_HEAD = process.argv.includes('--include-head');
+const DEMOTE_MISSING = process.argv.includes('--demote-missing');
 const scanDirs = (arg('scan-dir') ?? '').split(',').filter(Boolean);
 const brandArg = arg('brand');
 const revertFile = arg('revert');
@@ -149,7 +162,7 @@ async function main() {
     return;
   }
   if (!scanDirs.length) {
-    console.error('Usage: tsx scripts/backfill-lrv-source.ts --scan-dir=data/brand-scans/<date>[,<date>...] [--brand=a,b] [--apply]');
+    console.error('Usage: tsx scripts/backfill-lrv-source.ts --scan-dir=data/brand-scans/<date>[,<date>...] [--brand=a,b] [--demote-missing] [--apply]');
     process.exit(1);
   }
   if (APPLY && !withSource) {
@@ -172,7 +185,11 @@ async function main() {
     const src = files.get(b.slug);
     const live = src ? (JSON.parse(fs.readFileSync(src.file, 'utf8')) as FeedColor[]) : [];
     const feed = feedLrvIndex(b.slug, live);
-    const tally = { rows: 0, noLrv: 0, head: 0, matched: 0, nameMismatch: 0, offFeed: 0, manufacturer: 0, computed: 0, newManufacturer: 0, refreshed: 0, demoted: 0, unchanged: 0 };
+    const hasFeed = !!src && feed.size > 0;
+    const named = !!wanted?.has(b.slug);
+    // A label is only removed on evidence from a feed, unless a reset is asked for.
+    const demoteUnconfirmed = DEMOTE_MISSING && (hasFeed || named);
+    const tally = { rows: 0, noLrv: 0, head: 0, matched: 0, nameMismatch: 0, offFeed: 0, notInFeed: 0, manufacturer: 0, kept: 0, computed: 0, newManufacturer: 0, refreshed: 0, demoted: 0, unchanged: 0 };
     const demotions: string[] = [];
 
     for (const r of await loadBrandRows<Row>(supabase, b.id, fields)) {
@@ -189,18 +206,30 @@ async function main() {
         tally.noLrv++;
         to = { lrv_source: null, lrv_checked_on: null };
       } else {
-        const c = feed.size ? feed.lookup(r) : undefined;
-        let published = false;
+        const c = hasFeed ? feed.lookup(r) : undefined;
+        let verdict: 'published' | 'differs' | 'nameMismatch' | 'notInFeed' = 'notInFeed';
         if (c) {
           tally.matched++;
-          if (!namesAgree(r.name, c.name)) tally.nameMismatch++;
-          else if (Math.abs(lrv - c.published) < TOLERANCE + 1e-9) published = true;
-          else tally.offFeed++;
+          if (!namesAgree(r.name, c.name)) verdict = 'nameMismatch';
+          else if (Math.abs(lrv - c.published) < TOLERANCE + 1e-9) verdict = 'published';
+          else verdict = 'differs';
         }
-        to = published ? { lrv_source: 'manufacturer', lrv_checked_on: src!.date } : { lrv_source: 'computed', lrv_checked_on: null };
-        if (published) tally.manufacturer++;
-        else tally.computed++;
-        if (lrv > LRV_CEILING && !published) ceiling.push(`${b.slug}/${r.slug} "${r.name}" ${r.color_number ?? ''}: ${lrv}`);
+        if (verdict === 'nameMismatch') tally.nameMismatch++;
+        else if (verdict === 'differs') tally.offFeed++;
+        else if (verdict === 'notInFeed') tally.notInFeed++;
+
+        if (verdict === 'published') {
+          to = { lrv_source: 'manufacturer', lrv_checked_on: src!.date };
+          tally.manufacturer++;
+        } else if (from.lrv_source === 'manufacturer' && verdict !== 'differs' && !demoteUnconfirmed) {
+          // No feed evidence against the label: keep it and its date.
+          to = from;
+          tally.kept++;
+        } else {
+          to = { lrv_source: 'computed', lrv_checked_on: null };
+          tally.computed++;
+        }
+        if (lrv > LRV_CEILING && to.lrv_source !== 'manufacturer') ceiling.push(`${b.slug}/${r.slug} "${r.name}" ${r.color_number ?? ''}: ${lrv}`);
       }
 
       if (to.lrv_source === from.lrv_source && to.lrv_checked_on === from.lrv_checked_on) { tally.unchanged++; continue; }
@@ -214,10 +243,14 @@ async function main() {
       changes.push({ id: r.id, slug: r.slug, brand: b.slug, lrv, from, to });
     }
     for (const [k, v] of Object.entries(tally)) totals[k] = (totals[k] ?? 0) + v;
-    console.log(`[${b.slug}] ${src ? `feed ${path.relative(process.cwd(), src.file)} (${feed.size} published LRVs)` : 'no feed LRVs'}`);
+    const feedNote = hasFeed
+      ? `feed ${path.relative(process.cwd(), src!.file)} (${feed.size} published LRVs)`
+      : `no feed, labels left as-is${demoteUnconfirmed ? ' (--demote-missing: manufacturer labels demoted)' : ''}; only rows with no LRV normalized`;
+    if (!hasFeed && named && !demoteUnconfirmed) console.warn(`  --brand names ${b.slug} but no live file in --scan-dir has published LRVs for it.`);
+    console.log(`[${b.slug}] ${feedNote}`);
     console.log('  ', tally);
     if (demotions.length) {
-      console.log(`  demoted to computed (labeled manufacturer, no longer equal to the feed):`);
+      console.log(`  demoted to computed (labeled manufacturer${demoteUnconfirmed ? ', not confirmed by the feed' : ', feed shows a different value'}):`);
       for (const d of VERBOSE ? demotions : demotions.slice(0, 10)) console.log(`    ${d}`);
       if (!VERBOSE && demotions.length > 10) console.log(`    ... ${demotions.length - 10} more (--verbose)`);
     }

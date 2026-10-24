@@ -17,7 +17,19 @@
 -- apply-hex-corrections.ts and import-brand-scan.ts set 'manufacturer' when
 -- the feed carries a usable LRV, otherwise 'computed'; any other insert gets
 -- the 'computed' default. backfill-lrv-source.ts labels existing rows from the
--- scans and is safe to re-run.
+-- scans and is safe to re-run with any subset of scans: it removes a
+-- 'manufacturer' label only where the feed it reads shows a different value.
+--
+-- NULL contract: "lrv_source is NULL when lrv is NULL" holds after this
+-- migration and after every backfill, but it is NOT enforced. An insert or
+-- update that leaves lrv NULL without setting lrv_source still gets the
+-- 'computed' default (seed-database, import-behr-live, reconcile-regional and
+-- retire-bad-color-rows do not write the column). A CHECK
+-- ((lrv IS NULL) = (lrv_source IS NULL)) was considered and rejected: with
+-- the 'computed' default it would make those inserts fail outright. Instead,
+-- readers treat lrv IS NULL as authoritative: no LRV means no label,
+-- whatever lrv_source says (MP-80 must follow this). backfill-lrv-source.ts
+-- normalizes such rows to NULL on every run, in every brand.
 --
 -- Trigger: colors_touch_content_updated_at (migration 014) compares name,
 -- slug, hex, color_number, lrv, undertone, color_family and availability. It
