@@ -331,6 +331,10 @@ export default function PaintColorStatisticsPage() {
             <p className="mt-4 text-sm text-on-surface-variant">
               Published values were checked against each manufacturer&apos;s site in October 2026. The LRV on an individual color page can differ where we still store a value computed from the hex.
             </p>
+            <p className="mt-2 text-sm text-on-surface-variant">
+              To browse every current Sherwin-Williams, Benjamin Moore, Behr and Dutch Boy color by LRV, use the{" "}
+              <Link href="/tools/lrv-finder" className="text-primary hover:underline underline-offset-4">LRV finder</Link>.
+            </p>
           </div>
         </section>
 

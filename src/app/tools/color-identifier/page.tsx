@@ -229,6 +229,13 @@ export default function ColorIdentifierPage() {
                 how far apart two colors are before you order samples.
               </li>
               <li>
+                <strong className="text-on-surface">Check every brand</strong>: paste the sampled hex code into{" "}
+                <Link href="/tools/hex-to-paint-color" className="text-primary underline hover:text-primary/80">
+                  Hex to Paint Color
+                </Link>{" "}
+                to see the closest current color from each of the 13 brands side by side, with its LRV.
+              </li>
+              <li>
                 <strong className="text-on-surface">Calculate how much paint to buy</strong> — enter your
                 room dimensions in the{" "}
                 <Link href="/tools/paint-calculator" className="text-primary underline hover:text-primary/80">
