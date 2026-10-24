@@ -18,8 +18,9 @@ export type Gain = readonly [number, number, number];
 // and the gains it produces amplify noise.
 const MIN_REFERENCE_LUMINANCE = 0.05;
 // Gains above this mean the "white" spot was strongly colored (a red wall,
-// not trim). Refuse it rather than swing every sample.
-const MAX_GAIN = 2.5;
+// not trim). Refuse it rather than swing every sample. 4 still accepts white
+// trim under a warm incandescent bulb (#FFC080 needs a blue gain of about 2.8).
+const MAX_GAIN = 4;
 
 export function srgbToLinear(channel255: number): number {
   const c = channel255 / 255;

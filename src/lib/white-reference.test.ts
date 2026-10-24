@@ -25,6 +25,10 @@ test("a warm reference becomes neutral and pulls samples cooler", () => {
   assert.ok(parseInt(sample.slice(1, 3), 16) < 0xb0, "red should fall");
 });
 
+test("accepts white trim under a warm bulb", () => {
+  assert.equal(whiteGainFromReference("#ffc080").ok, true);
+});
+
 test("rejects dark, strongly colored and malformed references", () => {
   assert.deepEqual(whiteGainFromReference("#101010"), { ok: false, reason: "too-dark" });
   assert.deepEqual(whiteGainFromReference("#c03020"), { ok: false, reason: "too-colorful" });
