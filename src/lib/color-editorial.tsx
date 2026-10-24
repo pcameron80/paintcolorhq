@@ -583,17 +583,19 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
     </>
   ),
-  "behr/ultra-pure-white-w-b-500": (
+  "behr/ultra-pure-white-upw": (
     <>
       <p>
-        Ultra Pure White is Behr&apos;s brightest, cleanest white — at LRV 97 it&apos;s a true, crisp white with
-        no obvious undertone, and it doubles as Behr&apos;s tint base, so it&apos;s everywhere at Home Depot. It&apos;s
-        the pick for a sharp, modern, gallery-clean look on walls, trim, and ceilings.
+        Ultra Pure White is one of Behr&apos;s brightest, cleanest whites. Its published LRV of 94 ties for the
+        highest Behr publishes, and it&apos;s a true, crisp white with no obvious undertone. It doubles as Behr&apos;s tint
+        base, so it&apos;s everywhere at Home Depot. It&apos;s the pick for a sharp, modern, gallery-clean look on walls,
+        trim, and ceilings.
       </p>
       <p>
         That brightness is its strength and its caution: in low light it can feel stark or slightly cool,
         and it makes any warmer white nearby look dingy. It&apos;s stunning in bright rooms and as crisp trim
-        against deep colors. Benjamin Moore Chantilly Lace is its closest cross-brand equivalent.
+        against deep colors. Its closest Benjamin Moore equivalent is Chantilly Lace (2121-70); Sherwin-Williams
+        High Reflective White is its closest match overall.
       </p>
     </>
   ),
