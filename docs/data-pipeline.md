@@ -155,12 +155,22 @@ Step 6: generate-retailer-overrides  Convert JSON results -> src/lib/retailer-ov
 
 Fetches all colors for a brand from Supabase (with pagination for >1000 rows), builds the expected URL using our family guess mapping, then sends a HEAD request. If the guess fails (non-200), it probes all other family categories for that brand's website.
 
+A URL passes only when it ends on a 2xx **and** on the host it was sent to (ignoring `www.`). A redirect to another site fails even when it ends in a 200, and the summary lists the hosts. Before this check, `colorhousepaint.store` 301'd every color to a gambling site and still passed 128/128 (found 2026-10-23).
+
+Modes that need no database credentials, print only, and exit 1 on any failure:
+
+- `--sample [per-brand=20] [delay-ms=1000] [site]`: up to N links per brand, built by `getRetailerLinks` from colors the site's public `/api/brand/<slug>/colors` returns.
+- `--org [delay-ms=1000]`: every brand-page "Visit" link in `src/lib/brand-org-data.ts`.
+- `--url <url> [url...]`: one-off checks.
+
+Behr, Kilz, Benjamin Moore and the big-box search pages answer scripts with 403 or 503 while working in a browser, so those failures need a manual look.
+
 **Output:** `scripts/retailer-links-{brand}.json` containing:
 - `overrides[]` — Colors where a different family was found (`slug`, `colorNumber`, `ourFamily`, `correctFamily`)
 - `notFound[]` — Colors not found under any family on the brand's website
 - `checked` / `passed` — Summary counts
 
-**Supported brands:** `valspar`, `ppg`, `sherwin-williams`
+**Supported brands:** `valspar`, `ppg`, `sherwin-williams`, `dutch-boy`, `dunn-edwards`, `kilz`, `ral`. Colorhouse was removed on 2026-10-24 because its store domain was hijacked; Colorhouse color pages have no brand link.
 
 **Brand website family categories:**
 - **Valspar** (13): pink, red, orange, yellow, green, teal, blue, white, gray, black, brown, neutral, purple

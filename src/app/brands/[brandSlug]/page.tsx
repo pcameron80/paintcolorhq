@@ -10,6 +10,7 @@ import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getColorsByBrand
 import { PREMIUM_ALTERNATIVES } from "@/lib/premium-alternatives";
 import { closenessLabel } from "@/lib/closeness";
 import { getBrandContent } from "@/lib/brand-content";
+import { BRAND_ORG_DATA } from "@/lib/brand-org-data";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
@@ -74,22 +75,6 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     openGraph: { title, description, url, images: [{ url: "/og-image.webp", width: 1200, height: 630 }] },
   };
 }
-
-const brandOrgData: Record<string, { foundingDate?: string; headquarters?: string; url?: string; sameAs?: string[] }> = {
-  "sherwin-williams": { foundingDate: "1866", headquarters: "Cleveland, Ohio, USA", url: "https://www.sherwin-williams.com", sameAs: ["https://en.wikipedia.org/wiki/Sherwin-Williams"] },
-  "benjamin-moore": { foundingDate: "1883", headquarters: "Montvale, New Jersey, USA", url: "https://www.benjaminmoore.com", sameAs: ["https://en.wikipedia.org/wiki/Benjamin_Moore_%26_Co."] },
-  behr: { headquarters: "Santa Ana, California, USA", url: "https://www.behr.com", sameAs: ["https://en.wikipedia.org/wiki/Behr_Paint"] },
-  ppg: { foundingDate: "1883", headquarters: "Pittsburgh, Pennsylvania, USA", url: "https://www.ppgpaints.com", sameAs: ["https://en.wikipedia.org/wiki/PPG_Industries"] },
-  valspar: { headquarters: "Minneapolis, Minnesota, USA", url: "https://www.valspar.com", sameAs: ["https://en.wikipedia.org/wiki/Valspar"] },
-  "dunn-edwards": { foundingDate: "1925", headquarters: "Los Angeles, California, USA", url: "https://www.dunnedwards.com" },
-  "farrow-ball": { foundingDate: "1946", headquarters: "Dorset, England, UK", url: "https://www.farrow-ball.com", sameAs: ["https://en.wikipedia.org/wiki/Farrow_%26_Ball"] },
-  kilz: { foundingDate: "1954", url: "https://www.kilz.com" },
-  "vista-paint": { foundingDate: "1956", headquarters: "Fullerton, California, USA", url: "https://www.vistapaint.com" },
-  hirshfields: { headquarters: "Minneapolis, Minnesota, USA", url: "https://www.hirshfields.com" },
-  colorhouse: { foundingDate: "2005", headquarters: "Portland, Oregon, USA", url: "https://www.colorhousepaint.com" },
-  "dutch-boy": { foundingDate: "1907", url: "https://www.dutchboy.com" },
-  ral: { foundingDate: "1927", headquarters: "Bonn, Germany", url: "https://www.ral-farben.de" },
-};
 
 // JSON-LD helper — content is server-generated from trusted database values only
 function JsonLd({ data }: { data: object }) {
@@ -198,7 +183,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         }]
       : []),
   ];
-  const orgData = brandOrgData[brand.slug];
+  const orgData = BRAND_ORG_DATA[brand.slug];
 
   return (
     <div className="min-h-screen bg-surface">
@@ -257,27 +242,31 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             <p className="mt-2 mb-8 text-on-surface-variant max-w-3xl leading-relaxed">
               The closest digital match to each color in {alternativeTargets.join(", ").replace(/, ([^,]*)$/, " and $1")}. Matches are calculated from color data, so confirm with a physical sample before you buy.
             </p>
-            <div className="overflow-x-auto rounded-xl border border-outline-variant/20">
-              <table className="w-full min-w-[640px] text-sm">
-                <thead className="bg-surface-container-low text-left">
+            {/* Below md each row stacks: the source color, then its three
+                matches side by side, each with a brand label in place of the
+                hidden header. md and up is the original 640px table. */}
+            <div className="rounded-xl border border-outline-variant/20 md:overflow-x-auto">
+              <table className="block w-full text-sm md:table md:min-w-[640px]">
+                <thead className="hidden bg-surface-container-low text-left md:table-header-group">
                   <tr>
                     <th className="p-3 font-headline">{brand.name}</th>
                     {alternativeTargets.map((name) => <th key={name} className="p-3 font-headline">{name}</th>)}
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="block md:table-row-group">
                   {alternatives.map(({ color: c, byTarget }) => (
-                    <tr key={c.id} className="border-t border-outline-variant/15">
-                      <td className="p-3">
+                    <tr key={c.id} className="block border-t border-outline-variant/15 first:border-t-0 md:table-row md:first:border-t">
+                      <td className="block p-3 pb-1 md:table-cell md:pb-3">
                         <Link href={`/colors/${brandSlug}/${c.slug}`} className="flex items-center gap-3 font-bold text-on-surface hover:text-primary">
                           <span className="h-8 w-8 shrink-0 rounded-md border border-black/10" style={{ backgroundColor: c.hex }} />
                           {c.name}
                         </Link>
                       </td>
                       {byTarget.map((m, i) => (
-                        <td key={premium!.targets[i]} className="p-3">
+                        <td key={premium!.targets[i]} className="inline-block w-1/3 p-3 align-top md:table-cell md:w-auto md:align-middle">
+                          <span className="mb-1.5 block text-[11px] font-semibold leading-tight text-on-surface-variant md:hidden">{alternativeTargets[i]}</span>
                           {m ? (
-                            <Link href={`/colors/${m.match_color.brand.slug}/${m.match_color.slug}`} className="flex items-center gap-3 hover:text-primary">
+                            <Link href={`/colors/${m.match_color.brand.slug}/${m.match_color.slug}`} className="flex flex-col items-start gap-1.5 hover:text-primary md:flex-row md:items-center md:gap-3">
                               <span className="h-8 w-8 shrink-0 rounded-md border border-black/10" style={{ backgroundColor: m.match_color.hex }} />
                               <span>
                                 <span className="block font-semibold text-on-surface">{m.match_color.name}</span>

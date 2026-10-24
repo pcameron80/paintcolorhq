@@ -126,13 +126,9 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
     { name: "Home Depot", url: (i) =>
       `https://www.homedepot.com/s/${encodeURIComponent(`Kilz ${i.colorName} paint`)}` },
   ],
-  colorhouse: [
-    { name: "Colorhouse", url: (i) => {
-      // "Stone .07" -> "stone-07"
-      const slug = i.colorName.toLowerCase().replace(/\s*\./g, "-").replace(/\s+/g, "-");
-      return `https://www.colorhousepaint.store/colors/${slug}/`;
-    }},
-  ],
+  // No colorhouse entry: colorhousepaint.store 301s every color to an
+  // unrelated gambling site (verified 2026-10-23). With no link here the
+  // Colorhouse color pages fall back to the Amazon samples CTA.
   "dutch-boy": [
     { name: "Dutch Boy", url: () => "https://www.dutchboy.com/en/colors/color-library/paint" },
     { name: "Menards", url: (i) =>
@@ -160,6 +156,9 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
  * single "buy" CTA; the brand's own $0 .com is demoted to a small reference link.
  */
 export const AFFILIATE_RETAILERS = new Set(["Home Depot", "Lowe's", "Ace Hardware"]);
+
+/** Brand slugs with retailer links (scripts/check-retailer-links.ts --sample). */
+export const RETAILER_LINK_BRANDS = Object.keys(BRAND_LINKS);
 
 export function isAffiliateRetailer(retailerName: string): boolean {
   return AFFILIATE_RETAILERS.has(retailerName);
