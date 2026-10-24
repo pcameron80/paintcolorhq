@@ -1,0 +1,1407 @@
+{
+  "command": "url-info",
+  "seed": 20261024,
+  "results": [
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/slate-rock-n460-5",
+      "http": 0,
+      "size": 191300,
+      "discovered": "2026-04-05",
+      "crawled": "2026-10-02"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/kitten-whiskers-1003",
+      "http": 0,
+      "size": 197011,
+      "discovered": "2026-06-16",
+      "crawled": "2026-10-05"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/almond-brittle-s270-6",
+      "http": 0,
+      "size": 195881,
+      "discovered": "2026-06-09",
+      "crawled": "2026-10-07"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/cool-concrete-1023-2",
+      "http": 0,
+      "size": 194080,
+      "discovered": "2026-03-31",
+      "crawled": "2026-09-27"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/pretty-peony-1006-3b",
+      "http": 0,
+      "size": 190117,
+      "discovered": "2026-05-04",
+      "crawled": "2026-10-16"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/shadow-taupe-14-01",
+      "http": 0,
+      "size": 189152,
+      "discovered": "2026-07-10",
+      "crawled": "2026-09-23"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/kilz/sofia-ra210-01",
+      "http": 0,
+      "size": 190626,
+      "discovered": "2026-05-13",
+      "crawled": "2026-08-29"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/rural-earth-1239",
+      "http": 0,
+      "size": 207375,
+      "discovered": "2026-04-21",
+      "crawled": "2026-10-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/sensual-peach-p200-2",
+      "http": 0,
+      "size": 191628,
+      "discovered": "2026-04-05",
+      "crawled": "2026-10-04"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/savannah-green-2150-30",
+      "http": 0,
+      "size": 195345,
+      "discovered": "2026-07-01",
+      "crawled": "2026-10-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/craft-paper-6125",
+      "http": 0,
+      "size": 196450,
+      "discovered": "2026-05-05",
+      "crawled": "2026-09-27"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/jack-rabbit-1014-4",
+      "http": 0,
+      "size": 196650,
+      "discovered": "2026-04-15",
+      "crawled": "2026-10-07"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/hirshfields/feather-stone-229",
+      "http": 0,
+      "size": 192029,
+      "discovered": "2026-05-10",
+      "crawled": "2026-10-02"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/wild-hawk-6007-2b",
+      "http": 0,
+      "size": 193488,
+      "discovered": "2026-06-07",
+      "crawled": "2026-09-24"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/silver-fox-4008-3c",
+      "http": 0,
+      "size": 190430,
+      "discovered": "2026-04-27",
+      "crawled": "2026-09-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/trinket-gold-n290-6",
+      "http": 0,
+      "size": 192552,
+      "discovered": "2026-07-25",
+      "crawled": "2026-09-25"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/quaking-grass-1121-4",
+      "http": 0,
+      "size": 191755,
+      "discovered": "2026-05-04",
+      "crawled": "2026-10-16"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/orange-essence-k-612",
+      "http": 0,
+      "size": 191741,
+      "discovered": "2026-05-21",
+      "crawled": "2026-10-14"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dunn-edwards/cedarville-de5185",
+      "http": 0,
+      "size": 189453,
+      "discovered": "2026-05-10",
+      "crawled": "2026-10-02"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/toile-red-6",
+      "http": 0,
+      "size": 191221,
+      "discovered": "2026-05-25",
+      "crawled": "2026-10-18"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/instant-classic-mq1-34",
+      "http": 0,
+      "size": 192921,
+      "discovered": "2026-06-01",
+      "crawled": "2026-10-24"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/ice-cap-1576",
+      "http": 0,
+      "size": 180804,
+      "discovered": "2026-06-22",
+      "crawled": "2026-10-11"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dunn-edwards/more-water-please-defd55",
+      "http": 0,
+      "size": 194324,
+      "discovered": "2026-07-17",
+      "crawled": "2026-09-29"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/orange-chinese-lantern-60yr-33-514",
+      "http": 0,
+      "size": 190993,
+      "discovered": "2026-06-12",
+      "crawled": "2026-10-04"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/big-fish-c-434",
+      "http": 0,
+      "size": 190643,
+      "discovered": "2026-05-12",
+      "crawled": "2026-10-04"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/sweet-pastel-mq3-39",
+      "http": 0,
+      "size": 174452,
+      "discovered": "2026-03-16",
+      "crawled": "2026-10-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/cool-dusk-550f-4",
+      "http": 0,
+      "size": 178946,
+      "discovered": "2026-04-09",
+      "crawled": "2026-07-26"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/ice-blue-1232-1",
+      "http": 0,
+      "size": 156010,
+      "discovered": "2026-03-21",
+      "crawled": "2026-10-24"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/rhythm-orange-209-6db",
+      "http": 0,
+      "size": 194073,
+      "discovered": "2026-07-06",
+      "crawled": "2026-09-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/montana-dust-k-1214",
+      "http": 0,
+      "size": 190031,
+      "discovered": "2026-04-30",
+      "crawled": "2026-09-22"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/highest-mountain-mist-30gg-65-082",
+      "http": 0,
+      "size": 192868,
+      "discovered": "2026-06-12",
+      "crawled": "2026-09-23"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/hamburger-vs-9801",
+      "http": 0,
+      "size": 189617,
+      "discovered": "2026-03-18",
+      "crawled": "2026-10-21"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/warm-gold-35yy-59-533",
+      "http": 0,
+      "size": 191197,
+      "discovered": "2026-07-25",
+      "crawled": "2026-10-08"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/rabbit-s-ear-ppg0999-2",
+      "http": 0,
+      "size": 191852,
+      "discovered": "2026-07-27",
+      "crawled": "2026-10-15"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/moth-gray-1024-4",
+      "http": 0,
+      "size": 196206,
+      "discovered": "2026-06-09",
+      "crawled": "2026-10-07"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/pretty-pink-pph-32",
+      "http": 0,
+      "size": 191454,
+      "discovered": "2026-06-22",
+      "crawled": "2026-10-17"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dunn-edwards/january-frost-de5849",
+      "http": 0,
+      "size": 191949,
+      "discovered": "2026-05-04",
+      "crawled": "2026-10-12"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/pawn-beige-vs-9108",
+      "http": 0,
+      "size": 180748,
+      "discovered": "2026-03-27",
+      "crawled": "2026-09-23"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/impatient-pink-6854",
+      "http": 0,
+      "size": 188482,
+      "discovered": "2026-07-02",
+      "crawled": "2026-09-28"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/jugo-de-guayaba-pph-27-hisp",
+      "http": 0,
+      "size": 192714,
+      "discovered": "2026-06-22",
+      "crawled": "2026-10-21"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/mountain-gray-1021-1",
+      "http": 0,
+      "size": 191970,
+      "discovered": "2026-03-10",
+      "crawled": "2026-10-14"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/frosted-needles-328-1db",
+      "http": 0,
+      "size": 192700,
+      "discovered": "2026-06-22",
+      "crawled": "2026-09-25"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/fern-canopy-m380-6",
+      "http": 0,
+      "size": 188820,
+      "discovered": "2026-03-08",
+      "crawled": "2026-10-12"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/cognac-snifter-1148",
+      "http": 0,
+      "size": 193748,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-01"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/melted-butter-300a-3",
+      "http": 0,
+      "size": 191870,
+      "discovered": "2026-03-19",
+      "crawled": "2026-09-17"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/wedding-cake-white-hdc-nt-10g",
+      "http": 0,
+      "size": 193150,
+      "discovered": "2026-06-16",
+      "crawled": "2026-10-18"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/deep-space-750f-7",
+      "http": 0,
+      "size": 172773,
+      "discovered": "2026-03-27",
+      "crawled": "2026-09-26"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/leather-15-14",
+      "http": 0,
+      "size": 192955,
+      "discovered": "2026-04-12",
+      "crawled": "2026-10-09"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/hirshfields/smoky-tone-541",
+      "http": 0,
+      "size": 190685,
+      "discovered": "2026-05-15",
+      "crawled": "2026-10-06"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/windmill-s350-2",
+      "http": 0,
+      "size": 189204,
+      "discovered": "2026-04-08",
+      "crawled": "2026-10-05"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/appalachian-trail-633",
+      "http": 0,
+      "size": 195771,
+      "discovered": "2026-04-02",
+      "crawled": "2026-09-30"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/tonic-p360-3",
+      "http": 0,
+      "size": 189756,
+      "discovered": "2026-06-08",
+      "crawled": "2026-09-26"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/hirshfields/bunny-cake-12",
+      "http": 0,
+      "size": 193352,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/sweet-buttermilk-c-1020",
+      "http": 0,
+      "size": 149877,
+      "discovered": "2026-05-03",
+      "crawled": "2026-07-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/hirshfields/gold-taffeta-276",
+      "http": 0,
+      "size": 172526,
+      "discovered": "2026-06-04",
+      "crawled": "2026-07-08"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/symmetry-9601",
+      "http": 0,
+      "size": 195711,
+      "discovered": "2026-05-08",
+      "crawled": "2026-09-29"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/thunderbolt-10-06",
+      "http": 0,
+      "size": 193423,
+      "discovered": "2026-03-19",
+      "crawled": "2026-10-22"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dunn-edwards/lime-sorbet-de5550",
+      "http": 0,
+      "size": 191501,
+      "discovered": "2026-05-23",
+      "crawled": "2026-10-14"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/morning-coffee-2005-10a",
+      "http": 0,
+      "size": 190014,
+      "discovered": "2026-05-12",
+      "crawled": "2026-10-03"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/roma-haze-grey-10yy-54-034",
+      "http": 0,
+      "size": 191887,
+      "discovered": "2026-07-15",
+      "crawled": "2026-09-28"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/midnight-navy-2067-10",
+      "http": 0,
+      "size": 192870,
+      "discovered": "2026-05-03",
+      "crawled": "2026-09-25"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/fall-harvest-2168-10",
+      "http": 0,
+      "size": 197830,
+      "discovered": "2026-04-26",
+      "crawled": "2026-10-15"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/black-flame-1043-7",
+      "http": 0,
+      "size": 190038,
+      "discovered": "2026-03-11",
+      "crawled": "2026-10-15"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/friendly-yellow-6680",
+      "http": 0,
+      "size": 195055,
+      "discovered": "2026-05-28",
+      "crawled": "2026-10-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/rustic-adobe-7708",
+      "http": 0,
+      "size": 189676,
+      "discovered": "2026-07-23",
+      "crawled": "2026-10-03"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/new-brick-s-h-200",
+      "http": 0,
+      "size": 189249,
+      "discovered": "2026-03-15",
+      "crawled": "2026-10-18"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/cinnamon-candle-bic-33",
+      "http": 0,
+      "size": 189562,
+      "discovered": "2026-04-09",
+      "crawled": "2026-10-05"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/secret-path-csp-800",
+      "http": 0,
+      "size": 194865,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-16"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/smoked-rose-302-5db",
+      "http": 0,
+      "size": 191221,
+      "discovered": "2026-06-22",
+      "crawled": "2026-09-26"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/breath-of-fresh-air-806",
+      "http": 0,
+      "size": 196351,
+      "discovered": "2026-07-03",
+      "crawled": "2026-10-21"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/surrender-4004-7b",
+      "http": 0,
+      "size": 204659,
+      "discovered": "2026-05-02",
+      "crawled": "2026-10-17"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/frosted-cocoa-hdc-nt-18g",
+      "http": 0,
+      "size": 191395,
+      "discovered": "2026-06-16",
+      "crawled": "2026-09-22"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/mannequin-cream-or-w03",
+      "http": 0,
+      "size": 192120,
+      "discovered": "2026-06-15",
+      "crawled": "2026-10-03"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/hazy-dawn-3004-2b",
+      "http": 0,
+      "size": 190524,
+      "discovered": "2026-05-30",
+      "crawled": "2026-10-22"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/harmonious-white-dc-013",
+      "http": 0,
+      "size": 196726,
+      "discovered": "2026-07-25",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/raspberry-crush-k-1229",
+      "http": 0,
+      "size": 190935,
+      "discovered": "2026-05-18",
+      "crawled": "2026-09-03"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/night-flower-1344",
+      "http": 0,
+      "size": 196631,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-08"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/hazel-6471",
+      "http": 0,
+      "size": 172264,
+      "discovered": "2026-06-01",
+      "crawled": "2026-07-06"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/watercolor-grape-8002-48a",
+      "http": 0,
+      "size": 192590,
+      "discovered": "2026-05-25",
+      "crawled": "2026-10-17"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dunn-edwards/castaway-de5738",
+      "http": 0,
+      "size": 192905,
+      "discovered": "2026-04-29",
+      "crawled": "2026-09-28"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/weathered-stone-421-2db",
+      "http": 0,
+      "size": 192584,
+      "discovered": "2026-06-22",
+      "crawled": "2026-09-28"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/colorhouse/wool-05-wool-05",
+      "http": 0,
+      "size": 179592,
+      "discovered": "2026-07-24",
+      "crawled": "2026-10-04"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dunn-edwards/rich-ivory-de5316",
+      "http": 0,
+      "size": 189563,
+      "discovered": "2026-06-24",
+      "crawled": "2026-10-13"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/grand-soiree-t14-13",
+      "http": 0,
+      "size": 189039,
+      "discovered": "2026-06-14",
+      "crawled": "2026-10-18"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/blue-hydrangea-2062-60",
+      "http": 0,
+      "size": 199460,
+      "discovered": "2026-06-05",
+      "crawled": "2026-10-02"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/mediterranean-7617",
+      "http": 0,
+      "size": 194960,
+      "discovered": "2026-05-28",
+      "crawled": "2026-10-21"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/brushed-rose-2003-4a",
+      "http": 0,
+      "size": 192243,
+      "discovered": "2026-06-07",
+      "crawled": "2026-09-25"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/dried-edamame-9122",
+      "http": 0,
+      "size": 194742,
+      "discovered": "2026-05-28",
+      "crawled": "2026-10-21"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ral/black-green-6012",
+      "http": 0,
+      "size": 188256,
+      "discovered": "2026-05-01",
+      "crawled": "2026-09-22"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/minuet-white-6819",
+      "http": 0,
+      "size": 189555,
+      "discovered": "2026-06-18",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/kilz/soapy-water-rb180-02",
+      "http": 0,
+      "size": 179809,
+      "discovered": "2026-03-08",
+      "crawled": "2026-09-05"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dunn-edwards/ash-hollow-de6046",
+      "http": 0,
+      "size": 187428,
+      "discovered": "2026-07-09",
+      "crawled": "2026-07-23"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/coconut-husk-8003-20g",
+      "http": 0,
+      "size": 187818,
+      "discovered": "2026-05-10",
+      "crawled": "2026-09-30"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/coastal-storm-mq6-20",
+      "http": 0,
+      "size": 192591,
+      "discovered": "2026-06-02",
+      "crawled": "2026-09-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/theres-no-place-like-home-c-317",
+      "http": 0,
+      "size": 195907,
+      "discovered": "2026-05-22",
+      "crawled": "2026-10-14"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/bryce-canyon-098",
+      "http": 0,
+      "size": 181853,
+      "discovered": "2026-04-25",
+      "crawled": "2026-09-04"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/adobe-white-ecc-55-2",
+      "http": 0,
+      "size": 189391,
+      "discovered": "2026-06-12",
+      "crawled": "2026-09-25"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/waters-edge-5003-6a",
+      "http": 0,
+      "size": 192504,
+      "discovered": "2026-05-12",
+      "crawled": "2026-10-04"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/honey-tea-mq2-18",
+      "http": 0,
+      "size": 190976,
+      "discovered": "2026-04-10",
+      "crawled": "2026-10-08"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ral/signal-blue-5005",
+      "http": 0,
+      "size": 180518,
+      "discovered": "2026-07-20",
+      "crawled": "2026-08-11"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/wythe-tan-cw-415",
+      "http": 0,
+      "size": 194720,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-05"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/romance-6323",
+      "http": 0,
+      "size": 191757,
+      "discovered": "2026-05-08",
+      "crawled": "2026-09-30"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/calamities-c-1314",
+      "http": 0,
+      "size": 191184,
+      "discovered": "2026-05-10",
+      "crawled": "2026-10-01"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/icy-lilac-90bb-74-038",
+      "http": 0,
+      "size": 191672,
+      "discovered": "2026-07-03",
+      "crawled": "2026-10-21"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/clear-blue-sky-4007-9a",
+      "http": 0,
+      "size": 192149,
+      "discovered": "2026-05-04",
+      "crawled": "2026-10-10"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/kilz/earthy-red-la140-01",
+      "http": 0,
+      "size": 192915,
+      "discovered": "2026-04-10",
+      "crawled": "2026-10-05"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/marblehead-gold-hc-11",
+      "http": 0,
+      "size": 195966,
+      "discovered": "2026-04-25",
+      "crawled": "2026-09-29"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/sea-wind-s480-2",
+      "http": 0,
+      "size": 188909,
+      "discovered": "2026-04-19",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/autumns-bronze-k-1120",
+      "http": 0,
+      "size": 193834,
+      "discovered": "2026-05-10",
+      "crawled": "2026-10-02"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/alligator-skin-ppu9-1",
+      "http": 0,
+      "size": 193073,
+      "discovered": "2026-06-12",
+      "crawled": "2026-09-30"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/hirshfields/goddess-green-723",
+      "http": 0,
+      "size": 193522,
+      "discovered": "2026-05-10",
+      "crawled": "2026-10-01"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/hirshfields/caramel-cloud-245",
+      "http": 0,
+      "size": 191577,
+      "discovered": "2026-05-14",
+      "crawled": "2026-10-06"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/colorhouse/air-04-air-04",
+      "http": 0,
+      "size": 189088,
+      "discovered": "2026-05-23",
+      "crawled": "2026-10-14"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/slate-tint-c-519",
+      "http": 0,
+      "size": 190017,
+      "discovered": "2026-07-11",
+      "crawled": "2026-10-23"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/red-river-clay-2091-40",
+      "http": 0,
+      "size": 196634,
+      "discovered": "2026-06-28",
+      "crawled": "2026-10-15"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/eastern-breeze-ppl-70",
+      "http": 0,
+      "size": 193837,
+      "discovered": "2026-06-12",
+      "crawled": "2026-09-28"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/kilz/cappuccino-spice-lc260-02",
+      "http": 0,
+      "size": 192260,
+      "discovered": "2026-06-08",
+      "crawled": "2026-09-26"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/hidden-sanctuary-1375",
+      "http": 0,
+      "size": 194309,
+      "discovered": "2026-06-11",
+      "crawled": "2026-09-29"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/inkwell-6992",
+      "http": 0,
+      "size": 197587,
+      "discovered": "2026-05-20",
+      "crawled": "2026-10-11"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/charismatic-sky-m520-3",
+      "http": 0,
+      "size": 187012,
+      "discovered": "2026-03-08",
+      "crawled": "2026-10-12"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/solitary-state-1009-3",
+      "http": 0,
+      "size": 180353,
+      "discovered": "2026-04-05",
+      "crawled": "2026-10-03"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/prettiest-pink-84rr-42-368",
+      "http": 0,
+      "size": 193539,
+      "discovered": "2026-07-26",
+      "crawled": "2026-10-12"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/double-latte-9108",
+      "http": 0,
+      "size": 194346,
+      "discovered": "2026-05-26",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/water-chestnut-30yy-62-127",
+      "http": 0,
+      "size": 190057,
+      "discovered": "2026-06-12",
+      "crawled": "2026-09-28"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/kilz/rich-leather-lb290-02",
+      "http": 0,
+      "size": 0,
+      "discovered": "2026-04-01",
+      "crawled": "2026-05-08"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/farrow-ball/dix-blue-82",
+      "http": 0,
+      "size": 0,
+      "discovered": "2026-04-08",
+      "crawled": "2026-05-14"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/happy-trails-1084-4",
+      "http": 0,
+      "size": 189376,
+      "discovered": "2026-03-31",
+      "crawled": "2026-09-27"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/unmarked-trail-n330-3",
+      "http": 0,
+      "size": 191538,
+      "discovered": "2026-03-17",
+      "crawled": "2026-10-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/log-cabin-2163-10",
+      "http": 0,
+      "size": 194980,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-17"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dunn-edwards/chocolate-milk-de6059",
+      "http": 0,
+      "size": 191497,
+      "discovered": "2026-05-08",
+      "crawled": "2026-09-30"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/webster-green-hc-130",
+      "http": 0,
+      "size": 195617,
+      "discovered": "2026-06-29",
+      "crawled": "2026-10-18"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/monks-robe-405-5db",
+      "http": 0,
+      "size": 0,
+      "discovered": "2026-07-12",
+      "crawled": "2026-07-12"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/dusky-mood-c-1317",
+      "http": 0,
+      "size": 188715,
+      "discovered": "2026-05-28",
+      "crawled": "2026-10-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/calmed-coral-307-5db",
+      "http": 0,
+      "size": 193957,
+      "discovered": "2026-07-15",
+      "crawled": "2026-09-27"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/fairway-mist-430a-3",
+      "http": 0,
+      "size": 190914,
+      "discovered": "2026-04-14",
+      "crawled": "2026-10-11"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/yosemite-blue-2059-40",
+      "http": 0,
+      "size": 195578,
+      "discovered": "2026-07-01",
+      "crawled": "2026-10-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/lily-pond-1223-2",
+      "http": 0,
+      "size": 191463,
+      "discovered": "2026-03-12",
+      "crawled": "2026-10-17"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/greenhouse-tint-6002-5c",
+      "http": 0,
+      "size": 190141,
+      "discovered": "2026-05-25",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/frosted-briarwood-green-50gg-47-057",
+      "http": 0,
+      "size": 192726,
+      "discovered": "2026-06-21",
+      "crawled": "2026-10-12"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/boulder-creek-ecc-34-2",
+      "http": 0,
+      "size": 191389,
+      "discovered": "2026-07-22",
+      "crawled": "2026-10-05"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/decorous-amber-7",
+      "http": 0,
+      "size": 195962,
+      "discovered": "2026-05-21",
+      "crawled": "2026-10-14"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/blue-calico-1246-7",
+      "http": 0,
+      "size": 172380,
+      "discovered": "2026-07-07",
+      "crawled": "2026-09-21"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/dreamcatcher-640",
+      "http": 0,
+      "size": 195777,
+      "discovered": "2026-04-26",
+      "crawled": "2026-10-18"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/wagon-train-8003-22g",
+      "http": 0,
+      "size": 189344,
+      "discovered": "2026-05-15",
+      "crawled": "2026-10-06"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/silver-feather-1002-1",
+      "http": 0,
+      "size": 194153,
+      "discovered": "2026-03-07",
+      "crawled": "2026-10-11"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/foxtrot-7003-3",
+      "http": 0,
+      "size": 202969,
+      "discovered": "2026-05-15",
+      "crawled": "2026-10-18"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/grape-gum-2068-20",
+      "http": 0,
+      "size": 192526,
+      "discovered": "2026-04-25",
+      "crawled": "2026-09-26"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/grayed-foundry-426-6db",
+      "http": 0,
+      "size": 194330,
+      "discovered": "2026-06-22",
+      "crawled": "2026-09-26"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/spice-bazaar-ppu4-18",
+      "http": 0,
+      "size": 191412,
+      "discovered": "2026-04-21",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/fudge-1073-7",
+      "http": 0,
+      "size": 190488,
+      "discovered": "2026-06-30",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/poseidon-depths-432-6db",
+      "http": 0,
+      "size": 192498,
+      "discovered": "2026-07-30",
+      "crawled": "2026-09-01"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/sherwin-williams/heartfelt-6586",
+      "http": 0,
+      "size": 192676,
+      "discovered": "2026-06-07",
+      "crawled": "2026-09-25"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/gibraltar-cliffs-1587",
+      "http": 0,
+      "size": 197301,
+      "discovered": "2026-06-24",
+      "crawled": "2026-10-14"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/kilz/overcast-day-rf290-02",
+      "http": 0,
+      "size": 193122,
+      "discovered": "2026-03-16",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/wind-blown-c-585",
+      "http": 0,
+      "size": 167001,
+      "discovered": "2026-05-19",
+      "crawled": "2026-09-03"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ral/pure-green-6037",
+      "http": 0,
+      "size": 176550,
+      "discovered": "2026-06-04",
+      "crawled": "2026-09-22"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/snowy-egret-pwn-50",
+      "http": 0,
+      "size": 191640,
+      "discovered": "2026-06-14",
+      "crawled": "2026-10-10"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/kiwi-kiss-k-358",
+      "http": 0,
+      "size": 190276,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-02"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/rialto-mq1-5",
+      "http": 0,
+      "size": 190879,
+      "discovered": "2026-07-03",
+      "crawled": "2026-08-11"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/martica-c-810",
+      "http": 0,
+      "size": 173503,
+      "discovered": "2026-06-02",
+      "crawled": "2026-09-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/lily-pad-480",
+      "http": 0,
+      "size": 196699,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-18"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/quilted-gold-219-4db",
+      "http": 0,
+      "size": 192166,
+      "discovered": "2026-07-21",
+      "crawled": "2026-10-03"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/adieu-8004-34c",
+      "http": 0,
+      "size": 191124,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-23"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/pirate-coast-5004-3a",
+      "http": 0,
+      "size": 191836,
+      "discovered": "2026-06-04",
+      "crawled": "2026-09-22"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/prairie-rose-m170-2",
+      "http": 0,
+      "size": 196302,
+      "discovered": "2026-07-18",
+      "crawled": "2026-10-13"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/green-hydrangea-csp-850",
+      "http": 0,
+      "size": 197868,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-06"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/wright-flesh-pink-fllw792",
+      "http": 0,
+      "size": 191059,
+      "discovered": "2026-07-05",
+      "crawled": "2026-09-18"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/thistle-qe-45",
+      "http": 0,
+      "size": 148866,
+      "discovered": "2026-03-29",
+      "crawled": "2026-09-26"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/nursery-pink-c-1160",
+      "http": 0,
+      "size": 191556,
+      "discovered": "2026-06-05",
+      "crawled": "2026-09-23"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/white-cc-160",
+      "http": 0,
+      "size": 194049,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-02"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/citrus-punch-13yy-60-475",
+      "http": 0,
+      "size": 191383,
+      "discovered": "2026-07-06",
+      "crawled": "2026-09-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/lavender-cloud-p550-3",
+      "http": 0,
+      "size": 189070,
+      "discovered": "2026-04-02",
+      "crawled": "2026-09-29"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/hirshfields/garden-glory-1106",
+      "http": 0,
+      "size": 149391,
+      "discovered": "2026-05-12",
+      "crawled": "2026-10-04"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/maid-cc-728",
+      "http": 0,
+      "size": 194017,
+      "discovered": "2026-04-25",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/lion-s-dance-gold-40yy-57-335",
+      "http": 0,
+      "size": 192688,
+      "discovered": "2026-07-13",
+      "crawled": "2026-09-26"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/hirshfields/cliffswallow-131",
+      "http": 0,
+      "size": 189730,
+      "discovered": "2026-06-10",
+      "crawled": "2026-09-29"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/lemon-curd-3007-2a",
+      "http": 0,
+      "size": 194028,
+      "discovered": "2026-06-06",
+      "crawled": "2026-09-23"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/bridal-rose-170e-3",
+      "http": 0,
+      "size": 190352,
+      "discovered": "2026-06-09",
+      "crawled": "2026-09-28"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/welcoming-yellow-113-5db",
+      "http": 0,
+      "size": 194740,
+      "discovered": "2026-06-22",
+      "crawled": "2026-10-17"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/valspar/evening-sun-3004-6c",
+      "http": 0,
+      "size": 192033,
+      "discovered": "2026-05-09",
+      "crawled": "2026-09-30"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/lucky-penny-1201-7",
+      "http": 0,
+      "size": 173057,
+      "discovered": "2026-03-23",
+      "crawled": "2026-09-20"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/sunnyside-c-841",
+      "http": 0,
+      "size": 192614,
+      "discovered": "2026-05-23",
+      "crawled": "2026-10-15"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/midnight-hour-1038-7",
+      "http": 0,
+      "size": 0,
+      "discovered": "",
+      "crawled": ""
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/pirate-gold-45yy-43-536",
+      "http": 0,
+      "size": 190338,
+      "discovered": "2026-07-14",
+      "crawled": "2026-09-27"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/ancient-cloud-ppg0995-2",
+      "http": 0,
+      "size": 191205,
+      "discovered": "2026-07-15",
+      "crawled": "2026-09-27"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/strawberry-daiquiri-s-g-120",
+      "http": 0,
+      "size": 150056,
+      "discovered": "2026-05-09",
+      "crawled": "2026-09-30"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/heather-plum-1396",
+      "http": 0,
+      "size": 195920,
+      "discovered": "2026-06-14",
+      "crawled": "2026-10-03"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/mata-hari-ppu17-1",
+      "http": 0,
+      "size": 192846,
+      "discovered": "2026-06-12",
+      "crawled": "2026-10-17"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/mermaid-tears-ce-02",
+      "http": 0,
+      "size": 191442,
+      "discovered": "2026-06-12",
+      "crawled": "2026-10-19"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/benjamin-moore/country-pink-2001-60",
+      "http": 0,
+      "size": 195352,
+      "discovered": "2026-07-08",
+      "crawled": "2026-09-27"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/mystic-tulip-c-1063",
+      "http": 0,
+      "size": 191519,
+      "discovered": "2026-06-01",
+      "crawled": "2026-10-24"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/cracked-wheat-320e-2",
+      "http": 0,
+      "size": 191290,
+      "discovered": "2026-03-22",
+      "crawled": "2026-09-21"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/aster-ppu16-09",
+      "http": 0,
+      "size": 192507,
+      "discovered": "2026-06-10",
+      "crawled": "2026-09-28"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/vista-paint/dubai-sand-k-1294",
+      "http": 0,
+      "size": 191352,
+      "discovered": "2026-06-04",
+      "crawled": "2026-09-22"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/smoky-white-bwc-13",
+      "http": 0,
+      "size": 191653,
+      "discovered": "2026-04-09",
+      "crawled": "2026-10-05"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/indigo-ink-hdc-cl-26a",
+      "http": 0,
+      "size": 189768,
+      "discovered": "2026-03-18",
+      "crawled": "2026-10-21"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/ppg/soft-amethyst-1178-4",
+      "http": 0,
+      "size": 189567,
+      "discovered": "2026-04-08",
+      "crawled": "2026-10-05"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/behr/ashes-ul260-9",
+      "http": 0,
+      "size": 190483,
+      "discovered": "2026-04-10",
+      "crawled": "2026-10-05"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dunn-edwards/burnt-crimson-dec705",
+      "http": 0,
+      "size": 193733,
+      "discovered": "2026-05-11",
+      "crawled": "2026-10-04"
+    },
+    {
+      "url": "https://www.paintcolorhq.com/colors/dutch-boy/perfect-puddle-136-5db",
+      "http": 0,
+      "size": 191048,
+      "discovered": "2026-06-23",
+      "crawled": "2026-10-05"
+    }
+  ],
+  "savedAt": "2026-10-24T13:17:22.545Z"
+}
