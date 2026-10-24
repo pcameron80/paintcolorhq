@@ -10,7 +10,6 @@ export function ColorDecisionGuide({ color, matches }: { color: ColorWithBrand; 
   return <section className="max-w-4xl mx-auto px-6 md:px-12 py-10 space-y-4">
     <h2 className="font-headline text-2xl font-bold">Choosing {color.brand.name} {color.name}</h2>
     <p className="text-on-surface-variant">{review.task}</p>
-    {review.measuredLrv !== undefined && <p>Manufacturer-published LRV: {review.measuredLrv}. This differs from the calculated estimate in our catalog.</p>}
     {review.reference && <p className="text-sm"><a href={review.reference} className="text-primary underline">Manufacturer reference</a> · Checked {review.checked}</p>}
     {shortlist.length > 0 && <><h3 className="font-semibold">Start with these digital candidates</h3><ul className="space-y-2">{shortlist.map(m => <li key={m.match_color.id}>
       <Link className="text-primary underline" href={`/colors/${m.match_color.brand.slug}/${m.match_color.slug}`}>{m.match_color.brand.name} {m.match_color.name}</Link>{" "}

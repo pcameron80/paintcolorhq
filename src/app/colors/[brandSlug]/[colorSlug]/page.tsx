@@ -205,7 +205,11 @@ export default async function ColorPage({ params }: PageProps) {
     getSimilarColorsFromSameBrand(color),
     getMoreFromFamily({ id: color.id, color_family: color.color_family, brand_id: color.brand_id }),
   ]);
-  const colorLede = generateColorLede(color, matches);
+  // Head-color pages keep their body fixed during the 2026-10-11 push, so the
+  // hue-band and match-hub links below skip them, and the lede, FAQ, visualizer
+  // link, sample CTA rel and Room Palettes swatch keep their pre-push output.
+  const isHeadColor = HEAD_COLOR_PUSH.includes(`${brandSlug}/${colorSlug}`);
+  const colorLede = generateColorLede(color, matches, { legacy: isHeadColor });
   const brandMatrix = nearestMatchesPerBrand(matches);
   // The strip under the hero leads with brands most stores carry, then fills
   // with the rest by closeness. A Kilz or Hirshfield's match first is less use
@@ -215,9 +219,6 @@ export default async function ColorPage({ params }: PageProps) {
     return i === -1 ? 99 : i;
   };
   const brandStrip = [...brandMatrix].sort((a, b) => majorRank(a.match_color.brand.slug) - majorRank(b.match_color.brand.slug)).slice(0, 6);
-  // Head-color pages keep their body fixed during the 2026-10-11 push, so the
-  // hue-band and match-hub links below skip them.
-  const isHeadColor = HEAD_COLOR_PUSH.includes(`${brandSlug}/${colorSlug}`);
   const hueBand = isHeadColor ? undefined : findHueBand({ l: color.lab_l, a: color.lab_a, b: color.lab_b_val });
   const availabilityNote = availabilityStatus(color.brand.slug, color.brand.name, color.color_number, color.availability);
   // Curated, hand-written review for high-demand colors (null for the long tail).
@@ -244,7 +245,8 @@ export default async function ColorPage({ params }: PageProps) {
   // filled darker-teal "buy" hero (so every page has a focal point); the rest
   // are teal-outlined.
   const shoppingCtas = [
-    ...sampleLinks.filter((l) => l.primary).map((l) => ({ key: l.label, href: l.url, label: `${l.label} of ${color.name}`, sponsored: true })),
+    // rel="sponsored" only when the Samplize link is actually affiliate-wrapped.
+    ...sampleLinks.filter((l) => l.primary).map((l) => ({ key: l.label, href: l.url, label: `${l.label} of ${color.name}`, sponsored: isHeadColor || l.affiliate })),
     ...buyRetailerLinks.map((l) => {
       const a = affiliatizeRetailer(l.url);
       return { key: l.retailerName, href: a.url, label: `Buy at ${l.retailerName}`, sponsored: a.affiliate };
@@ -279,18 +281,25 @@ export default async function ColorPage({ params }: PageProps) {
     const topList = top3.map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (${closenessPhrase(Number(m.delta_e_score))})`).join(", ");
     faqItems.push({
       question: `What colors match ${color.name} from other brands?`,
-      answer: `The closest cross-brand equivalents to ${color.name} are ${topList} — the best options for getting ${color.name}'s look from a brand your local store carries. Confirm with a physical sample, since sheen and lighting shift the final result.`,
+      answer: isHeadColor
+        ? `The closest cross-brand equivalents to ${color.name} are ${topList} — the best options for getting ${color.name}'s look from a brand your local store carries. Confirm with a physical sample, since sheen and lighting shift the final result.`
+        : `The closest cross-brand equivalents to ${color.name} are ${topList}. These are the best options for getting ${color.name}'s look from a brand your local store carries. Confirm with a physical sample, since sheen and lighting shift the final result.`,
     });
   }
   if (lrv != null) {
+    // Head-color pages keep the frozen pre-push wording (em dashes and the old
+    // "a estimated lightness value" sentence) until their read date.
+    const dash = isHeadColor ? " — " : ", ";
     const lrvBand =
-      lrv >= 70 ? "a light, reflective color that bounces plenty of light back into a room — well-suited to north-facing spaces, hallways, and smaller rooms that need to feel brighter"
-      : lrv >= 50 ? "a mid-light color — bright enough for living areas yet soft enough for bedrooms, and adaptable across most lighting conditions"
-      : lrv >= 25 ? "a mid-depth color with real presence — strong on accent walls, libraries, and rooms with good natural light"
+      lrv >= 70 ? `a light, reflective color that bounces plenty of light back into a room${dash}well-suited to north-facing spaces, hallways, and smaller rooms that need to feel brighter`
+      : lrv >= 50 ? `a mid-light color${dash}bright enough for living areas yet soft enough for bedrooms, and adaptable across most lighting conditions`
+      : lrv >= 25 ? `a mid-depth color with real presence${dash}strong on accent walls, libraries, and rooms with good natural light`
       : "a deep, dramatic color best saved for accent walls, dining rooms, and cozy spaces where atmosphere matters more than reflected light";
     faqItems.push({
       question: `What is the LRV of ${color.name}?`,
-      answer: `${color.name} has a estimated lightness value of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white — that makes it ${lrvBand}.`,
+      answer: isHeadColor
+        ? `${color.name} has a estimated lightness value of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white — that makes it ${lrvBand}.`
+        : `${color.name} has an estimated light reflectance value (LRV) of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white. That makes it ${lrvBand}.`,
     });
   }
 
@@ -616,8 +625,8 @@ export default async function ColorPage({ params }: PageProps) {
                         className="text-secondary font-semibold underline underline-offset-2 hover:no-underline"
                       >
                         Order a peel-and-stick sample of {color.name}
-                      </a>{" "}
-                      — or{" "}
+                      </a>
+                      , or{" "}
                       <a
                         href={getSamplizeShopLink("matrix-bundle").url}
                         target="_blank"
@@ -625,8 +634,8 @@ export default async function ColorPage({ params }: PageProps) {
                         className="text-secondary font-semibold underline underline-offset-2 hover:no-underline"
                       >
                         sample it next to its top matches
-                      </a>{" "}
-                      — Samplize {SAMPLIZE_OFFER.short}.
+                      </a>
+                      . Samplize {SAMPLIZE_OFFER.short}.
                     </p>
                   ) : (
                     <SamplizeOffer sid="color-match" intro="Comparing these brands?" compact />
@@ -658,7 +667,7 @@ export default async function ColorPage({ params }: PageProps) {
       {/* Curated Palettes */}
       <section className="bg-tertiary-fixed py-16 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
-          <CuratedPalettes hex={color.hex} brandId={color.brand_id} currentPath={`/colors/${brandSlug}/${colorSlug}`} colorName={color.name} />
+          <CuratedPalettes hex={color.hex} brandId={color.brand_id} currentPath={`/colors/${brandSlug}/${colorSlug}`} colorName={color.name} viewedColor={isHeadColor ? undefined : color} />
         </div>
       </section>
 
@@ -709,7 +718,9 @@ export default async function ColorPage({ params }: PageProps) {
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
         <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">Explore More with {color.name}</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          <TrackedLink href={`/tools/room-visualizer?hex=${encodeURIComponent(color.hex)}`} className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500" eventName="cta_click" eventParams={{ cta_label: "room_visualizer", color_name: color.name }}>
+          {/* The visualizer reads ?walls=; head-color pages keep the ?hex= link,
+              which the visualizer now also accepts. */}
+          <TrackedLink href={isHeadColor ? `/tools/room-visualizer?hex=${encodeURIComponent(color.hex)}` : `/tools/room-visualizer?walls=${color.hex.replace(/^#/, "")}`} className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500" eventName="cta_click" eventParams={{ cta_label: "room_visualizer", color_name: color.name }}>
             <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">See It on a Wall</p>
             <p className="mt-2 text-sm text-on-surface-variant">Preview this color in a real room</p>
           </TrackedLink>

@@ -1,4 +1,4 @@
-import { SAMPLIZE_OFFER, getSamplizeShopLink, AFFILIATE_ENABLED } from "@/lib/affiliate";
+import { SAMPLIZE_OFFER, getSamplizeShopLink } from "@/lib/affiliate";
 
 interface SamplizeOfferProps {
   /** Per-surface id for CJ SID attribution, e.g. "inspiration", "room-visualizer". */
@@ -30,7 +30,7 @@ export function SamplizeOffer({ sid, intro, compact = false, className = "" }: S
         <a href={url} target="_blank" rel={rel} className="text-secondary font-semibold underline underline-offset-2 hover:no-underline">
           Order peel-and-stick samples
         </a>{" "}
-        of your top matches — Samplize {SAMPLIZE_OFFER.short}.
+        of your top matches. Samplize {SAMPLIZE_OFFER.short}.
       </p>
     );
   }
@@ -39,10 +39,9 @@ export function SamplizeOffer({ sid, intro, compact = false, className = "" }: S
     <div className={`rounded-2xl border border-secondary/20 bg-surface-container/50 p-5 ${className}`}>
       <p className="text-sm text-on-surface">
         <span className="font-headline font-bold">{intro ?? "Comparing a few colors?"}</span>{" "}
-        Order peel-and-stick samples to see real paint on your wall before you commit —{" "}
-        <span className="font-semibold text-secondary">Samplize: {SAMPLIZE_OFFER.short}</span>.
+        Order peel-and-stick samples to see real paint on your wall before you commit.{" "}
+        <span className="font-semibold text-secondary">Samplize {SAMPLIZE_OFFER.short}</span>.
       </p>
-      <p className="mt-1 text-xs text-on-surface-variant">{SAMPLIZE_OFFER.tiers}</p>
       <a
         href={url}
         target="_blank"
@@ -51,9 +50,11 @@ export function SamplizeOffer({ sid, intro, compact = false, className = "" }: S
       >
         Shop peel-and-stick samples →
       </a>
-      {AFFILIATE_ENABLED && (
+      {/* Only when this link is CJ-wrapped: AFFILIATE_ENABLED is true whenever
+          any program is configured, which labeled plain links as affiliate. */}
+      {affiliate && (
         <p className="mt-3 text-xs text-on-surface-variant/80">
-          Affiliate link — Paint Color HQ may earn a small commission at no extra cost to you.
+          Affiliate link: Paint Color HQ may earn a small commission.
         </p>
       )}
     </div>

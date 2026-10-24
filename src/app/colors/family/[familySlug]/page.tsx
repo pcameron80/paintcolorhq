@@ -16,6 +16,7 @@ import { getPaletteBySlug } from "@/lib/palettes";
 import { HUE_BANDS_BY_FAMILY, getHueBand } from "@/lib/hue-bands";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
+import { indefiniteArticle, withArticle } from "@/lib/text";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -104,6 +105,10 @@ export default async function ColorFamilyPage({ params }: PageProps) {
   ]);
 
   const familyName = capitalize(familySlug.replace(/-/g, " "));
+  // Lowercase family word for mid-sentence use with its article ("an orange",
+  // "an off-white"); keeps the hyphen in off-white, the one compound family.
+  const familyWord = familySlug === "off-white" ? "off-white" : familyName.toLowerCase();
+  const familyArticle = indefiniteArticle(familyWord);
   const familyContent = getFamilyContent(familySlug);
   // Reciprocal family→blog links — close the one-way link gap the cluster audit
   // flagged (round-up posts link into family pages but not back).
@@ -158,7 +163,7 @@ export default async function ColorFamilyPage({ params }: PageProps) {
           },
           {
             "@type": "Question",
-            name: `How do I find a ${familyName.toLowerCase()} paint color that matches across brands?`,
+            name: `How do I find ${withArticle(familyWord)} paint color that matches across brands?`,
             acceptedAnswer: {
               "@type": "Answer",
               text: `Every color page on Paint Color HQ shows cross-brand matches ranked by CIEDE2000 Delta E score. Each match is labeled Nearly identical, Very similar, or Visible difference, and these are digital matches, so confirm with a physical sample. Click any color in the grid above to see its closest matches across all ${brandCount} brands.`,
@@ -343,7 +348,8 @@ export default async function ColorFamilyPage({ params }: PageProps) {
             </details>
             <details className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10">
               <summary className="flex cursor-pointer items-center justify-between px-6 py-5 font-headline font-bold text-on-surface hover:text-primary transition-colors">
-                How do I find a {familyName.toLowerCase()} paint color that matches across brands?
+                {/* Split as before so the beige page's HTML stays byte-identical. */}
+                {`How do I find ${familyArticle} `}{familyWord} paint color that matches across brands?
                 <svg className="h-5 w-5 shrink-0 text-outline transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
               </summary>
               <div className="px-6 pb-5 text-on-surface-variant leading-relaxed">

@@ -6,6 +6,7 @@ import { getAllBrands, getAllColorFamilies, getLatestColorDateByBrand, getLatest
 import { getAllBlogSlugs, getPostBySlug } from "@/lib/blog-posts";
 import { inspirationPalettes } from "@/lib/palettes";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
+import { COTY_HUB_DATES } from "@/lib/color-of-the-year";
 
 // ISR: refresh hourly so a scheduled post enters its sitemap shard on its date.
 export const revalidate = 3600;
@@ -72,7 +73,7 @@ export async function GET(
         { url: "/blog", lastmod: SITE_BUILD_DATE },
         { url: "/inspiration", lastmod: SITE_BUILD_DATE },
         { url: "/discontinued", lastmod: SITE_BUILD_DATE },
-        { url: "/color-of-the-year", lastmod: SITE_BUILD_DATE },
+        { url: "/color-of-the-year", lastmod: COTY_HUB_DATES.updated },
         { url: "/paint-color-statistics", lastmod: SITE_BUILD_DATE },
         { url: "/tools", lastmod: SITE_BUILD_DATE },
         { url: "/tools/paint-calculator", lastmod: SITE_BUILD_DATE },

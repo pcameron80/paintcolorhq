@@ -1,11 +1,15 @@
 import {
-  VALSPAR_OVERRIDES, VALSPAR_NOT_FOUND,
-  PPG_OVERRIDES, PPG_NOT_FOUND,
   SHERWIN_WILLIAMS_OVERRIDES, SHERWIN_WILLIAMS_NOT_FOUND,
   DUNN_EDWARDS_NOT_FOUND,
   KILZ_NOT_FOUND,
   RAL_NOT_FOUND,
 } from "./retailer-overrides";
+// Per-color official pages, built from each brand's own sitemap by
+// scripts/generate-official-color-urls.ts and keyed by our color_number.
+import PPG_URLS from "./official-urls/ppg.json";
+import VALSPAR_URLS from "./official-urls/valspar.json";
+import DUTCH_BOY_URLS from "./official-urls/dutch-boy.json";
+import VISTA_URLS from "./official-urls/vista-paint.json";
 
 export interface RetailerLink {
   retailerName: string;
@@ -28,28 +32,33 @@ function slugify(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
-// Map our color families to PPG's plural URL segments (default guesses)
-const PPG_FAMILY_MAP: Record<string, string> = {
-  red: "reds", orange: "oranges", yellow: "yellows", green: "greens",
-  blue: "blues", purple: "purples", pink: "pinks", brown: "browns",
-  gray: "grays", beige: "beiges", neutral: "neutrals",
-  white: "whites", "off-white": "whites", black: "blacks",
-};
+/**
+ * Brand-site slug for a color name: accents folded ("Crème" -> "creme") and
+ * apostrophes dropped rather than hyphenated ("Elephant's Breath" ->
+ * "elephants-breath"). Used for Farrow & Ball URLs and by the sitemap generator.
+ */
+export function nameSlug(name: string): string {
+  return name
+    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .toLowerCase().replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
 
-// Map our color families to Valspar's website categories (default guesses)
-const VALSPAR_FAMILY_MAP: Record<string, string> = {
-  red: "red", orange: "orange", yellow: "yellow", green: "green",
-  blue: "blue", purple: "purple", pink: "pink",
-  beige: "brown", brown: "brown", gray: "gray", neutral: "neutral",
-  white: "white", "off-white": "white", black: "black",
-};
+/** Looks a color up in a generated official-URL map; "" when it has no page. */
+function fromMap(map: Record<string, string>, base: string, colorNumber?: string): string {
+  const path = colorNumber ? map[colorNumber] : undefined;
+  return path ? `${base}${path}` : "";
+}
 
-// Map our color families to SW's 8 website categories (default guesses)
+// Map our color families to SW's website categories. SW serves a color under
+// any of its live family segments, so this only has to name a live one. SW
+// retired "white-and-pastel" for "white" (SW7008 Alabaster 404s under the old
+// segment, verified 2026-10-24), which broke every white and off-white link.
 const SW_FAMILY_MAP: Record<string, string> = {
   red: "red", orange: "orange", yellow: "yellow", green: "green",
   blue: "blue", purple: "purple", pink: "red",
   beige: "yellow", brown: "orange", gray: "neutral", neutral: "neutral",
-  white: "white-and-pastel", "off-white": "white-and-pastel", black: "neutral",
+  white: "white", "off-white": "white", black: "neutral",
 };
 
 const BRAND_LINKS: Record<string, RetailerConfig[]> = {
@@ -60,12 +69,10 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
       `https://www.homedepot.com/s/${encodeURIComponent(`Behr ${i.colorName} paint`)}` },
   ],
   ppg: [
-    { name: "PPG Paints", url: (i) => {
-      const num = i.colorNumber ?? "";
-      if (PPG_NOT_FOUND.has(num)) return "";
-      const family = PPG_OVERRIDES[num] ?? PPG_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutrals";
-      return `https://www.ppgpaints.com/color/color-families/${family}/${slugify(i.colorName)}`;
-    }},
+    // Every ppgpaints.com color URL now lands on a "PPG Paints is now Pittsburgh
+    // Paints" interstitial; the color pages moved to pittsburghpaints.com.
+    { name: "PPG Paints", url: (i) =>
+      fromMap(PPG_URLS, "https://www.pittsburghpaints.com/ppg-colors/", i.colorNumber) },
     { name: "Home Depot", url: (i) =>
       `https://www.homedepot.com/s/${encodeURIComponent(`PPG ${i.colorName} paint`)}` },
   ],
@@ -74,13 +81,8 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
       `https://www.homedepot.com/s/${encodeURIComponent(`Glidden ${i.colorName} paint`)}` },
   ],
   valspar: [
-    { name: "Valspar", url: (i) => {
-      const num = i.colorNumber ?? "";
-      if (VALSPAR_NOT_FOUND.has(num)) return "";
-      const family = VALSPAR_OVERRIDES[num] ?? VALSPAR_FAMILY_MAP[i.colorFamily ?? "neutral"] ?? "neutral";
-      const slug = `${slugify(i.colorName)}-${num.toLowerCase()}`;
-      return `https://www.valspar.com/en/colors/browse-colors/lowes/${family}/${slug}`;
-    }},
+    { name: "Valspar", url: (i) =>
+      fromMap(VALSPAR_URLS, "https://www.valspar.com/en/colors/browse-colors/", i.colorNumber) },
     { name: "Lowe's", url: (i) =>
       `https://www.lowes.com/search?searchTerm=${encodeURIComponent(`Valspar ${i.colorName} paint`)}` },
   ],
@@ -107,7 +109,10 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
       `https://www.acehardware.com/search?query=${encodeURIComponent(`Benjamin Moore ${i.colorName} paint`)}` },
   ],
   "farrow-ball": [
-    { name: "Farrow & Ball", url: () => "https://www.farrow-ball.com" },
+    // Every color has its own page on the US store (all 167 checked against
+    // its sitemap 2026-10-24), e.g. /us/paint/elephants-breath.
+    { name: "Farrow & Ball", url: (i) =>
+      `https://www.farrow-ball.com/us/paint/${nameSlug(i.colorName)}` },
   ],
   "dunn-edwards": [
     { name: "Dunn-Edwards", url: (i) => {
@@ -126,23 +131,23 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
     { name: "Home Depot", url: (i) =>
       `https://www.homedepot.com/s/${encodeURIComponent(`Kilz ${i.colorName} paint`)}` },
   ],
-  colorhouse: [
-    { name: "Colorhouse", url: (i) => {
-      // "Stone .07" -> "stone-07"
-      const slug = i.colorName.toLowerCase().replace(/\s*\./g, "-").replace(/\s+/g, "-");
-      return `https://www.colorhousepaint.store/colors/${slug}/`;
-    }},
-  ],
+  // No colorhouse entry: colorhousepaint.store 301s every color to an
+  // unrelated gambling site (verified 2026-10-23). With no link here the
+  // Colorhouse color pages fall back to the Amazon samples CTA.
   "dutch-boy": [
-    { name: "Dutch Boy", url: () => "https://www.dutchboy.com/en/colors/color-library/paint" },
+    { name: "Dutch Boy", url: (i) =>
+      fromMap(DUTCH_BOY_URLS, "https://www.dutchboy.com/en/colors/color-library/paint/", i.colorNumber) },
     { name: "Menards", url: (i) =>
       `https://www.menards.com/main/search.html?search=${encodeURIComponent(`Dutch Boy ${i.colorName} paint`)}` },
   ],
   "vista-paint": [
-    { name: "Vista Paint", url: () => "https://www.vistapaint.com/colors/" },
+    { name: "Vista Paint", url: (i) =>
+      fromMap(VISTA_URLS, "https://www.vistapaint.com/colors/", i.colorNumber) },
   ],
   hirshfields: [
-    { name: "Hirshfield's", url: () => "https://www.hirshfields.com/color/" },
+    // Hirshfield's has no per-color pages (none in its sitemap), so this is its
+    // color library; /color/ redirected to a "Color Basics" article.
+    { name: "Hirshfield's", url: () => "https://www.hirshfields.com/color-inspiration/browse-our-colors/" },
   ],
   ral: [
     { name: "RAL Color Chart", url: (i) => {
@@ -160,6 +165,9 @@ const BRAND_LINKS: Record<string, RetailerConfig[]> = {
  * single "buy" CTA; the brand's own $0 .com is demoted to a small reference link.
  */
 export const AFFILIATE_RETAILERS = new Set(["Home Depot", "Lowe's", "Ace Hardware"]);
+
+/** Brand slugs with retailer links (scripts/check-retailer-links.ts --sample). */
+export const RETAILER_LINK_BRANDS = Object.keys(BRAND_LINKS);
 
 export function isAffiliateRetailer(retailerName: string): boolean {
   return AFFILIATE_RETAILERS.has(retailerName);

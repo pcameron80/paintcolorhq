@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useId } from "react";
 import Link from "next/link";
 import type { ColorWithBrand } from "@/lib/types";
 import { trackCompare } from "@/lib/analytics";
-import { rgbToLab, deltaE2000 } from "@/lib/color-utils";
+import { hexToRgb, rgbToLab, deltaE2000, type Lab } from "@/lib/color-utils";
 import { closenessLabel } from "@/lib/closeness";
 
 interface CompareClientProps {
@@ -28,6 +28,8 @@ function ColorSearchInput({
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const inputId = useId();
+  const trimmed = query.trim();
 
   const search = useCallback(async (q: string) => {
     if (q.length < 2) {
@@ -47,9 +49,9 @@ function ColorSearchInput({
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => search(query), 300);
+    const timer = setTimeout(() => search(trimmed), 300);
     return () => clearTimeout(timer);
-  }, [query, search]);
+  }, [trimmed, search]);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -95,10 +97,11 @@ function ColorSearchInput({
 
   return (
     <div ref={containerRef} className="relative">
-      <label className="mb-2 block text-sm font-medium text-gray-700">
+      <label htmlFor={inputId} className="mb-2 block text-sm font-medium text-gray-700">
         {label}
       </label>
       <input
+        id={inputId}
         type="text"
         value={query}
         onChange={(e) => {
@@ -110,14 +113,14 @@ function ColorSearchInput({
         className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
       />
 
-      {open && (query.length >= 2) && (
+      {open && (trimmed.length >= 2) && (
         <div className="absolute z-10 mt-1 max-h-72 w-full overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg">
           {loading && (
             <p className="px-4 py-3 text-sm text-gray-500">Searching...</p>
           )}
           {!loading && results.length === 0 && (
             <p className="px-4 py-3 text-sm text-gray-500">
-              No colors found for &quot;{query}&quot;
+              No colors found for &quot;{trimmed}&quot;
             </p>
           )}
           {!loading && results.map((color) => (
@@ -154,36 +157,58 @@ function ColorSearchInput({
 export function CompareClient({ initialColor1, initialColor2 }: CompareClientProps) {
   const [color1, setColor1] = useState<ColorWithBrand | null>(initialColor1);
   const [color2, setColor2] = useState<ColorWithBrand | null>(initialColor2);
+  // Id currently picked in each slot. A full-row response is applied only if
+  // its slot still holds that id, so a slow fetch never overwrites a newer pick.
+  const pickedIds = useRef<[string | null, string | null]>([
+    initialColor1?.id ?? null,
+    initialColor2?.id ?? null,
+  ]);
 
+  // Write the URL only once both colors are set, and only when it changes.
+  // GA4 enhanced measurement counts each history change as a page_view, so a
+  // write on every pick and clear added about 900 phantom pageviews per 14 days.
   function updateUrl(c1: ColorWithBrand | null, c2: ColorWithBrand | null) {
-    const params = new URLSearchParams();
-    if (c1) params.set("color1", c1.id);
-    if (c2) params.set("color2", c2.id);
-    const qs = params.toString();
-    window.history.replaceState(null, "", qs ? `/compare?${qs}` : "/compare");
+    if (!c1 || !c2) return;
+    const qs = new URLSearchParams({ color1: c1.id, color2: c2.id }).toString();
+    if (window.location.search === `?${qs}`) return;
+    window.history.replaceState(null, "", `/compare?${qs}`);
+  }
+
+  // Search rows carry only id, name, slug, hex and brand. Fetch the full row
+  // (RGB, LAB, LRV) for the technical values.
+  function loadFullRow(slot: 0 | 1, color: ColorWithBrand, apply: (c: ColorWithBrand) => void) {
+    pickedIds.current[slot] = color.id;
+    fetch(`/api/color/${color.id}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data: { color?: ColorWithBrand } | null) => {
+        if (data?.color && pickedIds.current[slot] === color.id) apply(data.color);
+      })
+      .catch(() => {});
   }
 
   function selectColor1(color: ColorWithBrand) {
     setColor1(color);
     updateUrl(color, color2);
+    loadFullRow(0, color, setColor1);
   }
 
   function selectColor2(color: ColorWithBrand) {
     setColor2(color);
     updateUrl(color1, color);
+    loadFullRow(1, color, setColor2);
     if (color1) {
       trackCompare(color1.name, color.name, color1.brand.name, color.brand.name);
     }
   }
 
   function clearColor1() {
+    pickedIds.current[0] = null;
     setColor1(null);
-    updateUrl(null, color2);
   }
 
   function clearColor2() {
+    pickedIds.current[1] = null;
     setColor2(null);
-    updateUrl(color1, null);
   }
 
   return (
@@ -251,16 +276,32 @@ export function CompareClient({ initialColor1, initialColor2 }: CompareClientPro
   );
 }
 
+// A search row has no RGB or LAB until the full row loads, so fall back to the
+// hex. Hex converts exactly to the stored RGB and LAB values.
+function rgbOf(c: ColorWithBrand): { r: number; g: number; b: number } | null {
+  if (c.rgb_r != null && c.rgb_g != null && c.rgb_b != null) {
+    return { r: c.rgb_r, g: c.rgb_g, b: c.rgb_b };
+  }
+  try {
+    const rgb = hexToRgb(c.hex);
+    return [rgb.r, rgb.g, rgb.b].every(Number.isFinite) ? rgb : null;
+  } catch {
+    return null;
+  }
+}
+
+function labOf(c: ColorWithBrand): Lab | null {
+  if (c.lab_l != null && c.lab_a != null && c.lab_b_val != null) {
+    return { L: c.lab_l, a: c.lab_a, b: c.lab_b_val };
+  }
+  const rgb = rgbOf(c);
+  return rgb ? rgbToLab(rgb.r, rgb.g, rgb.b) : null;
+}
+
 function computeDeltaE(c1: ColorWithBrand, c2: ColorWithBrand): number {
-  const lab1 =
-    c1.lab_l != null && c1.lab_a != null && c1.lab_b_val != null
-      ? { L: c1.lab_l, a: c1.lab_a, b: c1.lab_b_val }
-      : rgbToLab(c1.rgb_r, c1.rgb_g, c1.rgb_b);
-  const lab2 =
-    c2.lab_l != null && c2.lab_a != null && c2.lab_b_val != null
-      ? { L: c2.lab_l, a: c2.lab_a, b: c2.lab_b_val }
-      : rgbToLab(c2.rgb_r, c2.rgb_g, c2.rgb_b);
-  return deltaE2000(lab1, lab2);
+  const lab1 = labOf(c1);
+  const lab2 = labOf(c2);
+  return lab1 && lab2 ? deltaE2000(lab1, lab2) : NaN;
 }
 
 function getDeltaEVerdict(de: number): string {
@@ -278,6 +319,8 @@ function DeltaEVerdict({
   color2: ColorWithBrand;
 }) {
   const de = computeDeltaE(color1, color2);
+  // No verdict beats a wrong one: a NaN would read as "Visible difference".
+  if (!Number.isFinite(de)) return null;
   const verdict = getDeltaEVerdict(de);
 
   return (
@@ -292,6 +335,7 @@ function DeltaEVerdict({
 }
 
 function ColorDetail({ color }: { color: ColorWithBrand }) {
+  const rgb = rgbOf(color);
   return (
     <div>
       <div
@@ -312,12 +356,15 @@ function ColorDetail({ color }: { color: ColorWithBrand }) {
           <dt className="text-gray-500">Hex</dt>
           <dd className="font-mono font-medium">{color.hex.toUpperCase()}</dd>
         </div>
-        <div className="flex justify-between">
-          <dt className="text-gray-500">RGB</dt>
-          <dd className="font-mono">
-            {color.rgb_r}, {color.rgb_g}, {color.rgb_b}
-          </dd>
-        </div>
+        {rgb && (
+          <div className="flex justify-between">
+            <dt className="text-gray-500">RGB</dt>
+            <dd className="font-mono">
+              {rgb.r}, {rgb.g}, {rgb.b}
+            </dd>
+          </div>
+        )}
+        {/* Hidden until the full row loads; search rows have no LRV. */}
         {color.lrv != null && (
           <div className="flex justify-between">
             <dt className="text-gray-500">Estimated LRV</dt>

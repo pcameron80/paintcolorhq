@@ -3,6 +3,11 @@
  * of check-retailer-links.ts runs.
  *
  * Usage: npx tsx scripts/generate-retailer-overrides.ts
+ *
+ * PPG, Valspar, Dutch Boy and Vista are not here: their links come from the
+ * brands' sitemaps via scripts/generate-official-color-urls.ts.
+ * Every brand in the list below needs its scripts/retailer-links-<brand>.json,
+ * or its section is dropped from the regenerated file.
  */
 import * as fs from "fs";
 import * as path from "path";
@@ -25,7 +30,7 @@ interface CheckResult {
   passed: number;
 }
 
-const brands = ["valspar", "ppg", "sherwin-williams", "dunn-edwards", "kilz", "colorhouse", "ral"] as const;
+const brands = ["sherwin-williams", "dunn-edwards", "kilz", "ral"] as const;
 
 function loadResults(brand: string): CheckResult | null {
   const file = path.resolve(__dirname, `retailer-links-${brand}.json`);

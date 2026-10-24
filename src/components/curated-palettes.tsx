@@ -141,11 +141,16 @@ export async function CuratedPalettes({
   brandId,
   currentPath,
   colorName,
+  viewedColor,
 }: {
   hex: string;
   brandId: string;
   currentPath: string;
   colorName?: string;
+  /** The page's own color. When given, "This Color" is that paint instead of
+   *  the closest same-brand match by RGB box, which picked a different paint
+   *  on about a quarter of color pages and saved the wrong id as Walls. */
+  viewedColor?: ColorWithBrand;
 }) {
   const palettes = generatePalettes(hex);
 
@@ -158,10 +163,11 @@ export async function CuratedPalettes({
   }
 
   // Resolve all companion colors within the same brand, plus the viewed color
+  // (looked up only when the page did not pass it in)
   const resolveMap = new Map<string, ColorWithBrand | null>();
   const entries = [...hexesToResolve];
   const [viewedMatch, ...companionMatches] = await Promise.all([
-    findClosestColor(hex, brandId),
+    viewedColor ?? findClosestColor(hex, brandId),
     ...entries.map((h) => findClosestColor(h, brandId)),
   ]);
   resolveMap.set(hex, viewedMatch);
@@ -185,7 +191,7 @@ export async function CuratedPalettes({
         Color schemes built around this color — each swatch links to the closest matching paint.
       </p>
 
-      <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {resolved.map((palette) => (
           <div
             key={palette.name}
@@ -200,10 +206,10 @@ export async function CuratedPalettes({
                         className="aspect-square w-full rounded-lg border-2 border-on-surface ring-2 ring-on-surface/10"
                         style={{ backgroundColor: color.match?.hex ?? color.paletteHex }}
                       />
-                      <p className="mt-1.5 text-center text-[10px] font-bold text-on-surface">
+                      <p className="mt-1.5 text-center text-xs font-bold text-on-surface">
                         {color.role}
                       </p>
-                      <p className="truncate text-center text-[10px] font-medium text-on-surface-variant">
+                      <p className="line-clamp-2 break-words text-center text-xs font-medium text-on-surface-variant">
                         This Color
                       </p>
                     </div>
@@ -218,16 +224,16 @@ export async function CuratedPalettes({
                       className="aspect-square w-full rounded-lg border border-outline-variant/10 transition-shadow group-hover:shadow-md"
                       style={{ backgroundColor: color.match?.hex ?? color.paletteHex }}
                     />
-                    <p className="mt-1.5 text-center text-[10px] font-medium text-outline">
+                    <p className="mt-1.5 text-center text-xs font-medium text-outline">
                       {color.role}
                     </p>
                     {color.match && (
-                      <p className="truncate text-center text-[10px] text-on-surface-variant group-hover:text-primary flex items-center justify-center gap-1">
+                      <p className="text-center text-xs text-on-surface-variant group-hover:text-primary flex items-center justify-center gap-1">
                         <span
                           className="inline-block h-2 w-2 rounded-full shrink-0"
                           style={{ backgroundColor: color.match.hex }}
                         />
-                        {color.match.name}
+                        <span className="min-w-0 line-clamp-2 break-words">{color.match.name}</span>
                       </p>
                     )}
                   </Link>

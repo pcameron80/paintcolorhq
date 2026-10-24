@@ -8,6 +8,7 @@ import { TrackPage } from "@/components/track-page";
 import { AdSenseScript } from "@/components/adsense-script";
 import { getAllPosts } from "@/lib/blog-posts";
 import { ORG_ID, FOUNDER_PERSON } from "@/lib/entity-schema";
+import { CURRENT_COTY } from "@/lib/color-of-the-year";
 
 export const metadata: Metadata = {
   title: "Find & Compare Paint Colors Across 13 Brands",
@@ -138,6 +139,9 @@ export default async function Home() {
             </div>
             <p className="mt-4 text-sm text-on-surface-variant">Just exploring? <Link href="/brands" className="text-primary underline underline-offset-4">Browse by brand</Link> or <Link href="/colors" className="text-primary underline underline-offset-4">explore color families</Link>.</p>
           </form>
+          <p className="mt-3 text-sm">
+            <Link href="/color-of-the-year" className="font-semibold text-primary underline underline-offset-4">See the {CURRENT_COTY.year} Colors of the Year, matched across brands</Link>
+          </p>
         </div>
 
         <div className="lg:w-1/2 relative h-[400px] sm:h-[500px] lg:h-[600px] w-full">

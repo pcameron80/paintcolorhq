@@ -1,6 +1,7 @@
 import type { ColorWithBrand, CrossBrandMatchWithColor } from "./types";
 import { hexToHsl } from "./palettes";
 import { closenessLabelLower } from "@/lib/closeness";
+import { withArticle } from "./text";
 
 // ---------- Derived color properties ----------
 
@@ -389,13 +390,18 @@ function joinList(items: string[]): string {
 // hex, LRV, undertone, family AND nearest-match identity — unlike the templated
 // family-verdict prose it replaces (two same-family colors shared ~70% of that).
 // No hand-writing, no LLM: pure data composition.
+//
+// `legacy` keeps the old fixed "a" article ("is a orange paint color") for the
+// head-color pages, whose body stays frozen during their push (head-colors.ts).
 export function generateColorLede(
   color: ColorWithBrand,
   matches: CrossBrandMatchWithColor[],
+  { legacy = false }: { legacy?: boolean } = {},
 ): string {
   const code = color.color_number ? ` ${color.color_number}` : "";
   const family = color.color_family ? color.color_family.toLowerCase() : "paint";
-  let lede = `${color.name}${code} is a ${family} paint color from ${color.brand.name}.`;
+  const familyPhrase = legacy ? `a ${family}` : withArticle(family);
+  let lede = `${color.name}${code} is ${familyPhrase} paint color from ${color.brand.name}.`;
 
   const specs: string[] = [`a hex value of ${color.hex.toUpperCase()}`];
   if (color.lrv != null) specs.push(`estimated LRV ${Math.round(Number(color.lrv))}`);

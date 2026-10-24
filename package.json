@@ -28,6 +28,7 @@
     "research-colors": "tsx scripts/blog/research-colors.ts",
     "verify-links": "tsx scripts/blog/verify-links.ts",
     "audit-colors": "tsx scripts/blog/audit-color-facts.ts",
+    "study-duplication": "tsx scripts/study-duplication.ts",
     "check-attribution": "tsx scripts/check-attribution.ts",
     "test:attribution": "node --import tsx --test src/lib/attribution.test.ts scripts/lib/attribution-check.test.ts",
     "indexnow-blog": "tsx scripts/blog/indexnow-submit.ts",
@@ -42,7 +43,7 @@
     "test:supplies": "node --import tsx --test scripts/lib/painting-supplies.test.ts",
     "predev": "tsx scripts/build-sitemap-data.ts",
     "build:sitemap": "tsx scripts/build-sitemap-data.ts",
-    "test:seo": "node --import tsx --test src/lib/indexing.test.ts src/lib/catalog-pagination.test.ts src/lib/closeness.test.ts src/lib/match-title-test.test.tssrc/lib/color-description.test.ts src/lib/hue-bands.test.ts",
+    "test:seo": "node --import tsx --test 'src/lib/*.test.ts'",
     "check:sitemap": "tsx scripts/check-sitemap-data.ts"
   },
   "dependencies": {

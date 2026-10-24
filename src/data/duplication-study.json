@@ -1,0 +1,380 @@
+{
+  "runDate": "2026-10-24",
+  "method": {
+    "twin": "Rank-1 cross-brand match at another non-RAL brand with CIEDE2000 delta_e_score < 1.0 (the tightest half of the Nearly identical band).",
+    "originality": "Share of a brand's colors with no twin. RAL is excluded from the ranking.",
+    "exactHex": "One hex value sold by two or more brands, RAL included.",
+    "whites": "Colors at LRV 75 or above; meanB is the mean LAB b* (higher is warmer).",
+    "retired": "availability = 'retired': retired by the brand but still mixable by code."
+  },
+  "totals": {
+    "colors": 26720,
+    "brands": 13,
+    "current": 23930,
+    "retired": 2790,
+    "discontinued": 0
+  },
+  "twins": {
+    "twinned": 18616,
+    "twinnedPct": 69.7,
+    "noTwin": 8104,
+    "noTwinPct": 30.3
+  },
+  "exactHex": {
+    "hexes": 815,
+    "colors": 1698,
+    "maxBrands": 4
+  },
+  "brands": [
+    {
+      "name": "Behr",
+      "slug": "behr",
+      "total": 5789,
+      "current": 3242,
+      "retired": 2547,
+      "discontinued": 0,
+      "twinned": 3843,
+      "uniquePct": 33.6
+    },
+    {
+      "name": "Benjamin Moore",
+      "slug": "benjamin-moore",
+      "total": 3903,
+      "current": 3903,
+      "retired": 0,
+      "discontinued": 0,
+      "twinned": 2597,
+      "uniquePct": 33.5
+    },
+    {
+      "name": "PPG",
+      "slug": "ppg",
+      "total": 3261,
+      "current": 3261,
+      "retired": 0,
+      "discontinued": 0,
+      "twinned": 2280,
+      "uniquePct": 30.1
+    },
+    {
+      "name": "Vista Paint",
+      "slug": "vista-paint",
+      "total": 2984,
+      "current": 2984,
+      "retired": 0,
+      "discontinued": 0,
+      "twinned": 2277,
+      "uniquePct": 23.7
+    },
+    {
+      "name": "Valspar",
+      "slug": "valspar",
+      "total": 2358,
+      "current": 2358,
+      "retired": 0,
+      "discontinued": 0,
+      "twinned": 1559,
+      "uniquePct": 33.9
+    },
+    {
+      "name": "Dunn-Edwards",
+      "slug": "dunn-edwards",
+      "total": 2230,
+      "current": 2230,
+      "retired": 0,
+      "discontinued": 0,
+      "twinned": 1387,
+      "uniquePct": 37.8
+    },
+    {
+      "name": "Sherwin-Williams",
+      "slug": "sherwin-williams",
+      "total": 1950,
+      "current": 1730,
+      "retired": 220,
+      "discontinued": 0,
+      "twinned": 1448,
+      "uniquePct": 25.7
+    },
+    {
+      "name": "Hirshfield's",
+      "slug": "hirshfields",
+      "total": 1469,
+      "current": 1469,
+      "retired": 0,
+      "discontinued": 0,
+      "twinned": 1251,
+      "uniquePct": 14.8
+    },
+    {
+      "name": "Dutch Boy",
+      "slug": "dutch-boy",
+      "total": 1441,
+      "current": 1441,
+      "retired": 0,
+      "discontinued": 0,
+      "twinned": 1080,
+      "uniquePct": 25.1
+    },
+    {
+      "name": "Kilz",
+      "slug": "kilz",
+      "total": 827,
+      "current": 827,
+      "retired": 0,
+      "discontinued": 0,
+      "twinned": 603,
+      "uniquePct": 27.1
+    },
+    {
+      "name": "RAL",
+      "slug": "ral",
+      "total": 213,
+      "current": 213,
+      "retired": 0,
+      "discontinued": 0,
+      "twinned": 74,
+      "uniquePct": 65.3
+    },
+    {
+      "name": "Farrow & Ball",
+      "slug": "farrow-ball",
+      "total": 167,
+      "current": 144,
+      "retired": 23,
+      "discontinued": 0,
+      "twinned": 125,
+      "uniquePct": 25.1
+    },
+    {
+      "name": "Colorhouse",
+      "slug": "colorhouse",
+      "total": 128,
+      "current": 128,
+      "retired": 0,
+      "discontinued": 0,
+      "twinned": 92,
+      "uniquePct": 28.1
+    }
+  ],
+  "originality": [
+    {
+      "name": "Dunn-Edwards",
+      "slug": "dunn-edwards",
+      "total": 2230,
+      "uniquePct": 37.8
+    },
+    {
+      "name": "Valspar",
+      "slug": "valspar",
+      "total": 2358,
+      "uniquePct": 33.9
+    },
+    {
+      "name": "Behr",
+      "slug": "behr",
+      "total": 5789,
+      "uniquePct": 33.6
+    },
+    {
+      "name": "Benjamin Moore",
+      "slug": "benjamin-moore",
+      "total": 3903,
+      "uniquePct": 33.5
+    },
+    {
+      "name": "PPG",
+      "slug": "ppg",
+      "total": 3261,
+      "uniquePct": 30.1
+    },
+    {
+      "name": "Colorhouse",
+      "slug": "colorhouse",
+      "total": 128,
+      "uniquePct": 28.1
+    },
+    {
+      "name": "Kilz",
+      "slug": "kilz",
+      "total": 827,
+      "uniquePct": 27.1
+    },
+    {
+      "name": "Sherwin-Williams",
+      "slug": "sherwin-williams",
+      "total": 1950,
+      "uniquePct": 25.7
+    },
+    {
+      "name": "Farrow & Ball",
+      "slug": "farrow-ball",
+      "total": 167,
+      "uniquePct": 25.1
+    },
+    {
+      "name": "Dutch Boy",
+      "slug": "dutch-boy",
+      "total": 1441,
+      "uniquePct": 25.1
+    },
+    {
+      "name": "Vista Paint",
+      "slug": "vista-paint",
+      "total": 2984,
+      "uniquePct": 23.7
+    },
+    {
+      "name": "Hirshfield's",
+      "slug": "hirshfields",
+      "total": 1469,
+      "uniquePct": 14.8
+    }
+  ],
+  "behrBenjaminMoore": {
+    "behrWithBenjaminMooreTwin": 1594,
+    "benjaminMooreWithBehrTwin": 1412
+  },
+  "topPairs": [
+    {
+      "a": "Benjamin Moore",
+      "b": "Behr",
+      "aWithTwinInB": 1412,
+      "bWithTwinInA": 1594
+    },
+    {
+      "a": "PPG",
+      "b": "Behr",
+      "aWithTwinInB": 1242,
+      "bWithTwinInA": 1584
+    },
+    {
+      "a": "Vista Paint",
+      "b": "Behr",
+      "aWithTwinInB": 1120,
+      "bWithTwinInA": 1513
+    },
+    {
+      "a": "Hirshfield's",
+      "b": "Vista Paint",
+      "aWithTwinInB": 1023,
+      "bWithTwinInA": 1289
+    },
+    {
+      "a": "Valspar",
+      "b": "Behr",
+      "aWithTwinInB": 837,
+      "bWithTwinInA": 1268
+    }
+  ],
+  "reusedNames": [
+    {
+      "name": "Antique White",
+      "brands": 8
+    },
+    {
+      "name": "Citron",
+      "brands": 6
+    },
+    {
+      "name": "Navajo White",
+      "brands": 6
+    },
+    {
+      "name": "Nightfall",
+      "brands": 6
+    },
+    {
+      "name": "Swiss Coffee",
+      "brands": 6
+    },
+    {
+      "name": "White",
+      "brands": 6
+    }
+  ],
+  "whites": {
+    "minLrv": 75,
+    "count": 4244,
+    "byBrand": [
+      {
+        "name": "Sherwin-Williams",
+        "slug": "sherwin-williams",
+        "count": 209,
+        "meanB": 7.8
+      },
+      {
+        "name": "Farrow & Ball",
+        "slug": "farrow-ball",
+        "count": 19,
+        "meanB": 8.1
+      },
+      {
+        "name": "Behr",
+        "slug": "behr",
+        "count": 984,
+        "meanB": 8.5
+      },
+      {
+        "name": "PPG",
+        "slug": "ppg",
+        "count": 548,
+        "meanB": 8.8
+      },
+      {
+        "name": "Kilz",
+        "slug": "kilz",
+        "count": 90,
+        "meanB": 9.4
+      },
+      {
+        "name": "Valspar",
+        "slug": "valspar",
+        "count": 341,
+        "meanB": 9.6
+      },
+      {
+        "name": "Dutch Boy",
+        "slug": "dutch-boy",
+        "count": 158,
+        "meanB": 10
+      },
+      {
+        "name": "Dunn-Edwards",
+        "slug": "dunn-edwards",
+        "count": 508,
+        "meanB": 10
+      },
+      {
+        "name": "Benjamin Moore",
+        "slug": "benjamin-moore",
+        "count": 523,
+        "meanB": 10
+      },
+      {
+        "name": "Colorhouse",
+        "slug": "colorhouse",
+        "count": 23,
+        "meanB": 10.4
+      },
+      {
+        "name": "Vista Paint",
+        "slug": "vista-paint",
+        "count": 584,
+        "meanB": 10.9
+      },
+      {
+        "name": "Hirshfield's",
+        "slug": "hirshfields",
+        "count": 248,
+        "meanB": 11.8
+      },
+      {
+        "name": "RAL",
+        "slug": "ral",
+        "count": 9,
+        "meanB": 33.5
+      }
+    ]
+  }
+}

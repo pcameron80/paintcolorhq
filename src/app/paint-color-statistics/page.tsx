@@ -3,122 +3,96 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
-import { supabase } from "@/lib/supabase";
+import study from "@/data/duplication-study.json";
+import { LIGHTEST_WHITES } from "@/data/lightest-whites";
 
-export const revalidate = 604800; // 7d — per-brand counts move only when the data pipeline re-runs
+// Every figure on this page comes from one dated run of the duplication study
+// (scripts/study-duplication.ts writes src/data/duplication-study.json), so the
+// total, the per-brand counts and the findings always agree. Re-run the script
+// and redeploy to refresh them; the "as of" month follows the run date.
+
+const fmt = (n: number) => n.toLocaleString("en-US");
+const AS_OF = new Date(`${study.runDate}T00:00:00Z`).toLocaleString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
+const TOTAL = fmt(study.totals.colors);
+const BRAND_COUNT = study.totals.brands;
 
 export const metadata: Metadata = {
   title: "Paint Color Statistics (2026): 13 Brands by the Numbers",
-  description:
-    "How many paint colors exist? Data on 26,597 colors across 13 brands — duplication rates, the most original palette, reused names, and how they compare.",
+  description: `How many paint colors exist? Data on ${TOTAL} colors across ${BRAND_COUNT} brands: duplication rates, the most original palette, reused names, and the lightest whites.`,
   alternates: { canonical: "https://www.paintcolorhq.com/paint-color-statistics" },
   openGraph: {
     title: "Paint Color Statistics (2026)",
-    description:
-      "26,597 paint colors across 13 brands, measured: cross-brand duplication rates, palette originality, reused names, and the lightest white each brand sells.",
+    description: `${TOTAL} paint colors across ${BRAND_COUNT} brands, measured: cross-brand duplication rates, palette originality, reused names, and the lightest white each brand sells.`,
     type: "website",
     url: "https://www.paintcolorhq.com/paint-color-statistics",
   },
 };
 
-// JSON-LD helper — content is server-generated from trusted data only.
+// JSON-LD helper: content is server-generated from trusted data only.
 function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
 const STUDY_URL = "/blog/most-duplicated-paint-color";
 
-// Findings from the Paint Color HQ cross-brand duplication study (published
-// July 2026, linked at STUDY_URL). These are static snapshots, labeled "as of
-// July 2026" wherever shown, because the live catalog shifts as brand palettes
-// change. Only the market-size table above them is computed live at render.
+const byName = (name: string) => study.brands.find((b) => b.name === name)!;
+const twinnedPct = (b: { total: number; twinned: number }) => Math.round((1000 * b.twinned) / b.total) / 10;
 
-// Share of each brand's palette with no nearly identical match (CIEDE2000 Delta E
-// 1.0) at any other brand. RAL is excluded — it is an industrial color standard,
-// not a consumer paint line, so counting its overlap would distort the ranking.
-const ORIGINALITY_RANKING: { brand: string; uniquePct: number }[] = [
-  { brand: "Behr", uniquePct: 48.5 },
-  { brand: "Dunn-Edwards", uniquePct: 35.6 },
-  { brand: "Kilz", uniquePct: 34.8 },
-  { brand: "Valspar", uniquePct: 34.5 },
-  { brand: "Benjamin Moore", uniquePct: 34.0 },
-  { brand: "PPG", uniquePct: 32.8 },
-  { brand: "Colorhouse", uniquePct: 27.3 },
-  { brand: "Sherwin-Williams", uniquePct: 26.6 },
-  { brand: "Farrow & Ball", uniquePct: 26.3 },
-  { brand: "Dutch Boy", uniquePct: 26.1 },
-  { brand: "Vista Paint", uniquePct: 19.7 },
-  { brand: "Hirshfield's", uniquePct: 8.2 },
-];
+// Originality: share of a brand's palette with no nearly identical twin
+// (CIEDE2000 under 1.0, the tightest half of the Nearly identical band) at any
+// other brand. RAL is excluded: it is an industrial color standard, not a
+// consumer paint line, so counting its overlap would distort the ranking.
+const ORIGINALITY = study.originality;
+const MOST_ORIGINAL = ORIGINALITY[0];
+const RUNNERS_UP = ORIGINALITY.slice(1, 4);
+const RUNNERS_UP_PCT = Math.round(RUNNERS_UP.reduce((s, r) => s + r.uniquePct, 0) / RUNNERS_UP.length);
+const LEAST_ORIGINAL = ORIGINALITY[ORIGINALITY.length - 1];
+const LEAST_ORIGINAL_TWINNED = twinnedPct(byName(LEAST_ORIGINAL.name));
 
-// Color names sold by the most brands under that exact name.
-const REUSED_NAMES: { name: string; brands: number }[] = [
-  { name: "Antique White", brands: 8 },
-  { name: "Swiss Coffee", brands: 6 },
-  { name: "Navajo White", brands: 6 },
-  { name: "Citron", brands: 6 },
-  { name: "White", brands: 6 },
-];
+const largestCurrent = [...study.brands].sort((a, b) => b.current - a.current)[0];
+const largestTotal = study.brands[0]; // the JSON is sorted by total, largest first
+const topTwoShare = Math.round((100 * (study.brands[0].total + study.brands[1].total)) / study.totals.colors);
 
-// The lightest white each brand sells, by Light Reflectance Value (0–100).
-const LIGHTEST_WHITES: { brand: string; name: string; lrv: number }[] = [
-  { brand: "Behr", name: "Ultra Pure White", lrv: 97.3 },
-  { brand: "Farrow & Ball", name: "All White", lrv: 94.2 },
-  { brand: "Kilz", name: "Ultra Bright White", lrv: 93.3 },
-  { brand: "Dutch Boy", name: "Tulle White", lrv: 93.1 },
-  { brand: "Hirshfield's", name: "Touch of Sun", lrv: 92.7 },
-  { brand: "Valspar", name: "Ultra White", lrv: 92.6 },
-  { brand: "Sherwin-Williams", name: "High Reflective White", lrv: 92.6 },
-  { brand: "Vista Paint", name: "Touch of Sun", lrv: 91.6 },
-  { brand: "Benjamin Moore", name: "Ice Mist", lrv: 90.6 },
-  { brand: "PPG", name: "Soft Candlelight", lrv: 88.7 },
-];
+// Most intertwined brand pair, larger direction first.
+const TOP_PAIR = (() => {
+  const p = study.topPairs[0];
+  return p.bWithTwinInA >= p.aWithTwinInB
+    ? { first: p.b, second: p.a, firstCount: p.bWithTwinInA, secondCount: p.aWithTwinInB }
+    : { first: p.a, second: p.b, firstCount: p.aWithTwinInB, secondCount: p.bWithTwinInA };
+})();
 
-interface BrandCount {
-  name: string;
-  slug: string;
-  count: number;
-}
+const listJoin = (items: string[]) => (items.length < 3 ? items.join(" and ") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`);
+const NUMBER_WORDS = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
 
-// Live market-size figures: one query for the brand list, then a cheap
-// head-only count per brand (no rows returned, just the total). 13 small
-// requests at weekly ISR keeps the grand total current without shipping a
-// stale hardcoded number. Sorted largest-first, ties broken alphabetically.
-async function getBrandColorCounts(): Promise<{ brands: BrandCount[]; total: number }> {
-  const { data: brands, error } = await supabase.from("brands").select("id, name, slug");
-  if (error) throw error;
+const [TOP_NAME, ...OTHER_NAMES] = study.reusedNames;
+const OTHER_NAMES_LINE = OTHER_NAMES.every((n) => n.brands === OTHER_NAMES[0]?.brands)
+  ? `${NUMBER_WORDS[OTHER_NAMES.length] ?? OTHER_NAMES.length} more names appear at ${NUMBER_WORDS[OTHER_NAMES[0]?.brands]?.toLowerCase() ?? OTHER_NAMES[0]?.brands} brands each.`
+  : `${OTHER_NAMES.length} more names appear at six or more brands.`;
+const PUBLISHED_WHITES = LIGHTEST_WHITES.filter((w) => !w.estimated);
+const ESTIMATED_WHITES = LIGHTEST_WHITES.filter((w) => w.estimated);
 
-  const counts = await Promise.all(
-    (brands ?? []).map(async (b) => {
-      const { count } = await supabase
-        .from("colors")
-        .select("id", { count: "exact", head: true })
-        .eq("brand_id", b.id);
-      return { name: b.name as string, slug: b.slug as string, count: count ?? 0 };
-    })
-  );
-
-  counts.sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
-  const total = counts.reduce((sum, c) => sum + c.count, 0);
-  return { brands: counts, total };
-}
-
-export default async function PaintColorStatisticsPage() {
-  const { brands, total } = await getBrandColorCounts();
-  const totalLabel = total.toLocaleString("en-US");
+export default function PaintColorStatisticsPage() {
+  const { twins, exactHex, totals } = study;
 
   const faqs = [
     {
       q: "How many paint colors are there?",
-      a: `Paint Color HQ tracks ${totalLabel} named paint colors across 13 major brands. That count includes duplicates; once nearly identical colors — those in the tightest half of our Nearly identical band relative to another under the CIEDE2000 standard — are collapsed into one, roughly 14,700 are genuinely distinct, about 55% of the catalog, based on our July 2026 analysis.`,
+      a: `Paint Color HQ tracks ${TOTAL} named paint colors across ${BRAND_COUNT} major brands as of ${AS_OF}: ${fmt(totals.current)} current colors and ${fmt(totals.retired)} that brands have retired but that can usually still be mixed by code. That count includes duplicates. Only ${twins.noTwinPct}% of those colors (${fmt(twins.noTwin)}) have no nearly identical twin at any other brand.`,
     },
     {
       q: "Which paint brand has the most colors?",
-      a: "Behr has the largest catalog of the brands we track, ahead of Benjamin Moore and PPG. The per-brand table on this page shows the current count for each brand and updates as palettes change. Behr also has the most original palette: as of July 2026, 48.5% of its colors have no nearly identical match at any other brand.",
+      a:
+        largestCurrent.name === largestTotal.name
+          ? `${largestTotal.name} has the largest palette of the brands we track, with ${fmt(largestTotal.total)} colors as of ${AS_OF}. The per-brand table on this page shows current and retired counts for every brand.`
+          : `${largestCurrent.name} has the largest current palette of the brands we track, with ${fmt(largestCurrent.current)} colors. Counting the ${fmt(largestTotal.retired)} colors ${largestTotal.name} has retired, ${largestTotal.name}'s full catalog of ${fmt(largestTotal.total)} is the largest. The per-brand table on this page shows both figures for every brand, as of ${AS_OF}.`,
+    },
+    {
+      q: "Which paint brand has the most original palette?",
+      a: `${MOST_ORIGINAL.name} has the most original palette: ${MOST_ORIGINAL.uniquePct}% of its colors have no nearly identical twin, followed closely by ${listJoin(RUNNERS_UP.map((r) => r.name))} at about ${RUNNERS_UP_PCT}%. ${LEAST_ORIGINAL.name} has the least original palette: ${LEAST_ORIGINAL_TWINNED}% of its colors have a twin at another brand. Figures are as of ${AS_OF}, with RAL excluded because it is an industrial standard rather than a paint line.`,
     },
     {
       q: "How many paint colors are duplicates of each other?",
-      a: "As of July 2026, 66.6% of the colors we track (17,702 of 26,597) have a nearly identical twin — in the tightest half of our Nearly identical band — at a competing brand, and 749 exact hex values are sold under different names by two or more brands. The overlap is heaviest between Behr and Benjamin Moore, which share about 2,400 nearly identical colors.",
+      a: `As of ${AS_OF}, ${twins.twinnedPct}% of the colors we track (${fmt(twins.twinned)} of ${TOTAL}) have a nearly identical twin at a competing brand, meaning the CIEDE2000 difference falls in the tightest half of our Nearly identical band. Separately, ${fmt(exactHex.hexes)} exact hex values are sold under different names by two or more brands, covering ${fmt(exactHex.colors)} colors. The overlap is heaviest between ${TOP_PAIR.first} and ${TOP_PAIR.second}: ${fmt(TOP_PAIR.firstCount)} ${TOP_PAIR.first} colors have a ${TOP_PAIR.second} twin, and ${fmt(TOP_PAIR.secondCount)} ${TOP_PAIR.second} colors have a ${TOP_PAIR.first} twin.`,
     },
   ];
 
@@ -131,10 +105,11 @@ export default async function PaintColorStatisticsPage() {
           "@context": "https://schema.org",
           "@type": "Dataset",
           name: "Paint Color Statistics 2026",
-          description:
-            "Aggregate statistics on 26,597 named paint colors across 13 brands: catalog size, cross-brand duplication rates measured with the CIEDE2000 standard, palette originality, and reused color names. Compiled by Paint Color HQ.",
+          description: `Aggregate statistics on ${TOTAL} named paint colors across ${BRAND_COUNT} brands: catalog size, cross-brand duplication rates measured with the CIEDE2000 standard, palette originality, reused color names, and each brand's lightest white. Compiled by Paint Color HQ; figures as of ${AS_OF}.`,
           url: "https://www.paintcolorhq.com/paint-color-statistics",
           temporalCoverage: "2026",
+          dateModified: study.runDate,
+          measurementTechnique: "CIEDE2000 color difference",
           isAccessibleForFree: true,
           creator: {
             "@type": "Organization",
@@ -180,7 +155,7 @@ export default async function PaintColorStatisticsPage() {
               Paint color statistics (2026)
             </h1>
             <p className="text-lg text-on-surface-variant leading-relaxed max-w-2xl">
-              How many paint colors exist, how much brands copy each other, and which palette is the most original — measured across {totalLabel} named colors from 13 brands. The catalog figures below are computed live; the study findings are dated so you can cite them cleanly.
+              How many paint colors exist, how much brands copy each other, and which palette is the most original, measured across {TOTAL} named colors from {BRAND_COUNT} brands. Every figure comes from one dated run of our study ({AS_OF}), so you can cite them together.
             </p>
           </div>
         </section>
@@ -189,17 +164,17 @@ export default async function PaintColorStatisticsPage() {
         <section className="px-6 md:px-12 py-12 bg-surface-container-low">
           <div className="max-w-4xl mx-auto">
             <p className="text-base text-on-surface-variant leading-relaxed">
-              <strong className="text-on-surface">Short version:</strong> Paint Color HQ tracks {totalLabel} named paint colors across 13 brands. As of July 2026, two thirds of them — 66.6%, or 17,702 colors — have a nearly identical twin (in the tightest half of our Nearly identical band) at a competing brand, and 749 exact hex values are sold under different names by two or more brands. Collapse the nearly identical overlap and about 14,700 genuinely distinct colors remain, roughly 55% of the catalog. Behr has the most original palette, with 48.5% of its colors unique to it; Hirshfield&apos;s the least, at 8.2%.
+              <strong className="text-on-surface">Short version:</strong> Paint Color HQ tracks {TOTAL} named paint colors across {BRAND_COUNT} brands. As of {AS_OF}, {twins.twinnedPct}% of them ({fmt(twins.twinned)} colors) have a nearly identical twin (in the tightest half of our Nearly identical band) at a competing brand, and {fmt(exactHex.hexes)} exact hex values are sold under different names by two or more brands. {MOST_ORIGINAL.name} has the most original palette, with {MOST_ORIGINAL.uniquePct}% of its colors unique to it; {LEAST_ORIGINAL.name} the least, at {LEAST_ORIGINAL.uniquePct}%.
             </p>
           </div>
         </section>
 
-        {/* Market size — LIVE */}
+        {/* Market size */}
         <section className="px-6 md:px-12 py-16">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">How many paint colors are there?</h2>
             <p className="text-on-surface-variant leading-relaxed mb-8">
-              Paint Color HQ indexes {totalLabel} named colors across 13 brands. The table below counts every color in each brand&apos;s catalog and refreshes from the live database, so the totals stay current as brands add or retire colors. Behr and Benjamin Moore alone account for more than a third of every color we track.
+              Paint Color HQ indexes {TOTAL} named colors across {BRAND_COUNT} brands: {fmt(totals.current)} current colors and {fmt(totals.retired)} retired ones that a brand has dropped from its palette but that can usually still be mixed by code. {largestCurrent.name} has the largest current palette; {largestTotal.name} has the largest catalog once its {fmt(largestTotal.retired)} retired colors are counted. {study.brands[0].name} and {study.brands[1].name} alone account for {topTwoShare}% of every color we track. Counts are as of {AS_OF}.
             </p>
 
             <div className="overflow-x-auto">
@@ -207,23 +182,29 @@ export default async function PaintColorStatisticsPage() {
                 <thead>
                   <tr className="border-b border-outline-variant/30">
                     <th className="py-3 pr-4 text-[11px] uppercase tracking-widest text-outline font-bold">Brand</th>
-                    <th className="py-3 pl-4 text-right text-[11px] uppercase tracking-widest text-outline font-bold">Colors</th>
+                    <th className="py-3 px-4 text-right text-[11px] uppercase tracking-widest text-outline font-bold">Current</th>
+                    <th className="py-3 px-4 text-right text-[11px] uppercase tracking-widest text-outline font-bold">Retired</th>
+                    <th className="py-3 pl-4 text-right text-[11px] uppercase tracking-widest text-outline font-bold">Total</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {brands.map((b) => (
+                  {study.brands.map((b) => (
                     <tr key={b.slug} className="border-b border-outline-variant/15">
                       <td className="py-3 pr-4">
                         <Link href={`/brands/${b.slug}`} className="text-on-surface hover:text-primary underline-offset-4 hover:underline transition-colors">
                           {b.name}
                         </Link>
                       </td>
-                      <td className="py-3 pl-4 text-right text-on-surface tabular-nums">{b.count.toLocaleString("en-US")}</td>
+                      <td className="py-3 px-4 text-right text-on-surface tabular-nums">{fmt(b.current)}</td>
+                      <td className="py-3 px-4 text-right text-on-surface-variant tabular-nums">{fmt(b.retired)}</td>
+                      <td className="py-3 pl-4 text-right text-on-surface tabular-nums">{fmt(b.total)}</td>
                     </tr>
                   ))}
                   <tr className="border-t-2 border-outline-variant/40">
                     <td className="py-3 pr-4 font-bold text-on-surface">All brands</td>
-                    <td className="py-3 pl-4 text-right font-bold text-on-surface tabular-nums">{totalLabel}</td>
+                    <td className="py-3 px-4 text-right font-bold text-on-surface tabular-nums">{fmt(totals.current)}</td>
+                    <td className="py-3 px-4 text-right font-bold text-on-surface tabular-nums">{fmt(totals.retired)}</td>
+                    <td className="py-3 pl-4 text-right font-bold text-on-surface tabular-nums">{TOTAL}</td>
                   </tr>
                 </tbody>
               </table>
@@ -236,14 +217,14 @@ export default async function PaintColorStatisticsPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">How many are duplicates?</h2>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              Different brands sell a lot of the same color. We measured every color against every other with the CIEDE2000 standard, where Delta E is the perceptual distance between two colors. We count a pair as twins only when the gap sits in the tightest half of our Nearly identical band, a difference the human eye can barely register. As of July 2026, <strong className="text-on-surface">66.6% of colors — 17,702 of 26,597 — have a nearly identical twin at a competing brand</strong>. The redundancy runs deeper than lookalikes: <strong className="text-on-surface">749 exact hex values are sold identically by two or more brands</strong>, covering 1,555 named colors, with up to four brands sharing a single hex.
+              Different brands sell a lot of the same color. We measured every color against every other with the CIEDE2000 standard, which scores the perceptual distance between two colors. We count a pair as twins only when the gap sits in the tightest half of our Nearly identical band, a difference the human eye can barely register. As of {AS_OF}, <strong className="text-on-surface">{twins.twinnedPct}% of colors, {fmt(twins.twinned)} of {TOTAL}, have a nearly identical twin at a competing brand</strong>. The redundancy runs deeper than lookalikes: <strong className="text-on-surface">{fmt(exactHex.hexes)} exact hex values are sold by two or more brands</strong>, covering {fmt(exactHex.colors)} named colors, with up to {exactHex.maxBrands} brands sharing a single hex.
             </p>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              Strip out the overlap and the catalog shrinks. Collapsing every group of nearly identical colors (each member in the tightest half of our Nearly identical band relative to its reference) down to one leaves <strong className="text-on-surface">about 14,700 genuinely distinct colors — roughly 55% of the catalog</strong>. Tighten the threshold to a quarter of that band, a difference almost nobody can see, and about 22,050 colors (around 83%) still stand apart.
+              Read the other way, {twins.noTwinPct}% of the catalog ({fmt(twins.noTwin)} colors) has no nearly identical twin at any other brand. We do not publish a single count of &ldquo;distinct&rdquo; colors: near-identity is not transitive, since color A can be a twin of B and B a twin of C while A and C are visibly different, so any such count depends on how the groups are drawn.
             </p>
             <p className="text-on-surface-variant leading-relaxed">
-              The overlap is not spread evenly. The most intertwined pair is <strong className="text-on-surface">Behr and Benjamin Moore</strong>: roughly 2,400 colors in each brand&apos;s palette have a nearly identical counterpart in the other. Separately, we track{" "}
-              <Link href="/discontinued" className="text-primary hover:underline underline-offset-4">243 discontinued or archived colors</Link>, each mapped to its closest current match. The full method and the color-by-color breakdown are in the{" "}
+              The overlap is not spread evenly. The most intertwined pair is <strong className="text-on-surface">{TOP_PAIR.first} and {TOP_PAIR.second}</strong>: {fmt(TOP_PAIR.firstCount)} {TOP_PAIR.first} colors have a nearly identical {TOP_PAIR.second} counterpart, and {fmt(TOP_PAIR.secondCount)} {TOP_PAIR.second} colors have a {TOP_PAIR.first} one. Separately, we track{" "}
+              <Link href="/discontinued" className="text-primary hover:underline underline-offset-4">{fmt(totals.retired)} retired colors</Link>, each mapped to its closest current match. The full method and the color-by-color breakdown are in the{" "}
               <Link href={STUDY_URL} className="text-primary hover:underline underline-offset-4">most-duplicated paint color study</Link>.
             </p>
           </div>
@@ -254,7 +235,7 @@ export default async function PaintColorStatisticsPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Which brand has the most original palette?</h2>
             <p className="text-on-surface-variant leading-relaxed mb-8">
-              Originality here is the share of a brand&apos;s colors that have no nearly identical match (in the tightest half of our Nearly identical band) at any other brand — colors you can only get from that brand. Behr leads by a wide margin; Hirshfield&apos;s sits at the bottom, with more than nine in ten of its colors matched elsewhere. Figures are as of July 2026. RAL is excluded because it is an industrial color standard rather than a consumer paint line.
+              Originality here is the share of a brand&apos;s colors that have no nearly identical twin (in the tightest half of our Nearly identical band) at any other brand: colors you can only get from that brand. {MOST_ORIGINAL.name} leads at {MOST_ORIGINAL.uniquePct}%, with {listJoin(RUNNERS_UP.map((r) => r.name))} close behind at about {RUNNERS_UP_PCT}%. {LEAST_ORIGINAL.name} sits at the bottom: {LEAST_ORIGINAL_TWINNED}% of its colors have a twin elsewhere. Figures are as of {AS_OF}. RAL is excluded because it is an industrial color standard rather than a consumer paint line.
             </p>
 
             <div className="overflow-x-auto">
@@ -267,10 +248,10 @@ export default async function PaintColorStatisticsPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {ORIGINALITY_RANKING.map((row, i) => (
-                    <tr key={row.brand} className="border-b border-outline-variant/15">
+                  {ORIGINALITY.map((row, i) => (
+                    <tr key={row.slug} className="border-b border-outline-variant/15">
                       <td className="py-3 pr-4 text-outline tabular-nums">{i + 1}</td>
-                      <td className="py-3 px-4 text-on-surface">{row.brand}</td>
+                      <td className="py-3 px-4 text-on-surface">{row.name}</td>
                       <td className="py-3 pl-4 text-right text-on-surface tabular-nums">{row.uniquePct.toFixed(1)}%</td>
                     </tr>
                   ))}
@@ -285,7 +266,7 @@ export default async function PaintColorStatisticsPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">The most reused color names</h2>
             <p className="text-on-surface-variant leading-relaxed mb-8">
-              Some names are near-universal. &ldquo;Antique White&rdquo; is the most reused: 8 of the 13 brands sell a color under that exact name — though, as the duplication data shows, those eight are rarely the same color underneath. Four more names appear at six brands each.
+              Some names are near-universal. &ldquo;{TOP_NAME.name}&rdquo; is the most reused: {TOP_NAME.brands} of the {BRAND_COUNT} brands sell a color under that exact name, though, as the duplication data shows, a shared name does not mean a shared color. {OTHER_NAMES_LINE}
             </p>
 
             <div className="overflow-x-auto">
@@ -297,10 +278,10 @@ export default async function PaintColorStatisticsPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {REUSED_NAMES.map((row) => (
+                  {study.reusedNames.map((row) => (
                     <tr key={row.name} className="border-b border-outline-variant/15">
                       <td className="py-3 pr-4 text-on-surface">{row.name}</td>
-                      <td className="py-3 pl-4 text-right text-on-surface tabular-nums">{row.brands} of 13</td>
+                      <td className="py-3 pl-4 text-right text-on-surface tabular-nums">{row.brands} of {BRAND_COUNT}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -314,7 +295,7 @@ export default async function PaintColorStatisticsPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">The lightest white each brand sells</h2>
             <p className="text-on-surface-variant leading-relaxed mb-8">
-              LRV, or Light Reflectance Value, runs from 0 (absolute black) to 100 (pure white) and measures how much light a color bounces back. The brightest white on the market is Behr Ultra Pure White at an LRV of 97.3; the rest of the brands&apos; whitest whites cluster in the low 90s and high 80s.
+              LRV, or Light Reflectance Value, runs from 0 (absolute black) to 100 (pure white) and measures how much light a color bounces back. Among brands that publish LRV, the whitest whites top out at 94 (Behr Ultra Pure White), with Sherwin-Williams UltraWhite at 93.5 and Dunn-Edwards Warm White at 93. Most brands&apos; lightest whites sit between 89 and 92. We have no published LRV on file for {listJoin(ESTIMATED_WHITES.map((w) => w.brand))}, so those rows show our estimate from each color&apos;s hex value, marked est.
             </p>
 
             <div className="overflow-x-auto">
@@ -323,20 +304,33 @@ export default async function PaintColorStatisticsPage() {
                   <tr className="border-b border-outline-variant/30">
                     <th className="py-3 pr-4 text-[11px] uppercase tracking-widest text-outline font-bold">Brand</th>
                     <th className="py-3 px-4 text-[11px] uppercase tracking-widest text-outline font-bold">Whitest color</th>
-                    <th className="py-3 pl-4 text-right text-[11px] uppercase tracking-widest text-outline font-bold">LRV</th>
+                    <th className="py-3 px-4 text-right text-[11px] uppercase tracking-widest text-outline font-bold">LRV</th>
+                    <th className="py-3 pl-4 text-[11px] uppercase tracking-widest text-outline font-bold">Source</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {LIGHTEST_WHITES.map((row) => (
-                    <tr key={row.brand} className="border-b border-outline-variant/15">
+                  {[...PUBLISHED_WHITES, ...ESTIMATED_WHITES].map((row) => (
+                    <tr key={row.brandSlug} className="border-b border-outline-variant/15">
                       <td className="py-3 pr-4 text-on-surface">{row.brand}</td>
-                      <td className="py-3 px-4 text-on-surface-variant">{row.name}</td>
-                      <td className="py-3 pl-4 text-right text-on-surface tabular-nums">{row.lrv.toFixed(1)}</td>
+                      <td className="py-3 px-4 text-on-surface-variant">
+                        <Link href={`/colors/${row.brandSlug}/${row.slug}`} className="hover:text-primary underline-offset-4 hover:underline transition-colors">
+                          {row.name}
+                        </Link>{" "}
+                        <span className="text-outline">{row.code}</span>
+                      </td>
+                      <td className="py-3 px-4 text-right text-on-surface tabular-nums whitespace-nowrap">
+                        {row.estimated ? row.lrv.toFixed(1) : String(row.lrv)}
+                        {row.estimated && <span className="text-outline"> est.</span>}
+                      </td>
+                      <td className="py-3 pl-4 text-on-surface-variant text-sm">{row.estimated ? "Our estimate" : row.source}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
+            <p className="mt-4 text-sm text-on-surface-variant">
+              Published values were checked against each manufacturer&apos;s site in October 2026. The LRV on an individual color page can differ where we still store a value computed from the hex.
+            </p>
           </div>
         </section>
 
@@ -352,9 +346,8 @@ export default async function PaintColorStatisticsPage() {
               <Link href="/paint-color-statistics" className="text-primary hover:underline underline-offset-4">https://www.paintcolorhq.com/paint-color-statistics</Link>.
             </p>
             <p className="text-on-surface-variant leading-relaxed">
-              The catalog figures — the total and the per-brand counts — update as brand palettes change, so quote them with the date you accessed the page. The duplication and originality findings are fixed to our{" "}
-              <Link href={STUDY_URL} className="text-primary hover:underline underline-offset-4">July 2026 analysis</Link>{" "}
-              and are labeled as such throughout.
+              The catalog counts, duplication and originality figures all come from our {AS_OF} run of the{" "}
+              <Link href={STUDY_URL} className="text-primary hover:underline underline-offset-4">duplication study</Link>. That run replaced the July 2026 figures, which were computed before we corrected outdated hex values for about 3,000 Behr, 1,100 Vista Paint and 500 Valspar colors on 2026-10-11. Please quote figures with the month they are dated to.
             </p>
           </div>
         </section>
