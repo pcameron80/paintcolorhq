@@ -6,19 +6,19 @@ import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 import { MatchColorSearch } from "@/components/match-color-search";
-import { getBrandBySlug, getTopCrossBrandMatches } from "@/lib/queries";
+import { getBrandBySlug, getBrandPairChart } from "@/lib/queries";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { closenessLabel } from "@/lib/closeness";
-import { RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
 import { getBrandPairIntro } from "@/lib/brand-pair-intros";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
 const MAJOR_BRANDS = MAJOR_MATCH_BRANDS;
+const PAIR_LIMIT = 50;
 
 interface PageProps { params: Promise<{ sourceBrandSlug: string; targetBrandSlug: string }>; }
 
-function getDeltaELabel(deltaE: number): { label: string; shortLabel: string; className: string } {
+function getDeltaELabel(deltaE: number): { label: string; className: string } {
   const label = closenessLabel(deltaE);
   const className =
     label === "Nearly identical"
@@ -26,7 +26,30 @@ function getDeltaELabel(deltaE: number): { label: string; shortLabel: string; cl
       : label === "Very similar"
         ? "bg-secondary-fixed text-secondary"
         : "bg-error-container text-error";
-  return { label, shortLabel: label, className };
+  return { label, className };
+}
+
+// Answer to "How many A colors have a B equivalent?". The count and the chart
+// come from one population, one pair per source color (see getBrandPairChart).
+// When exact is false the count is a floor, so it reads "At least N".
+function pairCountAnswer(sourceName: string, targetName: string, closeCount: number, exact: boolean, listed: number): string {
+  const n = closeCount.toLocaleString("en-US");
+  const one = closeCount === 1;
+  const caveat = "These are digital matches ranked by CIEDE2000 Delta E, so confirm with a physical sample before you buy.";
+  let lead: string;
+  let list: string;
+  if (closeCount === 0) {
+    lead = exact
+      ? `No ${sourceName} color in the current palette has a nearly identical ${targetName} match.`
+      : `We found no ${sourceName} color in the current palette with a nearly identical ${targetName} match.`;
+    list = listed > 0 ? `We list the ${listed} closest pairs.` : "";
+  } else {
+    lead = `${exact ? "" : "At least "}${n} ${sourceName} ${one ? "color" : "colors"} in the current palette ${one ? "has" : "have"} a nearly identical ${targetName} match.`;
+    list = closeCount >= listed
+      ? `We list the ${listed} closest pairs.`
+      : `We list the ${listed} closest pairs, including ${exact ? "all " : ""}${n} nearly identical ${one ? "one" : "ones"}.`;
+  }
+  return [lead, list, caveat].filter(Boolean).join(" ");
 }
 
 export async function generateStaticParams() {
@@ -56,7 +79,28 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
   const [sourceBrand, targetBrand] = await Promise.all([getBrandBySlug(sourceBrandSlug), getBrandBySlug(targetBrandSlug)]);
   if (!sourceBrand || !targetBrand) notFound();
 
-  const matches = await getTopCrossBrandMatches(sourceBrandSlug, targetBrandSlug, 50);
+  // Chart rows and FAQ count come from one pass, so they cannot drift apart.
+  // Page-level ISR (revalidate above) is the only cache.
+  const { matches, closeCount, closeCountExact } = await getBrandPairChart(sourceBrand.id, targetBrand.id, PAIR_LIMIT);
+  // Every indexed pair has well over 50 current-palette pairs (the smallest,
+  // Farrow & Ball to Behr, has 142 on 2026-10-24). A short chart means the
+  // query or the data broke, so say so in the build log.
+  if (matches.length < PAIR_LIMIT && MAJOR_BRANDS.includes(sourceBrandSlug) && MAJOR_BRANDS.includes(targetBrandSlug)) {
+    console.warn(`[match-listing] ${sourceBrandSlug} to ${targetBrandSlug} returned ${matches.length} of ${PAIR_LIMIT} rows`);
+  }
+  // One array feeds both the visible FAQ and the FAQPage JSON-LD, so the
+  // schema never claims an answer the page does not show.
+  const faqs = [
+    {
+      question: `How many ${sourceBrand.name} colors have a ${targetBrand.name} equivalent?`,
+      answer: pairCountAnswer(sourceBrand.name, targetBrand.name, closeCount, closeCountExact, matches.length),
+    },
+    {
+      // Visible now, so it talks about the labels the chart shows, not the score it hides.
+      question: `What is the best way to match ${sourceBrand.name} paint colors to ${targetBrand.name}?`,
+      answer: `Start with the closeness label on each pair: Nearly identical, Very similar or Visible difference. The label comes from the CIEDE2000 Delta E score between the two colors' digital values, so it is an approximation, not a guaranteed physical match. Check a physical sample of the ${targetBrand.name} color in your room's lighting before you commit, because small differences show more across a full wall.`,
+    },
+  ];
   const brandNames: Record<string, string> = { "sherwin-williams": "Sherwin-Williams", "benjamin-moore": "Benjamin Moore", behr: "Behr", valspar: "Valspar", ppg: "PPG", "dunn-edwards": "Dunn-Edwards", "farrow-ball": "Farrow & Ball" };
 
   return (
@@ -126,10 +170,10 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
               </div>
               <div className="divide-y divide-outline-variant/10">
                 {matches.map((m) => {
-                  const { label, shortLabel, className } = getDeltaELabel(m.deltaE);
+                  const { label, className } = getDeltaELabel(m.deltaE);
                   return (
                     <Link key={`${m.source.id}-${m.match.id}`} href={`/match/${sourceBrandSlug}/${m.source.slug}-to-${targetBrandSlug}`}
-                      className="block px-6 py-4 transition hover:bg-surface-container-low group">
+                      className="block px-4 sm:px-6 py-4 transition hover:bg-surface-container-low group">
                       <div className="hidden sm:grid sm:grid-cols-[1fr_40px_1fr_140px] sm:items-center sm:gap-4">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg shrink-0" style={{ backgroundColor: m.source.hex }} />
@@ -144,12 +188,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg shrink-0" style={{ backgroundColor: m.match.hex }} />
                           <div>
-                            <p className="font-headline font-bold text-on-surface">
-                              {m.match.name}
-                              {m.match.availability === "retired" && (
-                                <span title={RETIRED_MATCH_TOOLTIP} className="ml-2 align-middle rounded-full bg-surface-container px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-outline">Retired</span>
-                              )}
-                            </p>
+                            <p className="font-headline font-bold text-on-surface">{m.match.name}</p>
                             {m.match.color_number && <p className="text-[10px] text-outline">{m.match.color_number}</p>}
                           </div>
                         </div>
@@ -157,13 +196,16 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
                           <span className={`inline-block rounded-full px-3 py-1 text-[10px] font-bold ${className}`}>{label}</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-3 sm:hidden">
-                        <div className="w-8 h-8 rounded-md shrink-0" style={{ backgroundColor: m.source.hex }} />
-                        <p className="truncate text-sm font-headline font-bold text-on-surface flex-1">{m.source.name}</p>
-                        <svg className="h-4 w-4 text-outline shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                        <div className="w-8 h-8 rounded-md shrink-0" style={{ backgroundColor: m.match.hex }} />
-                        <p className="truncate text-sm font-headline font-bold text-on-surface flex-1">{m.match.name}</p>
-                        <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold ${className}`}>{shortLabel}</span>
+                      {/* Phone: names on line 1 (wrapping, never truncated), closeness badge on line 2. */}
+                      <div className="sm:hidden">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-md shrink-0" style={{ backgroundColor: m.source.hex }} />
+                          <p className="min-w-0 flex-1 break-words text-sm font-headline font-bold text-on-surface">{m.source.name}</p>
+                          <svg className="h-4 w-4 text-outline shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                          <div className="w-8 h-8 rounded-md shrink-0" style={{ backgroundColor: m.match.hex }} />
+                          <p className="min-w-0 flex-1 break-words text-sm font-headline font-bold text-on-surface">{m.match.name}</p>
+                        </div>
+                        <span className={`mt-2 inline-block rounded-full px-2 py-0.5 text-xs font-bold ${className}`}>{label}</span>
                       </div>
                     </Link>
                   );
@@ -176,6 +218,26 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
             </div>
           )}
           <p className="mt-6 text-center text-xs text-outline">Digital color matches based on color values. Always verify with physical paint samples.</p>
+        </div>
+      </section>
+
+      {/* FAQ, visible. Same array as the FAQPage JSON-LD below; markup follows /faq. */}
+      <section className="py-16 px-6 md:px-12 bg-surface">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-2">Frequently asked questions</h2>
+          <div className="divide-y divide-outline-variant/20">
+            {faqs.map((faq, i) => (
+              <details key={faq.question} className="group py-6" open={i === 0}>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold text-on-surface hover:text-primary">
+                  {faq.question}
+                  <svg className="h-5 w-5 shrink-0 text-outline transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </summary>
+                <p className="mt-4 leading-relaxed text-on-surface-variant">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -273,29 +335,16 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
           { "@type": "ListItem", position: 4, name: `${sourceBrand.name} to ${targetBrand.name}`, item: `https://www.paintcolorhq.com/match/${sourceBrandSlug}/to/${targetBrandSlug}` },
         ],
       }} />
-      {/* FAQPage for AI engine citation. Data-grounded answers from values
-          already in scope — match count for this brand pair, plus the
-          Delta E methodology explainer. */}
+      {/* FAQPage for AI engine citation. Built from the same faqs array as
+          the visible FAQ section: the nearly identical count for this brand
+          pair, plus how to read the closeness labels. */}
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: `How many ${sourceBrand.name} colors have a ${targetBrand.name} equivalent?`,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: `Paint Color HQ has identified ${matches.length} close ${sourceBrand.name}-to-${targetBrand.name} color matches ranked by CIEDE2000 Delta E score. These scores compare digital values; confirm with physical samples.`,
-            },
-          },
-          {
-            "@type": "Question",
-            name: `What is the best way to match ${sourceBrand.name} paint colors to ${targetBrand.name}?`,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: `Use the Delta E color difference score. A lower score means a closer digital approximation, not a guaranteed physical match. Always verify with physical paint samples in your room's actual lighting before committing — small differences amplify at scale.`,
-            },
-          },
-        ],
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
       }} />
 
       <AdSenseScript />

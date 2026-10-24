@@ -1,3 +1,4 @@
+import { NEARLY_IDENTICAL_MAX } from "./closeness";
 import { isColorIndexable } from "./indexing";
 import { supabase } from "./supabase";
 import type { Brand, Color, ColorWithBrand, CrossBrandMatchWithColor, ColorFamily } from "./types";
@@ -636,75 +637,147 @@ export async function getMoreFromFamily(
   return pool.slice(start, start + limit);
 }
 
-export async function getTopCrossBrandMatches(
-  sourceBrandSlug: string,
-  targetBrandSlug: string,
+// Brand-to-brand charts (/match/[a]/to/[b]). compute-matches stores the five
+// closest target-brand colors for each source color (ranks 1 to 5), retired
+// colors included. A switching chart lists colors buyers can order, so each
+// source color's pair is its closest current target among those five, and the
+// chart and the FAQ count read that one population. Keeping only rank 1
+// dropped every source whose closest target is retired: Behr has 2,547 retired
+// colors that are still match targets, so BM to Behr counted 1,829 nearly
+// identical colors where 2,590 qualify (2026-10-24).
+//
+// The version before that took the top 50 rank-1 rows across every target
+// brand in each batch and filtered to the target afterward, and its color
+// read stopped at 1,000 rows: SW to F&B came back empty and SW to BM showed
+// 5 rows. Now the target brand is filtered in SQL (!inner embed).
+//
+// Why batches and not one query: PostgREST wraps every embed in a LATERAL
+// subquery with LIMIT/OFFSET, which Postgres cannot flatten into a join. With
+// both brands filtered only through embeds, it ran the embed lookups for every
+// rank-1 row in the table and hit the 3 s anon statement timeout on the
+// 2026-10-24 preview build (the same SQL as a plain join takes 45 ms). So the
+// source brand goes on the base table: page its current colors, then query
+// 150 ids at a time (.in() rides in the URL), about 40 ms per batch.
+//
+// Errors throw: a blip fails the render instead of caching an empty chart for
+// 30 days.
+const BRAND_PAIR_COLOR_FIELDS =
+  "id, name, slug, hex, color_number, availability, brand_id, brand:brand_id (id, name, slug)";
+// 150 ids x 5 stored rows = 750 rows, under PostgREST's 1,000-row response cap.
+const BRAND_PAIR_BATCH = 150;
+const POSTGREST_MAX_ROWS = 1000;
+
+export interface BrandPairChart {
+  matches: { source: ColorWithBrand; match: ColorWithBrand; deltaE: number }[];
+  // Current source colors whose closest current target is nearly identical.
+  closeCount: number;
+  // False when some source's five stored targets are all retired and all
+  // nearly identical. A current color past rank 5 could still qualify, so
+  // closeCount is then a floor.
+  closeCountExact: boolean;
+}
+
+function brandPairError(what: string, error: { message: string }, status: number): Error {
+  // HEAD responses carry no body, so PostgREST errors arrive with an empty message.
+  return new Error(`${what} failed (HTTP ${status}): ${error.message || "no response body"}`);
+}
+
+async function getCurrentColors(brandId: string): Promise<{ id: string; name: string }[]> {
+  const colors: { id: string; name: string }[] = [];
+  const PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error, status } = await supabase
+      .from("colors")
+      .select("id, name")
+      .eq("brand_id", brandId)
+      .eq("availability", "current")
+      .order("id") // unordered pagination drops/repeats rows
+      .range(from, from + PAGE - 1);
+    if (error) throw brandPairError(`Current colors for brand ${brandId}`, error, status);
+    colors.push(...(data ?? []));
+    if (!data || data.length < PAGE) break;
+  }
+  return colors;
+}
+
+export async function getBrandPairChart(
+  sourceBrandId: string,
+  targetBrandId: string,
   limit = 50
-): Promise<{
-  source: ColorWithBrand;
-  match: ColorWithBrand;
-  deltaE: number;
-}[]> {
-  const [sourceBrand, targetBrand] = await Promise.all([
-    getBrandBySlug(sourceBrandSlug),
-    getBrandBySlug(targetBrandSlug),
-  ]);
+): Promise<BrandPairChart> {
+  const sources = await getCurrentColors(sourceBrandId);
+  const sourceName = new Map(sources.map((c) => [c.id, c.name]));
+  const pairs: { sourceId: string; matchId: string; deltaE: number }[] = [];
+  let closeCount = 0;
+  let closeCountExact = true;
 
-  if (!sourceBrand || !targetBrand) return [];
-
-  // Step 1: Get source brand color IDs
-  const { data: sourceColors, error: srcErr } = await supabase
-    .from("colors")
-    .select("id")
-    .eq("brand_id", sourceBrand.id);
-
-  if (srcErr || !sourceColors || sourceColors.length === 0) return [];
-
-  const sourceColorIds = sourceColors.map((c) => c.id);
-
-  // Step 2: Query cross_brand_matches for these source colors, joining both colors
-  // Supabase .in() has a URL length limit, so batch if needed
-  const batchSize = 200;
-  const allMatches: {
-    source: ColorWithBrand;
-    match: ColorWithBrand;
-    deltaE: number;
-  }[] = [];
-
-  for (let i = 0; i < sourceColorIds.length; i += batchSize) {
-    const batch = sourceColorIds.slice(i, i + batchSize);
-    const { data, error } = await supabase
+  for (let i = 0; i < sources.length; i += BRAND_PAIR_BATCH) {
+    const batch = sources.slice(i, i + BRAND_PAIR_BATCH).map((c) => c.id);
+    const { data, error, status } = await supabase
       .from("cross_brand_matches")
-      .select(`
-        delta_e_score,
-        rank,
-        source_color:source_color_id (*, brand:brand_id (*)),
-        match_color:match_color_id (*, brand:brand_id (*))
-      `)
+      .select("source_color_id, match_color_id, delta_e_score, match_color:match_color_id!inner (availability)")
       .in("source_color_id", batch)
-      .eq("rank", 1)
-      .order("delta_e_score", { ascending: true })
-      .limit(limit);
+      .eq("match_color.brand_id", targetBrandId)
+      .order("source_color_id")
+      .order("rank");
+    if (error) throw brandPairError(`Brand pair rows ${sourceBrandId} to ${targetBrandId}`, error, status);
+    if ((data ?? []).length >= POSTGREST_MAX_ROWS) {
+      throw new Error(`Brand pair rows ${sourceBrandId} to ${targetBrandId} hit the ${POSTGREST_MAX_ROWS}-row cap; lower BRAND_PAIR_BATCH`);
+    }
 
-    if (error || !data) continue;
-
-    for (const row of data) {
-      const matchColor = row.match_color as unknown as ColorWithBrand;
-      const sourceColor = row.source_color as unknown as ColorWithBrand;
-      if (!matchColor?.brand || !sourceColor?.brand) continue;
-      if (matchColor.brand.id !== targetBrand.id) continue;
-
-      allMatches.push({
-        source: sourceColor,
-        match: matchColor,
-        deltaE: Number(row.delta_e_score),
-      });
+    // PostgREST returns nested embeds with looser types; cast at the boundary.
+    const rows = (data ?? []) as unknown as {
+      source_color_id: string;
+      match_color_id: string;
+      delta_e_score: number | string;
+      match_color: { availability: string };
+    }[];
+    const bySource = new Map<string, typeof rows>();
+    for (const row of rows) {
+      const list = bySource.get(row.source_color_id);
+      if (list) list.push(row);
+      else bySource.set(row.source_color_id, [row]);
+    }
+    for (const [sourceId, list] of bySource) {
+      // Ordered by rank, so the first current row is the closest current color.
+      const best = list.find((row) => row.match_color.availability === "current");
+      if (best) {
+        const deltaE = Number(best.delta_e_score);
+        pairs.push({ sourceId, matchId: best.match_color_id, deltaE });
+        if (deltaE < NEARLY_IDENTICAL_MAX) closeCount++;
+      } else if (list.every((row) => Number(row.delta_e_score) < NEARLY_IDENTICAL_MAX)) {
+        closeCountExact = false;
+      }
     }
   }
 
-  // Sort by deltaE and return top N
-  allMatches.sort((a, b) => a.deltaE - b.deltaE);
-  return allMatches.slice(0, limit);
+  // Closest first, then source name, then id, so ties resolve the same way on
+  // every build.
+  pairs.sort((a, b) =>
+    a.deltaE - b.deltaE ||
+    (sourceName.get(a.sourceId) ?? "").localeCompare(sourceName.get(b.sourceId) ?? "") ||
+    a.sourceId.localeCompare(b.sourceId)
+  );
+  const top = pairs.slice(0, limit);
+  if (top.length === 0) return { matches: [], closeCount, closeCountExact };
+
+  // Full color rows only for the pairs on the chart: at most 2 x limit ids.
+  const ids = [...new Set(top.flatMap((p) => [p.sourceId, p.matchId]))];
+  const { data, error, status } = await supabase
+    .from("colors")
+    .select(BRAND_PAIR_COLOR_FIELDS)
+    .in("id", ids);
+  if (error) throw brandPairError(`Brand pair colors ${sourceBrandId} to ${targetBrandId}`, error, status);
+  const byId = new Map(((data ?? []) as unknown as ColorWithBrand[]).map((c) => [c.id, c]));
+  const matches = top.map((p) => {
+    const source = byId.get(p.sourceId);
+    const match = byId.get(p.matchId);
+    if (!source || !match) {
+      throw new Error(`Brand pair colors ${sourceBrandId} to ${targetBrandId} missing ${source ? p.matchId : p.sourceId}`);
+    }
+    return { source, match, deltaE: p.deltaE };
+  });
+  return { matches, closeCount, closeCountExact };
 }
 
 // Keyset pagination avoids overlapping ranges; shared eligibility preserves
