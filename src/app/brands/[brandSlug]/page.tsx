@@ -6,10 +6,12 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { BrandColorLibrary } from "@/components/brand-color-library";
-import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getColorsByBrandCount, getAllBrands, getCrossBrandMatches } from "@/lib/queries";
+import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getAllBrands, getCrossBrandMatches } from "@/lib/queries";
+import { getCachedColorsByBrandCount, getBrandFamilyCounts, getBrandUndertoneCounts } from "@/lib/brand-count-cache";
+import { RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
 import { PREMIUM_ALTERNATIVES } from "@/lib/premium-alternatives";
 import { closenessLabel } from "@/lib/closeness";
-import { getBrandContent } from "@/lib/brand-content";
+import { getBrandContent, BrandCotyNote } from "@/lib/brand-content";
 import { BRAND_ORG_DATA } from "@/lib/brand-org-data";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { AdSenseScript } from "@/components/adsense-script";
@@ -32,6 +34,30 @@ interface PageProps {
 
 const BRAND_TITLE_TEST = new Set(["sherwin-williams", "benjamin-moore"]);
 
+const PER_PAGE = 60;
+
+// Family chips. "tan" was removed 2026-10-24: no color in any brand carries
+// that family, so the chip always led to an empty page. Chips with a zero
+// count for the brand (and current undertone) are hidden at render time.
+const FAMILIES: { name: string; hex: string; border?: boolean }[] = [
+  { name: "white", hex: "#FFFFFF", border: true },
+  { name: "off-white", hex: "#F5F0E8", border: true },
+  { name: "gray", hex: "#9CA3AF" },
+  { name: "beige", hex: "#D4C5A9" },
+  { name: "neutral", hex: "#C7C1B7" },
+  { name: "brown", hex: "#8B6914" },
+  { name: "red", hex: "#DC2626" },
+  { name: "orange", hex: "#EA580C" },
+  { name: "yellow", hex: "#EAB308" },
+  { name: "green", hex: "#16A34A" },
+  { name: "blue", hex: "#2563EB" },
+  { name: "purple", hex: "#9333EA" },
+  { name: "pink", hex: "#EC4899" },
+  { name: "black", hex: "#1F2937" },
+];
+const FAMILY_NAMES = FAMILIES.map((f) => f.name);
+const UNDERTONES = ["warm", "cool", "neutral"] as const;
+
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { brandSlug } = await params;
   const brand = await getBrandBySlug(brandSlug);
@@ -39,8 +65,15 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   // Live count, not the stored brand.color_count (which is stale — undercounts
   // the actual indexable color pages; the grid, sitemap, and schema all use the
   // live count, so display + title must too).
-  const count = (await getColorsByBrandCount(brand.id)).toLocaleString();
+  const totalColors = await getCachedColorsByBrandCount(brand.id);
+  const count = totalColors.toLocaleString();
   const state = parseCatalogSearch(await searchParams);
+  // Paginated, unfiltered pages get their own title and description so the
+  // ~439 page-N URLs do not repeat page 1. Page 1 output is unchanged.
+  const totalPages = Math.max(1, Math.ceil(totalColors / PER_PAGE));
+  const pageSuffix = state.page > 1 && !state.family && !state.undertone && state.page <= totalPages
+    ? `Page ${state.page} of ${totalPages}`
+    : "";
   const url = catalogCanonical(brandSlug, state);
   // Lead with "[Brand] Color Chart" + "all [count] colors" — the two big
   // under-captured Bing queries (the page already ranks pos 3-8 for them).
@@ -54,17 +87,25 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   // to stay under ~60 chars. Baseline: scripts/seo/snapshots/bing-2026-10-11-
   // brands-baseline.json. Read both engines from 2026-10-25.
   const inTitleTest = BRAND_TITLE_TEST.has(brandSlug);
-  const title = inTitleTest
+  const baseTitle = inTitleTest
     ? `${brand.name} ${colorsWordCap}: Full Color Chart (All ${count})`
     : `${brand.name} Color Chart: All ${count} ${colorsWordCap}`;
+  // The test arm's title is absolute (no site suffix). Keep its page-N form
+  // near 65 characters by dropping the "(All N)" count when it would overflow.
+  const title = !pageSuffix
+    ? baseTitle
+    : inTitleTest && `${baseTitle} - ${pageSuffix}`.length > 65
+      ? `${brand.name} ${colorsWordCap}: Full Color Chart - ${pageSuffix}`
+      : `${baseTitle} - ${pageSuffix}`;
   // Pick 3 well-known compare brands different from the source.
   const compareTo = ["Sherwin-Williams", "Benjamin Moore", "Behr", "PPG"]
     .filter((b) => b !== brand.name)
     .slice(0, 3);
   const colorsWord = brandHasPaintWord ? "colors" : "paint colors";
-  const description = inTitleTest
+  const baseDescription = inTitleTest
     ? `Every ${brand.name} color on one page, A to Z, with hex code, LRV and undertone. Open any color for its closest ${compareTo.join(", ").replace(/, ([^,]*)$/, " and $1")} match.`
     : `The complete ${brand.name} color chart — all ${count} ${colorsWord} with hex codes, LRV & undertones, plus matches to ${compareTo.join(", ")} & more.`;
+  const description = pageSuffix ? `${pageSuffix}: ${baseDescription}` : baseDescription;
   const brandContent = getBrandContent(brandSlug);
   const shouldNoindex = !brandContent;
   return {
@@ -86,7 +127,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) notFound();
 
-  const perPage = 60;
+  const perPage = PER_PAGE;
   const { page, family, undertone } = parseCatalogSearch(await searchParams);
 
   // Render the requested page on the server. Database fetches remain cached;
@@ -95,22 +136,29 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
     .filter((p) => p.brandSlug === brandSlug)
     .map((p) => p.colorSlug);
 
-  const [colors, filteredCount, totalCount, popularColors, allBrands] = await Promise.all([
+  const unfiltered = !family && !undertone;
+  const [colors, filteredCount, totalCount, popularColors, allBrands, familyCounts, undertoneCounts] = await Promise.all([
     getColorsByBrand(brand.id, { limit: perPage, offset: (page - 1) * perPage, family, undertone }),
-    getColorsByBrandCount(brand.id, { family, undertone }),
-    getColorsByBrandCount(brand.id),
+    getCachedColorsByBrandCount(brand.id, { family, undertone }),
+    getCachedColorsByBrandCount(brand.id),
     // Single batched query replaces N parallel getColorBySlug round-trips
-    // (audit perf finding from H2.2 PR #54). Up to 11 fewer DB hits per
-    // brand-page render.
+    // (audit perf finding from H2.2 PR #54). Fetched on every page because
+    // the FAQ names the first three; the grid itself renders on page 1 only.
     getColorsBySlugList(brandSlug, popularSlugsForBrand),
     getAllBrands(),
+    getBrandFamilyCounts(brand.id, FAMILY_NAMES, undertone),
+    getBrandUndertoneCounts(brand.id, UNDERTONES, family),
   ]);
 
+  // A filter that matches nothing (an unknown family, or a family/undertone
+  // pair with no colors) is not a page.
+  if (!unfiltered && filteredCount === 0) notFound();
   if (page > Math.max(1, Math.ceil(filteredCount / perPage))) notFound();
+  const totalPages = Math.max(1, Math.ceil(totalCount / perPage));
 
   // Premium brands: each well-known color with its nearest match in the
   // brands most US stores carry. Page 1 only, unfiltered.
-  const premium = page === 1 && !family && !undertone ? PREMIUM_ALTERNATIVES[brandSlug] : undefined;
+  const premium = page === 1 && unfiltered ? PREMIUM_ALTERNATIVES[brandSlug] : undefined;
   const alternatives = premium
     ? await (async () => {
         const order = new Map(premium.colorSlugs.map((s, i) => [s, i]));
@@ -139,30 +187,17 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
     .filter((b): b is NonNullable<typeof b> => Boolean(b))
     .map((b) => ({ slug: b.slug, name: b.name }));
 
-  const families: { name: string; hex: string; border?: boolean }[] = [
-    { name: "white", hex: "#FFFFFF", border: true },
-    { name: "off-white", hex: "#F5F0E8", border: true },
-    { name: "gray", hex: "#9CA3AF" },
-    { name: "beige", hex: "#D4C5A9" },
-    { name: "neutral", hex: "#C7C1B7" },
-    { name: "brown", hex: "#8B6914" },
-    { name: "tan", hex: "#D2B48C" },
-    { name: "red", hex: "#DC2626" },
-    { name: "orange", hex: "#EA580C" },
-    { name: "yellow", hex: "#EAB308" },
-    { name: "green", hex: "#16A34A" },
-    { name: "blue", hex: "#2563EB" },
-    { name: "purple", hex: "#9333EA" },
-    { name: "pink", hex: "#EC4899" },
-    { name: "black", hex: "#1F2937" },
-  ];
+  // Hide chips that would lead to an empty listing; keep the active one so
+  // its selected state still shows.
+  const families = FAMILIES.filter((f) => f.name === family || (familyCounts[f.name] ?? 0) > 0);
+  const undertones = UNDERTONES.filter((u) => u === undertone || (undertoneCounts[u] ?? 0) > 0);
 
   const brandContent = getBrandContent(brand.slug);
   const subtitle = brandContent?.subtitle ?? `Browse every ${brand.name} color with undertone tags, LRV values, and cross-brand matches`;
 
   // Data-grounded FAQ (rendered visibly below + as FAQPage schema). Brand pages
   // are the biggest impression earner; visible FAQ adds SERP/AI surface. Answers
-  // vary per brand (count, most-searched colors, match targets) so they aren't
+  // vary per brand (count, curated popular colors, match targets) so they aren't
   // templated. Rendered in the DOM because JSON-LD-only FAQ gets ignored.
   const matchTargetNames = matchTargets.slice(0, 3).map((t) => t.name);
   const brandFaqs: { q: string; a: string }[] = [
@@ -208,6 +243,11 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
           </span>
           <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-8">
             {brand.name} Color Chart
+            {page > 1 && unfiltered && (
+              <span className="block mt-4 text-2xl md:text-3xl font-bold tracking-tight text-on-surface-variant">
+                Page {page} of {totalPages}
+              </span>
+            )}
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">{subtitle}</p>
           <div className="flex flex-wrap gap-4">
@@ -261,6 +301,9 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
                           <span className="h-8 w-8 shrink-0 rounded-md border border-black/10" style={{ backgroundColor: c.hex }} />
                           {c.name}
                         </Link>
+                        {c.availability === "retired" && (
+                          <span title={RETIRED_MATCH_TOOLTIP} className="ml-11 mt-1 inline-block rounded-full bg-surface-container px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-outline">Retired</span>
+                        )}
                       </td>
                       {byTarget.map((m, i) => (
                         <td key={premium!.targets[i]} className="inline-block w-1/3 p-3 align-top md:table-cell md:w-auto md:align-middle">
@@ -270,6 +313,9 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
                               <span className="h-8 w-8 shrink-0 rounded-md border border-black/10" style={{ backgroundColor: m.match_color.hex }} />
                               <span>
                                 <span className="block font-semibold text-on-surface">{m.match_color.name}</span>
+                                {m.match_color.availability === "retired" && (
+                                  <span title={RETIRED_MATCH_TOOLTIP} className="mt-0.5 inline-block rounded-full bg-surface-container px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-outline">Retired</span>
+                                )}
                                 <span className="block text-xs text-on-surface-variant">{closenessLabel(Number(m.delta_e_score))}</span>
                               </span>
                             </Link>
@@ -296,7 +342,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             </p>
           </div>
           <BrandColorLibrary
-            brandSlug={brandSlug} brandName={brand.name} families={families}
+            brandSlug={brandSlug} brandName={brand.name} families={families} undertones={undertones}
             initialColors={colors} initialTotalCount={filteredCount}
             currentPage={page} familyFilter={family} undertoneFilter={undertone}
           />
@@ -314,6 +360,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             <article id="brand-intro" className="max-w-4xl text-on-surface-variant leading-relaxed">
               {brandContent.intro}
             </article>
+            <BrandCotyNote brandSlug={brand.slug} />
             <ColorLinkEnhancer containerRef="brand-intro" />
           </div>
         </section>
@@ -365,17 +412,16 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         );
       })()}
 
-      {/* Popular Colors — featured above the paginated grid on page 1.
-          Promotes the curated POPULAR_COLOR_SLUGS subset with explicit
-          brand-page link signal, not just generateStaticParams pre-render. */}
-      {popularColors.length > 0 && (
+      {/* Popular colors: the curated POPULAR_COLOR_SLUGS subset (well-known
+          names, not a measured ranking), page 1 unfiltered only. */}
+      {page === 1 && unfiltered && popularColors.length > 0 && (
         <section className="py-16 px-6 md:px-12 bg-surface">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-2">
-              Most Popular {brand.name} Colors
+              Popular {brand.name} Colors
             </h2>
             <p className="text-on-surface-variant mb-8">
-              The {popularColors.length} {brand.name} colors most-searched on Paint Color HQ — verified bestsellers based on cross-brand match volume.
+              {popularColors.length} well-known {brand.name} colors, each with its hex code, LRV and closest matches in other brands.
             </p>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
               {popularColors.map((c) => (

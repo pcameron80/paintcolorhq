@@ -1,15 +1,18 @@
-// Curated list of popular paint color slugs across major brands. Used by:
-// - src/app/colors/[brandSlug]/[colorSlug]/page.tsx — generateStaticParams,
+// Curated list of well-known paint colors across major brands. It is an
+// editorial pick, not a measured popularity or sales ranking, so copy that
+// renders it must not call it "most-searched" or "bestsellers". Used by:
+// - src/app/brands/[brandSlug]/page.tsx: the "Popular {brand} Colors" grid
+//   (page 1, unfiltered) and the first three names in the brand FAQ.
+// - src/app/colors/[brandSlug]/[colorSlug]/page.tsx: generateStaticParams,
 //   so these slugs are pre-rendered at build time.
-// - src/app/api/sitemap/[id]/route.ts — match-individual shard, so the
-//   cross-brand match pages for these colors are discoverable in the
-//   sitemap.
+// - scripts/build-sitemap-data.ts: the match-individual shard, so the
+//   cross-brand match pages for these colors are in the sitemap.
 //
-// Slug source: src/lib/brand-content.tsx + src/lib/family-content.tsx
-// (only slugs in active code, so they're known to match the database).
-// Each slug is verified against the DB at color page build time so a
-// stale entry doesn't break the build — see generateStaticParams in
-// the color detail page.
+// A slug that does not resolve is dropped silently by every consumer, which
+// is how three Behr entries went dead unnoticed. `npm run check:sitemap`
+// now fails when any entry here is not a live, indexable color; run it after
+// editing this list. Behr slugs re-verified against the colors table
+// 2026-10-24.
 export const POPULAR_COLOR_SLUGS: Array<{
   brandSlug: string;
   colorSlug: string;
@@ -49,11 +52,11 @@ export const POPULAR_COLOR_SLUGS: Array<{
   { brandSlug: "benjamin-moore", colorSlug: "swiss-coffee-oc-45" },
   { brandSlug: "benjamin-moore", colorSlug: "pale-oak-oc-20" },
   // Behr
-  { brandSlug: "behr", colorSlug: "cameo-white-w-d-200" },
+  { brandSlug: "behr", colorSlug: "cameo-white-mq3-32" },
   { brandSlug: "behr", colorSlug: "dolphin-fin-790c-3" },
   { brandSlug: "behr", colorSlug: "silver-drop-790c-2" },
-  { brandSlug: "behr", colorSlug: "ultra-pure-white-1850" },
-  { brandSlug: "behr", colorSlug: "whisper-white-w-d-300" },
+  { brandSlug: "behr", colorSlug: "ultra-pure-white-upw" },
+  { brandSlug: "behr", colorSlug: "whisper-white-hdc-md-08" },
   { brandSlug: "behr", colorSlug: "red-pepper-ppu2-02" },
   // Dunn-Edwards
   { brandSlug: "dunn-edwards", colorSlug: "bone-china-dew339" },
