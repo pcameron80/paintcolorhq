@@ -17,7 +17,9 @@ export function CopySnippet({ code }: { code: string }) {
 
   return (
     <div className="relative">
-      <pre className="overflow-x-auto rounded-xl border border-outline-variant/15 bg-surface-container-lowest p-4 pr-24 text-xs leading-relaxed text-on-surface">
+      {/* Phones: the Copy button sits in a top gutter above the code (pt-12)
+          instead of a 96px right gutter that would eat most of a narrow box. */}
+      <pre className="overflow-x-auto rounded-xl border border-outline-variant/15 bg-surface-container-lowest p-4 pt-12 text-xs leading-relaxed text-on-surface sm:pr-24 sm:pt-4">
         <code>{code}</code>
       </pre>
       <button

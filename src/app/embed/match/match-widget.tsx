@@ -111,7 +111,7 @@ export function MatchWidget() {
     <div className="mx-auto flex h-full max-w-xl flex-col bg-white p-4 font-sans text-gray-900">
       <div className="mb-3">
         <p className="text-sm font-bold tracking-tight text-gray-900">Find this paint color in another brand</p>
-        <p className="text-xs text-gray-500">Pick a color — see the closest match across 13 brands.</p>
+        <p className="text-xs text-gray-500">Pick a color to see the closest matches from 13 brands&apos; catalogs.</p>
       </div>
 
       {/* Input row */}
