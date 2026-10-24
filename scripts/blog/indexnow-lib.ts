@@ -31,3 +31,44 @@ export function checkSlugs(
   }
   return out;
 }
+
+/** The only host IndexNow submissions may name (the key is registered for it). */
+export const SUBMIT_HOST = "www.paintcolorhq.com";
+/** Flood guard shared by every mode of indexnow-submit.ts. */
+export const MAX_URLS = 25;
+
+export interface UrlCheck {
+  /** Normalized, de-duplicated URLs that passed the static checks. */
+  urls: string[];
+  /** One line per rejected value, with the reason. */
+  errors: string[];
+}
+
+/** Static checks for --url values: https, www host only, no query or fragment,
+ *  at most MAX_URLS after de-duplication. Whether the page is live (200 or in
+ *  the sitemap) needs the network and is checked by the caller. */
+export function checkUrls(values: string[]): UrlCheck {
+  const out: UrlCheck = { urls: [], errors: [] };
+  const seen = new Set<string>();
+  for (const raw of values) {
+    const value = raw.trim();
+    let u: URL;
+    try {
+      u = new URL(value);
+    } catch {
+      out.errors.push(`${value || "(empty)"}: not a URL`);
+      continue;
+    }
+    if (u.protocol !== "https:") out.errors.push(`${value}: must be https`);
+    else if (u.hostname !== SUBMIT_HOST || u.port) out.errors.push(`${value}: host must be ${SUBMIT_HOST}`);
+    else if (u.search || u.hash) out.errors.push(`${value}: no query string or fragment`);
+    else if (!seen.has(u.href)) {
+      seen.add(u.href);
+      out.urls.push(u.href);
+    }
+  }
+  if (out.urls.length > MAX_URLS) {
+    out.errors.push(`${out.urls.length} URLs given; the limit is ${MAX_URLS}. This tool is not for bulk re-submission.`);
+  }
+  return out;
+}

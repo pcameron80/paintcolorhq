@@ -6,7 +6,8 @@
  * pins via Pinterest's API.
  *
  * Auth: Bearer CRON_SECRET (matches Vercel cron runtime header). Manual
- * triggering for testing also works with the same header.
+ * triggering for testing also works with the same header. Returns 401 when
+ * CRON_SECRET is unset or the header doesn't match.
  *
  * Query params:
  *   count — how many pins to create this run (default 1, max 10)
@@ -43,8 +44,11 @@ interface RunResult {
 }
 
 export async function GET(req: Request) {
+  // Fail closed: with CRON_SECRET unset, the old check accepted the literal
+  // header "Bearer undefined" and anyone could create pins.
+  const secret = process.env.CRON_SECRET;
   const auth = req.headers.get("authorization");
-  if (auth !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!secret || auth !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

@@ -98,7 +98,7 @@ on the brand site.
 4. **Submit to IndexNow** (notifies Bing — our strongest channel — and Yandex).
    Preferred wrapper:
    ```bash
-   npm run indexnow-blog -- --slug=<your-post-slug>
+   npm run indexnow-blog -- --slug=<your-post-slug> --submit   # without --submit it only previews
    ```
    Raw curl fallback (key hosted at `public/a28e7cd07d004d4b94cfcd6bc2129bda.txt`):
    ```bash

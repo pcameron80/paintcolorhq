@@ -6,6 +6,10 @@ import {
   postsNeverIndexed,
   isIndexed,
   liveProblem,
+  nudgesDue,
+  nudgedThrough,
+  inspectionLink,
+  NEVER_INDEXED_PROBLEM,
   type PostRef,
   type PublishState,
 } from "./publish-check-lib.ts";
@@ -48,18 +52,58 @@ test("postsToInspect: only submitted, unindexed posts, at most once a day", () =
   assert.deepEqual(postsToInspect(POSTS, state, at("2026-10-14T01:30:00Z")), [TRIM]); // next day
 });
 
-test("postsToInspect: stops once indexed or after 14 days", () => {
+test("postsToInspect: stops once indexed or after 28 days", () => {
   const indexed: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T01:30:00Z", indexedAt: "2026-10-15T01:30:00Z" } };
   assert.deepEqual(postsToInspect(POSTS, indexed, at("2026-10-16T01:30:00Z")), []);
   const waiting: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T01:30:00Z" } };
-  assert.deepEqual(postsToInspect(POSTS, waiting, at("2026-10-28T01:30:00Z")), []);
+  assert.deepEqual(postsToInspect(POSTS, waiting, at("2026-10-28T01:30:00Z")), [TRIM]); // day 15: still checking
+  assert.deepEqual(postsToInspect(POSTS, waiting, at("2026-11-11T01:30:00Z")), []); // day 29
 });
 
 test("postsNeverIndexed: reported once after the window closes", () => {
   const waiting: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T01:30:00Z" } };
-  assert.deepEqual(postsNeverIndexed(POSTS, waiting, at("2026-10-28T01:30:00Z")), [TRIM]);
-  const reported: PublishState = { [TRIM.slug]: { submittedAt: "x", lastProblem: "not indexed after 14 days" } };
-  assert.deepEqual(postsNeverIndexed(POSTS, reported, at("2026-10-28T01:30:00Z")), []);
+  assert.deepEqual(postsNeverIndexed(POSTS, waiting, at("2026-10-28T01:30:00Z")), []);
+  assert.deepEqual(postsNeverIndexed(POSTS, waiting, at("2026-11-11T01:30:00Z")), [TRIM]);
+  assert.equal(NEVER_INDEXED_PROBLEM, "not indexed after 28 days");
+  const reported: PublishState = { [TRIM.slug]: { submittedAt: "x", lastProblem: NEVER_INDEXED_PROBLEM } };
+  assert.deepEqual(postsNeverIndexed(POSTS, reported, at("2026-11-11T01:30:00Z")), []);
+});
+
+test("nudgesDue: reveal day, then day 3, only while unindexed", () => {
+  const submitted: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T01:30:00Z" } };
+  assert.deepEqual(nudgesDue(POSTS, submitted, at("2026-10-13T01:31:00Z")), [{ post: TRIM, day: 0 }]);
+  const afterDay0: PublishState = { [TRIM.slug]: { ...submitted[TRIM.slug], nudgedDays: [0] } };
+  assert.deepEqual(nudgesDue(POSTS, afterDay0, at("2026-10-15T23:00:00Z")), []); // day 2
+  assert.deepEqual(nudgesDue(POSTS, afterDay0, at("2026-10-16T01:30:00Z")), [{ post: TRIM, day: 3 }]);
+  const afterDay3: PublishState = { [TRIM.slug]: { ...submitted[TRIM.slug], nudgedDays: [0, 3] } };
+  assert.deepEqual(nudgesDue(POSTS, afterDay3, at("2026-10-20T01:30:00Z")), []);
+  const indexed: PublishState = { [TRIM.slug]: { ...submitted[TRIM.slug], indexedAt: "2026-10-14T01:30:00Z" } };
+  assert.deepEqual(nudgesDue(POSTS, indexed, at("2026-10-16T01:30:00Z")), []);
+  assert.deepEqual(nudgesDue(POSTS, {}, at("2026-10-13T01:31:00Z")), []); // not submitted yet
+});
+
+test("nudgesDue: a missed reveal-day run raises one nudge, not two", () => {
+  const late: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-16T09:30:00Z" } };
+  assert.deepEqual(nudgesDue(POSTS, late, at("2026-10-16T09:31:00Z")), [{ post: TRIM, day: 3 }]);
+  assert.deepEqual(nudgedThrough(3), [0, 3]);
+  assert.deepEqual(nudgedThrough(0, [0]), [0]);
+});
+
+test("inspectionLink: prefers the API link, else builds the inspect URL", () => {
+  const url = "https://www.paintcolorhq.com/blog/how-to-choose-trim-color";
+  const prop = "https://www.paintcolorhq.com/";
+  assert.equal(
+    inspectionLink(url, prop),
+    "https://search.google.com/search-console/inspect?resource_id=https%3A%2F%2Fwww.paintcolorhq.com%2F&id=" +
+      encodeURIComponent(url),
+  );
+  const s = {
+    inspections: [
+      { at: "a", verdict: "NEUTRAL", coverageState: "x", link: "https://search.google.com/old" },
+      { at: "b", verdict: "NEUTRAL", coverageState: "x" },
+    ],
+  };
+  assert.equal(inspectionLink(url, prop, s), "https://search.google.com/old");
 });
 
 test("isIndexed: only a PASS verdict counts", () => {

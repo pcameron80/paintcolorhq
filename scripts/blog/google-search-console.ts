@@ -64,6 +64,8 @@ export interface InspectionResult {
   verdict: string;
   coverageState: string;
   lastCrawlTime?: string;
+  /** Opens this URL in Search Console's URL Inspection tool. */
+  inspectionResultLink?: string;
 }
 
 /** URL Inspection API: Google's current index status for one URL. */
@@ -75,12 +77,16 @@ export async function inspectUrl(siteUrl: string, inspectionUrl: string): Promis
   });
   if (!res.ok) throw new Error(`GSC inspection failed (${res.status}): ${(await res.text()).slice(0, 200)}`);
   const json = (await res.json()) as {
-    inspectionResult?: { indexStatusResult?: { verdict?: string; coverageState?: string; lastCrawlTime?: string } };
+    inspectionResult?: {
+      inspectionResultLink?: string;
+      indexStatusResult?: { verdict?: string; coverageState?: string; lastCrawlTime?: string };
+    };
   };
   const r = json.inspectionResult?.indexStatusResult ?? {};
   return {
     verdict: r.verdict ?? "VERDICT_UNSPECIFIED",
     coverageState: r.coverageState ?? "unknown",
     lastCrawlTime: r.lastCrawlTime,
+    inspectionResultLink: json.inspectionResult?.inspectionResultLink,
   };
 }
