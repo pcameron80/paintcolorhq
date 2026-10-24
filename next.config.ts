@@ -190,6 +190,13 @@ const nextConfig: NextConfig = {
         source: "/embed/:path*",
         headers: embedSecurityHeaders,
       },
+      {
+        // Room visualizer photos and masks. scripts/export-rooms.py puts a content
+        // hash in every file name, so a changed file is a new URL and these can be
+        // cached for a year without revalidating.
+        source: "/rooms/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
     ];
   },
 };
