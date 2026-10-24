@@ -172,7 +172,7 @@ lsof -i :3000  # Check what's using port 3000
 
 4. **Route conflicts**: Dynamic segments at the same path level must share parameter names. Color family pages are at `/colors/family/[familySlug]` to avoid conflicting with `/colors/[brandSlug]/[colorSlug]`.
 
-5. **AdSense script**: Must use a raw `<script>` tag, not Next.js `<Script>` component, for crawler verification to work.
+5. **Ads and CSP**: AdSense was removed in October 2026 and Journey by Mediavine is the ad path. Keep the page CSP in `next.config.ts` scheme-based; a host allowlist blocks ad scripts, frames and workers with no error beyond a console CSP violation.
 
 6. **Large data files**: `data/cross-brand-matches.json` is 222MB. It's gitignored and excluded from Vercel deploys via `.vercelignore`.
 

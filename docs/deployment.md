@@ -100,4 +100,4 @@ Route (app)
 ## Analytics & Monetization
 
 - **Google Analytics 4**: Measurement ID `G-056NR93JLK` (loaded in root layout)
-- **Google AdSense**: Publisher ID `ca-pub-6269963973031881` (loaded in root layout)
+- **Display ads**: Google AdSense was removed in October 2026 (account rejected) and nothing loads it. Journey by Mediavine is the ad path. The page CSP in `next.config.ts` is scheme-based so Journey's scripts can load; see `docs/monetization.md`.

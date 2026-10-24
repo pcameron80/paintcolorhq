@@ -10,10 +10,37 @@ const colorRedirects: Record<string, string> = JSON.parse(
   readFileSync(join(process.cwd(), "src/data/color-redirects.json"), "utf8"),
 );
 
-// Fonts are self-hosted via next/font (Manrope + Inter, see app/layout.tsx),
-// so we don't need to allow fonts.googleapis.com/gstatic.com in CSP. They
-// were vestigial entries from an earlier external-CDN font setup.
+// Page CSP for everything outside /embed. Ad stacks (Journey by Mediavine is
+// the planned one) pull scripts, frames, workers and beacons from a changing
+// set of exchanges and CDNs, so a host allowlist silently blocks them: the
+// old allowlist below blocked 9 of 9 Journey probes. This policy restricts by
+// scheme instead (https only, plus data:/blob: where ad creatives need them)
+// and keeps the directives that matter without a host list: no plugins, no
+// <base> hijack, same-origin form posts, and no framing by other sites.
+// No upgrade-insecure-requests: block-all-mixed-content refuses http
+// subresources outright rather than rewriting them.
 const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: blob:",
+  "style-src 'self' 'unsafe-inline' https:",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data: https:",
+  "connect-src 'self' https: wss:",
+  "frame-src https: data: blob:",
+  "media-src 'self' https: data: blob:",
+  "worker-src 'self' blob:",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  "block-all-mixed-content",
+].join("; ");
+
+// Host-allowlist CSP, used only as the base of the /embed policy below. The
+// embed widget runs inside other sites' pages and loads no ads, so it keeps
+// the tight list. Fonts are self-hosted via next/font (Manrope + Inter, see
+// app/layout.tsx), so fonts.googleapis.com/gstatic.com are not needed here.
+const strictContentSecurityPolicy = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://adservice.google.com https://*.adtrafficquality.google https://va.vercel-scripts.com https://s.pinimg.com https://*.pinterest.com https://challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline'",
@@ -57,15 +84,16 @@ const securityHeaders = [
 ];
 
 // The /embed/* routes are meant to be iframed on third-party sites (the free
-// cross-brand match widget — a link/citation engine). Loosen ONLY the
-// frame-ancestors directive to `*` for those routes; every other security header
-// stays identical. The global rule below excludes /embed/ so this is the only
-// CSP that applies there (duplicate CSP headers would intersect to the strictest).
+// cross-brand match widget — a link/citation engine). They get the strict
+// host-allowlist policy above with two changes; every other security header
+// matches the page headers. The global rule below excludes /embed/ so this is
+// the only CSP that applies there (duplicate CSP headers would intersect to the
+// strictest).
 // frame-ancestors * → third-party sites can iframe the widget.
 // frame-src adds 'self' → the /embed landing page can iframe its own
-// /embed/match live preview (the global frame-src lists only ad domains, no
-// 'self', which would otherwise block the same-origin preview).
-const embedContentSecurityPolicy = contentSecurityPolicy
+// /embed/match live preview (the strict frame-src lists only third-party
+// hosts, no 'self', which would otherwise block the same-origin preview).
+const embedContentSecurityPolicy = strictContentSecurityPolicy
   .replace("frame-ancestors 'self'", "frame-ancestors *")
   .replace("frame-src ", "frame-src 'self' ");
 const embedSecurityHeaders = securityHeaders.map((h) =>
@@ -104,30 +132,10 @@ const nextConfig: NextConfig = {
         destination: "/colors/family/beige",
         permanent: true,
       },
-      {
-        source: "/blog",
-        has: [{ type: "query", key: "tag", value: "Design" }],
-        destination: "/blog?tag=design",
-        permanent: true,
-      },
-      {
-        source: "/blog",
-        has: [{ type: "query", key: "tag", value: "Guide" }],
-        destination: "/blog?tag=guide",
-        permanent: true,
-      },
-      {
-        source: "/blog",
-        has: [{ type: "query", key: "tag", value: "Trends" }],
-        destination: "/blog?tag=trends",
-        permanent: true,
-      },
-      {
-        source: "/blog",
-        has: [{ type: "query", key: "tag", value: "Tips" }],
-        destination: "/blog?tag=tips",
-        permanent: true,
-      },
+      // No /blog?tag= case redirects: on Vercel the `has` values matched
+      // regardless of case, so ?tag=design matched the "Design" rule and 308ed
+      // to itself (ERR_TOO_MANY_REDIRECTS). The blog page already filters tags
+      // case-insensitively, so every casing renders without a redirect.
       // MPC (Matthews Paint) removed 2026-06: sign/metal coatings, not
       // homeowner wall paint. ~2 Google clicks in 3 months across 1,419 pages.
       {
