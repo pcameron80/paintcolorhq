@@ -19,10 +19,10 @@ export const LRV_FINDER_BRANDS = [
 ] as const;
 
 export const LRV_FINDER_LIMIT = 60;
-// Over-fetch so rows that repeat a color already shown can be dropped and the
-// page still fills 60 cards. Behr carries the same color under several codes
-// (Ultra Pure White appears as W-B-500, PR-W15, UPW and 1850; GR-W5 and GR-W05)
-// until the dedupe tooling retires the extras.
+// Over-fetch so rows that repeat a color already shown (same brand, name and
+// hex under a second code) can be dropped and the page still fills 60 cards.
+// Same-name rows with different hexes (Behr's several Ultra Pure Whites) are
+// distinct catalog entries and stay.
 const FETCH_LIMIT = LRV_FINDER_LIMIT + 40;
 
 export interface LrvFilters {
