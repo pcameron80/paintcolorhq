@@ -2141,7 +2141,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-bathroom-colors",
     title: "The Best Sherwin-Williams Bathroom Paint Colors (2026)",
     date: "2026-08-07",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "The best Sherwin-Williams bathroom paint colors — spa-like greens and blues plus clean neutrals — each with its LRV and its closest cross-brand match.",
@@ -2218,7 +2218,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-black-paint-colors",
     title: "The Best Black Paint Colors for Doors, Trim & Walls (2026)",
     date: "2026-07-31",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "The best black paint colors for front doors, trim, cabinets, and walls — true black, soft black, and blue-black — each with its LRV and closest cross-brand match.",
@@ -2572,7 +2572,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dutch-boy-paint-colors",
     title: "10 Best Dutch Boy Paint Colors (2026)",
     date: "2026-07-03",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "10 Dutch Boy picks, from Swan White to Ocean's Depth, each with its LRV and closest Sherwin-Williams or Behr match. Plus where to buy it (hint: Menards).",
@@ -2766,7 +2766,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-benjamin-moore-paint-colors",
     title: "The Best Benjamin Moore Paint Colors for Every Room (2026)",
     date: "2026-06-17",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "The best Benjamin Moore paint colors — whites, greiges, grays, a blue-green, and a navy — each with its LRV and its closest match at Home Depot or Sherwin-Williams.",
@@ -2849,7 +2849,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-paint-colors",
     title: "The Best Sherwin-Williams Paint Colors for Every Room (2026)",
     date: "2026-06-13",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "The best Sherwin-Williams paint colors — whites, greiges, grays, a navy, and blacks — each with its LRV and its closest match in the brand you can buy.",
@@ -2941,7 +2941,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-behr-paint-colors",
     title: "13 Best Behr Paint Colors (2026)",
     date: "2026-06-10",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "13 Behr picks, from Swiss Coffee to Hidden Gem, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
@@ -3052,7 +3052,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-ppg-paint-colors",
     title: "15 Best PPG Paint Colors (2026)",
     date: "2026-06-07",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "15 PPG picks, from Commercial White to Night Watch, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
@@ -3172,7 +3172,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dunn-edwards-paint-colors",
     title: "14 Best Dunn-Edwards Paint Colors (2026)",
     date: "2026-06-03",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "14 Dunn-Edwards picks, from Swiss Coffee to Midnight Garden, each with its LRV and closest Sherwin-Williams, Benjamin Moore and Behr match.",
@@ -3287,7 +3287,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-valspar-paint-colors",
     title: "16 Best Valspar Paint Colors (2026)",
     date: "2026-05-31",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "16 Valspar picks, from Ultra White to Renew Blue, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
@@ -3412,7 +3412,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-paint-colors-for-laundry-rooms",
     title: "The Best Paint Colors for Laundry Rooms (14 Picks That Actually Work Under Cool LEDs)",
     date: "2026-04-29",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "A laundry room's harsh overhead lighting wrecks most paint colors. Here are 14 shades that hold up — with LRVs, finish recommendations, and what to skip.",
@@ -3565,7 +3565,7 @@ const blogPosts: BlogPost[] = [
     slug: "2026-colors-of-the-year-every-brand-compared",
     title: "2026 Colors of the Year: Every Major Brand Compared",
     date: "2026-01-08",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "See every major paint brand's 2026 Color of the Year side by side — from earthy greens to warm neutrals — with closest cross-brand matches.",
@@ -3690,7 +3690,7 @@ const blogPosts: BlogPost[] = [
     slug: "2025-colors-of-the-year-every-brand-compared",
     title: "2025 Colors of the Year: Every Major Brand Compared",
     date: "2025-09-18",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "See every major paint brand's 2025 Color of the Year side by side — from Sherwin-Williams to Benjamin Moore to Behr — with closest cross-brand matches.",
@@ -3805,7 +3805,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-alternatives-to-benjamin-moore",
     title: "Best Sherwin-Williams Alternatives to Benjamin Moore's Most Popular Colors",
     date: "2025-11-20",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "Found the perfect Benjamin Moore shade but prefer Sherwin-Williams? Here are the closest SW matches for BM's top sellers, verified by Delta E 2000.",
@@ -3992,7 +3992,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-kitchen-paint-colors-2025",
     title: "The 14 Best Kitchen Paint Colors for 2026",
     date: "2026-02-19",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "From crisp whites to moody greens, the 2026 kitchen paint colors that hold up in real kitchens — with LRV values and finish tips.",
@@ -4182,7 +4182,7 @@ const blogPosts: BlogPost[] = [
     slug: "calming-bedroom-paint-colors",
     title: "9 Calming Bedroom Colors Designers Love",
     date: "2026-01-15",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "Create a serene retreat with these designer-approved bedroom paint colors — soft blues, warm neutrals, and muted greens that promote relaxation.",
@@ -4416,7 +4416,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-white-paint-colors-guide",
     title: "The 15 Best White Paint Colors for Every Room (2026)",
     date: "2025-11-06",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "White is the hardest paint color to choose. This guide ranks 15 warm, cool, and true whites from top brands with room-by-room advice.",
@@ -4815,7 +4815,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-bathroom-paint-colors",
     title: "12 Best Bathroom Paint Colors That Handle Humidity (2026)",
     date: "2026-03-05",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "The best bathroom paint colors for 2026 — spa blues, warm earth tones, and dramatic jewel shades. Every pick handles humidity, with finish advice.",
@@ -5070,7 +5070,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-home-office-paint-colors",
     title: "Best Home Office Paint Colors for Productivity in 2026",
     date: "2026-02-05",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "The best paint colors for home office productivity — from calming blues and greens to 2026 trending shades — picked for focus, mood, and video call appearance.",
@@ -5310,7 +5310,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-nursery-paint-colors",
     title: "13 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last)",
     date: "2026-01-29",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "The best nursery paint colors for 2026 — gender-neutral picks from Sherwin-Williams, Benjamin Moore, and Behr that grow with your child.",
@@ -5459,7 +5459,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dining-room-paint-colors",
     title: "13 Best Dining Room Paint Colors for Every Style (2026)",
     date: "2026-02-12",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "The best dining room paint colors for 2026 — bold jewel tones, warm earth tones, and elegant neutrals with hex codes and pairing tips.",
@@ -5599,7 +5599,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-kitchen-colors",
     title: "15 Best Sherwin-Williams Paint Colors for Kitchens (2026)",
     date: "2026-02-26",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "The most popular Sherwin-Williams kitchen colors for cabinets, walls, and islands — with finish tips, lighting advice, and designer pairings.",
@@ -5822,7 +5822,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-behr-colors-for-bedrooms",
     title: "9 Best Behr Paint Colors for Bedrooms (2026 Picks)",
     date: "2026-01-22",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "The best Behr bedroom paint colors for 2026 — calming blues, soft greens, and warm neutrals with real pricing and cross-brand matches.",
@@ -6039,7 +6039,7 @@ const blogPosts: BlogPost[] = [
     slug: "sherwin-williams-vs-benjamin-moore",
     title: "Sherwin-Williams vs Benjamin Moore: The Complete Comparison",
     date: "2025-11-27",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "A head-to-head comparison of America's two premium paint brands — covering quality, price, color matching, cabinet vs wall paint, exterior durability, and which to choose for each project.",
@@ -6668,7 +6668,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-blue-paint-colors",
     title: "The Best Blue Paint Colors for Every Room (2026)",
     date: "2026-05-13",
-    modifiedDate: "2026-10-25",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "Fourteen designer-favorite blues ranked by undertone, LRV, and room application — from airy sky blues to dramatic naval. Every pick verified against our 26,000+ color database with cross-brand matches.",
