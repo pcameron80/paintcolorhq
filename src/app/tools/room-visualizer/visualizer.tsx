@@ -242,7 +242,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
           room={room}
           colors={surfaceColors}
           onSelectSurface={(s) => selectRegion(SURFACE_TO_REGION[s])}
-          priority={roomIdx === 0}
+          preload={roomIdx === 0}
         />
       </div>
 

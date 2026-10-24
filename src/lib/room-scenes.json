@@ -5,11 +5,21 @@
     "category": "living",
     "width": 1376,
     "height": 768,
-    "image": "/rooms/living-1/base.webp",
+    "image": "/rooms/living-1/base.48dc03cf08.webp",
     "masks": {
-      "main": "/rooms/living-1/mask-main.png",
-      "accent": "/rooms/living-1/mask-accent.png",
-      "trim": "/rooms/living-1/mask-trim.png"
+      "main": "/rooms/living-1/mask-main.620d225158.png",
+      "accent": "/rooms/living-1/mask-accent.a3e5506524.png",
+      "trim": "/rooms/living-1/mask-trim.1e45b81fd2.png"
+    },
+    "small": {
+      "width": 800,
+      "height": 447,
+      "masks": {
+        "main": "/rooms/living-1/mask-main-800.97277b602e.png",
+        "accent": "/rooms/living-1/mask-accent-800.81e7511e07.png",
+        "trim": "/rooms/living-1/mask-trim-800.4c9f5e0f61.png"
+      },
+      "image": "/rooms/living-1/base-800.6f903c9beb.webp"
     }
   },
   {
@@ -18,12 +28,23 @@
     "category": "living",
     "width": 1376,
     "height": 768,
-    "image": "/rooms/living-2/base.webp",
+    "image": "/rooms/living-2/base.577e303c7e.webp",
     "masks": {
-      "main": "/rooms/living-2/mask-main.png",
-      "accent": "/rooms/living-2/mask-accent.png",
-      "trim": "/rooms/living-2/mask-trim.png",
-      "window": "/rooms/living-2/mask-window.png"
+      "main": "/rooms/living-2/mask-main.4309483641.png",
+      "accent": "/rooms/living-2/mask-accent.eed558004f.png",
+      "trim": "/rooms/living-2/mask-trim.af9523beb7.png",
+      "window": "/rooms/living-2/mask-window.54d759a700.png"
+    },
+    "small": {
+      "width": 800,
+      "height": 447,
+      "masks": {
+        "main": "/rooms/living-2/mask-main-800.1d4c1835d3.png",
+        "accent": "/rooms/living-2/mask-accent-800.1982da93a4.png",
+        "trim": "/rooms/living-2/mask-trim-800.cf42d1bc47.png",
+        "window": "/rooms/living-2/mask-window-800.5bffbd31fa.png"
+      },
+      "image": "/rooms/living-2/base-800.b6f56c32ec.webp"
     }
   },
   {
@@ -32,12 +53,23 @@
     "category": "bedroom",
     "width": 1376,
     "height": 768,
-    "image": "/rooms/bedroom-1/base.webp",
+    "image": "/rooms/bedroom-1/base.4675926347.webp",
     "masks": {
-      "main": "/rooms/bedroom-1/mask-main.png",
-      "accent": "/rooms/bedroom-1/mask-accent.png",
-      "trim": "/rooms/bedroom-1/mask-trim.png",
-      "window": "/rooms/bedroom-1/mask-window.png"
+      "main": "/rooms/bedroom-1/mask-main.d9309022d8.png",
+      "accent": "/rooms/bedroom-1/mask-accent.e84f5deac2.png",
+      "trim": "/rooms/bedroom-1/mask-trim.6f06034b04.png",
+      "window": "/rooms/bedroom-1/mask-window.25ef48020f.png"
+    },
+    "small": {
+      "width": 800,
+      "height": 447,
+      "masks": {
+        "main": "/rooms/bedroom-1/mask-main-800.d830431f45.png",
+        "accent": "/rooms/bedroom-1/mask-accent-800.9b807e0bdb.png",
+        "trim": "/rooms/bedroom-1/mask-trim-800.6bd92a4f8e.png",
+        "window": "/rooms/bedroom-1/mask-window-800.b2fad5c5f9.png"
+      },
+      "image": "/rooms/bedroom-1/base-800.c89901ca67.webp"
     }
   },
   {
@@ -46,11 +78,21 @@
     "category": "bedroom",
     "width": 1376,
     "height": 768,
-    "image": "/rooms/bedroom-2/base.webp",
+    "image": "/rooms/bedroom-2/base.69b127c801.webp",
     "masks": {
-      "main": "/rooms/bedroom-2/mask-main.png",
-      "accent": "/rooms/bedroom-2/mask-accent.png",
-      "trim": "/rooms/bedroom-2/mask-trim.png"
+      "main": "/rooms/bedroom-2/mask-main.761e481b6f.png",
+      "accent": "/rooms/bedroom-2/mask-accent.2d7cb01154.png",
+      "trim": "/rooms/bedroom-2/mask-trim.2358149956.png"
+    },
+    "small": {
+      "width": 800,
+      "height": 447,
+      "masks": {
+        "main": "/rooms/bedroom-2/mask-main-800.ceb0330c28.png",
+        "accent": "/rooms/bedroom-2/mask-accent-800.bf438ca0b3.png",
+        "trim": "/rooms/bedroom-2/mask-trim-800.2c13f3e239.png"
+      },
+      "image": "/rooms/bedroom-2/base-800.12635a994e.webp"
     }
   },
   {
@@ -59,12 +101,23 @@
     "category": "kitchen",
     "width": 1376,
     "height": 768,
-    "image": "/rooms/kitchen-1/base.webp",
+    "image": "/rooms/kitchen-1/base.98f5836bcc.webp",
     "masks": {
-      "main": "/rooms/kitchen-1/mask-main.png",
-      "accent": "/rooms/kitchen-1/mask-accent.png",
-      "trim": "/rooms/kitchen-1/mask-trim.png",
-      "window": "/rooms/kitchen-1/mask-window.png"
+      "main": "/rooms/kitchen-1/mask-main.b95d65471e.png",
+      "accent": "/rooms/kitchen-1/mask-accent.610e9cea74.png",
+      "trim": "/rooms/kitchen-1/mask-trim.43d967f726.png",
+      "window": "/rooms/kitchen-1/mask-window.390536fa70.png"
+    },
+    "small": {
+      "width": 800,
+      "height": 447,
+      "masks": {
+        "main": "/rooms/kitchen-1/mask-main-800.a4dae22b7c.png",
+        "accent": "/rooms/kitchen-1/mask-accent-800.c7e822a85b.png",
+        "trim": "/rooms/kitchen-1/mask-trim-800.a79d7fd700.png",
+        "window": "/rooms/kitchen-1/mask-window-800.9346483832.png"
+      },
+      "image": "/rooms/kitchen-1/base-800.36e4f5068b.webp"
     }
   },
   {
@@ -73,11 +126,21 @@
     "category": "kitchen",
     "width": 1376,
     "height": 768,
-    "image": "/rooms/kitchen-2/base.webp",
+    "image": "/rooms/kitchen-2/base.5d9c96599e.webp",
     "masks": {
-      "main": "/rooms/kitchen-2/mask-main.png",
-      "accent": "/rooms/kitchen-2/mask-accent.png",
-      "trim": "/rooms/kitchen-2/mask-trim.png"
+      "main": "/rooms/kitchen-2/mask-main.d468b58daf.png",
+      "accent": "/rooms/kitchen-2/mask-accent.671596510a.png",
+      "trim": "/rooms/kitchen-2/mask-trim.65f6d9d414.png"
+    },
+    "small": {
+      "width": 800,
+      "height": 447,
+      "masks": {
+        "main": "/rooms/kitchen-2/mask-main-800.a066e527cf.png",
+        "accent": "/rooms/kitchen-2/mask-accent-800.51fde29dc7.png",
+        "trim": "/rooms/kitchen-2/mask-trim-800.f4201e3dd4.png"
+      },
+      "image": "/rooms/kitchen-2/base-800.5e48c6b502.webp"
     }
   },
   {
@@ -86,11 +149,21 @@
     "category": "dining",
     "width": 1376,
     "height": 768,
-    "image": "/rooms/dining-1/base.webp",
+    "image": "/rooms/dining-1/base.432e0a0abc.webp",
     "masks": {
-      "main": "/rooms/dining-1/mask-main.png",
-      "accent": "/rooms/dining-1/mask-accent.png",
-      "trim": "/rooms/dining-1/mask-trim.png"
+      "main": "/rooms/dining-1/mask-main.6669eb8824.png",
+      "accent": "/rooms/dining-1/mask-accent.f31d5fe327.png",
+      "trim": "/rooms/dining-1/mask-trim.d373814791.png"
+    },
+    "small": {
+      "width": 800,
+      "height": 447,
+      "masks": {
+        "main": "/rooms/dining-1/mask-main-800.7ce537bfdc.png",
+        "accent": "/rooms/dining-1/mask-accent-800.03439592f2.png",
+        "trim": "/rooms/dining-1/mask-trim-800.af0f31e0d8.png"
+      },
+      "image": "/rooms/dining-1/base-800.de89ae90eb.webp"
     }
   },
   {
@@ -99,12 +172,23 @@
     "category": "dining",
     "width": 1376,
     "height": 768,
-    "image": "/rooms/dining-2/base.webp",
+    "image": "/rooms/dining-2/base.ee73f5ea48.webp",
     "masks": {
-      "main": "/rooms/dining-2/mask-main.png",
-      "accent": "/rooms/dining-2/mask-accent.png",
-      "trim": "/rooms/dining-2/mask-trim.png",
-      "window": "/rooms/dining-2/mask-window.png"
+      "main": "/rooms/dining-2/mask-main.9257877ed3.png",
+      "accent": "/rooms/dining-2/mask-accent.ff86a94550.png",
+      "trim": "/rooms/dining-2/mask-trim.fca41210a9.png",
+      "window": "/rooms/dining-2/mask-window.5dea14477d.png"
+    },
+    "small": {
+      "width": 800,
+      "height": 447,
+      "masks": {
+        "main": "/rooms/dining-2/mask-main-800.e2714f10d9.png",
+        "accent": "/rooms/dining-2/mask-accent-800.2f7219b753.png",
+        "trim": "/rooms/dining-2/mask-trim-800.a9b077d0a3.png",
+        "window": "/rooms/dining-2/mask-window-800.1ea86f6615.png"
+      },
+      "image": "/rooms/dining-2/base-800.e94b932af9.webp"
     }
   },
   {
@@ -113,12 +197,23 @@
     "category": "bathroom",
     "width": 1376,
     "height": 768,
-    "image": "/rooms/bathroom-1/base.webp",
+    "image": "/rooms/bathroom-1/base.9d0ba285ba.webp",
     "masks": {
-      "main": "/rooms/bathroom-1/mask-main.png",
-      "accent": "/rooms/bathroom-1/mask-accent.png",
-      "trim": "/rooms/bathroom-1/mask-trim.png",
-      "window": "/rooms/bathroom-1/mask-window.png"
+      "main": "/rooms/bathroom-1/mask-main.95185aa22c.png",
+      "accent": "/rooms/bathroom-1/mask-accent.2d15d80a61.png",
+      "trim": "/rooms/bathroom-1/mask-trim.4b001f1e68.png",
+      "window": "/rooms/bathroom-1/mask-window.ef70c5102b.png"
+    },
+    "small": {
+      "width": 800,
+      "height": 447,
+      "masks": {
+        "main": "/rooms/bathroom-1/mask-main-800.208c8e4c19.png",
+        "accent": "/rooms/bathroom-1/mask-accent-800.7eb7ebb1bf.png",
+        "trim": "/rooms/bathroom-1/mask-trim-800.210c2f4f81.png",
+        "window": "/rooms/bathroom-1/mask-window-800.e829d9b6fb.png"
+      },
+      "image": "/rooms/bathroom-1/base-800.cf32d1d1ea.webp"
     }
   },
   {
@@ -127,11 +222,21 @@
     "category": "bathroom",
     "width": 1376,
     "height": 768,
-    "image": "/rooms/bathroom-2/base.webp",
+    "image": "/rooms/bathroom-2/base.46fab81a49.webp",
     "masks": {
-      "main": "/rooms/bathroom-2/mask-main.png",
-      "accent": "/rooms/bathroom-2/mask-accent.png",
-      "trim": "/rooms/bathroom-2/mask-trim.png"
+      "main": "/rooms/bathroom-2/mask-main.0fd1906576.png",
+      "accent": "/rooms/bathroom-2/mask-accent.b643353e9a.png",
+      "trim": "/rooms/bathroom-2/mask-trim.d065dd67fd.png"
+    },
+    "small": {
+      "width": 800,
+      "height": 447,
+      "masks": {
+        "main": "/rooms/bathroom-2/mask-main-800.d00cac94eb.png",
+        "accent": "/rooms/bathroom-2/mask-accent-800.3140244bea.png",
+        "trim": "/rooms/bathroom-2/mask-trim-800.5846a6ef6a.png"
+      },
+      "image": "/rooms/bathroom-2/base-800.6ed6ea634f.webp"
     }
   }
 ]
