@@ -41,7 +41,7 @@ RETIRED=(
   "com.paintcolorhq.instagram-drip"
   "com.paintcolorhq.facebook-drip"
 )
-RETIRED_DIR="$AGENTS/disabled-retired"
+RETIRED_DIR="$AGENTS/disabled-2026-10-24"
 
 unload_all() {
   for row in "${JOBS[@]}"; do
