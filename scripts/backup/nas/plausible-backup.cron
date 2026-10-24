@@ -1,0 +1,2 @@
+# Plausible CE nightly backup (PaintColorHQ repo scripts/backup/nas/). Script on flash; run via bash because /boot is noexec.
+15 2 * * * bash /boot/config/plausible-backup.sh > /dev/null 2>&1

@@ -19,6 +19,7 @@ Paint Color HQ is a complete paint color toolkit. Users can browse 25,000+ paint
 | [Deployment](./deployment.md) | Vercel setup, environment variables, deploy workflow |
 | [Monetization](./monetization.md) | Google AdSense, Google Analytics integration |
 | [Development Guide](./development.md) | Local setup, running scripts, common tasks |
+| [Backups](./backups.md) | Weekly Supabase snapshot and nightly Plausible backup to the NAS, restore steps |
 
 ## Key Stats
 
