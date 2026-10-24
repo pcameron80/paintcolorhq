@@ -41,6 +41,7 @@
     "test:palette-diff": "node --import tsx --test scripts/lib/palette-diff.test.ts",
     "test:samplize": "NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX='https://www.jdoqocy.com/click-101771405-15496318?url=' node --import tsx --test scripts/lib/samplize-affiliate.test.ts",
     "test:supplies": "node --import tsx --test scripts/lib/painting-supplies.test.ts",
+    "test:undertone": "node --import tsx --test scripts/lib/undertone.test.ts",
     "predev": "tsx scripts/build-sitemap-data.ts",
     "build:sitemap": "tsx scripts/build-sitemap-data.ts",
     "test:seo": "node --import tsx --test 'src/lib/*.test.ts'",

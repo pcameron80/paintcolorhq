@@ -10,6 +10,7 @@
 import { createClient } from "@supabase/supabase-js";
 import * as dotenv from "dotenv";
 import { refineColorFamily } from "./lib/color-math";
+import { undertoneLabel } from "./lib/undertone";
 
 dotenv.config({ path: ".env.local" });
 
@@ -41,7 +42,7 @@ interface SwApiColor {
 // ---------------------------------------------------------------------------
 
 function makeSlug(name: string, colorNumber: string): string {
-  let base = name
+  const base = name
     .toLowerCase()
     .replace(/[''"]/g, "")
     .replace(/&/g, "and")
@@ -156,7 +157,7 @@ async function main() {
 
   // 4. Prepare rows
   const rows = missing.map((c) => {
-    let slug = makeSlug(c.name, c.colorNumber);
+    const slug = makeSlug(c.name, c.colorNumber);
 
     // Ensure unique slug
     let finalSlug = slug;
@@ -169,21 +170,25 @@ async function main() {
 
     // Use API LRV if available, otherwise compute
     const lrv = c.lrv ?? Math.round(calculateLrv(c.red, c.green, c.blue) * 100) / 100;
+    const hex = c.hex.startsWith("#") ? c.hex : `#${c.hex}`;
+    const labA = Math.round(c.lab.A * 100) / 100;
+    const labB = Math.round(c.lab.B * 100) / 100;
 
     return {
       brand_id: brand.id,
       name: c.name.trim(),
       slug: finalSlug,
       color_number: c.colorNumber,
-      hex: c.hex.startsWith("#") ? c.hex : `#${c.hex}`,
+      hex,
       rgb_r: c.red,
       rgb_g: c.green,
       rgb_b: c.blue,
       lab_l: Math.round(c.lab.L * 100) / 100,
-      lab_a: Math.round(c.lab.A * 100) / 100,
-      lab_b_val: Math.round(c.lab.B * 100) / 100,
+      lab_a: labA,
+      lab_b_val: labB,
       lrv: Math.round(lrv * 100) / 100,
       color_family: refineColorFamily(mapColorFamily(c.colorFamilyNames), c.red, c.green, c.blue),
+      undertone: undertoneLabel(hex, labA, labB, `sherwin-williams/${finalSlug}`),
     };
   });
 
@@ -225,7 +230,7 @@ async function main() {
     "\nNext steps:\n" +
       "  1. Run: npx tsx scripts/compute-matches.ts (to compute cross-brand matches for new colors)\n" +
       "  2. Run: npx tsx scripts/seed-matches.ts (to seed match data to DB)\n" +
-      "  3. Run: npx tsx scripts/populate-undertones.ts (to classify undertones)"
+      "  (undertone is set on insert; no populate-undertones run needed)"
   );
 }
 
