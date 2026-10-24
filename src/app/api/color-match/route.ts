@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse, after } from "next/server";
-import { findColorMatches } from "@/lib/color-match";
+import { findColorMatches, findColorMatchesWithBestPerBrand } from "@/lib/color-match";
 import { logUsageEvent, usageMetaFromRequest, isOnSiteReferer } from "@/lib/usage-log";
 import { logRequestReferrer } from "@/lib/referrer-log";
 import { ATTRIBUTION } from "@/lib/attribution";
@@ -13,6 +13,9 @@ import { ATTRIBUTION } from "@/lib/attribution";
 // shape. The data is already public on the color pages, so it's open + CDN-cached.
 // Free use requires visible credit; the free body carries an `attribution` field
 // (added alongside `matches`, nothing renamed) stating the required link.
+// Retired or discontinued colors carry an additive `availability` field. With
+// `perBrand=1` (unfiltered only) the body also has `bestPerBrand`: the closest
+// color in each brand, always including Sherwin-Williams, Benjamin Moore, Behr.
 //
 // PAID tier (valid X-RapidAPI-Proxy-Secret, set via RAPIDAPI_PROXY_SECRET): the
 // enhanced response — up to 50 matches, optional batch (comma-separated hex), and
@@ -104,6 +107,14 @@ export async function GET(request: NextRequest) {
       hexes.map(async (h) => ({ hex: h, matches: await findColorMatches(h, brand, limit, paid) })),
     );
     return NextResponse.json({ results }, { headers });
+  }
+
+  // Free, unfiltered, perBrand=1 (the on-site tools and the widget): the same
+  // `matches`, plus the closest color in each brand. Its own query string is its
+  // own CDN cache key, so the plain free body is untouched. Paid ignores it.
+  if (!paid && !brand && params.get("perBrand") === "1") {
+    const { matches, bestPerBrand } = await findColorMatchesWithBestPerBrand(hexes[0], limit);
+    return NextResponse.json({ matches, bestPerBrand, attribution: ATTRIBUTION }, { headers });
   }
 
   const matches = await findColorMatches(hexes[0], brand, limit, paid);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 interface TocItem {
   id: string;
@@ -8,32 +8,61 @@ interface TocItem {
   level: number;
 }
 
+const EMPTY: TocItem[] = [];
+
+// The headings are server-rendered siblings of this component, so the DOM is
+// an external store read with useSyncExternalStore rather than copied into
+// state from an effect. The post body does not add or remove h2s after load,
+// so there is nothing to subscribe to.
+function subscribe(): () => void {
+  return () => {};
+}
+
+function getHeadings(): HTMLHeadingElement[] {
+  // Find all h2s inside the closest prose block
+  const article = document.querySelector("article .prose");
+  if (!article) return [];
+  const headings = Array.from(article.querySelectorAll("h2"));
+  return headings.length < 3 ? [] : headings; // Only show TOC for posts with 3+ sections
+}
+
+const headingId = (h: HTMLHeadingElement, i: number) => h.id || `section-${i}`;
+
+// getSnapshot must return the same reference while the data is unchanged, or
+// React re-renders forever. Cache on a string key of the ids and texts.
+let cachedKey = "";
+let cachedItems: TocItem[] = EMPTY;
+
+function getSnapshot(): TocItem[] {
+  const headings = getHeadings();
+  if (headings.length === 0) return EMPTY;
+  const items = headings.map((h, i) => ({
+    id: headingId(h, i),
+    text: h.textContent?.trim() ?? "",
+    level: 2,
+  }));
+  const key = items.map((item) => `${item.id}\u0000${item.text}`).join("\u0001");
+  if (key !== cachedKey) {
+    cachedKey = key;
+    cachedItems = items;
+  }
+  return cachedItems;
+}
+
+function getServerSnapshot(): TocItem[] {
+  return EMPTY;
+}
+
 export function TableOfContents() {
-  const [items, setItems] = useState<TocItem[]>([]);
+  const items = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
+  // Give id-less headings the ids the links point at. Writing to the DOM is
+  // the side effect an effect is for; it runs before the user can click.
   useEffect(() => {
-    // Find all h2s inside the closest prose block
-    const article = document.querySelector("article .prose");
-    if (!article) return;
-
-    const headings = article.querySelectorAll("h2");
-    if (headings.length < 3) return; // Only show TOC for posts with 3+ sections
-
-    const tocItems: TocItem[] = [];
-    headings.forEach((h, i) => {
-      // Add an id if missing
-      if (!h.id) {
-        h.id = `section-${i}`;
-      }
-      tocItems.push({
-        id: h.id,
-        text: h.textContent?.trim() ?? "",
-        level: 2,
-      });
+    getHeadings().forEach((h, i) => {
+      if (!h.id) h.id = headingId(h, i);
     });
-
-    setItems(tocItems);
-  }, []);
+  }, [items]);
 
   if (items.length === 0) return null;
 

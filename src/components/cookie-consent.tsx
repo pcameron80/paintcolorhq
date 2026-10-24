@@ -1,19 +1,16 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 import {
-  CONSENT_CHANGE_EVENT,
   CONSENT_STORAGE_KEY,
   OPEN_PRIVACY_CHOICES_EVENT,
   REGULATED_REGIONS,
-  adsAllowed,
   isNonTrackedPath,
   fetchConsentRegion,
   getStoredConsent,
   setStoredConsent,
-  type ConsentRegion,
-  type StoredConsent,
 } from "@/lib/consent";
 
 // Runs before gtag.js loads. Region-specific defaults come first so gtag can
@@ -47,11 +44,25 @@ const GTAG_INIT = `
   }
   gtag('ads_data_redaction', true);
   gtag('js', new Date());
+  // ?debug=true marks this browser internal for GA4 and Plausible until
+  // ?debug=false clears it (it used to cover only the one page view).
+  var internalFlag = false;
+  try {
+    if (location.search.indexOf('debug=true') !== -1) {
+      localStorage.setItem('pchq_internal', '1');
+      localStorage.setItem('plausible_ignore', 'true');
+    } else if (location.search.indexOf('debug=false') !== -1) {
+      localStorage.removeItem('pchq_internal');
+      localStorage.removeItem('plausible_ignore');
+    }
+    internalFlag = localStorage.getItem('pchq_internal') === '1';
+  } catch (e) {}
   var isInternal = (
     location.hostname === 'localhost' ||
     location.hostname === '127.0.0.1' ||
     location.hostname.endsWith('.vercel.app') ||
-    location.search.indexOf('debug=true') !== -1
+    location.search.indexOf('debug=true') !== -1 ||
+    internalFlag
   );
   // Headless scrapers that became visible once consent stopped gating gtag
   // (2026-10-02): Windows Chrome at screen sizes real visitors almost never
@@ -67,43 +78,39 @@ const GTAG_INIT = `
 `;
 
 export function CookieConsent() {
-  const [isEmbed, setIsEmbed] = useState(true);
-  const [stored, setStored] = useState<StoredConsent>(null);
-  const [region, setRegion] = useState<ConsentRegion>("pending");
+  // The embeddable widget runs inside third-party iframes, and /admin is the
+  // owner's own traffic: never show a banner or load GA there. Everywhere else
+  // the gtag scripts render immediately, server HTML included, instead of
+  // waiting on the uncached /api/geo lookup (155-171 ms). Regulated visitors
+  // are still covered: GTAG_INIT's region-scoped consent defaults deny them on
+  // gtag's own geo lookup before any hit is sent.
+  const pathname = usePathname();
+  const tracked = !!pathname && !isNonTrackedPath(pathname);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // The embeddable widget runs inside third-party iframes — never show a cookie
-    // banner or load GA/Pinterest there (no consent surface; it's someone else's page).
-    if (isNonTrackedPath(window.location.pathname)) return;
+    if (!tracked) return;
     let active = true;
+    // The geo lookup now only decides whether to show the banner.
     fetchConsentRegion().then((r) => {
       if (!active) return;
-      const initial = getStoredConsent();
-      setIsEmbed(false);
-      setStored(initial);
-      setRegion(r);
-      if (!initial && r === "regulated") setVisible(true);
+      if (!getStoredConsent() && r === "regulated") setVisible(true);
     });
 
     const onOpen = () => setVisible(true);
-    const onChange = (e: Event) =>
-      setStored((e as CustomEvent<"granted" | "denied">).detail);
     window.addEventListener(OPEN_PRIVACY_CHOICES_EVENT, onOpen);
-    window.addEventListener(CONSENT_CHANGE_EVENT, onChange);
     return () => {
       active = false;
       window.removeEventListener(OPEN_PRIVACY_CHOICES_EVENT, onOpen);
-      window.removeEventListener(CONSENT_CHANGE_EVENT, onChange);
     };
-  }, []);
+  }, [tracked]);
 
   const choose = useCallback((value: "granted" | "denied") => {
     setStoredConsent(value);
     setVisible(false);
   }, []);
 
-  if (isEmbed) return null;
+  if (!tracked) return null;
 
   return (
     <>
@@ -114,22 +121,6 @@ export function CookieConsent() {
         src="https://www.googletagmanager.com/gtag/js?id=G-056NR93JLK"
         strategy="afterInteractive"
       />
-      {adsAllowed(stored, region) && (
-        // Pinterest Tag — page tracking only (no enhanced match since we
-        // don't capture visitor emails on pageload).
-        <Script id="pinterest-tag" strategy="afterInteractive">
-          {`
-            !function(e){if(!window.pintrk){window.pintrk = function () {
-              window.pintrk.queue.push(Array.prototype.slice.call(arguments))};
-              var n=window.pintrk;n.queue=[],n.version="3.0";
-              var t=document.createElement("script");t.async=!0,t.src=e;
-              var r=document.getElementsByTagName("script")[0];
-              r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
-            pintrk('load', '2613209988121');
-            pintrk('page');
-          `}
-        </Script>
-      )}
 
       {visible && (
         <div className="fixed bottom-0 inset-x-0 z-[100] p-2 sm:p-6">

@@ -28,6 +28,29 @@ test('classic ready-mix whites (numeric ids) are kept', () => {
   assert.equal(shouldImport(color({ id: '1850', name: 'ULTRA PURE WHITE', hex: '#ffffff' })), true);
 });
 
+test('(HISP) Spanish-name duplicates are excluded', () => {
+  assert.equal(shouldImport(color({ id: 'PPH-59 (HISP)', name: 'HIERBA SANTA' })), false);
+  assert.equal(shouldImport(color({ id: 'PPH-59', name: 'HOLY HERB' })), true);
+});
+
+test('titleCaseName does not capitalize after an apostrophe', () => {
+  assert.equal(titleCaseName("WHALE'S TAIL"), "Whale's Tail");
+  assert.equal(titleCaseName("BEE'S KNEES"), "Bee's Knees");
+  assert.equal(titleCaseName("AMERICA'S CUP NAVY"), "America's Cup Navy");
+  assert.equal(titleCaseName("YOU'RE BLUSHING"), "You're Blushing");
+});
+
+test('titleCaseName keeps O/D/L prefixes capitalized', () => {
+  assert.equal(titleCaseName("O'BRIEN ORANGE"), "O'Brien Orange");
+  assert.equal(titleCaseName("COTE D'AZUR"), "Cote D'Azur");
+  assert.equal(titleCaseName("WILL O' THE WISP"), "Will O' the Wisp");
+});
+
+test('titleCaseName capitalizes a small word in final position', () => {
+  assert.equal(titleCaseName('FLUTTER BY'), 'Flutter By');
+  assert.equal(titleCaseName('SOMETHING TO DREAM OF'), 'Something to Dream Of');
+});
+
 test('legacy and malformed-hex entries are excluded', () => {
   assert.equal(shouldImport(color({ isLegacy: true })), false);
   assert.equal(shouldImport(color({ hex: 'rgb(1,2,3)' })), false);

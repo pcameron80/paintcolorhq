@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { safeNext } from "@/lib/safe-next";
 
 export async function GET(request: NextRequest) {
-  const next = request.nextUrl.searchParams.get("next") ?? "/dashboard";
+  const next = safeNext(request.nextUrl.searchParams.get("next"), request.nextUrl.origin, "/dashboard");
   const pendingCookies: { name: string; value: string; options?: Record<string, unknown> }[] = [];
 
   const supabase = createServerClient(

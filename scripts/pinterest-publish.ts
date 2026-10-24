@@ -63,7 +63,7 @@ const onlyKeys = onlyArg ? new Set(onlyArg.replace("--only=", "").split(",")) : 
 
 // ---- env + log helpers ----
 function upsertEnv(updates: Record<string, string>) {
-  let lines = fs.readFileSync(ENV_PATH, "utf8").split("\n");
+  const lines = fs.readFileSync(ENV_PATH, "utf8").split("\n");
   for (const [key, value] of Object.entries(updates)) {
     const idx = lines.findIndex((l) => l.startsWith(`${key}=`));
     const line = `${key}=${value}`;
@@ -100,7 +100,12 @@ async function refreshAccessToken(): Promise<void> {
   console.log("   ↻ refreshed access token");
 }
 
-async function pinterest(pathname: string, init: RequestInit, retry = true): Promise<any> {
+/** The Pinterest API fields this script reads: the created pin id. */
+interface PinterestResponse {
+  id: string;
+}
+
+async function pinterest(pathname: string, init: RequestInit, retry = true): Promise<PinterestResponse> {
   const res = await fetch(`${API}${pathname}`, {
     ...init,
     headers: { ...(init.headers ?? {}), Authorization: `Bearer ${accessToken}` },
@@ -193,10 +198,12 @@ async function main() {
     `${DRY_RUN ? "DRY RUN — " : ""}Publishing ${targets.length} pin(s)` +
       `${DAILY ? " (daily mix)" : DRIP ? " (drip, variety rotation)" : onlyKeys ? ` (--only=${[...onlyKeys].join(",")})` : ""}\n`,
   );
+  let failed = 0;
   for (const pin of targets) {
     try {
       await publishPin(pin, log);
     } catch (e) {
+      failed++;
       const msg = e instanceof Error ? e.message : String(e);
       console.error(`❌ ${pin.key} ${pin.name}: ${msg}`);
       // Surface auth/token failures — the drip runs unattended, so a silent
@@ -209,6 +216,12 @@ async function main() {
     if (!DRY_RUN) await new Promise((r) => setTimeout(r, 2500));
   }
   console.log("\nDone.");
+  // Every attempted post failed: exit non-zero so run.sh notifies and launchd's
+  // last exit status shows it. A partial failure is logged above and exits 0.
+  if (failed > 0 && failed === targets.length) {
+    console.error(`All ${failed} post(s) failed.`);
+    process.exitCode = 1;
+  }
 }
 
 main();

@@ -80,15 +80,22 @@ auto-appears in the sitemap, related-posts, and the Pinterest **guide** drip lan
 
 ## Stage 8 — Ping IndexNow (after the post is live)
 - Once the post is **live** (merged with a current `date`, or the day a scheduled
-  `date` reveals), run `npm run indexnow-blog` — it submits only blog posts that
-  went live in the last 2 days to Bing/Yandex (use `--slug=<slug>` to target one,
-  or `--days=N` for a wider window; `--dry` to preview).
+  `date` reveals), run `npm run indexnow-blog -- --submit`. It submits only blog
+  posts that went live in the last 2 days to Bing/Yandex (use `--slug=<slug>` to
+  target one, or `--days=N` for a wider window). Without `--submit` it is a dry
+  run that prints the payload and sends nothing.
 - `--slug` refuses a post whose `date` hasn't arrived (the engines would crawl a
   404) and any slug that matches no post. Run it on the reveal day; `--force`
   overrides the date check only.
-- **Targeted on purpose.** This only ever pings a handful of NEW blog URLs. Do
-  **not** resurrect the whole-sitemap `/api/cron/indexnow` daily submission — it
-  floods the engines (killed for that reason). The script hard-caps at 25 URLs.
+- **Targeted on purpose.** This only ever pings a handful of NEW or changed
+  URLs. The whole-sitemap `/api/cron/indexnow` daily route (about 27,000 URLs a
+  run) was **deleted on 2026-10-24** for flooding the engines. Never rebuild it.
+  The script hard-caps at 25 URLs.
+- **Non-blog pages** (a color page whose body changed, a fixed hub): pass
+  `--url=<url>` once per page, up to 25. Each must be on `www.paintcolorhq.com`
+  and either listed in the sitemap or answering 200. The run is a dry run
+  unless you add `--submit`; every real submission is appended to
+  `~/Library/Application Support/PaintColorHQ/indexnow-ledger.jsonl`.
 
 ---
 
@@ -99,13 +106,15 @@ auto-appears in the sitemap, related-posts, and the Pinterest **guide** drip lan
   doesn't depend on the branch the main checkout is on. For each
   post that revealed in the last 3 days it confirms the page is live (200, own
   canonical, in `sitemap/blog.xml`), pings IndexNow, and resubmits the sitemap to
-  Google Search Console. It then inspects each post once a day for 14 days and
+  Google Search Console. It then inspects each post once a day for 28 days and
   sends a macOS notification when Google reports it indexed, or when anything
   needs a look. Log, state and the worktree live in
   `~/Library/Application Support/PaintColorHQ/publish-check/`.
 - Google has no API for "Request indexing" on blog URLs (the Indexing API is for
-  job postings and livestreams only). For a priority post, click Request
-  indexing in the GSC URL Inspection UI by hand.
+  job postings and livestreams only). So on the reveal day and again on day 3,
+  while the post is still unindexed, the job raises a "Request indexing: <url>"
+  notification and logs the GSC inspection link. Open the link and click
+  Request indexing. Each nudge fires once per post.
 - Manual run: `npx tsx scripts/blog/publish-check.ts --dry` to preview.
 
 ## Parallel quick win (separate from posts)

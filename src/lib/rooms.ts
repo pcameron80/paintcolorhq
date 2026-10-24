@@ -14,6 +14,9 @@
  *     sometimes invents or moves grilles.
  *  4. python3 scripts/build-room-masks.py room-src/<id> --preview   (check preview.jpg)
  *  5. python3 scripts/export-rooms.py
+ *
+ * File names carry a content hash (base.<hash>.webp), so /rooms/* is served as
+ * immutable (next.config.ts). Never edit a published file in place: re-export.
  */
 import scenes from "./room-scenes.json";
 
@@ -32,6 +35,16 @@ export interface RoomScene {
   /** Path under /public to the room photo */
   image: string;
   /** Path under /public to each surface's mask; a missing surface isn't paintable here */
+  masks: Partial<Record<Surface, string>>;
+  /** The same photo and masks at 800 px wide, for phones and small embeds */
+  small: RoomAssets;
+}
+
+/** One resolution of a room: its photo and masks, all the same pixel size */
+export interface RoomAssets {
+  width: number;
+  height: number;
+  image: string;
   masks: Partial<Record<Surface, string>>;
 }
 

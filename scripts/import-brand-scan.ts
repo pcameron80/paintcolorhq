@@ -28,6 +28,7 @@ import * as dotenv from 'dotenv';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { titleCaseName, makeSlug } from './lib/behr-import-rules';
 import { classifyColorFamily, calculateLrv, rgbToLab, hexToRgb } from './lib/color-math';
+import { undertoneLabel } from './lib/undertone';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
@@ -218,6 +219,7 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
       lab_b_val: lab.b_val,
       lrv: Math.round(calculateLrv(rgb.r, rgb.g, rgb.b) * 10) / 10,
       color_family: classifyColorFamily(rgb.r, rgb.g, rgb.b),
+      undertone: undertoneLabel(c.hex!, lab.a, lab.b_val, `${slug}/${colorSlug}`),
       ...(rule.availability
         ? {
             availability: rule.availability,

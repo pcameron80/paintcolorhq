@@ -1,31 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
+import { useAuthUser } from "@/lib/use-auth-user";
 import { UserMenu } from "./user-menu";
 
 export function AuthButton() {
-  const [user, setUser] = useState<{
-    email: string;
-    avatarUrl: string | null;
-  } | null>(null);
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    const supabase = createSupabaseBrowserClient();
-    supabase.auth
-      .getUser()
-      .then(({ data: { user } }) => {
-        if (user) {
-          setUser({
-            email: user.email ?? "",
-            avatarUrl: user.user_metadata?.avatar_url ?? null,
-          });
-        }
-      })
-      .catch(() => {})
-      .finally(() => setReady(true));
-  }, []);
+  const { user, ready } = useAuthUser();
 
   // Always render the sign-in link as default — both server and client start with this
   // Once auth check completes, swap to UserMenu if logged in

@@ -1,5 +1,5 @@
 type GtagEvent = {
-  [key: string]: string | number | undefined;
+  [key: string]: string | number | boolean | undefined;
 };
 
 type PlausibleFn = ((event: string, options?: { props?: Record<string, string> }) => void) & { q?: unknown[] };
@@ -17,6 +17,7 @@ const PLAUSIBLE_GOALS: Record<string, string> = {
   retailer_click: "Retailer Click",
   color_search: "Color Search",
   color_compare: "Compare",
+  web_vitals: "Web Vitals",
 };
 
 function sendToPlausible(eventName: string, params?: GtagEvent) {
@@ -34,7 +35,18 @@ function sendToPlausible(eventName: string, params?: GtagEvent) {
     props.term = String(params.search_term).trim().toLowerCase().slice(0, 50);
     props.results = Number(params.result_count) > 0 ? "some" : "none";
   }
-  if (eventName === "retailer_click" && params?.color_brand) props.brand = String(params.color_brand);
+  if (eventName === "retailer_click") {
+    // brand is now the color's brand slug (it was the link hostname before
+    // 2026-10-26); retailer carries the hostname.
+    if (params?.color_brand) props.brand = String(params.color_brand);
+    if (params?.retailer) props.retailer = String(params.retailer);
+    if (params?.affiliate) props.affiliate = String(params.affiliate);
+  }
+  if (eventName === "web_vitals") {
+    if (params?.metric_name) props.metric = String(params.metric_name);
+    if (params?.metric_rating) props.rating = String(params.metric_rating);
+    if (params?.page_type) props.page_type = String(params.page_type);
+  }
   // Queue until the script loads (it replays window.plausible.q). The script
   // only loads on the production host, so elsewhere this queue is never sent.
   const fn: PlausibleFn =
@@ -137,11 +149,18 @@ export function trackBlogRead(slug: string, category?: string) {
 
 // --- Retailer outbound click ---
 
-export function trackRetailerClick(outboundUrl: string, brand: string, colorName: string) {
+export interface RetailerClickParams {
+  outbound_url: string;
+  retailer: string;
+  color_brand?: string;
+  color_slug?: string;
+  affiliate: "true" | "false";
+  color_name?: string;
+}
+
+export function trackRetailerClick(p: RetailerClickParams) {
   trackEvent("retailer_click", {
-    outbound_url: outboundUrl,
-    color_brand: brand,
-    color_name: colorName,
+    ...p,
     source_page: typeof window !== "undefined" ? window.location.pathname : undefined,
   });
 }
@@ -154,9 +173,16 @@ export function trackPageView(params: GtagEvent) {
 
 // --- Scroll depth (25 / 50 / 90) ---
 
-export function initScrollDepthTracking() {
-  if (typeof window === "undefined") return;
+/**
+ * Starts scroll-depth milestones for the page at `path` and returns a cleanup.
+ * The path and page type are captured at start, so a milestone can never be
+ * tagged with the next page's URL. AnalyticsProvider restarts it on every
+ * pathname change, so soft navigations get their own milestones.
+ */
+export function initScrollDepthTracking(path: string): () => void {
+  if (typeof window === "undefined") return () => {};
 
+  const pageType = detectPageType(path);
   const thresholds = [25, 50, 90];
   const fired = new Set<number>();
 
@@ -170,8 +196,8 @@ export function initScrollDepthTracking() {
         fired.add(t);
         trackEvent("scroll_depth", {
           percent_scrolled: String(t),
-          page_slug: window.location.pathname,
-          page_type: detectPageType(),
+          page_slug: path,
+          page_type: pageType,
         });
       }
     }
@@ -182,46 +208,46 @@ export function initScrollDepthTracking() {
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
+  return () => window.removeEventListener("scroll", onScroll);
 }
 
 // --- Time on page (30s / 60s / 120s / 300s) ---
 
-export function initTimeOnPageTracking() {
-  if (typeof window === "undefined") return;
+/** Starts dwell-time buckets for the page at `path`; returns a cleanup. */
+export function initTimeOnPageTracking(path: string): () => void {
+  if (typeof window === "undefined") return () => {};
 
+  const pageType = detectPageType(path);
   const buckets = [30, 60, 120, 300];
-  const timers: ReturnType<typeof setTimeout>[] = [];
+  const timers = buckets.map((seconds) =>
+    setTimeout(() => {
+      trackEvent("time_on_page", {
+        time_bucket: `${seconds}s`,
+        page_slug: path,
+        page_type: pageType,
+      });
+    }, seconds * 1000),
+  );
 
-  for (const seconds of buckets) {
-    timers.push(
-      setTimeout(() => {
-        trackEvent("time_on_page", {
-          time_bucket: `${seconds}s`,
-          page_slug: window.location.pathname,
-          page_type: detectPageType(),
-        });
-      }, seconds * 1000),
-    );
-  }
-
-  // Clean up on navigation
-  const cleanup = () => {
+  return () => {
     for (const t of timers) clearTimeout(t);
-    window.removeEventListener("beforeunload", cleanup);
   };
-  window.addEventListener("beforeunload", cleanup);
 }
 
 // --- Helpers ---
 
-function detectPageType(): string {
-  if (typeof window === "undefined") return "unknown";
-  const path = window.location.pathname;
+const MATCH_LISTING_PATH = /^\/match\/[^/]+\/to\/[^/]+\/?$/;
+
+/** Page type for a pathname; uses the same values as each route's TrackPage. */
+export function detectPageType(path: string): string {
   if (path.startsWith("/blog")) return "blog";
   if (path.startsWith("/tools")) return "tool";
   if (path.startsWith("/brands")) return "brand";
   if (path.startsWith("/colors/family")) return "family";
+  if (path.startsWith("/colors/hue")) return "hue_band";
   if (path.startsWith("/colors")) return "color";
+  if (path === "/match" || path === "/match/") return "match_hub";
+  if (MATCH_LISTING_PATH.test(path)) return "match_listing";
   if (path.startsWith("/match")) return "match";
   if (path.startsWith("/inspiration")) return "inspiration";
   if (path.startsWith("/compare")) return "compare";

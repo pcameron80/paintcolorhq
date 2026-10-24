@@ -6,14 +6,15 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { inspirationPalettes } from "@/lib/palettes";
 import { findClosestColor } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
+import { ogDefaults } from "@/lib/og";
 
 export const revalidate = 604800; // 7d — static index page
 
 export const metadata: Metadata = {
   title: "Color Inspiration",
-  description: "Browse 18 curated color palettes for every style — modern farmhouse, coastal retreat, moody library, and more. Each palette maps to real paint colors.",
+  description: `Browse ${inspirationPalettes.length} curated color palettes for every style: modern farmhouse, coastal retreat, moody library, and more. Each palette maps to real paint colors.`,
   alternates: { canonical: "https://www.paintcolorhq.com/inspiration" },
-  openGraph: { title: "Color Inspiration | Paint Color HQ", description: "Browse curated color palettes for every style.", url: "https://www.paintcolorhq.com/inspiration" },
+  openGraph: { ...ogDefaults, title: "Color Inspiration | Paint Color HQ", description: "Browse curated color palettes for every style.", url: "https://www.paintcolorhq.com/inspiration" },
 };
 
 interface ResolvedPalette {

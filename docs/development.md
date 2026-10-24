@@ -106,12 +106,19 @@ npm run seed-matches
 
 ### Verifying / Refreshing Retailer Links
 
-Each brand's website uses different color family categories in their URLs. The override system ensures our links point to the correct pages. To re-verify:
+PPG, Valspar, Dutch Boy and Vista links come from each brand's own sitemap, not from guessing. Refresh them quarterly (about 5 minutes; PPG fetches about 150 pages at 1 request per second), review the diff in `src/lib/official-urls/`, then sample:
+
+```bash
+npx tsx scripts/generate-official-color-urls.ts            # all four, or name brands
+npx tsx scripts/check-retailer-links.ts --sample 10 1000   # 200 + same path + name in <title>
+```
+
+The maps are keyed by our `color_number`. A color missing from a map has no page on the brand site (retired, or a code that names a different color there) and gets no official link. Farrow & Ball links are built from the name (`/us/paint/<name>`); Hirshfield's has no per-color pages, so it links to its color library.
+
+Sherwin-Williams, Dunn-Edwards, Kilz and RAL still use the probe-and-override flow below. SW serves a color under any live family segment, so its link only has to name one of the eight in its sitemap (`white` replaced `white-and-pastel` in 2026).
 
 ```bash
 # 1. Check all colors for a brand (probes each URL, tries all families on failure)
-npx tsx scripts/check-retailer-links.ts valspar 150
-npx tsx scripts/check-retailer-links.ts ppg 150
 npx tsx scripts/check-retailer-links.ts sherwin-williams 150
 
 # 2. Generate the TypeScript override file from all JSON results
@@ -123,13 +130,15 @@ npx tsx scripts/generate-retailer-overrides.ts
 - `generate-retailer-overrides.ts` reads those JSON files and generates `src/lib/retailer-overrides.ts` with `Record<string, string>` maps keyed by color number.
 - Colors not found on any family are added to a `NOT_FOUND` set so the direct link is skipped (fallback to retailer search where available).
 
-**Current coverage (Feb 2026):**
+**Official-page coverage (2026-10-24, from the sitemaps):**
 
-| Brand | Colors | Passed | Overrides | Not Found |
-|-------|--------|--------|-----------|-----------|
-| Valspar | 1,766 | 756 | 820 | 190 |
-| PPG | 2,088 | 933 | 1,100 | 55 |
-| Sherwin-Williams | 1,527 | 1,406 | 40 | 81 |
+| Brand | Colors | Linked to the color's page | No page on the brand site |
+|-------|--------|----------------------------|---------------------------|
+| PPG (pittsburghpaints.com) | 3,261 | 3,185 | 76 |
+| Valspar | 2,358 | 1,596 | 762 |
+| Dutch Boy | 1,441 | 1,316 | 125 |
+| Vista Paint | 2,984 | 2,881 | 103 |
+| Farrow & Ball | 167 | 167 | 0 |
 
 ### Clearing the Build Cache
 
@@ -159,7 +168,7 @@ lsof -i :3000  # Check what's using port 3000
 | `src/lib/blog-posts.tsx` | Blog post data + JSX content functions |
 | `src/lib/palettes.ts` | Curated inspiration palette definitions |
 | `src/lib/retailer-links.ts` | Brand-to-retailer URL mapping with verified override lookups |
-| `src/lib/retailer-overrides.ts` | Auto-generated color family overrides for 1,960 colors (do not edit manually) |
+| `src/lib/retailer-overrides.ts` | Auto-generated SW, Dunn-Edwards, Kilz and RAL not-found sets (do not edit manually) |
 | `src/lib/types.ts` | TypeScript interfaces for all data models |
 
 ## Known Gotchas
@@ -172,7 +181,7 @@ lsof -i :3000  # Check what's using port 3000
 
 4. **Route conflicts**: Dynamic segments at the same path level must share parameter names. Color family pages are at `/colors/family/[familySlug]` to avoid conflicting with `/colors/[brandSlug]/[colorSlug]`.
 
-5. **AdSense script**: Must use a raw `<script>` tag, not Next.js `<Script>` component, for crawler verification to work.
+5. **Ads and CSP**: AdSense was removed in October 2026 and Journey by Mediavine is the ad path. Keep the page CSP in `next.config.ts` scheme-based; a host allowlist blocks ad scripts, frames and workers with no error beyond a console CSP violation.
 
 6. **Large data files**: `data/cross-brand-matches.json` is 222MB. It's gitignored and excluded from Vercel deploys via `.vercelignore`.
 

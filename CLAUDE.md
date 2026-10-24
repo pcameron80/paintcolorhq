@@ -6,7 +6,7 @@
 
 - **URL:** https://www.paintcolorhq.com
 - **Type:** Cross-brand paint color matching and reference site.
-- **Scale:** 25K+ paint colors across 14 brands; cross-brand matches via CIEDE2000 / Delta E 2000.
+- **Scale:** 25K+ paint colors across 13 brands; cross-brand matches via CIEDE2000 / Delta E 2000.
 - **Audience:** US, English. Homeowners and decorators researching paint colors, matching colors across brands, planning painting projects.
 - **Stack:** Next.js 16 (App Router, Turbopack) + React 19 + TypeScript 5.9 + Tailwind 4 + Supabase (Postgres) + Resend + GA4 (G-056NR93JLK) + tsx scripts for the data pipeline.
 - **Monetization:** Currently engagement-driven; potential routes via affiliate links to paint retailers, but not active yet.
@@ -64,7 +64,7 @@ supabase/        # Supabase config/migrations
 - `src/lib/color-description.ts` - Auto-generated color page descriptions
 - `src/lib/brand-content.tsx` - Brand-specific editorial content + subtitles
 - `src/lib/family-content.tsx` - All 15 color family editorial content
-- `src/lib/palettes.ts` - 18 curated inspiration palettes
+- `src/lib/palettes.ts` - 21 curated inspiration palettes
 - `src/lib/blog-posts.tsx` - Blog post definitions + getRelatedPosts()
 - `src/lib/supabase.ts` - Supabase client (server-side, anon)
 - `src/lib/supabase-server.ts` - Supabase server client (with cookies/auth)

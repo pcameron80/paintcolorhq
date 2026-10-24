@@ -167,9 +167,16 @@ Runs as the `prebuild` hook and writes `public/match-data/<colorId>.json` (top 5
 After the main pipeline, retailer links can be verified against brand websites. This is a separate process because it depends on external website availability and doesn't affect the core color data.
 
 ```
+Step 4b: generate-official-color-urls  Brand sitemaps -> src/lib/official-urls/{brand}.json (quarterly)
 Step 5: check-retailer-links     Probe brand URLs for each color -> retailer-links-{brand}.json
 Step 6: generate-retailer-overrides  Convert JSON results -> src/lib/retailer-overrides.ts
 ```
+
+### Step 4b: Official color URLs from brand sitemaps
+
+**Script:** `scripts/generate-official-color-urls.ts [ppg|valspar|dutch-boy|vista-paint ...] [--dry-run]`
+
+Reads our catalog from the public `/api/brand/<slug>/colors` endpoint and each brand's sitemap, and writes a `color_number -> path` map per brand. Codes join Valspar, Dutch Boy and Vista pages; a page is linked only when its URL name matches ours too (Vista's stock base `49-vista-white` shares its code with `49-auburn-wave`). PPG pages are keyed by name on pittsburghpaints.com, so repeated names are resolved by reading the code from each candidate page's `<title>`, one request per second. Each run refuses to write a map that covers under half the brand's colors. Run quarterly, then `check-retailer-links.ts --sample`.
 
 ### Step 5: Check Retailer Links
 
@@ -194,12 +201,10 @@ Behr, Kilz, Benjamin Moore and the big-box search pages answer scripts with 403 
 - `notFound[]` — Colors not found under any family on the brand's website
 - `checked` / `passed` — Summary counts
 
-**Supported brands:** `valspar`, `ppg`, `sherwin-williams`, `dutch-boy`, `dunn-edwards`, `kilz`, `ral`. Colorhouse was removed on 2026-10-24 because its store domain was hijacked; Colorhouse color pages have no brand link.
+**Supported brands:** `sherwin-williams`, `dunn-edwards`, `kilz`, `ral`. Colorhouse was removed on 2026-10-24 because its store domain was hijacked; Colorhouse color pages have no brand link. PPG, Valspar, Dutch Boy and Vista moved to the sitemap maps (Step 4b) the same day.
 
 **Brand website family categories:**
-- **Valspar** (13): pink, red, orange, yellow, green, teal, blue, white, gray, black, brown, neutral, purple
-- **PPG** (15): reds, oranges, yellows, greens, blues, purples, pinks, browns, neutrals, whites, blacks, grays, beiges, aquas, metallics
-- **Sherwin-Williams** (8): red, orange, yellow, green, blue, purple, neutral, white-and-pastel
+- **Sherwin-Williams** (8, from its sitemap): red, orange, yellow, green, blue, purple, neutral, white. SW serves a color under any of them; `white-and-pastel` now 404s.
 
 ### Step 6: Generate Retailer Overrides
 
@@ -226,16 +231,33 @@ npm run scan-palettes                          # all brands (~25 min; Vista and 
 npm run scan-palettes -- --brand=behr,ppg      # subset; merges into the same day's report
 ```
 
-Output lands in `data/brand-scans/<YYYY-MM-DD>/` (gitignored): `REPORT.md`,
-`summary.json`, and per brand `-live`, `-missing`, `-not-live` and
-`-hex-changed` JSON files.
+Output lands in `data/brand-scans/<YYYY-MM-DD>/` (gitignored, resolved from the
+working directory; `--out-dir=<dir>` overrides it): `REPORT.md`, `summary.json`,
+and per brand `-live`, `-missing`, `-not-live`, `-hex-changed` and
+`-duplicate-codes` JSON files. `--reuse-live=<dir>` re-diffs a saved
+`<brand>-live.json` against the DB without crawling the brand site again
+(Dunn-Edwards and Vista take minutes each).
 
 - **Missing**: in the live palette, no DB row by code or alternate number. A
   `dbCodeForName` field means the same name exists under another code, which
   usually means a renumber or dual number, not a new color.
 - **Not live**: active DB rows the brand no longer lists. Candidates for
   `is_archived`, never deletion; the URLs keep ranking.
-- **Hex changed**: same code, swatch differs by CIEDE2000 2 or more.
+- **Hex changed**: same code, swatch differs by CIEDE2000 2 or more. One entry
+  per DB row: when two rows hold one code, each is compared on its own.
+- **Duplicate codes**: codes held by two or more DB rows (Behr keeps "PR-W05"
+  and "PR-W5" as two rows of one color), each row with its CIEDE2000 against the
+  live swatch. Until 2026-10-24 the diff kept one row per code, so a wrong
+  swatch on the second row was never reported; the first scan with the fix
+  found 70 such Behr rows.
+
+Codes are compared after each brand's `normalizeCode` in
+`palette-sources.ts`: Sherwin-Williams drops "SW" and leading zeros, Farrow &
+Ball drops "No.", PPG drops a "PPG" or "COL" prefix, and Behr drops the leading
+zeros of every number after a letter ("PR-W05" and "PR-W5" are one code, so
+Behr's not-live count fell from 572 to 306). PPG is read from
+pittsburghpaints.com: ppgpaints.com/sitemap.xml became an HTML redirect page in
+October 2026, which would have reported 0 colors.
 
 Fetchers live in `scripts/lib/palette-sources.ts`, one per brand, and the
 diff rules (with tests, `npm run test:palette-diff`) in
@@ -254,7 +276,7 @@ npm run export-db-colors && npm run compute-matches && npm run seed-matches
 
 ## Published LRVs and names
 
-Most LRVs in `colors` were computed from hex at import (migration 004). Four brands publish LRV in the feeds the palette drift scan pulls: Benjamin Moore, Behr, Sherwin-Williams and Dutch Boy. The scan output is the source for both scripts below. Run them after `scan-brand-palettes` and after `apply-hex-corrections.ts`, names first:
+Most LRVs in `colors` were computed from hex at import (migration 004). Eight brands publish LRV where the palette drift scan already reads: Benjamin Moore, Behr, Sherwin-Williams and Dutch Boy in their feeds; Dunn-Edwards ("Light Reflectance Value: LRV 84"), Vista Paint ("LRV: 74") and PPG (the "LRV:" label beside R/G/B) on each color page; Hirshfield's in the `LRV` field of its color-picker JSON. Colorhouse, RAL, Farrow & Ball, Valspar and Kilz carry no LRV in the scan. The scan output is the source for both scripts below. Run them after `scan-brand-palettes` and after `apply-hex-corrections.ts`, names first:
 
 ```bash
 # 1. Names mangled at import: "Strand of Pearlsreg", "Jalapeo Pepper", CC/CSP names cut to one word
@@ -268,11 +290,39 @@ npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/<date> --bran
 
 Both write a JSON backup to `scripts/data/backups/` before any write and take `--revert=<backup>`. Writes are conditional on the value read, so a concurrent edit is skipped, not overwritten.
 
-- **LRV:** matches on `color_number`, then `alternate_numbers`. It skips rows listed in `<brand>-hex-changed.json` (owned by `apply-hex-corrections.ts`), rows whose name does not match the feed, feed LRVs of 0, and Benjamin Moore `PM-` codes. The BM API gives premixed `PM-` codes their own LRV, which disagrees with BM's color pages (PM-1 Super White: feed 89.1, page 87.36). LRV does not feed Delta E, so matches need no recompute. Sherwin-Williams and Dutch Boy were left at their computed values on 2026-10-11: they differ from the feed by less than 1 point on all but 13 rows, and Dutch Boy publishes whole numbers.
-- **Names:** fixes only names that lost characters at import. Manufacturer renames (BM's "Gypsy Love" is now "Fascinator Rose") need `--renames`. When you apply renames, add each true former name to `src/lib/former-names.ts`; the color page then shows "Previously listed as ..." and adds it to the meta description, so the old name still finds the page. `SKIP_RENAME` in the script holds feed misspellings that must never be written. A code whose swatch disagrees with ours (CIEDE2000 > 5) is never written. Slugs are never changed.
+- **LRV:** matches on `color_number`, then `alternate_numbers`, both through the brand's `normalizeCode`, and updates every row that holds the code. A change under `--min-diff` (default 0.05) is skipped; one over `--max-delta` (default 10 points) is printed as an outlier for review and never written (PPG lists Botany Beige 15-27 at 87 and White Chip 15-06 at 71, which look swapped). The dry run prints a tally per code prefix (Dunn-Edwards DE, DEA, DET, DEW...), so a prefix whose values all move together stands out. It skips rows listed in `<brand>-hex-changed.json` (owned by `apply-hex-corrections.ts`), rows whose name does not match the feed, feed LRVs of 0, Benjamin Moore `PM-` codes, and Vista `R` codes (those pages print CIELAB L* under the LRV label: R132 Tannic Tea shows 32.7 for a color whose LRV is about 7). The BM API gives premixed `PM-` codes their own LRV, which disagrees with BM's color pages (PM-1 Super White: feed 89.1, page 87.36). LRV does not feed Delta E, so matches need no recompute. Sherwin-Williams and Dutch Boy were left at their computed values on 2026-10-11: they differ from the feed by less than 1 point on all but 13 rows, and Dutch Boy publishes whole numbers.
+- **Names:** fixes only names that lost characters at import. Manufacturer renames (BM's "Gypsy Love" is now "Fascinator Rose") need `--renames`. When you apply renames, add each true former name to `src/lib/former-names.ts`; the color page then shows "Previously listed as ..." and adds it to the meta description, so the old name still finds the page. `SKIP_RENAME` in the script holds feed misspellings that must never be written, and `FEED_NAME_STYLE` restyles feed names that would read wrong in the catalog ("BEACH VIBES"). A code whose swatch disagrees with ours (CIEDE2000 > 5) is never written. Slugs are never changed. `--case` also writes capitalization fixes, but only two import artifacts: a word-final capital after an apostrophe ("Lion'S Roar") and an initialism title-cased at import ("Nypd"). Feeds title-case every word ("A Touch Of Gold"), so their casing is never copied whole, and `KEEP_STYLED` protects names styled on purpose (O'Reilly Green, O'Brien Orange, Cote D'Azur, Je M'Apelle Missy). `MANUAL` holds hand fixes for rows the feed cannot reach (Kilz needs crawl4ai) and runs for any brand passed in `--brand`. PPG codes match through `normalizePpgCode`; before 2026-10-24 none of its 37 renames matched.
+
+### Quarterly runbook
+
+Run in this order, each step as a dry run first; the `--apply` steps write to production and are run by Philip:
+
+1. `npm run scan-palettes` (about 25 minutes). Read `REPORT.md`: a brand marked failed has a broken fetcher, not zero changes.
+2. Review `<brand>-hex-changed.json` and `<brand>-duplicate-codes.json`, then `apply-hex-corrections.ts`.
+3. `apply-published-names.ts` (add `--renames` and `--case` after reading the lists), then `apply-published-lrv.ts`.
+4. `import-brand-scan.ts` for reviewed gaps, then `npm run export-db-colors && npm run compute-matches && npm run seed-matches`.
+5. `npx tsx scripts/generate-official-color-urls.ts --dry-run`, then without `--dry-run`, and review the diff in `src/lib/official-urls/` (Step 4b above).
+6. `npx tsx scripts/check-retailer-links.ts --sample`, then `npx tsx scripts/generate-retailer-overrides.ts` if overrides changed (Steps 5 and 6).
+7. `npm run audit-colors` before anything that quotes color data ships.
 - **Blog copy prints LRVs.** After an LRV change, run `npm run audit-colors` (below). It catches a printed LRV that no longer matches; gap, range and ordering claims built on the moved colors still need a read.
 
 `scrape-bm-lrv.ts` and `scrape-behr-lrv.ts` are superseded. They only overwrote differences of 2 or more, which left about 1,250 BM rows 1 to 2 points off (Hale Navy HC-154 held 7.1; BM publishes 8.36). They also depend on the NAS crawl4ai server, which now requires `CRAWL4AI_TOKEN`.
+
+## Duplicate rows
+
+`dedupe-colors.ts` plans; `retire-bad-color-rows.ts` deletes. Grouping rules and the canonical choice are in `scripts/lib/dedupe-rules.ts`: same name and hex, Behr padded and unpadded codes with the same name ("PPU18-01" / "PPU18-1", hex can differ), one code under two slugs, Behr "(HISP)" Spanish-name rows, Sherwin-Williams 35 / 0035, and Benjamin Moore AC- aliases from BM's own API. The canonical is the row in the live feed, then the non-HISP row, then the brand numbering rules (BM: CC- and AC- lose, OC-/HC- beat PM-), then the shorter slug. Availability, LRV and hex are never copied from a loser.
+
+```bash
+npx tsx scripts/fetch-bm-aliases.ts                  # read-only: data/bm-ac-aliases.json
+npx tsx scripts/dedupe-colors.ts                     # plan: scripts/data/dedupe-plan-<date>.json, src/ untouched
+npx tsx scripts/dedupe-colors.ts --write-redirects   # merge the plan's 301s into src/data/color-redirects.json (never drops one)
+# commit and deploy the redirects, then:
+npx tsx scripts/retire-bad-color-rows.ts --pairs=scripts/data/dedupe-plan-<date>.json           # dry run
+npx tsx scripts/retire-bad-color-rows.ts --pairs=scripts/data/dedupe-plan-<date>.json --apply   # backup, then write
+npx tsx scripts/retire-bad-color-rows.ts --revert=scripts/data/backups/retire-<ts>.json --apply # undo
+```
+
+The retire step backs up every deleted row (all columns), its matches, every rebuilt list and every `project_colors` ref, folds the loser's code into the canonical's `alternate_numbers`, rebuilds the top 5 for every source that listed a loser, and re-points projects. It refuses a pair whose canonical is not in the live feed while the loser is, and refuses `--apply` while any redirect is missing from the committed map. `compute-matches` breaks equal Delta E ties the same way (live row first, then id), so re-export with `npm run export-db-colors` first; files exported before 2026-10-24 carry no `last_seen_live_on`.
 
 ## Content color-fact audit
 
@@ -291,3 +341,10 @@ It reads every color from Supabase and checks the content files (`src/lib/blog-p
 - **info** (with `--changed`): every mention of a corrected color, because descriptive words ("pink-beige", "soft blue-gray") can't be checked by number and need a read.
 
 It exits 1 on any error, so it can gate a deploy; `--strict` also fails on warnings. Matching runs on the copy's own words: a brand name followed by the full color name ("Behr Shy Green", "its SW match Simple Stone"), `/colors/` links, Swatches, and table cells under a "Closest <brand>" header. A color mentioned without its brand is not checked. Logic and tests: `scripts/blog/audit-color-facts-lib.ts`.
+
+## Traffic measurement (Plausible and Bing)
+
+These read analytics, not the color data, but they gate the numbers that go into planning:
+
+- `scripts/analytics/` holds read-only ClickHouse queries against the self-hosted Plausible database on the NAS, run with `scripts/analytics/run-clickhouse.sh <file.sql> <start> <end>`. Run `heavy-hitters.sql` before recording any traffic baseline, then `plausible-engagement.sql` for raw, bot-filtered and sensitivity figures by landing type. The filter definition and a reference run are in `scripts/analytics/README.md`.
+- `npm run bing-stats -- <command>` reads the Bing Webmaster API: `pages` / `queries` in whole weekly buckets (`--weeks`, `--from`, `--to`; top 100 pages a week only), `brands-did` for the SW/BM brand-title test against control brand pages, and `crawl`, `issues`, `feeds`, `url-info` and `links` for Bing's index view. Usage is in the header of `scripts/seo/bing-stats.ts`.

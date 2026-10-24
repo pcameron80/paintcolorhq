@@ -1,13 +1,24 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
+import { capText, normalizeHex } from "@/lib/og-params";
 
 export const runtime = "edge";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-  const hex = searchParams.get("hex") || "#4A90D9";
-  const name = searchParams.get("name") || "Paint Color";
-  const brand = searchParams.get("brand") || "";
+  // hex is optional (blog posts send only name + brand), but a present-and-invalid
+  // value is a bad request: rendering it would cache a broken swatch for 30 days.
+  const rawHex = searchParams.get("hex");
+  let hex = "#4A90D9";
+  if (rawHex !== null) {
+    const normalized = normalizeHex(rawHex);
+    if (!normalized) {
+      return new Response("Invalid 'hex' parameter (expected #RRGGBB)", { status: 400 });
+    }
+    hex = normalized;
+  }
+  const name = capText(searchParams.get("name"), 100) || "Paint Color";
+  const brand = capText(searchParams.get("brand"), 60);
 
   // Determine if the color is light or dark for text contrast
   const r = parseInt(hex.slice(1, 3), 16);
@@ -96,7 +107,7 @@ export async function GET(request: NextRequest) {
       width: 1200,
       height: 630,
       headers: {
-        "Cache-Control": "public, max-age=86400, s-maxage=86400",
+        "Cache-Control": "public, max-age=2592000, s-maxage=2592000, immutable",
       },
     }
   );
