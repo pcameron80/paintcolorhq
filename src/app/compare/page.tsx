@@ -47,7 +47,9 @@ const POPULAR_PAIRS: [string, string][] = [
 async function loadPopularPairs() {
   const bySlug = async (key: string) => {
     const [brand, slug] = key.split("/");
-    return getColorBySlug(brand, slug);
+    // getColorBySlug throws on a database error; a missing example pair is
+    // not worth failing the page over.
+    return getColorBySlug(brand, slug).catch(() => null);
   };
   const pairs = await Promise.all(POPULAR_PAIRS.map(async ([a, b]) => [await bySlug(a), await bySlug(b)] as const));
   return pairs.filter((p): p is readonly [NonNullable<typeof p[0]>, NonNullable<typeof p[1]>] => Boolean(p[0] && p[1]));

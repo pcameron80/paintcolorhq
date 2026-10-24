@@ -12,7 +12,7 @@ import { CuratedPalettes } from "@/components/curated-palettes";
 import { SaveToProject } from "@/components/save-to-project";
 import { ShareButton } from "@/components/share-button";
 import { PinterestSaveButton } from "@/components/pinterest-save-button";
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand, getMoreFromFamily } from "@/lib/queries";
 import { generateColorLede, nearestMatchesPerBrand, generateMetaDescription } from "@/lib/color-description";
 import { getColorEditorial } from "@/lib/color-editorial";
@@ -46,10 +46,16 @@ export const revalidate = 2592000; // 30d — static color/match/brand data; red
 export async function generateStaticParams() {
   // Verify each slug exists in the database before claiming it as a static
   // param — protects the build from stale entries when a slug gets renamed.
+  // A transient Supabase error on one slug skips that slug (it renders on
+  // demand instead) rather than failing the whole build.
   const verified = await Promise.all(
     POPULAR_COLOR_SLUGS.map(async (params) => {
-      const color = await getColorBySlug(params.brandSlug, params.colorSlug);
-      return color ? params : null;
+      try {
+        const color = await getColorBySlug(params.brandSlug, params.colorSlug);
+        return color ? params : null;
+      } catch {
+        return null;
+      }
     }),
   );
   return verified.filter((p): p is { brandSlug: string; colorSlug: string } => p !== null);
@@ -119,15 +125,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const color = await getColorBySlug(brandSlug, colorSlug);
   if (!color) {
     // Slug-renamed redirect: Google still has old slugs like /benjamin-moore/blue-736
-    // indexed at decent positions. Resolve via color_number → canonical slug. Doing
-    // this in generateMetadata (not just the page body) ensures Next.js short-circuits
-    // with a proper HTTP 307 instead of streaming the not-found UI alongside a meta
-    // refresh, which Googlebot indexes as a soft-404.
-    const colorNumber = extractColorNumber(colorSlug);
-    if (colorNumber) {
-      const correctSlug = await getColorSlugByNumber(brandSlug, colorNumber);
-      if (correctSlug && correctSlug !== colorSlug) redirect(`/colors/${brandSlug}/${correctSlug}`);
-    }
+    // indexed at decent positions. Resolve via color number -> canonical slug
+    // (src/lib/color-number.ts). Doing this in generateMetadata (not just the page
+    // body) makes Next.js short-circuit with a real 308 instead of streaming the
+    // not-found UI alongside a meta refresh, which Googlebot indexes as a soft-404.
+    // This replaced the middleware lookup, which ran ahead of the CDN cache on
+    // every request. The target is the canonical URL, no query string, one hop.
+    await redirectRenamedSlug(brandSlug, colorSlug);
     // notFound() here, not only in the page body: once the page starts
     // streaming the status is locked at 200, which Google records as a
     // soft 404. Metadata resolves first, so this returns a real 404.
@@ -176,10 +180,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-function extractColorNumber(slug: string): string | null {
-  const patterns = [/-([a-z]{1,4}\d+-\d+[a-z]*)$/i, /-([a-z]{1,4}-\d+[a-z]*)$/i, /-(\d+-\d+)$/i, /-(\d+)$/i];
-  for (const p of patterns) { const m = slug.match(p); if (m) return m[1].toUpperCase(); }
-  return null;
+async function redirectRenamedSlug(brandSlug: string, colorSlug: string): Promise<void> {
+  const correctSlug = await getColorSlugByNumber(brandSlug, colorSlug);
+  if (correctSlug && correctSlug !== colorSlug) permanentRedirect(`/colors/${brandSlug}/${correctSlug}`);
 }
 
 // JSON-LD helper — content is server-generated from trusted database values only
@@ -192,11 +195,7 @@ export default async function ColorPage({ params }: PageProps) {
   const color = await getColorBySlug(brandSlug, colorSlug);
 
   if (!color) {
-    const colorNumber = extractColorNumber(colorSlug);
-    if (colorNumber) {
-      const correctSlug = await getColorSlugByNumber(brandSlug, colorNumber);
-      if (correctSlug && correctSlug !== colorSlug) redirect(`/colors/${brandSlug}/${correctSlug}`);
-    }
+    await redirectRenamedSlug(brandSlug, colorSlug);
     notFound();
   }
 

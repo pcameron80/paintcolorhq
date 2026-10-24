@@ -99,7 +99,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     const resolved = await Promise.all(
       compareSwatches.map((c) => {
         const [, , brandSlug, colorSlug] = c.href.split("/");
-        return brandSlug && colorSlug ? getColorBySlug(brandSlug, colorSlug) : null;
+        // Optional compare link: a database error just drops it.
+        return brandSlug && colorSlug ? getColorBySlug(brandSlug, colorSlug).catch(() => null) : null;
       }),
     );
     if (resolved[0] && resolved[1]) compareHref = `/compare?color1=${resolved[0].id}&color2=${resolved[1].id}`;

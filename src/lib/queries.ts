@@ -1,5 +1,6 @@
 import { NEARLY_IDENTICAL_MAX } from "./closeness";
 import { isColorIndexable } from "./indexing";
+import { colorNumberCandidates, colorNumberQueryValues, pickColorNumberMatch, type ColorNumberRow } from "./color-number";
 import { supabase } from "./supabase";
 import type { Brand, Color, ColorWithBrand, CrossBrandMatchWithColor, ColorFamily } from "./types";
 import { expandUndertoneFilter, UNDERTONE_CATEGORIES } from "./undertone-utils";
@@ -41,7 +42,13 @@ export async function getBrandBySlug(slug: string): Promise<Brand | null> {
     .eq("slug", slug)
     .single();
 
-  if (error) return null;
+  // PGRST116 is "no row". Anything else (timeout, 5xx after the retry in
+  // supabase.ts) throws, so ISR keeps serving the cached page instead of
+  // caching a real color as a 404 for 30 days.
+  if (error) {
+    if (error.code === "PGRST116") return null;
+    throw error;
+  }
   return data;
 }
 
@@ -93,7 +100,10 @@ export async function getColorBySlug(
     .eq("slug", colorSlug)
     .single();
 
-  if (error) return null;
+  if (error) {
+    if (error.code === "PGRST116") return null;
+    throw error;
+  }
   return { ...(data as unknown as Color), brand };
 }
 
@@ -160,22 +170,30 @@ export async function getFamilyDemandColors(
     .filter((c): c is FamilyDemandColor => c !== undefined);
 }
 
+// Renamed or misspelled slug -> canonical slug, by the color number the slug
+// carries. Candidates come from colorNumberCandidates (most specific first);
+// one round trip each for color_number and alternate_numbers, then the first
+// candidate that hits wins. Returns null when nothing matches.
 export async function getColorSlugByNumber(
   brandSlug: string,
-  colorNumber: string
+  requestedSlug: string
 ): Promise<string | null> {
+  const candidates = colorNumberCandidates(requestedSlug);
+  if (candidates.length === 0) return null;
   const brand = await getBrandBySlug(brandSlug);
   if (!brand) return null;
 
-  const { data, error } = await supabase
-    .from("colors")
-    .select("slug")
-    .eq("brand_id", brand.id)
-    .eq("color_number", colorNumber)
-    .single();
+  const values = colorNumberQueryValues(candidates);
+  const fields = "slug, color_number, alternate_numbers";
+  const [byNumber, byAlternate] = await Promise.all([
+    supabase.from("colors").select(fields).eq("brand_id", brand.id).in("color_number", values),
+    supabase.from("colors").select(fields).eq("brand_id", brand.id).overlaps("alternate_numbers", values),
+  ]);
+  if (byNumber.error) throw byNumber.error;
+  if (byAlternate.error) throw byAlternate.error;
 
-  if (error || !data) return null;
-  return data.slug;
+  const rows = [...(byNumber.data ?? []), ...(byAlternate.data ?? [])] as ColorNumberRow[];
+  return pickColorNumberMatch(requestedSlug, candidates, rows);
 }
 
 export async function getCrossBrandMatches(
