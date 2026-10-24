@@ -25,6 +25,8 @@ export async function POST(request: NextRequest) {
         ...(ip ? { "X-Plausible-IP": ip } : {}),
       },
       cache: "no-store",
+      // A hung NAS must not hold a function open. No retry: a lost event is fine.
+      signal: AbortSignal.timeout(5000),
     });
     return new NextResponse(null, { status: res.status });
   } catch {
