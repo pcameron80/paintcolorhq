@@ -68,7 +68,7 @@ interface PaletteTemplate {
 const templates: PaletteTemplate[] = [
   {
     name: "Warm & Inviting",
-    description: "Warm tones with cozy appeal — welcoming and comfortable",
+    description: "Warm tones with cozy appeal, welcoming and comfortable",
     generate: (h, s, _l, role) => {
       const warmHue = h + (((30 - h + 540) % 360) - 180) * 0.4;
       switch (role) {
@@ -85,7 +85,7 @@ const templates: PaletteTemplate[] = [
   },
   {
     name: "Cool & Calm",
-    description: "Cool hues with soft contrast — serene and restful",
+    description: "Cool hues with soft contrast, serene and restful",
     generate: (h, s, _l, role) => {
       const coolHue = h + (((210 - h + 540) % 360) - 180) * 0.4;
       switch (role) {
@@ -102,7 +102,7 @@ const templates: PaletteTemplate[] = [
   },
   {
     name: "Bold Contrast",
-    description: "Complementary hues with punch — dynamic and striking",
+    description: "Complementary hues with punch, dynamic and striking",
     generate: (h, s, _l, role) => {
       const compHue = h + 180;
       switch (role) {
@@ -135,7 +135,7 @@ const templates: PaletteTemplate[] = [
   },
   {
     name: "Earthy Naturals",
-    description: "Grounded earth tones — organic and timeless",
+    description: "Grounded earth tones, organic and timeless",
     generate: (h, _s, _l, role) => {
       const earthHue = h + (((35 - h + 540) % 360) - 180) * 0.6;
       switch (role) {
