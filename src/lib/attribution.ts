@@ -32,7 +32,10 @@ export function isIgnoredHost(hostname: string): boolean {
   const h = hostname.toLowerCase().replace(/^\[|\]$/g, "").replace(/\.$/, "");
   if (!h) return true;
   if (h === "paintcolorhq.com" || h.endsWith(".paintcolorhq.com")) return true;
-  if (h === "vercel.app" || h.endsWith(".vercel.app")) return true;
+  // Only our own Vercel previews (project "paintcolorhq": paintcolorhq.vercel.app,
+  // paintcolorhq-git-<branch>-<team>.vercel.app, paintcolorhq-<hash>-<team>.vercel.app).
+  // Other *.vercel.app sites are real third parties and must be counted.
+  if (/^paintcolorhq(-[a-z0-9-]+)?\.vercel\.app$/.test(h)) return true;
   if (h === "localhost" || h.endsWith(".localhost")) return true;
   if (/\.(local|lan|internal|home|test|invalid|example)$/.test(h)) return true;
   if (!h.includes(".") && !h.includes(":")) return true; // single-label intranet name

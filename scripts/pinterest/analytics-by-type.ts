@@ -228,10 +228,10 @@ function buildHtml(rows: Row[], tot: Agg, start: string, end: string): string {
   </div>`;
 }
 
-async function emailReport(text: string, html: string, window: string): Promise<string> {
+async function emailReport(text: string, html: string, window: string): Promise<{ ok: boolean; message: string }> {
   const key = process.env.RESEND_API_KEY;
   const to = process.env.REPORT_EMAIL_TO || "support@paintcolorhq.com";
-  if (!key) return "✉️  skipped email — no RESEND_API_KEY in .env.local (report saved + notified instead).";
+  if (!key) return { ok: true, message: "✉️  skipped email — no RESEND_API_KEY in .env.local (report saved + notified instead)." };
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
@@ -243,8 +243,8 @@ async function emailReport(text: string, html: string, window: string): Promise<
       text,
     }),
   });
-  if (!res.ok) return `✉️  email failed (${res.status}): ${(await res.text()).slice(0, 160)}`;
-  return `✉️  emailed to ${to}`;
+  if (!res.ok) return { ok: false, message: `✉️  email failed (${res.status}): ${(await res.text()).slice(0, 160)}` };
+  return { ok: true, message: `✉️  emailed to ${to}` };
 }
 
 async function main() {
@@ -258,6 +258,9 @@ async function main() {
   );
 
   const owned = await fetchOwnedPins();
+  // Zero owned pins means the token or the listing call is wrong, not that the
+  // account is empty. Fail instead of reporting a table of zeros.
+  if (owned.length === 0) throw new Error("Pinterest returned 0 owned pins; refusing to write an empty report.");
   console.error(`Fetching analytics for ${owned.length} owned pins…`);
 
   const byType = new Map<string, Agg>();
@@ -294,12 +297,17 @@ async function main() {
   }
 
   if (failures) console.error(`${failures} pin(s) failed${firstError ? ` — first: ${firstError}` : ""}`);
+  if (failures === owned.length) {
+    throw new Error(`analytics failed for all ${owned.length} pins; first error: ${firstError}`);
+  }
   const text = buildText(rows, tot, start, end) + (failures ? `\n(${failures} pin(s) had no analytics for this window.)` : "");
   console.log(text);
 
   if (EMAIL) {
     const html = buildHtml(rows, tot, start, end);
-    console.log("\n" + (await emailReport(text, html, `${start} → ${end}`)));
+    const sent = await emailReport(text, html, `${start} → ${end}`);
+    console.log("\n" + sent.message);
+    if (!sent.ok) process.exitCode = 1;
   }
 }
 

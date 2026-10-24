@@ -24,6 +24,7 @@
 import * as dotenv from "dotenv";
 import * as path from "path";
 import { createClient } from "@supabase/supabase-js";
+import { isIgnoredHost } from "../src/lib/attribution";
 
 dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
 
@@ -57,8 +58,11 @@ function hostOf(value: string | null): string | null {
   }
 }
 
+// Same rule the API uses when it records referrers: our own hosts and previews,
+// localhost and private addresses are not external consumers. The old suffix
+// check counted localhost test embeds as the first real embedding site.
 function isExternal(host: string | null): host is string {
-  return Boolean(host) && !host!.endsWith("paintcolorhq.com");
+  return Boolean(host) && !isIgnoredHost(host!);
 }
 
 function summarize(rows: UsageRow[]) {

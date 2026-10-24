@@ -113,24 +113,28 @@ test("publishers read the shared ledgers, not repo-relative files", () => {
 test("installer maps each launchd label to its own template and job script", () => {
   const sh = here("./install-schedules.sh");
   const rows = [...sh.matchAll(/"(com\.paintcolorhq\.[\w-]+)\|([^|]+)\|([^|]+)\|([^"]+)"/g)];
-  assert.deepEqual(
-    rows.map((r) => r[1]).sort(),
-    [
-      "com.paintcolorhq.facebook-drip",
-      "com.paintcolorhq.instagram-drip",
-      "com.paintcolorhq.pinterest-analytics",
-      "com.paintcolorhq.pinterest-drip",
-    ],
-  );
+  // The three drips were retired on 2026-10-24: only the analytics report is
+  // installed. Restoring a drip is a deliberate change to this list.
+  assert.deepEqual(rows.map((r) => r[1]).sort(), ["com.paintcolorhq.pinterest-analytics"]);
   for (const [, label, template, job, script] of rows) {
     assert.ok(template.endsWith(`/${label}.plist.template`), `${label} template`);
     assert.equal(label, `com.paintcolorhq.${job}`, `${label} job name`);
     assert.ok(fs.existsSync(new URL(`../../${template}`, import.meta.url)), template);
     assert.ok(fs.existsSync(new URL(`../../${script}`, import.meta.url)), script);
   }
-  // The daily-quota cadence guard in queue.test.ts checks drip.sh; make sure
-  // the Pinterest drip agent is still the thing that runs it.
-  assert.ok(rows.some((r) => r[3] === "pinterest-drip" && r[4] === "scripts/pinterest/drip.sh"));
+});
+
+test("installer keeps the retired drips unloaded and out of JOBS", () => {
+  const sh = here("./install-schedules.sh");
+  const retired = sh.match(/RETIRED=\(([\s\S]*?)\)/)?.[1] ?? "";
+  for (const label of ["pinterest-drip", "instagram-drip", "facebook-drip"]) {
+    assert.match(retired, new RegExp(`"com\\.paintcolorhq\\.${label}"`), `${label} retired`);
+    assert.doesNotMatch(sh, new RegExp(`"com\\.paintcolorhq\\.${label}\\|`), `${label} not installable`);
+  }
+  // retire_drips runs on both install and uninstall.
+  assert.equal(sh.match(/^\s*retire_drips$/gm)?.length, 2);
+  // The summary counts JOBS instead of hard-coding a number.
+  assert.match(sh, /Installed \$\{#JOBS\[@\]\} agent/);
 });
 
 test("runner hands the state folder to the jobs and resets the worktree to origin", () => {

@@ -52,6 +52,14 @@ test("ignores our own hosts, previews and local or private addresses", () => {
   }
 });
 
+test("only our own Vercel previews are ignored, not every vercel.app site", () => {
+  assert.equal(isIgnoredHost("paintcolorhq.vercel.app"), true);
+  assert.equal(isIgnoredHost("paintcolorhq-git-release-wave1-2026-10-24-pac-projects.vercel.app"), true);
+  assert.equal(isIgnoredHost("paintcolorhq-a1b2c3d4e-pac-projects.vercel.app"), true);
+  assert.equal(normalizeReferrer("https://paint-blog.vercel.app/match")?.host, "paint-blog.vercel.app");
+  assert.equal(isIgnoredHost("mypaintcolorhq.vercel.app"), false);
+});
+
 test("does not mistake look-alike hosts for ours", () => {
   assert.equal(normalizeReferrer("https://notpaintcolorhq.com/x")?.host, "notpaintcolorhq.com");
   assert.equal(normalizeReferrer("https://paintcolorhq.com.evil.io/x")?.host, "paintcolorhq.com.evil.io");
