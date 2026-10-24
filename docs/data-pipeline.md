@@ -135,8 +135,8 @@ npm run export-db-colors
 npm run compute-matches
 
 # 3. Philip: TRUNCATE cross_brand_matches in the Supabase SQL editor.
-#    seed-matches' batched delete times out on 1.6M rows and aborts if the
-#    table is not empty afterwards.
+#    seed-matches' batched delete can hit a statement timeout on 1.6M rows,
+#    and it aborts if the table is not empty afterwards.
 
 # 4. Seed matches (about 5 minutes for 1.6M rows)
 npm run seed-matches
@@ -146,7 +146,7 @@ Then:
 
 5. **Do not deploy while seed-matches runs.** `build-match-data` fails the build when the table is mid-reseed (see below), so the previous deployment stays live, but a merge to main during the window is a wasted build.
 6. Verify the table: `cross_brand_matches` must equal colors x (brands - 1) x 5, which is colors x 60 with 13 brands (26,720 x 60 = 1,603,200).
-7. Redeploy. The prebuild regenerates `/match-data` (about 2 minutes on a cache miss).
+7. Redeploy. The prebuild regenerates `/match-data` (about 20 seconds on a cache miss, measured 2026-10-24).
 8. Allow 24 h for `/match-data` to reach rendered pages: `getCrossBrandMatches` fetches the files with `revalidate: 86400`.
 9. Run `npm run audit-colors`.
 
