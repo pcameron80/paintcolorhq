@@ -1,4 +1,6 @@
-import { refineColorFamily } from "./lib/color-math";
+// Family classification lives in the lib so every importer and
+// refine-color-families.ts apply the same rules.
+import { classifyColorFamily } from "./lib/color-math";
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -113,63 +115,6 @@ function makeSlug(name: string, label: string | number | null): string {
   }
 
   return base;
-}
-
-// ---------------------------------------------------------------------------
-// Color family classification (HSL-based)
-// ---------------------------------------------------------------------------
-
-function rgbToHsl(r: number, g: number, b: number): { h: number; s: number; l: number } {
-  const rr = r / 255;
-  const gg = g / 255;
-  const bb = b / 255;
-  const max = Math.max(rr, gg, bb);
-  const min = Math.min(rr, gg, bb);
-  const l = (max + min) / 2;
-  let h = 0;
-  let s = 0;
-
-  if (max !== min) {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case rr: h = ((gg - bb) / d + (gg < bb ? 6 : 0)) / 6; break;
-      case gg: h = ((bb - rr) / d + 2) / 6; break;
-      case bb: h = ((rr - gg) / d + 4) / 6; break;
-    }
-  }
-
-  return { h: h * 360, s: s * 100, l: l * 100 };
-}
-
-function classifyColorFamily(r: number, g: number, b: number): string {
-  const { h, s, l } = rgbToHsl(r, g, b);
-
-  // Achromatic checks first (low saturation)
-  if (l > 90 && s < 15) return 'white';
-  if (l > 85 && s < 20) return 'off-white';
-  if (l < 10) return 'black';
-  if (s < 15 && l >= 10 && l <= 90) return 'gray';
-
-  // Beige: warm neutral, light
-  if (s >= 10 && s <= 30 && h >= 30 && h <= 55 && l >= 60 && l <= 85) return 'beige';
-
-  // Brown: warm, dark-to-mid
-  if (s >= 15 && s <= 50 && h >= 15 && h <= 45 && l < 60) return 'brown';
-
-  // Neutral catch-all for low saturation
-  if (s < 20) return 'neutral';
-
-  // Chromatic hue-based classification
-  if (h >= 345 || h < 15) return 'red';
-  if (h >= 15 && h < 45) return 'orange';
-  if (h >= 45 && h < 70) return 'yellow';
-  if (h >= 70 && h < 170) return 'green';
-  if (h >= 170 && h < 260) return 'blue';
-  if (h >= 260 && h < 290) return 'purple';
-  if (h >= 290 && h < 345) return 'pink';
-
-  return 'neutral';
 }
 
 // ---------------------------------------------------------------------------
@@ -315,7 +260,7 @@ function main() {
         lab_a: lab.a,
         lab_b_val: lab.b_val,
         lrv: Math.round(calculateLrv(parsed.r, parsed.g, parsed.b) * 100) / 100,
-        color_family: refineColorFamily(classifyColorFamily(parsed.r, parsed.g, parsed.b), parsed.r, parsed.g, parsed.b),
+        color_family: classifyColorFamily(parsed.r, parsed.g, parsed.b),
         brand_slug: brandInfo.slug,
       });
 
