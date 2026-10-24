@@ -3,17 +3,13 @@
 import { useState, useEffect, useCallback } from "react";
 import Script from "next/script";
 import {
-  CONSENT_CHANGE_EVENT,
   CONSENT_STORAGE_KEY,
   OPEN_PRIVACY_CHOICES_EVENT,
   REGULATED_REGIONS,
-  adsAllowed,
   isNonTrackedPath,
   fetchConsentRegion,
   getStoredConsent,
   setStoredConsent,
-  type ConsentRegion,
-  type StoredConsent,
 } from "@/lib/consent";
 
 // Runs before gtag.js loads. Region-specific defaults come first so gtag can
@@ -68,33 +64,24 @@ const GTAG_INIT = `
 
 export function CookieConsent() {
   const [isEmbed, setIsEmbed] = useState(true);
-  const [stored, setStored] = useState<StoredConsent>(null);
-  const [region, setRegion] = useState<ConsentRegion>("pending");
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     // The embeddable widget runs inside third-party iframes — never show a cookie
-    // banner or load GA/Pinterest there (no consent surface; it's someone else's page).
+    // banner or load GA there (no consent surface; it's someone else's page).
     if (isNonTrackedPath(window.location.pathname)) return;
     let active = true;
     fetchConsentRegion().then((r) => {
       if (!active) return;
-      const initial = getStoredConsent();
       setIsEmbed(false);
-      setStored(initial);
-      setRegion(r);
-      if (!initial && r === "regulated") setVisible(true);
+      if (!getStoredConsent() && r === "regulated") setVisible(true);
     });
 
     const onOpen = () => setVisible(true);
-    const onChange = (e: Event) =>
-      setStored((e as CustomEvent<"granted" | "denied">).detail);
     window.addEventListener(OPEN_PRIVACY_CHOICES_EVENT, onOpen);
-    window.addEventListener(CONSENT_CHANGE_EVENT, onChange);
     return () => {
       active = false;
       window.removeEventListener(OPEN_PRIVACY_CHOICES_EVENT, onOpen);
-      window.removeEventListener(CONSENT_CHANGE_EVENT, onChange);
     };
   }, []);
 
@@ -114,22 +101,6 @@ export function CookieConsent() {
         src="https://www.googletagmanager.com/gtag/js?id=G-056NR93JLK"
         strategy="afterInteractive"
       />
-      {adsAllowed(stored, region) && (
-        // Pinterest Tag — page tracking only (no enhanced match since we
-        // don't capture visitor emails on pageload).
-        <Script id="pinterest-tag" strategy="afterInteractive">
-          {`
-            !function(e){if(!window.pintrk){window.pintrk = function () {
-              window.pintrk.queue.push(Array.prototype.slice.call(arguments))};
-              var n=window.pintrk;n.queue=[],n.version="3.0";
-              var t=document.createElement("script");t.async=!0,t.src=e;
-              var r=document.getElementsByTagName("script")[0];
-              r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
-            pintrk('load', '2613209988121');
-            pintrk('page');
-          `}
-        </Script>
-      )}
 
       {visible && (
         <div className="fixed bottom-0 inset-x-0 z-[100] p-2 sm:p-6">

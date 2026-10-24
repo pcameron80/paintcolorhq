@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
             <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
               Privacy Policy
             </h1>
-            <p className="text-sm text-outline">Effective date: October 21, 2026</p>
+            <p className="text-sm text-outline">Effective date: October 26, 2026</p>
           </div>
         </section>
 
@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
                 <li><strong className="text-on-surface">Project data:</strong> If you create color projects or palettes while signed in, we store that data in your account so you can access it across sessions.</li>
                 <li><strong className="text-on-surface">Usage data:</strong> We use Google Analytics to collect anonymous usage information such as pages visited, time on site, browser type, and referring pages. This helps us understand how the site is used and improve it.</li>
                 <li><strong className="text-on-surface">Cookieless visit counts:</strong> We also run our own copy of Plausible Analytics on our own server to count page views. It sets no cookies, stores nothing on your device, and does not track you across sites. It records the page, the referring site, your browser, device type and country. Your IP address is used only to estimate that location and to count unique visitors per day, and it is never stored. This data stays on our server and is not shared.</li>
-                <li><strong className="text-on-surface">Cookies:</strong> We use cookies for authentication sessions, analytics, and advertising. See the Cookies section below for details.</li>
+                <li><strong className="text-on-surface">Cookies:</strong> We use cookies for authentication sessions and analytics. See the Cookies section below for details.</li>
               </ul>
             </div>
 
@@ -56,9 +56,9 @@ export default function PrivacyPolicyPage() {
               <ul className="mt-3 list-disc space-y-2 pl-5">
                 <li><strong className="text-on-surface">Essential cookies:</strong> Required for authentication and core site functionality.</li>
                 <li><strong className="text-on-surface">Analytics cookies:</strong> Google Analytics uses cookies to collect anonymous usage data. You can opt out using the{" "}<a href="https://tools.google.com/dlpage/gaoptout" className="text-primary underline hover:text-primary/80" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</li>
-                <li><strong className="text-on-surface">Advertising cookies:</strong> We use Google AdSense to display advertisements. Google and its partners may use cookies to serve ads based on your prior visits to this site or other websites. You can opt out of personalized advertising by visiting{" "}<a href="https://www.google.com/settings/ads" className="text-primary underline hover:text-primary/80" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</li>
+                <li><strong className="text-on-surface">Advertising cookies:</strong> We do not currently show third-party ads. If that changes, this section will name the ad partner and explain how to opt out.</li>
               </ul>
-              <p className="mt-4"><strong className="text-on-surface">Your choices by location:</strong> If you visit from the European Economic Area, the United Kingdom or Switzerland, analytics and advertising cookies stay off until you click Accept on the cookie banner. Everywhere else, they are on by default, and you can turn them off at any time with the &ldquo;Your Privacy Choices&rdquo; link in the site footer. That link is how California and other US-state residents opt out of the sale or sharing of personal information for targeted advertising. We also honor the Global Privacy Control (GPC) browser signal as an opt-out of advertising cookies and the Pinterest tag.</p>
+              <p className="mt-4"><strong className="text-on-surface">Your choices by location:</strong> If you visit from the European Economic Area, the United Kingdom or Switzerland, analytics and advertising cookies stay off until you click Accept on the cookie banner. Everywhere else, they are on by default, and you can turn them off at any time with the &ldquo;Your Privacy Choices&rdquo; link in the site footer. That link is how California and other US-state residents opt out of the sale or sharing of personal information for targeted advertising. We also honor the Global Privacy Control (GPC) browser signal as an opt-out of advertising cookies.</p>
             </div>
 
             <div>
@@ -69,7 +69,6 @@ export default function PrivacyPolicyPage() {
               <ul className="mt-3 list-disc space-y-2 pl-5">
                 <li>Provide and maintain your account and saved projects</li>
                 <li>Improve the site based on usage patterns</li>
-                <li>Display relevant advertisements through Google AdSense</li>
                 <li>Respond to your inquiries if you contact us</li>
               </ul>
             </div>
@@ -80,11 +79,11 @@ export default function PrivacyPolicyPage() {
               </h2>
               <p>Paint Color HQ relies on the following third-party services, each with their own privacy policies:</p>
               <ul className="mt-3 list-disc space-y-2 pl-5">
-                <li><strong className="text-on-surface">Google Analytics</strong> &mdash; website usage analytics</li>
-                <li><strong className="text-on-surface">Google AdSense</strong> &mdash; advertising</li>
-                <li><strong className="text-on-surface">Pinterest Tag</strong> &mdash; measuring visits that come from Pinterest</li>
-                <li><strong className="text-on-surface">Supabase</strong> &mdash; authentication and database services</li>
-                <li><strong className="text-on-surface">Google OAuth</strong> &mdash; sign-in authentication</li>
+                <li><strong className="text-on-surface">Google Analytics:</strong> website usage analytics</li>
+                <li><strong className="text-on-surface">Supabase:</strong> authentication and database services</li>
+                <li><strong className="text-on-surface">Google OAuth:</strong> sign-in authentication</li>
+                <li><strong className="text-on-surface">Cloudflare Turnstile:</strong> spam protection on the contact form</li>
+                <li><strong className="text-on-surface">Resend:</strong> delivers contact-form messages</li>
               </ul>
             </div>
 

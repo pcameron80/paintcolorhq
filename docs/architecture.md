@@ -19,7 +19,7 @@
 paintcolorhq/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
-│   │   ├── layout.tsx          # Root layout (metadata, fonts, GA, AdSense)
+│   │   ├── layout.tsx          # Root layout (metadata, fonts, GA)
 │   │   ├── page.tsx            # Homepage (feature grid, SEO section)
 │   │   ├── globals.css         # Tailwind global styles
 │   │   ├── not-found.tsx       # Custom 404 page
@@ -173,3 +173,8 @@ Curated palettes are defined in `src/lib/palettes.ts` as arrays of hex values. A
 
 ### Project Color Roles
 When saving colors to projects, users assign roles (Walls, Trim, Accent, Pop). Colors are grouped by role in the project view, providing a structured palette planning experience.
+
+### Ads and the Page CSP
+Google AdSense was removed in October 2026 (the account was rejected), along with the Pinterest tag. Journey by Mediavine is the ad path. `AdSenseScript` in `src/components/adsense-script.tsx` renders nothing until its 25 imports are deleted.
+
+The page CSP in `next.config.ts` restricts by scheme (`https:`, `data:`, `blob:`), not by host, because an ad stack loads scripts, frames, workers and beacons from hosts that change. The old host allowlist blocked 9 of 9 Journey components in a live probe. The scheme-based policy keeps `object-src 'none'`, `base-uri 'self'`, `form-action 'self'` and `frame-ancestors 'self'`. Only the `/embed` routes still use the host allowlist (`strictContentSecurityPolicy`), with `frame-ancestors *` so other sites can iframe the widget.

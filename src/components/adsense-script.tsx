@@ -1,41 +1,8 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import Script from "next/script";
-import {
-  CONSENT_CHANGE_EVENT,
-  adsAllowed,
-  fetchConsentRegion,
-  getStoredConsent,
-} from "@/lib/consent";
-
+// AdSense removed 2026-10. The account was rejected, the loader still cost
+// 205-375 KB on every page that rendered this, and Journey by Mediavine (the
+// ad path now) requires being the only ad provider on the page. This renders
+// nothing so the 25 importing pages stay byte-identical in this change;
+// deleting the component and those imports rides a later PR.
 export function AdSenseScript() {
-  const [allowed, setAllowed] = useState(false);
-
-  useEffect(() => {
-    let active = true;
-    fetchConsentRegion().then((region) => {
-      if (active) setAllowed(adsAllowed(getStoredConsent(), region));
-    });
-
-    async function onChange() {
-      const region = await fetchConsentRegion();
-      if (active) setAllowed(adsAllowed(getStoredConsent(), region));
-    }
-    window.addEventListener(CONSENT_CHANGE_EVENT, onChange);
-    return () => {
-      active = false;
-      window.removeEventListener(CONSENT_CHANGE_EVENT, onChange);
-    };
-  }, []);
-
-  if (!allowed) return null;
-
-  return (
-    <Script
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6269963973031881"
-      strategy="afterInteractive"
-      crossOrigin="anonymous"
-    />
-  );
+  return null;
 }
