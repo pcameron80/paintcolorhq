@@ -243,10 +243,40 @@ async function handleMessage(message: JsonRpcMessage, request: Request): Promise
   }
 }
 
+// Abuse caps. Each tools/call is a full scan of the color table (66-125 ms of DB
+// time), so an unbounded JSON-RPC batch lets one request cost minutes of DB CPU
+// while counting as a single hit against per-IP limits. Real MCP clients send one
+// message per request; a short batch of handshake messages is still allowed.
+const MAX_BODY_BYTES = 16_384;
+const MAX_BATCH_MESSAGES = 5;
+const MAX_BATCH_TOOL_CALLS = 1;
+
+function tooLarge() {
+  return NextResponse.json(rpcError(null, -32600, `Request body too large: max ${MAX_BODY_BYTES} bytes`), {
+    status: 413,
+    headers: CORS_HEADERS,
+  });
+}
+
 export async function POST(request: Request) {
+  const declaredLength = Number(request.headers.get("content-length"));
+  if (Number.isFinite(declaredLength) && declaredLength > MAX_BODY_BYTES) return tooLarge();
+
+  let raw: string;
+  try {
+    raw = await request.text();
+  } catch {
+    return NextResponse.json(rpcError(null, -32700, "Parse error"), {
+      status: 400,
+      headers: CORS_HEADERS,
+    });
+  }
+  // Content-Length can be absent (chunked) or wrong, so measure the actual body too.
+  if (Buffer.byteLength(raw, "utf8") > MAX_BODY_BYTES) return tooLarge();
+
   let body: unknown;
   try {
-    body = await request.json();
+    body = JSON.parse(raw);
   } catch {
     return NextResponse.json(rpcError(null, -32700, "Parse error"), {
       status: 400,
@@ -256,9 +286,31 @@ export async function POST(request: Request) {
 
   // JSON-RPC supports a single message or a batch (array).
   if (Array.isArray(body)) {
-    const responses = (
-      await Promise.all(body.map((m) => handleMessage(m as JsonRpcMessage, request)))
-    ).filter((r): r is object => r !== null);
+    if (body.length === 0) {
+      return NextResponse.json(rpcError(null, -32600, "Invalid Request: empty batch"), {
+        status: 400,
+        headers: CORS_HEADERS,
+      });
+    }
+    const toolCalls = body.filter(
+      (m) => m !== null && typeof m === "object" && (m as JsonRpcMessage).method === "tools/call",
+    ).length;
+    if (body.length > MAX_BATCH_MESSAGES || toolCalls > MAX_BATCH_TOOL_CALLS) {
+      return NextResponse.json(
+        rpcError(
+          null,
+          -32600,
+          `Batch too large: max ${MAX_BATCH_MESSAGES} messages, ${MAX_BATCH_TOOL_CALLS} tools/call`,
+        ),
+        { status: 400, headers: CORS_HEADERS },
+      );
+    }
+    // Sequential, so a batch never fans out into parallel DB scans.
+    const responses: object[] = [];
+    for (const m of body) {
+      const r = await handleMessage(m as JsonRpcMessage, request);
+      if (r !== null) responses.push(r);
+    }
     if (responses.length === 0) return new NextResponse(null, { status: 202, headers: CORS_HEADERS });
     return NextResponse.json(responses, { headers: CORS_HEADERS });
   }

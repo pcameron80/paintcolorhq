@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
+import { capText } from "@/lib/og-params";
 
 export const runtime = "edge";
 
@@ -31,11 +32,12 @@ export async function GET(request: NextRequest) {
   }
   const hex = `#${normalizedHex}`;
 
-  const name = searchParams.get("name") || "Paint Color";
-  const brand = searchParams.get("brand") || "";
-  const code = searchParams.get("code") || "";
-  const lrv = searchParams.get("lrv");
-  const family = searchParams.get("family") || "";
+  const name = capText(searchParams.get("name"), 100) || "Paint Color";
+  const brand = capText(searchParams.get("brand"), 60);
+  const code = capText(searchParams.get("code"), 30);
+  const rawLrv = searchParams.get("lrv")?.trim();
+  const lrv = rawLrv && /^\d{1,3}(\.\d{1,2})?$/.test(rawLrv) ? rawLrv : null;
+  const family = capText(searchParams.get("family"), 30);
 
   // Output size. Default is the Pinterest 2:3 (1000×1500). Instagram's feed only
   // accepts 4:5–1.91:1, so the IG drip requests ?ar=4:5 (1080×1350). The layout

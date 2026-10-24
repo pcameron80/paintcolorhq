@@ -21,6 +21,36 @@ import { normalizeReferrer } from "@/lib/attribution";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const SITE_HOSTS = new Set(["www.paintcolorhq.com", "paintcolorhq.com"]);
+
+function headerHost(value: string | null): string | null {
+  if (!value || value === "null") return null;
+  try {
+    return new URL(value).hostname.toLowerCase();
+  } catch {
+    return null;
+  }
+}
+
+// The claimed host is only trusted when the browser's own Origin or Referer
+// vouches for the request. Two shapes pass: the normal beacon from our iframe
+// (Origin/Referer is this site, which a third-party page cannot forge), or a
+// request whose Origin/Referer already is the claimed host. A cross-site POST
+// that names some other site as the embedder fails both and is logged without
+// a host, so it cannot plant fake embed attributions.
+function vouchedHost(request: Request, claimed: string | null): boolean {
+  const claimedHost = headerHost(claimed);
+  if (!claimedHost) return false;
+  let ownHost: string | null = null;
+  try {
+    ownHost = new URL(request.url).hostname.toLowerCase();
+  } catch {
+    // no own host
+  }
+  const seen = [headerHost(request.headers.get("origin")), headerHost(request.headers.get("referer"))];
+  return seen.some((h) => h !== null && (h === claimedHost || SITE_HOSTS.has(h) || h === ownHost));
+}
+
 export async function POST(request: Request) {
   let host: string | null = null;
   let page: string | null = null;
@@ -34,6 +64,11 @@ export async function POST(request: Request) {
     }
   } catch {
     // Malformed beacon — still log the request meta below.
+  }
+
+  if (!vouchedHost(request, host)) {
+    host = null;
+    page = null;
   }
 
   after(() => logUsageEvent({ source: "embed", host, ...usageMetaFromRequest(request) }));
