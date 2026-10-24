@@ -33,7 +33,7 @@ a few weeks year to year.
 | Sherwin-Williams | Late September | Sep 24, 2025 | Universal Khaki (SW 6150) | [sherwin-williams.com/color-of-the-year](https://www.sherwin-williams.com/en-us/color/color-of-the-year) |
 | PPG | Early October | Oct 2, 2025 | Secret Safari (PPG1110-4) | [news.ppg.com](https://news.ppg.com) · [ppgpaints.com/coty](https://www.ppgpaints.com) |
 | Dunn-Edwards | Early–mid October | Oct 9, 2025 | Midnight Garden (DE5657) | [dunnedwards.com/color-of-the-year](https://www.dunnedwards.com/colors/color-of-the-year/) |
-| Benjamin Moore | Mid October | Oct 14, 2025 | Silhouette (AF-655) | [benjaminmoore.com/color-of-the-year](https://www.benjaminmoore.com/en-us/paint-colors/color-of-the-year) |
+| Benjamin Moore | Mid October | Oct 16, 2025 | Silhouette (AF-655) | [benjaminmoore.com/color-of-the-year](https://www.benjaminmoore.com/en-us/paint-colors/color-of-the-year) |
 | Pantone (context only) | Early December | Dec 4, 2025 | Cloud Dancer | [pantone.com/color-of-the-year](https://www.pantone.com/color-of-the-year) |
 
 **Farrow & Ball is the exception.** It does not name a single Color of the Year.
@@ -55,6 +55,16 @@ The moment a brand posts its color, you need three facts from the press release:
 the **name**, the **color code**, and the **hex**. If the release gives RGB but
 not hex, convert it; if it gives neither, pull the hex from the color's own page
 on the brand site.
+
+0. **Update the hub the same day.** Edit `src/lib/color-of-the-year.ts`: add the
+   pick to the current year (`colorSlug` set only if the color resolves in our
+   catalog, `announced` and `sourceUrl` from the release itself), remove that
+   brand from `pending`, and set `COTY_HUB_DATES.updated` to today. That date
+   drives the hub's `dateModified`, its visible "Updated" line and its sitemap
+   `lastmod`, so a hub left one announcement behind shows a stale date as well as
+   a missing pick. Check the color's values and status by SQL against the brand's
+   own color page before linking it. Ship it through the same preview gate as
+   step 3; the blog post below can follow.
 
 1. **Generate the match table.**
    ```bash

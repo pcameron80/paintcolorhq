@@ -7,26 +7,50 @@ import { SamplizeOffer } from "@/components/samplize-offer";
 import { getColorsBySlugList, getCrossBrandMatches } from "@/lib/queries";
 import { nearestMatchesPerBrand } from "@/lib/color-description";
 import { hexToRgb, rgbToLab, deltaE2000 } from "@/lib/color-utils";
-import { COLOR_OF_THE_YEAR, CURRENT_COTY, type ColorOfTheYearPick } from "@/lib/color-of-the-year";
+import { COLOR_OF_THE_YEAR, COTY_HUB_DATES, CURRENT_COTY, sharedParentCompany, type ColorOfTheYearPick } from "@/lib/color-of-the-year";
 import type { ColorWithBrand, CrossBrandMatchWithColor } from "@/lib/types";
-import { closenessLabel } from "@/lib/closeness";
+import { closenessLabel, closenessLabelLower } from "@/lib/closeness";
 
 export const revalidate = 604800; // 7d — picks change once a year; redeploy on a new announcement
 
-const URL = "https://www.paintcolorhq.com/color-of-the-year";
+const SITE = "https://www.paintcolorhq.com";
+const URL = `${SITE}/color-of-the-year`;
 const YEAR = CURRENT_COTY.year;
+const HEADLINE = `${YEAR} Paint Colors of the Year, Matched Across Brands`;
+const DESCRIPTION = `Benjamin Moore Webster Green, Sherwin-Williams Celery, Behr Grounded and the other ${YEAR} paint Colors of the Year, with the closest match in each brand.`;
 
-export const metadata: Metadata = {
-  title: { absolute: `${YEAR} Paint Colors of the Year, Matched Across Brands | Paint Color HQ` },
-  description: `Every ${YEAR} paint Color of the Year (Sherwin-Williams Celery, Valspar Cottage Door, Glidden Artifact and more) with its closest match from each other brand.`,
-  alternates: { canonical: URL },
-  openGraph: {
-    title: `${YEAR} Paint Colors of the Year, Matched Across Brands`,
-    description: `Each brand's ${YEAR} Color of the Year with the closest equivalent from every other brand we track.`,
-    type: "article",
-    url: URL,
-  },
-};
+// Social card and Article image: the generated /api/og card, tinted with the
+// first pick in our data so it is not the endpoint's default blue.
+function ogImageUrl(hex: string | undefined): string {
+  const params = new URLSearchParams({ name: `${YEAR} Paint Colors of the Year`, brand: "Matched across brands" });
+  if (hex) params.set("hex", hex);
+  return `${SITE}/api/og?${params}`;
+}
+
+async function leadHex(): Promise<string | undefined> {
+  const lead = CURRENT_COTY.picks.find((p) => p.colorSlug);
+  if (!lead?.colorSlug) return undefined;
+  const [color] = await getColorsBySlugList(lead.brandSlug, [lead.colorSlug]);
+  return color?.hex;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const image = { url: ogImageUrl(await leadHex()), width: 1200, height: 630, alt: HEADLINE };
+  return {
+    title: { absolute: `${HEADLINE} | Paint Color HQ` },
+    description: DESCRIPTION,
+    alternates: { canonical: URL },
+    openGraph: {
+      title: HEADLINE,
+      description: `Each brand's ${YEAR} Color of the Year with the closest equivalent from every other brand we track.`,
+      type: "article",
+      url: URL,
+      publishedTime: COTY_HUB_DATES.published,
+      modifiedTime: COTY_HUB_DATES.updated,
+      images: [image],
+    },
+  };
+}
 
 function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
@@ -88,16 +112,28 @@ export default async function ColorOfTheYearPage() {
     }
   }
 
-  // Picks whose closest cross-brand match has identical digital values.
+  // Picks whose closest cross-brand match is all but indistinguishable in our
+  // data. "The same values" is claimed only when the hexes are equal. A match
+  // from a different paint company leads, because a shared parent company
+  // explains an identical formula and a separate company does not.
   const twins = inData
     .map((p) => ({ p, best: p.matches[0] }))
-    .filter((x) => x.best && Number(x.best.delta_e_score) < 0.5);
+    .filter((x) => x.best && Number(x.best.delta_e_score) < 0.5)
+    .map((x) => ({
+      ...x,
+      sameValues: x.p.color.hex.toLowerCase() === x.best.match_color.hex.toLowerCase(),
+      parent: sharedParentCompany(x.p.pick.brandSlug, x.best.match_color.brand.slug),
+    }))
+    .sort((a, b) => Number(a.parent !== null) - Number(b.parent !== null) || Number(a.best.delta_e_score) - Number(b.best.delta_e_score));
 
   const pickNames = current.picks.map((p) => `${p.brandName} ${p.name}`);
+  const pendingSentence = current.pending.length > 0
+    ? ` ${current.pending.map((p) => `${p.brandName} is expected ${p.expected}`).join(". ")}.`
+    : "";
   const faqs = [
     {
       q: `What are the ${YEAR} paint colors of the year?`,
-      a: `As of this update: ${pickNames.join("; ")}. ${current.pending.map((p) => `${p.brandName} is expected ${p.expected}`).join(". ")}.`,
+      a: `As of ${formatDate(COTY_HUB_DATES.updated)}: ${pickNames.join("; ")}.${pendingSentence}`,
     },
     {
       q: "Can I get a Color of the Year in a different paint brand?",
@@ -117,9 +153,13 @@ export default async function ColorOfTheYearPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: `${YEAR} Paint Colors of the Year, Matched Across Brands`,
+          headline: HEADLINE,
+          description: DESCRIPTION,
           url: URL,
-          dateModified: new Date().toISOString().slice(0, 10),
+          mainEntityOfPage: { "@type": "WebPage", "@id": URL },
+          image: { "@type": "ImageObject", url: ogImageUrl(picks.find((p) => p.pick.colorSlug)?.color?.hex), width: 1200, height: 630 },
+          datePublished: COTY_HUB_DATES.published,
+          dateModified: COTY_HUB_DATES.updated,
           author: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" },
           publisher: { "@type": "Organization", name: "Paint Color HQ", url: "https://www.paintcolorhq.com" },
           mainEntity: {
@@ -159,7 +199,9 @@ export default async function ColorOfTheYearPage() {
               <span className="mx-2 text-outline">/</span>
               <span className="text-on-surface">Color of the Year</span>
             </nav>
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">Updated as brands announce</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+              Updated <time dateTime={COTY_HUB_DATES.updated}>{formatDate(COTY_HUB_DATES.updated)}</time> · added as brands announce
+            </span>
             <h1 className="mt-2 mb-6 font-headline text-5xl font-extrabold leading-[0.95] tracking-tighter text-on-surface md:text-6xl">
               {YEAR} paint colors of the year, matched across brands
             </h1>
@@ -168,7 +210,7 @@ export default async function ColorOfTheYearPage() {
               a Color of the Year but your local store sells a different brand.
             </p>
 
-            <div className="mt-10 grid grid-cols-3 gap-2 sm:grid-cols-6" aria-hidden="true">
+            <div className="mt-10 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-7" aria-hidden="true">
               {picks.map(({ pick, color }) => (
                 <a key={pick.brandSlug} href={`#${pick.brandSlug}`} className="overflow-hidden rounded-lg bg-surface-container-lowest shadow-sm">
                   {color ? (
@@ -200,15 +242,32 @@ export default async function ColorOfTheYearPage() {
                 nearest pair among this year&apos;s picks{closest.d < 5 ? ", similar enough in our data that one could stand in for the other." : ". They are still visibly different side by side, so they are not substitutes for each other."}
               </p>
             )}
-            {twins.map(({ p, best }) => (
-              <p key={p.pick.brandSlug}>
-                <strong className="text-on-surface">{p.pick.brandName} {p.pick.name} has a twin.</strong> Its color values in our data are the same as{" "}
+            {twins.map(({ p, best, sameValues, parent }) => {
+              const match = (
                 <Link href={`/colors/${best.match_color.brand.slug}/${best.match_color.slug}`} className="text-primary underline-offset-4 hover:underline">
                   {best.match_color.brand.name} {best.match_color.name}
                 </Link>
-                , an existing color.
+              );
+              return (
+                <p key={p.pick.brandSlug}>
+                  {sameValues ? (
+                    <>
+                      <strong className="text-on-surface">{p.pick.brandName} {p.pick.name} has a twin.</strong> Its color values in our data are the same as {match}, an existing color.
+                    </>
+                  ) : (
+                    <>
+                      <strong className="text-on-surface">{p.pick.brandName} {p.pick.name} is {closenessLabelLower(Number(best.delta_e_score))} to an existing color.</strong> Its closest match in our data is {match}.
+                    </>
+                  )}
+                  {parent ? ` Both brands belong to ${parent}.` : " The two come from different paint companies."}
+                </p>
+              );
+            })}
+            {twins.length > 0 && (
+              <p className="text-sm">
+                These are digital matches. Formulas, bases and sheens differ between brands, so compare physical samples before you buy.
               </p>
-            ))}
+            )}
           </div>
         </section>
 
