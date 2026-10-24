@@ -12,6 +12,11 @@
  * (data/brand-scans/<YYYY-MM-DD>/); it reads <brand>-missing.json there.
  * Without it, the 2026-06 files in data/brand-scans/ are used.
  *
+ * LRV: the manufacturer's published value when the scan entry carries a
+ * usable one (publishedLrv in scripts/lib/lrv-source.ts), otherwise computed
+ * from hex. Once migration 017 is applied, lrv_source says which, and a
+ * published value also gets lrv_checked_on (the scan date).
+ *
  * Usage:
  *   tsx scripts/import-brand-scan.ts --brand=dutch-boy            # dry run
  *   tsx scripts/import-brand-scan.ts --brand=behr --scan-dir=data/brand-scans/2026-10-11
@@ -29,6 +34,7 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { titleCaseName, makeSlug } from './lib/behr-import-rules';
 import { classifyColorFamily, calculateLrv, rgbToLab, hexToRgb } from './lib/color-math';
 import { undertoneLabel } from './lib/undertone';
+import { hasLrvSourceColumn, publishedLrv, roundLrv, scanDate } from './lib/lrv-source';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
@@ -45,6 +51,7 @@ interface ScanColor {
   code: string;
   name: string;
   hex: string | null;
+  lrv?: number;
 }
 
 interface BrandRule {
@@ -180,12 +187,15 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
     process.exit(1);
   }
   const candidates = rule.extract(JSON.parse(fs.readFileSync(file, 'utf8')));
+  const withSource = await hasLrvSourceColumn(supabase);
+  const checkedOn = scanDate(SCAN_DIR) ?? new Date().toISOString().slice(0, 10);
   const brand = await fetchBrand(supabase, slug);
   const { numbers, slugs } = await fetchExisting(supabase, brand.id);
 
   const rows = [];
   const skipped: Record<string, number> = { rule: 0, badHex: 0, existing: 0, slugCollision: 0, dupInFile: 0 };
   const seenCodes = new Set<string>();
+  let publishedCount = 0;
   const collisions: string[] = [];
 
   for (const c of candidates) {
@@ -205,6 +215,8 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
     if (slugs.has(colorSlug)) { skipped.slugCollision++; collisions.push(colorSlug); continue; }
     slugs.add(colorSlug);
     const lab = rgbToLab(rgb.r, rgb.g, rgb.b);
+    const published = publishedLrv(slug, c.code, c.lrv);
+    if (published !== null) publishedCount++;
     rows.push({
       brand_id: brand.id,
       name,
@@ -217,7 +229,12 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
       lab_l: lab.l,
       lab_a: lab.a,
       lab_b_val: lab.b_val,
-      lrv: Math.round(calculateLrv(rgb.r, rgb.g, rgb.b) * 10) / 10,
+      lrv: published ?? roundLrv(calculateLrv(rgb.r, rgb.g, rgb.b)),
+      ...(withSource
+        ? published !== null
+          ? { lrv_source: 'manufacturer', lrv_checked_on: checkedOn }
+          : { lrv_source: 'computed' }
+        : {}),
       color_family: classifyColorFamily(rgb.r, rgb.g, rgb.b),
       undertone: undertoneLabel(c.hex!, lab.a, lab.b_val, `${slug}/${colorSlug}`),
       ...(rule.availability
@@ -230,7 +247,7 @@ async function importBrand(supabase: SupabaseClient, slug: string) {
     });
   }
 
-  console.log(`[${slug}] candidates: ${candidates.length}, to import: ${rows.length}, skipped:`, skipped);
+  console.log(`[${slug}] candidates: ${candidates.length}, to import: ${rows.length} (${publishedCount} with the published LRV), skipped:`, skipped);
   if (collisions.length) console.log(`  slug collisions (not imported):`, collisions.slice(0, 10));
   const plan = path.join(SCAN_DIR, `${slug}-import-plan.json`);
   fs.writeFileSync(plan, JSON.stringify(rows, null, 1));

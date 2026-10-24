@@ -275,12 +275,25 @@ Run in this order, each step as a dry run first; the `--apply` steps write to pr
 
 1. `npm run scan-palettes` (about 25 minutes). Read `REPORT.md`: a brand marked failed has a broken fetcher, not zero changes.
 2. Review `<brand>-hex-changed.json` and `<brand>-duplicate-codes.json`, then `apply-hex-corrections.ts`.
-3. `apply-published-names.ts` (add `--renames` and `--case` after reading the lists), then `apply-published-lrv.ts`.
+3. `apply-published-names.ts` (add `--renames` and `--case` after reading the lists), then `apply-published-lrv.ts`, then `backfill-lrv-source.ts`.
 4. `import-brand-scan.ts` for reviewed gaps, then `npm run export-db-colors && npm run compute-matches && npm run seed-matches`.
 5. `npx tsx scripts/generate-official-color-urls.ts --dry-run`, then without `--dry-run`, and review the diff in `src/lib/official-urls/` (Step 4b above).
 6. `npx tsx scripts/check-retailer-links.ts --sample`, then `npx tsx scripts/generate-retailer-overrides.ts` if overrides changed (Steps 5 and 6).
 7. `npm run audit-colors` before anything that quotes color data ships.
 - **Blog copy prints LRVs.** After an LRV change, run `npm run audit-colors` (below). It catches a printed LRV that no longer matches; gap, range and ordering claims built on the moved colors still need a read.
+
+### LRV source and impossible values (migration 017)
+
+`colors.lrv_source` is `'manufacturer'` when the stored LRV equals the brand's published value, `'computed'` when it was derived from hex, and NULL with no LRV. `colors.lrv_checked_on` is the scan date that confirmed a manufacturer value. The matching rules (code normalization, name guard, which feed values count) live in `scripts/lib/lrv-source.ts` and are shared by every writer:
+
+- `apply-published-lrv.ts` writes `'manufacturer'` and the scan date with each LRV (`--checked-on` overrides the date).
+- `apply-hex-corrections.ts` and `import-brand-scan.ts` write `'manufacturer'` when the feed carries a usable LRV, otherwise `'computed'`. Both now use the published LRV through `publishedLrv()`, so Vista R codes, BM PM- codes and feed zeros fall back to the computed value.
+- `backfill-lrv-source.ts --scan-dir=<date>,<date>` labels existing rows (the last dir wins per brand) and demotes a `'manufacturer'` row whose value no longer matches. Safe to re-run after any LRV or import step. It also prints the ceiling check: rows above 94.5 that are not a published value.
+- `apply-lrv-nulls.ts` clears LRVs with no published value behind them that a computed value gets wrong (Colorhouse whites at 95.1 to 100). Pinned rows only; a row whose `dataQualityScore` would fall below `--min-score` (default 3) is held.
+
+All of them detect whether migration 017 is applied and write only `lrv` before it. The head colors in `src/lib/head-colors.ts` are skipped unless `--include-head`. `content_updated_at` (migration 014) does not watch the two columns.
+
+Thresholds used for the 2026-11 run: Dunn-Edwards default (`--max-delta=10`), Hirshfield's `--min-diff=0.5`, Vista, PPG, Sherwin-Williams and Dutch Boy `--min-diff=1`. Never 0.5 on Dutch Boy: it publishes whole numbers, so a half-point threshold swaps precise computed values for rounded ones.
 
 `scrape-bm-lrv.ts` and `scrape-behr-lrv.ts` are superseded. They only overwrote differences of 2 or more, which left about 1,250 BM rows 1 to 2 points off (Hale Navy HC-154 held 7.1; BM publishes 8.36). They also depend on the NAS crawl4ai server, which now requires `CRAWL4AI_TOKEN`.
 
