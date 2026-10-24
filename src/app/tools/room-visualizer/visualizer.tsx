@@ -6,6 +6,10 @@ import Image from "next/image";
 import { trackToolEngagement } from "@/lib/analytics";
 import { ROOMS, type Surface } from "@/lib/rooms";
 import { RoomCanvas } from "@/components/room-canvas";
+import { RetiredChip } from "@/components/retired-chip";
+import { BIG_THREE_BRANDS, bigThreeRows } from "@/lib/best-per-brand";
+import { closenessLabel } from "@/lib/closeness";
+import type { ColorAvailability } from "@/lib/types";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -20,8 +24,14 @@ interface PaintMatch {
   brandName: string;
   brandSlug: string;
   colorSlug: string;
-  colorNumber: string;
+  colorNumber: string | null;
   deltaE: number;
+  availability?: ColorAvailability;
+}
+
+interface MatchPayload {
+  matches?: PaintMatch[];
+  bestPerBrand?: PaintMatch[];
 }
 
 // ---------------------------------------------------------------------------
@@ -81,7 +91,17 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   const [roomIdx, setRoomIdx] = useState(() => Math.max(0, ROOMS.findIndex((r) => r.id === initialRoomId)));
   const [hexInput, setHexInput] = useState(merged.walls.replace("#", ""));
   const [matches, setMatches] = useState<PaintMatch[]>([]);
+  const [bestPerBrand, setBestPerBrand] = useState<PaintMatch[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const showPayload = (data: MatchPayload) => {
+    setMatches(data.matches ?? []);
+    setBestPerBrand(data.bestPerBrand ?? []);
+  };
+  const clearMatches = () => {
+    setMatches([]);
+    setBestPerBrand([]);
+  };
 
   const room = ROOMS[roomIdx];
   // Rooms only offer the surfaces they have (not every room has paintable windows).
@@ -114,7 +134,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   // cleared only when it changes (the effect below refetches for the new one).
   const showHex = (hex: string) => {
     const next = hex.replace("#", "");
-    if (next.toUpperCase() !== hexInput.toUpperCase()) setMatches([]);
+    if (next.toUpperCase() !== hexInput.toUpperCase()) clearMatches();
     setHexInput(next);
   };
 
@@ -161,11 +181,10 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
     setLoading(true);
     trackToolEngagement("room-visualizer", "complete", hexInput);
     try {
-      const res = await fetch(`/api/color-match?hex=${hexInput}`);
-      const data = await res.json();
-      setMatches(data.matches ?? []);
+      const res = await fetch(`/api/color-match?hex=${hexInput}&perBrand=1`);
+      showPayload(await res.json());
     } catch {
-      setMatches([]);
+      clearMatches();
     }
     setLoading(false);
   };
@@ -178,9 +197,10 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
     const controller = new AbortController();
     const timer = setTimeout(async () => {
       try {
-        const res = await fetch(`/api/color-match?hex=${hexInput}`, { signal: controller.signal });
-        const data = await res.json();
+        const res = await fetch(`/api/color-match?hex=${hexInput}&perBrand=1`, { signal: controller.signal });
+        const data: MatchPayload = await res.json();
         setMatches(data.matches ?? []);
+        setBestPerBrand(data.bestPerBrand ?? []);
       } catch {
         // Aborted by a newer color, or offline: keep the current list.
       }
@@ -195,6 +215,8 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
     setColors(merged);
     showHex(merged[selected]);
   };
+
+  const brandRows = bigThreeRows(bestPerBrand);
 
   return (
     <div className="mt-8">
@@ -418,6 +440,52 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
           </div>
         </div>
 
+        {/* Closest in each of the three biggest brands. The overall list
+            below is often one or two catalogs deep, so these rows make sure a
+            Sherwin-Williams, Benjamin Moore or Behr shopper sees their brand. */}
+        {brandRows.length > 0 && (
+          <div className="mt-6 pt-5 border-t border-outline-variant/15">
+            <p className="text-xs font-bold uppercase tracking-widest text-primary mb-4">
+              Closest in Sherwin-Williams, Benjamin Moore and Behr
+            </p>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {brandRows.map((m) => (
+                <div
+                  key={m.brandSlug}
+                  className="flex items-center gap-3 rounded-xl border border-outline-variant/20 bg-surface-container-low p-2.5"
+                >
+                  <button
+                    type="button"
+                    onClick={() => applyColor(m.hex)}
+                    className="h-12 w-12 shrink-0 rounded-lg border border-outline-variant/30"
+                    style={{ backgroundColor: m.hex }}
+                    title={`Apply ${m.name}`}
+                    aria-label={`Apply ${m.name} by ${m.brandName}`}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+                      {BIG_THREE_BRANDS.find((b) => b.slug === m.brandSlug)?.name ?? m.brandName}
+                    </p>
+                    <Link
+                      href={`/colors/${m.brandSlug}/${m.colorSlug}`}
+                      className="block truncate text-sm font-semibold text-on-surface hover:text-primary"
+                    >
+                      {m.name}
+                    </Link>
+                    <p className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-on-surface-variant">
+                      <span>
+                        {m.colorNumber ? `${m.colorNumber} · ` : ""}
+                        {closenessLabel(m.deltaE)}
+                      </span>
+                      <RetiredChip availability={m.availability} />
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Paint matches */}
         {matches.length > 0 && (
           <div className="mt-6 pt-5 border-t border-outline-variant/15">
@@ -453,6 +521,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
                     <p className="text-xs font-mono text-outline">
                       {m.hex.toUpperCase()}
                     </p>
+                    <RetiredChip availability={m.availability} className="mt-1 rounded-full bg-surface-container px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-outline" />
                   </div>
                 </div>
               ))}

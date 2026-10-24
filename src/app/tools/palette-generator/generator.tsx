@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
 import { trackToolEngagement } from "@/lib/analytics";
+import { RetiredChip } from "@/components/retired-chip";
+import type { ColorAvailability } from "@/lib/types";
 
 // --- Color utilities (copied from curated-palettes.tsx for client-side use) ---
 
@@ -172,6 +174,7 @@ interface MatchResult {
   brandSlug: string;
   colorSlug: string;
   deltaE: number;
+  availability?: ColorAvailability;
 }
 
 // --- Palette generation ---
@@ -419,6 +422,14 @@ export function PaletteGenerator() {
                           <p className="truncate text-center text-[10px] text-gray-400">
                             {match.brandName}
                           </p>
+                          {match.availability && (
+                            <p className="mt-0.5 text-center">
+                              <RetiredChip
+                                availability={match.availability}
+                                className="rounded-full bg-gray-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-gray-500"
+                              />
+                            </p>
+                          )}
                         </>
                       ) : (
                         <p className="truncate text-center text-[10px] text-gray-300">
