@@ -266,7 +266,7 @@ async function main() {
   fs.writeFileSync(backupPath, JSON.stringify(toWrite, null, 1));
   console.log(`Backup: ${path.relative(process.cwd(), backupPath)}`);
   const n = await writeAll(supabase, toWrite);
-  console.log(`Updated ${n} names. Redeploy (or revalidate) so pages pick them up.`);
+  console.log(`Updated ${n} names. Redeploy: the prebuild rebuilds /match-data because the content fingerprint changed. Pages pick up the new names within 24 h.`);
 }
 
 main().catch((err) => {

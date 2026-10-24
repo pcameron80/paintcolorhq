@@ -1,0 +1,80 @@
+[
+  {
+    "id": "355ff048-6b5e-4aa6-b4a4-ee66055068ec",
+    "key": "sherwin-williams/alabaster-7008",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27; match-title-test source (to-valspar, to-behr, to-ppg, to-farrow-ball, to-benjamin-moore)"
+  },
+  {
+    "id": "8f85e8f3-9acb-4d81-9bdf-0137a8dab91f",
+    "key": "sherwin-williams/agreeable-gray-7029",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27; match-title-test source (to-behr, to-valspar, to-dunn-edwards, to-ppg)"
+  },
+  {
+    "id": "2c655797-9532-4c5a-bd20-7d3aaf3df999",
+    "key": "benjamin-moore/white-dove-oc-17",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27; match-title-test source (to-behr, to-valspar, to-ppg, to-sherwin-williams)"
+  },
+  {
+    "id": "e00e5874-300b-42b5-85d8-c88de5f6c44c",
+    "key": "sherwin-williams/accessible-beige-7036",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27; match-title-test source (to-behr)"
+  },
+  {
+    "id": "05871ee2-9f9e-4539-b564-c8645b010e4e",
+    "key": "benjamin-moore/swiss-coffee-oc-45",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27; match-title-test source (to-sherwin-williams)"
+  },
+  {
+    "id": "a8f59e7b-bbdf-41dc-b64b-c5b44a715d5b",
+    "key": "benjamin-moore/pale-oak-oc-20",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27; match-title-test source (to-sherwin-williams)"
+  },
+  {
+    "id": "65806ca2-ce4a-4a1e-b1a7-d24842b0b747",
+    "key": "sherwin-williams/iron-ore-7069",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27; match-title-test source (to-behr, to-valspar)"
+  },
+  {
+    "id": "c472c09b-2830-4591-a649-b9932b4253c2",
+    "key": "sherwin-williams/greek-villa-7551",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27"
+  },
+  {
+    "id": "868bf1ed-90f1-48a2-81b9-0c12c0b31457",
+    "key": "sherwin-williams/shoji-white-7042",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27"
+  },
+  {
+    "id": "c798ce15-98ec-4751-90be-8ba3bd14629e",
+    "key": "benjamin-moore/chantilly-lace-2121-70",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27"
+  },
+  {
+    "id": "e773688d-94e8-4e8d-80e0-60e114324a66",
+    "key": "sherwin-williams/natural-linen-9109",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27"
+  },
+  {
+    "id": "aaacd018-d7e4-4412-84c4-3506ccb716a7",
+    "key": "sherwin-williams/sea-salt-6204",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27; match-title-test source (to-behr, to-valspar, to-ppg)"
+  },
+  {
+    "id": "e23e85c9-a5fa-4f7f-8426-0dbae13a2620",
+    "key": "sherwin-williams/urbane-bronze-7048",
+    "until": "2026-11-28",
+    "reason": "HEAD_COLOR_PUSH page body frozen to 2026-11-27"
+  }
+]
