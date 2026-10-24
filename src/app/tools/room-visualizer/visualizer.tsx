@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { trackToolEngagement } from "@/lib/analytics";
@@ -49,6 +49,9 @@ const DEFAULT_COLORS: Record<RegionId, string> = {
   windows: "#F4F3EF",
 };
 
+/** Quiet period before a picker drag or hex edit counts as one "use". */
+const TRACK_SETTLE_MS = 800;
+
 /** Regions where pop colors can be tried */
 const POP_REGIONS: RegionId[] = ["walls", "accentWall"];
 
@@ -67,9 +70,12 @@ interface RoomVisualizerProps {
 }
 
 export function RoomVisualizer({ initialColors, colorOptions, popColors, initialRoomId }: RoomVisualizerProps) {
-  const merged = initialColors
-    ? { ...DEFAULT_COLORS, ...initialColors }
-    : DEFAULT_COLORS;
+  // The colors the page opened with (URL or color-page colors over the
+  // defaults). Reset returns here, not to the bare defaults.
+  const merged = useMemo(
+    () => (initialColors ? { ...DEFAULT_COLORS, ...initialColors } : DEFAULT_COLORS),
+    [initialColors],
+  );
   const [colors, setColors] = useState(merged);
   const [selected, setSelected] = useState<RegionId>("walls");
   const [roomIdx, setRoomIdx] = useState(() => Math.max(0, ROOMS.findIndex((r) => r.id === initialRoomId)));
@@ -89,10 +95,32 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
     trackToolEngagement("room-visualizer", "open");
   }, []);
 
+  // The native picker fires onChange on every drag tick. Tracking each tick
+  // made one drag look like dozens of uses, so continuous inputs track once,
+  // after the value has settled.
+  const trackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => {
+    if (trackTimer.current) clearTimeout(trackTimer.current);
+  }, []);
+  const trackUseSettled = (hex: string) => {
+    if (trackTimer.current) clearTimeout(trackTimer.current);
+    trackTimer.current = setTimeout(() => {
+      trackTimer.current = null;
+      trackToolEngagement("room-visualizer", "use", hex);
+    }, TRACK_SETTLE_MS);
+  };
+
+  // Show a new hex in the input. Matches belong to the hex, so they are
+  // cleared only when it changes (the effect below refetches for the new one).
+  const showHex = (hex: string) => {
+    const next = hex.replace("#", "");
+    if (next.toUpperCase() !== hexInput.toUpperCase()) setMatches([]);
+    setHexInput(next);
+  };
+
   const selectRegion = (id: RegionId) => {
     setSelected(id);
-    setHexInput(colors[id].replace("#", ""));
-    setMatches([]);
+    showHex(colors[id]);
   };
 
   const changeRoom = (idx: number) => {
@@ -101,22 +129,30 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
     if (!REGIONS.some((r) => r.id === selected && next.masks[r.surface])) selectRegion("walls");
   };
 
-  const applyColor = (hex: string) => {
+  /** Paint the selected region and sync the hex input. Does not track. */
+  const setRegionColor = (hex: string) => {
     const normalized = hex.startsWith("#") ? hex : `#${hex}`;
     setColors((prev) => ({ ...prev, [selected]: normalized }));
-    setHexInput(normalized.replace("#", ""));
+    showHex(normalized);
+    return normalized;
+  };
+
+  /** A discrete choice (swatch or match click): one click is one use. */
+  const applyColor = (hex: string) => {
+    const normalized = setRegionColor(hex);
     trackToolEngagement("room-visualizer", "use", normalized);
   };
 
   const handlePickerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    applyColor(e.target.value);
+    trackUseSettled(setRegionColor(e.target.value));
   };
 
   const handleHexInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value.replace(/[^0-9a-fA-F]/g, "").slice(0, 6);
-    setHexInput(val);
     if (val.length === 6) {
-      setColors((prev) => ({ ...prev, [selected]: `#${val}` }));
+      trackUseSettled(setRegionColor(val));
+    } else {
+      setHexInput(val);
     }
   };
 
@@ -156,9 +192,8 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   }, [hexInput]);
 
   const resetColors = () => {
-    setColors(DEFAULT_COLORS);
-    setHexInput(DEFAULT_COLORS[selected].replace("#", ""));
-    setMatches([]);
+    setColors(merged);
+    showHex(merged[selected]);
   };
 
   return (
@@ -200,7 +235,6 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
       {/* ---- Room photo + paint overlay ---- */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-surface-container-low p-4">
         <p aria-live="polite" className="text-sm"><strong>Editing: {REGIONS.find(r => r.id === selected)?.label}</strong><span className="block mt-1">Digital color: {colors[selected].toUpperCase()}</span></p>
-        <button type="button" onClick={resetColors} className="rounded-xl bg-primary text-on-primary px-4 py-3 font-semibold">Reset all colors</button>
         <p className="w-full text-xs text-on-surface-variant">Digital room preview only. Lighting, screens, and paint finish affect appearance. Confirm your choice with a physical sample.</p>
       </div>
       <div className="overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container">
@@ -236,6 +270,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
             </button>
           ))}
           <button
+            type="button"
             onClick={resetColors}
             className="ml-auto rounded-xl border border-outline-variant/30 px-4 py-2.5 text-sm font-medium text-on-surface-variant hover:border-outline hover:bg-surface-container-low transition-all"
           >
@@ -302,6 +337,8 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
                         }`}
                         style={{ backgroundColor: hex }}
                         title={`${label}: ${hex.toUpperCase()}`}
+                        aria-label={`Apply ${label.toLowerCase()} color ${hex.toUpperCase()}`}
+                        aria-pressed={isActive}
                       />
                     );
                   })}
@@ -327,6 +364,8 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
                         }`}
                         style={{ backgroundColor: n }}
                         title={`Pop: ${n.toUpperCase()}`}
+                        aria-label={`Apply pop color ${n.toUpperCase()}`}
+                        aria-pressed={isActive}
                       />
                     );
                   })}
@@ -346,6 +385,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
               type="color"
               value={colors[selected]}
               onChange={handlePickerChange}
+              aria-label={`${REGIONS.find((r) => r.id === selected)?.label} color picker`}
               className="h-11 w-14 cursor-pointer rounded-xl border border-outline-variant/30"
             />
             <div className="flex items-center rounded-xl border border-outline-variant/30 bg-surface-container-low">
@@ -355,7 +395,11 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
                 value={hexInput}
                 onChange={handleHexInput}
                 maxLength={6}
-                className="w-20 border-none bg-transparent px-1 py-2.5 text-sm font-mono text-on-surface outline-none"
+                autoCapitalize="characters"
+                autoComplete="off"
+                spellCheck={false}
+                aria-label={`${REGIONS.find((r) => r.id === selected)?.label} hex code`}
+                className="w-20 border-none bg-transparent px-1 py-2.5 text-base sm:text-sm font-mono text-on-surface outline-none"
                 placeholder="D6D0C4"
               />
             </div>
@@ -364,6 +408,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
               style={{ backgroundColor: colors[selected] }}
             />
             <button
+              type="button"
               onClick={findMatches}
               disabled={loading || hexInput.length !== 6}
               className="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50 transition-colors shadow-sm"
@@ -386,10 +431,12 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
                   className="group flex flex-col overflow-hidden rounded-xl border border-outline-variant/20 bg-surface-container-low transition-shadow hover:shadow-md"
                 >
                   <button
+                    type="button"
                     onClick={() => applyColor(m.hex)}
                     className="relative h-16 w-full"
                     style={{ backgroundColor: m.hex }}
                     title={`Apply ${m.name}`}
+                    aria-label={`Apply ${m.name} by ${m.brandName}`}
                   >
                     <span className="absolute inset-0 flex items-center justify-center bg-black/0 text-xs font-semibold text-white opacity-0 transition-opacity group-hover:bg-black/30 group-hover:opacity-100">
                       Apply
