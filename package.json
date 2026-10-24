@@ -54,14 +54,14 @@
     "check:copy-counts": "tsx scripts/check-copy-counts.ts"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.6.1",
+    "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.95.3",
     "d3-geo": "^3.1.1",
     "google-auth-library": "^11.3.1",
-    "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "resend": "^6.9.2",
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "resend": "^6.34.1",
     "server-only": "^0.0.1",
     "topojson-client": "^3.1.0",
     "world-atlas": "^2.0.2"
