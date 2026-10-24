@@ -1,0 +1,57 @@
+name: CI
+
+# Runs on every PR into main or a release/* branch, and on pushes to main.
+# No secrets are used: the generated sitemap snapshot is replaced by a small
+# checked-in fixture, so nothing here talks to Supabase.
+on:
+  pull_request:
+    branches:
+      - main
+      - "release/**"
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Typecheck, lint, test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Matches the Vercel project's Node.js version (24.x).
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # src/generated/sitemap.json is gitignored and built from Supabase at
+      # prebuild. tsc and the tests only need its shape.
+      - name: Use sitemap fixture
+        run: |
+          mkdir -p src/generated
+          cp ci/sitemap.fixture.json src/generated/sitemap.json
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      # Report-only until the high-severity advisories are cleared (MP-75).
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
+        continue-on-error: true

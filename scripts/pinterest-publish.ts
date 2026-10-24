@@ -63,7 +63,7 @@ const onlyKeys = onlyArg ? new Set(onlyArg.replace("--only=", "").split(",")) : 
 
 // ---- env + log helpers ----
 function upsertEnv(updates: Record<string, string>) {
-  let lines = fs.readFileSync(ENV_PATH, "utf8").split("\n");
+  const lines = fs.readFileSync(ENV_PATH, "utf8").split("\n");
   for (const [key, value] of Object.entries(updates)) {
     const idx = lines.findIndex((l) => l.startsWith(`${key}=`));
     const line = `${key}=${value}`;
@@ -100,7 +100,12 @@ async function refreshAccessToken(): Promise<void> {
   console.log("   ↻ refreshed access token");
 }
 
-async function pinterest(pathname: string, init: RequestInit, retry = true): Promise<any> {
+/** The Pinterest API fields this script reads: the created pin id. */
+interface PinterestResponse {
+  id: string;
+}
+
+async function pinterest(pathname: string, init: RequestInit, retry = true): Promise<PinterestResponse> {
   const res = await fetch(`${API}${pathname}`, {
     ...init,
     headers: { ...(init.headers ?? {}), Authorization: `Bearer ${accessToken}` },
