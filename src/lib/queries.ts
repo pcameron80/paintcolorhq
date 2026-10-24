@@ -268,7 +268,8 @@ function getMatchDataBaseUrl(): string | null {
 // codes, name text and a hex color. Results come back in tiers: exact code
 // hits (color_number or alternate_numbers), the hex color (exact, else the
 // nearest paints), then names that equal, start with or contain the query,
-// then partial codes. A query that names a brand is filtered to it, and runs
+// then partial codes. Prefix and contains tiers are alphabetical, as the match
+// pickers sorted before. A query that names a brand is filtered to it, and runs
 // again without the brand when that finds nothing.
 const SEARCH_FIELDS = "id, name, slug, hex, color_number, brand:brand_id!inner (id, name, slug)";
 
@@ -358,14 +359,18 @@ async function runSearch(n: NormalizedSearch, brandSlug: string | null, limit: n
     ...(n.name && n.name.length <= 4 && !n.name.includes(" ")
       ? [`color_number.ilike.${pgQuote(`%${n.name}%`)}`]
       : []),
+    // A lone number may be part of a name ("100 Mph").
+    ...(!n.name && n.codes.length === 1 && /^[A-Z0-9]+$/.test(n.codes[0])
+      ? [`name.ilike.${pgQuote(`%${n.codes[0].toLowerCase()}%`)}`]
+      : []),
   ].join(",");
 
   const [codeExact, hexExact, nameExact, namePrefix, nameContains, codePartial] = await Promise.all([
     codeOr ? searchRows(brandSlug, limit, (q) => q.or(codeOr)) : none,
     n.hex ? searchRows(brandSlug, limit, (q) => q.ilike("hex", n.hex as string)) : none,
     terms.length ? searchRows(brandSlug, limit, (q) => q.or(terms.map((t) => `name.ilike.${pgQuote(t)}`).join(","))) : none,
-    terms.length ? searchRows(brandSlug, limit, (q) => q.or(terms.map((t) => `name.ilike.${pgQuote(`${t}%`)}`).join(","))) : none,
-    containsOr ? searchRows(brandSlug, limit, (q) => q.or(containsOr)) : none,
+    terms.length ? searchRows(brandSlug, limit, (q) => q.or(terms.map((t) => `name.ilike.${pgQuote(`${t}%`)}`).join(",")).order("name")) : none,
+    containsOr ? searchRows(brandSlug, limit, (q) => q.or(containsOr).order("name")) : none,
     n.codes.length
       ? searchRows(brandSlug, limit, (q) => q.or(n.codes.map((k) => `color_number.imatch.${pgQuote(codeRegex(k, false))}`).join(",")))
       : none,

@@ -150,6 +150,11 @@ test("filter-breaking characters never reach PostgREST", () => {
   assert.ok(!n("a_b").nameTerms[0].includes("_"));
 });
 
+test("periods and hyphens stay in names", () => {
+  assert.deepEqual(n("St. Elmo").nameTerms, ["st. elmo"]);
+  assert.deepEqual(n("semi-precious").nameTerms, ["semi-precious"]);
+});
+
 test("Unicode dashes and curly apostrophes normalize", () => {
   assert.deepEqual(n("HC\u2013154").codes, ["HC154"]);
   assert.deepEqual(n("Lauren\u2019s lace").nameTerms, ["lauren_s lace"]);

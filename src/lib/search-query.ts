@@ -142,7 +142,7 @@ function namePatterns(name: string): string[] {
   const base = name
     .replace(/\bgr[ae]y/g, "gr_y")
     .replace(/'/g, "_")
-    .replace(/[(),.]/g, " ")
+    .replace(/[(),]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
   if (base.length < 2) return [];
