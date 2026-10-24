@@ -11,6 +11,9 @@
 //
 // The July 2026 table used Behr W-B-500 at 97.3. That row is not in Behr's live
 // palette and Behr publishes Ultra Pure White (UPW) at 94, so it was replaced.
+// UPW is tied, not alone: Behr's 2026-10-11 feed also lists Stately White BXC-29
+// and Blanca Peak HDC-NT-04G at 94. Copy that names UPW says "ties for" or
+// "shared by", never "the brightest".
 
 export interface LightestWhite {
   brand: string;

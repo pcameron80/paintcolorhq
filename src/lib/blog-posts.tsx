@@ -1514,7 +1514,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the whitest white paint you can buy?",
         answer:
-          "Among the brands that publish LRV, Behr Ultra Pure White has the highest light reflectance, with a published LRV of 94, and it doubles as Behr's base white. Sherwin-Williams UltraWhite is close behind at 93.5. Every brand's ceiling differs: PPG's lightest white, Soft Candlelight, is published at LRV 89, about five points lower.",
+          "Among the brands that publish LRV, the highest published light reflectance is 94, shared by Behr Ultra Pure White, Behr's base white, and two other Behr whites, Stately White and Blanca Peak. Sherwin-Williams UltraWhite is close behind at 93.5. Every brand's ceiling differs: PPG's lightest white, Soft Candlelight, is published at LRV 89, about five points lower.",
       },
       {
         question: "Which paint brand has the warmest whites?",
@@ -1631,9 +1631,10 @@ const blogPosts: BlogPost[] = [
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Whitest White You Can Buy</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Every brand has a ceiling, the lightest white it sells, and the ceilings differ more
-          than you would expect. Among brands that publish LRV,{" "}
+          than you would expect. Among brands that publish LRV, the top published value is 94,
+          shared by{" "}
           <Swatch hex="#F8F9F3" name="Behr Ultra Pure White" href="/colors/behr/ultra-pure-white-upw" />{" "}
-          is the brightest at a published LRV of 94. Sherwin-Williams&apos; brightest,{" "}
+          and two other Behr whites, Stately White and Blanca Peak. Sherwin-Williams&apos; brightest,{" "}
           <Swatch hex="#F6F7F2" name="UltraWhite" href="/colors/sherwin-williams/ultrawhite-9500" />, is published at 93.5.
           PPG&apos;s lightest white is published at 89, about five points below Behr&apos;s.
           And if what you want is white with <em>no</em> undertone at all, the truest white we

@@ -319,7 +319,7 @@ export default function PaintColorStatisticsPage() {
                         <span className="text-outline">{row.code}</span>
                       </td>
                       <td className="py-3 px-4 text-right text-on-surface tabular-nums whitespace-nowrap">
-                        {row.lrv.toFixed(1)}
+                        {row.estimated ? row.lrv.toFixed(1) : String(row.lrv)}
                         {row.estimated && <span className="text-outline"> est.</span>}
                       </td>
                       <td className="py-3 pl-4 text-on-surface-variant text-sm">{row.estimated ? "Our estimate" : row.source}</td>

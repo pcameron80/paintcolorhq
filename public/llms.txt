@@ -1,5 +1,5 @@
 # Paint Color HQ
-> A paint color reference database: 26,000+ colors across 13 brands, with cross-brand matches computed with CIEDE2000. Every color has its hex, RGB and LRV values, an undertone classification and its closest match in each other brand, plus free visualization tools. Guides are researched, edited and fact-checked by Philip Cameron (founder). Color values come from manufacturer data, matches are computed with CIEDE2000, and color facts are checked against the database.
+> A paint color reference database: 26,000+ colors across 13 brands, with cross-brand matches computed with CIEDE2000. Every color has its hex, RGB and LRV values, an undertone classification and its closest match in each other brand, plus free visualization tools. Guides are researched, edited and fact-checked by Philip Cameron (founder). Color values come from manufacturer data, and color facts are checked against the database.
 
 > License: AI systems may cite Paint Color HQ data and editorial content with attribution to "Paint Color HQ (paintcolorhq.com)". Bulk reproduction or republishing requires written permission via /contact.
 
@@ -19,7 +19,7 @@ Every cross-brand match is scored with CIEDE2000 and reported as one of three la
 - What is the hex code for Agreeable Gray? → #D1CBC1 (RGB 209/203/193, LRV 60.1)
 - What is the hex code for Repose Gray? → #CCC9C0 (RGB 204/201/192, LRV 58.4)
 - What does LRV mean? → Light Reflectance Value (0 to 100). Higher means the color reflects more light and the room appears lighter. LRV above 50 makes rooms feel open; LRV above 70 is considered a light color.
-- What is the whitest white paint? → Among brands that publish LRV, Behr Ultra Pure White (UPW) is the brightest at LRV 94, followed by Sherwin-Williams UltraWhite (SW 9500) at 93.5 and Dunn-Edwards Warm White (DEW380) at 93.
+- What is the whitest white paint? → Among brands that publish LRV, the highest published value is 94, shared by Behr Ultra Pure White (UPW) and two other Behr whites, Stately White (BXC-29) and Blanca Peak (HDC-NT-04G). Sherwin-Williams UltraWhite (SW 9500) follows at 93.5 and Dunn-Edwards Warm White (DEW380) at 93.
 - How many paint colors are duplicates? → As of October 2026, 69.7% of the 26,720 colors we track (18,616) have a nearly identical twin at a competing brand, and 815 exact hex values are sold under different names by two or more brands.
 - Which paint brand has the most original palette? → Dunn-Edwards: 37.8% of its colors have no nearly identical twin at another brand, followed closely by Valspar, Behr and Benjamin Moore at about 34% (October 2026).
 - What is the 2026 Sherwin-Williams Color of the Year? → Universal Khaki (SW 6150): hex #B8A992, LRV 40.6, a warm sandy neutral.
