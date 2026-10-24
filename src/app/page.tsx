@@ -9,6 +9,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { getAllPosts } from "@/lib/blog-posts";
 import { ORG_ID, FOUNDER_PERSON } from "@/lib/entity-schema";
 import { CURRENT_COTY } from "@/lib/color-of-the-year";
+import { NAV_BRANDS, NAV_HUES } from "@/lib/site-nav";
 
 export const metadata: Metadata = {
   title: "Find & Compare Paint Colors Across 13 Brands",
@@ -16,16 +17,6 @@ export const metadata: Metadata = {
     "Discover paint colors you love from 26,000+ shades across our paint catalog, preview them on a wall, and find your color in the brand you can buy — free, no signup.",
   alternates: { canonical: "https://www.paintcolorhq.com/" },
 };
-
-const brands = [
-  { name: "Sherwin-Williams", slug: "sherwin-williams" },
-  { name: "Benjamin Moore", slug: "benjamin-moore" },
-  { name: "Behr", slug: "behr" },
-  { name: "PPG", slug: "ppg" },
-  { name: "Dunn-Edwards", slug: "dunn-edwards" },
-  { name: "Valspar", slug: "valspar" },
-  { name: "Farrow & Ball", slug: "farrow-ball" },
-];
 
 const colorFamilies = [
   { name: "White", slug: "white", color: "#FFFFFF", border: true },
@@ -42,6 +33,13 @@ const colorFamilies = [
   { name: "Pink", slug: "pink", color: "#EC4899" },
   { name: "Black", slug: "black", color: "#1F2937" },
 ];
+
+// Swatch tints for the hue-page chips (approximate band centers, decoration only).
+const HUE_SWATCH: Record<string, string> = {
+  "/colors/hue/blue-gray": "#6E8296",
+  "/colors/hue/blue-green": "#2F8A8C",
+  "/colors/hue/rust": "#A4532F",
+};
 
 // Ordered discover-first: find a color → expand it → see it on a wall →
 // refine → find it in a buyable brand (the closer) → calculate how much.
@@ -211,9 +209,9 @@ export default async function Home() {
               All brands <span>&rarr;</span>
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {brands.map((brand) => (
-              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="flex items-center justify-center p-5 min-h-24 bg-surface-container-lowest rounded-xl hover:shadow-md transition-shadow">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            {NAV_BRANDS.map((brand) => (
+              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="flex items-center justify-center p-4 md:p-5 min-h-16 md:min-h-24 bg-surface-container-lowest rounded-xl hover:shadow-md transition-shadow">
                 <span className="font-headline font-bold text-base text-on-surface text-center">{brand.name}</span>
               </Link>
             ))}
@@ -237,6 +235,19 @@ export default async function Home() {
                   style={{ backgroundColor: family.color }}
                 />
                 {family.name}
+              </Link>
+            ))}
+            {NAV_HUES.map((hue) => (
+              <Link
+                key={hue.href}
+                href={hue.href}
+                className="flex items-center gap-2 rounded-full bg-surface-container-lowest px-5 py-2.5 text-sm font-medium text-on-surface-variant transition-all hover:shadow-md hover:text-primary group"
+              >
+                <span
+                  className="inline-block h-5 w-5 rounded-full"
+                  style={{ backgroundColor: HUE_SWATCH[hue.href] ?? "#9CA3AF" }}
+                />
+                {hue.name}
               </Link>
             ))}
           </div>
