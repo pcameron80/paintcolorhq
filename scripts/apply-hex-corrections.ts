@@ -13,6 +13,11 @@
  * computed), color_family (classify + perceptual refine) and undertone.
  * Name, slug, code and URLs are untouched. A row whose hex no longer equals
  * the scan's dbHex (edited since the scan) is skipped, not overwritten.
+ * The feed LRV goes through publishedLrv() (scripts/lib/lrv-source.ts), so
+ * Vista R codes (L*, not LRV), BM PM- codes and feed zeros fall back to the
+ * computed value. Once migration 017 is applied, lrv_source and
+ * lrv_checked_on are written with the LRV ('manufacturer' + scan date, or
+ * 'computed'), and backed up for --revert.
  *
  * Usage:
  *   tsx scripts/apply-hex-corrections.ts --scan-dir=data/brand-scans/2026-10-11            # dry run
@@ -33,6 +38,7 @@ import { classifyColorFamily, refineColorFamily, calculateLrv, rgbToLab, hexToRg
 import { undertoneLabel } from './lib/undertone';
 import { pool } from './lib/palette-sources';
 import type { HexChange } from './lib/palette-diff';
+import { hasLrvSourceColumn, publishedLrv, roundLrv, scanDate } from './lib/lrv-source';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local'), quiet: true });
 
@@ -57,9 +63,11 @@ interface Row {
   color_family: string | null;
   undertone: string | null;
 }
-type Patch = Omit<Row, 'id' | 'slug'>;
+type Patch = Omit<Row, 'id' | 'slug'> & { lrv_source?: string | null; lrv_checked_on?: string | null };
 
-function corrected(hex: string, liveLrv: number | undefined): Patch {
+// published: the manufacturer's LRV from publishedLrv(), or null to compute from hex.
+// source: lrv_source / lrv_checked_on columns (migration 017) are written only when present.
+function corrected(hex: string, published: number | null, source: { withSource: boolean; checkedOn: string }): Patch {
   const rgb = hexToRgb(hex)!;
   const lab = rgbToLab(rgb.r, rgb.g, rgb.b);
   return {
@@ -70,22 +78,27 @@ function corrected(hex: string, liveLrv: number | undefined): Patch {
     lab_l: lab.l,
     lab_a: lab.a,
     lab_b_val: lab.b_val,
-    lrv: liveLrv ?? Math.round(calculateLrv(rgb.r, rgb.g, rgb.b) * 10) / 10,
+    lrv: published ?? roundLrv(calculateLrv(rgb.r, rgb.g, rgb.b)),
     color_family: refineColorFamily(classifyColorFamily(rgb.r, rgb.g, rgb.b), rgb.r, rgb.g, rgb.b),
     undertone: undertoneLabel(hex, lab.a, lab.b_val),
+    ...(source.withSource
+      ? published !== null
+        ? { lrv_source: 'manufacturer', lrv_checked_on: source.checkedOn }
+        : { lrv_source: 'computed', lrv_checked_on: null }
+      : {}),
   };
 }
 
-async function loadRows(supabase: SupabaseClient, brandId: string, slugs: string[]): Promise<Map<string, Row>> {
+async function loadRows(supabase: SupabaseClient, brandId: string, slugs: string[], withSource: boolean): Promise<Map<string, Row>> {
   const out = new Map<string, Row>();
   for (let i = 0; i < slugs.length; i += 200) {
     const { data, error } = await supabase
       .from('colors')
-      .select(FIELDS)
+      .select(withSource ? `${FIELDS}, lrv_source, lrv_checked_on` : FIELDS)
       .eq('brand_id', brandId)
       .in('slug', slugs.slice(i, i + 200));
     if (error) throw new Error(`DB read failed: ${error.message}`);
-    for (const r of data as Row[]) out.set(r.slug, r);
+    for (const r of data as unknown as Row[]) out.set(r.slug, r);
   }
   return out;
 }
@@ -114,9 +127,11 @@ async function main() {
     process.exit(1);
   }
   const supabase = createClient(url, key);
+  const withSource = await hasLrvSourceColumn(supabase);
 
   if (revertFile) {
-    const backup = JSON.parse(fs.readFileSync(revertFile, 'utf8')) as Row[];
+    // Backups taken after migration 017 include lrv_source / lrv_checked_on, so they restore too.
+    const backup = JSON.parse(fs.readFileSync(revertFile, 'utf8')) as (Row & Pick<Patch, 'lrv_source' | 'lrv_checked_on'>)[];
     const n = await writeAll(
       supabase,
       backup.map(({ id, slug: _slug, ...patch }) => ({ id, patch })),
@@ -129,6 +144,7 @@ async function main() {
     process.exit(1);
   }
   const dir = path.resolve(process.cwd(), scanDir);
+  const checkedOn = scanDate(dir) ?? new Date().toISOString().slice(0, 10);
   const { data: brands, error } = await supabase.from('brands').select('id, slug').order('slug');
   if (error || !brands) throw new Error(`Failed to fetch brands: ${error?.message}`);
   const wanted = brandArg ? new Set(brandArg.split(',')) : null;
@@ -141,7 +157,7 @@ async function main() {
     const changes = JSON.parse(fs.readFileSync(file, 'utf8')) as HexChange[];
     if (!changes.length) continue;
     if (changes.some((c) => !c.slug)) throw new Error(`${file} predates slug tracking; re-run the scan`);
-    const rows = await loadRows(supabase, b.id, changes.map((c) => c.slug));
+    const rows = await loadRows(supabase, b.id, changes.map((c) => c.slug), withSource);
     const tally = { apply: 0, alreadyCorrect: 0, editedSinceScan: 0, noRow: 0, familyMoves: 0, manufacturerLrv: 0 };
     for (const c of changes) {
       const row = rows.get(c.slug);
@@ -149,9 +165,10 @@ async function main() {
       const current = row.hex.toLowerCase();
       if (current === c.liveHex) { tally.alreadyCorrect++; continue; }
       if (current !== c.dbHex) { tally.editedSinceScan++; console.warn(`  skip ${b.slug}/${c.slug}: hex is ${current}, scan saw ${c.dbHex}`); continue; }
-      const patch = corrected(c.liveHex, c.liveLrv);
+      const published = publishedLrv(b.slug, c.code, c.liveLrv);
+      const patch = corrected(c.liveHex, published, { withSource, checkedOn });
       if (patch.color_family !== row.color_family) tally.familyMoves++;
-      if (c.liveLrv != null) tally.manufacturerLrv++;
+      if (published !== null) tally.manufacturerLrv++;
       const { id, slug, ...old } = row;
       backup.push({ id, slug, ...old });
       updates.push({ id, patch });
