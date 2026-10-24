@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
   const url = `https://www.paintcolorhq.com/blog/${post.slug}`;
+  const image = shareImage(post);
   return {
     title: `${post.title}`,
     description: post.excerpt,
@@ -41,13 +42,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: post.title, description: post.excerpt, type: "article",
       publishedTime: post.date, modifiedTime: post.modifiedDate ?? post.date, url, tags: post.tags,
-      ...(post.coverImage && { images: [{ url: `https://www.paintcolorhq.com${post.coverImage}`, width: 1200, height: 630 }] }),
+      images: [image],
     },
     twitter: {
       card: "summary_large_image", title: post.title, description: post.excerpt,
-      ...(post.coverImage && { images: [`https://www.paintcolorhq.com${post.coverImage}`] }),
+      images: [image.url],
     },
   };
+}
+
+// Share image for og:image, twitter:image and BlogPosting.image. Posts without
+// a cover use the site's default card rather than emitting no image at all.
+// The default is 1200x800 on disk; covers are generated at 1200x630.
+function shareImage(post: { coverImage?: string }) {
+  return post.coverImage
+    ? { url: `https://www.paintcolorhq.com${post.coverImage}`, width: 1200, height: 630 }
+    : { url: "https://www.paintcolorhq.com/og-image.webp", width: 1200, height: 800 };
 }
 
 function formatDate(dateStr: string) {
@@ -137,7 +147,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       {/* Hero image or color bar */}
       {post.coverImage ? (
         <div className="relative h-64 sm:h-80 md:h-96 mt-[65px]">
-          <Image src={post.coverImage} alt={post.title} fill priority className="object-cover" sizes="100vw" />
+          <Image src={post.coverImage} alt={post.title} fill preload fetchPriority="high" className="object-cover" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent" />
         </div>
       ) : (
@@ -168,6 +178,12 @@ export default async function BlogPostPage({ params }: PageProps) {
 
             <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-outline">
               <time dateTime={post.date}>{formatDate(post.date)}</time>
+              {post.modifiedDate && post.modifiedDate !== post.date && (
+                <>
+                  <div className="bg-surface-container-high h-1 w-4" />
+                  <span>Updated <time dateTime={post.modifiedDate}>{formatDate(post.modifiedDate)}</time></span>
+                </>
+              )}
               <div className="bg-surface-container-high h-1 w-4" />
               <Link href="/authors/paint-color-hq-staff" className="hover:text-primary transition-colors">{post.author}</Link>
               <div className="bg-surface-container-high h-1 w-4" />
@@ -278,17 +294,9 @@ export default async function BlogPostPage({ params }: PageProps) {
         description: post.excerpt, url: `https://www.paintcolorhq.com/blog/${post.slug}`,
         mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.paintcolorhq.com/blog/${post.slug}` },
         keywords: post.tags.join(", "),
-        // Always emit `image`. Posts without a coverImage fall back to the
-        // generated /api/og endpoint — satisfies the BlogPosting recommended
-        // property without forcing a stock image per post.
-        image: {
-          "@type": "ImageObject",
-          url: post.coverImage
-            ? `https://www.paintcolorhq.com${post.coverImage}`
-            : `https://www.paintcolorhq.com/api/og?name=${encodeURIComponent(post.title)}&brand=${encodeURIComponent("Paint Color HQ")}`,
-          width: 1200,
-          height: 630,
-        },
+        // Always emit `image`, the same file as og:image. Posts without a
+        // coverImage use the static default card, not an /api URL.
+        image: { "@type": "ImageObject", ...shareImage(post) },
         // Every current post is by the founder; a future guest author gets a plain Person node.
         author: post.author === FOUNDER_PERSON.name
           ? { ...FOUNDER_PERSON, worksFor: ORG_REF }

@@ -558,8 +558,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "behr/cracked-pepper-ppu18-01": (
     <>
       <p>
-        Cracked Pepper is Behr&apos;s soft black — a 2022 Color of the Year that reads as a deep, slightly
-        warm near-black at LRV 8 rather than a flat true black. It&apos;s the accessible choice for doors,
+        Cracked Pepper is Behr&apos;s soft black and Behr&apos;s 2024 Color of the Year. It reads as a deep,
+        slightly warm near-black at LRV 8 rather than a flat true black. It&apos;s the accessible choice for doors,
         accent walls, and cabinetry at Home Depot, with enough softness to feel modern rather than severe.
       </p>
       <p>
@@ -1272,7 +1272,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Caliente, Benjamin Moore&apos;s 2018 Color of the Year, is a bold, vibrant red with real depth — at
-        LRV 7 it&apos;s saturated and dramatic without tipping orange or pink. It&apos;s a statement color: a
+        LRV 8.8 it&apos;s saturated and dramatic without tipping orange or pink. It&apos;s a statement color: a
         front door, a dining room, an accent wall, or cabinetry where you want energy and confidence.
       </p>
       <p>
