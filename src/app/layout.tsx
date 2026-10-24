@@ -3,6 +3,7 @@ import { Inter, Manrope } from "next/font/google";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { CookieConsent } from "@/components/cookie-consent";
 import { PlausibleScript } from "@/components/plausible-script";
+import { WebVitalsReporter } from "@/components/web-vitals-reporter";
 import "./globals.css";
 
 const inter = Inter({
@@ -72,7 +73,10 @@ export default function RootLayout({
       <body className={`${inter.variable} ${manrope.variable} font-sans antialiased`}>
         {children}
         <CookieConsent />
+        {/* AnalyticsProvider must stay after CookieConsent (the gtag scripts);
+            WebVitalsReporter goes after both. */}
         <AnalyticsProvider />
+        <WebVitalsReporter />
         <PlausibleScript />
       </body>
     </html>
