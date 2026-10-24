@@ -49,6 +49,13 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       colorOptions[region] = parts.map((h) => `#${h}`);
     }
   }
+  // Color pages used to link ?hex=#RRGGBB, which was ignored, so the tool
+  // always opened on its default. Read it as the walls color when no walls
+  // param is given, so those links (and copies of them) open on the color.
+  if (sp.walls === undefined && typeof sp.hex === "string") {
+    const hex = sp.hex.replace(/^#/, "");
+    if (hexRe.test(hex)) initialColors.walls = `#${hex}`;
+  }
   // Parse pop colors separately (shown on walls + accent wall)
   const initialRoomId = typeof sp.room === "string" ? sp.room : undefined;
   const popRaw = sp.pop;

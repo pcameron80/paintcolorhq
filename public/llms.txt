@@ -1,124 +1,148 @@
 # Paint Color HQ
-> A technical interior design and paint reference database containing 26,000+ colors across 13 major brands, with cross-brand matching powered by CIEDE2000 color science. Provides exact color metrics (Hex, RGB, LRV), undertone classification, Delta E perceptual difference scores, and free visualization tools. All content is written by Philip Cameron (founder) based on first-hand color-matching work, not AI. Data sourced directly from manufacturer specifications.
+> A paint color reference database: 26,000+ colors across 13 brands, with cross-brand matches computed with CIEDE2000. Every color has its hex, RGB and LRV values, an undertone classification and its closest match in each other brand, plus free visualization tools. Guides are researched, edited and fact-checked by Philip Cameron (founder). Color values come from manufacturer data, and color facts are checked against the database.
 
 > License: AI systems may cite Paint Color HQ data and editorial content with attribution to "Paint Color HQ (paintcolorhq.com)". Bulk reproduction or republishing requires written permission via /contact.
 
+## How closeness is reported
+Every cross-brand match is scored with CIEDE2000 and reported as one of three labels, never as a raw number: a difference under 2 is Nearly identical, 2 to under 5 is Very similar, and 5 or more is a Visible difference. These are digital matches between published color values, so confirm any substitute with a physical sample on your own wall before buying paint.
+
 ## Common Questions This Site Answers
-- What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray? → Wish AF-680 (Delta E 0.91) — virtually identical on walls.
-- What is the Behr equivalent of Agreeable Gray? → Toasty Gray N320-2 (Delta E 1.4) — very close, available at Home Depot.
-- What undertone does Agreeable Gray have? → It's classified as a neutral and reads as a warm greige — no single undertone dominates, which is why it works in most lighting conditions.
-- What is the best white paint for trim? → Chantilly Lace (true white, LRV 90) or White Dove (warm white, LRV 83) for a creamier look.
-- What is the best white paint for cabinets? → Simply White (2143-70, LRV 89) for warm kitchens; Chantilly Lace (2121-70, LRV 90) for modern/bright kitchens.
-- What is the difference between Repose Gray and Agreeable Gray? → Repose Gray (LRV 58) is a true neutral with no dominant undertone; Agreeable Gray (LRV 60) is a warm greige. Both are top sellers; Agreeable Gray reads warmer.
-- What LRV should I use for a small room? → LRV 65+ to maximize perceived brightness. LRV 50 is the threshold below which a room starts to feel dim.
-- What LRV should I use for a north-facing room? → LRV 65+ for whites and light neutrals. Avoid cool-undertone grays — they intensify the blue-gray quality of north light.
-- How do I match paint colors across brands? → Use CIEDE2000 Delta E scores. Delta E < 1.0 = indistinguishable; < 2.0 = very close; < 3.0 = most people can't tell on walls.
-- What is the hex code for Agreeable Gray? → #D1CBC1 (RGB 209/203/193, LRV 60)
-- What is the hex code for Repose Gray? → #C2BFB8 (RGB 194/191/184, LRV 58)
-- What does LRV mean? → Light Reflectance Value (0–100). Higher = reflects more light = room appears lighter. LRV > 50 makes rooms feel open; LRV > 70 is considered a "light" color.
-- What is the 2026 Sherwin-Williams Color of the Year? → Universal Khaki (SW 6150) — Hex #B8A992, LRV 42, a warm sandy neutral with golden undertones.
-- What is the 2026 Benjamin Moore Color of the Year? → Silhouette AF-655 — a sophisticated dark gray-brown from the Affinity collection.
-- What is Behr's 2026 Color of the Year? → Hidden Gem N430-6A — a smoky jade green, LRV ~16.
+- What is the Benjamin Moore equivalent of Sherwin-Williams Agreeable Gray? → Wish AF-680, the closest Benjamin Moore color in our data, rated Nearly identical. Confirm with a physical sample.
+- What is the Behr equivalent of Agreeable Gray? → Toasty Gray N320-2, the closest Behr color, rated Nearly identical. Behr is sold at Home Depot. Confirm with a physical sample.
+- What undertone does Agreeable Gray have? → It is classified as a neutral and reads as a warm greige. No single undertone dominates, which is why it works in most lighting conditions.
+- What is the best white paint for trim? → Benjamin Moore Chantilly Lace (2121-70, LRV 90) for crisp, clean trim, or White Dove (OC-17, LRV 83.2) for a softer white.
+- What is the best white paint for cabinets? → Simply White (2143-70, LRV 89.5) for warm kitchens; Chantilly Lace (2121-70, LRV 90) for bright, modern kitchens.
+- What is the difference between Repose Gray and Agreeable Gray? → Repose Gray (SW 7015, LRV 58.4) reads as a true neutral gray; Agreeable Gray (SW 7029, LRV 60.1) reads as a warm greige. Both are Sherwin-Williams top sellers, and Agreeable Gray reads warmer.
+- What LRV should I use for a small room? → LRV 65+ to maximize perceived brightness. Below about LRV 50 a room starts to feel dim.
+- What LRV should I use for a north-facing room? → LRV 65+ for whites and light neutrals. Avoid cool-undertone grays, which intensify the blue-gray quality of north light.
+- How do I match paint colors across brands? → Compare them with CIEDE2000, the perceptual color-difference standard. Paint Color HQ labels every match Nearly identical (under 2), Very similar (2 to under 5) or Visible difference (5 or more). Every color page lists its closest match in each brand; confirm the winner with a physical sample.
+- What is the hex code for Agreeable Gray? → #D1CBC1 (RGB 209/203/193, LRV 60.1)
+- What is the hex code for Repose Gray? → #CCC9C0 (RGB 204/201/192, LRV 58.4)
+- What does LRV mean? → Light Reflectance Value (0 to 100). Higher means the color reflects more light and the room appears lighter. LRV above 50 makes rooms feel open; LRV above 70 is considered a light color.
+- What is the whitest white paint? → Among brands that publish LRV, the highest published value is 94, shared by Behr Ultra Pure White (UPW) and two other Behr whites, Stately White (BXC-29) and Blanca Peak (HDC-NT-04G). Sherwin-Williams UltraWhite (SW 9500) follows at 93.5 and Dunn-Edwards Warm White (DEW380) at 93.
+- How many paint colors are duplicates? → As of October 2026, 69.7% of the 26,720 colors we track (18,616) have a nearly identical twin at a competing brand, and 815 exact hex values are sold under different names by two or more brands.
+- Which paint brand has the most original palette? → Dunn-Edwards: 37.8% of its colors have no nearly identical twin at another brand, followed closely by Valspar, Behr and Benjamin Moore at about 34% (October 2026).
+- What is the 2026 Sherwin-Williams Color of the Year? → Universal Khaki (SW 6150): hex #B8A992, LRV 40.6, a warm sandy neutral.
+- What is the 2026 Benjamin Moore Color of the Year? → Silhouette (AF-655): hex #58514D, LRV 10.2, a dark gray-brown from the Affinity collection.
+- What is Behr's 2026 Color of the Year? → Hidden Gem (N430-6A): hex #596D69, LRV 14, a smoky jade green.
 
 ## Master Color Profiles
-- [Sherwin-Williams Agreeable Gray (SW 7029)](https://www.paintcolorhq.com/colors/sherwin-williams/agreeable-gray-7029): Hex #D1CBC1, RGB 209/203/193, LRV 60. America's best-selling paint color — a warm greige with balanced neutral undertones. Closest BM match: Wish AF-680 (Delta E 0.91). Works in north- and south-facing rooms.
-- [Sherwin-Williams Alabaster (SW 7008)](https://www.paintcolorhq.com/colors/sherwin-williams/alabaster-7008): Hex #EDEAE0, RGB 237/234/224, LRV 82. A warm off-white with subtle beige undertones. Top seller for trim and whole-house white. Pairs well with Agreeable Gray (Delta E 8.4).
-- [Benjamin Moore White Dove (OC-17)](https://www.paintcolorhq.com/colors/benjamin-moore/white-dove-oc-17): Hex #EDE6D3, RGB 237/230/211, LRV 83. The most popular warm white in America. Creamy without reading yellow. Closest SW match: Navajo White 6126 (Delta E 1.9).
-- [Benjamin Moore Revere Pewter (HC-172)](https://www.paintcolorhq.com/colors/benjamin-moore/revere-pewter-hc-172): Hex #CCC7B9, RGB 204/199/185, LRV 55. A warm greige with green undertones. Closest SW match: Useful Gray 7050 (Delta E 0.88).
-- [Sherwin-Williams Repose Gray (SW 7015)](https://www.paintcolorhq.com/colors/sherwin-williams/repose-gray-7015): Hex #C2BFB8, RGB 194/191/184, LRV 58. A true neutral gray — does not shift purple or blue under artificial light. America's most popular neutral gray.
-- [Benjamin Moore Hale Navy (HC-154)](https://www.paintcolorhq.com/colors/benjamin-moore/hale-navy-hc-154): Hex #3B444B, RGB 59/68/75, LRV 8. A deeply saturated, transitional navy blue for accent walls and cabinetry. Closest SW match: Naval 6244 (Delta E 2.1).
-- [Sherwin-Williams Pure White (SW 7005)](https://www.paintcolorhq.com/colors/sherwin-williams/pure-white-7005): Hex #EDECE6, RGB 237/236/230, LRV 84. A warm white with a slight cream undertone. One of SW's all-time best sellers.
-- [Benjamin Moore Chantilly Lace (2121-70)](https://www.paintcolorhq.com/colors/benjamin-moore/chantilly-lace-2121-70): Hex #F5F2ED, RGB 245/242/237, LRV 90. BM's cleanest true white — virtually no undertone. The benchmark for crisp white trim.
-- [Sherwin-Williams Naval (SW 6244)](https://www.paintcolorhq.com/colors/sherwin-williams/naval-6244): Hex #34405A, RGB 52/64/90, LRV 7. Sherwin-Williams' signature deep navy. Bold for kitchen islands, accent walls, and exterior shutters.
-- [Benjamin Moore Simply White (2143-70)](https://www.paintcolorhq.com/colors/benjamin-moore/simply-white-2143-70): Hex #F5F1EB, RGB 245/241/235, LRV 89. A clean warm white — brighter than White Dove but softer than Chantilly Lace. Top pick for cabinets.
+Closest matches below are each brand's rank-1 match in our data, labeled with the closeness scale above. Confirm any substitute with a physical sample.
+- [Sherwin-Williams Agreeable Gray (SW 7029)](https://www.paintcolorhq.com/colors/sherwin-williams/agreeable-gray-7029): Hex #D1CBC1, RGB 209/203/193, LRV 60.1. Sherwin-Williams' best-selling color, a warm greige with balanced neutral undertones. Closest Benjamin Moore match: Wish AF-680 (Nearly identical). Works in north- and south-facing rooms.
+- [Sherwin-Williams Alabaster (SW 7008)](https://www.paintcolorhq.com/colors/sherwin-williams/alabaster-7008): Hex #EDEAE0, RGB 237/234/224, LRV 82.2. A soft warm off-white and a top seller for trim and whole-house white. Closest Benjamin Moore match: Glacier White OC-37 (Nearly identical).
+- [Benjamin Moore White Dove (OC-17)](https://www.paintcolorhq.com/colors/benjamin-moore/white-dove-oc-17): Hex #EFEEE5, RGB 239/238/229, LRV 83.2. One of the most popular whites in America, soft without reading yellow. Closest Sherwin-Williams match: Cold Foam SW 9504 (Nearly identical).
+- [Benjamin Moore Revere Pewter (HC-172)](https://www.paintcolorhq.com/colors/benjamin-moore/revere-pewter-hc-172): Hex #CCC7B9, RGB 204/199/185, LRV 55.1. A warm greige that can lean green in cool light. Closest Sherwin-Williams match: Simple Stone SW 9521 (Nearly identical).
+- [Sherwin-Williams Repose Gray (SW 7015)](https://www.paintcolorhq.com/colors/sherwin-williams/repose-gray-7015): Hex #CCC9C0, RGB 204/201/192, LRV 58.4. A true neutral gray that holds steady under artificial light. Closest Benjamin Moore match: Apparition 860 (Nearly identical).
+- [Benjamin Moore Hale Navy (HC-154)](https://www.paintcolorhq.com/colors/benjamin-moore/hale-navy-hc-154): Hex #444C57, RGB 68/76/87, LRV 8.4. A deep, transitional navy for accent walls and cabinetry. Closest Sherwin-Williams match: Sea Mariner SW 9640 (Nearly identical).
+- [Sherwin-Williams Pure White (SW 7005)](https://www.paintcolorhq.com/colors/sherwin-williams/pure-white-7005): Hex #EDECE6, RGB 237/236/230, LRV 83.7. A soft white with a slight warm cast and one of Sherwin-Williams' best sellers. Closest Benjamin Moore match: Cloud Cover 855 (Nearly identical).
+- [Benjamin Moore Chantilly Lace (2121-70)](https://www.paintcolorhq.com/colors/benjamin-moore/chantilly-lace-2121-70): Hex #F4F6F1, RGB 244/246/241, LRV 90. Benjamin Moore's cleanest bright white and a benchmark for crisp trim. Closest Sherwin-Williams match: UltraWhite SW 9500 (Nearly identical).
+- [Sherwin-Williams Naval (SW 6244)](https://www.paintcolorhq.com/colors/sherwin-williams/naval-6244): Hex #2F3D4C, RGB 47/61/76, LRV 4.5. Sherwin-Williams' signature deep navy for kitchen islands, accent walls and exterior shutters. Closest Benjamin Moore match: North Sea CC-932 (Nearly identical).
+- [Benjamin Moore Simply White (2143-70)](https://www.paintcolorhq.com/colors/benjamin-moore/simply-white-2143-70): Hex #F7F7EE, RGB 247/247/238, LRV 89.5. A clean warm white, brighter than White Dove and softer than Chantilly Lace. Closest Sherwin-Williams match: High Reflective White SW 7757 (Nearly identical).
 
 ## Cross-Brand Color Matching
-- [Color Compare Tool](https://www.paintcolorhq.com/compare): Side-by-side comparison of any two colors with Delta E (CIEDE2000) perceptual difference score. Delta E < 1 = virtually identical, 1-2 = very close, 2-3 = close, 3-5 = noticeable difference.
-- [Color Search](https://www.paintcolorhq.com/search): Search 23,000+ colors by name, hex code, brand, color family, or undertone across all 13 brands.
-- [Brand-to-Brand Matches](https://www.paintcolorhq.com/match/sherwin-williams/to/benjamin-moore): Top 50 cross-brand matches between any two brands, ranked by Delta E score.
-- [SW to Benjamin Moore](https://www.paintcolorhq.com/match/sherwin-williams/to/benjamin-moore): Find the closest Benjamin Moore color for any Sherwin-Williams paint.
-- [Benjamin Moore to Behr](https://www.paintcolorhq.com/match/benjamin-moore/to/behr): Find budget Behr alternatives to premium Benjamin Moore colors.
+- [Paint Color Match](https://www.paintcolorhq.com/match): Find any color's closest equivalent in another brand, with CIEDE2000 matching across 26,000+ colors.
+- [Color Compare Tool](https://www.paintcolorhq.com/compare): Side-by-side comparison of any two colors, labeled Nearly identical, Very similar or Visible difference.
+- [Color Search](https://www.paintcolorhq.com/search): Search 26,000+ colors by name, hex code, brand, color family or undertone across all 13 brands.
+- [Sherwin-Williams to Benjamin Moore](https://www.paintcolorhq.com/match/sherwin-williams/to/benjamin-moore): The closest Benjamin Moore color for popular Sherwin-Williams paints.
+- [Benjamin Moore to Behr](https://www.paintcolorhq.com/match/benjamin-moore/to/behr): Behr alternatives to Benjamin Moore colors.
 
 ## Color Visualization & Planning Tools
-- [Room Color Visualizer](https://www.paintcolorhq.com/tools/room-visualizer): Preview paint colors on walls, an accent wall, trim and window frames in 10 photorealistic rooms (living rooms, bedrooms, kitchens, dining rooms, bathrooms). Instant color swapping.
-- [Photo Color Identifier](https://www.paintcolorhq.com/tools/color-identifier): Upload a photo, click any spot, instantly find the closest matching paint colors from all 13 brands using CIEDE2000.
-- [Palette Generator](https://www.paintcolorhq.com/tools/palette-generator): Build complementary, analogous, triadic, and split-complementary color schemes matched to real paint colors from 13 brands.
-- [Paint Calculator](https://www.paintcolorhq.com/tools/paint-calculator): Calculate exact gallons needed by room dimensions. Accounts for doors, windows, and number of coats.
-
-## Expert Guides & Analysis
-- [The 15 Best White Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-white-paint-colors-guide): 15 whites compared by undertone (warm/cool/true), LRV, and best room application. Includes cross-brand equivalents and LRV data for every pick.
-- [Paint Color Undertones Explained](https://www.paintcolorhq.com/blog/understanding-paint-color-undertones): How to identify blue, green, purple, and brown undertones in gray, white, and beige paints. Explains why Repose Gray reads as a true neutral and why Revere Pewter shifts green in cool light.
-- [How to Match Paint Colors Across Brands](https://www.paintcolorhq.com/blog/how-to-find-perfect-color-match-across-brands): Step-by-step guide using CIEDE2000 Delta E scores with real examples (Agreeable Gray → Behr, BM, PPG equivalents). Delta E under 2.0 is a match most people cannot distinguish on walls.
-- [Behr vs Sherwin-Williams vs Benjamin Moore (2026)](https://www.paintcolorhq.com/blog/behr-vs-sherwin-williams-vs-benjamin-moore): Price comparison ($35–90/gal), quality ratings, availability, and color selection across all three brands. Includes side-by-side Delta E comparisons of top sellers.
-- [Sherwin-Williams vs Benjamin Moore: Full Comparison](https://www.paintcolorhq.com/blog/sherwin-williams-vs-benjamin-moore): Coverage rates, durability testing results, price per sq ft, and which brand wins by use case (exteriors, cabinets, whole-house neutrals).
-- [Best Bathroom Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-bathroom-paint-colors): 15 moisture-resistant picks organized by mood: spa blues, warm whites, sage greens, earth tones, moody jewel tones. Includes LRV guidance for small bathrooms.
-- [Best Kitchen Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-kitchen-paint-colors-2025): 15 kitchen colors organized by palette: whites, greens, greiges, bold darks, and blue-grays. Includes finish guidance (satin/semi-gloss) and countertop pairing advice. BM Advance vs SW Emerald Urethane for cabinets.
-- [Best Kitchen Colors by Sherwin-Williams](https://www.paintcolorhq.com/blog/best-sherwin-williams-kitchen-colors): 18 SW-specific kitchen picks with specific LRV data, cabinet vs. wall applications, and hardware pairing recommendations.
-- [Best Living Room Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-living-room-paint-colors): Curated picks for open-plan spaces, cozy rooms, and high-ceiling great rooms. Organized by light exposure and room size.
-- [Best Exterior Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-exterior-paint-colors): Top picks for siding, trim, and front doors. UV resistance specs, 15+ year durability formulas, and specific trim pairing requirements for dark siding.
-- [Best Nursery Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-nursery-paint-colors): Low-VOC and zero-VOC picks for baby rooms. Organized by gender-neutral, warm, and cool palettes.
-- [Best Dining Room Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-dining-room-paint-colors): Colors that create atmosphere for entertaining — from warm greiges to bold accent shades.
-- [Best Bedroom Paint Colors for Calm](https://www.paintcolorhq.com/blog/calming-bedroom-paint-colors): Scientifically-grounded picks for sleep-promoting spaces. LRV guidance: bedrooms benefit from LRV 45–65 for restful atmosphere.
-- [Best Behr Colors for Bedrooms](https://www.paintcolorhq.com/blog/best-behr-colors-for-bedrooms): Budget-friendly Behr picks at $35–50/gallon for bedroom walls. Includes Home Depot SKUs and undertone analysis.
-- [Benjamin Moore's Most Popular Whites](https://www.paintcolorhq.com/blog/benjamin-moore-most-popular-whites): BM's top-selling whites ranked by LRV with undertone profiles: White Dove (83), Simply White (89), Chantilly Lace (90), Cloud White (85), Linen White (79).
-- [Best Paint Colors for North-Facing Rooms](https://www.paintcolorhq.com/blog/best-paint-colors-north-facing-rooms): North-facing rooms need LRV 65+ for whites, or warm neutrals that counteract cool blue-gray light. Specific picks with LRV data: Navajo White (LRV 70), Antique White (LRV 72), Ivory Lace (LRV 77).
-- [Best Paint Colors for East-Facing Rooms](https://www.paintcolorhq.com/blog/best-paint-colors-east-facing-rooms): East light is warm in the morning, cool by afternoon. Best colors shift gracefully: warm neutrals LRV 55–70.
-- [Warm vs. Cool Paint Colors: Complete Guide](https://www.paintcolorhq.com/blog/warm-vs-cool-paint-colors): Explains color temperature, how to read undertones, and which direction to go for each room type. Repose Gray is a true neutral; Agreeable Gray is warm-neutral; Stonington Gray is cool.
-- [Color Theory for Home Decorators](https://www.paintcolorhq.com/blog/color-theory-for-home-decorators): Analogous, complementary, and triadic schemes applied to interior design. LRV values for example colors; Quiet Moments (LRV 54) vs. cobalt blue as analogous anchors.
-- [2026 Colors of the Year: Every Brand Compared](https://www.paintcolorhq.com/blog/2026-colors-of-the-year-every-brand-compared): SW Universal Khaki (LRV 42, sandy neutral), BM Silhouette (dark gray-brown, Affinity collection), Behr Hidden Gem (smoky jade, LRV ~16), PPG Warm Mahogany (rich brown-red), Valspar Warm Eucalyptus (gray-green, "new neutral"). All 5 picks lean nature-inspired.
-- [2026 Paint Color Trends](https://www.paintcolorhq.com/blog/paint-color-trends-2026): Green and earth tones dominate — 3 of 5 brand COY picks are green-influenced. 34% YoY search growth for "sage green walls." Organic, grounding palettes replacing 2025's bold reds and navies.
-- [How to Test Paint Samples (The Right Way)](https://www.paintcolorhq.com/blog/how-to-test-paint-samples): Why 2"×2" paint chips mislead — test on 12"×12" boards, view in actual room lighting at different times of day. Fan deck LRV values differ from on-wall appearance.
-- [Paint Sheen Guide: Matte vs Eggshell vs Satin vs Semi-Gloss](https://www.paintcolorhq.com/blog/paint-sheen-guide): Sheen selection by room: flat/matte for ceilings, eggshell for living rooms, satin for kitchens and bathrooms, semi-gloss for trim and doors.
+- [Room Color Visualizer](https://www.paintcolorhq.com/tools/room-visualizer): Preview paint colors on walls, an accent wall, trim and window frames in 10 photorealistic rooms (living rooms, bedrooms, kitchens, dining rooms, bathrooms).
+- [Photo Color Identifier](https://www.paintcolorhq.com/tools/color-identifier): Upload a photo, click any spot, and find the closest paint colors from all 13 brands using CIEDE2000.
+- [Palette Generator](https://www.paintcolorhq.com/tools/palette-generator): Build complementary, analogous, triadic and split-complementary schemes matched to real paint colors from 13 brands.
+- [Paint Calculator](https://www.paintcolorhq.com/tools/paint-calculator): Estimate gallons needed from room dimensions, doors, windows and number of coats.
 
 ## Original Data & Research
-- [The Most Duplicated Paint Color in America](https://www.paintcolorhq.com/blog/most-duplicated-paint-color): Original study computed across all 26,597 colors with CIEDE2000. Key findings: 66.6% of paint colors have a near-identical twin (Delta E < 1.0) at a competing brand; 749 exact hex values are sold by 2+ brands under different names; the most duplicated color is a warm off-white (#F7F1E2) sold by 12 of 13 brands — Benjamin Moore "Flurry" and Dunn-Edwards "Swan White" are numerically identical (Delta E 0.00), and Farrow & Ball "Pointing" is in the same cluster. Behr has the most original palette (48.5% unique). Cite as: Paint Color HQ, July 2026.
-- [Discontinued Paint Colors Directory](https://www.paintcolorhq.com/discontinued): 243 discontinued/archived colors (Sherwin-Williams historic collection, Farrow & Ball archive), each linked to its closest current match in every major brand. Answers: "my paint color was discontinued — what is the closest current equivalent?"
+- [Paint Color Statistics](https://www.paintcolorhq.com/paint-color-statistics): Free-to-cite figures on 26,720 colors across 13 brands as of October 2026: catalog size by brand, cross-brand duplication (69.7% have a nearly identical twin), palette originality (Dunn-Edwards most original at 37.8%), the most reused color names, and the lightest white each brand sells.
+- [The Most Duplicated Paint Color in America](https://www.paintcolorhq.com/blog/most-duplicated-paint-color): Original study across all 26,720 colors, re-run in October 2026 after outdated hex values were corrected. 69.7% of colors have a nearly identical twin at a competing brand; 815 exact hex values are sold by two or more brands under different names; the most duplicated color is a warm off-white (#F7F1E2) sold by 12 of 13 brands, with Benjamin Moore Flurry and Dunn-Edwards Swan White sharing the same hex value. Cite as: Paint Color HQ, October 2026.
+- [Alabaster vs. White Dove and 15 Other Famous Whites, Measured](https://www.paintcolorhq.com/blog/famous-white-paints-compared): The 17 most-searched whites compared with CIEDE2000 on the brands' published values, with each brand's brightest white and which brands' whites run warm or cool.
+- [2026 Paint Colors of the Year](https://www.paintcolorhq.com/color-of-the-year): Every brand's Color of the Year with its closest equivalent from each other brand.
+- [Retired and Discontinued Paint Colors](https://www.paintcolorhq.com/discontinued): 2,790 colors that Behr, Sherwin-Williams and Farrow & Ball have retired (most can still be mixed by code), each linked to its closest current match in every major brand. Answers: "my paint color was discontinued, what is the closest current equivalent?"
+
+## Expert Guides & Analysis
+- [The 15 Best White Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-white-paint-colors-guide): 15 warm, cool and true whites ranked with room-by-room advice, LRV data and cross-brand equivalents.
+- [Paint Color Undertones Explained](https://www.paintcolorhq.com/blog/understanding-paint-color-undertones): How to identify undertones in gray, white and beige paints before you commit to a color.
+- [How to Find the Equivalent of a Paint Color in Another Brand](https://www.paintcolorhq.com/blog/how-to-find-perfect-color-match-across-brands): How CIEDE2000 closeness labels work, with real examples from a 26,000+ color database.
+- [Best Sherwin-Williams Alternatives to Benjamin Moore](https://www.paintcolorhq.com/blog/best-sherwin-williams-alternatives-to-benjamin-moore): The closest Sherwin-Williams color for Revere Pewter, Simply White, Hale Navy, Edgecomb Gray and Chantilly Lace.
+- [Behr vs Sherwin-Williams vs Benjamin Moore](https://www.paintcolorhq.com/blog/behr-vs-sherwin-williams-vs-benjamin-moore): Quality, price, color selection and availability across the three biggest paint brands in America.
+- [Sherwin-Williams vs Benjamin Moore: Full Comparison](https://www.paintcolorhq.com/blog/sherwin-williams-vs-benjamin-moore): Quality, price, color matching, cabinet vs wall paint and exterior durability, with which brand to choose for each project.
+- [Best Bathroom Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-bathroom-paint-colors): Spa blues, warm earth tones and jewel shades that handle humidity, with finish advice.
+- [Best Kitchen Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-kitchen-paint-colors-2025): Kitchen colors from crisp whites to moody greens, with LRV values and finish tips.
+- [Best Sherwin-Williams Kitchen Colors](https://www.paintcolorhq.com/blog/best-sherwin-williams-kitchen-colors): 18 Sherwin-Williams picks for cabinets, walls and islands, with finish and lighting advice.
+- [Best Living Room Paint Colors](https://www.paintcolorhq.com/blog/best-living-room-paint-colors): Living room colors for modern, traditional and farmhouse rooms.
+- [Best Exterior Paint Colors](https://www.paintcolorhq.com/blog/best-exterior-paint-colors): Exterior colors that work with your roof, trim and full sun, with pairing advice for every style.
+- [Best Nursery Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-nursery-paint-colors): Gender-neutral nursery picks from Sherwin-Williams, Benjamin Moore and Behr.
+- [Best Dining Room Paint Colors (2026)](https://www.paintcolorhq.com/blog/best-dining-room-paint-colors): Jewel tones, earth tones and neutrals for dining rooms, with hex codes and pairing tips.
+- [Calming Bedroom Paint Colors](https://www.paintcolorhq.com/blog/calming-bedroom-paint-colors): Soft blues, warm neutrals and muted greens for restful bedrooms.
+- [Best Behr Colors for Bedrooms](https://www.paintcolorhq.com/blog/best-behr-colors-for-bedrooms): Behr bedroom picks with pricing and cross-brand matches.
+- [Benjamin Moore's Most Popular Whites](https://www.paintcolorhq.com/blog/benjamin-moore-most-popular-whites): White Dove, Chantilly Lace, Simply White and Decorator's White ranked and compared, with undertones, best uses and Sherwin-Williams and Behr equivalents.
+- [Best Paint Colors for North-Facing Rooms](https://www.paintcolorhq.com/blog/best-paint-colors-north-facing-rooms): Warm-toned, high-LRV colors that counteract cool north light.
+- [Best Paint Colors for East-Facing Rooms](https://www.paintcolorhq.com/blog/best-paint-colors-east-facing-rooms): Colors that work in both warm morning sun and cool afternoon shade.
+- [Warm vs. Cool Paint Colors](https://www.paintcolorhq.com/blog/warm-vs-cool-paint-colors): How lighting affects color temperature and how to build a palette that flows room to room.
+- [Color Theory for Home Decorators](https://www.paintcolorhq.com/blog/color-theory-for-home-decorators): The color wheel, palette building and color combinations applied to interiors.
+- [2026 Colors of the Year: Every Brand Compared](https://www.paintcolorhq.com/blog/2026-colors-of-the-year-every-brand-compared): Every major brand's 2026 Color of the Year side by side, with closest cross-brand matches.
+- [2026 Paint Color Trends](https://www.paintcolorhq.com/blog/paint-color-trends-2026): The trends behind the 2026 Color of the Year picks across five major brands.
+- [How to Test Paint Samples](https://www.paintcolorhq.com/blog/how-to-test-paint-samples): How to test samples at a useful size and in your room's real light before choosing.
+- [Paint Sheen Guide](https://www.paintcolorhq.com/blog/paint-sheen-guide): Flat, eggshell, satin and semi-gloss explained, with which rooms need which sheen.
 
 ## Color Inspiration Palettes
-Curated 4-6 color palettes with specific paint codes and LRV data for 18 design styles:
-- [Modern Farmhouse Palette](https://www.paintcolorhq.com/inspiration/modern-farmhouse): Warm whites, soft greiges, and black accents. Alabaster walls, Peppercorn trim, Shiplap White ceilings.
-- [Coastal Retreat Palette](https://www.paintcolorhq.com/inspiration/coastal-retreat): Sea glass blues, driftwood grays, and sandy neutrals. Airy LRVs 60–80 for maximum light reflection.
-- [Moody Library Palette](https://www.paintcolorhq.com/inspiration/moody-library): Deep navy, forest green, and charcoal with warm brass accents. LRVs 5–20 for drama.
-- [Scandinavian Minimal Palette](https://www.paintcolorhq.com/inspiration/scandinavian-minimal): Clean whites (LRV 85–90), warm grays, and natural wood tones. No pattern, maximum light.
-- [Bold & Eclectic Palette](https://www.paintcolorhq.com/inspiration/bold-and-eclectic): High-contrast color blocking with jewel tones and warm neutrals as grounding elements.
-- [Earthy Organic Palette](https://www.paintcolorhq.com/inspiration/earthy-organic): Terra cotta, warm clay, and sage green. 2026's dominant design direction.
-- [Soft Romantic Palette](https://www.paintcolorhq.com/inspiration/soft-romantic): Blush, dusty rose, and warm ivory. LRV 70–85 for a light, feminine atmosphere.
-- [Urban Industrial Palette](https://www.paintcolorhq.com/inspiration/urban-industrial): Charcoal, warm black, and concrete gray with exposed metal accents.
-- [Mediterranean Sun Palette](https://www.paintcolorhq.com/inspiration/mediterranean-sun): Terracotta walls, warm yellow, and cobalt blue accents. High saturation, warm LRVs.
-- [Classic Traditional Palette](https://www.paintcolorhq.com/inspiration/classic-traditional): Deep greens, burgundy, and ivory. Benjamin Moore Historical Collection paints.
-- [Desert Sunset Palette](https://www.paintcolorhq.com/inspiration/desert-sunset): Warm peach, burnt orange, and sandy gold. Earthy, Southwest-inspired neutrals.
-- [Woodland Cabin Palette](https://www.paintcolorhq.com/inspiration/woodland-cabin): Forest green, bark brown, and warm cream. Low LRVs with warm artificial light.
-- [Ocean Breeze Palette](https://www.paintcolorhq.com/inspiration/ocean-breeze): Aqua, seafoam, and soft white. Fresh, casual coastal palette.
-- [Midnight Luxe Palette](https://www.paintcolorhq.com/inspiration/midnight-luxe): Deep navy, plum, and gold accents. Statement spaces with LRV 5–15.
-- [Spring Garden Palette](https://www.paintcolorhq.com/inspiration/spring-garden): Soft sage, lavender, and pale yellow. Fresh and light, LRV 65–80.
-- [French Country Palette](https://www.paintcolorhq.com/inspiration/french-country): Muted blue-gray, warm cream, and stone white. Understated European elegance.
-- [Tropical Escape Palette](https://www.paintcolorhq.com/inspiration/tropical-escape): Bright turquoise, coral, and palm green. High-saturation, vacation-inspired.
-- [Vintage Charm Palette](https://www.paintcolorhq.com/inspiration/vintage-charm): Dusty mauve, antique cream, and faded teal. Muted, nostalgic palette.
+Curated palettes with specific paint codes for 21 design styles:
+- [Modern Farmhouse Palette](https://www.paintcolorhq.com/inspiration/modern-farmhouse): Warm neutrals with organic green and soft taupe: relaxed and timeless.
+- [Coastal Retreat Palette](https://www.paintcolorhq.com/inspiration/coastal-retreat): Airy blues and sandy neutrals: breezy and light-filled.
+- [Moody Library Palette](https://www.paintcolorhq.com/inspiration/moody-library): Deep greens, burgundy, and aged gold: rich and contemplative.
+- [Scandinavian Minimal Palette](https://www.paintcolorhq.com/inspiration/scandinavian-minimal): Crisp whites and soft grays with warm wood tones: clean and airy.
+- [Bold & Eclectic Palette](https://www.paintcolorhq.com/inspiration/bold-and-eclectic): Bright yellow, deep blue, and purple accents: energetic and playful.
+- [Earthy Organic Palette](https://www.paintcolorhq.com/inspiration/earthy-organic): Terracotta, sage, and warm beige: grounded and natural.
+- [Soft Romantic Palette](https://www.paintcolorhq.com/inspiration/soft-romantic): Blush pinks, dusty mauves, and warm cream: gentle and inviting.
+- [Urban Industrial Palette](https://www.paintcolorhq.com/inspiration/urban-industrial): Cool grays with copper and charcoal: modern and edgy.
+- [Mediterranean Sun Palette](https://www.paintcolorhq.com/inspiration/mediterranean-sun): Warm terracotta, ocean blue, and sun-bleached white: lively and warm.
+- [Classic Traditional Palette](https://www.paintcolorhq.com/inspiration/classic-traditional): Navy, burgundy, and antique gold: refined and timeless.
+- [Desert Sunset Palette](https://www.paintcolorhq.com/inspiration/desert-sunset): Sandstone, burnt sienna, and warm clay: sun-baked and serene.
+- [Woodland Cabin Palette](https://www.paintcolorhq.com/inspiration/woodland-cabin): Forest greens and warm browns: cozy and rustic.
+- [Ocean Breeze Palette](https://www.paintcolorhq.com/inspiration/ocean-breeze): Clear blues and driftwood neutrals: calm and refreshing.
+- [Midnight Luxe Palette](https://www.paintcolorhq.com/inspiration/midnight-luxe): Deep navy, champagne, and burnished bronze: elegant and dramatic.
+- [Spring Garden Palette](https://www.paintcolorhq.com/inspiration/spring-garden): Fresh greens, soft peach, and warm cream: bright and uplifting.
+- [French Country Palette](https://www.paintcolorhq.com/inspiration/french-country): Linen, slate blue, and muted gold: understated and charming.
+- [Tropical Escape Palette](https://www.paintcolorhq.com/inspiration/tropical-escape): Emerald, amber, and leafy greens: lush and saturated.
+- [Vintage Charm Palette](https://www.paintcolorhq.com/inspiration/vintage-charm): Antique rose, warm taupe, and faded gold: nostalgic and soft.
+- [Mid-Century Modern Palette](https://www.paintcolorhq.com/inspiration/mid-century-modern): Warm walnut neutrals with mustard, teal, and olive.
+- [Japandi Palette](https://www.paintcolorhq.com/inspiration/japandi): Warm white, soft black, clay, and muted sage: wabi-sabi calm meets Scandinavian restraint.
+- [Organic Modern Palette](https://www.paintcolorhq.com/inspiration/organic-modern): Warm whites and mushroom greige with terracotta and charcoal.
 
 ## Browse by Brand
-- [All 1,900+ Sherwin-Williams Colors](https://www.paintcolorhq.com/brands/sherwin-williams): America's largest paint company. Top sellers: Agreeable Gray (SW 7029), Pure White (SW 7005), Alabaster (SW 7008).
-- [All Benjamin Moore Colors](https://www.paintcolorhq.com/brands/benjamin-moore): Premium paint with ~3,500 colors. Top sellers: White Dove (OC-17), Revere Pewter (HC-172), Chantilly Lace (2121-70).
-- [All Behr Colors](https://www.paintcolorhq.com/brands/behr): Home Depot exclusive. Best value at $35-50/gallon. Top sellers: Silver Drop, Ultra Pure White, Polar Bear.
-- [All PPG Colors](https://www.paintcolorhq.com/brands/ppg): ~4,000 colors. Available at Menards, PPG Paints stores, and select retailers.
-- [All Valspar Colors](https://www.paintcolorhq.com/brands/valspar): Lowe's exclusive. $30-55/gallon. ~2,000+ colors.
-- [All Farrow & Ball Colors](https://www.paintcolorhq.com/brands/farrow-ball): Ultra-premium British brand. $100-120/gallon. ~150 colors with complex, mineral-rich pigments.
-- [All Dunn-Edwards Colors](https://www.paintcolorhq.com/brands/dunn-edwards): Premium West Coast brand. Zero-VOC formulas. ~1,800 colors.
+All 13 brands, with color counts as of October 2026 (retired colors can usually still be mixed by code):
+- [Behr](https://www.paintcolorhq.com/brands/behr): 5,789 colors (3,242 current, 2,547 retired). Sold at Home Depot.
+- [Benjamin Moore](https://www.paintcolorhq.com/brands/benjamin-moore): 3,903 colors, the largest current palette we track. Top sellers include White Dove (OC-17), Revere Pewter (HC-172) and Chantilly Lace (2121-70).
+- [PPG](https://www.paintcolorhq.com/brands/ppg): 3,261 colors.
+- [Vista Paint](https://www.paintcolorhq.com/brands/vista-paint): 2,984 colors.
+- [Valspar](https://www.paintcolorhq.com/brands/valspar): 2,358 colors. Sold at Lowe's.
+- [Dunn-Edwards](https://www.paintcolorhq.com/brands/dunn-edwards): 2,230 colors, the most original palette we track.
+- [Sherwin-Williams](https://www.paintcolorhq.com/brands/sherwin-williams): 1,950 colors (1,730 current, 220 retired). Top sellers include Agreeable Gray (SW 7029), Pure White (SW 7005) and Alabaster (SW 7008).
+- [Hirshfield's](https://www.paintcolorhq.com/brands/hirshfields): 1,469 colors.
+- [Dutch Boy](https://www.paintcolorhq.com/brands/dutch-boy): 1,441 colors.
+- [Kilz](https://www.paintcolorhq.com/brands/kilz): 827 colors.
+- [RAL](https://www.paintcolorhq.com/brands/ral): 213 colors from the RAL Classic industrial color standard.
+- [Farrow & Ball](https://www.paintcolorhq.com/brands/farrow-ball): 167 colors (144 current, 23 retired).
+- [Colorhouse](https://www.paintcolorhq.com/brands/colorhouse): 128 colors.
 
-## Browse by Color Family
-- [White Paint Colors](https://www.paintcolorhq.com/colors/family/white): All whites organized by LRV and undertone (warm, cool, true white).
-- [Gray Paint Colors](https://www.paintcolorhq.com/colors/family/gray): Warm grays, cool grays, and true neutrals with undertone classification.
+## Browse by Color Family and Hue
+- [White Paint Colors](https://www.paintcolorhq.com/colors/family/white): All whites organized by LRV and undertone.
+- [Gray Paint Colors](https://www.paintcolorhq.com/colors/family/gray): Warm grays, cool grays and true neutrals with undertone classification.
 - [Beige & Greige Paint Colors](https://www.paintcolorhq.com/colors/family/beige): From warm cream to greige, with undertone analysis.
-- [Blue Paint Colors](https://www.paintcolorhq.com/colors/family/blue): Navy, sky blue, dusty blue, teal — organized by saturation and LRV.
-- [Green Paint Colors](https://www.paintcolorhq.com/colors/family/green): Sage, olive, forest, mint — the dominant 2026 trend color family.
-- [Brown & Earth Tones](https://www.paintcolorhq.com/colors/family/brown): Warm taupes, terra cottas, and earthy browns.
+- [Blue Paint Colors](https://www.paintcolorhq.com/colors/family/blue): Navy, sky blue, dusty blue and teal.
+- [Green Paint Colors](https://www.paintcolorhq.com/colors/family/green): Sage, olive, forest and mint.
+- [Brown & Earth Tones](https://www.paintcolorhq.com/colors/family/brown): Warm taupes, terra cottas and earthy browns.
+- [Blue Gray Paint Colors](https://www.paintcolorhq.com/colors/hue/blue-gray): Blue gray paint colors from every brand, with hex codes and closest matches in other brands.
+- [Blue Green Paint Colors](https://www.paintcolorhq.com/colors/hue/blue-green): Blue green paint colors from every brand, with hex codes and closest matches in other brands.
+- [Rust Paint Colors](https://www.paintcolorhq.com/colors/hue/rust): Rust paint colors from every brand, with hex codes and closest matches in other brands.
 
 ## Color Science Methodology
-- [Color-Matching Methodology](https://www.paintcolorhq.com/methodology): Full CIEDE2000 pipeline — conversion math, Delta E thresholds, data sources, and limitations.
-- [About Paint Color HQ](https://www.paintcolorhq.com/about): Uses CIEDE2000 — the International Commission on Illumination (CIE) standard for perceptual color difference. Every color includes hex, RGB, LRV, undertone classification (warm/cool/neutral), and cross-brand matches ranked by Delta E score. LRV data sourced from manufacturer fan decks.
+- [Color-Matching Methodology](https://www.paintcolorhq.com/methodology): The CIEDE2000 pipeline: conversion math, closeness thresholds, data sources and limitations.
+- [About Paint Color HQ](https://www.paintcolorhq.com/about): Every color includes hex, RGB, LRV, an undertone classification (warm, cool or neutral) and cross-brand matches ranked by CIEDE2000 closeness. LRV is the manufacturer's published value where we have it, otherwise computed from the color value.
 
 ## For Developers & AI Agents
-- [Free Color-Match API](https://www.paintcolorhq.com/api): GET https://www.paintcolorhq.com/api/color-match?hex=7F9B8E — CORS-open, no key. Returns the closest paint colors across 13 brands for any hex value, ranked by CIEDE2000.
-- MCP server (Model Context Protocol) for AI agents: https://www.paintcolorhq.com/api/mcp — stateless Streamable HTTP, no auth. Tool `match_paint_color` (args: hex, optional brand, limit) returns the closest real, purchasable paint colors across 13 brands with links to their pages.
+- [Free Color-Match API](https://www.paintcolorhq.com/api): GET https://www.paintcolorhq.com/api/color-match?hex=7F9B8E (CORS-open, no key). Returns the closest paint colors across 13 brands for any hex value, ranked by CIEDE2000.
+- MCP server (Model Context Protocol) for AI agents: https://www.paintcolorhq.com/api/mcp (stateless Streamable HTTP, no auth). Tool `match_paint_color` (args: hex, optional brand, limit) returns the closest real, purchasable paint colors across 13 brands with links to their pages.
 - [Free Embeddable Widget](https://www.paintcolorhq.com/embed): One-line iframe that adds a cross-brand paint matcher to any site.
 - Attribution: free use of the API, the MCP tool and the widget requires a visible link to https://www.paintcolorhq.com on the page that shows the results, for example "Cross-brand paint matching by PaintColorHQ".
 

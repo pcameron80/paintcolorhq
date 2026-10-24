@@ -59,6 +59,22 @@ test("lede handles missing lrv/undertone and zero matches gracefully", () => {
   assert.doesNotMatch(led, /closest cross-brand/); // no match clause when none
 });
 
+test("lede uses 'an' before a vowel family", () => {
+  const orange = generateColorLede(color({ name: "Tangerine", color_family: "orange" }), []);
+  assert.match(orange, /Tangerine 7029 is an orange paint color/);
+  const offWhite = generateColorLede(color({ name: "Alabaster", color_family: "off-white" }), []);
+  assert.match(offWhite, /Alabaster 7029 is an off-white paint color/);
+  const gray = generateColorLede(color(), []);
+  assert.match(gray, /is a gray paint color/);
+});
+
+test("legacy lede keeps the fixed 'a' article for frozen head-color pages", () => {
+  const led = generateColorLede(color({ name: "Alabaster", color_family: "off-white" }), [], { legacy: true });
+  assert.match(led, /Alabaster 7029 is a off-white paint color/);
+  const gray = generateColorLede(color(), [], { legacy: true });
+  assert.equal(gray, generateColorLede(color(), []));
+});
+
 // ---- nearestMatchesPerBrand ----
 
 test("nearestMatchesPerBrand: one per brand, sorted best-first", () => {

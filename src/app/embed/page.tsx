@@ -65,15 +65,17 @@ export default function EmbedPage() {
               Add a cross-brand paint matcher to your site
             </h1>
             <p className="max-w-2xl text-lg text-on-surface-variant">
-              Drop in one line of HTML. Your visitors pick any color and instantly see the closest match across 13 paint brands — Sherwin-Williams, Benjamin Moore, Behr, and more — ranked by the CIEDE2000 color-difference standard. Free, no signup, no API key.
+              Drop in one line of HTML. Your visitors pick any color and instantly see the closest matches from 13 brands&apos; catalogs, including Sherwin-Williams, Benjamin Moore and Behr, ranked by the CIEDE2000 color-difference standard. Free, no signup, no API key.
             </p>
           </div>
         </section>
 
         <section className="px-6 md:px-12 pb-16">
-          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2">
+          {/* grid-cols-1 below lg: an implicit auto column grows to the snippet's
+              min-content width (~660px) and pushed the whole page wider than phones. */}
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 lg:grid-cols-2">
             {/* Live preview */}
-            <div>
+            <div className="min-w-0">
               <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-4">Live preview</h2>
               <iframe
                 src="/embed/match"
@@ -86,11 +88,14 @@ export default function EmbedPage() {
             </div>
 
             {/* Snippet + steps */}
-            <div>
+            <div className="min-w-0">
               <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-4">Copy the embed code</h2>
               <CopySnippet code={EMBED_SNIPPET} />
               <p className="mt-3 text-sm text-on-surface-variant">
                 Paste it anywhere in your page&apos;s HTML — a blog post, a sidebar, a resources page. Keep the credit line so your readers (and you) can find the full tool. That&apos;s the only condition: the widget is free.
+              </p>
+              <p className="mt-3 text-sm text-on-surface-variant">
+                If your site sets a Content-Security-Policy, allow <code className="break-words">frame-src https://www.paintcolorhq.com</code>.
               </p>
               <p className="mt-3 text-sm text-on-surface">
                 <strong>Attribution:</strong> free use requires a visible link to https://www.paintcolorhq.com on the page that shows the widget. Keep the embed code unmodified, including the credit line inside the widget and the &ldquo;Cross-brand paint matching by PaintColorHQ&rdquo; line under it.
@@ -108,7 +113,7 @@ export default function EmbedPage() {
           <div className="mx-auto max-w-5xl rounded-2xl bg-surface-container-low p-8 md:p-10">
             <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-4">How the matching works</h2>
             <p className="max-w-3xl text-on-surface-variant">
-              Every color is converted to CIE LAB color space, and the widget computes the CIEDE2000 Delta E — a perceptual color-difference standard used in paint and coatings manufacturing — between your color and our 26,000+ colors, then returns the closest match in each brand. The verdict labels (&ldquo;Nearly identical,&rdquo; &ldquo;Very similar,&rdquo; &ldquo;Visible difference&rdquo;) map to standard Delta E thresholds. Full details on the{" "}
+              Every color is converted to CIE LAB color space. The widget computes the CIEDE2000 Delta E (a perceptual color-difference standard used in paint and coatings manufacturing) between your color and our 26,000+ colors, then shows the closest matches, best one per brand. The verdict labels (&ldquo;Nearly identical,&rdquo; &ldquo;Very similar,&rdquo; &ldquo;Visible difference&rdquo;) map to standard Delta E thresholds. Full details on the{" "}
               <Link href="/methodology" className="text-primary underline-offset-4 hover:underline">methodology page</Link>.
             </p>
             <p className="mt-4 text-sm text-on-surface-variant">

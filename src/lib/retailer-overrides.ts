@@ -2319,12 +2319,6 @@ export const KILZ_NOT_FOUND = new Set([
   "TB-91",
 ]);
 
-export const COLORHOUSE_OVERRIDES: Record<string, string> = {
-};
-
-export const COLORHOUSE_NOT_FOUND = new Set([
-]);
-
 export const RAL_OVERRIDES: Record<string, string> = {
 };
 
