@@ -2952,7 +2952,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What are the best Behr paint colors?",
         answer:
-          "Swiss Coffee (12) is Behr's best-selling warm white. Polar Bear (75), Whisper White (HDC-MD-08), and Ultra Pure White (PPU18-06) round out the whites; Sculptor Clay (PPU5-08) is the go-to greige and Silver City (MQ2-59) the reliable light gray. Watery (HDC-CT-26) leads the blues, and Hidden Gem (N430-6A) is the 2026 Color of the Year.",
+          "Swiss Coffee (12) is Behr's best-selling warm white. Polar Bear (75), Whisper White (HDC-MD-08), and Ultra Pure White (UPW) round out the whites; Sculptor Clay (PPU5-08) is the go-to greige and Silver City (MQ2-59) the reliable light gray. Watery (HDC-CT-26) leads the blues, and Hidden Gem (N430-6A) is the 2026 Color of the Year.",
       },
       {
         question: "Where can I buy Behr paint?",
@@ -2993,7 +2993,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#F5F3ED" name="Whisper White" brand="Behr" href="/colors/behr/whisper-white-hdc-md-08" /> — HDC-MD-08, LRV 89. A warm off-white that sits between white and cream with no yellow — it pairs with almost anything. Closest matches are <Link href="/colors/sherwin-williams/white-snow-9541" className="text-brand-blue hover:underline">Sherwin-Williams White Snow</Link> and <Link href="/colors/benjamin-moore/gardenia-af-10" className="text-brand-blue hover:underline">Benjamin Moore Gardenia</Link>. Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F8F9F3" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-upw" /> — PPU18-06, LRV 94. Behr&apos;s flagship bright, neutral white and the default ceiling/trim white. It matches <Link href="/colors/sherwin-williams/ultrawhite-9500" className="text-brand-blue hover:underline">Sherwin-Williams UltraWhite</Link> and <Link href="/colors/benjamin-moore/distant-gray-2124-70" className="text-brand-blue hover:underline">Benjamin Moore Distant Gray</Link>.
+          <Swatch hex="#F8F9F3" name="Ultra Pure White" brand="Behr" href="/colors/behr/ultra-pure-white-upw" /> — UPW, LRV 94. Behr&apos;s flagship bright, neutral white and the default ceiling/trim white. It matches <Link href="/colors/sherwin-williams/ultrawhite-9500" className="text-brand-blue hover:underline">Sherwin-Williams UltraWhite</Link> and <Link href="/colors/benjamin-moore/distant-gray-2124-70" className="text-brand-blue hover:underline">Benjamin Moore Distant Gray</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Behr Warm Neutrals &amp; Greiges</h2>
@@ -3333,7 +3333,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Whites &amp; Off-Whites</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F6F7F4" name="Ultra White" brand="Valspar" href="/colors/valspar/ultra-white-7006-24" /> — 7006-24, LRV 93. Valspar&apos;s clean, bright benchmark white with no obvious undertone. Use it for trim, ceilings, and modern rooms that want crisp contrast. Its closest match across brands is <Link href="/colors/sherwin-williams/ultrawhite-9500" className="text-brand-blue hover:underline">Sherwin-Williams UltraWhite</Link>, with <Link href="/colors/benjamin-moore/distant-gray-2124-70" className="text-brand-blue hover:underline">Benjamin Moore Distant Gray</Link> and <Link href="/colors/behr/ultra-pure-white-ppu18-06" className="text-brand-blue hover:underline">Behr Ultra Pure White</Link> nearly as close — so this is an easy color to source anywhere.
+          <Swatch hex="#F6F7F4" name="Ultra White" brand="Valspar" href="/colors/valspar/ultra-white-7006-24" /> — 7006-24, LRV 93. Valspar&apos;s clean, bright benchmark white with no obvious undertone. Use it for trim, ceilings, and modern rooms that want crisp contrast. Its closest match across brands is <Link href="/colors/sherwin-williams/ultrawhite-9500" className="text-brand-blue hover:underline">Sherwin-Williams UltraWhite</Link>, with <Link href="/colors/benjamin-moore/distant-gray-2124-70" className="text-brand-blue hover:underline">Benjamin Moore Distant Gray</Link> and <Link href="/colors/behr/ultra-pure-white-upw" className="text-brand-blue hover:underline">Behr Ultra Pure White</Link> nearly as close — so this is an easy color to source anywhere.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F2F0EA" name="Swiss Coffee" brand="Valspar" href="/colors/valspar/swiss-coffee-7002-16" /> — 7002-16, LRV 87. The warm, soft white for walls that should feel inviting rather than stark. It is a nearly identical match for <Link href="/colors/benjamin-moore/alabaster-876" className="text-brand-blue hover:underline">Benjamin Moore Alabaster</Link> (and <Link href="/colors/behr/whisper-white-hdc-md-08" className="text-brand-blue hover:underline">Behr Whisper White</Link>) — useful, because Alabaster is one of the most popular warm whites in the country and this is the Lowe&apos;s route to the same look.
