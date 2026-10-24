@@ -5,6 +5,9 @@
 // renders without matches rather than borrowing a same-named older color.
 //
 // Update each fall: add the new year, keep the previous year as the archive.
+// Edit this file the same day a brand announces and bump COTY_HUB_DATES.updated
+// with it. That date drives the hub's dateModified, its visible "Updated" line
+// and its sitemap lastmod, so it moves only when the picks change.
 
 export interface ColorOfTheYearPick {
   brandSlug: string;
@@ -23,6 +26,11 @@ export interface ColorOfTheYearCycle {
   pending: { brandName: string; expected: string }[];
 }
 
+export const COTY_HUB_DATES = {
+  published: "2026-10-05",
+  updated: "2026-10-24",
+} as const;
+
 export const COLOR_OF_THE_YEAR: ColorOfTheYearCycle[] = [
   {
     year: 2027,
@@ -38,23 +46,33 @@ export const COLOR_OF_THE_YEAR: ColorOfTheYearCycle[] = [
         note: "Shared with HGTV Home by Sherwin-Williams (HGSW6421).",
       },
       {
+        brandSlug: "benjamin-moore",
+        brandName: "Benjamin Moore",
+        name: "Webster Green",
+        code: "HC-130",
+        colorSlug: "webster-green-hc-130",
+        announced: "2026-10-14",
+        sourceUrl: "https://www.benjaminmoore.com/en-us/press/benjamin-moore-announces-color-of-the-year-2027",
+      },
+      {
         brandSlug: "ppg",
-        brandName: "Glidden / PPG",
+        brandName: "Glidden / Pittsburgh Paints",
         name: "Artifact",
         code: "PPG10-16",
         colorSlug: "artifact-10-16",
         announced: "2026-09-14",
         sourceUrl: "https://www.glidden.com/2027-color-of-the-year",
+        note: "PPG named a separate global pick, Country Soil (PPG15-30), for markets outside the US. It is not sold here, so we do not list it.",
       },
       {
         brandSlug: "behr",
         brandName: "Behr",
         name: "Grounded",
         code: "T27-01",
-        colorSlug: null,
+        colorSlug: "grounded-t27-01",
         announced: "2026-08-26",
         sourceUrl: "https://corporate.behr.com/news/behr-paint-company-announces-2027-color-of-the-year-grounded",
-        note: "A new Behr color, described by Behr as between olive and moss with brown undertones. It is not in our data yet, so we do not show matches for it. Behr's older Grounded (240D-5) is a different color.",
+        note: "Not the same color as Behr's older Grounded (240D-5), an orange.",
       },
       {
         brandSlug: "dutch-boy",
@@ -82,10 +100,7 @@ export const COLOR_OF_THE_YEAR: ColorOfTheYearCycle[] = [
         sourceUrl: "https://www.dunnedwards.com/colors/color-of-the-year/",
       },
     ],
-    pending: [
-      { brandName: "Benjamin Moore", expected: "mid-October 2026" },
-      { brandName: "Pantone", expected: "early December 2026" },
-    ],
+    pending: [{ brandName: "Pantone", expected: "early December 2026" }],
   },
   {
     year: 2026,
@@ -94,7 +109,7 @@ export const COLOR_OF_THE_YEAR: ColorOfTheYearCycle[] = [
       { brandSlug: "benjamin-moore", brandName: "Benjamin Moore", name: "Silhouette", code: "AF-655", colorSlug: "silhouette-af-655", announced: "2025-10-16", sourceUrl: "https://www.paint.org/coatingstech-magazine/articles/industry-colors-of-the-year-2026/" },
       { brandSlug: "behr", brandName: "Behr", name: "Hidden Gem", code: "N430-6A", colorSlug: "hidden-gem-n430-6a", sourceUrl: "https://corporate.behr.com/news/behr-paint-company-announces-2026-color-of-the-year-hidden-gem-a-smoky-jade-that-embodies-understated-elegance-and-timeless-sophistication" },
       { brandSlug: "valspar", brandName: "Valspar", name: "Warm Eucalyptus", code: "8004-28F", colorSlug: "warm-eucalyptus-8004-28f", sourceUrl: "https://www.paint.org/coatingstech-magazine/articles/industry-colors-of-the-year-2026/" },
-      { brandSlug: "ppg", brandName: "Glidden / PPG", name: "Warm Mahogany", code: "PPG1060-7", colorSlug: "warm-mahogany-1060-7", sourceUrl: "https://www.paint.org/coatingstech-magazine/articles/industry-colors-of-the-year-2026/" },
+      { brandSlug: "ppg", brandName: "Glidden / Pittsburgh Paints", name: "Warm Mahogany", code: "PPG1060-7", colorSlug: "warm-mahogany-1060-7", sourceUrl: "https://www.paint.org/coatingstech-magazine/articles/industry-colors-of-the-year-2026/" },
       { brandSlug: "dutch-boy", brandName: "Dutch Boy", name: "Melodious Ivory", code: "313-2DB", colorSlug: "melodious-ivory-313-2db", sourceUrl: "https://www.paint.org/coatingstech-magazine/articles/industry-colors-of-the-year-2026/" },
       { brandSlug: "dunn-edwards", brandName: "Dunn-Edwards", name: "Midnight Garden", code: "DE5657", colorSlug: "midnight-garden-de5657", sourceUrl: "https://www.paint.org/coatingstech-magazine/articles/industry-colors-of-the-year-2026/" },
     ],
@@ -103,6 +118,22 @@ export const COLOR_OF_THE_YEAR: ColorOfTheYearCycle[] = [
 ];
 
 export const CURRENT_COTY = COLOR_OF_THE_YEAR[0];
+
+// Brands we track that share a parent company. Two of them listing the same
+// color values is a shared formula, not two companies landing on one color.
+const PARENT_COMPANY: Record<string, string> = {
+  "sherwin-williams": "Sherwin-Williams",
+  "dutch-boy": "Sherwin-Williams",
+  valspar: "Sherwin-Williams",
+  behr: "Masco",
+  kilz: "Masco",
+};
+
+/** The parent company two brands share, or null when they are separate companies. */
+export function sharedParentCompany(brandSlugA: string, brandSlugB: string): string | null {
+  const a = PARENT_COMPANY[brandSlugA];
+  return a && a === PARENT_COMPANY[brandSlugB] ? a : null;
+}
 
 // "brandSlug/colorSlug" → { year, brandName } for the color-page badge.
 export const COTY_BY_COLOR: Record<string, { year: number; brandName: string }> = Object.fromEntries(
