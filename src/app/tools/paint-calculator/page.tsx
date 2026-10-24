@@ -7,7 +7,8 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { getAmazonSearchUrl } from "@/lib/affiliate";
 import { ogDefaults } from "@/lib/og";
-import { moreBrands } from "@/lib/site-facts";
+import { COVERAGE_PRODUCTS, GENERIC_RATE, formatRange, type CoverageSurface } from "@/lib/paint-coverage";
+import { roomSizeTable } from "@/lib/paint-quantity";
 
 /** Inline Amazon link for the guide prose — sponsored, opens in a new tab. */
 function AmazonLink({ query, children }: { query: string; children: React.ReactNode }) {
@@ -23,9 +24,9 @@ function AmazonLink({ query, children }: { query: string; children: React.ReactN
   );
 }
 
-const TITLE = "Paint Calculator - How Much Paint Do I Need?";
+const TITLE = "Paint Calculator: Gallons Needed and Coverage per Gallon";
 const DESCRIPTION =
-  `Calculate paint for Sherwin-Williams, Benjamin Moore, Behr, PPG, and ${moreBrands(4)} more brands. Enter room dimensions, subtract doors and windows, get gallons needed.`;
+  "Work out how many gallons of paint a room, ceiling, door set, cabinets or house needs, using spread rates from Sherwin-Williams, Benjamin Moore, Valspar and Glidden data sheets.";
 const URL = "https://www.paintcolorhq.com/tools/paint-calculator";
 
 export const metadata: Metadata = {
@@ -40,26 +41,71 @@ function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
+const SURFACE_LABEL: Record<CoverageSurface, string> = {
+  walls: "Walls",
+  ceiling: "Ceilings",
+  trim: "Trim, doors, cabinets",
+  exterior: "Exterior",
+  primer: "Primer",
+};
+
+function formatReadDate(iso: string): string {
+  return new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+const COVERAGE_ANSWER =
+  "One gallon of interior wall paint covers about 350 to 450 square feet in one coat on smooth, primed drywall, going by the manufacturer data sheets below. Exterior paint covers less, about 250 to 400 square feet, because siding is rougher and more porous. Most walls take two coats, so one gallon finishes roughly half that area.";
+
+const ROOM_ROWS = roomSizeTable(GENERIC_RATE.interior, GENERIC_RATE.interior);
+
+const FAQS: Array<{ q: string; a: string }> = [
+  { q: "How much does a gallon of paint cover?", a: COVERAGE_ANSWER },
+  {
+    q: "How many gallons for a 12x12 room?",
+    a: "A 12x12 ft room with 8 ft ceilings has 384 sq ft of wall. Take off one door (21 sq ft) and two windows (30 sq ft) and 333 sq ft is left to paint. Two coats is 666 sq ft, which at 350 sq ft per gallon is 1.90 gallons, so buy 2 gallons.",
+  },
+  {
+    q: "How do I calculate how much paint I need?",
+    a: "Multiply 2 x (length + width) x ceiling height for the wall area. Subtract about 21 sq ft per door and 15 sq ft per window. Multiply by the number of coats, divide by the spread rate on your paint's data sheet (350 sq ft per gallon if you don't know it yet), and round up to whole gallons.",
+  },
+  {
+    q: "How much paint do I need for a ceiling?",
+    a: "Multiply the room's length by its width for the ceiling area, then divide by the spread rate. A 12x14 ft ceiling is 168 sq ft, so one coat at 350 sq ft per gallon is 0.48 gallons: buy 1 gallon, or 2 quarts if the paint is sold in quarts.",
+  },
+  {
+    q: "What supplies do I need to paint a room?",
+    a: "Beyond the paint, a standard room takes seven things: a 9-inch roller frame with 3/8-inch nap covers (1/2-inch on textured walls), a 2.5-inch angled sash brush for cutting in, a paint tray with one liner per coat, painter's tape for baseboards and casings, a 9x12 canvas drop cloth, a roller extension pole, and spackle with a sanding sponge for prep. Starting from zero, the kit runs roughly $60-90, and everything except the tape, liners, and covers is reusable for years. The paint calculator sizes the tape and drop-cloth quantities to your room's dimensions.",
+  },
+  {
+    q: "What size roller nap should I use?",
+    a: "Match the nap to the surface: 3/8-inch for smooth drywall and plaster (the standard interior wall), 1/2-inch for light texture like orange peel, and 3/4-inch for heavy texture like knockdown or masonry. A 1/4-inch nap or foam roller gives the smoothest finish on doors, cabinets, and trim. Choose woven covers over knit, because cheap knit covers shed lint into the finish.",
+  },
+];
+
+const linkClass = "text-primary underline hover:text-primary/80";
+
 export default function PaintCalculatorPage() {
   return (
     <div className="min-h-screen bg-surface">
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
-        name: "Paint Calculator — How Much Paint Do I Need?",
-        description: "Calculate exactly how many gallons of paint you need. Enter room dimensions (length, width, height), subtract doors and windows, and get coverage based on the industry-standard rate of 350 sq ft per gallon for interior latex paint.",
+        name: "Paint Calculator",
+        description: "Estimate how many gallons of paint you need for walls, a ceiling, doors, cabinets or an exterior. Subtracts doors and windows and uses spread rates from manufacturer data sheets.",
         url: "https://www.paintcolorhq.com/tools/paint-calculator",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       }} />
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "How much area does one gallon of paint cover?", acceptedAnswer: { "@type": "Answer", text: "One gallon of interior latex paint covers approximately 350 square feet on smooth, primed drywall in a single coat. This is the industry-standard rate published by Sherwin-Williams, Benjamin Moore, and Behr, based on ASTM D5150 spread rate testing. Textured surfaces reduce coverage to 280-300 sq ft per gallon." } },
-          { "@type": "Question", name: "How many gallons for a 12x12 room?", acceptedAnswer: { "@type": "Answer", text: "A 12x12 ft room with 8 ft ceilings has 384 sq ft of wall area. Subtract 1 door (21 sq ft) and 2 windows (30 sq ft) for 333 sq ft of paintable area. At 2 coats, that is 666 sq ft divided by 350 sq ft/gallon = 2 gallons needed." } },
-          { "@type": "Question", name: "How do I calculate paint needed?", acceptedAnswer: { "@type": "Answer", text: "Calculate wall area using 2 x (length + width) x ceiling height. Subtract 21 sq ft per door and 15 sq ft per window. Multiply by number of coats (usually 2). Divide total by 350 sq ft per gallon and round up to the nearest whole gallon." } },
-          { "@type": "Question", name: "What supplies do I need to paint a room?", acceptedAnswer: { "@type": "Answer", text: "Beyond the paint, a standard room takes seven things: a 9-inch roller frame with 3/8-inch nap covers (1/2-inch on textured walls), a 2.5-inch angled sash brush for cutting in, a paint tray with one liner per coat, painter's tape for baseboards and casings, a 9x12 canvas drop cloth, a roller extension pole, and spackle with a sanding sponge for prep. Starting from zero, the kit runs roughly $60-90, and everything except the tape, liners, and covers is reusable for years. The paint calculator sizes the tape and drop-cloth quantities to your room's dimensions." } },
-          { "@type": "Question", name: "What size roller nap should I use?", acceptedAnswer: { "@type": "Answer", text: "Match the nap to the surface: 3/8-inch for smooth drywall and plaster (the standard interior wall), 1/2-inch for light texture like orange peel, and 3/4-inch for heavy texture like knockdown or masonry. A 1/4-inch nap or foam roller gives the smoothest finish on doors, cabinets, and trim. Choose woven covers over knit — cheap knit covers shed lint into the finish." } },
-        ],
+        mainEntity: FAQS.map((f) => ({
+          "@type": "Question", name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
       }} />
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -79,13 +125,13 @@ export default function PaintCalculatorPage() {
             Paint Calculator
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Calculate exactly how many gallons of paint you need. Enter room
-            dimensions (length, width, and ceiling height), subtract doors and
-            windows, and get coverage based on the industry-standard rate of{" "}
-            <strong className="text-on-surface">350 sq ft per gallon</strong> for interior latex paint.
-            Works for any brand — Sherwin-Williams, Benjamin Moore, Behr, and
-            more. Your result includes a supplies checklist with quantities
-            sized to your room.
+            Work out how many gallons of paint you need for a room, a ceiling,
+            doors, cabinets or the outside of a house. Enter the dimensions,
+            subtract doors and windows, and pick your paint to use the spread
+            rate from its own data sheet, or plan with{" "}
+            <strong className="text-on-surface">350 sq ft per gallon</strong> if
+            you haven&apos;t chosen one yet. Room estimates include a supplies
+            checklist sized to your room.
           </p>
         </div>
       </section>
@@ -93,6 +139,90 @@ export default function PaintCalculatorPage() {
       <section className="px-6 md:px-12 pb-16">
         <div className="max-w-7xl mx-auto">
           <PaintCalculator />
+        </div>
+      </section>
+
+      {/* Coverage per gallon, cited row by row */}
+      <section className="py-16 px-6 md:px-12">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-4">
+            How much does a gallon of paint cover?
+          </h2>
+          <p className="text-on-surface-variant leading-relaxed mb-6">{COVERAGE_ANSWER}</p>
+          <div className="overflow-x-auto rounded-xl border border-outline-variant/30">
+            <table className="w-full min-w-[560px] text-left text-sm">
+              <caption className="sr-only">Published coverage per gallon by product</caption>
+              <thead className="bg-surface-container-low text-on-surface">
+                <tr>
+                  <th scope="col" className="px-4 py-3 font-semibold">Paint</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Use</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Sq ft per gallon</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Source</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-outline-variant/20 text-on-surface-variant">
+                {COVERAGE_PRODUCTS.map((p) => (
+                  <tr key={p.id}>
+                    <td className="px-4 py-3">
+                      <span className="font-medium text-on-surface">{p.brand} {p.product}</span>
+                      <span className="block text-xs">{p.sheen}</span>
+                    </td>
+                    <td className="px-4 py-3">{p.surfaces.map((s) => SURFACE_LABEL[s]).join(", ")}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">{formatRange(p)}</td>
+                    <td className="px-4 py-3">
+                      <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                        {p.brand} {p.sourceType}
+                      </a>
+                      <span className="block text-xs">read {formatReadDate(p.readDate)}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-sm text-outline">
+            One coat on a smooth, primed surface, as printed on each manufacturer&apos;s
+            data sheet. &ldquo;Up to&rdquo; means the sheet gives only a ceiling. The
+            calculator plans with the low end of each range so the estimate errs
+            toward enough paint.
+          </p>
+        </div>
+      </section>
+
+      {/* Gallons by room size */}
+      <section className="py-16 px-6 md:px-12 bg-surface-container-low/40">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-4">
+            Gallons by room size
+          </h2>
+          <p className="text-on-surface-variant leading-relaxed mb-6">
+            Worked out with the calculator&apos;s own math for 8 ft ceilings, one door and
+            two windows, two coats on the walls and one on the ceiling, at{" "}
+            {GENERIC_RATE.interior} sq ft per gallon.
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-outline-variant/30">
+            <table className="w-full min-w-[420px] text-left text-sm">
+              <caption className="sr-only">Gallons of paint by room size</caption>
+              <thead className="bg-surface-container-low text-on-surface">
+                <tr>
+                  <th scope="col" className="px-4 py-3 font-semibold">Room</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Wall area to paint</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Walls, 2 coats</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Ceiling, 1 coat</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-outline-variant/20 text-on-surface-variant">
+                {ROOM_ROWS.map((r) => (
+                  <tr key={r.label}>
+                    <th scope="row" className="px-4 py-3 font-medium text-on-surface">{r.label}</th>
+                    <td className="px-4 py-3">{r.paintableArea} sq ft</td>
+                    <td className="px-4 py-3">{r.wallGallons} {r.wallGallons === 1 ? "gallon" : "gallons"}</td>
+                    <td className="px-4 py-3">{r.ceilingGallons} {r.ceilingGallons === 1 ? "gallon" : "gallons"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
@@ -170,9 +300,10 @@ export default function PaintCalculatorPage() {
                 Where the 350 sq ft rule bends
               </h3>
               <p>
-                The calculator&apos;s coverage rate — 350 sq ft per gallon — is the number
-                Sherwin-Williams, Benjamin Moore, and Behr all publish for interior latex on
-                smooth, primed drywall. Three situations pull real coverage below it. Texture
+                The calculator&apos;s default rate, 350 sq ft per gallon, is the low end of what
+                the interior wall paints in the table above print for one coat on smooth, primed
+                drywall; some sheets go as high as 450. Three situations pull real coverage below
+                the printed number. Texture
                 is the first: the same orange peel that wants a longer nap also has more
                 surface area, so plan on 280 to 300 sq ft per gallon. New or unprimed drywall
                 is the second — the paper face and joint compound drink the first coat, and
@@ -235,6 +366,23 @@ export default function PaintCalculatorPage() {
         </div>
       </section>
 
+      {/* Visible FAQ: the same questions and answers as the FAQPage JSON-LD */}
+      <section className="py-16 px-6 md:px-12">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">
+            Paint calculator FAQ
+          </h2>
+          <dl className="space-y-6 text-on-surface-variant leading-relaxed">
+            {FAQS.map((f) => (
+              <div key={f.q}>
+                <dt className="font-headline text-lg font-bold text-on-surface">{f.q}</dt>
+                <dd className="mt-2">{f.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
       {/* Next Steps */}
       <section className="py-20 px-6 md:px-12 bg-surface-container-low">
         <div className="max-w-4xl mx-auto">
@@ -261,7 +409,7 @@ export default function PaintCalculatorPage() {
                 </Link>{" "}
                 shows colors from Sherwin-Williams, Benjamin Moore, Behr,
                 Valspar, PPG, Dunn-Edwards, and Farrow &amp; Ball next to each
-                other with Delta E difference scores.
+                other with a plain-language verdict on how close they are.
               </li>
               <li>
                 <strong className="text-on-surface">Choose the right finish</strong> — read our{" "}

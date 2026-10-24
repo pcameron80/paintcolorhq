@@ -36,3 +36,10 @@ export function availabilityStatus(
 }
 
 export const RETIRED_MATCH_TOOLTIP = "Retired by the brand. Still available by its code.";
+export const DISCONTINUED_MATCH_TOOLTIP = "Discontinued by the brand.";
+
+export function availabilityTooltip(availability: ColorAvailability | undefined | null): string | null {
+  if (availability === "retired") return RETIRED_MATCH_TOOLTIP;
+  if (availability === "discontinued") return DISCONTINUED_MATCH_TOOLTIP;
+  return null;
+}

@@ -7,11 +7,11 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
 import { ogDefaults } from "@/lib/og";
-import { BRAND_COUNT } from "@/lib/site-facts";
+import { moreBrands } from "@/lib/site-facts";
 
-const TITLE = `Photo Color Identifier: Match to ${BRAND_COUNT} Brands`;
+const TITLE = "Paint Color Identifier: Match Paint From a Photo";
 const DESCRIPTION =
-  "Upload a photo and click any spot to find matching paint colors from Sherwin-Williams, Benjamin Moore, Behr, and more. Free, instant, cross-brand results.";
+  `Upload a photo and click a spot, or enter a hex code, to find the closest paint colors from Sherwin-Williams, Benjamin Moore, Behr and ${moreBrands(3)} more brands. Free.`;
 const URL = "https://www.paintcolorhq.com/tools/color-identifier";
 
 export const metadata: Metadata = {
@@ -20,6 +20,15 @@ export const metadata: Metadata = {
   alternates: { canonical: URL },
   openGraph: { ...ogDefaults, title: TITLE, description: DESCRIPTION, url: URL },
 };
+
+// Shown on the page and in the FAQPage JSON-LD, so the two always match.
+const WHAT_COLOR_QUESTION = "What paint color is this?";
+const WHAT_COLOR_ANSWER =
+  "Upload a photo of the painted surface and click it, or type the hex code if you already have one. " +
+  "The tool shows the closest color in Sherwin-Williams, Benjamin Moore and Behr, then the closest across all 13 brands, " +
+  "each with a plain-language label for how close it is. A photo narrows the answer to a shortlist; it cannot name the exact paint. " +
+  "For that, check the label or lid of a leftover can, or take a chip of the paint to a store to have it scanned, " +
+  "and confirm any match with a physical sample on the wall.";
 
 // JSON-LD helper - all content is server-generated from trusted static values
 function JsonLd({ data }: { data: object }) {
@@ -31,8 +40,8 @@ export default function ColorIdentifierPage() {
     <div className="min-h-screen bg-surface">
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
-        name: "Photo Color Identifier — Find Paint Colors from Any Photo",
-        description: "Upload any photo and click a spot to match it against 26,000+ paint colors from 13 brands (Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Farrow & Ball) using the CIEDE2000 Delta E 2000 color difference formula.",
+        name: "Paint Color Identifier",
+        description: "Upload any photo and click a spot, or enter a hex code, to match it against 26,000+ paint colors from 13 brands (Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Farrow & Ball) using the CIEDE2000 Delta E 2000 color difference formula.",
         url: "https://www.paintcolorhq.com/tools/color-identifier",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -40,6 +49,7 @@ export default function ColorIdentifierPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: [
+          { "@type": "Question", name: WHAT_COLOR_QUESTION, acceptedAnswer: { "@type": "Answer", text: WHAT_COLOR_ANSWER } },
           { "@type": "Question", name: "How does photo color identification work?", acceptedAnswer: { "@type": "Answer", text: "Upload a photo, then click any spot on the image. The tool samples a small patch of pixels around the spot you click, converts that color to CIELAB color space, and compares it against 26,000+ paint colors from 13 brands using the CIEDE2000 Delta E formula. Results are ranked by perceptual closeness so the top match is always the most visually accurate." } },
           { "@type": "Question", name: "What is Delta E in paint matching?", acceptedAnswer: { "@type": "Answer", text: "Delta E is a measure of perceptual color difference. We group every result into three plain labels: Nearly identical (the difference is hard to spot even side by side), Very similar (close, but you may notice it side by side), and Visible difference (clearly different shades). These are digital matches, so confirm with a physical sample. Paint Color HQ uses the CIEDE2000 formula, the international standard used in paint manufacturing quality control." } },
           { "@type": "Question", name: "What photo formats are supported?", acceptedAnswer: { "@type": "Answer", text: "The Photo Color Identifier supports JPEG, PNG, WebP, and any standard image format your browser can display. You can upload a photo from your device or snap one with your camera. For the most accurate results, photograph the surface in natural daylight without flash." } },
@@ -62,15 +72,15 @@ export default function ColorIdentifierPage() {
         <div className="max-w-7xl mx-auto">
           <span className="text-primary font-bold text-xs uppercase tracking-widest">Tool</span>
           <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
-            Photo Color Identifier <span className="text-primary">— Match Across 13 Brands</span>
+            Paint Color Identifier: <span className="text-primary">Match Paint From a Photo</span>
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Upload any photo and click a spot to find the closest matching paint
-            color from <strong className="text-on-surface">26,000+ colors across 13 brands</strong> —
+            Upload any photo and click a spot, or type a hex code, to find the
+            closest paint colors from <strong className="text-on-surface">26,000+ colors across 13 brands</strong>,
             including Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG,
-            Dunn-Edwards, and Farrow &amp; Ball. Results are ranked by how close
-            each match looks to the human eye, so the top suggestion is always
-            the most visually accurate option you can buy.
+            Dunn-Edwards, and Farrow &amp; Ball. You get the closest color in
+            Sherwin-Williams, Benjamin Moore and Behr, plus the closest across
+            every brand, ranked by how close each one looks to the human eye.
           </p>
         </div>
       </section>
@@ -93,6 +103,13 @@ export default function ColorIdentifierPage() {
             How Photo Paint Matching Works — and How to Get an Accurate Match
           </h2>
           <div className="space-y-10 text-on-surface-variant leading-relaxed">
+            <div>
+              <h3 className="font-headline text-xl font-bold text-on-surface mb-3">
+                {WHAT_COLOR_QUESTION}
+              </h3>
+              <p>{WHAT_COLOR_ANSWER}</p>
+            </div>
+
             <div>
               <h3 className="font-headline text-xl font-bold text-on-surface mb-3">
                 What happens when you click a spot
@@ -149,6 +166,13 @@ export default function ColorIdentifierPage() {
                 <li>
                   <strong className="text-on-surface">Stay out of shadow edges.</strong> A
                   spot half in shadow reads as a darker, cooler color than the paint.
+                </li>
+                <li>
+                  <strong className="text-on-surface">Set a white reference</strong> if the
+                  photo looks yellow or blue. Click something white in the same light, such as
+                  trim, a ceiling or a sheet of paper, and the tool removes that cast from later
+                  samples. It is an approximation: it corrects the tint, not a photo that is too
+                  dark or too bright.
                 </li>
                 <li>
                   <strong className="text-on-surface">Click several spots</strong> — use
@@ -258,7 +282,7 @@ export default function ColorIdentifierPage() {
                   Palette Generator
                 </Link>{" "}
                 to create coordinating schemes from your identified color
-                across all {BRAND_COUNT} supported brands.
+                across all 13 supported brands.
               </li>
             </ol>
           </div>

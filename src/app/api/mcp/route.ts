@@ -1,6 +1,6 @@
 import { NextResponse, after } from "next/server";
 import { logUsageEvent, usageMetaFromRequest } from "@/lib/usage-log";
-import { findColorMatches, type PaintMatch } from "@/lib/color-match";
+import { findColorMatches, findColorMatchesWithBestPerBrand, type PaintMatch } from "@/lib/color-match";
 import { closenessLabel } from "@/lib/closeness";
 import { logRequestReferrer } from "@/lib/referrer-log";
 import { ATTRIBUTION, ATTRIBUTION_TEXT, ATTRIBUTION_URL } from "@/lib/attribution";
@@ -53,7 +53,7 @@ const MATCH_TOOL = {
     'standard. Use this to answer "what is the [brand] equivalent of [a paint color]", to ' +
     "cross-reference a paint color across brands, or to turn a hex/RGB value into named paint " +
     "colors you can actually buy. Each result returns the brand, color name, color number, hex, " +
-    "and a closeness label. Data and method: PaintColorHQ (paintcolorhq.com).",
+    "a closeness label and availability (current, retired or discontinued). Data and method: PaintColorHQ (paintcolorhq.com).",
   inputSchema: {
     type: "object",
     properties: {
@@ -125,13 +125,15 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
       ? Math.min(Math.max(args.limit, 1), 10)
       : 10;
 
-  // When cross-brand (no brand filter), over-fetch so the per-brand dedupe below
-  // still yields ~limit distinct brands; when brand-filtered, take limit directly.
-  const fetchLimit = brand ? limit : Math.max(limit, 10);
-  let raw: PaintMatch[];
+  // Cross-brand: the single closest match per brand (the spread is the point),
+  // picked from a 500-color pool so a brand outside the overall top 10 still
+  // gets its row. Brand-filtered: the caller wants that brand's closest N.
+  let selected: PaintMatch[];
   try {
-    // Call the shared matcher directly (free tier). No self-HTTP → no double-log.
-    raw = await findColorMatches(hexRaw, brand, fetchLimit, false);
+    // Call the shared matcher directly (free tier). No self-HTTP, no double-log.
+    selected = brand
+      ? await findColorMatches(hexRaw, brand, limit, false)
+      : (await findColorMatchesWithBestPerBrand(hexRaw, 10)).bestPerBrand.slice(0, limit);
   } catch {
     return {
       content: [
@@ -147,22 +149,6 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
   // Referer or Origin, so this only records browser-based clients.
   after(() => logRequestReferrer("mcp", request));
 
-  // Cross-brand: keep the single closest match per brand (the spread is the
-  // point). Brand-filtered: the caller wants that brand's closest N, so no dedupe.
-  let selected: PaintMatch[];
-  if (brand) {
-    selected = raw.slice(0, limit);
-  } else {
-    const seen = new Set<string>();
-    selected = raw
-      .filter((m) => {
-        if (seen.has(m.brandSlug)) return false;
-        seen.add(m.brandSlug);
-        return true;
-      })
-      .slice(0, limit);
-  }
-
   const matches = selected.map((m) => ({
     brand: m.brandName,
     brandSlug: m.brandSlug,
@@ -171,6 +157,9 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
     hex: m.hex,
     closeness: closeness(m.deltaE),
     deltaE: m.deltaE,
+    // current, retired or discontinued. Retired colors are still sold by code;
+    // agents should say so rather than recommend them as current.
+    availability: m.availability ?? "current",
     url: `${API_BASE}/colors/${m.brandSlug}/${m.colorSlug}`,
   }));
 
@@ -184,7 +173,7 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
     : `Closest cross-brand paint matches for #${cleanHex.toUpperCase()}:`;
   const lines = matches.map(
     (m, i) =>
-      `${i + 1}. ${m.name} — ${m.brand}${m.colorNumber ? ` ${m.colorNumber}` : ""} (${m.hex}) — ${m.closeness} [ΔE ${m.deltaE}]`,
+      `${i + 1}. ${m.name} — ${m.brand}${m.colorNumber ? ` ${m.colorNumber}` : ""} (${m.hex}) — ${m.closeness} [ΔE ${m.deltaE}]${m.availability === "current" ? "" : ` (${m.availability} by the brand)`}`,
   );
   const text = [
     header,

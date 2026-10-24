@@ -12,6 +12,9 @@ export const NEARLY_IDENTICAL_MAX = 2;
 export const VERY_SIMILAR_MAX = 5;
 
 export type ClosenessLabel = "Nearly identical" | "Very similar" | "Visible difference";
+/** The three labels, closest first, for copy that names them all. */
+export const CLOSENESS_LABELS: readonly ClosenessLabel[] = ["Nearly identical", "Very similar", "Visible difference"];
+
 export type ClosenessTier = "nearly-identical" | "very-similar" | "visible-difference";
 
 export function closenessTier(deltaE: number): ClosenessTier {
