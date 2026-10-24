@@ -1,13 +1,12 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { unstable_cache } from "next/cache";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 import { MatchColorSearch } from "@/components/match-color-search";
-import { getBrandBySlug, getBrandPairCloseCount, getTopCrossBrandMatches } from "@/lib/queries";
+import { getBrandBySlug, getBrandPairChart } from "@/lib/queries";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { closenessLabel } from "@/lib/closeness";
 import { getBrandPairIntro } from "@/lib/brand-pair-intros";
@@ -16,13 +15,6 @@ export const revalidate = 2592000; // 30d — static color/match/brand data; red
 
 const MAJOR_BRANDS = MAJOR_MATCH_BRANDS;
 const PAIR_LIMIT = 50;
-
-// unstable_cache keys on the arguments too, so each brand pair caches its own count.
-const getCloseCount = unstable_cache(
-  async (sourceBrandId: string, targetBrandId: string) => getBrandPairCloseCount(sourceBrandId, targetBrandId),
-  ["brand-pair-close-count-v1"],
-  { revalidate: 2592000 },
-);
 
 interface PageProps { params: Promise<{ sourceBrandSlug: string; targetBrandSlug: string }>; }
 
@@ -37,20 +29,27 @@ function getDeltaELabel(deltaE: number): { label: string; className: string } {
   return { label, className };
 }
 
-// Answer to "How many A colors have a B equivalent?". closeCount and listed
-// come from the same filtered population (see getBrandPairCloseCount).
-function pairCountAnswer(sourceName: string, targetName: string, closeCount: number, listed: number): string {
+// Answer to "How many A colors have a B equivalent?". The count and the chart
+// come from one population, one pair per source color (see getBrandPairChart).
+// When exact is false the count is a floor, so it reads "At least N".
+function pairCountAnswer(sourceName: string, targetName: string, closeCount: number, exact: boolean, listed: number): string {
   const n = closeCount.toLocaleString("en-US");
+  const one = closeCount === 1;
   const caveat = "These are digital matches ranked by CIEDE2000 Delta E, so confirm with a physical sample before you buy.";
+  let lead: string;
+  let list: string;
   if (closeCount === 0) {
-    const list = listed > 0 ? ` We list the ${listed} closest pairs.` : "";
-    return `No ${sourceName} color in the current palette has a nearly identical ${targetName} match.${list} ${caveat}`;
+    lead = exact
+      ? `No ${sourceName} color in the current palette has a nearly identical ${targetName} match.`
+      : `We found no ${sourceName} color in the current palette with a nearly identical ${targetName} match.`;
+    list = listed > 0 ? `We list the ${listed} closest pairs.` : "";
+  } else {
+    lead = `${exact ? "" : "At least "}${n} ${sourceName} ${one ? "color" : "colors"} in the current palette ${one ? "has" : "have"} a nearly identical ${targetName} match.`;
+    list = closeCount >= listed
+      ? `We list the ${listed} closest pairs.`
+      : `We list the ${listed} closest pairs, including ${exact ? "all " : ""}${n} nearly identical ${one ? "one" : "ones"}.`;
   }
-  const lead = `${n} ${sourceName} colors in the current palette have a nearly identical ${targetName} match.`;
-  const list = closeCount >= listed
-    ? `We list the ${listed} closest of ${n} nearly identical pairs.`
-    : `We list the ${listed} closest pairs, including all ${n} nearly identical ones.`;
-  return `${lead} ${list} ${caveat}`;
+  return [lead, list, caveat].filter(Boolean).join(" ");
 }
 
 export async function generateStaticParams() {
@@ -80,12 +79,11 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
   const [sourceBrand, targetBrand] = await Promise.all([getBrandBySlug(sourceBrandSlug), getBrandBySlug(targetBrandSlug)]);
   if (!sourceBrand || !targetBrand) notFound();
 
-  const [matches, closeCount] = await Promise.all([
-    getTopCrossBrandMatches(sourceBrand.id, targetBrand.id, PAIR_LIMIT),
-    getCloseCount(sourceBrand.id, targetBrand.id),
-  ]);
+  // Chart rows and FAQ count come from one pass, so they cannot drift apart.
+  // Page-level ISR (revalidate above) is the only cache.
+  const { matches, closeCount, closeCountExact } = await getBrandPairChart(sourceBrand.id, targetBrand.id, PAIR_LIMIT);
   // Every indexed pair has well over 50 current-palette pairs (the smallest,
-  // Farrow & Ball to Behr, has 92 on 2026-10-24). A short chart means the
+  // Farrow & Ball to Behr, has 142 on 2026-10-24). A short chart means the
   // query or the data broke, so say so in the build log.
   if (matches.length < PAIR_LIMIT && MAJOR_BRANDS.includes(sourceBrandSlug) && MAJOR_BRANDS.includes(targetBrandSlug)) {
     console.warn(`[match-listing] ${sourceBrandSlug} to ${targetBrandSlug} returned ${matches.length} of ${PAIR_LIMIT} rows`);
@@ -95,11 +93,12 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
   const faqs = [
     {
       question: `How many ${sourceBrand.name} colors have a ${targetBrand.name} equivalent?`,
-      answer: pairCountAnswer(sourceBrand.name, targetBrand.name, closeCount, matches.length),
+      answer: pairCountAnswer(sourceBrand.name, targetBrand.name, closeCount, closeCountExact, matches.length),
     },
     {
+      // Visible now, so it talks about the labels the chart shows, not the score it hides.
       question: `What is the best way to match ${sourceBrand.name} paint colors to ${targetBrand.name}?`,
-      answer: `Use the Delta E color difference score. A lower score means a closer digital approximation, not a guaranteed physical match. Always verify with physical paint samples in your room's actual lighting before committing. Small differences amplify at scale.`,
+      answer: `Start with the closeness label on each pair: Nearly identical, Very similar or Visible difference. The label comes from the CIEDE2000 Delta E score between the two colors' digital values, so it is an approximation, not a guaranteed physical match. Check a physical sample of the ${targetBrand.name} color in your room's lighting before you commit, because small differences show more across a full wall.`,
     },
   ];
   const brandNames: Record<string, string> = { "sherwin-williams": "Sherwin-Williams", "benjamin-moore": "Benjamin Moore", behr: "Behr", valspar: "Valspar", ppg: "PPG", "dunn-edwards": "Dunn-Edwards", "farrow-ball": "Farrow & Ball" };
@@ -338,7 +337,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
       }} />
       {/* FAQPage for AI engine citation. Built from the same faqs array as
           the visible FAQ section: the nearly identical count for this brand
-          pair, plus the Delta E methodology explainer. */}
+          pair, plus how to read the closeness labels. */}
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: faqs.map((faq) => ({
