@@ -48,6 +48,7 @@
     "test:undertone": "node --import tsx --test scripts/lib/undertone.test.ts",
     "predev": "tsx scripts/build-sitemap-data.ts",
     "build:sitemap": "tsx scripts/build-sitemap-data.ts",
+    "test": "NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX='https://www.jdoqocy.com/click-101771405-15496318?url=' node --import tsx --test 'src/**/*.test.ts' 'scripts/**/*.test.ts'",
     "test:seo": "node --import tsx --test 'src/lib/*.test.ts'",
     "check:sitemap": "tsx scripts/check-sitemap-data.ts"
   },

@@ -12,6 +12,12 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Local-only data and report folders (gitignored); not source.
+    "data/**",
+    "reports/**",
+    "drafts/**",
+    "scripts/data/**",
+    "public/match-data/**",
   ]),
 ]);
 
