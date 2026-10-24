@@ -18,7 +18,9 @@ async function previousMatches(): Promise<{ source: string; matches: string[] } 
   } catch { /* no local snapshot */ }
   try {
     const res = await fetch(`${BASE_URL}/sitemap/match-individual.xml`, { signal: AbortSignal.timeout(10_000) });
-    if (res.ok) return { source: "live /sitemap/match-individual.xml", matches: sitemapPaths(await res.text(), BASE_URL) };
+    // Zero <loc> means a challenge or error page, not an empty sitemap.
+    const matches = res.ok ? sitemapPaths(await res.text(), BASE_URL) : [];
+    if (matches.length) return { source: "live /sitemap/match-individual.xml", matches };
   } catch { /* offline */ }
   return null;
 }
