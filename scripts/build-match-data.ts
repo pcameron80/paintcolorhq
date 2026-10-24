@@ -18,7 +18,8 @@
  *   3. Fingerprint the content the files are built from. On a match with the
  *      previous build's fingerprint, copy the cached files and skip to 6.
  *   4. Fetch matches 16 source colors per request (.in(), no OFFSET), a few
- *      requests in flight, and write the top 50 by Delta E per color.
+ *      requests in flight, and write the top 50 by Delta E per color
+ *      (ties broken by rank, then match id).
  *   5. Integrity gate: one file per color, each with at least 50 matches.
  *      Only then is the cache marker written.
  *   6. Overlay frozen sources (scripts/data/frozen-match-sources.json) with
@@ -92,6 +93,7 @@ interface MatchRow {
   source_color_id: string;
   match_color_id: string;
   delta_e_score: number;
+  rank: number;
 }
 interface OutputMatch {
   id: string;
@@ -311,10 +313,13 @@ async function main() {
   const shortPayloads: string[] = [];
 
   function writeGroup(sourceId: string, rows: MatchRow[]) {
-    // Delta E ascending, match id as a deterministic tie-break.
+    // Delta E ascending. Scores are rounded to 2 decimals, so ties are
+    // common: rank (compute-matches' order on the unrounded score within a
+    // target brand) breaks them first, then match id for determinism.
     rows.sort(
       (a, b) =>
         a.delta_e_score - b.delta_e_score ||
+        a.rank - b.rank ||
         (a.match_color_id < b.match_color_id ? -1 : a.match_color_id > b.match_color_id ? 1 : 0),
     );
     const payload: OutputMatch[] = [];
@@ -353,10 +358,11 @@ async function main() {
     const rows = await withRetry(`matches for batch starting ${ids[0]}`, async () => {
       const res = await supabase
         .from("cross_brand_matches")
-        .select("source_color_id, match_color_id, delta_e_score")
+        .select("source_color_id, match_color_id, delta_e_score, rank")
         .in("source_color_id", ids)
         .order("source_color_id", { ascending: true })
         .order("delta_e_score", { ascending: true })
+        .order("rank", { ascending: true })
         .order("match_color_id", { ascending: true })
         .limit(PAGE_SIZE);
       if (res.error) throw new Error(res.error.message);
