@@ -84,7 +84,10 @@ interface Update {
 // Feed codes whose LRV disagrees with the manufacturer's own color page.
 // BM's API gives premixed PM- codes their own LRV (PM-1 Super White 89.1)
 // while the color page shows the base color's (87.36). Checked 2026-10-11.
-const SKIP_CODES: Record<string, RegExp> = { 'benjamin-moore': /^PM-/ };
+// Vista's R-line pages print CIELAB L* under the "LRV" label: R132 Tannic Tea
+// (#5A4A43) shows 32.7, where its LRV is about 7. 125 of 132 R rows tripped
+// --max-delta on 2026-10-24.
+const SKIP_CODES: Record<string, RegExp> = { 'benjamin-moore': /^PM-/, 'vista-paint': /^R\d/ };
 
 const code = (s: string | null | undefined) => (s ?? '').trim().toUpperCase();
 // Leading letters of a code, for the per-prefix tally ("DET477" -> "DET", "0471" -> "#").
