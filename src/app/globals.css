@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 :root {
+  /* Fixed header height below lg: py-4 row (16 + 40 + 16) plus the 4px divider.
+     The mobile menu panel opens at this offset. */
+  --header-h: 76px;
+
   --background: #fbf8ff;
   --foreground: #161935;
 

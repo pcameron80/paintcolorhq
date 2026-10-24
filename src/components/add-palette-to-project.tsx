@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
+import { useAuthUser } from "@/lib/use-auth-user";
 
 interface Project {
   id: string;
@@ -21,20 +21,13 @@ export function AddPaletteToProject({
   currentPath: string;
 }) {
   const [open, setOpen] = useState(false);
-  const [user, setUser] = useState<{ id: string } | null>(null);
+  const { user, ready } = useAuthUser();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(false);
   const [addedTo, setAddedTo] = useState<Set<string>>(new Set());
   const [newProjectName, setNewProjectName] = useState("");
   const [creating, setCreating] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const supabase = createSupabaseBrowserClient();
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user) setUser({ id: user.id });
-    });
-  }, []);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -55,6 +48,8 @@ export function AddPaletteToProject({
   }
 
   function handleClick() {
+    // Wait for the auth check so a signed-in visitor is not bounced to login.
+    if (!ready) return;
     if (!user) {
       window.location.href = `/auth/login?next=${encodeURIComponent(currentPath)}`;
       return;
@@ -149,7 +144,7 @@ export function AddPaletteToProject({
                 })}
                 {projects.length === 0 && (
                   <p className="py-2 text-sm text-gray-400">
-                    No projects yet — create one below
+                    No projects yet. Create one below.
                   </p>
                 )}
               </div>
