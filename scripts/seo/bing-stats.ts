@@ -305,28 +305,41 @@ async function brandsDid() {
   const postFrom = dateArg("post-from") ?? "2026-10-16";
   const postTo = dateArg("post-to") ?? "9999-12-31";
   const rows = await bing("GetPageStats");
-  const weeks = new Map<string, { test: number; control: number; testImp: number; controlImp: number; n: number }>();
+  const inPre = (d: string) => d >= preFrom && d <= preTo;
+  const inPost = (d: string) => d >= postFrom && d <= postTo;
+  // Bing returns only the top 100 pages per week, so a small control brand page
+  // can drop out of a capped week and drag the pooled control down. Use a
+  // balanced panel: only control brands present in every week used.
+  const rowCount = new Map<string, number>();
+  const present = new Map<string, Set<string>>();
   for (const row of rows) {
     const day = isoDay(row.Date);
     if (!day) continue;
-    const w = weeks.get(day) ?? { test: 0, control: 0, testImp: 0, controlImp: 0, n: 0 };
-    w.n += 1;
+    rowCount.set(day, (rowCount.get(day) ?? 0) + 1);
+    const brand = brandOf(row.Query);
+    if (brand) present.set(brand, (present.get(brand) ?? new Set()).add(day));
+  }
+  const used = [...rowCount.keys()].filter((d) => inPre(d) || inPost(d)).sort();
+  const panel = CONTROL_BRANDS.filter((b) => used.every((d) => present.get(b)?.has(d)));
+  const dropped = CONTROL_BRANDS.filter((b) => !panel.includes(b));
+  const weeks = new Map<string, { test: number; control: number; testImp: number; controlImp: number; n: number }>();
+  for (const d of used) weeks.set(d, { test: 0, control: 0, testImp: 0, controlImp: 0, n: rowCount.get(d) ?? 0 });
+  for (const row of rows) {
+    const w = weeks.get(isoDay(row.Date));
+    if (!w) continue;
     const brand = brandOf(row.Query);
     if (brand && TEST_BRANDS.includes(brand)) {
       w.test += row.Clicks;
       w.testImp += row.Impressions;
-    } else if (brand && CONTROL_BRANDS.includes(brand)) {
+    } else if (brand && panel.includes(brand)) {
       w.control += row.Clicks;
       w.controlImp += row.Impressions;
     }
-    weeks.set(day, w);
   }
-  const inPre = (d: string) => d >= preFrom && d <= preTo;
-  const inPost = (d: string) => d >= postFrom && d <= postTo;
-  const used = [...weeks.keys()].filter((d) => inPre(d) || inPost(d)).sort();
 
   console.log(`Test arm: ${TEST_BRANDS.join(", ")}`);
-  console.log(`Controls (pooled): ${CONTROL_BRANDS.join(", ")}`);
+  console.log(`Controls (pooled, present every week): ${panel.join(", ") || "none"}`);
+  if (dropped.length) console.log(`Controls dropped (missing from a capped week): ${dropped.join(", ")}`);
   console.log(`Pre: weeks ending ${preFrom}..${preTo}. Post: weeks ending ${postFrom}..${postTo === "9999-12-31" ? "latest" : postTo}.\n`);
   console.log(
     `${"week ending".padEnd(12)} ${"period".padEnd(6)} ${"test clk".padStart(8)} ${"test ctr".padStart(8)} ` +
@@ -353,9 +366,11 @@ async function brandsDid() {
   console.log(`\nClicks per week (mean)   pre (${pre.length} wk)   post (${post.length} wk)   change`);
   console.log(`  test arm               ${f(tPre).padStart(8)}   ${f(tPost).padStart(9)}   ${f(tPost - tPre).padStart(6)}`);
   console.log(`  controls               ${f(cPre).padStart(8)}   ${f(cPost).padStart(9)}   ${f(cPost - cPre).padStart(6)}`);
-  console.log(`\nDifference-in-differences (clicks/week): ${f(tPost - tPre - (cPost - cPre))}`);
+  // Headline is the ratio form: the test arm and the pooled controls run at
+  // different traffic levels, so an absolute click difference depends on scale.
   const ratio = (tPost / tPre) / (cPost / cPre);
-  console.log(`Ratio form (test change / control change): ${Number.isFinite(ratio) ? `${((ratio - 1) * 100).toFixed(1)}%` : "-"}`);
+  console.log(`\nDifference-in-differences, ratio form (headline): ${Number.isFinite(ratio) ? `${((ratio - 1) * 100).toFixed(1)}%` : "-"} (test arm relative to controls)`);
+  console.log(`Absolute form (secondary, scale-dependent): ${f(tPost - tPre - (cPost - cPre))} clicks/week`);
   if (post.length < 3) {
     console.warn(`\nOnly ${post.length} post week(s) so far: read the result as direction, not a verdict.`);
   }
