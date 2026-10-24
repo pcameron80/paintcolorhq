@@ -63,7 +63,10 @@ client_secret_*.json
 /docs/blog-calendar.md
 
 # scrape caches (local-only — re-fetchable from manufacturer sites)
-/scripts/data/
+/scripts/data/*
+# ...except the frozen match-data list and its snapshots, which the build reads
+!/scripts/data/frozen-match-sources.json
+!/scripts/data/frozen-match/
 
 # pre-computed match data (regenerated at build time by scripts/build-match-data.ts)
 /public/match-data/

@@ -201,7 +201,7 @@ async function main() {
     await supabase.from("brands").update({ color_count: count }).eq("id", r.bid);
     console.log(`Retired ${r.brand}/${r.slug}`);
   }
-  console.log(`Matches: inserted ${inserts.length}, deleted ${deletes.length}. Redeploy so the prebuild regenerates match data.`);
+  console.log(`Matches: inserted ${inserts.length}, deleted ${deletes.length}. Redeploy once this finishes: the prebuild rebuilds /match-data and fails if the match count is not colors x (brands - 1) x 5. Pages pick up the new files within 24 h.`);
 }
 
 main().catch((e) => {

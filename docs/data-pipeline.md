@@ -30,7 +30,9 @@ Reads the ColorNerd dataset from `data/colornerd/` and processes it into a norma
 - Converts RGB to CIELAB color space for Delta E matching
 - Deduplicates slugs within brands
 
-**Output:** `data/colors-processed.json` (22,807 colors)
+**Output:** `data/colors-processed.json` (22,807 colors at the original ColorNerd import)
+
+**Do not re-run this against the live database.** The DB has drifted far past the ColorNerd files (brand API imports, LRV scrapes, dedupe, retirements). `import-colors` plus `seed-db` re-adds MPC, which was retired, and loses every correction made in the DB since. Use `export-db-colors` instead (see Re-Running the Pipeline).
 
 **Skipped brands:** Avery, DIC, HKS, IKEA, Kobra, Neenah, Toyo, Trumatch (non-paint brands)
 
@@ -61,9 +63,9 @@ Calculates the closest color matches between all brands using CIEDE2000.
 - Processes one source brand at a time to bound memory
 - Logs progress every 1000 colors with rate and ETA
 
-**Output:** `data/cross-brand-matches.json` (222MB, 1,482,455 match records)
+**Output:** `data/cross-brand-matches.json` (1,603,200 match records as of 2026-10-24: 26,720 colors x 12 other brands x 5)
 
-**Performance:** ~120 seconds for 22,807 colors across 14 brands.
+**Performance:** about 2 to 3 minutes for 26,720 colors across 13 brands.
 
 ### Step 4: Seed Matches (`npm run seed-matches`)
 
@@ -87,25 +89,28 @@ An open-source dataset of paint color swatches in JSON/CSV format. Cloned to `da
 
 ## Color Counts by Brand
 
+As of 2026-10-24 (live `brands.color_count`, 13 brands):
+
 | Brand | Colors |
 |-------|--------|
-| Behr | 4,535 |
-| Benjamin Moore | 3,919 |
-| Vista Paint | 2,785 |
-| PPG | 2,088 |
-| Valspar | 1,766 |
-| Dunn-Edwards | 1,696 |
-| Sherwin-Williams | 1,527 |
+| Behr | 5,789 |
+| Benjamin Moore | 3,903 |
+| PPG | 3,261 |
+| Vista Paint | 2,984 |
+| Valspar | 2,358 |
+| Dunn-Edwards | 2,230 |
+| Sherwin-Williams | 1,950 |
 | Hirshfield's | 1,469 |
-| MPC | 1,419 |
-| Kilz | 868 |
+| Dutch Boy | 1,441 |
+| Kilz | 827 |
 | RAL | 213 |
-| Farrow & Ball | 132 |
+| Farrow & Ball | 167 |
 | Colorhouse | 128 |
-| Dutch Boy | 101 |
-| **Total** | **22,807** |
+| **Total** | **26,720** |
 
 ## Color Family Distribution
+
+From the original 22,807-color import; not updated since.
 
 | Family | Count | Family | Count |
 |--------|-------|--------|-------|
@@ -120,23 +125,42 @@ An open-source dataset of paint color swatches in JSON/CSV format. Cloned to `da
 
 ## Re-Running the Pipeline
 
-To refresh data (e.g. after adding new color sources):
+To recompute matches after color data changes in the DB (hex, Lab, new or retired colors):
 
 ```bash
-# 1. Process colors from source data
-npm run import-colors
+# 1. Export what is live in the DB (not import-colors, see Step 1)
+npm run export-db-colors
 
-# 2. Seed colors to Supabase
-npm run seed-db
-
-# 3. Compute all cross-brand matches (takes ~2 minutes)
+# 2. Compute all cross-brand matches locally
 npm run compute-matches
 
-# 4. Seed matches to Supabase (takes ~5 minutes for 1.5M records)
+# 3. Philip: TRUNCATE cross_brand_matches in the Supabase SQL editor.
+#    seed-matches' batched delete times out on 1.6M rows and aborts if the
+#    table is not empty afterwards.
+
+# 4. Seed matches (about 5 minutes for 1.6M rows)
 npm run seed-matches
 ```
 
+Then:
+
+5. **Do not deploy while seed-matches runs.** `build-match-data` fails the build when the table is mid-reseed (see below), so the previous deployment stays live, but a merge to main during the window is a wasted build.
+6. Verify the table: `cross_brand_matches` must equal colors x (brands - 1) x 5, which is colors x 60 with 13 brands (26,720 x 60 = 1,603,200).
+7. Redeploy. The prebuild regenerates `/match-data` (about 2 minutes on a cache miss).
+8. Allow 24 h for `/match-data` to reach rendered pages: `getCrossBrandMatches` fetches the files with `revalidate: 86400`.
+9. Run `npm run audit-colors`.
+
 All scripts use `dotenv` to load `.env.local` for Supabase credentials.
+
+## Match Data Build (`scripts/build-match-data.ts`)
+
+Runs as the `prebuild` hook and writes `public/match-data/<colorId>.json` (top 50 matches by Delta E) for every color.
+
+- **Cache key.** A content fingerprint (v3): color count, max `content_updated_at`, an md5 over every color's id, name, slug, hex, number, availability and brand, an md5 of the brands, the match count and an md5 of the script. Any in-place correction misses the cache and regenerates. The files and the key live in `.next/cache/match-data/` only. The key is never copied to `public/`.
+- **Integrity gate.** Before generating: `cross_brand_matches` must equal colors x (brands - 1) x 5. After generating: one file per color, each with at least 50 matches, and every row read. On any failure the build exits 1 before writing the cache key.
+- **Paging.** Matches are fetched 16 source colors per request (`.in()`, ordered by source, Delta E and match id), 8 requests at a time. No OFFSET paging.
+- **Frozen sources.** `scripts/data/frozen-match-sources.json` lists colors whose match file must not change while a test runs (`{id, key, until, reason}`). Until `until` (exclusive, UTC), the build serves the committed snapshot in `scripts/data/frozen-match/<id>.json` instead of the regenerated file. The snapshot is applied after the cache, so editing the list never forces a regeneration. Capture snapshots with `npx tsx scripts/snapshot-frozen-match.ts` (reads production, keeps existing snapshots unless `--force`; `--check` compares). A frozen entry without a snapshot fails the build.
+- `npm run build-match-data -- --force` ignores the cache.
 
 ## Retailer Link Verification
 
