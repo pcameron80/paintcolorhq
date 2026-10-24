@@ -1,74 +1,117 @@
 /**
- * Undertone classification (mirrors src/lib/color-description.ts). Shared by
- * populate-undertones.ts and apply-hex-corrections.ts so a corrected hex gets
- * exactly the undertone a fresh populate run would give it.
+ * Undertone classification for the colors.undertone column. The single source
+ * of truth for that column: populate-undertones.ts, apply-hex-corrections.ts
+ * and the importers (import-brand-scan, import-behr-live, import-sw-api-colors,
+ * import-valspar-api-colors) all call undertoneLabel(), so a re-run and a fresh
+ * insert give a color the same label. The site only reads the stored label
+ * (src/lib/undertone-utils.ts holds the allowed strings).
+ *
+ * Method: CIELAB chroma and hue angle.
+ *   C* = sqrt(a*^2 + b*^2), h = atan2(b*, a*) in degrees, 0-360.
+ *   C* below NEUTRAL_CHROMA is Neutral (BM Chantilly Lace is 2.66).
+ *   Otherwise the hue angle picks the sector in SECTORS.
+ *
+ * The previous version gated on HSL saturation and needed a* AND b* past +/-5
+ * or +/-8 before calling anything warm or cool. Most whites, creams and
+ * greiges sit at a* near 0 and b* 4-9, so about half the catalog came out
+ * Neutral, including SW Alabaster and BM White Dove, and navies with a* near 0
+ * fell through to Neutral too.
+ *
+ * Calibrated against scripts/lib/undertone.test.ts. Change a threshold there
+ * first, then here.
  */
 
-function hexToHsl(hex: string): [number, number, number] {
-  const r = parseInt(hex.slice(1, 3), 16) / 255;
-  const g = parseInt(hex.slice(3, 5), 16) / 255;
-  const b = parseInt(hex.slice(5, 7), 16) / 255;
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  const l = (max + min) / 2;
-  if (max === min) return [0, 0, l * 100];
-  const d = max - min;
-  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-  let h = 0;
-  if (max === r) h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
-  else if (max === g) h = ((b - r) / d + 2) / 6;
-  else h = ((r - g) / d + 4) / 6;
-  return [h * 360, s * 100, l * 100];
+import { hexToRgb, rgbToLab } from './color-math';
+
+export type RawUndertone = 'golden' | 'pink' | 'green' | 'blue' | 'violet' | 'balanced';
+
+/** Below this CIELAB chroma a color reads as having no undertone. */
+export const NEUTRAL_CHROMA = 3.0;
+
+/**
+ * Hue-angle sectors, [from, to) in degrees. Pink wraps through 0.
+ * Tuned from the starting sectors (golden 45-120, pink 330-45):
+ * - Golden starts at 30, not 45. Colors named brick, tomato, coral and salmon
+ *   have median hue 37-42 (orange-leaning reds, yellow undertone), while
+ *   raspberry, burgundy, cranberry, wine and cherry sit at median 0-24. At 45,
+ *   about 1,880 orange-reds the old classifier called golden would turn pink.
+ * - Golden stops at 112, not 120: light grays at h 113-120 (BM Gray Owl,
+ *   Oxford White, Stonington Gray) are a* < 0 greens that paint makers
+ *   describe as cool, while BM Simply White (h 110) is a warm white.
+ */
+export const SECTORS: readonly { from: number; to: number; undertone: RawUndertone }[] = [
+  { from: 30, to: 112, undertone: 'golden' },
+  { from: 112, to: 200, undertone: 'green' },
+  { from: 200, to: 290, undertone: 'blue' },
+  { from: 290, to: 330, undertone: 'violet' },
+  { from: 330, to: 360, undertone: 'pink' },
+  { from: 0, to: 30, undertone: 'pink' },
+];
+
+/**
+ * Manufacturer wording that the Lab math cannot see, keyed by
+ * "<brand-slug>/<color-slug>". Add a color here only with a source.
+ *
+ * SW Repose Gray: Sherwin-Williams describes it as a cool gray. Its Lab
+ * (a* -0.56, b* 4.86) lands in the golden sector; the only cool component is
+ * the green-side a*, so it is filed as Cool (Green).
+ */
+export const UNDERTONE_OVERRIDES: Readonly<Record<string, RawUndertone>> = {
+  'sherwin-williams/repose-gray-7015': 'green',
+};
+
+export function chromaHue(labA: number, labB: number): { chroma: number; hue: number } {
+  const chroma = Math.sqrt(labA * labA + labB * labB);
+  const hue = ((Math.atan2(labB, labA) * 180) / Math.PI + 360) % 360;
+  return { chroma, hue };
 }
 
-export type RawUndertone = "golden" | "pink" | "green" | "blue" | "violet" | "balanced";
-
+/**
+ * Raw undertone for a color. Lab comes from the row when present, otherwise it
+ * is derived from hex. `key` ("<brand-slug>/<color-slug>") enables overrides.
+ */
 export function computeUndertone(
   hex: string,
   labA: number | null,
   labB: number | null,
+  key?: string,
 ): RawUndertone {
-  const [h, s] = hexToHsl(hex);
-  const isAchromatic = s < 8;
+  if (key && UNDERTONE_OVERRIDES[key]) return UNDERTONE_OVERRIDES[key];
 
-  if (isAchromatic) {
-    if (labA != null && labB != null) {
-      if (labB > 3) return "golden";
-      if (labA > 2) return "pink";
-      if (labB < -2) return "blue";
-      if (labA < -2) return "green";
-      return "balanced";
-    }
-    return "balanced";
+  let a = labA;
+  let b = labB;
+  if (a == null || b == null || !Number.isFinite(a) || !Number.isFinite(b)) {
+    const rgb = hexToRgb(hex);
+    if (!rgb) return 'balanced';
+    const lab = rgbToLab(rgb.r, rgb.g, rgb.b);
+    a = lab.a;
+    b = lab.b_val;
   }
 
-  if (labA != null && labB != null) {
-    if (labA > 8 && labB > 8) return "golden";
-    if (labA > 8 && labB <= 8) return "pink";
-    if (labA < -5 && labB > 5) return "green";
-    if (labA < -5 && labB < -5) return "blue";
-    if (labA > 3 && labB < -3) return "violet";
-    return "balanced";
+  const { chroma, hue } = chromaHue(a, b);
+  if (chroma < NEUTRAL_CHROMA) return 'balanced';
+  for (const s of SECTORS) {
+    if (hue >= s.from && hue < s.to) return s.undertone;
   }
-
-  if (h >= 20 && h < 70) return "golden";
-  if (h >= 330 || h < 20) return "pink";
-  if (h >= 70 && h < 160) return "green";
-  if (h >= 200 && h < 270) return "blue";
-  if (h >= 270 && h < 330) return "violet";
-  return "balanced";
+  return 'balanced';
 }
 
+/** Raw undertone to stored label. Every value is one of UNDERTONE_LABELS. */
 export const LABEL_MAP: Record<RawUndertone, string> = {
-  golden: "Warm (Golden)",
-  pink: "Warm (Pink)",
-  blue: "Cool (Blue)",
-  green: "Cool (Green)",
-  violet: "Cool (Violet)",
-  balanced: "Neutral",
+  golden: 'Warm (Golden)',
+  pink: 'Warm (Pink)',
+  blue: 'Cool (Blue)',
+  green: 'Cool (Green)',
+  violet: 'Cool (Violet)',
+  balanced: 'Neutral',
 };
 
 /** Stored label for a color, e.g. "Warm (Golden)". */
-export function undertoneLabel(hex: string, labA: number | null, labB: number | null): string {
-  return LABEL_MAP[computeUndertone(hex, labA, labB)];
+export function undertoneLabel(
+  hex: string,
+  labA: number | null,
+  labB: number | null,
+  key?: string,
+): string {
+  return LABEL_MAP[computeUndertone(hex, labA, labB, key)];
 }
