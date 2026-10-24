@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { trackToolEngagement } from "@/lib/analytics";
+import { trackEvent, trackToolEngagement } from "@/lib/analytics";
 import { closenessLabel } from "@/lib/closeness";
 
 interface ColorMatch {
@@ -24,6 +24,48 @@ function closeness(deltaE: number): string {
 
 type Stage = "upload" | "pick" | "results";
 
+// Side of the square patch sampled around a click, in canvas pixels. One pixel
+// on a phone photo is mostly sensor noise and JPEG artifacts, so neighboring
+// clicks landed on different paints. The per-channel median of a 7x7 patch
+// ignores stray pixels and returns the same paint for the same spot.
+const PATCH_SIZE = 7;
+
+function medianOf(values: number[]): number {
+  const sorted = [...values].sort((a, b) => a - b);
+  return sorted[Math.floor(sorted.length / 2)];
+}
+
+/** Per-channel median color of a PATCH_SIZE square centered on (x, y), clamped to the canvas. */
+function samplePatch(
+  ctx: CanvasRenderingContext2D,
+  canvasWidth: number,
+  canvasHeight: number,
+  x: number,
+  y: number,
+): string {
+  const w = Math.max(1, Math.min(PATCH_SIZE, canvasWidth));
+  const h = Math.max(1, Math.min(PATCH_SIZE, canvasHeight));
+  const half = Math.floor(PATCH_SIZE / 2);
+  const left = Math.min(Math.max(0, x - half), Math.max(0, canvasWidth - w));
+  const top = Math.min(Math.max(0, y - half), Math.max(0, canvasHeight - h));
+  const data = ctx.getImageData(left, top, w, h).data;
+  const r: number[] = [];
+  const g: number[] = [];
+  const b: number[] = [];
+  for (let i = 0; i < data.length; i += 4) {
+    r.push(data[i]);
+    g.push(data[i + 1]);
+    b.push(data[i + 2]);
+  }
+  const toHex = (n: number) => n.toString(16).padStart(2, "0");
+  return `#${toHex(medianOf(r))}${toHex(medianOf(g))}${toHex(medianOf(b))}`;
+}
+
+function deviceType(): string {
+  if (typeof window === "undefined" || !window.matchMedia) return "unknown";
+  return window.matchMedia("(pointer: coarse)").matches ? "mobile" : "desktop";
+}
+
 export function ColorIdentifier() {
   const [stage, setStage] = useState<Stage>("upload");
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -41,6 +83,10 @@ export function ColorIdentifier() {
   }, []);
 
   const handleFile = useCallback((file: File) => {
+    // GA4 only (not tool_use, not a Plausible goal): measures how many
+    // visitors get a photo in, split by device, so the mobile drop-off between
+    // upload and pick is visible.
+    trackEvent("identifier_upload", { device: deviceType() });
     const reader = new FileReader();
     reader.onload = (e) => {
       setImageSrc(e.target?.result as string);
@@ -75,6 +121,8 @@ export function ColorIdentifier() {
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   }, []);
 
@@ -84,18 +132,21 @@ export function ColorIdentifier() {
       if (!canvas) return;
 
       const rect = canvas.getBoundingClientRect();
-      const x = Math.round(
-        ((e.clientX - rect.left) / rect.width) * canvas.width,
+      if (rect.width === 0 || rect.height === 0 || canvas.width === 0 || canvas.height === 0) return;
+      const clamp = (n: number, max: number) => Math.min(Math.max(0, n), max - 1);
+      const x = clamp(
+        Math.floor(((e.clientX - rect.left) / rect.width) * canvas.width),
+        canvas.width,
       );
-      const y = Math.round(
-        ((e.clientY - rect.top) / rect.height) * canvas.height,
+      const y = clamp(
+        Math.floor(((e.clientY - rect.top) / rect.height) * canvas.height),
+        canvas.height,
       );
 
       const ctx = canvas.getContext("2d");
       if (!ctx) return;
 
-      const pixel = ctx.getImageData(x, y, 1, 1).data;
-      const hex = `#${pixel[0].toString(16).padStart(2, "0")}${pixel[1].toString(16).padStart(2, "0")}${pixel[2].toString(16).padStart(2, "0")}`;
+      const hex = samplePatch(ctx, canvas.width, canvas.height, x, y);
 
       setPickedColor(hex);
       setLoading(true);
@@ -175,21 +226,24 @@ export function ColorIdentifier() {
             />
           </svg>
           <p className="mb-2 text-sm font-medium text-gray-700">
-            Drop an image here or click to upload
+            Drop an image here or choose a photo
           </p>
           <p className="mb-4 text-xs text-gray-500">
             JPG, PNG, or any image format
           </p>
-          <label className="cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
+          {/* No capture attribute: it forces the camera on phones and hides
+              the photo library, where most room photos already are. */}
+          <label className="cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-blue-600">
             Choose Photo
             <input
               type="file"
               accept="image/*"
-              capture="environment"
-              className="hidden"
+              className="sr-only"
               onChange={(e) => {
                 const file = e.target.files?.[0];
                 if (file) handleFile(file);
+                // Allow choosing the same photo again after "Upload different photo".
+                e.target.value = "";
               }}
             />
           </label>
@@ -200,7 +254,7 @@ export function ColorIdentifier() {
       {stage === "pick" && imageSrc && (
         <div>
           <p className="mb-4 text-sm text-gray-600">
-            Click anywhere on the image to sample a color.
+            Click or tap a spot on the image to sample its color.
           </p>
           {/* Hidden image element for loading */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -311,9 +365,9 @@ export function ColorIdentifier() {
               No close paint matches found for this color.
             </p>
           )}
-          {matches.length > 0 && Object.keys(sampleLinks).length > 0 && (
+          {matches.length > 0 && Object.values(sampleLinks).some((l) => l.affiliate) && (
             <p className="mt-4 text-xs text-gray-400">
-              Sample links are affiliate links — if you buy through them, Paint
+              Sample links are affiliate links. If you buy through them, Paint
               Color HQ may earn a small commission at no extra cost to you.
             </p>
           )}

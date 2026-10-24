@@ -27,7 +27,7 @@ export default function ColorIdentifierPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Photo Color Identifier — Find Paint Colors from Any Photo",
-        description: "Upload any photo and click a pixel to match it against 26,000+ paint colors from 13 brands (Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Farrow & Ball) using the CIEDE2000 Delta E 2000 color difference formula.",
+        description: "Upload any photo and click a spot to match it against 26,000+ paint colors from 13 brands (Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG, Dunn-Edwards, Farrow & Ball) using the CIEDE2000 Delta E 2000 color difference formula.",
         url: "https://www.paintcolorhq.com/tools/color-identifier",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -35,11 +35,11 @@ export default function ColorIdentifierPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: [
-          { "@type": "Question", name: "How does photo color identification work?", acceptedAnswer: { "@type": "Answer", text: "Upload a photo, then click any spot on the image. The tool reads the exact pixel color at that point, converts it to CIELAB color space, and compares it against 26,000+ paint colors from 13 brands using the CIEDE2000 Delta E formula. Results are ranked by perceptual closeness so the top match is always the most visually accurate." } },
+          { "@type": "Question", name: "How does photo color identification work?", acceptedAnswer: { "@type": "Answer", text: "Upload a photo, then click any spot on the image. The tool samples a small patch of pixels around the spot you click, converts that color to CIELAB color space, and compares it against 26,000+ paint colors from 13 brands using the CIEDE2000 Delta E formula. Results are ranked by perceptual closeness so the top match is always the most visually accurate." } },
           { "@type": "Question", name: "What is Delta E in paint matching?", acceptedAnswer: { "@type": "Answer", text: "Delta E is a measure of perceptual color difference. We group every result into three plain labels: Nearly identical (the difference is hard to spot even side by side), Very similar (close, but you may notice it side by side), and Visible difference (clearly different shades). These are digital matches, so confirm with a physical sample. Paint Color HQ uses the CIEDE2000 formula, the international standard used in paint manufacturing quality control." } },
           { "@type": "Question", name: "What photo formats are supported?", acceptedAnswer: { "@type": "Answer", text: "The Photo Color Identifier supports JPEG, PNG, WebP, and any standard image format your browser can display. You can upload a photo from your device or snap one with your camera. For the most accurate results, photograph the surface in natural daylight without flash." } },
           { "@type": "Question", name: "How accurate is paint matching from a photo?", acceptedAnswer: { "@type": "Answer", text: "The color math follows the same CIEDE2000 standard paint manufacturers use for quality control. The variable is your photo: lighting, camera white balance, and shadows shift the pixel colors the tool reads. Shoot in indirect daylight without flash, sample several spots, and treat the top matches as a shortlist to confirm with a physical sample — not a final answer." } },
-          { "@type": "Question", name: "Why does the matched paint look different on my wall?", acceptedAnswer: { "@type": "Answer", text: "The pixel you clicked reflects the lighting in the photo, not the paint under your lighting. Bulb temperature, north- vs south-facing windows, sheen, and the colors around a wall all change how the same paint reads. That's why the last step is always a physical sample on your actual wall, checked in morning and evening light." } },
+          { "@type": "Question", name: "Why does the matched paint look different on my wall?", acceptedAnswer: { "@type": "Answer", text: "The spot you clicked reflects the lighting in the photo, not the paint under your lighting. Bulb temperature, north- vs south-facing windows, sheen, and the colors around a wall all change how the same paint reads. That's why the last step is always a physical sample on your actual wall, checked in morning and evening light." } },
         ],
       }} />
       <JsonLd data={{
@@ -90,13 +90,15 @@ export default function ColorIdentifierPage() {
           <div className="space-y-10 text-on-surface-variant leading-relaxed">
             <div>
               <h3 className="font-headline text-xl font-bold text-on-surface mb-3">
-                What happens when you click a pixel
+                What happens when you click a spot
               </h3>
               <p>
-                When you click a spot on your photo, the tool reads the exact color of that
-                pixel — its red, green, and blue values. That number alone isn&apos;t enough to
+                When you click a spot on your photo, the tool averages a small patch of pixels
+                around the spot you click, so a single noisy pixel can&apos;t throw off the
+                match, and reads the result as red, green, and blue values. That number alone
+                isn&apos;t enough to
                 find a paint match, because RGB describes what a screen displays, not what a
-                human eye perceives. So the tool converts the pixel to{" "}
+                human eye perceives. So the tool converts that color to{" "}
                 <strong className="text-on-surface">CIELAB color space</strong>, a model built
                 to mirror how people see color differences, and then compares it
                 against all 26,000+ paint colors in our database using the{" "}
@@ -141,7 +143,7 @@ export default function ColorIdentifierPage() {
                 </li>
                 <li>
                   <strong className="text-on-surface">Stay out of shadow edges.</strong> A
-                  pixel half in shadow reads as a darker, cooler color than the paint.
+                  spot half in shadow reads as a darker, cooler color than the paint.
                 </li>
                 <li>
                   <strong className="text-on-surface">Click several spots</strong> — use
@@ -223,8 +225,8 @@ export default function ColorIdentifierPage() {
                   Color Comparison tool
                 </Link>{" "}
                 displays colors side by side with hex codes, LRV values, and
-                Delta E difference scores so you can see exactly how close (or
-                far apart) two colors really are.
+                a plain-language verdict on how close they are, so you can see
+                how far apart two colors are before you order samples.
               </li>
               <li>
                 <strong className="text-on-surface">Calculate how much paint to buy</strong> — enter your
@@ -251,7 +253,7 @@ export default function ColorIdentifierPage() {
                   Palette Generator
                 </Link>{" "}
                 to create coordinating schemes from your identified color
-                across all 14 supported brands.
+                across all 13 supported brands.
               </li>
             </ol>
           </div>
