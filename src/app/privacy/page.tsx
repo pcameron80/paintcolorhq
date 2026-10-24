@@ -38,7 +38,7 @@ export default function PrivacyPolicyPage() {
             <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
               Privacy Policy
             </h1>
-            <p className="text-sm text-outline">Effective date: {EFFECTIVE_DATE}</p>
+            <p className="text-sm text-outline">{`Effective date: ${EFFECTIVE_DATE}`}</p>
           </div>
         </section>
 
