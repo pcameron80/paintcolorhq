@@ -3,13 +3,31 @@
 import { useState, useEffect, useCallback, useRef, useId } from "react";
 import Link from "next/link";
 import type { ColorWithBrand } from "@/lib/types";
-import { trackCompare } from "@/lib/analytics";
+import { trackCompare, trackEvent } from "@/lib/analytics";
+import { TrackedLink } from "@/components/tracked-link";
 import { hexToRgb, rgbToLab, deltaE2000, type Lab } from "@/lib/color-utils";
 import { closenessLabel } from "@/lib/closeness";
+
+/** The few fields a popular-pair card needs. */
+export interface PairColor {
+  id: string;
+  name: string;
+  hex: string;
+  brandName: string;
+}
 
 interface CompareClientProps {
   initialColor1: ColorWithBrand | null;
   initialColor2: ColorWithBrand | null;
+  popularPairs: [PairColor, PairColor][];
+}
+
+/** Popular pairs shown under a result; the empty tool shows the full list. */
+const PAIRS_UNDER_RESULT = 4;
+
+// Rows of public/match-data/{colorId}.json, built at deploy time, closest first.
+interface MatchDataRow {
+  match_color: { id: string; brand: { slug: string } };
 }
 
 function ColorSearchInput({
@@ -154,7 +172,34 @@ function ColorSearchInput({
   );
 }
 
-export function CompareClient({ initialColor1, initialColor2 }: CompareClientProps) {
+// The cross-brand match page for a pair exists when one color is the closest
+// match in its brand for the other. Returns that page's path, or null.
+async function findPairPage(
+  a: ColorWithBrand,
+  b: ColorWithBrand,
+  signal: AbortSignal,
+): Promise<string | null> {
+  if (a.brand.slug === b.brand.slug) return null;
+  for (const [source, target] of [[a, b], [b, a]] as const) {
+    try {
+      const res = await fetch(`/match-data/${source.id}.json`, { signal });
+      if (!res.ok) continue;
+      const rows: MatchDataRow[] = await res.json();
+      const best = rows.find((r) => r.match_color?.brand?.slug === target.brand.slug);
+      if (best?.match_color.id === target.id) {
+        return `/match/${source.brand.slug}/${source.slug}-to-${target.brand.slug}`;
+      }
+    } catch {
+      if (signal.aborted) return null;
+    }
+  }
+  return null;
+}
+
+const NEXT_STEP_CLASS =
+  "rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue";
+
+export function CompareClient({ initialColor1, initialColor2, popularPairs }: CompareClientProps) {
   const [color1, setColor1] = useState<ColorWithBrand | null>(initialColor1);
   const [color2, setColor2] = useState<ColorWithBrand | null>(initialColor2);
   // Id currently picked in each slot. A full-row response is applied only if
@@ -163,6 +208,22 @@ export function CompareClient({ initialColor1, initialColor2 }: CompareClientPro
     initialColor1?.id ?? null,
     initialColor2?.id ?? null,
   ]);
+
+  // Path of the cross-brand match page for this pair, when there is one.
+  const [pairPage, setPairPage] = useState<{ key: string; href: string | null } | null>(null);
+  const pairKey = color1 && color2 ? `${color1.id}|${color2.id}` : null;
+  useEffect(() => {
+    if (!color1 || !color2) return;
+    const key = `${color1.id}|${color2.id}`;
+    const controller = new AbortController();
+    findPairPage(color1, color2, controller.signal).then((href) => {
+      if (!controller.signal.aborted) setPairPage({ key, href });
+    });
+    return () => controller.abort();
+    // Ids are enough: the full-row refetch swaps the object, not the color.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [color1?.id, color2?.id]);
+  const pairHref = pairPage && pairPage.key === pairKey ? pairPage.href : null;
 
   // Write the URL only once both colors are set, and only when it changes.
   // GA4 enhanced measurement counts each history change as a page_view, so a
@@ -211,6 +272,24 @@ export function CompareClient({ initialColor1, initialColor2 }: CompareClientPro
     setColor2(null);
   }
 
+  function swapColors() {
+    if (!color1 || !color2) return;
+    trackEvent("cta_click", { cta_label: "compare_swap", color_1: color2.name, color_2: color1.name });
+    pickedIds.current = [color2.id, color1.id];
+    setColor1(color2);
+    setColor2(color1);
+    updateUrl(color2, color1);
+  }
+
+  const otherPairs = color1 && color2
+    ? popularPairs
+        .filter(([a, b]) => {
+          const ids = new Set([a.id, b.id]);
+          return !(ids.has(color1.id) && ids.has(color2.id));
+        })
+        .slice(0, PAIRS_UNDER_RESULT)
+    : popularPairs;
+
   return (
     <>
       <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -229,47 +308,105 @@ export function CompareClient({ initialColor1, initialColor2 }: CompareClientPro
       </div>
 
       {color1 && color2 && (
-        <div className="mt-10">
-          {/* Delta E similarity verdict */}
+        <div className="mt-6">
+          {/* The verdict goes straight under the pickers. Below the swatches
+              it started more than a full screen down on a phone. */}
+          <DeltaEVerdict color1={color1} color2={color2} />
 
-
-          <div className="grid grid-cols-2 gap-3 sm:gap-8">
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-8">
             <ColorDetail color={color1} />
             <ColorDetail color={color2} />
           </div>
 
-          <DeltaEVerdict color1={color1} color2={color2} />
+          <p className="mt-6 text-sm text-gray-600">
+            Compare physical samples beside your trim and flooring in daylight and evening light. Screens do not predict the finished paint.
+          </p>
 
           {/* Next-step CTAs */}
           <div className="mt-10 rounded-xl border border-gray-200 bg-gray-50 p-6">
             <h3 className="text-lg font-semibold text-gray-900">Next Steps</h3>
-            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              <Link
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <TrackedLink
+                href={`/tools/room-visualizer?${new URLSearchParams({ walls: color1.hex.replace("#", ""), accent: color2.hex.replace("#", "") })}`}
+                className={NEXT_STEP_CLASS}
+                eventName="cta_click"
+                eventParams={{ cta_label: "compare_see_in_room", color_1: color1.name, color_2: color2.name }}
+              >
+                See both in a room
+              </TrackedLink>
+              {pairHref && (
+                <TrackedLink
+                  href={pairHref}
+                  className={NEXT_STEP_CLASS}
+                  eventName="cta_click"
+                  eventParams={{ cta_label: "compare_pair_page", color_1: color1.name, color_2: color2.name }}
+                >
+                  See the full match page
+                </TrackedLink>
+              )}
+              <button
+                type="button"
+                onClick={swapColors}
+                className={NEXT_STEP_CLASS}
+              >
+                Swap the two colors
+              </button>
+              <TrackedLink
                 href={`/colors/${color1.brand.slug}/${color1.slug}`}
-                className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue"
+                className={NEXT_STEP_CLASS}
+                eventName="cta_click"
+                eventParams={{ cta_label: "compare_color_1_matches", color_1: color1.name }}
               >
                 Find matches for {color1.name}
-              </Link>
-              <Link
+              </TrackedLink>
+              <TrackedLink
                 href={`/colors/${color2.brand.slug}/${color2.slug}`}
-                className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue"
+                className={NEXT_STEP_CLASS}
+                eventName="cta_click"
+                eventParams={{ cta_label: "compare_color_2_matches", color_2: color2.name }}
               >
                 Find matches for {color2.name}
-              </Link>
-              <Link
-                href="/tools/room-visualizer"
-                className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue"
+              </TrackedLink>
+              <TrackedLink
+                href={`/tools/palette-generator?${new URLSearchParams({ hex: color1.hex.replace("#", "") })}`}
+                className={NEXT_STEP_CLASS}
+                eventName="cta_click"
+                eventParams={{ cta_label: "compare_build_palette", color_1: color1.name }}
               >
-                Try Room Visualizer
-              </Link>
-              <Link
-                href="/tools/palette-generator"
-                className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue"
-              >
-                Build a Palette
-              </Link>
+                Build a palette around {color1.name}
+              </TrackedLink>
             </div>
           </div>
+        </div>
+      )}
+
+      {otherPairs.length > 0 && (
+        <div className="mt-12">
+          <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface">
+            {color1 && color2 ? "Other popular comparisons" : "Popular comparisons"}
+          </h2>
+          <p className="mt-2 mb-6 text-sm text-on-surface-variant">Colors people often decide between. Open one to see the side-by-side verdict.</p>
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {otherPairs.map(([a, b]) => (
+              <li key={`${a.id}-${b.id}`}>
+                <TrackedLink
+                  href={`/compare?color1=${a.id}&color2=${b.id}`}
+                  className="flex items-center gap-3 rounded-xl border border-outline-variant/30 p-3 hover:shadow-md transition-all"
+                  eventName="cta_click"
+                  eventParams={{ cta_label: color1 && color2 ? "compare_popular_pair_after_result" : "compare_popular_pair", color_1: a.name, color_2: b.name }}
+                >
+                  <span className="flex shrink-0">
+                    <span className="h-10 w-10 rounded-l-lg border border-black/10" style={{ backgroundColor: a.hex }} />
+                    <span className="h-10 w-10 rounded-r-lg border border-l-0 border-black/10" style={{ backgroundColor: b.hex }} />
+                  </span>
+                  <span className="text-sm leading-tight">
+                    <span className="block font-semibold text-on-surface">{a.name} vs {b.name}</span>
+                    <span className="block text-xs text-on-surface-variant">{a.brandName === b.brandName ? a.brandName : `${a.brandName} vs ${b.brandName}`}</span>
+                  </span>
+                </TrackedLink>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </>
@@ -324,11 +461,14 @@ function DeltaEVerdict({
   const verdict = getDeltaEVerdict(de);
 
   return (
-    <div className="mb-8 rounded-xl border border-gray-200 bg-gray-50 p-6 text-center">
-      <p className="text-lg font-medium text-gray-900">{verdict}</p>
-      <p className="mt-2 text-sm text-gray-600">Compare physical samples beside your trim and flooring in daylight and evening light. Screens do not predict the finished paint.</p>
-      <p className="mt-3 text-sm text-gray-500">
-        Closeness is measured with the CIEDE2000 color-difference formula.
+    <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+      <span className="flex shrink-0" aria-hidden="true">
+        <span className="h-8 w-8 rounded-l-md border border-black/10" style={{ backgroundColor: color1.hex }} />
+        <span className="h-8 w-8 rounded-r-md border border-l-0 border-black/10" style={{ backgroundColor: color2.hex }} />
+      </span>
+      <p className="text-base font-medium text-gray-900" aria-live="polite">
+        {verdict}
+        <span className="block text-xs font-normal text-gray-500">Measured with the CIEDE2000 color-difference formula.</span>
       </p>
     </div>
   );

@@ -1,0 +1,141 @@
+tier	date	pin_id	key	reason
+1	2026-06-02	1116681670148751625	swatch-benjamin-moore-buttermilk-919	swatch:N
+1	2026-06-04	1116681670148888464	swatch-mpc-black-hole-met-mp19952	dead destination: 308 to /brands (MPC not in DB)
+1	2026-06-06	1116681670148982068	restock-29	curated: Hale Navy printed #3E4450/LRV 7.1 vs DB #444C57/LRV 8.4 (dE 2.9, dLRV -1.3) ; Naval printed #34405A/LRV 4.5 vs DB #2F3D4C/LRV 4.5 (dE 6.0, dLRV +0.0) ; Newburyport Blue printed #475667/LRV 9 vs DB #475667/LRV 10.3 (dE 0.0, dLRV -1.3)
+1	2026-06-06	1116681670149039297	restock-30	curated: Evergreen Fog printed #95A18D/LRV 30 vs DB #95978A/LRV 30.4 (dE 5.8, dLRV -0.4) ; Saybrook Sage printed #B2BAA4/LRV 46.4 vs DB #B2B8A3/LRV 45.5 (dE 1.0, dLRV +0.9)
+1	2026-06-22	1116681670150118599	swatch-benjamin-moore-natural-cream-oc-14	swatch:HF
+1	2026-06-24	1116681670150261711	swatch-benjamin-moore-pale-oak-oc-20	swatch:HF
+1	2026-06-26	1116681670150401416	swatch-benjamin-moore-silver-peony-1475	swatch:M
+1	2026-07-17	1116681670151903455	swatch-behr-castilian-pink-s170-3	swatch:HLF
+1	2026-07-18	1116681670151976416	swatch-behr-smoke-bush-rose-s170-5	swatch:H
+1	2026-07-22	1116681670152263243	comparison-aug-01	curated: White Dove printed #F3EFE0 vs DB #EFEEE5; original pin text says "they are not [twins]... Delta E of 2.27"
+1	2026-08-01	1116681670153022806	swatch-behr-all-dressed-up-p160-3	swatch:HF
+1	2026-08-05	1116681670153322662	may26-01	curated: Hale Navy printed #3E4450/LRV 7.1 vs DB #444C57/LRV 8.4 (dE 2.9, dLRV -1.3) ; White Dove printed #EDE6D3/LRV 83 vs DB #EFEEE5/LRV 83.2 (dE 4.6, dLRV -0.2) ; Edgecomb Gray printed #D3CBBA/LRV 66 vs DB #DAD4C5/LRV 63.1 (dE 2.4, dLRV +2.9)
+1	2026-08-06	1116681670153400364	may26-02	curated: Iron Ore printed #43484C/LRV 6 vs DB #434341/LRV 5.6 (dE 4.5, dLRV +0.4) ; Pure White printed #F3EEE0/LRV 83.7 vs DB #EDECE6/LRV 83.7 (dE 3.6, dLRV +0.0)
+1	2026-08-07	1116681670153474011	may26-03	curated: Iron Ore printed #43484C/LRV 6 vs DB #434341/LRV 5.6 (dE 4.5, dLRV +0.4) ; Alabaster printed #ECE3D7/LRV 82 vs DB #EDEAE0/LRV 82.2 (dE 3.1, dLRV -0.2)
+1	2026-08-08	1116681670153549802	may26-05	curated: Evergreen Fog printed #95A18D/LRV 30 vs DB #95978A/LRV 30.4 (dE 5.8, dLRV -0.4) ; Pure White printed #F3EEE0/LRV 83.7 vs DB #EDECE6/LRV 83.7 (dE 3.6, dLRV +0.0) ; Saybrook Sage printed #B2BAA4/LRV 46.4 vs DB #B2B8A3/LRV 45.5 (dE 1.0, dLRV +0.9)
+1	2026-08-09	1116681670153629806	may26-06	curated: Naval printed #34405A/LRV 4.5 vs DB #2F3D4C/LRV 4.5 (dE 6.0, dLRV +0.0) ; Pure White printed #F3EEE0/LRV 83.7 vs DB #EDECE6/LRV 83.7 (dE 3.6, dLRV +0.0) ; Accessible Beige printed #D1C4A9/LRV 57.9 vs DB #D1C7B8/LRV 57.9 (dE 4.4, dLRV +0.0)
+1	2026-08-10	1116681670153704994	may26-07	curated: Pink Hydrangea printed #FEB6D4/LRV 62 vs DB #F8C1BB/LRV 62 (dE 12.2, dLRV +0.0) ; Simply White printed #F1EDE3/LRV 92.5 vs DB #F7F7EE/LRV 89.5 (dE 2.7, dLRV +3.0) ; Saybrook Sage printed #B2BAA4/LRV 46.4 vs DB #B2B8A3/LRV 45.5 (dE 1.0, dLRV +0.9)
+1	2026-08-11	1116681670153782402	may26-08	curated: Chantilly Lace printed #F5F1EB/LRV 92.3 vs DB #F4F6F1/LRV 90 (dE 3.0, dLRV +2.3) ; Hale Navy printed #3E4450/LRV 7.1 vs DB #444C57/LRV 8.4 (dE 2.9, dLRV -1.3)
+1	2026-08-13	1116681670153929692	may26-10	curated: Pure White printed #F3EEE0/LRV 83.7 vs DB #EDECE6/LRV 83.7 (dE 3.6, dLRV +0.0) ; Iron Ore printed #43484C/LRV 6 vs DB #434341/LRV 5.6 (dE 4.5, dLRV +0.4)
+1	2026-08-29	1116681670155159985	may26-04	curated: Chantilly Lace printed #F5F1EB/LRV 92.3 vs DB #F4F6F1/LRV 90 (dE 3.0, dLRV +2.3) ; Pure White printed #F3EEE0/LRV 83.7 vs DB #EDECE6/LRV 83.7 (dE 3.6, dLRV +0.0) ; White Dove printed #EDE6D3/LRV 83 vs DB #EFEEE5/LRV 83.2 (dE 4.6, dLRV -0.2)
+1	2026-09-02	1116681670155465960	swatch-behr-pocket-watch-n290-5	swatch:H
+1	2026-09-09	1116681670156003444	restock-29	curated: Hale Navy printed #3E4450/LRV 7.1 vs DB #444C57/LRV 8.4 (dE 2.9, dLRV -1.3) ; Naval printed #34405A/LRV 4.5 vs DB #2F3D4C/LRV 4.5 (dE 6.0, dLRV +0.0) ; Newburyport Blue printed #475667/LRV 9 vs DB #475667/LRV 10.3 (dE 0.0, dLRV -1.3)
+1	2026-09-12	1116681670156234992	restock-30	curated: Evergreen Fog printed #95A18D/LRV 30 vs DB #95978A/LRV 30.4 (dE 5.8, dLRV -0.4) ; Saybrook Sage printed #B2BAA4/LRV 46.4 vs DB #B2B8A3/LRV 45.5 (dE 1.0, dLRV +0.9)
+1	2026-09-16	1116681670156539424	comparison-aug-01	curated: White Dove printed #F3EFE0 vs DB #EFEEE5; original pin text says "they are not [twins]... Delta E of 2.27"
+1	2026-10-02	1116681670157806229	swatch-benjamin-moore-buttermilk-919	swatch:N
+1	2026-10-03	1116681670157888399	may26-01	curated: Hale Navy printed #3E4450/LRV 7.1 vs DB #444C57/LRV 8.4 (dE 2.9, dLRV -1.3) ; White Dove printed #EDE6D3/LRV 83 vs DB #EFEEE5/LRV 83.2 (dE 4.6, dLRV -0.2) ; Edgecomb Gray printed #D3CBBA/LRV 66 vs DB #DAD4C5/LRV 63.1 (dE 2.4, dLRV +2.9)
+1	2026-10-04	1116681670157975973	may26-02	curated: Iron Ore printed #43484C/LRV 6 vs DB #434341/LRV 5.6 (dE 4.5, dLRV +0.4) ; Pure White printed #F3EEE0/LRV 83.7 vs DB #EDECE6/LRV 83.7 (dE 3.6, dLRV +0.0)
+1	2026-10-05	1116681670158055948	may26-03	curated: Iron Ore printed #43484C/LRV 6 vs DB #434341/LRV 5.6 (dE 4.5, dLRV +0.4) ; Alabaster printed #ECE3D7/LRV 82 vs DB #EDEAE0/LRV 82.2 (dE 3.1, dLRV -0.2)
+1	2026-10-06	1116681670158131913	may26-05	curated: Evergreen Fog printed #95A18D/LRV 30 vs DB #95978A/LRV 30.4 (dE 5.8, dLRV -0.4) ; Pure White printed #F3EEE0/LRV 83.7 vs DB #EDECE6/LRV 83.7 (dE 3.6, dLRV +0.0) ; Saybrook Sage printed #B2BAA4/LRV 46.4 vs DB #B2B8A3/LRV 45.5 (dE 1.0, dLRV +0.9)
+1	2026-10-07	1116681670158207389	may26-06	curated: Naval printed #34405A/LRV 4.5 vs DB #2F3D4C/LRV 4.5 (dE 6.0, dLRV +0.0) ; Pure White printed #F3EEE0/LRV 83.7 vs DB #EDECE6/LRV 83.7 (dE 3.6, dLRV +0.0) ; Accessible Beige printed #D1C4A9/LRV 57.9 vs DB #D1C7B8/LRV 57.9 (dE 4.4, dLRV +0.0)
+1	2026-10-08	1116681670158291767	may26-07	curated: Pink Hydrangea printed #FEB6D4/LRV 62 vs DB #F8C1BB/LRV 62 (dE 12.2, dLRV +0.0) ; Simply White printed #F1EDE3/LRV 92.5 vs DB #F7F7EE/LRV 89.5 (dE 2.7, dLRV +3.0) ; Saybrook Sage printed #B2BAA4/LRV 46.4 vs DB #B2B8A3/LRV 45.5 (dE 1.0, dLRV +0.9)
+1	2026-10-09	1116681670158375008	may26-08	curated: Chantilly Lace printed #F5F1EB/LRV 92.3 vs DB #F4F6F1/LRV 90 (dE 3.0, dLRV +2.3) ; Hale Navy printed #3E4450/LRV 7.1 vs DB #444C57/LRV 8.4 (dE 2.9, dLRV -1.3)
+1	2026-10-11	1116681670158546826	may26-10	curated: Pure White printed #F3EEE0/LRV 83.7 vs DB #EDECE6/LRV 83.7 (dE 3.6, dLRV +0.0) ; Iron Ore printed #43484C/LRV 6 vs DB #434341/LRV 5.6 (dE 4.5, dLRV +0.4)
+1	2026-10-14	1116681670158781870	may26-04	curated: Chantilly Lace printed #F5F1EB/LRV 92.3 vs DB #F4F6F1/LRV 90 (dE 3.0, dLRV +2.3) ; Pure White printed #F3EEE0/LRV 83.7 vs DB #EDECE6/LRV 83.7 (dE 3.6, dLRV +0.0) ; White Dove printed #EDE6D3/LRV 83 vs DB #EFEEE5/LRV 83.2 (dE 4.6, dLRV -0.2)
+2	2026-05-31	1116681670148583595	swatch-benjamin-moore-inukshuk-cc-460	swatch:L
+2	2026-05-31	1116681670148619574	swatch-benjamin-moore-silhouette-af-655	swatch:L
+2	2026-05-31	1116681670148619580	swatch-behr-mourning-dove-or-w12	swatch:HF
+2	2026-06-05	1116681670148972148	restock-08	curated: Newburyport Blue printed #475667/LRV 9 vs DB #475667/LRV 10.3 (dE 0.0, dLRV -1.3)
+2	2026-06-08	1116681670149178279	restock-16	curated: Gentleman's Gray printed #314757/LRV 5.8 vs DB #314757/LRV 7.3 (dE 0.0, dLRV -1.5)
+2	2026-06-09	1116681670149234035	restock-18	curated: Kendall Charcoal printed #686763/LRV 13.5 vs DB #686763/LRV 14.6 (dE 0.0, dLRV -1.1)
+2	2026-06-10	1116681670149304782	restock-21	curated: Kendall Charcoal printed #686763/LRV 13.5 vs DB #686763/LRV 14.6 (dE 0.0, dLRV -1.1)
+2	2026-06-11	1116681670149370811	restock-24	curated: Caliente printed #8B2829/LRV 7.2 vs DB #8B2829/LRV 8.8 (dE 0.0, dLRV -1.6)
+2	2026-06-12	1116681670149397152	restock-26	curated: Palladian Blue printed #C2D2CA/LRV 61.8 vs DB #C2D2CA/LRV 60.4 (dE 0.0, dLRV +1.4)
+2	2026-06-14	1116681670149576931	swatch-benjamin-moore-kendall-charcoal-hc-166	swatch:L
+2	2026-06-14	1116681670149591828	swatch-benjamin-moore-palladian-blue-hc-144	swatch:L
+2	2026-06-15	1116681670149601697	swatch-benjamin-moore-gentlemans-gray-2062-20	swatch:L
+2	2026-06-15	1116681670149658780	swatch-benjamin-moore-newburyport-blue-hc-155	swatch:L
+2	2026-06-16	1116681670149713311	swatch-benjamin-moore-caliente-af-290	swatch:L
+2	2026-06-21	1116681670150049284	swatch-benjamin-moore-white-dove-oc-17	swatch: White Dove printed #F3EFE0 (pre-10-11 json) vs DB #EFEEE5
+2	2026-06-21	1116681670150049291	swatch-behr-bella-pink-210e-1	swatch:HFR
+2	2026-06-23	1116681670150188960	swatch-behr-bermuda-shell-250c-1	swatch:HFR
+2	2026-06-25	1116681670150331389	swatch-benjamin-moore-carlisle-cream-1031	swatch:L
+2	2026-06-26	1116681670150401421	roomscene-02	curated: White Dove printed #F3EFE0 (pre-10-11) vs DB #EFEEE5 (dE 2.6)
+2	2026-06-29	1116681670150624603	swatch-valspar-lush-sage-5003-2b	swatch:HL
+2	2026-06-29	1116681670150624609	roomscene-05	curated: White Dove printed #F3EFE0 (pre-10-11) vs DB #EFEEE5 (dE 2.6)
+2	2026-06-30	1116681670150695984	roomscene-06	curated: Hale Navy printed #444C57/LRV 7.1 vs DB #444C57/LRV 8.4 (dE 0.0, dLRV -1.3)
+2	2026-07-01	1116681670150765411	swatch-behr-fine-white-250a-1	swatch:HFR
+2	2026-07-02	1116681670150833213	roomscene-08	curated: White Dove printed #F3EFE0 (pre-10-11) vs DB #EFEEE5 (dE 2.6)
+2	2026-07-04	1116681670150974210	swatch-behr-parasol-n120-1	swatch:H
+2	2026-07-04	1116681670150974213	swatch-benjamin-moore-abalone-2108-60	swatch:L
+2	2026-07-04	1116681670150974217	roomscene-10	curated: White Dove printed #F3EFE0 (pre-10-11) vs DB #EFEEE5 (dE 2.6)
+2	2026-07-07	1116681670151190077	swatch-valspar-almost-charcoal-4008-2b	swatch:HL
+2	2026-07-08	1116681670151262079	swatch-benjamin-moore-alexandria-beige-hc-77	swatch:L
+2	2026-07-09	1116681670151331679	swatch-benjamin-moore-batik-af-610	swatch:L
+2	2026-07-09	1116681670151331685	swatch-benjamin-moore-black-beauty-2128-10	swatch:L
+2	2026-07-12	1116681670151544179	swatch-benjamin-moore-colonial-verdigris-cw-530	swatch:L
+2	2026-07-18	1116681670151976417	swatch-behr-snowy-pine-ppu10-13	swatch:LF
+2	2026-07-20	1116681670152121405	swatch-benjamin-moore-ashwood-moss-1484	swatch:L
+2	2026-07-20	1116681670152121407	swatch-benjamin-moore-birds-egg-2051-60	swatch:L
+2	2026-07-21	1116681670152192967	swatch-benjamin-moore-black-pepper-2130-40	swatch:L
+2	2026-07-21	1116681670152192974	swatch-benjamin-moore-southwest-pottery-048	swatch:L
+2	2026-07-22	1116681670152263234	swatch-benjamin-moore-cinnamon-slate-2113-40	swatch:L
+2	2026-07-23	1116681670152337025	swatch-benjamin-moore-hale-navy-hc-154	swatch:L
+2	2026-07-24	1116681670152411753	swatch-benjamin-moore-van-courtland-blue-hc-145	swatch:L
+2	2026-07-27	1116681670152638852	roomscene-aug-05	curated: Palladian Blue printed #C2D2CA/LRV 61.8 vs DB #C2D2CA/LRV 60.4 (dE 0.0, dLRV +1.4)
+2	2026-07-28	1116681670152714488	roomscene-aug-06	curated: White Dove printed #F3EFE0 (pre-10-11) vs DB #EFEEE5 (dE 2.6)
+2	2026-07-29	1116681670152793427	roomscene-aug-07	curated: Aegean Teal printed #708A8C/LRV 23.5 vs DB #708A8C/LRV 25.1 (dE 0.0, dLRV -1.6)
+2	2026-07-29	1116681670152793431	comparison-aug-02	curated: Gray Owl printed #D4D5CD/LRV 66 vs DB #D4D5CD/LRV 64.5 (dE 0.0, dLRV +1.5) ; Classic Gray printed #E4E1D8/LRV 75.3 vs DB #E4E1D8/LRV 73.7 (dE 0.0, dLRV +1.6)
+2	2026-07-31	1116681670152947193	roomscene-aug-08	curated: Wrought Iron printed #4A4B4C/LRV 7 vs DB #4A4B4C/LRV 8.2 (dE 0.0, dLRV -1.2)
+2	2026-08-02	1116681670153097290	swatch-behr-carpe-diem-mq1-16	swatch:LR
+2	2026-08-02	1116681670153097309	roomscene-aug-10	curated: Canyon Dusk printed #C19A86/LRV 36.2 vs DB #C39C83/LRV 37 (dE 2.1, dLRV -0.8)
+2	2026-08-04	1116681670153245316	swatch-behr-practical-tan-s280-3	swatch:H
+2	2026-08-05	1116681670153322655	swatch-behr-smoked-oyster-780a-2	swatch:HF
+2	2026-08-05	1116681670153322659	swatch-behr-twinberry-mq1-14	swatch:L
+2	2026-08-05	1116681670153322666	comparison-aug-04	curated: Wrought Iron printed #4A4B4C/LRV 7 vs DB #4A4B4C/LRV 8.2 (dE 0.0, dLRV -1.2)
+2	2026-08-07	1116681670153474004	swatch-benjamin-moore-aberdeen-green-631	swatch:L
+2	2026-08-07	1116681670153474007	swatch-benjamin-moore-dark-olive-2140-30	swatch:L
+2	2026-08-08	1116681670153549799	swatch-benjamin-moore-gallery-buff-csp-225	swatch:L
+2	2026-08-08	1116681670153549804	comparison-aug-05	curated: Palladian Blue printed #C2D2CA/LRV 61.8 vs DB #C2D2CA/LRV 60.4 (dE 0.0, dLRV +1.4)
+2	2026-08-09	1116681670153629798	swatch-benjamin-moore-pashmina-af-100	swatch:L
+2	2026-08-11	1116681670153782391	swatch-farrow-ball-light-gray-17	swatch:HL
+2	2026-08-12	1116681670153855299	may26-09	curated: White Dove printed #EDE6D3/LRV 83 vs DB #EFEEE5/LRV 83.2 (dE 4.6, dLRV -0.2)
+2	2026-08-12	1116681670153855303	comparison-aug-06	curated: Canyon Dusk printed #C19A86/LRV 36.2 vs DB #C39C83/LRV 37 (dE 2.1, dLRV -0.8)
+2	2026-08-21	1116681670154541938	restock-08	curated: Newburyport Blue printed #475667/LRV 9 vs DB #475667/LRV 10.3 (dE 0.0, dLRV -1.3)
+2	2026-08-27	1116681670155008855	restock-16	curated: Gentleman's Gray printed #314757/LRV 5.8 vs DB #314757/LRV 7.3 (dE 0.0, dLRV -1.5)
+2	2026-08-29	1116681670155159983	restock-18	curated: Kendall Charcoal printed #686763/LRV 13.5 vs DB #686763/LRV 14.6 (dE 0.0, dLRV -1.1)
+2	2026-09-01	1116681670155391727	swatch-behr-moxie-mq3-35	swatch:L
+2	2026-09-01	1116681670155391729	restock-21	curated: Kendall Charcoal printed #686763/LRV 13.5 vs DB #686763/LRV 14.6 (dE 0.0, dLRV -1.1)
+2	2026-09-02	1116681670155465963	swatch-behr-recycled-glass-mq6-18	swatch:L
+2	2026-09-03	1116681670155538457	swatch-behr-sandy-clay-bwc-25	swatch:H
+2	2026-09-04	1116681670155614666	swatch-behr-sweet-vanilla-780a-1	swatch:HF
+2	2026-09-04	1116681670155614668	swatch-behr-translucent-silk-mq3-36	swatch:L
+2	2026-09-04	1116681670155614672	restock-24	curated: Caliente printed #8B2829/LRV 7.2 vs DB #8B2829/LRV 8.8 (dE 0.0, dLRV -1.6)
+2	2026-09-05	1116681670155694829	swatch-behr-whisper-white-hdc-md-08	swatch:LF
+2	2026-09-05	1116681670155694835	swatch-benjamin-moore-aegean-teal-2136-40	swatch:L
+2	2026-09-06	1116681670155778204	swatch-benjamin-moore-boothbay-gray-hc-165	swatch:L
+2	2026-09-06	1116681670155778205	swatch-benjamin-moore-lichen-stone-csp-820	swatch:L
+2	2026-09-06	1116681670155778207	restock-26	curated: Palladian Blue printed #C2D2CA/LRV 61.8 vs DB #C2D2CA/LRV 60.4 (dE 0.0, dLRV +1.4)
+2	2026-09-07	1116681670155857528	swatch-benjamin-moore-evening-dove-2128-30	swatch:L
+2	2026-09-07	1116681670155857531	swatch-benjamin-moore-oregano-2147-10	swatch:L
+2	2026-09-08	1116681670155932772	swatch-benjamin-moore-fieldstone-1558	swatch:L
+2	2026-09-09	1116681670156003436	swatch-benjamin-moore-quiet-moments-1563	swatch:L
+2	2026-09-10	1116681670156077158	swatch-benjamin-moore-shoreline-1471	swatch:L
+2	2026-09-10	1116681670156077167	roomscene-02	curated: White Dove printed #F3EFE0 (pre-10-11) vs DB #EFEEE5 (dE 2.6)
+2	2026-09-11	1116681670156153196	swatch-benjamin-moore-sweet-basil-455	swatch:L
+2	2026-09-11	1116681670156153198	swatch-benjamin-moore-victorian-garden-1531	swatch:L
+2	2026-09-12	1116681670156234980	swatch-benjamin-moore-wenge-af-180	swatch:L
+2	2026-09-13	1116681670156315312	roomscene-05	curated: White Dove printed #F3EFE0 (pre-10-11) vs DB #EFEEE5 (dE 2.6)
+2	2026-09-14	1116681670156393210	roomscene-06	curated: Hale Navy printed #444C57/LRV 7.1 vs DB #444C57/LRV 8.4 (dE 0.0, dLRV -1.3)
+2	2026-09-16	1116681670156539423	roomscene-08	curated: White Dove printed #F3EFE0 (pre-10-11) vs DB #EFEEE5 (dE 2.6)
+2	2026-09-18	1116681670156685622	roomscene-10	curated: White Dove printed #F3EFE0 (pre-10-11) vs DB #EFEEE5 (dE 2.6)
+2	2026-09-19	1116681670156762473	comparison-aug-02	curated: Gray Owl printed #D4D5CD/LRV 66 vs DB #D4D5CD/LRV 64.5 (dE 0.0, dLRV +1.5) ; Classic Gray printed #E4E1D8/LRV 75.3 vs DB #E4E1D8/LRV 73.7 (dE 0.0, dLRV +1.6)
+2	2026-09-25	1116681670157229732	roomscene-aug-05	curated: Palladian Blue printed #C2D2CA/LRV 61.8 vs DB #C2D2CA/LRV 60.4 (dE 0.0, dLRV +1.4)
+2	2026-09-26	1116681670157312848	roomscene-aug-06	curated: White Dove printed #F3EFE0 (pre-10-11) vs DB #EFEEE5 (dE 2.6)
+2	2026-09-26	1116681670157312853	comparison-aug-04	curated: Wrought Iron printed #4A4B4C/LRV 7 vs DB #4A4B4C/LRV 8.2 (dE 0.0, dLRV -1.2)
+2	2026-09-27	1116681670157412440	roomscene-aug-07	curated: Aegean Teal printed #708A8C/LRV 23.5 vs DB #708A8C/LRV 25.1 (dE 0.0, dLRV -1.6)
+2	2026-09-28	1116681670157483593	swatch-benjamin-moore-inukshuk-cc-460	swatch:L
+2	2026-09-28	1116681670157483598	roomscene-aug-08	curated: Wrought Iron printed #4A4B4C/LRV 7 vs DB #4A4B4C/LRV 8.2 (dE 0.0, dLRV -1.2)
+2	2026-09-29	1116681670157563339	swatch-benjamin-moore-silhouette-af-655	swatch:L
+2	2026-09-30	1116681670157644519	swatch-behr-mourning-dove-or-w12	swatch:HF
+2	2026-09-30	1116681670157644531	roomscene-aug-10	curated: Canyon Dusk printed #C19A86/LRV 36.2 vs DB #C39C83/LRV 37 (dE 2.1, dLRV -0.8)
+2	2026-09-30	1116681670157644535	comparison-aug-05	curated: Palladian Blue printed #C2D2CA/LRV 61.8 vs DB #C2D2CA/LRV 60.4 (dE 0.0, dLRV +1.4)
+2	2026-10-03	1116681670157888407	comparison-aug-06	curated: Canyon Dusk printed #C19A86/LRV 36.2 vs DB #C39C83/LRV 37 (dE 2.1, dLRV -0.8)
+2	2026-10-10	1116681670158458060	may26-09	curated: White Dove printed #EDE6D3/LRV 83 vs DB #EFEEE5/LRV 83.2 (dE 4.6, dLRV -0.2)
+2	2026-10-14	1116681670158781856	swatch-benjamin-moore-kendall-charcoal-hc-166	swatch:L
+2	2026-10-15	1116681670158861978	swatch-benjamin-moore-palladian-blue-hc-144	swatch:L
+2	2026-10-16	1116681670158943908	swatch-benjamin-moore-gentlemans-gray-2062-20	swatch:L
+2	2026-10-18	1116681670159113782	swatch-benjamin-moore-newburyport-blue-hc-155	swatch:L
+2	2026-10-20	1116681670159280991	swatch-benjamin-moore-caliente-af-290	swatch:L
+2	2026-10-23	1116681670159549741	restock-08	curated: Newburyport Blue printed #475667/LRV 9 vs DB #475667/LRV 10.3 (dE 0.0, dLRV -1.3)

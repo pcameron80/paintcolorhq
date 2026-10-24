@@ -7,6 +7,7 @@ import { getAllBlogSlugs, getPostBySlug } from "@/lib/blog-posts";
 import { inspirationPalettes } from "@/lib/palettes";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { COTY_HUB_DATES } from "@/lib/color-of-the-year";
+import { API_DOCS_DATE, MATCH_TEMPLATE_DATE, colorLastmod, matchLastmod } from "@/lib/content-dates";
 
 // ISR: refresh hourly so a scheduled post enters its sitemap shard on its date.
 export const revalidate = 3600;
@@ -15,19 +16,7 @@ const BASE_URL = "https://www.paintcolorhq.com";
 const COLORS_PER_SITEMAP = 5000;
 
 // Omit lastmod when the actual content modification date is unknown.
-const SITE_BUILD_DATE = "";
-
-// Last date the color and match page templates changed visibly on every page
-// (2026-10-11: closeness labels #186, retired labels, swatch/LRV corrections).
-// A page's lastmod is the later of this and its own data change date. Bump
-// these only for a substantive change to every page of that type; a lastmod
-// that moves without content changing teaches Google to ignore it.
-const COLOR_TEMPLATE_DATE = "2026-10-11";
-const MATCH_TEMPLATE_DATE = "2026-10-11";
-
-function latestDate(...dates: (string | null | undefined)[]): string {
-  return dates.map((d) => d?.slice(0, 10) ?? "").sort().at(-1)!;
-}
+const NO_LASTMOD = "";
 
 interface SitemapEntry {
   url: string;
@@ -64,30 +53,31 @@ export async function GET(
 
     if (id === "pages") {
       entries = [
-        { url: "/", lastmod: SITE_BUILD_DATE },
-        { url: "/brands", lastmod: SITE_BUILD_DATE },
-        { url: "/colors", lastmod: SITE_BUILD_DATE },
-        { url: "/search", lastmod: SITE_BUILD_DATE },
-        { url: "/match", lastmod: SITE_BUILD_DATE },
-        { url: "/compare", lastmod: SITE_BUILD_DATE },
-        { url: "/blog", lastmod: SITE_BUILD_DATE },
-        { url: "/inspiration", lastmod: SITE_BUILD_DATE },
-        { url: "/discontinued", lastmod: SITE_BUILD_DATE },
+        { url: "/", lastmod: NO_LASTMOD },
+        { url: "/brands", lastmod: NO_LASTMOD },
+        { url: "/colors", lastmod: NO_LASTMOD },
+        { url: "/search", lastmod: NO_LASTMOD },
+        { url: "/match", lastmod: NO_LASTMOD },
+        { url: "/compare", lastmod: NO_LASTMOD },
+        { url: "/api", lastmod: API_DOCS_DATE },
+        { url: "/blog", lastmod: NO_LASTMOD },
+        { url: "/inspiration", lastmod: NO_LASTMOD },
+        { url: "/discontinued", lastmod: NO_LASTMOD },
         { url: "/color-of-the-year", lastmod: COTY_HUB_DATES.updated },
-        { url: "/paint-color-statistics", lastmod: SITE_BUILD_DATE },
-        { url: "/tools", lastmod: SITE_BUILD_DATE },
-        { url: "/tools/paint-calculator", lastmod: SITE_BUILD_DATE },
-        { url: "/tools/color-identifier", lastmod: SITE_BUILD_DATE },
-        { url: "/tools/room-visualizer", lastmod: SITE_BUILD_DATE },
-        { url: "/tools/palette-generator", lastmod: SITE_BUILD_DATE },
-        { url: "/about", lastmod: SITE_BUILD_DATE },
-        { url: "/methodology", lastmod: SITE_BUILD_DATE },
-        { url: "/embed", lastmod: SITE_BUILD_DATE },
-        { url: "/contact", lastmod: SITE_BUILD_DATE },
-        { url: "/faq", lastmod: SITE_BUILD_DATE },
-        { url: "/privacy", lastmod: SITE_BUILD_DATE },
-        { url: "/terms", lastmod: SITE_BUILD_DATE },
-        { url: "/authors/paint-color-hq-staff", lastmod: SITE_BUILD_DATE },
+        { url: "/paint-color-statistics", lastmod: NO_LASTMOD },
+        { url: "/tools", lastmod: NO_LASTMOD },
+        { url: "/tools/paint-calculator", lastmod: NO_LASTMOD },
+        { url: "/tools/color-identifier", lastmod: NO_LASTMOD },
+        { url: "/tools/room-visualizer", lastmod: NO_LASTMOD },
+        { url: "/tools/palette-generator", lastmod: NO_LASTMOD },
+        { url: "/about", lastmod: NO_LASTMOD },
+        { url: "/methodology", lastmod: NO_LASTMOD },
+        { url: "/embed", lastmod: NO_LASTMOD },
+        { url: "/contact", lastmod: NO_LASTMOD },
+        { url: "/faq", lastmod: NO_LASTMOD },
+        { url: "/privacy", lastmod: NO_LASTMOD },
+        { url: "/terms", lastmod: NO_LASTMOD },
+        { url: "/authors/paint-color-hq-staff", lastmod: NO_LASTMOD },
       ];
     } else if (id === "brands") {
       const [brands, latestByBrand] = await Promise.all([getAllBrands(), getLatestColorDateByBrand()]);
@@ -95,7 +85,7 @@ export async function GET(
         url: `/brands/${b.slug}`,
         // Brand lastmod = newest color insertion date for this brand.
         // Real "latest activity" signal per brand instead of a uniform build date.
-        lastmod: latestByBrand.get(b.slug) ?? SITE_BUILD_DATE,
+        lastmod: latestByBrand.get(b.slug) ?? NO_LASTMOD,
       }));
     } else if (id.startsWith("colors-")) {
       const pageNum = Number(id.slice("colors-".length));
@@ -110,7 +100,7 @@ export async function GET(
       }
       entries = pageColors.map((c) => ({
         url: `/colors/${c.brandSlug}/${c.colorSlug}`,
-        lastmod: latestDate(c.createdAt, c.contentUpdatedAt, COLOR_TEMPLATE_DATE),
+        lastmod: colorLastmod(c),
       }));
     } else if (id === "matches") {
       // Brand-to-brand match landing pages — only major brand combinations
@@ -127,28 +117,28 @@ export async function GET(
       }
     } else if (id === "match-individual") {
       const matchUpdatedAt: Record<string, string> = sitemapSnapshot.matchUpdatedAt ?? {};
-      entries = sitemapSnapshot.matches.map((url) => ({ url, lastmod: latestDate(matchUpdatedAt[url], MATCH_TEMPLATE_DATE) }));
+      entries = sitemapSnapshot.matches.map((url) => ({ url, lastmod: matchLastmod(url, matchUpdatedAt) }));
     } else if (id === "blog") {
       entries = getAllBlogSlugs().map((s) => {
         const post = getPostBySlug(s);
         return {
           url: `/blog/${s}`,
-          // Prefer modifiedDate, fall back to date, fall back to build date
-          lastmod: post?.modifiedDate ?? post?.date ?? SITE_BUILD_DATE,
+          // Prefer modifiedDate, fall back to date, else omit lastmod
+          lastmod: post?.modifiedDate ?? post?.date ?? NO_LASTMOD,
         };
       });
     } else if (id === "families") {
       const [families, latestByFamily] = await Promise.all([getAllColorFamilies(), getLatestColorDateByFamily()]);
       entries = families.map((f) => ({
         url: `/colors/family/${f.slug}`,
-        lastmod: latestByFamily.get(f.slug) ?? SITE_BUILD_DATE,
+        lastmod: latestByFamily.get(f.slug) ?? NO_LASTMOD,
       }));
       // Blended-hue collections (blue gray, blue green, rust).
-      entries.push(...HUE_BAND_SLUGS.map((slug) => ({ url: `/colors/hue/${slug}`, lastmod: SITE_BUILD_DATE })));
+      entries.push(...HUE_BAND_SLUGS.map((slug) => ({ url: `/colors/hue/${slug}`, lastmod: NO_LASTMOD })));
     } else if (id === "inspiration") {
       entries = inspirationPalettes.map((p) => ({
         url: `/inspiration/${p.slug}`,
-        lastmod: SITE_BUILD_DATE,
+        lastmod: NO_LASTMOD,
       }));
     } else {
       return new NextResponse("Not found", { status: 404 });

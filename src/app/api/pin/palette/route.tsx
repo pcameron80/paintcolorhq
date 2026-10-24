@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
+import { capText, normalizeHex } from "@/lib/og-params";
 
 export const runtime = "edge";
 
@@ -20,17 +21,20 @@ export const runtime = "edge";
  */
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-  const name = searchParams.get("name") || "Color Palette";
-  const description = searchParams.get("description") || "";
-  const colorsParam = searchParams.get("colors") || "";
+  const name = capText(searchParams.get("name"), 100) || "Color Palette";
+  const description = capText(searchParams.get("description"), 200);
+  const colorsParam = (searchParams.get("colors") || "").slice(0, 500);
 
+  // Invalid hexes are dropped (the padding below fills the gap) rather than
+  // passed to the renderer as arbitrary CSS color strings.
   const swatches = colorsParam
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean)
-    .map((s) => {
-      const [hex, role] = s.split(":");
-      return { hex: hex || "#cccccc", role: role || "" };
+    .flatMap((s) => {
+      const [rawHex, role] = s.split(":");
+      const hex = normalizeHex(rawHex);
+      return hex ? [{ hex, role: capText(role, 20) }] : [];
     })
     .slice(0, 5);
 

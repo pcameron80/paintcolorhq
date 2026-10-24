@@ -19,7 +19,7 @@
 paintcolorhq/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
-│   │   ├── layout.tsx          # Root layout (metadata, fonts, GA, AdSense)
+│   │   ├── layout.tsx          # Root layout (metadata, fonts, GA)
 │   │   ├── page.tsx            # Homepage (feature grid, SEO section)
 │   │   ├── globals.css         # Tailwind global styles
 │   │   ├── not-found.tsx       # Custom 404 page
@@ -101,7 +101,8 @@ paintcolorhq/
 │       ├── palettes.ts         # Curated inspiration palette data
 │       ├── color-description.ts # Algorithmic SEO descriptions for color pages
 │       ├── retailer-links.ts   # Brand-to-retailer URL mapping with override lookups
-│       └── retailer-overrides.ts # Auto-generated verified family overrides (1,960 entries)
+│       ├── retailer-overrides.ts # Auto-generated SW/Dunn-Edwards/Kilz/RAL not-found sets
+│       └── official-urls/      # Per-color brand URLs from sitemaps (PPG, Valspar, Dutch Boy, Vista)
 ├── scripts/                    # Data pipeline scripts
 │   ├── import-colors.ts        # Parse ColorNerd JSON
 │   ├── seed-database.ts        # Upload colors to Supabase
@@ -109,6 +110,7 @@ paintcolorhq/
 │   ├── seed-matches.ts         # Upload matches to Supabase
 │   ├── check-retailer-links.ts # Verify retailer URLs against brand websites
 │   ├── generate-retailer-overrides.ts # Generate retailer-overrides.ts from check results
+│   ├── generate-official-color-urls.ts # Build official-urls/*.json from brand sitemaps
 │   └── lib/
 │       └── color-utils.ts      # Color math (RGB, Lab, Delta E)
 ├── supabase/
@@ -173,3 +175,8 @@ Curated palettes are defined in `src/lib/palettes.ts` as arrays of hex values. A
 
 ### Project Color Roles
 When saving colors to projects, users assign roles (Walls, Trim, Accent, Pop). Colors are grouped by role in the project view, providing a structured palette planning experience.
+
+### Ads and the Page CSP
+Google AdSense was removed in October 2026 (the account was rejected), along with the Pinterest tag. Journey by Mediavine is the ad path. `AdSenseScript` in `src/components/adsense-script.tsx` renders nothing until its 25 imports are deleted.
+
+The page CSP in `next.config.ts` restricts by scheme (`https:`, `data:`, `blob:`), not by host, because an ad stack loads scripts, frames, workers and beacons from hosts that change. The old host allowlist blocked 9 of 9 Journey components in a live probe. The scheme-based policy keeps `object-src 'none'`, `base-uri 'self'`, `form-action 'self'` and `frame-ancestors 'self'`. Only the `/embed` routes still use the host allowlist (`strictContentSecurityPolicy`), with `frame-ancestors *` so other sites can iframe the widget.

@@ -3,6 +3,9 @@ import { Inter, Manrope } from "next/font/google";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { CookieConsent } from "@/components/cookie-consent";
 import { PlausibleScript } from "@/components/plausible-script";
+import { WebVitalsReporter } from "@/components/web-vitals-reporter";
+import { ogDefaults } from "@/lib/og";
+import { BRAND_COUNT, moreBrands } from "@/lib/site-facts";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,24 +18,23 @@ const manrope = Manrope({
   subsets: ["latin"],
 });
 
+const DEFAULT_TITLE = `Match Any Paint Color Across ${BRAND_COUNT} Brands | Paint Color HQ`;
+
 export const metadata: Metadata = {
   title: {
-    default: "Match Any Paint Color Across 13 Brands | Paint Color HQ",
+    default: DEFAULT_TITLE,
     template: "%s | Paint Color HQ",
   },
   description:
-    "Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. 26,000+ colors with room visualizer & photo color identifier.",
+    `Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & ${moreBrands(3)} more brands. 26,000+ colors with room visualizer & photo color identifier.`,
   metadataBase: new URL("https://www.paintcolorhq.com"),
+  // No og:url here: a default url made every page without its own openGraph
+  // (the tool pages, for one) share as the homepage. Pages set their own url.
   openGraph: {
-    type: "website",
-    siteName: "Paint Color HQ",
-    title: "Match Any Paint Color Across 13 Brands | Paint Color HQ",
+    ...ogDefaults,
+    title: DEFAULT_TITLE,
     description:
-      "Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. 26,000+ colors with room visualizer, photo color identifier & paint calculator.",
-    // Default og:url for pages that don't set their own. Per-page metadata
-    // (color, brand, family, blog) overrides this with the canonical URL.
-    url: "https://www.paintcolorhq.com",
-    images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
+      `Free paint color cross-reference tool. Match any color across Sherwin-Williams, Benjamin Moore, Behr & ${moreBrands(3)} more brands. 26,000+ colors with room visualizer, photo color identifier & paint calculator.`,
   },
   twitter: {
     card: "summary_large_image",
@@ -72,7 +74,10 @@ export default function RootLayout({
       <body className={`${inter.variable} ${manrope.variable} font-sans antialiased`}>
         {children}
         <CookieConsent />
+        {/* AnalyticsProvider must stay after CookieConsent (the gtag scripts);
+            WebVitalsReporter goes after both. */}
         <AnalyticsProvider />
+        <WebVitalsReporter />
         <PlausibleScript />
       </body>
     </html>

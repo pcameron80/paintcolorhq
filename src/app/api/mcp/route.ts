@@ -1,6 +1,6 @@
 import { NextResponse, after } from "next/server";
 import { logUsageEvent, usageMetaFromRequest } from "@/lib/usage-log";
-import { findColorMatches, type PaintMatch } from "@/lib/color-match";
+import { findColorMatches, findColorMatchesWithBestPerBrand, type PaintMatch } from "@/lib/color-match";
 import { closenessLabel } from "@/lib/closeness";
 import { logRequestReferrer } from "@/lib/referrer-log";
 import { ATTRIBUTION, ATTRIBUTION_TEXT, ATTRIBUTION_URL } from "@/lib/attribution";
@@ -53,7 +53,7 @@ const MATCH_TOOL = {
     'standard. Use this to answer "what is the [brand] equivalent of [a paint color]", to ' +
     "cross-reference a paint color across brands, or to turn a hex/RGB value into named paint " +
     "colors you can actually buy. Each result returns the brand, color name, color number, hex, " +
-    "and a closeness label. Data and method: PaintColorHQ (paintcolorhq.com).",
+    "a closeness label and availability (current, retired or discontinued). Data and method: PaintColorHQ (paintcolorhq.com).",
   inputSchema: {
     type: "object",
     properties: {
@@ -125,13 +125,15 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
       ? Math.min(Math.max(args.limit, 1), 10)
       : 10;
 
-  // When cross-brand (no brand filter), over-fetch so the per-brand dedupe below
-  // still yields ~limit distinct brands; when brand-filtered, take limit directly.
-  const fetchLimit = brand ? limit : Math.max(limit, 10);
-  let raw: PaintMatch[];
+  // Cross-brand: the single closest match per brand (the spread is the point),
+  // picked from a 500-color pool so a brand outside the overall top 10 still
+  // gets its row. Brand-filtered: the caller wants that brand's closest N.
+  let selected: PaintMatch[];
   try {
-    // Call the shared matcher directly (free tier). No self-HTTP → no double-log.
-    raw = await findColorMatches(hexRaw, brand, fetchLimit, false);
+    // Call the shared matcher directly (free tier). No self-HTTP, no double-log.
+    selected = brand
+      ? await findColorMatches(hexRaw, brand, limit, false)
+      : (await findColorMatchesWithBestPerBrand(hexRaw, 10)).bestPerBrand.slice(0, limit);
   } catch {
     return {
       content: [
@@ -147,22 +149,6 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
   // Referer or Origin, so this only records browser-based clients.
   after(() => logRequestReferrer("mcp", request));
 
-  // Cross-brand: keep the single closest match per brand (the spread is the
-  // point). Brand-filtered: the caller wants that brand's closest N, so no dedupe.
-  let selected: PaintMatch[];
-  if (brand) {
-    selected = raw.slice(0, limit);
-  } else {
-    const seen = new Set<string>();
-    selected = raw
-      .filter((m) => {
-        if (seen.has(m.brandSlug)) return false;
-        seen.add(m.brandSlug);
-        return true;
-      })
-      .slice(0, limit);
-  }
-
   const matches = selected.map((m) => ({
     brand: m.brandName,
     brandSlug: m.brandSlug,
@@ -171,6 +157,9 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
     hex: m.hex,
     closeness: closeness(m.deltaE),
     deltaE: m.deltaE,
+    // current, retired or discontinued. Retired colors are still sold by code;
+    // agents should say so rather than recommend them as current.
+    availability: m.availability ?? "current",
     url: `${API_BASE}/colors/${m.brandSlug}/${m.colorSlug}`,
   }));
 
@@ -184,7 +173,7 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
     : `Closest cross-brand paint matches for #${cleanHex.toUpperCase()}:`;
   const lines = matches.map(
     (m, i) =>
-      `${i + 1}. ${m.name} — ${m.brand}${m.colorNumber ? ` ${m.colorNumber}` : ""} (${m.hex}) — ${m.closeness} [ΔE ${m.deltaE}]`,
+      `${i + 1}. ${m.name} — ${m.brand}${m.colorNumber ? ` ${m.colorNumber}` : ""} (${m.hex}) — ${m.closeness} [ΔE ${m.deltaE}]${m.availability === "current" ? "" : ` (${m.availability} by the brand)`}`,
   );
   const text = [
     header,
@@ -243,10 +232,40 @@ async function handleMessage(message: JsonRpcMessage, request: Request): Promise
   }
 }
 
+// Abuse caps. Each tools/call is a full scan of the color table (66-125 ms of DB
+// time), so an unbounded JSON-RPC batch lets one request cost minutes of DB CPU
+// while counting as a single hit against per-IP limits. Real MCP clients send one
+// message per request; a short batch of handshake messages is still allowed.
+const MAX_BODY_BYTES = 16_384;
+const MAX_BATCH_MESSAGES = 5;
+const MAX_BATCH_TOOL_CALLS = 1;
+
+function tooLarge() {
+  return NextResponse.json(rpcError(null, -32600, `Request body too large: max ${MAX_BODY_BYTES} bytes`), {
+    status: 413,
+    headers: CORS_HEADERS,
+  });
+}
+
 export async function POST(request: Request) {
+  const declaredLength = Number(request.headers.get("content-length"));
+  if (Number.isFinite(declaredLength) && declaredLength > MAX_BODY_BYTES) return tooLarge();
+
+  let raw: string;
+  try {
+    raw = await request.text();
+  } catch {
+    return NextResponse.json(rpcError(null, -32700, "Parse error"), {
+      status: 400,
+      headers: CORS_HEADERS,
+    });
+  }
+  // Content-Length can be absent (chunked) or wrong, so measure the actual body too.
+  if (Buffer.byteLength(raw, "utf8") > MAX_BODY_BYTES) return tooLarge();
+
   let body: unknown;
   try {
-    body = await request.json();
+    body = JSON.parse(raw);
   } catch {
     return NextResponse.json(rpcError(null, -32700, "Parse error"), {
       status: 400,
@@ -256,9 +275,31 @@ export async function POST(request: Request) {
 
   // JSON-RPC supports a single message or a batch (array).
   if (Array.isArray(body)) {
-    const responses = (
-      await Promise.all(body.map((m) => handleMessage(m as JsonRpcMessage, request)))
-    ).filter((r): r is object => r !== null);
+    if (body.length === 0) {
+      return NextResponse.json(rpcError(null, -32600, "Invalid Request: empty batch"), {
+        status: 400,
+        headers: CORS_HEADERS,
+      });
+    }
+    const toolCalls = body.filter(
+      (m) => m !== null && typeof m === "object" && (m as JsonRpcMessage).method === "tools/call",
+    ).length;
+    if (body.length > MAX_BATCH_MESSAGES || toolCalls > MAX_BATCH_TOOL_CALLS) {
+      return NextResponse.json(
+        rpcError(
+          null,
+          -32600,
+          `Batch too large: max ${MAX_BATCH_MESSAGES} messages, ${MAX_BATCH_TOOL_CALLS} tools/call`,
+        ),
+        { status: 400, headers: CORS_HEADERS },
+      );
+    }
+    // Sequential, so a batch never fans out into parallel DB scans.
+    const responses: object[] = [];
+    for (const m of body) {
+      const r = await handleMessage(m as JsonRpcMessage, request);
+      if (r !== null) responses.push(r);
+    }
     if (responses.length === 0) return new NextResponse(null, { status: 202, headers: CORS_HEADERS });
     return NextResponse.json(responses, { headers: CORS_HEADERS });
   }

@@ -8,84 +8,24 @@ Google Analytics 4 is installed via gtag.js in the root layout (`src/app/layout.
 - **Script**: Loaded via `<script>` tag in `<head>`
 - **Scope**: All pages (site-wide)
 
-## Google AdSense
+## Display Ads
 
-### Setup
+### Status (October 2026)
 
-AdSense publisher ID: `ca-pub-6269963973031881`
+- **Google AdSense is removed.** The account (`ca-pub-6269963973031881`) was rejected on 2026-06-14 and never re-applied. `AdSenseScript` in `src/components/adsense-script.tsx` renders nothing; the 25 pages that import it get cleaned up in a later PR. The loader had cost 205-375 KB per page on those templates and earned nothing.
+- **The Pinterest tag is removed** from `src/components/cookie-consent.tsx`. Pinterest sent 0 GA4 sessions in October 2026. The Pinterest save button and pin images are unaffected; they need no script.
+- **Journey by Mediavine is the ad path.** Its entry bar is 1,000 sessions/month. Journey must be the only ad provider on the page, which is a second reason the AdSense loader had to go.
+- `public/ads.txt` still carries the AdSense line. Journey supplies its own ads.txt on install day.
 
-The AdSense script is loaded globally via a raw `<script>` tag in `src/app/layout.tsx`:
+### Content Security Policy
 
-```html
-<script
-  async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6269963973031881"
-  crossOrigin="anonymous"
-/>
-```
+The page CSP in `next.config.ts` restricts by scheme (`https:`, `data:`, `blob:`) instead of by host. Journey's wrapper, Grow, GPT, Prebid, its bidders, video and a blob worker load from hosts that change, and the old host allowlist blocked 9 of 9 of them in a live probe. Listing only the wrapper host would let the page render while bids drop silently.
 
-**Important**: This uses a raw HTML `<script>` tag, NOT the Next.js `<Script>` component. The `<Script>` component with `beforeInteractive` only adds a `<link rel="preload">` which the AdSense crawler cannot verify. The raw tag ensures the script appears in the initial HTML for crawler verification.
+Do not reintroduce a host allowlist on pages that show ads. The `/embed` routes keep the strict allowlist (`strictContentSecurityPolicy`) because the widget runs on other sites and shows no ads.
 
-### Ad Placement Strategy
+### Ad Placement
 
-Recommended ad units and placements by page type:
-
-#### Color Detail Pages (`/colors/[brand]/[color]`)
-These are the highest-value pages (25,000+ unique URLs, high search intent).
-
-| Position | Ad Unit | Reasoning |
-|----------|---------|-----------|
-| Between color specs and matches section | Display Ad | Natural content break, above the fold |
-| Bottom of page, above footer | Multiplex Ad | Users browse extensively; "related content" style drives pageviews |
-
-#### Brand & Family Grid Pages (`/brands/[slug]`, `/colors/family/[slug]`)
-Grid layouts with many color cards.
-
-| Position | Ad Unit | Reasoning |
-|----------|---------|-----------|
-| Mixed into color grid (every 8-12 cards) | In-feed Ad | Blends naturally with the card grid layout |
-
-#### Homepage (`/`)
-| Position | Ad Unit | Reasoning |
-|----------|---------|-----------|
-| Below hero section, above brand cards | Display Ad | High visibility without disrupting core UX |
-
-#### Search Results (`/search`)
-| Position | Ad Unit | Reasoning |
-|----------|---------|-----------|
-| Mixed into results | In-feed Ad | Natural fit with result cards |
-
-### Implementation Notes
-
-To add ad units, create a reusable `<AdUnit>` component:
-
-```typescript
-// src/components/ad-unit.tsx
-"use client";
-
-import { useEffect } from "react";
-
-export function AdUnit({ slot, format = "auto" }: { slot: string; format?: string }) {
-  useEffect(() => {
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch {}
-  }, []);
-
-  return (
-    <ins
-      className="adsbygoogle"
-      style={{ display: "block" }}
-      data-ad-client="ca-pub-6269963973031881"
-      data-ad-slot={slot}
-      data-ad-format={format}
-      data-full-width-responsive="true"
-    />
-  );
-}
-```
-
-Each ad placement needs a unique `slot` ID from the AdSense dashboard.
+Journey's script wrapper places the ad units, configured in the Mediavine dashboard, so there are no per-slot ad components in this repo. The wrapper script, ads.txt, the Mediavine privacy section and the consent prompt land in the Journey install-day change.
 
 ### Revenue Projections
 

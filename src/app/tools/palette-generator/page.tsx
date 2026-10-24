@@ -7,28 +7,83 @@ import { PaletteGenerator } from "./generator";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
+import { ogDefaults } from "@/lib/og";
+import { moreBrands } from "@/lib/site-facts";
+import { getAllBrands } from "@/lib/queries";
+import { CATALOG_BRANDS } from "@/lib/catalog-stats";
+
+export const revalidate = 86400;
+
+// The filter lists the brands in this order first, then the rest by size.
+const BRAND_ORDER = [
+  "sherwin-williams",
+  "benjamin-moore",
+  "behr",
+  "ppg",
+  "valspar",
+  "dunn-edwards",
+  "farrow-ball",
+];
+
+/**
+ * Brands for the filter, straight from the catalog so the list can never
+ * offer a brand with no colors (which turned every swatch into "No match").
+ * Falls back to the build-time catalog snapshot if Supabase is unreachable.
+ */
+async function filterBrands(): Promise<Array<{ name: string; slug: string }>> {
+  let brands: Array<{ name: string; slug: string }>;
+  try {
+    brands = (await getAllBrands()).map((b) => ({ name: b.name, slug: b.slug }));
+  } catch {
+    brands = [];
+  }
+  if (brands.length === 0) brands = CATALOG_BRANDS.map((b) => ({ name: b.name, slug: b.slug }));
+  const rank = (slug: string) => {
+    const i = BRAND_ORDER.indexOf(slug);
+    return i === -1 ? BRAND_ORDER.length : i;
+  };
+  // Array.prototype.sort is stable, so brands outside BRAND_ORDER keep the
+  // color_count order getAllBrands returns.
+  return [...brands].sort((a, b) => rank(a.slug) - rank(b.slug));
+}
+
+const TITLE = "Paint Color Palette Generator - Build a Coordinated Color Scheme";
+const DESCRIPTION =
+  `Generate coordinated paint palettes from any starting color. Walls, Trim, Accent, and Pop roles matched to Sherwin-Williams, Benjamin Moore, Behr, and ${moreBrands(3)} more.`;
+const URL = "https://www.paintcolorhq.com/tools/palette-generator";
 
 export const metadata: Metadata = {
-  title: "Paint Color Palette Generator - Build a Coordinated Color Scheme",
-  description:
-    "Generate coordinated paint palettes from any starting color. Walls, Trim, Accent, and Pop roles matched to Sherwin-Williams, Benjamin Moore, Behr, and 11 more.",
-  alternates: {
-    canonical: "https://www.paintcolorhq.com/tools/palette-generator",
-  },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: URL },
+  openGraph: { ...ogDefaults, title: TITLE, description: DESCRIPTION, url: URL },
 };
+
+// The five templates in generator.tsx, described from what the code does.
+const TEMPLATE_NOTES = [
+  { name: "Warm & Inviting", text: "pulls your hue 40 percent of the way toward orange, then shifts the Accent slightly toward yellow and the Pop slightly toward red." },
+  { name: "Cool & Calm", text: "pulls your hue 40 percent of the way toward blue, with a deeper cool Accent and a Pop from the opposite side of the wheel." },
+  { name: "Bold Contrast", text: "keeps Walls and Trim on your own hue and builds the Pop from its complement, the color directly opposite on the wheel, with a deeper Accent 30 degrees short of it." },
+  { name: "Analogous Harmony", text: "uses close neighbors: Walls and Trim 30 degrees one way around the wheel, the Accent 30 degrees the other way, and the Pop 60 degrees out." },
+  { name: "Earthy Naturals", text: "pulls your hue 60 percent of the way toward tan and terracotta at fixed, muted saturation, with a cool, muted Accent from across the wheel for contrast." },
+];
+
+const HOW_TEMPLATES =
+  "The generator makes five palettes from your starting color: Warm & Inviting (hue pulled toward orange), Cool & Calm (hue pulled toward blue), Bold Contrast (Accent and Pop from the complementary color), Analogous Harmony (neighboring hues 30 to 60 degrees away) and Earthy Naturals (muted tan and terracotta with a cool, muted Accent). Each palette has Walls, Trim, Accent and Pop colors.";
 
 // JSON-LD helper - all content is server-generated from trusted static values
 function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-export default function PaletteGeneratorPage() {
+export default async function PaletteGeneratorPage() {
+  const brands = await filterBrands();
   return (
     <div className="min-h-screen bg-surface">
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Paint Palette Generator",
-        description: "Build coordinated paint palettes from any starting color. Generates complementary, analogous, and triadic schemes matched to real paint colors.",
+        description: "Build coordinated paint palettes from any starting color. Generates five schemes (Warm & Inviting, Cool & Calm, Bold Contrast, Analogous Harmony and Earthy Naturals), each with Walls, Trim, Accent and Pop colors matched to real paint.",
         url: "https://www.paintcolorhq.com/tools/palette-generator",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -36,11 +91,11 @@ export default function PaletteGeneratorPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: [
-          { "@type": "Question", name: "What color harmony types does the palette generator use?", acceptedAnswer: { "@type": "Answer", text: "The palette generator creates five schemes based on proven color harmony principles: complementary (opposite colors on the wheel), analogous (adjacent colors), triadic (three evenly spaced colors), split-complementary (base color plus two colors adjacent to its complement), and monochromatic (shades of a single hue)." } },
-          { "@type": "Question", name: "Are the palette colors matched to real paint?", acceptedAnswer: { "@type": "Answer", text: "Yes. Every color in every palette is matched to a real paint color you can buy from our database of over 26,000 colors across 14 major brands including Sherwin-Williams, Benjamin Moore, Behr, Valspar, and PPG. You can also filter results to a single brand." } },
+          { "@type": "Question", name: "What palette types does the palette generator make?", acceptedAnswer: { "@type": "Answer", text: HOW_TEMPLATES } },
+          { "@type": "Question", name: "Are the palette colors matched to real paint?", acceptedAnswer: { "@type": "Answer", text: `Yes. Every swatch is matched to the closest real paint color from our database of more than 26,000 colors across ${brands.length} brands, including Sherwin-Williams, Benjamin Moore, Behr, Valspar and PPG. You can also hold the results to a single brand with the brand filter.` } },
           { "@type": "Question", name: "What are the palette roles?", acceptedAnswer: { "@type": "Answer", text: "Each palette assigns colors to four room roles: Walls (the main color covering the most area), Trim (baseboards, crown molding, door frames), Accent (a feature wall or large furniture piece), and Pop (used sparingly on throw pillows, art, or statement pieces for energy)." } },
           { "@type": "Question", name: "How do I use a generated palette in a real room?", acceptedAnswer: { "@type": "Answer", text: "Give each color a job using the 60-30-10 rule: the Walls color covers about 60 percent of the room as the dominant surface, the Trim and Accent colors carry roughly 30 percent on woodwork and a feature wall, and the Pop color appears in about 10 percent on pillows, art, or a single door. Send any scheme to the room visualizer to preview those proportions on a real room photo before you paint." } },
-          { "@type": "Question", name: "What makes the colors in a palette go together?", acceptedAnswer: { "@type": "Answer", text: "Two things: a color-wheel relationship (warm, cool, high-contrast complementary, close analogous neighbors, or grounded earth tones) that sets the overall direction, and consistent undertones so the colors don't quietly clash. A palette reads as settled when its colors share an undertone family — warm with warm, cool with cool — or use a contrast you chose on purpose. Confirm the final combination with physical samples in your own light before buying." } },
+          { "@type": "Question", name: "What makes the colors in a palette go together?", acceptedAnswer: { "@type": "Answer", text: "Two things: a color-wheel relationship (warm, cool, high-contrast complementary, close analogous neighbors, or grounded earth tones) that sets the overall direction, and consistent undertones so the colors don't quietly clash. A palette reads as settled when its colors share an undertone family (warm with warm, cool with cool) or use a contrast you chose on purpose. Confirm the final combination with physical samples in your own light before buying." } },
         ],
       }} />
       <JsonLd data={{
@@ -70,7 +125,7 @@ export default function PaletteGeneratorPage() {
       <section className="px-6 md:px-12 pb-16">
         <div className="max-w-7xl mx-auto">
           <Suspense>
-            <PaletteGenerator />
+            <PaletteGenerator brands={brands} />
           </Suspense>
         </div>
       </section>
@@ -78,13 +133,12 @@ export default function PaletteGeneratorPage() {
       <section className="py-16 px-6 md:px-12 bg-surface-container-low">
         <div className="max-w-3xl mx-auto text-on-surface-variant leading-relaxed">
           <h2 className="font-headline text-3xl font-bold text-on-surface mb-6">How the palettes are built</h2>
-          <p className="mb-4">The generator starts from your chosen color and uses standard color-wheel relationships to produce five palette types:</p>
-          <p className="mb-4"><strong>Complementary</strong> — the color directly opposite yours on the wheel. High contrast; works well for an accent wall against a neutral main color.</p>
-          <p className="mb-4"><strong>Analogous</strong> — colors adjacent to yours. Lower contrast, unified feel. Common in bedrooms and living rooms where you want calm.</p>
-          <p className="mb-4"><strong>Triadic</strong> — three colors evenly spaced around the wheel. Energetic, but needs careful balance — one dominant color, two supporting, not equal thirds.</p>
-          <p className="mb-4"><strong>Split-complementary</strong> — your color plus the two adjacent to its complement. Softer than pure complementary while still high-interest.</p>
-          <p className="mb-4"><strong>Monochromatic</strong> — tints and shades of a single hue. Sophisticated but can feel flat without careful variation in LRV.</p>
-          <p>Each generated color is matched to the nearest real paint from the catalog, so palettes are purchasable rather than abstract. Roles are assigned by LRV and chroma: Walls get the mid-LRV anchor, Trim gets the lightest value, Accent gets the second-darkest, and Pop gets the most saturated color for use on pillows, art, or a statement piece.</p>
+          <p className="mb-4">The generator starts from your chosen color and builds five palettes from it. Each one shifts the hue a different way:</p>
+          {TEMPLATE_NOTES.map((t) => (
+            <p key={t.name} className="mb-4"><strong className="text-on-surface">{t.name}</strong>: {t.text}</p>
+          ))}
+          <p className="mb-4">The four roles are set by lightness and saturation, not by the palette type. Trim is mixed near-white, Walls light and muted, Accent deep and moderately saturated, and Pop mid-light and the most saturated of the four. Your own color takes the role it already fits: very light colors become Trim, light colors Walls, strong mid-tone colors Pop, and everything else Accent.</p>
+          <p>Each mixed color is then matched to the closest real paint in the catalog, ranked by perceptual color difference, so every palette is something you can buy.</p>
         </div>
       </section>
 

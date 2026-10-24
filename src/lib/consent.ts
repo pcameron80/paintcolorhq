@@ -44,8 +44,10 @@ export function hasGlobalPrivacyControl(): boolean {
     .globalPrivacyControl === true;
 }
 
-// Ad and marketing tags (AdSense, Pinterest). An explicit choice always wins;
-// with no choice, only non-regulated visitors without GPC get them.
+// Gate for ad and marketing tags. Nothing calls it since AdSense and the
+// Pinterest tag were removed (2026-10); it stays for the next ad partner's
+// loader (Journey). An explicit choice always wins; with no choice, only
+// non-regulated visitors without GPC get them.
 export function adsAllowed(stored: StoredConsent, region: ConsentRegion): boolean {
   if (stored) return stored === "granted";
   return region === "other" && !hasGlobalPrivacyControl();

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { createSupabaseBrowserClient } from "@/lib/supabase-browser";
+import { useAuthUser } from "@/lib/use-auth-user";
 
 const ROLES = ["walls", "trim", "accent", "pop"];
 
@@ -25,7 +25,7 @@ export function SaveToProject({
   currentPath: string;
 }) {
   const [open, setOpen] = useState(false);
-  const [user, setUser] = useState<{ id: string } | null>(null);
+  const { user, ready } = useAuthUser();
   const [projects, setProjects] = useState<Project[]>([]);
   const [savedIn, setSavedIn] = useState<SavedIn[]>([]);
   const [loading, setLoading] = useState(false);
@@ -33,13 +33,6 @@ export function SaveToProject({
   const [creating, setCreating] = useState(false);
   const [selectedRole, setSelectedRole] = useState("walls");
   const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const supabase = createSupabaseBrowserClient();
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user) setUser({ id: user.id });
-    });
-  }, []);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -65,6 +58,8 @@ export function SaveToProject({
   }
 
   function handleClick() {
+    // Wait for the auth check so a signed-in visitor is not bounced to login.
+    if (!ready) return;
     if (!user) {
       window.location.href = `/auth/login?next=${encodeURIComponent(currentPath)}`;
       return;
@@ -202,7 +197,7 @@ export function SaveToProject({
                 })}
                 {projects.length === 0 && (
                   <p className="py-2 text-sm text-gray-400">
-                    No projects yet — create one below
+                    No projects yet. Create one below.
                   </p>
                 )}
               </div>

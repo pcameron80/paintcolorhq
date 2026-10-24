@@ -119,7 +119,7 @@ const content: Record<string, FamilyContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Green is the breakout color trend of 2025–2026. From soft sage kitchens to deep forest
+          Green has moved from accent color to main event in a lot of homes. From soft sage kitchens to deep forest
           accent walls, every shade of green is surging in popularity. The movement is driven by
           biophilic design — the idea that incorporating nature into interiors improves well-being.
           Green connects a room to the outdoors without requiring a single plant.
@@ -576,7 +576,7 @@ const content: Record<string, FamilyContent> = {
           <Link href="/colors/sherwin-williams/grounded-6089" className="text-brand-blue hover:underline">
             Sherwin-Williams Grounded
           </Link>{" "}
-          (their 2025 Color of the Year) signals this shift toward earthy warmth.{" "}
+          (one of Sherwin-Williams&apos; nine 2025 Color Capsule colors) signals this shift toward earthy warmth.{" "}
           <Link href="/colors/benjamin-moore/cinnamon-slate-2113-40" className="text-brand-blue hover:underline">
             Benjamin Moore Cinnamon Slate
           </Link>{" "}

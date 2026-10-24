@@ -19,6 +19,8 @@ interface Props {
   brandSlug: string;
   brandName: string;
   families: FamilyOption[];
+  /** Undertone chips to show; the page drops those with no colors. */
+  undertones?: readonly string[];
   initialColors: BrandColor[];
   initialTotalCount: number;
   currentPage: number;
@@ -38,6 +40,7 @@ export function BrandColorLibrary({
   brandSlug,
   brandName,
   families,
+  undertones = ["warm", "cool", "neutral"],
   initialColors,
   initialTotalCount, currentPage, familyFilter, undertoneFilter,
 }: Props) {
@@ -130,7 +133,7 @@ export function BrandColorLibrary({
         >
           All Undertones
         </Link>
-        {(["warm", "cool", "neutral"] as const).map((tone) => (
+        {undertones.map((tone) => (
           <Link
             key={tone}
             href={makeHref({ undertone: tone, page: 1 })}

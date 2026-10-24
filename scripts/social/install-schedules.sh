@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
-# Install (or remove) the four social launchd agents: the Pinterest, Facebook
-# and Instagram drips and the weekly Pinterest analytics report.
+# Install (or remove) the social launchd agents. Today that is one job: the
+# weekly Pinterest analytics report.
+#
+# The Pinterest, Instagram and Facebook drips were RETIRED on 2026-10-24 (their
+# plists moved to ~/Library/LaunchAgents/disabled-2026-10-24/). They are listed
+# in RETIRED below, not in JOBS, so a reinstall never loads them again: install
+# unloads them and moves any plist still in ~/Library/LaunchAgents aside.
+# Bringing a drip back is a deliberate decision: move its row back into JOBS.
 #
 # Everything the jobs need lives in ~/Library/Application Support/PaintColorHQ/
 # social/: run.sh, one detached worktree of origin/main (checkout/) that run.sh
@@ -27,11 +33,15 @@ MODE="${1:-install}"
 
 # label | plist template | job name (log file) | job script, relative to the repo
 JOBS=(
-  "com.paintcolorhq.pinterest-drip|scripts/pinterest/com.paintcolorhq.pinterest-drip.plist.template|pinterest-drip|scripts/pinterest/drip.sh"
-  "com.paintcolorhq.instagram-drip|scripts/instagram/com.paintcolorhq.instagram-drip.plist.template|instagram-drip|scripts/instagram/drip.sh"
-  "com.paintcolorhq.facebook-drip|scripts/facebook/com.paintcolorhq.facebook-drip.plist.template|facebook-drip|scripts/facebook/drip.sh"
   "com.paintcolorhq.pinterest-analytics|scripts/pinterest/com.paintcolorhq.pinterest-analytics.plist.template|pinterest-analytics|scripts/pinterest/analytics-report.sh"
 )
+# Retired 2026-10-24. Unloaded on every install and uninstall, never loaded.
+RETIRED=(
+  "com.paintcolorhq.pinterest-drip"
+  "com.paintcolorhq.instagram-drip"
+  "com.paintcolorhq.facebook-drip"
+)
+RETIRED_DIR="$AGENTS/disabled-2026-10-24"
 
 unload_all() {
   for row in "${JOBS[@]}"; do
@@ -40,9 +50,24 @@ unload_all() {
   done
 }
 
+# Unload the retired drips and move any of their plists still in LaunchAgents
+# aside, so a login cannot start them again. Moved, not deleted.
+retire_drips() {
+  for label in "${RETIRED[@]}"; do
+    launchctl unload "$AGENTS/$label.plist" 2>/dev/null || true
+    launchctl remove "$label" 2>/dev/null || true # loaded with its plist already moved
+    if [[ -f "$AGENTS/$label.plist" ]]; then
+      mkdir -p "$RETIRED_DIR"
+      mv "$AGENTS/$label.plist" "$RETIRED_DIR/$label.plist"
+      echo "Retired drip: moved $label.plist to $RETIRED_DIR/"
+    fi
+  done
+}
+
 case "$MODE" in
   uninstall)
     unload_all
+    retire_drips
     for row in "${JOBS[@]}"; do
       IFS='|' read -r label _ _ _ <<< "$row"
       rm -f "$AGENTS/$label.plist"
@@ -111,6 +136,7 @@ if [[ "$MODE" == "--check" ]]; then
 fi
 
 unload_all
+retire_drips
 echo "Ledgers (migrating):"
 if ! migrate; then
   echo "Migration failed. The agents are unloaded; the old plists are still in $AGENTS" >&2
@@ -124,8 +150,12 @@ for row in "${JOBS[@]}"; do
   launchctl load "$AGENTS/$label.plist"
 done
 
-echo "Installed 4 agents; each runs from $WT (latest origin/$BRANCH):"
-echo "  pinterest-drip 10:00, instagram-drip 16:00, facebook-drip 18:00 daily; pinterest-analytics Mon 09:00 (local time)"
+echo "Installed ${#JOBS[@]} agent(s); each runs from $WT (latest origin/$BRANCH):"
+for row in "${JOBS[@]}"; do
+  IFS='|' read -r label _ job _ <<< "$row"
+  echo "  $job ($label)"
+done
+echo "Retired, not loaded: ${RETIRED[*]}"
 echo "Ledgers: $DIR/*-published.json"
 echo "Logs:    $DIR/logs/"
 echo "Reports: $DIR/pinterest-reports/"

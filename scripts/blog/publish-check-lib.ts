@@ -3,15 +3,20 @@
  *
  * A future-dated post reveals at 00:00 UTC on its date (ISR, up to ~1h). The
  * job then confirms it is really live, pings IndexNow, resubmits the sitemap to
- * Google Search Console, and for the next two weeks inspects the URL once a day
- * until Google reports it indexed. Everything here is side-effect free so the
+ * Google Search Console, and for the next four weeks inspects the URL once a day
+ * until Google reports it indexed. On the reveal day and again on day 3, while
+ * the post is still unindexed, it raises a "Request indexing" nudge with the
+ * Search Console inspection link: the API cannot request indexing, so a person
+ * has to press the button. Everything here is side-effect free so the
  * rules can be unit-tested; the network calls live in publish-check.ts.
  */
 import { isLiveAt } from "../../src/lib/blog-publish.ts";
 
 export const SUBMIT_WINDOW_DAYS = 3; // retry window for a post that hasn't come up yet
-export const INSPECT_WINDOW_DAYS = 14; // how long to keep checking Google's index status
+export const INSPECT_WINDOW_DAYS = 28; // how long to keep checking Google's index status
 export const INSPECT_EVERY_HOURS = 20; // at most one inspection per post per day
+export const NUDGE_DAYS = [0, 3] as const; // days after reveal to ask for a manual "Request indexing"
+export const NEVER_INDEXED_PROBLEM = `not indexed after ${INSPECT_WINDOW_DAYS} days`;
 
 const DAY = 86_400_000;
 
@@ -24,6 +29,7 @@ export interface Inspection {
   at: string;
   verdict: string; // PASS | NEUTRAL | FAIL | VERDICT_UNSPECIFIED
   coverageState: string; // e.g. "Submitted and indexed", "Discovered - currently not indexed"
+  link?: string; // inspectionResultLink: opens this URL in Search Console's inspection tool
 }
 
 export interface PostState {
@@ -31,6 +37,7 @@ export interface PostState {
   inspections?: Inspection[];
   indexedAt?: string;
   lastProblem?: string;
+  nudgedDays?: number[]; // NUDGE_DAYS already raised for this post
 }
 
 export type PublishState = Record<string, PostState>;
@@ -67,9 +74,47 @@ export function postsNeverIndexed(posts: PostRef[], state: PublishState, now: Da
       s?.submittedAt &&
       !s.indexedAt &&
       ageMs(p.date, now) > INSPECT_WINDOW_DAYS * DAY &&
-      s.lastProblem !== "not indexed after 14 days"
+      s.lastProblem !== NEVER_INDEXED_PROBLEM
     );
   });
+}
+
+export interface Nudge {
+  post: PostRef;
+  day: number; // the NUDGE_DAYS entry being raised
+}
+
+/** Submitted, still-unindexed posts inside the inspect window that have reached
+ *  a nudge day not yet raised. Only the latest reached day fires, so a missed
+ *  reveal-day run doesn't produce two nudges at once. */
+export function nudgesDue(posts: PostRef[], state: PublishState, now: Date): Nudge[] {
+  const out: Nudge[] = [];
+  for (const p of posts) {
+    const s = state[p.slug];
+    if (!s?.submittedAt || s.indexedAt) continue;
+    const age = ageMs(p.date, now);
+    if (age < 0 || age > INSPECT_WINDOW_DAYS * DAY) continue;
+    const day = NUDGE_DAYS.filter((d) => age >= d * DAY).at(-1);
+    if (day === undefined || s.nudgedDays?.includes(day)) continue;
+    out.push({ post: p, day });
+  }
+  return out;
+}
+
+/** Nudge days to record after raising `day`: it and every earlier one. */
+export function nudgedThrough(day: number, prior: number[] = []): number[] {
+  return [...new Set([...prior, ...NUDGE_DAYS.filter((d) => d <= day)])].sort((a, b) => a - b);
+}
+
+/** The Search Console inspection link for a URL: the one the API returned on the
+ *  latest inspection, or the standard inspect URL for the property. */
+export function inspectionLink(url: string, propertyUrl: string, s?: PostState): string {
+  const fromApi = [...(s?.inspections ?? [])].reverse().find((i) => i.link)?.link;
+  if (fromApi) return fromApi;
+  return (
+    "https://search.google.com/search-console/inspect" +
+    `?resource_id=${encodeURIComponent(propertyUrl)}&id=${encodeURIComponent(url)}`
+  );
 }
 
 /** Google's URL Inspection verdict PASS means the URL is on Google. */
