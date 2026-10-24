@@ -4,18 +4,6 @@ import { capText, normalizeHex } from "@/lib/og-params";
 
 export const runtime = "edge";
 
-/**
- * Pinterest-optimized 1000×1500 pin image for a blog post.
- *
- * Layout:
- *   Top 55%  — cover-image fill (or coverColor block if no image)
- *   Middle   — eyebrow ("PAINT COLOR HQ") + bold title (up to ~3 lines)
- *   Bottom   — paintcolorhq.com footer
- *
- * Params:
- *   title (required), excerpt, cover (URL relative to site, e.g.
- *   /blog/foo.webp), color (fallback hex), tag (optional eyebrow extra)
- */
 const SITE = "https://www.paintcolorhq.com";
 const COVER_PATH_RE = /^\/blog\/[a-z0-9-]+\.(webp|jpe?g|png)$/;
 
@@ -36,6 +24,18 @@ function safeCoverPath(raw: string | null): string | null {
   return COVER_PATH_RE.test(url.pathname) ? url.pathname : null;
 }
 
+/**
+ * Pinterest-optimized 1000×1500 pin image for a blog post.
+ *
+ * Layout:
+ *   Top 55%  — cover-image fill (or coverColor block if no image)
+ *   Middle   — eyebrow ("PAINT COLOR HQ") + bold title (up to ~3 lines)
+ *   Bottom   — paintcolorhq.com footer
+ *
+ * Params:
+ *   title (required), excerpt, cover (URL relative to site, e.g.
+ *   /blog/foo.webp), color (fallback hex), tag (optional eyebrow extra)
+ */
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
   const title = capText(searchParams.get("title"), 200) || "Paint Color Guide";
