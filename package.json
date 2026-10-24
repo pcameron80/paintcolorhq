@@ -35,6 +35,8 @@
     "preview:pinterest": "tsx scripts/pinterest-preview.ts",
     "test:pinterest": "node --import tsx --test scripts/pinterest/queue.test.ts",
     "test:social": "node --import tsx --test scripts/social/*.test.ts",
+    "test:backup": "node --import tsx --test scripts/backup/*.test.ts",
+    "backup-db": "tsx scripts/backup-db-snapshot.ts",
     "test:blog": "node --import tsx --test scripts/blog/*.test.ts",
     "test:dedupe": "node --import tsx --test scripts/lib/dedupe-rules.test.ts",
     "test:color-math": "node --import tsx --test scripts/lib/color-math.test.ts",

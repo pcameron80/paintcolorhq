@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>__LABEL__</string>
+  <!-- Invoke /bin/bash DIRECTLY (not the script via its shebang): macOS TCC
+       attributes file access to the launchd program, so the FDA-granted
+       /bin/bash must be the program. Same Full Disk Access grant as the
+       social agents (/bin/bash + node); no new grant needed. -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>__RUNSH__</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key><string>__NODE_DIR__:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+  <!-- StartCalendarInterval is LOCAL time. Weekday 1 = Monday, 11:00, a
+       weekday hour when the laptop is normally awake and on the home LAN or
+       Tailscale. A run missed while asleep fires once on wake. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>1</integer>
+    <key>Hour</key><integer>11</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+  <key>StandardErrorPath</key><string>__LOG__</string>
+  <key>RunAtLoad</key><false/>
+</dict>
+</plist>
