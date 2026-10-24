@@ -49,7 +49,8 @@
     "predev": "tsx scripts/build-sitemap-data.ts",
     "build:sitemap": "tsx scripts/build-sitemap-data.ts",
     "test:seo": "node --import tsx --test 'src/lib/*.test.ts'",
-    "check:sitemap": "tsx scripts/check-sitemap-data.ts"
+    "check:sitemap": "tsx scripts/check-sitemap-data.ts",
+    "check:copy-counts": "tsx scripts/check-copy-counts.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",

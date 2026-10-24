@@ -3,12 +3,18 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
+import { ogDefaults } from "@/lib/og";
+
+const TITLE = "Free Paint Color Tools — Visualizer & Calculator";
+const DESCRIPTION =
+  "Free paint tools: palette generator, room visualizer, photo color identifier and paint calculator. Preview colors, match photos, estimate how much to buy.";
+const URL = "https://www.paintcolorhq.com/tools";
 
 export const metadata: Metadata = {
-  title: "Free Paint Color Tools — Visualizer & Calculator",
-  description:
-    "Free paint tools: palette generator, room visualizer, photo color identifier, and paint calculator. Preview colors, match from photos, and estimate coverage across all major brands.",
-  alternates: { canonical: "https://www.paintcolorhq.com/tools" },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: URL },
+  openGraph: { ...ogDefaults, title: TITLE, description: DESCRIPTION, url: URL },
 };
 
 const tools = [

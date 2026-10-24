@@ -6,14 +6,18 @@ import { RoomVisualizer } from "./visualizer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
+import { ogDefaults } from "@/lib/og";
+
+const TITLE = "Room Color Visualizer - Preview Paint Colors in a Room";
+const DESCRIPTION =
+  "Preview paint colors before you buy. Try wall, accent, trim and window colors in 10 photorealistic rooms, then find digital paint matches across our catalog.";
+const URL = "https://www.paintcolorhq.com/tools/room-visualizer";
 
 export const metadata: Metadata = {
-  title: "Room Color Visualizer - Preview Paint Colors in a Room",
-  description:
-    "Preview paint colors before you buy. Try wall, accent, trim and window colors in 10 photorealistic rooms, then find digital paint matches across our catalog.",
-  alternates: {
-    canonical: "https://www.paintcolorhq.com/tools/room-visualizer",
-  },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: URL },
+  openGraph: { ...ogDefaults, title: TITLE, description: DESCRIPTION, url: URL },
 };
 
 // JSON-LD helper - all content is server-generated from trusted static values

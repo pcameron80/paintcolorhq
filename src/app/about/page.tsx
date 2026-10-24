@@ -4,7 +4,8 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
-import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
+import { FOUNDER_PERSON, ORG_REF, ORG_SAME_AS } from "@/lib/entity-schema";
+import { ogDefaults } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "About Paint Color HQ | Our Color Science Methodology",
@@ -12,10 +13,10 @@ export const metadata: Metadata = {
     "Learn how Paint Color HQ uses CIEDE2000 color science to match 26,000+ colors across our paint catalog. Independent, data-driven paint color tools.",
   alternates: { canonical: "https://www.paintcolorhq.com/about" },
   openGraph: {
+    ...ogDefaults,
     title: "About Paint Color HQ | Our Color Science Methodology",
     description:
       "Learn how Paint Color HQ uses CIEDE2000 color science to match 26,000+ colors across our paint catalog. Independent, data-driven paint color tools.",
-    type: "website",
     url: "https://www.paintcolorhq.com/about",
   },
 };
@@ -35,7 +36,7 @@ export default function AboutPage() {
         logo: "https://www.paintcolorhq.com/logo.webp",
         description: "Paint Color HQ is an independent paint color discovery and cross-brand matching platform. We use CIEDE2000 color science to help homeowners and professionals choose paint colors with confidence.",
         contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: "https://www.paintcolorhq.com/contact" },
-        sameAs: ["https://www.pinterest.com/paintcolorhq", "https://www.linkedin.com/company/paint-color-hq"],
+        sameAs: ORG_SAME_AS,
         founder: FOUNDER_PERSON,
         knowsAbout: ["Paint color matching", "CIEDE2000 color difference", "Cross-brand paint color comparison", "Color science", "Interior paint selection"],
       }} />

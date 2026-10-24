@@ -6,6 +6,7 @@ import { getColorById, getColorBySlug } from "@/lib/queries";
 import { TrackedLink } from "@/components/tracked-link";
 import { CompareClient } from "./compare-client";
 import { SamplizeOffer } from "@/components/samplize-offer";
+import { ogDefaults } from "@/lib/og";
 
 interface PageProps { searchParams: Promise<{ color1?: string; color2?: string }>; }
 
@@ -19,7 +20,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
     // Parametric compare URLs are combinatorial thin-content — keep them out of the index
     // (robots.txt Disallow blocks crawl, not indexing). Mirrors /search behaviour.
     ...(hasParams && { robots: { index: false, follow: true } }),
-    openGraph: { title: "Compare Paint Colors Side by Side", description: "Put two paint colors side by side: swatches, hex, RGB and LRV, plus a plain-language verdict on how close they are. Works across brands.", url: "https://www.paintcolorhq.com/compare" },
+    openGraph: { ...ogDefaults, title: "Compare Paint Colors Side by Side", description: "Put two paint colors side by side: swatches, hex, RGB and LRV, plus a plain-language verdict on how close they are. Works across brands.", url: "https://www.paintcolorhq.com/compare" },
   };
 }
 

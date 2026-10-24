@@ -5,13 +5,15 @@ import { Footer } from "@/components/footer";
 import { getAllPosts } from "@/lib/blog-posts";
 import { AdSenseScript } from "@/components/adsense-script";
 import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
+import { ogDefaults } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Philip Cameron | Founder of Paint Color HQ",
   description:
-    "Philip Cameron is the founder of Paint Color HQ. He built the site to solve a personal cross-brand paint color matching problem — and writes every guide grounded in CIEDE2000 color science, not opinion alone.",
+    "Philip Cameron founded Paint Color HQ to solve his own cross-brand paint matching problem. He grounds every guide in CIEDE2000 color science, not opinion.",
   alternates: { canonical: "https://www.paintcolorhq.com/authors/paint-color-hq-staff" },
   openGraph: {
+    ...ogDefaults,
     title: "Philip Cameron | Founder of Paint Color HQ",
     description:
       "Philip Cameron is the founder of Paint Color HQ. He built the site to solve a personal cross-brand paint color matching problem.",
