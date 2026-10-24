@@ -2,7 +2,7 @@ import { NEARLY_IDENTICAL_MAX } from "./closeness";
 import { isColorIndexable } from "./indexing";
 import { colorNumberCandidates, colorNumberQueryValues, pickColorNumberMatch, type ColorNumberRow } from "./color-number";
 import { findColorMatches } from "./color-match";
-import { codeRegex, normalizeSearchQuery, pgQuote, type NormalizedSearch } from "./search-query";
+import { codeRegex, isCodePrefix, normalizeSearchQuery, pgQuote, type NormalizedSearch } from "./search-query";
 import { supabase } from "./supabase";
 import type { Brand, Color, ColorWithBrand, CrossBrandMatchWithColor, ColorFamily } from "./types";
 import { expandUndertoneFilter, UNDERTONE_CATEGORIES } from "./undertone-utils";
@@ -365,10 +365,12 @@ async function runSearch(n: NormalizedSearch, brandSlug: string | null, limit: n
       : []),
   ].join(",");
 
-  const [codeExact, hexExact, nameExact, namePrefix, nameContains, codePartial] = await Promise.all([
+  const typingCode = !!n.name && isCodePrefix(n.name);
+  const [codeExact, hexExact, nameExact, codePrefix, namePrefix, nameContains, codePartial] = await Promise.all([
     codeOr ? searchRows(brandSlug, limit, (q) => q.or(codeOr)) : none,
     n.hex ? searchRows(brandSlug, limit, (q) => q.ilike("hex", n.hex as string)) : none,
     terms.length ? searchRows(brandSlug, limit, (q) => q.or(terms.map((t) => `name.ilike.${pgQuote(t)}`).join(","))) : none,
+    typingCode ? searchRows(brandSlug, limit, (q) => q.ilike("color_number", `${n.name}%`).order("color_number")) : none,
     terms.length ? searchRows(brandSlug, limit, (q) => q.or(terms.map((t) => `name.ilike.${pgQuote(`${t}%`)}`).join(",")).order("name")) : none,
     containsOr ? searchRows(brandSlug, limit, (q) => q.or(containsOr).order("name")) : none,
     n.codes.length
@@ -394,7 +396,7 @@ async function runSearch(n: NormalizedSearch, brandSlug: string | null, limit: n
 
   const seen = new Set<string>();
   const out: ColorWithBrand[] = [];
-  for (const tier of [tiers[0], hexHits, tiers[1], namePrefix, nameContains, codePartial]) {
+  for (const tier of [tiers[0], hexHits, tiers[1], codePrefix, namePrefix, nameContains, codePartial]) {
     for (const c of tier) {
       if (seen.has(c.id)) continue;
       seen.add(c.id);

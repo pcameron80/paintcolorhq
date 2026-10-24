@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { codeRegex, normalizeSearchQuery as n, pgQuote } from "./search-query";
+import { codeRegex, isCodePrefix, normalizeSearchQuery as n, pgQuote } from "./search-query";
 
 const re = (key: string) => new RegExp(codeRegex(key, true), "i");
 
@@ -159,4 +159,11 @@ test("Unicode dashes and curly apostrophes normalize", () => {
   assert.deepEqual(n("HC\u2013154").codes, ["HC154"]);
   assert.deepEqual(n("Lauren\u2019s lace").nameTerms, ["lauren_s lace"]);
   assert.deepEqual(n("Martha&#8217;s").nameTerms, ["martha_s"]);
+});
+
+test("a code prefix typed alone is still a name, flagged as a code in progress", () => {
+  assert.equal(n("PM-").name, "pm");
+  assert.ok(isCodePrefix(n("PM-").name));
+  assert.ok(isCodePrefix("HC"));
+  assert.ok(!isCodePrefix("white"));
 });

@@ -112,6 +112,11 @@ function stripBrand(s: string): { brandSlug: string | null; rest: string } {
   return { brandSlug: null, rest: s };
 }
 
+// "pm", "hc", "oc": a person part way through typing a code.
+export function isCodePrefix(s: string): boolean {
+  return CODE_PREFIXES.has(s.toLowerCase());
+}
+
 export function codeKey(code: string): string {
   return code.toUpperCase().replace(/[^A-Z0-9]/g, "");
 }
