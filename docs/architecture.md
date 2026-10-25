@@ -4,7 +4,7 @@
 
 | Layer | Technology | Version |
 |-------|-----------|---------|
-| Framework | Next.js (App Router) | 16.1.6 |
+| Framework | Next.js (App Router) | 16.4.2 |
 | Runtime | React | 19.2.3 |
 | Database | Supabase (PostgreSQL) | - |
 | Auth | Supabase Auth (Google OAuth) | - |
@@ -99,7 +99,7 @@ paintcolorhq/
 │       ├── project-queries.ts  # Project-specific queries
 │       ├── blog-posts.tsx      # Blog post data + JSX content (24 posts)
 │       ├── palettes.ts         # Curated inspiration palette data
-│       ├── color-description.ts # Algorithmic SEO descriptions for color pages
+│       ├── color-description.ts # Data-derived color meta, lede and per-brand matches (no templated prose)
 │       ├── retailer-links.ts   # Brand-to-retailer URL mapping with override lookups
 │       ├── retailer-overrides.ts # Auto-generated SW/Dunn-Edwards/Kilz/RAL not-found sets
 │       └── official-urls/      # Per-color brand URLs from sitemaps (PPG, Valspar, Dutch Boy, Vista)

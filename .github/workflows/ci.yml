@@ -51,7 +51,7 @@ jobs:
       - name: Test
         run: npm test
 
-      # Report-only until the high-severity advisories are cleared (MP-75).
+      # Blocking since Next 16.4.2 cleared the production advisories (MP-67).
+      # Production dependencies only: dev tooling advisories do not ship.
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high
-        continue-on-error: true
