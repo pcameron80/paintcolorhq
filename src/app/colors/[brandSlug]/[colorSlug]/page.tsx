@@ -340,7 +340,7 @@ export default async function ColorPage({ params }: PageProps) {
       <Header />
 
       {/* Immersive Color Hero */}
-      <section id="color-preview" className="scroll-mt-24 relative w-full min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-center overflow-hidden pt-20" style={{ backgroundColor: color.hex }}>
+      <section id="color-preview" className="scroll-mt-24 relative w-full min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-center overflow-x-clip pt-20" style={{ backgroundColor: color.hex }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
         <div className="relative z-10 w-full max-w-5xl text-center px-6 pt-16 pb-8">
           <p className={`font-headline uppercase tracking-[0.4em] text-xs mb-4 opacity-80 ${textMutedClass}`}>
