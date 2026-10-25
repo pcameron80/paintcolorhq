@@ -276,6 +276,10 @@ export function PaletteGenerator({ brands }: { brands: FilterBrand[] }) {
   useEffect(() => {
     trackToolEngagement("palette-generator", "open");
     const p = generatePalettes(inputHex);
+    // One-time mount initialization; palettes stay empty in the server render
+    // so the SSR markup is unchanged. Flagged by react-hooks 7 in
+    // eslint-config-next 16.4.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPalettes(p);
     fetchMatches(p, brandFilter);
     // eslint-disable-next-line react-hooks/exhaustive-deps
