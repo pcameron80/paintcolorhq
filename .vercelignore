@@ -3,3 +3,8 @@ scripts/*
 !scripts/build-match-data.ts
 
 !scripts/build-sitemap-data.ts
+
+# src/lib/copy-counts.test.ts imports this; Next 16.4 type-checks test files during the build.
+!scripts/lib/
+scripts/lib/*
+!scripts/lib/copy-counts.ts
