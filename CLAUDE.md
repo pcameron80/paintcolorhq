@@ -64,7 +64,7 @@ supabase/        # Supabase config/migrations
 - `src/lib/color-description.ts` - Data-derived color meta description, lede and per-brand match list. No templated prose generators; do not add any
 - `src/lib/brand-content.tsx` - Brand-specific editorial content + subtitles
 - `src/lib/family-content.tsx` - All 15 color family editorial content
-- `src/lib/palettes.ts` - 18 curated inspiration palettes
+- `src/lib/palettes.ts` - 21 curated inspiration palettes
 - `src/lib/blog-posts.tsx` - Blog post definitions + getRelatedPosts()
 - `src/lib/supabase.ts` - Supabase client (server-side, anon)
 - `src/lib/supabase-server.ts` - Supabase server client (with cookies/auth)

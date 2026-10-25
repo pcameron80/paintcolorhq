@@ -106,28 +106,49 @@ export function SearchResults() {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
   const [results, setResults] = useState<ColorWithBrand[]>([]);
+  const [brandLink, setBrandLink] = useState<{ slug: string; name: string } | null>(null);
   const [brandFilter, setBrandFilter] = useState("");
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const trackingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Only the newest request may set results or log a search; an older one
+  // that resolves late is dropped.
+  const requestIdRef = useRef(0);
 
-  const search = useCallback(async (q: string) => {
+  const search = useCallback(async (raw: string) => {
+    const q = raw.trim();
+    const id = ++requestIdRef.current;
+    if (trackingTimerRef.current) clearTimeout(trackingTimerRef.current);
     if (q.length < 2) {
       setResults([]);
+      setBrandLink(null);
       setHasSearched(false);
+      setLoading(false);
       return;
     }
     setLoading(true);
     setHasSearched(true);
+    let count = 0;
     try {
       const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
       const data = await res.json();
-      setResults(data.results ?? []);
+      if (id !== requestIdRef.current) return;
+      const found: ColorWithBrand[] = data.results ?? [];
+      count = found.length;
+      setResults(found);
+      setBrandLink(data.brand ?? null);
     } catch {
+      if (id !== requestIdRef.current) return;
       setResults([]);
+      setBrandLink(null);
     } finally {
-      setLoading(false);
+      if (id === requestIdRef.current) setLoading(false);
     }
+    // Log the search once the person stops typing, with the result count
+    // for this exact term.
+    trackingTimerRef.current = setTimeout(() => {
+      if (id === requestIdRef.current) trackColorSearch(q, count);
+    }, 1200);
   }, []);
 
   useEffect(() => {
@@ -135,23 +156,7 @@ export function SearchResults() {
     return () => clearTimeout(timer);
   }, [query, search]);
 
-  // Synced in an effect, not during render (react-hooks/refs). The tracking
-  // timer below reads it 1.5s later, long after this effect has run.
-  const latestResultsRef = useRef(results.length);
-  useEffect(() => {
-    latestResultsRef.current = results.length;
-  }, [results.length]);
-
-  useEffect(() => {
-    if (trackingTimerRef.current) clearTimeout(trackingTimerRef.current);
-    if (query.length >= 2) {
-      trackingTimerRef.current = setTimeout(() => {
-        trackColorSearch(query, latestResultsRef.current);
-      }, 1500);
-    }
-    return () => { if (trackingTimerRef.current) clearTimeout(trackingTimerRef.current); };
-  }, [query]);
-
+  useEffect(() => () => { if (trackingTimerRef.current) clearTimeout(trackingTimerRef.current); }, []);
 
   const handlePopularSearchSelect = useCallback((term: string) => {
     setQuery(term);
@@ -160,8 +165,9 @@ export function SearchResults() {
   const visibleResults = results.filter(c => !brandFilter || c.brand.slug === brandFilter);
   const resultBrands = Array.from(new Map(results.map(c => [c.brand.slug, c.brand.name])).entries());
 
-  const showEmptyState = !loading && !hasSearched && query.length < 2;
-  const showNoResults = !loading && hasSearched && results.length === 0 && query.length >= 2;
+  const trimmed = query.trim();
+  const showEmptyState = !loading && !hasSearched && trimmed.length < 2;
+  const showNoResults = !loading && hasSearched && results.length === 0 && trimmed.length >= 2;
   const showResults = !loading && results.length > 0;
 
   return (
@@ -190,6 +196,14 @@ export function SearchResults() {
         <div className="mt-10">
           <p className="mb-6 text-sm text-on-surface-variant">
             {visibleResults.length} of {results.length} returned colors
+            {brandLink && (
+              <>
+                {" · "}
+                <Link href={`/brands/${brandLink.slug}`} className="font-semibold text-primary hover:underline">
+                  Browse all {brandLink.name} colors
+                </Link>
+              </>
+            )}
           </p>
           <div className="mb-6 flex flex-wrap items-center gap-3">
             <label htmlFor="result-brand" className="text-sm font-semibold">Filter returned colors</label>
@@ -230,10 +244,10 @@ export function SearchResults() {
         <div className="mt-12 space-y-10">
           <div className="text-center bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-10">
             <p className="font-headline font-bold text-on-surface text-lg">
-              No colors found for &quot;{query}&quot;
+              No colors found for &quot;{trimmed}&quot;
             </p>
             <p className="mt-2 text-sm text-on-surface-variant">
-              Check your spelling, or try searching by color number (e.g. &quot;SW 7029&quot;) or hex code (e.g. &quot;#D6D0C4&quot;).
+              Check the spelling, or search by color number, such as &quot;SW 7029&quot; or &quot;OC-17&quot;, or by a hex code such as &quot;#D6D0C4&quot;. Search one color at a time.
             </p>
           </div>
           <PopularSearches onSelect={handlePopularSearchSelect} />

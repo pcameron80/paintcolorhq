@@ -1,6 +1,8 @@
 import { NEARLY_IDENTICAL_MAX } from "./closeness";
 import { isColorIndexable } from "./indexing";
 import { colorNumberCandidates, colorNumberQueryValues, pickColorNumberMatch, type ColorNumberRow } from "./color-number";
+import { findColorMatches } from "./color-match";
+import { codeRegex, isCodePrefix, normalizeSearchQuery, pgQuote, type NormalizedSearch } from "./search-query";
 import { supabase } from "./supabase";
 import type { Brand, Color, ColorWithBrand, CrossBrandMatchWithColor, ColorFamily } from "./types";
 import { expandUndertoneFilter, UNDERTONE_CATEGORIES } from "./undertone-utils";
@@ -260,6 +262,150 @@ function getMatchDataBaseUrl(): string | null {
   return null;
 }
 
+// Site search (/api/search) and the match pickers (brand-scoped).
+//
+// normalizeSearchQuery (search-query.ts) splits the query into a brand, color
+// codes, name text and a hex color. Results come back in tiers: exact code
+// hits (color_number or alternate_numbers), the hex color (exact, else the
+// nearest paints), then names that equal, start with or contain the query,
+// then partial codes. Prefix and contains tiers are alphabetical, as the match
+// pickers sorted before. A query that names a brand is filtered to it, and runs
+// again without the brand when that finds nothing.
+const SEARCH_FIELDS = "id, name, slug, hex, color_number, brand:brand_id!inner (id, name, slug)";
+
+export interface SearchResponse {
+  results: ColorWithBrand[];
+  // The brand the query named, so the page can link to it.
+  brand: { slug: string; name: string } | null;
+}
+
+function searchBase(brandSlug: string | null) {
+  const q = supabase.from("colors").select(SEARCH_FIELDS);
+  return brandSlug ? q.eq("brand.slug", brandSlug) : q;
+}
+
+async function searchRows(
+  brandSlug: string | null,
+  limit: number,
+  apply: (q: ReturnType<typeof searchBase>) => ReturnType<typeof searchBase>,
+): Promise<ColorWithBrand[]> {
+  const { data, error } = await apply(searchBase(brandSlug)).limit(limit);
+  if (error) throw error;
+  return (data ?? []) as unknown as ColorWithBrand[];
+}
+
+function likeToRegExp(pattern: string): RegExp {
+  const body = pattern
+    .split("")
+    .map((ch) => (ch === "_" ? "." : ch === "%" ? ".*" : ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")))
+    .join("");
+  return new RegExp(body, "i");
+}
+
+async function nearestAsResults(hex: string, brandSlug: string | null, limit: number): Promise<ColorWithBrand[]> {
+  const matches = await findColorMatches(hex, brandSlug, Math.min(limit, 24), false);
+  return matches.map(
+    (m) =>
+      ({
+        id: m.id,
+        name: m.name,
+        slug: m.colorSlug,
+        hex: m.hex,
+        color_number: m.colorNumber,
+        brand: { id: "", name: m.brandName, slug: m.brandSlug },
+      }) as unknown as ColorWithBrand,
+  );
+}
+
+async function undertoneSearch(text: string, limit: number): Promise<ColorWithBrand[] | null> {
+  // "warm gray", "cool white", "neutral beige"
+  const undertoneKeywords: Record<string, string[]> = {
+    warm: UNDERTONE_CATEGORIES.warm,
+    cool: UNDERTONE_CATEGORIES.cool,
+    neutral: UNDERTONE_CATEGORIES.neutral,
+  };
+  for (const [keyword, labels] of Object.entries(undertoneKeywords)) {
+    if (!text.startsWith(keyword + " ")) continue;
+    const colorPart = text.slice(keyword.length + 1).trim().replace(/\bgrey\b/g, "gray");
+    if (!colorPart) continue;
+    const { data, error } = await supabase
+      .from("colors")
+      .select(COLOR_CARD_FIELDS_WITH_BRAND)
+      .in("undertone", labels)
+      .eq("color_family", colorPart)
+      .limit(limit);
+    if (!error && data && data.length > 0) return data as unknown as ColorWithBrand[];
+    const { data: nameData, error: nameError } = await supabase
+      .from("colors")
+      .select(COLOR_CARD_FIELDS_WITH_BRAND)
+      .in("undertone", labels)
+      .ilike("name", `%${colorPart.replace(/\bgr[ae]y/g, "gr_y")}%`)
+      .limit(limit);
+    if (!nameError && nameData && nameData.length > 0) return nameData as unknown as ColorWithBrand[];
+  }
+  return null;
+}
+
+async function runSearch(n: NormalizedSearch, brandSlug: string | null, limit: number): Promise<ColorWithBrand[]> {
+  const terms = n.nameTerms;
+  const none = Promise.resolve([] as ColorWithBrand[]);
+  const codeOr = [
+    ...n.codes.map((k) => `color_number.imatch.${pgQuote(codeRegex(k, true))}`),
+    ...(n.codeValues.length ? [`alternate_numbers.ov.{${n.codeValues.join(",")}}`] : []),
+  ].join(",");
+  const containsOr = [
+    ...terms.map((t) => `name.ilike.${pgQuote(`%${t}%`)}`),
+    // Partial codes typed without a digit yet ("pm-", "hc").
+    ...(n.name && n.name.length <= 4 && !n.name.includes(" ")
+      ? [`color_number.ilike.${pgQuote(`%${n.name}%`)}`]
+      : []),
+    // A lone number may be part of a name ("100 Mph").
+    ...(!n.name && n.codes.length === 1 && /^[A-Z0-9]+$/.test(n.codes[0])
+      ? [`name.ilike.${pgQuote(`%${n.codes[0].toLowerCase()}%`)}`]
+      : []),
+  ].join(",");
+
+  const typingCode = !!n.name && isCodePrefix(n.name);
+  const [codeExact, hexExact, nameExact, codePrefix, namePrefix, nameContains, codePartial] = await Promise.all([
+    codeOr ? searchRows(brandSlug, limit, (q) => q.or(codeOr)) : none,
+    n.hex ? searchRows(brandSlug, limit, (q) => q.ilike("hex", n.hex as string)) : none,
+    terms.length ? searchRows(brandSlug, limit, (q) => q.or(terms.map((t) => `name.ilike.${pgQuote(t)}`).join(","))) : none,
+    typingCode ? searchRows(brandSlug, limit, (q) => q.ilike("color_number", `${n.name}%`).order("color_number")) : none,
+    terms.length ? searchRows(brandSlug, limit, (q) => q.or(terms.map((t) => `name.ilike.${pgQuote(`${t}%`)}`).join(",")).order("name")) : none,
+    containsOr ? searchRows(brandSlug, limit, (q) => q.or(containsOr).order("name")) : none,
+    n.codes.length
+      ? searchRows(brandSlug, limit, (q) => q.or(n.codes.map((k) => `color_number.imatch.${pgQuote(codeRegex(k, false))}`).join(",")))
+      : none,
+  ]);
+
+  // Name plus code ("october mist 1495"): both must match. When nothing
+  // satisfies both, the number was likely misremembered, so an exact name
+  // leads and the code hits follow it.
+  let tiers = [codeExact, nameExact];
+  if (terms.length && codeExact.length) {
+    const res = terms.map(likeToRegExp);
+    const both = codeExact.filter((c) => res.some((re) => re.test(c.name)));
+    tiers = both.length ? [both, nameExact] : [nameExact, codeExact];
+  }
+  // A hex with no exact paint falls back to the nearest paints, unless the
+  // same token was an exact color code (Dunn-Edwards DEFD39).
+  let hexHits = hexExact;
+  if (n.hex && hexHits.length === 0 && codeExact.length === 0) {
+    hexHits = await nearestAsResults(n.hex, brandSlug, limit);
+  }
+
+  const seen = new Set<string>();
+  const out: ColorWithBrand[] = [];
+  for (const tier of [tiers[0], hexHits, tiers[1], codePrefix, namePrefix, nameContains, codePartial]) {
+    for (const c of tier) {
+      if (seen.has(c.id)) continue;
+      seen.add(c.id);
+      out.push(c);
+    }
+  }
+  return out.slice(0, limit);
+}
+
 // Name or number search inside one brand, for the match pickers. The general
 // search caps at 50 rows across all brands, so filtering its results to one
 // brand afterwards often left nothing for common words like "white".
@@ -268,101 +414,44 @@ export async function searchColorsInBrand(
   brandSlug: string,
   limit = 20
 ): Promise<ColorWithBrand[]> {
-  const brand = await getBrandBySlug(brandSlug);
-  if (!brand) return [];
-  const q = query.replace(/[%,()]/g, " ").trim();
-  if (q.length < 2) return [];
-  const { data, error } = await supabase
-    .from("colors")
-    .select(COLOR_CARD_FIELDS_WITH_BRAND)
-    .eq("brand_id", brand.id)
-    .or(`name.ilike.%${q}%,color_number.ilike.%${q}%`)
-    .order("name")
-    .limit(limit * 2);
-  if (error) throw error;
-  // Exact name or number first, then names that start with the query.
-  const lower = q.toLowerCase();
-  const score = (c: ColorWithBrand) => {
-    const name = c.name.toLowerCase();
-    const num = (c.color_number ?? "").toLowerCase();
-    if (name === lower || num === lower) return 0;
-    if (name.startsWith(lower) || num.endsWith(lower)) return 1;
-    return 2;
-  };
-  return ((data ?? []) as unknown as ColorWithBrand[])
-    .map((c, i) => ({ c, i, s: score(c) }))
-    .sort((x, y) => x.s - y.s || x.i - y.i)
-    .slice(0, limit)
-    .map((x) => x.c);
+  const n = normalizeSearchQuery(query);
+  if (!n.name && n.codes.length === 0 && !n.hex) return [];
+  return runSearch(n, brandSlug, limit);
 }
 
-export async function searchColors(
-  query: string,
-  limit = 50
-): Promise<ColorWithBrand[]> {
-  // Try exact hex match first
-  if (query.match(/^#?[0-9a-fA-F]{6}$/)) {
-    const hex = query.startsWith("#") ? query : `#${query}`;
-    const { data } = await supabase
-      .from("colors")
-      .select(COLOR_CARD_FIELDS_WITH_BRAND)
-      .ilike("hex", hex)
-      .limit(limit);
+export async function searchColorsDetailed(query: string, limit = 50): Promise<SearchResponse> {
+  const n = normalizeSearchQuery(query);
+  const hasTerms = !!n.name || n.codes.length > 0 || !!n.hex;
 
-    if (data && data.length > 0) {
-      return data as unknown as ColorWithBrand[];
-    }
+  // A brand alone ("behr", "sherwin williams") returns that brand.
+  if (!hasTerms) {
+    if (!n.brandSlug) return { results: [], brand: null };
+    const brand = await getBrandBySlug(n.brandSlug);
+    if (!brand) return { results: [], brand: null };
+    const results = await searchRows(n.brandSlug, limit, (q) => q.order("name"));
+    return { results, brand: { slug: brand.slug, name: brand.name } };
   }
 
-  // Check for undertone keywords: "warm gray", "cool white", "neutral beige"
-  const lower = query.toLowerCase().trim();
-  const undertoneKeywords: Record<string, string[]> = {
-    warm: UNDERTONE_CATEGORIES.warm,
-    cool: UNDERTONE_CATEGORIES.cool,
-    neutral: UNDERTONE_CATEGORIES.neutral,
-  };
-
-  for (const [keyword, labels] of Object.entries(undertoneKeywords)) {
-    if (lower.startsWith(keyword + " ")) {
-      const colorPart = lower.slice(keyword.length + 1).trim();
-      if (colorPart) {
-        let q = supabase
-          .from("colors")
-          .select(COLOR_CARD_FIELDS_WITH_BRAND)
-          .in("undertone", labels);
-
-        // Try matching as color_family first
-        q = q.eq("color_family", colorPart);
-
-        const { data, error } = await q.limit(limit);
-        if (!error && data && data.length > 0) {
-          return data as unknown as ColorWithBrand[];
-        }
-
-        // Fall back to name search with undertone filter
-        const { data: nameData, error: nameError } = await supabase
-          .from("colors")
-          .select(COLOR_CARD_FIELDS_WITH_BRAND)
-          .in("undertone", labels)
-          .ilike("name", `%${colorPart}%`)
-          .limit(limit);
-
-        if (!nameError && nameData && nameData.length > 0) {
-          return nameData as unknown as ColorWithBrand[];
-        }
-      }
-    }
+  if (!n.brandSlug && n.codes.length === 0 && !n.hex) {
+    const undertone = await undertoneSearch(n.text, limit);
+    if (undertone) return { results: undertone, brand: null };
   }
 
-  // Full-text search on name
-  const { data, error } = await supabase
-    .from("colors")
-    .select(COLOR_CARD_FIELDS_WITH_BRAND)
-    .or(`name.ilike.%${query}%,color_number.ilike.%${query}%`)
-    .limit(limit);
+  let results = await runSearch(n, n.brandSlug, limit);
+  let brand: SearchResponse["brand"] = null;
+  if (n.brandSlug) {
+    if (results.length === 0) {
+      results = await runSearch(n, null, limit);
+    } else {
+      const b = results.find((c) => c.brand.slug === n.brandSlug)?.brand;
+      if (b) brand = { slug: b.slug, name: b.name };
+    }
+  }
+  return { results, brand };
+}
 
-  if (error) throw error;
-  return (data ?? []) as unknown as ColorWithBrand[];
+export async function searchColors(query: string, limit = 50): Promise<ColorWithBrand[]> {
+  return (await searchColorsDetailed(query, limit)).results;
 }
 
 // Match colors where the LAB-based classifier assigned this family OR the

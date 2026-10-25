@@ -42,7 +42,7 @@
     "test:dedupe": "node --import tsx --test scripts/lib/dedupe-rules.test.ts",
     "test:color-math": "node --import tsx --test scripts/lib/color-math.test.ts",
     "test:behr-import": "node --import tsx --test scripts/lib/behr-import-rules.test.ts",
-    "test:palette-diff": "node --import tsx --test scripts/lib/palette-diff.test.ts",
+    "test:palette-diff": "node --import tsx --test scripts/lib/palette-diff.test.ts scripts/lib/palette-sources.test.ts",
     "test:samplize": "NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX='https://www.jdoqocy.com/click-101771405-15496318?url=' node --import tsx --test scripts/lib/samplize-affiliate.test.ts",
     "test:supplies": "node --import tsx --test scripts/lib/painting-supplies.test.ts",
     "test:undertone": "node --import tsx --test scripts/lib/undertone.test.ts",
@@ -50,7 +50,8 @@
     "build:sitemap": "tsx scripts/build-sitemap-data.ts",
     "test": "NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX='https://www.jdoqocy.com/click-101771405-15496318?url=' node --import tsx --test 'src/**/*.test.ts' 'scripts/**/*.test.ts'",
     "test:seo": "node --import tsx --test 'src/lib/*.test.ts'",
-    "check:sitemap": "tsx scripts/check-sitemap-data.ts"
+    "check:sitemap": "tsx scripts/check-sitemap-data.ts",
+    "check:copy-counts": "tsx scripts/check-copy-counts.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.6.1",
