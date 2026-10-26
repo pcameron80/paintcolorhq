@@ -2,7 +2,7 @@ type GtagEvent = {
   [key: string]: string | number | boolean | undefined;
 };
 
-type PlausibleFn = ((event: string, options?: { props?: Record<string, string> }) => void) & { q?: unknown[] };
+type PlausibleFn = ((event: string, options?: { props?: Record<string, string>; interactive?: boolean }) => void) & { q?: unknown[] };
 
 declare global {
   interface Window {
@@ -55,7 +55,14 @@ function sendToPlausible(eventName: string, params?: GtagEvent) {
       (fn.q = fn.q || []).push(args);
     }, {} as { q?: unknown[] });
   window.plausible = fn;
-  fn(goal, Object.keys(props).length ? { props } : undefined);
+  // Web Vitals fire on every page load. Sent as interactive events they made
+  // every session count as engaged, so Plausible's bounce rate fell from about
+  // 65% to 1% the day #246 shipped (2026-10-24). Non-interactive events keep
+  // the goal counts without touching bounce rate or visit duration.
+  const options: { props?: Record<string, string>; interactive?: boolean } = {};
+  if (Object.keys(props).length) options.props = props;
+  if (eventName === "web_vitals") options.interactive = false;
+  fn(goal, Object.keys(options).length ? options : undefined);
 }
 
 export function trackEvent(eventName: string, params?: GtagEvent) {
