@@ -245,7 +245,7 @@ export default async function ColorPage({ params }: PageProps) {
   // are teal-outlined.
   const shoppingCtas = [
     // rel="sponsored" only when the Samplize link is actually affiliate-wrapped.
-    ...sampleLinks.filter((l) => l.primary).map((l) => ({ key: l.label, href: l.url, label: `${l.label} of ${color.name}`, sponsored: isHeadColor || l.affiliate })),
+    ...sampleLinks.filter((l) => l.primary).map((l) => ({ key: l.label, href: l.url, label: `${l.label} of ${color.name}`, sponsored: l.affiliate })),
     ...buyRetailerLinks.map((l) => {
       const a = affiliatizeRetailer(l.url);
       return { key: l.retailerName, href: a.url, label: `Buy at ${l.retailerName}`, sponsored: a.affiliate };
@@ -569,7 +569,7 @@ export default async function ColorPage({ params }: PageProps) {
                   )}
                   {AFFILIATE_ENABLED && (
                     <p className="mt-4 text-xs text-on-surface-variant">
-                      Some sample and supply links are affiliate links — if you buy through them, Paint Color HQ may earn a small commission at no extra cost to you. It helps keep the site free.
+                      Amazon links are affiliate links. As an Amazon Associate, Paint Color HQ earns from qualifying purchases, at no extra cost to you. Other sample and store links are not affiliate links.
                     </p>
                   )}
                 </div>
