@@ -75,6 +75,171 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Best Paint Colors for South-Facing Rooms (2026-12-03) ──────────────── */
+  {
+    slug: "best-paint-colors-south-facing-rooms",
+    title: "Best Paint Colors for South-Facing Rooms",
+    date: "2026-12-03",
+    author: "Philip Cameron",
+    excerpt:
+      "South-facing rooms get strong, warm light. Measured picks with LRV and yellowness, from cool grays to crisp whites, plus when a darker color works.",
+    coverColor: "#CBCCC6",
+    coverImage: "/blog/best-paint-colors-south-facing-rooms.webp",
+    tags: ["South-Facing", "Lighting", "Design"],
+    faq: [
+      {
+        question: "What is the best paint color for a south-facing room?",
+        answer:
+          "Benjamin Moore advises a white with a hint of gray or blue to counterbalance the amber cast of southern exposure. In our measurements, grays and gray-greens with low yellowness, such as Stonington Gray, Rainwashed and Palladian Blue, fit that advice. These are recommendations, not rules, so sample any color on the actual wall.",
+      },
+      {
+        question: "Do south-facing rooms need light or dark paint?",
+        answer:
+          "Both work, and the manufacturers lean different ways. Farrow & Ball suggests soft, pale tones to maximize the feeling of light and space. Benjamin Moore says slightly darker hues can help keep colors from washing out, and names Coastline and Evening Dove as moodier options for rooms with this much light.",
+      },
+      {
+        question: "Why does paint look yellow in a south-facing room?",
+        answer:
+          "Benjamin Moore notes that lighting often casts a warmer tone in a room with southern exposure. A color with a lot of yellow in it, which we measure as a high b* value, starts warmer to begin with. Hush measures b* 14.4 against 2.9 for Stonington Gray, so it is the one in this guide most likely to read creamy.",
+      },
+      {
+        question: "Does this advice apply in the Southern Hemisphere?",
+        answer:
+          "No. This guide assumes a home in the United States or elsewhere in the Northern Hemisphere, and the manufacturer guidance we cite was written for that case.",
+      },
+      {
+        question: "What white should I use for trim and ceilings in a south-facing room?",
+        answer:
+          "Benjamin Moore recommends Chantilly Lace, which it calls a crisp and clean white, for trim and ceilings in south-facing rooms. Its LRV is 90.0 and its yellowness (b*) is 2.2.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best paint colors for south-facing rooms are cool-leaning grays, gray-greens and crisp whites that counterbalance the warm, strong light. Benjamin Moore describes southern exposure as strong light with a warmer tone, and advises a white with a hint of gray or blue against its amber cast. Below are nine colors, each with its LRV and a measured yellowness value, plus a digital match from another brand. This guide assumes a home in the Northern Hemisphere.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What south light does to paint</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s color experts say a south-facing room &quot;tends to get consistent natural light throughout the day,&quot; that the light is strong, and that it often casts a warmer tone. Farrow &amp; Ball puts it as warm light &quot;from dawn until dusk.&quot; Because the light is already warm, we recommend favoring colors with low yellowness here, the opposite of the advice in our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We measure yellowness as b*, the yellow-to-blue axis of the CIELAB color space, computed from each color&apos;s hex. Higher means yellower, and negative means bluer. We also list LRV, the percentage of light a color reflects, from 0 (black) to 100 (pure white). Both numbers are in the table at the end.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cool grays and gray-greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These are the picks to start with, because they carry little yellow for the sun to amplify. Browse more in the {" "}<Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#cbccc6" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> (LRV 59.4) has b* 2.9, among the lowest yellowness values in this guide, which is why we recommend it first for rooms that get sun most of the day. Its closest match at Sherwin-Williams is <Swatch hex="#ccccc5" name="Sweater Weather" brand="Sherwin-Williams" href="/colors/sherwin-williams/sweater-weather-9548" />, nearly identical as a digital match (confirm with a physical sample).
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#ccc9c0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> (LRV 58.4) has b* 4.9, close to twice the yellowness of Stonington Gray. It is the warmer of the two grays, and a safer choice if the room also has a few hours of shade. Benjamin Moore&apos;s <Swatch hex="#cdc9bf" name="Apparition" brand="Benjamin Moore" href="/colors/benjamin-moore/apparition-860" /> is a nearly identical digital match.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#c2cdc5" name="Rainwashed" brand="Sherwin-Williams" href="/colors/sherwin-williams/rainwashed-6211" /> (LRV 59.2) has b* 2.7 and a green-leaning a* of -5.2, so it is a gray with a hint of green. <Swatch hex="#c2d2ca" name="Palladian Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/palladian-blue-hc-144" /> (LRV 60.4) goes a step further: b* 2.1 and a* of -6.9, the most green-leaning of the set. Both follow Benjamin Moore&apos;s advice to look to blues and greens to balance warm golden light. Sherwin-Williams&apos; <Swatch hex="#bfd2c9" name="Waterscape" brand="Sherwin-Williams" href="/colors/sherwin-williams/waterscape-6470" /> is a nearly identical digital match to Palladian Blue. Benjamin Moore&apos;s <Swatch hex="#c1c9c2" name="Silver Marlin" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-marlin-2139-50" /> is a nearly identical digital match to Rainwashed. More in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Crisp whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore calls <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> a &quot;crisp and clean white paint color&quot; for trim and ceilings in south-facing rooms. It measures LRV 90.0 and b* 2.2, so there is little yellow for the sun to push. Benjamin Moore&apos;s page labels it OC-65, while our database lists it as 2121-70. The north-facing guide warns against it for the opposite reason: the same cleanness reads stark in cool light.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#f1f0e7" name="Steam" brand="Benjamin Moore" href="/colors/benjamin-moore/steam-af-15" /> (LRV 84.2, b* 4.5) is a softer wall white from Benjamin Moore&apos;s list of experts&apos; favorites, which it describes as having versatile undertones across a large swath of exposures. Sherwin-Williams&apos; <Swatch hex="#efece3" name="Cold Foam" brand="Sherwin-Williams" href="/colors/sherwin-williams/cold-foam-9504" /> is a nearly identical digital match. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">When you want warmth anyway</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore also lists <Swatch hex="#d5cab0" name="Hush" brand="Benjamin Moore" href="/colors/benjamin-moore/hush-af-95" /> among its experts&apos; favorite versatile neutrals. It measures LRV 57.1 and b* 14.4, about five times the yellowness of Stonington Gray, so in a room with warm, strong light it is the pick most likely to read distinctly sandy. Choose it if you want that, not as a safe default. <Swatch hex="#d7c9ae" name="Natural Wool" brand="Sherwin-Williams" href="/colors/sherwin-williams/natural-wool-9508" /> is a nearly identical digital match.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Darker colors for strong light</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The manufacturers disagree about pale versus deep. Farrow &amp; Ball suggests soft, pale tones to maximize the feeling of light and space. Benjamin Moore says slightly darker hues can help prevent colors from washing out, and offers <Swatch hex="#929ea9" name="Coastline" brand="Benjamin Moore" href="/colors/benjamin-moore/coastline-af-570" /> and <Swatch hex="#525b68" name="Evening Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/evening-dove-2128-30" /> as moodier choices for these rooms. Coastline is LRV 33.9 and Evening Dove is LRV 12.0, and both have negative b* (-7.2 and -8.6), so they sit on the blue side. Sherwin-Williams&apos; <Swatch hex="#979fa5" name="Let it Rain" brand="Sherwin-Williams" href="/colors/sherwin-williams/let-it-rain-9152" /> is a very similar digital match to Coastline. Sherwin-Williams&apos; <Swatch hex="#515763" name="Mineral Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/mineral-gray-2740" /> is nearly identical to Evening Dove. Preview them side by side in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">All nine, measured</h2>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 font-semibold">Digital match at another brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#F4F6F1" name="Chantilly Lace" brand="BM 2121-70" href="/colors/benjamin-moore/chantilly-lace-2121-70" /></td>
+                <td className="py-2 pr-4">90.0</td>
+                <td className="py-2 pr-4">2.2</td>
+                <td className="py-2">Not applicable (trim and ceiling white)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f1f0e7" name="Steam" brand="BM AF-15" href="/colors/benjamin-moore/steam-af-15" /></td>
+                <td className="py-2 pr-4">84.2</td>
+                <td className="py-2 pr-4">4.5</td>
+                <td className="py-2"><Swatch hex="#efece3" name="Cold Foam" brand="SW 9504" href="/colors/sherwin-williams/cold-foam-9504" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cbccc6" name="Stonington Gray" brand="BM HC-170" href="/colors/benjamin-moore/stonington-gray-hc-170" /></td>
+                <td className="py-2 pr-4">59.4</td>
+                <td className="py-2 pr-4">2.9</td>
+                <td className="py-2"><Swatch hex="#ccccc5" name="Sweater Weather" brand="SW 9548" href="/colors/sherwin-williams/sweater-weather-9548" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc9c0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" /></td>
+                <td className="py-2 pr-4">58.4</td>
+                <td className="py-2 pr-4">4.9</td>
+                <td className="py-2"><Swatch hex="#cdc9bf" name="Apparition" brand="BM 860" href="/colors/benjamin-moore/apparition-860" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c2cdc5" name="Rainwashed" brand="SW 6211" href="/colors/sherwin-williams/rainwashed-6211" /></td>
+                <td className="py-2 pr-4">59.2</td>
+                <td className="py-2 pr-4">2.7</td>
+                <td className="py-2"><Swatch hex="#c1c9c2" name="Silver Marlin" brand="BM 2139-50" href="/colors/benjamin-moore/silver-marlin-2139-50" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c2d2ca" name="Palladian Blue" brand="BM HC-144" href="/colors/benjamin-moore/palladian-blue-hc-144" /></td>
+                <td className="py-2 pr-4">60.4</td>
+                <td className="py-2 pr-4">2.1</td>
+                <td className="py-2"><Swatch hex="#bfd2c9" name="Waterscape" brand="SW 6470" href="/colors/sherwin-williams/waterscape-6470" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d5cab0" name="Hush" brand="BM AF-95" href="/colors/benjamin-moore/hush-af-95" /></td>
+                <td className="py-2 pr-4">57.1</td>
+                <td className="py-2 pr-4">14.4</td>
+                <td className="py-2"><Swatch hex="#d7c9ae" name="Natural Wool" brand="SW 9508" href="/colors/sherwin-williams/natural-wool-9508" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#929ea9" name="Coastline" brand="BM AF-570" href="/colors/benjamin-moore/coastline-af-570" /></td>
+                <td className="py-2 pr-4">33.9</td>
+                <td className="py-2 pr-4">-7.2</td>
+                <td className="py-2"><Swatch hex="#979fa5" name="Let it Rain" brand="SW 9152" href="/colors/sherwin-williams/let-it-rain-9152" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#525b68" name="Evening Dove" brand="BM 2128-30" href="/colors/benjamin-moore/evening-dove-2128-30" /></td>
+                <td className="py-2 pr-4">12.0</td>
+                <td className="py-2 pr-4">-8.6</td>
+                <td className="py-2"><Swatch hex="#515763" name="Mineral Gray" brand="SW 2740" href="/colors/sherwin-williams/mineral-gray-2740" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Matches are computed from published color data and are digital matches only. Confirm any substitute with a physical sample, and check the pair side by side in the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>. See all <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> colors for more options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to test in strong light</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore recommends painting a foam poster board with your sample and observing it in the actual space. Check it in the morning, at midday and in the evening, and in more than one season: Benjamin Moore notes winter provides less light because the sun sets earlier. Our guide to <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">testing paint samples</Link> covers the method. If your windows face east instead, see the <Link href="/blog/best-paint-colors-east-facing-rooms" className="text-brand-blue hover:underline">east-facing room guide</Link>, and for how yellow and blue shift in different light, read <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding paint color undertones</Link>.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── How to Choose a Paint Color in Five Steps (2026-12-01) ──────────────── */
   {
     slug: "how-to-choose-paint-color",
