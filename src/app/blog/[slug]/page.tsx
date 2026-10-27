@@ -207,6 +207,22 @@ export default async function BlogPostPage({ params }: PageProps) {
             <div id="blog-content" className="prose prose-gray max-w-none mt-10 text-on-surface-variant leading-relaxed">
               <TableOfContents />
               {articleContent}
+              {/* The faq array is also the FAQPage JSON-LD below, so it has to be
+                  printed here: schema for questions a reader cannot see is a
+                  structured-data mismatch. */}
+              {post.faq && post.faq.length > 0 && (
+                <>
+                  <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently asked questions</h2>
+                  <dl className="mt-4 space-y-6">
+                    {post.faq.map((item) => (
+                      <div key={item.question}>
+                        <dt className="font-bold text-gray-900">{item.question}</dt>
+                        <dd className="mt-2 ml-0 text-gray-700 leading-relaxed">{item.answer}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </>
+              )}
             </div>
             <ColorLinkEnhancer containerRef="blog-content" />
           </article>
