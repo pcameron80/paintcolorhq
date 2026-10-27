@@ -75,6 +75,400 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Farmhouse paint colors (2026-11-26) ──────────────── */
+  {
+    slug: "farmhouse-paint-colors",
+    title: "Farmhouse Paint Colors: Whites, Greiges, Greens",
+    date: "2026-11-26",
+    author: "Philip Cameron",
+    excerpt:
+      "Farmhouse paint colors from Sherwin-Williams and Benjamin Moore, with LRV, measured yellowness and Behr and Valspar matches for whites, greiges and greens.",
+    coverColor: "#e6dfd3",
+    coverImage: "/blog/farmhouse-paint-colors.webp",
+    tags: ["Guide", "White Paint", "Cross-Brand Matching"],
+    faq: [
+      {
+        question: "What are the best farmhouse paint colors?",
+        answer:
+          "Benjamin Moore describes farmhouse paint colors as neutral hues, including soft whites, grays, off-whites and greige tones, with accents of color added for warmth and interest. Its modern farmhouse list names Revere Pewter, Balboa Mist, White Dove, Gray Owl, Hale Navy and Black. Sherwin-Williams suggests High Reflective White, Alabaster, Sea Salt and Stardew.",
+      },
+      {
+        question: "What white paint is best for a farmhouse?",
+        answer:
+          "Benjamin Moore names Simply White for farmhouse rooms and says it harmonizes with natural wood. Sherwin-Williams suggests High Reflective White or a bright white such as Alabaster for shiplap. By our data, High Reflective White (LRV 92.6) is the lightest and Shoji White (LRV 74.3) the darkest and yellowest of the whites in this guide.",
+      },
+      {
+        question: "What green goes with a farmhouse style?",
+        answer:
+          "Sherwin-Williams recommends soft greens like Sea Salt as an alternative to white. Benjamin Moore puts Bassett Hall Green on its farmhouse page and names Spa and Hancock Green for a modern farmhouse bathroom. Sea Salt measures the least yellow of these, with a b* of 3.4 and an LRV of 63.3.",
+      },
+      {
+        question: "What paint finish works for farmhouse interiors?",
+        answer:
+          "Benjamin Moore says eggshell and satin finishes are ideal for modern farmhouse interiors, with a semi-gloss on trim and doors to add definition.",
+      },
+      {
+        question: "What color is a farmhouse exterior?",
+        answer:
+          "Benjamin Moore shows a modern farmhouse in Black Satin with Brilliant White trim, and lists Iron Mountain and Kendall Charcoal as other intense siding colors. Sherwin-Williams used Pure White on the siding of its modern farmhouse project, with Iron Ore shutters.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Farmhouse paint colors are soft whites, off-whites, grays and greiges, with a muted green or blue and one dark color for contrast. Benjamin Moore defines the style as neutral hues, including soft whites, grays, off-whites and greige tones, with accents of color added for warmth and interest. Below are the whites, greiges, greens and darks that Sherwin-Williams and Benjamin Moore name for the style, each with its light reflectance value (LRV), a measured yellowness figure, and the closest Behr and Valspar match.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What the paint makers say counts as farmhouse</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We only list colors a manufacturer has tied to the style. Our sources are Sherwin-Williams&apos; farmhouse color guide, its modern farmhouse project home, and Benjamin Moore&apos;s farmhouse and modern farmhouse color pages.
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Sherwin-Williams&apos; farmhouse guide calls <Link href="/colors/sherwin-williams/high-reflective-white-7757" className="text-brand-blue hover:underline">High Reflective White</Link> &quot;a great color to start with,&quot; suggests a shiplap wall in a bright white such as <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link>, and offers muted grays and blues like Stardew and soft greens like <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sea Salt</Link> as alternatives to white.</li>
+          <li>In its modern farmhouse project, Sherwin-Williams used <Link href="/colors/sherwin-williams/pure-white-7005" className="text-brand-blue hover:underline">Pure White</Link> on siding and kitchen cabinets, <Link href="/colors/sherwin-williams/shoji-white-7042" className="text-brand-blue hover:underline">Shoji White</Link> on hallway and family room walls, <Link href="/colors/sherwin-williams/iron-ore-7069" className="text-brand-blue hover:underline">Iron Ore</Link> on the shutters, and Caviar on windows and doors.</li>
+          <li>Benjamin Moore&apos;s farmhouse page lists Simply White, Sea Haze, Avon Green, Hudson Bay, Heritage Red and Venetian Portico as its most popular farmhouse colors. Its modern farmhouse page lists Revere Pewter, Balboa Mist, <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>, Gray Owl, Hale Navy and Black.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a ready-made palette rather than individual colors, see our <Link href="/inspiration/modern-farmhouse" className="text-brand-blue hover:underline">modern farmhouse color palette</Link>. This guide goes the other direction and compares the individual colors, so you can build your own.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to read the numbers</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          LRV runs from 0 (black) to 100 (pure white) and tells you how much light a color reflects. The yellowness column is b*, the yellow-blue axis of the CIELAB color space, which we calculated from each color&apos;s hex value in our database. A higher b* means more yellow, zero is neutral, and a negative number leans blue. We use it instead of the &quot;undertone&quot; label because it is a measurement, though it comes from the on-screen hex, so confirm it with a physical sample. For the vocabulary behind it, see our guide to <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The closest-match columns come from our cross-brand database. Every pair below rates nearly identical (a Delta E 2000 difference under 2) unless the cell says otherwise. These are digital matches. Confirm any substitute against a physical sample before you buy.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore says Simply White &quot;harmonizes beautifully with natural wood tones.&quot; (Benjamin Moore&apos;s farmhouse pages show Simply White as OC-117, while our database stores it as 2143-70.) The seven whites below span 74.3 to 92.6 in LRV, and the yellowness spread is wider than most people expect: High Reflective White measures b* 2.9, while Shoji White measures 6.7.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest SW or BM</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7f1" name="High Reflective White" brand="SW 7757" href="/colors/sherwin-williams/high-reflective-white-7757" /></td>
+                <td className="py-2 pr-4">92.6</td>
+                <td className="py-2 pr-4">2.9</td>
+                <td className="py-2 pr-4">Ultra Pure White</td>
+                <td className="py-2 pr-4">Cuddle Down</td>
+                <td className="py-2">Chantilly Lace</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7ee" name="Simply White" brand="BM 2143-70" href="/colors/benjamin-moore/simply-white-2143-70" /></td>
+                <td className="py-2 pr-4">89.5</td>
+                <td className="py-2 pr-4">4.3</td>
+                <td className="py-2 pr-4">Palais White</td>
+                <td className="py-2 pr-4">Ewe</td>
+                <td className="py-2">High Reflective White</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">83.7</td>
+                <td className="py-2 pr-4">3.0</td>
+                <td className="py-2 pr-4">Melting Icicles</td>
+                <td className="py-2 pr-4">Snowed In</td>
+                <td className="py-2">Cloud Cover</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2 pr-4">4.5</td>
+                <td className="py-2 pr-4">Harmonious White</td>
+                <td className="py-2 pr-4">Paramount White</td>
+                <td className="py-2">Cold Foam</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">82.2</td>
+                <td className="py-2 pr-4">5.2</td>
+                <td className="py-2 pr-4">Arcade White</td>
+                <td className="py-2 pr-4">Polar White</td>
+                <td className="py-2">Glacier White</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4">81.9</td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4">Silver Leaf</td>
+                <td className="py-2 pr-4">Polar White</td>
+                <td className="py-2">Cotton</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /></td>
+                <td className="py-2 pr-4">74.3</td>
+                <td className="py-2 pr-4">6.7</td>
+                <td className="py-2 pr-4">Crisp Linen</td>
+                <td className="py-2 pr-4">Totten&apos;s Inlet</td>
+                <td className="py-2">Etiquette</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two pairs show the difference. <Link href="/colors/sherwin-williams/pure-white-7005" className="text-brand-blue hover:underline">Pure White</Link> (b* 3.0) and <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link> (b* 5.2) have almost the same LRV, 83.7 and 82.2, so the choice between them is purely about how much yellow you want next to wood and brick. And <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link> (b* 4.5) sits between them. <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> is listed in the results on both of Benjamin Moore&apos;s farmhouse pages, and at b* 5.6 it is the yellowest of the three Benjamin Moore whites here. Browse the rest in the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link> families, or read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Walls in Shoji White are the warmest option in the table, and Sherwin-Williams used it on walls in its modern farmhouse project home, with Pure White on the cabinets and siding. The gap in LRV between those two is 9.4 points (74.3 and 83.7), enough to read as a deliberate step.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse greiges and grays</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore recommends &quot;soft, earthy&quot; colors for modern farmhouse walls and names Revere Pewter, Balboa Mist and Feather Down for walls and trim. Its farmhouse collection page also lists <Link href="/colors/benjamin-moore/pale-oak-oc-20" className="text-brand-blue hover:underline">Pale Oak</Link> and Edgecomb Gray among its results, although it does not single them out. The table is ordered from lightest to darkest.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest SW or BM</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /></td>
+                <td className="py-2 pr-4">68.6</td>
+                <td className="py-2 pr-4">5.9</td>
+                <td className="py-2 pr-4">Campfire Ash</td>
+                <td className="py-2 pr-4">Glass Pebble</td>
+                <td className="py-2">Oat Milk</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dbd7cd" name="Balboa Mist" brand="BM OC-27" href="/colors/benjamin-moore/balboa-mist-oc-27" /></td>
+                <td className="py-2 pr-4">65.5</td>
+                <td className="py-2 pr-4">5.4</td>
+                <td className="py-2 pr-4">Ginger Sugar</td>
+                <td className="py-2 pr-4">Slush</td>
+                <td className="py-2">Winter Walk</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /></td>
+                <td className="py-2 pr-4">63.1</td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2 pr-4">Arid Landscape</td>
+                <td className="py-2 pr-4">Warm Putty</td>
+                <td className="py-2">Dumpling</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /></td>
+                <td className="py-2 pr-4">55.1</td>
+                <td className="py-2 pr-4">7.6</td>
+                <td className="py-2 pr-4">Coliseum Marble</td>
+                <td className="py-2 pr-4">Villa Grey</td>
+                <td className="py-2">Simple Stone</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#b9bbb7" name="Coventry Gray" brand="BM HC-169" href="/colors/benjamin-moore/coventry-gray-hc-169" /></td>
+                <td className="py-2 pr-4">48.2</td>
+                <td className="py-2 pr-4">1.8</td>
+                <td className="py-2 pr-4">Quiet Time</td>
+                <td className="py-2 pr-4">Urban Sunrise</td>
+                <td className="py-2">Argos</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#b4b6ac" name="Sea Haze" brand="BM 2137-50" href="/colors/benjamin-moore/sea-haze-2137-50" /></td>
+                <td className="py-2 pr-4">45.4</td>
+                <td className="py-2 pr-4">4.8</td>
+                <td className="py-2 pr-4">Stone Mill</td>
+                <td className="py-2 pr-4">Gray-Green Linen</td>
+                <td className="py-2">Sensible Hue</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#aca79e" name="Dorian Gray" brand="SW 7017" href="/colors/sherwin-williams/dorian-gray-7017" /></td>
+                <td className="py-2 pr-4">38.9</td>
+                <td className="py-2 pr-4">5.3</td>
+                <td className="py-2 pr-4">Stingray Gray</td>
+                <td className="py-2 pr-4">Graceful Gray</td>
+                <td className="py-2">Upper West Side</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The yellowness column splits this group in two. Revere Pewter (7.6) and Edgecomb Gray (8.1) are the yellowest, which pushes them toward greige rather than gray. Coventry Gray (1.8) is the least yellow gray here and reads as a plain light gray. Sea Haze is the one Benjamin Moore describes as &quot;a soothing gray with soft green undertones,&quot; and its measured a* of -2.5 (a slight lean toward green) agrees. Sherwin-Williams pairs Alabaster with Dorian Gray, which at LRV 38.9 is the darkest gray here, about 30 points lower than Pale Oak. For more greiges see the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families and our <Link href="/blog/best-greige-paint-colors" className="text-brand-blue hover:underline">best greige paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Both makers name greens for the style. Sherwin-Williams calls whispery soft greens like Sea Salt a good alternative to white. Benjamin Moore puts Bassett Hall Green on its farmhouse page, pairs it with white wainscoting, and names Spa and Hancock Green among the greens it likes for a modern farmhouse bathroom.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest SW or BM</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /></td>
+                <td className="py-2 pr-4">63.3</td>
+                <td className="py-2 pr-4">3.4</td>
+                <td className="py-2 pr-4">Silver Setting</td>
+                <td className="py-2 pr-4">Three Wishes</td>
+                <td className="py-2">Gray Cashmere</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d5dbc0" name="Hancock Green" brand="BM HC-117" href="/colors/benjamin-moore/hancock-green-hc-117" /></td>
+                <td className="py-2 pr-4">66.1</td>
+                <td className="py-2 pr-4">12.6</td>
+                <td className="py-2 pr-4">Airy Green</td>
+                <td className="py-2 pr-4">Prairie Willow</td>
+                <td className="py-2">Honeydew (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d6d4b9" name="Spa" brand="BM AF-435" href="/colors/benjamin-moore/spa-af-435" /></td>
+                <td className="py-2 pr-4">62.6</td>
+                <td className="py-2 pr-4">13.6</td>
+                <td className="py-2 pr-4">Pale Cucumber</td>
+                <td className="py-2 pr-4">Lunar Tide</td>
+                <td className="py-2">Acanthus (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#a8a888" name="Bassett Hall Green" brand="BM CW-480" href="/colors/benjamin-moore/bassett-hall-green-cw-480" /></td>
+                <td className="py-2 pr-4">38.1</td>
+                <td className="py-2 pr-4">16.6</td>
+                <td className="py-2 pr-4">Meditation Time</td>
+                <td className="py-2 pr-4">Backwoods (very similar)</td>
+                <td className="py-2">Majolica Green (very similar)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sea Salt is the quietest green on this list: b* 3.4 and an LRV of 63.3, close to the greiges above, so it works as a wall color. Hancock Green and Spa are far more yellow (b* 12.6 and 13.6) at nearly the same lightness, and Bassett Hall Green is the deepest at LRV 38.1. Look at more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> family.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark accents</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore says Hale Navy and Black Satin &quot;add depth&quot; to a modern farmhouse, and the Sherwin-Williams home uses Iron Ore and Caviar on shutters, windows and doors. Black HC-190 and Black Satin 2131-10 share an LRV of 4.6 in our database.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest SW or BM</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
+                <td className="py-2 pr-4">8.4</td>
+                <td className="py-2 pr-4">-7.6</td>
+                <td className="py-2 pr-4">Dark Night</td>
+                <td className="py-2 pr-4">Rogue Blue</td>
+                <td className="py-2">Sea Mariner</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#313132" name="Black" brand="BM HC-190" href="/colors/benjamin-moore/black-hc-190" /></td>
+                <td className="py-2 pr-4">4.6</td>
+                <td className="py-2 pr-4">-0.6</td>
+                <td className="py-2 pr-4">Limousine Leather (very similar)</td>
+                <td className="py-2 pr-4">Tomcat</td>
+                <td className="py-2">Tricorn Black</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2 pr-4">Black Suede</td>
+                <td className="py-2 pr-4">Caviar (very similar)</td>
+                <td className="py-2">Notre Dame</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#313031" name="Caviar" brand="SW 6990" href="/colors/sherwin-williams/caviar-6990" /></td>
+                <td className="py-2 pr-4">3.0</td>
+                <td className="py-2 pr-4">-0.5</td>
+                <td className="py-2 pr-4">Limousine Leather (very similar)</td>
+                <td className="py-2 pr-4">Noir</td>
+                <td className="py-2">Black</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Hale Navy&apos;s b* of -7.6 is the measured reason it reads blue. Black and Caviar sit within 1 point of zero, and Iron Ore, at 1.2, is the only one of the four with a slight yellow lean.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Two whole-house schemes</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These are our suggestions, built only from colors the manufacturers name. Each keeps the trim lighter than the walls.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Role</th>
+                <th className="py-2 pr-4 font-semibold">Benjamin Moore scheme</th>
+                <th className="py-2 font-semibold">Sherwin-Williams scheme</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Walls</td>
+                <td className="py-2 pr-4">Balboa Mist (LRV 65.5)</td>
+                <td className="py-2">Shoji White (LRV 74.3)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Trim and ceiling</td>
+                <td className="py-2 pr-4">White Dove (LRV 83.2)</td>
+                <td className="py-2">Pure White (LRV 83.7)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Cabinets or island</td>
+                <td className="py-2 pr-4">Hale Navy (LRV 8.4)</td>
+                <td className="py-2">Sea Salt (LRV 63.3)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Door and hardware</td>
+                <td className="py-2 pr-4">Black (LRV 4.6)</td>
+                <td className="py-2">Caviar (LRV 3.0)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The wall-to-trim gap is 17.7 LRV points in the Benjamin Moore scheme and 9.4 in the Sherwin-Williams one. Sherwin-Williams used Pure White on its project&apos;s kitchen cabinets, so a Sea Salt island is our own suggestion, not theirs. Benjamin Moore says eggshell and satin suit modern farmhouse interiors and a semi-gloss on trim and doors adds definition, and our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers the trade-offs. Preview either set in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> or build variations in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse exterior</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s exterior example is a house in Black Satin 2131-10 with trim in <Swatch hex="#ebeee9" name="Brilliant White" brand="BM OC-150" href="/colors/benjamin-moore/brilliant-white-oc-150" /> (LRV 83.8). It also lists Iron Mountain and Kendall Charcoal as intense siding colors, and says to choose off-white trim that shares the undertone of the deep body color. Sherwin-Williams went the other way with Pure White siding and Iron Ore shutters. For more body colors see our guide to <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">the best exterior paint colors</Link>, and for the trim white, <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">how to choose a trim color</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Before you buy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Compare any two colors from this guide in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, then paint a large sample on the wall and look at it in morning and evening light. If you are covering a whole house, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> estimates the gallons. The manufacturers&apos; farmhouse collections are at <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and each color page here lists its closest match in every other brand.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Basement Paint Colors for Low-Light Rooms (2026-11-24) ──────────────── */
   {
     slug: "basement-paint-colors",
