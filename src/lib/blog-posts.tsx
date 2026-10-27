@@ -75,6 +75,468 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Painting a Brick House: Decide This First (2026-11-19) ──────────────── */
+  {
+    slug: "painted-brick-house-colors",
+    title: "Painting a Brick House: Decide This First",
+    date: "2026-11-19",
+    author: "Philip Cameron",
+    excerpt:
+      "Paint, limewash or mineral paint? Data-sheet temperatures, wait times and permeance, then 12 colors for painted brick with trim and door ideas.",
+    coverColor: "#434341",
+    coverImage: "/blog/painted-brick-house-colors.webp",
+    tags: ["Exterior", "How-To", "Guide"],
+    faq: [
+      {
+        question: "Can you paint a brick house?",
+        answer:
+          "Yes, if the brick is unglazed and in sound condition, with a masonry primer and a masonry-rated topcoat. The Brick Industry Association warns that paint is hard to remove and that any coating can trap moisture if water is already getting into the wall, so repair leaks, efflorescence and failed mortar first. It advises against treating glazed brick unless the coating maker approves.",
+      },
+      {
+        question: "How long should new brick cure before painting?",
+        answer:
+          "It depends on the maker. Benjamin Moore says 30 days and a pH of 10 or less, or 7 days if you seal first with its masonry sealer. Sherwin-Williams&apos;s Loxon primer sheet says masonry should be at least 7 days old, and its acrylic coating sheet says mortar must be cured at least 28 days. The Brick Industry Association says at least 30 days for new or repaired mortar. Sherwin-Williams&apos;s FAQ advises letting new brick weather for a year.",
+      },
+      {
+        question: "What is the minimum temperature for painting brick?",
+        answer:
+          "Check the data sheet for your product. Sherwin-Williams Loxon primer, Benjamin Moore Ultra Spec EXT, KEIM Granital and KEIM Soldalit list 40°F. Sherwin-Williams Loxon Acrylic Coating and Benjamin Moore&apos;s elastomeric coating list 50°F, and Romabio limewash lists 55°F. The Brick Industry Association also advises against painting a surface within 5°F of the dew point.",
+      },
+      {
+        question: "Do you need to prime brick before painting?",
+        answer:
+          "The makers&apos; systems say yes. Sherwin-Williams&apos;s guide to painting a brick house recommends starting with its Loxon Concrete &amp; Masonry Primer, and Benjamin Moore calls for its masonry sealer when the pH is 10 or more. The Brick Industry Association recommends an alkali-resistant primer or a masonry-designated paint because the mortar&apos;s alkalinity can reduce paint durability.",
+      },
+      {
+        question: "Is limewash better than paint on brick?",
+        answer:
+          "It depends on the look and the starting surface. According to the Brick Industry Association, limewash is mineral, does not change the brick&apos;s vapor permeability, lasts 5 to 10 years or more and can be recoated without stripping, but it weathers unevenly. Romabio will not guarantee its limewash over acrylic or oil-based paint. Acrylic paint gives a uniform, opaque finish but forms a film and needs repainting over time.",
+      },
+      {
+        question: "What color should you paint a brick house?",
+        answer:
+          "Most choices fall into four directions: white (LRV 81.9 to 83.7 for the four whites in this post), warm off-white (66.2 to 74.3), greige (55.1 to 63.1) and charcoal or black (2.9 to 8.1). Pick the trim at the same time, because the gap in LRV between brick and trim sets how crisp the edge looks, and paint a large test panel on the wall before committing.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Painting a brick house starts with the coating, not the color. Acrylic paint forms a film on the brick, while limewash and mineral paints soak into the pores, and Sherwin-Williams says staining suits exterior brick better than paint because brick is porous and needs to breathe. If you paint, use a masonry primer and a masonry-rated topcoat, let new brick and repointed mortar cure first (the data sheets below say 7 to 30 days), and wait for weather above the product&apos;s minimum, usually 40 to 50°F. Then pick from the 12 colors below, which come with LRV, closest Behr and Valspar matches, and Sherwin-Williams trim and door ideas.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Decide the coating first</h2>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The Brick Industry Association (BIA), the national trade association for clay brick manufacturers, puts permanence ahead of color. Its technical note on changing the appearance of brick says paint can be very difficult to remove from brick without causing damage, and that painted exterior brick can need repainting on a regular basis. So the first choice is which coating, because it is the one you will live with. BIA describes four, and the table adds what it says about each.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Coating</th>
+                <th className="py-2 pr-4 font-semibold">How it bonds</th>
+                <th className="py-2 pr-4 font-semibold">Vapor permeance</th>
+                <th className="py-2 font-semibold">Upkeep</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Acrylic latex or masonry paint</td>
+                <td className="py-2 pr-4">Forms a film on the surface of the brick</td>
+                <td className="py-2 pr-4">BIA calls acrylic latex typically vapor semi-permeable. The data sheets below report 11.9 to 59.5 perms</td>
+                <td className="py-2">A recurring maintenance task, repainted over the life of the wall</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Limewash</td>
+                <td className="py-2 pr-4">Mineral. Calcite crystals bond to the masonry as the lime absorbs carbon dioxide</td>
+                <td className="py-2 pr-4">BIA says it will not change the brick&apos;s vapor permeability</td>
+                <td className="py-2">Lasts 5 to 10 years or more, and new coats go over old without stripping</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Mineral (silicate) paint</td>
+                <td className="py-2 pr-4">Silicate binder soaks in and bonds chemically. Needs clean, unsealed brick</td>
+                <td className="py-2 pr-4">BIA says it does not affect the substrate&apos;s permeability. KEIM sheets report 77 to 85 perms</td>
+                <td className="py-2">Warranties of 15 years or more, and some projects went 30 years or more without recoating</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Masonry stain</td>
+                <td className="py-2 pr-4">Changes the color and keeps the brick texture. Mineral-based preferred</td>
+                <td className="py-2 pr-4">BIA prefers mineral-based stains for their high vapor permeability</td>
+                <td className="py-2">Does not need maintenance, with some projects lasting 20 years or more</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams is blunter. Its stain guide says staining brick is better than painting because bricks are very porous and need to breathe, which it calls essential for exterior brick, and that painting brick takes a specific formula. A stain keeps the brick&apos;s texture and mortar lines, while paint at full opacity softens them. BIA adds that a uniform paint color can also highlight differences in the texture of the brickwork.
+        </p>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Four conditions can rule a coating in or out before you look at a single color:
+        </p>
+
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Glazed brick.</strong> BIA says mineral paints, stains and limewash will not bond to a glazed face. A film-forming coating can be applied if the glaze is roughened and a specialty product is used, but BIA calls the durability very limited and does not recommend it.</li>
+          <li><strong>Brick that is already painted.</strong> BIA says mineral paint needs the old coating removed, and Romabio says it cannot guarantee its limewash over acrylic or oil-based paint. KEIM&apos;s Granital sheet rules out previously painted elastomeric, oil-based and lacquered surfaces and calls for a bonding primer over acrylic paint, while its Soldalit sheet says it anchors to latex or acrylic paint that is in sound condition. In practice that leaves a repaint, or a mineral paint made for painted surfaces.</li>
+          <li><strong>Moisture already in the wall.</strong> BIA says most brick deterioration comes from unaddressed moisture, and that a coating can make it worse by trapping water. Stains, soiling and efflorescence on the face are its signs of excess moisture. Fix the source first.</li>
+          <li><strong>The type of wall.</strong> BIA says a drainage wall (with an air space and weeps behind the brick) gives more flexibility in coatings than a mass masonry wall, which dries mainly through its face and needs a coating that does not slow that. Ask the brick maker or a mason which one you have.</li>
+        </ul>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What the data sheets say: temperature, waiting time, permeance</h2>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These figures come from each maker&apos;s own sheet, which is also what the product warranty is written around. Makers revise their sheets, so check the current one for the product on your can. The permeance column is each sheet&apos;s own breathability figure, in perms.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Product</th>
+                <th className="py-2 pr-4 font-semibold">Minimum temperature</th>
+                <th className="py-2 pr-4 font-semibold">New masonry</th>
+                <th className="py-2 pr-4 font-semibold">Recoat</th>
+                <th className="py-2 font-semibold">Reported permeance</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Sherwin-Williams Loxon Concrete &amp; Masonry Primer-Sealer</td>
+                <td className="py-2 pr-4">40°F, and air and surface must stay above 40°F for 48 hours</td>
+                <td className="py-2 pr-4">Masonry at least 7 days old. Outdoors, topcoat within 14 days</td>
+                <td className="py-2 pr-4">24 hours</td>
+                <td className="py-2">25.79 perms (ASTM D1653)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Sherwin-Williams Loxon Acrylic Coating (over the primer)</td>
+                <td className="py-2 pr-4">50°F</td>
+                <td className="py-2 pr-4">Mortar cured at least 28 days to coat directly</td>
+                <td className="py-2 pr-4">24 hours</td>
+                <td className="py-2">11.9 perms for one primer coat and two coats (based on ASTM D1653)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Benjamin Moore Ultra Spec EXT W455</td>
+                <td className="py-2 pr-4">40°F</td>
+                <td className="py-2 pr-4">30 days. Prime with Masonry Sealer 608 or N609 if pH is 10 or more</td>
+                <td className="py-2 pr-4">4 hours</td>
+                <td className="py-2">59.5 perms for one sealer coat and 1 to 2 coats (ASTM D1653)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Benjamin Moore Ultra Spec Masonry Elastomeric 360</td>
+                <td className="py-2 pr-4">50°F, and not if rain is expected within 24 hours</td>
+                <td className="py-2 pr-4">30 days and pH of 10 or less, or 7 days and pH of 13 or less if sealed first</td>
+                <td className="py-2 pr-4">12 hours</td>
+                <td className="py-2">38 perms (ASTM D1653)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">KEIM Granital (mineral silicate)</td>
+                <td className="py-2 pr-4">40°F and rising, below 86°F, no sun-heated brick</td>
+                <td className="py-2 pr-4">Not stated for brick</td>
+                <td className="py-2 pr-4">24 hours at 50°F or above, 24 to 48 hours at 40 to 50°F</td>
+                <td className="py-2">80 to 85 perms (ASTM E96)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">KEIM Soldalit (sol-silicate)</td>
+                <td className="py-2 pr-4">40°F and rising, below 95°F, no direct sun</td>
+                <td className="py-2 pr-4">Not stated for brick</td>
+                <td className="py-2 pr-4">12 hours at 50°F or above, 24 to 48 hours at 40 to 50°F</td>
+                <td className="py-2">77 perms (ASTM E96)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Romabio Classico Limewash</td>
+                <td className="py-2 pr-4">55°F, below 90°F. The wash-off antique finish needs 70°F or more</td>
+                <td className="py-2 pr-4">Not stated</td>
+                <td className="py-2 pr-4">2 to 8 hours after the first coat, 1 to 4 hours after later coats</td>
+                <td className="py-2">Sd value of 0.10 m, a different unit from perms</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three notes on reading that table. First, BIA classes anything over 10 perms as vapor permeable and says brick treatments commonly report 20 to 85 perms. Every perm figure above clears 10, but BIA warns that multiple coats and heavy applications lower permeance, so the film on your wall may differ from the one the sheet tested. Second, BIA says ASTM D1653 and ASTM E96 are not interchangeable, so the Sherwin-Williams and Benjamin Moore numbers and the KEIM numbers are not a ranking of each other. Third, the cold limit is a floor, not a target: BIA also advises against painting a surface within 5°F of the dew point.
+        </p>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The wait for new brick is the number that varies most. Benjamin Moore ties its 30 days to a pH of 10 or less. BIA gives at least 30 days for new or repaired mortar to cure, longer in cool weather. Sherwin-Williams&apos;s own exterior FAQ goes further and says to let new brick weather for a year before painting, so anything in the brick has time to leach out. If the build is under a year old and the brick shows efflorescence, the year is the safer plan.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Prep order that avoids the usual failures</h2>
+
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Find the water.</strong> BIA lists staining, soiling, efflorescence, failed sealant joints, damaged flashing and clogged weeps as problems to correct before any coating.</li>
+          <li><strong>Repoint.</strong> Mortar that is loose, missing or cracked wider than a business card should be removed and repointed, and BIA recommends a mason experienced in restoration for exterior work. New mortar needs at least 30 days to cure before you coat.</li>
+          <li><strong>Remove efflorescence and watch for it to return.</strong> Efflorescence is a deposit of water-soluble salts on the face of the masonry. BIA says to remove it and observe the wall for recurrence before coating. It says a stiff non-metallic brush with soapy water, or low-pressure washing, is often enough, and not to use muriatic acid, diluted or not.</li>
+          <li><strong>Let it dry.</strong> BIA says wait at least 24 hours after cleaning, longer after rain, and describes a check: tape a 4 mil plastic sheet over the brick for at least 16 hours, and if moisture shows on the plastic, wait longer. Sherwin-Williams&apos;s FAQ says to allow several days.</li>
+          <li><strong>Prime the whole wall.</strong> Sherwin-Williams&apos;s primer sheet says to prime the entire surface instead of spot priming, because primed and unprimed areas hold out the topcoat differently. BIA recommends an alkali-resistant primer or a paint designated for masonry, since the mortar&apos;s alkalinity reduces paint durability.</li>
+          <li><strong>Check the forecast.</strong> Stay above the minimum on the sheet, and keep rain off the wall for the time it lists: 12 hours for the KEIM and Romabio products and 24 hours for Benjamin Moore&apos;s elastomeric coating.</li>
+          <li><strong>Paint a test panel.</strong> BIA recommends sample panels and says to judge them dry, because treatments can look different wet. For how many coats a color needs, see <Link href="/blog/how-many-coats-of-paint" className="text-brand-blue hover:underline">how long to wait between coats of paint</Link>.</li>
+        </ol>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors for painted brick</h2>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These 12 are recommendations, picked to cover the four directions people paint brick: white, warm off-white, greige and charcoal. Every LRV is from our database, which has the full list for each brand. Closest-match names link to their color pages, and every match is a digital match: confirm it with a physical sample before buying. Yellowness is CIELAB b* computed from each color&apos;s hex, where a higher number is yellower. For exterior color theory beyond brick, including the roof and the plantings, see <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">the best exterior paint colors</Link>.
+        </p>
+
+        <h3 className="mt-8 text-xl font-bold text-gray-900">White</h3>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams describes <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> as a soft, warm but balanced white, and <Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /> as a bright white with the slightest yellow undertone, which it suggests using on trim. <Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /> and <Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /> are Benjamin Moore whites in the same range. By the b* measurement, Pure White is the least yellow of the four and Swiss Coffee the most, and all four sit within 2 LRV points of each other. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest in the other big brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">82.2</td>
+                <td className="py-2 pr-4">5.2</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/arcade-white-gr-w08" className="text-brand-blue hover:underline">Arcade White</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/polar-white-7003-16" className="text-brand-blue hover:underline">Polar White</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/glacier-white-oc-37" className="text-brand-blue hover:underline">Glacier White</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">83.7</td>
+                <td className="py-2 pr-4">3.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/melting-icicles-bwc-20" className="text-brand-blue hover:underline">Melting Icicles</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/snowed-in-6004-1a" className="text-brand-blue hover:underline">Snowed In</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/cloud-cover-855" className="text-brand-blue hover:underline">Cloud Cover</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2 pr-4">4.5</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/harmonious-white-dc-013" className="text-brand-blue hover:underline">Harmonious White</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/paramount-white-7006-22" className="text-brand-blue hover:underline">Paramount White</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/cold-foam-9504" className="text-brand-blue hover:underline">Cold Foam</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4">81.9</td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/silver-leaf-w-f-720" className="text-brand-blue hover:underline">Silver Leaf</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/polar-white-7003-16" className="text-brand-blue hover:underline">Polar White</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/cotton-9581" className="text-brand-blue hover:underline">Cotton</Link> (nearly identical)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="mt-8 text-xl font-bold text-gray-900">Warm off-white</h3>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams calls <Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> a warm, creamy white that borders on greige, and <Swatch hex="#dfd3c3" name="Natural Linen" brand="SW 9109" href="/colors/sherwin-williams/natural-linen-9109" /> a light, warm neutral with a greige undertone. Both measure yellower than the whites above. The <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white family</Link> has more in this range.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest in the other big brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /></td>
+                <td className="py-2 pr-4">74.3</td>
+                <td className="py-2 pr-4">6.7</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/crisp-linen-mq3-13" className="text-brand-blue hover:underline">Crisp Linen</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/tottens-inlet-7006-9" className="text-brand-blue hover:underline">Totten&apos;s Inlet</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/etiquette-af-50" className="text-brand-blue hover:underline">Etiquette</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dfd3c3" name="Natural Linen" brand="SW 9109" href="/colors/sherwin-williams/natural-linen-9109" /></td>
+                <td className="py-2 pr-4">66.2</td>
+                <td className="py-2 pr-4">9.4</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/parisian-taupe-pwn-42" className="text-brand-blue hover:underline">Parisian Taupe</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/gentle-shadows-8005-5a" className="text-brand-blue hover:underline">Gentle Shadows</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/dusty-road-1017" className="text-brand-blue hover:underline">Dusty Road</Link> (nearly identical)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="mt-8 text-xl font-bold text-gray-900">Gray and greige</h3>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /> is Sherwin-Williams&apos;s own best-selling color and, by its description, a gray with a beige undertone. <Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /> and <Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> are the Benjamin Moore picks in the same range. All three measure b* 5.7 or higher, so none is a cool gray. See the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link>.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest in the other big brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /></td>
+                <td className="py-2 pr-4">60.1</td>
+                <td className="py-2 pr-4">5.7</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Toasty Gray</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Heritage Gray</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /></td>
+                <td className="py-2 pr-4">55.1</td>
+                <td className="py-2 pr-4">7.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/coliseum-marble-ppu8-16" className="text-brand-blue hover:underline">Coliseum Marble</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/villa-grey-6005-1b" className="text-brand-blue hover:underline">Villa Grey</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/simple-stone-9521" className="text-brand-blue hover:underline">Simple Stone</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /></td>
+                <td className="py-2 pr-4">63.1</td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/arid-landscape-n310-2" className="text-brand-blue hover:underline">Arid Landscape</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/warm-putty-6006-1a" className="text-brand-blue hover:underline">Warm Putty</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/dumpling-9616" className="text-brand-blue hover:underline">Dumpling</Link> (nearly identical)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="mt-8 text-xl font-bold text-gray-900">Dark</h3>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams calls <Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /> a cool, deep charcoal that suits exteriors, <Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /> a brownish gray, and <Swatch hex="#2f2f30" name="Tricorn Black" brand="SW 6258" href="/colors/sherwin-williams/tricorn-black-6258" /> a true black that works with any undertone. All three are under LRV 9. Dark colors can also change the primer: Benjamin Moore&apos;s sheets say certain custom colors require a Deep Color Base Primer tinted to a special prescription, so ask the store about the primer when you order.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest in the other big brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/black-suede-s-h-790" className="text-brand-blue hover:underline">Black Suede</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/caviar-8006-4g" className="text-brand-blue hover:underline">Caviar</Link> (very similar)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/notre-dame-csp-570" className="text-brand-blue hover:underline">Notre Dame</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /></td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2 pr-4">4.1</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/black-bean-790d-7" className="text-brand-blue hover:underline">Black Bean</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/semi-sweet-4003-2c" className="text-brand-blue hover:underline">Semi-Sweet</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/dragons-breath-1547" className="text-brand-blue hover:underline">Dragon&apos;s Breath</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#2f2f30" name="Tricorn Black" brand="SW 6258" href="/colors/sherwin-williams/tricorn-black-6258" /></td>
+                <td className="py-2 pr-4">2.9</td>
+                <td className="py-2 pr-4">-0.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/raven-black-ppf-59" className="text-brand-blue hover:underline">Raven Black</Link> (very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/tomcat-8006-12g" className="text-brand-blue hover:underline">Tomcat</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/black-hc-190" className="text-brand-blue hover:underline">Black</Link> (nearly identical)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trim and door ideas from Sherwin-Williams</h2>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams&apos;s color service lists two or three coordinating colors for each of its colors. It does not label them trim or door, so those roles are our suggestion. The lighter-by figure is our arithmetic: the coordinating color&apos;s LRV minus the brick color&apos;s LRV, both from our database. In <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">our trim guide</Link>, soft tonal trim whites sit 9 to 15 points above the wall and bright trim whites 22 to 35 above it.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Painted brick color</th>
+                <th className="py-2 font-semibold">Sherwin-Williams coordinating colors</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Alabaster (LRV 82.2)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/townhall-tan-7690" className="text-brand-blue hover:underline">Townhall Tan</Link> (LRV 42.2); <Link href="/colors/sherwin-williams/dakota-wheat-9023" className="text-brand-blue hover:underline">Dakota Wheat</Link> (LRV 54.4)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pure White (LRV 83.7)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/march-wind-7668" className="text-brand-blue hover:underline">March Wind</Link> (LRV 48.5); <Link href="/colors/sherwin-williams/perle-noir-9154" className="text-brand-blue hover:underline">Perle Noir</Link> (LRV 7.6)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Shoji White (LRV 74.3)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/pure-white-7005" className="text-brand-blue hover:underline">Pure White</Link> (LRV 83.7, 9.4 points lighter); <Link href="/colors/sherwin-williams/fawn-brindle-7640" className="text-brand-blue hover:underline">Fawn Brindle</Link> (LRV 35.5); <Link href="/colors/sherwin-williams/perle-noir-9154" className="text-brand-blue hover:underline">Perle Noir</Link> (LRV 7.6)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Natural Linen (LRV 66.2)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/divine-white-6105" className="text-brand-blue hover:underline">Divine White</Link> (LRV 72.4, 6.2 points lighter); <Link href="/colors/sherwin-williams/antler-velvet-9111" className="text-brand-blue hover:underline">Antler Velvet</Link> (LRV 43.3); <Link href="/colors/sherwin-williams/gris-morado-9156" className="text-brand-blue hover:underline">Gris Morado</Link> (LRV 26.1)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Agreeable Gray (LRV 60.1)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/incredible-white-7028" className="text-brand-blue hover:underline">Incredible White</Link> (LRV 73.5, 13.4 points lighter); <Link href="/colors/sherwin-williams/extra-white-7006" className="text-brand-blue hover:underline">Extra White</Link> (LRV 85.9, 25.8 points lighter); <Link href="/colors/sherwin-williams/coral-rose-9004" className="text-brand-blue hover:underline">Coral Rose</Link> (LRV 28.2)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Urbane Bronze (LRV 8.1)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/shoji-white-7042" className="text-brand-blue hover:underline">Shoji White</Link> (LRV 74.3, 66.2 points lighter); <Link href="/colors/sherwin-williams/extra-white-7006" className="text-brand-blue hover:underline">Extra White</Link> (LRV 85.9, 77.8 points lighter); <Link href="/colors/sherwin-williams/ivoire-6127" className="text-brand-blue hover:underline">Ivoire</Link> (LRV 63.6, 55.5 points lighter)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Iron Ore (LRV 5.6)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/nebulous-white-7063" className="text-brand-blue hover:underline">Nebulous White</Link> (LRV 73.5, 67.9 points lighter); <Link href="/colors/sherwin-williams/extra-white-7006" className="text-brand-blue hover:underline">Extra White</Link> (LRV 85.9, 80.3 points lighter); <Link href="/colors/sherwin-williams/cityscape-7067" className="text-brand-blue hover:underline">Cityscape</Link> (LRV 21.7, 16.1 points lighter)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Tricorn Black (LRV 2.9)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/ice-cube-6252" className="text-brand-blue hover:underline">Ice Cube</Link> (LRV 77.3, 74.4 points lighter); <Link href="/colors/sherwin-williams/classic-light-buff-50" className="text-brand-blue hover:underline">Classic Light Buff</Link> (LRV 82.5, 79.6 points lighter); <Link href="/colors/sherwin-williams/blithe-blue-9052" className="text-brand-blue hover:underline">Blithe Blue</Link> (LRV 46.0, 43.1 points lighter)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two things stand out. Alabaster and Pure White come with no white in their lists, only tans and grays, so for a white-on-white house take the trim white from the trim guide above. And Natural Linen&apos;s white, Divine White, is only 6.2 points lighter, which reads as a very soft edge. For the darker brick colors every listed white is 55 or more points lighter, a high-contrast edge. The darker coordinating colors, such as Perle Noir, Cityscape and Blithe Blue, are door candidates, and <Link href="/blog/front-door-paint-colors" className="text-brand-blue hover:underline">our front door guide</Link> has pairing tables and the storm-door warranty rules for dark doors.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Preview and estimate</h2>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Preview candidates in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, and use the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> to put two candidates side by side. For quantities, enter the coverage rate from the sheet into the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link>: Loxon Acrylic Coating lists 200 square feet per gallon, and 80 on porous, rough stucco, while KEIM lists 250 to 300 for Granital on brick. Brick is closer to the rough, porous case than to a smooth wall, so buy enough for a test area first and measure how far it goes. If you keep the red brick instead, the same room visualizer and the front door and trim guides cover the pairings.
+        </p>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          All the colors above are available from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> or <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and each color page lists the closest match in every other brand we track.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── The Weirdest Paint Color Names, Measured (2026-11-17) ──────────────── */
   {
     slug: "weirdest-paint-color-names",
