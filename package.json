@@ -15,6 +15,7 @@
     "populate-undertones": "tsx scripts/populate-undertones.ts",
     "adoption-report": "tsx scripts/adoption-report.ts",
     "bing-stats": "tsx scripts/seo/bing-stats.ts",
+    "ai-visibility": "tsx scripts/seo/ai-visibility.ts",
     "check-samplize": "tsx scripts/check-samplize-availability.ts",
     "sync-samplize": "tsx scripts/sync-samplize-feed.ts",
     "build-city-coords": "tsx scripts/build-city-coords.ts",
