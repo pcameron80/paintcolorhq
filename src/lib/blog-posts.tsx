@@ -75,6 +75,163 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Shoji White vs Alabaster and Other SW Whites (2026-11-10) ──────────────── */
+  {
+    slug: "sherwin-williams-white-paint-colors-compared",
+    title: "Shoji White vs Alabaster and Other SW Whites",
+    date: "2026-11-10",
+    author: "Philip Cameron",
+    excerpt:
+      "Seven Sherwin-Williams white pairs measured: a closeness verdict, the LRV gap and the color direction that separates each, from Alabaster to Shoji White.",
+    coverColor: "#edeae0",
+    coverImage: "/blog/sherwin-williams-white-paint-colors-compared.webp",
+    tags: ["Guide", "White Paint", "Cross-Brand Matching"],
+    faq: [
+      {
+        question: "Is Shoji White lighter or darker than Alabaster?",
+        answer:
+          "Darker. Shoji White has an LRV of 74.3 and Alabaster 82.2, a gap of 7.9 points. Shoji White also measures about 1.5 b* units yellower. The two rate very similar on CIEDE2000.",
+      },
+      {
+        question: "Are Greek Villa and Alabaster the same color?",
+        answer:
+          "They are not the same paint, but they rate nearly identical on Sherwin-Williams' published color values. Greek Villa is slightly lighter, with an LRV of 84.0 against 82.2. Confirm with a physical sample before swapping one for the other.",
+      },
+      {
+        question: "What is the difference between Creamy and Alabaster?",
+        answer:
+          "They rate very similar. Creamy is about 2.0 b* units yellower and 0.9 a* units toward red, with almost the same lightness (LRV 81.2 against 82.2).",
+      },
+      {
+        question: "What is the difference between Extra White and Pure White?",
+        answer:
+          "They rate nearly identical. Extra White is lighter, with an LRV of 85.9 against 83.7, and carries less yellow, with a b* of 2.3 against 3.0.",
+      },
+      {
+        question: "Is Alabaster close to Dover White?",
+        answer:
+          "Yes, they rate nearly identical, with an LRV gap of 0.3. Dover White measures about 2.3 b* units yellower, so it reads creamier.",
+      },
+      {
+        question: "Which is the darkest of the Sherwin-Williams whites here?",
+        answer:
+          "Of the nine whites measured, White Duck (LRV 74.1) and Shoji White (LRV 74.3) are the darkest, about 8 LRV points below Alabaster.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          <Link href="/colors/sherwin-williams/shoji-white-7042" className="text-brand-blue hover:underline">Shoji White</Link> and <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link> rate very similar on Sherwin-Williams&apos; published color values, and the biggest difference is lightness, not color. Shoji White reflects 74.3 percent of light against Alabaster&apos;s 82.2, so it is the darker of the two by almost 8 LRV points, and it measures slightly yellower. <Link href="/colors/sherwin-williams/greek-villa-7551" className="text-brand-blue hover:underline">Greek Villa</Link> is the opposite case: it rates nearly identical to Alabaster. Below, seven Sherwin-Williams white pairs get a closeness verdict, the LRV gap and the direction that separates them.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How the pairs were measured</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every hex and LRV below is the value stored in our database for each Sherwin-Williams color. We converted each hex to CIELAB, the color space that describes a color on three axes: L* for lightness, a* for green (negative) to red (positive), and b* for blue (negative) to yellow (positive). We then scored each pair with CIEDE2000 and turned the result into one of three labels: under 2 is nearly identical, 2 to under 5 is very similar, and 5 or more is a visible difference. A higher b* means a yellower, creamier white. We do not use the database undertone field here; where a paint is described as warm or cool, that is Sherwin-Williams&apos; own wording.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These are digital values. They show how close two paints are on paper, and a physical sample in your own light is still the test that counts. Pairs that rate nearly identical are digital matches to confirm with a sample, not guarantees.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">All seven pairs at a glance</h2>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Pair</th>
+                <th className="py-2 pr-4 font-semibold">Closeness</th>
+                <th className="py-2 pr-4 font-semibold">LRV (gap)</th>
+                <th className="py-2 font-semibold">What separates them</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> vs <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">Very similar</td>
+                <td className="py-2 pr-4">74.3 vs 82.2 (7.9)</td>
+                <td className="py-2">Shoji White is 3.6 L* darker and 1.5 b* yellower</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f0ece2" name="Greek Villa" brand="SW 7551" href="/colors/sherwin-williams/greek-villa-7551" /> vs <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">Nearly identical</td>
+                <td className="py-2 pr-4">84.0 vs 82.2 (1.8)</td>
+                <td className="py-2">Greek Villa is 0.8 L* lighter; a* and b* are within 0.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#efe8db" name="Creamy" brand="SW 7012" href="/colors/sherwin-williams/creamy-7012" /> vs <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">Very similar</td>
+                <td className="py-2 pr-4">81.2 vs 82.2 (1.0)</td>
+                <td className="py-2">Creamy is 2.0 b* yellower and 0.9 a* redder</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> vs <Swatch hex="#f0eadc" name="Dover White" brand="SW 6385" href="/colors/sherwin-williams/dover-white-6385" /></td>
+                <td className="py-2 pr-4">Nearly identical</td>
+                <td className="py-2 pr-4">82.2 vs 82.5 (0.3)</td>
+                <td className="py-2">Dover White is 2.3 b* yellower</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e5dfd2" name="White Duck" brand="SW 7010" href="/colors/sherwin-williams/white-duck-7010" /> vs <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">Very similar</td>
+                <td className="py-2 pr-4">74.1 vs 82.2 (8.1)</td>
+                <td className="py-2">White Duck is 3.7 L* darker and 1.9 b* yellower</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /> vs <Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">Nearly identical</td>
+                <td className="py-2 pr-4">85.9 vs 83.7 (2.2)</td>
+                <td className="py-2">Extra White is 0.9 L* lighter, 0.7 b* less yellow and 0.5 a* greener</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /> vs <Swatch hex="#edeae5" name="Snowbound" brand="SW 7004" href="/colors/sherwin-williams/snowbound-7004" /></td>
+                <td className="py-2 pr-4">Nearly identical</td>
+                <td className="py-2 pr-4">83.7 vs 82.5 (1.2)</td>
+                <td className="py-2">Pure White is 0.5 L* lighter and 0.8 a* greener; b* within 0.3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Differences are computed from unrounded values, so they can differ by 0.1 from subtracting the rounded numbers in the text. The two pairs with a visible lightness gap, Shoji White and White Duck against Alabaster, are the only ones where lightness is the main story. In the other five, the paints are within about 2 LRV points of each other and the difference is a small shift in yellowness.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Shoji White vs Alabaster</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> (LRV 74.3) and <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> (LRV 82.2) rate very similar. Sherwin-Williams describes Shoji White as a &quot;warm, creamy white that borders on greige,&quot; and Alabaster as a &quot;soft, warm but balanced white.&quot; The measurements show where the two part ways: Shoji White is 3.6 L* units darker, about 1.5 b* units yellower and about 1.0 a* units toward red. We cannot measure &quot;greige&quot; from a hex, but darker and slightly more yellow is the direction that makes Shoji White the more likely of the two to read as greige. Alabaster is the brighter choice, and with an LRV 7.9 points higher it will make a dim room feel lighter. Run the pair in the <Link href="/compare?color1=868bf1ed-90f1-48a2-81b9-0c12c0b31457&color2=355ff048-6b5e-4aa6-b4a4-ee66055068ec" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Greek Villa vs Alabaster</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#f0ece2" name="Greek Villa" brand="SW 7551" href="/colors/sherwin-williams/greek-villa-7551" /> (LRV 84.0) and <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> rate nearly identical, and this is the closest pair of the seven on color: a* and b* are within 0.3 of each other. The only real difference is that Greek Villa is 0.8 L* lighter, an LRV gap of 1.8. Sherwin-Williams calls Greek Villa a &quot;sunny white&quot; that &quot;comes to life in natural light.&quot; If you like Alabaster but want it a touch brighter, Greek Villa is the digital match to sample first. See the pair in the <Link href="/compare?color1=c472c09b-2830-4591-a649-b9932b4253c2&color2=355ff048-6b5e-4aa6-b4a4-ee66055068ec" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Creamy vs Alabaster</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#efe8db" name="Creamy" brand="SW 7012" href="/colors/sherwin-williams/creamy-7012" /> (LRV 81.2) and Alabaster rate very similar, though only just: the pair sits barely over the nearly identical line. Creamy is about 2.0 b* units yellower and 0.9 a* units toward red, with almost the same lightness (an LRV gap of 1.0). Sherwin-Williams says Creamy &quot;has the softest of yellow undertones to create a subtle warmth in the room.&quot; Pick Creamy over Alabaster when you want the yellow to show a little more. Open the pair in the <Link href="/compare?color1=29ed4a05-5931-4c92-90c5-ed1d72cf9016&color2=355ff048-6b5e-4aa6-b4a4-ee66055068ec" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Alabaster vs Dover White</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> and <Swatch hex="#f0eadc" name="Dover White" brand="SW 6385" href="/colors/sherwin-williams/dover-white-6385" /> (LRV 82.5) rate nearly identical, with an LRV gap of just 0.3. The separating direction is yellowness: Dover White is 2.3 b* units yellower, the largest b* gap in any nearly identical pair here. Sherwin-Williams describes Dover White as &quot;a warm, sun-splashed white.&quot; The two are the same brightness, so the choice comes down to how creamy you want it. Compare them in the <Link href="/compare?color1=355ff048-6b5e-4aa6-b4a4-ee66055068ec&color2=a2ca8fcf-900b-4da6-b324-7d2a5fe0711b" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">White Duck vs Alabaster</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#e5dfd2" name="White Duck" brand="SW 7010" href="/colors/sherwin-williams/white-duck-7010" /> (LRV 74.1) and Alabaster rate very similar, but the LRV gap is 8.1, the largest in this post. White Duck is 3.7 L* darker and 1.9 b* yellower. Sherwin-Williams calls it a &quot;cool white&quot; that is &quot;creamy and bright.&quot; On the published color, its b* of 7.1 puts it with Creamy (7.2) and Dover White (7.5) at the yellow end of these nine whites, and its lightness is within 0.2 LRV of Shoji White. Shoji White and White Duck are the two darkest whites in the group. See the pair in the <Link href="/compare?color1=dbd58b74-2772-467e-b957-71573cdf7c64&color2=355ff048-6b5e-4aa6-b4a4-ee66055068ec" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Extra White vs Pure White</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /> (LRV 85.9) and <Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /> (LRV 83.7) rate nearly identical, with an LRV gap of 2.2. Extra White is the lighter, with 0.9 more L*, and it carries less yellow (b* 2.3 against 3.0) and slightly more green in a* (-1.2 against -0.7). Sherwin-Williams says Extra White is &quot;clean and crisp&quot; and suits trim and ceilings, while Pure White has &quot;the slightest yellow undertone that keeps it from appearing too stark.&quot; Both are among the brightest, least yellow whites in this post, so they work as trim beside a warmer wall white. Our guide to <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">choosing a trim color</Link> covers the trim math. Open the pair in the <Link href="/compare?color1=43638318-d603-4f65-9e5c-7598268f249c&color2=31acd35a-ece3-480c-ba53-321cb6b2fd42" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Pure White vs Snowbound</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Pure White and <Swatch hex="#edeae5" name="Snowbound" brand="SW 7004" href="/colors/sherwin-williams/snowbound-7004" /> (LRV 82.5) rate nearly identical, with an LRV gap of 1.2. The b* values are within 0.3 of each other (3.0 and 2.8), so yellowness does not separate them. Pure White is 0.5 L* lighter and sits 0.8 a* units toward green; Snowbound is the one nearer neutral on a*. Sherwin-Williams describes Snowbound as having a &quot;slight gray undertone&quot; and being a &quot;versatile cool white.&quot; Compare them in the <Link href="/compare?color1=31acd35a-ece3-480c-ba53-321cb6b2fd42&color2=eab16fdd-5803-4b22-9e20-bf115adc2832" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Which pair should you sample</h2>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Want a lighter, brighter Alabaster?</strong> Sample Greek Villa. It is the closest digital match and about 2 LRV points lighter.</li>
+          <li><strong>Want a creamier Alabaster at the same brightness?</strong> Sample Creamy or Dover White, both about 2 b* units yellower.</li>
+          <li><strong>Want a heavier, more beige white?</strong> Shoji White and White Duck are both about 8 LRV points darker than Alabaster. Expect less reflected light.</li>
+          <li><strong>Want crisp trim next to a warm white?</strong> Extra White and Pure White carry the least yellow here. See the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link> families for every Sherwin-Williams option.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Cross-brand questions, such as Alabaster against Benjamin Moore White Dove, are measured in <Link href="/blog/famous-white-paints-compared" className="text-brand-blue hover:underline">our famous whites comparison</Link>. For a wider list of whites, see the <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link>, and every <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> color page lists its closest matches in other brands. Preview two whites in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, then roll out physical samples on two walls and look at them morning and evening.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── What Is LRV in Paint? 26,720 Colors Compared (2026-11-05) ──────────────── */
   {
     slug: "what-is-lrv-in-paint",
