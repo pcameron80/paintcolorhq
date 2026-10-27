@@ -75,6 +75,205 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── How to Choose a Paint Color in Five Steps (2026-12-01) ──────────────── */
+  {
+    slug: "how-to-choose-paint-color",
+    title: "How to Choose a Paint Color in Five Steps",
+    date: "2026-12-01",
+    author: "Philip Cameron",
+    excerpt:
+      "Choose a paint color in five steps: list what cannot change, read the light, set an LRV range, narrow by undertone, then test. Includes measured examples.",
+    coverColor: "#ddd9ce",
+    coverImage: "/blog/how-to-choose-paint-color.webp",
+    tags: ["How-To", "Guide", "Tips"],
+    faq: [
+      {
+        question: "How do I choose a paint color for a room?",
+        answer:
+          "Work in this order: list the finishes that will not change, such as floors, counters and tile. Find out which way the room faces and what bulbs it uses. Set a minimum light reflectance value (LRV) that suits that light. Pick one family and undertone. Then test two or three finalists on the wall. Each step removes options, so you test a short list instead of a whole fan deck.",
+      },
+      {
+        question: "How do I choose paint colors for a whole house?",
+        answer:
+          "A reasonable approach is to choose one main neutral for the rooms that open onto each other, then adjust the others to their own light. Light differs by room, and Sherwin-Williams treats north-facing and south-facing rooms differently. Keep the trim white and the sheens consistent so the rooms still read as one house.",
+      },
+      {
+        question: "Does the direction a room faces change which paint color to pick?",
+        answer:
+          "Yes. Sherwin-Williams says north-facing rooms get the least light and tend to look cool, so it recommends a warm neutral or a color with warm undertones there. It describes south-facing rooms as having consistent warm light, so most colors work. East- and west-facing rooms shift between warm and cool light through the day, so choose for the hours you use the room most.",
+      },
+      {
+        question: "What LRV should I look for?",
+        answer:
+          "There is no single number for every room. Sherwin-Williams suggests a paint with an LRV of 60 or higher to counteract the blue light in north-facing rooms, and says colors in the 50 to 60 range tend to work in most lighting. Lower numbers are darker. Dark colors can still work in a bright room, but Sherwin-Williams notes they may not suit a room with little natural light.",
+      },
+      {
+        question: "Can I choose a paint color from a screen?",
+        answer:
+          "Use a screen to narrow the list, not to make the final call. Screens and lighting both shift how a color looks, and Sherwin-Williams recommends picking the color in your own space rather than at the store. A digital match between two brands is a starting point that a physical sample should confirm.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Choose a paint color in five steps: list the finishes you cannot change, work out how much light the room gets and where it comes from, set a light reflectance value (LRV) range, narrow to one family and undertone, then test two or three finalists in the room. The order matters because each step removes options before you reach the next. Starting with forty chips and no filter is how a shortlist never gets shorter.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 1: List what cannot change</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Both big paint makers start here. Benjamin Moore&apos;s first step lists hardwood floors, countertops, a fireplace surround and area rugs, and says &quot;the colors in these items will help determine which paint color families will work best in your room.&quot; Sherwin-Williams says to &quot;determine what features or existing finishes in the room you would consider permanent like cabinets, tile or a brick fireplace,&quot; and gives an example: if kitchen cabinet wood has a red undertone, the wall color has to work with that hue.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Recommendation: write the list down before you open a color chart. Floor, counter, tile, cabinets, fireplace, the one big piece of furniture. Next to each, note whether it leans red, yellow, green or gray. If one of them has a color you want to coordinate with, upload a photo of it to the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> and click the spot to see the closest paint colors. That list is the filter for step 4.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 2: Read the light</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Light changes how a color reads, and there are two sources to account for.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Daylight and room direction.</strong> Sherwin-Williams tells you to point a compass at the room&apos;s largest windows. Its guidance by direction:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>North:</strong> &quot;North facing rooms receive the least amount of light throughout the day,&quot; and Sherwin-Williams advises a warm neutral or a color with warm undertones to balance the cool light. Benjamin Moore&apos;s north-facing page likewise suggests a clean white with a hint of yellow, and grays chosen for their warm undertones. Our guide to <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing room colors</Link> has the shortlist.</li>
+          <li><strong>South:</strong> Sherwin-Williams says these rooms &quot;tend to experience consistent warm light throughout the day,&quot; so most colors work, but avoid anything very warm that could feel too bold at some hours.</li>
+          <li><strong>East and west:</strong> they are opposites. East-facing rooms get warm light in the morning and cool light toward evening, and west-facing rooms the reverse. Sherwin-Williams says to choose &quot;based on when you plan to use your space the most.&quot; See <Link href="/blog/best-paint-colors-east-facing-rooms" className="text-brand-blue hover:underline">east-facing room colors</Link>.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Bulbs.</strong> Benjamin Moore&apos;s warm and cool color guide says to check your lightbulb temperature: &quot;Lightbulbs with a temperature over 3500K tend to cast cooler.&quot; Sherwin-Williams adds that the warm tones of incandescent light influence a color differently than daylight, and says that with warm lighting you should choose as you would for a south-facing room, and with white or cool lighting as you would for a north-facing one. Recommendation: use the same bulb color temperature in the room for the whole decision, and test again at night.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 3: Set an LRV range</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          LRV is the share of light a color reflects, from 0 (reflects none) to 100 (reflects all of it). Every color page here lists it. For north-facing rooms, Sherwin-Williams says: &quot;look for a paint that has a 60 LRV or higher.&quot; Here is how some well-known neutrals sit against that mark:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Against the 60 mark</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2">23.2 above</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /></td>
+                <td className="py-2 pr-4">68.6</td>
+                <td className="py-2">8.6 above</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /></td>
+                <td className="py-2 pr-4">63.3</td>
+                <td className="py-2">3.3 above</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /></td>
+                <td className="py-2 pr-4">60.1</td>
+                <td className="py-2">0.1 above</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc9c0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" /></td>
+                <td className="py-2 pr-4">58.4</td>
+                <td className="py-2">1.6 below</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cec6bb" name="Worldly Gray" brand="SW 7043" href="/colors/sherwin-williams/worldly-gray-7043" /></td>
+                <td className="py-2 pr-4">57.1</td>
+                <td className="py-2">2.9 below</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Treat 60 as a guideline, not a cutoff. Sherwin-Williams itself lists Worldly Gray, at 57.1, among its best colors for north-facing rooms, and says neutrals in the 50 to 60 range &quot;tend to work well regardless of lighting.&quot; It also warns that dark shades &quot;may not work in a room with little natural light.&quot; The practical use of an LRV range is to throw out the outliers, such as a 30 in a dim north room, before you buy a single sample.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 4: Narrow by family and undertone</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Pick the family first (<Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link>, <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link>, <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link>, and so on), using your step 1 list. Then decide how warm or cool you want it. Undertone is not a number on a paint can, so there are two honest ways to read it.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          One is the manufacturer&apos;s own description. Benjamin Moore describes Pale Oak this way: &quot;With its warm gray undertones, this versatile neutral conjures the quiet majesty of white oak.&quot; The other is to measure it. We convert each color&apos;s hex value to the CIELAB color space, where b* runs from blue (negative) to yellow (positive) and a* from green (negative) to red (positive). A higher b* is a yellower color. A negative a* leans green. These are our calculations from the stored hex values:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 font-semibold">Green-red (a*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Sea Salt</td>
+                <td className="py-2 pr-4">63.3</td>
+                <td className="py-2 pr-4">3.4</td>
+                <td className="py-2">-3.2</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Repose Gray</td>
+                <td className="py-2 pr-4">58.4</td>
+                <td className="py-2 pr-4">4.9</td>
+                <td className="py-2">-0.6</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Agreeable Gray</td>
+                <td className="py-2 pr-4">60.1</td>
+                <td className="py-2 pr-4">5.7</td>
+                <td className="py-2">0.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pale Oak</td>
+                <td className="py-2 pr-4">68.6</td>
+                <td className="py-2 pr-4">5.9</td>
+                <td className="py-2">-0.5</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Worldly Gray</td>
+                <td className="py-2 pr-4">57.1</td>
+                <td className="py-2 pr-4">6.5</td>
+                <td className="py-2">0.9</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1c7b8" name="Accessible Beige" brand="SW 7036" href="/colors/sherwin-williams/accessible-beige-7036" /></td>
+                <td className="py-2 pr-4">57.9</td>
+                <td className="py-2 pr-4">8.8</td>
+                <td className="py-2">0.9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Read the table as a ladder. Sea Salt has the lowest yellowness and the only strongly negative a*, so it is the one that leans green. Accessible Beige has the highest b*, so it is the creamiest. The four colors in the middle sit within about 1.6 points of each other on b*, and that shows in the comparison labels: Agreeable Gray and Repose Gray rate nearly identical, Agreeable Gray and Accessible Beige rate very similar, and Agreeable Gray and Sea Salt show a visible difference. These are digital matches, so confirm any pair with a physical sample.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          That is why the order matters. Two colors that rate nearly identical will not be separated by undertone, so decide between them on LRV and on the sample. In a north room, that makes Agreeable Gray (60.1) the safer pick than Repose Gray (58.4) under Sherwin-Williams&apos; 60 mark, though only by 1.7 points. Check any pair side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>. For more on reading warmth and coolness, see our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> and <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool paint colors</Link>. The brand pages for <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> list every color with its LRV.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 5: Preview, then test</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Before you buy anything, preview your two or three finalists in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, which shows wall, accent, trim and window colors in 10 rooms. To see a wall color with a trim, accent and pop color already assigned, the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> builds a set from any starting color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Then test them in the room. Benjamin Moore says &quot;the best way to test color in different lighting conditions is to buy paint samples,&quot; and Sherwin-Williams advises picking the color in your own space, not at the store. How large to make the sample, where to put it and how long to live with it is covered in <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">how to test paint samples</Link>. Once you have a winner, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> estimates how much to buy.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">After the wall color: trim, ceiling, door and sheen</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The wall color sets the rest. Pick the trim by the LRV gap or by yellowness in <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">how to choose a trim color</Link>. Choose the ceiling in <Link href="/blog/ceiling-paint-color" className="text-brand-blue hover:underline">ceiling paint color</Link>, and the exterior door in <Link href="/blog/front-door-paint-colors" className="text-brand-blue hover:underline">front door paint colors</Link>. The <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers finish for each surface. If you are choosing among whites for any of these, the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> lists them all with LRVs, including <Link href="/colors/sherwin-williams/greek-villa-7551" className="text-brand-blue hover:underline">Greek Villa</Link> and <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link>, which rate nearly identical to each other.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Farmhouse paint colors (2026-11-26) ──────────────── */
   {
     slug: "farmhouse-paint-colors",
