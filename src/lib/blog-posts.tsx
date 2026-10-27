@@ -5599,7 +5599,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-kitchen-colors",
     title: "15 Best Sherwin-Williams Paint Colors for Kitchens (2026)",
     date: "2026-02-26",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-11-12",
     author: "Philip Cameron",
     excerpt:
       "The most popular Sherwin-Williams kitchen colors for cabinets, walls, and islands — with finish tips, lighting advice, and designer pairings.",
@@ -5614,19 +5614,19 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Whites for Kitchen Cabinets</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White cabinets remain the top choice for kitchens, and the specific white matters enormously. The wrong white clashes with countertops and makes the whole kitchen feel off. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these whites in a kitchen setting before buying samples.
+          For cabinets, the difference between Sherwin-Williams whites is mostly yellowness, not lightness. Our <Link href="/blog/kitchen-cabinet-paint-colors" className="text-brand-blue hover:underline">kitchen cabinet paint colors</Link> guide ranks cabinet whites by measured yellowness (the b* value of each published color) and shows how to match one to your countertop. The four below are this post&apos;s Sherwin-Williams cabinet whites with their measured values.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — the most popular SW cabinet white. It&apos;s warm enough to avoid sterile vibes but clean enough for modern kitchens. Pairs beautifully with quartz and marble countertops. Works in both north-facing and south-facing kitchens because it holds its true color under different lighting.
+          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" />: LRV 83.7, yellowness 3.0. A clean white with a little yellow, for countertops that look neutral or cool.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> — a creamier option with warm yellow undertones. Best for kitchens with warm-toned flooring and brass hardware. In north-facing kitchens, it reads as a soft warm glow rather than stark white.
+          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" />: LRV 82.2, yellowness 5.2, the creamiest of the four. Suits countertops and floors that look creamy or golden.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" />: one of the brightest whites in the SW deck. Use for trim and ceilings when you want maximum brightness. It can feel clinical on cabinets in small kitchens, so pair it with warm countertops to balance it out. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for more.
+          <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" />: LRV 92.6, yellowness 2.9, the brightest of the four. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> for how it compares with other bright whites.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDEAE5" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> — a soft white with subtle gray undertones. Snowbound hides fingerprints and smudges better than pure whites, making it a smart choice for busy kitchens with kids. Compare it side by side with Pure White using our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>.
+          <Swatch hex="#EDEAE5" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" />: LRV 82.5, yellowness 2.8, the least yellow of the four. Compare it with Pure White in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Greens for Kitchen Cabinets</h2>
