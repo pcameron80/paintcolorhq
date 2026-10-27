@@ -75,6 +75,349 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── The Weirdest Paint Color Names, Measured (2026-11-17) ──────────────── */
+  {
+    slug: "weirdest-paint-color-names",
+    title: "The Weirdest Paint Color Names, Measured",
+    date: "2026-11-17",
+    author: "Philip Cameron",
+    excerpt:
+      "We searched 26,720 paint colors for the weirdest names, from Lizard Breath to Dead Salmon, with each one's LRV and a normally named match at another brand.",
+    coverColor: "#edbb32",
+    coverImage: "/blog/weirdest-paint-color-names.webp",
+    tags: ["Guide", "Cross-Brand Matching", "Data"],
+    faq: [
+      {
+        question: "What is the weirdest paint color name?",
+        answer:
+          "There is no objective winner, because weird is a judgment. From the 26,720 colors we track across 13 brands, the names that stand out most are Lizard Breath and Hot Dog Relish at Behr, Dead Salmon at Farrow & Ball, Slumber Sloth at Sherwin-Williams, Mayonnaise at Benjamin Moore and Zombie at PPG. Each one is listed with its LRV and a normally named match in this post.",
+      },
+      {
+        question: "Where do paint color names come from?",
+        answer:
+          "Most paint companies do not explain their names. Farrow & Ball is an exception for some colors: its Dead Salmon page says the name refers to the matt finish of an aged pink painted at Kedleston Hall in 1805, and its Elephant's Breath page says the name was originally created by the interior designer John Fowler. For colors with no manufacturer explanation, treat any story you read as a guess.",
+      },
+      {
+        question: "Does a strange name change how the paint looks?",
+        answer:
+          "No. The name is a label. What the paint looks like on a wall depends on its color value, its light reflectance value (LRV), which is the percentage of light it reflects from 0 to 100, and the light in your room. Dead Salmon has an LRV of 35.7 and Lucky Potato has an LRV of 82.0, and neither number can be guessed from the name.",
+      },
+      {
+        question: "How do I find a normally named version of a strange color?",
+        answer:
+          "Open the color's page on Paint Color HQ and read the closest equivalents at other brands, or compare two colors side by side in the compare tool. The results are digital matches: confirm any substitute with a physical sample on your wall before you buy gallons.",
+      },
+      {
+        question: "Do different paint brands reuse the same color name?",
+        answer:
+          "Yes, and the colors behind a shared name can be very different. Three brands sell a color called Dill Pickle: Benjamin Moore's is a pale yellow-green with an LRV of 50.0, while Behr's and Dunn-Edwards' are dark greens with LRVs of 16.0 and 15.9. Check the hex and LRV, not the name.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The weirdest color names in the paint aisle are food, animals and monsters attached to ordinary-looking colors: Lizard Breath is a golden yellow, Pickle is a mid green, and Dead Salmon is a muted tan. We searched all 26,720 colors in our database across 13 brands and pulled 25 of the strangest names, then added each color&apos;s light reflectance value (LRV) and a normally named color at another brand that you can ask for instead.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How we picked these names</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We searched every current color name for food, animal, monster and body words, then chose the 25 we found strangest. That is a judgment call, not a ranking, and your list would differ. What is measured is everything beside the name: the hex value, the LRV, and the closest match at another brand. Closeness uses CIEDE2000, a standard color-difference formula, and we report it in words: <em>nearly identical</em>, <em>very similar</em> or <em>visible difference</em>. Every substitute below is a digital match, so confirm it with a physical sample before you buy.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Food names</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Food supplies the most odd names. This set runs from the lightest color on this page to the darkest: Mayonnaise reflects 88.1 percent of light and Pancake Syrup only 8.4. Hot Dog Relish is the only food name here whose closest match is merely very similar, not nearly identical. Mayonnaise is an off-white, and the many brands that sell near-copies of that kind of shade are mapped in our study of <Link href="/blog/most-duplicated-paint-color" className="text-brand-blue hover:underline">the most duplicated paint color</Link>.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Closest normally named color elsewhere</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#faf6e6" name="Mayonnaise" brand="Benjamin Moore" href="/colors/benjamin-moore/mayonnaise-2152-70" /></td>
+                <td className="py-2 pr-4">88.1</td>
+                <td className="py-2 pr-4"><Link href="/colors/ppg/linwood-beach-white-71yy-87-078" className="text-brand-blue hover:underline">Linwood Beach White</Link> (PPG)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ffd06c" name="Nacho Cheese" brand="Benjamin Moore" href="/colors/benjamin-moore/nacho-cheese-2018-40" /></td>
+                <td className="py-2 pr-4">65.1</td>
+                <td className="py-2 pr-4"><Link href="/colors/dutch-boy/honeybee-yellow-116-6db" className="text-brand-blue hover:underline">Honeybee Yellow</Link> (Dutch Boy)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#efead8" name="Lucky Potato" brand="Behr" href="/colors/behr/lucky-potato-t11-20" /></td>
+                <td className="py-2 pr-4">82.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/farrow-ball/james-white-2010" className="text-brand-blue hover:underline">James White</Link> (Farrow &amp; Ball)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#85a16a" name="Pickle" brand="Sherwin-Williams" href="/colors/sherwin-williams/pickle-6725" /></td>
+                <td className="py-2 pr-4">31.5</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/buckingham-gardens-545" className="text-brand-blue hover:underline">Buckingham Gardens</Link> (Benjamin Moore)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#717c3e" name="Hot Dog Relish" brand="Behr" href="/colors/behr/hot-dog-relish-hdc-sm16-11" /></td>
+                <td className="py-2 pr-4">18.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/timson-green-cw-470" className="text-brand-blue hover:underline">Timson Green</Link> (Benjamin Moore)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Very similar</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#724336" name="Pancake Syrup" brand="Benjamin Moore" href="/colors/benjamin-moore/pancake-syrup-2104-10" /></td>
+                <td className="py-2 pr-4">8.4</td>
+                <td className="py-2 pr-4"><Link href="/colors/ppg/warm-mahogany-1060-7" className="text-brand-blue hover:underline">Warm Mahogany</Link> (PPG)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Food words are everywhere in color names. Counting whole-word matches in current names, mustard appears in 30 color names across 9 brands, cheese in 14 across 4, pudding in 11 across 7 and pickle in 7 across 6. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> family to see the pickles and relishes next to the other greens.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Animal names</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Animals give paint its strangest phrasing, because the name often points at a body part or a breath rather than a look. Salmon appears in 40 current color names across 11 brands, and elephant in 13 across 9.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Closest normally named color elsewhere</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edbb32" name="Lizard Breath" brand="Behr" href="/colors/behr/lizard-breath-t11-11" /></td>
+                <td className="py-2 pr-4">54.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/dunn-edwards/sunflower-de5391" className="text-brand-blue hover:underline">Sunflower</Link> (Dunn-Edwards)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#b49d8d" name="Dead Salmon" brand="Farrow & Ball" href="/colors/farrow-ball/dead-salmon-28" /></td>
+                <td className="py-2 pr-4">35.7</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/trusty-tan-6087" className="text-brand-blue hover:underline">Trusty Tan</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccbfb3" name="Elephant's Breath" brand="Farrow & Ball" href="/colors/farrow-ball/elephants-breath-229" /></td>
+                <td className="py-2 pr-4">53.4</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/hampshire-taupe-990" className="text-brand-blue hover:underline">Hampshire Taupe</Link> (Benjamin Moore)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#8b857f" name="Mole's Breath" brand="Farrow & Ball" href="/colors/farrow-ball/moles-breath-276" /></td>
+                <td className="py-2 pr-4">23.8</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/dovetail-7018" className="text-brand-blue hover:underline">Dovetail</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cec5b6" name="Slumber Sloth" brand="Sherwin-Williams" href="/colors/sherwin-williams/slumber-sloth-9606" /></td>
+                <td className="py-2 pr-4">56.4</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/smokey-taupe-983" className="text-brand-blue hover:underline">Smokey Taupe</Link> (Benjamin Moore)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#8c8449" name="Frog's Legs" brand="PPG" href="/colors/ppg/frogs-legs-1116-7" /></td>
+                <td className="py-2 pr-4">22.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/rural-green-6418" className="text-brand-blue hover:underline">Rural Green</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Farrow &amp; Ball explains three of these.</strong> Of Dead Salmon, the brand&apos;s own page says the name &quot;refers to the matt finish of an aged pink painted at Kedleston Hall in 1805&quot;. It also labels the color &quot;An aged salmon pink&quot;, although the stored hex of #b49d8d reads on screen as a muted tan. Of Elephant&apos;s Breath, the page says the name was &quot;originally created by John Fowler, the notable English interior designer&quot;, and that the color &quot;reads as an uplifting mid grey with its hint of magenta&quot;. Mole&apos;s Breath, per the same brand, is a color &quot;whose name takes its roots from the much loved Elephant&apos;s Breath&quot;. All three quotes come from the color pages on the <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> website (farrow-ball.com, retrieved October 2026). We found no manufacturer explanation for the other names in this post, so we do not guess where they come from.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Dead Salmon shows how loosely a name tracks a color. Across all 40 salmon names the LRV runs from 16.6 to 78.5, and the brighter ones live in the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink</Link> family.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Monster and fantasy names</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Zombie, Goblin and Gremlin are all PPG colors, and they are three different colors: a dark gray, a dark blue-gray and a muted olive-gold. The troll and the dragon come from Behr and Valspar.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Closest normally named color elsewhere</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#595a5c" name="Zombie" brand="PPG" href="/colors/ppg/zombie-1010-7" /></td>
+                <td className="py-2 pr-4">10.2</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/peppercorn-7674" className="text-brand-blue hover:underline">Peppercorn</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#525e68" name="Goblin" brand="PPG" href="/colors/ppg/goblin-1040-7" /></td>
+                <td className="py-2 pr-4">10.8</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/thunder-bay-ecc-35-3" className="text-brand-blue hover:underline">Thunder Bay</Link> (Behr)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#a79954" name="Gremlin" brand="PPG" href="/colors/ppg/gremlin-1110-5" /></td>
+                <td className="py-2 pr-4">31.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/spring-moss-390d-6" className="text-brand-blue hover:underline">Spring Moss</Link> (Behr)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#9a834b" name="Wishing Troll" brand="Behr" href="/colors/behr/wishing-troll-t11-17" /></td>
+                <td className="py-2 pr-4">24.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/brazen-259" className="text-brand-blue hover:underline">Brazen</Link> (Benjamin Moore)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ab3148" name="Fire-Breathing Dragon" brand="Valspar" href="/colors/valspar/fire-breathing-dragon-8001-6g" /></td>
+                <td className="py-2 pr-4">11.3</td>
+                <td className="py-2 pr-4"><Link href="/colors/dutch-boy/rumba-red-103-7db" className="text-brand-blue hover:underline">Rumba Red</Link> (Dutch Boy)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Blood and bone</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Body names are the ones people screenshot. Blue Blood at Behr is a dusty violet-gray, and Dragons Blood at Benjamin Moore is a dark orange-red. Bone Meal, at Dutch Boy, is a light tan with an LRV of 53.1.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Closest normally named color elsewhere</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ac4931" name="Dragons Blood" brand="Benjamin Moore" href="/colors/benjamin-moore/dragons-blood-cw-320" /></td>
+                <td className="py-2 pr-4">13.4</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/hearty-orange-6622" className="text-brand-blue hover:underline">Hearty Orange</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1bf98" name="Bone Meal" brand="Dutch Boy" href="/colors/dutch-boy/bone-meal-320-3db" /></td>
+                <td className="py-2 pr-4">53.1</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/white-oak-hdc-nt-02" className="text-brand-blue hover:underline">White Oak</Link> (Behr)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#5d5f76" name="Blue Blood" brand="Behr" href="/colors/behr/blue-blood-s560-6" /></td>
+                <td className="py-2 pr-4">12.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/ppg/blue-heron-50bb-13-104" className="text-brand-blue hover:underline">Blue Heron</Link> (PPG)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Very similar</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Puns and phrases</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Some names are jokes, and the joke does not tell you the color. Cut the Mustard is a brown-gold at Sherwin-Williams. Elephant in the Room is a pale gray with a faint lavender cast at Valspar. Flustered Mustard and Eye of the Tiger are both golds, with LRVs of 53.0 and 46.9.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Closest normally named color elsewhere</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ba7f38" name="Cut the Mustard" brand="Sherwin-Williams" href="/colors/sherwin-williams/cut-the-mustard-6384" /></td>
+                <td className="py-2 pr-4">25.9</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/garden-ochre-3005-5a" className="text-brand-blue hover:underline">Garden Ochre</Link> (Valspar)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cac8cb" name="Elephant in the Room" brand="Valspar" href="/colors/valspar/elephant-in-the-room-8006-12b" /></td>
+                <td className="py-2 pr-4">58.2</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/sensitive-tint-6267" className="text-brand-blue hover:underline">Sensitive Tint</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dbc058" name="Flustered Mustard" brand="Behr" href="/colors/behr/flustered-mustard-p320-6a" /></td>
+                <td className="py-2 pr-4">53.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/sunlit-meadow-8001-26e" className="text-brand-blue hover:underline">Sunlit Meadow</Link> (Valspar)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e4b370" name="Eye of the Tiger" brand="Benjamin Moore" href="/colors/benjamin-moore/eye-of-the-tiger-188" /></td>
+                <td className="py-2 pr-4">46.9</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/classical-gold-2831" className="text-brand-blue hover:underline">Classical Gold</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#beb5a9" name="Rhino-Ed Gray" brand="Dutch Boy" href="/colors/dutch-boy/rhino-ed-gray-440-2db" /></td>
+                <td className="py-2 pr-4">46.9</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/amazing-gray-7044" className="text-brand-blue hover:underline">Amazing Gray</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Same name, different colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Brands do not coordinate names, so one name can hide very different colors. Dill Pickle is the clearest case in our data:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Dill Pickle at</th>
+                <th className="py-2 font-semibold">LRV</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c5c285" name="Dill Pickle" brand="Benjamin Moore" href="/colors/benjamin-moore/dill-pickle-2147-40" /></td>
+                <td className="py-2">50.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#5e7645" name="Dill Pickle" brand="Behr" href="/colors/behr/dill-pickle-420d-7" /></td>
+                <td className="py-2">16.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#67744a" name="Dill Pickle" brand="Dunn-Edwards" href="/colors/dunn-edwards/dill-pickle-de5573" /></td>
+                <td className="py-2">15.9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blue Blood splits the same way. Behr&apos;s version has an LRV of 12.0, and the PPG color of that name is <Swatch hex="#6b7f81" name="Blue Blood" brand="PPG" href="/colors/ppg/blue-blood-1034-6" />, with an LRV of 19.9.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What a name cannot tell you</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A name does not predict lightness. Mayonnaise (88.1) and Lucky Potato (82.0) are the pale ones on this page, while Pancake Syrup (8.4) and Zombie (10.2) are the darkest. Pick on the numbers instead: look up the LRV and hex on the color&apos;s page, check the closest match at the brand you plan to buy from, and run both through the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>. If you have a color and no name, the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> finds the closest named colors in the database. Browse the <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutral</Link> family for more quiet shades, and the <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> page for Lizard Breath, Lucky Potato and the rest of that palette.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Kitchen Cabinet Paint Colors (2026-11-12) ──────────────── */
   {
     slug: "kitchen-cabinet-paint-colors",
