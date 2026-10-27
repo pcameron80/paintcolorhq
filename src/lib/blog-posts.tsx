@@ -75,6 +75,316 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Accent Wall Colors and What to Pair Them With (2026-10-29) ──────────────── */
+  {
+    slug: "accent-wall-colors",
+    title: "Accent Wall Colors and What to Pair Them With",
+    date: "2026-10-29",
+    author: "Philip Cameron",
+    excerpt:
+      "Green, blue, brown and rust accent wall colors, each paired with the base color for the other three walls, plus the LRV gap between them measured.",
+    coverColor: "#2f3d4c",
+    coverImage: "/blog/accent-wall-colors.webp",
+    tags: ["Guide", "Tips", "Bedroom"],
+    faq: [
+      {
+        question: "Which wall should be the accent wall?",
+        answer:
+          "Sherwin-Williams says the wall that comes into view opposite the main entrance is often the most appropriate feature wall. Benjamin Moore advises selecting a wall with purpose, one your eye is drawn to immediately, and avoiding walls you would rather blend into the room.",
+      },
+      {
+        question: "How dark should an accent wall be compared to the other walls?",
+        answer:
+          "Sherwin-Williams suggests a color a few shades darker than the other walls. Farrow & Ball advises avoiding really strong contrasts between the accent and the three adjacent walls. In its own feature wall pairings, the gap in light reflectance value (LRV) between accent and wall has a median of 28.2 points for the lighter pairings and 46.4 to 59.7 points for its dark ones.",
+      },
+      {
+        question: "What color wall goes with a navy accent wall?",
+        answer:
+          "Benjamin Moore lists Coventry Gray, White Dove, Lenox Tan and Glacier White as color combinations for Hale Navy. Sherwin-Williams lists Icicle, Ramie and Roycroft Suede as coordinating colors for Naval. Farrow & Ball pairs Hague Blue with Hardwick White walls.",
+      },
+      {
+        question: "What accent wall colors work with gray walls?",
+        answer:
+          "Manufacturer pairings for gray walls include Hale Navy on Coventry Gray (Benjamin Moore), Coral Rose on Agreeable Gray (Sherwin-Williams), and Plummett on Pavilion Gray or Down Pipe on Blue Gray (Farrow & Ball). The LRV gap in those four pairs runs from 28.3 to 39.8 points.",
+      },
+      {
+        question: "Is a brown accent wall too dark for a bedroom?",
+        answer:
+          "Dark colors reflect little light, so the effect depends on the room. Urbane Bronze has an LRV of 8.1 and Evergreen Fog has an LRV of 30.4. Sherwin-Williams suggests Evergreen Fog for a bedroom, and a mid-LRV accent behind the bed leaves more light in the room than a very dark one.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Pick the wall that faces the entrance, then paint it a color that is a few shades darker than the other three. Sherwin-Williams, Benjamin Moore and Farrow &amp; Ball all publish pairings of accent and base colors, and we measured the light reflectance value (LRV) gap in each one. Farrow &amp; Ball&apos;s lighter pairings have a median gap of 28.2 LRV points, its dark ones run 46.4 to 59.7, and the Sherwin-Williams and Benjamin Moore pairings in this post run from 31.9 to 77.8 because most of them use a white wall.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Which wall to accent</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two of the three manufacturers answer this directly. Sherwin-Williams says: &quot;the wall that comes into view opposite the main entrance to the room is often the most appropriate one to use as your feature wall.&quot; Benjamin Moore says: &quot;When choosing an accent wall, select a wall with purpose&quot; because &quot;your eye will be drawn to it immediately,&quot; and to &quot;avoid walls you&apos;d like to hide or blend into the room.&quot; Farrow &amp; Ball does not name a wall, but its colour expert, Patrick, gives a rule for the color, covered below.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Our recommendation combines the two: when the wall opposite the door also holds the bed, sofa or fireplace, it is the one to paint. Skip a wall broken up by several doors or windows, because the color has little solid surface to show on.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How far apart should accent and base be?</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The manufacturers disagree a little. Sherwin-Williams suggests you &quot;choose a color a few shades darker than the other walls.&quot; Farrow &amp; Ball&apos;s Patrick says: &quot;The best way to approach a feature wall is to avoid any really strong contrasts between the accent colour and the three adjacent walls,&quot; and adds: &quot;Look for colours with the same undertone, which will help you achieve a more &apos;blended&apos; look.&quot; Benjamin Moore points the other way for light rooms: &quot;For rooms with lighter, softer colours, bring in depth with dark, bold accent colours.&quot;
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          To turn that into a number, we pulled the LRV of every accent and wall in Farrow &amp; Ball&apos;s published feature wall pairings from our database. LRV is the amount of light a color reflects on a scale of 0 to 100, where Sherwin-Williams says zero reflects no light and 100 reflects all light. The gap is the wall&apos;s LRV minus the accent&apos;s.
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>In 15 of Farrow &amp; Ball&apos;s lighter pairings (green, blue, gray and neutral groups), the gap runs from 13.7 to 45.5 points, with a median of 28.2. One pairing in its blue group, Titmouse Blue, is not in our database and is left out.</li>
+          <li>In its four &quot;dark&quot; pairings, the gap runs from 46.4 to 59.7.</li>
+          <li>In the ten Sherwin-Williams and Benjamin Moore pairings below, the gap runs from 31.9 to 77.8. Eight of the ten walls have an LRV of 70 or higher.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This is our reading of the manufacturers&apos; own examples, not a rule they state. A gap near 30 points is the most common choice for a tonal look. A gap of 60 or more is a deliberate, dramatic one, and every example in this post at that size uses an accent with an LRV under 20 against a pale wall, which matches Benjamin Moore&apos;s advice to add depth to light, soft rooms with dark, bold accents.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Green accent wall colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The Sherwin-Williams walls below are the coordinating colors in its own color data for each green. <Link href="/colors/family/green" className="text-brand-blue hover:underline">Browse the green family</Link> for more, and see <Link href="/blog/best-sage-green-paint-colors" className="text-brand-blue hover:underline">our sage green guide</Link> for the lighter sages, which this post leaves out.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Accent (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">Other three walls (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">LRV gap</th>
+                <th className="py-2 font-semibold">Pairing from</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#95978a" name="Evergreen Fog" brand="SW 9130" href="/colors/sherwin-williams/evergreen-fog-9130" /> (30.4)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e2daca" name="Neutral Ground" brand="SW 7568" href="/colors/sherwin-williams/neutral-ground-7568" /> (70.6)</td>
+                <td className="py-2 pr-4">40.2</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#95978a" name="Evergreen Fog" brand="SW 9130" href="/colors/sherwin-williams/evergreen-fog-9130" /> (30.4)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e3e2d9" name="Ethereal White" brand="SW 6182" href="/colors/sherwin-williams/ethereal-white-6182" /> (75.7)</td>
+                <td className="py-2 pr-4">45.3</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#5e6259" name="Pewter Green" brand="SW 6208" href="/colors/sherwin-williams/pewter-green-6208" /> (11.8)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> (74.3)</td>
+                <td className="py-2 pr-4">62.5</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#737c70" name="Green Smoke" brand="F&B 47" href="/colors/farrow-ball/green-smoke-47" /> (19.2)</td>
+                <td className="py-2 pr-4"><Swatch hex="#d9d2c1" name="Shaded White" brand="F&B 201" href="/colors/farrow-ball/shaded-white-201" /> (64.7)</td>
+                <td className="py-2 pr-4">45.5</td>
+                <td className="py-2">Farrow &amp; Ball</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams describes Evergreen Fog as a &quot;green-meets-gray with just a bit of blue.&quot; It is the lighter of the two accents. At LRV 30.4 it sits 40 points below its wall, so it reads as a clear step darker without turning the room dark. Pewter Green is the dramatic option: Sherwin-Williams describes it as &quot;dark yet calming,&quot; and at LRV 11.8 against a wall at 74.3 the gap is 62.5 points.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Farrow &amp; Ball&apos;s advice to match undertone can be tested with a measurement. CIELAB b* runs from negative (blue) to positive (yellow). Pewter Green measures b* 4.6 and Shoji White 6.7, so both lean slightly yellow and sit 2.1 apart. Evergreen Fog measures 6.6, against 8.8 for Neutral Ground and 4.5 for Ethereal White, so the accent sits between its two coordinating walls.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Blue accent wall colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The three navies below are not interchangeable. <Link href="/colors/family/blue" className="text-brand-blue hover:underline">The blue family page</Link> lists the rest.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Accent (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">Other three walls (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">LRV gap</th>
+                <th className="py-2 font-semibold">Pairing from</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#2f3d4c" name="Naval" brand="SW 6244" href="/colors/sherwin-williams/naval-6244" /> (4.5)</td>
+                <td className="py-2 pr-4"><Swatch hex="#dbdfe0" name="Icicle" brand="SW 6238" href="/colors/sherwin-williams/icicle-6238" /> (73.2)</td>
+                <td className="py-2 pr-4">68.7</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (8.4)</td>
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /> (83.2)</td>
+                <td className="py-2 pr-4">74.8</td>
+                <td className="py-2">Benjamin Moore</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#3d4e57" name="Hague Blue" brand="F&B 30" href="/colors/farrow-ball/hague-blue-30" /> (7.1)</td>
+                <td className="py-2 pr-4"><Swatch hex="#b5afa0" name="Hardwick White" brand="F&B 5" href="/colors/farrow-ball/hardwick-white-5" /> (43.0)</td>
+                <td className="py-2 pr-4">35.9</td>
+                <td className="py-2">Farrow &amp; Ball</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams says Naval has a &quot;cool gray-green undertone,&quot; and we can put a number on its cool side: Naval measures b* -11.0, while its coordinating Icicle measures -1.0, close to neutral. Naval on Icicle is the highest-contrast blue pairing here at 68.7 points. Hague Blue on Hardwick White is the gentlest at 35.9, because Farrow &amp; Ball&apos;s &quot;white&quot; is a mid-light color with an LRV of 43.0.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Comparing the navies themselves, Hale Navy and Hague Blue are very similar to each other. Naval is a visible difference from both. If you are swapping one for another, treat the result as a digital match and confirm it with a physical sample before buying a gallon. Benjamin Moore describes Hale Navy as &quot;A use-anywhere shade of navy with a classic maritime feel.&quot;
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Accent colors for gray walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Gray bases give smaller gaps than white ones, 28.3 to 39.8 points here. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> for more bases.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Accent (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">Gray walls (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">LRV gap</th>
+                <th className="py-2 font-semibold">Pairing from</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (8.4)</td>
+                <td className="py-2 pr-4"><Swatch hex="#b9bbb7" name="Coventry Gray" brand="BM HC-169" href="/colors/benjamin-moore/coventry-gray-hc-169" /> (48.2)</td>
+                <td className="py-2 pr-4">39.8</td>
+                <td className="py-2">Benjamin Moore</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c37f7a" name="Coral Rose" brand="SW 9004" href="/colors/sherwin-williams/coral-rose-9004" /> (28.2)</td>
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /> (60.1)</td>
+                <td className="py-2 pr-4">31.9</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#626664" name="Down Pipe" brand="F&B 26" href="/colors/farrow-ball/down-pipe-26" /> (13.0)</td>
+                <td className="py-2 pr-4"><Swatch hex="#aeb2a4" name="Blue Gray" brand="F&B 91" href="/colors/farrow-ball/blue-gray-91" /> (43.5)</td>
+                <td className="py-2 pr-4">30.5</td>
+                <td className="py-2">Farrow &amp; Ball</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#8d8d8b" name="Plummett" brand="F&B 272" href="/colors/farrow-ball/plummett-272" /> (26.6)</td>
+                <td className="py-2 pr-4"><Swatch hex="#c8c3bc" name="Pavilion Gray" brand="F&B 242" href="/colors/farrow-ball/pavilion-gray-242" /> (54.9)</td>
+                <td className="py-2 pr-4">28.3</td>
+                <td className="py-2">Farrow &amp; Ball</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Coral Rose is the only warm-hued accent among the gray pairings. Sherwin-Williams lists it, along with Incredible White and Extra White, as coordinating colors for Agreeable Gray. Farrow &amp; Ball also offers a gray-on-gray pairing with a smaller gap: Pavilion Gray on Dimpse, 13.7 points, the lowest of its pairings. Sherwin-Williams describes Agreeable Gray as having &quot;a beige undertone.&quot;
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Brown and rust accent wall colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Link href="/colors/family/brown" className="text-brand-blue hover:underline">Brown family</Link> colors and the <Link href="/colors/family/orange" className="text-brand-blue hover:underline">orange family</Link>, which holds the rust and terracotta shades, have more options. Two are worth pairing with their manufacturer&apos;s coordinating whites.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Accent (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">Other three walls (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">LRV gap</th>
+                <th className="py-2 font-semibold">Pairing from</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /> (8.1)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> (74.3)</td>
+                <td className="py-2 pr-4">66.2</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /> (8.1)</td>
+                <td className="py-2 pr-4"><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /> (85.9)</td>
+                <td className="py-2 pr-4">77.8</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ac6b53" name="Cavern Clay" brand="SW 7701" href="/colors/sherwin-williams/cavern-clay-7701" /> (19.9)</td>
+                <td className="py-2 pr-4"><Swatch hex="#efe8db" name="Creamy" brand="SW 7012" href="/colors/sherwin-williams/creamy-7012" /> (81.2)</td>
+                <td className="py-2 pr-4">61.3</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams calls Urbane Bronze a &quot;brownish gray,&quot; and at LRV 8.1 it is a touch darker than Hale Navy. Its measured b* is 4.1 against 6.7 for Shoji White, so the pair lean the same way and sit 2.6 apart. Cavern Clay is the opposite case: Sherwin-Williams calls it a &quot;reddish orange midtone,&quot; and it measures b* 24.3 against 7.2 for Creamy. The accent carries far more yellow than the wall, so this is a warm contrast where the bronze pairing is a nearly neutral one.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bedroom accent walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams names the bedroom for one of these colors: &quot;Consider this gorgeous green-meets-gray with just a bit of blue in a bedroom&quot; (Evergreen Fog). For the wall, our recommendation is the one behind the bed in most layouts, since that is the wall with a purpose in Benjamin Moore&apos;s terms. A mid-LRV accent like Evergreen Fog at 30.4 or Cavern Clay at 19.9 leaves more reflected light in a bedroom than Naval at 4.5. For more restful options see <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">our calming bedroom paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The same accents in other brands</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you want one of these accents in a brand you already use, the closest matches in our database are below. These are digital matches. Confirm any substitute with a physical sample before you buy.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Accent</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 font-semibold">Closest other brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Evergreen Fog</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/shady-willow-ecc-36-1" className="text-brand-blue hover:underline">Shady Willow</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/storm-cloud-gray-2140-40" className="text-brand-blue hover:underline">Storm Cloud Gray</Link>, Benjamin Moore (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pewter Green</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/painted-turtle-710f-6" className="text-brand-blue hover:underline">Painted Turtle</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/quaking-bog-5005-2c" className="text-brand-blue hover:underline">Quaking Bog</Link>, Valspar (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Naval</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/midnight-dream-570f-7" className="text-brand-blue hover:underline">Midnight Dream</Link> (very similar)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/north-sea-cc-932" className="text-brand-blue hover:underline">North Sea</Link>, Benjamin Moore (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Hale Navy</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/rogue-blue-5009-2" className="text-brand-blue hover:underline">Rogue Blue</Link>, Valspar (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Urbane Bronze</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/black-bean-790d-7" className="text-brand-blue hover:underline">Black Bean</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/dragons-breath-1547" className="text-brand-blue hover:underline">Dragon&apos;s Breath</Link>, Benjamin Moore (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Cavern Clay</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/mojave-sunset-220d-7" className="text-brand-blue hover:underline">Mojave Sunset</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/audubon-russet-hc-51" className="text-brand-blue hover:underline">Audubon Russet</Link>, Benjamin Moore (nearly identical)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          To compare any two of these side by side, use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>. Browse more from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Try the pairing before you buy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Preview each accent and base combination in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, then build a full scheme with the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>. A screen cannot show how a wall changes through the day, so paint a large sample on the accent wall itself, using <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">our sample testing guide</Link>. For the basics of how colors relate, see <Link href="/blog/color-theory-for-home-decorators" className="text-brand-blue hover:underline">color theory for home decorators</Link>.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Small Bathroom Paint Colors by Natural Light (2026-10-27) ──────────────── */
   {
     slug: "small-bathroom-paint-colors",
