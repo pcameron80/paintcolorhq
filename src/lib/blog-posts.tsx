@@ -75,6 +75,392 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── What Is LRV in Paint? 26,720 Colors Compared (2026-11-05) ──────────────── */
+  {
+    slug: "what-is-lrv-in-paint",
+    title: "What Is LRV in Paint? 26,720 Colors Compared",
+    date: "2026-11-05",
+    author: "Philip Cameron",
+    excerpt:
+      "LRV is a 0 to 100 score for how much light a paint color reflects. See how 26,720 colors from 13 brands spread across it, and which figures the maker published.",
+    coverColor: "#F7F7F1",
+    coverImage: "/blog/what-is-lrv-in-paint.webp",
+    tags: ["Guide", "Tips", "Color Theory"],
+    faq: [
+      {
+        question: "What does LRV mean in paint?",
+        answer:
+          "LRV stands for light reflectance value. It is a number from 0 to 100 that says how much light a painted surface reflects: 0 reflects none and 100 reflects all of it. A color with a high LRV looks lighter in a room, and a color with a low LRV looks darker.",
+      },
+      {
+        question: "What is a good LRV for paint?",
+        answer:
+          "It depends on the surface and the room. Our rule of thumb, which is ours and not an industry standard, is 70 and above for ceilings and trim, 50 to 70 for light neutral walls and rooms with little daylight, 30 to 50 for mid-tone walls, and under 30 for accents, cabinets and doors. Sherwin-Williams advises looking at higher-LRV colors for north-facing rooms.",
+      },
+      {
+        question: "What is the highest LRV paint color?",
+        answer:
+          "The highest manufacturer-published LRV we have checked is 94, shared by Behr Ultra Pure White and two other Behr whites. Next are Sherwin-Williams UltraWhite at 93.5 and Dunn-Edwards Warm White at 93. Benjamin Moore's lightest is Chantilly Lace at 90. A few colors in our catalog show 100.0, but those are computed from a pure white swatch and are not real paint values.",
+      },
+      {
+        question: "What are Sherwin-Williams LRV values?",
+        answer:
+          "Sherwin-Williams colors in our catalog run from 0.9 to 92.6, with a median of 39.6. These are computed from each swatch's hex value, not copied from the manufacturer. When we compared them with Sherwin-Williams' own feed on 2026-10-11, they were within 1 point on all but 13 colors. For a specification, use the figure on Sherwin-Williams' own color page.",
+      },
+      {
+        question: "Does a higher LRV mean a color is warmer or cooler?",
+        answer:
+          "No. LRV measures lightness only. Two colors with the same LRV can lean warm, cool, green or pink. To judge the lean, compare the colors side by side and look at the undertone separately.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          LRV, or light reflectance value, is a number from 0 to 100 that tells you how much light a painted surface reflects. Zero reflects none and 100 reflects all of it, so a higher LRV looks lighter on the wall and a lower one looks darker. Across the 26,720 colors in our catalog the median LRV is 44.0, and only 4.0 percent reach 85 or higher. Benjamin Moore and Behr figures are the manufacturers&apos; published LRVs. For the other 11 brands the figure is computed from the swatch color, and this post marks which is which.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What LRV measures</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams defines it on its room-orientation guide: &quot;The scale ranges from 0-100 with zero reflecting no light and 100 reflecting all light.&quot; The same page says LRV affects how dark or light a color appears in your room, and that north-facing rooms call for colors with a higher LRV. Our guide to <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">paint colors for north-facing rooms</Link> applies that advice to specific colors.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore lists an LRV on its color pages and describes a high LRV as a color that reflects a lot of light. It also uses LRV as a rule: its garage-door advice says to choose a color with an LRV of 55 or higher for a vinyl door, to avoid warping. That is the one hard cutoff we found from a manufacturer, and it is about warping on vinyl, not about how a room looks.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          LRV says nothing about hue. A cream and a pale gray can share the same number. For the warm or cool lean of a color, see our guide to <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Which LRVs here are published and which are computed</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every number in this post is the value stored in our database on 2026-10-26. They come from two sources, and the difference matters if you are specifying paint for a job.
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Manufacturer-published: Benjamin Moore and Behr.</strong> On 2026-10-11 we overwrote Benjamin Moore and Behr LRVs with the figure in the manufacturer&apos;s own feed wherever the feed had a usable one. These 9,692 colors are the only ones where the stored number is the maker&apos;s.</li>
+          <li><strong>Computed from the swatch color: the other 11 brands, 17,028 colors.</strong> We calculate relative luminance from each swatch&apos;s hex value. It is an estimate of what the manufacturer would print, not the printed figure.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          How far off can an estimate be? Before the 2026-10-11 correction, about 1,250 Benjamin Moore colors carried computed values 1 to 2 points from the published ones. <Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> showed 7.1 computed; Benjamin Moore publishes 8.36, and we now store 8.4.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/dutch-boy" className="text-brand-blue hover:underline">Dutch Boy</Link>, both of which publish LRV in their feeds, our computed values were within 1 point of the feed on all but 13 colors when we checked on 2026-10-11. Dutch Boy publishes whole numbers. Dunn-Edwards, Vista Paint, PPG and Hirshfield&apos;s also print an LRV on their color pages, and we have not yet replaced our computed values with theirs. Colorhouse, RAL, Farrow &amp; Ball, Valspar and Kilz carry no LRV in the data we collect, so those are computed too. The brand table below marks each brand.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How 26,720 colors spread across the LRV scale</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We counted every active color in the catalog into six bands. The shape is lopsided: the 10 to 30 band is the biggest, and the lightest band is the smallest.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">LRV band</th>
+                <th className="py-2 pr-4 font-semibold">Colors</th>
+                <th className="py-2 font-semibold">Share of catalog</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Under 10</td><td className="py-2 pr-4">2,065</td><td className="py-2">7.7%</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">10 to under 30</td><td className="py-2 pr-4">7,178</td><td className="py-2">26.9%</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">30 to under 50</td><td className="py-2 pr-4">5,798</td><td className="py-2">21.7%</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">50 to under 70</td><td className="py-2 pr-4">5,842</td><td className="py-2">21.9%</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">70 to under 85</td><td className="py-2 pr-4">4,764</td><td className="py-2">17.8%</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">85 and above</td><td className="py-2 pr-4">1,073</td><td className="py-2">4.0%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three readings follow. About 22 percent of colors (5,837) sit at 70 or above, so a shopper who wants a light wall color is choosing from roughly one in five. Colors at 90 or above number 259, under 1 percent of the catalog. And 2,065 colors are under 10.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Does it matter that two-thirds of the data is computed? Split the catalog into the 9,692 published colors and the 17,028 computed ones and the shapes are nearly the same: medians of 43.0 and 44.6, and 4.0 and 4.1 percent at 85 or above. The distribution is not an artifact of the method, though individual computed numbers can be a point or two off.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">LRV by brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Each row shows the share of that brand&apos;s colors in each band, in percent. &quot;Published&quot; means the stored LRV is the manufacturer&apos;s feed figure. &quot;Computed&quot; means we calculated it from the swatch color.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Brand</th>
+                <th className="py-2 pr-4 font-semibold">Colors</th>
+                <th className="py-2 pr-4 font-semibold">Median LRV</th>
+                <th className="py-2 pr-4 font-semibold">Under 10</th>
+                <th className="py-2 pr-4 font-semibold">10 to 30</th>
+                <th className="py-2 pr-4 font-semibold">30 to 50</th>
+                <th className="py-2 pr-4 font-semibold">50 to 70</th>
+                <th className="py-2 pr-4 font-semibold">70 to 85</th>
+                <th className="py-2 pr-4 font-semibold">85+</th>
+                <th className="py-2 font-semibold">LRV source</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link></td>
+                <td className="py-2 pr-4">5,789</td>
+                <td className="py-2 pr-4">42.0</td>
+                <td className="py-2 pr-4">7.5</td>
+                <td className="py-2 pr-4">29.2</td>
+                <td className="py-2 pr-4">21.1</td>
+                <td className="py-2 pr-4">19.8</td>
+                <td className="py-2 pr-4">17.0</td>
+                <td className="py-2 pr-4">5.4</td>
+                <td className="py-2">Published</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link></td>
+                <td className="py-2 pr-4">3,903</td>
+                <td className="py-2 pr-4">44.4</td>
+                <td className="py-2 pr-4">6.9</td>
+                <td className="py-2 pr-4">26.9</td>
+                <td className="py-2 pr-4">22.4</td>
+                <td className="py-2 pr-4">23.7</td>
+                <td className="py-2 pr-4">18.2</td>
+                <td className="py-2 pr-4">1.8</td>
+                <td className="py-2">Published</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/ppg" className="text-brand-blue hover:underline">PPG</Link></td>
+                <td className="py-2 pr-4">3,261</td>
+                <td className="py-2 pr-4">48.1</td>
+                <td className="py-2 pr-4">5.5</td>
+                <td className="py-2 pr-4">25.4</td>
+                <td className="py-2 pr-4">21.8</td>
+                <td className="py-2 pr-4">22.9</td>
+                <td className="py-2 pr-4">22.8</td>
+                <td className="py-2 pr-4">1.7</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/vista-paint" className="text-brand-blue hover:underline">Vista Paint</Link></td>
+                <td className="py-2 pr-4">2,984</td>
+                <td className="py-2 pr-4">47.7</td>
+                <td className="py-2 pr-4">6.3</td>
+                <td className="py-2 pr-4">24.8</td>
+                <td className="py-2 pr-4">21.1</td>
+                <td className="py-2 pr-4">22.7</td>
+                <td className="py-2 pr-4">19.0</td>
+                <td className="py-2 pr-4">6.2</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/valspar" className="text-brand-blue hover:underline">Valspar</Link></td>
+                <td className="py-2 pr-4">2,358</td>
+                <td className="py-2 pr-4">45.1</td>
+                <td className="py-2 pr-4">8.8</td>
+                <td className="py-2 pr-4">25.4</td>
+                <td className="py-2 pr-4">21.1</td>
+                <td className="py-2 pr-4">23.4</td>
+                <td className="py-2 pr-4">19.2</td>
+                <td className="py-2 pr-4">2.2</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/dunn-edwards" className="text-brand-blue hover:underline">Dunn-Edwards</Link></td>
+                <td className="py-2 pr-4">2,230</td>
+                <td className="py-2 pr-4">43.5</td>
+                <td className="py-2 pr-4">6.6</td>
+                <td className="py-2 pr-4">28.3</td>
+                <td className="py-2 pr-4">21.3</td>
+                <td className="py-2 pr-4">17.0</td>
+                <td className="py-2 pr-4">15.1</td>
+                <td className="py-2 pr-4">11.7</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link></td>
+                <td className="py-2 pr-4">1,950</td>
+                <td className="py-2 pr-4">39.6</td>
+                <td className="py-2 pr-4">10.8</td>
+                <td className="py-2 pr-4">27.5</td>
+                <td className="py-2 pr-4">23.9</td>
+                <td className="py-2 pr-4">21.1</td>
+                <td className="py-2 pr-4">15.5</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/hirshfields" className="text-brand-blue hover:underline">Hirshfield&apos;s</Link></td>
+                <td className="py-2 pr-4">1,469</td>
+                <td className="py-2 pr-4">46.4</td>
+                <td className="py-2 pr-4">8.6</td>
+                <td className="py-2 pr-4">23.3</td>
+                <td className="py-2 pr-4">21.7</td>
+                <td className="py-2 pr-4">24.0</td>
+                <td className="py-2 pr-4">18.3</td>
+                <td className="py-2 pr-4">4.1</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/dutch-boy" className="text-brand-blue hover:underline">Dutch Boy</Link></td>
+                <td className="py-2 pr-4">1,441</td>
+                <td className="py-2 pr-4">43.9</td>
+                <td className="py-2 pr-4">9.0</td>
+                <td className="py-2 pr-4">26.4</td>
+                <td className="py-2 pr-4">22.2</td>
+                <td className="py-2 pr-4">24.8</td>
+                <td className="py-2 pr-4">16.4</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/kilz" className="text-brand-blue hover:underline">Kilz</Link></td>
+                <td className="py-2 pr-4">827</td>
+                <td className="py-2 pr-4">40.2</td>
+                <td className="py-2 pr-4">7.4</td>
+                <td className="py-2 pr-4">29.0</td>
+                <td className="py-2 pr-4">23.1</td>
+                <td className="py-2 pr-4">24.2</td>
+                <td className="py-2 pr-4">14.0</td>
+                <td className="py-2 pr-4">2.3</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/ral" className="text-brand-blue hover:underline">RAL</Link></td>
+                <td className="py-2 pr-4">213</td>
+                <td className="py-2 pr-4">14.5</td>
+                <td className="py-2 pr-4">39.0</td>
+                <td className="py-2 pr-4">37.6</td>
+                <td className="py-2 pr-4">13.6</td>
+                <td className="py-2 pr-4">5.2</td>
+                <td className="py-2 pr-4">1.9</td>
+                <td className="py-2 pr-4">2.8</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link></td>
+                <td className="py-2 pr-4">167</td>
+                <td className="py-2 pr-4">43.9</td>
+                <td className="py-2 pr-4">9.6</td>
+                <td className="py-2 pr-4">25.1</td>
+                <td className="py-2 pr-4">21.0</td>
+                <td className="py-2 pr-4">27.5</td>
+                <td className="py-2 pr-4">15.0</td>
+                <td className="py-2 pr-4">1.8</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/colorhouse" className="text-brand-blue hover:underline">Colorhouse</Link></td>
+                <td className="py-2 pr-4">128</td>
+                <td className="py-2 pr-4">52.7</td>
+                <td className="py-2 pr-4">10.9</td>
+                <td className="py-2 pr-4">17.2</td>
+                <td className="py-2 pr-4">20.3</td>
+                <td className="py-2 pr-4">27.3</td>
+                <td className="py-2 pr-4">14.8</td>
+                <td className="py-2 pr-4">9.4</td>
+                <td className="py-2">Computed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The only like-for-like comparison here is Behr against Benjamin Moore, because both are published. Behr has 311 colors at 85 or above (5.4 percent of its line) and Benjamin Moore has 72 (1.8 percent). Behr&apos;s median is 42.0 and Benjamin Moore&apos;s is 44.4.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The computed brands need more care. Sherwin-Williams has the lowest median of any line with more than 1,000 colors, 39.6, and 10.8 percent of its colors fall under 10. Given the 1-point agreement with its feed, we trust that reading. PPG (48.1) and Vista Paint (47.7) have the highest medians, but those are computed from hex and neither brand&apos;s printed values are loaded yet. Dunn-Edwards shows 11.7 percent at 85 or above, the top share of any large line, and 51 of its colors compute above 94.5, a ceiling we use as a sanity check. We read that band as a side effect of computing from near-white swatches, not as a fact about Dunn-Edwards paint. RAL is the outlier at a median of 14.5, with 39.0 percent of its 213 colors under 10.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The lightest white each brand sells</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For the brightest whites we went past our stored numbers and checked each manufacturer&apos;s own site or palette feed in October 2026. Where a brand publishes no usable LRV, the figure is our estimate from the swatch color and is marked that way.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Brand</th>
+                <th className="py-2 pr-4 font-semibold">Lightest white</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Source</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Behr</td><td className="py-2 pr-4"><Link href="/colors/behr/ultra-pure-white-upw" className="text-brand-blue hover:underline">Ultra Pure White</Link> (UPW)</td><td className="py-2 pr-4">94</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams</td><td className="py-2 pr-4"><Link href="/colors/sherwin-williams/ultrawhite-9500" className="text-brand-blue hover:underline">UltraWhite</Link> (SW 9500)</td><td className="py-2 pr-4">93.5</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Dunn-Edwards</td><td className="py-2 pr-4"><Link href="/colors/dunn-edwards/white-dew380" className="text-brand-blue hover:underline">Warm White</Link> (DEW380)</td><td className="py-2 pr-4">93</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Dutch Boy</td><td className="py-2 pr-4"><Link href="/colors/dutch-boy/super-white-001w" className="text-brand-blue hover:underline">Super White</Link> (001W)</td><td className="py-2 pr-4">92</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Benjamin Moore</td><td className="py-2 pr-4"><Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> (2121-70)</td><td className="py-2 pr-4">90</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Hirshfield&apos;s</td><td className="py-2 pr-4"><Link href="/colors/hirshfields/touch-of-sun-852" className="text-brand-blue hover:underline">Touch of Sun</Link> (0852)</td><td className="py-2 pr-4">90</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Vista Paint</td><td className="py-2 pr-4"><Link href="/colors/vista-paint/touch-of-sun-c-851" className="text-brand-blue hover:underline">Touch of Sun</Link> (0852)</td><td className="py-2 pr-4">90</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">PPG</td><td className="py-2 pr-4"><Link href="/colors/ppg/soft-candlelight-61yy-89-135" className="text-brand-blue hover:underline">Soft Candlelight</Link> (61YY 89/135)</td><td className="py-2 pr-4">89</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Farrow &amp; Ball</td><td className="py-2 pr-4"><Link href="/colors/farrow-ball/all-white-2005" className="text-brand-blue hover:underline">All White</Link> (2005)</td><td className="py-2 pr-4">94.2 est.</td><td className="py-2">Our estimate</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Kilz</td><td className="py-2 pr-4"><Link href="/colors/kilz/ultra-bright-white-tb-01" className="text-brand-blue hover:underline">Ultra Bright White</Link> (TB-01)</td><td className="py-2 pr-4">93.3 est.</td><td className="py-2">Our estimate</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Valspar</td><td className="py-2 pr-4"><Link href="/colors/valspar/ultra-white-7006-24" className="text-brand-blue hover:underline">Ultra White</Link> (7006-24)</td><td className="py-2 pr-4">92.6 est.</td><td className="py-2">Our estimate</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The answer to &quot;highest LRV paint&quot; is a tie, not a single winner. Behr publishes 94 for Ultra Pure White and for two more whites in its line, Stately White and Blanca Peak, and Sherwin-Williams UltraWhite follows at 93.5. Leave the estimated rows out of that comparison: a computed figure can sit above a published one without the paint being any brighter. The same caution applies to the handful of catalog colors that compute to 100.0 from a pure #ffffff swatch, since a painted film never reflects all light. Some published figures here also differ from the LRV on our color pages, which for most brands is still the computed value. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link> families to sort the bright end.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">LRV bands by room use: our guide</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This table is our own guide, built from where the catalog&apos;s colors fall and from what LRV measures. It is not an industry standard, and we did not find room-by-room cutoffs on the manufacturer pages we read. Read the bands as starting points, then check them against your light. The Benjamin Moore examples carry published LRVs; the Sherwin-Williams examples are computed.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">LRV band (share)</th>
+                <th className="py-2 pr-4 font-semibold">Examples (LRV)</th>
+                <th className="py-2 font-semibold">Where we would use it</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">85 and above (4.0%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#f7f7f1" name="High Reflective White" brand="SW 7757" href="/colors/sherwin-williams/high-reflective-white-7757" /> (92.6)<br /><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /> (85.9)</td>
+                <td className="py-2">Ceilings and trim where you want the brightest surface in the room.</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">70 to under 85 (17.8%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /> (83.2)<br /><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> (82.2)<br /><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> (74.3)</td>
+                <td className="py-2">Whole-room whites, softer trim, and walls in small or dim rooms where you want light bounced around.</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">50 to under 70 (21.9%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)<br /><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /> (63.3)<br /><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /> (60.1)<br /><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (55.1)</td>
+                <td className="py-2">Light neutral walls. The upper half of the band, 60 and up, is the safer pick for north-facing rooms.</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">30 to under 50 (21.7%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#c0b2a2" name="Balanced Beige" brand="SW 7037" href="/colors/sherwin-williams/balanced-beige-7037" /> (45.7)</td>
+                <td className="py-2">Mid-tone walls in rooms with plenty of daylight, where a color can look deeper without closing the room in.</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">10 to under 30 (26.9%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#686763" name="Kendall Charcoal" brand="BM HC-166" href="/colors/benjamin-moore/kendall-charcoal-hc-166" /> (14.6)</td>
+                <td className="py-2">Accent walls, cabinets and doors. This is the largest band in the catalog.</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Under 10 (7.7%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (8.4)<br /><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /> (5.6)<br /><Swatch hex="#2f2f30" name="Tricorn Black" brand="SW 6258" href="/colors/sherwin-williams/tricorn-black-6258" /> (2.9)</td>
+                <td className="py-2">Front doors, shutters and small accents, where the color is the point.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two cautions on the table. First, the gap between two colors often matters more than either number, which is why our <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">trim color guide</Link> works in LRV differences. Second, a ceiling reads as a step only when it is lighter than the walls: a ceiling in the 70 to 85 band over walls in the 50 to 70 band opens a gap of 10 points or more. Our <Link href="/blog/ceiling-paint-color" className="text-brand-blue hover:underline">ceiling paint color</Link> post has measured pairs.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to check a color&apos;s LRV</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Open the color&apos;s page on Paint Color HQ. Every color page lists its LRV.</li>
+          <li>If the number decides a purchase, confirm it against the manufacturer&apos;s color page or the back of the chip. Treat our figure for any brand other than Benjamin Moore and Behr as an estimate.</li>
+          <li>Put two candidates side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> to see both LRVs next to each other.</li>
+          <li>If you only have a hex code or a photo of a painted wall, the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> lists the closest paint colors, each with its LRV on its color page. A match found this way is a digital match, so confirm it with a physical sample.</li>
+          <li>Paint a large sample and look at it in the room at several times of day. LRV predicts relative lightness, not how your window and bulbs will treat it.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For the bright end of the scale, see our guide to the <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors</Link>. For the grays and greiges in the middle bands, browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>, and compare brands on the <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> pages, the two lines whose LRVs here are the manufacturer&apos;s own.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Bedroom paint colors by window direction (2026-11-03) ──────────────── */
   {
     slug: "best-bedroom-paint-colors",
