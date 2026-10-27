@@ -75,6 +75,479 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Bedroom paint colors by window direction (2026-11-03) ──────────────── */
+  {
+    slug: "best-bedroom-paint-colors",
+    title: "Bedroom Paint Colors by Window Direction",
+    date: "2026-11-03",
+    author: "Philip Cameron",
+    excerpt:
+      "Bedroom paint colors sorted by window direction and LRV, using paint-maker light guidance for north, south, east and west rooms, plus dark picks.",
+    coverColor: "#cdd2ca",
+    coverImage: "/blog/best-bedroom-paint-colors.webp",
+    tags: ["Bedroom", "Guide", "Tips"],
+    faq: [
+      {
+        question: "What are the best bedroom paint colors?",
+        answer:
+          "It depends on which way the bedroom windows face. Sherwin-Williams advises warm neutrals with a higher LRV for north-facing rooms. Benjamin Moore suggests cool-leaning whites, grays and greiges for the warm light of south- and west-facing rooms, and clean warm whites for east-facing rooms. Check the direction first, then sample two or three colors on the wall.",
+      },
+      {
+        question: "What color should a north-facing bedroom be?",
+        answer:
+          "Sherwin-Williams says to avoid cool undertones in a north-facing room and choose a warm neutral instead, with a higher LRV. Its own north-facing picks are Antique White, Worldly Gray and Greek Villa. Benjamin Moore suggests a white with a hint of yellow, and Farrow & Ball says to avoid blue or gray bases in lighter shades.",
+      },
+      {
+        question: "What color is best for a bedroom that gets afternoon sun?",
+        answer:
+          "Benjamin Moore says west-facing rooms get stronger, warmer light after noon and suggests cool-toned whites, grays and greiges to even it out. Its west-facing easy picks are White Dove, Metropolitan and Revere Pewter. Sherwin-Williams adds that if you use a west-facing bedroom at all hours, a neutral gives a balanced feel through the day.",
+      },
+      {
+        question: "Can you paint a bedroom a dark color?",
+        answer:
+          "Yes. Benjamin Moore says a south-facing room gets enough light to carry moodier, darker colors and lists Coastline, Mulberry Wine and Evening Dove. For a north-facing room, Sherwin-Williams says a bold dark color should still have warm undertones, while Farrow & Ball suggests embracing the cool light with a deep color such as Railings or Down Pipe.",
+      },
+      {
+        question: "What LRV should bedroom paint have?",
+        answer:
+          "LRV, light reflectance value, runs from 0 (black) to 100 (white). Sherwin-Williams says to look at higher-LRV colors in north-facing rooms. In this guide the light picks run from 87.4 (Super White) down to 50.0 (Metropolitan), and the dark picks fall between 14.6 (Kendall Charcoal) and 5.6 (Iron Ore).",
+      },
+      {
+        question: "Does a bedroom paint color look different at night?",
+        answer:
+          "Yes, because electric light replaces daylight. Sherwin-Williams says that with little natural light you should choose colors by the lighting you use: warm bulbs suit the colors you would pick for a south-facing room, and white or cool bulbs suit north-facing colors. Test your sample under the bulbs you use in the evening.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best bedroom paint color depends on which way the windows face. Paint makers give different advice for each direction: warm neutrals with a higher light reflectance value (LRV) for north light, cool-leaning whites and grays for the warm light of south and west rooms, and clean warm whites for east rooms. Below are picks for each direction with their LRV, plus dark bedroom colors and the closest matches in other brands.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Start with the direction your windows face</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams tells you to point a compass at the largest windows in the room: whichever way the dial points is the room&apos;s orientation. Benjamin Moore explains why it matters. The light from each direction has a different intensity and cast, and that changes how a paint color looks on the wall, most of all for whites, grays and neutrals.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Each section below summarizes what Sherwin-Williams, Benjamin Moore and Farrow &amp; Ball say about that direction, then lists colors in a table. Two measured numbers sit beside each color. <strong>LRV</strong> is the share of light a color reflects, from 0 to 100, and every color page on Paint Color HQ lists it. <strong>Yellowness</strong> is the b* value of the color&apos;s published color data, the yellow-to-blue axis of the CIELAB color space. A higher number is yellower, zero is neither, and a negative number leans blue.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">North-facing bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams says north-facing rooms receive the least light through the day and have cool lighting. It advises avoiding cool undertones, which make the room look colder, and choosing a warm neutral or a color with warm undertones. Its tip for judging this is to look at LRV and favor higher numbers. Benjamin Moore recommends a clean white with a hint of yellow and says north light can be muted. Farrow &amp; Ball says northern light brings out cooler tones, so a lighter shade should avoid a blue or gray base.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">Who lists it</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f0ece2" name="Greek Villa" brand="SW 7551" href="/colors/sherwin-williams/greek-villa-7551" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, north-facing list</td>
+                <td className="py-2 pr-4">84.0</td>
+                <td className="py-2">5.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, off-white pick</td>
+                <td className="py-2 pr-4">81.9</td>
+                <td className="py-2">5.6</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e8dcc6" name="Antique White" brand="SW 6119" href="/colors/sherwin-williams/antique-white-6119" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, north-facing list</td>
+                <td className="py-2 pr-4">72.4</td>
+                <td className="py-2">12.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d4d5cd" name="Gray Owl" brand="BM 2137-60" href="/colors/benjamin-moore/gray-owl-2137-60" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, gray pick</td>
+                <td className="py-2 pr-4">64.5</td>
+                <td className="py-2">3.8</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cec6bb" name="Worldly Gray" brand="SW 7043" href="/colors/sherwin-williams/worldly-gray-7043" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, north-facing list</td>
+                <td className="py-2 pr-4">57.1</td>
+                <td className="py-2">6.5</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cec1a9" name="Bleeker Beige" brand="BM HC-80" href="/colors/benjamin-moore/bleeker-beige-hc-80" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, neutral pick</td>
+                <td className="py-2 pr-4">51.7</td>
+                <td className="py-2">13.7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s three picks on its north page are described as versatile across exposures, not as north-only colors, so read them as safe starting points. The data shows the pattern the paint makers describe. Every color in the table is at LRV 51.7 or higher, and all six carry some yellow, from 3.8 for Gray Owl to 13.7 for Bleeker Beige. If you want the brightest north bedroom, the two whites at 81.9 and 84.0 reflect the most light. For a warmer, creamier wall, Antique White carries more than twice the yellow of Greek Villa. The <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">guide to the best paint colors for north-facing rooms</Link> goes deeper on this direction.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">South-facing bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams says south-facing rooms get consistent warm light and are the easy case, because most colors work. Its caution is not to pick something so warm that it feels too bold at points in the day. Benjamin Moore says southern light is strong and often warmer, and recommends a white with a hint of gray or blue to counter the amber cast, a blue-toned gray, and greens, blues and violets. It also says slightly darker hues keep colors from washing out.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">Who lists it</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f1f0e7" name="Steam" brand="BM AF-15" href="/colors/benjamin-moore/steam-af-15" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, off-white pick</td>
+                <td className="py-2 pr-4">84.2</td>
+                <td className="py-2">4.5</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c2cdc5" name="Rainwashed" brand="SW 6211" href="/colors/sherwin-williams/rainwashed-6211" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, south-facing list</td>
+                <td className="py-2 pr-4">59.2</td>
+                <td className="py-2">2.7</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#bfc9d0" name="Upward" brand="SW 6239" href="/colors/sherwin-williams/upward-6239" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, south-facing list</td>
+                <td className="py-2 pr-4">57.4</td>
+                <td className="py-2">-4.7</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc9c0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, south-facing list</td>
+                <td className="py-2 pr-4">58.4</td>
+                <td className="py-2">4.9</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d5cab0" name="Hush" brand="BM AF-95" href="/colors/benjamin-moore/hush-af-95" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, neutral pick</td>
+                <td className="py-2 pr-4">57.1</td>
+                <td className="py-2">14.4</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#686763" name="Kendall Charcoal" brand="BM HC-166" href="/colors/benjamin-moore/kendall-charcoal-hc-166" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, gray pick</td>
+                <td className="py-2 pr-4">14.6</td>
+                <td className="py-2">2.4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Upward is the only color in this table with a negative score, so it is the one that leans blue, which matches Benjamin Moore&apos;s advice to counter amber light. Rainwashed is the one with a green lean, at an a* (the green-to-red axis) of -5.2. If you want that look a step lighter, <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sea Salt</Link> (LRV 63.3, a* -3.2) is not on Sherwin-Williams&apos; south list but sits in the same green-gray range. Since south light is the strongest, it is also the direction where a mid or deep color holds up, which is why the dark section below leans on it. Mid-tone blue-grays and greens are collected in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> families.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">East-facing bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          East rooms change the most through the day. Benjamin Moore says they get more direct light in the morning and more muted, indirect light past noon, with a cooler cast in the afternoon. It recommends clean, warm whites, a lighter gray with a hint of warmth, and mid-tones that balance bright mornings and dim afternoons. Its example of a bedroom is one where you dress in the bright morning. Farrow &amp; Ball splits the advice by use: if you are in the room mostly in the evening, it suggests light blues and greens or a deep shade, and if you use it by day, brighter shades that suit the morning sun.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">Who lists it</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f1f2ee" name="Super White" brand="BM OC-152" href="/colors/benjamin-moore/super-white-oc-152" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, off-white pick</td>
+                <td className="py-2 pr-4">87.4</td>
+                <td className="py-2">1.8</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e5e0d0" name="Ballet White" brand="BM OC-9" href="/colors/benjamin-moore/ballet-white-oc-9" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, neutral pick</td>
+                <td className="py-2 pr-4">72.0</td>
+                <td className="py-2">8.4</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d4e2e2" name="Ocean Air" brand="BM 2123-50" href="/colors/benjamin-moore/ocean-air-2123-50" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, lighter and airier</td>
+                <td className="py-2 pr-4">71.8</td>
+                <td className="py-2">-1.6</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#efd5cf" name="Pleasant Pink" brand="BM 2094-60" href="/colors/benjamin-moore/pleasant-pink-2094-60" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, lighter and airier</td>
+                <td className="py-2 pr-4">68.9</td>
+                <td className="py-2">6.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cbccc6" name="Stonington Gray" brand="BM HC-170" href="/colors/benjamin-moore/stonington-gray-hc-170" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, gray pick</td>
+                <td className="py-2 pr-4">59.4</td>
+                <td className="py-2">2.9</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c8ceae" name="Spring Meadow" brand="BM 486" href="/colors/benjamin-moore/spring-meadow-486" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, lighter and airier</td>
+                <td className="py-2 pr-4">56.9</td>
+                <td className="py-2">15.2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s east advice and its west advice point in opposite directions: clean warm whites for east, cool-toned whites for west. Super White has the lowest yellowness of any white in this guide at 1.8, so it is the cleanest of the east options, while Ballet White at 8.4 is the creamiest. Sherwin-Williams treats east and west together and says that for a bedroom, which is used at all hours, a neutral gives a balanced feel. That points to a mid-value neutral such as <Link href="/colors/sherwin-williams/accessible-beige-7036" className="text-brand-blue hover:underline">Accessible Beige</Link> (LRV 57.9, yellowness 8.8) if you cannot decide which time of day matters most. More like it are in the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">West-facing bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore says west rooms get indirect, somewhat muted light in the morning and stronger, warmer, often amber light past noon. Its advice is cool-toned colors to even that out: whites with cool blue tones, a slightly cool gray, or a greige with cool undertones. Farrow &amp; Ball notes west light is cooler in the morning and brighter in the afternoon, and says warm tones such as Middleton Pink suit the late golden light.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">Who lists it</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, off-white pick</td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2">4.5</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, neutral pick</td>
+                <td className="py-2 pr-4">55.1</td>
+                <td className="py-2">7.6</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#bbbeb9" name="Metropolitan" brand="BM AF-690" href="/colors/benjamin-moore/metropolitan-af-690" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, gray pick</td>
+                <td className="py-2 pr-4">50.0</td>
+                <td className="py-2">2.2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Metropolitan is the cleanest and the deepest of the three (LRV 50.0, yellowness 2.2). Revere Pewter is the warmest, so if you choose it in a west room, expect it to read warmer under afternoon sun than the cool-toned colors Benjamin Moore describes. Recommendation: for a west bedroom you use mostly at night, take the lower-yellowness options, Metropolitan or Sea Salt (yellowness 3.4, LRV 63.3), and check them with a sample at 5 p.m. and again under the lamps you use.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Choose your LRV band</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Direction tells you the cast. LRV tells you how light or dark the room will feel. Sorting every pick in the tables by LRV gives four bands:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">LRV band</th>
+                <th className="py-2 font-semibold">Picks from this guide (LRV)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">70 and above</td>
+                <td className="py-2">Super White (87.4), Steam (84.2), Greek Villa (84.0), White Dove (83.2), Swiss Coffee (81.9), Antique White (72.4), Ballet White (72.0), Ocean Air (71.8)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">50 to 69.9</td>
+                <td className="py-2">Pleasant Pink (68.9), <Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6), Gray Owl (64.5), Sea Salt (63.3), Stonington Gray (59.4), Rainwashed (59.2), Repose Gray (58.4), Accessible Beige (57.9), Upward (57.4), Hush (57.1), Worldly Gray (57.1), Spring Meadow (56.9), Revere Pewter (55.1), Bleeker Beige (51.7), Metropolitan (50.0)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">30 to 49.9</td>
+                <td className="py-2"><Swatch hex="#b7b9a6" name="October Mist" brand="BM 1495" href="/colors/benjamin-moore/october-mist-1495" /> (46.5), Coastline (33.9), <Swatch hex="#95978a" name="Evergreen Fog" brand="SW 9130" href="/colors/sherwin-williams/evergreen-fog-9130" /> (30.4)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Under 30</td>
+                <td className="py-2">Kendall Charcoal (14.6), Evening Dove (12.0), Hale Navy (8.4), <Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /> (8.1), <Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /> (5.6)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Recommendation, based on the Sherwin-Williams advice to favor higher LRV in north rooms: in a north bedroom, stay at 50 or above unless you are deliberately going dark. In a south bedroom the whole range is open. In an east or west room, the 50 to 70 band gives the most stable result across the day, since it is neither washed out by morning sun nor swallowed by evening shadow. That last point is our reasoning from the paint makers&apos; descriptions of shifting light, not a published rule, so confirm it with a sample. The <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> explains why two colors with the same LRV can still look different on a wall.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark bedroom paint colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The paint makers agree that dark bedrooms work, with a condition that depends on direction. Benjamin Moore says a south-facing room gets enough light to carry moodier colors and lists Coastline, Mulberry Wine and Evening Dove. Sherwin-Williams says that in a north room a bold dark color should still have warm undertones. Farrow &amp; Ball takes the other route for north: embrace the cool light with a deep color such as Railings or Down Pipe.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 font-semibold">Direction note</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#929ea9" name="Coastline" brand="BM AF-570" href="/colors/benjamin-moore/coastline-af-570" /></td>
+                <td className="py-2 pr-4">33.9</td>
+                <td className="py-2 pr-4">-7.2</td>
+                <td className="py-2">Benjamin Moore, south-facing dark list</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#525b68" name="Evening Dove" brand="BM 2128-30" href="/colors/benjamin-moore/evening-dove-2128-30" /></td>
+                <td className="py-2 pr-4">12.0</td>
+                <td className="py-2 pr-4">-8.6</td>
+                <td className="py-2">Benjamin Moore, south-facing dark list</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
+                <td className="py-2 pr-4">8.4</td>
+                <td className="py-2 pr-4">-7.6</td>
+                <td className="py-2">Deep blue, strongest blue lean of our dark picks after Evening Dove</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#686763" name="Kendall Charcoal" brand="BM HC-166" href="/colors/benjamin-moore/kendall-charcoal-hc-166" /></td>
+                <td className="py-2 pr-4">14.6</td>
+                <td className="py-2 pr-4">2.4</td>
+                <td className="py-2">Benjamin Moore gray pick, any direction</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /></td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2 pr-4">4.1</td>
+                <td className="py-2">Recommendation for north: the most yellow of the deep picks</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2">Near-neutral, the lowest LRV here</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a north bedroom, test Urbane Bronze first. Sherwin-Williams&apos; rule is about warm undertones, and we measure warmth as yellowness: Urbane Bronze scores 4.1, the highest of the deep picks and more than three times Iron Ore&apos;s 1.2. A color at LRV 5.6 to 8.4 reflects under 10 percent of the light that hits it, so plan lamps or sconces for the room. If you do not want four dark walls, put the deep color on one wall and a light color from the north list on the rest, and try the combination in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Closest matches in other brands</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If the color you want is in a brand your store does not carry, these are the closest matches from our database, labeled by how close they read. These are digital matches, so confirm each with a physical sample before buying gallons.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Pick</th>
+                <th className="py-2 pr-4 font-semibold">Behr</th>
+                <th className="py-2 pr-4 font-semibold">Sherwin-Williams / Benjamin Moore</th>
+                <th className="py-2 font-semibold">Farrow &amp; Ball</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Swiss Coffee</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/silver-leaf-w-f-720" className="text-brand-blue hover:underline">Silver Leaf</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/cotton-9581" className="text-brand-blue hover:underline">Cotton</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/au-lait-cb9" className="text-brand-blue hover:underline">Au Lait</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Greek Villa</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/salt-crystal-qe-25" className="text-brand-blue hover:underline">Salt Crystal</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/dune-white-968" className="text-brand-blue hover:underline">Dune White</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/au-lait-cb9" className="text-brand-blue hover:underline">Au Lait</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Sea Salt</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/silver-setting-pwl-89" className="text-brand-blue hover:underline">Silver Setting</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/gray-cashmere-2138-60" className="text-brand-blue hover:underline">Gray Cashmere</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/skylight-205" className="text-brand-blue hover:underline">Skylight</Link> (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pale Oak</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/campfire-ash-n320-1" className="text-brand-blue hover:underline">Campfire Ash</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/oat-milk-9501" className="text-brand-blue hover:underline">Oat Milk</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/ammonite-274" className="text-brand-blue hover:underline">Ammonite</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Repose Gray</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/gratifying-gray-dc-008" className="text-brand-blue hover:underline">Gratifying Gray</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/apparition-860" className="text-brand-blue hover:underline">Apparition</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/cornforth-white-228" className="text-brand-blue hover:underline">Cornforth White</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Revere Pewter</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/coliseum-marble-ppu8-16" className="text-brand-blue hover:underline">Coliseum Marble</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/simple-stone-9521" className="text-brand-blue hover:underline">Simple Stone</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/cromarty-285" className="text-brand-blue hover:underline">Cromarty</Link> (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Hale Navy</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/sea-mariner-9640" className="text-brand-blue hover:underline">Sea Mariner</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/railings-31" className="text-brand-blue hover:underline">Railings</Link> (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Kendall Charcoal</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/mined-coal-ppu18-18" className="text-brand-blue hover:underline">Mined Coal</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/storm-warning-9555" className="text-brand-blue hover:underline">Storm Warning</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/down-pipe-26" className="text-brand-blue hover:underline">Down Pipe</Link> (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Urbane Bronze</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/black-bean-790d-7" className="text-brand-blue hover:underline">Black Bean</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/dragons-breath-1547" className="text-brand-blue hover:underline">Dragon&apos;s Breath</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/liquorice-cb10" className="text-brand-blue hover:underline">Liquorice</Link> (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Evergreen Fog</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/shady-willow-ecc-36-1" className="text-brand-blue hover:underline">Shady Willow</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/storm-cloud-gray-2140-40" className="text-brand-blue hover:underline">Storm Cloud Gray</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/pigeon-25" className="text-brand-blue hover:underline">Pigeon</Link> (very similar)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          In this table the Farrow &amp; Ball column is where pairs most often fall to very similar rather than nearly identical, so those are the ones most worth sampling. Our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> shows any two of these side by side with both LRVs. Each color page also lists the closest match in every other brand.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">More bedroom picks by brand and mood</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This guide sorts by light. Our other bedroom guides sort by something else:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">Designer-favorite bedroom colors in soft blues, greens and warm neutrals</Link> if mood is your first filter.</li>
+          <li><Link href="/blog/best-benjamin-moore-bedroom-colors" className="text-brand-blue hover:underline">The best Benjamin Moore bedroom colors</Link>, with a deep navy feature wall. All brand details are on the <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore brand page</Link>.</li>
+          <li><Link href="/blog/best-behr-colors-for-bedrooms" className="text-brand-blue hover:underline">The best Behr bedroom colors</Link> if you are buying at a home center.</li>
+          <li><Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">The best paint colors for north-facing rooms</Link> for the full north-light write-up.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams colors in this guide are also on the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams brand page</Link>, and the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families list every neutral by LRV.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to choose in five steps</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Find your window direction with a compass pointed at the largest window.</li>
+          <li>Pick the direction&apos;s table above and note the cast it needs: warm for north, cool-leaning for south and west, clean and warm for east.</li>
+          <li>Choose an LRV band. Stay at 50 or above in a north room unless you are going dark on purpose.</li>
+          <li>Preview two or three colors in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, then build the full scheme, including trim, in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.</li>
+          <li>Put a sample on the wall and look at it in the morning, in the afternoon and under your evening bulbs.</li>
+        </ol>
+      </>
+    ),
+  },
+
   /* ──────────────── Accent Wall Colors and What to Pair Them With (2026-10-29) ──────────────── */
   {
     slug: "accent-wall-colors",
