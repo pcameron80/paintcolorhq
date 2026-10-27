@@ -208,6 +208,11 @@ export default async function ColorPage({ params }: PageProps) {
   // hue-band and match-hub links below skip them, and the lede, FAQ, visualizer
   // link, sample CTA rel and Room Palettes swatch keep their pre-push output.
   const isHeadColor = HEAD_COLOR_PUSH.includes(`${brandSlug}/${colorSlug}`);
+  // Phones: compact match rows and a shorter hero. On mobile, color-page
+  // landings scrolled a third of the 19-screen page on average and the match
+  // grid alone was ~5 screens of 144px swatch cards (Plausible, 7 days to
+  // 2026-10-27). Head-color page bodies stay frozen until 2026-11-27.
+  const compactMobile = !isHeadColor;
   const colorLede = generateColorLede(color, matches, { legacy: isHeadColor });
   const brandMatrix = nearestMatchesPerBrand(matches);
   // The strip under the hero leads with brands most stores carry, then fills
@@ -340,9 +345,9 @@ export default async function ColorPage({ params }: PageProps) {
       <Header />
 
       {/* Immersive Color Hero */}
-      <section id="color-preview" className="scroll-mt-24 relative w-full min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-center overflow-x-clip pt-20" style={{ backgroundColor: color.hex }}>
+      <section id="color-preview" className={`scroll-mt-24 relative w-full ${isHeadColor ? "min-h-[500px]" : "min-h-[400px]"} md:min-h-[600px] flex flex-col items-center justify-center overflow-x-clip pt-20`} style={{ backgroundColor: color.hex }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
-        <div className="relative z-10 w-full max-w-5xl text-center px-6 pt-16 pb-8">
+        <div className={`relative z-10 w-full max-w-5xl text-center px-6 ${isHeadColor ? "pt-16" : "pt-6 md:pt-16"} pb-8`}>
           <p className={`font-headline uppercase tracking-[0.4em] text-xs mb-4 opacity-80 ${textMutedClass}`}>
             {color.brand.name} · {color.hex.toUpperCase()}{color.color_number ? ` \u00B7 ${color.color_number}` : ""}
           </p>
@@ -579,17 +584,17 @@ export default async function ColorPage({ params }: PageProps) {
 
           <div id="color-matches" className="lg:col-span-7 scroll-mt-24 order-1 lg:order-2">
             {brandMatrix.length > 0 && (
-              <div className="bg-surface-container-low rounded-xl p-8 md:p-10">
+              <div className={`bg-surface-container-low rounded-xl ${compactMobile ? "p-5" : "p-8"} md:p-10`}>
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">Compare alternatives to {color.name}</h2>
                 <p className="text-sm text-on-surface-variant mb-8">Digital candidates from other paint brands, ranked by color similarity. Always verify with a physical sample. <Link href="/methodology" className="text-primary underline-offset-4 hover:underline whitespace-nowrap">How we calculate match accuracy →</Link>{!isHeadColor && <> Matching a different color? Start a new <Link href="/match" className="text-primary underline-offset-4 hover:underline">paint color match</Link>.</>}</p>
                 {/* Side-by-side hero — the single nearest equivalent shown large,
                     so "does this actually match?" is answered visually before
                     the full per-brand matrix below. Whole block links to it. */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className={`grid grid-cols-1 md:grid-cols-2 ${compactMobile ? "gap-3" : "gap-6"} md:gap-6`}>
                   {brandMatrix.map((match) => (
-                    <Link key={match.id} href={`/colors/${match.match_color.brand.slug}/${match.match_color.slug}`} className="bg-surface-container-lowest p-4 rounded-xl group hover:shadow-md transition-all border border-outline-variant/20">
-                      <div className="space-y-4 mb-4">
-                        <div className="w-full h-36 rounded-lg border border-black/10" style={{ backgroundColor: match.match_color.hex }} />
+                    <Link key={match.id} href={`/colors/${match.match_color.brand.slug}/${match.match_color.slug}`} className={`bg-surface-container-lowest rounded-xl group hover:shadow-md transition-all border border-outline-variant/20 ${compactMobile ? "flex items-center gap-4 p-3 md:block md:p-4" : "p-4"}`}>
+                      <div className={compactMobile ? "flex min-w-0 flex-1 items-center gap-4 md:block md:space-y-4 md:mb-4" : "space-y-4 mb-4"}>
+                        <div className={`rounded-lg border border-black/10 ${compactMobile ? "h-14 w-14 shrink-0 md:h-36 md:w-full" : "w-full h-36"}`} style={{ backgroundColor: match.match_color.hex }} />
                         <div className="min-w-0">
                           <h3 className="font-headline font-bold text-on-surface break-words">
                             {match.match_color.name}
@@ -598,11 +603,12 @@ export default async function ColorPage({ params }: PageProps) {
                             )}
                           </h3>
                           <p className="text-xs text-on-surface-variant mt-1">{match.match_color.brand.name}</p>
-                          <p className="text-xs text-on-surface-variant mt-1">{match.match_color.hex.toUpperCase()}</p>
+                          <p className={`text-xs text-on-surface-variant mt-1 ${compactMobile ? "hidden md:block" : ""}`}>{match.match_color.hex.toUpperCase()}</p>
+                          {compactMobile && <p className="text-xs text-on-surface-variant mt-1 md:hidden">{closenessLabel(Number(match.delta_e_score))}</p>}
                         </div>
                       </div>
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="text-on-surface-variant">{closenessLabel(Number(match.delta_e_score))}</span>
+                      <div className={`flex justify-between items-center text-xs ${compactMobile ? "shrink-0 md:flex" : ""}`}>
+                        <span className={`text-on-surface-variant ${compactMobile ? "hidden md:inline" : ""}`}>{closenessLabel(Number(match.delta_e_score))}</span>
                         <svg className="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
                       </div>
                     </Link>
