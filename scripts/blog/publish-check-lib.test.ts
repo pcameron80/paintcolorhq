@@ -21,48 +21,48 @@ const POSTS = [TRIM, COATS, OLD];
 const at = (iso: string) => new Date(iso);
 
 test("postsToSubmit: nothing before the reveal date", () => {
-  assert.deepEqual(postsToSubmit(POSTS, {}, at("2026-10-12T23:59:00Z")), []);
+  assert.deepEqual(postsToSubmit(POSTS, {}, at("2026-10-13T03:59:00Z")), []);
 });
 
-test("postsToSubmit: a post is due from 00:00 UTC on its date", () => {
-  assert.deepEqual(postsToSubmit(POSTS, {}, at("2026-10-13T01:30:00Z")), [TRIM]);
+test("postsToSubmit: a post is due from midnight Eastern on its date", () => {
+  assert.deepEqual(postsToSubmit(POSTS, {}, at("2026-10-13T05:30:00Z")), [TRIM]);
 });
 
 test("postsToSubmit: old posts and already-submitted posts are skipped", () => {
-  const state: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T01:30:00Z" } };
-  assert.deepEqual(postsToSubmit(POSTS, state, at("2026-10-13T13:30:00Z")), []);
+  const state: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T05:30:00Z" } };
+  assert.deepEqual(postsToSubmit(POSTS, state, at("2026-10-13T17:30:00Z")), []);
 });
 
 test("postsToSubmit: an unsubmitted post is retried for 3 days, then dropped", () => {
-  assert.deepEqual(postsToSubmit(POSTS, {}, at("2026-10-15T23:00:00Z")).map((p) => p.slug), [
+  assert.deepEqual(postsToSubmit(POSTS, {}, at("2026-10-16T03:00:00Z")).map((p) => p.slug), [
     TRIM.slug,
     COATS.slug,
   ]);
-  assert.deepEqual(postsToSubmit(POSTS, {}, at("2026-10-16T01:00:00Z")), [COATS]);
+  assert.deepEqual(postsToSubmit(POSTS, {}, at("2026-10-16T05:00:00Z")), [COATS]);
 });
 
 test("postsToInspect: only submitted, unindexed posts, at most once a day", () => {
   const state: PublishState = {
     [TRIM.slug]: {
-      submittedAt: "2026-10-13T01:30:00Z",
-      inspections: [{ at: "2026-10-13T01:31:00Z", verdict: "NEUTRAL", coverageState: "URL is unknown to Google" }],
+      submittedAt: "2026-10-13T05:30:00Z",
+      inspections: [{ at: "2026-10-13T05:31:00Z", verdict: "NEUTRAL", coverageState: "URL is unknown to Google" }],
     },
   };
-  assert.deepEqual(postsToInspect(POSTS, state, at("2026-10-13T13:30:00Z")), []); // 12h later
-  assert.deepEqual(postsToInspect(POSTS, state, at("2026-10-14T01:30:00Z")), [TRIM]); // next day
+  assert.deepEqual(postsToInspect(POSTS, state, at("2026-10-13T17:30:00Z")), []); // 12h later
+  assert.deepEqual(postsToInspect(POSTS, state, at("2026-10-14T05:30:00Z")), [TRIM]); // next day
 });
 
 test("postsToInspect: stops once indexed or after 28 days", () => {
-  const indexed: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T01:30:00Z", indexedAt: "2026-10-15T01:30:00Z" } };
-  assert.deepEqual(postsToInspect(POSTS, indexed, at("2026-10-16T01:30:00Z")), []);
-  const waiting: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T01:30:00Z" } };
-  assert.deepEqual(postsToInspect(POSTS, waiting, at("2026-10-28T01:30:00Z")), [TRIM]); // day 15: still checking
+  const indexed: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T05:30:00Z", indexedAt: "2026-10-15T05:30:00Z" } };
+  assert.deepEqual(postsToInspect(POSTS, indexed, at("2026-10-16T05:30:00Z")), []);
+  const waiting: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T05:30:00Z" } };
+  assert.deepEqual(postsToInspect(POSTS, waiting, at("2026-10-28T05:30:00Z")), [TRIM]); // day 15: still checking
   assert.deepEqual(postsToInspect(POSTS, waiting, at("2026-11-11T01:30:00Z")), []); // day 29
 });
 
 test("postsNeverIndexed: reported once after the window closes", () => {
-  const waiting: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T01:30:00Z" } };
-  assert.deepEqual(postsNeverIndexed(POSTS, waiting, at("2026-10-28T01:30:00Z")), []);
+  const waiting: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T05:30:00Z" } };
+  assert.deepEqual(postsNeverIndexed(POSTS, waiting, at("2026-10-28T05:30:00Z")), []);
   assert.deepEqual(postsNeverIndexed(POSTS, waiting, at("2026-11-11T01:30:00Z")), [TRIM]);
   assert.equal(NEVER_INDEXED_PROBLEM, "not indexed after 28 days");
   const reported: PublishState = { [TRIM.slug]: { submittedAt: "x", lastProblem: NEVER_INDEXED_PROBLEM } };
@@ -70,21 +70,21 @@ test("postsNeverIndexed: reported once after the window closes", () => {
 });
 
 test("nudgesDue: reveal day, then day 3, only while unindexed", () => {
-  const submitted: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T01:30:00Z" } };
-  assert.deepEqual(nudgesDue(POSTS, submitted, at("2026-10-13T01:31:00Z")), [{ post: TRIM, day: 0 }]);
+  const submitted: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-13T05:30:00Z" } };
+  assert.deepEqual(nudgesDue(POSTS, submitted, at("2026-10-13T05:31:00Z")), [{ post: TRIM, day: 0 }]);
   const afterDay0: PublishState = { [TRIM.slug]: { ...submitted[TRIM.slug], nudgedDays: [0] } };
-  assert.deepEqual(nudgesDue(POSTS, afterDay0, at("2026-10-15T23:00:00Z")), []); // day 2
-  assert.deepEqual(nudgesDue(POSTS, afterDay0, at("2026-10-16T01:30:00Z")), [{ post: TRIM, day: 3 }]);
+  assert.deepEqual(nudgesDue(POSTS, afterDay0, at("2026-10-16T03:00:00Z")), []); // day 2
+  assert.deepEqual(nudgesDue(POSTS, afterDay0, at("2026-10-16T05:30:00Z")), [{ post: TRIM, day: 3 }]);
   const afterDay3: PublishState = { [TRIM.slug]: { ...submitted[TRIM.slug], nudgedDays: [0, 3] } };
-  assert.deepEqual(nudgesDue(POSTS, afterDay3, at("2026-10-20T01:30:00Z")), []);
-  const indexed: PublishState = { [TRIM.slug]: { ...submitted[TRIM.slug], indexedAt: "2026-10-14T01:30:00Z" } };
-  assert.deepEqual(nudgesDue(POSTS, indexed, at("2026-10-16T01:30:00Z")), []);
-  assert.deepEqual(nudgesDue(POSTS, {}, at("2026-10-13T01:31:00Z")), []); // not submitted yet
+  assert.deepEqual(nudgesDue(POSTS, afterDay3, at("2026-10-20T05:30:00Z")), []);
+  const indexed: PublishState = { [TRIM.slug]: { ...submitted[TRIM.slug], indexedAt: "2026-10-14T05:30:00Z" } };
+  assert.deepEqual(nudgesDue(POSTS, indexed, at("2026-10-16T05:30:00Z")), []);
+  assert.deepEqual(nudgesDue(POSTS, {}, at("2026-10-13T05:31:00Z")), []); // not submitted yet
 });
 
 test("nudgesDue: a missed reveal-day run raises one nudge, not two", () => {
-  const late: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-16T09:30:00Z" } };
-  assert.deepEqual(nudgesDue(POSTS, late, at("2026-10-16T09:31:00Z")), [{ post: TRIM, day: 3 }]);
+  const late: PublishState = { [TRIM.slug]: { submittedAt: "2026-10-16T13:30:00Z" } };
+  assert.deepEqual(nudgesDue(POSTS, late, at("2026-10-16T13:31:00Z")), [{ post: TRIM, day: 3 }]);
   assert.deepEqual(nudgedThrough(3), [0, 3]);
   assert.deepEqual(nudgedThrough(0, [0]), [0]);
 });
