@@ -75,6 +75,362 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Kitchen Cabinet Paint Colors (2026-11-12) ──────────────── */
+  {
+    slug: "kitchen-cabinet-paint-colors",
+    title: "Kitchen Cabinet Paint Colors, Measured",
+    date: "2026-11-12",
+    author: "Philip Cameron",
+    excerpt:
+      "Cabinet whites ranked by measured yellowness, plus deep greens, blues and charcoals. How to judge each against your countertop and floor, and where to buy it.",
+    coverColor: "#EFEEE5",
+    coverImage: "/blog/kitchen-cabinet-paint-colors.webp",
+    tags: ["Kitchen", "Cabinets", "Cross-Brand Matching", "Guide"],
+    faq: [
+      {
+        question: "What are the best kitchen cabinet paint colors?",
+        answer:
+          "White remains the default, and the choice inside white comes down to yellowness. Among the Benjamin Moore and Sherwin-Williams whites we measured, light reflectance value (LRV) spans only about 8 points, from 81.9 to 90.0, while yellowness (b*) runs from 2.2 to 5.6. For a darker cabinet, Pewter Green, Hale Navy, Naval, Iron Ore, Wrought Iron and Urbane Bronze all fall between 4.5 and 11.8 LRV.",
+      },
+      {
+        question: "How do I match cabinet paint to my countertop?",
+        answer:
+          "Benjamin Moore advises noting the countertop's undertones and choosing cabinet colors that share similar undertones. In numbers, a countertop that looks creamy suits a cabinet white with a higher b* value, such as 5 or above. A countertop that looks gray-white or cool suits a cleaner white with a b* value near 2 to 3. Hold a painted sample against the countertop and the floor in your own light before you buy.",
+      },
+      {
+        question: "What sheen is best for kitchen cabinets?",
+        answer:
+          "Benjamin Moore says satin brings a soft, elegant touch, while semi-gloss and high gloss are easy to clean. Sheens are not standardized between brands. Benjamin Moore's ADVANCE satin measures 25 to 35 at 60 degrees, while Sherwin-Williams lists its Emerald Urethane Trim Enamel satin at 35 to 45.",
+      },
+      {
+        question: "How long before I can use cabinets after painting them?",
+        answer:
+          "Benjamin Moore's ADVANCE data sheets give 4 to 6 hours to touch and 16 hours to recoat at 77 degrees F and 50% humidity. They say to keep heavy abrasion off the finish, and shelves and tabletops out of service, for at least 3 to 5 days (semi-gloss) or 5 to 7 days (satin). Full hardness can take up to 30 days. Sherwin-Williams' Emerald Urethane Trim Enamel sheet gives touch and recoat times but no cure time.",
+      },
+      {
+        question: "Will white cabinet paint turn yellow?",
+        answer:
+          "It can. Benjamin Moore's ADVANCE data sheet says the paint yellows less than conventional alkyds but that a slight amount of yellowing may occur, accelerated in dark or poorly ventilated areas and more visible in lighter colors. Starting with a cleaner white leaves more room before any shift shows.",
+      },
+      {
+        question: "What Behr color is similar to White Dove?",
+        answer:
+          "Harmonious White is the closest Behr color to Benjamin Moore White Dove in our database, and the two rate nearly identical by CIEDE2000. That is a digital match. Confirm it with a physical sample of each on your cabinets before buying paint.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best kitchen cabinet paint color is the one whose yellowness matches your countertop and floor. Benjamin Moore tells painters to note the countertop&apos;s undertones and pick a cabinet color that shares them, and we turned that rule into numbers. The eleven Benjamin Moore and Sherwin-Williams cabinet whites we measured sit within about 8 LRV points of each other, but their yellowness (b*) ranges from 2.2 for <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> to 5.6 for <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link>, which is why two &quot;white&quot; cabinets can look so different next to the same countertop. This post ranks the whites by that measure, adds six deep colors, and lists the closest match in other brands.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Wall color is a separate decision. For the walls around your cabinets, see our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">guide to kitchen wall colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Two numbers that decide a cabinet color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>LRV</strong> is the percentage of light a color reflects, from 0 (black) to 100 (pure white). The gap between your cabinet LRV and your countertop LRV sets how much the two separate. Every color page on Paint Color HQ lists it.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Yellowness</strong> is the b* value of the color&apos;s published color data, the yellow-to-blue axis of the CIELAB color space. Positive numbers lean yellow, negative numbers lean blue, and zero is neutral. A higher b* means a creamier white. On white cabinets, b* is the number that tells you whether the paint will look warm or crisp beside a given countertop, because LRV barely moves between popular whites.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s kitchen cabinet page says to &quot;take note of your countertop&apos;s undertones&quot; and choose cabinet colors that &quot;share similar undertones.&quot; It also names flooring, backsplash and fixtures as the existing features to take color cues from. Undertone is hard to judge by eye, so below we replace it with the b* measurement for the cabinet side and give you a test for the countertop and floor side.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cabinet whites, from cleanest to creamiest</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These eleven whites come from Benjamin Moore and Sherwin-Williams, sorted by b*. LRV spans 8.1 points across the whole list. Yellowness spans 3.4 units, so <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> carries about two and a half times the yellow of Chantilly Lace.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">White</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#F4F6F1" name="Chantilly Lace" brand="BM 2121-70" href="/colors/benjamin-moore/chantilly-lace-2121-70" /></td>
+                <td className="py-2 pr-4">90.0</td>
+                <td className="py-2">2.2</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /></td>
+                <td className="py-2 pr-4">85.9</td>
+                <td className="py-2">2.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae5" name="Snowbound" brand="SW 7004" href="/colors/sherwin-williams/snowbound-7004" /></td>
+                <td className="py-2 pr-4">82.5</td>
+                <td className="py-2">2.8</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">83.7</td>
+                <td className="py-2">3.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f0f1ea" name="White Heron" brand="BM OC-57" href="/colors/benjamin-moore/white-heron-oc-57" /></td>
+                <td className="py-2 pr-4">86.7</td>
+                <td className="py-2">3.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7ee" name="Simply White" brand="BM 2143-70" href="/colors/benjamin-moore/simply-white-2143-70" /></td>
+                <td className="py-2 pr-4">89.5</td>
+                <td className="py-2">4.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2">4.5</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">82.2</td>
+                <td className="py-2">5.2</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f0ece2" name="Greek Villa" brand="SW 7551" href="/colors/sherwin-williams/greek-villa-7551" /></td>
+                <td className="py-2 pr-4">84.0</td>
+                <td className="py-2">5.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f3f2e7" name="Cloud White" brand="BM OC-130" href="/colors/benjamin-moore/cloud-white-oc-130" /></td>
+                <td className="py-2 pr-4">85.1</td>
+                <td className="py-2">5.4</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4">81.9</td>
+                <td className="py-2">5.6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Compare any two of these side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, or browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link> families. For a longer comparison of the whites themselves, see our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Match the white to your countertop and floor</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We could not find a countertop or flooring manufacturer that publishes b* values for its colors, so this part is a recommendation built on Benjamin Moore&apos;s undertone rule and the measurements above, not a lab result. The test is simple: hold a painted sample next to the countertop and the floor, in the kitchen&apos;s own light, and ask which of three groups it belongs with.
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Countertop or floor looks creamy, beige or golden:</strong> choose from the creamier end (b* 5.2 to 5.6). This keeps the cabinet&apos;s yellowness close to the surface beside it.</li>
+          <li><strong>Countertop looks gray-white, cool or blue-white:</strong> choose from the cleaner end (b* 2.2 to 3.3). Again the aim is to keep the two yellowness levels close.</li>
+          <li><strong>You cannot tell, or the kitchen mixes both:</strong> choose Simply White (4.3) or White Dove (4.5). They sit near the middle of the 2.2 to 5.6 range, so neither extreme is exposed.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s white cabinet page adds a lighting check: if whites look too warm in your space it points to cooler off-whites, and if they look gray or blue it points to warmer ones. It also advises viewing samples throughout the day, so check yours in morning light and under the bulbs you cook by.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Floors work the same way. Benjamin Moore lists flooring with countertops, backsplash and fixtures as the features to take cues from, so judge the sample against it too. If a sample looks right against the countertop and wrong against the floor, move one step along the b* list rather than switching to a different color family. To see a white against a full room, try it in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Deep cabinet colors, measured</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Dark cabinets add a second variable: chroma (C*), the measure of how colorful the paint is. A low C* is a near-neutral charcoal, a high one is clearly blue or green. All six colors below have an LRV under 12, so against a countertop as light as Alabaster (82.2) they sit 70 to 78 points down. That gap is why dark cabinets read as a strong outline against a white countertop, whichever of the six you choose.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">b*</th>
+                <th className="py-2 font-semibold">Chroma (C*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#5e6259" name="Pewter Green" brand="SW 6208" href="/colors/sherwin-williams/pewter-green-6208" /></td>
+                <td className="py-2 pr-4">11.8</td>
+                <td className="py-2 pr-4">4.6</td>
+                <td className="py-2">5.7</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
+                <td className="py-2 pr-4">8.4</td>
+                <td className="py-2 pr-4">-7.6</td>
+                <td className="py-2">7.6</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#2f3d4c" name="Naval" brand="SW 6244" href="/colors/sherwin-williams/naval-6244" /></td>
+                <td className="py-2 pr-4">4.5</td>
+                <td className="py-2 pr-4">-11.0</td>
+                <td className="py-2">11.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2">1.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#4a4b4c" name="Wrought Iron" brand="BM 2124-10" href="/colors/benjamin-moore/wrought-iron-2124-10" /></td>
+                <td className="py-2 pr-4">8.2</td>
+                <td className="py-2 pr-4">-0.7</td>
+                <td className="py-2">0.8</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /></td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2 pr-4">4.1</td>
+                <td className="py-2">4.1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three patterns follow from the numbers. Iron Ore and Wrought Iron are both close to neutral (C* of 1.3 and 0.8), so they add the least yellow or blue of the six. If you cannot read your countertop, we recommend starting with one of these two. Hale Navy and Naval are the only two clearly on the blue side, and Naval is both darker and more colorful (4.5 LRV and C* 11.0, against 8.4 and 7.6). Pewter Green and Urbane Bronze lean slightly yellow at 4.6 and 4.1, close to the 4.3 to 4.5 of Simply White and White Dove, so a two-tone kitchen that pairs a green or bronze lower cabinet with one of those whites keeps the same amount of yellow across both.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Browse more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link>, <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> families. Our <Link href="/blog/best-sherwin-williams-kitchen-colors" className="text-brand-blue hover:underline">Sherwin-Williams kitchen colors guide</Link> covers more bold island and cabinet picks from that brand.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What the cabinet paint data sheets say</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Cabinet enamels list their own drying and sheen figures, and they differ between brands. The table pulls them from the manufacturers&apos; own data sheets for Benjamin Moore ADVANCE Waterborne Interior Alkyd and Sherwin-Williams Emerald Urethane Trim Enamel. All times are at 77&deg;F and 50% relative humidity.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Product and sheen</th>
+                <th className="py-2 pr-4 font-semibold">Gloss at 60 degrees</th>
+                <th className="py-2 pr-4 font-semibold">To touch</th>
+                <th className="py-2 pr-4 font-semibold">To recoat</th>
+                <th className="py-2 font-semibold">Cure guidance</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">BM ADVANCE satin (792)</td>
+                <td className="py-2 pr-4">25 to 35</td>
+                <td className="py-2 pr-4">4 to 6 hours</td>
+                <td className="py-2 pr-4">16 hours</td>
+                <td className="py-2">5 to 7 days before heavy abrasion or tabletops; up to 30 days for optimum hardness</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">BM ADVANCE semi-gloss (793)</td>
+                <td className="py-2 pr-4">50 to 60</td>
+                <td className="py-2 pr-4">4 to 6 hours</td>
+                <td className="py-2 pr-4">16 hours</td>
+                <td className="py-2">3 to 5 days before heavy abrasion or tabletops; up to 30 days for optimum hardness</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">SW Emerald Urethane Trim Enamel satin</td>
+                <td className="py-2 pr-4">35 to 45</td>
+                <td className="py-2 pr-4">1 hour</td>
+                <td className="py-2 pr-4">4 hours</td>
+                <td className="py-2">Not stated on the sheet</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">SW Emerald Urethane Trim Enamel gloss</td>
+                <td className="py-2 pr-4">65 and above</td>
+                <td className="py-2 pr-4">2 hours</td>
+                <td className="py-2 pr-4">4 hours</td>
+                <td className="py-2">Not stated on the sheet</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three things stand out. First, &quot;satin&quot; is not one sheen: the top of Benjamin Moore&apos;s satin range (35) is where Sherwin-Williams&apos; satin range starts, so the same word gives a shinier cabinet from one can than the other. Benjamin Moore&apos;s cabinet page says satin brings a soft, elegant touch, while semi-gloss and high gloss are easy to clean. Our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> explains how sheen changes what you see.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Second, the time to recoat is not the time to use the cabinets. The Benjamin Moore sheets say to keep heavy abrasion off the finish for days after it is dry, and to leave shelves and tabletops out of service for the same period. They also say full hardness and final sheen can take up to 30 days depending on weather and drying conditions. Sherwin-Williams&apos; sheet states that drying and recoat times depend on temperature, humidity and film thickness, and does not publish a cure time, so ask the store or the manufacturer if you need one.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Third, prep is in the sheets. For cabinetry, Benjamin Moore says all surfaces are to be roughened by sanding with 220 grit or coarser before priming, and calls for a coat of its ADVANCE alkyd primer on wood, MDF and thermofoil. Sherwin-Williams lists one coat of Premium Wall &amp; Wood Primer under two coats of Emerald Urethane Trim Enamel for interior wood. Benjamin Moore also notes that ADVANCE yellows less than conventional alkyds, but a slight amount of yellowing may occur, and that it is more visible in lighter colors. That is one more reason to start from a cleaner white if you are unsure.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Closest cross-brand matches</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If the cabinet enamel you want is sold by a different brand than the color you chose, you need the closest equivalent. Each row below gives the closest <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> or <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> color in our database, with the closeness label from CIEDE2000 (under 2 is nearly identical, 2 to under 5 is very similar, 5 and above is a visible difference). These are digital matches. Confirm any substitute with a physical sample on your own cabinet before you buy a gallon.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">Other major brand</th>
+                <th className="py-2 font-semibold">Behr</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">White Dove (BM)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/cold-foam-9504" className="text-brand-blue hover:underline">Cold Foam</Link> (SW), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/harmonious-white-dc-013" className="text-brand-blue hover:underline">Harmonious White</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pure White (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/cloud-cover-855" className="text-brand-blue hover:underline">Cloud Cover</Link> (BM), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/melting-icicles-bwc-20" className="text-brand-blue hover:underline">Melting Icicles</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Alabaster (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/glacier-white-oc-37" className="text-brand-blue hover:underline">Glacier White</Link> (BM), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/arcade-white-gr-w08" className="text-brand-blue hover:underline">Arcade White</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Simply White (BM)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/high-reflective-white-7757" className="text-brand-blue hover:underline">High Reflective White</Link> (SW), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/palais-white-gr-w15" className="text-brand-blue hover:underline">Palais White</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Hale Navy (BM)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/sea-mariner-9640" className="text-brand-blue hover:underline">Sea Mariner</Link> (SW), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Naval (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/north-sea-cc-932" className="text-brand-blue hover:underline">North Sea</Link> (BM), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/midnight-dream-570f-7" className="text-brand-blue hover:underline">Midnight Dream</Link>, very similar</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Iron Ore (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/notre-dame-csp-570" className="text-brand-blue hover:underline">Notre Dame</Link> (BM), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/black-suede-s-h-790" className="text-brand-blue hover:underline">Black Suede</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Wrought Iron (BM)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/cyberspace-7076" className="text-brand-blue hover:underline">Cyberspace</Link> (SW), very similar</td>
+                <td className="py-2"><Link href="/colors/behr/night-club-n500-7" className="text-brand-blue hover:underline">Night Club</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pewter Green (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/dark-olive-2140-30" className="text-brand-blue hover:underline">Dark Olive</Link> (BM), very similar</td>
+                <td className="py-2"><Link href="/colors/behr/painted-turtle-710f-6" className="text-brand-blue hover:underline">Painted Turtle</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Urbane Bronze (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/dragons-breath-1547" className="text-brand-blue hover:underline">Dragon&apos;s Breath</Link> (BM), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/black-bean-790d-7" className="text-brand-blue hover:underline">Black Bean</Link>, nearly identical</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Closeness in color is not closeness in lightness. Simply White (89.5) and High Reflective White (92.6) rate nearly identical, yet the Sherwin-Williams color is 3.1 LRV points brighter. Cloud Cover (80.3) is 3.4 points darker than Pure White (83.7), and Glacier White (80.2) is 2.0 points darker than Alabaster (82.2). On a cabinet face those differences are small, but they show when the substitute sits beside an untouched countertop. Every color page lists its closest equivalents in other brands, so the same lookup works for any cabinet color not on this list.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to test a cabinet color before you paint</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Sort your countertop and floor into warm, cool or mixed by holding a white sample against each in daylight.</li>
+          <li>Pick two whites from the matching b* group in the table above, and one from the neighboring group.</li>
+          <li>Paint each on a board in the sheen you plan to use. Satin and semi-gloss reflect the room differently, so the sheen belongs in the test.</li>
+          <li>Preview the shortlist in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, then judge the boards against the countertop, floor and backsplash together.</li>
+          <li>Use the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> for quantity once you commit, and leave the cure time on the data sheet before you load the shelves.</li>
+        </ol>
+      </>
+    ),
+  },
+
   /* ──────────────── Shoji White vs Alabaster and Other SW Whites (2026-11-10) ──────────────── */
   {
     slug: "sherwin-williams-white-paint-colors-compared",
