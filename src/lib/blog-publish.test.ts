@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { isLiveAt, publishInstant } from "./blog-publish.ts";
+import { isLiveAt, publishInstant } from "./blog-publish";
 
 test("date-only publish dates mean midnight Eastern (EDT)", () => {
   assert.equal(new Date(publishInstant("2026-10-27")).toISOString(), "2026-10-27T04:00:00.000Z");
