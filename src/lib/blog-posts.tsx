@@ -75,6 +75,214 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Basement Paint Colors for Low-Light Rooms (2026-11-24) ──────────────── */
+  {
+    slug: "basement-paint-colors",
+    title: "Basement Paint Colors for Low-Light Rooms",
+    date: "2026-11-24",
+    author: "Philip Cameron",
+    excerpt:
+      "Basement paint colors for rooms with little daylight: whites and light neutrals at LRV 60 and up, how warm and cool bulbs shift them, and masonry wall guidance.",
+    coverColor: "#E6DFD3",
+    coverImage: "/blog/basement-paint-colors.webp",
+    tags: ["Guide", "Tips", "Cross-Brand Matching"],
+    faq: [
+      {
+        question: "What are the best paint colors for a basement?",
+        answer:
+          "Light colors with an LRV of 60 or higher. In our database that includes bright whites such as Sherwin-Williams High Reflective White (LRV 92.6), off-white and light greige options such as Benjamin Moore Edgecomb Gray (LRV 63.1), and a few soft gray-greens. Sherwin-Williams advises choosing a higher LRV for rooms with little light.",
+      },
+      {
+        question: "What LRV should basement walls be?",
+        answer:
+          "We recommend 60 or higher for walls. LRV runs from 0 to 100, where 0 reflects no light and 100 reflects all of it, according to Sherwin-Williams. About a third of the 26,720 colors in our database reach 60, and about 1 in 10 reach 80.",
+      },
+      {
+        question: "Do light bulbs change paint color?",
+        answer:
+          "Yes. Farrow & Ball says halogen and incandescent bulbs give off yellow light that makes wall colors look warmer, while cool white bulbs give off bluer light and a cooler cast. It suggests a neutral white bulb for the truest view of a wall color.",
+      },
+      {
+        question: "Can you use regular wall paint on basement concrete or block walls?",
+        answer:
+          "It depends on the wall and the product. Drylok Original is a masonry waterproofer that its data sheet says can be topcoated with a good-quality latex paint after 24 hours. Sherwin-Williams lists Loxon Concrete & Masonry Primer/Sealer as an alkali and efflorescence resistant primer for masonry. Follow the data sheet for the specific product, and treat a wall that leaks as a moisture problem first.",
+      },
+      {
+        question: "What paint sheen is best for basement walls?",
+        answer:
+          "Benjamin Moore says more reflective sheens such as eggshell work well in rooms with diffuse, indirect light, and flatter sheens work well in rooms with direct light. Most basements get indirect light, which points toward eggshell, though a flatter finish hides more wall flaws.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Choose basement paint colors with an LRV of 60 or higher, then pick the shade to suit the bulbs you will actually run in the room. Sherwin-Williams, which defines LRV on a scale from 0 to 100, tells shoppers with little to no natural light to settle the lighting first and choose paint second. Only about a third of the colors in our database reach LRV 60, and those are mostly whites, off-whites and light greiges. Below, each pick comes with its LRV, a measured yellowness score and its closest match in the other big brand, plus what the paint makers say about bulbs and about painting masonry walls.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why 60 is the floor for basement walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Light reflectance value (LRV) is the share of light a color bounces back. Sherwin-Williams describes the scale as running from 0, which reflects no light, to 100, which reflects all of it. A basement with a few small windows has less light to bounce, so the number matters more there than in a bright room. Sherwin-Williams makes the same point from the other direction: put one can of paint in a room with limited natural light and another in a room flooded with sun, and &quot;it will look and act like two different colors.&quot;
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The manufacturers do not publish a cutoff for basements, so the number 60 is our recommendation, based on how the catalog is distributed. Of the 26,720 current colors in our database, the average LRV is 44.8. Only 8,875 (33 percent) reach 60, 5,837 reach 70, and 2,541 (about 10 percent) reach 80. A floor of 60 removes two thirds of the catalog and leaves the colors that return most of the light that reaches them. For rooms that face north and get weak daylight rather than none, our guide to <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing room colors</Link> covers the window side of the problem.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Basement paint colors ranked by LRV</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The yellowness column is the b* value from CIELAB, calculated from each color&apos;s published hex. Higher means a creamier color and lower means a cleaner, crisper one. It is a measurement we computed, not a manufacturer&apos;s description. The last column gives the closest match in the other brand; all of them rate nearly identical to the original, but each is a digital match, so confirm it with a physical sample.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 font-semibold">Closest in other brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7f1" name="High Reflective White" brand="SW 7757" href="/colors/sherwin-williams/high-reflective-white-7757" /></td>
+                <td className="py-2 pr-4">92.6</td>
+                <td className="py-2 pr-4">2.9</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f0ece2" name="Greek Villa" brand="SW 7551" href="/colors/sherwin-williams/greek-villa-7551" /></td>
+                <td className="py-2 pr-4">84.0</td>
+                <td className="py-2 pr-4">5.3</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/dune-white-968" className="text-brand-blue hover:underline">Dune White</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2 pr-4">4.5</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/cold-foam-9504" className="text-brand-blue hover:underline">Cold Foam</Link> (SW)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">82.2</td>
+                <td className="py-2 pr-4">5.2</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/glacier-white-oc-37" className="text-brand-blue hover:underline">Glacier White</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4">81.9</td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/cotton-9581" className="text-brand-blue hover:underline">Cotton</Link> (SW)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /></td>
+                <td className="py-2 pr-4">74.3</td>
+                <td className="py-2 pr-4">6.7</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/etiquette-af-50" className="text-brand-blue hover:underline">Etiquette</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /></td>
+                <td className="py-2 pr-4">68.6</td>
+                <td className="py-2 pr-4">5.9</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/oat-milk-9501" className="text-brand-blue hover:underline">Oat Milk</Link> (SW)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dfd3c3" name="Natural Linen" brand="SW 9109" href="/colors/sherwin-williams/natural-linen-9109" /></td>
+                <td className="py-2 pr-4">66.2</td>
+                <td className="py-2 pr-4">9.4</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/dusty-road-1017" className="text-brand-blue hover:underline">Dusty Road</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /></td>
+                <td className="py-2 pr-4">63.3</td>
+                <td className="py-2 pr-4">3.4</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/gray-cashmere-2138-60" className="text-brand-blue hover:underline">Gray Cashmere</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /></td>
+                <td className="py-2 pr-4">63.1</td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/dumpling-9616" className="text-brand-blue hover:underline">Dumpling</Link> (SW)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /></td>
+                <td className="py-2 pr-4">60.1</td>
+                <td className="py-2 pr-4">5.7</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (BM)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two well-known neutrals sit just under the line. <Swatch hex="#d1c7b8" name="Accessible Beige" brand="SW 7036" href="/colors/sherwin-williams/accessible-beige-7036" /> (LRV 57.9) and <Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (LRV 55.1) are good colors, but they return less of the little light a basement has. If you want that depth, put it on one wall rather than all four.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link>, <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link>, <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> and <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> families and sort by LRV to find more at or above 60. The <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> puts any two side by side. Both <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> have deep lists in this range.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How your bulbs change the pick</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          With no window light to fall back on, the bulb is the light source for every hour you are in the room. The paint makers agree on the direction of the effect:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Farrow &amp; Ball:</strong> halogen and incandescent bulbs emit yellow light that makes wall colors appear warmer, while cool white bulbs give off a bluer light and a cooler cast. For the truest view of a wall color, it suggests a neutral white bulb, which most accurately replicates daylight.</li>
+          <li><strong>Sherwin-Williams:</strong> incandescent bulbs generate yellow light that intensifies warm colors and tends to dull cooler ones. Fluorescent bulbs generate cool, blue light that amplifies blues and greens and mutes warmer colors. Its list of bulb types does not mention LEDs.</li>
+          <li><strong>Benjamin Moore (UK site):</strong> each type of light source, LED, fluorescent or halogen, emits a different and less tonally balanced color of light, and it suggests mixing bulb types in a space to make the color read more true.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams turns that into a rule for rooms with little to no natural light. Warm lighting makes a room feel cozier but typically a bit dimmer, and white or cool lighting suits spaces where you need more light, such as a bathroom or home office. Once the lighting is chosen, it says to pick colors as you would for a south-facing room if the light is warm, and as you would for a north-facing room if it is white or cool toned.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams describes what that means for color. In a room with warm light, neutral-toned colors may seem warmer and cool-toned colors may seem more neutral, and a color that is already too warm can feel too bold. In a room with cool light, it says to avoid cool undertones and choose a warm neutral instead. Combining that with the yellowness scores above gives us this recommendation:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Warm bulbs (cozy family room, media room):</strong> lean toward the lower-yellowness colors, so the bulb supplies the warmth. Sea Salt (3.4), Agreeable Gray (5.7) and Pale Oak (5.9) are the calmer choices, and High Reflective White (2.9) keeps the brightest walls.</li>
+          <li><strong>Cool white or daylight-style bulbs (home gym, office, laundry):</strong> lean toward the creamiest colors, so the walls do not turn flat. Natural Linen (9.4) and Edgecomb Gray (8.1) are the highest in the table, with Shoji White (6.7) as a lighter step.</li>
+          <li><strong>Mixed lighting or not sure:</strong> the whites between 4.5 and 5.6, White Dove, Alabaster, Greek Villa and Swiss Coffee, are the least extreme in either direction.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The yellowness cutoffs are ours; the direction comes from the manufacturers. Our guide to <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link> explains why a color can shift like this.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Whatever you choose, test it under the final bulbs. Benjamin Moore&apos;s advice is to paint large squares on all of the walls and judge them in both the dark and light spots of the room. In a room with no daylight, that means testing with the lamps and overheads you will really use. The <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> is a quick way to narrow the list before you buy samples.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Painting basement masonry walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Color is the easy part. If your walls are bare concrete or block, the product on the wall comes first, and the data sheets are specific. We read two:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Drylok Original</strong> (data sheet published by Sika, August 2026, version 01.04) is described as a waterproofer for interior or exterior, above or below grade concrete or masonry walls. It lists a rating of 10 PSI, equivalent to a wall of water 22 feet high. The directions call for two coats, with 75 square feet per gallon on the first coat and 75 to 100 on the second. It can be topcoated with latex paint after 24 hours, though Drylok calls itself an ideal finish coat.</li>
+          <li><strong>Sherwin-Williams Loxon Concrete &amp; Masonry Primer/Sealer</strong> is listed in the company&apos;s primers and sealers guide as an acrylic primer/sealer for interior and exterior masonry, with alkali resistance, efflorescence resistance and self-priming. That guide marks water repellency only on its silane and siloxane products, which are labeled for exterior surfaces, and it gives no water pressure rating for the Loxon primer, and the guide makes no waterproofing claim for it.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two details in the Drylok sheet affect color choice and warranty. First, you can tint it, but only to light shades: the sheet says to use alkali-proof universal colorants at 25 percent of the normal amount and no more than 2 ounces per gallon. That fits an LRV 60 floor, though the final color will not match a full-strength tint, so test the tinted result. Second, it says Drylok may be applied over previous coatings in sound condition, but the warranty is void, and efflorescence, the white powdery deposit on masonry, must be removed first. The sheet also says that if leaking continues after two coats, pores or pinholes are still open.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We are not giving waterproofing advice beyond these sheets. If a wall is wet, read the full data sheet and safety data sheet for the product you are using, or call the manufacturer, before you spend money on a wall color.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Ceilings, trim and sheen</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          In a basement the ceiling is another reflecting surface, so the white-versus-wall-color decision covered in <Link href="/blog/ceiling-paint-color" className="text-brand-blue hover:underline">our ceiling paint color guide</Link> carries extra weight. Trim follows the same contrast logic as in <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">how to choose a trim color</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For sheen, Benjamin Moore&apos;s UK guidance says eggshell and other more reflective sheens work well in rooms with diffuse, indirect light, and flatter sheens work well in rooms with direct light. Our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers the tradeoffs.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to decide</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Settle the bulbs first: warm, cool white or neutral white, and the same type throughout the room.</li>
+          <li>Keep walls at LRV 60 or higher, and use anything darker as a single accent wall.</li>
+          <li>Warm bulbs: choose from the low-yellowness colors. Cool bulbs: choose from the creamiest.</li>
+          <li>Bare masonry: choose the coating from the data sheet first, then the color. If you tint a waterproofer, test the tinted sample.</li>
+          <li>Sample under the final lighting, on more than one wall.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          When you have a color, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> estimates the gallons for the room, and each color page lists its closest matches in other brands.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Painting a Brick House: Decide This First (2026-11-19) ──────────────── */
   {
     slug: "painted-brick-house-colors",
