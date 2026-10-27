@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PLAUSIBLE_ORIGIN } from "@/lib/plausible";
+import { PLAUSIBLE_ORIGIN, withNonInteractiveFlag } from "@/lib/plausible";
 
 // First-party relay for Plausible events. Not a rewrite: a rewrite would pass
 // the visitor's cookies (including the Supabase session) to the stats host.
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
   try {
     const res = await fetch(`${PLAUSIBLE_ORIGIN}/api/event`, {
       method: "POST",
-      body,
+      body: withNonInteractiveFlag(body),
       headers: {
         "Content-Type": request.headers.get("content-type") ?? "text/plain",
         "User-Agent": request.headers.get("user-agent") ?? "",
