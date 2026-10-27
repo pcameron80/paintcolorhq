@@ -8,6 +8,7 @@ import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
 import { ogDefaults } from "@/lib/og";
 import { moreBrands } from "@/lib/site-facts";
+import { ToolFaq, type Faq } from "@/components/tool-faq";
 
 const TITLE = "Paint Color Identifier: Match Paint From a Photo";
 const DESCRIPTION =
@@ -21,7 +22,8 @@ export const metadata: Metadata = {
   openGraph: { ...ogDefaults, title: TITLE, description: DESCRIPTION, url: URL },
 };
 
-// Shown on the page and in the FAQPage JSON-LD, so the two always match.
+// Shown in the guide below and kept in the FAQPage JSON-LD (ToolFaq skips
+// printing it a second time).
 const WHAT_COLOR_QUESTION = "What paint color is this?";
 const WHAT_COLOR_ANSWER =
   "Upload a photo of the painted surface and click it, or type the hex code if you already have one. " +
@@ -29,6 +31,16 @@ const WHAT_COLOR_ANSWER =
   "each with a plain-language label for how close it is. A photo narrows the answer to a shortlist; it cannot name the exact paint. " +
   "For that, check the label or lid of a leftover can, or take a chip of the paint to a store to have it scanned, " +
   "and confirm any match with a physical sample on the wall.";
+
+const FAQS: Faq[] = [
+  { q: WHAT_COLOR_QUESTION, a: WHAT_COLOR_ANSWER },
+  { q: "Is the paint color identifier free?", a: "Yes. It is free with no sign-up and nothing to install. It runs in your browser on a phone or computer, and your photo is read on your own device rather than uploaded to a server." },
+  { q: "How does photo color identification work?", a: "Upload a photo, then click any spot on the image. The tool samples a small patch of pixels around the spot you click, converts that color to CIELAB color space, and compares it against 26,000+ paint colors from 13 brands using the CIEDE2000 Delta E formula. Results are ranked by perceptual closeness so the top match is always the most visually accurate." },
+  { q: "What is Delta E in paint matching?", a: "Delta E is a measure of perceptual color difference. We group every result into three plain labels: Nearly identical (the difference is hard to spot even side by side), Very similar (close, but you may notice it side by side), and Visible difference (clearly different shades). These are digital matches, so confirm with a physical sample. Paint Color HQ uses the CIEDE2000 formula, the international standard used in paint manufacturing quality control." },
+  { q: "What photo formats are supported?", a: "The Paint Color Identifier supports JPEG, PNG, WebP, and any standard image format your browser can display. You can upload a photo from your device or snap one with your camera. For the most accurate results, photograph the surface in natural daylight without flash." },
+  { q: "How accurate is paint matching from a photo?", a: "The color math follows the same CIEDE2000 standard paint manufacturers use for quality control. The variable is your photo: lighting, camera white balance, and shadows shift the pixel colors the tool reads. Shoot in indirect daylight without flash, sample several spots, and treat the top matches as a shortlist to confirm with a physical sample, not a final answer." },
+  { q: "Why does the matched paint look different on my wall?", a: "The spot you clicked reflects the lighting in the photo, not the paint under your lighting. Bulb temperature, north- vs south-facing windows, sheen, and the colors around a wall all change how the same paint reads. That's why the last step is always a physical sample on your actual wall, checked in morning and evening light." },
+];
 
 // JSON-LD helper - all content is server-generated from trusted static values
 function JsonLd({ data }: { data: object }) {
@@ -45,17 +57,6 @@ export default function ColorIdentifierPage() {
         url: "https://www.paintcolorhq.com/tools/color-identifier",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      }} />
-      <JsonLd data={{
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: WHAT_COLOR_QUESTION, acceptedAnswer: { "@type": "Answer", text: WHAT_COLOR_ANSWER } },
-          { "@type": "Question", name: "How does photo color identification work?", acceptedAnswer: { "@type": "Answer", text: "Upload a photo, then click any spot on the image. The tool samples a small patch of pixels around the spot you click, converts that color to CIELAB color space, and compares it against 26,000+ paint colors from 13 brands using the CIEDE2000 Delta E formula. Results are ranked by perceptual closeness so the top match is always the most visually accurate." } },
-          { "@type": "Question", name: "What is Delta E in paint matching?", acceptedAnswer: { "@type": "Answer", text: "Delta E is a measure of perceptual color difference. We group every result into three plain labels: Nearly identical (the difference is hard to spot even side by side), Very similar (close, but you may notice it side by side), and Visible difference (clearly different shades). These are digital matches, so confirm with a physical sample. Paint Color HQ uses the CIEDE2000 formula, the international standard used in paint manufacturing quality control." } },
-          { "@type": "Question", name: "What photo formats are supported?", acceptedAnswer: { "@type": "Answer", text: "The Photo Color Identifier supports JPEG, PNG, WebP, and any standard image format your browser can display. You can upload a photo from your device or snap one with your camera. For the most accurate results, photograph the surface in natural daylight without flash." } },
-          { "@type": "Question", name: "How accurate is paint matching from a photo?", acceptedAnswer: { "@type": "Answer", text: "The color math follows the same CIEDE2000 standard paint manufacturers use for quality control. The variable is your photo: lighting, camera white balance, and shadows shift the pixel colors the tool reads. Shoot in indirect daylight without flash, sample several spots, and treat the top matches as a shortlist to confirm with a physical sample — not a final answer." } },
-          { "@type": "Question", name: "Why does the matched paint look different on my wall?", acceptedAnswer: { "@type": "Answer", text: "The spot you clicked reflects the lighting in the photo, not the paint under your lighting. Bulb temperature, north- vs south-facing windows, sheen, and the colors around a wall all change how the same paint reads. That's why the last step is always a physical sample on your actual wall, checked in morning and evening light." } },
-        ],
       }} />
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -81,6 +82,7 @@ export default function ColorIdentifierPage() {
             Dunn-Edwards, and Farrow &amp; Ball. You get the closest color in
             Sherwin-Williams, Benjamin Moore and Behr, plus the closest across
             every brand, ranked by how close each one looks to the human eye.
+            Free, with no sign-up or download.
           </p>
         </div>
       </section>
@@ -227,6 +229,8 @@ export default function ColorIdentifierPage() {
           </div>
         </div>
       </section>
+
+      <ToolFaq title="Paint color identifier FAQ" faqs={FAQS} hidden={[WHAT_COLOR_QUESTION]} />
 
       {/* What to Do After */}
       <section className="py-20 px-6 md:px-12">
