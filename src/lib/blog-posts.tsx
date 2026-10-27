@@ -75,6 +75,232 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Small Bathroom Paint Colors by Natural Light (2026-10-27) ──────────────── */
+  {
+    slug: "small-bathroom-paint-colors",
+    title: "Small Bathroom Paint Colors by Natural Light",
+    date: "2026-10-27",
+    author: "Philip Cameron",
+    excerpt:
+      "Small bathroom paint colors sorted by daylight: pale picks at LRV 60 or higher for windowless rooms, mid-tones for windowed ones, one dark option, and matches.",
+    coverColor: "#cdd2ca",
+    coverImage: "/blog/small-bathroom-paint-colors.webp",
+    tags: ["Bathroom", "Guide", "Tips"],
+    faq: [
+      {
+        question: "What is the best paint color for a small bathroom with no window?",
+        answer:
+          "We recommend a pale color with a light reflectance value (LRV) of 60 or higher, such as Pale Oak (68.6), Sea Salt (63.3) or Palladian Blue (60.4). With no daylight, the fixtures are the only light source, and a lighter wall sends more of it back into the room. The 60 line is our recommendation, not a published industry rule.",
+      },
+      {
+        question: "Does a small bathroom have to be painted a light color?",
+        answer:
+          "No. In a windowless bathroom you can go deliberately dark, for example Hale Navy at an LRV of 8.4, and let the room read as a small, enclosed space. We recommend it only if you plan layered lighting, because a dark wall reflects very little of the light from the fixtures.",
+      },
+      {
+        question: "What LRV should a small bathroom paint color have?",
+        answer:
+          "There is no published bathroom rule. Our recommendation: 60 or higher with no window, and about 30 or higher with a window that gets decent daylight. Sherwin-Williams says only that north-facing rooms call for colors with a higher LRV, and it gives no number.",
+      },
+      {
+        question: "What paint should I use in a bathroom with humidity?",
+        answer:
+          "Use a paint the manufacturer makes for bathrooms. Benjamin Moore describes Aura Bath & Spa as optimized for humid environments with a mildew resistant coating, and Sherwin-Williams says its Duration Home interior paint repels stains, blocks moisture and resists mildew. Both claims are the manufacturers' own.",
+      },
+      {
+        question: "Is Palladian Blue a blue or a green?",
+        answer:
+          "Measured from its published color data, Palladian Blue sits on the green side of the CIELAB scale (a* of -6.9) and slightly on the yellow side of the yellow-to-blue axis (b* of 2.1). It reads as a pale blue-green rather than a true blue, and it is the greenest of the six colors in this guide.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The right small bathroom paint color depends on how much daylight the room gets. With no window, we recommend a pale color with an LRV of 60 or higher, such as <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sea Salt</Link> (63.3) or <Link href="/colors/benjamin-moore/pale-oak-oc-20" className="text-brand-blue hover:underline">Pale Oak</Link> (68.6), or a deliberate dark such as Hale Navy (8.4) with good lighting. With a window, you can step down to a mid-tone like Evergreen Fog (30.4). The LRV thresholds are our recommendation, based on where colors fall in our database of 26,720 paints, not a rule from any manufacturer.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How we sorted these colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>LRV</strong> is light reflectance value. Sherwin-Williams defines it as the amount of light a color reflects, on a scale where &quot;zero reflecting no light and 100 reflecting all light.&quot; Every color page on Paint Color HQ lists it. Sherwin-Williams also says that in north-facing rooms you want colors with a higher LRV, and that if you have to rely on lighting, warm lighting &quot;will typically be a bit dimmer.&quot; It does not give a number for either case.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          So we set our own lines from the data. Of the 26,720 colors in our database, 8,875 (33 percent) have an LRV of 60 or higher, 5,837 (22 percent) are 70 or higher, and 2,065 (8 percent) are under 10. A line at 60 for windowless rooms leaves a third of all paints to choose from, so it does not force you into white. For rooms with a window, we use about 30 as the floor.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We also describe each color with two measurements computed from its published hex value in the CIELAB color space: <strong>a*</strong> (negative is greener, positive is redder) and <strong>b*</strong> (positive is yellower, negative is bluer). These replace guesses about undertone.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">a* (green-red)</th>
+                <th className="py-2 pr-4 font-semibold">b* (blue-yellow)</th>
+                <th className="py-2 font-semibold">Our recommendation</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /></td>
+                <td className="py-2 pr-4">68.6</td>
+                <td className="py-2 pr-4">-0.5</td>
+                <td className="py-2 pr-4">5.9</td>
+                <td className="py-2">Windowless</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /></td>
+                <td className="py-2 pr-4">63.3</td>
+                <td className="py-2 pr-4">-3.2</td>
+                <td className="py-2 pr-4">3.4</td>
+                <td className="py-2">Windowless</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c2d2ca" name="Palladian Blue" brand="BM HC-144" href="/colors/benjamin-moore/palladian-blue-hc-144" /></td>
+                <td className="py-2 pr-4">60.4</td>
+                <td className="py-2 pr-4">-6.9</td>
+                <td className="py-2 pr-4">2.1</td>
+                <td className="py-2">Windowless</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c2cdc5" name="Rainwashed" brand="SW 6211" href="/colors/sherwin-williams/rainwashed-6211" /></td>
+                <td className="py-2 pr-4">59.2</td>
+                <td className="py-2 pr-4">-5.2</td>
+                <td className="py-2 pr-4">2.7</td>
+                <td className="py-2">Windowed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#95978a" name="Evergreen Fog" brand="SW 9130" href="/colors/sherwin-williams/evergreen-fog-9130" /></td>
+                <td className="py-2 pr-4">30.4</td>
+                <td className="py-2 pr-4">-3.2</td>
+                <td className="py-2 pr-4">6.6</td>
+                <td className="py-2">Windowed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
+                <td className="py-2 pr-4">8.4</td>
+                <td className="py-2 pr-4">-0.5</td>
+                <td className="py-2 pr-4">-7.6</td>
+                <td className="py-2">Dark, windowless</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          One result is worth knowing before you buy: Hale Navy is the only pick that measures on the blue side. Palladian Blue, despite its name, sits further toward green than any other color here.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Windowless bathroom: pale colors at LRV 60 or higher</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          With no window, the fixtures are the only light the walls ever see, and no daylight arrives to lift a mid-tone. We recommend keeping the LRV at 60 or higher so the walls return as much of that light as they can. Three colors clear the line:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Pale Oak (LRV 68.6)</strong> is the lightest and the most neutral of the three, with an a* near zero.</li>
+          <li><strong>Sea Salt (LRV 63.3)</strong> is a pale green-gray (a* of -3.2). Our <Link href="/blog/best-sherwin-williams-bathroom-colors" className="text-brand-blue hover:underline">guide to Sherwin-Williams bathroom colors</Link> covers it alongside other Sherwin-Williams picks.</li>
+          <li><strong>Palladian Blue (LRV 60.4)</strong> is a pale blue-green and the greenest color in this guide. It clears the line by only 0.4 points.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Rainwashed, at 59.2, sits just under our line and is the closest call. In a windowless room we would pick one of the three above.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bathroom with a window: mid-tones work</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Daylight changes what a color can do. With a window, we are comfortable going down to about LRV 30. Two picks show the range:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Rainwashed (LRV 59.2)</strong> is a pale green-gray (a* of -5.2) that keeps the room light, and it is the safer choice if the window faces north or is small.</li>
+          <li><strong>Evergreen Fog (LRV 30.4)</strong> is a gray-green with the most yellow of the six (b* of 6.6). It is the deepest color we would paint a small bathroom with a window, and it gives a softer contrast against white fixtures than a navy would.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If the window faces north, Sherwin-Williams&apos; advice to pick a higher LRV applies. Our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing room guide</Link> covers that case, and in that situation we would treat the bathroom like a windowless one. To compare any two candidates side by side, use the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">A deliberate dark option for a windowless room</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you want a windowless bathroom to look intentional rather than merely bright, our recommendation is to go dark. Hale Navy has an LRV of 8.4 and the only blue-side measurement in this guide (b* of -7.6), so it reads as a deep gray-navy rather than a saturated one.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The tradeoff is simple: at 8.4, the wall reflects less than a tenth of the light that hits it, so the room depends on its fixtures. We recommend more than one light source, such as a vanity light and a ceiling fixture, rather than a single overhead bulb. Sherwin-Williams notes that warm lighting is cozier but typically dimmer, so if you choose warm bulbs, plan for more fixtures, not fewer. Skip dark colors if the room needs to feel airy or if you apply makeup there with no extra light.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Humidity and paint: what the manufacturers say</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We could not test mildew resistance ourselves, so here is what two manufacturers state about their bathroom paints. Benjamin Moore&apos;s data sheet for Aura Bath &amp; Spa describes it as &quot;specially formulated for optimal performance in high humidity environments,&quot; and says it contains additives &quot;that inhibit the growth of mold and mildew on the surface of the paint film.&quot; Sherwin-Williams says its Duration Home interior acrylic latex &quot;repels stains, blocks moisture and resists mildew.&quot;
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two practical points come straight from the Benjamin Moore data sheet. Surfaces must be free of mildew before painting, and the sheet notes that &quot;surfactant leaching is a common problem in areas where moisture concentrates on walls like bathrooms &amp; showers,&quot; so stains from it must be removed first. Aura Bath &amp; Spa is sold in a matte finish, which means the moisture formula and the sheen are separate decisions. Our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers which finish suits which surface, and our <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">bathroom paint colors guide</Link> covers more colors for bathrooms of any size.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Closest matches in other brands</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every pair below rates nearly identical by CIEDE2000, the standard color-difference formula. These are digital matches, so confirm each one with a physical sample in your own bathroom before you buy.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Pick</th>
+                <th className="py-2 pr-4 font-semibold"><Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link></th>
+                <th className="py-2 pr-4 font-semibold"><Link href="/brands/valspar" className="text-brand-blue hover:underline">Valspar</Link></th>
+                <th className="py-2 font-semibold">Other brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pale Oak</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/campfire-ash-n320-1" className="text-brand-blue hover:underline">Campfire Ash</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/glass-pebble-8004-26a" className="text-brand-blue hover:underline">Glass Pebble</Link></td>
+                <td className="py-2">Sherwin-Williams <Link href="/colors/sherwin-williams/oat-milk-9501" className="text-brand-blue hover:underline">Oat Milk</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Sea Salt</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/silver-setting-pwl-89" className="text-brand-blue hover:underline">Silver Setting</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/three-wishes-8004-32b" className="text-brand-blue hover:underline">Three Wishes</Link></td>
+                <td className="py-2">Benjamin Moore <Link href="/colors/benjamin-moore/gray-cashmere-2138-60" className="text-brand-blue hover:underline">Gray Cashmere</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Palladian Blue</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/natures-reflection-n430-2" className="text-brand-blue hover:underline">Natures Reflection</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/distant-valley-5002-3a" className="text-brand-blue hover:underline">Distant Valley</Link></td>
+                <td className="py-2">Sherwin-Williams <Link href="/colors/sherwin-williams/waterscape-6470" className="text-brand-blue hover:underline">Waterscape</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Rainwashed</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/mountain-falls-n420-2" className="text-brand-blue hover:underline">Mountain Falls</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/ocean-froth-8003-34c" className="text-brand-blue hover:underline">Ocean Froth</Link></td>
+                <td className="py-2">Benjamin Moore <Link href="/colors/benjamin-moore/silver-marlin-2139-50" className="text-brand-blue hover:underline">Silver Marlin</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Evergreen Fog</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/shady-willow-ecc-36-1" className="text-brand-blue hover:underline">Shady Willow</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/gray-expos-5007-2a" className="text-brand-blue hover:underline">Gray Expos&eacute;</Link></td>
+                <td className="py-2">Benjamin Moore <Link href="/colors/benjamin-moore/storm-cloud-gray-2140-40" className="text-brand-blue hover:underline">Storm Cloud Gray</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Hale Navy</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/rogue-blue-5009-2" className="text-brand-blue hover:underline">Rogue Blue</Link></td>
+                <td className="py-2">Sherwin-Williams <Link href="/colors/sherwin-williams/sea-mariner-9640" className="text-brand-blue hover:underline">Sea Mariner</Link></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to test before you paint</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Decide your category first: windowless or windowed. That sets the LRV range.</li>
+          <li>Preview two or three candidates in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.</li>
+          <li>Paint a sample board and hold it on the wall next to the vanity and tile, with the bulbs you plan to use switched on.</li>
+          <li>Look at it at night as well as in the morning, since a windowless room looks the same at both times but a windowed one does not.</li>
+          <li>Estimate how much paint you need with the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link>.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For more options, browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link>, <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> color families, or see everything in the catalogs from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>. Pale Oak is listed in the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> family.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Ceiling paint color (2026-10-22) ──────────────── */
   {
     slug: "ceiling-paint-color",
