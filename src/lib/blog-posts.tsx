@@ -8989,7 +8989,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-nursery-paint-colors",
     title: "13 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last)",
     date: "2026-01-29",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-27",
     author: "Philip Cameron",
     excerpt:
       "The best nursery paint colors for 2026 — gender-neutral picks from Sherwin-Williams, Benjamin Moore, and Behr that grow with your child.",
@@ -9060,7 +9060,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#C8BCAB" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> (LRV 51.2) — the defining mushroom taupe of 2026. It sits between beige, gray, and the faintest whisper of brown. At LRV 51, it is warm and grounding without darkening a small nursery.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> (LRV 41) — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral. Its closest Benjamin Moore match is <Link href="/colors/benjamin-moore/rocky-beach-csp-190" className="text-brand-blue hover:underline">Rocky Beach (CSP-190)</Link>, and Behr <Link href="/colors/behr/nile-sand-ul170-19" className="text-brand-blue hover:underline">Nile Sand (UL170-19)</Link> is closer still; both rate nearly identical in our digital data. <Link href="/colors/benjamin-moore/shaker-beige-hc-45" className="text-brand-blue hover:underline">Shaker Beige (HC-45)</Link> is a lighter warm tan that shows a visible difference. See our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> roundup.
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> (LRV 41), Sherwin-Williams&apos; 2026 Color of the Year. A warm, sandy neutral. Its closest Benjamin Moore match is <Link href="/colors/benjamin-moore/rocky-beach-csp-190" className="text-brand-blue hover:underline">Rocky Beach (CSP-190)</Link>, and Behr <Link href="/colors/behr/nile-sand-ul170-19" className="text-brand-blue hover:underline">Nile Sand (UL170-19)</Link> is closer still; both rate nearly identical in our digital data. <Link href="/colors/benjamin-moore/shaker-beige-hc-45" className="text-brand-blue hover:underline">Shaker Beige (HC-45)</Link> is a lighter warm tan that shows a visible difference. See our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> roundup.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families for more earthy nursery options.
@@ -9138,7 +9138,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dining-room-paint-colors",
     title: "13 Best Dining Room Paint Colors for Every Style (2026)",
     date: "2026-02-12",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-27",
     author: "Philip Cameron",
     excerpt:
       "The best dining room paint colors for 2026 — bold jewel tones, warm earth tones, and elegant neutrals with hex codes and pairing tips.",
@@ -9181,7 +9181,7 @@ const blogPosts: BlogPost[] = [
           The biggest dining room color trend in 2026 is the shift from cool grays toward warm earth tones — taupes, terracottas, khakis, and mushroom shades. These colors feel organic, grounding, and naturally cozy under warm dining room lighting. Read our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link> for more on this shift.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral that represents the definitive move away from cool grays. It works beautifully in dining rooms because it flatters skin tones under warm lighting and pairs with virtually any wood table or chair.
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — Sherwin-Williams&apos; 2026 Color of the Year. A warm, sandy neutral at LRV 41 that suits a dining room with warm lighting and wood furniture.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#b0785c" name="Spiced Cider" brand="Sherwin-Williams" href="/colors/sherwin-williams/spiced-cider-7702" /> — a warm terracotta that brings Mediterranean warmth to any dining space. It glows beautifully under pendant lighting and pairs with white dishes, terracotta serveware, and linen table runners.
