@@ -9278,7 +9278,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-kitchen-colors",
     title: "15 Best Sherwin-Williams Paint Colors for Kitchens (2026)",
     date: "2026-02-26",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-27",
     author: "Philip Cameron",
     excerpt:
       "The most popular Sherwin-Williams kitchen colors for cabinets, walls, and islands — with finish tips, lighting advice, and designer pairings.",
@@ -9372,7 +9372,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best SW Paint Lines for Kitchens</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>For cabinets: Emerald Urethane Trim Enamel.</strong> This is the gold standard for kitchen cabinets. It self-levels for a factory-smooth finish, resists yellowing over time, and cleans up with just a damp cloth. Use a satin or semi-gloss sheen — satin is the modern default, semi-gloss for extra durability near the stove and sink.
+          <strong>For cabinets: Emerald Urethane Trim Enamel.</strong> Its data sheet lists satin at 35 to 45 gloss units at 60 degrees, dry to the touch in 1 hour and ready to recoat in 4 hours at 77&deg;F and 50% humidity. For interior wood it calls for one coat of Premium Wall &amp; Wood Primer under two coats of the enamel. The sheet gives no cure time, so ask the store how long to wait before the doors take daily use.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>For walls: Duration or Emerald.</strong> Both are scrubbable and moisture-resistant, which kitchen walls need. Duration is slightly more affordable. Eggshell sheen is standard for kitchen walls — it hides imperfections while still being wipeable.
@@ -9394,10 +9394,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>What is the most popular Sherwin-Williams color for kitchen cabinets?</strong> Pure White (SW 7005) is the most specified cabinet color at Sherwin-Williams. Alabaster (SW 7008) is a close second for homeowners who prefer a warmer, creamier white.
+          <strong>Which Sherwin-Williams white is best for kitchen cabinets?</strong> We have no sales data to rank them by popularity, so we compare them on measured values. Snowbound (SW 7004), High Reflective White (SW 7757) and Pure White (SW 7005) carry almost the same yellowness, 2.8 to 3.0 on the b* scale, and suit countertops that look neutral or cool. Of those three, High Reflective White is clearly the brightest. Alabaster (SW 7008) is the creamiest at 5.2 and suits creamy or golden stone. Hold a sample against your countertop before you choose.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>What Sherwin-Williams paint should I use on kitchen cabinets?</strong> Emerald Urethane Trim Enamel in satin sheen. It self-levels for a smooth finish, resists yellowing, and holds up to the moisture, grease, and constant wiping that kitchen cabinets endure.
+          <strong>What Sherwin-Williams paint should I use on kitchen cabinets?</strong> Emerald Urethane Trim Enamel. Its data sheet lists satin at 35 to 45 gloss units and gloss at 65 and above, both recoatable in 4 hours, over one coat of Premium Wall &amp; Wood Primer on interior wood. It does not publish a cure time.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>What is the best Sherwin-Williams color for small kitchens?</strong> Alabaster (SW 7008) opens up small kitchens with its warm glow, while Agreeable Gray (SW 7029) adds depth without closing the space in. Avoid very dark colors on all surfaces in a small kitchen — use them as accents on an island or lower cabinets instead.
