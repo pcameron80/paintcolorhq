@@ -9296,38 +9296,38 @@ const blogPosts: BlogPost[] = [
           White cabinets remain the top choice for kitchens, and the specific white matters enormously. The wrong white clashes with countertops and makes the whole kitchen feel off. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these whites in a kitchen setting before buying samples.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — the most popular SW cabinet white. It&apos;s warm enough to avoid sterile vibes but clean enough for modern kitchens. Pairs beautifully with quartz and marble countertops. Works in both north-facing and south-facing kitchens because it holds its true color under different lighting.
+          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" />: LRV 83.7, yellowness 3.0. A clean white with a little yellow, for countertops that look neutral or cool.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> — a creamier option with warm yellow undertones. Best for kitchens with warm-toned flooring and brass hardware. In north-facing kitchens, it reads as a soft warm glow rather than stark white.
+          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" />: LRV 82.2, yellowness 5.2, the creamiest of the four. Suits countertops and floors that look creamy or golden.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" />: one of the brightest whites in the SW deck. Use for trim and ceilings when you want maximum brightness. It can feel clinical on cabinets in small kitchens, so pair it with warm countertops to balance it out. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for more.
+          <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" />: LRV 92.6, yellowness 2.9, the brightest of the four. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> for how it compares with other bright whites.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDEAE5" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> — a soft white with subtle gray undertones. Snowbound hides fingerprints and smudges better than pure whites, making it a smart choice for busy kitchens with kids. Compare it side by side with Pure White using our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>.
+          <Swatch hex="#EDEAE5" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" />: LRV 82.5, yellowness 2.8, the least yellow of the four. Compare it with Pure White in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Greens for Kitchen Cabinets</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green kitchens are one of the biggest cabinet trends right now. These SW greens work on lower cabinets with white uppers, or as a full cabinet color. The 2026 trend leans toward moodier, olive-influenced greens rather than the bright sages of previous years.
+          These Sherwin-Williams greens work on lower cabinets with white uppers, or as a full cabinet color. They split into one light green, Restful at LRV 39, and two dark ones, Rosemary at LRV 14 and Pewter Green at LRV 12, which suit a kitchen with plenty of light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#5E6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — the kitchen green of the decade. A muted sage-forest that reads sophisticated in every lighting condition. Pairs with brass hardware, butcher block counters, and white marble equally well.
+          <Swatch hex="#5E6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — a muted gray-green and the darkest of the three. Pairs with brass hardware, butcher block counters, and white marble equally well.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#91AF9D" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" /> — a brighter, more saturated sage for kitchens with lots of natural light. It can lean blue-green under fluorescent lighting, so test a sample under your actual kitchen lights first.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#64695C" name="Rosemary" brand="Sherwin-Williams" href="/colors/sherwin-williams/rosemary-6187" /> — a deeper, earthier green with olive undertones. This is the 2026 mood: rich, grounded greens that feel organic rather than trendy. Browse all options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
+          <Swatch hex="#64695C" name="Rosemary" brand="Sherwin-Williams" href="/colors/sherwin-williams/rosemary-6187" /> — a deeper, earthier green with olive undertones, slightly lighter and yellower than Pewter Green. Browse all options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Neutrals for Kitchen Walls</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          If your cabinets are the star, the wall color should support them without competing. The 2026 trend in kitchen neutrals has shifted from cool grays toward warmer taupes, greiges, and sandy tones.
+          If your cabinets are the star, the wall color should support them without competing.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — America&apos;s #1 paint color works in kitchens as well as anywhere. Its warm greige tone complements white cabinets, wood cabinets, and painted cabinets alike. If your kitchen opens to a living room, Agreeable Gray creates seamless flow between spaces.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — a greige at LRV 60, a little lighter and less yellow than Accessible Beige. Its warm tone complements white cabinets, wood cabinets, and painted cabinets alike. If your kitchen opens to a living room, Agreeable Gray creates seamless flow between spaces.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — warmer and richer than Agreeable Gray. Best for kitchens with honey oak floors or warm-toned stone countertops. Explore the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for similar tones.
@@ -9336,15 +9336,15 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#E6DFD3" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a warm off-white that keeps walls bright without the stark feel of true white. It bridges the gap between a neutral wall color and a white, making it versatile for kitchens where you can&apos;t decide between the two.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral that represents the shift away from cool grays. It pairs especially well with white or green cabinets and natural stone countertops. Read our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link> for more context on this trend.
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — Sherwin-Williams&apos; 2026 Color of the Year. A warm, sandy neutral at LRV 41, the darkest and yellowest of these four neutrals. It pairs especially well with white or green cabinets and natural stone countertops. Read our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link> to see how it compares with the other brands&apos; 2026 picks.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Bold Colors for Kitchen Islands and Accents</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For kitchen islands, accent walls, or statement cabinetry, these bold SW colors are designer-approved. A two-tone kitchen — white uppers with a bold island — is one of the most requested designs right now.
+          For kitchen islands, accent walls, or statement cabinetry, these four dark Sherwin-Williams colors carry the room. One layout to try is white uppers with a dark island.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — the #1 bold kitchen color. Navy islands with white countertops and gold hardware are a timeless combination. Naval works in both traditional and modern kitchens. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link> for lighter navy alternatives.
+          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a deep navy. Navy islands pair with white countertops and gold hardware. Naval works in both traditional and modern kitchens. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link> for lighter navy alternatives.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#434341" name="Iron Ore" brand="Sherwin-Williams" href="/colors/sherwin-williams/iron-ore-7069" /> — a charcoal-black for modern kitchen cabinets. Less stark than true black, more dramatic than dark gray. It reads as a rich, warm charcoal rather than flat black, which prevents the kitchen from feeling like a cave. Explore the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> for more dark neutrals.
@@ -9353,7 +9353,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" />: one of Sherwin-Williams&apos; nine 2025 Color Capsule colors. It adds a warm, earthy tone to kitchen cabinetry. It works surprisingly well on kitchen islands surrounded by lighter cabinetry. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2025 Color of the Year guide</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#23383F" name="Dark Night" brand="Sherwin-Williams" href="/colors/sherwin-williams/dark-night-6237" /> — a deep teal-black that splits the difference between navy and black. It&apos;s having a moment on kitchen islands where homeowners want something bolder than navy but more interesting than black.
+          <Swatch hex="#23383F" name="Dark Night" brand="Sherwin-Williams" href="/colors/sherwin-williams/dark-night-6237" /> — a deep teal-black that splits the difference between navy and black. It suits an island where you want something darker than navy without going to black.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How Kitchen Lighting Changes These Colors</h2>
@@ -9375,7 +9375,7 @@ const blogPosts: BlogPost[] = [
           <strong>For cabinets: Emerald Urethane Trim Enamel.</strong> Its data sheet lists satin at 35 to 45 gloss units at 60 degrees, dry to the touch in 1 hour and ready to recoat in 4 hours at 77&deg;F and 50% humidity. For interior wood it calls for one coat of Premium Wall &amp; Wood Primer under two coats of the enamel. The sheet gives no cure time, so ask the store how long to wait before the doors take daily use.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>For walls: Duration or Emerald.</strong> Both are scrubbable and moisture-resistant, which kitchen walls need. Duration is slightly more affordable. Eggshell sheen is standard for kitchen walls — it hides imperfections while still being wipeable.
+          <strong>For walls: Duration or Emerald.</strong> Both are Sherwin-Williams interior wall lines; compare their data sheets for washability and sheen before you buy. We suggest eggshell for kitchen walls, because it hides more surface flaws than satin while still wiping clean.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Work out the quantity first.</strong> Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to see how many gallons your walls and cabinets need, then ask the store about any current promotion before you buy.
