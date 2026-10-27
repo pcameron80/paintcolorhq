@@ -58,7 +58,9 @@ function sendToPlausible(eventName: string, params?: GtagEvent) {
   // Web Vitals fire on every page load. Sent as interactive events they made
   // every session count as engaged, so Plausible's bounce rate fell from about
   // 65% to 1% the day #246 shipped (2026-10-24). Non-interactive events keep
-  // the goal counts without touching bounce rate or visit duration.
+  // the goal counts without touching bounce rate or visit duration. Plausible
+  // CE 3.2.1 drops a bare `i: false`, so the relay adds `interactive: false`
+  // (see withNonInteractiveFlag in src/lib/plausible.ts).
   const options: { props?: Record<string, string>; interactive?: boolean } = {};
   if (Object.keys(props).length) options.props = props;
   if (eventName === "web_vitals") options.interactive = false;
