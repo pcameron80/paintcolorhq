@@ -9281,14 +9281,14 @@ const blogPosts: BlogPost[] = [
     modifiedDate: "2026-10-27",
     author: "Philip Cameron",
     excerpt:
-      "The most popular Sherwin-Williams kitchen colors for cabinets, walls, and islands — with finish tips, lighting advice, and designer pairings.",
+      "15 Sherwin-Williams kitchen colors for cabinets, walls and islands, with measured cabinet whites, data-sheet finish figures and lighting advice.",
     coverColor: "#6B7C6E",
     coverImage: "/blog/best-sherwin-williams-kitchen-colors.webp",
     tags: ["Sherwin-Williams", "Kitchen", "Design", "Cabinets"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Sherwin-Williams is the paint brand most specified by kitchen designers and contractors in the US. With over 1,700 colors and a store within 20 minutes of most Americans, it&apos;s the go-to for kitchen renovations. These 15 Sherwin-Williams kitchen colors cover cabinets, walls, and statement islands — each one chosen because designers and homeowners keep coming back to it. We&apos;ll also cover which SW paint line to use, how lighting changes these colors, and how to sample before committing.
+          These 15 Sherwin-Williams colors cover a kitchen from cabinets to island: four cabinet whites, three cabinet greens, four wall neutrals and four bold colors for islands and accents. Each name links to the color&apos;s page, which gives its LRV and its closest matches in other brands. After the picks, we cover what the cabinet enamel&apos;s data sheet says, how kitchen lighting shifts these colors, and how to sample before you commit.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Whites for Kitchen Cabinets</h2>
@@ -9378,7 +9378,7 @@ const blogPosts: BlogPost[] = [
           <strong>For walls: Duration or Emerald.</strong> Both are scrubbable and moisture-resistant, which kitchen walls need. Duration is slightly more affordable. Eggshell sheen is standard for kitchen walls — it hides imperfections while still being wipeable.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Wait for the sales.</strong> Sherwin-Williams runs 30-40% off sales several times a year. Kitchen projects typically need 3-5 gallons for cabinets alone — the savings add up fast. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out exactly how many gallons you need.
+          <strong>Work out the quantity first.</strong> Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to see how many gallons your walls and cabinets need, then ask the store about any current promotion before you buy.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Sample Kitchen Paint Colors</h2>
