@@ -4057,7 +4057,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
                 <td className="py-2 pr-4">Sea Mariner (nearly identical)</td>
                 <td className="py-2 pr-4"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link> (nearly identical)</td>
-                <td className="py-2"><Link href="/colors/valspar/royal-navy-4011-4" className="text-brand-blue hover:underline">Royal Navy</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/rogue-blue-5009-2" className="text-brand-blue hover:underline">Rogue Blue</Link> (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#3d4450" name="Charcoal Blue" brand="SW 2739" href="/colors/sherwin-williams/charcoal-blue-2739" /></td>
