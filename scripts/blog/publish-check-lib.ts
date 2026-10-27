@@ -10,7 +10,7 @@
  * has to press the button. Everything here is side-effect free so the
  * rules can be unit-tested; the network calls live in publish-check.ts.
  */
-import { isLiveAt } from "../../src/lib/blog-publish.ts";
+import { isLiveAt, publishInstant } from "../../src/lib/blog-publish.ts";
 
 export const SUBMIT_WINDOW_DAYS = 3; // retry window for a post that hasn't come up yet
 export const INSPECT_WINDOW_DAYS = 28; // how long to keep checking Google's index status
@@ -42,7 +42,7 @@ export interface PostState {
 
 export type PublishState = Record<string, PostState>;
 
-const ageMs = (date: string, now: Date) => now.getTime() - new Date(date).getTime();
+const ageMs = (date: string, now: Date) => now.getTime() - publishInstant(date);
 
 /** Live posts inside the submit window that haven't been submitted yet. */
 export function postsToSubmit(posts: PostRef[], state: PublishState, now: Date): PostRef[] {
