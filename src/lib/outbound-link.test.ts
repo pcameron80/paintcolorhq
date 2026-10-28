@@ -52,6 +52,12 @@ test("affiliate-network redirects report the wrapped store as the retailer", () 
     page("/colors/behr/swiss-coffee"),
   );
   assert.equal(impact?.retailer, "homedepot.com");
+  const awin = classifyOutboundLink(
+    "https://www.awin1.com/cread.php?awinmid=1&awinaffid=2&ued=https%3A%2F%2Fwww.farrow-ball.com%2Fpaint%2Fhague-blue",
+    page("/colors/farrow-ball/hague-blue-30"),
+  );
+  assert.equal(awin?.retailer, "farrow-ball.com");
+  assert.equal(awin?.affiliate, "true");
 });
 
 test("share, social, self, relative and non-http links are not retailer clicks", () => {
