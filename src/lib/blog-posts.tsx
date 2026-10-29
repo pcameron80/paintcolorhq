@@ -5178,10 +5178,10 @@ const blogPosts: BlogPost[] = [
     slug: "famous-white-paints-compared",
     title: "Alabaster vs. White Dove and 15 Other Famous Whites, Measured",
     date: "2026-07-03",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "We measured the 17 most-searched white paints with CIEDE2000. On the brands' published values, Alabaster and White Dove rate nearly identical, and a $30 Behr staple is a near-perfect twin of a Benjamin Moore classic.",
+      "We measured the 17 most-searched white paints with CIEDE2000. On the brands' published values, Alabaster and White Dove rate nearly identical, and a Behr staple is a near-perfect twin of a Benjamin Moore classic.",
     coverColor: "#EFEEE5",
     tags: ["Data", "Design"],
     faq: [
@@ -5214,7 +5214,7 @@ const blogPosts: BlogPost[] = [
           <Link href="/colors/sherwin-williams/cold-foam-9504" className="text-brand-blue hover:underline">Cold Foam (SW 9504)</Link>.
           That is one of several answers we got by measuring the 17 most-searched whites in
           America with CIEDE2000, the color-difference standard paint manufacturers use for
-          quality control. White is the best-selling color family and the one where the internet
+          quality control. White is the color family where the internet
           argues hardest about whether two names are &ldquo;basically the same,&rdquo; so the
           numbers below settle some long-running debates and start at least one new one.
         </p>
@@ -5897,7 +5897,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-black-paint-colors",
     title: "The Best Black Paint Colors for Doors, Trim & Walls (2026)",
     date: "2026-07-31",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best black paint colors for front doors, trim, cabinets, and walls — true black, soft black, and blue-black — each with its LRV and closest cross-brand match.",
@@ -5908,7 +5908,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the best black paint color?",
         answer:
-          "Tricorn Black (SW 6258) is the most-specified true black — a clean, near-neutral black at LRV 2.9 that holds up on doors, trim, and cabinets. Its Benjamin Moore twin is Black (HC-190), a nearly identical match. For a softer, warmer black designers prefer on whole walls, Iron Ore (SW 7069) and Wrought Iron (BM 2124-10) read as charcoal-blacks rather than absolute black.",
+          "Tricorn Black (SW 6258) is our pick for a true black: a clean, near-neutral black at LRV 2.9 for doors, trim, and cabinets. Its Benjamin Moore twin is Black (HC-190), a nearly identical match. For a softer, warmer black on whole walls, Iron Ore (SW 7069) and Wrought Iron (BM 2124-10) read as charcoal-blacks rather than absolute black.",
       },
       {
         question: "What does LRV mean for a black paint color?",
@@ -5950,7 +5950,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Soft &amp; Warm Blacks (LRV 5&ndash;8)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Soft blacks are the designer&apos;s secret for walls and large surfaces — they carry the drama of black but show subtle dimension instead of going flat. <Swatch hex="#434341" name="Iron Ore" brand="Sherwin-Williams" href="/colors/sherwin-williams/iron-ore-7069" /> (SW 7069, LRV 5.6) is the most popular of the group: a warm charcoal-black that reads black indoors but softens to deep gray in bright light, which makes it far more forgiving on whole walls and exteriors. Its closest match is{" "}
+          Soft blacks suit walls and large surfaces: they carry the drama of black but show subtle dimension instead of going flat. <Swatch hex="#434341" name="Iron Ore" brand="Sherwin-Williams" href="/colors/sherwin-williams/iron-ore-7069" /> (SW 7069, LRV 5.6) is the one to start with: a warm charcoal-black that reads black indoors but softens to deep gray in bright light, which makes it far more forgiving on whole walls and exteriors. Its closest match is{" "}
           <Link href="/colors/behr/broadway-ppu18-20" className="text-brand-blue hover:underline">Behr Broadway</Link> (a nearly identical match at Home Depot), with Benjamin Moore Notre Dame close behind.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
@@ -6083,7 +6083,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-gray-paint-colors",
     title: "The Best Gray Paint Colors for Every Room (2026)",
     date: "2026-07-17",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best true gray paint colors, light to charcoal — each with its LRV, undertone, and closest cross-brand match, plus a guide to choosing gray by room light.",
@@ -6094,7 +6094,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the most popular gray paint color?",
         answer:
-          "Repose Gray (SW 7015) is the most-specified true gray — a light, balanced gray at LRV 58 that reads clean without a strong cool or warm cast. Gray Owl (BM 2137-60) is the most popular cooler, airy gray, and Chelsea Gray (BM HC-168) the most popular deep charcoal-gray for cabinets and accent walls.",
+          "Repose Gray (SW 7015) is our pick for a true gray: a light, balanced gray at LRV 58 that reads clean without a strong cool or warm cast. Gray Owl (BM 2137-60) is a cooler, airy gray, and Chelsea Gray (BM HC-168) a deep charcoal-gray for cabinets and accent walls.",
       },
       {
         question: "What is the difference between a true gray and a greige?",
@@ -6144,12 +6144,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Mid-Tone Grays (LRV 38–50)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Mid-tone grays give a room more depth and weight — strong enough for a feature wall, still livable across a whole room with good light. <Swatch hex="#bcb7ad" name="Mindful Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/mindful-gray-7016" /> (SW 7016, LRV 48, neutral) is the most popular step-up from Repose Gray, with more presence. Its PPG match Ghost Writer is nearly identical and Benjamin Moore <Link href="/colors/benjamin-moore/thunder-af-685" className="text-brand-blue hover:underline">Thunder</Link> is a nearly identical second. <Swatch hex="#b9bbb7" name="Coventry Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/coventry-gray-hc-169" /> (BM HC-169, LRV 48, neutral) is the cooler, cleaner mid-gray — its Sherwin-Williams match is <Link href="/colors/sherwin-williams/argos-7065" className="text-brand-blue hover:underline">Argos</Link> and PPG Gray Stone is nearly identical too. <Swatch hex="#aca79e" name="Dorian Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/dorian-gray-7017" /> (SW 7017, LRV 39, warm) leans a touch warm, which makes it the most forgiving mid-gray in cool north light — its Benjamin Moore match is Upper West Side, with Behr Stingray Gray close behind.
+          Mid-tone grays give a room more depth and weight — strong enough for a feature wall, still livable across a whole room with good light. <Swatch hex="#bcb7ad" name="Mindful Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/mindful-gray-7016" /> (SW 7016, LRV 48, neutral) is the next step deeper than Repose Gray, with more presence. Its PPG match Ghost Writer is nearly identical and Benjamin Moore <Link href="/colors/benjamin-moore/thunder-af-685" className="text-brand-blue hover:underline">Thunder</Link> is a nearly identical second. <Swatch hex="#b9bbb7" name="Coventry Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/coventry-gray-hc-169" /> (BM HC-169, LRV 48, neutral) is the cooler, cleaner mid-gray — its Sherwin-Williams match is <Link href="/colors/sherwin-williams/argos-7065" className="text-brand-blue hover:underline">Argos</Link> and PPG Gray Stone is nearly identical too. <Swatch hex="#aca79e" name="Dorian Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/dorian-gray-7017" /> (SW 7017, LRV 39, warm) leans a touch warm, which makes it the most forgiving mid-gray in cool north light — its Benjamin Moore match is Upper West Side, with Behr Stingray Gray close behind.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Charcoal Grays (LRV under 25)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Charcoals are for impact — cabinets, islands, accent walls, exterior trim, and moody dining rooms. <Swatch hex="#87857d" name="Chelsea Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/chelsea-gray-hc-168" /> (BM HC-168, LRV 23, warm) is the designer favorite for kitchen cabinetry — deep and grounded, with a warm undertone that keeps it from going cold. Behr Barnwood Gray is a nearly identical match and SW Classic French Gray is close. <Swatch hex="#78736e" name="Gauntlet Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/gauntlet-gray-7019" /> (SW 7019, LRV 17, warm) is the deeper warm charcoal — dramatic on an accent wall or front door without reading pure black. Behr Unpredictable Hue is its closest match, with Benjamin Moore <Link href="/colors/benjamin-moore/windy-city-csp-150" className="text-brand-blue hover:underline">Windy City</Link> a close second.
+          Charcoals are for impact — cabinets, islands, accent walls, exterior trim, and moody dining rooms. <Swatch hex="#87857d" name="Chelsea Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/chelsea-gray-hc-168" /> (BM HC-168, LRV 23, warm) suits kitchen cabinetry: deep and grounded, with a warm undertone that keeps it from going cold. Behr Barnwood Gray is a nearly identical match and SW Classic French Gray is close. <Swatch hex="#78736e" name="Gauntlet Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/gauntlet-gray-7019" /> (SW 7019, LRV 17, warm) is the deeper warm charcoal — dramatic on an accent wall or front door without reading pure black. Behr Unpredictable Hue is its closest match, with Benjamin Moore <Link href="/colors/benjamin-moore/windy-city-csp-150" className="text-brand-blue hover:underline">Windy City</Link> a close second.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The One Cool Blue-Gray: Network Gray</h2>
@@ -6528,7 +6528,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-paint-colors",
     title: "The Best Sherwin-Williams Paint Colors for Every Room (2026)",
     date: "2026-06-13",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best Sherwin-Williams paint colors — whites, greiges, grays, a navy, and blacks — each with its LRV and its closest match in the brand you can buy.",
@@ -6539,7 +6539,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the most popular Sherwin-Williams paint color?",
         answer:
-          "Agreeable Gray (SW 7029) is the most-specified Sherwin-Williams color and the most popular paint color in the US — a warm greige at LRV 60 that reads neutral across almost any lighting. Alabaster (SW 7008) is the most popular white, and Repose Gray (SW 7015) the most popular true gray.",
+          "Agreeable Gray (SW 7029) is our pick for most homes: a warm greige at LRV 60 that reads neutral across almost any lighting. For a white, start with Alabaster (SW 7008); for a true gray, Repose Gray (SW 7015).",
       },
       {
         question: "What is the Behr or Benjamin Moore equivalent of Agreeable Gray?",
@@ -6554,19 +6554,19 @@ const blogPosts: BlogPost[] = [
       {
         question: "Which Sherwin-Williams paint line is best?",
         answer:
-          "Emerald is the premium interior line (best coverage and washability); Duration and SuperPaint are the mid-tier workhorses most homeowners use; Cashmere is prized for its smooth finish. The line affects durability and price, not the color — every shade below is available across all of them.",
+          "Sherwin-Williams sells several interior lines, including Emerald, Duration, SuperPaint and Cashmere, and each line's data sheet lists its washability and coverage. The line affects performance and price, not the color: every shade below is available across all of them.",
       },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
           The best Sherwin-Williams paint color for most homes is{" "}
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60) — a warm greige that has become the default neutral on American walls for a reason: it holds steady across north light, south light, and lamplight without turning purple, green, or pink. Sherwin-Williams is the brand professionals reach for first, so this guide does something a paint-chip rack can&apos;t — it pairs each of these 14 colors with its closest match in the brand you actually buy at, whether that&apos;s Behr at Home Depot, Valspar at Lowe&apos;s, or Benjamin Moore at an independent dealer. Every LRV and every cross-brand match below comes straight from our color database.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60), a warm greige that holds steady across north light, south light, and lamplight without turning purple, green, or pink. This guide does something a paint-chip rack can&apos;t — it pairs each of these 14 colors with its closest match in the brand you actually buy at, whether that&apos;s Behr at Home Depot, Valspar at Lowe&apos;s, or Benjamin Moore at an independent dealer. Every LRV and every cross-brand match below comes straight from our color database.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines &amp; Where to Find Sherwin-Williams</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> sells through its own stores rather than the big-box aisles, which is the single most useful thing to know before you fall for a color. If your nearest store carries Behr or your painter buys Benjamin Moore, you don&apos;t have to give up the SW shade you wanted — you match it. On the can, <strong>Emerald</strong> is the premium line, <strong>Duration</strong> and <strong>SuperPaint</strong> are the everyday workhorses, and <strong>Cashmere</strong> is the smooth-finish favorite. The line changes durability and price, not the color, so every shade below is the same hex whichever you choose.
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> sells through its own stores rather than the big-box aisles, which is the single most useful thing to know before you fall for a color. If your nearest store carries Behr or your painter buys Benjamin Moore, you don&apos;t have to give up the SW shade you wanted — you match it. Sherwin-Williams sells the colors in several interior lines, including <strong>Emerald</strong>, <strong>Duration</strong>, <strong>SuperPaint</strong> and <strong>Cashmere</strong>; each line&apos;s data sheet lists its washability and coverage. The line changes performance and price, not the color, so every shade below is the same hex whichever you choose.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Whites</h2>
@@ -6591,7 +6591,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Blue-Green: Sea Salt</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CDD2CA" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63) is the soft, spa-like green-gray that reads differently in every room — sage in some light, pale gray-blue in others. It&apos;s the most-loved SW color for bathrooms and bedrooms for exactly that reason. See its color page for the current calculated cross-brand shortlist.
+          <Swatch hex="#CDD2CA" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63) is the soft, spa-like green-gray that reads differently in every room — sage in some light, pale gray-blue in others. That shifting quality is why it suits calm bathrooms and bedrooms. See its color page for the current calculated cross-brand shortlist.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Navy: Naval</h2>
@@ -8095,7 +8095,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-white-paint-colors-guide",
     title: "The 15 Best White Paint Colors for Every Room (2026)",
     date: "2025-11-06",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "White is the hardest paint color to choose. This guide ranks 15 warm, cool, and true whites from top brands with room-by-room advice.",
@@ -8118,12 +8118,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Warm White Paint Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Warm whites are the most popular category in 2026, accounting for 6 of the top 10 best-selling whites across Sherwin-Williams and Benjamin Moore. They feel cozy without looking yellow, and they pair naturally with wood tones, brass hardware, and warm-toned countertops. Warm whites have LRV values between 69 and 90, with undertones ranging from cream to soft golden yellow.
+          Warm whites feel cozy without looking yellow, and they pair naturally with wood tones, brass hardware, and warm-toned countertops. Warm whites have LRV values between 69 and 90, with undertones ranging from cream to soft golden yellow.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">1. White Dove (OC-17) — Benjamin Moore</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is one of the most popular white paints in America. It is a soft white with a slight warm lean that reads welcoming without tipping into yellow territory. Designers reach for it as a whole-house color, cabinet white, and trim color.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is a soft white with a slight warm lean that reads welcoming without tipping into yellow territory. It works as a whole-house color, cabinet white, and trim color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Slightly warm. <strong>LRV:</strong> 83. <strong>Best for:</strong> Cabinets, trim, whole-house color, farmhouse and transitional style. <strong>Pair with:</strong> Chantilly Lace on trim for subtle contrast. See more in our <Link href="/blog/benjamin-moore-most-popular-whites" className="text-brand-blue hover:underline">BM whites ranking</Link>.
@@ -8131,7 +8131,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">2. Alabaster (SW 7008) — Sherwin-Williams</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> sits right between white and off-white — a soft, creamy shade with just enough warmth to feel organic without reading as beige. It was SW&apos;s 2016 Color of the Year and remains one of their best sellers nearly a decade later.
+          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> sits right between white and off-white — a soft, creamy shade with just enough warmth to feel organic without reading as beige. Sherwin-Williams named it its 2016 Color of the Year.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Warm cream-yellow. <strong>LRV:</strong> 82. <strong>Best for:</strong> Living rooms, bedrooms, exteriors, open floor plans. <strong>Pair with:</strong> <Link href="/colors/sherwin-williams/iron-ore-7069" className="text-brand-blue hover:underline">Iron Ore (SW 7069)</Link> for cabinets or accent walls.
@@ -8139,7 +8139,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">3. Pure White (SW 7005) — Sherwin-Williams</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> is one of SW&apos;s all-time best sellers. Despite the name, it&apos;s a warm white with a slight cream undertone — not a true white. It works beautifully with both chrome and brass fixtures, making it the rare white that adapts to almost any hardware.
+          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> is, despite the name, a warm white with a slight cream undertone — not a true white. It works beautifully with both chrome and brass fixtures, making it the rare white that adapts to almost any hardware.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Warm (slight cream). <strong>LRV:</strong> 84. <strong>Best for:</strong> Trim, cabinets, kitchens, bathrooms. <strong>Pair with:</strong> <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Agreeable Gray (SW 7029)</Link> on walls.
@@ -8163,7 +8163,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">6. Simply White (OC-117) — Benjamin Moore</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> sits between true white and warm white — it has just a whisper of warmth without obvious cream tones. It was BM&apos;s 2016 Color of the Year and remains the go-to bridge color when you want warmth without commitment.
+          <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> sits between true white and warm white — it has just a whisper of warmth without obvious cream tones. Benjamin Moore named it its 2016 Color of the Year, and it works as a bridge color when you want warmth without commitment.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Slightly warm. <strong>LRV:</strong> 90. <strong>Best for:</strong> Kitchens, bathrooms, transitional style, trim. <strong>Pair with:</strong> Hale Navy (HC-154) for a classic contrast. Explore the full <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> collection.
@@ -8229,7 +8229,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Off-White Paint Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Off-whites bridge the gap between white and color. They have more visible undertones than the whites above, giving rooms a softer, more layered look. Off-whites are having a major moment in 2026 as homeowners move away from stark bright white toward warmer, more organic finishes.
+          Off-whites bridge the gap between white and color. They have more visible undertones than the whites above, giving rooms a softer, more layered look. Choose one when bright white would feel stark against wood floors, warm stone or brass.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">13. Pale Oak (OC-20) — Benjamin Moore</h3>
@@ -8283,7 +8283,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">Best White for Trim and Ceilings</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Trim white should be slightly crisper than your wall white to create subtle dimension. <strong>Chantilly Lace</strong> and <strong>High Reflective White</strong> are the industry standards. For ceilings, <strong>Ultra Pure White</strong> from Behr is the budget champion. The classic designer trick: use White Dove on walls and Chantilly Lace on trim — the contrast is barely visible but gives the room depth.
+          Trim white should be slightly crisper than your wall white to create subtle dimension. <strong>Chantilly Lace</strong> and <strong>High Reflective White</strong> are two crisp options. For ceilings, <strong>Ultra Pure White</strong> from Behr is a lower-priced option. One pairing to try: use White Dove on walls and Chantilly Lace on trim — the contrast is barely visible but gives the room depth.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose the Right White Paint</h2>
@@ -8310,7 +8310,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">White Paint Finish Guide</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The sheen you choose affects how your white reads. <strong>Flat/matte</strong> finishes absorb light and hide imperfections — best for ceilings and low-traffic walls. <strong>Eggshell</strong> adds a subtle glow and is the most popular choice for walls. <strong>Satin</strong> is more durable and works for kitchens, bathrooms, and trim. <strong>Semi-gloss</strong> reflects the most light and is the standard for trim, doors, and cabinets. Higher sheens make whites look brighter and can amplify undertones. See our complete <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> for more.
+          The sheen you choose affects how your white reads. <strong>Flat/matte</strong> finishes absorb light and hide imperfections — best for ceilings and low-traffic walls. <strong>Eggshell</strong> adds a subtle glow and is a common choice for walls. <strong>Satin</strong> is more durable and works for kitchens, bathrooms, and trim. <strong>Semi-gloss</strong> reflects the most light and is the standard for trim, doors, and cabinets. Higher sheens make whites look brighter and can amplify undertones. See our complete <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cross-Brand White Equivalents</h2>
@@ -8329,7 +8329,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">What is the most popular white paint color?</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Benjamin Moore White Dove (OC-17) is the most popular white paint overall. For Sherwin-Williams, it&apos;s a tie between Alabaster (SW 7008) and Pure White (SW 7005). These warm whites dominate because they work in the widest range of lighting conditions and pair with the most common fixed elements.
+          Our pick in Benjamin Moore is White Dove (OC-17). For Sherwin-Williams, start with Alabaster (SW 7008) or Pure White (SW 7005). These warm whites work in the widest range of lighting conditions and pair with the most common fixed elements.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">What is the best white paint that is not too warm and not too cool?</h3>
@@ -8349,12 +8349,12 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">Should I use the same white throughout my house?</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Using one white for all walls creates a seamless, cohesive flow — especially important in open floor plans. Alabaster and White Dove are the most popular whole-house whites because they adapt well to different lighting conditions. However, most designers use a second, crisper white for trim and ceilings to create subtle dimension. Build your whole-house palette with our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+          Using one white for all walls creates a seamless, cohesive flow — especially important in open floor plans. Alabaster and White Dove are our picks for a whole-house white because they adapt well to different lighting conditions. A second, crisper white for trim and ceilings to create subtle dimension. Build your whole-house palette with our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">What is the best white for painting over dark colors?</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          High-LRV true whites like Chantilly Lace (LRV 90) and High Reflective White (LRV 93) provide the best coverage over dark colors. Use a high-quality primer first, then apply two coats. Warm whites with lower LRVs may need three coats to fully cover a dark base. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint and primer you need.
+          Covering a dark color with any white takes a primer first, then two coats; check the paint line&apos;s data sheet for its coverage, and plan for a third coat if the old color still shows through. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint and primer you need.
         </p>
       </>
     ),
