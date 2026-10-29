@@ -46,7 +46,7 @@ export function SuppliesList(props: SupplyListInput) {
 
       <p className="mt-4 text-xs text-gray-500">
         Supply links go to Amazon search results. As an Amazon Associate, Paint
-        Color HQ earns from qualifying purchases — it costs you nothing extra.
+        Color HQ earns from qualifying purchases, at no extra cost to you.
         The reusables here (frame, brush, pole, canvas cloth) also stock the
         paint aisle at Home Depot or Lowe&apos;s if you&apos;re headed there for
         the paint anyway.

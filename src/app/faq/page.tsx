@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
+import { CATALOG_BRANDS, BRAND_COUNT } from "@/lib/catalog-stats";
+import { ogDefaults } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions About Paint Colors",
@@ -10,10 +12,10 @@ export const metadata: Metadata = {
     "Answers to common questions about paint colors — cross-brand matching, undertones, paint quantities, and Paint Color HQ tools.",
   alternates: { canonical: "https://www.paintcolorhq.com/faq" },
   openGraph: {
+    ...ogDefaults,
     title: "Paint Color FAQ - Common Questions Answered",
     description:
       "Answers to common questions about paint colors, matching across brands, undertones, and more.",
-    type: "website",
     url: "https://www.paintcolorhq.com/faq",
   },
 };
@@ -37,12 +39,12 @@ const faqs = [
   {
     question: "How much paint do I need for a room?",
     answer:
-      "A gallon of paint typically covers about 350–400 square feet with one coat. For a standard 12×12 room with 8-foot ceilings, you'd need about 1.5 gallons for two coats on the walls. Our Paint Calculator lets you enter your exact room dimensions, number of doors and windows, and desired number of coats to get a precise estimate. It accounts for the areas you won't be painting.",
+      "A gallon of paint typically covers about 350–400 square feet with one coat. For a standard 12×12 room with 8-foot ceilings, you'd need about 2 gallons for two coats on the walls (384 sq ft of wall, less a door and two windows, is about 333 sq ft per coat). Our Paint Calculator lets you enter your exact room dimensions, number of doors and windows, and desired number of coats to get a precise estimate. It accounts for the areas you won't be painting.",
   },
   {
     question: "Can I match Sherwin-Williams colors to Benjamin Moore?",
     answer:
-      "Yes. Paint Color HQ has the complete color libraries for both Sherwin-Williams and Benjamin Moore (plus 12 other brands). Search for any Sherwin-Williams color and you'll see the closest Benjamin Moore equivalents ranked from closest to farthest, and vice versa. For example, Sherwin-Williams Agreeable Gray (SW 7029) has close digital matches in the Benjamin Moore lineup that we'll surface automatically.",
+      `Yes. Paint Color HQ has the complete color libraries for both Sherwin-Williams and Benjamin Moore (plus ${BRAND_COUNT - 2} other brands). Search for any Sherwin-Williams color and you'll see the closest Benjamin Moore equivalents ranked from closest to farthest, and vice versa. For example, Sherwin-Williams Agreeable Gray (SW 7029) has close digital matches in the Benjamin Moore lineup that we'll surface automatically.`,
   },
   {
     question: "What's the difference between paint sheen levels?",
@@ -62,7 +64,7 @@ const faqs = [
   {
     question: "What paint brands does Paint Color HQ cover?",
     answer:
-      "We currently cover 11 major paint brands: Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, Dunn-Edwards, Farrow & Ball, Colorhouse, Hirshfield's, Kilz, and more. Our database includes over 26,000 individual colors across all brands, and we add new colors regularly.",
+      `We currently cover ${BRAND_COUNT} paint brands: ${new Intl.ListFormat("en-US", { type: "conjunction" }).format(CATALOG_BRANDS.map((b) => b.name).sort((a, b) => a.localeCompare(b)))}. Our database includes over 26,000 individual colors across all brands, and we add new colors regularly.`,
   },
   {
     question: "How do I choose a paint color for my room?",
@@ -72,7 +74,7 @@ const faqs = [
   {
     question: "What is the most popular paint color?",
     answer:
-      "Neutral tones dominate: warm whites, light grays, and greige (gray-beige) shades are consistently the best sellers across all major brands. Sherwin-Williams Agreeable Gray, Benjamin Moore White Dove, and Behr Silver Drop are perennial favorites. For 2025–2026, earthy tones like warm terracotta, sage green, and muted blues have been trending. You can browse the most popular colors from each brand on our brand pages.",
+      "Neutral tones dominate: warm whites, light grays, and greige (gray-beige) shades are consistently the best sellers across all major brands. Sherwin-Williams Agreeable Gray, Benjamin Moore White Dove, and Behr Silver Drop are perennial favorites. Earthy tones like warm terracotta, sage green, and muted blues have been gaining ground on pure grays. You can browse the most popular colors from each brand on our brand pages.",
   },
   {
     question: "Is Paint Color HQ free to use?",

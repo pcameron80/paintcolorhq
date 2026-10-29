@@ -3,3 +3,15 @@ scripts/*
 !scripts/build-match-data.ts
 
 !scripts/build-sitemap-data.ts
+
+# Files under scripts/ that the build needs:
+# - frozen-match.ts, the frozen list and snapshots: build-match-data's helpers
+# - copy-counts.ts: src/lib/copy-counts.test.ts imports it, and Next 16.4 type-checks test files during the build
+!scripts/lib/
+scripts/lib/*
+!scripts/lib/frozen-match.ts
+!scripts/lib/copy-counts.ts
+!scripts/data/
+scripts/data/*
+!scripts/data/frozen-match-sources.json
+!scripts/data/frozen-match/

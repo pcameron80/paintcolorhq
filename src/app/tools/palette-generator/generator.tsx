@@ -1,10 +1,14 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useId } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
-import { trackToolEngagement } from "@/lib/analytics";
+import { trackToolEngagement, trackEvent } from "@/lib/analytics";
+import { TrackedLink } from "@/components/tracked-link";
+import { CopyLinkButton } from "@/components/copy-link-button";
+import { RetiredChip } from "@/components/retired-chip";
+import type { ColorAvailability } from "@/lib/types";
 
 // --- Color utilities (copied from curated-palettes.tsx for client-side use) ---
 
@@ -66,7 +70,7 @@ interface PaletteTemplate {
 const templates: PaletteTemplate[] = [
   {
     name: "Warm & Inviting",
-    description: "Warm tones with cozy appeal — welcoming and comfortable",
+    description: "Warm tones with cozy appeal, welcoming and comfortable",
     generate: (h, s, _l, role) => {
       const warmHue = h + (((30 - h + 540) % 360) - 180) * 0.4;
       switch (role) {
@@ -83,7 +87,7 @@ const templates: PaletteTemplate[] = [
   },
   {
     name: "Cool & Calm",
-    description: "Cool hues with soft contrast — serene and restful",
+    description: "Cool hues with soft contrast, serene and restful",
     generate: (h, s, _l, role) => {
       const coolHue = h + (((210 - h + 540) % 360) - 180) * 0.4;
       switch (role) {
@@ -100,7 +104,7 @@ const templates: PaletteTemplate[] = [
   },
   {
     name: "Bold Contrast",
-    description: "Complementary hues with punch — dynamic and striking",
+    description: "Complementary hues with punch, dynamic and striking",
     generate: (h, s, _l, role) => {
       const compHue = h + 180;
       switch (role) {
@@ -133,7 +137,7 @@ const templates: PaletteTemplate[] = [
   },
   {
     name: "Earthy Naturals",
-    description: "Grounded earth tones — organic and timeless",
+    description: "Grounded earth tones, organic and timeless",
     generate: (h, _s, _l, role) => {
       const earthHue = h + (((35 - h + 540) % 360) - 180) * 0.6;
       switch (role) {
@@ -172,6 +176,7 @@ interface MatchResult {
   brandSlug: string;
   colorSlug: string;
   deltaE: number;
+  availability?: ColorAvailability;
 }
 
 // --- Palette generation ---
@@ -193,24 +198,18 @@ function generatePalettes(hex: string): GeneratedPalette[] {
 
 // --- Brand list ---
 
-const BRANDS = [
-  { name: "All Brands", slug: "" },
-  { name: "Sherwin-Williams", slug: "sherwin-williams" },
-  { name: "Benjamin Moore", slug: "benjamin-moore" },
-  { name: "Behr", slug: "behr" },
-  { name: "PPG", slug: "ppg" },
-  { name: "Dunn-Edwards", slug: "dunn-edwards" },
-  { name: "Valspar", slug: "valspar" },
-  { name: "Farrow & Ball", slug: "farrow-ball" },
-  { name: "Clark+Kensington", slug: "clark-kensington" },
-  { name: "Olympic", slug: "olympic" },
-  { name: "Dutch Boy", slug: "dutch-boy" },
-];
+export interface FilterBrand {
+  name: string;
+  slug: string;
+}
 
 // --- Component ---
 
-export function PaletteGenerator() {
+export function PaletteGenerator({ brands }: { brands: FilterBrand[] }) {
   const searchParams = useSearchParams();
+  const colorId = useId();
+  const hexId = useId();
+  const brandId = useId();
   const initialHex = (() => {
     const param = searchParams.get("hex");
     if (param && /^#?[0-9a-fA-F]{6}$/.test(param)) {
@@ -219,14 +218,28 @@ export function PaletteGenerator() {
     return "#5B8C5A";
   })();
 
+  // ?brand= reopens a shared link on the same filter. Unknown slugs fall
+  // back to all brands rather than a filter with no colors.
+  const initialBrand = (() => {
+    const param = searchParams.get("brand");
+    return param && brands.some((b) => b.slug === param) ? param : "";
+  })();
+
   const [inputHex, setInputHex] = useState(initialHex);
   const [hexText, setHexText] = useState(initialHex);
-  const [brandFilter, setBrandFilter] = useState("");
+  const [brandFilter, setBrandFilter] = useState(initialBrand);
+  // The starting color the shown palettes were built from (the picker can
+  // move on before Generate is pressed). The share link uses this one.
+  const [resultHex, setResultHex] = useState(initialHex);
   const [palettes, setPalettes] = useState<GeneratedPalette[]>([]);
   const [matches, setMatches] = useState<Map<string, MatchResult | null>>(
     new Map()
   );
   const [loading, setLoading] = useState(false);
+  // The brand the current results were fetched with (not the dropdown value,
+  // which can change before Generate is pressed).
+  const [resultBrand, setResultBrand] = useState("");
+  const selectedBrand = brands.find((b) => b.slug === resultBrand);
 
   const fetchMatches = useCallback(
     async (generatedPalettes: GeneratedPalette[], brand: string) => {
@@ -238,6 +251,7 @@ export function PaletteGenerator() {
       }
 
       setLoading(true);
+      setResultBrand(brand);
       try {
         const entries = [...uniqueHexes];
         const results = await Promise.all(
@@ -262,6 +276,10 @@ export function PaletteGenerator() {
   useEffect(() => {
     trackToolEngagement("palette-generator", "open");
     const p = generatePalettes(inputHex);
+    // One-time mount initialization; palettes stay empty in the server render
+    // so the SSR markup is unchanged. Flagged by react-hooks 7 in
+    // eslint-config-next 16.4.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPalettes(p);
     fetchMatches(p, brandFilter);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -269,6 +287,7 @@ export function PaletteGenerator() {
 
   function handleGenerate() {
     trackToolEngagement("palette-generator", "complete", inputHex);
+    setResultHex(inputHex);
     const p = generatePalettes(inputHex);
     setPalettes(p);
     fetchMatches(p, brandFilter);
@@ -284,6 +303,23 @@ export function PaletteGenerator() {
     if (/^#[0-9a-fA-F]{6}$/.test(value)) {
       setInputHex(value);
     }
+  }
+
+  function shareUrl(): string {
+    const params = new URLSearchParams({ hex: resultHex.replace("#", "").toUpperCase() });
+    if (resultBrand) params.set("brand", resultBrand);
+    return `${window.location.origin}/tools/palette-generator?${params}`;
+  }
+
+  // Walls against Accent is the pairing people second-guess most: the two
+  // biggest areas of color in the room.
+  function compareUrl(palette: GeneratedPalette): string | null {
+    const walls = palette.colors.find((c) => c.role === "Walls");
+    const accent = palette.colors.find((c) => c.role === "Accent");
+    const w = walls && matches.get(walls.hex);
+    const a = accent && matches.get(accent.hex);
+    if (!w || !a || w.id === a.id) return null;
+    return `/compare?${new URLSearchParams({ color1: w.id, color2: a.id })}`;
   }
 
   function roomVisualizerUrl(palette: GeneratedPalette): string {
@@ -314,36 +350,44 @@ export function PaletteGenerator() {
       {/* Controls */}
       <div className="flex flex-wrap items-end gap-4 rounded-xl border border-gray-200 bg-gray-50 p-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label htmlFor={hexId} className="block text-sm font-medium text-gray-700">
             Starting Color
           </label>
           <div className="mt-1 flex items-center gap-2">
             <input
+              id={colorId}
               type="color"
+              aria-label="Pick a starting color"
               value={inputHex}
               onChange={(e) => handleColorChange(e.target.value)}
               className="h-10 w-14 cursor-pointer rounded border border-gray-300"
             />
             <input
+              id={hexId}
               type="text"
+              inputMode="text"
+              autoCapitalize="characters"
+              spellCheck={false}
               value={hexText}
               onChange={(e) => handleHexTextChange(e.target.value)}
               placeholder="#5B8C5A"
-              className="h-10 w-28 rounded-lg border border-gray-300 px-3 text-sm text-gray-900 focus:border-brand-blue focus:outline-none"
+              className="h-10 w-32 rounded-lg border border-gray-300 px-3 text-base text-gray-900 focus:border-brand-blue focus:outline-none"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label htmlFor={brandId} className="block text-sm font-medium text-gray-700">
             Brand Filter
           </label>
           <select
+            id={brandId}
             value={brandFilter}
             onChange={(e) => setBrandFilter(e.target.value)}
-            className="mt-1 h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 focus:border-brand-blue focus:outline-none"
+            className="mt-1 h-10 max-w-full rounded-lg border border-gray-300 bg-white px-3 text-base text-gray-900 focus:border-brand-blue focus:outline-none"
           >
-            {BRANDS.map((b) => (
+            <option value="">All Brands</option>
+            {brands.map((b) => (
               <option key={b.slug} value={b.slug}>
                 {b.name}
               </option>
@@ -358,6 +402,12 @@ export function PaletteGenerator() {
         >
           {loading ? "Matching..." : "Generate"}
         </button>
+
+        <CopyLinkButton
+          getUrl={shareUrl}
+          onCopied={() => trackEvent("cta_click", { cta_label: "palette_copy_link", hex: resultHex })}
+          className="h-10 rounded-lg border border-gray-300 bg-white px-4 text-sm font-medium text-gray-900 transition-colors hover:border-gray-900"
+        />
       </div>
 
       {/* Palettes grid */}
@@ -369,7 +419,7 @@ export function PaletteGenerator() {
               className="rounded-xl border border-gray-200 p-5"
             >
               <h3 className="font-semibold text-gray-900">{palette.name}</h3>
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-600">
                 {palette.description}
               </p>
 
@@ -404,25 +454,37 @@ export function PaletteGenerator() {
                           style={{ backgroundColor: displayHex }}
                         />
                       )}
-                      <p className="mt-1.5 text-center text-[10px] font-medium text-gray-400">
+                      <p className="mt-1.5 text-center text-xs font-medium text-gray-600">
                         {color.role}
                       </p>
                       {loading ? (
-                        <p className="truncate text-center text-[10px] text-gray-300">
+                        <p className="text-center text-xs text-gray-600" aria-hidden="true">
                           ...
                         </p>
                       ) : match ? (
                         <>
-                          <p className="truncate text-center text-[10px] text-gray-500">
+                          <Link
+                            href={`/colors/${match.brandSlug}/${match.colorSlug}`}
+                            className="line-clamp-2 break-words text-center text-xs leading-tight text-gray-900 underline decoration-gray-300 underline-offset-2 hover:text-brand-blue hover:decoration-brand-blue"
+                            title={match.name}
+                          >
                             {match.name}
-                          </p>
-                          <p className="truncate text-center text-[10px] text-gray-400">
+                          </Link>
+                          <p className="line-clamp-1 break-words text-center text-xs text-gray-600" title={match.brandName}>
                             {match.brandName}
                           </p>
+                          {match.availability && (
+                            <p className="mt-0.5 text-center">
+                              <RetiredChip
+                                availability={match.availability}
+                                className="rounded-full bg-gray-100 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-gray-500"
+                              />
+                            </p>
+                          )}
                         </>
                       ) : (
-                        <p className="truncate text-center text-[10px] text-gray-300">
-                          No match
+                        <p className="line-clamp-2 text-center text-xs text-gray-600">
+                          {selectedBrand ? `No ${selectedBrand.name} match` : "No match"}
                         </p>
                       )}
                     </div>
@@ -450,6 +512,19 @@ export function PaletteGenerator() {
                   </svg>
                   Visualize
                 </Link>
+                {(() => {
+                  const href = loading ? null : compareUrl(palette);
+                  return href ? (
+                    <TrackedLink
+                      href={href}
+                      className="rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-900 transition-colors hover:border-gray-900"
+                      eventName="cta_click"
+                      eventParams={{ cta_label: "palette_compare_walls_accent", palette: palette.name }}
+                    >
+                      Compare walls vs accent
+                    </TrackedLink>
+                  ) : null;
+                })()}
                 <AddPaletteToProject
                   colors={palette.colors
                     .filter((c) => matches.get(c.hex))

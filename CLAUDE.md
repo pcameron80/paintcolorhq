@@ -6,9 +6,9 @@
 
 - **URL:** https://www.paintcolorhq.com
 - **Type:** Cross-brand paint color matching and reference site.
-- **Scale:** 25K+ paint colors across 14 brands; cross-brand matches via CIEDE2000 / Delta E 2000.
+- **Scale:** 25K+ paint colors across 13 brands; cross-brand matches via CIEDE2000 / Delta E 2000.
 - **Audience:** US, English. Homeowners and decorators researching paint colors, matching colors across brands, planning painting projects.
-- **Stack:** Next.js 16 (App Router, Turbopack) + React 19 + TypeScript 5.9 + Tailwind 4 + Supabase (Postgres) + Resend + GA4 (G-056NR93JLK) + tsx scripts for the data pipeline.
+- **Stack:** Next.js 16.4.2 (App Router, Turbopack) + React 19 + TypeScript 5.9 + Tailwind 4 + Supabase (Postgres) + Resend + GA4 (G-056NR93JLK) + tsx scripts for the data pipeline.
 - **Monetization:** Currently engagement-driven; potential routes via affiliate links to paint retailers, but not active yet.
 - **Repo:** `git@github.com:pcameron80/paintcolorhq.git`
 
@@ -34,7 +34,7 @@ Paint color reference and matching website. Helps users explore paint colors acr
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (App Router) with React 19
+- **Framework:** Next.js 16.4.2 (App Router) with React 19. Keep it current: a Next advisory that is harmless today becomes exploitable once the app adds `"use server"`, `"use cache"`, auth in middleware or self-hosting, so upgrade Next before introducing any of those.
 - **Language:** TypeScript 5.9
 - **Styling:** Tailwind CSS 4
 - **Database:** Supabase (PostgreSQL)
@@ -61,10 +61,10 @@ supabase/        # Supabase config/migrations
 - `src/lib/queries.ts` - Main database query functions
 - `src/lib/types.ts` - TypeScript type definitions
 - `src/lib/analytics.ts` - GA4 event tracking functions + detectPageType()
-- `src/lib/color-description.ts` - Auto-generated color page descriptions
+- `src/lib/color-description.ts` - Data-derived color meta description, lede and per-brand match list. No templated prose generators; do not add any
 - `src/lib/brand-content.tsx` - Brand-specific editorial content + subtitles
 - `src/lib/family-content.tsx` - All 15 color family editorial content
-- `src/lib/palettes.ts` - 18 curated inspiration palettes
+- `src/lib/palettes.ts` - 21 curated inspiration palettes
 - `src/lib/blog-posts.tsx` - Blog post definitions + getRelatedPosts()
 - `src/lib/supabase.ts` - Supabase client (server-side, anon)
 - `src/lib/supabase-server.ts` - Supabase server client (with cookies/auth)

@@ -143,7 +143,7 @@ export function SaveToProject({
       </button>
 
       {open && (
-        <div className="absolute left-0 z-50 mt-2 w-72 rounded-xl border border-gray-200 bg-white p-4 shadow-xl">
+        <div className="absolute right-0 z-50 mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-gray-200 bg-white p-4 shadow-xl">
           <p className="text-sm font-semibold text-gray-900">
             Save to project
           </p>

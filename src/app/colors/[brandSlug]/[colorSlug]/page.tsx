@@ -245,7 +245,7 @@ export default async function ColorPage({ params }: PageProps) {
   // are teal-outlined.
   const shoppingCtas = [
     // rel="sponsored" only when the Samplize link is actually affiliate-wrapped.
-    ...sampleLinks.filter((l) => l.primary).map((l) => ({ key: l.label, href: l.url, label: `${l.label} of ${color.name}`, sponsored: isHeadColor || l.affiliate })),
+    ...sampleLinks.filter((l) => l.primary).map((l) => ({ key: l.label, href: l.url, label: `${l.label} of ${color.name}`, sponsored: l.affiliate })),
     ...buyRetailerLinks.map((l) => {
       const a = affiliatizeRetailer(l.url);
       return { key: l.retailerName, href: a.url, label: `Buy at ${l.retailerName}`, sponsored: a.affiliate };
@@ -340,7 +340,7 @@ export default async function ColorPage({ params }: PageProps) {
       <Header />
 
       {/* Immersive Color Hero */}
-      <section id="color-preview" className="scroll-mt-24 relative w-full min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-center overflow-hidden pt-20" style={{ backgroundColor: color.hex }}>
+      <section id="color-preview" className="scroll-mt-24 relative w-full min-h-[500px] md:min-h-[600px] flex flex-col items-center justify-center overflow-x-clip pt-20" style={{ backgroundColor: color.hex }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
         <div className="relative z-10 w-full max-w-5xl text-center px-6 pt-16 pb-8">
           <p className={`font-headline uppercase tracking-[0.4em] text-xs mb-4 opacity-80 ${textMutedClass}`}>
@@ -569,7 +569,7 @@ export default async function ColorPage({ params }: PageProps) {
                   )}
                   {AFFILIATE_ENABLED && (
                     <p className="mt-4 text-xs text-on-surface-variant">
-                      Some sample and supply links are affiliate links — if you buy through them, Paint Color HQ may earn a small commission at no extra cost to you. It helps keep the site free.
+                      Amazon links are affiliate links. As an Amazon Associate, Paint Color HQ earns from qualifying purchases, at no extra cost to you. Other sample and store links are not affiliate links.
                     </p>
                   )}
                 </div>

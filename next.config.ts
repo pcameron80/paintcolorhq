@@ -163,6 +163,18 @@ const nextConfig: NextConfig = {
       // than a file, add this as the FIRST entry of this list (statusCode,
       // never permanent: true) and delete public/ads.txt from the repo:
       //   { source: "/ads.txt", destination: "<ADS_TXT_URL from Journey>", statusCode: 301 },
+      // Retired 2026-10-29: 2025-only trend and popularity posts whose
+      // claims could not be sourced. Each points to its 2026 successor.
+      {
+        source: "/blog/2025-colors-of-the-year-every-brand-compared",
+        destination: "/blog/2026-colors-of-the-year-every-brand-compared",
+        permanent: true,
+      },
+      {
+        source: "/blog/most-popular-paint-colors-2025",
+        destination: "/blog/paint-color-trends-2026",
+        permanent: true,
+      },
       // Deduped color rows: old slug → canonical slug (161 entries).
       ...Object.entries(colorRedirects).map(([from, to]) => ({
         source: `/colors/${from}`,
@@ -194,6 +206,13 @@ const nextConfig: NextConfig = {
       {
         source: "/embed/:path*",
         headers: embedSecurityHeaders,
+      },
+      {
+        // Room visualizer photos and masks. scripts/export-rooms.py puts a content
+        // hash in every file name, so a changed file is a new URL and these can be
+        // cached for a year without revalidating.
+        source: "/rooms/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
       },
     ];
   },

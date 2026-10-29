@@ -6,6 +6,11 @@
  * A live color counts as present when its normalized code matches a DB row's
  * color_number OR any of its alternate_numbers. Everything else lands in one
  * of the report buckets below; nothing here decides what gets imported.
+ *
+ * A code can belong to more than one DB row (Behr holds "PR-W05" and "PR-W5"
+ * as two rows of one color). Every row whose own code matches is compared, so
+ * a wrong swatch on the second row is reported instead of hidden behind the
+ * first. alternate_numbers are used only when no row owns the code.
  */
 
 import { hexToRgb, rgbToLab, deltaE2000 } from './color-utils';
@@ -45,6 +50,23 @@ export interface HexChange {
   liveLrv?: number;
 }
 
+/** DB rows that share one normalized color_number, compared with the live entry. */
+export interface DuplicateCode {
+  /** normalized code */
+  code: string;
+  liveName?: string;
+  liveHex?: string;
+  rows: {
+    slug: string;
+    color_number: string;
+    name: string;
+    hex: string;
+    is_archived: boolean;
+    /** CIEDE2000 against the live swatch, when both hexes are usable */
+    deltaE?: number;
+  }[];
+}
+
 export interface PaletteDiff {
   liveCount: number;
   dbCount: number;
@@ -57,6 +79,8 @@ export interface PaletteDiff {
   hexChanged: HexChange[];
   /** live entries dropped by the brand's keep() rule or with no usable hex */
   filtered: number;
+  /** normalized codes held by two or more DB rows */
+  duplicateCodes: DuplicateCode[];
 }
 
 /** Below this the swatch change is rounding noise between sources, not a reformulation. */
@@ -73,6 +97,31 @@ export const normName = (name: string): string =>
     .replace(/&/g, 'and')
     .replace(/[^a-z0-9]+/g, ' ')
     .trim();
+
+/**
+ * Word-by-word capitalization repair for a DB name whose letters match the
+ * feed's, taking the feed's casing for a word only when ours is an import
+ * artifact:
+ *   - a word-final capital after an apostrophe: "Painter'S" -> "Painter's"
+ *   - an initialism title-cased at import: "Nypd" -> "NYPD", "Rm" -> "RM"
+ * Everything else keeps our casing. Feeds title-case every word, so copying
+ * them whole would turn "A Touch of Gold" into "A Touch Of Gold".
+ */
+export function caseFix(dbName: string, feedName: string): string {
+  const ours = dbName.split(' ');
+  const theirs = feedName.split(' ');
+  if (ours.length !== theirs.length) return dbName;
+  return ours
+    .map((w, i) => {
+      const f = theirs[i];
+      if (w === f || w.toLowerCase() !== f.toLowerCase()) return w;
+      // Word-final only ("Lion'S", "That'S"), so O'Reilly and D'Azur keep their capital.
+      if (/['’][A-Z]$/.test(w) && w.slice(0, -1) + w.slice(-1).toLowerCase() === f) return f;
+      if (/^[A-Z]{2,4}$/.test(f) && /^[A-Z][a-z]+$/.test(w)) return f;
+      return w;
+    })
+    .join(' ');
+}
 
 export function normHex(hex: string | null | undefined): string | null {
   if (!hex) return null;
@@ -106,17 +155,27 @@ export function diffPalette(
 ): PaletteDiff {
   const toKey = (code: string) => normCode(opts.normalizeCode ? opts.normalizeCode(code) : code);
 
-  const byCode = new Map<string, DbColor>();
+  // Rows by their own code, and separately by alias. An alias only answers
+  // for a code no row owns.
+  const byCode = new Map<string, DbColor[]>();
+  const byAlias = new Map<string, DbColor[]>();
   const byName = new Map<string, DbColor>();
+  const push = (m: Map<string, DbColor[]>, k: string, row: DbColor) => {
+    const list = m.get(k);
+    if (!list) m.set(k, [row]);
+    else if (!list.includes(row)) list.push(row);
+  };
   for (const row of db) {
-    if (row.color_number) byCode.set(toKey(row.color_number), row);
+    const own = row.color_number ? toKey(row.color_number) : null;
+    if (own) push(byCode, own, row);
     for (const alt of row.alternate_numbers ?? []) {
       const k = toKey(alt);
-      if (!byCode.has(k)) byCode.set(k, row);
+      if (k !== own) push(byAlias, k, row);
     }
     const n = normName(row.name);
     if (n && !byName.has(n)) byName.set(n, row);
   }
+  const rowsFor = (key: string): DbColor[] => byCode.get(key) ?? byAlias.get(key) ?? [];
 
   // A row can be reachable through its own code AND an alias (BM Black is
   // HC-190 with premix alias PM-9, and the feed lists both with different
@@ -124,6 +183,7 @@ export function diffPalette(
   const allLiveKeys = new Set(live.filter((c) => c.code?.trim()).map((c) => toKey(c.code)));
 
   const liveKeys = new Set<string>();
+  const liveByKey = new Map<string, LiveColor>();
   const missing: MissingColor[] = [];
   const hexChanged: HexChange[] = [];
   let matched = 0;
@@ -138,14 +198,16 @@ export function diffPalette(
     const key = toKey(c.code);
     if (liveKeys.has(key)) continue; // feeds repeat rows (Behr's classic whites)
     liveKeys.add(key);
+    liveByKey.set(key, c);
 
-    const row = byCode.get(key);
-    if (row) {
+    const rows = rowsFor(key);
+    if (rows.length) {
       matched++;
-      const dbHex = normHex(row.hex);
-      const viaAlias = !!row.color_number && toKey(row.color_number) !== key;
-      const ownCodeLive = viaAlias && allLiveKeys.has(toKey(row.color_number!));
-      if (hex && dbHex && hex !== dbHex && !ownCodeLive) {
+      for (const row of rows) {
+        const dbHex = normHex(row.hex);
+        const viaAlias = !!row.color_number && toKey(row.color_number) !== key;
+        const ownCodeLive = viaAlias && allLiveKeys.has(toKey(row.color_number!));
+        if (!hex || !dbHex || hex === dbHex || ownCodeLive) continue;
         const d = deltaE(hex, dbHex);
         if (d >= HEX_CHANGE_THRESHOLD) {
           hexChanged.push({
@@ -175,6 +237,30 @@ export function diffPalette(
     });
   }
 
+  const duplicateCodes: DuplicateCode[] = [];
+  for (const [key, rows] of byCode) {
+    if (rows.length < 2) continue;
+    const c = liveByKey.get(key);
+    const liveHex = normHex(c?.hex) ?? undefined;
+    duplicateCodes.push({
+      code: key,
+      ...(c ? { liveName: c.name } : {}),
+      ...(liveHex ? { liveHex } : {}),
+      rows: rows.map((r) => {
+        const dbHex = normHex(r.hex);
+        return {
+          slug: r.slug,
+          color_number: r.color_number!,
+          name: r.name,
+          hex: r.hex,
+          is_archived: !!r.is_archived,
+          ...(liveHex && dbHex ? { deltaE: Math.round(deltaE(liveHex, dbHex) * 10) / 10 } : {}),
+        };
+      }),
+    });
+  }
+  duplicateCodes.sort((a, b) => a.code.localeCompare(b.code));
+
   const notLive = db
     .filter((row) => !row.is_archived && row.color_number)
     .filter((row) => {
@@ -191,5 +277,6 @@ export function diffPalette(
     notLive,
     hexChanged: hexChanged.sort((a, b) => b.deltaE - a.deltaE),
     filtered,
+    duplicateCodes,
   };
 }

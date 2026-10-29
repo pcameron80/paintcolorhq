@@ -58,6 +58,9 @@ export function shouldImport(c: LiveColor): boolean {
   if (/\bGLOSS\b/i.test(c.name)) return false;
   if (!/^#[0-9a-f]{6}$/.test(c.hex)) return false;
   if (!c.name) return false;
+  // Spanish-name duplicates of an English row with the same code and hex
+  // ("PPH-59 (HISP)" Hierba Santa next to PPH-59 Holy Herb).
+  if (/\(HISP\)\s*$/i.test(c.id)) return false;
   return true;
 }
 
@@ -66,15 +69,22 @@ const SMALL_WORDS = new Set([
   'the', 'to', 'with',
 ]);
 
-/** "PEACH OF MIND" -> "Peach of Mind"; first word always capitalized. */
+/**
+ * "PEACH OF MIND" -> "Peach of Mind". For ALL-CAPS feed names only.
+ * - First and last words are always capitalized ("FLUTTER BY" -> "Flutter By").
+ * - A letter after a hyphen is capitalized ("SEMI-SWEET" -> "Semi-Sweet").
+ * - A letter after an apostrophe is not ("WHALE'S TAIL" -> "Whale's Tail"),
+ *   except after a one-letter O/D/L prefix ("O'BRIEN" -> "O'Brien",
+ *   "COTE D'AZUR" -> "Cote D'Azur").
+ */
 export function titleCaseName(raw: string): string {
   const words = raw.toLowerCase().split(/\s+/).filter(Boolean);
   return words
     .map((w, i) => {
-      if (i > 0 && SMALL_WORDS.has(w)) return w;
-      // capitalize first letter and any letter after a hyphen/apostrophe
-      // boundary start ("semi-sweet" -> "Semi-Sweet")
-      return w.replace(/(^|[-'])([a-z])/g, (_, p, ch) => p + ch.toUpperCase());
+      if (i > 0 && i < words.length - 1 && SMALL_WORDS.has(w)) return w;
+      return w
+        .replace(/(^|-)([a-z])/g, (_, p, ch) => p + ch.toUpperCase())
+        .replace(/^([ODL])'([a-z])/, (_, p, ch) => `${p}'${ch.toUpperCase()}`);
     })
     .join(' ');
 }

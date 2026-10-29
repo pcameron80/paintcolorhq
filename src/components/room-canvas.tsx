@@ -1,190 +1,28 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { preload as preloadResource } from "react-dom";
 import Image from "next/image";
 import type { RoomScene, Surface } from "@/lib/rooms";
+import {
+  SURFACES,
+  SceneCancelled,
+  cacheScene,
+  cachedScene,
+  prepareScene,
+  renderScene,
+  sceneKey,
+  type PreparedScene,
+} from "@/lib/room-render";
 
-// ---------------------------------------------------------------------------
-// Color math
-// ---------------------------------------------------------------------------
-//
-// A surface pixel is rendered as paint × shade, in linear light, where shade is the
-// photo's brightness at that pixel relative to the surface's typical brightness. The
-// photo's walls are plain off-white, so this puts the room's real light and shadow
-// onto any paint color. Surface edges are then blended in sRGB, as browsers
-// anti-alias: a linear-light blend turns a dark/light seam pixel pale.
-// scripts/build-room-masks.py renders its previews with the same math.
-
-const SURFACES: Surface[] = ["main", "accent", "trim", "window"];
-
-function srgbToLinear(c: number): number {
-  return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-}
-
-/** Linear [0, 1] → sRGB 0-255, sampled finely enough that banding never shows. */
-const LUT_SIZE = 4096;
-const LINEAR_TO_SRGB = new Uint8ClampedArray(LUT_SIZE + 1);
-for (let i = 0; i <= LUT_SIZE; i++) {
-  const c = i / LUT_SIZE;
-  LINEAR_TO_SRGB[i] = Math.round(255 * (c <= 0.0031308 ? c * 12.92 : 1.055 * c ** (1 / 2.4) - 0.055));
-}
-
-function hexToLinear(hex: string): [number, number, number] {
-  const h = hex.replace("#", "");
-  return [0, 2, 4].map((i) => srgbToLinear(parseInt(h.slice(i, i + 2), 16) / 255)) as [number, number, number];
-}
-
-// ---------------------------------------------------------------------------
-// Scene preparation (once per room)
-// ---------------------------------------------------------------------------
-
-interface PreparedScene {
-  width: number;
-  height: number;
-  base: Uint8ClampedArray;
-  /** Indices of pixels any surface covers; only these are recomputed per color */
-  pixels: Uint32Array;
-  /** Per covered pixel: denoised linear luminance (indexed like `pixels`) */
-  lum: Float32Array;
-  /** Per surface, per covered pixel: coverage 0-255 (indexed like `pixels`) */
-  cover: Partial<Record<Surface, Uint8Array>>;
-  /** Per surface: 1 / its typical (60th percentile) luminance */
-  shadeScale: Partial<Record<Surface, number>>;
-}
-
-function loadImage(src: string): Promise<HTMLImageElement> {
-  return new Promise((resolve, reject) => {
-    const img = new window.Image();
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error(`Failed to load ${src}`));
-    img.src = src;
-  });
-}
-
-function pixelsOf(img: HTMLImageElement, w: number, h: number): Uint8ClampedArray {
-  const c = document.createElement("canvas");
-  c.width = w;
-  c.height = h;
-  const ctx = c.getContext("2d", { willReadFrequently: true })!;
-  ctx.drawImage(img, 0, 0, w, h);
-  return ctx.getImageData(0, 0, w, h).data;
-}
-
-/** Median of 9 values (a 3×3 neighborhood). */
-function median9(v: number[]): number {
-  v.sort((a, b) => a - b);
-  return v[4];
-}
-
-async function prepareScene(room: RoomScene, maxWidth: number): Promise<PreparedScene> {
-  // Smaller embeds prepare a downscaled scene: a fraction of the pixels to process.
-  const w = Math.min(room.width, maxWidth);
-  const h = Math.round((room.height * w) / room.width);
-  const surfaces = SURFACES.filter((s) => room.masks[s]);
-  const [baseImg, ...maskImgs] = await Promise.all([
-    loadImage(room.image),
-    ...surfaces.map((s) => loadImage(room.masks[s]!)),
-  ]);
-  const base = pixelsOf(baseImg, w, h);
-  const maskData = maskImgs.map((m) => pixelsOf(m, w, h));
-
-  // Covered pixels: any surface above zero.
-  const covered: number[] = [];
-  for (let p = 0; p < w * h; p++) {
-    for (const m of maskData) {
-      if (m[p * 4] > 0) {
-        covered.push(p);
-        break;
-      }
-    }
-  }
-  const pixels = Uint32Array.from(covered);
-
-  // Linear luminance of the whole photo, then a 3×3 median at covered pixels only:
-  // it strips pixel noise (which dark paint would amplify into speckle) but keeps
-  // real light and shadow edges.
-  const fullLum = new Float32Array(w * h);
-  for (let p = 0; p < w * h; p++) {
-    const i = p * 4;
-    fullLum[p] =
-      0.2126 * srgbToLinear(base[i] / 255) +
-      0.7152 * srgbToLinear(base[i + 1] / 255) +
-      0.0722 * srgbToLinear(base[i + 2] / 255);
-  }
-  const lum = new Float32Array(pixels.length);
-  const win: number[] = new Array(9);
-  for (let k = 0; k < pixels.length; k++) {
-    const p = pixels[k];
-    const x = p % w;
-    const y = (p - x) / w;
-    let n = 0;
-    for (let dy = -1; dy <= 1; dy++) {
-      const yy = Math.min(h - 1, Math.max(0, y + dy));
-      for (let dx = -1; dx <= 1; dx++) {
-        const xx = Math.min(w - 1, Math.max(0, x + dx));
-        win[n++] = fullLum[yy * w + xx];
-      }
-    }
-    lum[k] = median9(win);
-  }
-
-  // Coverage per surface, and each surface's typical brightness from a histogram.
-  const cover: PreparedScene["cover"] = {};
-  const shadeScale: PreparedScene["shadeScale"] = {};
-  surfaces.forEach((s, si) => {
-    const m = maskData[si];
-    const arr = new Uint8Array(pixels.length);
-    const hist = new Uint32Array(1024);
-    let count = 0;
-    for (let k = 0; k < pixels.length; k++) {
-      const a = m[pixels[k] * 4];
-      arr[k] = a;
-      if (a > 127) {
-        hist[Math.min(1023, Math.floor(lum[k] * 1024))]++;
-        count++;
-      }
-    }
-    cover[s] = arr;
-    let acc = 0;
-    let bin = 0;
-    while (bin < 1023 && acc + hist[bin] < count * 0.6) acc += hist[bin++];
-    shadeScale[s] = 1 / Math.max((bin + 0.5) / 1024, 1e-3);
-  });
-
-  return { width: w, height: h, base, pixels, lum, cover, shadeScale };
-}
-
-function renderScene(scene: PreparedScene, colors: Record<Surface, string>, out: ImageData) {
-  const { base, pixels, lum, cover, shadeScale } = scene;
-  const data = out.data;
-  data.set(base);
-  const active = SURFACES.filter((s) => cover[s]).map((s) => ({
-    cover: cover[s]!,
-    rgb: hexToLinear(colors[s]),
-    scale: shadeScale[s]!,
-  }));
-  for (let k = 0; k < pixels.length; k++) {
-    const i = pixels[k] * 4;
-    let r = base[i];
-    let g = base[i + 1];
-    let b = base[i + 2];
-    for (const s of active) {
-      const c = s.cover[k];
-      if (c === 0) continue;
-      const a = c / 255;
-      const shade = lum[k] * s.scale * LUT_SIZE;
-      const pr = LINEAR_TO_SRGB[Math.min(LUT_SIZE, (s.rgb[0] * shade) | 0)];
-      const pg = LINEAR_TO_SRGB[Math.min(LUT_SIZE, (s.rgb[1] * shade) | 0)];
-      const pb = LINEAR_TO_SRGB[Math.min(LUT_SIZE, (s.rgb[2] * shade) | 0)];
-      r += (pr - r) * a;
-      g += (pg - g) * a;
-      b += (pb - b) * a;
-    }
-    data[i] = r;
-    data[i + 1] = g;
-    data[i + 2] = b;
-  }
-}
+/**
+ * Viewports this narrow (phones) get each room's 800 px set instead of the full-size
+ * photo. The canvas there is at most about 450 CSS px wide, so 800 px still covers a
+ * 2x screen at nearly full sharpness, for under half the bytes and pixel work. The
+ * same query picks the <picture> source and the canvas's asset set, so a phone never
+ * downloads both photos.
+ */
+const SMALL_MEDIA = "(max-width: 480px)";
 
 // ---------------------------------------------------------------------------
 // Component
@@ -195,7 +33,8 @@ interface RoomCanvasProps {
   colors: Record<Surface, string>;
   /** Called with the surface under the pointer; omit for a view-only preview */
   onSelectSurface?: (surface: Surface) => void;
-  priority?: boolean;
+  /** Preload the room photo at high priority (it is the page's main image) */
+  preload?: boolean;
   /** Alt text for the room photo */
   alt?: string;
   /** Render at most this many pixels wide (default: the photo's full width) */
@@ -215,7 +54,7 @@ export function RoomCanvas({
   room,
   colors,
   onSelectSurface,
-  priority,
+  preload,
   alt,
   maxWidth = Infinity,
   deferUntilVisible = false,
@@ -244,20 +83,29 @@ export function RoomCanvas({
     return () => io.disconnect();
   }, [visible]);
 
+  // Small embeds always use the 800 px set; the full-width visualizer uses it on phones.
+  const smallOnly = maxWidth <= room.small.width;
+  const photo = smallOnly ? room.small : room;
+
   useEffect(() => {
     if (!visible) return;
+    const assets = smallOnly || window.matchMedia(SMALL_MEDIA).matches ? room.small : room;
+    const key = sceneKey(assets, maxWidth);
     let cancelled = false;
-    prepareScene(room, maxWidth)
+    const hit = cachedScene(key);
+    const work = hit ? Promise.resolve(hit) : prepareScene(assets, maxWidth, () => cancelled);
+    work
       .then((data) => {
+        if (!hit) cacheScene(key, data);
         if (!cancelled) setScene({ id: room.id, data });
       })
-      .catch(() => {
-        if (!cancelled) setFailedId(room.id);
+      .catch((err) => {
+        if (!cancelled && !(err instanceof SceneCancelled)) setFailedId(room.id);
       });
     return () => {
       cancelled = true;
     };
-  }, [room, visible, maxWidth]);
+  }, [room, visible, maxWidth, smallOnly]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -299,22 +147,41 @@ export function RoomCanvas({
     }
   };
 
+  if (preload) {
+    // next/image's own preload has no media attribute, so on a phone it would fetch
+    // the full photo as well as the <picture> source. One preload per set instead.
+    if (smallOnly) {
+      preloadResource(room.small.image, { as: "image", fetchPriority: "high" });
+    } else {
+      preloadResource(room.small.image, { as: "image", fetchPriority: "high", media: SMALL_MEDIA });
+      preloadResource(room.image, { as: "image", fetchPriority: "high", media: `not all and ${SMALL_MEDIA}` });
+    }
+  }
+
   return (
     <div ref={wrapRef} className="relative block w-full overflow-hidden">
-      <Image
-        src={room.image}
-        alt={alt ?? `${room.name} with the selected paint colors`}
-        width={room.width}
-        height={room.height}
-        sizes={sizes}
-        className="block h-auto w-full"
-        priority={priority}
-        unoptimized
-      />
+      {/* Files under /rooms are loaded directly, never through /_next/image: the canvas
+          reads their exact pixels, and the masks must not be resampled or recompressed. */}
+      <picture className="block">
+        {!smallOnly && (
+          <source media={SMALL_MEDIA} srcSet={room.small.image} width={room.small.width} height={room.small.height} />
+        )}
+        <Image
+          src={photo.image}
+          alt={alt ?? `${room.name} with the selected paint colors`}
+          width={photo.width}
+          height={photo.height}
+          sizes={sizes}
+          className="block h-auto w-full"
+          loading={preload ? "eager" : undefined}
+          fetchPriority={preload ? "high" : undefined}
+          unoptimized
+        />
+      </picture>
       <canvas
         ref={canvasRef}
-        width={scene?.data.width ?? room.width}
-        height={scene?.data.height ?? room.height}
+        width={scene?.data.width ?? photo.width}
+        height={scene?.data.height ?? photo.height}
         onClick={handleClick}
         aria-hidden="true"
         className={`absolute inset-0 h-full w-full ${onSelectSurface ? "cursor-pointer " : ""}${

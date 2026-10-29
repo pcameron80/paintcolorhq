@@ -69,7 +69,18 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <p className="mt-8 text-sm text-outline">
+            <p className="mt-8 text-sm text-on-surface-variant">
+              Prefer email? Write to{" "}
+              <a href="mailto:support@paintcolorhq.com" className="text-primary underline hover:text-primary/80">
+                support@paintcolorhq.com
+              </a>
+              . Paint Color HQ is run by{" "}
+              <Link href="/about" className="text-primary underline hover:text-primary/80">
+                Philip Cameron
+              </Link>
+              .
+            </p>
+            <p className="mt-2 text-sm text-outline">
               We typically respond within 1–2 business days.
             </p>
           </div>

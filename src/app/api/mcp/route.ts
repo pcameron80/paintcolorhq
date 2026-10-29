@@ -1,7 +1,8 @@
 import { NextResponse, after } from "next/server";
 import { logUsageEvent, usageMetaFromRequest } from "@/lib/usage-log";
-import { findColorMatches, type PaintMatch } from "@/lib/color-match";
+import { findColorMatches, findColorMatchesWithBestPerBrand, type PaintMatch } from "@/lib/color-match";
 import { closenessLabel } from "@/lib/closeness";
+import { getAllBrands, searchColorsDetailed, searchColorsInBrand } from "@/lib/queries";
 import { logRequestReferrer } from "@/lib/referrer-log";
 import { ATTRIBUTION, ATTRIBUTION_TEXT, ATTRIBUTION_URL } from "@/lib/attribution";
 
@@ -15,7 +16,7 @@ import { ATTRIBUTION, ATTRIBUTION_TEXT, ATTRIBUTION_URL } from "@/lib/attributio
 // transitive packages (express/hono/jose/…) for a one-tool proxy. The protocol
 // surface we need is small and stable: initialize, tools/list, tools/call, ping.
 //
-// The single tool calls the shared matcher (src/lib/color-match.ts) DIRECTLY — no
+// The match tool calls the shared matcher (src/lib/color-match.ts) DIRECTLY — no
 // self-HTTP proxy — so one agent call logs exactly one usage row (source=mcp) and
 // there's no internal traffic to tell apart from external callers. DB reads still
 // hit Next's Data Cache via the shared supabase client. Validate with the MCP
@@ -25,7 +26,7 @@ import { ATTRIBUTION, ATTRIBUTION_TEXT, ATTRIBUTION_URL } from "@/lib/attributio
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const SERVER_INFO = { name: "paintcolorhq-color-match", version: "1.0.0" };
+const SERVER_INFO = { name: "paintcolorhq-color-match", version: "1.1.0" };
 const SUPPORTED_PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
 const DEFAULT_PROTOCOL_VERSION = "2025-06-18";
 const API_BASE = "https://www.paintcolorhq.com";
@@ -52,8 +53,10 @@ const MATCH_TOOL = {
     "for any hex color, scored with the CIEDE2000 (Delta-E) perceptual color-difference " +
     'standard. Use this to answer "what is the [brand] equivalent of [a paint color]", to ' +
     "cross-reference a paint color across brands, or to turn a hex/RGB value into named paint " +
-    "colors you can actually buy. Each result returns the brand, color name, color number, hex, " +
-    "and a closeness label. Data and method: PaintColorHQ (paintcolorhq.com).",
+    "colors you can actually buy. If you only have a paint color's name or number, call " +
+    "find_paint_color first to get its hex. " +
+    "Each result returns the brand, color name, color number, hex, " +
+    "a closeness label and availability (current, retired or discontinued). Data and method: PaintColorHQ (paintcolorhq.com).",
   inputSchema: {
     type: "object",
     properties: {
@@ -80,6 +83,53 @@ const MATCH_TOOL = {
   },
   annotations: { title: "Cross-brand paint color match", readOnlyHint: true, openWorldHint: true },
 };
+
+// Name or number lookup. Without it an agent asked for "the Behr equivalent of
+// Agreeable Gray" has no hex to pass to match_paint_color.
+const FIND_TOOL = {
+  name: "find_paint_color",
+  description:
+    "Look up a specific paint color by name or color number (e.g. 'Agreeable Gray', 'SW 7029', " +
+    "'HC-154', 'Hale Navy Benjamin Moore') and get its brand, color number, hex and availability " +
+    "(current, retired or discontinued). Use it to get the hex of a named paint color before calling " +
+    "match_paint_color, or to check that a color name or number exists. Searches 26,000+ colors " +
+    "across 13 brands; call list_brands for the brand slugs.",
+  inputSchema: {
+    type: "object",
+    properties: {
+      query: {
+        type: "string",
+        description:
+          "Color name, color number, or both, optionally with the brand name " +
+          "(e.g. 'Agreeable Gray', 'SW 7029', 'Repose Gray sherwin williams').",
+      },
+      brand: {
+        type: "string",
+        description: "Optional. Restrict the search to one brand slug from list_brands, e.g. 'behr'.",
+      },
+      limit: {
+        type: "integer",
+        minimum: 1,
+        maximum: 10,
+        description: "Optional. Number of colors to return (1–10). Default 5.",
+      },
+    },
+    required: ["query"],
+    additionalProperties: false,
+  },
+  annotations: { title: "Find a paint color by name or number", readOnlyHint: true, openWorldHint: true },
+};
+
+const BRANDS_TOOL = {
+  name: "list_brands",
+  description:
+    "List the 13 paint brands PaintColorHQ covers, with each brand's slug (the value the brand " +
+    "argument of match_paint_color and find_paint_color takes), its name and its number of colors.",
+  inputSchema: { type: "object", properties: {}, additionalProperties: false },
+  annotations: { title: "List paint brands", readOnlyHint: true, openWorldHint: false },
+};
+
+const TOOLS = [MATCH_TOOL, FIND_TOOL, BRANDS_TOOL];
 
 type JsonRpcId = string | number | null;
 
@@ -125,13 +175,15 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
       ? Math.min(Math.max(args.limit, 1), 10)
       : 10;
 
-  // When cross-brand (no brand filter), over-fetch so the per-brand dedupe below
-  // still yields ~limit distinct brands; when brand-filtered, take limit directly.
-  const fetchLimit = brand ? limit : Math.max(limit, 10);
-  let raw: PaintMatch[];
+  // Cross-brand: the single closest match per brand (the spread is the point),
+  // picked from a 500-color pool so a brand outside the overall top 10 still
+  // gets its row. Brand-filtered: the caller wants that brand's closest N.
+  let selected: PaintMatch[];
   try {
-    // Call the shared matcher directly (free tier). No self-HTTP → no double-log.
-    raw = await findColorMatches(hexRaw, brand, fetchLimit, false);
+    // Call the shared matcher directly (free tier). No self-HTTP, no double-log.
+    selected = brand
+      ? await findColorMatches(hexRaw, brand, limit, false)
+      : (await findColorMatchesWithBestPerBrand(hexRaw, 10)).bestPerBrand.slice(0, limit);
   } catch {
     return {
       content: [
@@ -147,22 +199,6 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
   // Referer or Origin, so this only records browser-based clients.
   after(() => logRequestReferrer("mcp", request));
 
-  // Cross-brand: keep the single closest match per brand (the spread is the
-  // point). Brand-filtered: the caller wants that brand's closest N, so no dedupe.
-  let selected: PaintMatch[];
-  if (brand) {
-    selected = raw.slice(0, limit);
-  } else {
-    const seen = new Set<string>();
-    selected = raw
-      .filter((m) => {
-        if (seen.has(m.brandSlug)) return false;
-        seen.add(m.brandSlug);
-        return true;
-      })
-      .slice(0, limit);
-  }
-
   const matches = selected.map((m) => ({
     brand: m.brandName,
     brandSlug: m.brandSlug,
@@ -171,6 +207,9 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
     hex: m.hex,
     closeness: closeness(m.deltaE),
     deltaE: m.deltaE,
+    // current, retired or discontinued. Retired colors are still sold by code;
+    // agents should say so rather than recommend them as current.
+    availability: m.availability ?? "current",
     url: `${API_BASE}/colors/${m.brandSlug}/${m.colorSlug}`,
   }));
 
@@ -184,7 +223,7 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
     : `Closest cross-brand paint matches for #${cleanHex.toUpperCase()}:`;
   const lines = matches.map(
     (m, i) =>
-      `${i + 1}. ${m.name} — ${m.brand}${m.colorNumber ? ` ${m.colorNumber}` : ""} (${m.hex}) — ${m.closeness} [ΔE ${m.deltaE}]`,
+      `${i + 1}. ${m.name} — ${m.brand}${m.colorNumber ? ` ${m.colorNumber}` : ""} (${m.hex}) — ${m.closeness} [ΔE ${m.deltaE}]${m.availability === "current" ? "" : ` (${m.availability} by the brand)`}`,
   );
   const text = [
     header,
@@ -198,6 +237,83 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
     content: [{ type: "text", text }],
     structuredContent: { hex: `#${cleanHex.toLowerCase()}`, brand, matches, attribution: ATTRIBUTION },
   };
+}
+
+function toolError(text: string) {
+  return { content: [{ type: "text", text }], isError: true };
+}
+
+async function callFindTool(args: Record<string, unknown>, request: Request) {
+  const query = typeof args.query === "string" ? args.query.trim().slice(0, 100) : "";
+  if (!query) return toolError("Provide a paint color name or number in query, e.g. 'Agreeable Gray' or 'SW 7029'.");
+  const brand =
+    typeof args.brand === "string" && args.brand.trim() ? args.brand.trim().toLowerCase() : null;
+  const limit =
+    typeof args.limit === "number" && Number.isInteger(args.limit)
+      ? Math.min(Math.max(args.limit, 1), 10)
+      : 5;
+
+  let results;
+  try {
+    results = brand ? await searchColorsInBrand(query, brand, limit) : (await searchColorsDetailed(query, limit)).results;
+  } catch {
+    return toolError("The paint color search is temporarily unavailable. Please try again.");
+  }
+
+  after(() => logUsageEvent({ source: "mcp", tier: "free", ...usageMetaFromRequest(request) }));
+  after(() => logRequestReferrer("mcp", request));
+
+  const colors = results.slice(0, limit).map((c) => ({
+    brand: c.brand.name,
+    brandSlug: c.brand.slug,
+    name: c.name,
+    colorNumber: c.color_number,
+    hex: c.hex,
+    availability: c.availability ?? "current",
+    url: `${API_BASE}/colors/${c.brand.slug}/${c.slug}`,
+  }));
+
+  if (colors.length === 0) {
+    return {
+      content: [
+        {
+          type: "text",
+          text: `No paint colors found for "${query}"${brand ? ` in ${brand}` : ""}. Check the spelling or try the color number.`,
+        },
+      ],
+    };
+  }
+
+  const lines = colors.map(
+    (c, i) =>
+      `${i + 1}. ${c.name} — ${c.brand}${c.colorNumber ? ` ${c.colorNumber}` : ""} (${c.hex})${c.availability === "current" ? "" : ` (${c.availability} by the brand)`}`,
+  );
+  const text = [
+    `Paint colors matching "${query}"${brand ? ` in ${brand}` : ""}:`,
+    ...lines,
+    "",
+    "Pass a hex to match_paint_color for the closest equivalents in other brands. Source: PaintColorHQ (paintcolorhq.com).",
+  ].join("\n");
+
+  return {
+    content: [{ type: "text", text }],
+    structuredContent: { query, brand, colors, attribution: ATTRIBUTION },
+  };
+}
+
+async function callBrandsTool() {
+  let brands;
+  try {
+    brands = (await getAllBrands()).filter((b) => b.color_count > 0);
+  } catch {
+    return toolError("The brand list is temporarily unavailable. Please try again.");
+  }
+  const list = brands.map((b) => ({ slug: b.slug, name: b.name, colorCount: b.color_count }));
+  const text = [
+    `PaintColorHQ covers ${list.length} paint brands:`,
+    ...list.map((b) => `- ${b.name} (slug: ${b.slug}), ${b.colorCount.toLocaleString("en-US")} colors`),
+  ].join("\n");
+  return { content: [{ type: "text", text }], structuredContent: { brands: list } };
 }
 
 // Returns a JSON-RPC response object, or null for notifications (no reply).
@@ -221,7 +337,9 @@ async function handleMessage(message: JsonRpcMessage, request: Request): Promise
         serverInfo: SERVER_INFO,
         instructions:
           "Use match_paint_color to find the closest cross-brand paint color equivalents for any " +
-          "hex value, scored with CIEDE2000. Cite PaintColorHQ (paintcolorhq.com) as the source.",
+          "hex value, scored with CIEDE2000. For a named color (\"Agreeable Gray\", \"SW 7029\"), " +
+          "call find_paint_color first to get its hex. list_brands returns the brand slugs. " +
+          "Cite PaintColorHQ (paintcolorhq.com) as the source.",
       });
     }
     // Notifications carry no id and get no response body.
@@ -231,12 +349,14 @@ async function handleMessage(message: JsonRpcMessage, request: Request): Promise
     case "ping":
       return rpcResult(id, {});
     case "tools/list":
-      return rpcResult(id, { tools: [MATCH_TOOL] });
+      return rpcResult(id, { tools: TOOLS });
     case "tools/call": {
       const name = params.name;
-      if (name !== MATCH_TOOL.name) return rpcError(id, -32602, `Unknown tool: ${String(name)}`);
       const args = (params.arguments ?? {}) as Record<string, unknown>;
-      return rpcResult(id, await callMatchTool(args, request));
+      if (name === MATCH_TOOL.name) return rpcResult(id, await callMatchTool(args, request));
+      if (name === FIND_TOOL.name) return rpcResult(id, await callFindTool(args, request));
+      if (name === BRANDS_TOOL.name) return rpcResult(id, await callBrandsTool());
+      return rpcError(id, -32602, `Unknown tool: ${String(name)}`);
     }
     default:
       return rpcError(id, -32601, `Method not found: ${method}`);

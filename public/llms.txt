@@ -81,7 +81,7 @@ Closest matches below are each brand's rank-1 match in our data, labeled with th
 - [Warm vs. Cool Paint Colors](https://www.paintcolorhq.com/blog/warm-vs-cool-paint-colors): How lighting affects color temperature and how to build a palette that flows room to room.
 - [Color Theory for Home Decorators](https://www.paintcolorhq.com/blog/color-theory-for-home-decorators): The color wheel, palette building and color combinations applied to interiors.
 - [2026 Colors of the Year: Every Brand Compared](https://www.paintcolorhq.com/blog/2026-colors-of-the-year-every-brand-compared): Every major brand's 2026 Color of the Year side by side, with closest cross-brand matches.
-- [2026 Paint Color Trends](https://www.paintcolorhq.com/blog/paint-color-trends-2026): The trends behind the 2026 Color of the Year picks across five major brands.
+- [2026 Paint Color Trends](https://www.paintcolorhq.com/blog/paint-color-trends-2026): The eight 2026 Color of the Year picks grouped into greens, warm neutrals and deep darks, with LRVs and closest matches in four brands.
 - [How to Test Paint Samples](https://www.paintcolorhq.com/blog/how-to-test-paint-samples): How to test samples at a useful size and in your room's real light before choosing.
 - [Paint Sheen Guide](https://www.paintcolorhq.com/blog/paint-sheen-guide): Flat, eggshell, satin and semi-gloss explained, with which rooms need which sheen.
 

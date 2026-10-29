@@ -75,11 +75,3691 @@ function Swatch({ hex, name, brand, href }: { hex: string; name: string; brand?:
 /* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
+  /* ──────────────── Best Paint Colors for South-Facing Rooms (2026-12-03) ──────────────── */
+  {
+    slug: "best-paint-colors-south-facing-rooms",
+    title: "Best Paint Colors for South-Facing Rooms",
+    date: "2026-12-03",
+    author: "Philip Cameron",
+    excerpt:
+      "South-facing rooms get strong, warm light. Measured picks with LRV and yellowness, from cool grays to crisp whites, plus when a darker color works.",
+    coverColor: "#CBCCC6",
+    coverImage: "/blog/best-paint-colors-south-facing-rooms.webp",
+    tags: ["South-Facing", "Lighting", "Design"],
+    faq: [
+      {
+        question: "What is the best paint color for a south-facing room?",
+        answer:
+          "Benjamin Moore advises a white with a hint of gray or blue to counterbalance the amber cast of southern exposure. In our measurements, grays and gray-greens with low yellowness, such as Stonington Gray, Rainwashed and Palladian Blue, fit that advice. These are recommendations, not rules, so sample any color on the actual wall.",
+      },
+      {
+        question: "Do south-facing rooms need light or dark paint?",
+        answer:
+          "Both work, and the manufacturers lean different ways. Farrow & Ball suggests soft, pale tones to maximize the feeling of light and space. Benjamin Moore says slightly darker hues can help keep colors from washing out, and names Coastline and Evening Dove as moodier options for rooms with this much light.",
+      },
+      {
+        question: "Why does paint look yellow in a south-facing room?",
+        answer:
+          "Benjamin Moore notes that lighting often casts a warmer tone in a room with southern exposure. A color with a lot of yellow in it, which we measure as a high b* value, starts warmer to begin with. Hush measures b* 14.4 against 2.9 for Stonington Gray, so it is the one in this guide most likely to read creamy.",
+      },
+      {
+        question: "Does this advice apply in the Southern Hemisphere?",
+        answer:
+          "No. This guide assumes a home in the United States or elsewhere in the Northern Hemisphere, and the manufacturer guidance we cite was written for that case.",
+      },
+      {
+        question: "What white should I use for trim and ceilings in a south-facing room?",
+        answer:
+          "Benjamin Moore recommends Chantilly Lace, which it calls a crisp and clean white, for trim and ceilings in south-facing rooms. Its LRV is 90.0 and its yellowness (b*) is 2.2.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best paint colors for south-facing rooms are cool-leaning grays, gray-greens and crisp whites that counterbalance the warm, strong light. Benjamin Moore describes southern exposure as strong light with a warmer tone, and advises a white with a hint of gray or blue against its amber cast. Below are nine colors, each with its LRV and a measured yellowness value, plus a digital match from another brand. This guide assumes a home in the Northern Hemisphere.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What south light does to paint</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s color experts say a south-facing room &quot;tends to get consistent natural light throughout the day,&quot; that the light is strong, and that it often casts a warmer tone. Farrow &amp; Ball puts it as warm light &quot;from dawn until dusk.&quot; Because the light is already warm, we recommend favoring colors with low yellowness here, the opposite of the advice in our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We measure yellowness as b*, the yellow-to-blue axis of the CIELAB color space, computed from each color&apos;s hex. Higher means yellower, and negative means bluer. We also list LRV, the percentage of light a color reflects, from 0 (black) to 100 (pure white). Both numbers are in the table at the end.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cool grays and gray-greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These are the picks to start with, because they carry little yellow for the sun to amplify. Browse more in the {" "}<Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#cbccc6" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> (LRV 59.4) has b* 2.9, among the lowest yellowness values in this guide, which is why we recommend it first for rooms that get sun most of the day. Its closest match at Sherwin-Williams is <Swatch hex="#ccccc5" name="Sweater Weather" brand="Sherwin-Williams" href="/colors/sherwin-williams/sweater-weather-9548" />, nearly identical as a digital match (confirm with a physical sample).
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#ccc9c0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> (LRV 58.4) has b* 4.9, close to twice the yellowness of Stonington Gray. It is the warmer of the two grays, and a safer choice if the room also has a few hours of shade. Benjamin Moore&apos;s <Swatch hex="#cdc9bf" name="Apparition" brand="Benjamin Moore" href="/colors/benjamin-moore/apparition-860" /> is a nearly identical digital match.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#c2cdc5" name="Rainwashed" brand="Sherwin-Williams" href="/colors/sherwin-williams/rainwashed-6211" /> (LRV 59.2) has b* 2.7 and a green-leaning a* of -5.2, so it is a gray with a hint of green. <Swatch hex="#c2d2ca" name="Palladian Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/palladian-blue-hc-144" /> (LRV 60.4) goes a step further: b* 2.1 and a* of -6.9, the most green-leaning of the set. Both follow Benjamin Moore&apos;s advice to look to blues and greens to balance warm golden light. Sherwin-Williams&apos; <Swatch hex="#bfd2c9" name="Waterscape" brand="Sherwin-Williams" href="/colors/sherwin-williams/waterscape-6470" /> is a nearly identical digital match to Palladian Blue. Benjamin Moore&apos;s <Swatch hex="#c1c9c2" name="Silver Marlin" brand="Benjamin Moore" href="/colors/benjamin-moore/silver-marlin-2139-50" /> is a nearly identical digital match to Rainwashed. More in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Crisp whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore calls <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> a &quot;crisp and clean white paint color&quot; for trim and ceilings in south-facing rooms. It measures LRV 90.0 and b* 2.2, so there is little yellow for the sun to push. Benjamin Moore&apos;s page labels it OC-65, while our database lists it as 2121-70. The north-facing guide warns against it for the opposite reason: the same cleanness reads stark in cool light.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#f1f0e7" name="Steam" brand="Benjamin Moore" href="/colors/benjamin-moore/steam-af-15" /> (LRV 84.2, b* 4.5) is a softer wall white from Benjamin Moore&apos;s list of experts&apos; favorites, which it describes as having versatile undertones across a large swath of exposures. Sherwin-Williams&apos; <Swatch hex="#efece3" name="Cold Foam" brand="Sherwin-Williams" href="/colors/sherwin-williams/cold-foam-9504" /> is a nearly identical digital match. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">When you want warmth anyway</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore also lists <Swatch hex="#d5cab0" name="Hush" brand="Benjamin Moore" href="/colors/benjamin-moore/hush-af-95" /> among its experts&apos; favorite versatile neutrals. It measures LRV 57.1 and b* 14.4, about five times the yellowness of Stonington Gray, so in a room with warm, strong light it is the pick most likely to read distinctly sandy. Choose it if you want that, not as a safe default. <Swatch hex="#d7c9ae" name="Natural Wool" brand="Sherwin-Williams" href="/colors/sherwin-williams/natural-wool-9508" /> is a nearly identical digital match.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Darker colors for strong light</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The manufacturers disagree about pale versus deep. Farrow &amp; Ball suggests soft, pale tones to maximize the feeling of light and space. Benjamin Moore says slightly darker hues can help prevent colors from washing out, and offers <Swatch hex="#929ea9" name="Coastline" brand="Benjamin Moore" href="/colors/benjamin-moore/coastline-af-570" /> and <Swatch hex="#525b68" name="Evening Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/evening-dove-2128-30" /> as moodier choices for these rooms. Coastline is LRV 33.9 and Evening Dove is LRV 12.0, and both have negative b* (-7.2 and -8.6), so they sit on the blue side. Sherwin-Williams&apos; <Swatch hex="#979fa5" name="Let it Rain" brand="Sherwin-Williams" href="/colors/sherwin-williams/let-it-rain-9152" /> is a very similar digital match to Coastline. Sherwin-Williams&apos; <Swatch hex="#515763" name="Mineral Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/mineral-gray-2740" /> is nearly identical to Evening Dove. Preview them side by side in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">All nine, measured</h2>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 font-semibold">Digital match at another brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#F4F6F1" name="Chantilly Lace" brand="BM 2121-70" href="/colors/benjamin-moore/chantilly-lace-2121-70" /></td>
+                <td className="py-2 pr-4">90.0</td>
+                <td className="py-2 pr-4">2.2</td>
+                <td className="py-2">Not applicable (trim and ceiling white)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f1f0e7" name="Steam" brand="BM AF-15" href="/colors/benjamin-moore/steam-af-15" /></td>
+                <td className="py-2 pr-4">84.2</td>
+                <td className="py-2 pr-4">4.5</td>
+                <td className="py-2"><Swatch hex="#efece3" name="Cold Foam" brand="SW 9504" href="/colors/sherwin-williams/cold-foam-9504" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cbccc6" name="Stonington Gray" brand="BM HC-170" href="/colors/benjamin-moore/stonington-gray-hc-170" /></td>
+                <td className="py-2 pr-4">59.4</td>
+                <td className="py-2 pr-4">2.9</td>
+                <td className="py-2"><Swatch hex="#ccccc5" name="Sweater Weather" brand="SW 9548" href="/colors/sherwin-williams/sweater-weather-9548" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc9c0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" /></td>
+                <td className="py-2 pr-4">58.4</td>
+                <td className="py-2 pr-4">4.9</td>
+                <td className="py-2"><Swatch hex="#cdc9bf" name="Apparition" brand="BM 860" href="/colors/benjamin-moore/apparition-860" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c2cdc5" name="Rainwashed" brand="SW 6211" href="/colors/sherwin-williams/rainwashed-6211" /></td>
+                <td className="py-2 pr-4">59.2</td>
+                <td className="py-2 pr-4">2.7</td>
+                <td className="py-2"><Swatch hex="#c1c9c2" name="Silver Marlin" brand="BM 2139-50" href="/colors/benjamin-moore/silver-marlin-2139-50" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c2d2ca" name="Palladian Blue" brand="BM HC-144" href="/colors/benjamin-moore/palladian-blue-hc-144" /></td>
+                <td className="py-2 pr-4">60.4</td>
+                <td className="py-2 pr-4">2.1</td>
+                <td className="py-2"><Swatch hex="#bfd2c9" name="Waterscape" brand="SW 6470" href="/colors/sherwin-williams/waterscape-6470" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d5cab0" name="Hush" brand="BM AF-95" href="/colors/benjamin-moore/hush-af-95" /></td>
+                <td className="py-2 pr-4">57.1</td>
+                <td className="py-2 pr-4">14.4</td>
+                <td className="py-2"><Swatch hex="#d7c9ae" name="Natural Wool" brand="SW 9508" href="/colors/sherwin-williams/natural-wool-9508" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#929ea9" name="Coastline" brand="BM AF-570" href="/colors/benjamin-moore/coastline-af-570" /></td>
+                <td className="py-2 pr-4">33.9</td>
+                <td className="py-2 pr-4">-7.2</td>
+                <td className="py-2"><Swatch hex="#979fa5" name="Let it Rain" brand="SW 9152" href="/colors/sherwin-williams/let-it-rain-9152" /></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#525b68" name="Evening Dove" brand="BM 2128-30" href="/colors/benjamin-moore/evening-dove-2128-30" /></td>
+                <td className="py-2 pr-4">12.0</td>
+                <td className="py-2 pr-4">-8.6</td>
+                <td className="py-2"><Swatch hex="#515763" name="Mineral Gray" brand="SW 2740" href="/colors/sherwin-williams/mineral-gray-2740" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Matches are computed from published color data and are digital matches only. Confirm any substitute with a physical sample, and check the pair side by side in the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>. See all <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> colors for more options.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to test in strong light</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore recommends painting a foam poster board with your sample and observing it in the actual space. Check it in the morning, at midday and in the evening, and in more than one season: Benjamin Moore notes winter provides less light because the sun sets earlier. Our guide to <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">testing paint samples</Link> covers the method. If your windows face east instead, see the <Link href="/blog/best-paint-colors-east-facing-rooms" className="text-brand-blue hover:underline">east-facing room guide</Link>, and for how yellow and blue shift in different light, read <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">understanding paint color undertones</Link>.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── How to Choose a Paint Color in Five Steps (2026-12-01) ──────────────── */
+  {
+    slug: "how-to-choose-paint-color",
+    title: "How to Choose a Paint Color in Five Steps",
+    date: "2026-12-01",
+    author: "Philip Cameron",
+    excerpt:
+      "Choose a paint color in five steps: list what cannot change, read the light, set an LRV range, narrow by undertone, then test. Includes measured examples.",
+    coverColor: "#ddd9ce",
+    coverImage: "/blog/how-to-choose-paint-color.webp",
+    tags: ["How-To", "Guide", "Tips"],
+    faq: [
+      {
+        question: "How do I choose a paint color for a room?",
+        answer:
+          "Work in this order: list the finishes that will not change, such as floors, counters and tile. Find out which way the room faces and what bulbs it uses. Set a minimum light reflectance value (LRV) that suits that light. Pick one family and undertone. Then test two or three finalists on the wall. Each step removes options, so you test a short list instead of a whole fan deck.",
+      },
+      {
+        question: "How do I choose paint colors for a whole house?",
+        answer:
+          "A reasonable approach is to choose one main neutral for the rooms that open onto each other, then adjust the others to their own light. Light differs by room, and Sherwin-Williams treats north-facing and south-facing rooms differently. Keep the trim white and the sheens consistent so the rooms still read as one house.",
+      },
+      {
+        question: "Does the direction a room faces change which paint color to pick?",
+        answer:
+          "Yes. Sherwin-Williams says north-facing rooms get the least light and tend to look cool, so it recommends a warm neutral or a color with warm undertones there. It describes south-facing rooms as having consistent warm light, so most colors work. East- and west-facing rooms shift between warm and cool light through the day, so choose for the hours you use the room most.",
+      },
+      {
+        question: "What LRV should I look for?",
+        answer:
+          "There is no single number for every room. Sherwin-Williams suggests a paint with an LRV of 60 or higher to counteract the blue light in north-facing rooms, and says colors in the 50 to 60 range tend to work in most lighting. Lower numbers are darker. Dark colors can still work in a bright room, but Sherwin-Williams notes they may not suit a room with little natural light.",
+      },
+      {
+        question: "Can I choose a paint color from a screen?",
+        answer:
+          "Use a screen to narrow the list, not to make the final call. Screens and lighting both shift how a color looks, and Sherwin-Williams recommends picking the color in your own space rather than at the store. A digital match between two brands is a starting point that a physical sample should confirm.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Choose a paint color in five steps: list the finishes you cannot change, work out how much light the room gets and where it comes from, set a light reflectance value (LRV) range, narrow to one family and undertone, then test two or three finalists in the room. The order matters because each step removes options before you reach the next. Starting with forty chips and no filter is how a shortlist never gets shorter.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 1: List what cannot change</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Both big paint makers start here. Benjamin Moore&apos;s first step lists hardwood floors, countertops, a fireplace surround and area rugs, and says &quot;the colors in these items will help determine which paint color families will work best in your room.&quot; Sherwin-Williams says to &quot;determine what features or existing finishes in the room you would consider permanent like cabinets, tile or a brick fireplace,&quot; and gives an example: if kitchen cabinet wood has a red undertone, the wall color has to work with that hue.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Recommendation: write the list down before you open a color chart. Floor, counter, tile, cabinets, fireplace, the one big piece of furniture. Next to each, note whether it leans red, yellow, green or gray. If one of them has a color you want to coordinate with, upload a photo of it to the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> and click the spot to see the closest paint colors. That list is the filter for step 4.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 2: Read the light</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Light changes how a color reads, and there are two sources to account for.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Daylight and room direction.</strong> Sherwin-Williams tells you to point a compass at the room&apos;s largest windows. Its guidance by direction:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>North:</strong> &quot;North facing rooms receive the least amount of light throughout the day,&quot; and Sherwin-Williams advises a warm neutral or a color with warm undertones to balance the cool light. Benjamin Moore&apos;s north-facing page likewise suggests a clean white with a hint of yellow, and grays chosen for their warm undertones. Our guide to <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing room colors</Link> has the shortlist.</li>
+          <li><strong>South:</strong> Sherwin-Williams says these rooms &quot;tend to experience consistent warm light throughout the day,&quot; so most colors work, but avoid anything very warm that could feel too bold at some hours.</li>
+          <li><strong>East and west:</strong> they are opposites. East-facing rooms get warm light in the morning and cool light toward evening, and west-facing rooms the reverse. Sherwin-Williams says to choose &quot;based on when you plan to use your space the most.&quot; See <Link href="/blog/best-paint-colors-east-facing-rooms" className="text-brand-blue hover:underline">east-facing room colors</Link>.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Bulbs.</strong> Benjamin Moore&apos;s warm and cool color guide says to check your lightbulb temperature: &quot;Lightbulbs with a temperature over 3500K tend to cast cooler.&quot; Sherwin-Williams adds that the warm tones of incandescent light influence a color differently than daylight, and says that with warm lighting you should choose as you would for a south-facing room, and with white or cool lighting as you would for a north-facing one. Recommendation: use the same bulb color temperature in the room for the whole decision, and test again at night.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 3: Set an LRV range</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          LRV is the share of light a color reflects, from 0 (reflects none) to 100 (reflects all of it). Every color page here lists it. For north-facing rooms, Sherwin-Williams says: &quot;look for a paint that has a 60 LRV or higher.&quot; Here is how some well-known neutrals sit against that mark:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Against the 60 mark</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2">23.2 above</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /></td>
+                <td className="py-2 pr-4">68.6</td>
+                <td className="py-2">8.6 above</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /></td>
+                <td className="py-2 pr-4">63.3</td>
+                <td className="py-2">3.3 above</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /></td>
+                <td className="py-2 pr-4">60.1</td>
+                <td className="py-2">0.1 above</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc9c0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" /></td>
+                <td className="py-2 pr-4">58.4</td>
+                <td className="py-2">1.6 below</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cec6bb" name="Worldly Gray" brand="SW 7043" href="/colors/sherwin-williams/worldly-gray-7043" /></td>
+                <td className="py-2 pr-4">57.1</td>
+                <td className="py-2">2.9 below</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Treat 60 as a guideline, not a cutoff. Sherwin-Williams itself lists Worldly Gray, at 57.1, among its best colors for north-facing rooms, and says neutrals in the 50 to 60 range &quot;tend to work well regardless of lighting.&quot; It also warns that dark shades &quot;may not work in a room with little natural light.&quot; The practical use of an LRV range is to throw out the outliers, such as a 30 in a dim north room, before you buy a single sample.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 4: Narrow by family and undertone</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Pick the family first (<Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link>, <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link>, <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link>, and so on), using your step 1 list. Then decide how warm or cool you want it. Undertone is not a number on a paint can, so there are two honest ways to read it.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          One is the manufacturer&apos;s own description. Benjamin Moore describes Pale Oak this way: &quot;With its warm gray undertones, this versatile neutral conjures the quiet majesty of white oak.&quot; The other is to measure it. We convert each color&apos;s hex value to the CIELAB color space, where b* runs from blue (negative) to yellow (positive) and a* from green (negative) to red (positive). A higher b* is a yellower color. A negative a* leans green. These are our calculations from the stored hex values:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 font-semibold">Green-red (a*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Sea Salt</td>
+                <td className="py-2 pr-4">63.3</td>
+                <td className="py-2 pr-4">3.4</td>
+                <td className="py-2">-3.2</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Repose Gray</td>
+                <td className="py-2 pr-4">58.4</td>
+                <td className="py-2 pr-4">4.9</td>
+                <td className="py-2">-0.6</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Agreeable Gray</td>
+                <td className="py-2 pr-4">60.1</td>
+                <td className="py-2 pr-4">5.7</td>
+                <td className="py-2">0.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pale Oak</td>
+                <td className="py-2 pr-4">68.6</td>
+                <td className="py-2 pr-4">5.9</td>
+                <td className="py-2">-0.5</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Worldly Gray</td>
+                <td className="py-2 pr-4">57.1</td>
+                <td className="py-2 pr-4">6.5</td>
+                <td className="py-2">0.9</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1c7b8" name="Accessible Beige" brand="SW 7036" href="/colors/sherwin-williams/accessible-beige-7036" /></td>
+                <td className="py-2 pr-4">57.9</td>
+                <td className="py-2 pr-4">8.8</td>
+                <td className="py-2">0.9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Read the table as a ladder. Sea Salt has the lowest yellowness and the only strongly negative a*, so it is the one that leans green. Accessible Beige has the highest b*, so it is the creamiest. The four colors in the middle sit within about 1.6 points of each other on b*, and that shows in the comparison labels: Agreeable Gray and Repose Gray rate nearly identical, Agreeable Gray and Accessible Beige rate very similar, and Agreeable Gray and Sea Salt show a visible difference. These are digital matches, so confirm any pair with a physical sample.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          That is why the order matters. Two colors that rate nearly identical will not be separated by undertone, so decide between them on LRV and on the sample. In a north room, that makes Agreeable Gray (60.1) the safer pick than Repose Gray (58.4) under Sherwin-Williams&apos; 60 mark, though only by 1.7 points. Check any pair side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>. For more on reading warmth and coolness, see our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> and <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool paint colors</Link>. The brand pages for <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> list every color with its LRV.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Step 5: Preview, then test</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Before you buy anything, preview your two or three finalists in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, which shows wall, accent, trim and window colors in 10 rooms. To see a wall color with a trim, accent and pop color already assigned, the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> builds a set from any starting color.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Then test them in the room. Benjamin Moore says &quot;the best way to test color in different lighting conditions is to buy paint samples,&quot; and Sherwin-Williams advises picking the color in your own space, not at the store. How large to make the sample, where to put it and how long to live with it is covered in <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">how to test paint samples</Link>. Once you have a winner, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> estimates how much to buy.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">After the wall color: trim, ceiling, door and sheen</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The wall color sets the rest. Pick the trim by the LRV gap or by yellowness in <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">how to choose a trim color</Link>. Choose the ceiling in <Link href="/blog/ceiling-paint-color" className="text-brand-blue hover:underline">ceiling paint color</Link>, and the exterior door in <Link href="/blog/front-door-paint-colors" className="text-brand-blue hover:underline">front door paint colors</Link>. The <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers finish for each surface. If you are choosing among whites for any of these, the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> lists them all with LRVs, including <Link href="/colors/sherwin-williams/greek-villa-7551" className="text-brand-blue hover:underline">Greek Villa</Link> and <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link>, which rate nearly identical to each other.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Farmhouse paint colors (2026-11-26) ──────────────── */
+  {
+    slug: "farmhouse-paint-colors",
+    title: "Farmhouse Paint Colors: Whites, Greiges, Greens",
+    date: "2026-11-26",
+    author: "Philip Cameron",
+    excerpt:
+      "Farmhouse paint colors from Sherwin-Williams and Benjamin Moore, with LRV, measured yellowness and Behr and Valspar matches for whites, greiges and greens.",
+    coverColor: "#e6dfd3",
+    coverImage: "/blog/farmhouse-paint-colors.webp",
+    tags: ["Guide", "White Paint", "Cross-Brand Matching"],
+    faq: [
+      {
+        question: "What are the best farmhouse paint colors?",
+        answer:
+          "Benjamin Moore describes farmhouse paint colors as neutral hues, including soft whites, grays, off-whites and greige tones, with accents of color added for warmth and interest. Its modern farmhouse list names Revere Pewter, Balboa Mist, White Dove, Gray Owl, Hale Navy and Black. Sherwin-Williams suggests High Reflective White, Alabaster, Sea Salt and Stardew.",
+      },
+      {
+        question: "What white paint is best for a farmhouse?",
+        answer:
+          "Benjamin Moore names Simply White for farmhouse rooms and says it harmonizes with natural wood. Sherwin-Williams suggests High Reflective White or a bright white such as Alabaster for shiplap. By our data, High Reflective White (LRV 92.6) is the lightest and Shoji White (LRV 74.3) the darkest and yellowest of the whites in this guide.",
+      },
+      {
+        question: "What green goes with a farmhouse style?",
+        answer:
+          "Sherwin-Williams recommends soft greens like Sea Salt as an alternative to white. Benjamin Moore puts Bassett Hall Green on its farmhouse page and names Spa and Hancock Green for a modern farmhouse bathroom. Sea Salt measures the least yellow of these, with a b* of 3.4 and an LRV of 63.3.",
+      },
+      {
+        question: "What paint finish works for farmhouse interiors?",
+        answer:
+          "Benjamin Moore says eggshell and satin finishes are ideal for modern farmhouse interiors, with a semi-gloss on trim and doors to add definition.",
+      },
+      {
+        question: "What color is a farmhouse exterior?",
+        answer:
+          "Benjamin Moore shows a modern farmhouse in Black Satin with Brilliant White trim, and lists Iron Mountain and Kendall Charcoal as other intense siding colors. Sherwin-Williams used Pure White on the siding of its modern farmhouse project, with Iron Ore shutters.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Farmhouse paint colors are soft whites, off-whites, grays and greiges, with a muted green or blue and one dark color for contrast. Benjamin Moore defines the style as neutral hues, including soft whites, grays, off-whites and greige tones, with accents of color added for warmth and interest. Below are the whites, greiges, greens and darks that Sherwin-Williams and Benjamin Moore name for the style, each with its light reflectance value (LRV), a measured yellowness figure, and the closest Behr and Valspar match.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What the paint makers say counts as farmhouse</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We only list colors a manufacturer has tied to the style. Our sources are Sherwin-Williams&apos; farmhouse color guide, its modern farmhouse project home, and Benjamin Moore&apos;s farmhouse and modern farmhouse color pages.
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Sherwin-Williams&apos; farmhouse guide calls <Link href="/colors/sherwin-williams/high-reflective-white-7757" className="text-brand-blue hover:underline">High Reflective White</Link> &quot;a great color to start with,&quot; suggests a shiplap wall in a bright white such as <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link>, and offers muted grays and blues like Stardew and soft greens like <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sea Salt</Link> as alternatives to white.</li>
+          <li>In its modern farmhouse project, Sherwin-Williams used <Link href="/colors/sherwin-williams/pure-white-7005" className="text-brand-blue hover:underline">Pure White</Link> on siding and kitchen cabinets, <Link href="/colors/sherwin-williams/shoji-white-7042" className="text-brand-blue hover:underline">Shoji White</Link> on hallway and family room walls, <Link href="/colors/sherwin-williams/iron-ore-7069" className="text-brand-blue hover:underline">Iron Ore</Link> on the shutters, and Caviar on windows and doors.</li>
+          <li>Benjamin Moore&apos;s farmhouse page lists Simply White, Sea Haze, Avon Green, Hudson Bay, Heritage Red and Venetian Portico as its most popular farmhouse colors. Its modern farmhouse page lists Revere Pewter, Balboa Mist, <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>, Gray Owl, Hale Navy and Black.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a ready-made palette rather than individual colors, see our <Link href="/inspiration/modern-farmhouse" className="text-brand-blue hover:underline">modern farmhouse color palette</Link>. This guide goes the other direction and compares the individual colors, so you can build your own.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to read the numbers</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          LRV runs from 0 (black) to 100 (pure white) and tells you how much light a color reflects. The yellowness column is b*, the yellow-blue axis of the CIELAB color space, which we calculated from each color&apos;s hex value in our database. A higher b* means more yellow, zero is neutral, and a negative number leans blue. We use it instead of the &quot;undertone&quot; label because it is a measurement, though it comes from the on-screen hex, so confirm it with a physical sample. For the vocabulary behind it, see our guide to <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The closest-match columns come from our cross-brand database. Every pair below rates nearly identical (a Delta E 2000 difference under 2) unless the cell says otherwise. These are digital matches. Confirm any substitute against a physical sample before you buy.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse whites</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore says Simply White &quot;harmonizes beautifully with natural wood tones.&quot; (Benjamin Moore&apos;s farmhouse pages show Simply White as OC-117, while our database stores it as 2143-70.) The seven whites below span 74.3 to 92.6 in LRV, and the yellowness spread is wider than most people expect: High Reflective White measures b* 2.9, while Shoji White measures 6.7.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest SW or BM</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7f1" name="High Reflective White" brand="SW 7757" href="/colors/sherwin-williams/high-reflective-white-7757" /></td>
+                <td className="py-2 pr-4">92.6</td>
+                <td className="py-2 pr-4">2.9</td>
+                <td className="py-2 pr-4">Ultra Pure White</td>
+                <td className="py-2 pr-4">Cuddle Down</td>
+                <td className="py-2">Chantilly Lace</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7ee" name="Simply White" brand="BM 2143-70" href="/colors/benjamin-moore/simply-white-2143-70" /></td>
+                <td className="py-2 pr-4">89.5</td>
+                <td className="py-2 pr-4">4.3</td>
+                <td className="py-2 pr-4">Palais White</td>
+                <td className="py-2 pr-4">Ewe</td>
+                <td className="py-2">High Reflective White</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">83.7</td>
+                <td className="py-2 pr-4">3.0</td>
+                <td className="py-2 pr-4">Melting Icicles</td>
+                <td className="py-2 pr-4">Snowed In</td>
+                <td className="py-2">Cloud Cover</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2 pr-4">4.5</td>
+                <td className="py-2 pr-4">Harmonious White</td>
+                <td className="py-2 pr-4">Paramount White</td>
+                <td className="py-2">Cold Foam</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">82.2</td>
+                <td className="py-2 pr-4">5.2</td>
+                <td className="py-2 pr-4">Arcade White</td>
+                <td className="py-2 pr-4">Polar White</td>
+                <td className="py-2">Glacier White</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4">81.9</td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4">Silver Leaf</td>
+                <td className="py-2 pr-4">Polar White</td>
+                <td className="py-2">Cotton</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /></td>
+                <td className="py-2 pr-4">74.3</td>
+                <td className="py-2 pr-4">6.7</td>
+                <td className="py-2 pr-4">Crisp Linen</td>
+                <td className="py-2 pr-4">Totten&apos;s Inlet</td>
+                <td className="py-2">Etiquette</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two pairs show the difference. <Link href="/colors/sherwin-williams/pure-white-7005" className="text-brand-blue hover:underline">Pure White</Link> (b* 3.0) and <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link> (b* 5.2) have almost the same LRV, 83.7 and 82.2, so the choice between them is purely about how much yellow you want next to wood and brick. And <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link> (b* 4.5) sits between them. <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> is listed in the results on both of Benjamin Moore&apos;s farmhouse pages, and at b* 5.6 it is the yellowest of the three Benjamin Moore whites here. Browse the rest in the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link> families, or read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Walls in Shoji White are the warmest option in the table, and Sherwin-Williams used it on walls in its modern farmhouse project home, with Pure White on the cabinets and siding. The gap in LRV between those two is 9.4 points (74.3 and 83.7), enough to read as a deliberate step.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse greiges and grays</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore recommends &quot;soft, earthy&quot; colors for modern farmhouse walls and names Revere Pewter, Balboa Mist and Feather Down for walls and trim. Its farmhouse collection page also lists <Link href="/colors/benjamin-moore/pale-oak-oc-20" className="text-brand-blue hover:underline">Pale Oak</Link> and Edgecomb Gray among its results, although it does not single them out. The table is ordered from lightest to darkest.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest SW or BM</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /></td>
+                <td className="py-2 pr-4">68.6</td>
+                <td className="py-2 pr-4">5.9</td>
+                <td className="py-2 pr-4">Campfire Ash</td>
+                <td className="py-2 pr-4">Glass Pebble</td>
+                <td className="py-2">Oat Milk</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dbd7cd" name="Balboa Mist" brand="BM OC-27" href="/colors/benjamin-moore/balboa-mist-oc-27" /></td>
+                <td className="py-2 pr-4">65.5</td>
+                <td className="py-2 pr-4">5.4</td>
+                <td className="py-2 pr-4">Ginger Sugar</td>
+                <td className="py-2 pr-4">Slush</td>
+                <td className="py-2">Winter Walk</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /></td>
+                <td className="py-2 pr-4">63.1</td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2 pr-4">Arid Landscape</td>
+                <td className="py-2 pr-4">Warm Putty</td>
+                <td className="py-2">Dumpling</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /></td>
+                <td className="py-2 pr-4">55.1</td>
+                <td className="py-2 pr-4">7.6</td>
+                <td className="py-2 pr-4">Coliseum Marble</td>
+                <td className="py-2 pr-4">Villa Grey</td>
+                <td className="py-2">Simple Stone</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#b9bbb7" name="Coventry Gray" brand="BM HC-169" href="/colors/benjamin-moore/coventry-gray-hc-169" /></td>
+                <td className="py-2 pr-4">48.2</td>
+                <td className="py-2 pr-4">1.8</td>
+                <td className="py-2 pr-4">Quiet Time</td>
+                <td className="py-2 pr-4">Urban Sunrise</td>
+                <td className="py-2">Argos</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#b4b6ac" name="Sea Haze" brand="BM 2137-50" href="/colors/benjamin-moore/sea-haze-2137-50" /></td>
+                <td className="py-2 pr-4">45.4</td>
+                <td className="py-2 pr-4">4.8</td>
+                <td className="py-2 pr-4">Stone Mill</td>
+                <td className="py-2 pr-4">Gray-Green Linen</td>
+                <td className="py-2">Sensible Hue</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#aca79e" name="Dorian Gray" brand="SW 7017" href="/colors/sherwin-williams/dorian-gray-7017" /></td>
+                <td className="py-2 pr-4">38.9</td>
+                <td className="py-2 pr-4">5.3</td>
+                <td className="py-2 pr-4">Stingray Gray</td>
+                <td className="py-2 pr-4">Graceful Gray</td>
+                <td className="py-2">Upper West Side</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The yellowness column splits this group in two. Revere Pewter (7.6) and Edgecomb Gray (8.1) are the yellowest, which pushes them toward greige rather than gray. Coventry Gray (1.8) is the least yellow gray here and reads as a plain light gray. Sea Haze is the one Benjamin Moore describes as &quot;a soothing gray with soft green undertones,&quot; and its measured a* of -2.5 (a slight lean toward green) agrees. Sherwin-Williams pairs Alabaster with Dorian Gray, which at LRV 38.9 is the darkest gray here, about 30 points lower than Pale Oak. For more greiges see the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families and our <Link href="/blog/best-greige-paint-colors" className="text-brand-blue hover:underline">best greige paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse greens</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Both makers name greens for the style. Sherwin-Williams calls whispery soft greens like Sea Salt a good alternative to white. Benjamin Moore puts Bassett Hall Green on its farmhouse page, pairs it with white wainscoting, and names Spa and Hancock Green among the greens it likes for a modern farmhouse bathroom.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest SW or BM</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /></td>
+                <td className="py-2 pr-4">63.3</td>
+                <td className="py-2 pr-4">3.4</td>
+                <td className="py-2 pr-4">Silver Setting</td>
+                <td className="py-2 pr-4">Three Wishes</td>
+                <td className="py-2">Gray Cashmere</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d5dbc0" name="Hancock Green" brand="BM HC-117" href="/colors/benjamin-moore/hancock-green-hc-117" /></td>
+                <td className="py-2 pr-4">66.1</td>
+                <td className="py-2 pr-4">12.6</td>
+                <td className="py-2 pr-4">Airy Green</td>
+                <td className="py-2 pr-4">Prairie Willow</td>
+                <td className="py-2">Honeydew (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d6d4b9" name="Spa" brand="BM AF-435" href="/colors/benjamin-moore/spa-af-435" /></td>
+                <td className="py-2 pr-4">62.6</td>
+                <td className="py-2 pr-4">13.6</td>
+                <td className="py-2 pr-4">Pale Cucumber</td>
+                <td className="py-2 pr-4">Lunar Tide</td>
+                <td className="py-2">Acanthus (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#a8a888" name="Bassett Hall Green" brand="BM CW-480" href="/colors/benjamin-moore/bassett-hall-green-cw-480" /></td>
+                <td className="py-2 pr-4">38.1</td>
+                <td className="py-2 pr-4">16.6</td>
+                <td className="py-2 pr-4">Meditation Time</td>
+                <td className="py-2 pr-4">Backwoods (very similar)</td>
+                <td className="py-2">Majolica Green (very similar)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sea Salt is the quietest green on this list: b* 3.4 and an LRV of 63.3, close to the greiges above, so it works as a wall color. Hancock Green and Spa are far more yellow (b* 12.6 and 13.6) at nearly the same lightness, and Bassett Hall Green is the deepest at LRV 38.1. Look at more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> family.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark accents</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore says Hale Navy and Black Satin &quot;add depth&quot; to a modern farmhouse, and the Sherwin-Williams home uses Iron Ore and Caviar on shutters, windows and doors. Black HC-190 and Black Satin 2131-10 share an LRV of 4.6 in our database.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest SW or BM</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
+                <td className="py-2 pr-4">8.4</td>
+                <td className="py-2 pr-4">-7.6</td>
+                <td className="py-2 pr-4">Dark Night</td>
+                <td className="py-2 pr-4">Rogue Blue</td>
+                <td className="py-2">Sea Mariner</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#313132" name="Black" brand="BM HC-190" href="/colors/benjamin-moore/black-hc-190" /></td>
+                <td className="py-2 pr-4">4.6</td>
+                <td className="py-2 pr-4">-0.6</td>
+                <td className="py-2 pr-4">Limousine Leather (very similar)</td>
+                <td className="py-2 pr-4">Tomcat</td>
+                <td className="py-2">Tricorn Black</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2 pr-4">Black Suede</td>
+                <td className="py-2 pr-4">Caviar (very similar)</td>
+                <td className="py-2">Notre Dame</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#313031" name="Caviar" brand="SW 6990" href="/colors/sherwin-williams/caviar-6990" /></td>
+                <td className="py-2 pr-4">3.0</td>
+                <td className="py-2 pr-4">-0.5</td>
+                <td className="py-2 pr-4">Limousine Leather (very similar)</td>
+                <td className="py-2 pr-4">Noir</td>
+                <td className="py-2">Black</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Hale Navy&apos;s b* of -7.6 is the measured reason it reads blue. Black and Caviar sit within 1 point of zero, and Iron Ore, at 1.2, is the only one of the four with a slight yellow lean.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Two whole-house schemes</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These are our suggestions, built only from colors the manufacturers name. Each keeps the trim lighter than the walls.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Role</th>
+                <th className="py-2 pr-4 font-semibold">Benjamin Moore scheme</th>
+                <th className="py-2 font-semibold">Sherwin-Williams scheme</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Walls</td>
+                <td className="py-2 pr-4">Balboa Mist (LRV 65.5)</td>
+                <td className="py-2">Shoji White (LRV 74.3)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Trim and ceiling</td>
+                <td className="py-2 pr-4">White Dove (LRV 83.2)</td>
+                <td className="py-2">Pure White (LRV 83.7)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Cabinets or island</td>
+                <td className="py-2 pr-4">Hale Navy (LRV 8.4)</td>
+                <td className="py-2">Sea Salt (LRV 63.3)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Door and hardware</td>
+                <td className="py-2 pr-4">Black (LRV 4.6)</td>
+                <td className="py-2">Caviar (LRV 3.0)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The wall-to-trim gap is 17.7 LRV points in the Benjamin Moore scheme and 9.4 in the Sherwin-Williams one. Sherwin-Williams used Pure White on its project&apos;s kitchen cabinets, so a Sea Salt island is our own suggestion, not theirs. Benjamin Moore says eggshell and satin suit modern farmhouse interiors and a semi-gloss on trim and doors adds definition, and our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers the trade-offs. Preview either set in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> or build variations in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse exterior</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s exterior example is a house in Black Satin 2131-10 with trim in <Swatch hex="#ebeee9" name="Brilliant White" brand="BM OC-150" href="/colors/benjamin-moore/brilliant-white-oc-150" /> (LRV 83.8). It also lists Iron Mountain and Kendall Charcoal as intense siding colors, and says to choose off-white trim that shares the undertone of the deep body color. Sherwin-Williams went the other way with Pure White siding and Iron Ore shutters. For more body colors see our guide to <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">the best exterior paint colors</Link>, and for the trim white, <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">how to choose a trim color</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Before you buy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Compare any two colors from this guide in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, then paint a large sample on the wall and look at it in morning and evening light. If you are covering a whole house, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> estimates the gallons. The manufacturers&apos; farmhouse collections are at <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and each color page here lists its closest match in every other brand.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Basement Paint Colors for Low-Light Rooms (2026-11-24) ──────────────── */
+  {
+    slug: "basement-paint-colors",
+    title: "Basement Paint Colors for Low-Light Rooms",
+    date: "2026-11-24",
+    author: "Philip Cameron",
+    excerpt:
+      "Basement paint colors for rooms with little daylight: whites and light neutrals at LRV 60 and up, how warm and cool bulbs shift them, and masonry wall guidance.",
+    coverColor: "#E6DFD3",
+    coverImage: "/blog/basement-paint-colors.webp",
+    tags: ["Guide", "Tips", "Cross-Brand Matching"],
+    faq: [
+      {
+        question: "What are the best paint colors for a basement?",
+        answer:
+          "Light colors with an LRV of 60 or higher. In our database that includes bright whites such as Sherwin-Williams High Reflective White (LRV 92.6), off-white and light greige options such as Benjamin Moore Edgecomb Gray (LRV 63.1), and a few soft gray-greens. Sherwin-Williams advises choosing a higher LRV for rooms with little light.",
+      },
+      {
+        question: "What LRV should basement walls be?",
+        answer:
+          "We recommend 60 or higher for walls. LRV runs from 0 to 100, where 0 reflects no light and 100 reflects all of it, according to Sherwin-Williams. About a third of the 26,720 colors in our database reach 60, and about 1 in 10 reach 80.",
+      },
+      {
+        question: "Do light bulbs change paint color?",
+        answer:
+          "Yes. Farrow & Ball says halogen and incandescent bulbs give off yellow light that makes wall colors look warmer, while cool white bulbs give off bluer light and a cooler cast. It suggests a neutral white bulb for the truest view of a wall color.",
+      },
+      {
+        question: "Can you use regular wall paint on basement concrete or block walls?",
+        answer:
+          "It depends on the wall and the product. Drylok Original is a masonry waterproofer that its data sheet says can be topcoated with a good-quality latex paint after 24 hours. Sherwin-Williams lists Loxon Concrete & Masonry Primer/Sealer as an alkali and efflorescence resistant primer for masonry. Follow the data sheet for the specific product, and treat a wall that leaks as a moisture problem first.",
+      },
+      {
+        question: "What paint sheen is best for basement walls?",
+        answer:
+          "Benjamin Moore says more reflective sheens such as eggshell work well in rooms with diffuse, indirect light, and flatter sheens work well in rooms with direct light. Most basements get indirect light, which points toward eggshell, though a flatter finish hides more wall flaws.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Choose basement paint colors with an LRV of 60 or higher, then pick the shade to suit the bulbs you will actually run in the room. Sherwin-Williams, which defines LRV on a scale from 0 to 100, tells shoppers with little to no natural light to settle the lighting first and choose paint second. Only about a third of the colors in our database reach LRV 60, and those are mostly whites, off-whites and light greiges. Below, each pick comes with its LRV, a measured yellowness score and its closest match in the other big brand, plus what the paint makers say about bulbs and about painting masonry walls.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why 60 is the floor for basement walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Light reflectance value (LRV) is the share of light a color bounces back. Sherwin-Williams describes the scale as running from 0, which reflects no light, to 100, which reflects all of it. A basement with a few small windows has less light to bounce, so the number matters more there than in a bright room. Sherwin-Williams makes the same point from the other direction: put one can of paint in a room with limited natural light and another in a room flooded with sun, and &quot;it will look and act like two different colors.&quot;
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The manufacturers do not publish a cutoff for basements, so the number 60 is our recommendation, based on how the catalog is distributed. Of the 26,720 current colors in our database, the average LRV is 44.8. Only 8,875 (33 percent) reach 60, 5,837 reach 70, and 2,541 (about 10 percent) reach 80. A floor of 60 removes two thirds of the catalog and leaves the colors that return most of the light that reaches them. For rooms that face north and get weak daylight rather than none, our guide to <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing room colors</Link> covers the window side of the problem.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Basement paint colors ranked by LRV</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The yellowness column is the b* value from CIELAB, calculated from each color&apos;s published hex. Higher means a creamier color and lower means a cleaner, crisper one. It is a measurement we computed, not a manufacturer&apos;s description. The last column gives the closest match in the other brand; all of them rate nearly identical to the original, but each is a digital match, so confirm it with a physical sample.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 font-semibold">Closest in other brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7f1" name="High Reflective White" brand="SW 7757" href="/colors/sherwin-williams/high-reflective-white-7757" /></td>
+                <td className="py-2 pr-4">92.6</td>
+                <td className="py-2 pr-4">2.9</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f0ece2" name="Greek Villa" brand="SW 7551" href="/colors/sherwin-williams/greek-villa-7551" /></td>
+                <td className="py-2 pr-4">84.0</td>
+                <td className="py-2 pr-4">5.3</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/dune-white-968" className="text-brand-blue hover:underline">Dune White</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2 pr-4">4.5</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/cold-foam-9504" className="text-brand-blue hover:underline">Cold Foam</Link> (SW)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">82.2</td>
+                <td className="py-2 pr-4">5.2</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/glacier-white-oc-37" className="text-brand-blue hover:underline">Glacier White</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4">81.9</td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/cotton-9581" className="text-brand-blue hover:underline">Cotton</Link> (SW)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /></td>
+                <td className="py-2 pr-4">74.3</td>
+                <td className="py-2 pr-4">6.7</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/etiquette-af-50" className="text-brand-blue hover:underline">Etiquette</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /></td>
+                <td className="py-2 pr-4">68.6</td>
+                <td className="py-2 pr-4">5.9</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/oat-milk-9501" className="text-brand-blue hover:underline">Oat Milk</Link> (SW)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dfd3c3" name="Natural Linen" brand="SW 9109" href="/colors/sherwin-williams/natural-linen-9109" /></td>
+                <td className="py-2 pr-4">66.2</td>
+                <td className="py-2 pr-4">9.4</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/dusty-road-1017" className="text-brand-blue hover:underline">Dusty Road</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /></td>
+                <td className="py-2 pr-4">63.3</td>
+                <td className="py-2 pr-4">3.4</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/gray-cashmere-2138-60" className="text-brand-blue hover:underline">Gray Cashmere</Link> (BM)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /></td>
+                <td className="py-2 pr-4">63.1</td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/dumpling-9616" className="text-brand-blue hover:underline">Dumpling</Link> (SW)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /></td>
+                <td className="py-2 pr-4">60.1</td>
+                <td className="py-2 pr-4">5.7</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (BM)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two well-known neutrals sit just under the line. <Swatch hex="#d1c7b8" name="Accessible Beige" brand="SW 7036" href="/colors/sherwin-williams/accessible-beige-7036" /> (LRV 57.9) and <Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (LRV 55.1) are good colors, but they return less of the little light a basement has. If you want that depth, put it on one wall rather than all four.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link>, <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link>, <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> and <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> families and sort by LRV to find more at or above 60. The <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> puts any two side by side. Both <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> have deep lists in this range.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How your bulbs change the pick</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          With no window light to fall back on, the bulb is the light source for every hour you are in the room. The paint makers agree on the direction of the effect:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Farrow &amp; Ball:</strong> halogen and incandescent bulbs emit yellow light that makes wall colors appear warmer, while cool white bulbs give off a bluer light and a cooler cast. For the truest view of a wall color, it suggests a neutral white bulb, which most accurately replicates daylight.</li>
+          <li><strong>Sherwin-Williams:</strong> incandescent bulbs generate yellow light that intensifies warm colors and tends to dull cooler ones. Fluorescent bulbs generate cool, blue light that amplifies blues and greens and mutes warmer colors. Its list of bulb types does not mention LEDs.</li>
+          <li><strong>Benjamin Moore (UK site):</strong> each type of light source, LED, fluorescent or halogen, emits a different and less tonally balanced color of light, and it suggests mixing bulb types in a space to make the color read more true.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams turns that into a rule for rooms with little to no natural light. Warm lighting makes a room feel cozier but typically a bit dimmer, and white or cool lighting suits spaces where you need more light, such as a bathroom or home office. Once the lighting is chosen, it says to pick colors as you would for a south-facing room if the light is warm, and as you would for a north-facing room if it is white or cool toned.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams describes what that means for color. In a room with warm light, neutral-toned colors may seem warmer and cool-toned colors may seem more neutral, and a color that is already too warm can feel too bold. In a room with cool light, it says to avoid cool undertones and choose a warm neutral instead. Combining that with the yellowness scores above gives us this recommendation:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Warm bulbs (cozy family room, media room):</strong> lean toward the lower-yellowness colors, so the bulb supplies the warmth. Sea Salt (3.4), Agreeable Gray (5.7) and Pale Oak (5.9) are the calmer choices, and High Reflective White (2.9) keeps the brightest walls.</li>
+          <li><strong>Cool white or daylight-style bulbs (home gym, office, laundry):</strong> lean toward the creamiest colors, so the walls do not turn flat. Natural Linen (9.4) and Edgecomb Gray (8.1) are the highest in the table, with Shoji White (6.7) as a lighter step.</li>
+          <li><strong>Mixed lighting or not sure:</strong> the whites between 4.5 and 5.6, White Dove, Alabaster, Greek Villa and Swiss Coffee, are the least extreme in either direction.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The yellowness cutoffs are ours; the direction comes from the manufacturers. Our guide to <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link> explains why a color can shift like this.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Whatever you choose, test it under the final bulbs. Benjamin Moore&apos;s advice is to paint large squares on all of the walls and judge them in both the dark and light spots of the room. In a room with no daylight, that means testing with the lamps and overheads you will really use. The <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> is a quick way to narrow the list before you buy samples.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Painting basement masonry walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Color is the easy part. If your walls are bare concrete or block, the product on the wall comes first, and the data sheets are specific. We read two:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Drylok Original</strong> (data sheet published by Sika, August 2026, version 01.04) is described as a waterproofer for interior or exterior, above or below grade concrete or masonry walls. It lists a rating of 10 PSI, equivalent to a wall of water 22 feet high. The directions call for two coats, with 75 square feet per gallon on the first coat and 75 to 100 on the second. It can be topcoated with latex paint after 24 hours, though Drylok calls itself an ideal finish coat.</li>
+          <li><strong>Sherwin-Williams Loxon Concrete &amp; Masonry Primer/Sealer</strong> is listed in the company&apos;s primers and sealers guide as an acrylic primer/sealer for interior and exterior masonry, with alkali resistance, efflorescence resistance and self-priming. That guide marks water repellency only on its silane and siloxane products, which are labeled for exterior surfaces, and it gives no water pressure rating for the Loxon primer, and the guide makes no waterproofing claim for it.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two details in the Drylok sheet affect color choice and warranty. First, you can tint it, but only to light shades: the sheet says to use alkali-proof universal colorants at 25 percent of the normal amount and no more than 2 ounces per gallon. That fits an LRV 60 floor, though the final color will not match a full-strength tint, so test the tinted result. Second, it says Drylok may be applied over previous coatings in sound condition, but the warranty is void, and efflorescence, the white powdery deposit on masonry, must be removed first. The sheet also says that if leaking continues after two coats, pores or pinholes are still open.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We are not giving waterproofing advice beyond these sheets. If a wall is wet, read the full data sheet and safety data sheet for the product you are using, or call the manufacturer, before you spend money on a wall color.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Ceilings, trim and sheen</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          In a basement the ceiling is another reflecting surface, so the white-versus-wall-color decision covered in <Link href="/blog/ceiling-paint-color" className="text-brand-blue hover:underline">our ceiling paint color guide</Link> carries extra weight. Trim follows the same contrast logic as in <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">how to choose a trim color</Link>.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For sheen, Benjamin Moore&apos;s UK guidance says eggshell and other more reflective sheens work well in rooms with diffuse, indirect light, and flatter sheens work well in rooms with direct light. Our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers the tradeoffs.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to decide</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Settle the bulbs first: warm, cool white or neutral white, and the same type throughout the room.</li>
+          <li>Keep walls at LRV 60 or higher, and use anything darker as a single accent wall.</li>
+          <li>Warm bulbs: choose from the low-yellowness colors. Cool bulbs: choose from the creamiest.</li>
+          <li>Bare masonry: choose the coating from the data sheet first, then the color. If you tint a waterproofer, test the tinted sample.</li>
+          <li>Sample under the final lighting, on more than one wall.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          When you have a color, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> estimates the gallons for the room, and each color page lists its closest matches in other brands.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Painting a Brick House: Decide This First (2026-11-19) ──────────────── */
+  {
+    slug: "painted-brick-house-colors",
+    title: "Painting a Brick House: Decide This First",
+    date: "2026-11-19",
+    author: "Philip Cameron",
+    excerpt:
+      "Paint, limewash or mineral paint? Data-sheet temperatures, wait times and permeance, then 12 colors for painted brick with trim and door ideas.",
+    coverColor: "#434341",
+    coverImage: "/blog/painted-brick-house-colors.webp",
+    tags: ["Exterior", "How-To", "Guide"],
+    faq: [
+      {
+        question: "Can you paint a brick house?",
+        answer:
+          "Yes, if the brick is unglazed and in sound condition, with a masonry primer and a masonry-rated topcoat. The Brick Industry Association warns that paint is hard to remove and that any coating can trap moisture if water is already getting into the wall, so repair leaks, efflorescence and failed mortar first. It advises against treating glazed brick unless the coating maker approves.",
+      },
+      {
+        question: "How long should new brick cure before painting?",
+        answer:
+          "It depends on the maker. Benjamin Moore says 30 days and a pH of 10 or less, or 7 days if you seal first with its masonry sealer. Sherwin-Williams&apos;s Loxon primer sheet says masonry should be at least 7 days old, and its acrylic coating sheet says mortar must be cured at least 28 days. The Brick Industry Association says at least 30 days for new or repaired mortar. Sherwin-Williams&apos;s FAQ advises letting new brick weather for a year.",
+      },
+      {
+        question: "What is the minimum temperature for painting brick?",
+        answer:
+          "Check the data sheet for your product. Sherwin-Williams Loxon primer, Benjamin Moore Ultra Spec EXT, KEIM Granital and KEIM Soldalit list 40°F. Sherwin-Williams Loxon Acrylic Coating and Benjamin Moore&apos;s elastomeric coating list 50°F, and Romabio limewash lists 55°F. The Brick Industry Association also advises against painting a surface within 5°F of the dew point.",
+      },
+      {
+        question: "Do you need to prime brick before painting?",
+        answer:
+          "The makers&apos; systems say yes. Sherwin-Williams&apos;s guide to painting a brick house recommends starting with its Loxon Concrete &amp; Masonry Primer, and Benjamin Moore calls for its masonry sealer when the pH is 10 or more. The Brick Industry Association recommends an alkali-resistant primer or a masonry-designated paint because the mortar&apos;s alkalinity can reduce paint durability.",
+      },
+      {
+        question: "Is limewash better than paint on brick?",
+        answer:
+          "It depends on the look and the starting surface. According to the Brick Industry Association, limewash is mineral, does not change the brick&apos;s vapor permeability, lasts 5 to 10 years or more and can be recoated without stripping, but it weathers unevenly. Romabio will not guarantee its limewash over acrylic or oil-based paint. Acrylic paint gives a uniform, opaque finish but forms a film and needs repainting over time.",
+      },
+      {
+        question: "What color should you paint a brick house?",
+        answer:
+          "Most choices fall into four directions: white (LRV 81.9 to 83.7 for the four whites in this post), warm off-white (66.2 to 74.3), greige (55.1 to 63.1) and charcoal or black (2.9 to 8.1). Pick the trim at the same time, because the gap in LRV between brick and trim sets how crisp the edge looks, and paint a large test panel on the wall before committing.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Painting a brick house starts with the coating, not the color. Acrylic paint forms a film on the brick, while limewash and mineral paints soak into the pores, and Sherwin-Williams says staining suits exterior brick better than paint because brick is porous and needs to breathe. If you paint, use a masonry primer and a masonry-rated topcoat, let new brick and repointed mortar cure first (the data sheets below say 7 to 30 days), and wait for weather above the product&apos;s minimum, usually 40 to 50°F. Then pick from the 12 colors below, which come with LRV, closest Behr and Valspar matches, and Sherwin-Williams trim and door ideas.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Decide the coating first</h2>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The Brick Industry Association (BIA), the national trade association for clay brick manufacturers, puts permanence ahead of color. Its technical note on changing the appearance of brick says paint can be very difficult to remove from brick without causing damage, and that painted exterior brick can need repainting on a regular basis. So the first choice is which coating, because it is the one you will live with. BIA describes four, and the table adds what it says about each.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Coating</th>
+                <th className="py-2 pr-4 font-semibold">How it bonds</th>
+                <th className="py-2 pr-4 font-semibold">Vapor permeance</th>
+                <th className="py-2 font-semibold">Upkeep</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Acrylic latex or masonry paint</td>
+                <td className="py-2 pr-4">Forms a film on the surface of the brick</td>
+                <td className="py-2 pr-4">BIA calls acrylic latex typically vapor semi-permeable. The data sheets below report 11.9 to 59.5 perms</td>
+                <td className="py-2">A recurring maintenance task, repainted over the life of the wall</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Limewash</td>
+                <td className="py-2 pr-4">Mineral. Calcite crystals bond to the masonry as the lime absorbs carbon dioxide</td>
+                <td className="py-2 pr-4">BIA says it will not change the brick&apos;s vapor permeability</td>
+                <td className="py-2">Lasts 5 to 10 years or more, and new coats go over old without stripping</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Mineral (silicate) paint</td>
+                <td className="py-2 pr-4">Silicate binder soaks in and bonds chemically. Needs clean, unsealed brick</td>
+                <td className="py-2 pr-4">BIA says it does not affect the substrate&apos;s permeability. KEIM sheets report 77 to 85 perms</td>
+                <td className="py-2">Warranties of 15 years or more, and some projects went 30 years or more without recoating</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Masonry stain</td>
+                <td className="py-2 pr-4">Changes the color and keeps the brick texture. Mineral-based preferred</td>
+                <td className="py-2 pr-4">BIA prefers mineral-based stains for their high vapor permeability</td>
+                <td className="py-2">Does not need maintenance, with some projects lasting 20 years or more</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams is blunter. Its stain guide says staining brick is better than painting because bricks are very porous and need to breathe, which it calls essential for exterior brick, and that painting brick takes a specific formula. A stain keeps the brick&apos;s texture and mortar lines, while paint at full opacity softens them. BIA adds that a uniform paint color can also highlight differences in the texture of the brickwork.
+        </p>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Four conditions can rule a coating in or out before you look at a single color:
+        </p>
+
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Glazed brick.</strong> BIA says mineral paints, stains and limewash will not bond to a glazed face. A film-forming coating can be applied if the glaze is roughened and a specialty product is used, but BIA calls the durability very limited and does not recommend it.</li>
+          <li><strong>Brick that is already painted.</strong> BIA says mineral paint needs the old coating removed, and Romabio says it cannot guarantee its limewash over acrylic or oil-based paint. KEIM&apos;s Granital sheet rules out previously painted elastomeric, oil-based and lacquered surfaces and calls for a bonding primer over acrylic paint, while its Soldalit sheet says it anchors to latex or acrylic paint that is in sound condition. In practice that leaves a repaint, or a mineral paint made for painted surfaces.</li>
+          <li><strong>Moisture already in the wall.</strong> BIA says most brick deterioration comes from unaddressed moisture, and that a coating can make it worse by trapping water. Stains, soiling and efflorescence on the face are its signs of excess moisture. Fix the source first.</li>
+          <li><strong>The type of wall.</strong> BIA says a drainage wall (with an air space and weeps behind the brick) gives more flexibility in coatings than a mass masonry wall, which dries mainly through its face and needs a coating that does not slow that. Ask the brick maker or a mason which one you have.</li>
+        </ul>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What the data sheets say: temperature, waiting time, permeance</h2>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These figures come from each maker&apos;s own sheet, which is also what the product warranty is written around. Makers revise their sheets, so check the current one for the product on your can. The permeance column is each sheet&apos;s own breathability figure, in perms.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Product</th>
+                <th className="py-2 pr-4 font-semibold">Minimum temperature</th>
+                <th className="py-2 pr-4 font-semibold">New masonry</th>
+                <th className="py-2 pr-4 font-semibold">Recoat</th>
+                <th className="py-2 font-semibold">Reported permeance</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Sherwin-Williams Loxon Concrete &amp; Masonry Primer-Sealer</td>
+                <td className="py-2 pr-4">40°F, and air and surface must stay above 40°F for 48 hours</td>
+                <td className="py-2 pr-4">Masonry at least 7 days old. Outdoors, topcoat within 14 days</td>
+                <td className="py-2 pr-4">24 hours</td>
+                <td className="py-2">25.79 perms (ASTM D1653)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Sherwin-Williams Loxon Acrylic Coating (over the primer)</td>
+                <td className="py-2 pr-4">50°F</td>
+                <td className="py-2 pr-4">Mortar cured at least 28 days to coat directly</td>
+                <td className="py-2 pr-4">24 hours</td>
+                <td className="py-2">11.9 perms for one primer coat and two coats (based on ASTM D1653)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Benjamin Moore Ultra Spec EXT W455</td>
+                <td className="py-2 pr-4">40°F</td>
+                <td className="py-2 pr-4">30 days. Prime with Masonry Sealer 608 or N609 if pH is 10 or more</td>
+                <td className="py-2 pr-4">4 hours</td>
+                <td className="py-2">59.5 perms for one sealer coat and 1 to 2 coats (ASTM D1653)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Benjamin Moore Ultra Spec Masonry Elastomeric 360</td>
+                <td className="py-2 pr-4">50°F, and not if rain is expected within 24 hours</td>
+                <td className="py-2 pr-4">30 days and pH of 10 or less, or 7 days and pH of 13 or less if sealed first</td>
+                <td className="py-2 pr-4">12 hours</td>
+                <td className="py-2">38 perms (ASTM D1653)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">KEIM Granital (mineral silicate)</td>
+                <td className="py-2 pr-4">40°F and rising, below 86°F, no sun-heated brick</td>
+                <td className="py-2 pr-4">Not stated for brick</td>
+                <td className="py-2 pr-4">24 hours at 50°F or above, 24 to 48 hours at 40 to 50°F</td>
+                <td className="py-2">80 to 85 perms (ASTM E96)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">KEIM Soldalit (sol-silicate)</td>
+                <td className="py-2 pr-4">40°F and rising, below 95°F, no direct sun</td>
+                <td className="py-2 pr-4">Not stated for brick</td>
+                <td className="py-2 pr-4">12 hours at 50°F or above, 24 to 48 hours at 40 to 50°F</td>
+                <td className="py-2">77 perms (ASTM E96)</td>
+              </tr>
+              <tr className="border-b border-gray-100 align-top">
+                <td className="py-2 pr-4">Romabio Classico Limewash</td>
+                <td className="py-2 pr-4">55°F, below 90°F. The wash-off antique finish needs 70°F or more</td>
+                <td className="py-2 pr-4">Not stated</td>
+                <td className="py-2 pr-4">2 to 8 hours after the first coat, 1 to 4 hours after later coats</td>
+                <td className="py-2">Sd value of 0.10 m, a different unit from perms</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three notes on reading that table. First, BIA classes anything over 10 perms as vapor permeable and says brick treatments commonly report 20 to 85 perms. Every perm figure above clears 10, but BIA warns that multiple coats and heavy applications lower permeance, so the film on your wall may differ from the one the sheet tested. Second, BIA says ASTM D1653 and ASTM E96 are not interchangeable, so the Sherwin-Williams and Benjamin Moore numbers and the KEIM numbers are not a ranking of each other. Third, the cold limit is a floor, not a target: BIA also advises against painting a surface within 5°F of the dew point.
+        </p>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The wait for new brick is the number that varies most. Benjamin Moore ties its 30 days to a pH of 10 or less. BIA gives at least 30 days for new or repaired mortar to cure, longer in cool weather. Sherwin-Williams&apos;s own exterior FAQ goes further and says to let new brick weather for a year before painting, so anything in the brick has time to leach out. If the build is under a year old and the brick shows efflorescence, the year is the safer plan.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Prep order that avoids the usual failures</h2>
+
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Find the water.</strong> BIA lists staining, soiling, efflorescence, failed sealant joints, damaged flashing and clogged weeps as problems to correct before any coating.</li>
+          <li><strong>Repoint.</strong> Mortar that is loose, missing or cracked wider than a business card should be removed and repointed, and BIA recommends a mason experienced in restoration for exterior work. New mortar needs at least 30 days to cure before you coat.</li>
+          <li><strong>Remove efflorescence and watch for it to return.</strong> Efflorescence is a deposit of water-soluble salts on the face of the masonry. BIA says to remove it and observe the wall for recurrence before coating. It says a stiff non-metallic brush with soapy water, or low-pressure washing, is often enough, and not to use muriatic acid, diluted or not.</li>
+          <li><strong>Let it dry.</strong> BIA says wait at least 24 hours after cleaning, longer after rain, and describes a check: tape a 4 mil plastic sheet over the brick for at least 16 hours, and if moisture shows on the plastic, wait longer. Sherwin-Williams&apos;s FAQ says to allow several days.</li>
+          <li><strong>Prime the whole wall.</strong> Sherwin-Williams&apos;s primer sheet says to prime the entire surface instead of spot priming, because primed and unprimed areas hold out the topcoat differently. BIA recommends an alkali-resistant primer or a paint designated for masonry, since the mortar&apos;s alkalinity reduces paint durability.</li>
+          <li><strong>Check the forecast.</strong> Stay above the minimum on the sheet, and keep rain off the wall for the time it lists: 12 hours for the KEIM and Romabio products and 24 hours for Benjamin Moore&apos;s elastomeric coating.</li>
+          <li><strong>Paint a test panel.</strong> BIA recommends sample panels and says to judge them dry, because treatments can look different wet. For how many coats a color needs, see <Link href="/blog/how-many-coats-of-paint" className="text-brand-blue hover:underline">how long to wait between coats of paint</Link>.</li>
+        </ol>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors for painted brick</h2>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These 12 are recommendations, picked to cover the four directions people paint brick: white, warm off-white, greige and charcoal. Every LRV is from our database, which has the full list for each brand. Closest-match names link to their color pages, and every match is a digital match: confirm it with a physical sample before buying. Yellowness is CIELAB b* computed from each color&apos;s hex, where a higher number is yellower. For exterior color theory beyond brick, including the roof and the plantings, see <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">the best exterior paint colors</Link>.
+        </p>
+
+        <h3 className="mt-8 text-xl font-bold text-gray-900">White</h3>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams describes <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> as a soft, warm but balanced white, and <Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /> as a bright white with the slightest yellow undertone, which it suggests using on trim. <Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /> and <Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /> are Benjamin Moore whites in the same range. By the b* measurement, Pure White is the least yellow of the four and Swiss Coffee the most, and all four sit within 2 LRV points of each other. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest in the other big brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">82.2</td>
+                <td className="py-2 pr-4">5.2</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/arcade-white-gr-w08" className="text-brand-blue hover:underline">Arcade White</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/polar-white-7003-16" className="text-brand-blue hover:underline">Polar White</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/glacier-white-oc-37" className="text-brand-blue hover:underline">Glacier White</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">83.7</td>
+                <td className="py-2 pr-4">3.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/melting-icicles-bwc-20" className="text-brand-blue hover:underline">Melting Icicles</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/snowed-in-6004-1a" className="text-brand-blue hover:underline">Snowed In</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/cloud-cover-855" className="text-brand-blue hover:underline">Cloud Cover</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2 pr-4">4.5</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/harmonious-white-dc-013" className="text-brand-blue hover:underline">Harmonious White</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/paramount-white-7006-22" className="text-brand-blue hover:underline">Paramount White</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/cold-foam-9504" className="text-brand-blue hover:underline">Cold Foam</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4">81.9</td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/silver-leaf-w-f-720" className="text-brand-blue hover:underline">Silver Leaf</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/polar-white-7003-16" className="text-brand-blue hover:underline">Polar White</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/cotton-9581" className="text-brand-blue hover:underline">Cotton</Link> (nearly identical)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="mt-8 text-xl font-bold text-gray-900">Warm off-white</h3>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams calls <Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> a warm, creamy white that borders on greige, and <Swatch hex="#dfd3c3" name="Natural Linen" brand="SW 9109" href="/colors/sherwin-williams/natural-linen-9109" /> a light, warm neutral with a greige undertone. Both measure yellower than the whites above. The <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white family</Link> has more in this range.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest in the other big brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /></td>
+                <td className="py-2 pr-4">74.3</td>
+                <td className="py-2 pr-4">6.7</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/crisp-linen-mq3-13" className="text-brand-blue hover:underline">Crisp Linen</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/tottens-inlet-7006-9" className="text-brand-blue hover:underline">Totten&apos;s Inlet</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/etiquette-af-50" className="text-brand-blue hover:underline">Etiquette</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dfd3c3" name="Natural Linen" brand="SW 9109" href="/colors/sherwin-williams/natural-linen-9109" /></td>
+                <td className="py-2 pr-4">66.2</td>
+                <td className="py-2 pr-4">9.4</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/parisian-taupe-pwn-42" className="text-brand-blue hover:underline">Parisian Taupe</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/gentle-shadows-8005-5a" className="text-brand-blue hover:underline">Gentle Shadows</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/dusty-road-1017" className="text-brand-blue hover:underline">Dusty Road</Link> (nearly identical)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="mt-8 text-xl font-bold text-gray-900">Gray and greige</h3>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /> is Sherwin-Williams&apos;s own best-selling color and, by its description, a gray with a beige undertone. <Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /> and <Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> are the Benjamin Moore picks in the same range. All three measure b* 5.7 or higher, so none is a cool gray. See the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link>.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest in the other big brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /></td>
+                <td className="py-2 pr-4">60.1</td>
+                <td className="py-2 pr-4">5.7</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Toasty Gray</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Heritage Gray</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /></td>
+                <td className="py-2 pr-4">55.1</td>
+                <td className="py-2 pr-4">7.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/coliseum-marble-ppu8-16" className="text-brand-blue hover:underline">Coliseum Marble</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/villa-grey-6005-1b" className="text-brand-blue hover:underline">Villa Grey</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/simple-stone-9521" className="text-brand-blue hover:underline">Simple Stone</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /></td>
+                <td className="py-2 pr-4">63.1</td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/arid-landscape-n310-2" className="text-brand-blue hover:underline">Arid Landscape</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/warm-putty-6006-1a" className="text-brand-blue hover:underline">Warm Putty</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/dumpling-9616" className="text-brand-blue hover:underline">Dumpling</Link> (nearly identical)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 className="mt-8 text-xl font-bold text-gray-900">Dark</h3>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams calls <Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /> a cool, deep charcoal that suits exteriors, <Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /> a brownish gray, and <Swatch hex="#2f2f30" name="Tricorn Black" brand="SW 6258" href="/colors/sherwin-williams/tricorn-black-6258" /> a true black that works with any undertone. All three are under LRV 9. Dark colors can also change the primer: Benjamin Moore&apos;s sheets say certain custom colors require a Deep Color Base Primer tinted to a special prescription, so ask the store about the primer when you order.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 pr-4 font-semibold">Closest Valspar</th>
+                <th className="py-2 font-semibold">Closest in the other big brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/black-suede-s-h-790" className="text-brand-blue hover:underline">Black Suede</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/caviar-8006-4g" className="text-brand-blue hover:underline">Caviar</Link> (very similar)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/notre-dame-csp-570" className="text-brand-blue hover:underline">Notre Dame</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /></td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2 pr-4">4.1</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/black-bean-790d-7" className="text-brand-blue hover:underline">Black Bean</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/semi-sweet-4003-2c" className="text-brand-blue hover:underline">Semi-Sweet</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/dragons-breath-1547" className="text-brand-blue hover:underline">Dragon&apos;s Breath</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#2f2f30" name="Tricorn Black" brand="SW 6258" href="/colors/sherwin-williams/tricorn-black-6258" /></td>
+                <td className="py-2 pr-4">2.9</td>
+                <td className="py-2 pr-4">-0.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/raven-black-ppf-59" className="text-brand-blue hover:underline">Raven Black</Link> (very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/tomcat-8006-12g" className="text-brand-blue hover:underline">Tomcat</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/black-hc-190" className="text-brand-blue hover:underline">Black</Link> (nearly identical)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trim and door ideas from Sherwin-Williams</h2>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams&apos;s color service lists two or three coordinating colors for each of its colors. It does not label them trim or door, so those roles are our suggestion. The lighter-by figure is our arithmetic: the coordinating color&apos;s LRV minus the brick color&apos;s LRV, both from our database. In <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">our trim guide</Link>, soft tonal trim whites sit 9 to 15 points above the wall and bright trim whites 22 to 35 above it.
+        </p>
+
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Painted brick color</th>
+                <th className="py-2 font-semibold">Sherwin-Williams coordinating colors</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Alabaster (LRV 82.2)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/townhall-tan-7690" className="text-brand-blue hover:underline">Townhall Tan</Link> (LRV 42.2); <Link href="/colors/sherwin-williams/dakota-wheat-9023" className="text-brand-blue hover:underline">Dakota Wheat</Link> (LRV 54.4)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pure White (LRV 83.7)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/march-wind-7668" className="text-brand-blue hover:underline">March Wind</Link> (LRV 48.5); <Link href="/colors/sherwin-williams/perle-noir-9154" className="text-brand-blue hover:underline">Perle Noir</Link> (LRV 7.6)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Shoji White (LRV 74.3)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/pure-white-7005" className="text-brand-blue hover:underline">Pure White</Link> (LRV 83.7, 9.4 points lighter); <Link href="/colors/sherwin-williams/fawn-brindle-7640" className="text-brand-blue hover:underline">Fawn Brindle</Link> (LRV 35.5); <Link href="/colors/sherwin-williams/perle-noir-9154" className="text-brand-blue hover:underline">Perle Noir</Link> (LRV 7.6)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Natural Linen (LRV 66.2)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/divine-white-6105" className="text-brand-blue hover:underline">Divine White</Link> (LRV 72.4, 6.2 points lighter); <Link href="/colors/sherwin-williams/antler-velvet-9111" className="text-brand-blue hover:underline">Antler Velvet</Link> (LRV 43.3); <Link href="/colors/sherwin-williams/gris-morado-9156" className="text-brand-blue hover:underline">Gris Morado</Link> (LRV 26.1)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Agreeable Gray (LRV 60.1)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/incredible-white-7028" className="text-brand-blue hover:underline">Incredible White</Link> (LRV 73.5, 13.4 points lighter); <Link href="/colors/sherwin-williams/extra-white-7006" className="text-brand-blue hover:underline">Extra White</Link> (LRV 85.9, 25.8 points lighter); <Link href="/colors/sherwin-williams/coral-rose-9004" className="text-brand-blue hover:underline">Coral Rose</Link> (LRV 28.2)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Urbane Bronze (LRV 8.1)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/shoji-white-7042" className="text-brand-blue hover:underline">Shoji White</Link> (LRV 74.3, 66.2 points lighter); <Link href="/colors/sherwin-williams/extra-white-7006" className="text-brand-blue hover:underline">Extra White</Link> (LRV 85.9, 77.8 points lighter); <Link href="/colors/sherwin-williams/ivoire-6127" className="text-brand-blue hover:underline">Ivoire</Link> (LRV 63.6, 55.5 points lighter)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Iron Ore (LRV 5.6)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/nebulous-white-7063" className="text-brand-blue hover:underline">Nebulous White</Link> (LRV 73.5, 67.9 points lighter); <Link href="/colors/sherwin-williams/extra-white-7006" className="text-brand-blue hover:underline">Extra White</Link> (LRV 85.9, 80.3 points lighter); <Link href="/colors/sherwin-williams/cityscape-7067" className="text-brand-blue hover:underline">Cityscape</Link> (LRV 21.7, 16.1 points lighter)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Tricorn Black (LRV 2.9)</td>
+                <td className="py-2"><Link href="/colors/sherwin-williams/ice-cube-6252" className="text-brand-blue hover:underline">Ice Cube</Link> (LRV 77.3, 74.4 points lighter); <Link href="/colors/sherwin-williams/classic-light-buff-50" className="text-brand-blue hover:underline">Classic Light Buff</Link> (LRV 82.5, 79.6 points lighter); <Link href="/colors/sherwin-williams/blithe-blue-9052" className="text-brand-blue hover:underline">Blithe Blue</Link> (LRV 46.0, 43.1 points lighter)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two things stand out. Alabaster and Pure White come with no white in their lists, only tans and grays, so for a white-on-white house take the trim white from the trim guide above. And Natural Linen&apos;s white, Divine White, is only 6.2 points lighter, which reads as a very soft edge. For the darker brick colors every listed white is 55 or more points lighter, a high-contrast edge. The darker coordinating colors, such as Perle Noir, Cityscape and Blithe Blue, are door candidates, and <Link href="/blog/front-door-paint-colors" className="text-brand-blue hover:underline">our front door guide</Link> has pairing tables and the storm-door warranty rules for dark doors.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Preview and estimate</h2>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Preview candidates in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, and use the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> to put two candidates side by side. For quantities, enter the coverage rate from the sheet into the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link>: Loxon Acrylic Coating lists 200 square feet per gallon, and 80 on porous, rough stucco, while KEIM lists 250 to 300 for Granital on brick. Brick is closer to the rough, porous case than to a smooth wall, so buy enough for a test area first and measure how far it goes. If you keep the red brick instead, the same room visualizer and the front door and trim guides cover the pairings.
+        </p>
+
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          All the colors above are available from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> or <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, and each color page lists the closest match in every other brand we track.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── The Weirdest Paint Color Names, Measured (2026-11-17) ──────────────── */
+  {
+    slug: "weirdest-paint-color-names",
+    title: "The Weirdest Paint Color Names, Measured",
+    date: "2026-11-17",
+    author: "Philip Cameron",
+    excerpt:
+      "We searched 26,720 paint colors for the weirdest names, from Lizard Breath to Dead Salmon, with each one's LRV and a normally named match at another brand.",
+    coverColor: "#edbb32",
+    coverImage: "/blog/weirdest-paint-color-names.webp",
+    tags: ["Guide", "Cross-Brand Matching", "Data"],
+    faq: [
+      {
+        question: "What is the weirdest paint color name?",
+        answer:
+          "There is no objective winner, because weird is a judgment. From the 26,720 colors we track across 13 brands, the names that stand out most are Lizard Breath and Hot Dog Relish at Behr, Dead Salmon at Farrow & Ball, Slumber Sloth at Sherwin-Williams, Mayonnaise at Benjamin Moore and Zombie at PPG. Each one is listed with its LRV and a normally named match in this post.",
+      },
+      {
+        question: "Where do paint color names come from?",
+        answer:
+          "Most paint companies do not explain their names. Farrow & Ball is an exception for some colors: its Dead Salmon page says the name refers to the matt finish of an aged pink painted at Kedleston Hall in 1805, and its Elephant's Breath page says the name was originally created by the interior designer John Fowler. For colors with no manufacturer explanation, treat any story you read as a guess.",
+      },
+      {
+        question: "Does a strange name change how the paint looks?",
+        answer:
+          "No. The name is a label. What the paint looks like on a wall depends on its color value, its light reflectance value (LRV), which is the percentage of light it reflects from 0 to 100, and the light in your room. Dead Salmon has an LRV of 35.7 and Lucky Potato has an LRV of 82.0, and neither number can be guessed from the name.",
+      },
+      {
+        question: "How do I find a normally named version of a strange color?",
+        answer:
+          "Open the color's page on Paint Color HQ and read the closest equivalents at other brands, or compare two colors side by side in the compare tool. The results are digital matches: confirm any substitute with a physical sample on your wall before you buy gallons.",
+      },
+      {
+        question: "Do different paint brands reuse the same color name?",
+        answer:
+          "Yes, and the colors behind a shared name can be very different. Three brands sell a color called Dill Pickle: Benjamin Moore's is a pale yellow-green with an LRV of 50.0, while Behr's and Dunn-Edwards' are dark greens with LRVs of 16.0 and 15.9. Check the hex and LRV, not the name.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The weirdest color names in the paint aisle are food, animals and monsters attached to ordinary-looking colors: Lizard Breath is a golden yellow, Pickle is a mid green, and Dead Salmon is a muted tan. We searched all 26,720 colors in our database across 13 brands and pulled 25 of the strangest names, then added each color&apos;s light reflectance value (LRV) and a normally named color at another brand that you can ask for instead.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How we picked these names</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We searched every current color name for food, animal, monster and body words, then chose the 25 we found strangest. That is a judgment call, not a ranking, and your list would differ. What is measured is everything beside the name: the hex value, the LRV, and the closest match at another brand. Closeness uses CIEDE2000, a standard color-difference formula, and we report it in words: <em>nearly identical</em>, <em>very similar</em> or <em>visible difference</em>. Every substitute below is a digital match, so confirm it with a physical sample before you buy.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Food names</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Food supplies the most odd names. This set runs from the lightest color on this page to the darkest: Mayonnaise reflects 88.1 percent of light and Pancake Syrup only 8.4. Hot Dog Relish is the only food name here whose closest match is merely very similar, not nearly identical. Mayonnaise is an off-white, and the many brands that sell near-copies of that kind of shade are mapped in our study of <Link href="/blog/most-duplicated-paint-color" className="text-brand-blue hover:underline">the most duplicated paint color</Link>.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Closest normally named color elsewhere</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#faf6e6" name="Mayonnaise" brand="Benjamin Moore" href="/colors/benjamin-moore/mayonnaise-2152-70" /></td>
+                <td className="py-2 pr-4">88.1</td>
+                <td className="py-2 pr-4"><Link href="/colors/ppg/linwood-beach-white-71yy-87-078" className="text-brand-blue hover:underline">Linwood Beach White</Link> (PPG)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ffd06c" name="Nacho Cheese" brand="Benjamin Moore" href="/colors/benjamin-moore/nacho-cheese-2018-40" /></td>
+                <td className="py-2 pr-4">65.1</td>
+                <td className="py-2 pr-4"><Link href="/colors/dutch-boy/honeybee-yellow-116-6db" className="text-brand-blue hover:underline">Honeybee Yellow</Link> (Dutch Boy)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#efead8" name="Lucky Potato" brand="Behr" href="/colors/behr/lucky-potato-t11-20" /></td>
+                <td className="py-2 pr-4">82.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/farrow-ball/james-white-2010" className="text-brand-blue hover:underline">James White</Link> (Farrow &amp; Ball)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#85a16a" name="Pickle" brand="Sherwin-Williams" href="/colors/sherwin-williams/pickle-6725" /></td>
+                <td className="py-2 pr-4">31.5</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/buckingham-gardens-545" className="text-brand-blue hover:underline">Buckingham Gardens</Link> (Benjamin Moore)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#717c3e" name="Hot Dog Relish" brand="Behr" href="/colors/behr/hot-dog-relish-hdc-sm16-11" /></td>
+                <td className="py-2 pr-4">18.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/timson-green-cw-470" className="text-brand-blue hover:underline">Timson Green</Link> (Benjamin Moore)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Very similar</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#724336" name="Pancake Syrup" brand="Benjamin Moore" href="/colors/benjamin-moore/pancake-syrup-2104-10" /></td>
+                <td className="py-2 pr-4">8.4</td>
+                <td className="py-2 pr-4"><Link href="/colors/ppg/warm-mahogany-1060-7" className="text-brand-blue hover:underline">Warm Mahogany</Link> (PPG)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Food words are everywhere in color names. Counting whole-word matches in current names, mustard appears in 30 color names across 9 brands, cheese in 14 across 4, pudding in 11 across 7 and pickle in 7 across 6. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> family to see the pickles and relishes next to the other greens.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Animal names</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Animals give paint its strangest phrasing, because the name often points at a body part or a breath rather than a look. Salmon appears in 40 current color names across 11 brands, and elephant in 13 across 9.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Closest normally named color elsewhere</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edbb32" name="Lizard Breath" brand="Behr" href="/colors/behr/lizard-breath-t11-11" /></td>
+                <td className="py-2 pr-4">54.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/dunn-edwards/sunflower-de5391" className="text-brand-blue hover:underline">Sunflower</Link> (Dunn-Edwards)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#b49d8d" name="Dead Salmon" brand="Farrow & Ball" href="/colors/farrow-ball/dead-salmon-28" /></td>
+                <td className="py-2 pr-4">35.7</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/trusty-tan-6087" className="text-brand-blue hover:underline">Trusty Tan</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccbfb3" name="Elephant's Breath" brand="Farrow & Ball" href="/colors/farrow-ball/elephants-breath-229" /></td>
+                <td className="py-2 pr-4">53.4</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/hampshire-taupe-990" className="text-brand-blue hover:underline">Hampshire Taupe</Link> (Benjamin Moore)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#8b857f" name="Mole's Breath" brand="Farrow & Ball" href="/colors/farrow-ball/moles-breath-276" /></td>
+                <td className="py-2 pr-4">23.8</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/dovetail-7018" className="text-brand-blue hover:underline">Dovetail</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cec5b6" name="Slumber Sloth" brand="Sherwin-Williams" href="/colors/sherwin-williams/slumber-sloth-9606" /></td>
+                <td className="py-2 pr-4">56.4</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/smokey-taupe-983" className="text-brand-blue hover:underline">Smokey Taupe</Link> (Benjamin Moore)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#8c8449" name="Frog's Legs" brand="PPG" href="/colors/ppg/frogs-legs-1116-7" /></td>
+                <td className="py-2 pr-4">22.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/rural-green-6418" className="text-brand-blue hover:underline">Rural Green</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Farrow &amp; Ball explains three of these.</strong> Of Dead Salmon, the brand&apos;s own page says the name &quot;refers to the matt finish of an aged pink painted at Kedleston Hall in 1805&quot;. It also labels the color &quot;An aged salmon pink&quot;, although the stored hex of #b49d8d reads on screen as a muted tan. Of Elephant&apos;s Breath, the page says the name was &quot;originally created by John Fowler, the notable English interior designer&quot;, and that the color &quot;reads as an uplifting mid grey with its hint of magenta&quot;. Mole&apos;s Breath, per the same brand, is a color &quot;whose name takes its roots from the much loved Elephant&apos;s Breath&quot;. All three quotes come from the color pages on the <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link> website (farrow-ball.com, retrieved October 2026). We found no manufacturer explanation for the other names in this post, so we do not guess where they come from.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Dead Salmon shows how loosely a name tracks a color. Across all 40 salmon names the LRV runs from 16.6 to 78.5, and the brighter ones live in the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink</Link> family.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Monster and fantasy names</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Zombie, Goblin and Gremlin are all PPG colors, and they are three different colors: a dark gray, a dark blue-gray and a muted olive-gold. The troll and the dragon come from Behr and Valspar.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Closest normally named color elsewhere</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#595a5c" name="Zombie" brand="PPG" href="/colors/ppg/zombie-1010-7" /></td>
+                <td className="py-2 pr-4">10.2</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/peppercorn-7674" className="text-brand-blue hover:underline">Peppercorn</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#525e68" name="Goblin" brand="PPG" href="/colors/ppg/goblin-1040-7" /></td>
+                <td className="py-2 pr-4">10.8</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/thunder-bay-ecc-35-3" className="text-brand-blue hover:underline">Thunder Bay</Link> (Behr)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#a79954" name="Gremlin" brand="PPG" href="/colors/ppg/gremlin-1110-5" /></td>
+                <td className="py-2 pr-4">31.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/spring-moss-390d-6" className="text-brand-blue hover:underline">Spring Moss</Link> (Behr)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#9a834b" name="Wishing Troll" brand="Behr" href="/colors/behr/wishing-troll-t11-17" /></td>
+                <td className="py-2 pr-4">24.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/brazen-259" className="text-brand-blue hover:underline">Brazen</Link> (Benjamin Moore)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ab3148" name="Fire-Breathing Dragon" brand="Valspar" href="/colors/valspar/fire-breathing-dragon-8001-6g" /></td>
+                <td className="py-2 pr-4">11.3</td>
+                <td className="py-2 pr-4"><Link href="/colors/dutch-boy/rumba-red-103-7db" className="text-brand-blue hover:underline">Rumba Red</Link> (Dutch Boy)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Blood and bone</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Body names are the ones people screenshot. Blue Blood at Behr is a dusty violet-gray, and Dragons Blood at Benjamin Moore is a dark orange-red. Bone Meal, at Dutch Boy, is a light tan with an LRV of 53.1.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Closest normally named color elsewhere</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ac4931" name="Dragons Blood" brand="Benjamin Moore" href="/colors/benjamin-moore/dragons-blood-cw-320" /></td>
+                <td className="py-2 pr-4">13.4</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/hearty-orange-6622" className="text-brand-blue hover:underline">Hearty Orange</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d1bf98" name="Bone Meal" brand="Dutch Boy" href="/colors/dutch-boy/bone-meal-320-3db" /></td>
+                <td className="py-2 pr-4">53.1</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/white-oak-hdc-nt-02" className="text-brand-blue hover:underline">White Oak</Link> (Behr)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#5d5f76" name="Blue Blood" brand="Behr" href="/colors/behr/blue-blood-s560-6" /></td>
+                <td className="py-2 pr-4">12.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/ppg/blue-heron-50bb-13-104" className="text-brand-blue hover:underline">Blue Heron</Link> (PPG)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Very similar</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Puns and phrases</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Some names are jokes, and the joke does not tell you the color. Cut the Mustard is a brown-gold at Sherwin-Williams. Elephant in the Room is a pale gray with a faint lavender cast at Valspar. Flustered Mustard and Eye of the Tiger are both golds, with LRVs of 53.0 and 46.9.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Closest normally named color elsewhere</th>
+                <th className="py-2 font-semibold">How close</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ba7f38" name="Cut the Mustard" brand="Sherwin-Williams" href="/colors/sherwin-williams/cut-the-mustard-6384" /></td>
+                <td className="py-2 pr-4">25.9</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/garden-ochre-3005-5a" className="text-brand-blue hover:underline">Garden Ochre</Link> (Valspar)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cac8cb" name="Elephant in the Room" brand="Valspar" href="/colors/valspar/elephant-in-the-room-8006-12b" /></td>
+                <td className="py-2 pr-4">58.2</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/sensitive-tint-6267" className="text-brand-blue hover:underline">Sensitive Tint</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#dbc058" name="Flustered Mustard" brand="Behr" href="/colors/behr/flustered-mustard-p320-6a" /></td>
+                <td className="py-2 pr-4">53.0</td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/sunlit-meadow-8001-26e" className="text-brand-blue hover:underline">Sunlit Meadow</Link> (Valspar)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e4b370" name="Eye of the Tiger" brand="Benjamin Moore" href="/colors/benjamin-moore/eye-of-the-tiger-188" /></td>
+                <td className="py-2 pr-4">46.9</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/classical-gold-2831" className="text-brand-blue hover:underline">Classical Gold</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#beb5a9" name="Rhino-Ed Gray" brand="Dutch Boy" href="/colors/dutch-boy/rhino-ed-gray-440-2db" /></td>
+                <td className="py-2 pr-4">46.9</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/amazing-gray-7044" className="text-brand-blue hover:underline">Amazing Gray</Link> (Sherwin-Williams)</td>
+                <td className="py-2 whitespace-nowrap text-gray-600">Nearly identical</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Same name, different colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Brands do not coordinate names, so one name can hide very different colors. Dill Pickle is the clearest case in our data:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Dill Pickle at</th>
+                <th className="py-2 font-semibold">LRV</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c5c285" name="Dill Pickle" brand="Benjamin Moore" href="/colors/benjamin-moore/dill-pickle-2147-40" /></td>
+                <td className="py-2">50.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#5e7645" name="Dill Pickle" brand="Behr" href="/colors/behr/dill-pickle-420d-7" /></td>
+                <td className="py-2">16.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#67744a" name="Dill Pickle" brand="Dunn-Edwards" href="/colors/dunn-edwards/dill-pickle-de5573" /></td>
+                <td className="py-2">15.9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Blue Blood splits the same way. Behr&apos;s version has an LRV of 12.0, and the PPG color of that name is <Swatch hex="#6b7f81" name="Blue Blood" brand="PPG" href="/colors/ppg/blue-blood-1034-6" />, with an LRV of 19.9.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What a name cannot tell you</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          A name does not predict lightness. Mayonnaise (88.1) and Lucky Potato (82.0) are the pale ones on this page, while Pancake Syrup (8.4) and Zombie (10.2) are the darkest. Pick on the numbers instead: look up the LRV and hex on the color&apos;s page, check the closest match at the brand you plan to buy from, and run both through the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>. If you have a color and no name, the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> finds the closest named colors in the database. Browse the <Link href="/colors/family/neutral" className="text-brand-blue hover:underline">neutral</Link> family for more quiet shades, and the <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> page for Lizard Breath, Lucky Potato and the rest of that palette.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Kitchen Cabinet Paint Colors (2026-11-12) ──────────────── */
+  {
+    slug: "kitchen-cabinet-paint-colors",
+    title: "Kitchen Cabinet Paint Colors, Measured",
+    date: "2026-11-12",
+    author: "Philip Cameron",
+    excerpt:
+      "Cabinet whites ranked by measured yellowness, plus deep greens, blues and charcoals. How to judge each against your countertop and floor, and where to buy it.",
+    coverColor: "#EFEEE5",
+    coverImage: "/blog/kitchen-cabinet-paint-colors.webp",
+    tags: ["Kitchen", "Cabinets", "Cross-Brand Matching", "Guide"],
+    faq: [
+      {
+        question: "What are the best kitchen cabinet paint colors?",
+        answer:
+          "White remains the default, and the choice inside white comes down to yellowness. Among the Benjamin Moore and Sherwin-Williams whites we measured, light reflectance value (LRV) spans only about 8 points, from 81.9 to 90.0, while yellowness (b*) runs from 2.2 to 5.6. For a darker cabinet, Pewter Green, Hale Navy, Naval, Iron Ore, Wrought Iron and Urbane Bronze all fall between 4.5 and 11.8 LRV.",
+      },
+      {
+        question: "How do I match cabinet paint to my countertop?",
+        answer:
+          "Benjamin Moore advises noting the countertop's undertones and choosing cabinet colors that share similar undertones. In numbers, a countertop that looks creamy suits a cabinet white with a higher b* value, such as 5 or above. A countertop that looks gray-white or cool suits a cleaner white with a b* value near 2 to 3. Hold a painted sample against the countertop and the floor in your own light before you buy.",
+      },
+      {
+        question: "What sheen is best for kitchen cabinets?",
+        answer:
+          "Benjamin Moore says satin brings a soft, elegant touch, while semi-gloss and high gloss are easy to clean. Sheens are not standardized between brands. Benjamin Moore's ADVANCE satin measures 25 to 35 at 60 degrees, while Sherwin-Williams lists its Emerald Urethane Trim Enamel satin at 35 to 45.",
+      },
+      {
+        question: "How long before I can use cabinets after painting them?",
+        answer:
+          "Benjamin Moore's ADVANCE data sheets give 4 to 6 hours to touch and 16 hours to recoat at 77 degrees F and 50% humidity. They say to keep heavy abrasion off the finish, and shelves and tabletops out of service, for at least 3 to 5 days (semi-gloss) or 5 to 7 days (satin). Full hardness can take up to 30 days. Sherwin-Williams' Emerald Urethane Trim Enamel sheet gives touch and recoat times but no cure time.",
+      },
+      {
+        question: "Will white cabinet paint turn yellow?",
+        answer:
+          "It can. Benjamin Moore's ADVANCE data sheet says the paint yellows less than conventional alkyds but that a slight amount of yellowing may occur, accelerated in dark or poorly ventilated areas and more visible in lighter colors. Starting with a cleaner white leaves more room before any shift shows.",
+      },
+      {
+        question: "What Behr color is similar to White Dove?",
+        answer:
+          "Harmonious White is the closest Behr color to Benjamin Moore White Dove in our database, and the two rate nearly identical by CIEDE2000. That is a digital match. Confirm it with a physical sample of each on your cabinets before buying paint.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best kitchen cabinet paint color is the one whose yellowness matches your countertop and floor. Benjamin Moore tells painters to note the countertop&apos;s undertones and pick a cabinet color that shares them, and we turned that rule into numbers. The eleven Benjamin Moore and Sherwin-Williams cabinet whites we measured sit within about 8 LRV points of each other, but their yellowness (b*) ranges from 2.2 for <Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> to 5.6 for <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link>, which is why two &quot;white&quot; cabinets can look so different next to the same countertop. This post ranks the whites by that measure, adds six deep colors, and lists the closest match in other brands.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Wall color is a separate decision. For the walls around your cabinets, see our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">guide to kitchen wall colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Two numbers that decide a cabinet color</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>LRV</strong> is the percentage of light a color reflects, from 0 (black) to 100 (pure white). The gap between your cabinet LRV and your countertop LRV sets how much the two separate. Every color page on Paint Color HQ lists it.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>Yellowness</strong> is the b* value of the color&apos;s published color data, the yellow-to-blue axis of the CIELAB color space. Positive numbers lean yellow, negative numbers lean blue, and zero is neutral. A higher b* means a creamier white. On white cabinets, b* is the number that tells you whether the paint will look warm or crisp beside a given countertop, because LRV barely moves between popular whites.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s kitchen cabinet page says to &quot;take note of your countertop&apos;s undertones&quot; and choose cabinet colors that &quot;share similar undertones.&quot; It also names flooring, backsplash and fixtures as the existing features to take color cues from. Undertone is hard to judge by eye, so below we replace it with the b* measurement for the cabinet side and give you a test for the countertop and floor side.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cabinet whites, from cleanest to creamiest</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These eleven whites come from Benjamin Moore and Sherwin-Williams, sorted by b*. LRV spans 8.1 points across the whole list. Yellowness spans 3.4 units, so <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> carries about two and a half times the yellow of Chantilly Lace.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">White</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#F4F6F1" name="Chantilly Lace" brand="BM 2121-70" href="/colors/benjamin-moore/chantilly-lace-2121-70" /></td>
+                <td className="py-2 pr-4">90.0</td>
+                <td className="py-2">2.2</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /></td>
+                <td className="py-2 pr-4">85.9</td>
+                <td className="py-2">2.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae5" name="Snowbound" brand="SW 7004" href="/colors/sherwin-williams/snowbound-7004" /></td>
+                <td className="py-2 pr-4">82.5</td>
+                <td className="py-2">2.8</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">83.7</td>
+                <td className="py-2">3.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f0f1ea" name="White Heron" brand="BM OC-57" href="/colors/benjamin-moore/white-heron-oc-57" /></td>
+                <td className="py-2 pr-4">86.7</td>
+                <td className="py-2">3.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f7f7ee" name="Simply White" brand="BM 2143-70" href="/colors/benjamin-moore/simply-white-2143-70" /></td>
+                <td className="py-2 pr-4">89.5</td>
+                <td className="py-2">4.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2">4.5</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">82.2</td>
+                <td className="py-2">5.2</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f0ece2" name="Greek Villa" brand="SW 7551" href="/colors/sherwin-williams/greek-villa-7551" /></td>
+                <td className="py-2 pr-4">84.0</td>
+                <td className="py-2">5.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f3f2e7" name="Cloud White" brand="BM OC-130" href="/colors/benjamin-moore/cloud-white-oc-130" /></td>
+                <td className="py-2 pr-4">85.1</td>
+                <td className="py-2">5.4</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4">81.9</td>
+                <td className="py-2">5.6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Compare any two of these side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>, or browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link> families. For a longer comparison of the whites themselves, see our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Match the white to your countertop and floor</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We could not find a countertop or flooring manufacturer that publishes b* values for its colors, so this part is a recommendation built on Benjamin Moore&apos;s undertone rule and the measurements above, not a lab result. The test is simple: hold a painted sample next to the countertop and the floor, in the kitchen&apos;s own light, and ask which of three groups it belongs with.
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Countertop or floor looks creamy, beige or golden:</strong> choose from the creamier end (b* 5.2 to 5.6). This keeps the cabinet&apos;s yellowness close to the surface beside it.</li>
+          <li><strong>Countertop looks gray-white, cool or blue-white:</strong> choose from the cleaner end (b* 2.2 to 3.3). Again the aim is to keep the two yellowness levels close.</li>
+          <li><strong>You cannot tell, or the kitchen mixes both:</strong> choose Simply White (4.3) or White Dove (4.5). They sit near the middle of the 2.2 to 5.6 range, so neither extreme is exposed.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s white cabinet page adds a lighting check: if whites look too warm in your space it points to cooler off-whites, and if they look gray or blue it points to warmer ones. It also advises viewing samples throughout the day, so check yours in morning light and under the bulbs you cook by.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Floors work the same way. Benjamin Moore lists flooring with countertops, backsplash and fixtures as the features to take cues from, so judge the sample against it too. If a sample looks right against the countertop and wrong against the floor, move one step along the b* list rather than switching to a different color family. To see a white against a full room, try it in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Deep cabinet colors, measured</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Dark cabinets add a second variable: chroma (C*), the measure of how colorful the paint is. A low C* is a near-neutral charcoal, a high one is clearly blue or green. All six colors below have an LRV under 12, so against a countertop as light as Alabaster (82.2) they sit 70 to 78 points down. That gap is why dark cabinets read as a strong outline against a white countertop, whichever of the six you choose.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">b*</th>
+                <th className="py-2 font-semibold">Chroma (C*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#5e6259" name="Pewter Green" brand="SW 6208" href="/colors/sherwin-williams/pewter-green-6208" /></td>
+                <td className="py-2 pr-4">11.8</td>
+                <td className="py-2 pr-4">4.6</td>
+                <td className="py-2">5.7</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
+                <td className="py-2 pr-4">8.4</td>
+                <td className="py-2 pr-4">-7.6</td>
+                <td className="py-2">7.6</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#2f3d4c" name="Naval" brand="SW 6244" href="/colors/sherwin-williams/naval-6244" /></td>
+                <td className="py-2 pr-4">4.5</td>
+                <td className="py-2 pr-4">-11.0</td>
+                <td className="py-2">11.0</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2">1.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#4a4b4c" name="Wrought Iron" brand="BM 2124-10" href="/colors/benjamin-moore/wrought-iron-2124-10" /></td>
+                <td className="py-2 pr-4">8.2</td>
+                <td className="py-2 pr-4">-0.7</td>
+                <td className="py-2">0.8</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /></td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2 pr-4">4.1</td>
+                <td className="py-2">4.1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three patterns follow from the numbers. Iron Ore and Wrought Iron are both close to neutral (C* of 1.3 and 0.8), so they add the least yellow or blue of the six. If you cannot read your countertop, we recommend starting with one of these two. Hale Navy and Naval are the only two clearly on the blue side, and Naval is both darker and more colorful (4.5 LRV and C* 11.0, against 8.4 and 7.6). Pewter Green and Urbane Bronze lean slightly yellow at 4.6 and 4.1, close to the 4.3 to 4.5 of Simply White and White Dove, so a two-tone kitchen that pairs a green or bronze lower cabinet with one of those whites keeps the same amount of yellow across both.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Browse more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link>, <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> families. Our <Link href="/blog/best-sherwin-williams-kitchen-colors" className="text-brand-blue hover:underline">Sherwin-Williams kitchen colors guide</Link> covers more bold island and cabinet picks from that brand.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What the cabinet paint data sheets say</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Cabinet enamels list their own drying and sheen figures, and they differ between brands. The table pulls them from the manufacturers&apos; own data sheets for Benjamin Moore ADVANCE Waterborne Interior Alkyd and Sherwin-Williams Emerald Urethane Trim Enamel. All times are at 77&deg;F and 50% relative humidity.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Product and sheen</th>
+                <th className="py-2 pr-4 font-semibold">Gloss at 60 degrees</th>
+                <th className="py-2 pr-4 font-semibold">To touch</th>
+                <th className="py-2 pr-4 font-semibold">To recoat</th>
+                <th className="py-2 font-semibold">Cure guidance</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">BM ADVANCE satin (792)</td>
+                <td className="py-2 pr-4">25 to 35</td>
+                <td className="py-2 pr-4">4 to 6 hours</td>
+                <td className="py-2 pr-4">16 hours</td>
+                <td className="py-2">5 to 7 days before heavy abrasion or tabletops; up to 30 days for optimum hardness</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">BM ADVANCE semi-gloss (793)</td>
+                <td className="py-2 pr-4">50 to 60</td>
+                <td className="py-2 pr-4">4 to 6 hours</td>
+                <td className="py-2 pr-4">16 hours</td>
+                <td className="py-2">3 to 5 days before heavy abrasion or tabletops; up to 30 days for optimum hardness</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">SW Emerald Urethane Trim Enamel satin</td>
+                <td className="py-2 pr-4">35 to 45</td>
+                <td className="py-2 pr-4">1 hour</td>
+                <td className="py-2 pr-4">4 hours</td>
+                <td className="py-2">Not stated on the sheet</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">SW Emerald Urethane Trim Enamel gloss</td>
+                <td className="py-2 pr-4">65 and above</td>
+                <td className="py-2 pr-4">2 hours</td>
+                <td className="py-2 pr-4">4 hours</td>
+                <td className="py-2">Not stated on the sheet</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three things stand out. First, &quot;satin&quot; is not one sheen: the top of Benjamin Moore&apos;s satin range (35) is where Sherwin-Williams&apos; satin range starts, so the same word gives a shinier cabinet from one can than the other. Benjamin Moore&apos;s cabinet page says satin brings a soft, elegant touch, while semi-gloss and high gloss are easy to clean. Our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> explains how sheen changes what you see.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Second, the time to recoat is not the time to use the cabinets. The Benjamin Moore sheets say to keep heavy abrasion off the finish for days after it is dry, and to leave shelves and tabletops out of service for the same period. They also say full hardness and final sheen can take up to 30 days depending on weather and drying conditions. Sherwin-Williams&apos; sheet states that drying and recoat times depend on temperature, humidity and film thickness, and does not publish a cure time, so ask the store or the manufacturer if you need one.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Third, prep is in the sheets. For cabinetry, Benjamin Moore says all surfaces are to be roughened by sanding with 220 grit or coarser before priming, and calls for a coat of its ADVANCE alkyd primer on wood, MDF and thermofoil. Sherwin-Williams lists one coat of Premium Wall &amp; Wood Primer under two coats of Emerald Urethane Trim Enamel for interior wood. Benjamin Moore also notes that ADVANCE yellows less than conventional alkyds, but a slight amount of yellowing may occur, and that it is more visible in lighter colors. That is one more reason to start from a cleaner white if you are unsure.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Closest cross-brand matches</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If the cabinet enamel you want is sold by a different brand than the color you chose, you need the closest equivalent. Each row below gives the closest <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> or <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> color in our database, with the closeness label from CIEDE2000 (under 2 is nearly identical, 2 to under 5 is very similar, 5 and above is a visible difference). These are digital matches. Confirm any substitute with a physical sample on your own cabinet before you buy a gallon.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">Other major brand</th>
+                <th className="py-2 font-semibold">Behr</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">White Dove (BM)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/cold-foam-9504" className="text-brand-blue hover:underline">Cold Foam</Link> (SW), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/harmonious-white-dc-013" className="text-brand-blue hover:underline">Harmonious White</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pure White (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/cloud-cover-855" className="text-brand-blue hover:underline">Cloud Cover</Link> (BM), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/melting-icicles-bwc-20" className="text-brand-blue hover:underline">Melting Icicles</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Alabaster (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/glacier-white-oc-37" className="text-brand-blue hover:underline">Glacier White</Link> (BM), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/arcade-white-gr-w08" className="text-brand-blue hover:underline">Arcade White</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Simply White (BM)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/high-reflective-white-7757" className="text-brand-blue hover:underline">High Reflective White</Link> (SW), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/palais-white-gr-w15" className="text-brand-blue hover:underline">Palais White</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Hale Navy (BM)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/sea-mariner-9640" className="text-brand-blue hover:underline">Sea Mariner</Link> (SW), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Naval (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/north-sea-cc-932" className="text-brand-blue hover:underline">North Sea</Link> (BM), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/midnight-dream-570f-7" className="text-brand-blue hover:underline">Midnight Dream</Link>, very similar</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Iron Ore (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/notre-dame-csp-570" className="text-brand-blue hover:underline">Notre Dame</Link> (BM), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/black-suede-s-h-790" className="text-brand-blue hover:underline">Black Suede</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Wrought Iron (BM)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/cyberspace-7076" className="text-brand-blue hover:underline">Cyberspace</Link> (SW), very similar</td>
+                <td className="py-2"><Link href="/colors/behr/night-club-n500-7" className="text-brand-blue hover:underline">Night Club</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pewter Green (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/dark-olive-2140-30" className="text-brand-blue hover:underline">Dark Olive</Link> (BM), very similar</td>
+                <td className="py-2"><Link href="/colors/behr/painted-turtle-710f-6" className="text-brand-blue hover:underline">Painted Turtle</Link>, nearly identical</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Urbane Bronze (SW)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/dragons-breath-1547" className="text-brand-blue hover:underline">Dragon&apos;s Breath</Link> (BM), nearly identical</td>
+                <td className="py-2"><Link href="/colors/behr/black-bean-790d-7" className="text-brand-blue hover:underline">Black Bean</Link>, nearly identical</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Closeness in color is not closeness in lightness. Simply White (89.5) and High Reflective White (92.6) rate nearly identical, yet the Sherwin-Williams color is 3.1 LRV points brighter. Cloud Cover (80.3) is 3.4 points darker than Pure White (83.7), and Glacier White (80.2) is 2.0 points darker than Alabaster (82.2). On a cabinet face those differences are small, but they show when the substitute sits beside an untouched countertop. Every color page lists its closest equivalents in other brands, so the same lookup works for any cabinet color not on this list.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to test a cabinet color before you paint</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Sort your countertop and floor into warm, cool or mixed by holding a white sample against each in daylight.</li>
+          <li>Pick two whites from the matching b* group in the table above, and one from the neighboring group.</li>
+          <li>Paint each on a board in the sheen you plan to use. Satin and semi-gloss reflect the room differently, so the sheen belongs in the test.</li>
+          <li>Preview the shortlist in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, then judge the boards against the countertop, floor and backsplash together.</li>
+          <li>Use the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> for quantity once you commit, and leave the cure time on the data sheet before you load the shelves.</li>
+        </ol>
+      </>
+    ),
+  },
+
+  /* ──────────────── Shoji White vs Alabaster and Other SW Whites (2026-11-10) ──────────────── */
+  {
+    slug: "sherwin-williams-white-paint-colors-compared",
+    title: "Shoji White vs Alabaster and Other SW Whites",
+    date: "2026-11-10",
+    author: "Philip Cameron",
+    excerpt:
+      "Seven Sherwin-Williams white pairs measured: a closeness verdict, the LRV gap and the color direction that separates each, from Alabaster to Shoji White.",
+    coverColor: "#edeae0",
+    coverImage: "/blog/sherwin-williams-white-paint-colors-compared.webp",
+    tags: ["Guide", "White Paint", "Cross-Brand Matching"],
+    faq: [
+      {
+        question: "Is Shoji White lighter or darker than Alabaster?",
+        answer:
+          "Darker. Shoji White has an LRV of 74.3 and Alabaster 82.2, a gap of 7.9 points. Shoji White also measures about 1.5 b* units yellower. The two rate very similar on CIEDE2000.",
+      },
+      {
+        question: "Are Greek Villa and Alabaster the same color?",
+        answer:
+          "They are not the same paint, but they rate nearly identical on Sherwin-Williams' published color values. Greek Villa is slightly lighter, with an LRV of 84.0 against 82.2. Confirm with a physical sample before swapping one for the other.",
+      },
+      {
+        question: "What is the difference between Creamy and Alabaster?",
+        answer:
+          "They rate very similar. Creamy is about 2.0 b* units yellower and 0.9 a* units toward red, with almost the same lightness (LRV 81.2 against 82.2).",
+      },
+      {
+        question: "What is the difference between Extra White and Pure White?",
+        answer:
+          "They rate nearly identical. Extra White is lighter, with an LRV of 85.9 against 83.7, and carries less yellow, with a b* of 2.3 against 3.0.",
+      },
+      {
+        question: "Is Alabaster close to Dover White?",
+        answer:
+          "Yes, they rate nearly identical, with an LRV gap of 0.3. Dover White measures about 2.3 b* units yellower, so it reads creamier.",
+      },
+      {
+        question: "Which is the darkest of the Sherwin-Williams whites here?",
+        answer:
+          "Of the nine whites measured, White Duck (LRV 74.1) and Shoji White (LRV 74.3) are the darkest, about 8 LRV points below Alabaster.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          <Link href="/colors/sherwin-williams/shoji-white-7042" className="text-brand-blue hover:underline">Shoji White</Link> and <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Alabaster</Link> rate very similar on Sherwin-Williams&apos; published color values, and the biggest difference is lightness, not color. Shoji White reflects 74.3 percent of light against Alabaster&apos;s 82.2, so it is the darker of the two by almost 8 LRV points, and it measures slightly yellower. <Link href="/colors/sherwin-williams/greek-villa-7551" className="text-brand-blue hover:underline">Greek Villa</Link> is the opposite case: it rates nearly identical to Alabaster. Below, seven Sherwin-Williams white pairs get a closeness verdict, the LRV gap and the direction that separates them.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How the pairs were measured</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every hex and LRV below is the value stored in our database for each Sherwin-Williams color. We converted each hex to CIELAB, the color space that describes a color on three axes: L* for lightness, a* for green (negative) to red (positive), and b* for blue (negative) to yellow (positive). We then scored each pair with CIEDE2000 and turned the result into one of three labels: under 2 is nearly identical, 2 to under 5 is very similar, and 5 or more is a visible difference. A higher b* means a yellower, creamier white. We do not use the database undertone field here; where a paint is described as warm or cool, that is Sherwin-Williams&apos; own wording.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          These are digital values. They show how close two paints are on paper, and a physical sample in your own light is still the test that counts. Pairs that rate nearly identical are digital matches to confirm with a sample, not guarantees.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">All seven pairs at a glance</h2>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Pair</th>
+                <th className="py-2 pr-4 font-semibold">Closeness</th>
+                <th className="py-2 pr-4 font-semibold">LRV (gap)</th>
+                <th className="py-2 font-semibold">What separates them</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> vs <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">Very similar</td>
+                <td className="py-2 pr-4">74.3 vs 82.2 (7.9)</td>
+                <td className="py-2">Shoji White is 3.6 L* darker and 1.5 b* yellower</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f0ece2" name="Greek Villa" brand="SW 7551" href="/colors/sherwin-williams/greek-villa-7551" /> vs <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">Nearly identical</td>
+                <td className="py-2 pr-4">84.0 vs 82.2 (1.8)</td>
+                <td className="py-2">Greek Villa is 0.8 L* lighter; a* and b* are within 0.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#efe8db" name="Creamy" brand="SW 7012" href="/colors/sherwin-williams/creamy-7012" /> vs <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">Very similar</td>
+                <td className="py-2 pr-4">81.2 vs 82.2 (1.0)</td>
+                <td className="py-2">Creamy is 2.0 b* yellower and 0.9 a* redder</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> vs <Swatch hex="#f0eadc" name="Dover White" brand="SW 6385" href="/colors/sherwin-williams/dover-white-6385" /></td>
+                <td className="py-2 pr-4">Nearly identical</td>
+                <td className="py-2 pr-4">82.2 vs 82.5 (0.3)</td>
+                <td className="py-2">Dover White is 2.3 b* yellower</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e5dfd2" name="White Duck" brand="SW 7010" href="/colors/sherwin-williams/white-duck-7010" /> vs <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /></td>
+                <td className="py-2 pr-4">Very similar</td>
+                <td className="py-2 pr-4">74.1 vs 82.2 (8.1)</td>
+                <td className="py-2">White Duck is 3.7 L* darker and 1.9 b* yellower</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /> vs <Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /></td>
+                <td className="py-2 pr-4">Nearly identical</td>
+                <td className="py-2 pr-4">85.9 vs 83.7 (2.2)</td>
+                <td className="py-2">Extra White is 0.9 L* lighter, 0.7 b* less yellow and 0.5 a* greener</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /> vs <Swatch hex="#edeae5" name="Snowbound" brand="SW 7004" href="/colors/sherwin-williams/snowbound-7004" /></td>
+                <td className="py-2 pr-4">Nearly identical</td>
+                <td className="py-2 pr-4">83.7 vs 82.5 (1.2)</td>
+                <td className="py-2">Pure White is 0.5 L* lighter and 0.8 a* greener; b* within 0.3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Differences are computed from unrounded values, so they can differ by 0.1 from subtracting the rounded numbers in the text. The two pairs with a visible lightness gap, Shoji White and White Duck against Alabaster, are the only ones where lightness is the main story. In the other five, the paints are within about 2 LRV points of each other and the difference is a small shift in yellowness.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Shoji White vs Alabaster</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> (LRV 74.3) and <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> (LRV 82.2) rate very similar. Sherwin-Williams describes Shoji White as a &quot;warm, creamy white that borders on greige,&quot; and Alabaster as a &quot;soft, warm but balanced white.&quot; The measurements show where the two part ways: Shoji White is 3.6 L* units darker, about 1.5 b* units yellower and about 1.0 a* units toward red. We cannot measure &quot;greige&quot; from a hex, but darker and slightly more yellow is the direction that makes Shoji White the more likely of the two to read as greige. Alabaster is the brighter choice, and with an LRV 7.9 points higher it will make a dim room feel lighter. Run the pair in the <Link href="/compare?color1=868bf1ed-90f1-48a2-81b9-0c12c0b31457&color2=355ff048-6b5e-4aa6-b4a4-ee66055068ec" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Greek Villa vs Alabaster</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#f0ece2" name="Greek Villa" brand="SW 7551" href="/colors/sherwin-williams/greek-villa-7551" /> (LRV 84.0) and <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> rate nearly identical, and this is the closest pair of the seven on color: a* and b* are within 0.3 of each other. The only real difference is that Greek Villa is 0.8 L* lighter, an LRV gap of 1.8. Sherwin-Williams calls Greek Villa a &quot;sunny white&quot; that &quot;comes to life in natural light.&quot; If you like Alabaster but want it a touch brighter, Greek Villa is the digital match to sample first. See the pair in the <Link href="/compare?color1=c472c09b-2830-4591-a649-b9932b4253c2&color2=355ff048-6b5e-4aa6-b4a4-ee66055068ec" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Creamy vs Alabaster</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#efe8db" name="Creamy" brand="SW 7012" href="/colors/sherwin-williams/creamy-7012" /> (LRV 81.2) and Alabaster rate very similar, though only just: the pair sits barely over the nearly identical line. Creamy is about 2.0 b* units yellower and 0.9 a* units toward red, with almost the same lightness (an LRV gap of 1.0). Sherwin-Williams says Creamy &quot;has the softest of yellow undertones to create a subtle warmth in the room.&quot; Pick Creamy over Alabaster when you want the yellow to show a little more. Open the pair in the <Link href="/compare?color1=29ed4a05-5931-4c92-90c5-ed1d72cf9016&color2=355ff048-6b5e-4aa6-b4a4-ee66055068ec" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Alabaster vs Dover White</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> and <Swatch hex="#f0eadc" name="Dover White" brand="SW 6385" href="/colors/sherwin-williams/dover-white-6385" /> (LRV 82.5) rate nearly identical, with an LRV gap of just 0.3. The separating direction is yellowness: Dover White is 2.3 b* units yellower, the largest b* gap in any nearly identical pair here. Sherwin-Williams describes Dover White as &quot;a warm, sun-splashed white.&quot; The two are the same brightness, so the choice comes down to how creamy you want it. Compare them in the <Link href="/compare?color1=355ff048-6b5e-4aa6-b4a4-ee66055068ec&color2=a2ca8fcf-900b-4da6-b324-7d2a5fe0711b" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">White Duck vs Alabaster</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#e5dfd2" name="White Duck" brand="SW 7010" href="/colors/sherwin-williams/white-duck-7010" /> (LRV 74.1) and Alabaster rate very similar, but the LRV gap is 8.1, the largest in this post. White Duck is 3.7 L* darker and 1.9 b* yellower. Sherwin-Williams calls it a &quot;cool white&quot; that is &quot;creamy and bright.&quot; On the published color, its b* of 7.1 puts it with Creamy (7.2) and Dover White (7.5) at the yellow end of these nine whites, and its lightness is within 0.2 LRV of Shoji White. Shoji White and White Duck are the two darkest whites in the group. See the pair in the <Link href="/compare?color1=dbd58b74-2772-467e-b957-71573cdf7c64&color2=355ff048-6b5e-4aa6-b4a4-ee66055068ec" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Extra White vs Pure White</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /> (LRV 85.9) and <Swatch hex="#edece6" name="Pure White" brand="SW 7005" href="/colors/sherwin-williams/pure-white-7005" /> (LRV 83.7) rate nearly identical, with an LRV gap of 2.2. Extra White is the lighter, with 0.9 more L*, and it carries less yellow (b* 2.3 against 3.0) and slightly more green in a* (-1.2 against -0.7). Sherwin-Williams says Extra White is &quot;clean and crisp&quot; and suits trim and ceilings, while Pure White has &quot;the slightest yellow undertone that keeps it from appearing too stark.&quot; Both are among the brightest, least yellow whites in this post, so they work as trim beside a warmer wall white. Our guide to <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">choosing a trim color</Link> covers the trim math. Open the pair in the <Link href="/compare?color1=43638318-d603-4f65-9e5c-7598268f249c&color2=31acd35a-ece3-480c-ba53-321cb6b2fd42" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Pure White vs Snowbound</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Pure White and <Swatch hex="#edeae5" name="Snowbound" brand="SW 7004" href="/colors/sherwin-williams/snowbound-7004" /> (LRV 82.5) rate nearly identical, with an LRV gap of 1.2. The b* values are within 0.3 of each other (3.0 and 2.8), so yellowness does not separate them. Pure White is 0.5 L* lighter and sits 0.8 a* units toward green; Snowbound is the one nearer neutral on a*. Sherwin-Williams describes Snowbound as having a &quot;slight gray undertone&quot; and being a &quot;versatile cool white.&quot; Compare them in the <Link href="/compare?color1=31acd35a-ece3-480c-ba53-321cb6b2fd42&color2=eab16fdd-5803-4b22-9e20-bf115adc2832" className="text-brand-blue hover:underline">comparison tool</Link>.
+        </p>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Which pair should you sample</h2>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Want a lighter, brighter Alabaster?</strong> Sample Greek Villa. It is the closest digital match and about 2 LRV points lighter.</li>
+          <li><strong>Want a creamier Alabaster at the same brightness?</strong> Sample Creamy or Dover White, both about 2 b* units yellower.</li>
+          <li><strong>Want a heavier, more beige white?</strong> Shoji White and White Duck are both about 8 LRV points darker than Alabaster. Expect less reflected light.</li>
+          <li><strong>Want crisp trim next to a warm white?</strong> Extra White and Pure White carry the least yellow here. See the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link> families for every Sherwin-Williams option.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Cross-brand questions, such as Alabaster against Benjamin Moore White Dove, are measured in <Link href="/blog/famous-white-paints-compared" className="text-brand-blue hover:underline">our famous whites comparison</Link>. For a wider list of whites, see the <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link>, and every <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> color page lists its closest matches in other brands. Preview two whites in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, then roll out physical samples on two walls and look at them morning and evening.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── What Is LRV in Paint? 26,720 Colors Compared (2026-11-05) ──────────────── */
+  {
+    slug: "what-is-lrv-in-paint",
+    title: "What Is LRV in Paint? 26,720 Colors Compared",
+    date: "2026-11-05",
+    author: "Philip Cameron",
+    excerpt:
+      "LRV is a 0 to 100 score for how much light a paint color reflects. See how 26,720 colors from 13 brands spread across it, and which figures the maker published.",
+    coverColor: "#F7F7F1",
+    coverImage: "/blog/what-is-lrv-in-paint.webp",
+    tags: ["Guide", "Tips", "Color Theory"],
+    faq: [
+      {
+        question: "What does LRV mean in paint?",
+        answer:
+          "LRV stands for light reflectance value. It is a number from 0 to 100 that says how much light a painted surface reflects: 0 reflects none and 100 reflects all of it. A color with a high LRV looks lighter in a room, and a color with a low LRV looks darker.",
+      },
+      {
+        question: "What is a good LRV for paint?",
+        answer:
+          "It depends on the surface and the room. Our rule of thumb, which is ours and not an industry standard, is 70 and above for ceilings and trim, 50 to 70 for light neutral walls and rooms with little daylight, 30 to 50 for mid-tone walls, and under 30 for accents, cabinets and doors. Sherwin-Williams advises looking at higher-LRV colors for north-facing rooms.",
+      },
+      {
+        question: "What is the highest LRV paint color?",
+        answer:
+          "The highest manufacturer-published LRV we have checked is 94, shared by Behr Ultra Pure White and two other Behr whites. Next are Sherwin-Williams UltraWhite at 93.5 and Dunn-Edwards Warm White at 93. Benjamin Moore's lightest is Chantilly Lace at 90. A few colors in our catalog show 100.0, but those are computed from a pure white swatch and are not real paint values.",
+      },
+      {
+        question: "What are Sherwin-Williams LRV values?",
+        answer:
+          "Sherwin-Williams colors in our catalog run from 0.9 to 92.6, with a median of 39.6. These are computed from each swatch's hex value, not copied from the manufacturer. When we compared them with Sherwin-Williams' own feed on 2026-10-11, they were within 1 point on all but 13 colors. For a specification, use the figure on Sherwin-Williams' own color page.",
+      },
+      {
+        question: "Does a higher LRV mean a color is warmer or cooler?",
+        answer:
+          "No. LRV measures lightness only. Two colors with the same LRV can lean warm, cool, green or pink. To judge the lean, compare the colors side by side and look at the undertone separately.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          LRV, or light reflectance value, is a number from 0 to 100 that tells you how much light a painted surface reflects. Zero reflects none and 100 reflects all of it, so a higher LRV looks lighter on the wall and a lower one looks darker. Across the 26,720 colors in our catalog the median LRV is 44.0, and only 4.0 percent reach 85 or higher. Benjamin Moore and Behr figures are the manufacturers&apos; published LRVs. For the other 11 brands the figure is computed from the swatch color, and this post marks which is which.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What LRV measures</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams defines it on its room-orientation guide: &quot;The scale ranges from 0-100 with zero reflecting no light and 100 reflecting all light.&quot; The same page says LRV affects how dark or light a color appears in your room, and that north-facing rooms call for colors with a higher LRV. Our guide to <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">paint colors for north-facing rooms</Link> applies that advice to specific colors.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore lists an LRV on its color pages and describes a high LRV as a color that reflects a lot of light. It also uses LRV as a rule: its garage-door advice says to choose a color with an LRV of 55 or higher for a vinyl door, to avoid warping. That is the one hard cutoff we found from a manufacturer, and it is about warping on vinyl, not about how a room looks.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          LRV says nothing about hue. A cream and a pale gray can share the same number. For the warm or cool lean of a color, see our guide to <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Which LRVs here are published and which are computed</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every number in this post is the value stored in our database on 2026-10-26. They come from two sources, and the difference matters if you are specifying paint for a job.
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Manufacturer-published: Benjamin Moore and Behr.</strong> On 2026-10-11 we overwrote Benjamin Moore and Behr LRVs with the figure in the manufacturer&apos;s own feed wherever the feed had a usable one. These 9,692 colors are the only ones where the stored number is the maker&apos;s.</li>
+          <li><strong>Computed from the swatch color: the other 11 brands, 17,028 colors.</strong> We calculate relative luminance from each swatch&apos;s hex value. It is an estimate of what the manufacturer would print, not the printed figure.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          How far off can an estimate be? Before the 2026-10-11 correction, about 1,250 Benjamin Moore colors carried computed values 1 to 2 points from the published ones. <Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> showed 7.1 computed; Benjamin Moore publishes 8.36, and we now store 8.4.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/dutch-boy" className="text-brand-blue hover:underline">Dutch Boy</Link>, both of which publish LRV in their feeds, our computed values were within 1 point of the feed on all but 13 colors when we checked on 2026-10-11. Dutch Boy publishes whole numbers. Dunn-Edwards, Vista Paint, PPG and Hirshfield&apos;s also print an LRV on their color pages, and we have not yet replaced our computed values with theirs. Colorhouse, RAL, Farrow &amp; Ball, Valspar and Kilz carry no LRV in the data we collect, so those are computed too. The brand table below marks each brand.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How 26,720 colors spread across the LRV scale</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We counted every active color in the catalog into six bands. The shape is lopsided: the 10 to 30 band is the biggest, and the lightest band is the smallest.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">LRV band</th>
+                <th className="py-2 pr-4 font-semibold">Colors</th>
+                <th className="py-2 font-semibold">Share of catalog</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Under 10</td><td className="py-2 pr-4">2,065</td><td className="py-2">7.7%</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">10 to under 30</td><td className="py-2 pr-4">7,178</td><td className="py-2">26.9%</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">30 to under 50</td><td className="py-2 pr-4">5,798</td><td className="py-2">21.7%</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">50 to under 70</td><td className="py-2 pr-4">5,842</td><td className="py-2">21.9%</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">70 to under 85</td><td className="py-2 pr-4">4,764</td><td className="py-2">17.8%</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">85 and above</td><td className="py-2 pr-4">1,073</td><td className="py-2">4.0%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Three readings follow. About 22 percent of colors (5,837) sit at 70 or above, so a shopper who wants a light wall color is choosing from roughly one in five. Colors at 90 or above number 259, under 1 percent of the catalog. And 2,065 colors are under 10.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Does it matter that two-thirds of the data is computed? Split the catalog into the 9,692 published colors and the 17,028 computed ones and the shapes are nearly the same: medians of 43.0 and 44.6, and 4.0 and 4.1 percent at 85 or above. The distribution is not an artifact of the method, though individual computed numbers can be a point or two off.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">LRV by brand</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Each row shows the share of that brand&apos;s colors in each band, in percent. &quot;Published&quot; means the stored LRV is the manufacturer&apos;s feed figure. &quot;Computed&quot; means we calculated it from the swatch color.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Brand</th>
+                <th className="py-2 pr-4 font-semibold">Colors</th>
+                <th className="py-2 pr-4 font-semibold">Median LRV</th>
+                <th className="py-2 pr-4 font-semibold">Under 10</th>
+                <th className="py-2 pr-4 font-semibold">10 to 30</th>
+                <th className="py-2 pr-4 font-semibold">30 to 50</th>
+                <th className="py-2 pr-4 font-semibold">50 to 70</th>
+                <th className="py-2 pr-4 font-semibold">70 to 85</th>
+                <th className="py-2 pr-4 font-semibold">85+</th>
+                <th className="py-2 font-semibold">LRV source</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link></td>
+                <td className="py-2 pr-4">5,789</td>
+                <td className="py-2 pr-4">42.0</td>
+                <td className="py-2 pr-4">7.5</td>
+                <td className="py-2 pr-4">29.2</td>
+                <td className="py-2 pr-4">21.1</td>
+                <td className="py-2 pr-4">19.8</td>
+                <td className="py-2 pr-4">17.0</td>
+                <td className="py-2 pr-4">5.4</td>
+                <td className="py-2">Published</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link></td>
+                <td className="py-2 pr-4">3,903</td>
+                <td className="py-2 pr-4">44.4</td>
+                <td className="py-2 pr-4">6.9</td>
+                <td className="py-2 pr-4">26.9</td>
+                <td className="py-2 pr-4">22.4</td>
+                <td className="py-2 pr-4">23.7</td>
+                <td className="py-2 pr-4">18.2</td>
+                <td className="py-2 pr-4">1.8</td>
+                <td className="py-2">Published</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/ppg" className="text-brand-blue hover:underline">PPG</Link></td>
+                <td className="py-2 pr-4">3,261</td>
+                <td className="py-2 pr-4">48.1</td>
+                <td className="py-2 pr-4">5.5</td>
+                <td className="py-2 pr-4">25.4</td>
+                <td className="py-2 pr-4">21.8</td>
+                <td className="py-2 pr-4">22.9</td>
+                <td className="py-2 pr-4">22.8</td>
+                <td className="py-2 pr-4">1.7</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/vista-paint" className="text-brand-blue hover:underline">Vista Paint</Link></td>
+                <td className="py-2 pr-4">2,984</td>
+                <td className="py-2 pr-4">47.7</td>
+                <td className="py-2 pr-4">6.3</td>
+                <td className="py-2 pr-4">24.8</td>
+                <td className="py-2 pr-4">21.1</td>
+                <td className="py-2 pr-4">22.7</td>
+                <td className="py-2 pr-4">19.0</td>
+                <td className="py-2 pr-4">6.2</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/valspar" className="text-brand-blue hover:underline">Valspar</Link></td>
+                <td className="py-2 pr-4">2,358</td>
+                <td className="py-2 pr-4">45.1</td>
+                <td className="py-2 pr-4">8.8</td>
+                <td className="py-2 pr-4">25.4</td>
+                <td className="py-2 pr-4">21.1</td>
+                <td className="py-2 pr-4">23.4</td>
+                <td className="py-2 pr-4">19.2</td>
+                <td className="py-2 pr-4">2.2</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/dunn-edwards" className="text-brand-blue hover:underline">Dunn-Edwards</Link></td>
+                <td className="py-2 pr-4">2,230</td>
+                <td className="py-2 pr-4">43.5</td>
+                <td className="py-2 pr-4">6.6</td>
+                <td className="py-2 pr-4">28.3</td>
+                <td className="py-2 pr-4">21.3</td>
+                <td className="py-2 pr-4">17.0</td>
+                <td className="py-2 pr-4">15.1</td>
+                <td className="py-2 pr-4">11.7</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link></td>
+                <td className="py-2 pr-4">1,950</td>
+                <td className="py-2 pr-4">39.6</td>
+                <td className="py-2 pr-4">10.8</td>
+                <td className="py-2 pr-4">27.5</td>
+                <td className="py-2 pr-4">23.9</td>
+                <td className="py-2 pr-4">21.1</td>
+                <td className="py-2 pr-4">15.5</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/hirshfields" className="text-brand-blue hover:underline">Hirshfield&apos;s</Link></td>
+                <td className="py-2 pr-4">1,469</td>
+                <td className="py-2 pr-4">46.4</td>
+                <td className="py-2 pr-4">8.6</td>
+                <td className="py-2 pr-4">23.3</td>
+                <td className="py-2 pr-4">21.7</td>
+                <td className="py-2 pr-4">24.0</td>
+                <td className="py-2 pr-4">18.3</td>
+                <td className="py-2 pr-4">4.1</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/dutch-boy" className="text-brand-blue hover:underline">Dutch Boy</Link></td>
+                <td className="py-2 pr-4">1,441</td>
+                <td className="py-2 pr-4">43.9</td>
+                <td className="py-2 pr-4">9.0</td>
+                <td className="py-2 pr-4">26.4</td>
+                <td className="py-2 pr-4">22.2</td>
+                <td className="py-2 pr-4">24.8</td>
+                <td className="py-2 pr-4">16.4</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/kilz" className="text-brand-blue hover:underline">Kilz</Link></td>
+                <td className="py-2 pr-4">827</td>
+                <td className="py-2 pr-4">40.2</td>
+                <td className="py-2 pr-4">7.4</td>
+                <td className="py-2 pr-4">29.0</td>
+                <td className="py-2 pr-4">23.1</td>
+                <td className="py-2 pr-4">24.2</td>
+                <td className="py-2 pr-4">14.0</td>
+                <td className="py-2 pr-4">2.3</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/ral" className="text-brand-blue hover:underline">RAL</Link></td>
+                <td className="py-2 pr-4">213</td>
+                <td className="py-2 pr-4">14.5</td>
+                <td className="py-2 pr-4">39.0</td>
+                <td className="py-2 pr-4">37.6</td>
+                <td className="py-2 pr-4">13.6</td>
+                <td className="py-2 pr-4">5.2</td>
+                <td className="py-2 pr-4">1.9</td>
+                <td className="py-2 pr-4">2.8</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link></td>
+                <td className="py-2 pr-4">167</td>
+                <td className="py-2 pr-4">43.9</td>
+                <td className="py-2 pr-4">9.6</td>
+                <td className="py-2 pr-4">25.1</td>
+                <td className="py-2 pr-4">21.0</td>
+                <td className="py-2 pr-4">27.5</td>
+                <td className="py-2 pr-4">15.0</td>
+                <td className="py-2 pr-4">1.8</td>
+                <td className="py-2">Computed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Link href="/brands/colorhouse" className="text-brand-blue hover:underline">Colorhouse</Link></td>
+                <td className="py-2 pr-4">128</td>
+                <td className="py-2 pr-4">52.7</td>
+                <td className="py-2 pr-4">10.9</td>
+                <td className="py-2 pr-4">17.2</td>
+                <td className="py-2 pr-4">20.3</td>
+                <td className="py-2 pr-4">27.3</td>
+                <td className="py-2 pr-4">14.8</td>
+                <td className="py-2 pr-4">9.4</td>
+                <td className="py-2">Computed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The only like-for-like comparison here is Behr against Benjamin Moore, because both are published. Behr has 311 colors at 85 or above (5.4 percent of its line) and Benjamin Moore has 72 (1.8 percent). Behr&apos;s median is 42.0 and Benjamin Moore&apos;s is 44.4.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The computed brands need more care. Sherwin-Williams has the lowest median of any line with more than 1,000 colors, 39.6, and 10.8 percent of its colors fall under 10. Given the 1-point agreement with its feed, we trust that reading. PPG (48.1) and Vista Paint (47.7) have the highest medians, but those are computed from hex and neither brand&apos;s printed values are loaded yet. Dunn-Edwards shows 11.7 percent at 85 or above, the top share of any large line, and 51 of its colors compute above 94.5, a ceiling we use as a sanity check. We read that band as a side effect of computing from near-white swatches, not as a fact about Dunn-Edwards paint. RAL is the outlier at a median of 14.5, with 39.0 percent of its 213 colors under 10.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The lightest white each brand sells</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For the brightest whites we went past our stored numbers and checked each manufacturer&apos;s own site or palette feed in October 2026. Where a brand publishes no usable LRV, the figure is our estimate from the swatch color and is marked that way.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Brand</th>
+                <th className="py-2 pr-4 font-semibold">Lightest white</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Source</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Behr</td><td className="py-2 pr-4"><Link href="/colors/behr/ultra-pure-white-upw" className="text-brand-blue hover:underline">Ultra Pure White</Link> (UPW)</td><td className="py-2 pr-4">94</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Sherwin-Williams</td><td className="py-2 pr-4"><Link href="/colors/sherwin-williams/ultrawhite-9500" className="text-brand-blue hover:underline">UltraWhite</Link> (SW 9500)</td><td className="py-2 pr-4">93.5</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Dunn-Edwards</td><td className="py-2 pr-4"><Link href="/colors/dunn-edwards/white-dew380" className="text-brand-blue hover:underline">Warm White</Link> (DEW380)</td><td className="py-2 pr-4">93</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Dutch Boy</td><td className="py-2 pr-4"><Link href="/colors/dutch-boy/super-white-001w" className="text-brand-blue hover:underline">Super White</Link> (001W)</td><td className="py-2 pr-4">92</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Benjamin Moore</td><td className="py-2 pr-4"><Link href="/colors/benjamin-moore/chantilly-lace-2121-70" className="text-brand-blue hover:underline">Chantilly Lace</Link> (2121-70)</td><td className="py-2 pr-4">90</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Hirshfield&apos;s</td><td className="py-2 pr-4"><Link href="/colors/hirshfields/touch-of-sun-852" className="text-brand-blue hover:underline">Touch of Sun</Link> (0852)</td><td className="py-2 pr-4">90</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Vista Paint</td><td className="py-2 pr-4"><Link href="/colors/vista-paint/touch-of-sun-c-851" className="text-brand-blue hover:underline">Touch of Sun</Link> (0852)</td><td className="py-2 pr-4">90</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">PPG</td><td className="py-2 pr-4"><Link href="/colors/ppg/soft-candlelight-61yy-89-135" className="text-brand-blue hover:underline">Soft Candlelight</Link> (61YY 89/135)</td><td className="py-2 pr-4">89</td><td className="py-2">Manufacturer</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Farrow &amp; Ball</td><td className="py-2 pr-4"><Link href="/colors/farrow-ball/all-white-2005" className="text-brand-blue hover:underline">All White</Link> (2005)</td><td className="py-2 pr-4">94.2 est.</td><td className="py-2">Our estimate</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Kilz</td><td className="py-2 pr-4"><Link href="/colors/kilz/ultra-bright-white-tb-01" className="text-brand-blue hover:underline">Ultra Bright White</Link> (TB-01)</td><td className="py-2 pr-4">93.3 est.</td><td className="py-2">Our estimate</td></tr>
+              <tr className="border-b border-gray-100"><td className="py-2 pr-4">Valspar</td><td className="py-2 pr-4"><Link href="/colors/valspar/ultra-white-7006-24" className="text-brand-blue hover:underline">Ultra White</Link> (7006-24)</td><td className="py-2 pr-4">92.6 est.</td><td className="py-2">Our estimate</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The answer to &quot;highest LRV paint&quot; is a tie, not a single winner. Behr publishes 94 for Ultra Pure White and for two more whites in its line, Stately White and Blanca Peak, and Sherwin-Williams UltraWhite follows at 93.5. Leave the estimated rows out of that comparison: a computed figure can sit above a published one without the paint being any brighter. The same caution applies to the handful of catalog colors that compute to 100.0 from a pure #ffffff swatch, since a painted film never reflects all light. Some published figures here also differ from the LRV on our color pages, which for most brands is still the computed value. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/off-white" className="text-brand-blue hover:underline">off-white</Link> families to sort the bright end.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">LRV bands by room use: our guide</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This table is our own guide, built from where the catalog&apos;s colors fall and from what LRV measures. It is not an industry standard, and we did not find room-by-room cutoffs on the manufacturer pages we read. Read the bands as starting points, then check them against your light. The Benjamin Moore examples carry published LRVs; the Sherwin-Williams examples are computed.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">LRV band (share)</th>
+                <th className="py-2 pr-4 font-semibold">Examples (LRV)</th>
+                <th className="py-2 font-semibold">Where we would use it</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">85 and above (4.0%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#f7f7f1" name="High Reflective White" brand="SW 7757" href="/colors/sherwin-williams/high-reflective-white-7757" /> (92.6)<br /><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /> (85.9)</td>
+                <td className="py-2">Ceilings and trim where you want the brightest surface in the room.</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">70 to under 85 (17.8%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /> (83.2)<br /><Swatch hex="#edeae0" name="Alabaster" brand="SW 7008" href="/colors/sherwin-williams/alabaster-7008" /> (82.2)<br /><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> (74.3)</td>
+                <td className="py-2">Whole-room whites, softer trim, and walls in small or dim rooms where you want light bounced around.</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">50 to under 70 (21.9%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6)<br /><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /> (63.3)<br /><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /> (60.1)<br /><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (55.1)</td>
+                <td className="py-2">Light neutral walls. The upper half of the band, 60 and up, is the safer pick for north-facing rooms.</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">30 to under 50 (21.7%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#c0b2a2" name="Balanced Beige" brand="SW 7037" href="/colors/sherwin-williams/balanced-beige-7037" /> (45.7)</td>
+                <td className="py-2">Mid-tone walls in rooms with plenty of daylight, where a color can look deeper without closing the room in.</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">10 to under 30 (26.9%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#686763" name="Kendall Charcoal" brand="BM HC-166" href="/colors/benjamin-moore/kendall-charcoal-hc-166" /> (14.6)</td>
+                <td className="py-2">Accent walls, cabinets and doors. This is the largest band in the catalog.</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Under 10 (7.7%)</td>
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (8.4)<br /><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /> (5.6)<br /><Swatch hex="#2f2f30" name="Tricorn Black" brand="SW 6258" href="/colors/sherwin-williams/tricorn-black-6258" /> (2.9)</td>
+                <td className="py-2">Front doors, shutters and small accents, where the color is the point.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two cautions on the table. First, the gap between two colors often matters more than either number, which is why our <Link href="/blog/how-to-choose-trim-color" className="text-brand-blue hover:underline">trim color guide</Link> works in LRV differences. Second, a ceiling reads as a step only when it is lighter than the walls: a ceiling in the 70 to 85 band over walls in the 50 to 70 band opens a gap of 10 points or more. Our <Link href="/blog/ceiling-paint-color" className="text-brand-blue hover:underline">ceiling paint color</Link> post has measured pairs.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to check a color&apos;s LRV</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Open the color&apos;s page on Paint Color HQ. Every color page lists its LRV.</li>
+          <li>If the number decides a purchase, confirm it against the manufacturer&apos;s color page or the back of the chip. Treat our figure for any brand other than Benjamin Moore and Behr as an estimate.</li>
+          <li>Put two candidates side by side in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> to see both LRVs next to each other.</li>
+          <li>If you only have a hex code or a photo of a painted wall, the <Link href="/tools/color-identifier" className="text-brand-blue hover:underline">color identifier</Link> lists the closest paint colors, each with its LRV on its color page. A match found this way is a digital match, so confirm it with a physical sample.</li>
+          <li>Paint a large sample and look at it in the room at several times of day. LRV predicts relative lightness, not how your window and bulbs will treat it.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For the bright end of the scale, see our guide to the <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors</Link>. For the grays and greiges in the middle bands, browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>, and compare brands on the <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> pages, the two lines whose LRVs here are the manufacturer&apos;s own.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Bedroom paint colors by window direction (2026-11-03) ──────────────── */
+  {
+    slug: "best-bedroom-paint-colors",
+    title: "Bedroom Paint Colors by Window Direction",
+    date: "2026-11-03",
+    author: "Philip Cameron",
+    excerpt:
+      "Bedroom paint colors sorted by window direction and LRV, using paint-maker light guidance for north, south, east and west rooms, plus dark picks.",
+    coverColor: "#cdd2ca",
+    coverImage: "/blog/best-bedroom-paint-colors.webp",
+    tags: ["Bedroom", "Guide", "Tips"],
+    faq: [
+      {
+        question: "What are the best bedroom paint colors?",
+        answer:
+          "It depends on which way the bedroom windows face. Sherwin-Williams advises warm neutrals with a higher LRV for north-facing rooms. Benjamin Moore suggests cool-leaning whites, grays and greiges for the warm light of south- and west-facing rooms, and clean warm whites for east-facing rooms. Check the direction first, then sample two or three colors on the wall.",
+      },
+      {
+        question: "What color should a north-facing bedroom be?",
+        answer:
+          "Sherwin-Williams says to avoid cool undertones in a north-facing room and choose a warm neutral instead, with a higher LRV. Its own north-facing picks are Antique White, Worldly Gray and Greek Villa. Benjamin Moore suggests a white with a hint of yellow, and Farrow & Ball says to avoid blue or gray bases in lighter shades.",
+      },
+      {
+        question: "What color is best for a bedroom that gets afternoon sun?",
+        answer:
+          "Benjamin Moore says west-facing rooms get stronger, warmer light after noon and suggests cool-toned whites, grays and greiges to even it out. Its west-facing easy picks are White Dove, Metropolitan and Revere Pewter. Sherwin-Williams adds that if you use a west-facing bedroom at all hours, a neutral gives a balanced feel through the day.",
+      },
+      {
+        question: "Can you paint a bedroom a dark color?",
+        answer:
+          "Yes. Benjamin Moore says a south-facing room gets enough light to carry moodier, darker colors and lists Coastline, Mulberry Wine and Evening Dove. For a north-facing room, Sherwin-Williams says a bold dark color should still have warm undertones, while Farrow & Ball suggests embracing the cool light with a deep color such as Railings or Down Pipe.",
+      },
+      {
+        question: "What LRV should bedroom paint have?",
+        answer:
+          "LRV, light reflectance value, runs from 0 (black) to 100 (white). Sherwin-Williams says to look at higher-LRV colors in north-facing rooms. In this guide the light picks run from 87.4 (Super White) down to 50.0 (Metropolitan), and the dark picks fall between 14.6 (Kendall Charcoal) and 5.6 (Iron Ore).",
+      },
+      {
+        question: "Does a bedroom paint color look different at night?",
+        answer:
+          "Yes, because electric light replaces daylight. Sherwin-Williams says that with little natural light you should choose colors by the lighting you use: warm bulbs suit the colors you would pick for a south-facing room, and white or cool bulbs suit north-facing colors. Test your sample under the bulbs you use in the evening.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The best bedroom paint color depends on which way the windows face. Paint makers give different advice for each direction: warm neutrals with a higher light reflectance value (LRV) for north light, cool-leaning whites and grays for the warm light of south and west rooms, and clean warm whites for east rooms. Below are picks for each direction with their LRV, plus dark bedroom colors and the closest matches in other brands.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Start with the direction your windows face</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams tells you to point a compass at the largest windows in the room: whichever way the dial points is the room&apos;s orientation. Benjamin Moore explains why it matters. The light from each direction has a different intensity and cast, and that changes how a paint color looks on the wall, most of all for whites, grays and neutrals.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Each section below summarizes what Sherwin-Williams, Benjamin Moore and Farrow &amp; Ball say about that direction, then lists colors in a table. Two measured numbers sit beside each color. <strong>LRV</strong> is the share of light a color reflects, from 0 to 100, and every color page on Paint Color HQ lists it. <strong>Yellowness</strong> is the b* value of the color&apos;s published color data, the yellow-to-blue axis of the CIELAB color space. A higher number is yellower, zero is neither, and a negative number leans blue.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">North-facing bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams says north-facing rooms receive the least light through the day and have cool lighting. It advises avoiding cool undertones, which make the room look colder, and choosing a warm neutral or a color with warm undertones. Its tip for judging this is to look at LRV and favor higher numbers. Benjamin Moore recommends a clean white with a hint of yellow and says north light can be muted. Farrow &amp; Ball says northern light brings out cooler tones, so a lighter shade should avoid a blue or gray base.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">Who lists it</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f0ece2" name="Greek Villa" brand="SW 7551" href="/colors/sherwin-williams/greek-villa-7551" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, north-facing list</td>
+                <td className="py-2 pr-4">84.0</td>
+                <td className="py-2">5.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#eeece1" name="Swiss Coffee" brand="BM OC-45" href="/colors/benjamin-moore/swiss-coffee-oc-45" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, off-white pick</td>
+                <td className="py-2 pr-4">81.9</td>
+                <td className="py-2">5.6</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e8dcc6" name="Antique White" brand="SW 6119" href="/colors/sherwin-williams/antique-white-6119" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, north-facing list</td>
+                <td className="py-2 pr-4">72.4</td>
+                <td className="py-2">12.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d4d5cd" name="Gray Owl" brand="BM 2137-60" href="/colors/benjamin-moore/gray-owl-2137-60" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, gray pick</td>
+                <td className="py-2 pr-4">64.5</td>
+                <td className="py-2">3.8</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cec6bb" name="Worldly Gray" brand="SW 7043" href="/colors/sherwin-williams/worldly-gray-7043" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, north-facing list</td>
+                <td className="py-2 pr-4">57.1</td>
+                <td className="py-2">6.5</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cec1a9" name="Bleeker Beige" brand="BM HC-80" href="/colors/benjamin-moore/bleeker-beige-hc-80" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, neutral pick</td>
+                <td className="py-2 pr-4">51.7</td>
+                <td className="py-2">13.7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s three picks on its north page are described as versatile across exposures, not as north-only colors, so read them as safe starting points. The data shows the pattern the paint makers describe. Every color in the table is at LRV 51.7 or higher, and all six carry some yellow, from 3.8 for Gray Owl to 13.7 for Bleeker Beige. If you want the brightest north bedroom, the two whites at 81.9 and 84.0 reflect the most light. For a warmer, creamier wall, Antique White carries more than twice the yellow of Greek Villa. The <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">guide to the best paint colors for north-facing rooms</Link> goes deeper on this direction.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">South-facing bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams says south-facing rooms get consistent warm light and are the easy case, because most colors work. Its caution is not to pick something so warm that it feels too bold at points in the day. Benjamin Moore says southern light is strong and often warmer, and recommends a white with a hint of gray or blue to counter the amber cast, a blue-toned gray, and greens, blues and violets. It also says slightly darker hues keep colors from washing out.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">Who lists it</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f1f0e7" name="Steam" brand="BM AF-15" href="/colors/benjamin-moore/steam-af-15" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, off-white pick</td>
+                <td className="py-2 pr-4">84.2</td>
+                <td className="py-2">4.5</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c2cdc5" name="Rainwashed" brand="SW 6211" href="/colors/sherwin-williams/rainwashed-6211" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, south-facing list</td>
+                <td className="py-2 pr-4">59.2</td>
+                <td className="py-2">2.7</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#bfc9d0" name="Upward" brand="SW 6239" href="/colors/sherwin-williams/upward-6239" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, south-facing list</td>
+                <td className="py-2 pr-4">57.4</td>
+                <td className="py-2">-4.7</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc9c0" name="Repose Gray" brand="SW 7015" href="/colors/sherwin-williams/repose-gray-7015" /></td>
+                <td className="py-2 pr-4">Sherwin-Williams, south-facing list</td>
+                <td className="py-2 pr-4">58.4</td>
+                <td className="py-2">4.9</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d5cab0" name="Hush" brand="BM AF-95" href="/colors/benjamin-moore/hush-af-95" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, neutral pick</td>
+                <td className="py-2 pr-4">57.1</td>
+                <td className="py-2">14.4</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#686763" name="Kendall Charcoal" brand="BM HC-166" href="/colors/benjamin-moore/kendall-charcoal-hc-166" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, gray pick</td>
+                <td className="py-2 pr-4">14.6</td>
+                <td className="py-2">2.4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Upward is the only color in this table with a negative score, so it is the one that leans blue, which matches Benjamin Moore&apos;s advice to counter amber light. Rainwashed is the one with a green lean, at an a* (the green-to-red axis) of -5.2. If you want that look a step lighter, <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sea Salt</Link> (LRV 63.3, a* -3.2) is not on Sherwin-Williams&apos; south list but sits in the same green-gray range. Since south light is the strongest, it is also the direction where a mid or deep color holds up, which is why the dark section below leans on it. Mid-tone blue-grays and greens are collected in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> families.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">East-facing bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          East rooms change the most through the day. Benjamin Moore says they get more direct light in the morning and more muted, indirect light past noon, with a cooler cast in the afternoon. It recommends clean, warm whites, a lighter gray with a hint of warmth, and mid-tones that balance bright mornings and dim afternoons. Its example of a bedroom is one where you dress in the bright morning. Farrow &amp; Ball splits the advice by use: if you are in the room mostly in the evening, it suggests light blues and greens or a deep shade, and if you use it by day, brighter shades that suit the morning sun.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">Who lists it</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#f1f2ee" name="Super White" brand="BM OC-152" href="/colors/benjamin-moore/super-white-oc-152" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, off-white pick</td>
+                <td className="py-2 pr-4">87.4</td>
+                <td className="py-2">1.8</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e5e0d0" name="Ballet White" brand="BM OC-9" href="/colors/benjamin-moore/ballet-white-oc-9" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, neutral pick</td>
+                <td className="py-2 pr-4">72.0</td>
+                <td className="py-2">8.4</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#d4e2e2" name="Ocean Air" brand="BM 2123-50" href="/colors/benjamin-moore/ocean-air-2123-50" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, lighter and airier</td>
+                <td className="py-2 pr-4">71.8</td>
+                <td className="py-2">-1.6</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#efd5cf" name="Pleasant Pink" brand="BM 2094-60" href="/colors/benjamin-moore/pleasant-pink-2094-60" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, lighter and airier</td>
+                <td className="py-2 pr-4">68.9</td>
+                <td className="py-2">6.3</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cbccc6" name="Stonington Gray" brand="BM HC-170" href="/colors/benjamin-moore/stonington-gray-hc-170" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, gray pick</td>
+                <td className="py-2 pr-4">59.4</td>
+                <td className="py-2">2.9</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c8ceae" name="Spring Meadow" brand="BM 486" href="/colors/benjamin-moore/spring-meadow-486" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, lighter and airier</td>
+                <td className="py-2 pr-4">56.9</td>
+                <td className="py-2">15.2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore&apos;s east advice and its west advice point in opposite directions: clean warm whites for east, cool-toned whites for west. Super White has the lowest yellowness of any white in this guide at 1.8, so it is the cleanest of the east options, while Ballet White at 8.4 is the creamiest. Sherwin-Williams treats east and west together and says that for a bedroom, which is used at all hours, a neutral gives a balanced feel. That points to a mid-value neutral such as <Link href="/colors/sherwin-williams/accessible-beige-7036" className="text-brand-blue hover:underline">Accessible Beige</Link> (LRV 57.9, yellowness 8.8) if you cannot decide which time of day matters most. More like it are in the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">West-facing bedrooms</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Benjamin Moore says west rooms get indirect, somewhat muted light in the morning and stronger, warmer, often amber light past noon. Its advice is cool-toned colors to even that out: whites with cool blue tones, a slightly cool gray, or a greige with cool undertones. Farrow &amp; Ball notes west light is cooler in the morning and brighter in the afternoon, and says warm tones such as Middleton Pink suit the late golden light.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">Who lists it</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 font-semibold">Yellowness (b*)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, off-white pick</td>
+                <td className="py-2 pr-4">83.2</td>
+                <td className="py-2">4.5</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, neutral pick</td>
+                <td className="py-2 pr-4">55.1</td>
+                <td className="py-2">7.6</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#bbbeb9" name="Metropolitan" brand="BM AF-690" href="/colors/benjamin-moore/metropolitan-af-690" /></td>
+                <td className="py-2 pr-4">Benjamin Moore, gray pick</td>
+                <td className="py-2 pr-4">50.0</td>
+                <td className="py-2">2.2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Metropolitan is the cleanest and the deepest of the three (LRV 50.0, yellowness 2.2). Revere Pewter is the warmest, so if you choose it in a west room, expect it to read warmer under afternoon sun than the cool-toned colors Benjamin Moore describes. Recommendation: for a west bedroom you use mostly at night, take the lower-yellowness options, Metropolitan or Sea Salt (yellowness 3.4, LRV 63.3), and check them with a sample at 5 p.m. and again under the lamps you use.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Choose your LRV band</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Direction tells you the cast. LRV tells you how light or dark the room will feel. Sorting every pick in the tables by LRV gives four bands:
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">LRV band</th>
+                <th className="py-2 font-semibold">Picks from this guide (LRV)</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">70 and above</td>
+                <td className="py-2">Super White (87.4), Steam (84.2), Greek Villa (84.0), White Dove (83.2), Swiss Coffee (81.9), Antique White (72.4), Ballet White (72.0), Ocean Air (71.8)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">50 to 69.9</td>
+                <td className="py-2">Pleasant Pink (68.9), <Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /> (68.6), Gray Owl (64.5), Sea Salt (63.3), Stonington Gray (59.4), Rainwashed (59.2), Repose Gray (58.4), Accessible Beige (57.9), Upward (57.4), Hush (57.1), Worldly Gray (57.1), Spring Meadow (56.9), Revere Pewter (55.1), Bleeker Beige (51.7), Metropolitan (50.0)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">30 to 49.9</td>
+                <td className="py-2"><Swatch hex="#b7b9a6" name="October Mist" brand="BM 1495" href="/colors/benjamin-moore/october-mist-1495" /> (46.5), Coastline (33.9), <Swatch hex="#95978a" name="Evergreen Fog" brand="SW 9130" href="/colors/sherwin-williams/evergreen-fog-9130" /> (30.4)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Under 30</td>
+                <td className="py-2">Kendall Charcoal (14.6), Evening Dove (12.0), Hale Navy (8.4), <Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /> (8.1), <Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /> (5.6)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Recommendation, based on the Sherwin-Williams advice to favor higher LRV in north rooms: in a north bedroom, stay at 50 or above unless you are deliberately going dark. In a south bedroom the whole range is open. In an east or west room, the 50 to 70 band gives the most stable result across the day, since it is neither washed out by morning sun nor swallowed by evening shadow. That last point is our reasoning from the paint makers&apos; descriptions of shifting light, not a published rule, so confirm it with a sample. The <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> explains why two colors with the same LRV can still look different on a wall.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark bedroom paint colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The paint makers agree that dark bedrooms work, with a condition that depends on direction. Benjamin Moore says a south-facing room gets enough light to carry moodier colors and lists Coastline, Mulberry Wine and Evening Dove. Sherwin-Williams says that in a north room a bold dark color should still have warm undertones. Farrow &amp; Ball takes the other route for north: embrace the cool light with a deep color such as Railings or Down Pipe.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Yellowness (b*)</th>
+                <th className="py-2 font-semibold">Direction note</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#929ea9" name="Coastline" brand="BM AF-570" href="/colors/benjamin-moore/coastline-af-570" /></td>
+                <td className="py-2 pr-4">33.9</td>
+                <td className="py-2 pr-4">-7.2</td>
+                <td className="py-2">Benjamin Moore, south-facing dark list</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#525b68" name="Evening Dove" brand="BM 2128-30" href="/colors/benjamin-moore/evening-dove-2128-30" /></td>
+                <td className="py-2 pr-4">12.0</td>
+                <td className="py-2 pr-4">-8.6</td>
+                <td className="py-2">Benjamin Moore, south-facing dark list</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
+                <td className="py-2 pr-4">8.4</td>
+                <td className="py-2 pr-4">-7.6</td>
+                <td className="py-2">Deep blue, strongest blue lean of our dark picks after Evening Dove</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#686763" name="Kendall Charcoal" brand="BM HC-166" href="/colors/benjamin-moore/kendall-charcoal-hc-166" /></td>
+                <td className="py-2 pr-4">14.6</td>
+                <td className="py-2 pr-4">2.4</td>
+                <td className="py-2">Benjamin Moore gray pick, any direction</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /></td>
+                <td className="py-2 pr-4">8.1</td>
+                <td className="py-2 pr-4">4.1</td>
+                <td className="py-2">Recommendation for north: the most yellow of the deep picks</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#434341" name="Iron Ore" brand="SW 7069" href="/colors/sherwin-williams/iron-ore-7069" /></td>
+                <td className="py-2 pr-4">5.6</td>
+                <td className="py-2 pr-4">1.2</td>
+                <td className="py-2">Near-neutral, the lowest LRV here</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For a north bedroom, test Urbane Bronze first. Sherwin-Williams&apos; rule is about warm undertones, and we measure warmth as yellowness: Urbane Bronze scores 4.1, the highest of the deep picks and more than three times Iron Ore&apos;s 1.2. A color at LRV 5.6 to 8.4 reflects under 10 percent of the light that hits it, so plan lamps or sconces for the room. If you do not want four dark walls, put the deep color on one wall and a light color from the north list on the rest, and try the combination in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Closest matches in other brands</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If the color you want is in a brand your store does not carry, these are the closest matches from our database, labeled by how close they read. These are digital matches, so confirm each with a physical sample before buying gallons.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Pick</th>
+                <th className="py-2 pr-4 font-semibold">Behr</th>
+                <th className="py-2 pr-4 font-semibold">Sherwin-Williams / Benjamin Moore</th>
+                <th className="py-2 font-semibold">Farrow &amp; Ball</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Swiss Coffee</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/silver-leaf-w-f-720" className="text-brand-blue hover:underline">Silver Leaf</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/cotton-9581" className="text-brand-blue hover:underline">Cotton</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/au-lait-cb9" className="text-brand-blue hover:underline">Au Lait</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Greek Villa</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/salt-crystal-qe-25" className="text-brand-blue hover:underline">Salt Crystal</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/dune-white-968" className="text-brand-blue hover:underline">Dune White</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/au-lait-cb9" className="text-brand-blue hover:underline">Au Lait</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Sea Salt</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/silver-setting-pwl-89" className="text-brand-blue hover:underline">Silver Setting</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/gray-cashmere-2138-60" className="text-brand-blue hover:underline">Gray Cashmere</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/skylight-205" className="text-brand-blue hover:underline">Skylight</Link> (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pale Oak</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/campfire-ash-n320-1" className="text-brand-blue hover:underline">Campfire Ash</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/oat-milk-9501" className="text-brand-blue hover:underline">Oat Milk</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/ammonite-274" className="text-brand-blue hover:underline">Ammonite</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Repose Gray</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/gratifying-gray-dc-008" className="text-brand-blue hover:underline">Gratifying Gray</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/apparition-860" className="text-brand-blue hover:underline">Apparition</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/cornforth-white-228" className="text-brand-blue hover:underline">Cornforth White</Link> (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Revere Pewter</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/coliseum-marble-ppu8-16" className="text-brand-blue hover:underline">Coliseum Marble</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/simple-stone-9521" className="text-brand-blue hover:underline">Simple Stone</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/cromarty-285" className="text-brand-blue hover:underline">Cromarty</Link> (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Hale Navy</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/sea-mariner-9640" className="text-brand-blue hover:underline">Sea Mariner</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/railings-31" className="text-brand-blue hover:underline">Railings</Link> (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Kendall Charcoal</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/mined-coal-ppu18-18" className="text-brand-blue hover:underline">Mined Coal</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/storm-warning-9555" className="text-brand-blue hover:underline">Storm Warning</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/down-pipe-26" className="text-brand-blue hover:underline">Down Pipe</Link> (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Urbane Bronze</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/black-bean-790d-7" className="text-brand-blue hover:underline">Black Bean</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/dragons-breath-1547" className="text-brand-blue hover:underline">Dragon&apos;s Breath</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/liquorice-cb10" className="text-brand-blue hover:underline">Liquorice</Link> (very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Evergreen Fog</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/shady-willow-ecc-36-1" className="text-brand-blue hover:underline">Shady Willow</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/storm-cloud-gray-2140-40" className="text-brand-blue hover:underline">Storm Cloud Gray</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/farrow-ball/pigeon-25" className="text-brand-blue hover:underline">Pigeon</Link> (very similar)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          In this table the Farrow &amp; Ball column is where pairs most often fall to very similar rather than nearly identical, so those are the ones most worth sampling. Our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> shows any two of these side by side with both LRVs. Each color page also lists the closest match in every other brand.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">More bedroom picks by brand and mood</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This guide sorts by light. Our other bedroom guides sort by something else:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">Designer-favorite bedroom colors in soft blues, greens and warm neutrals</Link> if mood is your first filter.</li>
+          <li><Link href="/blog/best-benjamin-moore-bedroom-colors" className="text-brand-blue hover:underline">The best Benjamin Moore bedroom colors</Link>, with a deep navy feature wall. All brand details are on the <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore brand page</Link>.</li>
+          <li><Link href="/blog/best-behr-colors-for-bedrooms" className="text-brand-blue hover:underline">The best Behr bedroom colors</Link> if you are buying at a home center.</li>
+          <li><Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">The best paint colors for north-facing rooms</Link> for the full north-light write-up.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams colors in this guide are also on the <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams brand page</Link>, and the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families list every neutral by LRV.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to choose in five steps</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Find your window direction with a compass pointed at the largest window.</li>
+          <li>Pick the direction&apos;s table above and note the cast it needs: warm for north, cool-leaning for south and west, clean and warm for east.</li>
+          <li>Choose an LRV band. Stay at 50 or above in a north room unless you are going dark on purpose.</li>
+          <li>Preview two or three colors in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, then build the full scheme, including trim, in the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.</li>
+          <li>Put a sample on the wall and look at it in the morning, in the afternoon and under your evening bulbs.</li>
+        </ol>
+      </>
+    ),
+  },
+
+  /* ──────────────── Accent Wall Colors and What to Pair Them With (2026-10-29) ──────────────── */
+  {
+    slug: "accent-wall-colors",
+    title: "Accent Wall Colors and What to Pair Them With",
+    date: "2026-10-29",
+    author: "Philip Cameron",
+    excerpt:
+      "Green, blue, brown and rust accent wall colors, each paired with the base color for the other three walls, plus the LRV gap between them measured.",
+    coverColor: "#2f3d4c",
+    coverImage: "/blog/accent-wall-colors.webp",
+    tags: ["Guide", "Tips", "Bedroom"],
+    faq: [
+      {
+        question: "Which wall should be the accent wall?",
+        answer:
+          "Sherwin-Williams says the wall that comes into view opposite the main entrance is often the most appropriate feature wall. Benjamin Moore advises selecting a wall with purpose, one your eye is drawn to immediately, and avoiding walls you would rather blend into the room.",
+      },
+      {
+        question: "How dark should an accent wall be compared to the other walls?",
+        answer:
+          "Sherwin-Williams suggests a color a few shades darker than the other walls. Farrow & Ball advises avoiding really strong contrasts between the accent and the three adjacent walls. In its own feature wall pairings, the gap in light reflectance value (LRV) between accent and wall has a median of 28.2 points for the lighter pairings and 46.4 to 59.7 points for its dark ones.",
+      },
+      {
+        question: "What color wall goes with a navy accent wall?",
+        answer:
+          "Benjamin Moore lists Coventry Gray, White Dove, Lenox Tan and Glacier White as color combinations for Hale Navy. Sherwin-Williams lists Icicle, Ramie and Roycroft Suede as coordinating colors for Naval. Farrow & Ball pairs Hague Blue with Hardwick White walls.",
+      },
+      {
+        question: "What accent wall colors work with gray walls?",
+        answer:
+          "Manufacturer pairings for gray walls include Hale Navy on Coventry Gray (Benjamin Moore), Coral Rose on Agreeable Gray (Sherwin-Williams), and Plummett on Pavilion Gray or Down Pipe on Blue Gray (Farrow & Ball). The LRV gap in those four pairs runs from 28.3 to 39.8 points.",
+      },
+      {
+        question: "Is a brown accent wall too dark for a bedroom?",
+        answer:
+          "Dark colors reflect little light, so the effect depends on the room. Urbane Bronze has an LRV of 8.1 and Evergreen Fog has an LRV of 30.4. Sherwin-Williams suggests Evergreen Fog for a bedroom, and a mid-LRV accent behind the bed leaves more light in the room than a very dark one.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          Pick the wall that faces the entrance, then paint it a color that is a few shades darker than the other three. Sherwin-Williams, Benjamin Moore and Farrow &amp; Ball all publish pairings of accent and base colors, and we measured the light reflectance value (LRV) gap in each one. Farrow &amp; Ball&apos;s lighter pairings have a median gap of 28.2 LRV points, its dark ones run 46.4 to 59.7, and the Sherwin-Williams and Benjamin Moore pairings in this post run from 31.9 to 77.8 because most of them use a white wall.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Which wall to accent</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two of the three manufacturers answer this directly. Sherwin-Williams says: &quot;the wall that comes into view opposite the main entrance to the room is often the most appropriate one to use as your feature wall.&quot; Benjamin Moore says: &quot;When choosing an accent wall, select a wall with purpose&quot; because &quot;your eye will be drawn to it immediately,&quot; and to &quot;avoid walls you&apos;d like to hide or blend into the room.&quot; Farrow &amp; Ball does not name a wall, but its colour expert, Patrick, gives a rule for the color, covered below.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Our recommendation combines the two: when the wall opposite the door also holds the bed, sofa or fireplace, it is the one to paint. Skip a wall broken up by several doors or windows, because the color has little solid surface to show on.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How far apart should accent and base be?</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The manufacturers disagree a little. Sherwin-Williams suggests you &quot;choose a color a few shades darker than the other walls.&quot; Farrow &amp; Ball&apos;s Patrick says: &quot;The best way to approach a feature wall is to avoid any really strong contrasts between the accent colour and the three adjacent walls,&quot; and adds: &quot;Look for colours with the same undertone, which will help you achieve a more &apos;blended&apos; look.&quot; Benjamin Moore points the other way for light rooms: &quot;For rooms with lighter, softer colours, bring in depth with dark, bold accent colours.&quot;
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          To turn that into a number, we pulled the LRV of every accent and wall in Farrow &amp; Ball&apos;s published feature wall pairings from our database. LRV is the amount of light a color reflects on a scale of 0 to 100, where Sherwin-Williams says zero reflects no light and 100 reflects all light. The gap is the wall&apos;s LRV minus the accent&apos;s.
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>In 15 of Farrow &amp; Ball&apos;s lighter pairings (green, blue, gray and neutral groups), the gap runs from 13.7 to 45.5 points, with a median of 28.2. One pairing in its blue group, Titmouse Blue, is not in our database and is left out.</li>
+          <li>In its four &quot;dark&quot; pairings, the gap runs from 46.4 to 59.7.</li>
+          <li>In the ten Sherwin-Williams and Benjamin Moore pairings below, the gap runs from 31.9 to 77.8. Eight of the ten walls have an LRV of 70 or higher.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          This is our reading of the manufacturers&apos; own examples, not a rule they state. A gap near 30 points is the most common choice for a tonal look. A gap of 60 or more is a deliberate, dramatic one, and every example in this post at that size uses an accent with an LRV under 20 against a pale wall, which matches Benjamin Moore&apos;s advice to add depth to light, soft rooms with dark, bold accents.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Green accent wall colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The Sherwin-Williams walls below are the coordinating colors in its own color data for each green. <Link href="/colors/family/green" className="text-brand-blue hover:underline">Browse the green family</Link> for more, and see <Link href="/blog/best-sage-green-paint-colors" className="text-brand-blue hover:underline">our sage green guide</Link> for the lighter sages, which this post leaves out.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Accent (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">Other three walls (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">LRV gap</th>
+                <th className="py-2 font-semibold">Pairing from</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#95978a" name="Evergreen Fog" brand="SW 9130" href="/colors/sherwin-williams/evergreen-fog-9130" /> (30.4)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e2daca" name="Neutral Ground" brand="SW 7568" href="/colors/sherwin-williams/neutral-ground-7568" /> (70.6)</td>
+                <td className="py-2 pr-4">40.2</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#95978a" name="Evergreen Fog" brand="SW 9130" href="/colors/sherwin-williams/evergreen-fog-9130" /> (30.4)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e3e2d9" name="Ethereal White" brand="SW 6182" href="/colors/sherwin-williams/ethereal-white-6182" /> (75.7)</td>
+                <td className="py-2 pr-4">45.3</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#5e6259" name="Pewter Green" brand="SW 6208" href="/colors/sherwin-williams/pewter-green-6208" /> (11.8)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> (74.3)</td>
+                <td className="py-2 pr-4">62.5</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#737c70" name="Green Smoke" brand="F&B 47" href="/colors/farrow-ball/green-smoke-47" /> (19.2)</td>
+                <td className="py-2 pr-4"><Swatch hex="#d9d2c1" name="Shaded White" brand="F&B 201" href="/colors/farrow-ball/shaded-white-201" /> (64.7)</td>
+                <td className="py-2 pr-4">45.5</td>
+                <td className="py-2">Farrow &amp; Ball</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams describes Evergreen Fog as a &quot;green-meets-gray with just a bit of blue.&quot; It is the lighter of the two accents. At LRV 30.4 it sits 40 points below its wall, so it reads as a clear step darker without turning the room dark. Pewter Green is the dramatic option: Sherwin-Williams describes it as &quot;dark yet calming,&quot; and at LRV 11.8 against a wall at 74.3 the gap is 62.5 points.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Farrow &amp; Ball&apos;s advice to match undertone can be tested with a measurement. CIELAB b* runs from negative (blue) to positive (yellow). Pewter Green measures b* 4.6 and Shoji White 6.7, so both lean slightly yellow and sit 2.1 apart. Evergreen Fog measures 6.6, against 8.8 for Neutral Ground and 4.5 for Ethereal White, so the accent sits between its two coordinating walls.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Blue accent wall colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The three navies below are not interchangeable. <Link href="/colors/family/blue" className="text-brand-blue hover:underline">The blue family page</Link> lists the rest.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Accent (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">Other three walls (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">LRV gap</th>
+                <th className="py-2 font-semibold">Pairing from</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#2f3d4c" name="Naval" brand="SW 6244" href="/colors/sherwin-williams/naval-6244" /> (4.5)</td>
+                <td className="py-2 pr-4"><Swatch hex="#dbdfe0" name="Icicle" brand="SW 6238" href="/colors/sherwin-williams/icicle-6238" /> (73.2)</td>
+                <td className="py-2 pr-4">68.7</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (8.4)</td>
+                <td className="py-2 pr-4"><Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" /> (83.2)</td>
+                <td className="py-2 pr-4">74.8</td>
+                <td className="py-2">Benjamin Moore</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#3d4e57" name="Hague Blue" brand="F&B 30" href="/colors/farrow-ball/hague-blue-30" /> (7.1)</td>
+                <td className="py-2 pr-4"><Swatch hex="#b5afa0" name="Hardwick White" brand="F&B 5" href="/colors/farrow-ball/hardwick-white-5" /> (43.0)</td>
+                <td className="py-2 pr-4">35.9</td>
+                <td className="py-2">Farrow &amp; Ball</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams says Naval has a &quot;cool gray-green undertone,&quot; and we can put a number on its cool side: Naval measures b* -11.0, while its coordinating Icicle measures -1.0, close to neutral. Naval on Icicle is the highest-contrast blue pairing here at 68.7 points. Hague Blue on Hardwick White is the gentlest at 35.9, because Farrow &amp; Ball&apos;s &quot;white&quot; is a mid-light color with an LRV of 43.0.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Comparing the navies themselves, Hale Navy and Hague Blue are very similar to each other. Naval is a visible difference from both. If you are swapping one for another, treat the result as a digital match and confirm it with a physical sample before buying a gallon. Benjamin Moore describes Hale Navy as &quot;A use-anywhere shade of navy with a classic maritime feel.&quot;
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Accent colors for gray walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Gray bases give smaller gaps than white ones, 28.3 to 39.8 points here. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> for more bases.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Accent (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">Gray walls (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">LRV gap</th>
+                <th className="py-2 font-semibold">Pairing from</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /> (8.4)</td>
+                <td className="py-2 pr-4"><Swatch hex="#b9bbb7" name="Coventry Gray" brand="BM HC-169" href="/colors/benjamin-moore/coventry-gray-hc-169" /> (48.2)</td>
+                <td className="py-2 pr-4">39.8</td>
+                <td className="py-2">Benjamin Moore</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c37f7a" name="Coral Rose" brand="SW 9004" href="/colors/sherwin-williams/coral-rose-9004" /> (28.2)</td>
+                <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /> (60.1)</td>
+                <td className="py-2 pr-4">31.9</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#626664" name="Down Pipe" brand="F&B 26" href="/colors/farrow-ball/down-pipe-26" /> (13.0)</td>
+                <td className="py-2 pr-4"><Swatch hex="#aeb2a4" name="Blue Gray" brand="F&B 91" href="/colors/farrow-ball/blue-gray-91" /> (43.5)</td>
+                <td className="py-2 pr-4">30.5</td>
+                <td className="py-2">Farrow &amp; Ball</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#8d8d8b" name="Plummett" brand="F&B 272" href="/colors/farrow-ball/plummett-272" /> (26.6)</td>
+                <td className="py-2 pr-4"><Swatch hex="#c8c3bc" name="Pavilion Gray" brand="F&B 242" href="/colors/farrow-ball/pavilion-gray-242" /> (54.9)</td>
+                <td className="py-2 pr-4">28.3</td>
+                <td className="py-2">Farrow &amp; Ball</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Coral Rose is the only warm-hued accent among the gray pairings. Sherwin-Williams lists it, along with Incredible White and Extra White, as coordinating colors for Agreeable Gray. Farrow &amp; Ball also offers a gray-on-gray pairing with a smaller gap: Pavilion Gray on Dimpse, 13.7 points, the lowest of its pairings. Sherwin-Williams describes Agreeable Gray as having &quot;a beige undertone.&quot;
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Brown and rust accent wall colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <Link href="/colors/family/brown" className="text-brand-blue hover:underline">Brown family</Link> colors and the <Link href="/colors/family/orange" className="text-brand-blue hover:underline">orange family</Link>, which holds the rust and terracotta shades, have more options. Two are worth pairing with their manufacturer&apos;s coordinating whites.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Accent (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">Other three walls (LRV)</th>
+                <th className="py-2 pr-4 font-semibold">LRV gap</th>
+                <th className="py-2 font-semibold">Pairing from</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /> (8.1)</td>
+                <td className="py-2 pr-4"><Swatch hex="#e6dfd3" name="Shoji White" brand="SW 7042" href="/colors/sherwin-williams/shoji-white-7042" /> (74.3)</td>
+                <td className="py-2 pr-4">66.2</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#54504a" name="Urbane Bronze" brand="SW 7048" href="/colors/sherwin-williams/urbane-bronze-7048" /> (8.1)</td>
+                <td className="py-2 pr-4"><Swatch hex="#eeefea" name="Extra White" brand="SW 7006" href="/colors/sherwin-williams/extra-white-7006" /> (85.9)</td>
+                <td className="py-2 pr-4">77.8</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ac6b53" name="Cavern Clay" brand="SW 7701" href="/colors/sherwin-williams/cavern-clay-7701" /> (19.9)</td>
+                <td className="py-2 pr-4"><Swatch hex="#efe8db" name="Creamy" brand="SW 7012" href="/colors/sherwin-williams/creamy-7012" /> (81.2)</td>
+                <td className="py-2 pr-4">61.3</td>
+                <td className="py-2">Sherwin-Williams</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams calls Urbane Bronze a &quot;brownish gray,&quot; and at LRV 8.1 it is a touch darker than Hale Navy. Its measured b* is 4.1 against 6.7 for Shoji White, so the pair lean the same way and sit 2.6 apart. Cavern Clay is the opposite case: Sherwin-Williams calls it a &quot;reddish orange midtone,&quot; and it measures b* 24.3 against 7.2 for Creamy. The accent carries far more yellow than the wall, so this is a warm contrast where the bronze pairing is a nearly neutral one.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bedroom accent walls</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Sherwin-Williams names the bedroom for one of these colors: &quot;Consider this gorgeous green-meets-gray with just a bit of blue in a bedroom&quot; (Evergreen Fog). For the wall, our recommendation is the one behind the bed in most layouts, since that is the wall with a purpose in Benjamin Moore&apos;s terms. A mid-LRV accent like Evergreen Fog at 30.4 or Cavern Clay at 19.9 leaves more reflected light in a bedroom than Naval at 4.5. For more restful options see <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">our calming bedroom paint colors</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">The same accents in other brands</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you want one of these accents in a brand you already use, the closest matches in our database are below. These are digital matches. Confirm any substitute with a physical sample before you buy.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Accent</th>
+                <th className="py-2 pr-4 font-semibold">Closest Behr</th>
+                <th className="py-2 font-semibold">Closest other brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Evergreen Fog</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/shady-willow-ecc-36-1" className="text-brand-blue hover:underline">Shady Willow</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/storm-cloud-gray-2140-40" className="text-brand-blue hover:underline">Storm Cloud Gray</Link>, Benjamin Moore (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pewter Green</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/painted-turtle-710f-6" className="text-brand-blue hover:underline">Painted Turtle</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/quaking-bog-5005-2c" className="text-brand-blue hover:underline">Quaking Bog</Link>, Valspar (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Naval</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/midnight-dream-570f-7" className="text-brand-blue hover:underline">Midnight Dream</Link> (very similar)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/north-sea-cc-932" className="text-brand-blue hover:underline">North Sea</Link>, Benjamin Moore (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Hale Navy</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/rogue-blue-5009-2" className="text-brand-blue hover:underline">Rogue Blue</Link>, Valspar (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Urbane Bronze</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/black-bean-790d-7" className="text-brand-blue hover:underline">Black Bean</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/dragons-breath-1547" className="text-brand-blue hover:underline">Dragon&apos;s Breath</Link>, Benjamin Moore (nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Cavern Clay</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/mojave-sunset-220d-7" className="text-brand-blue hover:underline">Mojave Sunset</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/benjamin-moore/audubon-russet-hc-51" className="text-brand-blue hover:underline">Audubon Russet</Link>, Benjamin Moore (nearly identical)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          To compare any two of these side by side, use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>. Browse more from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/farrow-ball" className="text-brand-blue hover:underline">Farrow &amp; Ball</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Try the pairing before you buy</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Preview each accent and base combination in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>, then build a full scheme with the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>. A screen cannot show how a wall changes through the day, so paint a large sample on the accent wall itself, using <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">our sample testing guide</Link>. For the basics of how colors relate, see <Link href="/blog/color-theory-for-home-decorators" className="text-brand-blue hover:underline">color theory for home decorators</Link>.
+        </p>
+      </>
+    ),
+  },
+
+  /* ──────────────── Small Bathroom Paint Colors by Natural Light (2026-10-27) ──────────────── */
+  {
+    slug: "small-bathroom-paint-colors",
+    title: "Small Bathroom Paint Colors by Natural Light",
+    date: "2026-10-27",
+    author: "Philip Cameron",
+    excerpt:
+      "Small bathroom paint colors sorted by daylight: pale picks at LRV 60 or higher for windowless rooms, mid-tones for windowed ones, one dark option, and matches.",
+    coverColor: "#cdd2ca",
+    coverImage: "/blog/small-bathroom-paint-colors.webp",
+    tags: ["Bathroom", "Guide", "Tips"],
+    faq: [
+      {
+        question: "What is the best paint color for a small bathroom with no window?",
+        answer:
+          "We recommend a pale color with a light reflectance value (LRV) of 60 or higher, such as Pale Oak (68.6), Sea Salt (63.3) or Palladian Blue (60.4). With no daylight, the fixtures are the only light source, and a lighter wall sends more of it back into the room. The 60 line is our recommendation, not a published industry rule.",
+      },
+      {
+        question: "Does a small bathroom have to be painted a light color?",
+        answer:
+          "No. In a windowless bathroom you can go deliberately dark, for example Hale Navy at an LRV of 8.4, and let the room read as a small, enclosed space. We recommend it only if you plan layered lighting, because a dark wall reflects very little of the light from the fixtures.",
+      },
+      {
+        question: "What LRV should a small bathroom paint color have?",
+        answer:
+          "There is no published bathroom rule. Our recommendation: 60 or higher with no window, and about 30 or higher with a window that gets decent daylight. Sherwin-Williams says only that north-facing rooms call for colors with a higher LRV, and it gives no number.",
+      },
+      {
+        question: "What paint should I use in a bathroom with humidity?",
+        answer:
+          "Use a paint the manufacturer makes for bathrooms. Benjamin Moore describes Aura Bath & Spa as optimized for humid environments with a mildew resistant coating, and Sherwin-Williams says its Duration Home interior paint repels stains, blocks moisture and resists mildew. Both claims are the manufacturers' own.",
+      },
+      {
+        question: "Is Palladian Blue a blue or a green?",
+        answer:
+          "Measured from its published color data, Palladian Blue sits on the green side of the CIELAB scale (a* of -6.9) and slightly on the yellow side of the yellow-to-blue axis (b* of 2.1). It reads as a pale blue-green rather than a true blue, and it is the greenest of the six colors in this guide.",
+      },
+    ],
+    content: () => (
+      <>
+        <p className="text-lg leading-relaxed text-gray-800">
+          The right small bathroom paint color depends on how much daylight the room gets. With no window, we recommend a pale color with an LRV of 60 or higher, such as <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sea Salt</Link> (63.3) or <Link href="/colors/benjamin-moore/pale-oak-oc-20" className="text-brand-blue hover:underline">Pale Oak</Link> (68.6), or a deliberate dark such as Hale Navy (8.4) with good lighting. With a window, you can step down to a mid-tone like Evergreen Fog (30.4). The LRV thresholds are our recommendation, based on where colors fall in our database of 26,720 paints, not a rule from any manufacturer.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How we sorted these colors</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          <strong>LRV</strong> is light reflectance value. Sherwin-Williams defines it as the amount of light a color reflects, on a scale where &quot;zero reflecting no light and 100 reflecting all light.&quot; Every color page on Paint Color HQ lists it. Sherwin-Williams also says that in north-facing rooms you want colors with a higher LRV, and that if you have to rely on lighting, warm lighting &quot;will typically be a bit dimmer.&quot; It does not give a number for either case.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          So we set our own lines from the data. Of the 26,720 colors in our database, 8,875 (33 percent) have an LRV of 60 or higher, 5,837 (22 percent) are 70 or higher, and 2,065 (8 percent) are under 10. A line at 60 for windowless rooms leaves a third of all paints to choose from, so it does not force you into white. For rooms with a window, we use about 30 as the floor.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We also describe each color with two measurements computed from its published hex value in the CIELAB color space: <strong>a*</strong> (negative is greener, positive is redder) and <strong>b*</strong> (positive is yellower, negative is bluer). These replace guesses about undertone.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Color</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">a* (green-red)</th>
+                <th className="py-2 pr-4 font-semibold">b* (blue-yellow)</th>
+                <th className="py-2 font-semibold">Our recommendation</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#ddd9ce" name="Pale Oak" brand="BM OC-20" href="/colors/benjamin-moore/pale-oak-oc-20" /></td>
+                <td className="py-2 pr-4">68.6</td>
+                <td className="py-2 pr-4">-0.5</td>
+                <td className="py-2 pr-4">5.9</td>
+                <td className="py-2">Windowless</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#cdd2ca" name="Sea Salt" brand="SW 6204" href="/colors/sherwin-williams/sea-salt-6204" /></td>
+                <td className="py-2 pr-4">63.3</td>
+                <td className="py-2 pr-4">-3.2</td>
+                <td className="py-2 pr-4">3.4</td>
+                <td className="py-2">Windowless</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c2d2ca" name="Palladian Blue" brand="BM HC-144" href="/colors/benjamin-moore/palladian-blue-hc-144" /></td>
+                <td className="py-2 pr-4">60.4</td>
+                <td className="py-2 pr-4">-6.9</td>
+                <td className="py-2 pr-4">2.1</td>
+                <td className="py-2">Windowless</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c2cdc5" name="Rainwashed" brand="SW 6211" href="/colors/sherwin-williams/rainwashed-6211" /></td>
+                <td className="py-2 pr-4">59.2</td>
+                <td className="py-2 pr-4">-5.2</td>
+                <td className="py-2 pr-4">2.7</td>
+                <td className="py-2">Windowed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#95978a" name="Evergreen Fog" brand="SW 9130" href="/colors/sherwin-williams/evergreen-fog-9130" /></td>
+                <td className="py-2 pr-4">30.4</td>
+                <td className="py-2 pr-4">-3.2</td>
+                <td className="py-2 pr-4">6.6</td>
+                <td className="py-2">Windowed</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
+                <td className="py-2 pr-4">8.4</td>
+                <td className="py-2 pr-4">-0.5</td>
+                <td className="py-2 pr-4">-7.6</td>
+                <td className="py-2">Dark, windowless</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          One result is worth knowing before you buy: Hale Navy is the only pick that measures on the blue side. Palladian Blue, despite its name, sits further toward green than any other color here.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Windowless bathroom: pale colors at LRV 60 or higher</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          With no window, the fixtures are the only light the walls ever see, and no daylight arrives to lift a mid-tone. We recommend keeping the LRV at 60 or higher so the walls return as much of that light as they can. Three colors clear the line:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Pale Oak (LRV 68.6)</strong> is the lightest and the most neutral of the three, with an a* near zero.</li>
+          <li><strong>Sea Salt (LRV 63.3)</strong> is a pale green-gray (a* of -3.2). Our <Link href="/blog/best-sherwin-williams-bathroom-colors" className="text-brand-blue hover:underline">guide to Sherwin-Williams bathroom colors</Link> covers it alongside other Sherwin-Williams picks.</li>
+          <li><strong>Palladian Blue (LRV 60.4)</strong> is a pale blue-green and the greenest color in this guide. It clears the line by only 0.4 points.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Rainwashed, at 59.2, sits just under our line and is the closest call. In a windowless room we would pick one of the three above.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Bathroom with a window: mid-tones work</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Daylight changes what a color can do. With a window, we are comfortable going down to about LRV 30. Two picks show the range:
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li><strong>Rainwashed (LRV 59.2)</strong> is a pale green-gray (a* of -5.2) that keeps the room light, and it is the safer choice if the window faces north or is small.</li>
+          <li><strong>Evergreen Fog (LRV 30.4)</strong> is a gray-green with the most yellow of the six (b* of 6.6). It is the deepest color we would paint a small bathroom with a window, and it gives a softer contrast against white fixtures than a navy would.</li>
+        </ul>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If the window faces north, Sherwin-Williams&apos; advice to pick a higher LRV applies. Our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing room guide</Link> covers that case, and in that situation we would treat the bathroom like a windowless one. To compare any two candidates side by side, use the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">A deliberate dark option for a windowless room</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          If you want a windowless bathroom to look intentional rather than merely bright, our recommendation is to go dark. Hale Navy has an LRV of 8.4 and the only blue-side measurement in this guide (b* of -7.6), so it reads as a deep gray-navy rather than a saturated one.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          The tradeoff is simple: at 8.4, the wall reflects less than a tenth of the light that hits it, so the room depends on its fixtures. We recommend more than one light source, such as a vanity light and a ceiling fixture, rather than a single overhead bulb. Sherwin-Williams notes that warm lighting is cozier but typically dimmer, so if you choose warm bulbs, plan for more fixtures, not fewer. Skip dark colors if the room needs to feel airy or if you apply makeup there with no extra light.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Humidity and paint: what the manufacturers say</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          We could not test mildew resistance ourselves, so here is what two manufacturers state about their bathroom paints. Benjamin Moore&apos;s data sheet for Aura Bath &amp; Spa describes it as &quot;specially formulated for optimal performance in high humidity environments,&quot; and says it contains additives &quot;that inhibit the growth of mold and mildew on the surface of the paint film.&quot; Sherwin-Williams says its Duration Home interior acrylic latex &quot;repels stains, blocks moisture and resists mildew.&quot;
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Two practical points come straight from the Benjamin Moore data sheet. Surfaces must be free of mildew before painting, and the sheet notes that &quot;surfactant leaching is a common problem in areas where moisture concentrates on walls like bathrooms &amp; showers,&quot; so stains from it must be removed first. Aura Bath &amp; Spa is sold in a matte finish, which means the moisture formula and the sheen are separate decisions. Our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> covers which finish suits which surface, and our <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">bathroom paint colors guide</Link> covers more colors for bathrooms of any size.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Closest matches in other brands</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Every pair below rates nearly identical by CIEDE2000, the standard color-difference formula. These are digital matches, so confirm each one with a physical sample in your own bathroom before you buy.
+        </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">Pick</th>
+                <th className="py-2 pr-4 font-semibold"><Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link></th>
+                <th className="py-2 pr-4 font-semibold"><Link href="/brands/valspar" className="text-brand-blue hover:underline">Valspar</Link></th>
+                <th className="py-2 font-semibold">Other brand</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Pale Oak</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/campfire-ash-n320-1" className="text-brand-blue hover:underline">Campfire Ash</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/glass-pebble-8004-26a" className="text-brand-blue hover:underline">Glass Pebble</Link></td>
+                <td className="py-2">Sherwin-Williams <Link href="/colors/sherwin-williams/oat-milk-9501" className="text-brand-blue hover:underline">Oat Milk</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Sea Salt</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/silver-setting-pwl-89" className="text-brand-blue hover:underline">Silver Setting</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/three-wishes-8004-32b" className="text-brand-blue hover:underline">Three Wishes</Link></td>
+                <td className="py-2">Benjamin Moore <Link href="/colors/benjamin-moore/gray-cashmere-2138-60" className="text-brand-blue hover:underline">Gray Cashmere</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Palladian Blue</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/natures-reflection-n430-2" className="text-brand-blue hover:underline">Natures Reflection</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/distant-valley-5002-3a" className="text-brand-blue hover:underline">Distant Valley</Link></td>
+                <td className="py-2">Sherwin-Williams <Link href="/colors/sherwin-williams/waterscape-6470" className="text-brand-blue hover:underline">Waterscape</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Rainwashed</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/mountain-falls-n420-2" className="text-brand-blue hover:underline">Mountain Falls</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/ocean-froth-8003-34c" className="text-brand-blue hover:underline">Ocean Froth</Link></td>
+                <td className="py-2">Benjamin Moore <Link href="/colors/benjamin-moore/silver-marlin-2139-50" className="text-brand-blue hover:underline">Silver Marlin</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Evergreen Fog</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/shady-willow-ecc-36-1" className="text-brand-blue hover:underline">Shady Willow</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/gray-expos-5007-2a" className="text-brand-blue hover:underline">Gray Expos&eacute;</Link></td>
+                <td className="py-2">Benjamin Moore <Link href="/colors/benjamin-moore/storm-cloud-gray-2140-40" className="text-brand-blue hover:underline">Storm Cloud Gray</Link></td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4">Hale Navy</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link></td>
+                <td className="py-2 pr-4"><Link href="/colors/valspar/rogue-blue-5009-2" className="text-brand-blue hover:underline">Rogue Blue</Link></td>
+                <td className="py-2">Sherwin-Williams <Link href="/colors/sherwin-williams/sea-mariner-9640" className="text-brand-blue hover:underline">Sea Mariner</Link></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to test before you paint</h2>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-gray-700 leading-relaxed">
+          <li>Decide your category first: windowless or windowed. That sets the LRV range.</li>
+          <li>Preview two or three candidates in the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.</li>
+          <li>Paint a sample board and hold it on the wall next to the vanity and tile, with the bulbs you plan to use switched on.</li>
+          <li>Look at it at night as well as in the morning, since a windowless room looks the same at both times but a windowed one does not.</li>
+          <li>Estimate how much paint you need with the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link>.</li>
+        </ol>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          For more options, browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link>, <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue</Link> and <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> color families, or see everything in the catalogs from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>. Pale Oak is listed in the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> family.
+        </p>
+      </>
+    ),
+  },
+
   /* ──────────────── Ceiling paint color (2026-10-22) ──────────────── */
   {
     slug: "ceiling-paint-color",
     title: "Ceiling Paint Color: Same as the Walls or White?",
     date: "2026-10-22",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "When to paint the ceiling the wall color, when white works better, and the lighter-step colors and mixing ratios paint makers suggest, with whites by LRV.",
@@ -115,7 +3795,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "How does color-changing ceiling paint work?",
         answer:
-          "It goes on tinted so you can see where you have rolled, then dries white. Benjamin Moore's Insl-X Color-Changing Ceiling Paint and Glidden's Pink to White Ceiling Paint go on pink. Valspar Skylight Color-Changing Ceiling Paint goes on light purple. These are ready-mixed whites and are not meant to be tinted.",
+          "It goes on tinted so you can see where you have rolled, then dries white, according to the brands that sell it. Benjamin Moore's Insl-X Color-Changing Ceiling Paint and Glidden's Pink to White Ceiling Paint go on pink. Valspar Skylight Color-Changing Ceiling Paint goes on light purple. These are ready-mixed whites and are not meant to be tinted.",
       },
     ],
     content: () => (
@@ -146,7 +3826,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When white is the better ceiling</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Sherwin-Williams calls white &quot;the most effective color for reflecting light back into the room,&quot; and stresses it for rooms with few or no sources of natural light. Its ceiling guide adds that light ceiling colors make ceilings appear higher and rooms appear larger, and Benjamin Moore says the same of white ceilings in small spaces. White is also simply the default: Sherwin-Williams notes it is the most common ceiling color.
+          Sherwin-Williams calls white &quot;the most effective color for reflecting light back into the room,&quot; and stresses it for rooms with few or no sources of natural light. Its ceiling guide adds that light ceiling colors make ceilings appear higher and rooms appear larger, and Benjamin Moore says the same of white ceilings in small spaces.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Farrow &amp; Ball offers the counterpoint. Over colored walls, a bright white ceiling makes you &quot;immediately aware of the ceiling height,&quot; and &quot;the lighter the ceiling, the darker the walls will appear.&quot; If your walls are a mid-tone color, that is the case for the lighter-step ceiling below rather than a stark white.
@@ -263,7 +3943,7 @@ const blogPosts: BlogPost[] = [
         <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
           <li><strong>Sherwin-Williams Premium Ceiling Paint:</strong> flat, lists an LRV of 92 on its data sheet, 350 to 400 square feet per gallon, recoat in 4 hours.</li>
           <li><strong>Sherwin-Williams ProMar Ceiling Paint:</strong> super-flat, and Sherwin-Williams says it is tintable to hundreds of colors.</li>
-          <li><strong>Benjamin Moore Waterborne Ceiling Paint:</strong> ultra flat, which Benjamin Moore calls its flattest paint, available in 3,500+ colors, 400 to 450 square feet per gallon, recoat in 1 to 2 hours.</li>
+          <li><strong>Benjamin Moore Waterborne Ceiling Paint:</strong> ultra flat. Benjamin Moore calls it its flattest paint and lists 3,500+ colors, 400 to 450 square feet per gallon, and a recoat in 1 to 2 hours.</li>
         </ul>
         <p className="mt-4 text-gray-700 leading-relaxed">
           To work out how much you need, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> handles walls, and a flat ceiling is roughly the room&apos;s length times its width. Recoat times for other paints are in our guide to <Link href="/blog/how-many-coats-of-paint" className="text-brand-blue hover:underline">how long to wait between coats</Link>.
@@ -378,13 +4058,13 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2 pr-4"><Swatch hex="#444c57" name="Hale Navy" brand="BM HC-154" href="/colors/benjamin-moore/hale-navy-hc-154" /></td>
                 <td className="py-2 pr-4">Sea Mariner (nearly identical)</td>
                 <td className="py-2 pr-4"><Link href="/colors/behr/dark-night-ppf-58" className="text-brand-blue hover:underline">Dark Night</Link> (nearly identical)</td>
-                <td className="py-2"><Link href="/colors/valspar/royal-navy-4011-4" className="text-brand-blue hover:underline">Royal Navy</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/rogue-blue-5009-2" className="text-brand-blue hover:underline">Rogue Blue</Link> (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#3d4450" name="Charcoal Blue" brand="SW 2739" href="/colors/sherwin-williams/charcoal-blue-2739" /></td>
                 <td className="py-2 pr-4">Hale Navy (very similar)</td>
                 <td className="py-2 pr-4">Stiletto (nearly identical)</td>
-                <td className="py-2">Royal Navy (very similar)</td>
+                <td className="py-2">Downing Street (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#475667" name="Newburyport Blue" brand="BM HC-155" href="/colors/benjamin-moore/newburyport-blue-hc-155" /></td>
@@ -1195,7 +4875,7 @@ const blogPosts: BlogPost[] = [
 
   {
     slug: "sea-salt-sw-6204",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     title: "Sea Salt (SW 6204): Undertones, Coordinating Colors & Cross-Brand Matches",
     date: "2026-09-11",
     author: "Philip Cameron",
@@ -1223,13 +4903,13 @@ const blogPosts: BlogPost[] = [
       {
         question: "Is Sea Salt a good color for a bathroom?",
         answer:
-          "Yes — the bathroom is Sea Salt's most popular use. At LRV 63.3 it is light enough to keep a small bathroom feeling open, and its green-blue-gray shift reads calm and spa-like under both daylight and vanity lighting. Pair it with a soft white trim like Alabaster (SW 7008, LRV 82.2) rather than a stark white, which would make the green-gray look dingy by contrast.",
+          "Yes. At LRV 63.3 it is light enough to keep a small bathroom feeling open, and its green-blue-gray shift reads calm and spa-like under both daylight and vanity lighting. Pair it with a soft white trim like Alabaster (SW 7008, LRV 82.2) rather than a stark white, which would make the green-gray look dingy by contrast.",
       },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sea Salt (SW 6204)</Link> is a light green-gray at LRV 63.3 with a neutral undertone — and it is the most famous chameleon in the Sherwin-Williams deck, a color that reads green in one room, gray in another, and blue-green by lamplight. That shape-shifting is the whole appeal in a spa-like bathroom or a calm bedroom, and the whole problem anywhere you need a color to hold still. This guide breaks down what Sea Salt actually is, how it behaves by window direction, how it splits from its two sisters Rainwashed and Comfort Gray, and its closest match in every brand you can buy. Every hex, LRV, and undertone here comes straight from our color database.
+          <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sea Salt (SW 6204)</Link> is a light green-gray at LRV 63.3 with a neutral undertone — and it shifts more than most colors in the Sherwin-Williams deck, reading green in one room, gray in another, and blue-green by lamplight. That shape-shifting is the whole appeal in a spa-like bathroom or a calm bedroom, and the whole problem anywhere you need a color to hold still. This guide breaks down what Sea Salt actually is, how it behaves by window direction, how it splits from its two sisters Rainwashed and Comfort Gray, and its closest match in every brand you can buy. Every hex, LRV, and undertone here comes straight from our color database.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Full color data and cross-brand matches: <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sea Salt SW 6204</Link>.
@@ -1255,12 +4935,12 @@ const blogPosts: BlogPost[] = [
           Sea Salt is a Sherwin-Williams color, but the same green-gray exists under a different name in almost every line — matched by how close it actually looks, not by name. The single closest is <Swatch hex="#cdd2ca" name="White Rapids" brand="Dutch Boy" href="/colors/dutch-boy/white-rapids-425-1db" /> from Dutch Boy, which shares Sea Salt&apos;s exact hex, so it is the nearest of all and rates nearly identical. In Benjamin Moore, <Swatch hex="#d0d6ce" name="Gray Cashmere" brand="Benjamin Moore" href="/colors/benjamin-moore/gray-cashmere-2138-60" /> (2138-60) is the nearly identical equivalent. In Behr it is <Swatch hex="#cacec7" name="Silver Setting" brand="Behr" href="/colors/behr/silver-setting-pwl-89" />, also nearly identical, and PPG <Link href="/colors/ppg/bay-of-fundy-10-07" className="text-brand-blue hover:underline">Bay of Fundy</Link>, Valspar <Link href="/colors/valspar/three-wishes-8004-32b" className="text-brand-blue hover:underline">Three Wishes</Link>, and Hirshfield&apos;s <Link href="/colors/hirshfields/pale-loden-440" className="text-brand-blue hover:underline">Pale Loden</Link> are all close enough to swap in. The one to watch is Farrow &amp; Ball <Link href="/colors/farrow-ball/skylight-205" className="text-brand-blue hover:underline">Skylight</Link> — it is a close cousin and rates very similar, but not a direct swap, so treat it as a cousin, not a substitute.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The match people ask about most is Benjamin Moore <Swatch hex="#c2d2ca" name="Palladian Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/palladian-blue-hc-144" /> (HC-144, LRV 60.4) — the famous blue-green that gets pitched as the Sea Salt of Benjamin Moore. They are close cousins, not twins. Palladian Blue reads a shade bluer and a hair cooler than Sea Salt, and its own closest Sherwin-Williams match is <Link href="/colors/sherwin-williams/waterscape-6470" className="text-brand-blue hover:underline">Waterscape</Link> (SW 6470), not Sea Salt. If you love Sea Salt&apos;s green side, the honest Benjamin Moore equivalent is Gray Cashmere; if you want the same idea pushed further toward blue, that is when Palladian Blue is the better call.
+          The Benjamin Moore color most often compared with it is <Swatch hex="#c2d2ca" name="Palladian Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/palladian-blue-hc-144" /> (HC-144, LRV 60.4), a blue-green often pitched as the Sea Salt of Benjamin Moore. They are close cousins, not twins. Palladian Blue reads a shade bluer and a hair cooler than Sea Salt, and its own closest Sherwin-Williams match is <Link href="/colors/sherwin-williams/waterscape-6470" className="text-brand-blue hover:underline">Waterscape</Link> (SW 6470), not Sea Salt. If you love Sea Salt&apos;s green side, the honest Benjamin Moore equivalent is Gray Cashmere; if you want the same idea pushed further toward blue, that is when Palladian Blue is the better call.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Coordinating Colors: Trim, Companions, and What to Pair</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          {seaSaltFacts.pairing} <Swatch hex="#edeae0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (SW 7008, LRV 82.2) is a soft white to compare in a physical sample. For a tonal, layered scheme, <Swatch hex="#c8cbc4" name="Silver Strand" brand="Sherwin-Williams" href="/colors/sherwin-williams/silver-strand-7057" /> (SW 7057, LRV 59, warm golden) is Sea Salt&apos;s closest cabinet-and-trim companion — a hair warmer and slightly deeper, so it grounds a room built on Sea Salt walls. And when you want more color weight in the same green-gray range, <Swatch hex="#bec3bb" name="Comfort Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/comfort-gray-6205" /> (SW 6205, LRV 53.6) steps the green-gray up for a vanity, island, or accent wall. Sea Salt&apos;s most common home is the bathroom — see our <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">best bathroom paint colors</Link> guide for where it lands against the field, and if you are deciding between it and a true sage, our <Link href="/blog/best-sage-green-paint-colors" className="text-brand-blue hover:underline">best sage green paint colors</Link> post covers the greener end of the family.
+          {seaSaltFacts.pairing} <Swatch hex="#edeae0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (SW 7008, LRV 82.2) is a soft white to compare in a physical sample. For a tonal, layered scheme, <Swatch hex="#c8cbc4" name="Silver Strand" brand="Sherwin-Williams" href="/colors/sherwin-williams/silver-strand-7057" /> (SW 7057, LRV 59, warm golden) is Sea Salt&apos;s closest cabinet-and-trim companion — a hair warmer and slightly deeper, so it grounds a room built on Sea Salt walls. And when you want more color weight in the same green-gray range, <Swatch hex="#bec3bb" name="Comfort Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/comfort-gray-6205" /> (SW 6205, LRV 53.6) steps the green-gray up for a vanity, island, or accent wall. For bathrooms, see our <Link href="/blog/best-bathroom-paint-colors" className="text-brand-blue hover:underline">best bathroom paint colors</Link> guide for where it lands against the field, and if you are deciding between it and a true sage, our <Link href="/blog/best-sage-green-paint-colors" className="text-brand-blue hover:underline">best sage green paint colors</Link> post covers the greener end of the family.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Testing Sea Salt in Your Own Room</h2>
@@ -1326,7 +5006,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Closest Match in Every Brand</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          If you love Hale Navy but buy a different brand, here are its closest equivalents — scored by how similar they actually look rather than by name. The nearest of all is Sherwin-Williams <Swatch hex="#434a54" name="Sea Mariner" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-mariner-9640" /> (SW 9640): nearly identical, and a much closer Sherwin-Williams match than the better-known Naval. Valspar <Swatch hex="#414a55" name="Royal Navy" brand="Valspar" href="/colors/valspar/royal-navy-4011-4" /> and Kilz <Swatch hex="#444d5a" name="Prussian Blue" brand="Kilz" href="/colors/kilz/prussian-blue-rd100-02" /> are also nearly identical. Behr <Swatch hex="#404b57" name="Dark Night" brand="Behr" href="/colors/behr/dark-night-ppf-58" /> and Dunn-Edwards <Swatch hex="#444d56" name="Deepest Sea" brand="Dunn-Edwards" href="/colors/dunn-edwards/deepest-sea-de5825" /> both land close enough to read as the same color in a room. PPG <Swatch hex="#3f4c5a" name="Cavalry" brand="PPG" href="/colors/ppg/cavalry-1041-7" /> and Dutch Boy <Swatch hex="#3e4b54" name="Navigation" brand="Dutch Boy" href="/colors/dutch-boy/navigation-432-7db" /> are the nearest their lines offer, but both drift a visible step cooler and grayer — worth a side-by-side check before you treat either as a swap. The one to watch is Farrow &amp; Ball <Swatch hex="#45484b" name="Railings" brand="Farrow & Ball" href="/colors/farrow-ball/railings-31" />: it rates very similar to Hale Navy but reads more charcoal than navy, so do not treat the two as interchangeable. The full deep-navy range lives in <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue paint colors</Link>, and — for the gray-undertone reason above — Hale Navy itself files under <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
+          If you love Hale Navy but buy a different brand, here are its closest equivalents — scored by how similar they actually look rather than by name. The nearest of all is Sherwin-Williams <Swatch hex="#434a54" name="Sea Mariner" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-mariner-9640" /> (SW 9640): nearly identical, and a much closer Sherwin-Williams match than the better-known Naval. Valspar <Swatch hex="#424d58" name="Rogue Blue" brand="Valspar" href="/colors/valspar/rogue-blue-5009-2" /> and Kilz <Swatch hex="#444d5a" name="Prussian Blue" brand="Kilz" href="/colors/kilz/prussian-blue-rd100-02" /> are also nearly identical. Behr <Swatch hex="#404b57" name="Dark Night" brand="Behr" href="/colors/behr/dark-night-ppf-58" /> and Dunn-Edwards <Swatch hex="#444d56" name="Deepest Sea" brand="Dunn-Edwards" href="/colors/dunn-edwards/deepest-sea-de5825" /> both land close enough to read as the same color in a room. PPG <Swatch hex="#3f4c5a" name="Cavalry" brand="PPG" href="/colors/ppg/cavalry-1041-7" /> and Dutch Boy <Swatch hex="#3e4b54" name="Navigation" brand="Dutch Boy" href="/colors/dutch-boy/navigation-432-7db" /> are the nearest their lines offer, but both drift a visible step cooler and grayer — worth a side-by-side check before you treat either as a swap. The one to watch is Farrow &amp; Ball <Swatch hex="#45484b" name="Railings" brand="Farrow & Ball" href="/colors/farrow-ball/railings-31" />: it rates very similar to Hale Navy but reads more charcoal than navy, so do not treat the two as interchangeable. The full deep-navy range lives in <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue paint colors</Link>, and — for the gray-undertone reason above — Hale Navy itself files under <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Coordinating Colors</h2>
@@ -1417,7 +5097,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     slug: "agreeable-gray-sw-7029",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     title: "Agreeable Gray (SW 7029): Undertones, Coordinating Colors & Cross-Brand Matches",
     date: "2026-08-21",
     author: "Philip Cameron",
@@ -1472,7 +5152,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Agreeable Gray vs. Repose Gray</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          This is the comparison almost everyone runs into, because <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> and <Swatch hex="#ccc9c0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> are the two most-specified Sherwin-Williams greige-grays and they look nearly the same on a chip. The measurable difference in our database is light: Agreeable Gray sits at LRV 60.1, Repose Gray at LRV 58.4, so Agreeable reads a hair lighter. Both are classified neutral undertone. The practical difference is warmth — Agreeable Gray carries more beige and reads as a true greige, while Repose Gray reads cleaner and a touch cooler, closer to a true light gray.
+          These two are easy to confuse, because <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> and <Swatch hex="#ccc9c0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> are both light Sherwin-Williams greige-grays and they look nearly the same on a chip. The measurable difference in our database is light: Agreeable Gray sits at LRV 60.1, Repose Gray at LRV 58.4, so Agreeable reads a hair lighter. Both are classified neutral undertone. The practical difference is warmth — Agreeable Gray carries more beige and reads as a true greige, while Repose Gray reads cleaner and a touch cooler, closer to a true light gray.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Pick Agreeable Gray if you want warmth, a cozier whole-home neutral, or a color that holds up in cool north light. Pick Repose Gray if you want a crisper, more modern gray, or your room already runs warm and you don&apos;t want it tipping beige. If you&apos;re stuck between the two, put them side by side in our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link> — the difference is real but subtle, and seeing them together settles it faster than a paint chip does.
@@ -1499,10 +5179,10 @@ const blogPosts: BlogPost[] = [
     slug: "famous-white-paints-compared",
     title: "Alabaster vs. White Dove and 15 Other Famous Whites, Measured",
     date: "2026-07-03",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "We measured the 17 most-searched white paints with CIEDE2000. On the brands' published values, Alabaster and White Dove rate nearly identical, and a $30 Behr staple is a near-perfect twin of a Benjamin Moore classic.",
+      "We measured the 17 most-searched white paints with CIEDE2000. On the brands' published values, Alabaster and White Dove rate nearly identical, and a Behr staple is a near-perfect twin of a Benjamin Moore classic.",
     coverColor: "#EFEEE5",
     tags: ["Data", "Design"],
     faq: [
@@ -1535,7 +5215,7 @@ const blogPosts: BlogPost[] = [
           <Link href="/colors/sherwin-williams/cold-foam-9504" className="text-brand-blue hover:underline">Cold Foam (SW 9504)</Link>.
           That is one of several answers we got by measuring the 17 most-searched whites in
           America with CIEDE2000, the color-difference standard paint manufacturers use for
-          quality control. White is the best-selling color family and the one where the internet
+          quality control. White is the color family where the internet
           argues hardest about whether two names are &ldquo;basically the same,&rdquo; so the
           numbers below settle some long-running debates and start at least one new one.
         </p>
@@ -2049,7 +5729,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-benjamin-moore-bedroom-colors",
     title: "The Best Benjamin Moore Bedroom Paint Colors (2026)",
     date: "2026-08-14",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best Benjamin Moore bedroom paint colors — restful greiges, soft grays, muted blues and greens, plus a deep navy feature wall — each with its LRV and closest match.",
@@ -2093,14 +5773,14 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Greiges for Bedrooms</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#ccc7b9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (HC-172, LRV 55) is the warm, neutral greige that anchors more bedrooms than any other Benjamin Moore color — grounded, flexible, and easy to pair with both warm woods and cool linens. Its closest Sherwin-Williams match is Simple Stone (a barely-perceptible difference) and its Behr match Coliseum Marble is nearly identical. A shade lighter and warmer, <Swatch hex="#e1dfd1" name="November Rain" brand="Benjamin Moore" href="/colors/benjamin-moore/november-rain-2142-60" /> (2142-60, LRV 71) is the soft greige-white for bedrooms that want more light without going stark — Behr Shark Tooth and SW Nonchalant White are both nearly identical. If you are weighing brands, the breakdown in{" "}
+          <Swatch hex="#ccc7b9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> (HC-172, LRV 55) is a warm, neutral greige: grounded, flexible, and easy to pair with both warm woods and cool linens. Its closest Sherwin-Williams match is Simple Stone (a barely-perceptible difference) and its Behr match Coliseum Marble is nearly identical. A shade lighter and warmer, <Swatch hex="#e1dfd1" name="November Rain" brand="Benjamin Moore" href="/colors/benjamin-moore/november-rain-2142-60" /> (2142-60, LRV 71) is the soft greige-white for bedrooms that want more light without going stark — Behr Shark Tooth and SW Nonchalant White are both nearly identical. If you are weighing brands, the breakdown in{" "}
           <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Behr vs Sherwin-Williams vs Benjamin Moore</Link> compares the three head to head. More options in{" "}
           <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Grays for Bedrooms</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#d4d5cd" name="Gray Owl" brand="Benjamin Moore" href="/colors/benjamin-moore/gray-owl-2137-60" /> (2137-60, LRV 65) is the cool, airy gray with a faint green cast that keeps it from going cold — a designer favorite for light-filled bedrooms. Its Behr match Close Knit is nearly identical and SW Silverpointe is a barely-perceptible difference. Slightly deeper and bluer, <Swatch hex="#cbccc6" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> (HC-170, LRV 59) is the classic mid-light blue-gray that reads serene without feeling stark — SW Sweater Weather and Behr Paving Stones are both nearly identical. For the softest, most light-forward option, <Swatch hex="#d6dcd3" name="Healing Aloe" brand="Benjamin Moore" href="/colors/benjamin-moore/healing-aloe-1562" /> (1562, LRV 68) leans gently green-gray and reads almost like a tinted white — SW Kingston and Behr Nurture are its closest matches.
+          <Swatch hex="#d4d5cd" name="Gray Owl" brand="Benjamin Moore" href="/colors/benjamin-moore/gray-owl-2137-60" /> (2137-60, LRV 65) is the cool, airy gray with a faint green cast that keeps it from going cold, suited to light-filled bedrooms. Its Behr match Close Knit is nearly identical and SW Silverpointe is a barely-perceptible difference. Slightly deeper and bluer, <Swatch hex="#cbccc6" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> (HC-170, LRV 59) is the classic mid-light blue-gray that reads serene without feeling stark — SW Sweater Weather and Behr Paving Stones are both nearly identical. For the softest, most light-forward option, <Swatch hex="#d6dcd3" name="Healing Aloe" brand="Benjamin Moore" href="/colors/benjamin-moore/healing-aloe-1562" /> (1562, LRV 68) leans gently green-gray and reads almost like a tinted white — SW Kingston and Behr Nurture are its closest matches.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Soft Blues and Greens for Bedrooms</h2>
@@ -2141,7 +5821,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-bathroom-colors",
     title: "The Best Sherwin-Williams Bathroom Paint Colors (2026)",
     date: "2026-08-07",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-24",
     author: "Philip Cameron",
     excerpt:
       "The best Sherwin-Williams bathroom paint colors — spa-like greens and blues plus clean neutrals — each with its LRV and its closest cross-brand match.",
@@ -2218,7 +5898,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-black-paint-colors",
     title: "The Best Black Paint Colors for Doors, Trim & Walls (2026)",
     date: "2026-07-31",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best black paint colors for front doors, trim, cabinets, and walls — true black, soft black, and blue-black — each with its LRV and closest cross-brand match.",
@@ -2229,7 +5909,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the best black paint color?",
         answer:
-          "Tricorn Black (SW 6258) is the most-specified true black — a clean, near-neutral black at LRV 2.9 that holds up on doors, trim, and cabinets. Its Benjamin Moore twin is Black (HC-190), a nearly identical match. For a softer, warmer black designers prefer on whole walls, Iron Ore (SW 7069) and Wrought Iron (BM 2124-10) read as charcoal-blacks rather than absolute black.",
+          "Tricorn Black (SW 6258) is our pick for a true black: a clean, near-neutral black at LRV 2.9 for doors, trim, and cabinets. Its Benjamin Moore twin is Black (HC-190), a nearly identical match. For a softer, warmer black on whole walls, Iron Ore (SW 7069) and Wrought Iron (BM 2124-10) read as charcoal-blacks rather than absolute black.",
       },
       {
         question: "What does LRV mean for a black paint color?",
@@ -2271,7 +5951,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Soft &amp; Warm Blacks (LRV 5&ndash;8)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Soft blacks are the designer&apos;s secret for walls and large surfaces — they carry the drama of black but show subtle dimension instead of going flat. <Swatch hex="#434341" name="Iron Ore" brand="Sherwin-Williams" href="/colors/sherwin-williams/iron-ore-7069" /> (SW 7069, LRV 5.6) is the most popular of the group: a warm charcoal-black that reads black indoors but softens to deep gray in bright light, which makes it far more forgiving on whole walls and exteriors. Its closest match is{" "}
+          Soft blacks suit walls and large surfaces: they carry the drama of black but show subtle dimension instead of going flat. <Swatch hex="#434341" name="Iron Ore" brand="Sherwin-Williams" href="/colors/sherwin-williams/iron-ore-7069" /> (SW 7069, LRV 5.6) is the one to start with: a warm charcoal-black that reads black indoors but softens to deep gray in bright light, which makes it far more forgiving on whole walls and exteriors. Its closest match is{" "}
           <Link href="/colors/behr/broadway-ppu18-20" className="text-brand-blue hover:underline">Behr Broadway</Link> (a nearly identical match at Home Depot), with Benjamin Moore Notre Dame close behind.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
@@ -2316,7 +5996,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     slug: "best-beige-paint-colors",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     title: "The Best Beige & Warm Neutral Paint Colors (2026)",
     date: "2026-07-24",
     author: "Philip Cameron",
@@ -2334,12 +6014,12 @@ const blogPosts: BlogPost[] = [
       {
         question: "Do beige paint colors look dated?",
         answer:
-          "The flat, pinkish builder-beige of the early 2000s looks dated; today's warm neutrals do not. The fix is undertone control. Pick a beige with a neutral or gray-tempered undertone (Accessible Beige, Natural Linen, Bleeker Beige) rather than one that swings hard yellow or pink, pair it with clean white trim, and test it on the wall before committing. Warm neutrals are back specifically because the gray era went too cold.",
+          "The flat, pinkish builder-beige of the early 2000s looks dated because of its undertone, not because it is beige. The fix is undertone control. Pick a beige with a neutral or gray-tempered undertone (Accessible Beige, Natural Linen, Bleeker Beige) rather than one that swings hard yellow or pink, pair it with clean white trim, and test it on the wall before committing.",
       },
       {
         question: "What is the most popular beige paint color?",
         answer:
-          "Accessible Beige (SW 7036, LRV 58) is the most-specified warm neutral in the US — a near-balanced beige that holds steady across lighting. Manchester Tan (HC-81, LRV 63) is Benjamin Moore's equivalent benchmark, and Pale Oak (OC-20, LRV 69) is the popular soft, near-white warm neutral. Each has a nearly identical match in every other major brand.",
+          "Accessible Beige (SW 7036, LRV 58) is the safest all-round pick: a near-balanced beige that holds steady across lighting. Manchester Tan (HC-81, LRV 63) is the Benjamin Moore counterpart, and Pale Oak (OC-20, LRV 69) is the soft, near-white option. Each has a nearly identical match in every other major brand.",
       },
       {
         question: "What trim color goes with beige walls?",
@@ -2352,7 +6032,7 @@ const blogPosts: BlogPost[] = [
         <h2 className="mt-10 text-2xl font-bold">Compare a beige with your gray shortlist</h2><p className="mt-4 text-gray-700 leading-relaxed">If these beiges feel too warm beside your flooring, compare them with <Link href="/colors/behr/chic-gray-ppu26-10" className="text-brand-blue underline">Behr Chic Gray PPU26-10</Link> and <Link href="/colors/dunn-edwards/play-on-gray-de6228" className="text-brand-blue underline">Dunn-Edwards Play on Gray DE6228</Link>. Keep the same trim sample beside each candidate. Their color pages show calculated cross-brand shortlists; use physical samples to decide which works with your fixed finishes.</p>
         <p className="text-lg leading-relaxed text-gray-800">
           The best beige paint color for most homes is{" "}
-          <Swatch hex="#d1c7b8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (SW 7036, LRV 57.9) — a near-balanced warm neutral that reads cozy without going yellow or pink. Beige is back because the gray era went too cold, but the version winning now is disciplined: warm, not muddy; tan, not builder-pink. The difference between a beige that looks current and one that looks dated is undertone control. This guide ranks 10 specific warm neutrals across the warmth scale — each with its exact LRV, undertone, and closest cross-brand match straight from our 26,000-color database.
+          <Swatch hex="#d1c7b8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (SW 7036, LRV 57.9) — a near-balanced warm neutral that reads cozy without going yellow or pink. The beiges that work are disciplined: warm, not muddy; tan, not builder-pink. What separates a beige that looks deliberate from one that looks dated is undertone control. This guide ranks 10 specific warm neutrals across the warmth scale — each with its exact LRV, undertone, and closest cross-brand match straight from our 26,000-color database.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Beige vs. Greige: Know the Difference Before You Buy</h2>
@@ -2404,7 +6084,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-gray-paint-colors",
     title: "The Best Gray Paint Colors for Every Room (2026)",
     date: "2026-07-17",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best true gray paint colors, light to charcoal — each with its LRV, undertone, and closest cross-brand match, plus a guide to choosing gray by room light.",
@@ -2415,7 +6095,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the most popular gray paint color?",
         answer:
-          "Repose Gray (SW 7015) is the most-specified true gray — a light, balanced gray at LRV 58 that reads clean without a strong cool or warm cast. Gray Owl (BM 2137-60) is the most popular cooler, airy gray, and Chelsea Gray (BM HC-168) the most popular deep charcoal-gray for cabinets and accent walls.",
+          "Repose Gray (SW 7015) is our pick for a true gray: a light, balanced gray at LRV 58 that reads clean without a strong cool or warm cast. Gray Owl (BM 2137-60) is a cooler, airy gray, and Chelsea Gray (BM HC-168) a deep charcoal-gray for cabinets and accent walls.",
       },
       {
         question: "What is the difference between a true gray and a greige?",
@@ -2465,12 +6145,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Mid-Tone Grays (LRV 38–50)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Mid-tone grays give a room more depth and weight — strong enough for a feature wall, still livable across a whole room with good light. <Swatch hex="#bcb7ad" name="Mindful Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/mindful-gray-7016" /> (SW 7016, LRV 48, neutral) is the most popular step-up from Repose Gray, with more presence. Its PPG match Ghost Writer is nearly identical and Benjamin Moore <Link href="/colors/benjamin-moore/thunder-af-685" className="text-brand-blue hover:underline">Thunder</Link> is a nearly identical second. <Swatch hex="#b9bbb7" name="Coventry Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/coventry-gray-hc-169" /> (BM HC-169, LRV 48, neutral) is the cooler, cleaner mid-gray — its Sherwin-Williams match is <Link href="/colors/sherwin-williams/argos-7065" className="text-brand-blue hover:underline">Argos</Link> and PPG Gray Stone is nearly identical too. <Swatch hex="#aca79e" name="Dorian Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/dorian-gray-7017" /> (SW 7017, LRV 39, warm) leans a touch warm, which makes it the most forgiving mid-gray in cool north light — its Benjamin Moore match is Upper West Side, with Behr Stingray Gray close behind.
+          Mid-tone grays give a room more depth and weight — strong enough for a feature wall, still livable across a whole room with good light. <Swatch hex="#bcb7ad" name="Mindful Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/mindful-gray-7016" /> (SW 7016, LRV 48, neutral) is the next step deeper than Repose Gray, with more presence. Its PPG match Ghost Writer is nearly identical and Benjamin Moore <Link href="/colors/benjamin-moore/thunder-af-685" className="text-brand-blue hover:underline">Thunder</Link> is a nearly identical second. <Swatch hex="#b9bbb7" name="Coventry Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/coventry-gray-hc-169" /> (BM HC-169, LRV 48, neutral) is the cooler, cleaner mid-gray — its Sherwin-Williams match is <Link href="/colors/sherwin-williams/argos-7065" className="text-brand-blue hover:underline">Argos</Link> and PPG Gray Stone is nearly identical too. <Swatch hex="#aca79e" name="Dorian Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/dorian-gray-7017" /> (SW 7017, LRV 39, warm) leans a touch warm, which makes it the most forgiving mid-gray in cool north light — its Benjamin Moore match is Upper West Side, with Behr Stingray Gray close behind.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Charcoal Grays (LRV under 25)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Charcoals are for impact — cabinets, islands, accent walls, exterior trim, and moody dining rooms. <Swatch hex="#87857d" name="Chelsea Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/chelsea-gray-hc-168" /> (BM HC-168, LRV 23, warm) is the designer favorite for kitchen cabinetry — deep and grounded, with a warm undertone that keeps it from going cold. Behr Barnwood Gray is a nearly identical match and SW Classic French Gray is close. <Swatch hex="#78736e" name="Gauntlet Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/gauntlet-gray-7019" /> (SW 7019, LRV 17, warm) is the deeper warm charcoal — dramatic on an accent wall or front door without reading pure black. Behr Unpredictable Hue is its closest match, with Benjamin Moore <Link href="/colors/benjamin-moore/windy-city-csp-150" className="text-brand-blue hover:underline">Windy City</Link> a close second.
+          Charcoals are for impact — cabinets, islands, accent walls, exterior trim, and moody dining rooms. <Swatch hex="#87857d" name="Chelsea Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/chelsea-gray-hc-168" /> (BM HC-168, LRV 23, warm) suits kitchen cabinetry: deep and grounded, with a warm undertone that keeps it from going cold. Behr Barnwood Gray is a nearly identical match and SW Classic French Gray is close. <Swatch hex="#78736e" name="Gauntlet Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/gauntlet-gray-7019" /> (SW 7019, LRV 17, warm) is the deeper warm charcoal — dramatic on an accent wall or front door without reading pure black. Behr Unpredictable Hue is its closest match, with Benjamin Moore <Link href="/colors/benjamin-moore/windy-city-csp-150" className="text-brand-blue hover:underline">Windy City</Link> a close second.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The One Cool Blue-Gray: Network Gray</h2>
@@ -2492,7 +6172,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     slug: "best-sage-green-paint-colors",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     title: "The Best Sage Green Paint Colors for Every Room (2026)",
     date: "2026-07-10",
     author: "Philip Cameron",
@@ -2503,9 +6183,9 @@ const blogPosts: BlogPost[] = [
     tags: ["Guide", "Green", "Sage"],
     faq: [
       {
-        question: "What is the most popular sage green paint color?",
+        question: "What are the best sage green paint colors?",
         answer:
-          "Evergreen Fog (SW 9130) is the most-specified sage green — a deeper gray-green at LRV 30.4 with a warm golden undertone. October Mist (BM 1495) is the softer, mid-tone sage at LRV 46.5, and Sea Salt (SW 6204) is the lightest, near-neutral option at LRV 63.3 for those who want only a hint of green.",
+          "Evergreen Fog (SW 9130), Sherwin-Williams' 2022 Color of the Year, is a deeper gray-green at LRV 30.4 with a warm golden undertone. October Mist (BM 1495) is the softer, mid-tone sage at LRV 46.5, and Sea Salt (SW 6204) is the lightest, near-neutral option at LRV 63.3 for those who want only a hint of green.",
       },
       {
         question: "Is sage green warm or cool?",
@@ -2538,7 +6218,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Deep Sage Greens (Best for Accent Walls &amp; Cabinets)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#95978a" name="Evergreen Fog" brand="Sherwin-Williams" href="/colors/sherwin-williams/evergreen-fog-9130" /> (SW 9130, LRV 30.4) is the sage that put the whole category on the map — a deeper gray-green with a warm golden undertone that works on walls, islands, and built-ins. Its closest Behr match is <Link href="/colors/behr/shady-willow-ecc-36-1" className="text-brand-blue hover:underline">Shady Willow</Link> and its Benjamin Moore match is <Link href="/colors/benjamin-moore/storm-cloud-gray-2140-40" className="text-brand-blue hover:underline">Storm Cloud Gray</Link>. For something darker and more dramatic, <Swatch hex="#5e6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> (SW 6208, LRV 11.8) is the moody, near-charcoal sage that designers love for kitchen islands and front doors — also warm-undertoned, with Behr <Link href="/colors/behr/woodland-moss-ppf-45" className="text-brand-blue hover:underline">Woodland Moss</Link> its closest match.
+          <Swatch hex="#95978a" name="Evergreen Fog" brand="Sherwin-Williams" href="/colors/sherwin-williams/evergreen-fog-9130" /> (SW 9130, LRV 30.4), Sherwin-Williams&apos; 2022 Color of the Year, is a deeper gray-green with a warm golden undertone that works on walls, islands, and built-ins. Its closest Behr match is <Link href="/colors/behr/shady-willow-ecc-36-1" className="text-brand-blue hover:underline">Shady Willow</Link> and its Benjamin Moore match is <Link href="/colors/benjamin-moore/storm-cloud-gray-2140-40" className="text-brand-blue hover:underline">Storm Cloud Gray</Link>. For something darker and more dramatic, <Swatch hex="#5e6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> (SW 6208, LRV 11.8) is a moody, near-charcoal sage for kitchen islands and front doors, also warm-undertoned, with Behr <Link href="/colors/behr/woodland-moss-ppf-45" className="text-brand-blue hover:underline">Woodland Moss</Link> its closest match.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Mid-Tone Sage Greens (Best for Whole Rooms)</h2>
@@ -2548,7 +6228,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Light Sage Greens (Best for Bathrooms &amp; Trim)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          When you want only a whisper of green, these pale sages read almost neutral until the light catches them. <Swatch hex="#cdd2ca" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63.3) is the famous spa color — a pale green-gray that shifts toward blue-green in bright light, which is why it&apos;s a bathroom default; its Benjamin Moore match is <Link href="/colors/benjamin-moore/gray-cashmere-2138-60" className="text-brand-blue hover:underline">Gray Cashmere</Link> and Behr <Link href="/colors/behr/silver-setting-pwl-89" className="text-brand-blue hover:underline">Silver Setting</Link>. <Swatch hex="#cbd0c5" name="Sparkling Sage" brand="Valspar" href="/colors/valspar/sparkling-sage-5005-3b" /> (5005-3B, LRV 61.8) is the Lowe&apos;s answer — a light, clean sage matching Behr <Link href="/colors/behr/shy-green-mq3-48" className="text-brand-blue hover:underline">Shy Green</Link> closely. <Swatch hex="#aeb3a9" name="Oyster Bay" brand="Sherwin-Williams" href="/colors/sherwin-williams/oyster-bay-6206" /> (SW 6206, LRV 44.1) sits a step deeper — a warm gray-green that flexes between sage and greige depending on the room; Dutch Boy <Link href="/colors/dutch-boy/woodsy-gray-425-3db" className="text-brand-blue hover:underline">Woodsy Gray</Link> is nearly identical.
+          When you want only a whisper of green, these pale sages read almost neutral until the light catches them. <Swatch hex="#cdd2ca" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63.3) is a pale green-gray that shifts toward blue-green in bright light, which suits a spa-like bathroom; its Benjamin Moore match is <Link href="/colors/benjamin-moore/gray-cashmere-2138-60" className="text-brand-blue hover:underline">Gray Cashmere</Link> and Behr <Link href="/colors/behr/silver-setting-pwl-89" className="text-brand-blue hover:underline">Silver Setting</Link>. <Swatch hex="#cbd0c5" name="Sparkling Sage" brand="Valspar" href="/colors/valspar/sparkling-sage-5005-3b" /> (5005-3B, LRV 61.8) is the Lowe&apos;s answer — a light, clean sage matching Behr <Link href="/colors/behr/shy-green-mq3-48" className="text-brand-blue hover:underline">Shy Green</Link> closely. <Swatch hex="#aeb3a9" name="Oyster Bay" brand="Sherwin-Williams" href="/colors/sherwin-williams/oyster-bay-6206" /> (SW 6206, LRV 44.1) sits a step deeper — a warm gray-green that flexes between sage and greige depending on the room; Dutch Boy <Link href="/colors/dutch-boy/woodsy-gray-425-3db" className="text-brand-blue hover:underline">Woodsy Gray</Link> is nearly identical.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">True-Green Sage (When You Want the Green to Show)</h2>
@@ -2572,7 +6252,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dutch-boy-paint-colors",
     title: "10 Best Dutch Boy Paint Colors (2026)",
     date: "2026-07-03",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-24",
     author: "Philip Cameron",
     excerpt:
       "10 Dutch Boy picks, from Swan White to Ocean's Depth, each with its LRV and closest Sherwin-Williams or Behr match. Plus where to buy it (hint: Menards).",
@@ -2610,7 +6290,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Where to Find Dutch Boy</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Link href="/brands/dutch-boy" className="text-brand-blue hover:underline">Dutch Boy</Link> is carried at Menards across the Midwest and through independent hardware and paint dealers — it isn&apos;t stocked at Home Depot, Lowe&apos;s, or Sherwin-Williams stores. That regional footprint is the catch: if there&apos;s no Menards or stocking dealer near you, the brand is hard to get. The fix runs both ways. If you love a premium color but want to save, buy the Dutch Boy equivalent. If you love a Dutch Boy color but can&apos;t find the brand, buy its match at Home Depot (Behr) or a Sherwin-Williams store instead. Every color below gives you both options. The full catalog and its closest matches in 13 other brands live on the <Link href="/match/dutch-boy/to/sherwin-williams" className="text-brand-blue hover:underline">Dutch Boy to Sherwin-Williams</Link> match list.
+          <Link href="/brands/dutch-boy" className="text-brand-blue hover:underline">Dutch Boy</Link> is carried at Menards across the Midwest and through independent hardware and paint dealers — it isn&apos;t stocked at Home Depot, Lowe&apos;s, or Sherwin-Williams stores. That regional footprint is the catch: if there&apos;s no Menards or stocking dealer near you, the brand is hard to get. The fix runs both ways. If you love a premium color but want to save, buy the Dutch Boy equivalent. If you love a Dutch Boy color but can&apos;t find the brand, buy its match at Home Depot (Behr) or a Sherwin-Williams store instead. Every color below gives you both options. The full catalog and its closest matches in 12 other brands live on the <Link href="/match/dutch-boy/to/sherwin-williams" className="text-brand-blue hover:underline">Dutch Boy to Sherwin-Williams</Link> match list.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Whites</h2>
@@ -2665,7 +6345,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-greige-paint-colors",
     title: "The Best Greige Paint Colors for Every Room (2026)",
     date: "2026-06-26",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best greige paint colors — from Agreeable Gray to Revere Pewter — each with its exact LRV, its warm-or-cool undertone, and its closest match in every other brand.",
@@ -2676,7 +6356,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the most popular greige paint color?",
         answer:
-          "Sherwin-Williams Agreeable Gray (SW 7029, LRV 60) is the most popular greige and arguably the most-specified neutral in the US. It is a balanced greige that holds up in almost any direction of light. Its nearly identical matches include Valspar Heritage Gray and Dutch Boy Doves Wings (both share its hex value), so you can get the same color at Lowe's or wherever you buy paint.",
+          "Sherwin-Williams Agreeable Gray (SW 7029, LRV 60) is our first pick. It is a balanced greige that holds up in almost any direction of light. Its nearly identical matches include Valspar Heritage Gray and Dutch Boy Doves Wings (both share its hex value), so you can get the same color at Lowe's or wherever you buy paint.",
       },
       {
         question: "What is the difference between greige and gray?",
@@ -2711,7 +6391,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Most Popular Greiges</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — SW 7029, LRV 60. The benchmark. A perfectly balanced greige that&apos;s bright enough for a north room and warm enough to feel inviting, which is exactly why it&apos;s the most-specified neutral in the country. Its closest matches are uncanny: <Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Valspar Heritage Gray</Link> and <Link href="/colors/dutch-boy/doves-wings-443-1db" className="text-brand-blue hover:underline">Dutch Boy Doves Wings</Link> both share its hex value, with <Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Benjamin Moore Wish</Link> and <Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link> close behind.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — SW 7029, LRV 60. The benchmark. A perfectly balanced greige that&apos;s bright enough for a north room and warm enough to feel inviting, which is why it is our first pick. Its closest matches are uncanny: <Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Valspar Heritage Gray</Link> and <Link href="/colors/dutch-boy/doves-wings-443-1db" className="text-brand-blue hover:underline">Dutch Boy Doves Wings</Link> both share its hex value, with <Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Benjamin Moore Wish</Link> and <Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link> close behind.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> — BM HC-172, LRV 55. The greige that launched a thousand renovations: a touch deeper and warmer than Agreeable Gray, with a grounded, slightly olive-tinged warmth that flatters wood floors and brass. Its closest cross-brand neighbors are <Link href="/colors/sherwin-williams/simple-stone-9521" className="text-brand-blue hover:underline">Sherwin-Williams Simple Stone</Link> and <Link href="/colors/behr/coliseum-marble-ppu8-16" className="text-brand-blue hover:underline">Behr Coliseum Marble</Link>.
@@ -2736,7 +6416,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warmer, Beige-Leaning Greiges</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — SW 7036, LRV 58. The warm-side counterpart to Agreeable Gray: enough beige to feel genuinely cozy, enough gray to stay current. It&apos;s the one to reach for when a room runs cool or you want a hug rather than a backdrop. <Link href="/colors/behr/shoreline-haze-mq6-31" className="text-brand-blue hover:underline">Behr Shoreline Haze</Link> and <Link href="/colors/ppg/synchronicity-1021-2" className="text-brand-blue hover:underline">PPG Synchronicity</Link> match it almost perfectly, with <Link href="/colors/benjamin-moore/inukshuk-cc-460" className="text-brand-blue hover:underline">Benjamin Moore Inukshuk</Link> close. See more in the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link>.
+          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — SW 7036, LRV 58. The warm-side counterpart to Agreeable Gray: enough beige to feel genuinely cozy, enough gray to stay balanced. It&apos;s the one to reach for when a room runs cool or you want a hug rather than a backdrop. <Link href="/colors/behr/shoreline-haze-mq6-31" className="text-brand-blue hover:underline">Behr Shoreline Haze</Link> and <Link href="/colors/ppg/synchronicity-1021-2" className="text-brand-blue hover:underline">PPG Synchronicity</Link> match it almost perfectly, with <Link href="/colors/benjamin-moore/inukshuk-cc-460" className="text-brand-blue hover:underline">Benjamin Moore Inukshuk</Link> close. See more in the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Deeper Greiges for Contrast, Islands &amp; Accents</h2>
@@ -2766,7 +6446,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-benjamin-moore-paint-colors",
     title: "The Best Benjamin Moore Paint Colors for Every Room (2026)",
     date: "2026-06-17",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best Benjamin Moore paint colors — whites, greiges, grays, a blue-green, and a navy — each with its LRV and its closest match at Home Depot or Sherwin-Williams.",
@@ -2777,7 +6457,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the most popular Benjamin Moore paint color?",
         answer:
-          "White Dove (OC-17) is Benjamin Moore's most popular color overall, a soft, slightly warm white at LRV 83 that works on walls, trim, and cabinets. Revere Pewter (HC-172) is the most popular greige and Hale Navy (HC-154) the most popular dark color. Chantilly Lace (2121-70) is the go-to bright white.",
+          "Our pick overall is White Dove (OC-17), a soft, slightly warm white at LRV 83 that works on walls, trim, and cabinets. For a greige, start with Revere Pewter (HC-172); for a dark color, Hale Navy (HC-154); for a bright white, Chantilly Lace (2121-70).",
       },
       {
         question: "What is the Behr equivalent of Revere Pewter?",
@@ -2792,7 +6472,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "Which Benjamin Moore paint line is best?",
         answer:
-          "Aura is the premium line (best color depth and washability, the one most designers specify); Regal Select is the excellent mid-tier default; Ben is the budget line. The line affects durability and price, not the color — every shade below is the same across all three.",
+          "Benjamin Moore sells Aura as its premium interior line, Regal Select below it, and Ben as its lower-priced line; each line's data sheet lists its washability and coverage. The line affects performance and price, not the color: every shade below is the same across all three.",
       },
     ],
     content: () => (
@@ -2804,7 +6484,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines &amp; Where to Find Benjamin Moore</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> isn&apos;t stocked at Home Depot or Lowe&apos;s — it sells through independent paint and hardware dealers, which is part of why it carries a premium reputation (and price). On the can, <strong>Aura</strong> is the top line most designers specify, <strong>Regal Select</strong> is the mid-tier default that suits most rooms, and <strong>Ben</strong> is the budget option. The line changes durability and price, not the color, so every shade below is the same hex whichever you buy. If the nearest dealer is a drive away, the cross-brand matches throughout this guide are the practical workaround.
+          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> isn&apos;t stocked at Home Depot or Lowe&apos;s — it sells through independent paint and hardware dealers. Benjamin Moore sells <strong>Aura</strong> as its premium line, <strong>Regal Select</strong> below it, and <strong>Ben</strong> as its lower-priced option; each line&apos;s data sheet lists its washability and coverage. The line changes performance and price, not the color, so every shade below is the same hex whichever you buy. If the nearest dealer is a drive away, the cross-brand matches throughout this guide are the practical workaround.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Whites</h2>
@@ -2849,7 +6529,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-paint-colors",
     title: "The Best Sherwin-Williams Paint Colors for Every Room (2026)",
     date: "2026-06-13",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best Sherwin-Williams paint colors — whites, greiges, grays, a navy, and blacks — each with its LRV and its closest match in the brand you can buy.",
@@ -2860,7 +6540,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the most popular Sherwin-Williams paint color?",
         answer:
-          "Agreeable Gray (SW 7029) is the most-specified Sherwin-Williams color and the most popular paint color in the US — a warm greige at LRV 60 that reads neutral across almost any lighting. Alabaster (SW 7008) is the most popular white, and Repose Gray (SW 7015) the most popular true gray.",
+          "Agreeable Gray (SW 7029) is our pick for most homes: a warm greige at LRV 60 that reads neutral across almost any lighting. For a white, start with Alabaster (SW 7008); for a true gray, Repose Gray (SW 7015).",
       },
       {
         question: "What is the Behr or Benjamin Moore equivalent of Agreeable Gray?",
@@ -2875,19 +6555,19 @@ const blogPosts: BlogPost[] = [
       {
         question: "Which Sherwin-Williams paint line is best?",
         answer:
-          "Emerald is the premium interior line (best coverage and washability); Duration and SuperPaint are the mid-tier workhorses most homeowners use; Cashmere is prized for its smooth finish. The line affects durability and price, not the color — every shade below is available across all of them.",
+          "Sherwin-Williams sells several interior lines, including Emerald, Duration, SuperPaint and Cashmere, and each line's data sheet lists its washability and coverage. The line affects performance and price, not the color: every shade below is available across all of them.",
       },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
           The best Sherwin-Williams paint color for most homes is{" "}
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60) — a warm greige that has become the default neutral on American walls for a reason: it holds steady across north light, south light, and lamplight without turning purple, green, or pink. Sherwin-Williams is the brand professionals reach for first, so this guide does something a paint-chip rack can&apos;t — it pairs each of these 14 colors with its closest match in the brand you actually buy at, whether that&apos;s Behr at Home Depot, Valspar at Lowe&apos;s, or Benjamin Moore at an independent dealer. Every LRV and every cross-brand match below comes straight from our color database.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60), a warm greige that holds steady across north light, south light, and lamplight without turning purple, green, or pink. This guide does something a paint-chip rack can&apos;t — it pairs each of these 14 colors with its closest match in the brand you actually buy at, whether that&apos;s Behr at Home Depot, Valspar at Lowe&apos;s, or Benjamin Moore at an independent dealer. Every LRV and every cross-brand match below comes straight from our color database.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines &amp; Where to Find Sherwin-Williams</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> sells through its own stores rather than the big-box aisles, which is the single most useful thing to know before you fall for a color. If your nearest store carries Behr or your painter buys Benjamin Moore, you don&apos;t have to give up the SW shade you wanted — you match it. On the can, <strong>Emerald</strong> is the premium line, <strong>Duration</strong> and <strong>SuperPaint</strong> are the everyday workhorses, and <strong>Cashmere</strong> is the smooth-finish favorite. The line changes durability and price, not the color, so every shade below is the same hex whichever you choose.
+          <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> sells through its own stores rather than the big-box aisles, which is the single most useful thing to know before you fall for a color. If your nearest store carries Behr or your painter buys Benjamin Moore, you don&apos;t have to give up the SW shade you wanted — you match it. Sherwin-Williams sells the colors in several interior lines, including <strong>Emerald</strong>, <strong>Duration</strong>, <strong>SuperPaint</strong> and <strong>Cashmere</strong>; each line&apos;s data sheet lists its washability and coverage. The line changes performance and price, not the color, so every shade below is the same hex whichever you choose.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Whites</h2>
@@ -2912,7 +6592,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Blue-Green: Sea Salt</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CDD2CA" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63) is the soft, spa-like green-gray that reads differently in every room — sage in some light, pale gray-blue in others. It&apos;s the most-loved SW color for bathrooms and bedrooms for exactly that reason. See its color page for the current calculated cross-brand shortlist.
+          <Swatch hex="#CDD2CA" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> (SW 6204, LRV 63) is the soft, spa-like green-gray that reads differently in every room — sage in some light, pale gray-blue in others. That shifting quality is why it suits calm bathrooms and bedrooms. See its color page for the current calculated cross-brand shortlist.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Sherwin-Williams Navy: Naval</h2>
@@ -2941,7 +6621,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-behr-paint-colors",
     title: "13 Best Behr Paint Colors (2026)",
     date: "2026-06-10",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-24",
     author: "Philip Cameron",
     excerpt:
       "13 Behr picks, from Swiss Coffee to Hidden Gem, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
@@ -3052,7 +6732,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-ppg-paint-colors",
     title: "15 Best PPG Paint Colors (2026)",
     date: "2026-06-07",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-24",
     author: "Philip Cameron",
     excerpt:
       "15 PPG picks, from Commercial White to Night Watch, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
@@ -3172,7 +6852,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dunn-edwards-paint-colors",
     title: "14 Best Dunn-Edwards Paint Colors (2026)",
     date: "2026-06-03",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-24",
     author: "Philip Cameron",
     excerpt:
       "14 Dunn-Edwards picks, from Swiss Coffee to Midnight Garden, each with its LRV and closest Sherwin-Williams, Benjamin Moore and Behr match.",
@@ -3287,7 +6967,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-valspar-paint-colors",
     title: "16 Best Valspar Paint Colors (2026)",
     date: "2026-05-31",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-24",
     author: "Philip Cameron",
     excerpt:
       "16 Valspar picks, from Ultra White to Renew Blue, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
@@ -3412,7 +7092,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-paint-colors-for-laundry-rooms",
     title: "The Best Paint Colors for Laundry Rooms (14 Picks That Actually Work Under Cool LEDs)",
     date: "2026-04-29",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "A laundry room's harsh overhead lighting wrecks most paint colors. Here are 14 shades that hold up — with LRVs, finish recommendations, and what to skip.",
@@ -3434,7 +7114,7 @@ const blogPosts: BlogPost[] = [
           <strong>Lighting is almost always artificial and almost always cool.</strong> Most laundry rooms are interior spaces lit by 4000–5000K LED bulbs or a single fluorescent tube. That spectrum pulls warm undertones gray and pulls cool undertones icy. A white that looks balanced in a south-facing showroom reads clinical here. A beige that looks cozy in your living room reads sallow. The same paint in two rooms of the same house will not look like the same color — which is the central truth most paint guides skip.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>The finish has to be washable.</strong> Detergent splashes, water from the utility sink, and the constant film of dryer dust mean you will be wiping these walls. Flat and matte finishes absorb that grime and burnish when scrubbed. Minimum acceptable finish for laundry-room walls: <strong>eggshell</strong>. Better: <strong>satin</strong>. For trim, doors, and any wainscoting, go <strong>semi-gloss</strong>. For cabinetry, use a true cabinet-grade enamel — Benjamin Moore Advance or Sherwin-Williams Emerald Urethane Trim Enamel both self-level, cure hard, and survive repeated cleaning around a washer.
+          <strong>The finish has to be washable.</strong> Detergent splashes, water from the utility sink, and the constant film of dryer dust mean you will be wiping these walls. Flat and matte finishes absorb that grime and burnish when scrubbed. Minimum acceptable finish for laundry-room walls: <strong>eggshell</strong>. Better: <strong>satin</strong>. For trim, doors, and any wainscoting, go <strong>semi-gloss</strong>. For cabinetry, use a true cabinet-grade enamel — Benjamin Moore Advance and Sherwin-Williams Emerald Urethane Trim Enamel are both sold by their makers as self-leveling enamels for cabinets and trim.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>The space is usually small.</strong> Most laundry rooms are 5 by 7 feet or smaller. That changes the math on saturation. A deep navy that anchors a 14-foot great room can swallow a 35-square-foot laundry room whole. Conversely, a stark high-LRV white that opens up an open floor plan can read bleached and institutional in a closet-sized utility space. LRV (Light Reflectance Value) matters more here than in almost any other room, and it is the single number you should check before buying samples.
@@ -3442,7 +7122,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Bright Whites for Small or Windowless Laundry Rooms (LRV 83+)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          If your laundry room is windowless or has only a tiny high window, your first job is to throw as much artificial light back into the room as possible. Whites with LRV above 83 reflect more light than they absorb, which is why nearly every contractor defaults to one of these three.
+          If your laundry room is windowless or has only a tiny high window, your first job is to throw as much artificial light back into the room as possible. Whites with LRV above 83 send back more than four-fifths of the light that hits them, and all three below clear that mark.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — LRV 90. A clean, bright <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> white that measures close to neutral, with very little tint either way. That restraint makes it a sound pick for a windowless laundry room where you cannot predict bulb behavior. If you only paint one room in the house with Chantilly Lace, the laundry room is a defensible choice.
@@ -3457,7 +7137,7 @@ const blogPosts: BlogPost[] = [
           A note on Behr Ultra Pure White and SW High Reflective White: both excellent for ceilings and trim, but at LRV 93–94 they can read flat and dimensionless on walls in a tiny room. Save them for the ceiling.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens — The 2026 Direction (LRV 46–63)</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens (LRV 46–63)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Soft green is the single best category if you want your laundry room to feel like a place you do not mind spending 20 minutes in. Green sits opposite red on the color wheel, so it neutralizes the slight pinkish cast that fluorescent and warm LED bulbs throw at white walls. It pairs beautifully with white cabinetry, marble or quartz folding counters, and natural-fiber baskets. And it photographs well, which matters if your laundry room ever ends up on Instagram.
         </p>
@@ -3468,7 +7148,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#BBBCA7" name="Softened Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/softened-green-6177" /> — LRV 49.3. So soft it almost reads as a warm gray with a green whisper. The right pick if you want green energy without committing to a green room. Under typical laundry-room overheads it shifts subtly through the day from neutral to faintly herbal — which is exactly what you want when the bulbs are the dominant light source.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CDD2CA" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> — LRV 63.3. Technically a blue-green, Sea Salt has been one of Sherwin-Williams&apos; top sellers for over a decade for good reason: it reads as either pale blue or pale green depending on the light, and that flexibility is gold in a windowless room. With white tile and a porcelain utility sink, it tips toward spa-blue; with butcher block, it tips toward pale sage. For a deeper look at why this happens, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones guide</Link>.
+          <Swatch hex="#CDD2CA" name="Sea Salt" brand="Sherwin-Williams" href="/colors/sherwin-williams/sea-salt-6204" /> — LRV 63.3. Technically a blue-green, Sea Salt reads as either pale blue or pale green depending on the light, and that flexibility is gold in a windowless room. With white tile and a porcelain utility sink, it tips toward spa-blue; with butcher block, it tips toward pale sage. For a deeper look at why this happens, read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">paint color undertones guide</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Blues — Crisp, Clean, and Forgiving (LRV 58–61)</h2>
@@ -3482,18 +7162,18 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#BCCBCE" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — LRV 57.9. A powder blue with strong gray undertones. Genuinely soothing — it shows up on our shortlist for <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom palettes</Link> — and the same quality turns a laundry room from a chore zone into something closer to a small spa. It needs warm wood or brass somewhere in the room to keep it from drifting clinical.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C2D2CA" name="Palladian Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/palladian-blue-hc-144" /> — LRV 60.4. A pale aqua-blue with a green whisper. A Historic Color that has aged better than almost any other in the BM Historical Collection — designers have specified it continuously since the 1990s without it ever feeling dated. The right pick if your laundry room opens off a hallway with white trim and you want it to feel like a deliberate jewel-box rather than a closet. See more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
+          <Swatch hex="#C2D2CA" name="Palladian Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/palladian-blue-hc-144" /> — LRV 60.4. A pale aqua-blue with a green whisper. Part of Benjamin Moore&apos;s Historical Collection. The right pick if your laundry room opens off a hallway with white trim and you want it to feel like a deliberate jewel-box rather than a closet. See more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals — When the Laundry Connects to a Mudroom (LRV 58–63)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          If your laundry room is part of a larger mudroom or boot room, the most cohesive choice is to flow the same warm neutral from the entry into the laundry. This avoids the visual whiplash of walking from a warm hallway into a cool utility space. Both colors below are top-five sellers for their respective brands and have widely-matched cross-brand equivalents that rate nearly identical.
+          If your laundry room is part of a larger mudroom or boot room, the most cohesive choice is to flow the same warm neutral from the entry into the laundry. This avoids the visual whiplash of walking from a warm hallway into a cool utility space. Both colors below have cross-brand equivalents that rate nearly identical.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — LRV 63.1. A warm greige sitting almost exactly between gray and beige. The most-specified warm neutral in transitional residential design, and it works as a whole-house color flowing from entry to laundry to powder room without feeling repetitive. Under cool laundry-room bulbs it shifts slightly cooler but never tips fully gray.
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — LRV 63.1. A warm greige sitting almost exactly between gray and beige. It works as a whole-house color flowing from entry to laundry to powder room without feeling repetitive. Under cool laundry-room bulbs it shifts slightly cooler but never tips fully gray.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — LRV 57.9. The Sherwin-Williams answer to Edgecomb Gray, with a slightly warmer cream undertone. Holds its warmth under cool LEDs better than almost any other warm neutral — exactly the property you need in a laundry room. With warm-toned LVP flooring or wood cabinetry, this is the safer of the two picks. Compare the two with our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> before deciding.
+          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — LRV 57.9. The Sherwin-Williams answer to Edgecomb Gray, with a slightly warmer cream undertone. Holds its warmth under cool LEDs, exactly the property you need in a laundry room. With warm-toned LVP flooring or wood cabinetry, this is the safer of the two picks. Compare the two with our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> before deciding.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Bold and Moody — When You Have the Square Footage (LRV 4–14)</h2>
@@ -3541,7 +7221,7 @@ const blogPosts: BlogPost[] = [
           <strong>Stark cool grays.</strong> Anything with a strong blue undertone reads dingy under typical laundry-room lighting.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>High-contrast wallpaper feature walls.</strong> Pinterest is currently selling these. In a small laundry room, busy wallpaper turns the space into visual noise. Save wallpaper for the powder room.
+          <strong>High-contrast wallpaper feature walls.</strong> In a small laundry room, busy wallpaper turns the space into visual noise. Save wallpaper for the powder room.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Builder-grade flat white on every surface.</strong> This is the default in production homes and the single biggest reason laundry rooms feel like utility closets. Even a one-shade upgrade to a warm white in eggshell transforms the space.
@@ -3565,7 +7245,7 @@ const blogPosts: BlogPost[] = [
     slug: "2026-colors-of-the-year-every-brand-compared",
     title: "2026 Colors of the Year: Every Major Brand Compared",
     date: "2026-01-08",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "See every major paint brand's 2026 Color of the Year side by side — from earthy greens to warm neutrals — with closest cross-brand matches.",
@@ -3578,7 +7258,7 @@ const blogPosts: BlogPost[] = [
           Looking for 2027? Seven brands have named their 2027 picks so far, and the <Link href="/color-of-the-year" className="text-brand-blue hover:underline">2027 Color of the Year hub</Link> tracks each one with its closest matches in other brands.
         </p>
         <p className="mt-4 text-lg leading-relaxed text-gray-800">
-          Every year, the biggest paint brands announce their Color of the Year — a single shade they believe captures the cultural mood. For 2026 the picks are strikingly aligned: earthy greens, warm neutrals, and nature-inspired tones dominate. After 2025&apos;s bolder palette of reds and deep navies, every major brand pivoted toward quieter, more livable colors. Below, every official 2026 selection — what it actually looks like on a wall, why each brand chose it, and what it pairs with.
+          Every year, the biggest paint brands announce their Color of the Year — a single shade each brand picks for the year ahead. The 2026 picks have a lot in common: earthy greens, warm neutrals, and nature-inspired tones. The 2025 picks included bolder reds and deep navies; the 2026 set is quieter. Below, every official 2026 selection — what it actually looks like on a wall, why each brand chose it, and what it pairs with.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Sherwin-Williams: Universal Khaki</h2>
@@ -3586,7 +7266,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> is a warm, sandy neutral with golden undertones and an LRV of 40.6 — the second-brightest of the seven 2026 picks, after Dutch Boy&apos;s Melodious Ivory. Sherwin-Williams positions it as a whole-house color that bridges beige and warm gray, which is why it landed as CoY: it&apos;s the safest bold pick on the list, designed to scale across rooms and lighting conditions without locking buyers into a single mood.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The choice makes more sense in context with <Link href="/colors/sherwin-williams/grounded-6089" className="text-brand-blue hover:underline">Grounded</Link>, from SW&apos;s 2025 Color Capsule (a deeper warm brown at LRV ~12). Universal Khaki softens that direction — keeps the earthy warmth, lightens the room. Signals that SW is reading the broader 2026 mood as &ldquo;earthy livable&rdquo; rather than the &ldquo;earthy bold&rdquo; that defined 2025. Pairs cleanly with warm wood floors, cream or off-white trim, and brass hardware. Avoid pure white trim — the contrast reads harsh and emphasizes any yellow shift in the khaki.
+          The choice makes more sense in context with <Link href="/colors/sherwin-williams/grounded-6089" className="text-brand-blue hover:underline">Grounded</Link>, from SW&apos;s 2025 Color Capsule (a deeper warm brown at LRV ~12). Universal Khaki keeps Grounded&apos;s earthy warmth but is far lighter, so it brightens a room instead of closing it in. Pairs cleanly with warm wood floors, cream or off-white trim, and brass hardware. Avoid pure white trim — the contrast reads harsh and emphasizes any yellow shift in the khaki.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           At LRV 40 it carries more visual weight than the chip suggests in north-facing rooms; sample on the actual wall before committing. Looking for this shade from another brand? Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match.
@@ -3606,7 +7286,7 @@ const blogPosts: BlogPost[] = [
           as &ldquo;burnt umber with delicate notes of charcoal,&rdquo; with inspiration drawn from classic tailoring and fine suiting fabrics. LRV sits around 10, putting it firmly in accent-wall and architectural-trim territory rather than whole-room dominant. The undertone is the differentiator: warm enough to read brown-leaning under 2700K bulbs, neutral enough to read as a deep neutral under cool daylight.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Benjamin Moore tends to alternate moody anchors with brighter cheerful picks year-over-year. 2025&apos;s <Link href="/colors/benjamin-moore/cinnamon-slate-2113-40" className="text-brand-blue hover:underline">Cinnamon Slate</Link> tested chromatic depth with a heathered plum; Silhouette doubles down on the depth and strips out the chroma. This is the most architectural of the seven 2026 picks — a color that signals BM is leaning hard into &ldquo;cocooning spaces&rdquo; (libraries, dining rooms, primary bedrooms) as a major 2026 design force.
+          Benjamin Moore&apos;s 2025 pick, <Link href="/colors/benjamin-moore/cinnamon-slate-2113-40" className="text-brand-blue hover:underline">Cinnamon Slate</Link>, was a heathered plum with more color; Silhouette keeps the depth and strips out the chroma. It is the most architectural of the seven 2026 picks, suited to cocooning rooms such as libraries, dining rooms and primary bedrooms.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Pairs with deep walnut floors, brass or matte black hardware, and warm whites for trim. At LRV 10, a pure white trim creates jarring contrast — use Simply White or <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link> to soften it. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> to find complementary shades for a full palette.
@@ -3673,128 +7353,13 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The 2026 picks read as a coordinated industry pivot. Four of seven are explicitly green-influenced (Hidden Gem, Warm Eucalyptus, Midnight Garden, Silhouette&apos;s earthy undertone). None of the seven is a cool gray or a cool blue. Six of seven sit below LRV 45, requiring real sampling rather than chip-glance; the exception is Melodious Ivory, a warm ivory at 61.8. Compare that with 2025&apos;s wider spread (Encore navy at LRV 6 next to Grounded brown at LRV 12 next to Rumors red at mid-saturation) and the cultural read is clear: the industry is softening the &ldquo;bring color back&rdquo; movement of the early 2020s into something quieter, earthier, and more genuinely livable.
+          The seven 2026 picks share a lot. Four of seven are explicitly green-influenced (Hidden Gem, Warm Eucalyptus, Midnight Garden, Silhouette&apos;s earthy undertone). None of the seven is a cool gray or a cool blue. Six of seven sit below LRV 45, requiring real sampling rather than chip-glance; the exception is Melodious Ivory, a warm ivory at 61.8. Compare that with 2025&apos;s wider spread (Encore navy at LRV 6 next to Grounded brown at LRV 12 next to Rumors red at mid-saturation) and the 2026 set is quieter and earthier.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The underlying signal isn&apos;t about specific colors — it&apos;s about lighting honesty. Each of the seven picks performs meaningfully differently under 2700K warm bulbs versus 4000K daylight, and most carry enough chroma or saturation that lighting failures are visible at scale. That&apos;s a quiet reminder that the chip-on-the-wall step matters more in 2026 than in the gray-dominated decade prior. For a look back at last year&apos;s selections, see our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2025 Colors of the Year comparison</Link>.
+          Each of the seven picks reads differently under 2700K warm bulbs than under 4000K daylight, and most carry enough color that the shift shows on a full wall, so test a large sample in your own light before you commit. For the eight 2026 picks grouped by color direction, see our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> post.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two shades are. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. For the broader 2026 trend story beyond the official picks, see <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link>.
-        </p>
-      </>
-    ),
-  },
-
-  /* ──────────────── Post 1 ──────────────── */
-  {
-    slug: "2025-colors-of-the-year-every-brand-compared",
-    title: "2025 Colors of the Year: Every Major Brand Compared",
-    date: "2025-09-18",
-    modifiedDate: "2026-10-26",
-    author: "Philip Cameron",
-    excerpt:
-      "See every major paint brand's 2025 Color of the Year side by side — from Sherwin-Williams to Benjamin Moore to Behr — with closest cross-brand matches.",
-    coverColor: "#785b47",
-    coverImage: "/blog/2025-colors-of-the-year-every-brand-compared.webp",
-    tags: ["Trends", "Color of the Year", "2025"],
-    content: () => (
-      <>
-        <p className="text-lg leading-relaxed text-gray-800">
-          Every year, the biggest paint brands announce their Color of the Year — a single shade they believe captures the cultural mood. For 2025 the picks pivoted hard into warm earth tones and rich grounded hues, with five of the seven selections sitting in the brown, plum, red and caramel range. The era of cool grays as the default residential neutral effectively ended this year. Below is every official 2025 selection, why each brand chose it, and the practical caveats that don&apos;t show up in the press release.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Sherwin-Williams: Grounded (2025 Color Capsule)</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> is a warm, earthy brown with LRV ~12. For 2025, Sherwin-Williams named a{" "}
-          <a
-            href="https://www.sherwin-williams.com/en-us/color/color-of-the-year/2025"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-blue hover:underline"
-          >
-            nine-color Color Capsule
-          </a>{" "}
-          instead of a single Color of the Year, and Grounded (SW 6089) is its deep brown. The move away from the lighter picks of the three years before (Evergreen Fog in 2022, Redend Point in 2023, Upward in 2024) toward deeper earth tones was deliberate — the cultural read at the time was &ldquo;post-pandemic warmth,&rdquo; colors that anchor and ground rather than brighten and energize.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Grounded reads most clearly as an accent or architectural color rather than a whole-room neutral. At LRV 12, it absorbs light quickly in north-facing rooms and can read muddy under cool LED bulbs. Most effective applications: front doors, kitchen islands, cabinetry, exterior trim, accent walls in libraries or dining rooms. Pairs especially well with warm wood floors, brass hardware, leather, and terracotta or cream-toned trim. Avoid pairing with cool grays or pure white trim — the temperature mismatch flattens the warmth that makes Grounded work.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Looking for this shade from another brand? Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match. Explore the full <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more warm earth tones like Grounded.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Benjamin Moore: Cinnamon Slate</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8A7576" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> is a delicate mix of heathered plum and velvety brown — landing in a chromatic space between chocolate and plum that&apos;s genuinely uncommon in mass-market paint lines. Most browns lean either yellow-warm (taupe, beige territory) or red-warm (mahogany territory). Cinnamon Slate splits the difference with a hint of violet, which is what gives it the &ldquo;heathered&rdquo; quality.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Benjamin Moore&apos;s CoY history alternates between architectural anchors and brighter cheerful picks. Cinnamon Slate marked a test of whether the market was ready for chromatic depth beyond just &ldquo;warm earth.&rdquo; Photograph it under controlled lighting and it reads plum; under 2700K warm bulbs at home it reads closer to a warm brown with a violet shadow. That bifurcation makes physical sampling essential — chip-glance and online preview both mislead.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Best applications: accent walls, cabinetry, exterior front doors, primary bedrooms. Pairs with cream or warm whites, walnut floors, soft brass or aged-bronze hardware. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> to find complementary shades for a full palette.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Behr: Rumors</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#744347" name="Rumors" brand="Behr" href="/colors/behr/rumors-mq1-15" /> is a dynamic ruby red — warm, slightly muted, alluring rather than aggressive. Behr&apos;s pick was the most extroverted of the 2025 lineup: red is the most-debated paint color category, and{" "}
-          <a
-            href="https://corporate.behr.com/news/behr-paint-company-announces-2025-color-of-the-year-rumors-a-deep-ruby-red-that-makes-a-statement-in-every-space"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-blue hover:underline"
-          >
-            Behr&apos;s announcement
-          </a>{" "}
-          included survey data showing 76% of Americans would consider painting a room red (n=1,000, July 2024). Rumors specifically is calibrated to deliver drama without going clown-bright.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          The strategic read: Behr leans toward crowd-friendly picks that move retail volume at Home Depot. Rumors plays to the &ldquo;maybe I&apos;ll be brave this year&rdquo; impulse without committing buyers to a screaming primary red. The execution gotcha is that reds intensify dramatically under 2700K warm bulbs (the standard residential bulb temperature) and can shift toward pink or wash out under 4000K cool daylight. Sample at multiple times of day in the room where it&apos;ll actually live.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Best applications: dining rooms, libraries, accent walls, kitchen cabinetry, front doors. Pairs with warm whites (avoid pure white — too clinical), dark wood floors, brass hardware. Compare it against the full <Link href="/colors/family/red" className="text-brand-blue hover:underline">red color family</Link> to see how it stacks up against thousands of similar shades.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Purple Basil</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#5c4450" name="Purple Basil" brand="PPG" href="/colors/ppg/purple-basil-1046-7" /> is a deep, moody purple-brown that sits between plum and chocolate. PPG often picks colors that read like architectural detail rather than typical interior wall colors — Purple Basil fits that pattern. The hue is unusually chromatic for a 2025 CoY (most picks leaned safer brown or red); the purple bias signals PPG positioning toward designer specifications and architectural finish work rather than pure retail.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Like all purples, Purple Basil is the most lighting-sensitive pick of the seven. Under 2700K warm bulbs the violet undertone reads as a deep mauve-plum; under 4000K daylight it leans closer to a true cool purple-brown. Photograph it and you&apos;ll see different colors at different exposures — another reason on-wall sampling matters more than chip-glance.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Best applications: accent walls, front doors, cabinetry, powder rooms. Pairs with warm woods (walnut, oak), brass hardware, cream trim, and natural stone. Avoid pairing with cool grays — the purple undertone amplifies any gray cast nearby.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Encore</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#0f456e" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" /> is a deep saturated navy at LRV ~6 — one of the boldest Color of the Year picks in recent memory across any brand. Valspar bet on the &ldquo;navy is the new black&rdquo; trend that built through the early 2020s and chose the deepest, most architectural version of it.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Encore was the outlier of the 2025 lineup — the only deep-cool pick in a warm-earth-dominated year. The strategic read: Valspar testing whether the warm-earth signal extended to deep blue, or whether the &ldquo;dark cocooning spaces&rdquo; signal was strong enough on its own. At LRV 6 it eats light: pure white trim creates harsh contrast and the color reads near-black in any north-facing room. Specialty primer matters at this depth — most standard primers add an extra coat to coverage compared with mid-LRV colors.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Best applications: accent walls in well-lit rooms, front doors, cabinetry, dining rooms, libraries. Pairs with crisp warm whites (Simply White, <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>), brass, brushed nickel, or matte black hardware. See the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for the full range of navy and blue options.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dutch Boy: Mapped Blue</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7a9192" name="Mapped Blue" brand="Dutch Boy" href="/colors/dutch-boy/mapped-blue-429-5db" /> (429-5DB) is a muted, gray-tinged blue at LRV 26.5. It is the year&apos;s second cool pick next to Encore, but far softer: a mid-tone that works on full walls, not only as an accent. Dutch Boy is a Sherwin-Williams company, and <Link href="/colors/sherwin-williams/moody-blue-6221" className="text-brand-blue hover:underline">Sherwin-Williams Moody Blue</Link> (SW 6221) carries the same color values. The closest Benjamin Moore color, <Link href="/colors/benjamin-moore/aegean-teal-2136-40" className="text-brand-blue hover:underline">Aegean Teal</Link> (2136-40), rates Very similar. These are digital matches, so confirm with a physical sample.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dunn-Edwards: Caramelized</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#ba947f" name="Caramelized" brand="Dunn-Edwards" href="/colors/dunn-edwards/caramelized-det687" /> (DET687) is a warm caramel brown at LRV 33, the value Dunn-Edwards publishes, and the lightest of the seven 2025 picks. It carries the year&apos;s earth-tone theme into a mid-tone that works as a whole-room color. Outside Dunn-Edwards&apos; Southwest footprint, <Link href="/colors/benjamin-moore/chadwick-brown-1160" className="text-brand-blue hover:underline">Benjamin Moore Chadwick Brown</Link> (1160) and <Link href="/colors/sherwin-williams/mellow-mauve-0039" className="text-brand-blue hover:underline">Sherwin-Williams Mellow Mauve</Link> (SW 0039) both rate Very similar. These are digital matches, so confirm with a physical sample.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          The 2025 picks are remarkably unified on warmth and depth. Five of seven lean explicitly warm: Grounded (brown), Cinnamon Slate (plum-brown), Rumors (red), Purple Basil (purple-brown) and Caramelized (caramel). The first four sit between LRV 7 and 20; Caramelized, at 33, is the light end. The two cool picks split: Encore navy was Valspar testing whether the deep-cocooning-space signal could extend to cool tones, and Dutch Boy&apos;s Mapped Blue is a softer mid-tone. The shared message across the lineup: the era of cool grays as the default residential neutral is over, and the industry is willing to commit to chromatic depth — not just warmer neutrals.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          The underlying execution constraint across the lineup: every 2025 pick rewards careful sampling. Grounded shifts toward muddy under cool LEDs. Cinnamon Slate&apos;s violet reads differently in photos versus on a real wall. Rumors intensifies under warm bulbs. Purple Basil is lighting-sensitive across the board. Encore eats light. The 2020s gray-default era let buyers chip-glance and commit; 2025 doesn&apos;t.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two shades are. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. For the 2026 picks, see our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>. For a broader look at which colors dominated 2025 beyond the official picks, see our <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">most popular paint colors of 2025</Link> roundup.
+          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two shades are. Preview any of these shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. For other 2026 colors beyond the official picks, see <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link>.
         </p>
       </>
     ),
@@ -3805,17 +7370,17 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-alternatives-to-benjamin-moore",
     title: "Best Sherwin-Williams Alternatives to Benjamin Moore's Most Popular Colors",
     date: "2025-11-20",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "Found the perfect Benjamin Moore shade but prefer Sherwin-Williams? Here are the closest SW matches for BM's top sellers, verified by Delta E 2000.",
+      "Found the perfect Benjamin Moore shade but prefer Sherwin-Williams? Here are the closest SW matches for well-known BM colors, verified by Delta E 2000.",
     coverColor: "#D4C5A9",
     coverImage: "/blog/best-sherwin-williams-alternatives-to-benjamin-moore.webp",
     tags: ["Cross-Brand Matching", "Sherwin-Williams", "Benjamin Moore"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Benjamin Moore and Sherwin-Williams are the two most popular paint brands in North America, but their colors don&apos;t always cross-reference neatly. If your painter stocks Sherwin-Williams but you fell in love with a Benjamin Moore swatch, this guide shows you the closest match — backed by Delta E 2000 color science.
+          Benjamin Moore and Sherwin-Williams colors don&apos;t always cross-reference neatly. If your painter stocks Sherwin-Williams but you fell in love with a Benjamin Moore swatch, this guide shows you the closest match — backed by Delta E 2000 color science.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How We Match Colors</h2>
@@ -3825,7 +7390,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Revere Pewter → Simple Stone</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> is one of the most specced neutral colors in residential design. Its warm greige tone has dominated builder-grade homes for a decade. The closest Sherwin-Williams match is <Swatch hex="#CDC7B7" name="Simple Stone" brand="Sherwin-Williams" href="/colors/sherwin-williams/simple-stone-9521" />, which rates nearly identical. The better-known <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> leans slightly warmer and lighter and rates very similar.
+          <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> is a warm greige. The closest Sherwin-Williams match is <Swatch hex="#CDC7B7" name="Simple Stone" brand="Sherwin-Williams" href="/colors/sherwin-williams/simple-stone-9521" />, which rates nearly identical. The better-known <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> leans slightly warmer and lighter and rates very similar.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Simply White → High Reflective White</h2>
@@ -3840,7 +7405,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Edgecomb Gray → Dumpling</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> is a warm gray-beige that has been the go-to neutral for transitional interiors. The closest Sherwin-Williams match is <Swatch hex="#D8D0C1" name="Dumpling" brand="Sherwin-Williams" href="/colors/sherwin-williams/dumpling-9616" />, which rates nearly identical. <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" />, SW&apos;s best-selling color, rates very similar and reads a little grayer. View the full <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> to explore alternatives.
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> is a warm gray-beige that suits transitional interiors. The closest Sherwin-Williams match is <Swatch hex="#D8D0C1" name="Dumpling" brand="Sherwin-Williams" href="/colors/sherwin-williams/dumpling-9616" />, which rates nearly identical. <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" />, rates very similar and reads a little grayer. View the full <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> to explore alternatives.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Chantilly Lace → UltraWhite</h2>
@@ -3861,7 +7426,7 @@ const blogPosts: BlogPost[] = [
     slug: "understanding-paint-color-undertones",
     title: "Paint Color Undertones: Why Your Gray Looks Blue",
     date: "2025-10-09",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Learn what undertones are, why they matter, and how to identify them before you commit to a paint color. Avoid the most common color selection mistake.",
@@ -3903,10 +7468,10 @@ const blogPosts: BlogPost[] = [
           <strong>Purple undertone:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — some warm grays carry a slight violet cast, especially under LED lighting.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Brown undertone:</strong> <Swatch hex="#C0B2A2" name="Balanced Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/balanced-beige-7037" /> — these &ldquo;greige&rdquo; colors are the most popular neutrals because the warm brown undertone prevents them from feeling cold.
+          <strong>Brown undertone:</strong> <Swatch hex="#C0B2A2" name="Balanced Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/balanced-beige-7037" /> — in these &ldquo;greige&rdquo; colors the warm brown undertone prevents them from feeling cold.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Warm neutral undertone:</strong> <Swatch hex="#CCC9C0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> — one of <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>&apos; most popular grays, Repose Gray sits right in the middle with a subtle warm undertone that keeps it from leaning too cool or too warm. It&apos;s a true &ldquo;balanced gray&rdquo; that works in almost any lighting.
+          <strong>Warm neutral undertone:</strong> <Swatch hex="#CCC9C0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> — a <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> gray, Repose Gray sits right in the middle with a subtle warm undertone that keeps it from leaning too cool or too warm. It&apos;s a true &ldquo;balanced gray&rdquo; that works in almost any lighting.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Identify Undertones</h2>
@@ -3950,7 +7515,7 @@ const blogPosts: BlogPost[] = [
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Undertones in White Paint</h2>
         <img src="/blog/understanding-paint-color-undertones-warm-cool-whites.webp" alt="Warm white versus cool white Benjamin Moore paint colors compared" width={1200} height={400} className="mt-6 w-full rounded-lg" />
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White is the single most popular paint color in the world — and ironically, it&apos;s where undertones cause the most grief. There is no such thing as a &ldquo;plain white&rdquo; paint. Every white on the market carries an undertone, and on a large wall that undertone becomes the dominant visual characteristic. What looked like a clean white in the store can read as pink, yellow, green, or blue once it covers 200 square feet of drywall. Our analysis of over 800 white paint colors using CIEDE2000 color science confirms this: even whites with nearly identical lightness values can differ dramatically in undertone.
+          White is where undertones cause the most grief. There is no such thing as a &ldquo;plain white&rdquo; paint. Every white on the market carries an undertone, and on a large wall that undertone becomes the dominant visual characteristic. What looked like a clean white in the store can read as pink, yellow, green, or blue once it covers 200 square feet of drywall. Our analysis of over 800 white paint colors using CIEDE2000 color science confirms this: even whites with nearly identical lightness values can differ dramatically in undertone.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Pink undertones</strong> are common in warm whites. Colors like <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>&apos;s <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> carry a faint rosy warmth that feels soft and traditional. <strong>Yellow undertones</strong> are the hallmark of creamy whites. <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link> leans that way only slightly: on Benjamin Moore&apos;s published values it is a soft white with a mild yellow lean, which is why it sits comfortably beside wood tones and earth-toned furnishings. <strong>Blue undertones</strong> appear in cool whites and make a space feel modern and clinical. <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a popular choice that sits close to true white with just the faintest warm cast — it works in nearly any room because its undertone is so restrained. On the cooler side, <Swatch hex="#ECEEEB" name="Decorator's White" brand="Benjamin Moore" href="/colors/benjamin-moore/decorators-white-oc-149" /> carries a subtle blue-gray undertone that reads as bright and contemporary.
@@ -3964,7 +7529,7 @@ const blogPosts: BlogPost[] = [
           Beige has been a staple neutral for decades, but it&apos;s far from simple. The undertone of a beige paint determines whether your room feels like a sun-drenched Mediterranean villa or a dated 1990s builder-grade home. The three most common beige undertones are pink/peach, yellow, and green. Pink-undertone beiges feel rosy and pair well with cool-toned furniture. Yellow-undertone beiges feel warm and golden — they&apos;re the classic &ldquo;builder beige&rdquo; that dominated homes for years. Green-undertone beiges are the trickiest; they can look muddy or olive in the wrong light, but in warm south-facing rooms, they feel organic and earthy.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Then there&apos;s greige — the gray-beige hybrid that has dominated interior design for the past decade. Greige colors blend the warmth of beige with the sophistication of gray, but the undertone is what makes or breaks them. A greige with a strong purple undertone can look lavender in cool light. A greige with a green undertone might read as khaki. The most versatile greiges, like <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" />, succeed because their undertones are so balanced that they shift gracefully with changing light rather than locking into a single unexpected hue.
+          Then there&apos;s greige — the gray-beige hybrid. Greige colors blend the warmth of beige with the sophistication of gray, but the undertone is what makes or breaks them. A greige with a strong purple undertone can look lavender in cool light. A greige with a green undertone might read as khaki. The most versatile greiges, like <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" />, succeed because their undertones are so balanced that they shift gracefully with changing light rather than locking into a single unexpected hue.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           When choosing beige or greige, always compare at least three options from the same brand&apos;s strip card. The darker shades on the card will reveal the undertone. You can also use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to filter by family and compare swatches digitally before heading to the store. Explore our <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for a comprehensive look at every beige available across major brands.
@@ -3992,7 +7557,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-kitchen-paint-colors-2025",
     title: "The 14 Best Kitchen Paint Colors for 2026",
     date: "2026-02-19",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "From crisp whites to moody greens, the 2026 kitchen paint colors that hold up in real kitchens — with LRV values and finish tips.",
@@ -4010,7 +7575,7 @@ const blogPosts: BlogPost[] = [
           Kitchens put more demands on paint than any other room. Daily cooking generates grease, steam, and splatter that require a finish tough enough to wipe clean repeatedly without dulling or peeling. The rule: <strong>satin or semi-gloss finish only</strong> for kitchen cabinets and walls. Flat and eggshell absorb grease and cannot be scrubbed clean without removing the paint film.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For cabinet-grade durability, Benjamin Moore Advance and Sherwin-Williams Emerald Urethane Trim Enamel are the two best formulations available to consumers. Both self-level (reducing brush marks), cure to a hard finish, and hold color better than standard wall paint under repeated cleaning.
+          For cabinets, Benjamin Moore sells Advance and Sherwin-Williams sells Emerald Urethane Trim Enamel. Both brands describe them as enamels that level out brush marks and cure to a hard finish; check each data sheet for cure and recoat times.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           LRV (Light Reflectance Value, on a 0–100 scale) matters more in kitchens than almost any other room because task lighting creates harsh contrast. Colors below LRV 20 on full-height cabinets can make a kitchen feel closed-in unless the room has substantial natural light or high ceilings.
@@ -4018,21 +7583,21 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Crisp Whites (LRV 83–90)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White remains the most-specified kitchen color for one practical reason: it reflects task lighting back into the work area instead of absorbing it. The critical variable is undertone. Blue-white kitchens look clinical under warm incandescent or LED bulbs; yellow-white kitchens look dingy under cool daylight bulbs. The three whites below are chosen specifically because their undertones stay stable across bulb types.
+          White works in kitchens for one practical reason: it reflects task lighting back into the work area instead of absorbing it. The critical variable is undertone. Blue-white kitchens look clinical under warm incandescent or LED bulbs; yellow-white kitchens look dingy under cool daylight bulbs. The three whites below are chosen specifically because their undertones stay stable across bulb types.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F4F6F1" name="Chantilly Lace OC-65" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — LRV 90. A clean, bright white that measures close to neutral, which is why it has become the go-to for modern kitchens with stainless appliances and quartz countertops. At LRV 90, it reflects most of the light that reaches it. Finish: semi-gloss for cabinets, satin for walls.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDECE6" name="Pure White SW 7005" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — LRV 84. A warm white with subtle cream undertones that pairs naturally with butcher block, brass hardware, and warm oak flooring. Where Chantilly Lace is crisp, Pure White is inviting. It is the most popular Sherwin-Williams cabinet color and holds up under both warm and cool lighting without shifting to yellow.
+          <Swatch hex="#EDECE6" name="Pure White SW 7005" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — LRV 84. A warm white with subtle cream undertones that pairs naturally with butcher block, brass hardware, and warm oak flooring. Where Chantilly Lace is crisp, Pure White is inviting. It holds up under both warm and cool lighting without shifting to yellow.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EFEEE5" name="White Dove OC-17" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — LRV 83. A soft white that leans slightly warm. Best for kitchens with warm-toned countertops (marble with warm veining, soapstone, butcher block) where you want the cabinetry to feel like part of a warm, cohesive palette rather than a stark contrast. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">full white color family</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens (LRV 6–12) — The 2026 Trend</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens (LRV 6–12)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green cabinetry went from trend to mainstream between 2023 and 2025, and in 2026 the direction has shifted from bright sage toward deeper, more complex greens with blue or gray undertones. These are not colors for timid renovations. At LRV 6–12, they absorb most of the light in the room and demand specific countertop pairings to avoid looking muddy. Done right, they are the most striking kitchen choice available.
+          Green cabinetry runs from bright sage to deeper, more complex greens with blue or gray undertones; the colors below are the deep end. These are not colors for timid renovations. At LRV 6–12, they absorb most of the light in the room and demand specific countertop pairings to avoid looking muddy. Done right, they are the most striking kitchen choice available.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#28372F" name="Essex Green HC-188" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — LRV 5.6. Dark forest green that reads almost black in low light. Best used on lower cabinets paired with white or cream uppers, where the contrast creates a furniture-like look. Requires white or very light quartz countertops to keep the kitchen from reading too dark. Finish: semi-gloss in Benjamin Moore Advance to show off the depth.
@@ -4046,21 +7611,21 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals (LRV 51–63)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The cool gray kitchen dominated the 2010s. In 2026, warm neutrals, greiges, and mushroom tones have replaced it for homeowners who want a timeless kitchen without going all-white or all-bold. At LRV 51–63, these colors reflect enough light to stay bright while adding warmth that cool grays never could.
+          Warm neutrals, greiges, and mushroom tones suit a kitchen that should feel timeless without going all-white or all-bold. At LRV 51–63, these colors reflect enough light to stay bright while adding warmth that cool grays lack.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DAD4C5" name="Edgecomb Gray HC-173" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — LRV 63. The most-specified warm greige for transitional kitchens. It reads as neither beige nor gray, which makes it flexible with a wide range of countertop materials. Works with both warm and cool hardware finishes. Its LRV is high enough to stay bright in north-facing kitchens without looking washed out in south-facing ones.
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray HC-173" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — LRV 63. A warm greige for transitional kitchens. It reads as neither beige nor gray, which makes it flexible with a wide range of countertop materials. Works with both warm and cool hardware finishes. Its LRV is high enough to stay bright in north-facing kitchens without looking washed out in south-facing ones.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D1C7B8" name="Accessible Beige SW 7036" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — LRV 58. Leans warmer than Edgecomb Gray, with more yellow-tan in its undertone. This makes it a natural match for kitchens with oak or honey-toned wood flooring, where a cooler neutral would clash with the wood&apos;s warmth. On countertops with strong warm veining (travertine, warm quartzite), it integrates seamlessly.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8BCAB" name="Shiitake SW 9173" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — LRV 51.2. A deeper mushroom-taupe that is the most current of the three warm neutrals listed here. At LRV 51, it is dark enough to feel intentional while still maintaining readability in natural light. Best paired with natural stone countertops and unlacquered brass hardware for a fully organic, 2026-forward kitchen aesthetic.
+          <Swatch hex="#C8BCAB" name="Shiitake SW 9173" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — LRV 51.2. A mushroom-taupe and the deepest of the three warm neutrals listed here. At LRV 51, it is dark enough to feel intentional while still maintaining readability in natural light. Best paired with natural stone countertops and unlacquered brass hardware for a fully organic look.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Bold Darks (LRV 4–41)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Dark cabinetry has moved from accent islands to full kitchens in high-end renovations. At LRV 4–8, these colors need strong light sources to prevent the kitchen from feeling like a cave. They work best in kitchens with large windows, skylights, or generous overhead lighting, and they require light-colored countertops and backsplashes as counterbalance.
+          Dark cabinetry works on an island or across a full kitchen. At LRV 4–8, these colors need strong light sources to prevent the kitchen from feeling like a cave. They work best in kitchens with large windows, skylights, or generous overhead lighting, and they require light-colored countertops and backsplashes as counterbalance.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#2F3D4C" name="Naval SW 6244" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — LRV 4.5. A deep, complex navy with blue-black depth. At LRV 4.5, it is very dark. The classic application is a navy island with white perimeter cabinets and white quartz countertops, creating a high-contrast look that photographs extremely well. Aged brass or unlacquered brass hardware at the same warmth level.
@@ -4085,7 +7650,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Test Before Committing</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Kitchen lighting is the hardest lighting condition to predict from a chip. Most kitchens have overhead task lighting that creates bright spots and shadows simultaneously. Before buying a full gallon, test with large peel-and-stick samples from Benjamin Moore or Sherwin-Williams (roughly $5–8 each, approximately 8 x 8 inches). Place samples next to your countertops and hardware, and observe them at three specific times: morning natural light, midday overhead light, and evening with your kitchen lights on at full intensity.
+          Kitchen lighting is the hardest lighting condition to predict from a chip. Most kitchens have overhead task lighting that creates bright spots and shadows simultaneously. Before buying a full gallon, test with large peel-and-stick samples from Benjamin Moore or Sherwin-Williams (about 8 x 8 inches). Place samples next to your countertops and hardware, and observe them at three specific times: morning natural light, midday overhead light, and evening with your kitchen lights on at full intensity.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           For cabinet colors specifically: paint a sample board the same size as one cabinet door and lean it against the actual cabinet for 48 hours before making a final decision. The color on a flat surface at eye level reads differently than on a recessed panel at varying heights and angles.
@@ -4102,7 +7667,7 @@ const blogPosts: BlogPost[] = [
     slug: "behr-vs-sherwin-williams-vs-benjamin-moore",
     title: "Behr vs Sherwin-Williams vs Benjamin Moore: Which Paint Brand Is Best?",
     date: "2025-12-04",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "An honest comparison of the three biggest paint brands in America — covering quality, price, color selection, availability, and who each brand is best for.",
@@ -4112,12 +7677,12 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          These three brands account for the vast majority of residential paint sold in America. But they serve different customers, at different price points, through different channels. Here&apos;s an honest breakdown to help you decide.
+          These three brands serve different customers, at different price points, through different channels. Here&apos;s an honest breakdown to help you decide.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Price Comparison</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Behr</strong> is the most affordable of the three, with premium lines like Marquee starting around $45–50 per gallon at Home Depot. <strong>Sherwin-Williams</strong> sits in the middle at $55–75+ per gallon depending on the product line, though their frequent 30–40% off sales close the gap. <strong>Benjamin Moore</strong> is the premium option at $60–80+ per gallon, sold exclusively through independent dealers.
+          <strong>Behr</strong> is sold at Home Depot, <strong>Sherwin-Williams</strong> through its own stores, and <strong>Benjamin Moore</strong> through independent dealers. Prices vary by line and change often, so get a current quote for the exact line you want.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Where to Buy</h2>
@@ -4133,15 +7698,15 @@ const blogPosts: BlogPost[] = [
           On Paint Color HQ, every color page shows the closest equivalents from all other brands, so you&apos;re never locked into a single brand&apos;s ecosystem.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Popular Colors Compared Across Brands</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Matched Colors Across Brands</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The best way to compare brands is to look at their most popular colors side by side. Here are some of the best-sellers from each brand and their closest cross-brand equivalents:
+          The clearest way to compare brands is to put matched colors side by side. Here are well-known colors from each brand and their closest cross-brand equivalents:
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Best-selling gray:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> — all warm greiges that rate Nearly identical or Very similar to one another. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+          <strong>Warm greige:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> — all warm greiges that rate Nearly identical or Very similar to one another. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Best-selling white:</strong> <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#E9E6E1" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
+          <strong>Warm white:</strong> <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#E9E6E1" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two colors are, and read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore deep dive</Link> for a more detailed head-to-head. For a systematic view of the closest matches across each pair, see the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM</Link>, <Link href="/match/sherwin-williams/to/behr" className="text-brand-blue hover:underline">SW to Behr</Link>, and <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">BM to Behr</Link> conversion charts.
@@ -4149,13 +7714,13 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Paint Quality</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Benjamin Moore Regal Select and Aura</strong> are widely considered the best consumer paints available. They offer exceptional coverage (often true one-coat), rich color depth, and durability. Professional painters consistently rank BM at the top.
+          <strong>Benjamin Moore Regal Select and Aura</strong> are Benjamin Moore&apos;s premium interior lines. Each line&apos;s data sheet lists its coverage, washability and recoat time, which is the fairest way to compare them with the other brands.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Sherwin-Williams Emerald</strong> is a strong second and preferred by many contractors for its excellent self-leveling and workability. Their Duration line is also excellent for high-traffic areas.
+          <strong>Sherwin-Williams Emerald</strong> is Sherwin-Williams&apos; premium interior line, with Duration and SuperPaint below it. Sherwin-Williams publishes the same data sheets.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Behr Marquee and Dynasty</strong> have improved dramatically in recent years. Consumer Reports has ranked Behr Marquee at or near the top in blind tests. For DIYers, the thick consistency and one-coat coverage make it very forgiving.
+          <strong>Behr Marquee and Dynasty</strong> are Behr&apos;s top interior lines. Behr says both cover in one coat, and its published guarantee limits that to colors in its One-Coat Color Collection.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best For…</h2>
@@ -4163,10 +7728,10 @@ const blogPosts: BlogPost[] = [
           <strong>DIYers on a budget:</strong> Behr. The convenience of Home Depot, competitive pricing, and excellent DIY-friendly formulas make it hard to beat for weekend warriors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Hiring a painter:</strong> Sherwin-Williams or Benjamin Moore. Professional painters prefer these brands for their workability, and most contractors have SW or BM accounts with trade discounts.
+          <strong>Hiring a painter:</strong> Sherwin-Williams or Benjamin Moore. Many contractors already hold trade accounts with one of them.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Color-critical projects:</strong> Benjamin Moore. If getting the exact right color matters (and you&apos;re willing to pay for it), BM&apos;s Gennex color system produces the most accurate and consistent color matches.
+          <strong>Color-critical projects:</strong> Benjamin Moore. If getting the exact right color matters (and you&apos;re willing to pay for it), Benjamin Moore says its Gennex colorant system keeps its colors consistent from can to can.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Can You Mix Brands?</h2>
@@ -4182,7 +7747,7 @@ const blogPosts: BlogPost[] = [
     slug: "calming-bedroom-paint-colors",
     title: "9 Calming Bedroom Colors Designers Love",
     date: "2026-01-15",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Create a serene retreat with these designer-approved bedroom paint colors — soft blues, warm neutrals, and muted greens that promote relaxation.",
@@ -4211,7 +7776,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Muted Greens</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green connects us to nature, and muted sage tones have become incredibly popular for bedrooms. They pair beautifully with natural wood furniture and linen textiles.
+          Muted sage greens bring a natural feel to a bedroom. They pair beautifully with natural wood furniture and linen textiles.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#B2B8A3" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a warm, dusty sage that&apos;s serene without feeling sterile.
@@ -4225,13 +7790,13 @@ const blogPosts: BlogPost[] = [
           If you prefer neutrals but want to avoid the &ldquo;cold gray bedroom&rdquo; trap, warm undertones are essential. These colors create a cocoon-like feeling.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that feels like cashmere. One of the most popular bedroom neutrals.
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that feels like cashmere.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#E6DFD3" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a warm, creamy white with yellow-beige undertones that glows in evening light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DBD7CD" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — another BM best-seller that splits the difference between gray and beige.
+          <Swatch hex="#DBD7CD" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — a Benjamin Moore neutral that splits the difference between gray and beige.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Lavender</h2>
@@ -4253,7 +7818,7 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 7 ──────────────── */
   {
     slug: "how-to-find-perfect-color-match-across-brands",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     title: "How to Find the Equivalent of a Paint Color in Another Brand",
     date: "2025-12-11",
     author: "Philip Cameron",
@@ -4295,7 +7860,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why You Need Cross-Brand Paint Matching</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Cross-brand matching is essential in four scenarios: (1) a designer specifies <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> but your contractor stocks Sherwin-Williams; (2) you move to an area where your brand is unavailable; (3) a Farrow &amp; Ball color at $115/gallon needs a <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> equivalent at $45/gallon or <Link href="/brands/valspar" className="text-brand-blue hover:underline">Valspar</Link> at $38/gallon; or (4) the original color has been discontinued and you need the closest surviving equivalent.
+          Cross-brand matching is essential in four scenarios: (1) a designer specifies <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> but your contractor stocks Sherwin-Williams; (2) you move to an area where your brand is unavailable; (3) you want a Farrow &amp; Ball color in a lower-priced brand such as <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> or <Link href="/brands/valspar" className="text-brand-blue hover:underline">Valspar</Link>; or (4) the original color has been discontinued and you need the closest surviving equivalent.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           In all of these cases, you need more than an eyeball guess. You need science-backed color matching — and that&apos;s where Delta E comes in.
@@ -4352,22 +7917,22 @@ const blogPosts: BlogPost[] = [
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Finding the Behr equivalent of Agreeable Gray.</strong>{" "}
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (LRV 60, hex #D1CBC1) is America&apos;s most popular paint color. The closest Behr equivalent is <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> (N320-2) — a warm greige that rates nearly identical, meaning the two colors are hard to tell apart on a wall.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (LRV 60, hex #D1CBC1) is a light warm greige. The closest Behr equivalent is <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> (N320-2) — a warm greige that rates nearly identical, meaning the two colors are hard to tell apart on a wall.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Matching Edgecomb Gray across brands.</strong>{" "}
-          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (HC-173, LRV 63) is a designer favorite warm greige. Its closest Sherwin-Williams match is <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60) which rates very similar — close but perceptible side by side. Head to the Edgecomb Gray page to see all cross-brand matches ranked from closest to farthest.
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (HC-173, LRV 63) is a light warm greige. Its closest Sherwin-Williams match is <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60) which rates very similar — close but perceptible side by side. Head to the Edgecomb Gray page to see all cross-brand matches ranked from closest to farthest.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Budget-friendly alternative to Farrow &amp; Ball.</strong> Love <Swatch hex="#D1CBC3" name="Cornforth White" brand="Farrow & Ball" href="/colors/farrow-ball/cornforth-white-228" /> (No. 228, $115/gallon) but not the price? Its closest Sherwin-Williams match rates nearly identical at $50–60/gallon during SW sales — saving $55+ per gallon with a close digital match (confirm with a sample). Check the Cornforth White page for all cross-brand matches ranked from closest to farthest.
+          <strong>Budget-friendly alternative to Farrow &amp; Ball.</strong> Love <Swatch hex="#D1CBC3" name="Cornforth White" brand="Farrow & Ball" href="/colors/farrow-ball/cornforth-white-228" /> (No. 228) but want a lower-priced brand? Its closest Sherwin-Williams match rates nearly identical, a close digital match to confirm with a sample. Check the Cornforth White page for all cross-brand matches ranked from closest to farthest.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Matching a classic white.</strong>{" "}
-          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is one of the most popular whites in the country. A close Sherwin-Williams equivalent is <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" />, which rates nearly identical; SW Cold Foam (SW 9504) is closer still. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how close they are. For more on choosing whites, read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link>.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is a soft warm white. A close Sherwin-Williams equivalent is <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" />, which rates nearly identical; SW Cold Foam (SW 9504) is closer still. Use the <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to see how close they are. For more on choosing whites, read our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Navy blues across brands.</strong>{" "}
-          <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> is a classic navy that designers love for accent walls and cabinetry. If you need a Sherwin-Williams alternative, search for Hale Navy on our site and you&apos;ll find the closest SW navy ranked by Delta E. Explore more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>, or browse the full <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">BM to SW conversion chart</Link> for top crossovers across all color families.
+          <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> is a deep navy for accent walls and cabinetry. If you need a Sherwin-Williams alternative, search for Hale Navy on our site and you&apos;ll find the closest SW navy ranked by Delta E. Explore more options in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>, or browse the full <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">BM to SW conversion chart</Link> for top crossovers across all color families.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When a Perfect Match Doesn&apos;t Exist</h2>
@@ -4416,7 +7981,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-white-paint-colors-guide",
     title: "The 15 Best White Paint Colors for Every Room (2026)",
     date: "2025-11-06",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "White is the hardest paint color to choose. This guide ranks 15 warm, cool, and true whites from top brands with room-by-room advice.",
@@ -4439,12 +8004,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Warm White Paint Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Warm whites are the most popular category in 2026, accounting for 6 of the top 10 best-selling whites across Sherwin-Williams and Benjamin Moore. They feel cozy without looking yellow, and they pair naturally with wood tones, brass hardware, and warm-toned countertops. Warm whites have LRV values between 69 and 90, with undertones ranging from cream to soft golden yellow.
+          Warm whites feel cozy without looking yellow, and they pair naturally with wood tones, brass hardware, and warm-toned countertops. Warm whites have LRV values between 69 and 90, with undertones ranging from cream to soft golden yellow.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">1. White Dove (OC-17) — Benjamin Moore</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is one of the most popular white paints in America. It is a soft white with a slight warm lean that reads welcoming without tipping into yellow territory. Designers reach for it as a whole-house color, cabinet white, and trim color.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is a soft white with a slight warm lean that reads welcoming without tipping into yellow territory. It works as a whole-house color, cabinet white, and trim color.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Slightly warm. <strong>LRV:</strong> 83. <strong>Best for:</strong> Cabinets, trim, whole-house color, farmhouse and transitional style. <strong>Pair with:</strong> Chantilly Lace on trim for subtle contrast. See more in our <Link href="/blog/benjamin-moore-most-popular-whites" className="text-brand-blue hover:underline">BM whites ranking</Link>.
@@ -4452,7 +8017,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">2. Alabaster (SW 7008) — Sherwin-Williams</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> sits right between white and off-white — a soft, creamy shade with just enough warmth to feel organic without reading as beige. It was SW&apos;s 2016 Color of the Year and remains one of their best sellers nearly a decade later.
+          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> sits right between white and off-white — a soft, creamy shade with just enough warmth to feel organic without reading as beige. Sherwin-Williams named it its 2016 Color of the Year.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Warm cream-yellow. <strong>LRV:</strong> 82. <strong>Best for:</strong> Living rooms, bedrooms, exteriors, open floor plans. <strong>Pair with:</strong> <Link href="/colors/sherwin-williams/iron-ore-7069" className="text-brand-blue hover:underline">Iron Ore (SW 7069)</Link> for cabinets or accent walls.
@@ -4460,7 +8025,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">3. Pure White (SW 7005) — Sherwin-Williams</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> is one of SW&apos;s all-time best sellers. Despite the name, it&apos;s a warm white with a slight cream undertone — not a true white. It works beautifully with both chrome and brass fixtures, making it the rare white that adapts to almost any hardware.
+          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> is, despite the name, a warm white with a slight cream undertone — not a true white. It works beautifully with both chrome and brass fixtures, making it the rare white that adapts to almost any hardware.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Warm (slight cream). <strong>LRV:</strong> 84. <strong>Best for:</strong> Trim, cabinets, kitchens, bathrooms. <strong>Pair with:</strong> <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Agreeable Gray (SW 7029)</Link> on walls.
@@ -4484,7 +8049,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">6. Simply White (OC-117) — Benjamin Moore</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> sits between true white and warm white — it has just a whisper of warmth without obvious cream tones. It was BM&apos;s 2016 Color of the Year and remains the go-to bridge color when you want warmth without commitment.
+          <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> sits between true white and warm white — it has just a whisper of warmth without obvious cream tones. Benjamin Moore named it its 2016 Color of the Year, and it works as a bridge color when you want warmth without commitment.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Slightly warm. <strong>LRV:</strong> 90. <strong>Best for:</strong> Kitchens, bathrooms, transitional style, trim. <strong>Pair with:</strong> Hale Navy (HC-154) for a classic contrast. Explore the full <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> collection.
@@ -4550,7 +8115,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Off-White Paint Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Off-whites bridge the gap between white and color. They have more visible undertones than the whites above, giving rooms a softer, more layered look. Off-whites are having a major moment in 2026 as homeowners move away from stark bright white toward warmer, more organic finishes.
+          Off-whites bridge the gap between white and color. They have more visible undertones than the whites above, giving rooms a softer, more layered look. Choose one when bright white would feel stark against wood floors, warm stone or brass.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">13. Pale Oak (OC-20) — Benjamin Moore</h3>
@@ -4604,7 +8169,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">Best White for Trim and Ceilings</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Trim white should be slightly crisper than your wall white to create subtle dimension. <strong>Chantilly Lace</strong> and <strong>High Reflective White</strong> are the industry standards. For ceilings, <strong>Ultra Pure White</strong> from Behr is the budget champion. The classic designer trick: use White Dove on walls and Chantilly Lace on trim — the contrast is barely visible but gives the room depth.
+          Trim white should be slightly crisper than your wall white to create subtle dimension. <strong>Chantilly Lace</strong> and <strong>High Reflective White</strong> are two crisp options. For ceilings, <strong>Ultra Pure White</strong> from Behr is a lower-priced option. One pairing to try: use White Dove on walls and Chantilly Lace on trim — the contrast is barely visible but gives the room depth.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose the Right White Paint</h2>
@@ -4631,7 +8196,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">White Paint Finish Guide</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The sheen you choose affects how your white reads. <strong>Flat/matte</strong> finishes absorb light and hide imperfections — best for ceilings and low-traffic walls. <strong>Eggshell</strong> adds a subtle glow and is the most popular choice for walls. <strong>Satin</strong> is more durable and works for kitchens, bathrooms, and trim. <strong>Semi-gloss</strong> reflects the most light and is the standard for trim, doors, and cabinets. Higher sheens make whites look brighter and can amplify undertones. See our complete <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> for more.
+          The sheen you choose affects how your white reads. <strong>Flat/matte</strong> finishes absorb light and hide imperfections — best for ceilings and low-traffic walls. <strong>Eggshell</strong> adds a subtle glow and is a common choice for walls. <strong>Satin</strong> is more durable and works for kitchens, bathrooms, and trim. <strong>Semi-gloss</strong> reflects the most light and is the standard for trim, doors, and cabinets. Higher sheens make whites look brighter and can amplify undertones. See our complete <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cross-Brand White Equivalents</h2>
@@ -4650,7 +8215,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">What is the most popular white paint color?</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Benjamin Moore White Dove (OC-17) is the most popular white paint overall. For Sherwin-Williams, it&apos;s a tie between Alabaster (SW 7008) and Pure White (SW 7005). These warm whites dominate because they work in the widest range of lighting conditions and pair with the most common fixed elements.
+          Our pick in Benjamin Moore is White Dove (OC-17). For Sherwin-Williams, start with Alabaster (SW 7008) or Pure White (SW 7005). These warm whites work in the widest range of lighting conditions and pair with the most common fixed elements.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">What is the best white paint that is not too warm and not too cool?</h3>
@@ -4670,12 +8235,12 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">Should I use the same white throughout my house?</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Using one white for all walls creates a seamless, cohesive flow — especially important in open floor plans. Alabaster and White Dove are the most popular whole-house whites because they adapt well to different lighting conditions. However, most designers use a second, crisper white for trim and ceilings to create subtle dimension. Build your whole-house palette with our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
+          Using one white for all walls creates a seamless, cohesive flow — especially important in open floor plans. Alabaster and White Dove are our picks for a whole-house white because they adapt well to different lighting conditions. A second, crisper white for trim and ceilings to create subtle dimension. Build your whole-house palette with our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
         </p>
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">What is the best white for painting over dark colors?</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          High-LRV true whites like Chantilly Lace (LRV 90) and High Reflective White (LRV 93) provide the best coverage over dark colors. Use a high-quality primer first, then apply two coats. Warm whites with lower LRVs may need three coats to fully cover a dark base. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint and primer you need.
+          Covering a dark color with any white takes a primer first, then two coats; check the paint line&apos;s data sheet for its coverage, and plan for a third coat if the old color still shows through. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how much paint and primer you need.
         </p>
       </>
     ),
@@ -4744,81 +8309,15 @@ const blogPosts: BlogPost[] = [
     ),
   },
 
-  /* ──────────────── Post 10 ──────────────── */
-  {
-    slug: "most-popular-paint-colors-2025",
-    title: "The Most Popular Paint Colors of 2025",
-    date: "2025-10-30",
-    modifiedDate: "2026-10-11",
-    author: "Philip Cameron",
-    excerpt:
-      "Based on search trends, designer picks, and real project data — these are the paint colors that defined 2025 across every major brand.",
-    coverColor: "#6E7E6A",
-    coverImage: "/blog/most-popular-paint-colors-2025.webp",
-    tags: ["Trends", "2025", "Popular"],
-    content: () => (
-      <>
-        <p className="text-lg leading-relaxed text-gray-800">
-          We analyzed search data, designer recommendations, and trending projects to identify the most popular paint colors of 2025. No surprise: warm neutrals dominated, green had a breakout year, and the era of cool gray is definitively over. <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore colors led the way.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Top 5 Overall</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>1.</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — For the fifth year running, this warm greige remains the single most popular paint color in America. It works in virtually every room and lighting condition.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>2.</strong> <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — The soft white that designers can&apos;t stop specifying. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>3.</strong> <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — A warm greige that holds its ground in the age of beige-is-back.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>4.</strong> <Swatch hex="#5E6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — The green that launched a thousand kitchen renovations. A soft sage-forest tone that represents 2025&apos;s biggest color trend.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>5.</strong> <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — The most popular trim color in the country, and increasingly used as a wall color for those who want warmth without commitment.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Biggest Trend: Green Everything</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          2025 was the year green went mainstream. From sage kitchens to forest-green front doors, every shade of <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> saw massive growth. The trend was driven by biophilic design — the idea that incorporating nature into interiors improves well-being.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Standout greens include <Swatch hex="#B2B8A3" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" />, <Swatch hex="#28372F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" />, and <Swatch hex="#91AF9D" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" />. We covered the kitchen-specific options in our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen colors guide</Link>.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Warm Neutral Takeover</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Cool gray ruled the 2010s, but 2025 confirmed its replacement: warm greige, beige, and cream tones are the new default. The <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Colors of the Year</Link> reflect this — four out of five brands chose warm earth tones.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          For homeowners looking to transition from gray to warm, the easiest path is a greige like Agreeable Gray or Edgecomb Gray. These colors bridge the gap and work with both cool-toned and warm-toned furnishings. Check out our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link> for more on making the transition.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Navy Holds Strong</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> and <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> continued to dominate as accent colors — kitchen islands, front doors, accent walls, and cabinetry. Navy offers drama without the commitment of true black. Explore more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Looking Ahead to 2026</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Early signals suggest 2026 will continue the warm trend while introducing more saturated colors — think terracotta, olive, and warm plum. The pendulum is swinging from the ultra-neutral 2020s toward more expressive color choices.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Whatever direction you choose, use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to explore 26,000+ colors across 13 brands, and find the perfect match for your next project. Preview any of these popular shades with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> or build a full palette with our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
-        </p>
-      </>
-    ),
-  },
   /* ──────────────── Post 11 ──────────────── */
   {
     slug: "best-bathroom-paint-colors",
     title: "12 Best Bathroom Paint Colors That Handle Humidity (2026)",
     date: "2026-03-05",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "The best bathroom paint colors for 2026 — spa blues, warm earth tones, and dramatic jewel shades. Every pick handles humidity, with finish advice.",
+      "The best bathroom paint colors: spa blues, warm earth tones, and dramatic jewel shades, with finish advice for humid rooms.",
     coverColor: "#7BAFB4",
     coverImage: "/blog/best-bathroom-paint-colors.webp",
     tags: ["Bathroom", "Design", "Tips", "2026"],
@@ -4839,7 +8338,7 @@ const blogPosts: BlogPost[] = [
           <strong>Finish matters as much as color.</strong> Use a <strong>satin or semi-gloss finish</strong> — both repel moisture and wipe clean easily. Flat and eggshell finishes absorb water and trap mildew spores. Semi-gloss is the best choice for shower surrounds and ceilings directly above tubs.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Choose mildew-resistant formulas.</strong> Premium bathroom-specific lines — Benjamin Moore Aura Bath &amp; Spa, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> Emerald, <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> Ultra Scuff Defense, and <Link href="/brands/ppg" className="text-brand-blue hover:underline">PPG</Link> Diamond — include antimicrobial additives that inhibit mold growth on the paint film itself.
+          <strong>Choose a mildew-resistant formula.</strong> Benjamin Moore says Aura Bath &amp; Spa is made for bathrooms. For any other line, the data sheet says whether the paint is mildew-resistant, and that resistance covers the paint film, not the wall behind it.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Primer is non-negotiable.</strong> If your walls have any existing mildew stains, apply a mold-killing primer before topcoating. Painting over mildew traps spores under the surface and they will push through within weeks. Read our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> for a deep dive on finishes.
@@ -4872,7 +8371,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Sage &amp; Muted Greens</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green has surged in bathroom design for 2026, especially soft sage tones that create an organic, nature-inspired feel. They pair exceptionally well with wood vanities, stone countertops, and brass hardware — bringing the outside in without overwhelming a small space.
+          Soft sage greens give a bathroom an organic, nature-inspired feel. They pair exceptionally well with wood vanities, stone countertops, and brass hardware — bringing the outside in without overwhelming a small space.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#B2B8A3" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a dusty, warm sage that reads as neutral in bathroom lighting. Sophisticated without trying too hard, and it complements both warm and cool-toned tile.
@@ -4883,10 +8382,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Earth Tones &amp; Terracotta</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          One of the biggest bathroom color shifts in 2026 is the move toward warm, earthy shades. Terracotta, clay, and warm browns create bathrooms that feel grounded and cozy — a welcome departure from the cool gray trend that dominated the last decade.
+          Warm, earthy shades are the alternative to cool gray. Terracotta, clay, and warm browns make a bathroom feel grounded and cozy, especially under warm bulbs.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8A7576" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — Benjamin Moore&apos;s 2025 Color of the Year is a muted warm brown that creates incredible depth in a bathroom. Pair with cream tile and matte black fixtures for a modern earthy look. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year comparison</Link> for more on this shade.
+          <Swatch hex="#8A7576" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — Benjamin Moore&apos;s 2025 Color of the Year is a muted warm brown that creates incredible depth in a bathroom. Pair with cream tile and matte black fixtures for a modern earthy look.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#BAA185" name="Latte" brand="Sherwin-Williams" href="/colors/sherwin-williams/latte-6108" /> — a warm, creamy beige-brown that adds warmth without going dark. Ideal for bathrooms that lack natural light, where cooler tones can feel flat and lifeless.
@@ -4897,7 +8396,7 @@ const blogPosts: BlogPost[] = [
           Gray remains one of the most popular bathroom colors because it offers more visual interest than white while staying neutral enough to work with any fixture or tile. The trick is choosing a gray with the right undertone for your lighting — cool grays with blue undertones suit modern bathrooms, while warm grays with greige undertones soften traditional spaces.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CCC9C0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> — a true neutral gray with barely-there warm undertones. One of the most reliable bathroom grays because it doesn&apos;t shift purple or blue under artificial light. Explore more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+          <Swatch hex="#CCC9C0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> — a true neutral gray with barely-there warm undertones. Its warm undertone keeps it from reading purple or blue under artificial light, which makes it a safe bathroom gray. Explore more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody &amp; Dramatic (Powder Rooms)</h2>
@@ -4974,7 +8473,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-living-room-paint-colors",
     title: "The Best Living Room Paint Colors for Every Style",
     date: "2026-01-02",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Whether your style is modern, traditional, or farmhouse — these living room paint colors create the perfect backdrop for your most-used room.",
@@ -4984,12 +8483,12 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The living room is where your color choice matters most. It&apos;s the room guests see first, where your family spends the most time, and often the largest continuous wall space in the house. The right color sets the tone for your entire home — and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> remains the top choice among living room designers. Here are the best options for every design style.
+          The living room is where your color choice matters most. It&apos;s the room guests see first, where your family spends the most time, and often the largest continuous wall space in the house. The right color sets the tone for your entire home. Here are the best options for every design style.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Modern & Minimalist</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Modern living rooms thrive on clean lines and restrained color. The walls should recede, letting furniture and art take center stage.
+          A modern living room calls for clean lines and restrained color. The walls should recede, letting furniture and art take center stage.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — a clean, bright white that&apos;s the standard for modern interiors. It measures close to neutral and photographs cleanly.
@@ -5009,7 +8508,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — the quintessential transitional neutral. This warm greige works with virtually any furnishing style and feels equally at home in a 1920s colonial and a 2024 new build.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — America&apos;s most popular paint color for a reason. It&apos;s a warm gray-beige that adapts to every lighting condition and pairs with everything from traditional hardwood floors to modern tile.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — a warm gray-beige that adapts to every lighting condition and pairs with everything from traditional hardwood floors to modern tile.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#DBD7CD" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — a slightly lighter greige option that opens up smaller living rooms while maintaining warmth. Check our <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for more warm neutrals.
@@ -5017,7 +8516,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse & Cottage</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Farmhouse style has evolved beyond stark white shiplap. Today&apos;s farmhouse living rooms use creamy whites and soft earth tones that feel collected and lived-in.
+          A farmhouse living room doesn&apos;t need stark white shiplap. Creamy whites and soft earth tones feel collected and lived-in.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the soft white that launched a thousand farmhouse kitchens. It leans slightly warm without reading yellow and works with natural wood beams and vintage textiles.
@@ -5028,7 +8527,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody & Cozy</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          More homeowners are embracing rich, enveloping colors for living rooms — especially in homes with open floor plans where the living room can be defined by a bold color change.
+          Rich, enveloping colors suit living rooms too, especially in homes with open floor plans where the living room can be defined by a bold color change.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#28372F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that creates a dramatic, library-like atmosphere. Pair with cognac leather and brass accents.
@@ -5037,7 +8536,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — a rich navy that adds sophistication without feeling dark. Works especially well in rooms with large windows.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8A7576" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — the 2025 Color of the Year is a warm, muted brown that creates incredible coziness. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year guide</Link> for more on this shade.
+          <Swatch hex="#8A7576" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — Benjamin Moore&apos;s 2025 Color of the Year, a heathered plum-brown that makes a living room feel cozy.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Coastal & Airy</h2>
@@ -5070,10 +8569,10 @@ const blogPosts: BlogPost[] = [
     slug: "best-home-office-paint-colors",
     title: "Best Home Office Paint Colors for Productivity in 2026",
     date: "2026-02-05",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "The best paint colors for home office productivity — from calming blues and greens to 2026 trending shades — picked for focus, mood, and video call appearance.",
+      "The best paint colors for home office productivity — from calming blues and greens to deeper muted shades, picked for focus, mood, and video call appearance.",
     coverColor: "#5B7A6E",
     coverImage: "/blog/best-home-office-paint-colors.webp",
     tags: ["Home Office", "Productivity", "Design", "2026 Trends"],
@@ -5081,7 +8580,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Choosing the best paint colors for home office productivity is one of the highest-impact changes you can make to your workspace. Wall color changes how a room feels over a long workday, and it shows up behind you on every video call. Below you&apos;ll find 13 colors across four major brands — including 2026 trending shades — organized by the type of work they support best.
+          Choosing the best paint colors for home office productivity is one of the highest-impact changes you can make to your workspace. Wall color changes how a room feels over a long workday, and it shows up behind you on every video call. Below you&apos;ll find 13 colors across four major brands, organized by the type of work they support best.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Office Paint Color Matters for Productivity</h2>
@@ -5094,7 +8593,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Blues for Focus</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Blue is the most common choice for productivity spaces. Soft, grayed blues read calm and orderly, which suits detail-oriented work.
+          Soft, grayed blues read calm and orderly, which suits detail-oriented work.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C8D0C9" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a muted blue-green that&apos;s calming without being cold. It reads as sophisticated in person and looks fantastic on camera.
@@ -5106,7 +8605,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#CBCCC6" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> — technically a gray, but its blue undertones give it the focus-enhancing properties of blue while maintaining a neutral, professional look. Compare it against other options with our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#959BA0" name="Dustblu" brand="Sherwin-Williams" href="/colors/sherwin-williams/dustblu-9161" /> — a 2026 trending muted blue that balances sophistication with calm. It reads as deeply professional without being cold, and it flatters most skin tones on video calls. Browse all options from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>.
+          <Swatch hex="#959BA0" name="Dustblu" brand="Sherwin-Williams" href="/colors/sherwin-williams/dustblu-9161" /> — a muted blue that balances sophistication with calm. It reads as deeply professional without being cold, and it flatters most skin tones on video calls. Browse all options from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Greens for Creativity</h2>
@@ -5181,7 +8680,7 @@ const blogPosts: BlogPost[] = [
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">What is the best paint color for home office productivity?</h3>
         <p className="mt-3 text-gray-700 leading-relaxed">
-          Muted blues and greens consistently perform best for productivity. Quiet Moments (Benjamin Moore 1563) and Pewter Green (Sherwin-Williams 6208) top most designer recommendations because they lower heart rate, reduce anxiety, and provide a natural resting point for eyes fatigued by screens. For 2026, Hidden Gem by Behr offers a fresh take on the productive green.
+          Muted blues and greens are our picks for focused work. Quiet Moments (Benjamin Moore 1563) and Pewter Green (Sherwin-Williams 6208) are soft enough to give eyes a resting point between screens. Hidden Gem, Behr&apos;s 2026 Color of the Year, is a deeper green option.
         </p>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">What colors should you avoid in a home office?</h3>
         <p className="mt-3 text-gray-700 leading-relaxed">
@@ -5209,7 +8708,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-exterior-paint-colors",
     title: "The Best Exterior Paint Colors to Boost Curb Appeal",
     date: "2026-03-09",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Exterior paint must work with your roof, trim, and full sun. These are the colors that hold up outdoors, with pairing advice for every style.",
@@ -5219,7 +8718,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Exterior paint selection is harder than interior because you cannot control the conditions. Your roof, stone or brick accents, landscaping, and neighboring houses are fixed. Full sun washes out colors by 2 to 3 shades compared to how they look on a chip indoors. Wind, rain, UV exposure, and temperature swings mean formulation matters as much as color. The best exterior paints for 2026 use 100% acrylic formulations with UV-resistant pigments; both Benjamin Moore Aura Exterior and Sherwin-Williams Emerald Exterior are rated for 15+ years before significant fading.
+          Exterior paint selection is harder than interior because you cannot control the conditions. Your roof, stone or brick accents, landscaping, and neighboring houses are fixed. Full sun washes out colors by 2 to 3 shades compared to how they look on a chip indoors. Wind, rain, UV exposure, and temperature swings mean formulation matters as much as color, so check the exterior line&apos;s data sheet and warranty before you buy.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Classic White Exteriors</h2>
@@ -5227,21 +8726,21 @@ const blogPosts: BlogPost[] = [
           A white house is timeless for a reason: it works with every architectural style, every roof color, and every landscape. But exterior whites behave differently from interior whites — bright sun washes them out, so you often need a white with more body than you&apos;d choose indoors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — one of the most specified exterior whites. Its slight warm lean keeps it from looking stark or cold in full sun.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — a soft exterior white. Its slight warm lean keeps it from looking stark or cold in full sun.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — for homeowners who want a crisp white that measures close to neutral. Best on modern and contemporary homes.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — a warm white that&apos;s the most popular SW exterior color. It glows golden at sunset. Browse our full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — a warm white that glows golden at sunset. Browse our full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark & Dramatic Siding</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Dark exteriors have been climbing steadily since 2020 and now represent a significant share of new-construction spec choices. Charcoal, navy, and deep green siding reads as modern and intentional rather than simply dark. The critical pairing requirement: light trim is non-negotiable. Without white or cream trim to create contrast, dark siding absorbs all the light and the house loses its architectural definition.
+          Charcoal, navy, and deep green siding reads as modern and intentional rather than simply dark. The critical pairing requirement: light trim is non-negotiable. Without white or cream trim to create contrast, dark siding absorbs all the light and the house loses its architectural definition.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4A4B4C" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as deep charcoal in sunlight. The most popular dark exterior color. It&apos;s sophisticated without being as stark as true black.
+          <Swatch hex="#4A4B4C" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as deep charcoal in sunlight. It&apos;s sophisticated without being as stark as true black.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#28372F" name="Essex Green HC-188" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — at LRV 5.6, this is a very dark forest green that reads differently from charcoal: where dark grays feel urban and modern, Essex Green on a craftsman or colonial feels grounded and organic. It blends with mature tree lines while clearly distinguishing the house from the neighborhood.
@@ -5252,10 +8751,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Gray & Greige</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Gray siding defined the 2010s, but today&apos;s grays are warmer — leaning into greige and taupe territory. These colors work with both traditional and modern architecture.
+          Warm grays lean into greige and taupe territory. These colors work with both traditional and modern architecture.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — the most popular interior color works just as well outside. It&apos;s a warm greige that complements brown, gray, and black roofing.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — it works outside as well as in. It&apos;s a warm greige that complements brown, gray, and black roofing.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#ADA295" name="Mega Greige" brand="Sherwin-Williams" href="/colors/sherwin-williams/mega-greige-7031" /> — a deeper greige for a more substantial exterior color. It reads as a warm, sophisticated gray that avoids looking cold.
@@ -5277,7 +8776,7 @@ const blogPosts: BlogPost[] = [
           The front door is where you can take a risk. It&apos;s a small surface area with an outsized impact on curb appeal.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — navy is the most popular front door color. It conveys trust, stability, and sophistication.
+          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a classic navy for a front door. It conveys trust, stability, and sophistication.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#4A4B4C" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black door works on every house style and makes hardware stand out.
@@ -5310,7 +8809,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-nursery-paint-colors",
     title: "13 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last)",
     date: "2026-01-29",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best nursery paint colors for 2026 — gender-neutral picks from Sherwin-Williams, Benjamin Moore, and Behr that grow with your child.",
@@ -5320,20 +8819,20 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best nursery paint color for most rooms is Benjamin Moore Saybrook Sage (HC-114, hex #b2b8a3, LRV 46) — a warm, gender-neutral sage green that is calming for newborns and still looks stylish at age ten. For parents who prefer a neutral, <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove</Link> (OC-17, hex #EFEEE5, LRV 83) is the safest soft white for nurseries. The 2026 nursery trend has shifted away from pastel pink and baby blue toward earthy, muted tones — mushroom taupes, smoky sages, and warm clays that grow with your child. These 13 nursery paint colors from <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> are ranked by versatility, longevity, and sleep-science research.
+          The best nursery paint color for most rooms is Benjamin Moore Saybrook Sage (HC-114, hex #b2b8a3, LRV 46) — a warm, gender-neutral sage green that is calming for newborns and still looks stylish at age ten. For parents who prefer a neutral, <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove</Link> (OC-17, hex #EFEEE5, LRV 83) is the safest soft white for nurseries. This guide favors earthy, muted tones over pastel pink and baby blue: mushroom taupes, smoky sages and warm clays that still suit the room as your child grows. These 13 nursery paint colors from <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>, <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> are ranked by versatility and by how well they age with the room.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Baby Pastels Are Out in 2026</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Muted Tones Over Baby Pastels</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Pastel pink and baby blue have their place, but they&apos;re the nursery paint colors most parents regret within two years. They feel dated quickly and don&apos;t transition well as kids develop their own preferences.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The 2026 trend in baby room colors leans into mushroom taupes, smoky sages, warm clay tones, and creamy whites. These are sophisticated, muted shades that happen to be kid-friendly — colors that would look equally at home in a guest room. The goal: paint once, enjoy for a decade.
+          The colors in this guide lean into mushroom taupes, smoky sages, warm clay tones, and creamy whites. These are muted shades that happen to be kid-friendly — colors that would look equally at home in a guest room. The goal: paint once, enjoy for a decade.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Soft Green Nursery Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green is the most versatile nursery color and the top choice among nursery designers in 2026. It&apos;s gender-neutral, calming, and connects the room to nature — exactly what sleep experts recommend for a baby&apos;s environment.
+          Green is the most flexible color in this guide. It&apos;s gender-neutral, reads calm, and works with both wood and white furniture.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#B2B8A3" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (LRV 45.5) — a warm, dusty sage that is serene for an infant and sophisticated enough for a 10-year-old. It pairs beautifully with natural wood cribs and white furniture. Its closest Sherwin-Williams match is Softened Green (SW 6177) which rates very similar.
@@ -5361,10 +8860,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Warm Neutral Nursery Colors</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Warm whites, creams, and mushroom taupes create a bright, airy nursery that serves as a blank canvas for colorful bedding, art, and toys. They&apos;re the easiest baby room colors to accessorize and redecorate around as your child grows. In 2026, the trend is moving toward warmer, earthier neutrals rather than the cool grays that dominated nurseries a few years ago.
+          Warm whites, creams, and mushroom taupes create a bright, airy nursery that serves as a blank canvas for colorful bedding, art, and toys. They&apos;re the easiest baby room colors to accessorize and redecorate around as your child grows. The picks below are warm rather than cool gray, which keeps a small room from feeling chilly.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (LRV 83), one of the most popular whites in America. In a nursery, it creates a bright, peaceful space that lets colorful decor pop. Sherwin-Williams Pure White (SW 7005, LRV 84) rates nearly identical. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (LRV 83) is a soft, slightly warm white. In a nursery, it creates a bright, peaceful space that lets colorful decor pop. Sherwin-Williams Pure White (SW 7005, LRV 84) rates nearly identical. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#E6DFD3" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> (LRV 74.3) — a creamy, sandy white that counteracts the cool blue cast in north-facing nurseries. At LRV 74, it reflects enough light to keep the room bright while adding perceptible warmth. See our <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">north-facing rooms guide</Link> for more.
@@ -5373,15 +8872,15 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#DBD7CD" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> (LRV 65.5) — a warm gray-beige for parents who want depth beyond white. At LRV 66, it is cozy without being dark. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families for similar tones.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Earthy Tones: The 2026 Nursery Trend</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Earthy Tones That Grow With Your Child</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The biggest shift in nursery paint colors for 2026 is toward earthy, grounding tones — mushroom taupes, warm clays, and dusted olives. These colors create a cocoon-like atmosphere that feels safe, warm, and timeless. Color-drenching (painting walls, trim, and ceiling the same shade) is one of the most popular nursery techniques for 2026.
+          Earthy, grounding tones (mushroom taupes, warm clays and dusted olives) make a nursery feel enclosed and warm. They also suit color-drenching, where walls, trim and ceiling are painted the same shade, because a muted color does not overwhelm a small room when it covers every surface.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8BCAB" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> (LRV 51.2) — the defining mushroom taupe of 2026. It sits between beige, gray, and the faintest whisper of brown. At LRV 51, it is warm and grounding without darkening a small nursery.
+          <Swatch hex="#C8BCAB" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> (LRV 51.2) is a mushroom taupe. It sits between beige, gray, and the faintest whisper of brown. At LRV 51, it is warm and grounding without darkening a small nursery.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> (LRV 41) — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral. Its closest Benjamin Moore match is <Link href="/colors/benjamin-moore/rocky-beach-csp-190" className="text-brand-blue hover:underline">Rocky Beach (CSP-190)</Link>, and Behr <Link href="/colors/behr/nile-sand-ul170-19" className="text-brand-blue hover:underline">Nile Sand (UL170-19)</Link> is closer still; both rate nearly identical in our digital data. <Link href="/colors/benjamin-moore/shaker-beige-hc-45" className="text-brand-blue hover:underline">Shaker Beige (HC-45)</Link> is a lighter warm tan that shows a visible difference. See our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> roundup.
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> (LRV 41), Sherwin-Williams&apos; 2026 Color of the Year. A warm, sandy neutral. Its closest Benjamin Moore match is <Link href="/colors/benjamin-moore/rocky-beach-csp-190" className="text-brand-blue hover:underline">Rocky Beach (CSP-190)</Link>, and Behr <Link href="/colors/behr/nile-sand-ul170-19" className="text-brand-blue hover:underline">Nile Sand (UL170-19)</Link> is closer still; both rate nearly identical in our digital data. <Link href="/colors/benjamin-moore/shaker-beige-hc-45" className="text-brand-blue hover:underline">Shaker Beige (HC-45)</Link> is a lighter warm tan that shows a visible difference. See our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> roundup.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> families for more earthy nursery options.
@@ -5411,7 +8910,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Nursery Paint Safety: VOC Guide for New Parents</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Use zero-VOC or low-VOC paint.</strong> Babies spend 12-16 hours a day in the nursery, and their developing lungs are more sensitive to airborne chemicals. VOCs (volatile organic compounds) are the chemicals that cause &ldquo;new paint smell.&rdquo; All major brands now offer zero-VOC lines: Benjamin Moore Natura, Sherwin-Williams Harmony, and Behr Premium Plus are the most popular.
+          <strong>Use zero-VOC or low-VOC paint.</strong> Babies spend 12-16 hours a day in the nursery, and their developing lungs are more sensitive to airborne chemicals. VOCs (volatile organic compounds) are the chemicals that cause &ldquo;new paint smell.&rdquo; All major brands offer zero-VOC lines, including Benjamin Moore Natura, Sherwin-Williams Harmony and Behr Premium Plus.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Paint early.</strong> Finish painting at least 2-3 weeks before baby arrives. Even low-VOC paint needs time to fully off-gas and cure. Open windows during and after painting to accelerate ventilation.
@@ -5436,7 +8935,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Nursery Paint Colors FAQ</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>What is the best color for a nursery?</strong> Soft sage greens (like Saybrook Sage) and warm neutrals (like White Dove) are the most universally loved nursery colors. They&apos;re gender-neutral, calming, and transition well as your child grows.
+          <strong>What is the best color for a nursery?</strong> Soft sage greens (like Saybrook Sage) and warm neutrals (like White Dove) are our top picks. They&apos;re gender-neutral, calming, and transition well as your child grows.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>What nursery colors help babies sleep?</strong> Cool blues and soft greens are backed by research as sleep-promoting colors. They lower heart rate and reduce anxiety. Avoid bright reds, oranges, or saturated yellows, which are stimulating.
@@ -5445,7 +8944,7 @@ const blogPosts: BlogPost[] = [
           <strong>Is it safe to paint while pregnant?</strong> Zero-VOC paints (Benjamin Moore Natura, Sherwin-Williams Harmony, Behr Premium Plus) emit less than 5 grams per liter of volatile organic compounds. The American Pregnancy Association advises pregnant women to avoid painting directly but notes that brief exposure to zero-VOC paint after the first trimester poses minimal risk. Have someone else paint and ventilate the room for 48–72 hours before use.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>What are the trending nursery colors for 2026?</strong> Earthy mushroom taupes, smoky sages, warm clay blushes, and creamy whites dominate 2026 nursery trends. The shift is toward warmer, more atmospheric colors rather than the cool grays that were popular in previous years.
+          <strong>Should a nursery be warm or cool?</strong> Warm, for most rooms. Mushroom taupes, smoky sages, warm clay blushes and creamy whites stay soft in lamplight, where cool grays can read flat and chilly at night.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>How many coats of paint does a nursery need?</strong> Plan for two coats of your chosen color over a quality primer. If you&apos;re painting over a dark color, you may need a third coat or a tinted primer. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate the total gallons for your room size.
@@ -5459,7 +8958,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dining-room-paint-colors",
     title: "13 Best Dining Room Paint Colors for Every Style (2026)",
     date: "2026-02-12",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best dining room paint colors for 2026 — bold jewel tones, warm earth tones, and elegant neutrals with hex codes and pairing tips.",
@@ -5469,7 +8968,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best dining room paint colors share one thing: they make the room feel intentional. Whether you want a moody navy that turns Tuesday pasta into a dinner party or a warm neutral that flows into an open kitchen, the right dining room color transforms how meals feel. These 13 colors cover every style — from dramatic jewel tones to trending 2026 earth tones — with specific brand names, hex codes, and pairing advice so you can choose with confidence.
+          The best dining room paint colors share one thing: they make the room feel intentional. Whether you want a moody navy that turns Tuesday pasta into a dinner party or a warm neutral that flows into an open kitchen, the right dining room color transforms how meals feel. These 13 colors cover every style, from dramatic jewel tones to warm earth tones, with specific brand names, hex codes, and pairing advice so you can choose with confidence.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Dining Rooms Can Handle Bold Color</h2>
@@ -5485,7 +8984,7 @@ const blogPosts: BlogPost[] = [
           Jewel tones create intimacy and a sense of occasion. If you entertain frequently or want your dining room to feel like a destination rather than a passthrough, these are the colors to consider.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — navy is the single most popular bold dining room color in America. It conveys elegance, works with every wood tone from oak to walnut, and makes white trim and china pop. It looks equally stunning in traditional homes with wainscoting and in modern spaces with clean lines. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for lighter navy alternatives.
+          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a deep navy that conveys elegance, works with every wood tone from oak to walnut, and makes white trim and china pop. It looks equally stunning in traditional homes with wainscoting and in modern spaces with clean lines. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for lighter navy alternatives.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#524B59" name="Shadow" brand="Benjamin Moore" href="/colors/benjamin-moore/shadow-2117-30" /> — a moody, sophisticated plum-gray that&apos;s dramatic without being overwhelming. It looks stunning by candlelight and pairs with both gold and silver accents. Shadow works especially well in dining rooms with high ceilings where you want the walls to feel enveloping.
@@ -5494,21 +8993,21 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#28372F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that creates a rich, library-like dining room. Pair with brass light fixtures and a wood table for old-world sophistication. Essex Green is one of Benjamin Moore&apos;s Historical Collection colors, which means it has been used in American homes for centuries. See more in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#744034" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> — a sumptuous red-brown with earthy undertones that PPG highlighted as a 2026 trend color. It brings warmth and depth to formal dining rooms without the intensity of a pure red. Pair with cream linens and natural wood for a grounded, inviting feel.
+          <Swatch hex="#744034" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> — a sumptuous red-brown with earthy undertones. It brings warmth and depth to formal dining rooms without the intensity of a pure red. Pair with cream linens and natural wood for a grounded, inviting feel.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Earth Tones (The 2026 Trend)</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Earth Tones</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The biggest dining room color trend in 2026 is the shift from cool grays toward warm earth tones — taupes, terracottas, khakis, and mushroom shades. These colors feel organic, grounding, and naturally cozy under warm dining room lighting. Read our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link> for more on this shift.
+          Warm earth tones (taupes, terracottas, khakis, and mushroom shades) are the warm alternative to cool gray. They feel organic, grounding, and naturally cozy under warm dining room lighting. Read our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link> for the warm neutrals the brands picked this year.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral that represents the definitive move away from cool grays. It works beautifully in dining rooms because it flatters skin tones under warm lighting and pairs with virtually any wood table or chair.
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — Sherwin-Williams&apos; 2026 Color of the Year. A warm, sandy neutral at LRV 41 that suits a dining room with warm lighting and wood furniture.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#b0785c" name="Spiced Cider" brand="Sherwin-Williams" href="/colors/sherwin-williams/spiced-cider-7702" /> — a warm terracotta that brings Mediterranean warmth to any dining space. It glows beautifully under pendant lighting and pairs with white dishes, terracotta serveware, and linen table runners.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8BCAB" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — a mushroom tone that&apos;s having a moment in dining rooms. It&apos;s warm, grounding, and sophisticated without being dark — the dining room equivalent of a cashmere sweater. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more earthy options.
+          <Swatch hex="#C8BCAB" name="Shiitake" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — a mushroom tone. It&apos;s warm, grounding, and sophisticated without being dark — the dining room equivalent of a cashmere sweater. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more earthy options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#857666" name="Safari Beige" brand="Valspar" href="/colors/valspar/safari-beige-6006-2b" /> — a sandy, warm beige-brown that creates an organic, earthy dining room. It pairs naturally with ceramic tableware, woven placemats, and natural wood tones. Explore <Link href="/brands/valspar" className="text-brand-blue hover:underline">all Valspar colors</Link> on our site.
@@ -5525,7 +9024,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — slightly warmer and richer than <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Agreeable Gray</Link>. It creates a cozy, golden atmosphere under warm lighting that makes dining rooms feel especially inviting on winter evenings. Browse the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for similar tones.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — America&apos;s most popular paint color works in dining rooms that need to blend seamlessly with adjacent spaces. It&apos;s the safe choice when you want warmth without committing to a specific color direction. See our <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">living room color guide</Link> for complementary options.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — a balanced greige for dining rooms that need to blend seamlessly with adjacent spaces. It&apos;s the safe choice when you want warmth without committing to a specific color direction. See our <Link href="/blog/best-living-room-paint-colors" className="text-brand-blue hover:underline">living room color guide</Link> for complementary options.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft & Formal Dining Room Colors</h2>
@@ -5533,7 +9032,7 @@ const blogPosts: BlogPost[] = [
           For a dining room that feels refined and classic rather than dramatic, muted blues and greens offer timeless elegance. These work especially well in traditional homes, dining rooms with crown molding, and spaces with crystal chandeliers or silver accents.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8D0C9" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a soft blue-green that adds color without intensity. It&apos;s serene and pairs perfectly with white wainscoting and crystal chandeliers. This is one of Benjamin Moore&apos;s most popular colors for formal dining rooms.
+          <Swatch hex="#C8D0C9" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a soft blue-green that adds color without intensity. It&apos;s serene and pairs perfectly with white wainscoting and crystal chandeliers.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#5E6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — a muted sage-forest that feels both modern and traditional. It&apos;s one of the most versatile dining room greens available and looks particularly elegant with white trim and warm brass hardware.
@@ -5574,10 +9073,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>What is the most popular dining room paint color?</strong> Navy blue (like <Link href="/colors/sherwin-williams/naval-6244" className="text-brand-blue hover:underline">Sherwin-Williams Naval</Link>) and warm greige (like <Link href="/colors/benjamin-moore/edgecomb-gray-hc-173" className="text-brand-blue hover:underline">Edgecomb Gray</Link>) are consistently the two most popular dining room paint colors. Navy dominates in formal dining rooms while greige leads in open-concept homes.
+          <strong>What is the safest dining room paint color?</strong> Navy blue (like <Link href="/colors/sherwin-williams/naval-6244" className="text-brand-blue hover:underline">Sherwin-Williams Naval</Link>) and warm greige (like <Link href="/colors/benjamin-moore/edgecomb-gray-hc-173" className="text-brand-blue hover:underline">Edgecomb Gray</Link>) are the two safest directions. Navy suits a formal, closed dining room; greige suits an open-concept home where the dining area shares walls with the kitchen or living room.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>What dining room colors are trending in 2026?</strong> Warm earth tones are the biggest 2026 dining room trend — sandy khakis, terracottas, and mushroom shades are replacing the cool grays of recent years. Deep, botanical greens and warm mahogany reds are also gaining popularity for statement dining rooms.
+          <strong>What colors make a dining room feel warm?</strong> Earth tones: sandy khakis, terracottas, and mushroom shades. For a statement room, deep botanical greens and mahogany reds add warmth with more depth.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Should I paint my dining room a dark color?</strong> Yes, if you want drama and intimacy. Dining rooms are one of the best spaces for dark colors because they&apos;re used in short bursts under warm evening light. Dark colors like navy, forest green, and deep plum look better at night than they do on a daytime paint chip.
@@ -5599,17 +9098,17 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-kitchen-colors",
     title: "15 Best Sherwin-Williams Paint Colors for Kitchens (2026)",
     date: "2026-02-26",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-27",
     author: "Philip Cameron",
     excerpt:
-      "The most popular Sherwin-Williams kitchen colors for cabinets, walls, and islands — with finish tips, lighting advice, and designer pairings.",
+      "15 Sherwin-Williams kitchen colors for cabinets, walls and islands, with measured cabinet whites, data-sheet finish figures and lighting advice.",
     coverColor: "#6B7C6E",
     coverImage: "/blog/best-sherwin-williams-kitchen-colors.webp",
     tags: ["Sherwin-Williams", "Kitchen", "Design", "Cabinets"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Sherwin-Williams is the paint brand most specified by kitchen designers and contractors in the US. With over 1,700 colors and a store within 20 minutes of most Americans, it&apos;s the go-to for kitchen renovations. These 15 Sherwin-Williams kitchen colors cover cabinets, walls, and statement islands — each one chosen because designers and homeowners keep coming back to it. We&apos;ll also cover which SW paint line to use, how lighting changes these colors, and how to sample before committing.
+          These 15 Sherwin-Williams colors cover a kitchen from cabinets to island: four cabinet whites, three cabinet greens, four wall neutrals and four bold colors for islands and accents. Each name links to the color&apos;s page, which gives its LRV and its closest matches in other brands. After the picks, we cover what the cabinet enamel&apos;s data sheet says, how kitchen lighting shifts these colors, and how to sample before you commit.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Whites for Kitchen Cabinets</h2>
@@ -5617,38 +9116,38 @@ const blogPosts: BlogPost[] = [
           White cabinets remain the top choice for kitchens, and the specific white matters enormously. The wrong white clashes with countertops and makes the whole kitchen feel off. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these whites in a kitchen setting before buying samples.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — the most popular SW cabinet white. It&apos;s warm enough to avoid sterile vibes but clean enough for modern kitchens. Pairs beautifully with quartz and marble countertops. Works in both north-facing and south-facing kitchens because it holds its true color under different lighting.
+          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" />: LRV 83.7, yellowness 3.0. A clean white with a little yellow, for countertops that look neutral or cool.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> — a creamier option with warm yellow undertones. Best for kitchens with warm-toned flooring and brass hardware. In north-facing kitchens, it reads as a soft warm glow rather than stark white.
+          <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" />: LRV 82.2, yellowness 5.2, the creamiest of the four. Suits countertops and floors that look creamy or golden.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" />: one of the brightest whites in the SW deck. Use for trim and ceilings when you want maximum brightness. It can feel clinical on cabinets in small kitchens, so pair it with warm countertops to balance it out. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for more.
+          <Swatch hex="#F7F7F1" name="High Reflective White" brand="Sherwin-Williams" href="/colors/sherwin-williams/high-reflective-white-7757" />: LRV 92.6, yellowness 2.9, the brightest of the four. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">best white paint colors guide</Link> for how it compares with other bright whites.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDEAE5" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" /> — a soft white with subtle gray undertones. Snowbound hides fingerprints and smudges better than pure whites, making it a smart choice for busy kitchens with kids. Compare it side by side with Pure White using our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>.
+          <Swatch hex="#EDEAE5" name="Snowbound" brand="Sherwin-Williams" href="/colors/sherwin-williams/snowbound-7004" />: LRV 82.5, yellowness 2.8, the least yellow of the four. Compare it with Pure White in the <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Greens for Kitchen Cabinets</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green kitchens are one of the biggest cabinet trends right now. These SW greens work on lower cabinets with white uppers, or as a full cabinet color. The 2026 trend leans toward moodier, olive-influenced greens rather than the bright sages of previous years.
+          These Sherwin-Williams greens work on lower cabinets with white uppers, or as a full cabinet color. They split into one light green, Restful at LRV 39, and two dark ones, Rosemary at LRV 14 and Pewter Green at LRV 12, which suit a kitchen with plenty of light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#5E6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — the kitchen green of the decade. A muted sage-forest that reads sophisticated in every lighting condition. Pairs with brass hardware, butcher block counters, and white marble equally well.
+          <Swatch hex="#5E6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — a muted gray-green and the darkest of the three. Pairs with brass hardware, butcher block counters, and white marble equally well.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#91AF9D" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" /> — a brighter, more saturated sage for kitchens with lots of natural light. It can lean blue-green under fluorescent lighting, so test a sample under your actual kitchen lights first.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#64695C" name="Rosemary" brand="Sherwin-Williams" href="/colors/sherwin-williams/rosemary-6187" /> — a deeper, earthier green with olive undertones. This is the 2026 mood: rich, grounded greens that feel organic rather than trendy. Browse all options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
+          <Swatch hex="#64695C" name="Rosemary" brand="Sherwin-Williams" href="/colors/sherwin-williams/rosemary-6187" /> — a deeper, earthier green with olive undertones, slightly lighter and yellower than Pewter Green. Browse all options in the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Neutrals for Kitchen Walls</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          If your cabinets are the star, the wall color should support them without competing. The 2026 trend in kitchen neutrals has shifted from cool grays toward warmer taupes, greiges, and sandy tones.
+          If your cabinets are the star, the wall color should support them without competing.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — America&apos;s #1 paint color works in kitchens as well as anywhere. Its warm greige tone complements white cabinets, wood cabinets, and painted cabinets alike. If your kitchen opens to a living room, Agreeable Gray creates seamless flow between spaces.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — a greige at LRV 60, a little lighter and less yellow than Accessible Beige. Its warm tone complements white cabinets, wood cabinets, and painted cabinets alike. If your kitchen opens to a living room, Agreeable Gray creates seamless flow between spaces.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — warmer and richer than Agreeable Gray. Best for kitchens with honey oak floors or warm-toned stone countertops. Explore the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for similar tones.
@@ -5657,15 +9156,15 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#E6DFD3" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a warm off-white that keeps walls bright without the stark feel of true white. It bridges the gap between a neutral wall color and a white, making it versatile for kitchens where you can&apos;t decide between the two.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — the 2026 HGTV Home by Sherwin-Williams Color Collection pick. A warm, sandy neutral that represents the shift away from cool grays. It pairs especially well with white or green cabinets and natural stone countertops. Read our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link> for more context on this trend.
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> — Sherwin-Williams&apos; 2026 Color of the Year. A warm, sandy neutral at LRV 41, the darkest and yellowest of these four neutrals. It pairs especially well with white or green cabinets and natural stone countertops. Read our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Color of the Year comparison</Link> to see how it compares with the other brands&apos; 2026 picks.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Bold Colors for Kitchen Islands and Accents</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For kitchen islands, accent walls, or statement cabinetry, these bold SW colors are designer-approved. A two-tone kitchen — white uppers with a bold island — is one of the most requested designs right now.
+          For kitchen islands, accent walls, or statement cabinetry, these four dark Sherwin-Williams colors carry the room. One layout to try is white uppers with a dark island.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — the #1 bold kitchen color. Navy islands with white countertops and gold hardware are a timeless combination. Naval works in both traditional and modern kitchens. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link> for lighter navy alternatives.
+          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a deep navy. Navy islands pair with white countertops and gold hardware. Naval works in both traditional and modern kitchens. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue family</Link> for lighter navy alternatives.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#434341" name="Iron Ore" brand="Sherwin-Williams" href="/colors/sherwin-williams/iron-ore-7069" /> — a charcoal-black for modern kitchen cabinets. Less stark than true black, more dramatic than dark gray. It reads as a rich, warm charcoal rather than flat black, which prevents the kitchen from feeling like a cave. Explore the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> for more dark neutrals.
@@ -5674,7 +9173,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" />: one of Sherwin-Williams&apos; nine 2025 Color Capsule colors. It adds a warm, earthy tone to kitchen cabinetry. It works surprisingly well on kitchen islands surrounded by lighter cabinetry. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2025 Color of the Year guide</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#23383F" name="Dark Night" brand="Sherwin-Williams" href="/colors/sherwin-williams/dark-night-6237" /> — a deep teal-black that splits the difference between navy and black. It&apos;s having a moment on kitchen islands where homeowners want something bolder than navy but more interesting than black.
+          <Swatch hex="#23383F" name="Dark Night" brand="Sherwin-Williams" href="/colors/sherwin-williams/dark-night-6237" /> — a deep teal-black that splits the difference between navy and black. It suits an island where you want something darker than navy without going to black.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How Kitchen Lighting Changes These Colors</h2>
@@ -5693,13 +9192,13 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best SW Paint Lines for Kitchens</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>For cabinets: Emerald Urethane Trim Enamel.</strong> This is the gold standard for kitchen cabinets. It self-levels for a factory-smooth finish, resists yellowing over time, and cleans up with just a damp cloth. Use a satin or semi-gloss sheen — satin is the modern default, semi-gloss for extra durability near the stove and sink.
+          <strong>For cabinets: Emerald Urethane Trim Enamel.</strong> Its data sheet lists satin at 35 to 45 gloss units at 60 degrees, dry to the touch in 1 hour and ready to recoat in 4 hours at 77&deg;F and 50% humidity. For interior wood it calls for one coat of Premium Wall &amp; Wood Primer under two coats of the enamel. The sheet gives no cure time, so ask the store how long to wait before the doors take daily use.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>For walls: Duration or Emerald.</strong> Both are scrubbable and moisture-resistant, which kitchen walls need. Duration is slightly more affordable. Eggshell sheen is standard for kitchen walls — it hides imperfections while still being wipeable.
+          <strong>For walls: Duration or Emerald.</strong> Both are Sherwin-Williams interior wall lines; compare their data sheets for washability and sheen before you buy. We suggest eggshell for kitchen walls, because it hides more surface flaws than satin while still wiping clean.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Wait for the sales.</strong> Sherwin-Williams runs 30-40% off sales several times a year. Kitchen projects typically need 3-5 gallons for cabinets alone — the savings add up fast. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to figure out exactly how many gallons you need.
+          <strong>Work out the quantity first.</strong> Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to see how many gallons your walls and cabinets need, then ask the store about any current promotion before you buy.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Sample Kitchen Paint Colors</h2>
@@ -5715,10 +9214,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>What is the most popular Sherwin-Williams color for kitchen cabinets?</strong> Pure White (SW 7005) is the most specified cabinet color at Sherwin-Williams. Alabaster (SW 7008) is a close second for homeowners who prefer a warmer, creamier white.
+          <strong>Which Sherwin-Williams white is best for kitchen cabinets?</strong> We have no sales data to rank them by popularity, so we compare them on measured values. Snowbound (SW 7004), High Reflective White (SW 7757) and Pure White (SW 7005) carry almost the same yellowness, 2.8 to 3.0 on the b* scale, and suit countertops that look neutral or cool. Of those three, High Reflective White is clearly the brightest. Alabaster (SW 7008) is the creamiest at 5.2 and suits creamy or golden stone. Hold a sample against your countertop before you choose.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>What Sherwin-Williams paint should I use on kitchen cabinets?</strong> Emerald Urethane Trim Enamel in satin sheen. It self-levels for a smooth finish, resists yellowing, and holds up to the moisture, grease, and constant wiping that kitchen cabinets endure.
+          <strong>What Sherwin-Williams paint should I use on kitchen cabinets?</strong> Emerald Urethane Trim Enamel. Its data sheet lists satin at 35 to 45 gloss units and gloss at 65 and above, both recoatable in 4 hours, over one coat of Premium Wall &amp; Wood Primer on interior wood. It does not publish a cure time.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>What is the best Sherwin-Williams color for small kitchens?</strong> Alabaster (SW 7008) opens up small kitchens with its warm glow, while Agreeable Gray (SW 7029) adds depth without closing the space in. Avoid very dark colors on all surfaces in a small kitchen — use them as accents on an island or lower cabinets instead.
@@ -5738,7 +9237,7 @@ const blogPosts: BlogPost[] = [
     slug: "benjamin-moore-most-popular-whites",
     title: "Benjamin Moore's Most Popular White Paint Colors Ranked",
     date: "2025-11-13",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "White Dove, Chantilly Lace, Simply White, Decorator's White — ranked and compared with undertone analysis, best uses, and SW/Behr equivalents.",
@@ -5748,12 +9247,12 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Benjamin Moore makes some of the most beloved white paints in the industry, but with dozens of whites in their deck, choosing the right one is overwhelming. This guide ranks BM&apos;s most popular whites from warmest to coolest, explains their undertones, and shows you the best use for each.
+          Benjamin Moore has dozens of whites in its deck, so choosing the right one is overwhelming. This guide ranks its best-known whites from warmest to coolest, explains their undertones, and shows you the best use for each.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">1. White Dove (OC-17)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is one of the most popular white paints in America. It&apos;s a soft white with a slight warm lean that never looks yellow on the wall. Designers use it for everything: cabinets, trim, walls, ceilings, and entire homes. It&apos;s the safe choice that always looks good.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is a soft white with a slight warm lean that never looks yellow on the wall. It works for cabinets, trim, walls, ceilings, and entire homes. It&apos;s the safe choice that always looks good.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Cabinets, trim, whole-house color, farmhouse style.
@@ -5773,7 +9272,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">3. Simply White (OC-117)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a close neighbor of both White Dove and Chantilly Lace, rating nearly identical to each. It&apos;s warmer than Chantilly Lace and brighter than White Dove. It was BM&apos;s 2016 Color of the Year and remains a top seller. Ideal when you want just a hint of warmth.
+          <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a close neighbor of both White Dove and Chantilly Lace, rating nearly identical to each. It&apos;s warmer than Chantilly Lace and brighter than White Dove. Benjamin Moore named it its 2016 Color of the Year. Ideal when you want just a hint of warmth.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Kitchens, bathrooms, transitional style.
@@ -5822,25 +9321,25 @@ const blogPosts: BlogPost[] = [
     slug: "best-behr-colors-for-bedrooms",
     title: "9 Best Behr Paint Colors for Bedrooms (2026 Picks)",
     date: "2026-01-22",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "The best Behr bedroom paint colors for 2026 — calming blues, soft greens, and warm neutrals with real pricing and cross-brand matches.",
+      "The best Behr bedroom paint colors for 2026 — calming blues, soft greens, and warm neutrals with LRVs, Behr's paint lines and cross-brand matches.",
     coverColor: "#B5C4CB",
     coverImage: "/blog/best-behr-colors-for-bedrooms.webp",
     tags: ["Behr", "Bedroom", "Budget", "2026"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best Behr paint color for most bedrooms is Silver Drop (790C-2, hex #dde3d7, LRV 70) — a soft, barely-warm off-white that works in any lighting condition and costs $45–55/gallon in the Dynasty line, compared to $80–90/gallon for Benjamin Moore Aura. Consumer Reports ranked Behr Dynasty and Marquee at or near the top of their 2025 independent blind tests for coverage, durability, and stain resistance. Every color below is available at Home Depot, and we used CIEDE2000 Delta E calculations to find the closest cross-brand matches from Sherwin-Williams and Benjamin Moore.
+          The best Behr paint color for most bedrooms is Silver Drop (790C-2, hex #dde3d7, LRV 70) — a soft, barely-warm off-white that works in any lighting condition. Every color below is available at Home Depot, and we used CIEDE2000 Delta E calculations to find the closest cross-brand matches from Sherwin-Williams and Benjamin Moore.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Calming Blues</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Blue is the most popular bedroom color family for a reason — it lowers heart rate and promotes sleep. These three Behr blues are best sellers that work in bedrooms of any size.
+          Blues read calm at night. These three Behr blues run from a near-neutral gray-blue at LRV 61 to a deep slate at LRV 23, so one of them fits a bedroom of any size.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C9CFCC" name="Light French Gray" brand="Behr" href="/colors/behr/light-french-gray-720e-2" /> is a cool, nearly neutral gray with a faint blue-green cast, and one of Behr&apos;s all-time top sellers. It reads cooler in north-facing rooms and as a balanced gray in south-facing light. LRV 61 makes it versatile for both main walls and accent walls.
+          <Swatch hex="#C9CFCC" name="Light French Gray" brand="Behr" href="/colors/behr/light-french-gray-720e-2" /> is a cool, nearly neutral gray with a faint blue-green cast. It reads cooler in north-facing rooms and as a balanced gray in south-facing light. LRV 61 makes it versatile for both main walls and accent walls.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#AFBEBE" name="Watery" brand="Behr" href="/colors/behr/watery-hdc-ct-26" /> — a soft aqua-blue that creates instant coastal calm. Light enough for small bedrooms (LRV 49), interesting enough to stand alone without an accent color. Its closest Benjamin Moore match is <Link href="/colors/benjamin-moore/wedgewood-gray-hc-146" className="text-brand-blue hover:underline">Wedgewood Gray (HC-146)</Link>, nearly identical in our digital data, and its closest Sherwin-Williams match is <Link href="/colors/sherwin-williams/rain-6219" className="text-brand-blue hover:underline">Rain (SW 6219)</Link>, also nearly identical. <Link href="/colors/benjamin-moore/palladian-blue-hc-144" className="text-brand-blue hover:underline">Palladian Blue (HC-144)</Link> often gets suggested as its twin, but it is lighter and greener and shows a visible difference, so treat it as a cousin, not a swap. Browse more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
@@ -5851,7 +9350,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green is the color the human eye processes most easily, which is why sage and muted greens feel instantly restful. The 2026 trend toward earthy greens — confirmed by Behr&apos;s own <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> Color of the Year — makes these picks especially current.
+          Green is the color the human eye processes most easily, which is why sage and muted greens feel instantly restful. Behr&apos;s 2026 Color of the Year, <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" />, is a green as well, though at LRV 14 it suits an accent wall more than a whole bedroom.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#b9c4ae" name="Whitewater Bay" brand="Behr" href="/colors/behr/whitewater-bay-ppu11-10" /> (LRV 53) — a light, grayed sage that pairs with natural wood furniture and linen textiles. At LRV 53 it reflects enough light for a smaller bedroom, and its gray cast keeps the green from reading minty.
@@ -5865,7 +9364,7 @@ const blogPosts: BlogPost[] = [
           Warm neutrals are the safe pick that still looks intentional. These greiges and taupes work with virtually any furniture, any lighting, and any style — from mid-century modern to farmhouse.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#dde3d7" name="Silver Drop" brand="Behr" href="/colors/behr/silver-drop-790c-2" /> — A soft, barely-warm off-white that has been a top-5 Behr seller for years. At LRV 70 it stays light enough for rooms with limited natural light while adding a whisper of warmth that pure white can&apos;t deliver.
+          <Swatch hex="#dde3d7" name="Silver Drop" brand="Behr" href="/colors/behr/silver-drop-790c-2" /> — A soft, barely-warm off-white. At LRV 70 it stays light enough for rooms with limited natural light while adding a whisper of warmth that pure white can&apos;t deliver.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#CCD6CA" name="Dolphin Fin" brand="Behr" href="/colors/behr/dolphin-fin-790c-3" /> (LRV 59) — a pale gray with a soft green cast, the coolest pick in this group, for bedrooms that mix warm and cool elements. Its closest matches are <Link href="/colors/benjamin-moore/crystalline-af-485" className="text-brand-blue hover:underline">Benjamin Moore Crystalline (AF-485)</Link> and <Link href="/colors/sherwin-williams/wavecrest-9672" className="text-brand-blue hover:underline">Sherwin-Williams Wavecrest (SW 9672)</Link>, both nearly identical. Compare it side-by-side with Silver Drop using our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
@@ -5890,16 +9389,13 @@ const blogPosts: BlogPost[] = [
           Behr sells four main interior lines, and the right one depends on your budget and situation:
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Behr Dynasty ($45–55/gal):</strong> The premium choice. One-coat coverage on most colors, excellent stain resistance, and a scuff-proof finish. Best for primary bedrooms and kids&apos; rooms where durability matters.
+          <strong>Behr Dynasty:</strong> Behr&apos;s top interior line. Behr says Dynasty covers in one coat, and its published guarantee limits that to colors in its One-Coat Color Collection, applied over sound, primed surfaces. The pick for primary bedrooms and kids&apos; rooms, where walls get wiped most.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Behr Marquee ($40–50/gal):</strong> One-coat hide guaranteed (on over 1,000 colors). Nearly as good as Dynasty at a slightly lower price. Solid choice for guest rooms and low-traffic bedrooms.
+          <strong>Behr Marquee:</strong> One step below Dynasty. Behr says Marquee carries the same one-coat guarantee, on the same color collection. A sound choice for guest rooms and low-traffic bedrooms.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Behr Ultra ($32–38/gal):</strong> The value pick. Paint and primer in one, good coverage in two coats. Fine for spare bedrooms and rental properties.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Behr Premium Plus ($28–32/gal):</strong> Budget tier. Will need two coats on most colors. Adequate for ceilings and closets. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how many gallons your bedroom needs at each price point.
+          <strong>Behr Ultra and Premium Plus:</strong> The two entry lines. Behr&apos;s one-coat guarantee terms name only Dynasty and Marquee, so plan on two coats with these. Fine for spare bedrooms, ceilings, closets and rentals. Use our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> to estimate how many gallons your bedroom needs.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Sheen for Bedroom Walls</h2>
@@ -5910,20 +9406,17 @@ const blogPosts: BlogPost[] = [
           Use semi-gloss on bedroom trim, baseboards, and door frames for contrast and durability. Read our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">complete paint sheen guide</Link> for a deeper breakdown.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Behr Over Premium Brands?</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Choose Behr for a Bedroom?</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Price savings are real.</strong> Behr Dynasty runs $45–55/gallon, while Benjamin Moore Aura costs $80–90/gallon and Sherwin-Williams Emerald runs $75–85 at full price. For a bedroom needing 2 gallons, switching to Behr saves $50–80 with comparable quality in blind tests.
+          <strong>Convenience matters for DIYers.</strong> Home Depot stocks every Behr color in-store and is open evenings and weekends. Benjamin Moore is sold through independent dealers, so hours vary by store. Sherwin-Williams sells through its own stores.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Convenience matters for DIYers.</strong> Home Depot stocks every Behr color in-store and is open evenings and weekends. Benjamin Moore is only available at independent dealers with limited hours. Sherwin-Williams has better hours but their best pricing requires waiting for sales.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Formula is DIY-friendly.</strong> Behr&apos;s thicker formula is forgiving for non-professional painters — it self-levels well and minimizes lap marks. Dynasty and Marquee offer genuine one-coat coverage on most bedroom colors. Read our <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">full three-brand comparison</Link> for the detailed breakdown.
+          <strong>Check the one-coat list first.</strong> Behr&apos;s one-coat guarantee for Dynasty and Marquee covers only colors in its One-Coat Color Collection, so confirm your color is on it before you plan on a single coat. Read our <Link href="/blog/behr-vs-sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">full three-brand comparison</Link> for the detailed breakdown.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Sample Before You Commit</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Never choose a bedroom color from a screen or a tiny paint chip alone. Buy Behr sample jars ($4.98 each at Home Depot) and paint two coats on a 2-by-2-foot area of your actual bedroom wall. Observe it at morning, afternoon, and nighttime light before committing. Read our <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">paint sampling guide</Link> for the full method.
+          Never choose a bedroom color from a screen or a tiny paint chip alone. Buy Behr sample jars at Home Depot and paint two coats on a 2-by-2-foot area of your actual bedroom wall. Observe it at morning, afternoon, and nighttime light before committing. Read our <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">paint sampling guide</Link> for the full method.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Want a faster preview? Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to see any Behr color on bedroom walls digitally. Then use the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a full room scheme — wall color, trim, accent, and ceiling — before heading to Home Depot.
@@ -5938,13 +9431,13 @@ const blogPosts: BlogPost[] = [
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">FAQ</h2>
-        <h3 className="mt-6 text-xl font-semibold text-gray-900">What is the most popular Behr color for bedrooms?</h3>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">Which Behr color works in the most bedrooms?</h3>
         <p className="mt-2 text-gray-700 leading-relaxed">
-          Silver Drop (790C-2) and Light French Gray (720E-2) are consistently Behr&apos;s top-selling bedroom colors. Both are versatile neutrals with enough depth to feel intentional, and both work in any lighting condition.
+          Silver Drop (790C-2, LRV 70) is our pick for most bedrooms, and Light French Gray (720E-2, LRV 61) is the cooler alternative. Both are versatile neutrals with enough depth to feel intentional, and both work in any lighting condition.
         </p>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">Is Behr Dynasty worth the extra cost over Marquee?</h3>
         <p className="mt-2 text-gray-700 leading-relaxed">
-          For primary bedrooms and kids&apos; rooms, yes. Dynasty has better stain and scuff resistance. For guest rooms and low-traffic spaces, Marquee delivers nearly identical results at $5–10 less per gallon.
+          For primary bedrooms and kids&apos; rooms, it is the safer pick, because Behr sells Dynasty as its top interior line. Behr&apos;s guarantee terms give both lines the same one-coat promise on the same color collection, so for guest rooms and low-traffic spaces Marquee is enough.
         </p>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">What is Behr&apos;s 2026 Color of the Year?</h3>
         <p className="mt-2 text-gray-700 leading-relaxed">
@@ -5961,74 +9454,132 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 20 (Tier 3 — Trends) ──────────────── */
   {
     slug: "paint-color-trends-2026",
-    title: "Paint Color Trends 2026: What Designers Are Predicting",
+    title: "Paint Color Trends 2026: What the Colors of the Year Show",
     date: "2026-03-13",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "From earthy greens to warm mushroom tones, the paint color trends defining 2026 — drawn from Color of the Year picks across five major brands.",
+      "Eight paint brands named a 2026 Color of the Year. Grouped and measured: four greens, two warm neutrals and two deep warm darks, each with its closest match in four big brands.",
     coverColor: "#8B6F47",
     coverImage: "/blog/paint-color-trends-2026.webp",
     tags: ["Trends", "2026", "Design"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The 2026 paint color story is told most clearly by looking at what five major brands chose for their Colors of the Year simultaneously: three picked greens or green-adjacent earth tones, and two picked warm neutrals. That kind of cross-brand alignment is rare and signals a genuine shift rather than a marketing coincidence. Combine that with search data showing a 34% year-over-year increase in queries for &quot;warm green paint&quot; and &quot;earthy neutral paint&quot; and you have the clearest trend signal in five years. Here is where things stand. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">full 2026 COTY comparison</Link> for the complete breakdown.
+          The clearest record of where paint color is heading in 2026 is what the brands themselves named. Eight paint brands picked a 2026 Color of the Year, and the picks fall into three groups: four muted greens, two warm neutrals and two deep warm darks. None is a cool gray or a blue. Below, each group with the LRV and undertone from our color database, and a table of each pick&apos;s closest match at Sherwin-Williams, Benjamin Moore, Behr and Valspar. For why each brand chose its color, see our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 1: Earthy Greens Dominate</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Muted greens: four of the eight picks</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The biggest trend of 2026 is confirmed by the Color of the Year picks themselves: earthy, muted greens are everywhere. Behr&apos;s <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> is a smoky jade, while Valspar&apos;s <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> is a grounded gray-green. Two of five major brands chose green — that&apos;s not a coincidence.
+          Half the 2026 picks are green, and three of them are dark. <Swatch hex="#596d69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> (Behr N430-6A, LRV 14) is a smoky jade. <Swatch hex="#637057" name="Midnight Garden" brand="Dunn-Edwards" href="/colors/dunn-edwards/midnight-garden-de5657" /> (Dunn-Edwards DE5657, LRV 14.9) is a deep, cool-leaning olive. <Swatch hex="#7c7f70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> (Valspar 8004-28F, LRV 20.6) is a grayed green with a warm undertone, the lightest of the three. At these LRVs all three absorb most of the light that reaches them, so test them on a large sample in the room before committing a whole wall.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          These aren&apos;t the bright sages of 2024. The 2026 greens are moodier, warmer, and more olive-influenced — closer to eucalyptus and jade than mint or Kelly green. Explore the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 2: Warm Neutrals Get Richer</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Sherwin-Williams&apos; <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> captures the new neutral perfectly — warm, sandy, and golden rather than the cool grays of the 2010s. Meanwhile, Benjamin Moore&apos;s <Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /> shows that even dark neutrals are getting warmer.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          PPG&apos;s <Swatch hex="#744034" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> pushes this further into rich brown-red territory. Browse our <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for the full range.
+          The fourth green is the outlier. PPG&apos;s <Swatch hex="#c6bb68" name="Secret Safari" brand="PPG" href="/colors/ppg/secret-safari-1110-4" /> (PPG1110-4, LRV 48.5) is a mid-tone yellow-green, light enough for a whole room. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for more options in every brand.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 3: Warm Plum & Berry</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm neutrals: Universal Khaki and Melodious Ivory</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Warm plum and berry tones are gaining ground after years of absence. Not bright violet, but muted, brown-inflected purples and dusty berry tones that feel sophisticated rather than playful. Dining rooms, bedrooms, and powder rooms are the primary use cases, where drama is welcome and the small square footage makes a saturated color approachable. Homeowners who painted a navy or forest green accent wall two years ago are the most likely candidates to try this next.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          See the <Link href="/colors/family/purple" className="text-brand-blue hover:underline">purple family</Link> for options across all 13 brands.
+          Sherwin-Williams&apos; <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> (SW 6150, LRV 40.6) is a sandy khaki, deeper than the light greiges most whole-house neutrals sit at (Agreeable Gray is LRV 60). Dutch Boy&apos;s <Swatch hex="#e4caad" name="Melodious Ivory" brand="Dutch Boy" href="/colors/dutch-boy/melodious-ivory-313-2db" /> (313-2DB, LRV 61.8) is the lightest pick of the eight, a warm ivory. It shares its hex with Sherwin-Williams Interactive Cream (SW 6113), so the two read as the same color on a screen. See the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for nearby shades.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 4: Butter Yellow Returns</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Deep warm darks: Silhouette and Warm Mahogany</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Soft, buttery yellows are reappearing after a decade of being avoided. The version showing up in 2026 is nothing like the primary yellow of the 1990s; it is muted, cream-adjacent, and often closer to ivory than yellow on the wall. Kitchens, breakfast nooks, and entryways are the primary use cases. The key distinction from the versions that felt dated: low saturation and a neutral or warm undertone (avoid lemon or green-yellow tones entirely). Benjamin Moore&apos;s Hawthorne Yellow HC-4 and Farrow &amp; Ball&apos;s Dayroom Yellow No.233 are the most-cited examples in this category.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Browse the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link> to find soft, warm options from every brand.
+          Benjamin Moore&apos;s <Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /> (AF-655, LRV 10.2) is a dark gray-brown with a warm undertone; Benjamin Moore describes it as burnt umber with notes of charcoal. <Swatch hex="#744034" name="Warm Mahogany" brand="Glidden" href="/colors/ppg/warm-mahogany-1060-7" /> (PPG1060-7, LRV 7.6), named by the Pittsburgh Paints Company for its Glidden and Pittsburgh Paints brands, is the darkest pick of the eight, a brown-red that Glidden calls a rich, warm-toned red. Both suit rooms where a dark color is the point: dining rooms, libraries, bedrooms and cabinetry. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> for more.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 5: The Death of &ldquo;Safe Neutral&rdquo;</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What the numbers show</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The biggest shift of 2026 isn&apos;t a specific color — it&apos;s a mindset change. Homeowners are moving away from playing it safe with builder-grade greige and instead choosing colors that reflect their personality. Even neutrals are getting more interesting: warm mushroom tones, sandy taupes, and rosy beiges are replacing the ubiquitous <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Agreeable Gray</Link>.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          This doesn&apos;t mean bold color everywhere — it means intentional color choices even in neutral rooms. Read our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link> for help making intentional neutral choices.
+          Six of the eight picks sit below LRV 45; only Secret Safari (48.5) and Melodious Ivory (61.8) are light enough to keep a room bright on their own. The undertones split evenly: three warm, three neutral, and two cool (Midnight Garden and Secret Safari). The practical reading for a homeowner is that most of the 2026 picks are accent, cabinet or single-room colors rather than whole-house neutrals.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">What&apos;s Fading Out</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Each 2026 pick in four big brands</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Cool gray:</strong> The 2015–2020 darling continues to decline. Warm grays and greiges have fully replaced it.
-          <strong> All-white everything:</strong> The sterile all-white interior is giving way to warm whites paired with color. Rooms need at least some warmth and personality.
-          <strong> Navy overload:</strong> Navy remains popular but is plateauing after peaking in 2023.
+          These are the closest digital matches in our database, measured with CIEDE2000. Confirm any substitute with a physical sample before you buy.
         </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">2026 pick</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Sherwin-Williams</th>
+                <th className="py-2 pr-4 font-semibold">Benjamin Moore</th>
+                <th className="py-2 pr-4 font-semibold">Behr</th>
+                <th className="py-2 font-semibold">Valspar</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#596d69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /><span className="block text-xs text-gray-500">Behr</span></td>
+                <td className="py-2 pr-4">14</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/rocky-river-6215" className="text-brand-blue hover:underline">Rocky River</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/jack-cc-660" className="text-brand-blue hover:underline">Jack Pine</Link> (Very similar)</td>
+                <td className="py-2 pr-4">Same brand</td>
+                <td className="py-2"><Link href="/colors/valspar/ocean-abyss-5002-6c" className="text-brand-blue hover:underline">Ocean Abyss</Link> (Very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#7c7f70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /><span className="block text-xs text-gray-500">Valspar</span></td>
+                <td className="py-2 pr-4">20.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/dried-thyme-6186" className="text-brand-blue hover:underline">Dried Thyme</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/rooftop-garden-csp-765" className="text-brand-blue hover:underline">Rooftop Garden</Link> (Very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/lizard-green-ppu10-18" className="text-brand-blue hover:underline">Lizard Green</Link> (Very similar)</td>
+                <td className="py-2">Same brand</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#637057" name="Midnight Garden" brand="Dunn-Edwards" href="/colors/dunn-edwards/midnight-garden-de5657" /><span className="block text-xs text-gray-500">Dunn-Edwards</span></td>
+                <td className="py-2 pr-4">14.9</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/greenfield-6439" className="text-brand-blue hover:underline">Greenfield</Link> (Very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/alligator-alley-441" className="text-brand-blue hover:underline">Alligator Alley</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/willow-leaf-qe-39" className="text-brand-blue hover:underline">Willow Leaf</Link> (Nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/april-arbor-5008-4c" className="text-brand-blue hover:underline">April Arbor</Link> (Very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c6bb68" name="Secret Safari" brand="PPG" href="/colors/ppg/secret-safari-1110-4" /><span className="block text-xs text-gray-500">PPG</span></td>
+                <td className="py-2 pr-4">48.5</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/lim-n-fresco-9030" className="text-brand-blue hover:underline">Limón Fresco</Link> (Very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/sweet-vibrations-391" className="text-brand-blue hover:underline">Sweet Vibrations</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/go-go-lime-p350-5" className="text-brand-blue hover:underline">Go Go Lime</Link> (Nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/greek-tapenade-6008-6b" className="text-brand-blue hover:underline">Greek Tapenade</Link> (Nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /><span className="block text-xs text-gray-500">Sherwin-Williams</span></td>
+                <td className="py-2 pr-4">40.6</td>
+                <td className="py-2 pr-4">Same brand</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/rocky-beach-csp-190" className="text-brand-blue hover:underline">Rocky Beach</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/nile-sand-ul170-19" className="text-brand-blue hover:underline">Nile Sand</Link> (Nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/oyster-shoal-8005-5d" className="text-brand-blue hover:underline">Oyster Shoal</Link> (Nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e4caad" name="Melodious Ivory" brand="Dutch Boy" href="/colors/dutch-boy/melodious-ivory-313-2db" /><span className="block text-xs text-gray-500">Dutch Boy</span></td>
+                <td className="py-2 pr-4">61.8</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/interactive-cream-6113" className="text-brand-blue hover:underline">Interactive Cream</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/home-sweet-home-1088" className="text-brand-blue hover:underline">Home Sweet Home</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/pumpkin-seed-s260-2" className="text-brand-blue hover:underline">Pumpkin Seed</Link> (Nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/holmes-cream-3004-10b" className="text-brand-blue hover:underline">Holmes Cream</Link> (Nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /><span className="block text-xs text-gray-500">Benjamin Moore</span></td>
+                <td className="py-2 pr-4">10.2</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/stony-creek-9610" className="text-brand-blue hover:underline">Stony Creek</Link> (Very similar)</td>
+                <td className="py-2 pr-4">Same brand</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/willow-wood-ecc-41-2" className="text-brand-blue hover:underline">Willow Wood</Link> (Nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/semi-sweet-4003-2c" className="text-brand-blue hover:underline">Semi-Sweet</Link> (Nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#744034" name="Warm Mahogany" brand="Glidden" href="/colors/ppg/warm-mahogany-1060-7" /><span className="block text-xs text-gray-500">Glidden / Pittsburgh Paints</span></td>
+                <td className="py-2 pr-4">7.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/red-barn-7591" className="text-brand-blue hover:underline">Red Barn</Link> (Very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/pancake-syrup-2104-10" className="text-brand-blue hover:underline">Pancake Syrup</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/florence-red-bxc-76" className="text-brand-blue hover:underline">Florence Red</Link> (Very similar)</td>
+                <td className="py-2"><Link href="/colors/valspar/chocolate-cherry-2003-7a" className="text-brand-blue hover:underline">Chocolate Cherry</Link> (Very similar)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Try the 2026 Trends</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to try a 2026 color</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Start small: a front door, a powder room, or an accent wall. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any color on your walls before committing. Our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> can help you build a cohesive scheme around a trending color.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          For a look back at what dominated last year, read our <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">most popular colors of 2025</Link> roundup and our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2025 Colors of the Year comparison</Link>.
+          Start small: a front door, a powder room, an island or one accent wall. Use the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview a color on your walls, and the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a scheme around it. Our guide to <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">testing paint samples</Link> covers how to judge a dark color in your own light.
         </p>
       </>
     ),
@@ -6039,10 +9590,10 @@ const blogPosts: BlogPost[] = [
     slug: "sherwin-williams-vs-benjamin-moore",
     title: "Sherwin-Williams vs Benjamin Moore: The Complete Comparison",
     date: "2025-11-27",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "A head-to-head comparison of America's two premium paint brands — covering quality, price, color matching, cabinet vs wall paint, exterior durability, and which to choose for each project.",
+      "A head-to-head comparison of Sherwin-Williams and Benjamin Moore: matched color pairs, paint lines, cabinets, exteriors, where to buy, and how to work out what a project costs.",
     coverColor: "#C4B8A2",
     coverImage: "/blog/sherwin-williams-vs-benjamin-moore.webp",
     tags: ["Brands", "Comparison", "Buying Guide"],
@@ -6050,7 +9601,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "Is Sherwin-Williams or Benjamin Moore better?",
         answer:
-          "Both make excellent paint. Benjamin Moore Aura has a slight edge in color depth and one-coat coverage; Sherwin-Williams Emerald excels in self-leveling and workability. At full retail BM is more expensive, but SW runs 30-40% off sales 4-6 times per year that flip the value math. For cabinets, pros generally prefer BM Advance. For walls, it's a near toss-up at the premium tier.",
+          "Both make premium paint, and at the top tier prep and application matter more than the label. Sherwin-Williams is easier to buy, through its own stores; Benjamin Moore has the larger palette and sells through independent dealers. Compare like-for-like lines (Aura against Emerald, Regal Select against SuperPaint) and get current quotes for each.",
       },
       {
         question: "Can I get a Benjamin Moore color in Sherwin-Williams paint (or vice versa)?",
@@ -6060,37 +9611,34 @@ const blogPosts: BlogPost[] = [
       {
         question: "Which brand is better for kitchen cabinets?",
         answer:
-          "Benjamin Moore Advance is widely preferred by cabinet painters - it's a waterborne alkyd that levels like oil-based paint but cleans up with water and dries to a hard, factory-like finish. Sherwin-Williams ProClassic Waterbased and Emerald Urethane Trim Enamel are strong alternatives. For best durability, all three need an oil-based or shellac-based primer (Zinsser BIN) on previously-painted cabinets.",
+          "Each brand sells a cabinet enamel: Benjamin Moore Advance, which Benjamin Moore describes as a waterborne alkyd, and Sherwin-Williams Emerald Urethane Trim Enamel, with ProClassic Waterbased as a second SW option. Whichever you pick, previously painted cabinets need sanding, cleaning and an oil-based or shellac-based primer such as Zinsser BIN before the topcoat.",
       },
       {
         question: "Which brand is better for exterior paint?",
         answer:
-          "Both have excellent exterior lines. Benjamin Moore Aura Exterior carries a 'Lifetime Limited Warranty' on most substrates. Sherwin-Williams Emerald Rain Refresh is engineered for early washability (rain within 60 minutes of application). For UV stability on dark or saturated colors, BM Aura Exterior has a slight edge. For tough climates with frequent rain, SW Emerald Rain Refresh is the safer choice for contractor schedules.",
+          "Aura Exterior is Benjamin Moore's top exterior line and Emerald is Sherwin-Williams'. Compare their data sheets for fade resistance on dark colors and read each warranty for your siding material. If rain is a scheduling risk, look at the fast rain-resistant products: Benjamin Moore says Element Guard resists rain as soon as 60 minutes after application, and Sherwin-Williams sells Emerald Rain Refresh for the same job.",
       },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Sherwin-Williams and Benjamin Moore are the two most specified paint brands among designers and contractors. Both make excellent paint, but they differ in meaningful ways that affect your wallet, your schedule, and your final result. This guide breaks down every factor so you can choose with confidence.
+          Sherwin-Williams and Benjamin Moore are the two premium brands most homeowners weigh against each other. Both make good paint. They differ in how you buy it, how big the palette is, and which products suit cabinets and exteriors. This guide covers each factor, and every color pair below comes from our cross-brand match data.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Price: Advantage SW (With Sales)</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Price: Get a Current Quote</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Benjamin Moore Regal Select:</strong> $65–$75/gallon. <strong>Aura:</strong> $80–$90/gallon.
+          We do not list per-gallon prices, because both brands change them by line, by store and through the year. Get a quote for the exact line and sheen you want from your local Sherwin-Williams store and a Benjamin Moore dealer.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Sherwin-Williams SuperPaint:</strong> $60–$70/gallon. <strong>Emerald:</strong> $75–$85/gallon. But SW runs 30–40% off sales 4–6 times per year, dropping Emerald to $50–$60. BM rarely discounts.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Verdict:</strong> At full price, they&apos;re comparable. With SW sales, you can get premium paint for mid-tier prices.
+          Compare like with like: Benjamin Moore Regal Select against Sherwin-Williams SuperPaint, and Benjamin Moore Aura against Sherwin-Williams Emerald.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Popular Colors Head-to-Head</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Matched Color Pairs</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The best way to compare these two brands is through their flagship colors. Here are the most popular shades and their closest cross-brand match:
+          The fastest way to compare the two palettes is through well-known colors and their closest match in the other brand:
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> ↔ <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> — America&apos;s two most popular grays. Delta E: 2.4 (close but noticeably different in person). Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> ↔ <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> — Two warm greiges, rated Very similar: close, but sample them side by side before you swap one for the other. Browse the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> ↔ <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — Both soft whites that lean slightly warm, and they rate nearly identical. See the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
@@ -6099,16 +9647,16 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#EDEAE0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> ↔ <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> — Warm whites for whole-house color. Very similar in our digital data.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> ↔ <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — The two most-specified navies. Naval is slightly cooler and more saturated; Hale Navy has a hint of green that makes it pair more easily with warm woods. Rated Visible difference, so they are not interchangeable.
+          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> ↔ <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — Two deep navies. Naval is slightly cooler and more saturated; Hale Navy has a hint of green that makes it pair more easily with warm woods. Rated Visible difference, so they are not interchangeable.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> ↔ <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — Both warm greiges that have replaced cool gray for whole-home neutral applications. Edgecomb has slightly more green; Accessible Beige reads slightly warmer.
+          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> ↔ <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — Two warm greiges for whole-home neutral walls. Edgecomb has slightly more green; Accessible Beige reads slightly warmer.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CCC9C0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> ↔ <Swatch hex="#E4E1D8" name="Classic Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/classic-gray-1548" /> — The most-specified true mid-grays. Repose has more brown; Classic Gray reads slightly cooler. Both are reliable in any direction of natural light.
+          <Swatch hex="#CCC9C0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> ↔ <Swatch hex="#E4E1D8" name="Classic Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/classic-gray-1548" /> — Two light grays. Repose has more brown and is the deeper of the two; Classic Gray reads slightly cooler and lighter.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2F2F30" name="Tricorn Black" brand="Sherwin-Williams" href="/colors/sherwin-williams/tricorn-black-6258" /> ↔ <Swatch hex="#3A3837" name="Black Beauty" brand="Benjamin Moore" href="/colors/benjamin-moore/black-beauty-2128-10" /> — The reliable blacks for trim, doors, and accent walls. Tricorn is a true neutral black; Black Beauty has the faintest blue cast that designers prize for sophistication.
+          <Swatch hex="#2F2F30" name="Tricorn Black" brand="Sherwin-Williams" href="/colors/sherwin-williams/tricorn-black-6258" /> ↔ <Swatch hex="#3A3837" name="Black Beauty" brand="Benjamin Moore" href="/colors/benjamin-moore/black-beauty-2128-10" /> — Two blacks for trim, doors, and accent walls. Tricorn is a true neutral black; Black Beauty has the faintest blue cast.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EEEFEA" name="Extra White" brand="Sherwin-Williams" href="/colors/sherwin-williams/extra-white-7006" /> ↔ <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — Two crisp whites that rate nearly identical, with Chantilly Lace the brighter of the two. Both read clean with no obvious undertone. Excellent for trim against any wall color.
@@ -6117,28 +9665,28 @@ const blogPosts: BlogPost[] = [
           Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any SW and BM colors are. Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> to understand why similar-looking colors can feel different on your walls. For a systematic view, browse the full <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM conversion chart</Link> or the <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">BM to SW chart</Link> for the 50 closest pairs.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Quality: Advantage BM (Slightly)</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Paint Lines</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Both brands make outstanding paint. BM Aura has a slight edge in color depth, richness, and true one-coat coverage. SW Emerald excels in self-leveling and workability — painters love how it flows off the brush.
+          Both brands make premium paint, and at the top tier the differences are small enough that prep and application matter more than the label. Compare the data sheets for the lines you are considering: coverage per gallon, recoat time and washability are listed there.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For cabinets and trim (where finish quality matters most), many pros prefer BM Advance (a waterborne alkyd). For wall paint, it&apos;s nearly a toss-up at the premium tier.
+          For cabinets and trim, each brand sells a dedicated enamel, covered in the cabinets section below.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Color Selection</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Benjamin Moore: ~3,500 colors.</strong> The largest palette, with an especially deep range of whites, neutrals, and historically-inspired shades.
+          <strong>Benjamin Moore: 3,903 colors in our database.</strong> The larger palette, with a deep range of whites, neutrals, and historically inspired shades.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Sherwin-Williams: ~1,700 colors.</strong> A more curated selection that covers every need. SW also offers custom matching of any BM color code.
+          <strong>Sherwin-Williams: 1,950 colors in our database.</strong> A smaller, more curated selection. Either brand&apos;s store can mix the other brand&apos;s color; see the color matching section below.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          On Paint Color HQ, every color page shows the closest matches from both brands automatically. Our <Link href="/blog/best-sherwin-williams-alternatives-to-benjamin-moore" className="text-brand-blue hover:underline">SW alternatives to BM&apos;s top sellers</Link> covers the most popular crossovers.
+          On Paint Color HQ, every color page shows the closest matches from both brands automatically. Our <Link href="/blog/best-sherwin-williams-alternatives-to-benjamin-moore" className="text-brand-blue hover:underline">SW alternatives to BM&apos;s top sellers</Link> covers the common crossovers.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Availability</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>SW wins here.</strong> Over 4,000 company-owned stores plus Lowe&apos;s locations. Open weekends and evenings. BM sells exclusively through independent dealers — selection is great, but hours are often limited and locations fewer.
+          <strong>SW is easier to buy.</strong> Sherwin-Williams sells through its own stores, which keep evening and weekend hours. Benjamin Moore sells through independent dealers, so hours and stock vary from store to store.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Color Matching Question</h2>
@@ -6148,12 +9696,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Who Should Choose SW</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          You value convenience (more stores, better hours), you want to wait for sales, your contractor already has an SW account, or you prefer their curated palette. Explore all <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams colors</Link>.
+          You value convenience (company-owned stores with longer hours), your contractor already has an SW account, or you prefer a smaller, curated palette. Explore all <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams colors</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Who Should Choose BM</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          You want the absolute richest color depth, you&apos;re painting cabinets (BM Advance is hard to beat), your designer specced BM colors, or you prefer working with an independent paint store for expert advice. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link>.
+          You want the larger palette, you are painting cabinets and want Advance, your designer specified BM colors, or you prefer an independent paint store for advice. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cabinets and Trim Deep Dive</h2>
@@ -6161,13 +9709,13 @@ const blogPosts: BlogPost[] = [
           Cabinet and trim paint is the one category where the brand choice meaningfully affects the result. Wall paint can be touched up; cabinets cannot. The wrong product on a kitchen cabinet means stripping and starting over.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Benjamin Moore Advance</strong> ($75–$85/gallon) is the cabinet paint most pros reach for. It&apos;s a waterborne alkyd — flows and levels like oil-based paint, dries to a hard factory-like finish, and cleans up with water. Critical detail: Advance needs an extended cure time (30 days to full hardness) before you stack heavy items on shelves or close drawers fully. The finish is worth the wait.
+          <strong>Benjamin Moore Advance</strong> is the cabinet and trim enamel Benjamin Moore describes as a waterborne alkyd: it levels like an oil-based paint and cleans up with water. It hardens slowly, so read the cure time on its data sheet before you rehang doors or load shelves.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Sherwin-Williams Emerald Urethane Trim Enamel</strong> ($75–$85/gallon) is SW&apos;s closest equivalent. Similar leveling characteristics, comparable hardness, slightly less open time (means you have less working window before the brush starts dragging). Pros split on which is better — both are excellent. ProClassic Waterbased ($55–$65/gallon) is the budget alternative if you&apos;re doing trim only, not cabinets.
+          <strong>Sherwin-Williams Emerald Urethane Trim Enamel</strong> is SW&apos;s equivalent, and ProClassic Waterbased is SW&apos;s other trim enamel. Compare open time and recoat time on the two data sheets if you are brushing large cabinet doors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For both brands, the prep work matters more than the paint. On previously-painted cabinets, sand to scuff the finish, clean with TSP or denatured alcohol, and prime with an oil-based or shellac-based primer (Zinsser BIN is the standard) before applying topcoat. Skipping this step is the #1 reason cabinet paint fails. Read our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> — for cabinets, satin or semi-gloss is standard.
+          For both brands, the prep work matters more than the paint. On previously-painted cabinets, sand to scuff the finish, clean with TSP or denatured alcohol, and prime with an oil-based or shellac-based primer (such as Zinsser BIN) before applying topcoat. Skip it and the topcoat can chip and peel. Read our <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">paint sheen guide</Link> — for cabinets, satin or semi-gloss is standard.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Exterior Paint: Different Trade-Offs</h2>
@@ -6175,38 +9723,29 @@ const blogPosts: BlogPost[] = [
           Exterior paint inverts some of the interior trade-offs. Weatherability, UV stability, and washability matter more than leveling. Both brands have premium exterior lines, but their strengths differ.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Benjamin Moore Aura Exterior</strong> ($90–$100/gallon) carries a Lifetime Limited Warranty on most substrates. Color retention on darker shades is the strongest in the residential category — important for the navy and charcoal exteriors trending in 2026. The mildewcide is robust enough for humid climates without yellowing white trim.
+          <strong>Benjamin Moore Aura Exterior</strong> is Benjamin Moore&apos;s top exterior line, and <strong>Sherwin-Williams Emerald</strong> is SW&apos;s. For dark exterior colors such as navy and charcoal, compare each line&apos;s data sheet for fade resistance, and read the warranty terms for your siding material before you buy.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Sherwin-Williams Emerald Rain Refresh</strong> ($80–$90/gallon) is engineered for a specific contractor problem: early washability. Paint dried for 60 minutes can survive a rain event without streaking, which saves repaint jobs on unpredictable weather days. For exteriors in regions with frequent spring rain (Pacific Northwest, Northeast, Southeast), this feature is genuinely valuable.
+          If rain could interrupt the job, look at the fast rain-resistant products. Benjamin Moore says Element Guard resists rain as soon as 60 minutes after application, and Sherwin-Williams sells Emerald Rain Refresh for the same problem; check its data sheet for the timing.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For front doors specifically, both brands offer specialty products: <strong>BM Aura Grand Entrance</strong> (a high-gloss exterior alkyd) and <strong>SW Resilience</strong> (waterborne with strong color depth on doors). Read our <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">best exterior paint colors guide</Link> for color picks specifically for siding, trim, and shutters.
+          For front doors specifically, Benjamin Moore sells <strong>Aura Grand Entrance</strong> as a door and trim enamel. Read our <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">best exterior paint colors guide</Link> for color picks specifically for siding, trim, and shutters.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Cost Analysis: What a Real Project Actually Costs</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Working Out What a Project Costs</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          List prices tell half the story. Here&apos;s what a typical 12x12 bedroom with 8-foot ceilings (walls only, 2 coats) actually costs in each brand:
+          Start with how much paint the job needs. Here is a typical 12x12 bedroom with 8-foot ceilings (walls only, 2 coats):
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Bedroom walls — 384 sq ft of wall area, minus 1 door (21 sq ft) and 2 windows (30 sq ft) = 333 sq ft per coat × 2 coats = 666 sq ft.</strong> At 350 sq ft per gallon, that&apos;s 2 gallons of wall paint. Run the numbers in our <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> with your actual dimensions for exact gallons.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Benjamin Moore Regal Select:</strong> 2 gallons × $70 = $140. No sale typically available.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Sherwin-Williams SuperPaint:</strong> 2 gallons × $65 = $130 at full price. During an SW Big Sale (typically Memorial Day, July 4, Labor Day, Black Friday): 2 × $39 = $78. Effective savings: $52, or 37%.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          For a whole-house repaint (assume 2,400 sq ft of wall area, 14 gallons total), the gap widens: $980 at BM list price vs $546 at SW sale pricing. That&apos;s real budget that can fund cabinet paint, sample pots for testing, or designer hours.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>The asterisk:</strong> SW sales are unpredictable in timing and exact discount percentage. If you have a project deadline that doesn&apos;t flex, factor in the possibility of buying at full price. BM dealers occasionally offer their own promotions (especially around inventory turnover), but they&apos;re less frequent and smaller in scale.
+          Multiply the gallons by your current quote for each line. For a whole-house repaint with about 2,400 sq ft of wall area, two coats come to roughly 14 gallons, so a few dollars of difference per gallon adds up.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best of Both Worlds</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Many homeowners use both brands. A common approach: BM Advance for cabinets and trim (superior finish), SW Emerald for walls (more accessible, great with sales). Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to make sure your BM trim white matches your SW wall color. Our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> can help you build a cohesive scheme mixing colors from either brand. To preview any combination in a real room before buying samples, try the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
+          You do not have to pick one brand for the whole house. For example, you can use Advance on cabinets and trim and Sherwin-Williams paint on the walls. Use our <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link> to make sure your BM trim white matches your SW wall color. Our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> can help you build a cohesive scheme mixing colors from either brand. To preview any combination in a real room before buying samples, try the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>.
         </p>
       </>
     ),
@@ -6217,6 +9756,7 @@ const blogPosts: BlogPost[] = [
     slug: "paint-sheen-guide",
     title: "Paint Sheen Guide: Flat vs Eggshell vs Satin vs Semi-Gloss",
     date: "2025-10-16",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Choosing the right sheen is just as important as choosing the right color. This guide explains every finish level and which rooms need which sheen.",
@@ -6270,7 +9810,7 @@ const blogPosts: BlogPost[] = [
           <strong>Sheen level:</strong> 10–25% gloss. <strong>Look:</strong> A soft, velvety finish with just a hint of luster — like the surface of an egg.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Pros:</strong> Easy to wipe clean. More durable than flat. Still hides minor imperfections. The most popular residential wall finish.
+          <strong>Pros:</strong> Easy to wipe clean. More durable than flat. Still hides minor imperfections. A common choice for living-area walls.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Cons:</strong> Shows touch-ups slightly more than flat. Not ideal for very high-moisture areas.
@@ -6337,6 +9877,7 @@ const blogPosts: BlogPost[] = [
     slug: "how-to-test-paint-samples",
     title: "How to Test Paint Samples the Right Way",
     date: "2025-10-23",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Stop making color decisions from tiny paint chips. Learn the right way to test paint samples so you choose a color you'll love for years.",
@@ -6359,7 +9900,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Option 1: Peel-and-Stick Samples</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Both <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore offer large peel-and-stick color samples (approximately 8×8 inches). At $5–8 each, they&apos;re the cheapest way to test multiple colors. Move them around the room, hold them next to your trim and countertops, and observe them at different times of day.
+          Both <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore offer large peel-and-stick color samples (approximately 8×8 inches). They let you test several colors without painting the wall. Move them around the room, hold them next to your trim and countertops, and observe them at different times of day.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Tip:</strong> Don&apos;t press them flat against the wall. Hold the sample about an inch away so you see the color without being influenced by the current wall color underneath.
@@ -6367,7 +9908,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Option 2: Paint Sample Boards</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Buy a quart sample ($8–15) and paint a large piece of white poster board — at least 2 feet square. Apply two coats and let it dry fully. This gives you a portable sample you can move to different walls and compare against other colors.
+          Buy a sample pot and paint a large piece of white poster board — at least 2 feet square. Apply two coats and let it dry fully. This gives you a portable sample you can move to different walls and compare against other colors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Why poster board and not the wall?</strong> Painting directly on the wall means the existing color bleeds through and distorts your sample. A white board gives you the true color.
@@ -6490,7 +10031,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-paint-colors-north-facing-rooms",
     title: "The Best Paint Colors for North-Facing Rooms",
     date: "2025-12-18",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "North-facing rooms get cool, indirect light. These warm-toned, high-LRV colors counteract the gray cast and make the space feel bright.",
@@ -6530,7 +10071,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige with sandy undertones. It reads as a sophisticated neutral in north light rather than turning cold. LRV 63.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — a true warm beige that holds its warmth even in the coolest light. A top-5 seller for a reason. LRV 58.
+          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — a true warm beige that holds its warmth even in the coolest light. LRV 58.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#E6DFD3" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a creamy, sandy neutral that splits the difference between white and beige. Browse the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for similar options.
@@ -6552,7 +10093,7 @@ const blogPosts: BlogPost[] = [
           This might surprise you — warm pinks and blush tones work wonderfully in north-facing rooms because their red and pink undertones counterbalance the cool blue light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DDD9CE" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> is a soft greige with a faint warm cast, which keeps it from going cold in north light. One of BM&apos;s bestsellers for this exact situation. LRV 68.6.
+          <Swatch hex="#DDD9CE" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> is a soft greige with a faint warm cast, which keeps it from going cold in north light. LRV 68.6.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EEE3D3" name="Dimity" brand="Farrow &amp; Ball" href="/colors/farrow-ball/dimity-2008" /> (LRV 77.8) — a warm pink-white that reads as a soft neutral in indirect light rather than distinctly pink. The pink undertone quietly counteracts the blue cast. At LRV 78 it&apos;s solidly in the bright-white range that works well in north-facing rooms; keep ceilings white to compensate. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
@@ -6579,7 +10120,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-paint-colors-east-facing-rooms",
     title: "The Best Paint Colors for East-Facing Rooms",
     date: "2025-12-26",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "East-facing rooms get warm morning sun and cool afternoon shade. These colors look great in both conditions — no more paint that only works half the day.",
@@ -6605,10 +10146,10 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#DBD7CD" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — a warm gray-beige that reads as a cozy neutral in morning light and a sophisticated gray in afternoon shade. LRV 65.5. One of the most reliable east-facing room picks.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — the best-selling paint color in America, and for good reason. Its balanced warm-cool undertone makes it a chameleon that works in any light condition. LRV 60.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — a light greige with a balanced warm-cool undertone, so morning sun warms it without turning it yellow. LRV 60.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warmer greige that leans slightly sandy. It catches the morning sun beautifully without going cold in the afternoon. Browse the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for similar shades.
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warmer greige that leans slightly sandy. Its warmth keeps it from reading cold once the sun moves off the windows in the afternoon. Browse the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for similar shades.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Greens</h2>
@@ -6668,7 +10209,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-blue-paint-colors",
     title: "The Best Blue Paint Colors for Every Room (2026)",
     date: "2026-05-13",
-    modifiedDate: "2026-10-26",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Fourteen designer-favorite blues ranked by undertone, LRV, and room application — from airy sky blues to dramatic naval. Every pick verified against our 26,000+ color database with cross-brand matches.",
@@ -6679,7 +10220,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the best blue paint color overall?",
         answer:
-          "For most rooms, Benjamin Moore Hale Navy (HC-154, LRV 8) is the most-specified blue among designers — a deeply saturated transitional navy that works on cabinetry, accent walls, and exteriors without committing to a single style. For lighter applications, Sherwin-Williams Sleepy Blue (SW 6225, LRV 58) is a versatile mid-tone that reads serene under most lighting conditions.",
+          "For most rooms, Benjamin Moore Hale Navy (HC-154, LRV 8) is our first pick: a deeply saturated transitional navy that works on cabinetry, accent walls, and exteriors without committing to a single style. For lighter applications, Sherwin-Williams Sleepy Blue (SW 6225, LRV 58) is a versatile mid-tone that reads serene under most lighting conditions.",
       },
       {
         question: "What's the best blue paint for a bedroom?",
@@ -6723,7 +10264,7 @@ const blogPosts: BlogPost[] = [
           Navy is the most reliable blue category — these LRV 5-15 colors read as &ldquo;dark blue&rdquo; without flashing purple or green in most lighting. Excellent for accent walls, kitchen islands, cabinetry, front doors, and dining rooms where you want atmosphere.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — HC-154, LRV 8. The most-specified navy among designers. Slightly green-leaning undertone makes it warmer than pure navy, which is why it pairs equally with warm wood floors and cool gray cabinetry. Closest <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams equivalent</Link> is Sea Mariner (SW 9640), rated nearly identical. The better-known Naval (SW 6244) shows a visible difference.
+          <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — HC-154, LRV 8. Our first-pick navy. Slightly green-leaning undertone makes it warmer than pure navy, which is why it pairs equally with warm wood floors and cool gray cabinetry. Closest <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams equivalent</Link> is Sea Mariner (SW 9640), rated nearly identical. The better-known Naval (SW 6244) shows a visible difference.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — SW 6244, LRV 5. Sherwin-Williams&apos; signature deep navy. Slightly more saturated and slightly cooler than Hale Navy. The right pick when you want a navy that reads unambiguously navy — no question whether it&apos;s &ldquo;a dark color&rdquo; or &ldquo;a navy.&rdquo; Excellent on kitchen islands and shutters.
@@ -6735,7 +10276,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#3E5063" name="Indigo Batik" brand="Sherwin-Williams" href="/colors/sherwin-williams/indigo-batik-7602" /> — SW 7602, LRV 8. A softer, slightly grayer take on navy. Reads more &ldquo;dusty denim&rdquo; than &ldquo;naval uniform.&rdquo; The right pick for primary bedrooms when you want depth without going to a hard navy. Excellent paired with white linen bedding and natural wood headboards.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4D5B6A" name="Stiffkey Blue" brand="Farrow & Ball" href="/colors/farrow-ball/stiffkey-blue-281" /> — No. 281, LRV about 10. The most dramatic blue on this list. Reads almost black in low light but reveals deep blue undertones when sunlight hits. The premium option for color-drenched rooms — paint walls, trim, and ceiling all in Stiffkey for the full Farrow &amp; Ball effect. At $115/gallon it&apos;s an investment; the closest <Link href="/match/farrow-ball/to/sherwin-williams" className="text-brand-blue hover:underline">SW equivalent</Link> drops the cost ~50% with minimal visual difference on walls.
+          <Swatch hex="#4D5B6A" name="Stiffkey Blue" brand="Farrow & Ball" href="/colors/farrow-ball/stiffkey-blue-281" /> — No. 281, LRV about 10. The most dramatic blue on this list. Reads almost black in low light but reveals deep blue undertones when sunlight hits. The premium option for color-drenched rooms — paint walls, trim, and ceiling all in Stiffkey for the full Farrow &amp; Ball effect. For the look in another brand, start with its closest <Link href="/match/farrow-ball/to/sherwin-williams" className="text-brand-blue hover:underline">SW equivalent</Link> and sample the two side by side.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The 5 Best Mid-Tone Blues</h2>
@@ -6780,13 +10321,13 @@ const blogPosts: BlogPost[] = [
           <strong>Bedrooms.</strong> Aim for LRV 45-65 for primary bedrooms. Quiet Moments, Sleepy Blue, and Indigo Batik (slightly darker, more sophisticated) are top picks. For kids&apos; rooms and nurseries, go higher LRV (Iceberg, Soar) to keep the room energizing without overstimulation. Read our <Link href="/blog/calming-bedroom-paint-colors" className="text-brand-blue hover:underline">calming bedroom paint colors guide</Link> for the full LRV-driven approach.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Kitchens (cabinets).</strong> Navy blues dominate. Hale Navy is the safe default for islands or lower cabinets, paired with white upper cabinets and brass or polished chrome hardware. For a more contemporary look, Naval (SW) provides slightly more saturation. Use Benjamin Moore Advance (waterborne alkyd) for cabinet durability — read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">SW vs BM brand comparison</Link> for the cabinet paint specifics.
+          <strong>Kitchens (cabinets).</strong> Navy is the natural choice. Hale Navy is the safe default for islands or lower cabinets, paired with white upper cabinets and brass or polished chrome hardware. For a more contemporary look, Naval (SW) provides slightly more saturation. Use a cabinet enamel such as Benjamin Moore Advance, which Benjamin Moore describes as a waterborne alkyd; read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">SW vs BM brand comparison</Link> for the cabinet paint specifics.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Bathrooms.</strong> Mid-tone blues (Quiet Moments, Sleepy Blue) work for primary bathrooms with good natural light. For powder rooms, go bolder — Stiffkey Blue or Hale Navy create the &ldquo;jewel box&rdquo; effect on a small footprint. For coastal/beachy bathrooms, Rainwashed (SW 6211) with its green-blue undertone is the go-to.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Exteriors.</strong> Hale Navy and Naval are the dominant exterior navies for shutters, doors, and accent siding. For full-house blue siding, look at deeper navies that hold their color over years of UV exposure — Newburyport Blue and Naval both have strong UV stability. Read our <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">best exterior paint colors guide</Link> for sheen and durability requirements.
+          <strong>Exteriors.</strong> Hale Navy and Naval suit shutters, doors, and accent siding. For full-house blue siding, check the fade resistance on the data sheet for the exterior line you buy, since deep colors fade fastest in strong sun. Read our <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">best exterior paint colors guide</Link> for sheen and durability requirements.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Front doors.</strong> Stiffkey Blue, Hale Navy, and Newburyport Blue are the classic front-door blues. The right one depends on your siding color: navy doors work with white, off-white, gray, and natural wood siding; they fight red brick.
@@ -6803,7 +10344,7 @@ const blogPosts: BlogPost[] = [
           <strong>Going too dark in a small dark room.</strong> Stiffkey Blue is gorgeous in a windowed dining room with afternoon sun. The same color in a windowless powder room reads cave-like. Always sample LRV-below-15 blues in the actual room before committing — and never pick a navy from a chip alone.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Skipping the cross-brand check.</strong> If your contractor stocks Behr and your designer specified Hale Navy, the close <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">Benjamin Moore to Behr conversion</Link> equivalent at $50-60/gallon (vs Hale Navy at $80+) is often the better project value. Read our <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">cross-brand matching guide</Link> for the Delta E methodology.
+          <strong>Skipping the cross-brand check.</strong> If your contractor stocks Behr and your designer specified Hale Navy, the close <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">Benjamin Moore to Behr conversion</Link> equivalent may be the more practical buy. Sample it next to Hale Navy first. Read our <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">cross-brand matching guide</Link> for the Delta E methodology.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Find a Blue Match Across Brands</h2>
