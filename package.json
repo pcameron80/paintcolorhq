@@ -29,6 +29,7 @@
     "research-colors": "tsx scripts/blog/research-colors.ts",
     "verify-links": "tsx scripts/blog/verify-links.ts",
     "audit-colors": "tsx scripts/blog/audit-color-facts.ts",
+    "claim-check": "tsx scripts/blog/claim-check.ts",
     "check:blog-dates": "tsx scripts/blog/check-modified-dates.ts",
     "study-duplication": "tsx scripts/study-duplication.ts",
     "check-attribution": "tsx scripts/check-attribution.ts",
