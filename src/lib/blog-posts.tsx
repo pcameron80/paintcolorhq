@@ -7263,7 +7263,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Sherwin-Williams: Universal Khaki</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> is a warm, sandy neutral with golden undertones and an LRV of 40.6 — the second-brightest of the seven 2026 picks, after Dutch Boy&apos;s Melodious Ivory. Sherwin-Williams positions it as a whole-house color that bridges beige and warm gray, which is why it landed as CoY: it&apos;s the safest bold pick on the list, designed to scale across rooms and lighting conditions without locking buyers into a single mood.
+          <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> is a warm, sandy neutral with golden undertones and an LRV of 40.6 — the third-brightest of the eight 2026 picks, after Dutch Boy&apos;s Melodious Ivory and PPG&apos;s Secret Safari. Sherwin-Williams positions it as a whole-house color that bridges beige and warm gray, which is why it landed as CoY: it&apos;s the safest bold pick on the list, designed to scale across rooms and lighting conditions without locking buyers into a single mood.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           The choice makes more sense in context with <Link href="/colors/sherwin-williams/grounded-6089" className="text-brand-blue hover:underline">Grounded</Link>, from SW&apos;s 2025 Color Capsule (a deeper warm brown at LRV ~12). Universal Khaki keeps Grounded&apos;s earthy warmth but is far lighter, so it brightens a room instead of closing it in. Pairs cleanly with warm wood floors, cream or off-white trim, and brass hardware. Avoid pure white trim — the contrast reads harsh and emphasizes any yellow shift in the khaki.
@@ -7286,7 +7286,7 @@ const blogPosts: BlogPost[] = [
           as &ldquo;burnt umber with delicate notes of charcoal,&rdquo; with inspiration drawn from classic tailoring and fine suiting fabrics. LRV sits around 10, putting it firmly in accent-wall and architectural-trim territory rather than whole-room dominant. The undertone is the differentiator: warm enough to read brown-leaning under 2700K bulbs, neutral enough to read as a deep neutral under cool daylight.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Benjamin Moore&apos;s 2025 pick, <Link href="/colors/benjamin-moore/cinnamon-slate-2113-40" className="text-brand-blue hover:underline">Cinnamon Slate</Link>, was a heathered plum with more color; Silhouette keeps the depth and strips out the chroma. It is the most architectural of the seven 2026 picks, suited to cocooning rooms such as libraries, dining rooms and primary bedrooms.
+          Benjamin Moore&apos;s 2025 pick, <Link href="/colors/benjamin-moore/cinnamon-slate-2113-40" className="text-brand-blue hover:underline">Cinnamon Slate</Link>, was a heathered plum with more color; Silhouette keeps the depth and strips out the chroma. It is the most architectural of the eight 2026 picks, suited to cocooning rooms such as libraries, dining rooms and primary bedrooms.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Pairs with deep walnut floors, brass or matte black hardware, and warm whites for trim. At LRV 10, a pure white trim creates jarring contrast — use Simply White or <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link> to soften it. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> to find complementary shades for a full palette.
@@ -7305,7 +7305,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Glidden / Pittsburgh Paints: Warm Mahogany</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#744034" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> is the 2026 pick for Glidden and Pittsburgh Paints, the US brands of The Pittsburgh Paints Company. It is a rich brown-red with LRV ~8 — the deepest, most saturated of all seven 2026 picks. The color reads more like a furniture stain than a typical wall color, and that&apos;s likely the point. The brand&apos;s commercial-architectural lineage (Manor Hall, the spec-builder line) shows up in CoY picks that frame the brand as residential-designer-relevant rather than purely transactional.
+          <Swatch hex="#744034" name="Warm Mahogany" brand="Glidden" href="/colors/ppg/warm-mahogany-1060-7" /> is the 2026 pick for Glidden and Pittsburgh Paints, the US brands of The Pittsburgh Paints Company. It is a rich brown-red with LRV ~8 — the deepest of all eight 2026 picks. The color reads more like a furniture stain than a typical wall color, and that&apos;s likely the point. The brand&apos;s commercial-architectural lineage (Manor Hall, the spec-builder line) shows up in CoY picks that frame the brand as residential-designer-relevant rather than purely transactional.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           At LRV 8 it absorbs most of the light in a room — pure white trim against it creates jarring contrast, and north-facing rooms make it read black. Most effective in small high-impact spaces: front doors, dining rooms, library accent walls, powder rooms, cabinetry. Pairs especially well with warm brass, natural walnut, leather, and cream-toned trim. Avoid pairing with cool grays or pure whites; the temperature mismatch makes the mahogany read clay-pot rather than rich.
@@ -7313,9 +7313,22 @@ const blogPosts: BlogPost[] = [
         <p className="mt-4 text-gray-700 leading-relaxed">
           The closest cross-brand equivalents sit in the warm-deep-brown range — browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> to find similar earth-toned shades across every brand.
         </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Secret Safari</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          PPG&apos;s global color team named a different 2026 color: 
-          <Swatch hex="#C6BB68" name="Secret Safari" brand="PPG" href="/colors/ppg/secret-safari-1110-4" /> (PPG1110-4), a muted yellow-green at LRV 48.5. Our <Link href="/blog/best-ppg-paint-colors" className="text-brand-blue hover:underline">best PPG paint colors</Link> guide covers it alongside the rest of the PPG range.
+          PPG named its own 2026 color, separate from the Glidden and Pittsburgh Paints pick above. <Swatch hex="#c6bb68" name="Secret Safari" brand="PPG" href="/colors/ppg/secret-safari-1110-4" /> (PPG1110-4) is a mid-tone yellow-green at LRV 48.5, which 
+          <a
+            href="https://investor.ppg.com/news/news-details/2025/PPG-announces-Secret-Safari-as-2026-Color-of-the-Year/default.aspx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue hover:underline"
+          >
+            PPG announced in October 2025
+          </a> 
+          and describes as a versatile yellow-green. It is the only green among the 2026 picks light enough for a whole room, and the one with the most visible yellow, so it reads brighter in warm light and greener in cool daylight.
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          It pairs with warm whites, natural wood and woven textures; a stark white trim pushes it toward lime. Three big brands have a Nearly identical match: <Link href="/colors/behr/go-go-lime-p350-5" className="text-brand-blue hover:underline">Behr Go Go Lime</Link> (P350-5), <Link href="/colors/benjamin-moore/sweet-vibrations-391" className="text-brand-blue hover:underline">Benjamin Moore Sweet Vibrations</Link> (391) and <Link href="/colors/valspar/greek-tapenade-6008-6b" className="text-brand-blue hover:underline">Valspar Greek Tapenade</Link> (6008-6B). The closest Sherwin-Williams color, <Link href="/colors/sherwin-williams/lim-n-fresco-9030" className="text-brand-blue hover:underline">Limón Fresco</Link> (SW 9030), rates Very similar. These are digital matches, so confirm with a physical sample. Our <Link href="/blog/best-ppg-paint-colors" className="text-brand-blue hover:underline">best PPG paint colors</Link> guide covers the rest of the PPG range.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Warm Eucalyptus</h2>
@@ -7332,12 +7345,12 @@ const blogPosts: BlogPost[] = [
           and available exclusively at Lowe&apos;s through Valspar&apos;s consumer line; the comparable independent-retailer color is Sage Slate V143-5.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Of the seven 2026 picks, this is one of the most &ldquo;livable&rdquo; — usable as a whole-room color in most lighting, not just accent territory. Valspar typically picks crowd-friendly colors over designer statements, and Warm Eucalyptus fits that pattern. The closest counterpart on this list is Hidden Gem (also green, though lighter: LRV 20.6 vs 14), but where Hidden Gem reads architectural Warm Eucalyptus reads domestic. Pairs especially well with warm wood tones (oak, maple, walnut), natural stone, brass, and cream or off-white trim. Pure white trim would create too much contrast.
+          Of the eight 2026 picks, this is one of the most &ldquo;livable&rdquo; — usable as a whole-room color in most lighting, not just accent territory. Valspar typically picks crowd-friendly colors over designer statements, and Warm Eucalyptus fits that pattern. The closest counterpart on this list is Hidden Gem (also green, but darker: LRV 14 vs 20.6), but where Hidden Gem reads architectural Warm Eucalyptus reads domestic. Pairs especially well with warm wood tones (oak, maple, walnut), natural stone, brass, and cream or off-white trim. Pure white trim would create too much contrast.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Dutch Boy: Melodious Ivory</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#e4caad" name="Melodious Ivory" brand="Dutch Boy" href="/colors/dutch-boy/melodious-ivory-313-2db" /> (313-2DB) is a warm, peach-leaning ivory at LRV 61.8, the lightest of the seven 2026 picks and the easiest to use on every wall of a house. Where most brands went deep this year, Dutch Boy went soft. It pairs with white oak, cane and creamy trim; a stark white trim makes it read more yellow.
+          <Swatch hex="#e4caad" name="Melodious Ivory" brand="Dutch Boy" href="/colors/dutch-boy/melodious-ivory-313-2db" /> (313-2DB) is a warm, peach-leaning ivory at LRV 61.8, the lightest of the eight 2026 picks and the easiest to use on every wall of a house. Where most brands went deep this year, Dutch Boy went soft. It pairs with white oak, cane and creamy trim; a stark white trim makes it read more yellow.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Dutch Boy is a Sherwin-Williams company, and <Link href="/colors/sherwin-williams/interactive-cream-6113" className="text-brand-blue hover:underline">Sherwin-Williams Interactive Cream</Link> (SW 6113) carries the same color values, so the look is available at any SW store. The closest Benjamin Moore color, <Link href="/colors/benjamin-moore/home-sweet-home-1088" className="text-brand-blue hover:underline">Home Sweet Home</Link> (1088), rates Nearly identical. These are digital matches, so confirm with a physical sample.
@@ -7353,10 +7366,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The seven 2026 picks share a lot. Four of seven are explicitly green-influenced (Hidden Gem, Warm Eucalyptus, Midnight Garden, Silhouette&apos;s earthy undertone). None of the seven is a cool gray or a cool blue. Six of seven sit below LRV 45, requiring real sampling rather than chip-glance; the exception is Melodious Ivory, a warm ivory at 61.8. Compare that with 2025&apos;s wider spread (Encore navy at LRV 6 next to Grounded brown at LRV 12 next to Rumors red at mid-saturation) and the 2026 set is quieter and earthier.
+          The eight 2026 picks share a lot. Four of eight are green (Hidden Gem, Warm Eucalyptus, Midnight Garden and Secret Safari). None of the eight is a cool gray or a cool blue. Six of eight sit below LRV 45, requiring real sampling rather than chip-glance; the exceptions are Secret Safari at 48.5 and Melodious Ivory, a warm ivory at 61.8. Compare that with 2025&apos;s wider spread (Encore navy at LRV 6 next to Grounded brown at LRV 12 next to Rumors red at mid-saturation) and the 2026 set is quieter and earthier.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Each of the seven picks reads differently under 2700K warm bulbs than under 4000K daylight, and most carry enough color that the shift shows on a full wall, so test a large sample in your own light before you commit. For the eight 2026 picks grouped by color direction, see our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> post.
+          Each of the eight picks reads differently under 2700K warm bulbs than under 4000K daylight, and most carry enough color that the shift shows on a full wall, so test a large sample in your own light before you commit. Our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">side-by-side table of the eight picks</Link> lists each one&apos;s closest match at Sherwin-Williams, Benjamin Moore, Behr and Valspar.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two shades are. Preview any of these shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. For other 2026 colors beyond the official picks, see <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link>.
