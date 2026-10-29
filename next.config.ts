@@ -158,6 +158,18 @@ const nextConfig: NextConfig = {
         destination: "/brands",
         permanent: true,
       },
+      // Retired 2026-10-29: 2025-only trend and popularity posts whose
+      // claims could not be sourced. Each points to its 2026 successor.
+      {
+        source: "/blog/2025-colors-of-the-year-every-brand-compared",
+        destination: "/blog/2026-colors-of-the-year-every-brand-compared",
+        permanent: true,
+      },
+      {
+        source: "/blog/most-popular-paint-colors-2025",
+        destination: "/blog/paint-color-trends-2026",
+        permanent: true,
+      },
       // Deduped color rows: old slug → canonical slug (161 entries).
       ...Object.entries(colorRedirects).map(([from, to]) => ({
         source: `/colors/${from}`,
