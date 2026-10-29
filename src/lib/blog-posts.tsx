@@ -3759,6 +3759,7 @@ const blogPosts: BlogPost[] = [
     slug: "ceiling-paint-color",
     title: "Ceiling Paint Color: Same as the Walls or White?",
     date: "2026-10-22",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "When to paint the ceiling the wall color, when white works better, and the lighter-step colors and mixing ratios paint makers suggest, with whites by LRV.",
@@ -3794,7 +3795,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "How does color-changing ceiling paint work?",
         answer:
-          "It goes on tinted so you can see where you have rolled, then dries white. Benjamin Moore's Insl-X Color-Changing Ceiling Paint and Glidden's Pink to White Ceiling Paint go on pink. Valspar Skylight Color-Changing Ceiling Paint goes on light purple. These are ready-mixed whites and are not meant to be tinted.",
+          "It goes on tinted so you can see where you have rolled, then dries white, according to the brands that sell it. Benjamin Moore's Insl-X Color-Changing Ceiling Paint and Glidden's Pink to White Ceiling Paint go on pink. Valspar Skylight Color-Changing Ceiling Paint goes on light purple. These are ready-mixed whites and are not meant to be tinted.",
       },
     ],
     content: () => (
@@ -3825,7 +3826,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">When white is the better ceiling</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Sherwin-Williams calls white &quot;the most effective color for reflecting light back into the room,&quot; and stresses it for rooms with few or no sources of natural light. Its ceiling guide adds that light ceiling colors make ceilings appear higher and rooms appear larger, and Benjamin Moore says the same of white ceilings in small spaces. White is also simply the default: Sherwin-Williams notes it is the most common ceiling color.
+          Sherwin-Williams calls white &quot;the most effective color for reflecting light back into the room,&quot; and stresses it for rooms with few or no sources of natural light. Its ceiling guide adds that light ceiling colors make ceilings appear higher and rooms appear larger, and Benjamin Moore says the same of white ceilings in small spaces.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Farrow &amp; Ball offers the counterpoint. Over colored walls, a bright white ceiling makes you &quot;immediately aware of the ceiling height,&quot; and &quot;the lighter the ceiling, the darker the walls will appear.&quot; If your walls are a mid-tone color, that is the case for the lighter-step ceiling below rather than a stark white.
@@ -3942,7 +3943,7 @@ const blogPosts: BlogPost[] = [
         <ul className="mt-4 list-disc space-y-2 pl-6 text-gray-700 leading-relaxed">
           <li><strong>Sherwin-Williams Premium Ceiling Paint:</strong> flat, lists an LRV of 92 on its data sheet, 350 to 400 square feet per gallon, recoat in 4 hours.</li>
           <li><strong>Sherwin-Williams ProMar Ceiling Paint:</strong> super-flat, and Sherwin-Williams says it is tintable to hundreds of colors.</li>
-          <li><strong>Benjamin Moore Waterborne Ceiling Paint:</strong> ultra flat, which Benjamin Moore calls its flattest paint, available in 3,500+ colors, 400 to 450 square feet per gallon, recoat in 1 to 2 hours.</li>
+          <li><strong>Benjamin Moore Waterborne Ceiling Paint:</strong> ultra flat. Benjamin Moore calls it its flattest paint and lists 3,500+ colors, 400 to 450 square feet per gallon, and a recoat in 1 to 2 hours.</li>
         </ul>
         <p className="mt-4 text-gray-700 leading-relaxed">
           To work out how much you need, the <Link href="/tools/paint-calculator" className="text-brand-blue hover:underline">paint calculator</Link> handles walls, and a flat ceiling is roughly the room&apos;s length times its width. Recoat times for other paints are in our guide to <Link href="/blog/how-many-coats-of-paint" className="text-brand-blue hover:underline">how long to wait between coats</Link>.
@@ -7861,7 +7862,7 @@ const blogPosts: BlogPost[] = [
     slug: "calming-bedroom-paint-colors",
     title: "9 Calming Bedroom Colors Designers Love",
     date: "2026-01-15",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Create a serene retreat with these designer-approved bedroom paint colors — soft blues, warm neutrals, and muted greens that promote relaxation.",
@@ -7890,7 +7891,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Muted Greens</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green connects us to nature, and muted sage tones have become incredibly popular for bedrooms. They pair beautifully with natural wood furniture and linen textiles.
+          Muted sage greens bring a natural feel to a bedroom. They pair beautifully with natural wood furniture and linen textiles.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#B2B8A3" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> — a warm, dusty sage that&apos;s serene without feeling sterile.
@@ -7904,13 +7905,13 @@ const blogPosts: BlogPost[] = [
           If you prefer neutrals but want to avoid the &ldquo;cold gray bedroom&rdquo; trap, warm undertones are essential. These colors create a cocoon-like feeling.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that feels like cashmere. One of the most popular bedroom neutrals.
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige that feels like cashmere.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#E6DFD3" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a warm, creamy white with yellow-beige undertones that glows in evening light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DBD7CD" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — another BM best-seller that splits the difference between gray and beige.
+          <Swatch hex="#DBD7CD" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — a Benjamin Moore neutral that splits the difference between gray and beige.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft Lavender</h2>
@@ -9878,6 +9879,7 @@ const blogPosts: BlogPost[] = [
     slug: "paint-sheen-guide",
     title: "Paint Sheen Guide: Flat vs Eggshell vs Satin vs Semi-Gloss",
     date: "2025-10-16",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Choosing the right sheen is just as important as choosing the right color. This guide explains every finish level and which rooms need which sheen.",
@@ -9931,7 +9933,7 @@ const blogPosts: BlogPost[] = [
           <strong>Sheen level:</strong> 10–25% gloss. <strong>Look:</strong> A soft, velvety finish with just a hint of luster — like the surface of an egg.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Pros:</strong> Easy to wipe clean. More durable than flat. Still hides minor imperfections. The most popular residential wall finish.
+          <strong>Pros:</strong> Easy to wipe clean. More durable than flat. Still hides minor imperfections. A common choice for living-area walls.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Cons:</strong> Shows touch-ups slightly more than flat. Not ideal for very high-moisture areas.
@@ -9998,6 +10000,7 @@ const blogPosts: BlogPost[] = [
     slug: "how-to-test-paint-samples",
     title: "How to Test Paint Samples the Right Way",
     date: "2025-10-23",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Stop making color decisions from tiny paint chips. Learn the right way to test paint samples so you choose a color you'll love for years.",
@@ -10020,7 +10023,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Option 1: Peel-and-Stick Samples</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Both <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore offer large peel-and-stick color samples (approximately 8×8 inches). At $5–8 each, they&apos;re the cheapest way to test multiple colors. Move them around the room, hold them next to your trim and countertops, and observe them at different times of day.
+          Both <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore offer large peel-and-stick color samples (approximately 8×8 inches). They let you test several colors without painting the wall. Move them around the room, hold them next to your trim and countertops, and observe them at different times of day.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Tip:</strong> Don&apos;t press them flat against the wall. Hold the sample about an inch away so you see the color without being influenced by the current wall color underneath.
@@ -10028,7 +10031,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Option 2: Paint Sample Boards</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Buy a quart sample ($8–15) and paint a large piece of white poster board — at least 2 feet square. Apply two coats and let it dry fully. This gives you a portable sample you can move to different walls and compare against other colors.
+          Buy a sample pot and paint a large piece of white poster board — at least 2 feet square. Apply two coats and let it dry fully. This gives you a portable sample you can move to different walls and compare against other colors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Why poster board and not the wall?</strong> Painting directly on the wall means the existing color bleeds through and distorts your sample. A white board gives you the true color.
@@ -10151,7 +10154,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-paint-colors-north-facing-rooms",
     title: "The Best Paint Colors for North-Facing Rooms",
     date: "2025-12-18",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "North-facing rooms get cool, indirect light. These warm-toned, high-LRV colors counteract the gray cast and make the space feel bright.",
@@ -10191,7 +10194,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — a warm greige with sandy undertones. It reads as a sophisticated neutral in north light rather than turning cold. LRV 63.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — a true warm beige that holds its warmth even in the coolest light. A top-5 seller for a reason. LRV 58.
+          <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — a true warm beige that holds its warmth even in the coolest light. LRV 58.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#E6DFD3" name="Shoji White" brand="Sherwin-Williams" href="/colors/sherwin-williams/shoji-white-7042" /> — a creamy, sandy neutral that splits the difference between white and beige. Browse the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for similar options.
@@ -10213,7 +10216,7 @@ const blogPosts: BlogPost[] = [
           This might surprise you — warm pinks and blush tones work wonderfully in north-facing rooms because their red and pink undertones counterbalance the cool blue light.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DDD9CE" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> is a soft greige with a faint warm cast, which keeps it from going cold in north light. One of BM&apos;s bestsellers for this exact situation. LRV 68.6.
+          <Swatch hex="#DDD9CE" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> is a soft greige with a faint warm cast, which keeps it from going cold in north light. LRV 68.6.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EEE3D3" name="Dimity" brand="Farrow &amp; Ball" href="/colors/farrow-ball/dimity-2008" /> (LRV 77.8) — a warm pink-white that reads as a soft neutral in indirect light rather than distinctly pink. The pink undertone quietly counteracts the blue cast. At LRV 78 it&apos;s solidly in the bright-white range that works well in north-facing rooms; keep ceilings white to compensate. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
