@@ -7244,7 +7244,7 @@ const blogPosts: BlogPost[] = [
     slug: "2026-colors-of-the-year-every-brand-compared",
     title: "2026 Colors of the Year: Every Major Brand Compared",
     date: "2026-01-08",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "See every major paint brand's 2026 Color of the Year side by side — from earthy greens to warm neutrals — with closest cross-brand matches.",
@@ -7257,7 +7257,7 @@ const blogPosts: BlogPost[] = [
           Looking for 2027? Seven brands have named their 2027 picks so far, and the <Link href="/color-of-the-year" className="text-brand-blue hover:underline">2027 Color of the Year hub</Link> tracks each one with its closest matches in other brands.
         </p>
         <p className="mt-4 text-lg leading-relaxed text-gray-800">
-          Every year, the biggest paint brands announce their Color of the Year — a single shade they believe captures the cultural mood. For 2026 the picks are strikingly aligned: earthy greens, warm neutrals, and nature-inspired tones dominate. After 2025&apos;s bolder palette of reds and deep navies, every major brand pivoted toward quieter, more livable colors. Below, every official 2026 selection — what it actually looks like on a wall, why each brand chose it, and what it pairs with.
+          Every year, the biggest paint brands announce their Color of the Year — a single shade each brand picks for the year ahead. The 2026 picks have a lot in common: earthy greens, warm neutrals, and nature-inspired tones. The 2025 picks included bolder reds and deep navies; the 2026 set is quieter. Below, every official 2026 selection — what it actually looks like on a wall, why each brand chose it, and what it pairs with.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Sherwin-Williams: Universal Khaki</h2>
@@ -7265,7 +7265,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> is a warm, sandy neutral with golden undertones and an LRV of 40.6 — the second-brightest of the seven 2026 picks, after Dutch Boy&apos;s Melodious Ivory. Sherwin-Williams positions it as a whole-house color that bridges beige and warm gray, which is why it landed as CoY: it&apos;s the safest bold pick on the list, designed to scale across rooms and lighting conditions without locking buyers into a single mood.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The choice makes more sense in context with <Link href="/colors/sherwin-williams/grounded-6089" className="text-brand-blue hover:underline">Grounded</Link>, from SW&apos;s 2025 Color Capsule (a deeper warm brown at LRV ~12). Universal Khaki softens that direction — keeps the earthy warmth, lightens the room. Signals that SW is reading the broader 2026 mood as &ldquo;earthy livable&rdquo; rather than the &ldquo;earthy bold&rdquo; that defined 2025. Pairs cleanly with warm wood floors, cream or off-white trim, and brass hardware. Avoid pure white trim — the contrast reads harsh and emphasizes any yellow shift in the khaki.
+          The choice makes more sense in context with <Link href="/colors/sherwin-williams/grounded-6089" className="text-brand-blue hover:underline">Grounded</Link>, from SW&apos;s 2025 Color Capsule (a deeper warm brown at LRV ~12). Universal Khaki keeps Grounded&apos;s earthy warmth but is far lighter, so it brightens a room instead of closing it in. Pairs cleanly with warm wood floors, cream or off-white trim, and brass hardware. Avoid pure white trim — the contrast reads harsh and emphasizes any yellow shift in the khaki.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           At LRV 40 it carries more visual weight than the chip suggests in north-facing rooms; sample on the actual wall before committing. Looking for this shade from another brand? Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match.
@@ -7285,7 +7285,7 @@ const blogPosts: BlogPost[] = [
           as &ldquo;burnt umber with delicate notes of charcoal,&rdquo; with inspiration drawn from classic tailoring and fine suiting fabrics. LRV sits around 10, putting it firmly in accent-wall and architectural-trim territory rather than whole-room dominant. The undertone is the differentiator: warm enough to read brown-leaning under 2700K bulbs, neutral enough to read as a deep neutral under cool daylight.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Benjamin Moore tends to alternate moody anchors with brighter cheerful picks year-over-year. 2025&apos;s <Link href="/colors/benjamin-moore/cinnamon-slate-2113-40" className="text-brand-blue hover:underline">Cinnamon Slate</Link> tested chromatic depth with a heathered plum; Silhouette doubles down on the depth and strips out the chroma. This is the most architectural of the seven 2026 picks — a color that signals BM is leaning hard into &ldquo;cocooning spaces&rdquo; (libraries, dining rooms, primary bedrooms) as a major 2026 design force.
+          Benjamin Moore&apos;s 2025 pick, <Link href="/colors/benjamin-moore/cinnamon-slate-2113-40" className="text-brand-blue hover:underline">Cinnamon Slate</Link>, was a heathered plum with more color; Silhouette keeps the depth and strips out the chroma. It is the most architectural of the seven 2026 picks, suited to cocooning rooms such as libraries, dining rooms and primary bedrooms.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Pairs with deep walnut floors, brass or matte black hardware, and warm whites for trim. At LRV 10, a pure white trim creates jarring contrast — use Simply White or <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link> to soften it. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> to find complementary shades for a full palette.
@@ -7352,13 +7352,13 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The 2026 picks read as a coordinated industry pivot. Four of seven are explicitly green-influenced (Hidden Gem, Warm Eucalyptus, Midnight Garden, Silhouette&apos;s earthy undertone). None of the seven is a cool gray or a cool blue. Six of seven sit below LRV 45, requiring real sampling rather than chip-glance; the exception is Melodious Ivory, a warm ivory at 61.8. Compare that with 2025&apos;s wider spread (Encore navy at LRV 6 next to Grounded brown at LRV 12 next to Rumors red at mid-saturation) and the cultural read is clear: the industry is softening the &ldquo;bring color back&rdquo; movement of the early 2020s into something quieter, earthier, and more genuinely livable.
+          The seven 2026 picks share a lot. Four of seven are explicitly green-influenced (Hidden Gem, Warm Eucalyptus, Midnight Garden, Silhouette&apos;s earthy undertone). None of the seven is a cool gray or a cool blue. Six of seven sit below LRV 45, requiring real sampling rather than chip-glance; the exception is Melodious Ivory, a warm ivory at 61.8. Compare that with 2025&apos;s wider spread (Encore navy at LRV 6 next to Grounded brown at LRV 12 next to Rumors red at mid-saturation) and the 2026 set is quieter and earthier.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           The underlying signal isn&apos;t about specific colors — it&apos;s about lighting honesty. Each of the seven picks performs meaningfully differently under 2700K warm bulbs versus 4000K daylight, and most carry enough chroma or saturation that lighting failures are visible at scale. That&apos;s a quiet reminder that the chip-on-the-wall step matters more in 2026 than in the gray-dominated decade prior. For a look back at last year&apos;s selections, see our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2025 Colors of the Year comparison</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two shades are. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. For the broader 2026 trend story beyond the official picks, see <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link>.
+          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two shades are. Preview any of these shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. For other 2026 colors beyond the official picks, see <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link>.
         </p>
       </>
     ),
@@ -7484,17 +7484,17 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-alternatives-to-benjamin-moore",
     title: "Best Sherwin-Williams Alternatives to Benjamin Moore's Most Popular Colors",
     date: "2025-11-20",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "Found the perfect Benjamin Moore shade but prefer Sherwin-Williams? Here are the closest SW matches for BM's top sellers, verified by Delta E 2000.",
+      "Found the perfect Benjamin Moore shade but prefer Sherwin-Williams? Here are the closest SW matches for well-known BM colors, verified by Delta E 2000.",
     coverColor: "#D4C5A9",
     coverImage: "/blog/best-sherwin-williams-alternatives-to-benjamin-moore.webp",
     tags: ["Cross-Brand Matching", "Sherwin-Williams", "Benjamin Moore"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Benjamin Moore and Sherwin-Williams are the two most popular paint brands in North America, but their colors don&apos;t always cross-reference neatly. If your painter stocks Sherwin-Williams but you fell in love with a Benjamin Moore swatch, this guide shows you the closest match — backed by Delta E 2000 color science.
+          Benjamin Moore and Sherwin-Williams colors don&apos;t always cross-reference neatly. If your painter stocks Sherwin-Williams but you fell in love with a Benjamin Moore swatch, this guide shows you the closest match — backed by Delta E 2000 color science.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How We Match Colors</h2>
@@ -7504,7 +7504,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Revere Pewter → Simple Stone</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> is one of the most specced neutral colors in residential design. Its warm greige tone has dominated builder-grade homes for a decade. The closest Sherwin-Williams match is <Swatch hex="#CDC7B7" name="Simple Stone" brand="Sherwin-Williams" href="/colors/sherwin-williams/simple-stone-9521" />, which rates nearly identical. The better-known <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> leans slightly warmer and lighter and rates very similar.
+          <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> is a warm greige. The closest Sherwin-Williams match is <Swatch hex="#CDC7B7" name="Simple Stone" brand="Sherwin-Williams" href="/colors/sherwin-williams/simple-stone-9521" />, which rates nearly identical. The better-known <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> leans slightly warmer and lighter and rates very similar.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Simply White → High Reflective White</h2>
@@ -7519,7 +7519,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Edgecomb Gray → Dumpling</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> is a warm gray-beige that has been the go-to neutral for transitional interiors. The closest Sherwin-Williams match is <Swatch hex="#D8D0C1" name="Dumpling" brand="Sherwin-Williams" href="/colors/sherwin-williams/dumpling-9616" />, which rates nearly identical. <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" />, SW&apos;s best-selling color, rates very similar and reads a little grayer. View the full <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> to explore alternatives.
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> is a warm gray-beige that suits transitional interiors. The closest Sherwin-Williams match is <Swatch hex="#D8D0C1" name="Dumpling" brand="Sherwin-Williams" href="/colors/sherwin-williams/dumpling-9616" />, which rates nearly identical. <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" />, rates very similar and reads a little grayer. View the full <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray family</Link> to explore alternatives.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Chantilly Lace → UltraWhite</h2>
@@ -7671,7 +7671,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-kitchen-paint-colors-2025",
     title: "The 14 Best Kitchen Paint Colors for 2026",
     date: "2026-02-19",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "From crisp whites to moody greens, the 2026 kitchen paint colors that hold up in real kitchens — with LRV values and finish tips.",
@@ -7689,7 +7689,7 @@ const blogPosts: BlogPost[] = [
           Kitchens put more demands on paint than any other room. Daily cooking generates grease, steam, and splatter that require a finish tough enough to wipe clean repeatedly without dulling or peeling. The rule: <strong>satin or semi-gloss finish only</strong> for kitchen cabinets and walls. Flat and eggshell absorb grease and cannot be scrubbed clean without removing the paint film.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For cabinet-grade durability, Benjamin Moore Advance and Sherwin-Williams Emerald Urethane Trim Enamel are the two best formulations available to consumers. Both self-level (reducing brush marks), cure to a hard finish, and hold color better than standard wall paint under repeated cleaning.
+          For cabinets, Benjamin Moore sells Advance and Sherwin-Williams sells Emerald Urethane Trim Enamel. Both brands describe them as enamels that level out brush marks and cure to a hard finish; check each data sheet for cure and recoat times.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           LRV (Light Reflectance Value, on a 0–100 scale) matters more in kitchens than almost any other room because task lighting creates harsh contrast. Colors below LRV 20 on full-height cabinets can make a kitchen feel closed-in unless the room has substantial natural light or high ceilings.
@@ -7697,21 +7697,21 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Crisp Whites (LRV 83–90)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White remains the most-specified kitchen color for one practical reason: it reflects task lighting back into the work area instead of absorbing it. The critical variable is undertone. Blue-white kitchens look clinical under warm incandescent or LED bulbs; yellow-white kitchens look dingy under cool daylight bulbs. The three whites below are chosen specifically because their undertones stay stable across bulb types.
+          White works in kitchens for one practical reason: it reflects task lighting back into the work area instead of absorbing it. The critical variable is undertone. Blue-white kitchens look clinical under warm incandescent or LED bulbs; yellow-white kitchens look dingy under cool daylight bulbs. The three whites below are chosen specifically because their undertones stay stable across bulb types.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F4F6F1" name="Chantilly Lace OC-65" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — LRV 90. A clean, bright white that measures close to neutral, which is why it has become the go-to for modern kitchens with stainless appliances and quartz countertops. At LRV 90, it reflects most of the light that reaches it. Finish: semi-gloss for cabinets, satin for walls.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDECE6" name="Pure White SW 7005" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — LRV 84. A warm white with subtle cream undertones that pairs naturally with butcher block, brass hardware, and warm oak flooring. Where Chantilly Lace is crisp, Pure White is inviting. It is the most popular Sherwin-Williams cabinet color and holds up under both warm and cool lighting without shifting to yellow.
+          <Swatch hex="#EDECE6" name="Pure White SW 7005" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — LRV 84. A warm white with subtle cream undertones that pairs naturally with butcher block, brass hardware, and warm oak flooring. Where Chantilly Lace is crisp, Pure White is inviting. It holds up under both warm and cool lighting without shifting to yellow.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EFEEE5" name="White Dove OC-17" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — LRV 83. A soft white that leans slightly warm. Best for kitchens with warm-toned countertops (marble with warm veining, soapstone, butcher block) where you want the cabinetry to feel like part of a warm, cohesive palette rather than a stark contrast. Browse the <Link href="/colors/family/white" className="text-brand-blue hover:underline">full white color family</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens (LRV 6–12) — The 2026 Trend</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody Greens (LRV 6–12)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Green cabinetry went from trend to mainstream between 2023 and 2025, and in 2026 the direction has shifted from bright sage toward deeper, more complex greens with blue or gray undertones. These are not colors for timid renovations. At LRV 6–12, they absorb most of the light in the room and demand specific countertop pairings to avoid looking muddy. Done right, they are the most striking kitchen choice available.
+          Green cabinetry runs from bright sage to deeper, more complex greens with blue or gray undertones; the colors below are the deep end. These are not colors for timid renovations. At LRV 6–12, they absorb most of the light in the room and demand specific countertop pairings to avoid looking muddy. Done right, they are the most striking kitchen choice available.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#28372F" name="Essex Green HC-188" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — LRV 5.6. Dark forest green that reads almost black in low light. Best used on lower cabinets paired with white or cream uppers, where the contrast creates a furniture-like look. Requires white or very light quartz countertops to keep the kitchen from reading too dark. Finish: semi-gloss in Benjamin Moore Advance to show off the depth.
@@ -7725,21 +7725,21 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Neutrals (LRV 51–63)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The cool gray kitchen dominated the 2010s. In 2026, warm neutrals, greiges, and mushroom tones have replaced it for homeowners who want a timeless kitchen without going all-white or all-bold. At LRV 51–63, these colors reflect enough light to stay bright while adding warmth that cool grays never could.
+          Warm neutrals, greiges, and mushroom tones suit a kitchen that should feel timeless without going all-white or all-bold. At LRV 51–63, these colors reflect enough light to stay bright while adding warmth that cool grays lack.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#DAD4C5" name="Edgecomb Gray HC-173" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — LRV 63. The most-specified warm greige for transitional kitchens. It reads as neither beige nor gray, which makes it flexible with a wide range of countertop materials. Works with both warm and cool hardware finishes. Its LRV is high enough to stay bright in north-facing kitchens without looking washed out in south-facing ones.
+          <Swatch hex="#DAD4C5" name="Edgecomb Gray HC-173" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — LRV 63. A warm greige for transitional kitchens. It reads as neither beige nor gray, which makes it flexible with a wide range of countertop materials. Works with both warm and cool hardware finishes. Its LRV is high enough to stay bright in north-facing kitchens without looking washed out in south-facing ones.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D1C7B8" name="Accessible Beige SW 7036" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> — LRV 58. Leans warmer than Edgecomb Gray, with more yellow-tan in its undertone. This makes it a natural match for kitchens with oak or honey-toned wood flooring, where a cooler neutral would clash with the wood&apos;s warmth. On countertops with strong warm veining (travertine, warm quartzite), it integrates seamlessly.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8BCAB" name="Shiitake SW 9173" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — LRV 51.2. A deeper mushroom-taupe that is the most current of the three warm neutrals listed here. At LRV 51, it is dark enough to feel intentional while still maintaining readability in natural light. Best paired with natural stone countertops and unlacquered brass hardware for a fully organic, 2026-forward kitchen aesthetic.
+          <Swatch hex="#C8BCAB" name="Shiitake SW 9173" brand="Sherwin-Williams" href="/colors/sherwin-williams/shiitake-9173" /> — LRV 51.2. A mushroom-taupe and the deepest of the three warm neutrals listed here. At LRV 51, it is dark enough to feel intentional while still maintaining readability in natural light. Best paired with natural stone countertops and unlacquered brass hardware for a fully organic look.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Bold Darks (LRV 4–41)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Dark cabinetry has moved from accent islands to full kitchens in high-end renovations. At LRV 4–8, these colors need strong light sources to prevent the kitchen from feeling like a cave. They work best in kitchens with large windows, skylights, or generous overhead lighting, and they require light-colored countertops and backsplashes as counterbalance.
+          Dark cabinetry works on an island or across a full kitchen. At LRV 4–8, these colors need strong light sources to prevent the kitchen from feeling like a cave. They work best in kitchens with large windows, skylights, or generous overhead lighting, and they require light-colored countertops and backsplashes as counterbalance.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#2F3D4C" name="Naval SW 6244" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — LRV 4.5. A deep, complex navy with blue-black depth. At LRV 4.5, it is very dark. The classic application is a navy island with white perimeter cabinets and white quartz countertops, creating a high-contrast look that photographs extremely well. Aged brass or unlacquered brass hardware at the same warmth level.
@@ -7764,7 +7764,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Test Before Committing</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Kitchen lighting is the hardest lighting condition to predict from a chip. Most kitchens have overhead task lighting that creates bright spots and shadows simultaneously. Before buying a full gallon, test with large peel-and-stick samples from Benjamin Moore or Sherwin-Williams (roughly $5–8 each, approximately 8 x 8 inches). Place samples next to your countertops and hardware, and observe them at three specific times: morning natural light, midday overhead light, and evening with your kitchen lights on at full intensity.
+          Kitchen lighting is the hardest lighting condition to predict from a chip. Most kitchens have overhead task lighting that creates bright spots and shadows simultaneously. Before buying a full gallon, test with large peel-and-stick samples from Benjamin Moore or Sherwin-Williams (about 8 x 8 inches). Place samples next to your countertops and hardware, and observe them at three specific times: morning natural light, midday overhead light, and evening with your kitchen lights on at full intensity.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           For cabinet colors specifically: paint a sample board the same size as one cabinet door and lean it against the actual cabinet for 48 hours before making a final decision. The color on a flat surface at eye level reads differently than on a recessed panel at varying heights and angles.
@@ -7781,7 +7781,7 @@ const blogPosts: BlogPost[] = [
     slug: "behr-vs-sherwin-williams-vs-benjamin-moore",
     title: "Behr vs Sherwin-Williams vs Benjamin Moore: Which Paint Brand Is Best?",
     date: "2025-12-04",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "An honest comparison of the three biggest paint brands in America — covering quality, price, color selection, availability, and who each brand is best for.",
@@ -7791,12 +7791,12 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          These three brands account for the vast majority of residential paint sold in America. But they serve different customers, at different price points, through different channels. Here&apos;s an honest breakdown to help you decide.
+          These three brands serve different customers, at different price points, through different channels. Here&apos;s an honest breakdown to help you decide.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Price Comparison</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Behr</strong> is the most affordable of the three, with premium lines like Marquee starting around $45–50 per gallon at Home Depot. <strong>Sherwin-Williams</strong> sits in the middle at $55–75+ per gallon depending on the product line, though their frequent 30–40% off sales close the gap. <strong>Benjamin Moore</strong> is the premium option at $60–80+ per gallon, sold exclusively through independent dealers.
+          <strong>Behr</strong> is sold at Home Depot, <strong>Sherwin-Williams</strong> through its own stores, and <strong>Benjamin Moore</strong> through independent dealers. Prices vary by line and change often, so get a current quote for the exact line you want.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Where to Buy</h2>
@@ -7812,15 +7812,15 @@ const blogPosts: BlogPost[] = [
           On Paint Color HQ, every color page shows the closest equivalents from all other brands, so you&apos;re never locked into a single brand&apos;s ecosystem.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Popular Colors Compared Across Brands</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Matched Colors Across Brands</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The best way to compare brands is to look at their most popular colors side by side. Here are some of the best-sellers from each brand and their closest cross-brand equivalents:
+          The clearest way to compare brands is to put matched colors side by side. Here are well-known colors from each brand and their closest cross-brand equivalents:
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Best-selling gray:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> — all warm greiges that rate Nearly identical or Very similar to one another. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+          <strong>Warm greige:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> — all warm greiges that rate Nearly identical or Very similar to one another. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Best-selling white:</strong> <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#E9E6E1" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
+          <strong>Warm white:</strong> <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#E9E6E1" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two colors are, and read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams vs Benjamin Moore deep dive</Link> for a more detailed head-to-head. For a systematic view of the closest matches across each pair, see the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM</Link>, <Link href="/match/sherwin-williams/to/behr" className="text-brand-blue hover:underline">SW to Behr</Link>, and <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">BM to Behr</Link> conversion charts.
@@ -7828,13 +7828,13 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Paint Quality</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Benjamin Moore Regal Select and Aura</strong> are widely considered the best consumer paints available. They offer exceptional coverage (often true one-coat), rich color depth, and durability. Professional painters consistently rank BM at the top.
+          <strong>Benjamin Moore Regal Select and Aura</strong> are Benjamin Moore&apos;s premium interior lines. Each line&apos;s data sheet lists its coverage, washability and recoat time, which is the fairest way to compare them with the other brands.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Sherwin-Williams Emerald</strong> is a strong second and preferred by many contractors for its excellent self-leveling and workability. Their Duration line is also excellent for high-traffic areas.
+          <strong>Sherwin-Williams Emerald</strong> is Sherwin-Williams&apos; premium interior line, with Duration and SuperPaint below it. Sherwin-Williams publishes the same data sheets.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Behr Marquee and Dynasty</strong> have improved dramatically in recent years. Consumer Reports has ranked Behr Marquee at or near the top in blind tests. For DIYers, the thick consistency and one-coat coverage make it very forgiving.
+          <strong>Behr Marquee and Dynasty</strong> are Behr&apos;s top interior lines. Behr says both cover in one coat, and its published guarantee limits that to colors in its One-Coat Color Collection.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best For…</h2>
@@ -7842,10 +7842,10 @@ const blogPosts: BlogPost[] = [
           <strong>DIYers on a budget:</strong> Behr. The convenience of Home Depot, competitive pricing, and excellent DIY-friendly formulas make it hard to beat for weekend warriors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Hiring a painter:</strong> Sherwin-Williams or Benjamin Moore. Professional painters prefer these brands for their workability, and most contractors have SW or BM accounts with trade discounts.
+          <strong>Hiring a painter:</strong> Sherwin-Williams or Benjamin Moore. Many contractors already hold trade accounts with one of them.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Color-critical projects:</strong> Benjamin Moore. If getting the exact right color matters (and you&apos;re willing to pay for it), BM&apos;s Gennex color system produces the most accurate and consistent color matches.
+          <strong>Color-critical projects:</strong> Benjamin Moore. If getting the exact right color matters (and you&apos;re willing to pay for it), Benjamin Moore says its Gennex colorant system keeps its colors consistent from can to can.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Can You Mix Brands?</h2>
@@ -9417,7 +9417,7 @@ const blogPosts: BlogPost[] = [
     slug: "benjamin-moore-most-popular-whites",
     title: "Benjamin Moore's Most Popular White Paint Colors Ranked",
     date: "2025-11-13",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "White Dove, Chantilly Lace, Simply White, Decorator's White — ranked and compared with undertone analysis, best uses, and SW/Behr equivalents.",
@@ -9427,12 +9427,12 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Benjamin Moore makes some of the most beloved white paints in the industry, but with dozens of whites in their deck, choosing the right one is overwhelming. This guide ranks BM&apos;s most popular whites from warmest to coolest, explains their undertones, and shows you the best use for each.
+          Benjamin Moore has dozens of whites in its deck, so choosing the right one is overwhelming. This guide ranks its best-known whites from warmest to coolest, explains their undertones, and shows you the best use for each.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">1. White Dove (OC-17)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is one of the most popular white paints in America. It&apos;s a soft white with a slight warm lean that never looks yellow on the wall. Designers use it for everything: cabinets, trim, walls, ceilings, and entire homes. It&apos;s the safe choice that always looks good.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> is a soft white with a slight warm lean that never looks yellow on the wall. It works for cabinets, trim, walls, ceilings, and entire homes. It&apos;s the safe choice that always looks good.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Cabinets, trim, whole-house color, farmhouse style.
@@ -9452,7 +9452,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">3. Simply White (OC-117)</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a close neighbor of both White Dove and Chantilly Lace, rating nearly identical to each. It&apos;s warmer than Chantilly Lace and brighter than White Dove. It was BM&apos;s 2016 Color of the Year and remains a top seller. Ideal when you want just a hint of warmth.
+          <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a close neighbor of both White Dove and Chantilly Lace, rating nearly identical to each. It&apos;s warmer than Chantilly Lace and brighter than White Dove. Benjamin Moore named it its 2016 Color of the Year. Ideal when you want just a hint of warmth.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Best for:</strong> Kitchens, bathrooms, transitional style.
