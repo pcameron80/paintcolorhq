@@ -3,14 +3,15 @@ Build visualizer masks from a generated room (see scripts/generate-room.ts).
 
 Reads <dir>/base.png and <dir>/key.png, classifies each key pixel by its flat key
 color (magenta = main walls, cyan = accent wall, yellow = trim, green = window
-frames) and writes:
+frames, blue = cabinets from key-cabinets.png) and writes:
   <dir>/mask-<surface>.png  one grayscale coverage mask per surface (0-255). Separate
                             files rather than RGBA channels: browsers premultiply
                             alpha on canvas reads, which would corrupt a 4th channel.
   <dir>/report.txt          coverage per surface + how well key and base stay aligned
 
-Optional <dir>/exclude.json: [[x0, y0, x1, y1], ...] rectangles in base-image pixels
-that are never painted (e.g. another room seen through a doorway).
+Optional <dir>/exclude.json: areas in base-image pixels that are never painted (e.g.
+another room seen through a doorway, a range hood that picked up the key color). Each
+entry is a rectangle [x0, y0, x1, y1] or a polygon [[x, y], [x, y], ...].
 Optional "reassign" rules in <dir>/meta.json move a surface to another inside a box.
 
 Coverage is soft: it scales with how saturated the key color is, so anti-aliased
@@ -25,7 +26,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter
 
 room = Path(sys.argv[1])
 base_img = Image.open(room / "base.png").convert("RGB")
@@ -79,6 +80,24 @@ elif window_key.exists():
     # The window key wins where it claims a frame; elsewhere its green is ignored.
     main, accent, trim = (m * (1 - window) for m in (main, accent, trim))
 
+# key-cabinets.png (a cabinets-only edit pass, kitchens) floods the cabinetry pure blue.
+# Blue is one strong channel, scored like green above. Hardware keeps its own color in
+# that pass, so pulls and knobs never score as blue and stay unpainted.
+cabinet_key = room / "key-cabinets.png"
+cabinets = np.zeros_like(window)
+if cabinet_key.exists():
+    ck = np.asarray(Image.open(cabinet_key).convert("RGB").resize(key_img.size, Image.LANCZOS), dtype=np.float32) / 255
+    chi = ck.max(axis=2)
+    cr, cg, cb = (ck[..., i] / np.maximum(chi, 1e-3) for i in range(3))
+    cabinets = coverage(cb - np.maximum(cr, cg)) * np.clip((chi - 0.12) / 0.1, 0, 1)
+    # The edit keeps hardware but tints dark pulls blue, so they still score as cabinet.
+    # In the base they are far darker than the door around them: under 15-25% of the
+    # local brightness, where the deepest real cabinet shadows stay above 45%.
+    wlum = (np.where(work <= 0.04045, work / 12.92, ((work + 0.055) / 1.055) ** 2.4) @ np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)).astype(np.float32)
+    local = np.asarray(Image.fromarray(wlum, mode="F").filter(ImageFilter.MedianFilter(2 * round(15 * scale) + 1)), dtype=np.float32)
+    hardware = np.clip((0.25 - wlum / np.maximum(local, 1e-3)) / 0.1, 0, 1)
+    cabinets *= 1 - hardware
+
 SURFACES = ("main", "accent", "trim", "window")
 
 # The base walls are near-neutral; anything strongly colored in the base (wood, art)
@@ -90,9 +109,16 @@ neutral = np.clip((0.38 - base_chroma) / 0.1, 0, 1)
 keep = np.ones_like(neutral)
 exclude_file = room / "exclude.json"
 if exclude_file.exists():
-    for x0, y0, x1, y1 in json.loads(exclude_file.read_text()):
-        keep[round(y0 * scale) : round(y1 * scale), round(x0 * scale) : round(x1 * scale)] = 0
+    polygons = Image.new("L", (keep.shape[1], keep.shape[0]), 0)
+    for area in json.loads(exclude_file.read_text()):
+        if isinstance(area[0], list):
+            ImageDraw.Draw(polygons).polygon([(x * scale, y * scale) for x, y in area], fill=255)
+        else:
+            x0, y0, x1, y1 = area
+            keep[round(y0 * scale) : round(y1 * scale), round(x0 * scale) : round(x1 * scale)] = 0
+    keep *= np.asarray(polygons) == 0
 masks = [m * neutral * keep for m in (main, accent, trim, window)]
+cabinets *= neutral * keep
 
 # meta.json "reassign": [{"rect": [x0, y0, x1, y1], "from": "main", "to": "accent"}, ...]
 # moves one surface's coverage to another inside a box (base-image pixels). The key
@@ -139,6 +165,17 @@ stack += short[..., None] * weight / np.maximum(weight.sum(axis=2, keepdims=True
 total = stack.sum(axis=2, keepdims=True)
 stack = np.where(total > 1, stack / np.maximum(total, 1e-3), stack)
 
+# Cabinets are built apart and never change the other four masks, so pages that paint
+# only walls and trim (the color-page pairing preview) render exactly as before. The
+# renderer paints cabinets last, on top of any wall that strays onto them; at a seam
+# the cabinets alone take whatever coverage the wall leaves short.
+grown = grow(stack).max(axis=2)
+cab_grown = grow(cabinets[..., None])[..., 0]
+between = (cab_grown > 0.5) & (grown > 0.5) & (neutral > 0.5)
+cabinets += np.clip(1 - stack.sum(axis=2) - cabinets, 0, 1) * between
+stack = np.concatenate([stack, cabinets[..., None]], axis=2)
+SURFACES += ("cabinets",)
+
 masks = [stack[..., i] for i in range(len(SURFACES))]
 
 soft = []
@@ -161,6 +198,13 @@ lines = [
     f"alignment: mean abs diff outside surfaces {drift.mean() * 255:.1f}/255, "
     f"{(drift > 0.15).mean() * 100:.1f}% of pixels moved noticeably",
 ]
+if cabinet_key.exists():
+    # The same check for the cabinets pass, outside the cabinets.
+    cab_drift = np.abs(work - ck).mean(axis=2)[(stack[..., 4] < 0.05) & (cb - np.maximum(cr, cg) < 0.25)]
+    lines.append(
+        f"cabinets key alignment: mean abs diff outside cabinets {cab_drift.mean() * 255:.1f}/255, "
+        f"{(cab_drift > 0.15).mean() * 100:.1f}% of pixels moved noticeably"
+    )
 (room / "report.txt").write_text("\n".join(lines) + "\n")
 print("\n".join(lines))
 
@@ -196,13 +240,14 @@ if "--preview" in sys.argv:
             out = out * (1 - a[..., None]) + paint * a[..., None]
         return np.clip(out, 0, 1)
 
-    # (main, accent, trim, window) — test colors near SW Sea Salt, Naval and Agreeable
-    # Gray, plus sage, terracotta and charcoal. The last two show windows painted apart from trim.
+    # (main, accent, trim, window, cabinets) — test colors near SW Sea Salt, Naval and
+    # Agreeable Gray, plus sage, terracotta and charcoal. The last two show windows painted
+    # apart from trim; cabinets go navy, sage, white and green.
     combos = [
-        ("#CDD2CA", "#2F3D4C", "#F2F0EB", "#F2F0EB"),
-        ("#2F3D4C", "#2F3D4C", "#F2F0EB", "#F2F0EB"),
-        ("#D1CBC1", "#7A8B6F", "#F2F0EB", "#2B2B2B"),
-        ("#E8D9C0", "#B5654A", "#3B3B3B", "#F2F0EB"),
+        ("#CDD2CA", "#2F3D4C", "#F2F0EB", "#F2F0EB", "#2F3D4C"),
+        ("#2F3D4C", "#2F3D4C", "#F2F0EB", "#F2F0EB", "#7A8B6F"),
+        ("#D1CBC1", "#7A8B6F", "#F2F0EB", "#2B2B2B", "#F2F0EB"),
+        ("#E8D9C0", "#B5654A", "#3B3B3B", "#F2F0EB", "#65816D"),
     ]
     tiles = [Image.fromarray((render(*c) * 255).astype(np.uint8)) for c in combos]
     w, h = tiles[0].size

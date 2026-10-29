@@ -48,6 +48,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
     trim: "trim",
     accent: "accentWall",
     windows: "windows",
+    cabinets: "cabinets",
   };
   const hexRe = /^[0-9a-fA-F]{6}$/;
   const initialColors: Record<string, string> = {};

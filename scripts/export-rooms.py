@@ -30,7 +30,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "room-src"
 OUT = ROOT / "public" / "rooms"
-SURFACES = ("main", "accent", "trim", "window")
+SURFACES = ("main", "accent", "trim", "window", "cabinets")
 # Display order in the room picker.
 CATEGORIES = ("living", "bedroom", "kitchen", "dining", "bathroom")
 SMALL_WIDTH = 800
