@@ -7356,125 +7356,10 @@ const blogPosts: BlogPost[] = [
           The seven 2026 picks share a lot. Four of seven are explicitly green-influenced (Hidden Gem, Warm Eucalyptus, Midnight Garden, Silhouette&apos;s earthy undertone). None of the seven is a cool gray or a cool blue. Six of seven sit below LRV 45, requiring real sampling rather than chip-glance; the exception is Melodious Ivory, a warm ivory at 61.8. Compare that with 2025&apos;s wider spread (Encore navy at LRV 6 next to Grounded brown at LRV 12 next to Rumors red at mid-saturation) and the 2026 set is quieter and earthier.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The underlying signal isn&apos;t about specific colors — it&apos;s about lighting honesty. Each of the seven picks performs meaningfully differently under 2700K warm bulbs versus 4000K daylight, and most carry enough chroma or saturation that lighting failures are visible at scale. That&apos;s a quiet reminder that the chip-on-the-wall step matters more in 2026 than in the gray-dominated decade prior. For a look back at last year&apos;s selections, see our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2025 Colors of the Year comparison</Link>.
+          Each of the seven picks reads differently under 2700K warm bulbs than under 4000K daylight, and most carry enough color that the shift shows on a full wall, so test a large sample in your own light before you commit. For the eight 2026 picks grouped by color direction, see our <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link> post.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two shades are. Preview any of these shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. For other 2026 colors beyond the official picks, see <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">2026 paint color trends</Link>.
-        </p>
-      </>
-    ),
-  },
-
-  /* ──────────────── Post 1 ──────────────── */
-  {
-    slug: "2025-colors-of-the-year-every-brand-compared",
-    title: "2025 Colors of the Year: Every Major Brand Compared",
-    date: "2025-09-18",
-    modifiedDate: "2026-10-24",
-    author: "Philip Cameron",
-    excerpt:
-      "See every major paint brand's 2025 Color of the Year side by side — from Sherwin-Williams to Benjamin Moore to Behr — with closest cross-brand matches.",
-    coverColor: "#785b47",
-    coverImage: "/blog/2025-colors-of-the-year-every-brand-compared.webp",
-    tags: ["Trends", "Color of the Year", "2025"],
-    content: () => (
-      <>
-        <p className="text-lg leading-relaxed text-gray-800">
-          Every year, the biggest paint brands announce their Color of the Year — a single shade they believe captures the cultural mood. For 2025 the picks pivoted hard into warm earth tones and rich grounded hues, with five of the seven selections sitting in the brown, plum, red and caramel range. The era of cool grays as the default residential neutral effectively ended this year. Below is every official 2025 selection, why each brand chose it, and the practical caveats that don&apos;t show up in the press release.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Sherwin-Williams: Grounded (2025 Color Capsule)</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#785b47" name="Grounded" brand="Sherwin-Williams" href="/colors/sherwin-williams/grounded-6089" /> is a warm, earthy brown with LRV ~12. For 2025, Sherwin-Williams named a{" "}
-          <a
-            href="https://www.sherwin-williams.com/en-us/color/color-of-the-year/2025"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-blue hover:underline"
-          >
-            nine-color Color Capsule
-          </a>{" "}
-          instead of a single Color of the Year, and Grounded (SW 6089) is its deep brown. The move away from the lighter picks of the three years before (Evergreen Fog in 2022, Redend Point in 2023, Upward in 2024) toward deeper earth tones was deliberate — the cultural read at the time was &ldquo;post-pandemic warmth,&rdquo; colors that anchor and ground rather than brighten and energize.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Grounded reads most clearly as an accent or architectural color rather than a whole-room neutral. At LRV 12, it absorbs light quickly in north-facing rooms and can read muddy under cool LED bulbs. Most effective applications: front doors, kitchen islands, cabinetry, exterior trim, accent walls in libraries or dining rooms. Pairs especially well with warm wood floors, brass hardware, leather, and terracotta or cream-toned trim. Avoid pairing with cool grays or pure white trim — the temperature mismatch flattens the warmth that makes Grounded work.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Looking for this shade from another brand? Use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to find the closest Delta E match. Explore the full <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown color family</Link> for more warm earth tones like Grounded.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Benjamin Moore: Cinnamon Slate</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8A7576" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> is a delicate mix of heathered plum and velvety brown — landing in a chromatic space between chocolate and plum that&apos;s genuinely uncommon in mass-market paint lines. Most browns lean either yellow-warm (taupe, beige territory) or red-warm (mahogany territory). Cinnamon Slate splits the difference with a hint of violet, which is what gives it the &ldquo;heathered&rdquo; quality.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Benjamin Moore&apos;s CoY history alternates between architectural anchors and brighter cheerful picks. Cinnamon Slate marked a test of whether the market was ready for chromatic depth beyond just &ldquo;warm earth.&rdquo; Photograph it under controlled lighting and it reads plum; under 2700K warm bulbs at home it reads closer to a warm brown with a violet shadow. That bifurcation makes physical sampling essential — chip-glance and online preview both mislead.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Best applications: accent walls, cabinetry, exterior front doors, primary bedrooms. Pairs with cream or warm whites, walnut floors, soft brass or aged-bronze hardware. Browse all <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore colors</Link> to find complementary shades for a full palette.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Behr: Rumors</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#744347" name="Rumors" brand="Behr" href="/colors/behr/rumors-mq1-15" /> is a dynamic ruby red — warm, slightly muted, alluring rather than aggressive. Behr&apos;s pick was the most extroverted of the 2025 lineup: red is the most-debated paint color category, and{" "}
-          <a
-            href="https://corporate.behr.com/news/behr-paint-company-announces-2025-color-of-the-year-rumors-a-deep-ruby-red-that-makes-a-statement-in-every-space"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-brand-blue hover:underline"
-          >
-            Behr&apos;s announcement
-          </a>{" "}
-          included survey data showing 76% of Americans would consider painting a room red (n=1,000, July 2024). Rumors specifically is calibrated to deliver drama without going clown-bright.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          The strategic read: Behr leans toward crowd-friendly picks that move retail volume at Home Depot. Rumors plays to the &ldquo;maybe I&apos;ll be brave this year&rdquo; impulse without committing buyers to a screaming primary red. The execution gotcha is that reds intensify dramatically under 2700K warm bulbs (the standard residential bulb temperature) and can shift toward pink or wash out under 4000K cool daylight. Sample at multiple times of day in the room where it&apos;ll actually live.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Best applications: dining rooms, libraries, accent walls, kitchen cabinetry, front doors. Pairs with warm whites (avoid pure white — too clinical), dark wood floors, brass hardware. Compare it against the full <Link href="/colors/family/red" className="text-brand-blue hover:underline">red color family</Link> to see how it stacks up against thousands of similar shades.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">PPG: Purple Basil</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#5c4450" name="Purple Basil" brand="PPG" href="/colors/ppg/purple-basil-1046-7" /> is a deep, moody purple-brown that sits between plum and chocolate. PPG often picks colors that read like architectural detail rather than typical interior wall colors — Purple Basil fits that pattern. The hue is unusually chromatic for a 2025 CoY (most picks leaned safer brown or red); the purple bias signals PPG positioning toward designer specifications and architectural finish work rather than pure retail.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Like all purples, Purple Basil is the most lighting-sensitive pick of the seven. Under 2700K warm bulbs the violet undertone reads as a deep mauve-plum; under 4000K daylight it leans closer to a true cool purple-brown. Photograph it and you&apos;ll see different colors at different exposures — another reason on-wall sampling matters more than chip-glance.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Best applications: accent walls, front doors, cabinetry, powder rooms. Pairs with warm woods (walnut, oak), brass hardware, cream trim, and natural stone. Avoid pairing with cool grays — the purple undertone amplifies any gray cast nearby.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar: Encore</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#0f456e" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" /> is a deep saturated navy at LRV ~6 — one of the boldest Color of the Year picks in recent memory across any brand. Valspar bet on the &ldquo;navy is the new black&rdquo; trend that built through the early 2020s and chose the deepest, most architectural version of it.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Encore was the outlier of the 2025 lineup — the only deep-cool pick in a warm-earth-dominated year. The strategic read: Valspar testing whether the warm-earth signal extended to deep blue, or whether the &ldquo;dark cocooning spaces&rdquo; signal was strong enough on its own. At LRV 6 it eats light: pure white trim creates harsh contrast and the color reads near-black in any north-facing room. Specialty primer matters at this depth — most standard primers add an extra coat to coverage compared with mid-LRV colors.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Best applications: accent walls in well-lit rooms, front doors, cabinetry, dining rooms, libraries. Pairs with crisp warm whites (Simply White, <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link>), brass, brushed nickel, or matte black hardware. See the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for the full range of navy and blue options.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dutch Boy: Mapped Blue</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#7a9192" name="Mapped Blue" brand="Dutch Boy" href="/colors/dutch-boy/mapped-blue-429-5db" /> (429-5DB) is a muted, gray-tinged blue at LRV 26.5. It is the year&apos;s second cool pick next to Encore, but far softer: a mid-tone that works on full walls, not only as an accent. Dutch Boy is a Sherwin-Williams company, and <Link href="/colors/sherwin-williams/moody-blue-6221" className="text-brand-blue hover:underline">Sherwin-Williams Moody Blue</Link> (SW 6221) carries the same color values. The closest Benjamin Moore color, <Link href="/colors/benjamin-moore/aegean-teal-2136-40" className="text-brand-blue hover:underline">Aegean Teal</Link> (2136-40), rates Very similar. These are digital matches, so confirm with a physical sample.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Dunn-Edwards: Caramelized</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#ba947f" name="Caramelized" brand="Dunn-Edwards" href="/colors/dunn-edwards/caramelized-det687" /> (DET687) is a warm caramel brown at LRV 33, the value Dunn-Edwards publishes, and the lightest of the seven 2025 picks. It carries the year&apos;s earth-tone theme into a mid-tone that works as a whole-room color. Outside Dunn-Edwards&apos; Southwest footprint, <Link href="/colors/benjamin-moore/chadwick-brown-1160" className="text-brand-blue hover:underline">Benjamin Moore Chadwick Brown</Link> (1160) and <Link href="/colors/sherwin-williams/mellow-mauve-0039" className="text-brand-blue hover:underline">Sherwin-Williams Mellow Mauve</Link> (SW 0039) both rate Very similar. These are digital matches, so confirm with a physical sample.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Common Thread</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          The 2025 picks are remarkably unified on warmth and depth. Five of seven lean explicitly warm: Grounded (brown), Cinnamon Slate (plum-brown), Rumors (red), Purple Basil (purple-brown) and Caramelized (caramel). The first four sit between LRV 7 and 20; Caramelized, at 33, is the light end. The two cool picks split: Encore navy was Valspar testing whether the deep-cocooning-space signal could extend to cool tones, and Dutch Boy&apos;s Mapped Blue is a softer mid-tone. The shared message across the lineup: the era of cool grays as the default residential neutral is over, and the industry is willing to commit to chromatic depth — not just warmer neutrals.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          The underlying execution constraint across the lineup: every 2025 pick rewards careful sampling. Grounded shifts toward muddy under cool LEDs. Cinnamon Slate&apos;s violet reads differently in photos versus on a real wall. Rumors intensifies under warm bulbs. Purple Basil is lighting-sensitive across the board. Encore eats light. The 2020s gray-default era let buyers chip-glance and commit; 2025 doesn&apos;t.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Want to see how all these colors compare scientifically? Use our <Link href="/compare" className="text-brand-blue hover:underline">color compare tool</Link> to see how close any two shades are. Preview any of these trending shades on your walls with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. For the 2026 picks, see our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>. For a broader look at which colors dominated 2025 beyond the official picks, see our <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">most popular paint colors of 2025</Link> roundup.
         </p>
       </>
     ),
@@ -8424,72 +8309,6 @@ const blogPosts: BlogPost[] = [
     ),
   },
 
-  /* ──────────────── Post 10 ──────────────── */
-  {
-    slug: "most-popular-paint-colors-2025",
-    title: "The Most Popular Paint Colors of 2025",
-    date: "2025-10-30",
-    modifiedDate: "2026-10-11",
-    author: "Philip Cameron",
-    excerpt:
-      "Based on search trends, designer picks, and real project data — these are the paint colors that defined 2025 across every major brand.",
-    coverColor: "#6E7E6A",
-    coverImage: "/blog/most-popular-paint-colors-2025.webp",
-    tags: ["Trends", "2025", "Popular"],
-    content: () => (
-      <>
-        <p className="text-lg leading-relaxed text-gray-800">
-          We analyzed search data, designer recommendations, and trending projects to identify the most popular paint colors of 2025. No surprise: warm neutrals dominated, green had a breakout year, and the era of cool gray is definitively over. <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and Benjamin Moore colors led the way.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Top 5 Overall</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>1.</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — For the fifth year running, this warm greige remains the single most popular paint color in America. It works in virtually every room and lighting condition.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>2.</strong> <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — The soft white that designers can&apos;t stop specifying. See our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link> for the full breakdown.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>3.</strong> <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — A warm greige that holds its ground in the age of beige-is-back.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>4.</strong> <Swatch hex="#5E6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> — The green that launched a thousand kitchen renovations. A soft sage-forest tone that represents 2025&apos;s biggest color trend.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>5.</strong> <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — The most popular trim color in the country, and increasingly used as a wall color for those who want warmth without commitment.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Biggest Trend: Green Everything</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          2025 was the year green went mainstream. From sage kitchens to forest-green front doors, every shade of <Link href="/colors/family/green" className="text-brand-blue hover:underline">green</Link> saw massive growth. The trend was driven by biophilic design — the idea that incorporating nature into interiors improves well-being.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Standout greens include <Swatch hex="#B2B8A3" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" />, <Swatch hex="#28372F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" />, and <Swatch hex="#91AF9D" name="Restful" brand="Sherwin-Williams" href="/colors/sherwin-williams/restful-6458" />. We covered the kitchen-specific options in our <Link href="/blog/best-kitchen-paint-colors-2025" className="text-brand-blue hover:underline">kitchen colors guide</Link>.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">The Warm Neutral Takeover</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Cool gray ruled the 2010s, but 2025 confirmed its replacement: warm greige, beige, and cream tones are the new default. The <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Colors of the Year</Link> reflect this — four out of five brands chose warm earth tones.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          For homeowners looking to transition from gray to warm, the easiest path is a greige like Agreeable Gray or Edgecomb Gray. These colors bridge the gap and work with both cool-toned and warm-toned furnishings. Check out our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link> for more on making the transition.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Navy Holds Strong</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> and <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> continued to dominate as accent colors — kitchen islands, front doors, accent walls, and cabinetry. Navy offers drama without the commitment of true black. Explore more in the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link>.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Looking Ahead to 2026</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Early signals suggest 2026 will continue the warm trend while introducing more saturated colors — think terracotta, olive, and warm plum. The pendulum is swinging from the ultra-neutral 2020s toward more expressive color choices.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Whatever direction you choose, use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to explore 26,000+ colors across 13 brands, and find the perfect match for your next project. Preview any of these popular shades with our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> or build a full palette with our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link>.
-        </p>
-      </>
-    ),
-  },
   /* ──────────────── Post 11 ──────────────── */
   {
     slug: "best-bathroom-paint-colors",
@@ -8566,7 +8385,7 @@ const blogPosts: BlogPost[] = [
           Warm, earthy shades are the alternative to cool gray. Terracotta, clay, and warm browns make a bathroom feel grounded and cozy, especially under warm bulbs.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8A7576" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — Benjamin Moore&apos;s 2025 Color of the Year is a muted warm brown that creates incredible depth in a bathroom. Pair with cream tile and matte black fixtures for a modern earthy look. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year comparison</Link> for more on this shade.
+          <Swatch hex="#8A7576" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — Benjamin Moore&apos;s 2025 Color of the Year is a muted warm brown that creates incredible depth in a bathroom. Pair with cream tile and matte black fixtures for a modern earthy look.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#BAA185" name="Latte" brand="Sherwin-Williams" href="/colors/sherwin-williams/latte-6108" /> — a warm, creamy beige-brown that adds warmth without going dark. Ideal for bathrooms that lack natural light, where cooler tones can feel flat and lifeless.
@@ -8717,7 +8536,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — a rich navy that adds sophistication without feeling dark. Works especially well in rooms with large windows.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8A7576" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — the 2025 Color of the Year is a warm, muted brown that creates incredible coziness. Read our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">Color of the Year guide</Link> for more on this shade.
+          <Swatch hex="#8A7576" name="Cinnamon Slate" brand="Benjamin Moore" href="/colors/benjamin-moore/cinnamon-slate-2113-40" /> — Benjamin Moore&apos;s 2025 Color of the Year, a heathered plum-brown that makes a living room feel cozy.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Coastal & Airy</h2>
@@ -9635,74 +9454,132 @@ const blogPosts: BlogPost[] = [
   /* ──────────────── Post 20 (Tier 3 — Trends) ──────────────── */
   {
     slug: "paint-color-trends-2026",
-    title: "Paint Color Trends 2026: What Designers Are Predicting",
+    title: "Paint Color Trends 2026: What the Colors of the Year Show",
     date: "2026-03-13",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "From earthy greens to warm mushroom tones, the paint color trends defining 2026 — drawn from Color of the Year picks across five major brands.",
+      "Eight paint brands named a 2026 Color of the Year. Grouped and measured: four greens, two warm neutrals and two deep warm darks, each with its closest match in four big brands.",
     coverColor: "#8B6F47",
     coverImage: "/blog/paint-color-trends-2026.webp",
     tags: ["Trends", "2026", "Design"],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The 2026 paint color story is told most clearly by looking at what five major brands chose for their Colors of the Year simultaneously: three picked greens or green-adjacent earth tones, and two picked warm neutrals. That kind of cross-brand alignment is rare and signals a genuine shift rather than a marketing coincidence. Combine that with search data showing a 34% year-over-year increase in queries for &quot;warm green paint&quot; and &quot;earthy neutral paint&quot; and you have the clearest trend signal in five years. Here is where things stand. See our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">full 2026 COTY comparison</Link> for the complete breakdown.
+          The clearest record of where paint color is heading in 2026 is what the brands themselves named. Eight paint brands picked a 2026 Color of the Year, and the picks fall into three groups: four muted greens, two warm neutrals and two deep warm darks. None is a cool gray or a blue. Below, each group with the LRV and undertone from our color database, and a table of each pick&apos;s closest match at Sherwin-Williams, Benjamin Moore, Behr and Valspar. For why each brand chose its color, see our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 1: Earthy Greens Dominate</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Muted greens: four of the eight picks</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The biggest trend of 2026 is confirmed by the Color of the Year picks themselves: earthy, muted greens are everywhere. Behr&apos;s <Swatch hex="#596D69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> is a smoky jade, while Valspar&apos;s <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> is a grounded gray-green. Two of five major brands chose green — that&apos;s not a coincidence.
+          Half the 2026 picks are green, and three of them are dark. <Swatch hex="#596d69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /> (Behr N430-6A, LRV 14) is a smoky jade. <Swatch hex="#637057" name="Midnight Garden" brand="Dunn-Edwards" href="/colors/dunn-edwards/midnight-garden-de5657" /> (Dunn-Edwards DE5657, LRV 14.9) is a deep, cool-leaning olive. <Swatch hex="#7c7f70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> (Valspar 8004-28F, LRV 20.6) is a grayed green with a warm undertone, the lightest of the three. At these LRVs all three absorb most of the light that reaches them, so test them on a large sample in the room before committing a whole wall.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          These aren&apos;t the bright sages of 2024. The 2026 greens are moodier, warmer, and more olive-influenced — closer to eucalyptus and jade than mint or Kelly green. Explore the full <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link>.
-        </p>
-
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 2: Warm Neutrals Get Richer</h2>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Sherwin-Williams&apos; <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> captures the new neutral perfectly — warm, sandy, and golden rather than the cool grays of the 2010s. Meanwhile, Benjamin Moore&apos;s <Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /> shows that even dark neutrals are getting warmer.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          PPG&apos;s <Swatch hex="#744034" name="Warm Mahogany" brand="PPG" href="/colors/ppg/warm-mahogany-1060-7" /> pushes this further into rich brown-red territory. Browse our <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for the full range.
+          The fourth green is the outlier. PPG&apos;s <Swatch hex="#c6bb68" name="Secret Safari" brand="PPG" href="/colors/ppg/secret-safari-1110-4" /> (PPG1110-4, LRV 48.5) is a mid-tone yellow-green, light enough for a whole room. Browse the <Link href="/colors/family/green" className="text-brand-blue hover:underline">green color family</Link> for more options in every brand.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 3: Warm Plum & Berry</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm neutrals: Universal Khaki and Melodious Ivory</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Warm plum and berry tones are gaining ground after years of absence. Not bright violet, but muted, brown-inflected purples and dusty berry tones that feel sophisticated rather than playful. Dining rooms, bedrooms, and powder rooms are the primary use cases, where drama is welcome and the small square footage makes a saturated color approachable. Homeowners who painted a navy or forest green accent wall two years ago are the most likely candidates to try this next.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          See the <Link href="/colors/family/purple" className="text-brand-blue hover:underline">purple family</Link> for options across all 13 brands.
+          Sherwin-Williams&apos; <Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /> (SW 6150, LRV 40.6) is a sandy khaki, deeper than the light greiges most whole-house neutrals sit at (Agreeable Gray is LRV 60). Dutch Boy&apos;s <Swatch hex="#e4caad" name="Melodious Ivory" brand="Dutch Boy" href="/colors/dutch-boy/melodious-ivory-313-2db" /> (313-2DB, LRV 61.8) is the lightest pick of the eight, a warm ivory. It shares its hex with Sherwin-Williams Interactive Cream (SW 6113), so the two read as the same color on a screen. See the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link> for nearby shades.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 4: Butter Yellow Returns</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Deep warm darks: Silhouette and Warm Mahogany</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Soft, buttery yellows are reappearing after a decade of being avoided. The version showing up in 2026 is nothing like the primary yellow of the 1990s; it is muted, cream-adjacent, and often closer to ivory than yellow on the wall. Kitchens, breakfast nooks, and entryways are the primary use cases. The key distinction from the versions that felt dated: low saturation and a neutral or warm undertone (avoid lemon or green-yellow tones entirely). Benjamin Moore&apos;s Hawthorne Yellow HC-4 and Farrow &amp; Ball&apos;s Dayroom Yellow No.233 are the most-cited examples in this category.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Browse the <Link href="/colors/family/yellow" className="text-brand-blue hover:underline">yellow family</Link> to find soft, warm options from every brand.
+          Benjamin Moore&apos;s <Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /> (AF-655, LRV 10.2) is a dark gray-brown with a warm undertone; Benjamin Moore describes it as burnt umber with notes of charcoal. <Swatch hex="#744034" name="Warm Mahogany" brand="Glidden" href="/colors/ppg/warm-mahogany-1060-7" /> (PPG1060-7, LRV 7.6), named by the Pittsburgh Paints Company for its Glidden and Pittsburgh Paints brands, is the darkest pick of the eight, a brown-red that Glidden calls a rich, warm-toned red. Both suit rooms where a dark color is the point: dining rooms, libraries, bedrooms and cabinetry. Browse the <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown family</Link> for more.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">Trend 5: The Death of &ldquo;Safe Neutral&rdquo;</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">What the numbers show</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The biggest shift of 2026 isn&apos;t a specific color — it&apos;s a mindset change. Homeowners are moving away from playing it safe with builder-grade greige and instead choosing colors that reflect their personality. Even neutrals are getting more interesting: warm mushroom tones, sandy taupes, and rosy beiges are replacing the ubiquitous <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Agreeable Gray</Link>.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          This doesn&apos;t mean bold color everywhere — it means intentional color choices even in neutral rooms. Read our <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">warm vs cool guide</Link> for help making intentional neutral choices.
+          Six of the eight picks sit below LRV 45; only Secret Safari (48.5) and Melodious Ivory (61.8) are light enough to keep a room bright on their own. The undertones split evenly: three warm, three neutral, and two cool (Midnight Garden and Secret Safari). The practical reading for a homeowner is that most of the 2026 picks are accent, cabinet or single-room colors rather than whole-house neutrals.
         </p>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">What&apos;s Fading Out</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Each 2026 pick in four big brands</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Cool gray:</strong> The 2015–2020 darling continues to decline. Warm grays and greiges have fully replaced it.
-          <strong> All-white everything:</strong> The sterile all-white interior is giving way to warm whites paired with color. Rooms need at least some warmth and personality.
-          <strong> Navy overload:</strong> Navy remains popular but is plateauing after peaking in 2023.
+          These are the closest digital matches in our database, measured with CIEDE2000. Confirm any substitute with a physical sample before you buy.
         </p>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="py-2 pr-4 font-semibold">2026 pick</th>
+                <th className="py-2 pr-4 font-semibold">LRV</th>
+                <th className="py-2 pr-4 font-semibold">Sherwin-Williams</th>
+                <th className="py-2 pr-4 font-semibold">Benjamin Moore</th>
+                <th className="py-2 pr-4 font-semibold">Behr</th>
+                <th className="py-2 font-semibold">Valspar</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#596d69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /><span className="block text-xs text-gray-500">Behr</span></td>
+                <td className="py-2 pr-4">14</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/rocky-river-6215" className="text-brand-blue hover:underline">Rocky River</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/jack-cc-660" className="text-brand-blue hover:underline">Jack Pine</Link> (Very similar)</td>
+                <td className="py-2 pr-4">Same brand</td>
+                <td className="py-2"><Link href="/colors/valspar/ocean-abyss-5002-6c" className="text-brand-blue hover:underline">Ocean Abyss</Link> (Very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#7c7f70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /><span className="block text-xs text-gray-500">Valspar</span></td>
+                <td className="py-2 pr-4">20.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/dried-thyme-6186" className="text-brand-blue hover:underline">Dried Thyme</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/rooftop-garden-csp-765" className="text-brand-blue hover:underline">Rooftop Garden</Link> (Very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/lizard-green-ppu10-18" className="text-brand-blue hover:underline">Lizard Green</Link> (Very similar)</td>
+                <td className="py-2">Same brand</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#637057" name="Midnight Garden" brand="Dunn-Edwards" href="/colors/dunn-edwards/midnight-garden-de5657" /><span className="block text-xs text-gray-500">Dunn-Edwards</span></td>
+                <td className="py-2 pr-4">14.9</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/greenfield-6439" className="text-brand-blue hover:underline">Greenfield</Link> (Very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/alligator-alley-441" className="text-brand-blue hover:underline">Alligator Alley</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/willow-leaf-qe-39" className="text-brand-blue hover:underline">Willow Leaf</Link> (Nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/april-arbor-5008-4c" className="text-brand-blue hover:underline">April Arbor</Link> (Very similar)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#c6bb68" name="Secret Safari" brand="PPG" href="/colors/ppg/secret-safari-1110-4" /><span className="block text-xs text-gray-500">PPG</span></td>
+                <td className="py-2 pr-4">48.5</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/lim-n-fresco-9030" className="text-brand-blue hover:underline">Limón Fresco</Link> (Very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/sweet-vibrations-391" className="text-brand-blue hover:underline">Sweet Vibrations</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/go-go-lime-p350-5" className="text-brand-blue hover:underline">Go Go Lime</Link> (Nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/greek-tapenade-6008-6b" className="text-brand-blue hover:underline">Greek Tapenade</Link> (Nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#b8a992" name="Universal Khaki" brand="Sherwin-Williams" href="/colors/sherwin-williams/universal-khaki-6150" /><span className="block text-xs text-gray-500">Sherwin-Williams</span></td>
+                <td className="py-2 pr-4">40.6</td>
+                <td className="py-2 pr-4">Same brand</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/rocky-beach-csp-190" className="text-brand-blue hover:underline">Rocky Beach</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/nile-sand-ul170-19" className="text-brand-blue hover:underline">Nile Sand</Link> (Nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/oyster-shoal-8005-5d" className="text-brand-blue hover:underline">Oyster Shoal</Link> (Nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#e4caad" name="Melodious Ivory" brand="Dutch Boy" href="/colors/dutch-boy/melodious-ivory-313-2db" /><span className="block text-xs text-gray-500">Dutch Boy</span></td>
+                <td className="py-2 pr-4">61.8</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/interactive-cream-6113" className="text-brand-blue hover:underline">Interactive Cream</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/home-sweet-home-1088" className="text-brand-blue hover:underline">Home Sweet Home</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/pumpkin-seed-s260-2" className="text-brand-blue hover:underline">Pumpkin Seed</Link> (Nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/holmes-cream-3004-10b" className="text-brand-blue hover:underline">Holmes Cream</Link> (Nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#58514d" name="Silhouette" brand="Benjamin Moore" href="/colors/benjamin-moore/silhouette-af-655" /><span className="block text-xs text-gray-500">Benjamin Moore</span></td>
+                <td className="py-2 pr-4">10.2</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/stony-creek-9610" className="text-brand-blue hover:underline">Stony Creek</Link> (Very similar)</td>
+                <td className="py-2 pr-4">Same brand</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/willow-wood-ecc-41-2" className="text-brand-blue hover:underline">Willow Wood</Link> (Nearly identical)</td>
+                <td className="py-2"><Link href="/colors/valspar/semi-sweet-4003-2c" className="text-brand-blue hover:underline">Semi-Sweet</Link> (Nearly identical)</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-2 pr-4"><Swatch hex="#744034" name="Warm Mahogany" brand="Glidden" href="/colors/ppg/warm-mahogany-1060-7" /><span className="block text-xs text-gray-500">Glidden / Pittsburgh Paints</span></td>
+                <td className="py-2 pr-4">7.6</td>
+                <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/red-barn-7591" className="text-brand-blue hover:underline">Red Barn</Link> (Very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/pancake-syrup-2104-10" className="text-brand-blue hover:underline">Pancake Syrup</Link> (Nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/florence-red-bxc-76" className="text-brand-blue hover:underline">Florence Red</Link> (Very similar)</td>
+                <td className="py-2"><Link href="/colors/valspar/chocolate-cherry-2003-7a" className="text-brand-blue hover:underline">Chocolate Cherry</Link> (Very similar)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Try the 2026 Trends</h2>
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">How to try a 2026 color</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Start small: a front door, a powder room, or an accent wall. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any color on your walls before committing. Our <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> can help you build a cohesive scheme around a trending color.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          For a look back at what dominated last year, read our <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">most popular colors of 2025</Link> roundup and our <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2025 Colors of the Year comparison</Link>.
+          Start small: a front door, a powder room, an island or one accent wall. Use the <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview a color on your walls, and the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> to build a scheme around it. Our guide to <Link href="/blog/how-to-test-paint-samples" className="text-brand-blue hover:underline">testing paint samples</Link> covers how to judge a dark color in your own light.
         </p>
       </>
     ),
