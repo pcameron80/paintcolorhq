@@ -6445,7 +6445,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-benjamin-moore-paint-colors",
     title: "The Best Benjamin Moore Paint Colors for Every Room (2026)",
     date: "2026-06-17",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "The best Benjamin Moore paint colors — whites, greiges, grays, a blue-green, and a navy — each with its LRV and its closest match at Home Depot or Sherwin-Williams.",
@@ -6456,7 +6456,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the most popular Benjamin Moore paint color?",
         answer:
-          "White Dove (OC-17) is Benjamin Moore's most popular color overall, a soft, slightly warm white at LRV 83 that works on walls, trim, and cabinets. Revere Pewter (HC-172) is the most popular greige and Hale Navy (HC-154) the most popular dark color. Chantilly Lace (2121-70) is the go-to bright white.",
+          "Our pick overall is White Dove (OC-17), a soft, slightly warm white at LRV 83 that works on walls, trim, and cabinets. For a greige, start with Revere Pewter (HC-172); for a dark color, Hale Navy (HC-154); for a bright white, Chantilly Lace (2121-70).",
       },
       {
         question: "What is the Behr equivalent of Revere Pewter?",
@@ -6471,7 +6471,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "Which Benjamin Moore paint line is best?",
         answer:
-          "Aura is the premium line (best color depth and washability, the one most designers specify); Regal Select is the excellent mid-tier default; Ben is the budget line. The line affects durability and price, not the color — every shade below is the same across all three.",
+          "Benjamin Moore sells Aura as its premium interior line, Regal Select below it, and Ben as its lower-priced line; each line's data sheet lists its washability and coverage. The line affects performance and price, not the color: every shade below is the same across all three.",
       },
     ],
     content: () => (
@@ -6483,7 +6483,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines &amp; Where to Find Benjamin Moore</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> isn&apos;t stocked at Home Depot or Lowe&apos;s — it sells through independent paint and hardware dealers, which is part of why it carries a premium reputation (and price). On the can, <strong>Aura</strong> is the top line most designers specify, <strong>Regal Select</strong> is the mid-tier default that suits most rooms, and <strong>Ben</strong> is the budget option. The line changes durability and price, not the color, so every shade below is the same hex whichever you buy. If the nearest dealer is a drive away, the cross-brand matches throughout this guide are the practical workaround.
+          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> isn&apos;t stocked at Home Depot or Lowe&apos;s — it sells through independent paint and hardware dealers. Benjamin Moore sells <strong>Aura</strong> as its premium line, <strong>Regal Select</strong> below it, and <strong>Ben</strong> as its lower-priced option; each line&apos;s data sheet lists its washability and coverage. The line changes performance and price, not the color, so every shade below is the same hex whichever you buy. If the nearest dealer is a drive away, the cross-brand matches throughout this guide are the practical workaround.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Whites</h2>
@@ -7540,7 +7540,7 @@ const blogPosts: BlogPost[] = [
     slug: "understanding-paint-color-undertones",
     title: "Paint Color Undertones: Why Your Gray Looks Blue",
     date: "2025-10-09",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Learn what undertones are, why they matter, and how to identify them before you commit to a paint color. Avoid the most common color selection mistake.",
@@ -7582,10 +7582,10 @@ const blogPosts: BlogPost[] = [
           <strong>Purple undertone:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — some warm grays carry a slight violet cast, especially under LED lighting.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Brown undertone:</strong> <Swatch hex="#C0B2A2" name="Balanced Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/balanced-beige-7037" /> — these &ldquo;greige&rdquo; colors are the most popular neutrals because the warm brown undertone prevents them from feeling cold.
+          <strong>Brown undertone:</strong> <Swatch hex="#C0B2A2" name="Balanced Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/balanced-beige-7037" /> — in these &ldquo;greige&rdquo; colors the warm brown undertone prevents them from feeling cold.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Warm neutral undertone:</strong> <Swatch hex="#CCC9C0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> — one of <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>&apos; most popular grays, Repose Gray sits right in the middle with a subtle warm undertone that keeps it from leaning too cool or too warm. It&apos;s a true &ldquo;balanced gray&rdquo; that works in almost any lighting.
+          <strong>Warm neutral undertone:</strong> <Swatch hex="#CCC9C0" name="Repose Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/repose-gray-7015" /> — a <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> gray, Repose Gray sits right in the middle with a subtle warm undertone that keeps it from leaning too cool or too warm. It&apos;s a true &ldquo;balanced gray&rdquo; that works in almost any lighting.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Identify Undertones</h2>
@@ -7629,7 +7629,7 @@ const blogPosts: BlogPost[] = [
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Undertones in White Paint</h2>
         <img src="/blog/understanding-paint-color-undertones-warm-cool-whites.webp" alt="Warm white versus cool white Benjamin Moore paint colors compared" width={1200} height={400} className="mt-6 w-full rounded-lg" />
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White is the single most popular paint color in the world — and ironically, it&apos;s where undertones cause the most grief. There is no such thing as a &ldquo;plain white&rdquo; paint. Every white on the market carries an undertone, and on a large wall that undertone becomes the dominant visual characteristic. What looked like a clean white in the store can read as pink, yellow, green, or blue once it covers 200 square feet of drywall. Our analysis of over 800 white paint colors using CIEDE2000 color science confirms this: even whites with nearly identical lightness values can differ dramatically in undertone.
+          White is where undertones cause the most grief. There is no such thing as a &ldquo;plain white&rdquo; paint. Every white on the market carries an undertone, and on a large wall that undertone becomes the dominant visual characteristic. What looked like a clean white in the store can read as pink, yellow, green, or blue once it covers 200 square feet of drywall. Our analysis of over 800 white paint colors using CIEDE2000 color science confirms this: even whites with nearly identical lightness values can differ dramatically in undertone.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Pink undertones</strong> are common in warm whites. Colors like <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>&apos;s <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> carry a faint rosy warmth that feels soft and traditional. <strong>Yellow undertones</strong> are the hallmark of creamy whites. <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">White Dove</Link> leans that way only slightly: on Benjamin Moore&apos;s published values it is a soft white with a mild yellow lean, which is why it sits comfortably beside wood tones and earth-toned furnishings. <strong>Blue undertones</strong> appear in cool whites and make a space feel modern and clinical. <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> is a popular choice that sits close to true white with just the faintest warm cast — it works in nearly any room because its undertone is so restrained. On the cooler side, <Swatch hex="#ECEEEB" name="Decorator's White" brand="Benjamin Moore" href="/colors/benjamin-moore/decorators-white-oc-149" /> carries a subtle blue-gray undertone that reads as bright and contemporary.
@@ -7643,7 +7643,7 @@ const blogPosts: BlogPost[] = [
           Beige has been a staple neutral for decades, but it&apos;s far from simple. The undertone of a beige paint determines whether your room feels like a sun-drenched Mediterranean villa or a dated 1990s builder-grade home. The three most common beige undertones are pink/peach, yellow, and green. Pink-undertone beiges feel rosy and pair well with cool-toned furniture. Yellow-undertone beiges feel warm and golden — they&apos;re the classic &ldquo;builder beige&rdquo; that dominated homes for years. Green-undertone beiges are the trickiest; they can look muddy or olive in the wrong light, but in warm south-facing rooms, they feel organic and earthy.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Then there&apos;s greige — the gray-beige hybrid that has dominated interior design for the past decade. Greige colors blend the warmth of beige with the sophistication of gray, but the undertone is what makes or breaks them. A greige with a strong purple undertone can look lavender in cool light. A greige with a green undertone might read as khaki. The most versatile greiges, like <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" />, succeed because their undertones are so balanced that they shift gracefully with changing light rather than locking into a single unexpected hue.
+          Then there&apos;s greige — the gray-beige hybrid. Greige colors blend the warmth of beige with the sophistication of gray, but the undertone is what makes or breaks them. A greige with a strong purple undertone can look lavender in cool light. A greige with a green undertone might read as khaki. The most versatile greiges, like <Swatch hex="#D1C7B8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" />, succeed because their undertones are so balanced that they shift gracefully with changing light rather than locking into a single unexpected hue.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           When choosing beige or greige, always compare at least three options from the same brand&apos;s strip card. The darker shades on the card will reveal the undertone. You can also use our <Link href="/search" className="text-brand-blue hover:underline">color search</Link> to filter by family and compare swatches digitally before heading to the store. Explore our <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for a comprehensive look at every beige available across major brands.
@@ -8653,7 +8653,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-living-room-paint-colors",
     title: "The Best Living Room Paint Colors for Every Style",
     date: "2026-01-02",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Whether your style is modern, traditional, or farmhouse — these living room paint colors create the perfect backdrop for your most-used room.",
@@ -8663,12 +8663,12 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The living room is where your color choice matters most. It&apos;s the room guests see first, where your family spends the most time, and often the largest continuous wall space in the house. The right color sets the tone for your entire home — and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> remains the top choice among living room designers. Here are the best options for every design style.
+          The living room is where your color choice matters most. It&apos;s the room guests see first, where your family spends the most time, and often the largest continuous wall space in the house. The right color sets the tone for your entire home. Here are the best options for every design style.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Modern & Minimalist</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Modern living rooms thrive on clean lines and restrained color. The walls should recede, letting furniture and art take center stage.
+          A modern living room calls for clean lines and restrained color. The walls should recede, letting furniture and art take center stage.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — a clean, bright white that&apos;s the standard for modern interiors. It measures close to neutral and photographs cleanly.
@@ -8688,7 +8688,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#DAD4C5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> — the quintessential transitional neutral. This warm greige works with virtually any furnishing style and feels equally at home in a 1920s colonial and a 2024 new build.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — America&apos;s most popular paint color for a reason. It&apos;s a warm gray-beige that adapts to every lighting condition and pairs with everything from traditional hardwood floors to modern tile.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — a warm gray-beige that adapts to every lighting condition and pairs with everything from traditional hardwood floors to modern tile.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#DBD7CD" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> — a slightly lighter greige option that opens up smaller living rooms while maintaining warmth. Check our <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for more warm neutrals.
@@ -8696,7 +8696,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Farmhouse & Cottage</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Farmhouse style has evolved beyond stark white shiplap. Today&apos;s farmhouse living rooms use creamy whites and soft earth tones that feel collected and lived-in.
+          A farmhouse living room doesn&apos;t need stark white shiplap. Creamy whites and soft earth tones feel collected and lived-in.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — the soft white that launched a thousand farmhouse kitchens. It leans slightly warm without reading yellow and works with natural wood beams and vintage textiles.
@@ -8707,7 +8707,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Moody & Cozy</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          More homeowners are embracing rich, enveloping colors for living rooms — especially in homes with open floor plans where the living room can be defined by a bold color change.
+          Rich, enveloping colors suit living rooms too, especially in homes with open floor plans where the living room can be defined by a bold color change.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#28372F" name="Essex Green" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — a deep forest green that creates a dramatic, library-like atmosphere. Pair with cognac leather and brass accents.
@@ -8749,10 +8749,10 @@ const blogPosts: BlogPost[] = [
     slug: "best-home-office-paint-colors",
     title: "Best Home Office Paint Colors for Productivity in 2026",
     date: "2026-02-05",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "The best paint colors for home office productivity — from calming blues and greens to 2026 trending shades — picked for focus, mood, and video call appearance.",
+      "The best paint colors for home office productivity — from calming blues and greens to deeper muted shades, picked for focus, mood, and video call appearance.",
     coverColor: "#5B7A6E",
     coverImage: "/blog/best-home-office-paint-colors.webp",
     tags: ["Home Office", "Productivity", "Design", "2026 Trends"],
@@ -8760,7 +8760,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Choosing the best paint colors for home office productivity is one of the highest-impact changes you can make to your workspace. Wall color changes how a room feels over a long workday, and it shows up behind you on every video call. Below you&apos;ll find 13 colors across four major brands — including 2026 trending shades — organized by the type of work they support best.
+          Choosing the best paint colors for home office productivity is one of the highest-impact changes you can make to your workspace. Wall color changes how a room feels over a long workday, and it shows up behind you on every video call. Below you&apos;ll find 13 colors across four major brands, organized by the type of work they support best.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why Office Paint Color Matters for Productivity</h2>
@@ -8773,7 +8773,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Blues for Focus</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Blue is the most common choice for productivity spaces. Soft, grayed blues read calm and orderly, which suits detail-oriented work.
+          Soft, grayed blues read calm and orderly, which suits detail-oriented work.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#C8D0C9" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — a muted blue-green that&apos;s calming without being cold. It reads as sophisticated in person and looks fantastic on camera.
@@ -8785,7 +8785,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#CBCCC6" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> — technically a gray, but its blue undertones give it the focus-enhancing properties of blue while maintaining a neutral, professional look. Compare it against other options with our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#959BA0" name="Dustblu" brand="Sherwin-Williams" href="/colors/sherwin-williams/dustblu-9161" /> — a 2026 trending muted blue that balances sophistication with calm. It reads as deeply professional without being cold, and it flatters most skin tones on video calls. Browse all options from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>.
+          <Swatch hex="#959BA0" name="Dustblu" brand="Sherwin-Williams" href="/colors/sherwin-williams/dustblu-9161" /> — a muted blue that balances sophistication with calm. It reads as deeply professional without being cold, and it flatters most skin tones on video calls. Browse all options from <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> and <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Greens for Creativity</h2>
@@ -8860,7 +8860,7 @@ const blogPosts: BlogPost[] = [
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">What is the best paint color for home office productivity?</h3>
         <p className="mt-3 text-gray-700 leading-relaxed">
-          Muted blues and greens consistently perform best for productivity. Quiet Moments (Benjamin Moore 1563) and Pewter Green (Sherwin-Williams 6208) top most designer recommendations because they lower heart rate, reduce anxiety, and provide a natural resting point for eyes fatigued by screens. For 2026, Hidden Gem by Behr offers a fresh take on the productive green.
+          Muted blues and greens are our picks for focused work. Quiet Moments (Benjamin Moore 1563) and Pewter Green (Sherwin-Williams 6208) are soft enough to give eyes a resting point between screens. Hidden Gem, Behr&apos;s 2026 Color of the Year, is a deeper green option.
         </p>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">What colors should you avoid in a home office?</h3>
         <p className="mt-3 text-gray-700 leading-relaxed">
@@ -8888,7 +8888,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-exterior-paint-colors",
     title: "The Best Exterior Paint Colors to Boost Curb Appeal",
     date: "2026-03-09",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
       "Exterior paint must work with your roof, trim, and full sun. These are the colors that hold up outdoors, with pairing advice for every style.",
@@ -8898,7 +8898,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Exterior paint selection is harder than interior because you cannot control the conditions. Your roof, stone or brick accents, landscaping, and neighboring houses are fixed. Full sun washes out colors by 2 to 3 shades compared to how they look on a chip indoors. Wind, rain, UV exposure, and temperature swings mean formulation matters as much as color. The best exterior paints for 2026 use 100% acrylic formulations with UV-resistant pigments; both Benjamin Moore Aura Exterior and Sherwin-Williams Emerald Exterior are rated for 15+ years before significant fading.
+          Exterior paint selection is harder than interior because you cannot control the conditions. Your roof, stone or brick accents, landscaping, and neighboring houses are fixed. Full sun washes out colors by 2 to 3 shades compared to how they look on a chip indoors. Wind, rain, UV exposure, and temperature swings mean formulation matters as much as color, so check the exterior line&apos;s data sheet and warranty before you buy.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Classic White Exteriors</h2>
@@ -8906,21 +8906,21 @@ const blogPosts: BlogPost[] = [
           A white house is timeless for a reason: it works with every architectural style, every roof color, and every landscape. But exterior whites behave differently from interior whites — bright sun washes them out, so you often need a white with more body than you&apos;d choose indoors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — one of the most specified exterior whites. Its slight warm lean keeps it from looking stark or cold in full sun.
+          <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> — a soft exterior white. Its slight warm lean keeps it from looking stark or cold in full sun.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> — for homeowners who want a crisp white that measures close to neutral. Best on modern and contemporary homes.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — a warm white that&apos;s the most popular SW exterior color. It glows golden at sunset. Browse our full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
+          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> — a warm white that glows golden at sunset. Browse our full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Dark & Dramatic Siding</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Dark exteriors have been climbing steadily since 2020 and now represent a significant share of new-construction spec choices. Charcoal, navy, and deep green siding reads as modern and intentional rather than simply dark. The critical pairing requirement: light trim is non-negotiable. Without white or cream trim to create contrast, dark siding absorbs all the light and the house loses its architectural definition.
+          Charcoal, navy, and deep green siding reads as modern and intentional rather than simply dark. The critical pairing requirement: light trim is non-negotiable. Without white or cream trim to create contrast, dark siding absorbs all the light and the house loses its architectural definition.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4A4B4C" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as deep charcoal in sunlight. The most popular dark exterior color. It&apos;s sophisticated without being as stark as true black.
+          <Swatch hex="#4A4B4C" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black that reads as deep charcoal in sunlight. It&apos;s sophisticated without being as stark as true black.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#28372F" name="Essex Green HC-188" brand="Benjamin Moore" href="/colors/benjamin-moore/essex-green-hc-188" /> — at LRV 5.6, this is a very dark forest green that reads differently from charcoal: where dark grays feel urban and modern, Essex Green on a craftsman or colonial feels grounded and organic. It blends with mature tree lines while clearly distinguishing the house from the neighborhood.
@@ -8931,10 +8931,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm Gray & Greige</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Gray siding defined the 2010s, but today&apos;s grays are warmer — leaning into greige and taupe territory. These colors work with both traditional and modern architecture.
+          Warm grays lean into greige and taupe territory. These colors work with both traditional and modern architecture.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — the most popular interior color works just as well outside. It&apos;s a warm greige that complements brown, gray, and black roofing.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> — it works outside as well as in. It&apos;s a warm greige that complements brown, gray, and black roofing.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#ADA295" name="Mega Greige" brand="Sherwin-Williams" href="/colors/sherwin-williams/mega-greige-7031" /> — a deeper greige for a more substantial exterior color. It reads as a warm, sophisticated gray that avoids looking cold.
@@ -8956,7 +8956,7 @@ const blogPosts: BlogPost[] = [
           The front door is where you can take a risk. It&apos;s a small surface area with an outsized impact on curb appeal.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — navy is the most popular front door color. It conveys trust, stability, and sophistication.
+          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — a classic navy for a front door. It conveys trust, stability, and sophistication.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#4A4B4C" name="Wrought Iron" brand="Benjamin Moore" href="/colors/benjamin-moore/wrought-iron-2124-10" /> — a soft black door works on every house style and makes hardware stand out.
