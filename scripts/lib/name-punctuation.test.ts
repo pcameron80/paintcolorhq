@@ -49,3 +49,19 @@ test('different letters are not this class', () => {
   assert.equal(classifyPunctuation('Almond', 'Almond Bisque'), null);
   assert.equal(classifyPunctuation('Gypsy Love', 'Rose Love'), null);
 });
+
+test('punctuation the catalog has and the feed lacks is never written', () => {
+  // The class is "the feed has punctuation the DB lost"; the reverse must not
+  // strip a correct catalog name when a feed drops an ampersand or apostrophe.
+  for (const [db, feed] of [
+    ['Smoke & Mirrors', 'Smoke Mirrors'],
+    ["St. John's Bay", 'St Johns Bay'],
+    ["Peaches 'n Cream", 'Peaches N Cream'],
+    ['Bride-to-Be', 'Bride To Be'],
+    ['Mt. Rainier Gray', 'Mt Rainier Gray'],
+  ]) {
+    assert.equal(classifyPunctuation(db, feed), 'punctuation-kept', `${db} vs ${feed}`);
+  }
+  // Curly vs straight is still quote style, not a lost mark.
+  assert.equal(classifyPunctuation("Nature's Reflection", 'Nature’s Reflection'), 'quote-only');
+});

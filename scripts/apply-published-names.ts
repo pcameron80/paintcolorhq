@@ -24,7 +24,8 @@
  *             -> "Teardrop"). --word-joins.
  *   accent    same letters; the feed has accents the DB lacks. --accents.
  *   The last three keep the catalog's casing (scripts/lib/name-punctuation.ts);
- *   quote-style-only differences and accents the feed drops are skipped.
+ *   quote-style-only differences, and accents or punctuation the feed drops,
+ *   are skipped.
  *
  * PPG codes are matched through normalizePpgCode (the site writes "PPG1104-2",
  * most rows store "1104-2"); before 2026-10-24 none of PPG's renames matched.
@@ -249,7 +250,8 @@ async function main() {
       // Smoke Mirrors). Each kind is now its own gated group; see
       // scripts/lib/name-punctuation.ts.
       const pClass = classifyPunctuation(r.name, feedName);
-      if (pClass === 'quote-only' || pClass === 'accent-kept') continue;
+      // Never written: quote style only, or the catalog has an accent or punctuation the feed lacks.
+      if (pClass === 'quote-only' || pClass === 'accent-kept' || pClass === 'punctuation-kept') continue;
       if (pClass) {
         const to = mergePunctuation(r.name, feedName);
         if (to !== r.name) changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to, group: pClass, note });

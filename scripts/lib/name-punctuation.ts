@@ -20,9 +20,21 @@
  *                 "Parisian Cafè"). --accents.
  *   accent-kept   the DB has an accent the feed lacks (Valspar Jalapeño).
  *                 Never written: the catalog keeps the accent.
+ *   punctuation-kept  the DB has punctuation the feed lacks ("Smoke &
+ *                 Mirrors" against a feed's "Smoke Mirrors", "St. John's Bay"
+ *                 against "St Johns Bay"). Never written: the import lost
+ *                 punctuation, it never added any, so a feed without it is
+ *                 the artifact.
  */
 
-export type PunctuationClass = 'quote-only' | 'punctuation' | 'word-join' | 'accent' | 'accent-kept';
+export type PunctuationClass = 'quote-only' | 'punctuation' | 'word-join' | 'accent' | 'accent-kept' | 'punctuation-kept';
+
+/** Count of each punctuation mark (not letters, digits or spaces). */
+function punctuationCounts(s: string): Map<string, number> {
+  const out = new Map<string, number>();
+  for (const ch of s) if (!isAlnum(ch) && !/\s/.test(ch)) out.set(ch, (out.get(ch) ?? 0) + 1);
+  return out;
+}
 
 const QUOTES: [RegExp, string][] = [
   [/[‘’ʼ′`´]/g, "'"],
@@ -81,6 +93,8 @@ export function classifyPunctuation(dbName: string, feedName: string): Punctuati
   const feedAcc = accents(feed);
   if ([...dbAcc.keys()].some((k) => feedAcc.get(k) !== dbAcc.get(k))) return 'accent-kept';
   if (feedAcc.size > dbAcc.size) return 'accent';
+  const feedPunct = punctuationCounts(feed);
+  if ([...punctuationCounts(db)].some(([ch, n]) => (feedPunct.get(ch) ?? 0) < n)) return 'punctuation-kept';
   const dbStarts = wordStarts(db);
   const feedStarts = wordStarts(feed);
   if ([...dbStarts].some((p) => !feedStarts.has(p))) return 'word-join';
