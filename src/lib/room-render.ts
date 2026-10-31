@@ -7,8 +7,16 @@ import type { RoomAssets, Surface } from "@/lib/rooms";
 // A surface pixel is rendered as paint × shade, in linear light, where shade is the
 // photo's brightness at that pixel relative to the surface's typical brightness. The
 // photo's walls are plain off-white, so this puts the room's real light and shadow
-// onto any paint color. Surface edges are then blended in sRGB, as browsers
-// anti-alias: a linear-light blend turns a dark/light seam pixel pale.
+// onto any paint color. Shade is anchored at 1 on the surface's 60th-percentile
+// brightness, so the brighter 40% would render lighter than the swatch; above 1 the
+// extra lightness is rolled off in L* so no lit pixel reads more than
+// HIGHLIGHT_LSTAR lighter than the paint chip. Shadows (shade below 1) are untouched.
+// The photos' walls are off-white, so their shading includes light bounced off the
+// other light walls; a room painted dark loses most of that bounce. WALL_BOUNCE scales
+// every surface's shade by how much light the painted walls reflect compared with the
+// photo's walls.
+// Surface edges are then blended in sRGB, as browsers anti-alias: a linear-light
+// blend turns a dark/light seam pixel pale.
 // scripts/build-room-masks.py renders its previews with the same math.
 
 export const SURFACES: Surface[] = ["main", "accent", "trim", "window", "cabinets"];
@@ -27,6 +35,58 @@ const LINEAR_TO_SRGB = new Uint8ClampedArray(LUT_SIZE + 1);
 for (let i = 0; i <= LUT_SIZE; i++) {
   const c = i / LUT_SIZE;
   LINEAR_TO_SRGB[i] = Math.round(255 * (c <= 0.0031308 ? c * 12.92 : 1.055 * c ** (1 / 2.4) - 0.055));
+}
+
+/** Most L* a lit area may add to the paint color; the excess approaches it, never passes it. */
+export const HIGHLIGHT_LSTAR = 2.75;
+
+function lstar(y: number): number {
+  return y > 216 / 24389 ? 116 * Math.cbrt(y) - 16 : (y * 24389) / 27;
+}
+
+function lstarToY(l: number): number {
+  return l > 8 ? ((l + 16) / 116) ** 3 : (l * 27) / 24389;
+}
+
+/**
+ * Share of a surface's light that bounced off the room's walls. Shade is multiplied by
+ * (1 - WALL_BOUNCE) + WALL_BOUNCE * (painted wall reflectance / PHOTO_WALL_Y), with main
+ * and accent weighted by their area.
+ */
+export const WALL_BOUNCE = 0.25;
+/**
+ * Reflectance (LRV / 100) of the photos' off-white walls: the generator asks for a very
+ * light warm gray-white, about LRV 80. A fixed paint value, not the photo's measured
+ * brightness, which also carries the room's exposure.
+ */
+const PHOTO_WALL_Y = 0.8;
+const WALL_SURFACES: Surface[] = ["main", "accent"];
+
+/** Shades above 1 map through a per-paint table covering 1 to HIGHLIGHT_MAX_SHADE. */
+const HIGHLIGHT_MAX_SHADE = 4;
+const HIGHLIGHT_STEPS = 1024;
+
+/**
+ * Highlight roll-off for one paint: entry i is the compressed shade for raw shade
+ * 1 + i * (HIGHLIGHT_MAX_SHADE - 1) / HIGHLIGHT_STEPS. The L* a raw shade would add
+ * over the paint, d, becomes HIGHLIGHT_LSTAR * (1 - e^(-d / HIGHLIGHT_LSTAR)): close to d
+ * for a faint highlight, levelling off below the cap for a strong one.
+ */
+export function highlightTable(rgb: [number, number, number]): Float32Array {
+  const y = luminance(rgb);
+  const table = new Float32Array(HIGHLIGHT_STEPS + 1);
+  const l0 = lstar(y);
+  for (let i = 0; i <= HIGHLIGHT_STEPS; i++) {
+    const raw = 1 + (i * (HIGHLIGHT_MAX_SHADE - 1)) / HIGHLIGHT_STEPS;
+    if (y < 1e-6) {
+      table[i] = raw;
+      continue;
+    }
+    const d = lstar(Math.min(1, y * raw)) - l0;
+    const dc = HIGHLIGHT_LSTAR * (1 - Math.exp(-d / HIGHLIGHT_LSTAR));
+    table[i] = lstarToY(l0 + dc) / y;
+  }
+  return table;
 }
 
 function hexToLinear(hex: string): [number, number, number] {
@@ -50,6 +110,8 @@ export interface PreparedScene {
   cover: Partial<Record<Surface, Uint8Array>>;
   /** Per surface: 1 / its typical (60th percentile) luminance */
   shadeScale: Partial<Record<Surface, number>>;
+  /** Per surface: pixels it covers at least half of */
+  area: Partial<Record<Surface, number>>;
 }
 
 /** Thrown out of prepareScene when the caller no longer wants the scene. */
@@ -184,6 +246,7 @@ export async function prepareScene(
   // Coverage per surface, and each surface's typical brightness from a histogram.
   const cover: PreparedScene["cover"] = {};
   const shadeScale: PreparedScene["shadeScale"] = {};
+  const area: PreparedScene["area"] = {};
   for (let si = 0; si < surfaces.length; si++) {
     await yieldToMain(isCancelled);
     const s = surfaces[si];
@@ -200,29 +263,56 @@ export async function prepareScene(
       }
     }
     cover[s] = arr;
+    area[s] = inside;
     let acc = 0;
     let bin = 0;
     while (bin < 1023 && acc + hist[bin] < inside * 0.6) acc += hist[bin++];
     shadeScale[s] = 1 / Math.max((bin + 0.5) / 1024, 1e-3);
   }
 
-  return { width: w, height: h, base, pixels, lum, cover, shadeScale };
+  return { width: w, height: h, base, pixels, lum, cover, shadeScale, area };
 }
 
 // ---------------------------------------------------------------------------
 // Painting (every color change)
 // ---------------------------------------------------------------------------
 
-/** A surface with no color given keeps the photo, so callers that predate a surface render as before. */
-export function renderScene(scene: PreparedScene, colors: Partial<Record<Surface, string>>, out: ImageData) {
+function luminance(rgb: [number, number, number]): number {
+  return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+}
+
+/** How much light the walls as painted bounce, relative to the photo's walls (1 = unchanged). */
+function wallReflectance(scene: PreparedScene, colors: Partial<Record<Surface, string>>): number {
+  let painted = 0;
+  let total = 0;
+  for (const s of WALL_SURFACES) {
+    const a = scene.area[s];
+    if (!a) continue;
+    total += a;
+    painted += a * (colors[s] ? luminance(hexToLinear(colors[s]!)) : PHOTO_WALL_Y);
+  }
+  return total > 0 ? painted / (total * PHOTO_WALL_Y) : 1;
+}
+
+/**
+ * A surface with no color given keeps the photo, so callers that predate a surface render
+ * as before. `bounce` defaults to WALL_BOUNCE; other values are for side-by-side comparisons.
+ */
+export function renderScene(
+  scene: PreparedScene,
+  colors: Partial<Record<Surface, string>>,
+  out: ImageData,
+  bounce = WALL_BOUNCE,
+) {
   const { base, pixels, lum, cover, shadeScale } = scene;
   const data = out.data;
   data.set(base);
-  const active = SURFACES.filter((s) => cover[s] && colors[s]).map((s) => ({
-    cover: cover[s]!,
-    rgb: hexToLinear(colors[s]!),
-    scale: shadeScale[s]!,
-  }));
+  const room = 1 - bounce + bounce * wallReflectance(scene, colors);
+  const active = SURFACES.filter((s) => cover[s] && colors[s]).map((s) => {
+    const rgb = hexToLinear(colors[s]!);
+    return { cover: cover[s]!, rgb, scale: shadeScale[s]! * room, highlight: highlightTable(rgb) };
+  });
+  const toStep = HIGHLIGHT_STEPS / (HIGHLIGHT_MAX_SHADE - 1);
   for (let k = 0; k < pixels.length; k++) {
     const i = pixels[k] * 4;
     let r = base[i];
@@ -232,7 +322,9 @@ export function renderScene(scene: PreparedScene, colors: Partial<Record<Surface
       const c = s.cover[k];
       if (c === 0) continue;
       const a = c / 255;
-      const shade = lum[k] * s.scale * LUT_SIZE;
+      let shade = lum[k] * s.scale;
+      if (shade > 1) shade = s.highlight[Math.min(HIGHLIGHT_STEPS, ((shade - 1) * toStep) | 0)];
+      shade *= LUT_SIZE;
       const pr = LINEAR_TO_SRGB[Math.min(LUT_SIZE, (s.rgb[0] * shade) | 0)];
       const pg = LINEAR_TO_SRGB[Math.min(LUT_SIZE, (s.rgb[1] * shade) | 0)];
       const pb = LINEAR_TO_SRGB[Math.min(LUT_SIZE, (s.rgb[2] * shade) | 0)];

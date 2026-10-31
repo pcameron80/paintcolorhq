@@ -225,7 +225,26 @@ if "--preview" in sys.argv:
     # A 3px median takes the photo's pixel noise out of the shading: on dark paint the
     # noise is amplified into visible speckle, while real light and shadow survive it.
     lum = np.asarray(Image.fromarray(lum.astype(np.float32), mode="F").filter(ImageFilter.MedianFilter(3)), dtype=np.float32)
-    def render(*hexes):
+    def rolloff(shade, rgb, cap=2.75):
+        # Same highlight roll-off as src/lib/room-render.ts (HIGHLIGHT_LSTAR): above the
+        # anchor, the L* a highlight adds over the paint levels off below `cap`.
+        y = float(rgb @ np.array([0.2126, 0.7152, 0.0722]))
+        if y < 1e-6:
+            return shade
+        lstar = lambda v: np.where(v > 216 / 24389, 116 * np.cbrt(v) - 16, v * 24389 / 27)
+        l0 = lstar(y)
+        d = lstar(np.minimum(1, y * shade)) - l0
+        lc = l0 + cap * (1 - np.exp(-np.maximum(d, 0) / cap))
+        rolled = np.where(lc > 8, ((lc + 16) / 116) ** 3, lc * 27 / 24389) / y
+        return np.where(shade > 1, rolled, shade)
+
+    def render(*hexes, bounce=0.25, photo_wall_y=0.8):
+        # Wall bounce loss, as WALL_BOUNCE / PHOTO_WALL_Y in src/lib/room-render.ts: dark
+        # walls bounce less light, so the whole room's shading scales down with them.
+        lum_w = np.array([0.2126, 0.7152, 0.0722])
+        areas = [(soft[..., i] > 0.5).sum() for i in range(2)]
+        painted = sum(a * float(hex_lin(h) @ lum_w) for a, h in zip(areas, hexes[:2]))
+        room = 1 - bounce + bounce * painted / max(1, sum(areas) * photo_wall_y)
         out = base.copy()
         for i, h in enumerate(hexes):
             a = soft[..., i]
@@ -235,7 +254,7 @@ if "--preview" in sys.argv:
             # Shading = this pixel's brightness relative to the surface's typical brightness,
             # applied in linear light. Edges are then blended in sRGB like any browser
             # anti-aliasing: a linear-light blend turns a dark/light seam pixel pale.
-            shade = lum / np.percentile(lum[sel], 60)
+            shade = rolloff(room * lum / np.percentile(lum[sel], 60), hex_lin(h))
             paint = to_srgb(hex_lin(h)[None, None, :] * shade[..., None])
             out = out * (1 - a[..., None]) + paint * a[..., None]
         return np.clip(out, 0, 1)
