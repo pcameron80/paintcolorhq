@@ -1,0 +1,996 @@
+{
+  "runDate": "2026-10-31",
+  "scanDate": "2026-10-11",
+  "auditDate": "2026-10-31",
+  "duplicationRunDate": "2026-10-24",
+  "method": {
+    "rows": "A color counts only when its code and name match the manufacturer's current palette (scan of 2026-10-11) and its stored hex is within CIEDE2000 2 of the brand's swatch; each manufacturer code counts once. RAL is not studied.",
+    "lrv": "Manufacturer-published LRV only: Benjamin Moore, Behr, Sherwin-Williams, Dutch Boy. Current colors only unless stated. Dunn-Edwards, Hirshfield's, Vista Paint, PPG publish LRV but our copies are not reconciled yet, so they are left out; the other brands publish none in our sources.",
+    "names": "A word in the color's name, matched whole. \"White\" means the last word is White or Whites. Words with fewer than 15 colors are not shown.",
+    "zones": "CIELAB from each verified swatch hex. Near-neutral is chroma under 10; hue sectors in degrees: Red and pink 345-30, Orange and tan 30-70, Yellow, cream and gold 70-105, Green 105-165, Teal 165-225, Blue 225-290, Purple 290-345. Lightness bands by L*: Very light 85+, Light 70+, Mid 50+, Dark 30+, Very dark under 30.",
+    "coty": "Published LRV of each Benjamin Moore, Behr, Sherwin-Williams Color of the Year pick, 2022 to 2027. Sherwin-Williams named a nine-color capsule for 2025, so that year has two picks.",
+    "whiteLrv": "80"
+  },
+  "coverage": {
+    "catalog": 26720,
+    "verified": 23801,
+    "withPublishedLrv": 12141,
+    "currentWithPublishedLrv": 9426,
+    "lrvBrands": [
+      "Benjamin Moore",
+      "Behr",
+      "Sherwin-Williams",
+      "Dutch Boy"
+    ],
+    "lrvPendingBrands": [
+      "Dunn-Edwards",
+      "Hirshfield's",
+      "Vista Paint",
+      "PPG"
+    ],
+    "ral": 213,
+    "noLiveSource": 128,
+    "notInFeed": 1881,
+    "nameMismatch": 69,
+    "hexOff": 0,
+    "flagged": 515,
+    "duplicateCode": 113,
+    "lrvFeedOutliers": 0,
+    "excluded": [
+      {
+        "id": "feed-behr-twins",
+        "title": "Behr twin rows that disagree with Behr's own feed (wrong swatch, wrongly 'current', or LRV 1+ off)",
+        "rows": 193
+      },
+      {
+        "id": "lrv-behr-stale-hex",
+        "title": "Behr rows whose stored hex is stale against Behr's current swatch",
+        "rows": 117
+      },
+      {
+        "id": "feed-names-punctuation",
+        "title": "Rows whose name differs from the manufacturer's only in punctuation or spacing",
+        "rows": 53
+      },
+      {
+        "id": "identity-vista-legacy-duplicates",
+        "title": "Vista legacy C-/K- rows that duplicate live Vista colors with stale swatches",
+        "rows": 66
+      },
+      {
+        "id": "identity-vista-reconcile-mispaired",
+        "title": "Vista rows re-pointed at a different color; slug and alternate code still name the old one",
+        "rows": 12
+      },
+      {
+        "id": "identity-behr-legacy-code-duplicates",
+        "title": "Behr legacy and stock-number rows that duplicate live Behr colors",
+        "rows": 23
+      },
+      {
+        "id": "identity-bm-alias-pairs-missed",
+        "title": "Benjamin Moore same-name alias pairs (one color stored twice)",
+        "rows": 4
+      },
+      {
+        "id": "identity-dutch-boy-foreign-codes",
+        "title": "Dutch Boy rows whose code family does not exist in Dutch Boy's palette",
+        "rows": 101
+      }
+    ]
+  },
+  "lrv": {
+    "pooledCurrentMedian": 43.5,
+    "brands": [
+      {
+        "name": "Behr",
+        "slug": "behr",
+        "colors": 2556,
+        "medianLrv": 46,
+        "meanLrv": 46.2,
+        "lrv80PlusPct": 12.6,
+        "lrvUnder20Pct": 21.3,
+        "vsPooledMedian": 2.5
+      },
+      {
+        "name": "Benjamin Moore",
+        "slug": "benjamin-moore",
+        "colors": 3812,
+        "medianLrv": 44.3,
+        "meanLrv": 44.4,
+        "lrv80PlusPct": 6.6,
+        "lrvUnder20Pct": 21.6,
+        "vsPooledMedian": 0.8
+      },
+      {
+        "name": "Dutch Boy",
+        "slug": "dutch-boy",
+        "colors": 1340,
+        "medianLrv": 44,
+        "meanLrv": 42.9,
+        "lrv80PlusPct": 4.4,
+        "lrvUnder20Pct": 22.4,
+        "vsPooledMedian": 0.5
+      },
+      {
+        "name": "Sherwin-Williams",
+        "slug": "sherwin-williams",
+        "colors": 1718,
+        "medianLrv": 38.7,
+        "meanLrv": 40.1,
+        "lrv80PlusPct": 3,
+        "lrvUnder20Pct": 25.4,
+        "vsPooledMedian": -4.8
+      }
+    ],
+    "nameWords": [
+      {
+        "word": "white",
+        "label": "White (last word)",
+        "colors": 225,
+        "medianLrv": 79.4,
+        "p10": 71.8,
+        "p90": 87.5,
+        "under50": 0,
+        "under50Pct": 0
+      },
+      {
+        "word": "cream",
+        "label": "Cream",
+        "colors": 118,
+        "medianLrv": 75,
+        "p10": 57,
+        "p90": 85,
+        "under50": 8,
+        "under50Pct": 6.8
+      },
+      {
+        "word": "beige",
+        "label": "Beige",
+        "colors": 101,
+        "medianLrv": 55.3,
+        "p10": 39.5,
+        "p90": 71.3,
+        "under50": 32,
+        "under50Pct": 31.7
+      },
+      {
+        "word": "khaki",
+        "label": "Khaki",
+        "colors": 17,
+        "medianLrv": 48,
+        "p10": 38.2,
+        "p90": 57,
+        "under50": 9,
+        "under50Pct": 52.9
+      },
+      {
+        "word": "gray",
+        "label": "Gray or grey",
+        "colors": 335,
+        "medianLrv": 40.6,
+        "p10": 17,
+        "p90": 63,
+        "under50": 227,
+        "under50Pct": 67.8
+      },
+      {
+        "word": "green",
+        "label": "Green",
+        "colors": 448,
+        "medianLrv": 36.9,
+        "p10": 10.1,
+        "p90": 74,
+        "under50": 285,
+        "under50Pct": 63.6
+      },
+      {
+        "word": "sage",
+        "label": "Sage",
+        "colors": 44,
+        "medianLrv": 36,
+        "p10": 19.3,
+        "p90": 61,
+        "under50": 33,
+        "under50Pct": 75
+      },
+      {
+        "word": "taupe",
+        "label": "Taupe",
+        "colors": 42,
+        "medianLrv": 33.8,
+        "p10": 17.5,
+        "p90": 65,
+        "under50": 33,
+        "under50Pct": 78.6
+      },
+      {
+        "word": "blue",
+        "label": "Blue",
+        "colors": 459,
+        "medianLrv": 33.1,
+        "p10": 10,
+        "p90": 68.4,
+        "under50": 330,
+        "under50Pct": 71.9
+      },
+      {
+        "word": "navy",
+        "label": "Navy",
+        "colors": 16,
+        "medianLrv": 7,
+        "p10": 4,
+        "p90": 12.7,
+        "under50": 16,
+        "under50Pct": 100
+      },
+      {
+        "word": "black",
+        "label": "Black",
+        "colors": 53,
+        "medianLrv": 6,
+        "p10": 4,
+        "p90": 9,
+        "under50": 53,
+        "under50Pct": 100
+      }
+    ],
+    "whites": {
+      "colors": 225,
+      "belowWhiteLrv": 116,
+      "belowWhiteLrvPct": 51.6,
+      "medianLrv": 79.4,
+      "byBrand": [
+        {
+          "name": "Sherwin-Williams",
+          "slug": "sherwin-williams",
+          "whites": 62,
+          "belowWhiteLrv": 48,
+          "belowWhiteLrvPct": 77.4,
+          "medianLrv": 74.1
+        },
+        {
+          "name": "Benjamin Moore",
+          "slug": "benjamin-moore",
+          "whites": 70,
+          "belowWhiteLrv": 38,
+          "belowWhiteLrvPct": 54.3,
+          "medianLrv": 79.4
+        },
+        {
+          "name": "Dutch Boy",
+          "slug": "dutch-boy",
+          "whites": 17,
+          "belowWhiteLrv": 7,
+          "belowWhiteLrvPct": 41.2,
+          "medianLrv": 82
+        },
+        {
+          "name": "Behr",
+          "slug": "behr",
+          "whites": 76,
+          "belowWhiteLrv": 23,
+          "belowWhiteLrvPct": 30.3,
+          "medianLrv": 83
+        }
+      ],
+      "darkest": [
+        {
+          "brand": "Behr",
+          "brandSlug": "behr",
+          "name": "Alice White",
+          "code": "MQ3-58",
+          "slug": "alice-white-mq3-58",
+          "hex": "#bfcbd1",
+          "lrv": 60
+        },
+        {
+          "brand": "Sherwin-Williams",
+          "brandSlug": "sherwin-williams",
+          "name": "Individual White",
+          "code": "6008",
+          "slug": "individual-white-6008",
+          "hex": "#d4cdca",
+          "lrv": 62
+        },
+        {
+          "brand": "Dutch Boy",
+          "brandSlug": "dutch-boy",
+          "name": "Elemental White",
+          "code": "421-1DB",
+          "slug": "elemental-white-421-1db",
+          "hex": "#d8d0bc",
+          "lrv": 63
+        },
+        {
+          "brand": "Benjamin Moore",
+          "brandSlug": "benjamin-moore",
+          "name": "Berber White",
+          "code": "955",
+          "slug": "berber-white-955",
+          "hex": "#dcd3bd",
+          "lrv": 63.2
+        },
+        {
+          "brand": "Benjamin Moore",
+          "brandSlug": "benjamin-moore",
+          "name": "Bruton White",
+          "code": "CW-710",
+          "slug": "bruton-white-cw-710",
+          "hex": "#d6d2c8",
+          "lrv": 63.3
+        }
+      ]
+    },
+    "retired": [
+      {
+        "name": "Behr",
+        "slug": "behr",
+        "listed": 5087,
+        "retired": 2531,
+        "retiredPct": 49.8,
+        "retiredMedianLrv": 36,
+        "currentMedianLrv": 46
+      },
+      {
+        "name": "Sherwin-Williams",
+        "slug": "sherwin-williams",
+        "listed": 1902,
+        "retired": 184,
+        "retiredPct": 9.7,
+        "retiredMedianLrv": 65.4,
+        "currentMedianLrv": 38.7
+      }
+    ]
+  },
+  "coty": {
+    "brands": [
+      "Benjamin Moore",
+      "Behr",
+      "Sherwin-Williams"
+    ],
+    "picks": [
+      {
+        "year": 2022,
+        "brand": "Behr",
+        "brandSlug": "behr",
+        "name": "Breezeway",
+        "code": "MQ3-21",
+        "slug": "breezeway-mq3-21",
+        "hex": "#cad6ce",
+        "lrv": 66
+      },
+      {
+        "year": 2022,
+        "brand": "Benjamin Moore",
+        "brandSlug": "benjamin-moore",
+        "name": "October Mist",
+        "code": "1495",
+        "slug": "october-mist-1495",
+        "hex": "#b7b9a6",
+        "lrv": 46.5
+      },
+      {
+        "year": 2022,
+        "brand": "Sherwin-Williams",
+        "brandSlug": "sherwin-williams",
+        "name": "Evergreen Fog",
+        "code": "SW 9130",
+        "slug": "evergreen-fog-9130",
+        "hex": "#95978a",
+        "lrv": 30.4
+      },
+      {
+        "year": 2023,
+        "brand": "Behr",
+        "brandSlug": "behr",
+        "name": "Blank Canvas",
+        "code": "DC-003",
+        "slug": "blank-canvas-dc-003",
+        "hex": "#f1ede1",
+        "lrv": 84
+      },
+      {
+        "year": 2023,
+        "brand": "Benjamin Moore",
+        "brandSlug": "benjamin-moore",
+        "name": "Raspberry Blush",
+        "code": "2008-30",
+        "slug": "raspberry-blush-2008-30",
+        "hex": "#d86057",
+        "lrv": 22.7
+      },
+      {
+        "year": 2023,
+        "brand": "Sherwin-Williams",
+        "brandSlug": "sherwin-williams",
+        "name": "Redend Point",
+        "code": "SW 9081",
+        "slug": "redend-point-9081",
+        "hex": "#ae8e7e",
+        "lrv": 29.7
+      },
+      {
+        "year": 2024,
+        "brand": "Behr",
+        "brandSlug": "behr",
+        "name": "Cracked Pepper",
+        "code": "PPU18-01",
+        "slug": "cracked-pepper-ppu18-01",
+        "hex": "#4f5152",
+        "lrv": 8
+      },
+      {
+        "year": 2024,
+        "brand": "Benjamin Moore",
+        "brandSlug": "benjamin-moore",
+        "name": "Blue Nova",
+        "code": "825",
+        "slug": "blue-nova-825",
+        "hex": "#5c6e93",
+        "lrv": 17
+      },
+      {
+        "year": 2024,
+        "brand": "Sherwin-Williams",
+        "brandSlug": "sherwin-williams",
+        "name": "Upward",
+        "code": "SW 6239",
+        "slug": "upward-6239",
+        "hex": "#bfc9d0",
+        "lrv": 57.4
+      },
+      {
+        "year": 2025,
+        "brand": "Behr",
+        "brandSlug": "behr",
+        "name": "Rumors",
+        "code": "MQ1-15",
+        "slug": "rumors-mq1-15",
+        "hex": "#744347",
+        "lrv": 8
+      },
+      {
+        "year": 2025,
+        "brand": "Benjamin Moore",
+        "brandSlug": "benjamin-moore",
+        "name": "Cinnamon Slate",
+        "code": "2113-40",
+        "slug": "cinnamon-slate-2113-40",
+        "hex": "#8a7576",
+        "lrv": 19.7
+      },
+      {
+        "year": 2026,
+        "brand": "Behr",
+        "brandSlug": "behr",
+        "name": "Hidden Gem",
+        "code": "N430-6A",
+        "slug": "hidden-gem-n430-6a",
+        "hex": "#596d69",
+        "lrv": 14
+      },
+      {
+        "year": 2026,
+        "brand": "Benjamin Moore",
+        "brandSlug": "benjamin-moore",
+        "name": "Silhouette",
+        "code": "AF-655",
+        "slug": "silhouette-af-655",
+        "hex": "#58514d",
+        "lrv": 10.2
+      },
+      {
+        "year": 2026,
+        "brand": "Sherwin-Williams",
+        "brandSlug": "sherwin-williams",
+        "name": "Universal Khaki",
+        "code": "SW 6150",
+        "slug": "universal-khaki-6150",
+        "hex": "#b8a992",
+        "lrv": 40.5
+      },
+      {
+        "year": 2027,
+        "brand": "Behr",
+        "brandSlug": "behr",
+        "name": "Grounded",
+        "code": "T27-01",
+        "slug": "grounded-t27-01",
+        "hex": "#565344",
+        "lrv": 9
+      },
+      {
+        "year": 2027,
+        "brand": "Benjamin Moore",
+        "brandSlug": "benjamin-moore",
+        "name": "Webster Green",
+        "code": "HC-130",
+        "slug": "webster-green-hc-130",
+        "hex": "#65816d",
+        "lrv": 20.2
+      },
+      {
+        "year": 2027,
+        "brand": "Sherwin-Williams",
+        "brandSlug": "sherwin-williams",
+        "name": "Celery",
+        "code": "SW 6421",
+        "slug": "celery-6421",
+        "hex": "#e0ddbd",
+        "lrv": 71.3
+      }
+    ],
+    "byYear": [
+      {
+        "year": 2022,
+        "picks": 3,
+        "meanLrv": 47.6
+      },
+      {
+        "year": 2023,
+        "picks": 3,
+        "meanLrv": 45.5
+      },
+      {
+        "year": 2024,
+        "picks": 3,
+        "meanLrv": 27.5
+      },
+      {
+        "year": 2025,
+        "picks": 2,
+        "meanLrv": 13.9
+      },
+      {
+        "year": 2026,
+        "picks": 3,
+        "meanLrv": 21.6
+      },
+      {
+        "year": 2027,
+        "picks": 3,
+        "meanLrv": 33.5
+      }
+    ],
+    "early": {
+      "from": 2022,
+      "to": 2023,
+      "picks": 6,
+      "meanLrv": 46.6
+    },
+    "late": {
+      "from": 2024,
+      "to": 2027,
+      "picks": 11,
+      "meanLrv": 25,
+      "under25": 8
+    }
+  },
+  "zones": {
+    "colors": 23801,
+    "neutralChromaMax": 10,
+    "bands": [
+      {
+        "name": "Very light",
+        "minL": 85,
+        "maxL": 100
+      },
+      {
+        "name": "Light",
+        "minL": 70,
+        "maxL": 85
+      },
+      {
+        "name": "Mid",
+        "minL": 50,
+        "maxL": 70
+      },
+      {
+        "name": "Dark",
+        "minL": 30,
+        "maxL": 50
+      },
+      {
+        "name": "Very dark",
+        "minL": 0,
+        "maxL": 30
+      }
+    ],
+    "neutral": {
+      "colors": 7344,
+      "pct": 30.9
+    },
+    "nearWhite": {
+      "colors": 3053,
+      "pct": 12.8
+    },
+    "tinted": 16457,
+    "sectors": [
+      {
+        "name": "Yellow, cream and gold",
+        "colors": 5381,
+        "pctOfTinted": 32.7
+      },
+      {
+        "name": "Orange and tan",
+        "colors": 3262,
+        "pctOfTinted": 19.8
+      },
+      {
+        "name": "Green",
+        "colors": 2121,
+        "pctOfTinted": 12.9
+      },
+      {
+        "name": "Blue",
+        "colors": 1721,
+        "pctOfTinted": 10.5
+      },
+      {
+        "name": "Red and pink",
+        "colors": 1708,
+        "pctOfTinted": 10.4
+      },
+      {
+        "name": "Teal",
+        "colors": 1322,
+        "pctOfTinted": 8
+      },
+      {
+        "name": "Purple",
+        "colors": 942,
+        "pctOfTinted": 5.7
+      }
+    ],
+    "grid": [
+      {
+        "name": "Near-neutral",
+        "total": 7344,
+        "pct": 30.9,
+        "bands": [
+          3053,
+          1776,
+          1174,
+          1106,
+          235
+        ]
+      },
+      {
+        "name": "Red and pink",
+        "total": 1708,
+        "pct": 7.2,
+        "bands": [
+          149,
+          389,
+          482,
+          645,
+          43
+        ]
+      },
+      {
+        "name": "Orange and tan",
+        "total": 3262,
+        "pct": 13.7,
+        "bands": [
+          305,
+          830,
+          1270,
+          827,
+          30
+        ]
+      },
+      {
+        "name": "Yellow, cream and gold",
+        "total": 5381,
+        "pct": 22.6,
+        "bands": [
+          1982,
+          1772,
+          1295,
+          331,
+          1
+        ]
+      },
+      {
+        "name": "Green",
+        "total": 2121,
+        "pct": 8.9,
+        "bands": [
+          557,
+          588,
+          670,
+          301,
+          5
+        ]
+      },
+      {
+        "name": "Teal",
+        "total": 1322,
+        "pct": 5.6,
+        "bands": [
+          209,
+          394,
+          413,
+          286,
+          20
+        ]
+      },
+      {
+        "name": "Blue",
+        "total": 1721,
+        "pct": 7.2,
+        "bands": [
+          52,
+          441,
+          581,
+          585,
+          62
+        ]
+      },
+      {
+        "name": "Purple",
+        "total": 942,
+        "pct": 4,
+        "bands": [
+          52,
+          229,
+          312,
+          298,
+          51
+        ]
+      }
+    ],
+    "mostCrowded": [
+      {
+        "row": "Near-neutral",
+        "band": "Very light",
+        "count": 3053,
+        "pct": 12.8
+      },
+      {
+        "row": "Yellow, cream and gold",
+        "band": "Very light",
+        "count": 1982,
+        "pct": 8.3
+      },
+      {
+        "row": "Near-neutral",
+        "band": "Light",
+        "count": 1776,
+        "pct": 7.5
+      }
+    ],
+    "emptiest": [
+      {
+        "row": "Yellow, cream and gold",
+        "band": "Very dark",
+        "count": 1,
+        "pct": 0
+      },
+      {
+        "row": "Green",
+        "band": "Very dark",
+        "count": 5,
+        "pct": 0
+      },
+      {
+        "row": "Teal",
+        "band": "Very dark",
+        "count": 20,
+        "pct": 0.1
+      }
+    ],
+    "emptyCells": 0
+  },
+  "perBrand": [
+    {
+      "name": "Behr",
+      "slug": "behr",
+      "catalog": 5789,
+      "current": 3242,
+      "retired": 2547,
+      "uniquePct": 33.6,
+      "verified": 5087,
+      "nearNeutralPct": 32.2,
+      "nearWhitePct": 13.4,
+      "lrvColors": 2556,
+      "medianLrv": 46,
+      "lrv80PlusPct": 12.6,
+      "lrvUnder20Pct": 21.3,
+      "lrvSource": "published by the brand"
+    },
+    {
+      "name": "Benjamin Moore",
+      "slug": "benjamin-moore",
+      "catalog": 3903,
+      "current": 3903,
+      "retired": 0,
+      "uniquePct": 33.5,
+      "verified": 3821,
+      "nearNeutralPct": 26.6,
+      "nearWhitePct": 10.4,
+      "lrvColors": 3812,
+      "medianLrv": 44.3,
+      "lrv80PlusPct": 6.6,
+      "lrvUnder20Pct": 21.6,
+      "lrvSource": "published by the brand"
+    },
+    {
+      "name": "PPG",
+      "slug": "ppg",
+      "catalog": 3261,
+      "current": 3261,
+      "retired": 0,
+      "uniquePct": 30.1,
+      "verified": 3184,
+      "nearNeutralPct": 34,
+      "nearWhitePct": 16.9,
+      "lrvColors": null,
+      "medianLrv": null,
+      "lrv80PlusPct": null,
+      "lrvUnder20Pct": null,
+      "lrvSource": "published by the brand, not yet reconciled; left out"
+    },
+    {
+      "name": "Vista Paint",
+      "slug": "vista-paint",
+      "catalog": 2984,
+      "current": 2984,
+      "retired": 0,
+      "uniquePct": 23.7,
+      "verified": 2869,
+      "nearNeutralPct": 30.7,
+      "nearWhitePct": 13.3,
+      "lrvColors": null,
+      "medianLrv": null,
+      "lrv80PlusPct": null,
+      "lrvUnder20Pct": null,
+      "lrvSource": "published by the brand, not yet reconciled; left out"
+    },
+    {
+      "name": "Valspar",
+      "slug": "valspar",
+      "catalog": 2358,
+      "current": 2358,
+      "retired": 0,
+      "uniquePct": 33.9,
+      "verified": 1593,
+      "nearNeutralPct": 33.2,
+      "nearWhitePct": 12.9,
+      "lrvColors": null,
+      "medianLrv": null,
+      "lrv80PlusPct": null,
+      "lrvUnder20Pct": null,
+      "lrvSource": "not published in our sources; left out"
+    },
+    {
+      "name": "Dunn-Edwards",
+      "slug": "dunn-edwards",
+      "catalog": 2230,
+      "current": 2230,
+      "retired": 0,
+      "uniquePct": 37.8,
+      "verified": 2219,
+      "nearNeutralPct": 28.5,
+      "nearWhitePct": 12.7,
+      "lrvColors": null,
+      "medianLrv": null,
+      "lrv80PlusPct": null,
+      "lrvUnder20Pct": null,
+      "lrvSource": "published by the brand, not yet reconciled; left out"
+    },
+    {
+      "name": "Sherwin-Williams",
+      "slug": "sherwin-williams",
+      "catalog": 1950,
+      "current": 1730,
+      "retired": 220,
+      "uniquePct": 25.7,
+      "verified": 1939,
+      "nearNeutralPct": 35,
+      "nearWhitePct": 12.4,
+      "lrvColors": 1718,
+      "medianLrv": 38.7,
+      "lrv80PlusPct": 3,
+      "lrvUnder20Pct": 25.4,
+      "lrvSource": "published by the brand"
+    },
+    {
+      "name": "Hirshfield's",
+      "slug": "hirshfields",
+      "catalog": 1469,
+      "current": 1469,
+      "retired": 0,
+      "uniquePct": 14.8,
+      "verified": 1469,
+      "nearNeutralPct": 25.1,
+      "nearWhitePct": 10.6,
+      "lrvColors": null,
+      "medianLrv": null,
+      "lrv80PlusPct": null,
+      "lrvUnder20Pct": null,
+      "lrvSource": "published by the brand, not yet reconciled; left out"
+    },
+    {
+      "name": "Dutch Boy",
+      "slug": "dutch-boy",
+      "catalog": 1441,
+      "current": 1441,
+      "retired": 0,
+      "uniquePct": 25.1,
+      "verified": 1340,
+      "nearNeutralPct": 28.1,
+      "nearWhitePct": 9.5,
+      "lrvColors": 1340,
+      "medianLrv": 44,
+      "lrv80PlusPct": 4.4,
+      "lrvUnder20Pct": 22.4,
+      "lrvSource": "published by the brand"
+    },
+    {
+      "name": "Kilz",
+      "slug": "kilz",
+      "catalog": 827,
+      "current": 827,
+      "retired": 0,
+      "uniquePct": 27.1,
+      "verified": 113,
+      "nearNeutralPct": 53.1,
+      "nearWhitePct": 15,
+      "lrvColors": null,
+      "medianLrv": null,
+      "lrv80PlusPct": null,
+      "lrvUnder20Pct": null,
+      "lrvSource": "not published in our sources; left out"
+    },
+    {
+      "name": "RAL",
+      "slug": "ral",
+      "catalog": 213,
+      "current": 213,
+      "retired": 0,
+      "uniquePct": null,
+      "verified": 0,
+      "nearNeutralPct": null,
+      "nearWhitePct": null,
+      "lrvColors": null,
+      "medianLrv": null,
+      "lrv80PlusPct": null,
+      "lrvUnder20Pct": null,
+      "lrvSource": "not studied (industrial standard)"
+    },
+    {
+      "name": "Farrow & Ball",
+      "slug": "farrow-ball",
+      "catalog": 167,
+      "current": 144,
+      "retired": 23,
+      "uniquePct": 25.1,
+      "verified": 167,
+      "nearNeutralPct": 46.1,
+      "nearWhitePct": 14.4,
+      "lrvColors": null,
+      "medianLrv": null,
+      "lrv80PlusPct": null,
+      "lrvUnder20Pct": null,
+      "lrvSource": "not published in our sources; left out"
+    },
+    {
+      "name": "Colorhouse",
+      "slug": "colorhouse",
+      "catalog": 128,
+      "current": 128,
+      "retired": 0,
+      "uniquePct": 28.1,
+      "verified": 0,
+      "nearNeutralPct": null,
+      "nearWhitePct": null,
+      "lrvColors": null,
+      "medianLrv": null,
+      "lrv80PlusPct": null,
+      "lrvUnder20Pct": null,
+      "lrvSource": "not published in our sources; left out"
+    }
+  ]
+}
