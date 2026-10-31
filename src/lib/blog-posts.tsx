@@ -6046,7 +6046,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">All ten beiges, measured</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Sorted from the warmest group to the lightest. Each match is the closest color in that brand by CIEDE2000, labeled in plain language. These are digital matches; confirm any substitute with a physical sample before you buy.
+          The two all-round picks first, then the warm tans, then the lightest four. Each match is the closest color in that brand by CIEDE2000, labeled in plain language. These are digital matches; confirm any substitute with a physical sample before you buy.
         </p>
         <div className="mt-6 overflow-x-auto">
           <table className="w-full text-sm border-collapse">
