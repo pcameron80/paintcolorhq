@@ -367,9 +367,9 @@ export default async function ColorOfTheYearPage() {
                     </>
                   );
                   return color ? (
-                    <Link key={pick.brandSlug} href={`/colors/${pick.brandSlug}/${pick.colorSlug}`} className="rounded-xl bg-surface-container-lowest transition-shadow hover:shadow-md">{body}</Link>
+                    <Link key={`${pick.brandSlug}-${pick.code}`} href={`/colors/${pick.brandSlug}/${pick.colorSlug}`} className="rounded-xl bg-surface-container-lowest transition-shadow hover:shadow-md">{body}</Link>
                   ) : (
-                    <div key={pick.brandSlug} className="rounded-xl bg-surface-container-lowest">{body}</div>
+                    <div key={`${pick.brandSlug}-${pick.code}`} className="rounded-xl bg-surface-container-lowest">{body}</div>
                   );
                 })}
               </div>
