@@ -14,6 +14,7 @@ import { closenessLabel } from "@/lib/closeness";
 import type { ColorAvailability } from "@/lib/types";
 import { VISUALIZER_PRESETS, presetForHex } from "@/lib/visualizer-presets";
 import { AddPaletteToProject } from "@/components/add-palette-to-project";
+import { renderRoomJpeg } from "@/lib/visualizer-download";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -110,6 +111,8 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   const [matches, setMatches] = useState<PaintMatch[]>([]);
   const [bestPerBrand, setBestPerBrand] = useState<PaintMatch[]>([]);
   const [loading, setLoading] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+  const [downloadError, setDownloadError] = useState(false);
 
   const showPayload = (data: MatchPayload) => {
     setMatches(data.matches ?? []);
@@ -288,6 +291,34 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   };
   const shareUrl = () => `${window.location.origin}${sharePath()}`;
 
+  // Saves the room as a JPEG with a credit band. The band lists the surfaces that
+  // were repainted, so a blogger's readers can see which colors the image shows.
+  const downloadImage = async () => {
+    setDownloading(true);
+    setDownloadError(false);
+    let url: string | undefined;
+    try {
+      const painted = regions
+        .filter((r) => colors[r.id].toUpperCase() !== DEFAULT_COLORS[r.id].toUpperCase())
+        .map((r) => ({ label: r.id === "walls" ? "Walls" : r.label, hex: colors[r.id] }));
+      const blob = await renderRoomJpeg(room, surfaceColors, painted);
+      url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `paintcolorhq-${room.id}-${colors.walls.replace("#", "").toLowerCase()}.jpg`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      trackEvent("cta_click", { cta_label: "visualizer_download_image", room: room.id });
+    } catch {
+      setDownloadError(true);
+    } finally {
+      // Give the browser a moment to start the download before the URL goes away.
+      if (url) setTimeout(() => URL.revokeObjectURL(url!), 1000);
+      setDownloading(false);
+    }
+  };
+
   return (
     <div className="mt-8">
       {/* ---- Room picker ---- */}
@@ -342,8 +373,20 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
           onCopied={() => trackEvent("cta_click", { cta_label: "visualizer_copy_link", room: room.id })}
           className="rounded-xl border border-outline-variant/30 bg-surface-container-lowest px-4 py-2 text-sm font-semibold text-on-surface hover:border-outline transition-all"
         />
+        <button
+          type="button"
+          onClick={downloadImage}
+          disabled={downloading}
+          className="rounded-xl border border-outline-variant/30 bg-surface-container-lowest px-4 py-2 text-sm font-semibold text-on-surface hover:border-outline transition-all disabled:cursor-wait disabled:opacity-60"
+        >
+          {downloading ? "Preparing..." : "Download image"}
+        </button>
         </div>
         <p className="w-full text-xs text-on-surface-variant">Digital room preview only. Lighting, screens, and paint finish affect appearance. Confirm your choice with a physical sample.</p>
+        <p className="w-full text-xs text-on-surface-variant">Downloaded images are free to use on your blog or social posts with a link to paintcolorhq.com.</p>
+        {downloadError && (
+          <p role="alert" className="w-full text-xs text-error">The image couldn&apos;t be prepared. Try again in a moment.</p>
+        )}
       </div>
       <div className="overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container">
         <RoomCanvas
