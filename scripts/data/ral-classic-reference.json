@@ -1,0 +1,2562 @@
+{
+ "about": "RAL Classic reference values for the codes the catalog holds (2026-11 data audit, finding feed-ral-hex). siteHex: the swatch on https://www.ral-farben.de/en/all-ral-colours (RAL gGmbH), fetched 2026-10-31. lab and publishedLrv: RAL's CIELAB (D65/10) and LRV as reproduced in Wikipedia's 'List of RAL colours', which cites ral-farben.de. effect: pearl, luminous or metallic codes, which no sRGB hex represents. Read by scripts/build-ral-corrections.ts. RAL Classic codes 2017, 6039 and 9012 are on the site but not in the catalog.",
+ "fetched": "2026-10-31",
+ "colors": [
+  {
+   "code": "1000",
+   "name": "Green beige",
+   "siteHex": "#c5bb8a",
+   "lab": {
+    "L": 76.022,
+    "a": -0.366,
+    "b": 27.636
+   },
+   "publishedLrv": 50,
+   "effect": false
+  },
+  {
+   "code": "1001",
+   "name": "Beige",
+   "siteHex": "#c6b286",
+   "lab": {
+    "L": 73.595,
+    "a": 5.518,
+    "b": 26.95
+   },
+   "publishedLrv": 46,
+   "effect": false
+  },
+  {
+   "code": "1002",
+   "name": "Sand yellow",
+   "siteHex": "#c7ae72",
+   "lab": {
+    "L": 71.934,
+    "a": 7.362,
+    "b": 36.744
+   },
+   "publishedLrv": 44,
+   "effect": false
+  },
+  {
+   "code": "1003",
+   "name": "Signal yellow",
+   "siteHex": "#e6b019",
+   "lab": {
+    "L": 75.041,
+    "a": 19.801,
+    "b": 80.264
+   },
+   "publishedLrv": 48,
+   "effect": false
+  },
+  {
+   "code": "1004",
+   "name": "Golden yellow",
+   "siteHex": "#d2a40e",
+   "lab": {
+    "L": 70.089,
+    "a": 16.1,
+    "b": 78.815
+   },
+   "publishedLrv": 41,
+   "effect": false
+  },
+  {
+   "code": "1005",
+   "name": "Honey yellow",
+   "siteHex": "#bc9611",
+   "lab": {
+    "L": 63.448,
+    "a": 13.382,
+    "b": 74.694
+   },
+   "publishedLrv": 32,
+   "effect": false
+  },
+  {
+   "code": "1006",
+   "name": "Maize yellow",
+   "siteHex": "#cf9804",
+   "lab": {
+    "L": 66.562,
+    "a": 22.472,
+    "b": 76.492
+   },
+   "publishedLrv": 36,
+   "effect": false
+  },
+  {
+   "code": "1007",
+   "name": "Daffodil yellow",
+   "siteHex": "#d49300",
+   "lab": {
+    "L": 66.5,
+    "a": 27.308,
+    "b": 80.402
+   },
+   "publishedLrv": 36,
+   "effect": false
+  },
+  {
+   "code": "1011",
+   "name": "Brown beige",
+   "siteHex": "#a38454",
+   "lab": {
+    "L": 57.338,
+    "a": 12.518,
+    "b": 33.353
+   },
+   "publishedLrv": 25,
+   "effect": false
+  },
+  {
+   "code": "1012",
+   "name": "Lemon yellow",
+   "siteHex": "#cfb539",
+   "lab": {
+    "L": 73.615,
+    "a": 4.946,
+    "b": 68.938
+   },
+   "publishedLrv": 46,
+   "effect": false
+  },
+  {
+   "code": "1013",
+   "name": "Oyster white",
+   "siteHex": "#dfdbc7",
+   "lab": {
+    "L": 87.152,
+    "a": 0.27,
+    "b": 10.431
+   },
+   "publishedLrv": 70,
+   "effect": false
+  },
+  {
+   "code": "1014",
+   "name": "Ivory",
+   "siteHex": "#d4c79c",
+   "lab": {
+    "L": 80.411,
+    "a": 2.763,
+    "b": 24.175
+   },
+   "publishedLrv": 57,
+   "effect": false
+  },
+  {
+   "code": "1015",
+   "name": "Light ivory",
+   "siteHex": "#ded3b6",
+   "lab": {
+    "L": 85.219,
+    "a": 2.394,
+    "b": 16.821
+   },
+   "publishedLrv": 66,
+   "effect": false
+  },
+  {
+   "code": "1016",
+   "name": "Sulfur yellow",
+   "siteHex": "#e8e253",
+   "lab": {
+    "L": 87.29,
+    "a": -9.283,
+    "b": 76.694
+   },
+   "publishedLrv": 71,
+   "effect": false
+  },
+  {
+   "code": "1017",
+   "name": "Saffron yellow",
+   "siteHex": "#e4af56",
+   "lab": {
+    "L": 75.183,
+    "a": 20.633,
+    "b": 55.581
+   },
+   "publishedLrv": 49,
+   "effect": false
+  },
+  {
+   "code": "1018",
+   "name": "Zinc yellow",
+   "siteHex": "#ebd346",
+   "lab": {
+    "L": 83.353,
+    "a": 3.462,
+    "b": 75.829
+   },
+   "publishedLrv": 63,
+   "effect": false
+  },
+  {
+   "code": "1019",
+   "name": "Grey beige",
+   "siteHex": "#9c917b",
+   "lab": {
+    "L": 60.643,
+    "a": 4.702,
+    "b": 13.952
+   },
+   "publishedLrv": 29,
+   "effect": false
+  },
+  {
+   "code": "1020",
+   "name": "Olive yellow",
+   "siteHex": "#999167",
+   "lab": {
+    "L": 59.883,
+    "a": 0.56,
+    "b": 24.683
+   },
+   "publishedLrv": 28,
+   "effect": false
+  },
+  {
+   "code": "1021",
+   "name": "Colza yellow",
+   "siteHex": "#e5c000",
+   "lab": {
+    "L": 77.828,
+    "a": 10.664,
+    "b": 94.6
+   },
+   "publishedLrv": 53,
+   "effect": false
+  },
+  {
+   "code": "1023",
+   "name": "Traffic yellow",
+   "siteHex": "#e6be05",
+   "lab": {
+    "L": 77.72,
+    "a": 11.334,
+    "b": 93.913
+   },
+   "publishedLrv": 53,
+   "effect": false
+  },
+  {
+   "code": "1024",
+   "name": "Ochre yellow",
+   "siteHex": "#ad9451",
+   "lab": {
+    "L": 62.261,
+    "a": 8.491,
+    "b": 41.488
+   },
+   "publishedLrv": 31,
+   "effect": false
+  },
+  {
+   "code": "1026",
+   "name": "Luminous yellow",
+   "siteHex": "#ffff00",
+   "lab": {
+    "L": 99.618,
+    "a": -17.229,
+    "b": 116.966
+   },
+   "publishedLrv": 99,
+   "effect": true
+  },
+  {
+   "code": "1027",
+   "name": "Curry",
+   "siteHex": "#998420",
+   "lab": {
+    "L": 55.557,
+    "a": 6.493,
+    "b": 58.255
+   },
+   "publishedLrv": 23,
+   "effect": false
+  },
+  {
+   "code": "1028",
+   "name": "Melon yellow",
+   "siteHex": "#f2a500",
+   "lab": {
+    "L": 73.671,
+    "a": 31.654,
+    "b": 95.458
+   },
+   "publishedLrv": 46,
+   "effect": false
+  },
+  {
+   "code": "1032",
+   "name": "Broom yellow",
+   "siteHex": "#cfa81e",
+   "lab": {
+    "L": 71.135,
+    "a": 12.766,
+    "b": 74.772
+   },
+   "publishedLrv": 42,
+   "effect": false
+  },
+  {
+   "code": "1033",
+   "name": "Dahlia yellow",
+   "siteHex": "#e4a02d",
+   "lab": {
+    "L": 71.74,
+    "a": 27.78,
+    "b": 71.677
+   },
+   "publishedLrv": 43,
+   "effect": false
+  },
+  {
+   "code": "1034",
+   "name": "Pastel yellow",
+   "siteHex": "#d9a156",
+   "lab": {
+    "L": 70.94,
+    "a": 22.91,
+    "b": 49.962
+   },
+   "publishedLrv": 42,
+   "effect": false
+  },
+  {
+   "code": "1035",
+   "name": "Pearl beige",
+   "siteHex": "#898271",
+   "lab": {
+    "L": 55.258,
+    "a": 1.866,
+    "b": 11.775
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "1036",
+   "name": "Pearl gold",
+   "siteHex": "#746341",
+   "lab": {
+    "L": 44.425,
+    "a": 6.462,
+    "b": 25.001
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "1037",
+   "name": "Sun yellow",
+   "siteHex": "#db9a17",
+   "lab": {
+    "L": 68.889,
+    "a": 27.62,
+    "b": 74.504
+   },
+   "publishedLrv": 39,
+   "effect": false
+  },
+  {
+   "code": "2000",
+   "name": "Yellow orange",
+   "siteHex": "#c7750f",
+   "lab": {
+    "L": 58.201,
+    "a": 37.297,
+    "b": 68.683
+   },
+   "publishedLrv": 26,
+   "effect": false
+  },
+  {
+   "code": "2001",
+   "name": "Red orange",
+   "siteHex": "#a74d23",
+   "lab": {
+    "L": 45.824,
+    "a": 44.129,
+    "b": 47.554
+   },
+   "publishedLrv": 15,
+   "effect": false
+  },
+  {
+   "code": "2002",
+   "name": "Vermilion",
+   "siteHex": "#ac3721",
+   "lab": {
+    "L": 44.441,
+    "a": 52.797,
+    "b": 43.768
+   },
+   "publishedLrv": 14,
+   "effect": false
+  },
+  {
+   "code": "2003",
+   "name": "Pastel orange",
+   "siteHex": "#e17c30",
+   "lab": {
+    "L": 64.235,
+    "a": 44.142,
+    "b": 61.832
+   },
+   "publishedLrv": 33,
+   "effect": false
+  },
+  {
+   "code": "2004",
+   "name": "Pure orange",
+   "siteHex": "#cc5608",
+   "lab": {
+    "L": 54.448,
+    "a": 53.586,
+    "b": 63.716
+   },
+   "publishedLrv": 22,
+   "effect": false
+  },
+  {
+   "code": "2005",
+   "name": "Luminous orange",
+   "siteHex": "#ff4612",
+   "lab": {
+    "L": 72.274,
+    "a": 87.783,
+    "b": 82.315
+   },
+   "publishedLrv": 44,
+   "effect": true
+  },
+  {
+   "code": "2007",
+   "name": "Luminous bright orange",
+   "siteHex": "#ffad19",
+   "lab": {
+    "L": 88.914,
+    "a": 52.782,
+    "b": 97.982
+   },
+   "publishedLrv": 74,
+   "effect": true
+  },
+  {
+   "code": "2008",
+   "name": "Bright red orange",
+   "siteHex": "#d66c21",
+   "lab": {
+    "L": 60.334,
+    "a": 46.913,
+    "b": 60.652
+   },
+   "publishedLrv": 28,
+   "effect": false
+  },
+  {
+   "code": "2009",
+   "name": "Traffic orange",
+   "siteHex": "#c9560d",
+   "lab": {
+    "L": 53.766,
+    "a": 51.886,
+    "b": 62.145
+   },
+   "publishedLrv": 22,
+   "effect": false
+  },
+  {
+   "code": "2010",
+   "name": "Signal orange",
+   "siteHex": "#bc602d",
+   "lab": {
+    "L": 53.28,
+    "a": 42.985,
+    "b": 49.867
+   },
+   "publishedLrv": 21,
+   "effect": false
+  },
+  {
+   "code": "2011",
+   "name": "Deep orange",
+   "siteHex": "#cf7421",
+   "lab": {
+    "L": 59.241,
+    "a": 40.856,
+    "b": 64.504
+   },
+   "publishedLrv": 27,
+   "effect": false
+  },
+  {
+   "code": "2012",
+   "name": "Salmon orange",
+   "siteHex": "#c2674f",
+   "lab": {
+    "L": 56.085,
+    "a": 42.492,
+    "b": 34.021
+   },
+   "publishedLrv": 24,
+   "effect": false
+  },
+  {
+   "code": "2013",
+   "name": "Pearl orange",
+   "siteHex": "#824128",
+   "lab": {
+    "L": 37.341,
+    "a": 33.898,
+    "b": 32.139
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "3000",
+   "name": "Flame red",
+   "siteHex": "#962a27",
+   "lab": {
+    "L": 37.687,
+    "a": 50.439,
+    "b": 36.563
+   },
+   "publishedLrv": 10,
+   "effect": false
+  },
+  {
+   "code": "3001",
+   "name": "Signal red",
+   "siteHex": "#8f1e24",
+   "lab": {
+    "L": 34.702,
+    "a": 48.478,
+    "b": 31.204
+   },
+   "publishedLrv": 8,
+   "effect": false
+  },
+  {
+   "code": "3002",
+   "name": "Carmine red",
+   "siteHex": "#8d1f24",
+   "lab": {
+    "L": 34.458,
+    "a": 48.832,
+    "b": 31.869
+   },
+   "publishedLrv": 8,
+   "effect": false
+  },
+  {
+   "code": "3003",
+   "name": "Ruby red",
+   "siteHex": "#7c0d24",
+   "lab": {
+    "L": 29.149,
+    "a": 45.067,
+    "b": 24.389
+   },
+   "publishedLrv": 6,
+   "effect": false
+  },
+  {
+   "code": "3004",
+   "name": "Purple red",
+   "siteHex": "#651927",
+   "lab": {
+    "L": 23.903,
+    "a": 35.433,
+    "b": 16.085
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "3005",
+   "name": "Wine red",
+   "siteHex": "#561e27",
+   "lab": {
+    "L": 19.699,
+    "a": 30.019,
+    "b": 12.525
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "3007",
+   "name": "Black red",
+   "siteHex": "#3d2326",
+   "lab": {
+    "L": 16.437,
+    "a": 14.617,
+    "b": 5.268
+   },
+   "publishedLrv": 2,
+   "effect": false
+  },
+  {
+   "code": "3009",
+   "name": "Oxide red",
+   "siteHex": "#643730",
+   "lab": {
+    "L": 27.272,
+    "a": 24.588,
+    "b": 16.512
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "3011",
+   "name": "Brown red",
+   "siteHex": "#6e2124",
+   "lab": {
+    "L": 27.966,
+    "a": 36.64,
+    "b": 21.316
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "3012",
+   "name": "Beige red",
+   "siteHex": "#b7856e",
+   "lab": {
+    "L": 61.394,
+    "a": 22.436,
+    "b": 22.979
+   },
+   "publishedLrv": 30,
+   "effect": false
+  },
+  {
+   "code": "3013",
+   "name": "Tomato red",
+   "siteHex": "#8a2f28",
+   "lab": {
+    "L": 35.45,
+    "a": 43.402,
+    "b": 30.523
+   },
+   "publishedLrv": 9,
+   "effect": false
+  },
+  {
+   "code": "3014",
+   "name": "Antique pink",
+   "siteHex": "#bc6f72",
+   "lab": {
+    "L": 58.26,
+    "a": 34.939,
+    "b": 14.085
+   },
+   "publishedLrv": 26,
+   "effect": false
+  },
+  {
+   "code": "3015",
+   "name": "Light pink",
+   "siteHex": "#cc9ea4",
+   "lab": {
+    "L": 71.232,
+    "a": 21.595,
+    "b": 4.983
+   },
+   "publishedLrv": 43,
+   "effect": false
+  },
+  {
+   "code": "3016",
+   "name": "Coral red",
+   "siteHex": "#963d2f",
+   "lab": {
+    "L": 40.678,
+    "a": 42.925,
+    "b": 30.919
+   },
+   "publishedLrv": 12,
+   "effect": false
+  },
+  {
+   "code": "3017",
+   "name": "Rose",
+   "siteHex": "#b9535b",
+   "lab": {
+    "L": 51.708,
+    "a": 47.655,
+    "b": 19.335
+   },
+   "publishedLrv": 20,
+   "effect": false
+  },
+  {
+   "code": "3018",
+   "name": "Strawberry red",
+   "siteHex": "#b63c49",
+   "lab": {
+    "L": 47.141,
+    "a": 54.458,
+    "b": 24.604
+   },
+   "publishedLrv": 16,
+   "effect": false
+  },
+  {
+   "code": "3020",
+   "name": "Traffic red",
+   "siteHex": "#ab1519",
+   "lab": {
+    "L": 40.511,
+    "a": 59.32,
+    "b": 47.967
+   },
+   "publishedLrv": 12,
+   "effect": false
+  },
+  {
+   "code": "3022",
+   "name": "Salmon pink",
+   "siteHex": "#be6954",
+   "lab": {
+    "L": 56.056,
+    "a": 38.9,
+    "b": 29.704
+   },
+   "publishedLrv": 24,
+   "effect": false
+  },
+  {
+   "code": "3024",
+   "name": "Luminous red",
+   "siteHex": "#ee1729",
+   "lab": {
+    "L": 61.253,
+    "a": 83.212,
+    "b": 65.195
+   },
+   "publishedLrv": 30,
+   "effect": true
+  },
+  {
+   "code": "3026",
+   "name": "Luminous bright red",
+   "siteHex": "#f71027",
+   "lab": {
+    "L": 63.701,
+    "a": 87.132,
+    "b": 70.01
+   },
+   "publishedLrv": 32,
+   "effect": true
+  },
+  {
+   "code": "3027",
+   "name": "Raspberry red",
+   "siteHex": "#9e1b3c",
+   "lab": {
+    "L": 38.686,
+    "a": 53.68,
+    "b": 20.868
+   },
+   "publishedLrv": 10,
+   "effect": false
+  },
+  {
+   "code": "3028",
+   "name": "Pure red",
+   "siteHex": "#b92726",
+   "lab": {
+    "L": 45.358,
+    "a": 60.958,
+    "b": 44.231
+   },
+   "publishedLrv": 15,
+   "effect": false
+  },
+  {
+   "code": "3031",
+   "name": "Orient red",
+   "siteHex": "#973238",
+   "lab": {
+    "L": 39.32,
+    "a": 47.086,
+    "b": 24.708
+   },
+   "publishedLrv": 11,
+   "effect": false
+  },
+  {
+   "code": "3032",
+   "name": "Pearl ruby red",
+   "siteHex": "#661925",
+   "lab": {
+    "L": 25.034,
+    "a": 36.705,
+    "b": 17.139
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "3033",
+   "name": "Pearl pink",
+   "siteHex": "#94352d",
+   "lab": {
+    "L": 39.808,
+    "a": 43.686,
+    "b": 30.991
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "4001",
+   "name": "Red lilac",
+   "siteHex": "#7c5b80",
+   "lab": {
+    "L": 45.333,
+    "a": 19.568,
+    "b": -14.009
+   },
+   "publishedLrv": 15,
+   "effect": false
+  },
+  {
+   "code": "4002",
+   "name": "Red violet",
+   "siteHex": "#823a4b",
+   "lab": {
+    "L": 36.8,
+    "a": 35.858,
+    "b": 8.343
+   },
+   "publishedLrv": 9,
+   "effect": false
+  },
+  {
+   "code": "4003",
+   "name": "Heather violet",
+   "siteHex": "#b65a88",
+   "lab": {
+    "L": 54.247,
+    "a": 44.659,
+    "b": -5.015
+   },
+   "publishedLrv": 22,
+   "effect": false
+  },
+  {
+   "code": "4004",
+   "name": "Claret violet",
+   "siteHex": "#5f1837",
+   "lab": {
+    "L": 23.577,
+    "a": 34.298,
+    "b": 0.517
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "4005",
+   "name": "Blue lilac",
+   "siteHex": "#746395",
+   "lab": {
+    "L": 47.024,
+    "a": 16.762,
+    "b": -25.226
+   },
+   "publishedLrv": 16,
+   "effect": false
+  },
+  {
+   "code": "4006",
+   "name": "Traffic purple",
+   "siteHex": "#852e6f",
+   "lab": {
+    "L": 36.964,
+    "a": 46.56,
+    "b": -16.759
+   },
+   "publishedLrv": 10,
+   "effect": false
+  },
+  {
+   "code": "4007",
+   "name": "Purple violet",
+   "siteHex": "#44263c",
+   "lab": {
+    "L": 19.721,
+    "a": 20.17,
+    "b": -7.946
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "4008",
+   "name": "Signal violet",
+   "siteHex": "#7c477d",
+   "lab": {
+    "L": 40.761,
+    "a": 32.526,
+    "b": -20.561
+   },
+   "publishedLrv": 12,
+   "effect": false
+  },
+  {
+   "code": "4009",
+   "name": "Pastel violet",
+   "siteHex": "#95838f",
+   "lab": {
+    "L": 58.22,
+    "a": 11.056,
+    "b": -3.283
+   },
+   "publishedLrv": 26,
+   "effect": false
+  },
+  {
+   "code": "4010",
+   "name": "Telemagenta",
+   "siteHex": "#ac3b71",
+   "lab": {
+    "L": 46.538,
+    "a": 54.36,
+    "b": -4.083
+   },
+   "publishedLrv": 16,
+   "effect": false
+  },
+  {
+   "code": "4011",
+   "name": "Pearl violet",
+   "siteHex": "#685c80",
+   "lab": {
+    "L": 44.108,
+    "a": 12.383,
+    "b": -18.407
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "4012",
+   "name": "Pearl blackberry",
+   "siteHex": "#67657a",
+   "lab": {
+    "L": 45.891,
+    "a": 4.098,
+    "b": -11.086
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "5000",
+   "name": "Violet blue",
+   "siteHex": "#35496b",
+   "lab": {
+    "L": 32.585,
+    "a": -1.282,
+    "b": -21.686
+   },
+   "publishedLrv": 7,
+   "effect": false
+  },
+  {
+   "code": "5001",
+   "name": "Green blue",
+   "siteHex": "#294763",
+   "lab": {
+    "L": 29.866,
+    "a": -9.761,
+    "b": -19.22
+   },
+   "publishedLrv": 6,
+   "effect": false
+  },
+  {
+   "code": "5002",
+   "name": "Ultramarine blue",
+   "siteHex": "#193278",
+   "lab": {
+    "L": 24.179,
+    "a": 11.008,
+    "b": -42.748
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "5003",
+   "name": "Sapphire blue",
+   "siteHex": "#203151",
+   "lab": {
+    "L": 22.956,
+    "a": 0.076,
+    "b": -20.213
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "5004",
+   "name": "Black blue",
+   "siteHex": "#1e222c",
+   "lab": {
+    "L": 11.174,
+    "a": 0.654,
+    "b": -7.457
+   },
+   "publishedLrv": 1,
+   "effect": false
+  },
+  {
+   "code": "5005",
+   "name": "Signal blue",
+   "siteHex": "#134a85",
+   "lab": {
+    "L": 32.448,
+    "a": -6.68,
+    "b": -37.201
+   },
+   "publishedLrv": 7,
+   "effect": false
+  },
+  {
+   "code": "5007",
+   "name": "Brillant blue",
+   "siteHex": "#466589",
+   "lab": {
+    "L": 42.929,
+    "a": -6.8,
+    "b": -23.609
+   },
+   "publishedLrv": 13,
+   "effect": false
+  },
+  {
+   "code": "5008",
+   "name": "Grey blue",
+   "siteHex": "#2f3a44",
+   "lab": {
+    "L": 23.463,
+    "a": -3.174,
+    "b": -8.172
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "5009",
+   "name": "Azure blue",
+   "siteHex": "#365875",
+   "lab": {
+    "L": 37.421,
+    "a": -10.799,
+    "b": -19.905
+   },
+   "publishedLrv": 10,
+   "effect": false
+  },
+  {
+   "code": "5010",
+   "name": "Gentian blue",
+   "siteHex": "#0e457a",
+   "lab": {
+    "L": 30.95,
+    "a": -7.433,
+    "b": -32.954
+   },
+   "publishedLrv": 7,
+   "effect": false
+  },
+  {
+   "code": "5011",
+   "name": "Steel blue",
+   "siteHex": "#222c3e",
+   "lab": {
+    "L": 16.969,
+    "a": -1.198,
+    "b": -13.154
+   },
+   "publishedLrv": 2,
+   "effect": false
+  },
+  {
+   "code": "5012",
+   "name": "Light blue",
+   "siteHex": "#457fb3",
+   "lab": {
+    "L": 53.135,
+    "a": -15.219,
+    "b": -32.486
+   },
+   "publishedLrv": 21,
+   "effect": false
+  },
+  {
+   "code": "5013",
+   "name": "Cobalt blue",
+   "siteHex": "#212f51",
+   "lab": {
+    "L": 20.044,
+    "a": 2.964,
+    "b": -23.406
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "5014",
+   "name": "Pigeon blue",
+   "siteHex": "#667691",
+   "lab": {
+    "L": 51.233,
+    "a": -2.817,
+    "b": -16.741
+   },
+   "publishedLrv": 19,
+   "effect": false
+  },
+  {
+   "code": "5015",
+   "name": "Sky blue",
+   "siteHex": "#3172ad",
+   "lab": {
+    "L": 48.193,
+    "a": -13.907,
+    "b": -36.485
+   },
+   "publishedLrv": 17,
+   "effect": false
+  },
+  {
+   "code": "5017",
+   "name": "Traffic blue",
+   "siteHex": "#0f518a",
+   "lab": {
+    "L": 34.824,
+    "a": -13.495,
+    "b": -36.357
+   },
+   "publishedLrv": 8,
+   "effect": false
+  },
+  {
+   "code": "5018",
+   "name": "Turquoise blue",
+   "siteHex": "#47848d",
+   "lab": {
+    "L": 52.285,
+    "a": -30.312,
+    "b": -9.335
+   },
+   "publishedLrv": 20,
+   "effect": false
+  },
+  {
+   "code": "5019",
+   "name": "Capri blue",
+   "siteHex": "#265682",
+   "lab": {
+    "L": 36.615,
+    "a": -11.411,
+    "b": -28.473
+   },
+   "publishedLrv": 9,
+   "effect": false
+  },
+  {
+   "code": "5020",
+   "name": "Ocean blue",
+   "siteHex": "#113e4d",
+   "lab": {
+    "L": 23.75,
+    "a": -20.682,
+    "b": -12.512
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "5021",
+   "name": "Water blue",
+   "siteHex": "#216d76",
+   "lab": {
+    "L": 43.325,
+    "a": -33.797,
+    "b": -10.417
+   },
+   "publishedLrv": 13,
+   "effect": false
+  },
+  {
+   "code": "5022",
+   "name": "Night blue",
+   "siteHex": "#282c58",
+   "lab": {
+    "L": 19.872,
+    "a": 10.632,
+    "b": -28.485
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "5023",
+   "name": "Distant blue",
+   "siteHex": "#4d648a",
+   "lab": {
+    "L": 43.013,
+    "a": -3.442,
+    "b": -23.737
+   },
+   "publishedLrv": 13,
+   "effect": false
+  },
+  {
+   "code": "5024",
+   "name": "Pastel blue",
+   "siteHex": "#6c8daa",
+   "lab": {
+    "L": 58.295,
+    "a": -10.309,
+    "b": -18.647
+   },
+   "publishedLrv": 26,
+   "effect": false
+  },
+  {
+   "code": "5025",
+   "name": "Pearl gentian blue",
+   "siteHex": "#3c6379",
+   "lab": {
+    "L": 41.102,
+    "a": -15.762,
+    "b": -16.748
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "5026",
+   "name": "Pearl night blue",
+   "siteHex": "#1b2b4d",
+   "lab": {
+    "L": 19.227,
+    "a": 1.728,
+    "b": -24.359
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "6000",
+   "name": "Patina green",
+   "siteHex": "#4a7363",
+   "lab": {
+    "L": 44.529,
+    "a": -23.651,
+    "b": 5.316
+   },
+   "publishedLrv": 14,
+   "effect": false
+  },
+  {
+   "code": "6001",
+   "name": "Emerald green",
+   "siteHex": "#40693a",
+   "lab": {
+    "L": 39.247,
+    "a": -28.094,
+    "b": 23.342
+   },
+   "publishedLrv": 11,
+   "effect": false
+  },
+  {
+   "code": "6002",
+   "name": "Leaf green",
+   "siteHex": "#3b5b2f",
+   "lab": {
+    "L": 34.079,
+    "a": -24.697,
+    "b": 23.999
+   },
+   "publishedLrv": 8,
+   "effect": false
+  },
+  {
+   "code": "6003",
+   "name": "Olive green",
+   "siteHex": "#4f553e",
+   "lab": {
+    "L": 34.335,
+    "a": -5.296,
+    "b": 13.147
+   },
+   "publishedLrv": 8,
+   "effect": false
+  },
+  {
+   "code": "6004",
+   "name": "Blue green",
+   "siteHex": "#214245",
+   "lab": {
+    "L": 25.484,
+    "a": -19.095,
+    "b": -4.31
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "6005",
+   "name": "Moss green",
+   "siteHex": "#234235",
+   "lab": {
+    "L": 24.439,
+    "a": -20.569,
+    "b": 4.665
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "6006",
+   "name": "Grey olive",
+   "siteHex": "#3c3d32",
+   "lab": {
+    "L": 24.036,
+    "a": -1.163,
+    "b": 7.105
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "6007",
+   "name": "Bottle green",
+   "siteHex": "#2e3526",
+   "lab": {
+    "L": 19.792,
+    "a": -6.46,
+    "b": 9.562
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "6008",
+   "name": "Brown green",
+   "siteHex": "#333327",
+   "lab": {
+    "L": 21.675,
+    "a": -0.827,
+    "b": 6.489
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "6009",
+   "name": "Fir green",
+   "siteHex": "#2a372c",
+   "lab": {
+    "L": 20.78,
+    "a": -8.546,
+    "b": 5.213
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "6010",
+   "name": "Grass green",
+   "siteHex": "#4e6e39",
+   "lab": {
+    "L": 42.993,
+    "a": -22.872,
+    "b": 26.093
+   },
+   "publishedLrv": 13,
+   "effect": false
+  },
+  {
+   "code": "6011",
+   "name": "Reseda green",
+   "siteHex": "#6a7c5b",
+   "lab": {
+    "L": 49.931,
+    "a": -12.896,
+    "b": 17.344
+   },
+   "publishedLrv": 18,
+   "effect": false
+  },
+  {
+   "code": "6012",
+   "name": "Black green",
+   "siteHex": "#2f3b39",
+   "lab": {
+    "L": 24.554,
+    "a": -6.234,
+    "b": -0.13
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "6013",
+   "name": "Reed green",
+   "siteHex": "#777659",
+   "lab": {
+    "L": 49.493,
+    "a": -2.158,
+    "b": 16.371
+   },
+   "publishedLrv": 18,
+   "effect": false
+  },
+  {
+   "code": "6014",
+   "name": "Yellow olive",
+   "siteHex": "#454339",
+   "lab": {
+    "L": 27.639,
+    "a": 0.59,
+    "b": 7.89
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "6015",
+   "name": "Black olive",
+   "siteHex": "#3c3f38",
+   "lab": {
+    "L": 25.484,
+    "a": -1.59,
+    "b": 4.15
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "6016",
+   "name": "Turquoise green",
+   "siteHex": "#256753",
+   "lab": {
+    "L": 38.439,
+    "a": -39.355,
+    "b": 8.026
+   },
+   "publishedLrv": 10,
+   "effect": false
+  },
+  {
+   "code": "6017",
+   "name": "May green",
+   "siteHex": "#5c8144",
+   "lab": {
+    "L": 49.029,
+    "a": -25.488,
+    "b": 29.753
+   },
+   "publishedLrv": 18,
+   "effect": false
+  },
+  {
+   "code": "6018",
+   "name": "Yellow green",
+   "siteHex": "#689a45",
+   "lab": {
+    "L": 57.587,
+    "a": -35.153,
+    "b": 42.334
+   },
+   "publishedLrv": 26,
+   "effect": false
+  },
+  {
+   "code": "6019",
+   "name": "Pastel green",
+   "siteHex": "#b8cfad",
+   "lab": {
+    "L": 80.385,
+    "a": -13.069,
+    "b": 14.476
+   },
+   "publishedLrv": 57,
+   "effect": false
+  },
+  {
+   "code": "6020",
+   "name": "Chrome green",
+   "siteHex": "#3b4634",
+   "lab": {
+    "L": 26.338,
+    "a": -8.365,
+    "b": 10.002
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "6021",
+   "name": "Pale green",
+   "siteHex": "#899b79",
+   "lab": {
+    "L": 61.305,
+    "a": -11.717,
+    "b": 16.056
+   },
+   "publishedLrv": 30,
+   "effect": false
+  },
+  {
+   "code": "6022",
+   "name": "Olive drab",
+   "siteHex": "#3b382e",
+   "lab": {
+    "L": 21.685,
+    "a": 1.103,
+    "b": 8.802
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "6024",
+   "name": "Traffic green",
+   "siteHex": "#3a8258",
+   "lab": {
+    "L": 47.925,
+    "a": -44.563,
+    "b": 18.534
+   },
+   "publishedLrv": 17,
+   "effect": false
+  },
+  {
+   "code": "6025",
+   "name": "Fern green",
+   "siteHex": "#5d703e",
+   "lab": {
+    "L": 43.932,
+    "a": -15.048,
+    "b": 26.076
+   },
+   "publishedLrv": 14,
+   "effect": false
+  },
+  {
+   "code": "6026",
+   "name": "Opal green",
+   "siteHex": "#0d5951",
+   "lab": {
+    "L": 34.35,
+    "a": -36.57,
+    "b": 0.829
+   },
+   "publishedLrv": 8,
+   "effect": false
+  },
+  {
+   "code": "6027",
+   "name": "Light green",
+   "siteHex": "#88b5b3",
+   "lab": {
+    "L": 71.56,
+    "a": -20.503,
+    "b": -3.86
+   },
+   "publishedLrv": 43,
+   "effect": false
+  },
+  {
+   "code": "6028",
+   "name": "Pine green",
+   "siteHex": "#3d5547",
+   "lab": {
+    "L": 32.5,
+    "a": -17.091,
+    "b": 6.069
+   },
+   "publishedLrv": 7,
+   "effect": false
+  },
+  {
+   "code": "6029",
+   "name": "Mint green",
+   "siteHex": "#226c45",
+   "lab": {
+    "L": 39.92,
+    "a": -47.213,
+    "b": 19.273
+   },
+   "publishedLrv": 11,
+   "effect": false
+  },
+  {
+   "code": "6032",
+   "name": "Signal green",
+   "siteHex": "#417e57",
+   "lab": {
+    "L": 47.236,
+    "a": -37.788,
+    "b": 16.942
+   },
+   "publishedLrv": 16,
+   "effect": false
+  },
+  {
+   "code": "6033",
+   "name": "Mint turquoise",
+   "siteHex": "#568480",
+   "lab": {
+    "L": 51.934,
+    "a": -22.925,
+    "b": -2.331
+   },
+   "publishedLrv": 20,
+   "effect": false
+  },
+  {
+   "code": "6034",
+   "name": "Pastel turquoise",
+   "siteHex": "#86a9ad",
+   "lab": {
+    "L": 67.128,
+    "a": -16.7,
+    "b": -5.213
+   },
+   "publishedLrv": 37,
+   "effect": false
+  },
+  {
+   "code": "6035",
+   "name": "Pearl green",
+   "siteHex": "#2e4f31",
+   "lab": {
+    "L": 28.366,
+    "a": -27.124,
+    "b": 18.409
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "6036",
+   "name": "Pearl opal green",
+   "siteHex": "#27514a",
+   "lab": {
+    "L": 32.729,
+    "a": -25.854,
+    "b": 0.881
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "6037",
+   "name": "Pure green",
+   "siteHex": "#3f8c3d",
+   "lab": {
+    "L": 50.209,
+    "a": -53.031,
+    "b": 41.386
+   },
+   "publishedLrv": 19,
+   "effect": false
+  },
+  {
+   "code": "6038",
+   "name": "Luminous green ",
+   "siteHex": "#20a339",
+   "lab": {
+    "L": 62.308,
+    "a": -84.293,
+    "b": 57.548
+   },
+   "publishedLrv": 31,
+   "effect": true
+  },
+  {
+   "code": "7000",
+   "name": "Squirrel grey",
+   "siteHex": "#7b858d",
+   "lab": {
+    "L": 55.673,
+    "a": -3.552,
+    "b": -4.905
+   },
+   "publishedLrv": 24,
+   "effect": false
+  },
+  {
+   "code": "7001",
+   "name": "Silver grey",
+   "siteHex": "#8b949b",
+   "lab": {
+    "L": 61.648,
+    "a": -2.346,
+    "b": -4.456
+   },
+   "publishedLrv": 30,
+   "effect": false
+  },
+  {
+   "code": "7002",
+   "name": "Olive grey",
+   "siteHex": "#7d7965",
+   "lab": {
+    "L": 50.775,
+    "a": -0.044,
+    "b": 12.64
+   },
+   "publishedLrv": 19,
+   "effect": false
+  },
+  {
+   "code": "7003",
+   "name": "Moss grey",
+   "siteHex": "#76776a",
+   "lab": {
+    "L": 49.694,
+    "a": -1.244,
+    "b": 7.793
+   },
+   "publishedLrv": 18,
+   "effect": false
+  },
+  {
+   "code": "7004",
+   "name": "Signal grey",
+   "siteHex": "#969799",
+   "lab": {
+    "L": 63.832,
+    "a": 0.185,
+    "b": -0.439
+   },
+   "publishedLrv": 33,
+   "effect": false
+  },
+  {
+   "code": "7005",
+   "name": "Mouse grey",
+   "siteHex": "#696d6b",
+   "lab": {
+    "L": 46.213,
+    "a": -1.581,
+    "b": 1.174
+   },
+   "publishedLrv": 15,
+   "effect": false
+  },
+  {
+   "code": "7006",
+   "name": "Beige grey",
+   "siteHex": "#716c60",
+   "lab": {
+    "L": 45.607,
+    "a": 2.498,
+    "b": 8.713
+   },
+   "publishedLrv": 15,
+   "effect": false
+  },
+  {
+   "code": "7008",
+   "name": "Khaki grey",
+   "siteHex": "#6c6040",
+   "lab": {
+    "L": 41.485,
+    "a": 4.118,
+    "b": 22.658
+   },
+   "publishedLrv": 12,
+   "effect": false
+  },
+  {
+   "code": "7009",
+   "name": "Green grey",
+   "siteHex": "#5b6058",
+   "lab": {
+    "L": 40.2,
+    "a": -2.864,
+    "b": 4.187
+   },
+   "publishedLrv": 11,
+   "effect": false
+  },
+  {
+   "code": "7010",
+   "name": "Tarpaulin grey",
+   "siteHex": "#575b57",
+   "lab": {
+    "L": 38.442,
+    "a": -2.331,
+    "b": 2.593
+   },
+   "publishedLrv": 10,
+   "effect": false
+  },
+  {
+   "code": "7011",
+   "name": "Iron grey",
+   "siteHex": "#535a5e",
+   "lab": {
+    "L": 37.44,
+    "a": -2.068,
+    "b": -3.02
+   },
+   "publishedLrv": 10,
+   "effect": false
+  },
+  {
+   "code": "7012",
+   "name": "Basalt grey",
+   "siteHex": "#595e60",
+   "lab": {
+    "L": 39.159,
+    "a": -2.027,
+    "b": -1.452
+   },
+   "publishedLrv": 11,
+   "effect": false
+  },
+  {
+   "code": "7013",
+   "name": "Brown grey",
+   "siteHex": "#545146",
+   "lab": {
+    "L": 34.343,
+    "a": 0.836,
+    "b": 8.009
+   },
+   "publishedLrv": 8,
+   "effect": false
+  },
+  {
+   "code": "7015",
+   "name": "Slate grey",
+   "siteHex": "#51535a",
+   "lab": {
+    "L": 35.155,
+    "a": -0.229,
+    "b": -3.737
+   },
+   "publishedLrv": 9,
+   "effect": false
+  },
+  {
+   "code": "7016",
+   "name": "Anthracite grey",
+   "siteHex": "#3b4044",
+   "lab": {
+    "L": 25.926,
+    "a": -1.853,
+    "b": -3.407
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "7021",
+   "name": "Black grey",
+   "siteHex": "#323537",
+   "lab": {
+    "L": 20.639,
+    "a": -0.806,
+    "b": -1.325
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "7022",
+   "name": "Umbra grey",
+   "siteHex": "#4c4c47",
+   "lab": {
+    "L": 31.372,
+    "a": -0.001,
+    "b": 3.652
+   },
+   "publishedLrv": 7,
+   "effect": false
+  },
+  {
+   "code": "7023",
+   "name": "Concrete grey",
+   "siteHex": "#7d7f76",
+   "lab": {
+    "L": 53.265,
+    "a": -1.634,
+    "b": 5.038
+   },
+   "publishedLrv": 21,
+   "effect": false
+  },
+  {
+   "code": "7024",
+   "name": "Graphite grey",
+   "siteHex": "#45494e",
+   "lab": {
+    "L": 30.964,
+    "a": -0.314,
+    "b": -3.685
+   },
+   "publishedLrv": 7,
+   "effect": false
+  },
+  {
+   "code": "7026",
+   "name": "Granite grey",
+   "siteHex": "#394345",
+   "lab": {
+    "L": 27.434,
+    "a": -4.013,
+    "b": -3.107
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "7030",
+   "name": "Stone grey",
+   "siteHex": "#8c8c83",
+   "lab": {
+    "L": 59.041,
+    "a": -0.114,
+    "b": 5.3
+   },
+   "publishedLrv": 27,
+   "effect": false
+  },
+  {
+   "code": "7031",
+   "name": "Blue grey",
+   "siteHex": "#5d676d",
+   "lab": {
+    "L": 43.16,
+    "a": -3.593,
+    "b": -4.523
+   },
+   "publishedLrv": 13,
+   "effect": false
+  },
+  {
+   "code": "7032",
+   "name": "Pebble grey",
+   "siteHex": "#b1b1a1",
+   "lab": {
+    "L": 71.941,
+    "a": -0.909,
+    "b": 8.469
+   },
+   "publishedLrv": 44,
+   "effect": false
+  },
+  {
+   "code": "7033",
+   "name": "Cement grey",
+   "siteHex": "#7c8273",
+   "lab": {
+    "L": 53.842,
+    "a": -3.737,
+    "b": 7.189
+   },
+   "publishedLrv": 22,
+   "effect": false
+  },
+  {
+   "code": "7034",
+   "name": "Yellow grey",
+   "siteHex": "#8c8870",
+   "lab": {
+    "L": 56.857,
+    "a": 0.031,
+    "b": 14.835
+   },
+   "publishedLrv": 25,
+   "effect": false
+  },
+  {
+   "code": "7035",
+   "name": "Light grey",
+   "siteHex": "#c2c6c3",
+   "lab": {
+    "L": 80.047,
+    "a": -1.207,
+    "b": 1.387
+   },
+   "publishedLrv": 57,
+   "effect": false
+  },
+  {
+   "code": "7036",
+   "name": "Platinum grey",
+   "siteHex": "#949292",
+   "lab": {
+    "L": 61.233,
+    "a": 1.346,
+    "b": 1.022
+   },
+   "publishedLrv": 30,
+   "effect": false
+  },
+  {
+   "code": "7037",
+   "name": "Dusty grey",
+   "siteHex": "#797b7b",
+   "lab": {
+    "L": 51.431,
+    "a": -0.642,
+    "b": 0.533
+   },
+   "publishedLrv": 20,
+   "effect": false
+  },
+  {
+   "code": "7038",
+   "name": "Agate grey",
+   "siteHex": "#adb0a9",
+   "lab": {
+    "L": 71.73,
+    "a": -1.62,
+    "b": 3.82
+   },
+   "publishedLrv": 43,
+   "effect": false
+  },
+  {
+   "code": "7039",
+   "name": "Quartz grey",
+   "siteHex": "#68675f",
+   "lab": {
+    "L": 43.496,
+    "a": 0.373,
+    "b": 5.56
+   },
+   "publishedLrv": 13,
+   "effect": false
+  },
+  {
+   "code": "7040",
+   "name": "Window grey",
+   "siteHex": "#969ca1",
+   "lab": {
+    "L": 64.7,
+    "a": -1.517,
+    "b": -2.498
+   },
+   "publishedLrv": 34,
+   "effect": false
+  },
+  {
+   "code": "7042",
+   "name": "Traffic grey A",
+   "siteHex": "#8c9190",
+   "lab": {
+    "L": 60.149,
+    "a": -1.676,
+    "b": 0.035
+   },
+   "publishedLrv": 28,
+   "effect": false
+  },
+  {
+   "code": "7043",
+   "name": "Traffic grey B",
+   "siteHex": "#4f5352",
+   "lab": {
+    "L": 34.565,
+    "a": -1.532,
+    "b": 0.596
+   },
+   "publishedLrv": 8,
+   "effect": false
+  },
+  {
+   "code": "7044",
+   "name": "Silk grey",
+   "siteHex": "#b3b2a9",
+   "lab": {
+    "L": 72.904,
+    "a": -0.082,
+    "b": 5.939
+   },
+   "publishedLrv": 45,
+   "effect": false
+  },
+  {
+   "code": "7045",
+   "name": "Telegrey 1",
+   "siteHex": "#8c9094",
+   "lab": {
+    "L": 60.348,
+    "a": -1.428,
+    "b": -1.836
+   },
+   "publishedLrv": 29,
+   "effect": false
+  },
+  {
+   "code": "7046",
+   "name": "Telegrey 2",
+   "siteHex": "#7c8287",
+   "lab": {
+    "L": 55.438,
+    "a": -1.833,
+    "b": -3.188
+   },
+   "publishedLrv": 23,
+   "effect": false
+  },
+  {
+   "code": "7047",
+   "name": "Telegrey 4",
+   "siteHex": "#c5c5c5",
+   "lab": {
+    "L": 80.668,
+    "a": -0.266,
+    "b": 0.82
+   },
+   "publishedLrv": 58,
+   "effect": false
+  },
+  {
+   "code": "7048",
+   "name": "Pearl mouse grey",
+   "siteHex": "#7a7871",
+   "lab": {
+    "L": 51.991,
+    "a": 0.679,
+    "b": 5.105
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "8000",
+   "name": "Green brown",
+   "siteHex": "#816d44",
+   "lab": {
+    "L": 46.778,
+    "a": 7.583,
+    "b": 28.693
+   },
+   "publishedLrv": 16,
+   "effect": false
+  },
+  {
+   "code": "8001",
+   "name": "Ochre brown",
+   "siteHex": "#8f6833",
+   "lab": {
+    "L": 47.08,
+    "a": 18.952,
+    "b": 39.867
+   },
+   "publishedLrv": 16,
+   "effect": false
+  },
+  {
+   "code": "8002",
+   "name": "Signal brown",
+   "siteHex": "#704f40",
+   "lab": {
+    "L": 37.391,
+    "a": 16.881,
+    "b": 16.707
+   },
+   "publishedLrv": 10,
+   "effect": false
+  },
+  {
+   "code": "8003",
+   "name": "Clay brown",
+   "siteHex": "#74502f",
+   "lab": {
+    "L": 37.148,
+    "a": 18.589,
+    "b": 30.287
+   },
+   "publishedLrv": 10,
+   "effect": false
+  },
+  {
+   "code": "8004",
+   "name": "Copper brown",
+   "siteHex": "#814d37",
+   "lab": {
+    "L": 38.964,
+    "a": 26.631,
+    "b": 27.038
+   },
+   "publishedLrv": 11,
+   "effect": false
+  },
+  {
+   "code": "8007",
+   "name": "Fawn brown",
+   "siteHex": "#67492f",
+   "lab": {
+    "L": 33.824,
+    "a": 15.336,
+    "b": 23.6
+   },
+   "publishedLrv": 8,
+   "effect": false
+  },
+  {
+   "code": "8008",
+   "name": "Olive brown",
+   "siteHex": "#694f2b",
+   "lab": {
+    "L": 35.151,
+    "a": 13.225,
+    "b": 28.492
+   },
+   "publishedLrv": 9,
+   "effect": false
+  },
+  {
+   "code": "8011",
+   "name": "Nut brown",
+   "siteHex": "#533a29",
+   "lab": {
+    "L": 27.125,
+    "a": 13.264,
+    "b": 17.081
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "8012",
+   "name": "Red brown",
+   "siteHex": "#5c3128",
+   "lab": {
+    "L": 27.74,
+    "a": 22.005,
+    "b": 15.201
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "8014",
+   "name": "Sepia brown",
+   "siteHex": "#453729",
+   "lab": {
+    "L": 24.029,
+    "a": 7.289,
+    "b": 12.866
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "8015",
+   "name": "Chestnut brown",
+   "siteHex": "#57332b",
+   "lab": {
+    "L": 25.491,
+    "a": 20.675,
+    "b": 15.127
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "8016",
+   "name": "Mahogany brown",
+   "siteHex": "#483026",
+   "lab": {
+    "L": 21.4,
+    "a": 14.371,
+    "b": 13.84
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "8017",
+   "name": "Chocolate brown",
+   "siteHex": "#42332e",
+   "lab": {
+    "L": 21.544,
+    "a": 8.972,
+    "b": 7.368
+   },
+   "publishedLrv": 3,
+   "effect": false
+  },
+  {
+   "code": "8019",
+   "name": "Grey brown",
+   "siteHex": "#3b3736",
+   "lab": {
+    "L": 23.321,
+    "a": 2.993,
+    "b": 1.467
+   },
+   "publishedLrv": 4,
+   "effect": false
+  },
+  {
+   "code": "8022",
+   "name": "Black brown",
+   "siteHex": "#201f20",
+   "lab": {
+    "L": 8.139,
+    "a": 1.932,
+    "b": -0.585
+   },
+   "publishedLrv": 1,
+   "effect": false
+  },
+  {
+   "code": "8023",
+   "name": "Orange brown",
+   "siteHex": "#965d33",
+   "lab": {
+    "L": 45.42,
+    "a": 28.236,
+    "b": 39.65
+   },
+   "publishedLrv": 15,
+   "effect": false
+  },
+  {
+   "code": "8024",
+   "name": "Beige brown",
+   "siteHex": "#6f543c",
+   "lab": {
+    "L": 38.036,
+    "a": 14.136,
+    "b": 20.822
+   },
+   "publishedLrv": 10,
+   "effect": false
+  },
+  {
+   "code": "8025",
+   "name": "Pale brown",
+   "siteHex": "#6e5b4b",
+   "lab": {
+    "L": 39.85,
+    "a": 9.63,
+    "b": 14.49
+   },
+   "publishedLrv": 11,
+   "effect": false
+  },
+  {
+   "code": "8028",
+   "name": "Terra brown",
+   "siteHex": "#4c3e30",
+   "lab": {
+    "L": 26.58,
+    "a": 7.884,
+    "b": 13.812
+   },
+   "publishedLrv": 5,
+   "effect": false
+  },
+  {
+   "code": "8029",
+   "name": "Pearl copper",
+   "siteHex": "#764537",
+   "lab": {
+    "L": 34.763,
+    "a": 26.058,
+    "b": 21.392
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "9001",
+   "name": "Cream",
+   "siteHex": "#e5e1d4",
+   "lab": {
+    "L": 89.616,
+    "a": 0.594,
+    "b": 8.06
+   },
+   "publishedLrv": 75,
+   "effect": false
+  },
+  {
+   "code": "9002",
+   "name": "Grey white",
+   "siteHex": "#d4d5cd",
+   "lab": {
+    "L": 85.07,
+    "a": -1.04,
+    "b": 5.18
+   },
+   "publishedLrv": 66,
+   "effect": false
+  },
+  {
+   "code": "9003",
+   "name": "Signal white",
+   "siteHex": "#ebecea",
+   "lab": {
+    "L": 93.223,
+    "a": -0.644,
+    "b": 2.45
+   },
+   "publishedLrv": 83,
+   "effect": false
+  },
+  {
+   "code": "9004",
+   "name": "Signal black",
+   "siteHex": "#2f3133",
+   "lab": {
+    "L": 17.464,
+    "a": 0.429,
+    "b": -0.837
+   },
+   "publishedLrv": 2,
+   "effect": false
+  },
+  {
+   "code": "9005",
+   "name": "Jet black",
+   "siteHex": "#131516",
+   "lab": {
+    "L": 4.041,
+    "a": 0.091,
+    "b": -0.873
+   },
+   "publishedLrv": 0,
+   "effect": false
+  },
+  {
+   "code": "9006",
+   "name": "White aluminium",
+   "siteHex": "#9a9d9d",
+   "lab": {
+    "L": 66.321,
+    "a": -0.347,
+    "b": 0.545
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "9007",
+   "name": "Grey aluminium",
+   "siteHex": "#828280",
+   "lab": {
+    "L": 55.547,
+    "a": -0.061,
+    "b": 2.142
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "9010",
+   "name": "Pure white",
+   "siteHex": "#efeee5",
+   "lab": {
+    "L": 93.613,
+    "a": -0.425,
+    "b": 6.008
+   },
+   "publishedLrv": 84,
+   "effect": false
+  },
+  {
+   "code": "9011",
+   "name": "Graphite black",
+   "siteHex": "#25282a",
+   "lab": {
+    "L": 16.572,
+    "a": -0.383,
+    "b": -1.735
+   },
+   "publishedLrv": 2,
+   "effect": false
+  },
+  {
+   "code": "9016",
+   "name": "Traffic white",
+   "siteHex": "#eff0eb",
+   "lab": {
+    "L": 94.843,
+    "a": -0.921,
+    "b": 3.28
+   },
+   "publishedLrv": 87,
+   "effect": false
+  },
+  {
+   "code": "9017",
+   "name": "Traffic black",
+   "siteHex": "#262625",
+   "lab": {
+    "L": 16.521,
+    "a": 0.709,
+    "b": -0.582
+   },
+   "publishedLrv": 2,
+   "effect": false
+  },
+  {
+   "code": "9018",
+   "name": "Papyrus white",
+   "siteHex": "#c6cbc6",
+   "lab": {
+    "L": 81.343,
+    "a": -2.293,
+    "b": 2.956
+   },
+   "publishedLrv": 59,
+   "effect": false
+  },
+  {
+   "code": "9022",
+   "name": "Pearl light grey",
+   "siteHex": "#818382",
+   "lab": {
+    "L": 55.474,
+    "a": -0.381,
+    "b": 1.165
+   },
+   "publishedLrv": null,
+   "effect": true
+  },
+  {
+   "code": "9023",
+   "name": "Pearl dark grey",
+   "siteHex": "#767779",
+   "lab": {
+    "L": 51.274,
+    "a": -0.7,
+    "b": -0.279
+   },
+   "publishedLrv": null,
+   "effect": true
+  }
+ ]
+}

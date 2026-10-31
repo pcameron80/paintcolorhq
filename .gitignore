@@ -67,6 +67,11 @@ client_secret_*.json
 # ...except the frozen match-data list and its snapshots, which the build reads
 !/scripts/data/frozen-match-sources.json
 !/scripts/data/frozen-match/
+# ...and the hand-curated inputs from the 2026-11 data audit (docs/data-audit-2026-11.md)
+!/scripts/data/explicit-duplicates.json
+!/scripts/data/vista-identity-plan.json
+!/scripts/data/ral-classic-reference.json
+!/scripts/data/audit-2026-11/
 
 # pre-computed match data (regenerated at build time by scripts/build-match-data.ts)
 /public/match-data/

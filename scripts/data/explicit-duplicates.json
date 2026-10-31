@@ -1,0 +1,680 @@
+{
+ "about": "Explicit duplicate pairs the grouping rules in scripts/lib/dedupe-rules.ts cannot see. Read by scripts/dedupe-colors.ts. The declared canonical is kept; a pair is refused when the loser no longer holds loserCode, when either row is missing, or when the canonical is not in the live feed while the loser is. Source: docs/data-audit-2026-11.md.",
+ "pairs": [
+  {
+   "brand": "behr",
+   "loser": "swiss-coffee-1812-1812",
+   "loserCode": "1812",
+   "canonical": "swiss-coffee-12",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 12 Swiss Coffee; 1812 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "swiss-coffee-w-b-700",
+   "loserCode": "W-B-700",
+   "canonical": "swiss-coffee-12",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 12 Swiss Coffee; W-B-700 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "cottage-white-1813-1813",
+   "loserCode": "1813",
+   "canonical": "cottage-white-13",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 13 Cottage White; 1813 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "cottage-white-w-f-310",
+   "loserCode": "W-F-310",
+   "canonical": "cottage-white-13",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 13 Cottage White; W-F-310 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "cottage-white-or-w9-or-w9",
+   "loserCode": "OR-W9",
+   "canonical": "cottage-white-13",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 13 Cottage White; OR-W9 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "navajo-white-1822-1822",
+   "loserCode": "1822",
+   "canonical": "navajo-white-22",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 22 Navajo White; 1822 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "navajo-white-w-d-320",
+   "loserCode": "W-D-320",
+   "canonical": "navajo-white-22",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 22 Navajo White; W-D-320 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "antique-white-1823-1823",
+   "loserCode": "1823",
+   "canonical": "antique-white-23",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 23 Antique White; 1823 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "antique-white-w-f-320",
+   "loserCode": "W-F-320",
+   "canonical": "antique-white-23",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 23 Antique White; W-F-320 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "white-1852-1852",
+   "loserCode": "1852",
+   "canonical": "white-52",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 52 White; 1852 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "white-w-f-620",
+   "loserCode": "W-F-620",
+   "canonical": "white-52",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 52 White; W-F-620 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "white-bl-w14-bl-w14",
+   "loserCode": "BL-W14",
+   "canonical": "white-52",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 52 White; BL-W14 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "frost-1857-1857",
+   "loserCode": "1857",
+   "canonical": "frost-57",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 57 Frost; 1857 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "frost-w-f-500",
+   "loserCode": "W-F-500",
+   "canonical": "frost-57",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 57 Frost; W-F-500 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "frost-bl-w15-bl-w15",
+   "loserCode": "BL-W15",
+   "canonical": "frost-57",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 57 Frost; BL-W15 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "linen-white-1870-1870",
+   "loserCode": "1870",
+   "canonical": "linen-white-70",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 70 Linen White; 1870 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "linen-white-w-d-310",
+   "loserCode": "W-D-310",
+   "canonical": "linen-white-70",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 70 Linen White; W-D-310 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "off-white-1873-1873",
+   "loserCode": "1873",
+   "canonical": "off-white-73",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 73 Off White; 1873 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "off-white-w-f-420",
+   "loserCode": "W-F-420",
+   "canonical": "off-white-73",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 73 Off White; W-F-420 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "polar-bear-1875-1875",
+   "loserCode": "1875",
+   "canonical": "polar-bear-75",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 75 Polar Bear; 1875 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "polar-bear-w-f-200",
+   "loserCode": "W-F-200",
+   "canonical": "polar-bear-75",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as 75 Polar Bear; W-F-200 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "grape-cr-me-ul250-10",
+   "loserCode": "UL250-10",
+   "canonical": "grape-creme-ppu16-11",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as PPU16-11 Grape Creme; UL250-10 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "behr",
+   "loser": "cathedral-grey-ul260-7",
+   "loserCode": "UL260-7",
+   "canonical": "cathedral-gray-ppu18-14",
+   "finding": "identity-behr-legacy-code-duplicates",
+   "why": "Behr lists this color only as PPU18-14 Cathedral Gray; UL260-7 is absent from behr.com's query index (2026-10-31)"
+  },
+  {
+   "brand": "benjamin-moore",
+   "loser": "white-opulence-879",
+   "loserCode": "879",
+   "canonical": "opulence-oc-69",
+   "finding": "identity-bm-alias-pairs-missed",
+   "why": "BM's API lists 879 and OC-69 as one color, Opulence #F5F2ED"
+  },
+  {
+   "brand": "benjamin-moore",
+   "loser": "charleston-brown-pm-23",
+   "loserCode": "PM-23",
+   "canonical": "charleston-hc-186",
+   "finding": "identity-bm-alias-pairs-missed",
+   "why": "BM redirects PM-23 to HC-186 Charleston Brown #745239; fix HC-186's hex too (audit-2026-11 hex input)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "cyan-sky-c-680",
+   "loserCode": "C-680",
+   "canonical": "cyan-sky-0681",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Cyan Sky as 0681; C-680 is a retired colornerd book code (stored #00b5b6, live #28b7b8)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "happy-face-c-850",
+   "loserCode": "C-850",
+   "canonical": "happy-face-0851",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Happy Face as 0851; C-850 is a retired colornerd book code (stored #ffd300, live #ffd328)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "fresh-scent-c-836",
+   "loserCode": "C-836",
+   "canonical": "fresh-scent-0837",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Fresh Scent as 0837; C-836 is a retired colornerd book code (stored #f0c115, live #f0c32f)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "sun-drops-c-822",
+   "loserCode": "C-822",
+   "canonical": "sun-drops-0823",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Sun Drops as 0823; C-822 is a retired colornerd book code (stored #e9b00d, live #e8b229)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "i-love-to-boogie-c-955",
+   "loserCode": "C-955",
+   "canonical": "i-love-to-boogie-0956",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells I Love To Boogie as 0956; C-955 is a retired colornerd book code (stored #fea800, live #fdab25)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "indian-necklace-c-694",
+   "loserCode": "C-694",
+   "canonical": "island-moment-0695",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Indian Necklace as 0695; C-694 is a retired colornerd book code (stored #43b2a6, live #50b5aa)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "lemon-whisper-c-954",
+   "loserCode": "C-954",
+   "canonical": "lemon-whisper-0955",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Lemon Whisper as 0955; C-954 is a retired colornerd book code (stored #ffb100, live #ffb428)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "sarahs-garden-c-673",
+   "loserCode": "C-673",
+   "canonical": "sarah-s-garden-0674",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Sarah's Garden as 0674; C-673 is a retired colornerd book code (stored #08a9bf, live #2eadc2)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "charybdis-c-660",
+   "loserCode": "C-660",
+   "canonical": "charybdis-0661",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Charybdis as 0661; C-660 is a retired colornerd book code (stored #1da1c9, live #37a5cb)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "meringue-c-695",
+   "loserCode": "C-695",
+   "canonical": "meringue-0696",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Meringue as 0696; C-695 is a retired colornerd book code (stored #009c8c, live #289f90)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "lemon-dream-c-941",
+   "loserCode": "C-941",
+   "canonical": "lemon-dream-0942",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Lemon Dream as 0942; C-941 is a retired colornerd book code (stored #eaa300, live #eca72a)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "zambia-c-962",
+   "loserCode": "C-962",
+   "canonical": "zambia-0963",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Zambia as 0963; C-962 is a retired colornerd book code (stored #ff9600, live #ff9a29)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "center-field-k-280",
+   "loserCode": "K-280",
+   "canonical": "center-field-7565",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Center Field as 7565; K-280 is a retired colornerd book code (stored #008b56, live #218f5d)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "aquadazzle-c-717",
+   "loserCode": "C-717",
+   "canonical": "aquadazzle-0718",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Aquadazzle as 0718; C-717 is a retired colornerd book code (stored #00724b, live #227654)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "day-in-the-garden-k-282",
+   "loserCode": "K-282",
+   "canonical": "day-in-the-garden-7567",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Day in the Garden as 7567; K-282 is a retired colornerd book code (stored #49c49c, live #66c8a0)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "golden-fressia-c-276",
+   "loserCode": "C-276",
+   "canonical": "golden-freesia-0277",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Golden Fressia as 0277; C-276 is a retired colornerd book code (stored #876e49, live #8a7454)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "peaceful-thyme-k-281",
+   "loserCode": "K-281",
+   "canonical": "peaceful-thyme-7566",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Peaceful Thyme as 7566; K-281 is a retired colornerd book code (stored #00b080, live #40b484)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "brookside-k-202",
+   "loserCode": "K-202",
+   "canonical": "brookside-7455",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Brookside as 7455; K-202 is a retired colornerd book code (stored #4aa9b2, live #57afb2)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "hondy-tonk-blue-c-618",
+   "loserCode": "C-618",
+   "canonical": "honky-tonk-blue-0619",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Hondy Tonk Blue as 0619; C-618 is a retired colornerd book code (stored #43668b, live #4f6e90)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "emerald-acres-k-265",
+   "loserCode": "K-265",
+   "canonical": "emerald-acres-7550",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Emerald Acres as 7550; K-265 is a retired colornerd book code (stored #00a283, live #43a687)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "florida-orange-k-552",
+   "loserCode": "K-552",
+   "canonical": "florida-orange-7949",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Florida Orange as 7949; K-552 is a retired colornerd book code (stored #ffaa00, live #ffa528)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "summer-sumac-k-297",
+   "loserCode": "K-297",
+   "canonical": "summer-sumac-7606",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Summer Sumac as 7606; K-297 is a retired colornerd book code (stored #48a469, live #63a26d)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "alexandra-valley-k-242",
+   "loserCode": "K-242",
+   "canonical": "alexandra-valley-7511",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Alexandra Valley as 7511; K-242 is a retired colornerd book code (stored #00bcb5, live #3ec4b6)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "monarch-wing-k-560",
+   "loserCode": "K-560",
+   "canonical": "monarch-wing-7957",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Monarch Wing as 7957; K-560 is a retired colornerd book code (stored #ff9a05, live #ff982f)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "time-to-grow-k-249",
+   "loserCode": "K-249",
+   "canonical": "time-to-grow-7526",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Time to Grow as 7526; K-249 is a retired colornerd book code (stored #2d8e84, live #4a9589)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "elmvale-k-313",
+   "loserCode": "K-313",
+   "canonical": "elmvale-7654",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Elmvale as 7654; K-313 is a retired colornerd book code (stored #69c365, live #85c16a)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "arizona-stone-c-696",
+   "loserCode": "C-696",
+   "canonical": "arizona-stone-0697",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Arizona Stone as 0697; C-696 is a retired colornerd book code (stored #006456, live #206d63)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "cool-turquoise-k-234",
+   "loserCode": "K-234",
+   "canonical": "cool-turquoise-7503",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Cool Turquoise as 7503; K-234 is a retired colornerd book code (stored #06b8b9, live #3ac1b9)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "miss-marigold-k-432",
+   "loserCode": "K-432",
+   "canonical": "miss-marigold-7829",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Miss Marigold as 7829; K-432 is a retired colornerd book code (stored #cdbc09, live #d1b42a)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "wilderness-retreat-k-320",
+   "loserCode": "K-320",
+   "canonical": "wilderness-retreat-7661",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Wilderness Retreat as 7661; K-320 is a retired colornerd book code (stored #5ab32c, live #75ab37)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "hill-and-vale-k-1255",
+   "loserCode": "K-1255",
+   "canonical": "hill-and-vale-ac156",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Hill and Vale as AC156; K-1255 is a retired colornerd book code (stored #0e7046, live #3a7550)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "painters-red-k-680",
+   "loserCode": "K-680",
+   "canonical": "painter-s-red-8093",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Painter's Red as 8093; K-680 is a retired colornerd book code (stored #cf252b, live #c74041)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "golden-autumn-k-520",
+   "loserCode": "K-520",
+   "canonical": "golden-autumn-7917",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Golden Autumn as 7917; K-520 is a retired colornerd book code (stored #f0a90a, live #f2a32f)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "aqua-marine-k-201",
+   "loserCode": "K-201",
+   "canonical": "aqua-marine-7454",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Aqua Marine as 7454; K-201 is a retired colornerd book code (stored #088e95, live #34999a)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "cha-cha-k-1202",
+   "loserCode": "K-1202",
+   "canonical": "cha-cha-ac103",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Cha Cha as AC103; K-1202 is a retired colornerd book code (stored #eec400, live #f4bc24)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "lots-of-lime-k-1258",
+   "loserCode": "K-1258",
+   "canonical": "lots-of-lime-ac159",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Lots of Lime as AC159; K-1258 is a retired colornerd book code (stored #63b125, live #7fab37)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "jolly-holly-k-312",
+   "loserCode": "K-312",
+   "canonical": "jolly-holly-7653",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Jolly Holly as 7653; K-312 is a retired colornerd book code (stored #2aa238, live #5ca54a)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "valentines-kiss-k-1231",
+   "loserCode": "K-1231",
+   "canonical": "valentine-s-kiss-ac132",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Valentine's Kiss as AC132; K-1231 is a retired colornerd book code (stored #ae3162, live #a74a6c)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "emerald-lights-k-1254",
+   "loserCode": "K-1254",
+   "canonical": "emerald-lights-ac155",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Emerald Lights as AC155; K-1254 is a retired colornerd book code (stored #096845, live #386d50)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "curry-flurry-k-1206",
+   "loserCode": "K-1206",
+   "canonical": "curry-flurry-ac107",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Curry Flurry as AC107; K-1206 is a retired colornerd book code (stored #da9e19, live #dc9835)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "enchanted-evergreen-k-248",
+   "loserCode": "K-248",
+   "canonical": "enchanted-evergreen-7525",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Enchanted Evergreen as 7525; K-248 is a retired colornerd book code (stored #006059, live #2a6d62)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "red-baron-k-672",
+   "loserCode": "K-672",
+   "canonical": "red-baron-8085",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Red Baron as 8085; K-672 is a retired colornerd book code (stored #be2535, live #b5464a)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "mountain-mist-k-224",
+   "loserCode": "K-224",
+   "canonical": "mountain-mist-7485",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Mountain Mist as 7485; K-224 is a retired colornerd book code (stored #0e535a, live #2d6265)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "its-the-berries-k-720",
+   "loserCode": "K-720",
+   "canonical": "it-s-the-berries-8133",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells It's the Berries as 8133; K-720 is a retired colornerd book code (stored #932944, live #954354)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "the-back-nine-k-288",
+   "loserCode": "K-288",
+   "canonical": "the-back-nine-7581",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells The Back Nine as 7581; K-288 is a retired colornerd book code (stored #236843, live #457052)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "forever-green-k-296",
+   "loserCode": "K-296",
+   "canonical": "forever-green-7605",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Forever Green as 7605; K-296 is a retired colornerd book code (stored #1f7d43, live #4c8253)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "jays-new-toy-k-704",
+   "loserCode": "K-704",
+   "canonical": "jay-s-new-toy-8117",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Jay's New Toy as 8117; K-704 is a retired colornerd book code (stored #a0293d, live #95454e)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "brightn-shiny-k-1208",
+   "loserCode": "K-1208",
+   "canonical": "bright-n-shiny-ac109",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Bright'n Shiny as AC109; K-1208 is a retired colornerd book code (stored #ffb700, live #ffa719)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "francesca-k-712",
+   "loserCode": "K-712",
+   "canonical": "francesca-8125",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Francesca as 8125; K-712 is a retired colornerd book code (stored #9f253d, live #95444f)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "cape-royal-k-856",
+   "loserCode": "K-856",
+   "canonical": "cape-royal-8341",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Cape Royal as 8341; K-856 is a retired colornerd book code (stored #294344, live #425556)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "night-edition-k-184",
+   "loserCode": "K-184",
+   "canonical": "night-edition-7429",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Night Edition as 7429; K-184 is a retired colornerd book code (stored #1b485d, live #395b6a)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "wavy-navy-k-1245",
+   "loserCode": "K-1245",
+   "canonical": "wavy-navy-ac146",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Wavy Navy as AC146; K-1245 is a retired colornerd book code (stored #005488, live #1d668c)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "blue-by-you-k-144",
+   "loserCode": "K-144",
+   "canonical": "blue-by-you-7357",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Blue By You as 7357; K-144 is a retired colornerd book code (stored #064f77, live #2c6480)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "iris-illusion-k-24",
+   "loserCode": "K-24",
+   "canonical": "iris-illusion-7157",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Iris Illusion as 7157; K-24 is a retired colornerd book code (stored #583e7b, live #605786)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "kitty-kitty-k-784",
+   "loserCode": "K-784",
+   "canonical": "kitty-kitty-8253",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Kitty Kitty as 8253; K-784 is a retired colornerd book code (stored #282728, live #434343)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "citadel-blue-k-168",
+   "loserCode": "K-168",
+   "canonical": "citadel-blue-7405",
+   "finding": "identity-vista-legacy-duplicates",
+   "why": "Vista sells Citadel Blue as 7405; K-168 is a retired colornerd book code (stored #00547b, live #006981)"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "goldfinch-k-545",
+   "loserCode": "K-545",
+   "canonical": "goldfinch-7942",
+   "finding": "identity-vista-reconcile-mispaired",
+   "requires": "fix-vista-identities.ts --apply",
+   "why": "goldfinch-k-545 was re-pointed at another color in June; its own color is live as goldfinch-7942"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "sporty-yellow-k-1203",
+   "loserCode": "K-1203",
+   "canonical": "sporty-yellow-ac104",
+   "finding": "identity-vista-reconcile-mispaired",
+   "requires": "fix-vista-identities.ts --apply",
+   "why": "sporty-yellow-k-1203 was re-pointed at another color in June; its own color is live as sporty-yellow-ac104"
+  },
+  {
+   "brand": "vista-paint",
+   "loser": "woodland-fern-k-272",
+   "loserCode": "K-272",
+   "canonical": "woodland-fern-7557",
+   "finding": "identity-vista-reconcile-mispaired",
+   "requires": "fix-vista-identities.ts --apply",
+   "why": "woodland-fern-k-272 was re-pointed at another color in June; its own color is live as woodland-fern-7557"
+  }
+ ]
+}
