@@ -291,16 +291,15 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   };
   const shareUrl = () => `${window.location.origin}${sharePath()}`;
 
-  // Saves the room as a JPEG with a credit band. The band lists the surfaces that
-  // were repainted, so a blogger's readers can see which colors the image shows.
+  // Saves the room as a JPEG with a credit band naming the colors it shows, so a
+  // blogger's readers can find them.
   const downloadImage = async () => {
     setDownloading(true);
     setDownloadError(false);
     let url: string | undefined;
     try {
-      const painted = regions
-        .filter((r) => colors[r.id].toUpperCase() !== DEFAULT_COLORS[r.id].toUpperCase())
-        .map((r) => ({ label: r.id === "walls" ? "Walls" : r.label, hex: colors[r.id] }));
+      // Same surfaces a project save takes: both walls always, the rest once repainted.
+      const painted = savedRegions.map((r) => ({ label: r.id === "walls" ? "Walls" : r.label, hex: colors[r.id] }));
       const blob = await renderRoomJpeg(room, surfaceColors, painted);
       url = URL.createObjectURL(blob);
       const a = document.createElement("a");
