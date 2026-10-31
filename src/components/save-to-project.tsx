@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useAuthUser } from "@/lib/use-auth-user";
 
-const ROLES = ["walls", "trim", "accent", "pop"];
+const ROLES = ["walls", "trim", "accent", "cabinets", "windows", "pop"];
 
 interface Project {
   id: string;
