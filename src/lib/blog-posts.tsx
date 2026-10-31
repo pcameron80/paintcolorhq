@@ -5996,7 +5996,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     slug: "best-beige-paint-colors",
-    modifiedDate: "2026-10-30",
+    modifiedDate: "2026-10-31",
     title: "The Best Beige & Warm Neutral Paint Colors (2026)",
     date: "2026-07-24",
     author: "Philip Cameron",
@@ -6300,7 +6300,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     slug: "best-sage-green-paint-colors",
-    modifiedDate: "2026-10-30",
+    modifiedDate: "2026-10-31",
     title: "The Best Sage Green Paint Colors for Every Room (2026)",
     date: "2026-07-10",
     author: "Philip Cameron",
@@ -6625,7 +6625,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-greige-paint-colors",
     title: "The Best Greige Paint Colors for Every Room (2026)",
     date: "2026-06-26",
-    modifiedDate: "2026-10-30",
+    modifiedDate: "2026-10-31",
     author: "Philip Cameron",
     excerpt:
       "Ten greige paint colors, from Agreeable Gray to Revere Pewter, with each one's LRV, measured warmth, warm or cool lean and closest SW, BM and Behr match.",
@@ -9204,7 +9204,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-nursery-paint-colors",
     title: "13 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last)",
     date: "2026-01-29",
-    modifiedDate: "2026-10-30",
+    modifiedDate: "2026-10-31",
     author: "Philip Cameron",
     excerpt:
       "13 gender-neutral nursery paint colors in soft greens, dusty blues, warm whites and muted pinks, with LRVs, cross-brand matches and what to check on the label.",
@@ -10619,7 +10619,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-paint-colors-east-facing-rooms",
     title: "The Best Paint Colors for East-Facing Rooms",
     date: "2025-12-26",
-    modifiedDate: "2026-10-30",
+    modifiedDate: "2026-10-31",
     author: "Philip Cameron",
     excerpt:
       "East-facing rooms get direct morning sun and cool afternoon light. Thirteen colors that hold up in both, with LRV, measured warmth and SW, BM and Behr matches.",
