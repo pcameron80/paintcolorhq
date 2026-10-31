@@ -3982,6 +3982,7 @@ const blogPosts: BlogPost[] = [
     slug: "front-door-paint-colors",
     title: "Front Door Paint Colors for Siding and Brick",
     date: "2026-10-20",
+    modifiedDate: "2026-10-26",
     author: "Philip Cameron",
     excerpt:
       "15 front door colors with their closest Behr and Valspar matches, the colors paint makers pair with each, door paint specs, and the storm-door rule for dark doors.",
@@ -4952,7 +4953,7 @@ const blogPosts: BlogPost[] = [
   },
   {
     slug: "hale-navy-bm-hc-154",
-    modifiedDate: "2026-10-11",
+    modifiedDate: "2026-10-26",
     title: "Hale Navy (BM HC-154): Undertones, Coordinating Colors & Cross-Brand Matches",
     date: "2026-09-04",
     author: "Philip Cameron",

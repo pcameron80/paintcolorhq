@@ -269,26 +269,31 @@ export async function plausibleDaily(r: Range, dates: string[]): Promise<TrendRo
 }
 
 /**
- * Visitor-days over 100 page views, the API version of
- * scripts/analytics/heavy-hitters.sql. The API cannot group by visitor, so
- * this groups by day and session fingerprint (city, browser, OS, device) and
- * flags groups averaging over 100 page views per visitor: such a group holds
- * at least one heavy hitter. Checked against the SQL on 2026-10-21..29 (ET):
- * the same 10 visitor-days, no false positives. Page views are the whole
- * group's, so they can include a few ordinary visitors who share the fingerprint.
+ * Likely bots: visitor-days over 100 page views that arrived with no referrer.
+ * The API cannot group by visitor, so this groups by day, source and session
+ * fingerprint (city, browser, OS, device) and flags no-referrer groups averaging
+ * over 100 page views per visitor. Page views are the whole group's, so they can
+ * include a few ordinary visitors who share the fingerprint.
+ *
+ * Referred heavy visitors are left out on purpose. On 2026-10-21..31 (UTC) the
+ * 12 visitor-days over 100 page views split cleanly: all 4 with no referrer were
+ * automated (3 were the Tokyo Edge crawler walking the Behr catalog A-Z, denied
+ * by the firewall from 2026-10-31), while the 8 arriving from Google, Bing,
+ * DuckDuckGo or Reddit read one brand or family for hours, like people do.
  */
 export async function plausibleHeavyHitters(r: Range): Promise<HeavyDay[]> {
   const res = await query({
     metrics: ["visitors", "pageviews", "visits"],
     date_range: [r.start, r.end],
-    dimensions: ["time:day", "visit:city", "visit:browser", "visit:os", "visit:device"],
+    dimensions: ["time:day", "visit:source", "visit:city", "visit:browser", "visit:os", "visit:device"],
     order_by: [["pageviews", "desc"]],
     pagination: { limit: 1000 },
   });
   const byDate = new Map<string, HeavyDay>();
   for (const x of res.results) {
     const [visitors, pv, visits] = x.metrics;
-    if (pv <= 100 * visitors) continue;
+    const source = x.dimensions[1];
+    if (pv <= 100 * visitors || (source && source !== "Direct / None")) continue;
     const date = x.dimensions[0].slice(0, 10);
     const d = byDate.get(date) ?? { date, visitorDays: 0, visits: 0, pageViews: 0 };
     d.visitorDays += 1;
