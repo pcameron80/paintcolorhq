@@ -2,14 +2,25 @@ import "server-only";
 import { GoogleAuth } from "google-auth-library";
 import cityCoords from "@/generated/city-coords.json";
 import { normalizePlace } from "@/lib/place-key";
-import { plausibleConfigured, plausibleRealtime, plausibleToday } from "@/lib/admin-plausible";
+import {
+  PLAUSIBLE_FIRST_DAY,
+  plausibleChannels,
+  plausibleConfigured,
+  plausibleCountries,
+  plausibleDaily,
+  plausibleGoals,
+  plausibleHeavyHitters,
+  plausibleLanding,
+  plausibleRealtime,
+  plausibleToday,
+} from "@/lib/admin-plausible";
 import type {
-  ChannelRow,
-  CountryRow,
+  ChannelsData,
+  CountriesData,
   DailyData,
   DailyRow,
   EventRow,
-  LandingRow,
+  LandingData,
   LiveResponse,
   MapPoint,
   NameCount,
@@ -20,6 +31,7 @@ import type {
   Section,
   Summary,
   TodayData,
+  TrendData,
 } from "@/lib/admin-analytics-types";
 
 /*
@@ -333,6 +345,67 @@ async function loadDaily(): Promise<DailyData> {
   return { rows, summary: summary.ok ? summary.data : null };
 }
 
+// ---- 7-day sections: Plausible first, GA4 when Plausible is unavailable
+
+/** The 7 full days ending yesterday, and the 7 before them (ET). */
+function weekRanges() {
+  const today = todayStr();
+  return {
+    current: { start: shiftDate(today, -7), end: shiftDate(today, -1) },
+    previous: { start: shiftDate(today, -14), end: shiftDate(today, -8) },
+  };
+}
+
+/** Plausible when configured and answering; otherwise the GA4 loader. */
+async function preferPlausible<T>(section: string, plausible: () => Promise<T>, ga4: () => Promise<T>): Promise<Section<T>> {
+  if (plausibleConfigured()) {
+    const p = await safe(`plausible ${section}`, plausible);
+    if (p.ok) return p;
+  }
+  return safe(section, ga4);
+}
+
+/**
+ * Daily trend from Plausible, starting at its first full day and growing to
+ * 28 days by 2026-11-18. It is not spliced onto GA4's earlier days: Plausible
+ * counts visitors who decline cookies (and bots GA4 filters), so a spliced
+ * line would jump on the switch day and read as growth.
+ */
+async function plausibleTrend(): Promise<TrendData> {
+  const today = todayStr();
+  const first = [shiftDate(today, -28), PLAUSIBLE_FIRST_DAY].sort()[1];
+  const end = shiftDate(today, -1);
+  if (first > end) throw new Error("No full Plausible days yet");
+  const dates: string[] = [];
+  for (let d = first; d <= end; d = shiftDate(d, 1)) dates.push(d);
+  const range = { start: first, end };
+  const [rows, heavy] = await Promise.all([plausibleDaily(range, dates), plausibleHeavyHitters(range)]);
+  const week = weekRanges().current;
+  const inWeek = (d: string) => d >= week.start && d <= week.end;
+  const weekPv = rows.filter((r) => inWeek(r.date)).reduce((a, r) => a + r.pageViews, 0);
+  const weekHeavy = heavy.filter((h) => inWeek(h.date));
+  const heavyPv = weekHeavy.reduce((a, h) => a + h.pageViews, 0);
+  return {
+    source: "plausible",
+    rows,
+    heavy,
+    heavy7: {
+      visitorDays: weekHeavy.reduce((a, h) => a + h.visitorDays, 0),
+      pageViews: heavyPv,
+      share: weekPv ? heavyPv / weekPv : 0,
+    },
+  };
+}
+
+function gaTrend(daily: DailyData): TrendData {
+  return {
+    source: "ga4",
+    rows: daily.rows.map((r) => ({ date: r.date, visitors: r.users, visits: r.sessions, pageViews: r.pageViews })),
+    heavy: null,
+    heavy7: null,
+  };
+}
+
 const AI_SOURCE = /(chatgpt|openai|perplexity|claude\.ai|anthropic|gemini\.google|copilot|bard|you\.com|phind|poe\.com|deepseek|grok|meta\.ai|mistral)/i;
 
 const CHANNEL_LABELS: Record<string, string> = {
@@ -348,7 +421,7 @@ const CHANNEL_LABELS: Record<string, string> = {
   Unassigned: "Unknown",
 };
 
-async function loadChannels(): Promise<ChannelRow[]> {
+async function loadGaChannels(): Promise<ChannelsData> {
   const report = await runReport({
     dateRanges: [{ startDate: "7daysAgo", endDate: "yesterday" }],
     dimensions: [{ name: "sessionDefaultChannelGroup" }, { name: "sessionSource" }],
@@ -361,12 +434,34 @@ async function loadChannels(): Promise<ChannelRow[]> {
     if (AI_SOURCE.test(dim(r, 1))) key = "AI Assistants";
     totals.set(key, (totals.get(key) ?? 0) + met(r, 0));
   }
-  return [...totals.entries()]
-    .map(([key, sessions]) => ({ key, label: CHANNEL_LABELS[key] ?? key, sessions }))
-    .sort((a, b) => b.sessions - a.sessions);
+  const rows = [...totals.entries()]
+    .map(([key, visits]) => ({ key, label: CHANNEL_LABELS[key] ?? key, visits }))
+    .sort((a, b) => b.visits - a.visits);
+  return { source: "ga4", rows };
 }
 
-async function loadLanding(): Promise<LandingRow[]> {
+/** GA4 engagement rate per landing path, joined onto Plausible's entry pages. */
+async function gaEngagementByLanding(paths: string[]): Promise<Map<string, number>> {
+  if (!paths.length) return new Map();
+  const report = await runReport({
+    dateRanges: [{ startDate: "7daysAgo", endDate: "yesterday" }],
+    dimensions: [{ name: "landingPage" }],
+    metrics: [{ name: "engagementRate" }],
+    dimensionFilter: { filter: { fieldName: "landingPage", inListFilter: { values: paths } } },
+    limit: 50,
+  });
+  return new Map((report.rows ?? []).map((r) => [dim(r, 0), met(r, 0)]));
+}
+
+async function loadPlausibleLanding(): Promise<LandingData> {
+  const p = await plausibleLanding(weekRanges().current);
+  // Engagement rate is GA4 only. Leave it off if GA4 does not answer.
+  const engaged = await safe("landing engagement", () => gaEngagementByLanding(p.rows.map((r) => r.path)));
+  const rows = p.rows.map((r) => ({ ...r, engagementRate: engaged.ok ? engaged.data.get(r.path) : undefined }));
+  return { source: "plausible", rows, bounce: p.bounce, bounceFrom: p.bounceFrom };
+}
+
+async function loadGaLanding(): Promise<LandingData> {
   const report = await runReport({
     dateRanges: [{ startDate: "7daysAgo", endDate: "yesterday" }],
     dimensions: [{ name: "landingPagePlusQueryString" }],
@@ -374,7 +469,8 @@ async function loadLanding(): Promise<LandingRow[]> {
     orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
     limit: 10,
   });
-  return (report.rows ?? []).map((r) => ({ path: dim(r, 0), sessions: met(r, 0), engagementRate: met(r, 1) }));
+  const rows = (report.rows ?? []).map((r) => ({ path: dim(r, 0), visits: met(r, 0), engagementRate: met(r, 1) }));
+  return { source: "ga4", rows, bounce: "none", bounceFrom: null };
 }
 
 const EVENT_LABELS: Record<string, string> = {
@@ -386,8 +482,20 @@ const EVENT_LABELS: Record<string, string> = {
   color_swatch_click: "Color swatch clicked",
 };
 
-async function loadEvents(): Promise<EventRow[]> {
-  const names = Object.keys(EVENT_LABELS);
+/**
+ * GA4 event name to Plausible goal, as mirrored by trackEvent in
+ * src/lib/analytics.ts and confirmed against the goals table on the NAS.
+ * Plausible's Tool Use counts actual uses only; GA4's tool_use also counts
+ * every tool page open. Events without a goal stay on GA4.
+ */
+const PLAUSIBLE_GOALS: Record<string, string> = {
+  retailer_click: "Retailer Click",
+  color_search: "Color Search",
+  color_compare: "Compare",
+  tool_use: "Tool Use",
+};
+
+async function gaEventCounts(names: string[]): Promise<EventRow[]> {
   const report = await runReport({
     dateRanges: [
       { startDate: "7daysAgo", endDate: "yesterday", name: "current" },
@@ -398,7 +506,9 @@ async function loadEvents(): Promise<EventRow[]> {
     dimensionFilter: { filter: { fieldName: "eventName", inListFilter: { values: names } } },
     limit: 20,
   });
-  const out = new Map<string, EventRow>(names.map((n) => [n, { name: n, label: EVENT_LABELS[n], current: 0, previous: 0 }]));
+  const out = new Map<string, EventRow>(
+    names.map((n) => [n, { name: n, label: EVENT_LABELS[n], current: 0, previous: 0, source: "ga4" as const }]),
+  );
   for (const r of report.rows ?? []) {
     const row = out.get(dim(r, 0));
     if (!row) continue;
@@ -406,10 +516,37 @@ async function loadEvents(): Promise<EventRow[]> {
     if (dim(r, 1) === "previous") row.previous = met(r, 0);
     else row.current = met(r, 0);
   }
-  return [...out.values()].sort((a, b) => b.current - a.current);
+  return [...out.values()];
 }
 
-async function loadCountries(): Promise<CountryRow[]> {
+const byCurrent = (rows: EventRow[]) => rows.sort((a, b) => b.current - a.current);
+
+async function loadPlausibleEvents(): Promise<EventRow[]> {
+  const { current, previous } = weekRanges();
+  const goals = Object.values(PLAUSIBLE_GOALS);
+  // No comparison while the previous week starts before Plausible has data.
+  const hasPrevious = previous.start >= PLAUSIBLE_FIRST_DAY;
+  const [cur, prev] = await Promise.all([
+    plausibleGoals(current, goals),
+    hasPrevious ? plausibleGoals(previous, goals) : Promise.resolve(null),
+  ]);
+  const rows: EventRow[] = Object.entries(PLAUSIBLE_GOALS).map(([name, goal]) => ({
+    name,
+    label: EVENT_LABELS[name],
+    current: cur.get(goal) ?? 0,
+    previous: prev ? (prev.get(goal) ?? 0) : null,
+    source: "plausible",
+  }));
+  const gaNames = Object.keys(EVENT_LABELS).filter((n) => !PLAUSIBLE_GOALS[n]);
+  const ga = await safe("events (GA4 only)", () => gaEventCounts(gaNames));
+  return byCurrent(ga.ok ? [...rows, ...ga.data] : rows);
+}
+
+async function loadGaEvents(): Promise<EventRow[]> {
+  return byCurrent(await gaEventCounts(Object.keys(EVENT_LABELS)));
+}
+
+async function loadGaCountries(): Promise<CountriesData> {
   const report = await runReport({
     dateRanges: [{ startDate: "7daysAgo", endDate: "yesterday" }],
     dimensions: [{ name: "country" }],
@@ -417,22 +554,29 @@ async function loadCountries(): Promise<CountryRow[]> {
     orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
     limit: 6,
   });
-  return (report.rows ?? []).map((r) => ({ country: dim(r, 0), sessions: met(r, 0) }));
+  return { source: "ga4", rows: (report.rows ?? []).map((r) => ({ country: dim(r, 0), visits: met(r, 0) })) };
 }
 
 async function loadReports(): Promise<ReportsData> {
-  const [daily, channels, landing, events, countries] = await Promise.all([
-    safe("daily", loadDaily),
-    safe("channels", loadChannels),
-    safe("landing", loadLanding),
-    safe("events", loadEvents),
-    safe("countries", loadCountries),
+  const week = weekRanges().current;
+  const dailyP = safe("daily", loadDaily);
+  const [daily, trend, channels, landing, events, countries] = await Promise.all([
+    dailyP,
+    preferPlausible("trend", plausibleTrend, async () => {
+      const d = await dailyP;
+      if (!d.ok) throw new Error("GA4 daily unavailable");
+      return gaTrend(d.data);
+    }),
+    preferPlausible("channels", async () => ({ source: "plausible" as const, rows: await plausibleChannels(week) }), loadGaChannels),
+    preferPlausible("landing", loadPlausibleLanding, loadGaLanding),
+    preferPlausible("events", loadPlausibleEvents, loadGaEvents),
+    preferPlausible("countries", async () => ({ source: "plausible" as const, rows: await plausibleCountries(week) }), loadGaCountries),
   ]);
-  return { daily, channels, landing, events, countries, fetchedAt: Date.now() };
+  return { daily, trend, channels, landing, events, countries, fetchedAt: Date.now() };
 }
 
 export function getReports(): Promise<ReportsData> {
-  const allOk = (r: ReportsData) => r.daily.ok && r.channels.ok && r.landing.ok && r.events.ok && r.countries.ok;
+  const allOk = (r: ReportsData) => r.daily.ok && r.trend.ok && r.channels.ok && r.landing.ok && r.events.ok && r.countries.ok;
   return cached(reportsCache, 10 * 60_000, loadReports, allOk);
 }
 

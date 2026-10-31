@@ -2,7 +2,18 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import type { LiveResponse, PeriodStats, Section, Summary, TodayData, TodayStats } from "@/lib/admin-analytics-types";
+import type {
+  DataSource,
+  EventRow,
+  LandingData,
+  LiveResponse,
+  PeriodStats,
+  Section,
+  Summary,
+  TodayData,
+  TodayStats,
+  TrendData,
+} from "@/lib/admin-analytics-types";
 import { BarList, LineChart, MinuteBars } from "./charts";
 import { WorldMap } from "./world-map";
 import { ago, fmtDecimal, fmtNum, fmtPct, pointDelta, relDelta, shortDate, type Delta } from "./format";
@@ -12,6 +23,10 @@ const FULL_MS = 10 * 60_000;
 // GA4 turned on its bot-traffic data filter on this date. Days before it still
 // include bots, so any comparison across it reads low. Update if the filter changes.
 const BOT_FILTER_DATE = "Oct 20, 2026";
+
+const SOURCE_NAME: Record<DataSource, string> = { plausible: "Plausible", ga4: "GA4" };
+const WEEK = "Last 7 full days";
+const fromSource = (s: DataSource) => `from ${SOURCE_NAME[s]}`;
 
 /*
  * Colors follow the dataviz palette (blue slot 1, orange slot 2), stepped for
@@ -165,11 +180,11 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
             )}
           </Card>
 
-          <Card className="lg:col-span-8" title="Where visitors are">
+          <Card className="lg:col-span-8" title="Where visitors are" note={rt.ok ? `Last 30 minutes, ${fromSource(rt.data.source)}` : undefined}>
             {rt.ok ? <WorldMap points={rt.data.points} /> : <Unavailable what="Live visitor data" />}
           </Card>
 
-          <Card className="lg:col-span-4" title="Pages being viewed now">
+          <Card className="lg:col-span-4" title="Pages being viewed now" note={rt.ok ? `Last 30 minutes, ${fromSource(rt.data.source)}` : undefined}>
             {rt.ok ? (
               <BarList rows={rt.data.pages.map((p) => ({ label: p.name, value: p.value }))} empty="No one is on the site." />
             ) : (
@@ -177,58 +192,49 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
             )}
           </Card>
 
-          <Card className="lg:col-span-12" title="Visits per day" note="The 28 complete days ending yesterday.">
-            {reports.daily.ok ? (
-              <LineChart
-                ariaLabel="Daily sessions over the last 28 days"
-                unit="visits"
-                points={reports.daily.data.rows.map((r) => ({ label: shortDate(r.date), value: r.sessions }))}
-              />
-            ) : (
-              <Unavailable what="Analytics data" />
-            )}
-            <p className="mt-3 text-xs" style={{ color: "var(--v-muted)" }}>
-              Bot traffic is excluded from {BOT_FILTER_DATE}; earlier days include it, so comparisons across that date read low.
-            </p>
-          </Card>
+          <TrendCard trend={reports.trend} />
 
           <SearchCards search={data.search} />
 
-          <Card className="lg:col-span-6" title="Where visits come from" note="Last 7 full days">
+          <Card
+            className="lg:col-span-6"
+            title="Where visits come from"
+            note={reports.channels.ok ? `${WEEK}, ${fromSource(reports.channels.data.source)}` : WEEK}
+          >
             {reports.channels.ok ? (
-              <BarList rows={reports.channels.data.map((c) => ({ label: c.label, value: c.sessions }))} />
+              <BarList rows={reports.channels.data.rows.map((c) => ({ label: c.label, value: c.visits }))} />
             ) : (
               <Unavailable what="Analytics data" />
             )}
           </Card>
 
-          <Card className="lg:col-span-6" title="Top landing pages" note="Last 7 full days">
-            {reports.landing.ok ? (
-              <BarList
-                rows={reports.landing.data.map((l) => ({
-                  label: l.path,
-                  value: l.sessions,
-                  sub: `${fmtPct(l.engagementRate)} engaged`,
-                }))}
-              />
-            ) : (
-              <Unavailable what="Analytics data" />
-            )}
-          </Card>
+          <LandingCard landing={reports.landing} />
 
-          <Card className="lg:col-span-4" title="What people do" note="Last 7 full days vs the 7 before">
+          <Card
+            className="lg:col-span-4"
+            title="What people do"
+            note={`${WEEK} vs the 7 before. Each row names its source.${
+              reports.events.ok && reports.events.data.some((e) => e.previous === null)
+                ? " Plausible rows show no change until Nov 4, when the prior week is all Plausible data."
+                : ""
+            }`}
+          >
             {reports.events.ok ? <EventList rows={reports.events.data} /> : <Unavailable what="Analytics data" />}
           </Card>
 
-          <Card className="lg:col-span-4" title="Top countries" note="Last 7 full days">
+          <Card
+            className="lg:col-span-4"
+            title="Top countries"
+            note={reports.countries.ok ? `${WEEK}, ${fromSource(reports.countries.data.source)}` : WEEK}
+          >
             {reports.countries.ok ? (
-              <BarList rows={reports.countries.data.map((c) => ({ label: c.country, value: c.sessions }))} />
+              <BarList rows={reports.countries.data.rows.map((c) => ({ label: c.country, value: c.visits }))} />
             ) : (
               <Unavailable what="Analytics data" />
             )}
           </Card>
 
-          <Card className="lg:col-span-4" title="Top Google searches" note={data.search.ok ? `7 days to ${shortDate(data.search.data.lastDate)}` : undefined}>
+          <Card className="lg:col-span-4" title="Top Google searches" note={data.search.ok ? `7 days to ${shortDate(data.search.data.lastDate)}, from Search Console` : undefined}>
             {data.search.ok ? (
               <BarList
                 rows={data.search.data.queries.map((q) => ({
@@ -369,24 +375,103 @@ function tile(
   return { label, value: fmt(pick(yest)), avg: fmt(pick(avg)), delta: cmp(pick(yest), pick(avg)) };
 }
 
-function EventList({ rows }: { rows: { name: string; label: string; current: number; previous: number }[] }) {
+function EventList({ rows }: { rows: EventRow[] }) {
   return (
     <ul className="space-y-3">
       {rows.map((r) => {
-        const d = relDelta(r.current, r.previous);
+        const d = r.previous === null ? null : relDelta(r.current, r.previous);
+        let change = "";
+        if (d) change = `${d.dir === "up" ? "▲" : d.dir === "down" ? "▼" : "■"} ${d.text}`;
+        else if (r.previous === 0 && r.current > 0) change = "new";
         return (
           <li key={r.name} className="flex items-baseline justify-between gap-3 text-sm">
-            <span>{r.label}</span>
+            <span>
+              {r.label}
+              <span className="ml-2 text-[11px]" style={{ color: "var(--v-muted)" }}>
+                {SOURCE_NAME[r.source]}
+              </span>
+            </span>
             <span className="text-right tabular-nums">
               {fmtNum(r.current)}
               <span className="ml-2 text-xs" style={{ color: "var(--v-muted)" }}>
-                {d ? `${d.dir === "up" ? "▲" : d.dir === "down" ? "▼" : "■"} ${d.text}` : r.previous === 0 && r.current > 0 ? "new" : ""}
+                {change}
               </span>
             </span>
           </li>
         );
       })}
     </ul>
+  );
+}
+
+function TrendCard({ trend }: { trend: Section<TrendData> }) {
+  if (!trend.ok) {
+    return (
+      <Card className="lg:col-span-12" title="Visits per day">
+        <Unavailable what="Analytics data" />
+      </Card>
+    );
+  }
+  const { source, rows, heavy, heavy7 } = trend.data;
+  const range = rows.length ? `${shortDate(rows[0].date)} to ${shortDate(rows[rows.length - 1].date)}` : "";
+  const note =
+    source === "plausible"
+      ? `${range}, from Plausible. Plausible data starts Oct 21, 2026, so this grows to 28 days by Nov 18 rather than splicing in GA4's earlier days.`
+      : `The 28 complete days ending yesterday, from GA4 (Plausible unavailable).`;
+  const flagged = (heavy ?? []).filter((h) => h.visitorDays > 0);
+  return (
+    <Card className="lg:col-span-12" title="Visits per day" note={note}>
+      <LineChart
+        ariaLabel={`Daily visits, ${range}`}
+        unit="visits"
+        points={rows.map((r) => ({ label: shortDate(r.date), value: r.visits }))}
+      />
+      {source === "ga4" && (
+        <p className="mt-3 text-xs" style={{ color: "var(--v-muted)" }}>
+          Bot traffic is excluded from {BOT_FILTER_DATE}; earlier days include it, so comparisons across that date read low.
+        </p>
+      )}
+      {heavy7 && (
+        <p className="mt-3 text-xs" style={{ color: "var(--v-muted)" }}>
+          Heavy hitters (one visitor over 100 page views in a day, usually a scraper; Plausible has no bot filter):{" "}
+          {heavy7.visitorDays === 0
+            ? "none in the last 7 full days."
+            : `${fmtNum(heavy7.visitorDays)} in the last 7 full days, ${fmtNum(heavy7.pageViews)} page views (${fmtPct(heavy7.share, 1)} of all).`}
+          {flagged.length > 0 && ` By day: ${flagged.map((h) => `${shortDate(h.date)}: ${h.visitorDays} (${fmtNum(h.pageViews)} views)`).join(", ")}.`}
+        </p>
+      )}
+    </Card>
+  );
+}
+
+function LandingCard({ landing }: { landing: Section<LandingData> }) {
+  if (!landing.ok) {
+    return (
+      <Card className="lg:col-span-6" title="Top landing pages" note={WEEK}>
+        <Unavailable what="Analytics data" />
+      </Card>
+    );
+  }
+  const { source, rows, bounce, bounceFrom } = landing.data;
+  const sub = (r: LandingData["rows"][number]) => {
+    const parts: string[] = [];
+    if (r.bounceRate != null) parts.push(`${fmtPct(r.bounceRate)} one-page`);
+    if (r.engagementRate !== undefined) parts.push(`${fmtPct(r.engagementRate)} engaged (GA4)`);
+    return parts.join(" · ") || undefined;
+  };
+  let caveat = "";
+  if (bounce === "trimmed" && bounceFrom)
+    caveat = `One-page share covers ${shortDate(bounceFrom)} 8:10 AM ET onward only: Plausible bounce data from Oct 24 to Oct 27, 2026 is invalid.`;
+  if (bounce === "excluded") caveat = "One-page share hidden: Plausible bounce data from Oct 24 to Oct 27, 2026 is invalid.";
+  return (
+    <Card className="lg:col-span-6" title="Top landing pages" note={`${WEEK}, visits ${fromSource(source)}`}>
+      <BarList rows={rows.map((l) => ({ label: l.path, value: l.visits, sub: sub(l) }))} />
+      {caveat && (
+        <p className="mt-3 text-xs" style={{ color: "var(--v-muted)" }}>
+          {caveat}
+        </p>
+      )}
+    </Card>
   );
 }
 
@@ -400,7 +485,7 @@ function SearchCards({ search }: { search: Section<import("@/lib/admin-analytics
   }
   const { days, lastDate } = search.data;
   const total = (k: "clicks" | "impressions") => days.reduce((a, d) => a + d[k], 0);
-  const note = `Last 28 days, through ${shortDate(lastDate)} (Google reports 2 to 3 days late)`;
+  const note = `Last 28 days, through ${shortDate(lastDate)}, from Search Console (Google reports 2 to 3 days late)`;
   return (
     <>
       <Card className="lg:col-span-6" title={`Clicks from Google: ${fmtNum(total("clicks"))}`} note={note}>

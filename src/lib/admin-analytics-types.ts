@@ -35,20 +35,69 @@ export type DailyData = { rows: DailyRow[]; summary: Summary | null };
 
 export type NameCount = { name: string; value: number };
 
-export type ChannelRow = { key: string; label: string; sessions: number };
+/** Where a section's numbers came from. Every chart and table names it. */
+export type DataSource = "plausible" | "ga4";
 
-export type LandingRow = { path: string; sessions: number; engagementRate: number };
+export type ChannelRow = { key: string; label: string; visits: number };
 
-export type EventRow = { name: string; label: string; current: number; previous: number };
+export type ChannelsData = { source: DataSource; rows: ChannelRow[] };
 
-export type CountryRow = { country: string; sessions: number };
+export type LandingRow = {
+  path: string;
+  visits: number;
+  /** Plausible one-page share, 0-1. Null when the window only covers invalid bounce data. */
+  bounceRate?: number | null;
+  /** GA4 engaged-session share for the same landing path, 0-1, when GA4 answers. */
+  engagementRate?: number;
+};
+
+export type LandingData = {
+  source: DataSource;
+  rows: LandingRow[];
+  /**
+   * "full": bounce covers the whole window. "trimmed": the window overlaps the
+   * invalid bounce period, so bounce covers only bounceFrom onward. "excluded":
+   * no valid bounce data in the window. "none": GA4, which has no bounce here.
+   */
+  bounce: "full" | "trimmed" | "excluded" | "none";
+  bounceFrom: string | null;
+};
+
+export type EventRow = {
+  name: string;
+  label: string;
+  current: number;
+  /** Null when the previous window starts before the source has data. */
+  previous: number | null;
+  source: DataSource;
+};
+
+export type CountryRow = { country: string; visits: number };
+
+export type CountriesData = { source: DataSource; rows: CountryRow[] };
+
+export type TrendRow = { date: string; visitors: number; visits: number; pageViews: number };
+
+/** Visitor-days with more than 100 page views: likely scrapers, not growth. */
+export type HeavyDay = { date: string; visitorDays: number; pageViews: number };
+
+export type TrendData = {
+  source: DataSource;
+  rows: TrendRow[];
+  /** Plausible only; GA4 already filters known bots. */
+  heavy: HeavyDay[] | null;
+  /** Heavy-hitter totals for the last 7 full days, with their share of all page views. */
+  heavy7: { visitorDays: number; pageViews: number; share: number } | null;
+};
 
 export type ReportsData = {
+  /** GA4 daily rows and the Yesterday summary (engagement rate needs GA4). */
   daily: Section<DailyData>;
-  channels: Section<ChannelRow[]>;
-  landing: Section<LandingRow[]>;
+  trend: Section<TrendData>;
+  channels: Section<ChannelsData>;
+  landing: Section<LandingData>;
   events: Section<EventRow[]>;
-  countries: Section<CountryRow[]>;
+  countries: Section<CountriesData>;
   fetchedAt: number;
 };
 
