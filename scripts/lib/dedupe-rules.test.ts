@@ -7,6 +7,8 @@ import {
   primaryReason,
   mergeRedirects,
   resolveAcTarget,
+  explicitGroups,
+  type ExplicitDuplicate,
   type GroupableRow,
 } from "./dedupe-rules";
 
@@ -295,4 +297,78 @@ test("compute-matches: equal Delta E prefers the live row, then match id, regard
   const top: typeof tie = [];
   for (const c of tie) insertCandidate(top, 1, c);
   assert.equal(top[0].id, "behr/a");
+});
+
+const vistaBrands = new Map([...brands, ["vista-paint", "vista-paint"]]);
+
+test("explicit: declared canonical is kept and losers that share it form one group", () => {
+  const rows = [
+    row("behr", "swiss-coffee-12", "12", "Swiss Coffee", "#f3f2e6"),
+    row("behr", "swiss-coffee-1812-1812", "1812", "Swiss Coffee 1812", "#f2f1e5", false),
+    row("behr", "swiss-coffee-w-b-700", "W-B-700", "Swiss Coffee", "#f2f1e5", false),
+    // Equal slug length and neither live: pickCanonical would fall to created_at.
+    row("behr", "grape-cr-me-ul250-10", "UL250-10", "Grape Crème", "#bebbbb", false),
+    row("behr", "grape-creme-ppu16-11", "PPU16-11", "Grape Creme", "#bebbbb", false),
+  ];
+  const { groups, refused } = explicitGroups(rows, brands, [
+    { brand: "behr", loser: "swiss-coffee-1812-1812", loserCode: "1812", canonical: "swiss-coffee-12" },
+    { brand: "behr", loser: "swiss-coffee-w-b-700", loserCode: "W-B-700", canonical: "swiss-coffee-12" },
+    { brand: "behr", loser: "grape-cr-me-ul250-10", loserCode: "UL250-10", canonical: "grape-creme-ppu16-11" },
+  ]);
+  assert.deepEqual(refused, []);
+  assert.equal(groups.length, 2);
+  const swiss = groups.find((g) => g.canonical.slug === "swiss-coffee-12")!;
+  assert.deepEqual(swiss.dupes.map((d) => d.slug).sort(), ["swiss-coffee-1812-1812", "swiss-coffee-w-b-700"]);
+  assert.deepEqual(swiss.alternates.sort(), ["1812", "W-B-700"]);
+  assert.equal(groups.find((g) => g.dupes[0].slug === "grape-cr-me-ul250-10")!.canonical.slug, "grape-creme-ppu16-11");
+});
+
+test("explicit: refuses a loser that no longer holds its code (fix-vista-identities not run yet)", () => {
+  const rows = [
+    // Before the identity fix, goldfinch-k-545 holds Under the Sun's live code 7861.
+    row("vista-paint", "goldfinch-k-545", "7861", "Under the Sun", "#ffcf2e"),
+    row("vista-paint", "goldfinch-7942", "7942", "Goldfinch", "#ffbe3c"),
+  ];
+  const { groups, refused } = explicitGroups(rows, vistaBrands, [
+    { brand: "vista-paint", loser: "goldfinch-k-545", loserCode: "K-545", canonical: "goldfinch-7942", requires: "fix-vista-identities.ts --apply" },
+  ]);
+  assert.equal(groups.length, 0);
+  assert.match(refused[0], /expected "K-545".*fix-vista-identities/);
+});
+
+test("explicit: refuses missing rows, rows already grouped, and a not-live canonical over a live loser", () => {
+  const rows = [
+    row("vista-paint", "cyan-sky-c-680", "C-680", "Cyan Sky", "#00b5b6", false),
+    row("vista-paint", "cyan-sky-0681", "0681", "Cyan Sky", "#28b7b8"),
+    row("vista-paint", "a-live", "1", "A", "#111111"),
+    row("vista-paint", "b-dead", "2", "A", "#111112", false),
+  ];
+  const { refused } = explicitGroups(
+    rows,
+    vistaBrands,
+    [
+      { brand: "vista-paint", loser: "gone-c-1", loserCode: "C-1", canonical: "cyan-sky-0681" },
+      { brand: "vista-paint", loser: "cyan-sky-c-680", loserCode: "C-680", canonical: "cyan-sky-0681" },
+      { brand: "vista-paint", loser: "a-live", loserCode: "1", canonical: "b-dead" },
+    ],
+    new Set(["vista-paint/cyan-sky-0681"]),
+  );
+  assert.equal(refused.length, 3);
+  assert.match(refused[0], /loser row not found/);
+  assert.match(refused[1], /rule-based group/);
+  assert.match(refused[2], /not in the live feed/);
+});
+
+test("explicit-duplicates.json: every pair is well formed and no slug is both loser and canonical", async () => {
+  const fs = await import("node:fs");
+  const path = await import("node:path");
+  const file = path.resolve(__dirname, "../data/explicit-duplicates.json");
+  const { pairs } = JSON.parse(fs.readFileSync(file, "utf8")) as { pairs: ExplicitDuplicate[] };
+  assert.equal(pairs.length, 84);
+  const losers = new Set(pairs.map((p) => `${p.brand}/${p.loser}`));
+  assert.equal(losers.size, pairs.length, "a loser is listed twice");
+  for (const p of pairs) {
+    assert.ok(p.brand && p.loser && p.canonical && p.loserCode, JSON.stringify(p));
+    assert.ok(!losers.has(`${p.brand}/${p.canonical}`), `${p.canonical} is also a loser`);
+  }
 });

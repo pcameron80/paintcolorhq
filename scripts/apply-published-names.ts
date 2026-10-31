@@ -18,6 +18,13 @@
  *   case      same letters, different capitalization ("Painter'S White" for
  *             "Painter's White"). Written only with --apply --case. Names in
  *             KEEP_STYLED are never touched (O'Reilly Green is BM's own styling).
+ *   punctuation  same letters; the feed has punctuation or spaces the DB lost
+ *             ("Strawberryncream" -> "Strawberry 'n Cream"). --punctuation.
+ *   word-join same letters; the feed joins words the DB splits ("Tear Drop"
+ *             -> "Teardrop"). --word-joins.
+ *   accent    same letters; the feed has accents the DB lacks. --accents.
+ *   The last three keep the catalog's casing (scripts/lib/name-punctuation.ts);
+ *   quote-style-only differences and accents the feed drops are skipped.
  *
  * PPG codes are matched through normalizePpgCode (the site writes "PPG1104-2",
  * most rows store "1104-2"); before 2026-10-24 none of PPG's renames matched.
@@ -31,6 +38,7 @@
  *   tsx scripts/apply-published-names.ts --scan-dir=... --brand=benjamin-moore,behr --apply      # artifacts only
  *   tsx scripts/apply-published-names.ts --scan-dir=... --apply --renames                        # artifacts + renames
  *   tsx scripts/apply-published-names.ts --scan-dir=... --brand=kilz,ppg,vista-paint --apply --case   # + capitalization and MANUAL rows
+ *   tsx scripts/apply-published-names.ts --scan-dir=... --brand=benjamin-moore,behr,dunn-edwards,ppg --apply --punctuation
  *   tsx scripts/apply-published-names.ts --revert=scripts/data/backups/published-names-<ts>.json
  *
  * MANUAL rows are written for any brand in --brand (default: benjamin-moore,
@@ -44,6 +52,7 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { deltaE2000, hexToRgb, rgbToLab } from '../src/lib/color-utils';
 import { normalizePpgCode } from './lib/palette-sources';
 import { caseFix } from './lib/palette-diff';
+import { classifyPunctuation, mergePunctuation } from './lib/name-punctuation';
 
 // Env, scan dir and backups resolve from the working directory, so the script
 // can be run from the main checkout even when the file lives in a worktree.
@@ -53,6 +62,9 @@ const arg = (name: string) => process.argv.find((a) => a.startsWith(`--${name}=`
 const APPLY = process.argv.includes('--apply');
 const RENAMES = process.argv.includes('--renames');
 const CASE = process.argv.includes('--case');
+const PUNCTUATION = process.argv.includes('--punctuation');
+const WORD_JOINS = process.argv.includes('--word-joins');
+const ACCENTS = process.argv.includes('--accents');
 const scanDir = arg('scan-dir');
 const brandArg = arg('brand');
 const revertFile = arg('revert');
@@ -103,7 +115,7 @@ const FEED_NAME_STYLE: Record<string, string> = {
 
 interface Row { id: string; slug: string; name: string; color_number: string | null; hex: string }
 interface LiveColor { code: string; name: string; hex: string | null }
-type Group = 'artifact' | 'rename' | 'conflict' | 'case';
+type Group = 'artifact' | 'rename' | 'conflict' | 'case' | 'punctuation' | 'word-join' | 'accent';
 interface Change { id: string; brand: string; slug: string; from: string; to: string; group: Group; note?: string }
 
 const code = (s: string | null | undefined) => (s ?? '').trim().toUpperCase();
@@ -231,13 +243,22 @@ async function main() {
         if (fixed !== r.name) changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to: fixed, group: 'case', note });
         continue;
       }
-      // Straight-vs-curly punctuation only: not worth a write.
-      const asciiClean = !/[^\x20-\x7e]/.test(r.name.replace(/[‐’]/g, ''));
-      if (asciiClean && letters(feedName) === letters(r.name)) continue;
+      // Same letters, different punctuation, spacing or accents. Until the
+      // 2026-11 audit this whole class was skipped as "straight-vs-curly
+      // punctuation only", which hid 69 import artifacts (Strawberryncream,
+      // Smoke Mirrors). Each kind is now its own gated group; see
+      // scripts/lib/name-punctuation.ts.
+      const pClass = classifyPunctuation(r.name, feedName);
+      if (pClass === 'quote-only' || pClass === 'accent-kept') continue;
+      if (pClass) {
+        const to = mergePunctuation(r.name, feedName);
+        if (to !== r.name) changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to, group: pClass, note });
+        continue;
+      }
       const group: Group = dE > 5 ? 'conflict' : classify(r.name, feedName, c.code);
       changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to: feedName, group, note });
     }
-    for (const g of ['artifact', 'rename', 'case', 'conflict'] as Group[]) {
+    for (const g of ['artifact', 'rename', 'case', 'punctuation', 'word-join', 'accent', 'conflict'] as Group[]) {
       const list = changes.filter((c) => c.group === g);
       if (!list.length) continue;
       console.log(`\n[${b.slug}] ${g}: ${list.length}`);
@@ -250,12 +271,24 @@ async function main() {
     (c) =>
       c.group === 'artifact' ||
       (CASE && c.group === 'case') ||
+      (PUNCTUATION && c.group === 'punctuation') ||
+      (WORD_JOINS && c.group === 'word-join') ||
+      (ACCENTS && c.group === 'accent') ||
       (RENAMES && c.group === 'rename' && !SKIP_RENAME.has(`${c.brand}/${c.slug}`)),
   );
   const groups = all.reduce<Record<string, number>>((acc, c) => ({ ...acc, [`${c.brand}/${c.group}`]: (acc[`${c.brand}/${c.group}`] ?? 0) + 1 }), {});
   console.log('\nTally by brand/group:', groups);
-  const scope = ['artifacts', ...(RENAMES ? ['renames'] : []), ...(CASE ? ['case'] : [])].join(' + ');
-  console.log(`Would write ${toWrite.length} names (${scope}; --renames and --case add the other groups).`);
+  const scope = [
+    'artifacts',
+    ...(RENAMES ? ['renames'] : []),
+    ...(CASE ? ['case'] : []),
+    ...(PUNCTUATION ? ['punctuation'] : []),
+    ...(WORD_JOINS ? ['word-joins'] : []),
+    ...(ACCENTS ? ['accents'] : []),
+  ].join(' + ');
+  console.log(
+    `Would write ${toWrite.length} names (${scope}; --renames, --case, --punctuation, --word-joins and --accents add the other groups).`,
+  );
   if (!APPLY) {
     console.log('Dry run — no DB changes. Re-run with --apply.');
     return;

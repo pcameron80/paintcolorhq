@@ -19,7 +19,8 @@
  * again at apply time.
  *
  * Inputs: the colors table (read-only), data/bm-ac-aliases.json when present
- * (npx tsx scripts/fetch-bm-aliases.ts).
+ * (npx tsx scripts/fetch-bm-aliases.ts), and scripts/data/explicit-duplicates.json
+ * (hand-listed pairs from the 2026-11 audit; refused pairs are printed).
  *
  * Usage:
  *   npx tsx scripts/dedupe-colors.ts                    # plan only
@@ -36,6 +37,8 @@ import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 import {
+  explicitGroups,
+  type ExplicitDuplicate,
   findDuplicateGroups,
   mergeRedirects,
   pickCanonical,
@@ -48,6 +51,7 @@ dotenv.config({ path: path.resolve(__dirname, '../.env.local'), quiet: true });
 
 const REDIRECTS_FILE = path.resolve(__dirname, '../src/data/color-redirects.json');
 const AC_ALIAS_FILE = path.resolve(__dirname, '../data/bm-ac-aliases.json');
+const EXPLICIT_FILE = path.resolve(__dirname, 'data/explicit-duplicates.json');
 const PLAN_DIR = path.resolve(__dirname, 'data');
 const args = process.argv.slice(2);
 const WRITE_REDIRECTS = args.includes('--write-redirects');
@@ -160,6 +164,19 @@ async function main() {
     const d = pickCanonical(g.rows, g.brandSlug);
     return { ...g, ...d, reason: primaryReason(g.reasons) };
   });
+
+  // Hand-listed pairs (scripts/data/explicit-duplicates.json). A row already
+  // in a rule-based group is never planned twice.
+  const explicitPairs = fs.existsSync(EXPLICIT_FILE)
+    ? (JSON.parse(fs.readFileSync(EXPLICIT_FILE, 'utf8')) as { pairs: ExplicitDuplicate[] }).pairs
+    : [];
+  const taken = new Set(plan.flatMap((p) => p.rows.map((r) => `${p.brandSlug}/${r.slug}`)));
+  const explicit = explicitGroups(colors, brandSlugById, explicitPairs, taken);
+  for (const g of explicit.groups) {
+    plan.push({ ...g, reasons: ['explicit'] as GroupReason[], reason: 'explicit' as GroupReason });
+  }
+  console.log(`Explicit pairs: ${explicitPairs.length} listed, ${explicit.groups.reduce((n, g) => n + g.dupes.length, 0)} planned, ${explicit.refused.length} refused`);
+  for (const r of explicit.refused) console.log(`  refused ${r}`);
   plan.sort((a, b) => `${a.brandSlug}/${a.canonical.slug}`.localeCompare(`${b.brandSlug}/${b.canonical.slug}`));
 
   // --- Tally ----------------------------------------------------------------

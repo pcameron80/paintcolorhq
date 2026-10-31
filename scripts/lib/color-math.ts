@@ -74,7 +74,51 @@ function lchHueFamily(h: number, c: number): string {
   return 'pink';
 }
 
+/**
+ * Hue family for a color re-filed by a chroma escape (rules b, c, f, h below).
+ * Escaped colors are muted (mostly C* 9-30), and at that chroma CIELAB puts
+ * plums and aubergines at hue 330-355 and dark wines at 355-20, where
+ * lchHueFamily would call both pink. The 2026-11 data audit found 111 of 622
+ * colored gray/neutral rows in that band: about 45 purple names (Concord
+ * Grape, Oriental Eggplant), about 25 wines (Divine Wine, Deep Garnet), 9 pinks.
+ */
+function mutedHueFamily(h: number, c: number, l: number): string {
+  if (c >= 30) return lchHueFamily(h, c);
+  if (h >= 330 && h < 355) return l >= 72 ? 'pink' : 'purple';
+  if (h >= 355 || h < 20) return l >= 45 ? 'pink' : 'red';
+  return lchHueFamily(h, c);
+}
+
 const ACHROMATIC_FAMILIES = new Set(['gray', 'neutral', 'white', 'off-white']);
+
+/**
+ * Brands that publish teals (LCh hue under 185) under Blue. Sherwin-Williams'
+ * own colorFamilyNames list Cooled Blue 6759, Rivulet 6760, Thermal Spring
+ * 6761 and Poseidon 6762 as Blue (checked 2026-10-31), so rule (i) leaves its
+ * blues alone. PPG (Algolia color_family "Greens") and Benjamin Moore
+ * (breadcrumb "Green") file the same hues as green.
+ */
+export const TEALS_STAY_BLUE_BRANDS: ReadonlySet<string> = new Set(['sherwin-williams']);
+
+/**
+ * Sourced per-color family overrides, keyed "<brand-slug>/<color-slug>". The
+ * refine rules cannot see these; add one only with a manufacturer source.
+ * Applied by familyForRow(), which refine-color-families.ts uses.
+ */
+export const FAMILY_OVERRIDES: Readonly<Record<string, string>> = {
+  // SW serves both under /red-paint-colors/ (canonical URL, checked
+  // 2026-10-31). Its API lists only "Designer Color Collection", so refine
+  // re-files them by LCh hue (23.7 and 28.2), which lchHueFamily calls orange.
+  'sherwin-williams/beetroot-9695': 'red',
+  'sherwin-williams/wild-poppy-9694': 'red',
+  // BM's breadcrumb files Maritime Blue 667 (LCh hue 184.4) under Blue.
+  'benjamin-moore/maritime-blue-667': 'blue',
+};
+
+export interface RefineOptions {
+  /** Brand slug, for brand-specific rules (TEALS_STAY_BLUE_BRANDS). */
+  brand?: string;
+}
 
 /** CIELAB lightness, chroma and LCh hue (degrees, 0-360) for an sRGB color. */
 export function rgbToLch(r: number, g: number, b: number): { l: number; c: number; h: number } {
@@ -100,7 +144,7 @@ export function rgbToLch(r: number, g: number, b: number): { l: number; c: numbe
 // in color-math.test.ts; change a threshold and they tell you who moved.
 //
 // "tan" is never produced here: it stays a name-only family.
-export function refineColorFamily(family: string, r: number, g: number, b: number): string {
+export function refineColorFamily(family: string, r: number, g: number, b: number, opts: RefineOptions = {}): string {
   const { l, c, h } = rgbToLch(r, g, b);
   // Warm creams (LCh hue 55-115) tolerate more chroma before they stop
   // reading as white than cool tints do.
@@ -113,11 +157,23 @@ export function refineColorFamily(family: string, r: number, g: number, b: numbe
   // (b, c, f) Chroma escapes. A label that says "no hue" on a color that
   // visibly has one is re-filed by LCh hue, then still passes through the
   // hue-family rules below, so a muted warm gray can land in beige or brown.
+  //
+  // (h) 2026-11 audit: a gray or neutral outside the warm-gray band (LCh hue
+  // 20-110) is colored at ISCC-NBS "moderate" chroma (C* 15+), or when dark
+  // and saturated for its lightness (L* < 50, C* 9+, C*/L* 0.3+): Newburyport
+  // Blue HC-155, Clary Sage PPU11-07, Plum Royale 2070-20. Warm grays keep
+  // their label, so greiges and taupes stay neutral. Hale Navy HC-154
+  // (C*/L* 0.24) is below the cutoff and keeps its label.
+  const coloredGray =
+    (f === 'gray' || f === 'neutral') &&
+    !(h >= 20 && h < 110) &&
+    (c >= 15 || (l < 50 && c >= 9 && c / l >= 0.3));
   const escape =
     (f === 'black' && c >= 10) ||
     (f === 'gray' && c >= 18) ||
-    (ACHROMATIC_FAMILIES.has(f) && c >= 20);
-  if (escape) f = lchHueFamily(h, c);
+    (ACHROMATIC_FAMILIES.has(f) && c >= 20) ||
+    coloredGray;
+  if (escape) f = mutedHueFamily(h, c, l);
 
   if (HUE_FAMILIES.has(f)) {
     // (d) Very light, low-chroma colors read as white or off-white.
@@ -141,13 +197,38 @@ export function refineColorFamily(family: string, r: number, g: number, b: numbe
     // and butter creams (Lime Chiffon, Tempered Sage), not tans. A yellow
     // that only got its hue from a chroma escape above is a muted warm gray,
     // so it does take this rule.
-    if ((f === 'orange' || (f === 'yellow' && escape)) && warm && c < 25) {
+    //
+    // Peach carve-out (2026-11 audit): light, clearly tinted oranges at hue
+    // 55-70 are peaches and apricots (BM Fresh Peach 060, Valspar New Peach
+    // 2008-6B), not tans; BM, SW and Valspar file them under orange. Darker
+    // or duller colors at the same hue (Fox Hedge Tan, Cavern Clay) still go
+    // to beige or brown.
+    const peach = f === 'orange' && h >= 55 && h < 70 && c >= 18 && l >= 75;
+    if ((f === 'orange' || (f === 'yellow' && escape)) && warm && c < 25 && !peach) {
       return l >= 60 ? 'beige' : 'brown';
     }
+    // (j) Light reds are pink (basic color terms; BM tags Bed of Roses 1318
+    // and Supple Pink 2007-50 "Color Family = Pink"). Corals at hue 30-35
+    // stay red pending a product decision: BM tags some of them orange.
+    if (f === 'red' && l >= 72 && (h < 30 || h >= 340)) return 'pink';
   }
 
   if (f === 'blue' && c >= 15 && h >= 295 && h < 345) return 'purple';
+  // (i) Teal-greens: HSL starts blue at hue 170, so spring greens and teals
+  // with LCh hue under 185 landed in blue (BM Erin Green 608, PPG Capri Teal).
+  // Teals at 185-200 stay blue, and so do brands in TEALS_STAY_BLUE_BRANDS.
+  if (f === 'blue' && c > 10 && h < 185 && !(opts.brand && TEALS_STAY_BLUE_BRANDS.has(opts.brand))) {
+    return 'green';
+  }
   return f;
+}
+
+/**
+ * Family for a stored row: a sourced FAMILY_OVERRIDES entry when one exists,
+ * otherwise refineColorFamily with the row's brand taken from the key.
+ */
+export function familyForRow(key: string, family: string, r: number, g: number, b: number): string {
+  return FAMILY_OVERRIDES[key] ?? refineColorFamily(family, r, g, b, { brand: key.split('/')[0] });
 }
 
 export function calculateLrv(r: number, g: number, b: number): number {
