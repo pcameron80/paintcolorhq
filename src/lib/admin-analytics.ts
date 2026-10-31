@@ -4,10 +4,13 @@ import cityCoords from "@/generated/city-coords.json";
 import { normalizePlace } from "@/lib/place-key";
 import {
   PLAUSIBLE_FIRST_DAY,
+  bounceInvalidOn,
+  combineDays,
   plausibleChannels,
   plausibleConfigured,
   plausibleCountries,
   plausibleDaily,
+  plausibleDayStats,
   plausibleGoals,
   plausibleHeavyHitters,
   plausibleLanding,
@@ -32,6 +35,7 @@ import type {
   Summary,
   TodayData,
   TrendData,
+  YesterdayData,
 } from "@/lib/admin-analytics-types";
 
 /*
@@ -397,6 +401,41 @@ async function plausibleTrend(): Promise<TrendData> {
   };
 }
 
+/**
+ * Yesterday vs the per-day average of the 7 days before it, from Plausible,
+ * with the same Eastern day boundaries as GA4's summary. GA4's engaged rate
+ * for the same days rides along as a secondary line.
+ */
+async function plausibleYesterday(daily: Promise<Section<DailyData>>): Promise<YesterdayData> {
+  const today = todayStr();
+  const date = shiftDate(today, -1);
+  const avgFrom = shiftDate(today, -8);
+  const avgTo = shiftDate(today, -2);
+  if (avgFrom < PLAUSIBLE_FIRST_DAY) throw new Error("Fewer than 8 full Plausible days");
+  const range = { start: avgFrom, end: date };
+  const [days, heavy] = await Promise.all([plausibleDayStats(range), plausibleHeavyHitters(range)]);
+  const prior = days.filter((d) => d.date >= avgFrom && d.date <= avgTo);
+  const bounceDays: string[] = [];
+  for (let d = avgFrom; d <= avgTo; d = shiftDate(d, 1)) {
+    if (!bounceInvalidOn(d) && prior.some((p) => p.date === d && p.visits > 0)) bounceDays.push(d);
+  }
+  const summary = await daily;
+  const s = summary.ok ? summary.data.summary : null;
+  return {
+    date,
+    yesterday: combineDays(
+      days.filter((d) => d.date === date),
+      heavy,
+      1,
+    ),
+    avg7: combineDays(prior, heavy, 7),
+    avgFrom,
+    avgTo,
+    bounceDays,
+    engaged: s ? { yesterday: s.yesterday.engagedRate, avg7: s.avg7.engagedRate } : null,
+  };
+}
+
 function gaTrend(daily: DailyData): TrendData {
   return {
     source: "ga4",
@@ -560,23 +599,26 @@ async function loadGaCountries(): Promise<CountriesData> {
 async function loadReports(): Promise<ReportsData> {
   const week = weekRanges().current;
   const dailyP = safe("daily", loadDaily);
-  const [daily, trend, channels, landing, events, countries] = await Promise.all([
+  const [daily, trend, yesterday, channels, landing, events, countries] = await Promise.all([
     dailyP,
     preferPlausible("trend", plausibleTrend, async () => {
       const d = await dailyP;
       if (!d.ok) throw new Error("GA4 daily unavailable");
       return gaTrend(d.data);
     }),
+    // No GA4 loader here: the page falls back to the GA4 summary in `daily`.
+    plausibleConfigured() ? safe("plausible yesterday", () => plausibleYesterday(dailyP)) : Promise.resolve({ ok: false as const }),
     preferPlausible("channels", async () => ({ source: "plausible" as const, rows: await plausibleChannels(week) }), loadGaChannels),
     preferPlausible("landing", loadPlausibleLanding, loadGaLanding),
     preferPlausible("events", loadPlausibleEvents, loadGaEvents),
     preferPlausible("countries", async () => ({ source: "plausible" as const, rows: await plausibleCountries(week) }), loadGaCountries),
   ]);
-  return { daily, trend, channels, landing, events, countries, fetchedAt: Date.now() };
+  return { daily, trend, yesterday, channels, landing, events, countries, fetchedAt: Date.now() };
 }
 
 export function getReports(): Promise<ReportsData> {
-  const allOk = (r: ReportsData) => r.daily.ok && r.trend.ok && r.channels.ok && r.landing.ok && r.events.ok && r.countries.ok;
+  const allOk = (r: ReportsData) =>
+    r.daily.ok && r.trend.ok && (r.yesterday.ok || !plausibleConfigured()) && r.channels.ok && r.landing.ok && r.events.ok && r.countries.ok;
   return cached(reportsCache, 10 * 60_000, loadReports, allOk);
 }
 

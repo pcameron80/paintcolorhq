@@ -79,7 +79,7 @@ export type CountriesData = { source: DataSource; rows: CountryRow[] };
 export type TrendRow = { date: string; visitors: number; visits: number; pageViews: number };
 
 /** Visitor-days with more than 100 page views: likely scrapers, not growth. */
-export type HeavyDay = { date: string; visitorDays: number; pageViews: number };
+export type HeavyDay = { date: string; visitorDays: number; visits: number; pageViews: number };
 
 export type TrendData = {
   source: DataSource;
@@ -90,10 +90,40 @@ export type TrendData = {
   heavy7: { visitorDays: number; pageViews: number; share: number } | null;
 };
 
+/** One day's (or a per-day average's) Plausible numbers for the Yesterday card. */
+export type DayStats = {
+  visits: number;
+  pageViews: number;
+  viewsPerVisit: number;
+  /** One-page share, 0-1. Null when no day in the span has valid bounce data. */
+  bounceRate: number | null;
+  /** Page views from heavy-hitter visitor-days (over 100 page views). */
+  heavyPageViews: number;
+  heavyVisitorDays: number;
+  /** Page views and pages per visit with heavy-hitter groups removed. */
+  exHeavyPageViews: number;
+  exHeavyViewsPerVisit: number;
+};
+
+/** Yesterday from Plausible vs the per-day average of the 7 days before it. */
+export type YesterdayData = {
+  date: string;
+  yesterday: DayStats;
+  avg7: DayStats;
+  avgFrom: string;
+  avgTo: string;
+  /** Days in the 7-day span the bounce average uses (invalid bounce days are left out). */
+  bounceDays: string[];
+  /** GA4 engaged-session share, a secondary line. Null when GA4 does not answer. */
+  engaged: { yesterday: number; avg7: number } | null;
+};
+
 export type ReportsData = {
   /** GA4 daily rows and the Yesterday summary (engagement rate needs GA4). */
   daily: Section<DailyData>;
   trend: Section<TrendData>;
+  /** Plausible Yesterday card. When not ok, the page falls back to daily.summary (GA4). */
+  yesterday: Section<YesterdayData>;
   channels: Section<ChannelsData>;
   landing: Section<LandingData>;
   events: Section<EventRow[]>;
