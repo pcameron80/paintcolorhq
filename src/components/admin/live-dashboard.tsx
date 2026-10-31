@@ -360,7 +360,7 @@ function YesterdayTiles({ data }: { data: YesterdayData }) {
         <DeltaText
           key="x"
           delta={relDelta(y.exHeavyPageViews, a.exHeavyPageViews)}
-          label={`${fmtNum(y.exHeavyPageViews)} excl. heavy hitters (avg ${fmtNum(a.exHeavyPageViews)})`}
+          label={`${fmtNum(y.exHeavyPageViews)} excl. likely bots (avg ${fmtNum(a.exHeavyPageViews)})`}
         />,
       ],
     },
@@ -372,7 +372,7 @@ function YesterdayTiles({ data }: { data: YesterdayData }) {
         <DeltaText
           key="x"
           delta={relDelta(y.exHeavyViewsPerVisit, a.exHeavyViewsPerVisit)}
-          label={`${fmtDecimal(y.exHeavyViewsPerVisit)} excl. heavy hitters (avg ${fmtDecimal(a.exHeavyViewsPerVisit)})`}
+          label={`${fmtDecimal(y.exHeavyViewsPerVisit)} excl. likely bots (avg ${fmtDecimal(a.exHeavyViewsPerVisit)})`}
         />,
       ],
     },
@@ -415,7 +415,7 @@ function YesterdayTiles({ data }: { data: YesterdayData }) {
       </div>
       <div className="mt-4 space-y-1 text-xs" style={{ color: "var(--v-muted)" }}>
         <p>
-          Heavy hitters (one visitor over 100 page views in a day):{" "}
+          Likely bots (over 100 page views in a day, no referrer):{" "}
           {y.heavyVisitorDays === 0
             ? "none yesterday"
             : `${fmtNum(y.heavyVisitorDays)} yesterday, ${fmtNum(y.heavyPageViews)} page views (${fmtPct(heavyShare, 1)} of the day)`}
@@ -547,7 +547,7 @@ function TrendCard({ trend }: { trend: Section<TrendData> }) {
       )}
       {heavy7 && (
         <p className="mt-3 text-xs" style={{ color: "var(--v-muted)" }}>
-          Heavy hitters (one visitor over 100 page views in a day, usually a scraper; Plausible has no bot filter):{" "}
+          Likely bots (over 100 page views in a day with no referrer; Plausible has no bot filter):{" "}
           {heavy7.visitorDays === 0
             ? "none in the last 7 full days."
             : `${fmtNum(heavy7.visitorDays)} in the last 7 full days, ${fmtNum(heavy7.pageViews)} page views (${fmtPct(heavy7.share, 1)} of all).`}
