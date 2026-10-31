@@ -355,16 +355,22 @@ export interface ExplicitGroup<T extends GroupableRow> extends DedupeDecision<T>
  *     canonical's alternate_numbers);
  *   - the canonical is not in the live feed while the loser is;
  *   - a row is also in a rule-based group (`taken`), so it is never planned twice.
+ * A pair whose loser a rule-based group already retires into the same
+ * canonical (`ruleTargets`: loser key -> canonical key) is `covered`, not
+ * refused: after fix-vista-identities.ts the three restored Vista rows share
+ * name and hex with their live rows, so name+hex plans exactly the listed pair.
  */
 export function explicitGroups<T extends GroupableRow>(
   rows: T[],
   brandSlugById: Map<string, string>,
   pairs: ExplicitDuplicate[],
   taken: Set<string> = new Set(),
-): { groups: ExplicitGroup<T>[]; refused: string[] } {
+  ruleTargets: ReadonlyMap<string, string> = new Map(),
+): { groups: ExplicitGroup<T>[]; refused: string[]; covered: string[] } {
   const byKey = new Map<string, T>();
   for (const r of rows) byKey.set(`${brandSlugById.get(r.brand_id) ?? '?'}/${r.slug}`, r);
   const refused: string[] = [];
+  const covered: string[] = [];
   const losersByCanonical = new Map<string, T[]>();
   for (const p of pairs) {
     const label = `${p.brand}/${p.loser} -> ${p.canonical}`;
@@ -376,6 +382,10 @@ export function explicitGroups<T extends GroupableRow>(
     }
     if ((loser.color_number ?? '').trim().toUpperCase() !== p.loserCode.trim().toUpperCase()) {
       refused.push(`${label}: loser holds "${loser.color_number}", expected "${p.loserCode}"${p.requires ? ` (run ${p.requires} first)` : ''}`);
+      continue;
+    }
+    if (ruleTargets.get(`${p.brand}/${p.loser}`) === `${p.brand}/${p.canonical}`) {
+      covered.push(`${label}: planned by a rule-based group`);
       continue;
     }
     if (taken.has(`${p.brand}/${p.loser}`) || taken.has(`${p.brand}/${p.canonical}`)) {
@@ -407,7 +417,7 @@ export function explicitGroups<T extends GroupableRow>(
       liveConflict: false,
     });
   }
-  return { groups, refused };
+  return { groups, refused, covered };
 }
 
 /**

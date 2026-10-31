@@ -336,6 +336,29 @@ test("explicit: refuses a loser that no longer holds its code (fix-vista-identit
   assert.match(refused[0], /expected "K-545".*fix-vista-identities/);
 });
 
+test("explicit: after the identity fix, a pair name+hex already plans the same way is covered, not refused", () => {
+  // fix-vista-identities.ts restores goldfinch-k-545 to Goldfinch with the
+  // live row's hex, so the name+hex rule groups it with goldfinch-7942.
+  const rows = [
+    row("vista-paint", "goldfinch-k-545", "K-545", "Goldfinch", "#ffbe3c", false),
+    row("vista-paint", "goldfinch-7942", "7942", "Goldfinch", "#ffbe3c"),
+  ];
+  const { groups } = findDuplicateGroups(rows, vistaBrands);
+  assert.equal(groups.length, 1);
+  const rule = pickCanonical(groups[0].rows, "vista-paint");
+  assert.equal(rule.canonical.slug, "goldfinch-7942");
+  const taken = new Set(groups[0].rows.map((r) => `vista-paint/${r.slug}`));
+  const ruleTargets = new Map(rule.dupes.map((d) => [`vista-paint/${d.slug}`, `vista-paint/${rule.canonical.slug}`]));
+  const pair = { brand: "vista-paint", loser: "goldfinch-k-545", loserCode: "K-545", canonical: "goldfinch-7942" };
+  const out = explicitGroups(rows, vistaBrands, [pair], taken, ruleTargets);
+  assert.deepEqual(out.refused, []);
+  assert.equal(out.groups.length, 0);
+  assert.match(out.covered[0], /planned by a rule-based group/);
+  // A rule-based group that retires the loser elsewhere is still a refusal.
+  const other = explicitGroups(rows, vistaBrands, [pair], taken, new Map([["vista-paint/goldfinch-k-545", "vista-paint/elsewhere"]]));
+  assert.match(other.refused[0], /rule-based group/);
+});
+
 test("explicit: refuses missing rows, rows already grouped, and a not-live canonical over a live loser", () => {
   const rows = [
     row("vista-paint", "cyan-sky-c-680", "C-680", "Cyan Sky", "#00b5b6", false),

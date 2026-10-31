@@ -166,16 +166,24 @@ async function main() {
   });
 
   // Hand-listed pairs (scripts/data/explicit-duplicates.json). A row already
-  // in a rule-based group is never planned twice.
+  // in a rule-based group is never planned twice; a pair the rules already
+  // plan the same way is reported as covered, not refused.
   const explicitPairs = fs.existsSync(EXPLICIT_FILE)
     ? (JSON.parse(fs.readFileSync(EXPLICIT_FILE, 'utf8')) as { pairs: ExplicitDuplicate[] }).pairs
     : [];
   const taken = new Set(plan.flatMap((p) => p.rows.map((r) => `${p.brandSlug}/${r.slug}`)));
-  const explicit = explicitGroups(colors, brandSlugById, explicitPairs, taken);
+  const ruleTargets = new Map(
+    plan.flatMap((p) => p.dupes.map((d) => [`${p.brandSlug}/${d.slug}`, `${p.brandSlug}/${p.canonical.slug}`] as [string, string])),
+  );
+  const explicit = explicitGroups(colors, brandSlugById, explicitPairs, taken, ruleTargets);
   for (const g of explicit.groups) {
     plan.push({ ...g, reasons: ['explicit'] as GroupReason[], reason: 'explicit' as GroupReason });
   }
-  console.log(`Explicit pairs: ${explicitPairs.length} listed, ${explicit.groups.reduce((n, g) => n + g.dupes.length, 0)} planned, ${explicit.refused.length} refused`);
+  console.log(
+    `Explicit pairs: ${explicitPairs.length} listed, ${explicit.groups.reduce((n, g) => n + g.dupes.length, 0)} planned, ` +
+      `${explicit.covered.length} covered by a rule-based group, ${explicit.refused.length} refused`,
+  );
+  for (const r of explicit.covered) console.log(`  covered ${r}`);
   for (const r of explicit.refused) console.log(`  refused ${r}`);
   plan.sort((a, b) => `${a.brandSlug}/${a.canonical.slug}`.localeCompare(`${b.brandSlug}/${b.canonical.slug}`));
 
