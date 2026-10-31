@@ -1,6 +1,6 @@
 import "server-only";
 import { PLAUSIBLE_ORIGIN } from "@/lib/plausible";
-import type { ChannelRow, CountriesData, HeavyDay, NameCount, TodayStats, TrendRow } from "@/lib/admin-analytics-types";
+import type { ChannelRow, CountriesData, DayStats, HeavyDay, NameCount, TodayStats, TrendRow } from "@/lib/admin-analytics-types";
 
 /*
  * Plausible Stats API v2 (self-hosted CE on the NAS). Plausible counts every
@@ -279,7 +279,7 @@ export async function plausibleDaily(r: Range, dates: string[]): Promise<TrendRo
  */
 export async function plausibleHeavyHitters(r: Range): Promise<HeavyDay[]> {
   const res = await query({
-    metrics: ["visitors", "pageviews"],
+    metrics: ["visitors", "pageviews", "visits"],
     date_range: [r.start, r.end],
     dimensions: ["time:day", "visit:city", "visit:browser", "visit:os", "visit:device"],
     order_by: [["pageviews", "desc"]],
@@ -287,13 +287,63 @@ export async function plausibleHeavyHitters(r: Range): Promise<HeavyDay[]> {
   });
   const byDate = new Map<string, HeavyDay>();
   for (const x of res.results) {
-    const [visitors, pv] = x.metrics;
+    const [visitors, pv, visits] = x.metrics;
     if (pv <= 100 * visitors) continue;
     const date = x.dimensions[0].slice(0, 10);
-    const d = byDate.get(date) ?? { date, visitorDays: 0, pageViews: 0 };
+    const d = byDate.get(date) ?? { date, visitorDays: 0, visits: 0, pageViews: 0 };
     d.visitorDays += 1;
+    d.visits += visits;
     d.pageViews += pv;
     byDate.set(date, d);
   }
   return [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date));
+}
+
+/** True when an Eastern day falls in the invalid bounce period (any part of it). */
+export function bounceInvalidOn(day: string): boolean {
+  return day >= BOUNCE_BAD_FIRST_DAY && day <= BOUNCE_VALID_FIRST_DAY;
+}
+
+type DayRow = { date: string; visits: number; pageViews: number; bounceRate: number };
+
+/** Visits, page views and bounce per Eastern day. Missing days come back as zero. */
+export async function plausibleDayStats(r: Range): Promise<DayRow[]> {
+  const res = await query({
+    metrics: ["visits", "pageviews", "bounce_rate"],
+    date_range: [r.start, r.end],
+    dimensions: ["time:day"],
+  });
+  return res.results.map((x) => ({
+    date: x.dimensions[0].slice(0, 10),
+    visits: x.metrics[0],
+    pageViews: x.metrics[1],
+    bounceRate: x.metrics[2] / 100,
+  }));
+}
+
+/**
+ * Combine days into per-day averages. Pages per visit and bounce are ratios of
+ * the totals, so a light day does not count as much as a heavy one. Bounce
+ * skips days in the invalid bounce period.
+ */
+export function combineDays(days: DayRow[], heavy: HeavyDay[], n: number): DayStats {
+  const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
+  const visits = sum(days.map((d) => d.visits));
+  const pv = sum(days.map((d) => d.pageViews));
+  const dates = new Set(days.map((d) => d.date));
+  const h = heavy.filter((x) => dates.has(x.date));
+  const hPv = sum(h.map((x) => x.pageViews));
+  const hVisits = sum(h.map((x) => x.visits));
+  const valid = days.filter((d) => !bounceInvalidOn(d.date) && d.visits > 0);
+  const validVisits = sum(valid.map((d) => d.visits));
+  return {
+    visits: visits / n,
+    pageViews: pv / n,
+    viewsPerVisit: visits ? pv / visits : 0,
+    bounceRate: validVisits ? sum(valid.map((d) => d.bounceRate * d.visits)) / validVisits : null,
+    heavyPageViews: hPv / n,
+    heavyVisitorDays: sum(h.map((x) => x.visitorDays)) / n,
+    exHeavyPageViews: (pv - hPv) / n,
+    exHeavyViewsPerVisit: visits - hVisits > 0 ? (pv - hPv) / (visits - hVisits) : 0,
+  };
 }

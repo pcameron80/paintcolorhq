@@ -13,6 +13,7 @@ import type {
   TodayData,
   TodayStats,
   TrendData,
+  YesterdayData,
 } from "@/lib/admin-analytics-types";
 import { BarList, LineChart, MinuteBars } from "./charts";
 import { WorldMap } from "./world-map";
@@ -172,13 +173,27 @@ export function LiveDashboard({ initial }: { initial: LiveResponse }) {
             {data.today.ok ? <TodayTiles data={data.today.data} /> : <Unavailable what="Plausible data" />}
           </Card>
 
-          <Card className="lg:col-span-12" title="Yesterday" note="The last complete day in GA4, compared with the average of the 7 days before it.">
-            {reports.daily.ok && reports.daily.data.summary ? (
-              <SummaryTiles summary={reports.daily.data.summary} />
-            ) : (
-              <Unavailable what="Analytics data" />
-            )}
-          </Card>
+          {reports.yesterday.ok ? (
+            <Card
+              className="lg:col-span-12"
+              title="Yesterday"
+              note={`${shortDate(reports.yesterday.data.date)}, from Plausible, compared with the daily average of the 7 days before it (${shortDate(reports.yesterday.data.avgFrom)} to ${shortDate(reports.yesterday.data.avgTo)}).`}
+            >
+              <YesterdayTiles data={reports.yesterday.data} />
+            </Card>
+          ) : (
+            <Card
+              className="lg:col-span-12"
+              title="Yesterday"
+              note="The last complete day in GA4 (Plausible unavailable), compared with the average of the 7 days before it."
+            >
+              {reports.daily.ok && reports.daily.data.summary ? (
+                <SummaryTiles summary={reports.daily.data.summary} />
+              ) : (
+                <Unavailable what="Analytics data" />
+              )}
+            </Card>
+          )}
 
           <Card className="lg:col-span-8" title="Where visitors are" note={rt.ok ? `Last 30 minutes, ${fromSource(rt.data.source)}` : undefined}>
             {rt.ok ? <WorldMap points={rt.data.points} /> : <Unavailable what="Live visitor data" />}
@@ -318,6 +333,105 @@ function SummaryTiles({ summary }: { summary: Summary }) {
             </ul>
           </div>
         ))}
+      </div>
+    </>
+  );
+}
+
+/** Flip the arrow color (not the wording) when a drop is the good direction. */
+function goodDirection(d: Delta | null, lowerIsBetter: boolean): Delta | null {
+  if (!d || !lowerIsBetter || d.dir === "flat") return d;
+  return { ...d, dir: d.dir === "up" ? "down" : "up" };
+}
+
+function YesterdayTiles({ data }: { data: YesterdayData }) {
+  const { yesterday: y, avg7: a, bounceDays, engaged } = data;
+  const tiles: { label: string; value: string; lines: ReactNode[] }[] = [
+    {
+      label: "Visits",
+      value: fmtNum(y.visits),
+      lines: [<DeltaText key="d" delta={relDelta(y.visits, a.visits)} label={`vs 7-day avg (${fmtNum(a.visits)})`} />],
+    },
+    {
+      label: "Page views",
+      value: fmtNum(y.pageViews),
+      lines: [
+        <DeltaText key="d" delta={relDelta(y.pageViews, a.pageViews)} label={`vs 7-day avg (${fmtNum(a.pageViews)})`} />,
+        <DeltaText
+          key="x"
+          delta={relDelta(y.exHeavyPageViews, a.exHeavyPageViews)}
+          label={`${fmtNum(y.exHeavyPageViews)} excl. heavy hitters (avg ${fmtNum(a.exHeavyPageViews)})`}
+        />,
+      ],
+    },
+    {
+      label: "Pages per visit",
+      value: fmtDecimal(y.viewsPerVisit),
+      lines: [
+        <DeltaText key="d" delta={relDelta(y.viewsPerVisit, a.viewsPerVisit)} label={`vs 7-day avg (${fmtDecimal(a.viewsPerVisit)})`} />,
+        <DeltaText
+          key="x"
+          delta={relDelta(y.exHeavyViewsPerVisit, a.exHeavyViewsPerVisit)}
+          label={`${fmtDecimal(y.exHeavyViewsPerVisit)} excl. heavy hitters (avg ${fmtDecimal(a.exHeavyViewsPerVisit)})`}
+        />,
+      ],
+    },
+    {
+      label: "One-page visits",
+      value: y.bounceRate === null ? "n/a" : fmtPct(y.bounceRate),
+      lines: [
+        y.bounceRate === null || a.bounceRate === null ? (
+          <li key="d" style={{ color: "var(--v-muted)" }}>
+            No valid bounce data to compare
+          </li>
+        ) : (
+          <DeltaText
+            key="d"
+            delta={(() => {
+              const d = pointDelta(y.bounceRate, a.bounceRate);
+              const g = goodDirection(d, true);
+              return g && d ? { ...g, text: d.text } : null;
+            })()}
+            label={`vs avg of ${bounceDays.length === 7 ? "7 days" : `${bounceDays.length} valid days`} (${fmtPct(a.bounceRate)})`}
+          />
+        ),
+      ],
+    },
+  ];
+  const heavyShare = y.pageViews ? y.heavyPageViews / y.pageViews : 0;
+  const avgShare = a.pageViews ? a.heavyPageViews / a.pageViews : 0;
+  return (
+    <>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {tiles.map((t) => (
+          <div key={t.label}>
+            <div className="text-xs" style={{ color: "var(--v-muted)" }}>
+              {t.label}
+            </div>
+            <div className="text-3xl font-semibold tabular-nums">{t.value}</div>
+            <ul className="mt-1 space-y-0.5 text-xs">{t.lines}</ul>
+          </div>
+        ))}
+      </div>
+      <div className="mt-4 space-y-1 text-xs" style={{ color: "var(--v-muted)" }}>
+        <p>
+          Heavy hitters (one visitor over 100 page views in a day):{" "}
+          {y.heavyVisitorDays === 0
+            ? "none yesterday"
+            : `${fmtNum(y.heavyVisitorDays)} yesterday, ${fmtNum(y.heavyPageViews)} page views (${fmtPct(heavyShare, 1)} of the day)`}
+          ; {fmtPct(avgShare, 1)} of page views on an average day before it.
+        </p>
+        {bounceDays.length < 7 && (
+          <p>
+            One-page average uses {bounceDays.length ? bounceDays.map(shortDate).join(", ") : "no days"} only: Plausible bounce data from Oct 24 to
+            Oct 27, 2026 is invalid.
+          </p>
+        )}
+        {engaged && (
+          <p>
+            GA4 engaged visits: {fmtPct(engaged.yesterday)} yesterday, {fmtPct(engaged.avg7)} on the 7-day average.
+          </p>
+        )}
       </div>
     </>
   );
