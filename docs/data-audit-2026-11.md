@@ -2,7 +2,11 @@
 
 The 2026-10-31 audit compared the colors table with each manufacturer's own feed and site. Twenty-four findings survived two independent checks each. This page lists them, what this branch changes, and the order Philip runs the writes in during the 2026-11-08 to 2026-11-14 window.
 
-Nothing here has been applied. Every script below is a dry run unless `--apply` is passed, writes a JSON backup to `scripts/data/backups/` first, writes each row only if it still holds the value that was read, and can `--revert`.
+Nothing here has been applied. Every script below is a dry run unless `--apply` is passed, writes a JSON backup to `scripts/data/backups/` first, and can `--revert`. Most also write each row only if it still holds the value that was read. Three exceptions:
+
+- `apply-hex-corrections.ts` checks each row's hex against the scan when it reads it, but its UPDATE matches on id only, and its revert is unconditional.
+- `retire-bad-color-rows.ts` deletes rows. Its backup holds every deleted color, match and project ref, and `--revert` re-inserts them.
+- Step 6 truncates `cross_brand_matches` with no row backup: a copy would add 142 MB to a 408 MB database. Recovery is to rerun `compute-matches` and `seed-matches`. Until the count check passes, `build-match-data` fails the build, so the deployed `/match-data` stays live.
 
 Already fixed or decided before this audit (see the Brain's `projects/paintcolorhq/data-pipeline.md`) is not repeated: the 2026-10-11 hex corrections, BM and Behr published LRV, names pass, availability states and retired rows.
 
@@ -10,11 +14,11 @@ Already fixed or decided before this audit (see the Brain's `projects/paintcolor
 
 | Area | Change |
 |---|---|
-| Family classifier (`scripts/lib/color-math.ts`) | Rule (h) colored grays and neutrals, rule (i) teal-greens out of blue, rule (j) light reds to pink, a peach carve-out from the tan rule, muted plums and wines no longer filed as pink, `FAMILY_OVERRIDES` (Beetroot, Wild Poppy, Maritime Blue), SW teals stay blue. `refine-color-families.ts` uses `familyForRow`. |
+| Family classifier (`scripts/lib/color-math.ts`) | Rule (h) colored grays and neutrals, rule (i) teal-greens out of blue, rule (j) light reds to pink, a peach carve-out from the tan rule, muted plums and wines no longer filed as pink, `FAMILY_OVERRIDES` (Beetroot, Wild Poppy, Maritime Blue), SW teals stay blue. `refine-color-families.ts` uses `familyForRow`. `apply-hex-corrections.ts` and `import-brand-scan.ts` use `familyFromHex`, so the SW exemption and the overrides also hold when a hex is corrected (refine never moves a green back to blue). |
 | Undertone (`scripts/lib/undertone.ts`) | Sourced overrides only: SW Passive to Cool (Blue), 13 Farrow & Ball neutral-group colors. Repose Gray's unsourced green override removed. The audit's v2 classifier is not adopted. |
-| Names (`apply-published-names.ts`, `lib/name-punctuation.ts`) | The "same letters" guard no longer hides punctuation, spacing and accent artifacts. Three new gated groups: `--punctuation`, `--word-joins`, `--accents`. Catalog casing is kept. |
+| Names (`apply-published-names.ts`, `lib/name-punctuation.ts`) | The "same letters" guard no longer hides punctuation, spacing and accent artifacts. Three new gated groups: `--punctuation`, `--word-joins`, `--accents`. Catalog casing is kept. Accents or punctuation the catalog has and the feed lacks are never written (`accent-kept`, `punctuation-kept`). |
 | LRV (`apply-published-lrv.ts`, `lib/published-lrv-holds.ts`) | `LRV_HOLD_CODES`: 8 published values that pass the 10-point cap but are wrong. |
-| Duplicates (`dedupe-colors.ts`, `lib/dedupe-rules.ts`, `scripts/data/explicit-duplicates.json`) | 84 hand-listed pairs with a guard on the loser's code, so a pair cannot run out of order. |
+| Duplicates (`dedupe-colors.ts`, `lib/dedupe-rules.ts`, `scripts/data/explicit-duplicates.json`) | 84 hand-listed pairs with a guard on the loser's code, so a pair cannot run out of order. A pair that a rule-based group already plans the same way is reported as covered, not refused. |
 | Vista identities (`fix-vista-identities.ts`, `scripts/data/vista-identity-plan.json`) | New script for the 12 rows the June reconcile re-pointed. |
 | RAL (`build-ral-corrections.ts`, `lib/ral-corrections.ts`, `scripts/data/ral-classic-reference.json`) | RAL's own swatches, gated against RAL's Lab values. |
 | Sub-2 dE hex (`scripts/data/audit-2026-11/sub-threshold-hex/`) | Ready inputs for `apply-hex-corrections.ts`: 62 Behr rows, 1 BM row. |
@@ -129,11 +133,20 @@ npx tsx scripts/apply-published-names.ts --scan-dir=data/brand-scans/2026-11-08 
 npx tsx scripts/fix-vista-identities.ts                 # dry run: expect 22 ready, 0 changed
 npx tsx scripts/fix-vista-identities.ts --apply
 npx tsx scripts/fetch-bm-aliases.ts                     # if data/bm-ac-aliases.json is missing
-npx tsx scripts/dedupe-colors.ts --write-redirects      # plan; expect 0 explicit pairs refused
+npx tsx scripts/dedupe-colors.ts --write-redirects      # plan; expect 81 explicit planned, 3 covered, 0 refused
+#    The plan also carries MP-41's rule-based groups, whose writes never ran. On the 2026-10-31
+#    export (identity fix applied in memory, no bm-ac-aliases.json) it retires 510 rows: 266 Behr
+#    behr-pad, 74 Behr HISP, 43 Behr same-code, 39 BM name+hex, 4 other rule-based, 3 Vista
+#    name+hex (the restored rows) and 81 explicit; the BM AC- aliases add about 42.
+#    In the same commit as the redirects, repoint content links to retired slugs (audit-colors
+#    errors on them): 13 in src/lib/blog-posts.tsx on 2026-10-31 (Behr toasty-gray-n320-2-2 x8,
+#    wheat-bread-720c-3-2, sterling-780e-3-2; Valspar encore-ci147; BM stone-cc-490, jack-cc-660).
 #    Commit and deploy src/data/color-redirects.json BEFORE retiring, so old URLs 301 at once.
 npx tsx scripts/retire-bad-color-rows.ts --pairs=scripts/data/dedupe-plan-<date>.json          # dry run
 npx tsx scripts/retire-bad-color-rows.ts --pairs=scripts/data/dedupe-plan-<date>.json --apply
-#    Then move src/lib/former-names.ts "benjamin-moore/white-opulence-879" to "benjamin-moore/opulence-oc-69".
+#    Then move the src/lib/former-names.ts keys of retired rows to their canonical, or the
+#    "Previously listed as" line disappears: benjamin-moore/white-opulence-879 -> opulence-oc-69,
+#    behr/canyon-ouvert-n300-4 -> open-canyon-n300-4, benjamin-moore/indian-summer-cc-186 -> casabella-102.
 
 # 3. Hex. Rescan Behr so its hex-changed list reflects the retired rows (expect the 28 same-code canonicals).
 npm run scan-palettes -- --brand=behr --out-dir=data/brand-scans/2026-11-08b
@@ -149,7 +162,9 @@ npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/2026-11-08 --
 npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/2026-11-08 --brand=dunn-edwards --apply
 npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/2026-11-08 --brand=vista-paint,ppg --min-diff=1
 npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/2026-11-08 --brand=vista-paint,ppg --min-diff=1 --apply
+npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/2026-11-08b --brand=behr --min-diff=0.5
 npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/2026-11-08b --brand=behr --min-diff=0.5 --apply
+npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/ral-2026-11 --brand=ral --min-diff=1
 npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/ral-2026-11 --brand=ral --min-diff=1 --apply
 npx tsx scripts/apply-availability.ts --scan-dir=data/brand-scans/2026-11-08b      # Behr twins left 'current'; then --apply
 
@@ -174,11 +189,15 @@ npm run audit-colors -- --changed=scripts/data/backups/published-lrv-<ts>.json
 #    the script refuses before 2026-11-04 and skips the 13 head colors until 2026-11-28).
 npx tsx scripts/populate-undertones.ts                  # dry run: expect about 15,889 changes
 npx tsx scripts/populate-undertones.ts --apply
+#    The one head color step 5 held (SW Natural Linen, orange to beige):
+npx tsx scripts/refine-color-families.ts --only-keys sherwin-williams/natural-linen-9109 --include-head
+npx tsx scripts/refine-color-families.ts --only-keys sherwin-williams/natural-linen-9109 --include-head --apply
 #    Redeploy, then npm run audit-colors.
 ```
 
 Notes:
 - Step 2 must precede step 3. Correcting Behr twin hexes first would list the same Behr color twice in adjacent ranks.
+- Head-color match lists are frozen snapshots until 2026-11-28 (`scripts/data/frozen-match/`). Seven of their cards go stale in step 2. Six link to rows the plan retires: Behr sandstone-cliff-750c-3-2, toasty-gray-n320-2-2, burnished-clay-ppu18-9 and hazelnut-cream-750c-2-2, BM brandy-cc-60, and D-E black-dea187. They 301 to the canonical. On Iron Ore, the "Silent Sea #3e3f40" card links to winter-balsam-c-1415, which becomes Winter Balsam #314747 after the identity fix. The build does not fail, because snapshots are checked for shape only. See D11.
 - Step 5 and step 8 change titles, meta and lastmod on about 4,000 and 15,900 pages. Running them in one window is possible but makes any traffic change harder to read.
 - PR #262 (names) and PR #263 (LRV source) touch `apply-published-names.ts` and `apply-published-lrv.ts`. Whichever merges second needs a rebase; keep `LRV_HOLD_CODES` and the punctuation groups.
 
@@ -196,3 +215,4 @@ Notes:
 | D8 | Undertone page guard in the greige band | Show the temperature only ("warm") for C* 3 to 10 at hue 75 to 100 unless a sourced override exists; keep Neutral below C* 3. Do not reduce the guard to the null and C* 20+ rules. |
 | D9 | The 7 restored historic Vista rows (Madder, Amish Green and others) | Leave `current` until the availability rule's spot check; Hirshfield's still sells them. |
 | D10 | Repose Gray now Warm (Golden) | Keep; SW's own wording is warm. Revert by restoring the override if you prefer the cool reading. |
+| D11 | Seven stale cards on frozen head-color match lists from step 2 until 2026-11-28 (see Notes) | Accept: six still reach the right color through a 301, and the Iron Ore card is one slot of 50. The alternative is to hold `fix-vista-identities.ts` and the retire until 2026-11-28. |
