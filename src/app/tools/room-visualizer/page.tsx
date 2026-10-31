@@ -323,7 +323,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             <p>
               The Paint Color HQ Room Visualizer lets you preview paint colors on
               every surface in a room before you commit to a single can of paint.
-              Click on any region — main walls, accent wall, trim, or kitchen cabinets —
+              Click on any region (main walls, accent wall, trim or kitchen cabinets)
               to select it, then choose a color from the picker or type in a
               specific hex code. The room updates instantly so you can experiment
               freely without any waiting.
