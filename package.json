@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "tsx scripts/build-match-data.ts && tsx scripts/build-sitemap-data.ts",
+    "prebuild": "tsx scripts/build-match-data.ts && tsx scripts/build-sitemap-data.ts && tsx scripts/build-search-words.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -49,7 +49,7 @@
     "test:samplize": "NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX='https://www.jdoqocy.com/click-101771405-15496318?url=' node --import tsx --test scripts/lib/samplize-affiliate.test.ts",
     "test:supplies": "node --import tsx --test scripts/lib/painting-supplies.test.ts",
     "test:undertone": "node --import tsx --test scripts/lib/undertone.test.ts",
-    "predev": "tsx scripts/build-sitemap-data.ts",
+    "predev": "tsx scripts/build-sitemap-data.ts && tsx scripts/build-search-words.ts",
     "build:sitemap": "tsx scripts/build-sitemap-data.ts",
     "test": "NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX='https://www.jdoqocy.com/click-101771405-15496318?url=' node --import tsx --test 'src/**/*.test.ts' 'scripts/**/*.test.ts'",
     "test:seo": "node --import tsx --test 'src/lib/*.test.ts'",
