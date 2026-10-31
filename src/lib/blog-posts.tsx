@@ -6312,11 +6312,6 @@ const blogPosts: BlogPost[] = [
     tags: ["Guide", "Green", "Sage"],
     faq: [
       {
-        question: "What are the best sage green paint colors?",
-        answer:
-          "October Mist (BM 1495, LRV 46.5) is our first pick: a neutral mid-tone sage with Softened Green (SW 6177) as a nearly identical Sherwin-Williams match. For a deeper sage, Evergreen Fog (SW 9130, LRV 30.4); for a light one, Sea Salt (SW 6204, LRV 63.3).",
-      },
-      {
         question: "What color is sage green?",
         answer:
           "Sage is a grayed yellow-green. Eleven of the twelve sages in this guide sit in our gray color family, not green, and their greenness (a*) runs only from -2.7 to -5.9. Behr Sage Garden is the exception: at a* -26.1 it is a clear green, not a grayed one.",
@@ -6331,17 +6326,30 @@ const blogPosts: BlogPost[] = [
         answer:
           "Storm Cloud Gray (2140-40) is the closest Benjamin Moore match to Evergreen Fog (SW 9130) and rates nearly identical. The closest Behr match, Shady Willow (ECC-36-1), is also nearly identical. Both are digital matches; confirm with a physical sample.",
       },
-      {
-        question: "What colors go with sage green?",
-        answer:
-          "Match the trim white to the sage's undertone: a white with some warmth for golden sages like Evergreen Fog and Escape Gray, a cleaner white for Saybrook Sage and Sea Salt. For an accent, go deeper inside the same family, such as Sea Salt walls with Evergreen Fog or Pewter Green on cabinets.",
-      },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
           The best sage green for most rooms is{" "}
           <Swatch hex="#b7b9a6" name="October Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/october-mist-1495" /> (1495, LRV 46.5): a neutral-undertone, mid-tone sage that reads green without turning olive or gray, with Sherwin-Williams <Link href="/colors/sherwin-williams/softened-green-6177" className="text-brand-blue hover:underline">Softened Green</Link> as a nearly identical match. &quot;Sage&quot; covers a wide band, from near-charcoal to near-white, so this guide sorts twelve sages from darkest to lightest, with each one&apos;s LRV, undertone and measured greenness from our database, and its closest match at Sherwin-Williams, Benjamin Moore and Behr.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Quick answers</h2>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What is the best sage green paint color?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          October Mist (1495, LRV 46.5) for a mid-tone sage on every wall, with Sherwin-Williams Softened Green and Behr Restful as nearly identical matches. For a deeper sage, Evergreen Fog (SW 9130, LRV 30.4); for a light one, Sea Salt (SW 6204, LRV 63.3).
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What is the most popular sage green color?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          We have no sales data, so we cannot rank sages by popularity. What we can measure is how easy each is to buy elsewhere: Valspar Sparkling Sage has a nearly identical match in 9 of the 12 other brands we track and Sea Salt in 8, while October Mist and Evergreen Fog have one in 6.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">Is sage green an outdated color?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          We do not measure fashion, but the brands&apos; own picks include greens. Two of the 2027 Colors of the Year are greens: Sherwin-Williams <Link href="/colors/sherwin-williams/celery-6421" className="text-brand-blue hover:underline">Celery</Link> (LRV 71.2) and Benjamin Moore <Link href="/colors/benjamin-moore/webster-green-hc-130" className="text-brand-blue hover:underline">Webster Green</Link> (LRV 20.2). For 2026, Valspar <Link href="/colors/valspar/warm-eucalyptus-8004-28f" className="text-brand-blue hover:underline">Warm Eucalyptus</Link> (LRV 20.6) and Dunn-Edwards <Link href="/colors/dunn-edwards/midnight-garden-de5657" className="text-brand-blue hover:underline">Midnight Garden</Link> (LRV 14.9) were grayed greens, deeper than every sage in the table except Pewter Green.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What colors match well with sage green?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          For trim, a white with an undertone that matches the sage: a little warmth for golden sages such as Evergreen Fog, a cleaner white for Saybrook Sage and Sea Salt. For an accent, a deeper sage from the same family. The colors-that-go-with-sage section below has specific picks.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">What color is sage green, measured</h2>
@@ -6481,7 +6489,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Deep sage greens for cabinets, doors and accent walls</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#5e6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> (SW 6208, LRV 11.8) is the darkest sage here, close to charcoal, with a warm golden undertone; it suits islands, lower cabinets and front doors. <Swatch hex="#828167" name="Tate Olive" brand="Benjamin Moore" href="/colors/benjamin-moore/tate-olive-hc-112" /> (HC-112, LRV 21.6) is the olive end of the category: its yellowness (b* 14.3) is the highest of the gray-greens, which is what makes it read olive rather than gray. <Swatch hex="#95978a" name="Evergreen Fog" brand="Sherwin-Williams" href="/colors/sherwin-williams/evergreen-fog-9130" /> (SW 9130, LRV 30.4), Sherwin-Williams&apos; 2022 Color of the Year, is the lightest of the three and the one that still works on all four walls of a well-lit room.
+          <Swatch hex="#5e6259" name="Pewter Green" brand="Sherwin-Williams" href="/colors/sherwin-williams/pewter-green-6208" /> (SW 6208, LRV 11.8) is the darkest sage here, close to charcoal, with a warm golden undertone; it suits islands, lower cabinets and front doors. <Swatch hex="#828167" name="Tate Olive" brand="Benjamin Moore" href="/colors/benjamin-moore/tate-olive-hc-112" /> (HC-112, LRV 21.6) is the olive end of the category: its yellowness (b* 14.3) is the highest of the gray-greens, which is what makes it read olive rather than gray. <Swatch hex="#95978a" name="Evergreen Fog" brand="Sherwin-Williams" href="/colors/sherwin-williams/evergreen-fog-9130" /> (SW 9130, LRV 30.4), Sherwin-Williams&apos; 2022 Color of the Year, is the lightest of the three and the one that still works on all four walls of a well-lit room. Two more deep sages to sample: Benjamin Moore <Swatch hex="#7c7766" name="Gloucester Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/gloucester-sage-hc-100" /> (HC-100, LRV 19.3), whose closest Behr match, Amazon River, is nearly identical. Behr <Swatch hex="#7b8472" name="Sage Green" brand="Behr" href="/colors/behr/sage-green-icc-77" /> (ICC-77, LRV 22) is the other; its closest Sherwin-Williams match, Privilege Green, is nearly identical.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Mid-tone sage greens for whole rooms</h2>
@@ -6665,6 +6673,24 @@ const blogPosts: BlogPost[] = [
         <p className="text-lg leading-relaxed text-gray-800">
           The best greige for most homes is{" "}
           <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60.1): light, low in yellow and neutral in undertone, so it shifts less with the light than warmer or cooler picks. Greige is a wide family, though, and the right one depends on how much warmth your room needs and which way you want it to lean. Below are ten greiges with each one&apos;s LRV, undertone and measured warmth from our database, and its closest match at Sherwin-Williams, Benjamin Moore and Behr.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Quick answers</h2>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What is the most popular greige color?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          We have no sales data, so we cannot rank greiges by popularity. What we can measure: Agreeable Gray, Worldly Gray, Edgecomb Gray and Pale Oak each have a nearly identical match in every brand where we list a match (10 each), and Manchester Tan in 11.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What are the best Sherwin-Williams greige colors in 2026?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          Agreeable Gray (SW 7029, LRV 60.1) first. Then, from coolest to warmest: Repose Gray (SW 7015, LRV 58.4), Worldly Gray (SW 7043, LRV 57.1), Accessible Beige (SW 7036, LRV 57.9), and the deeper Balanced Beige (SW 7037, LRV 45.7) and Perfect Greige (SW 6073, LRV 41.7).
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What is replacing greige?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          The brands&apos; own picks do not name a new greige. Six of the seven 2027 Colors of the Year are deep colors at LRV 26 or below, and the seventh, Sherwin-Williams <Link href="/colors/sherwin-williams/celery-6421" className="text-brand-blue hover:underline">Celery</Link> (LRV 71.2), is a pale yellow-green. None of the 2026 picks is a greige either: Sherwin-Williams <Link href="/colors/sherwin-williams/universal-khaki-6150" className="text-brand-blue hover:underline">Universal Khaki</Link> (LRV 40.6) is deeper and more yellow than any greige here.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">Is greige out in 2026?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          We do not measure fashion. What we can report is the brands&apos; picks: of the eight 2026 Colors of the Year, only Dutch Boy <Link href="/colors/dutch-boy/melodious-ivory-313-2db" className="text-brand-blue hover:underline">Melodious Ivory</Link> (LRV 61.8) is as light as the benchmark greiges in this guide, which run from LRV 55 to 69. Every pick is on our <Link href="/color-of-the-year" className="text-brand-blue hover:underline">Color of the Year hub</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">What color is greige, measured</h2>
@@ -9214,11 +9240,6 @@ const blogPosts: BlogPost[] = [
     tags: ["Nursery", "Kids Room", "Design", "Gender-Neutral", "Baby Room"],
     faq: [
       {
-        question: "What is the best paint color for a nursery?",
-        answer:
-          "Benjamin Moore Saybrook Sage (HC-114, LRV 45.5) is our first pick for color: a soft, cool-undertone sage that suits a baby's room and an older child's. For a light neutral, Benjamin Moore White Dove (OC-17, LRV 83.2) is the safer choice. Both have nearly identical matches at Behr, and White Dove has one at Sherwin-Williams.",
-      },
-      {
         question: "What are the best gender-neutral nursery paint colors?",
         answer:
           "Soft greens and warm neutrals: Saybrook Sage, Softened Green (SW 6177), White Dove, Balboa Mist (OC-27) and Shiitake (SW 9173). None of them reads as a pink or a blue, and all have nearly identical matches at Behr.",
@@ -9243,6 +9264,20 @@ const blogPosts: BlogPost[] = [
       <>
         <p className="text-lg leading-relaxed text-gray-800">
           The best nursery paint color for most rooms is <Swatch hex="#b2b8a3" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (HC-114, LRV 45.5): a soft, cool-undertone sage that reads as color without reading as a pink or a blue, and still suits the room when the crib becomes a bed. For parents who want a neutral, <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove</Link> (OC-17, LRV 83.2) is the light, warm-leaning white to start with. This guide covers 13 nursery colors in greens, blues, warm neutrals and muted pinks, with each one&apos;s LRV and undertone from our database and its closest match at <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>, then what to check on the paint itself.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Quick answers</h2>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What are the best colors to paint a baby nursery?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          Soft greens, grayed blues, warm whites and muted pinks. Our first picks are Benjamin Moore Saybrook Sage (HC-114, LRV 45.5) for color and White Dove (OC-17, LRV 83.2) for a light neutral; Quiet Moments (1563, LRV 60.7) is the blue-green-gray option, and First Light (2102-70, LRV 75.9) the palest pink.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What are the trendy nursery colors for 2026?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          We do not track trends, but we can report the brands&apos; 2026 picks. Most are deep: six of the eight are LRV 41 or below. The two lightest are Dutch Boy <Link href="/colors/dutch-boy/melodious-ivory-313-2db" className="text-brand-blue hover:underline">Melodious Ivory</Link> (LRV 61.8), a warm ivory light enough for all four walls, and PPG <Link href="/colors/ppg/secret-safari-1110-4" className="text-brand-blue hover:underline">Secret Safari</Link> (LRV 48.5), a strong yellow-green (b* 43.2) better kept to one wall; Sherwin-Williams <Link href="/colors/sherwin-williams/universal-khaki-6150" className="text-brand-blue hover:underline">Universal Khaki</Link> (LRV 40.6) suits an accent wall.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What color is replacing beige in 2026?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          No brand named a new beige. Six of the seven 2027 Colors of the Year are deep colors at LRV 26 or below, and the seventh, Sherwin-Williams <Link href="/colors/sherwin-williams/celery-6421" className="text-brand-blue hover:underline">Celery</Link> (LRV 71.2), is a pale yellow-green. Our <Link href="/blog/best-beige-paint-colors" className="text-brand-blue hover:underline">beige guide</Link> has the full answer and the beiges that still suit a nursery.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Why muted colors over baby pastels</h2>
@@ -9412,6 +9447,11 @@ const blogPosts: BlogPost[] = [
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft pink and mauve, done right</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Pink works best in a nursery when it has enough gray or white in it to read as a neutral. <Swatch hex="#c5bcc1" name="Iced Mauve" brand="Benjamin Moore" href="/colors/benjamin-moore/iced-mauve-2115-50" /> (2115-50, LRV 50.6) is a mauve-gray with a warm (pink) undertone, the only pink-undertone pick here; its closest Behr match, Mulberry Stain, is nearly identical, while the closest Sherwin-Williams, Veiled Violet, is only very similar. <Swatch hex="#f0e3df" name="First Light" brand="Benjamin Moore" href="/colors/benjamin-moore/first-light-2102-70" /> (2102-70, LRV 75.9) is a blush so pale it reads close to a warm white; Behr Pastel China is nearly identical. See the <Link href="/colors/family/pink" className="text-brand-blue hover:underline">pink family</Link> for more.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">More nursery colors to sample</h2>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          Four more colors worth a sample. Benjamin Moore <Link href="/colors/benjamin-moore/swiss-coffee-oc-45" className="text-brand-blue hover:underline">Swiss Coffee</Link> (OC-45, LRV 81.9) is nearly identical to White Dove, a soft white with a little more warmth. Sherwin-Williams <Link href="/colors/sherwin-williams/alpaca-7022" className="text-brand-blue hover:underline">Alpaca</Link> (SW 7022, LRV 56.4) is a light greige; its closest Benjamin Moore match, Wish, is nearly identical. Benjamin Moore <Link href="/colors/benjamin-moore/palladian-blue-hc-144" className="text-brand-blue hover:underline">Palladian Blue</Link> (HC-144, LRV 60.4) is very similar to Quiet Moments. Sherwin-Williams <Link href="/colors/sherwin-williams/quaint-peche-6330" className="text-brand-blue hover:underline">Quaint Peche</Link> (SW 6330, LRV 65) is a soft peach with a warm (golden) undertone. For a deeper green accent wall, Sherwin-Williams <Link href="/colors/sherwin-williams/evergreen-fog-9130" className="text-brand-blue hover:underline">Evergreen Fog</Link> (SW 9130, LRV 30.4); for a mid-tone one, Benjamin Moore <Link href="/colors/benjamin-moore/october-mist-1495" className="text-brand-blue hover:underline">October Mist</Link> (1495, LRV 46.5).
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">If you like one, also see</h2>
@@ -10629,19 +10669,9 @@ const blogPosts: BlogPost[] = [
     tags: ["East-Facing", "Lighting", "Design"],
     faq: [
       {
-        question: "What is the best paint color for an east-facing room?",
-        answer:
-          "Benjamin Moore Balboa Mist (OC-27, LRV 65.5) is our first pick: light enough to stay bright in the dimmer afternoon light, with a small amount of yellow (b* 5.4) to offset the afternoon's cool cast without turning yellow in morning sun. Sherwin-Williams Agreeable Gray (SW 7029, LRV 60.1) is a very similar alternative.",
-      },
-      {
         question: "Should I use warm or cool colors in an east-facing room?",
         answer:
           "Choose by when you use the room. Morning sun warms everything, so a room used mostly in the morning can take cooler colors such as Stonington Gray or Sea Salt. A room used mostly in the afternoon and evening sits in cooler, indirect light, so a slightly warm color, around b* 5 to 8 with an LRV above 55, holds up better.",
-      },
-      {
-        question: "What color should I paint an east-facing bedroom?",
-        answer:
-          "A bedroom gets most of its daytime use in the morning, when east light is strongest and warmest, so a cooler or balanced color works: Quiet Moments (BM 1563), Sea Salt (SW 6204) or Stonington Gray (BM HC-170), all LRV 59 to 64. For a warmer bedroom, Balboa Mist (OC-27) is the balanced choice.",
       },
       {
         question: "What color should I paint an east-facing living room?",
@@ -10658,6 +10688,24 @@ const blogPosts: BlogPost[] = [
       <>
         <p className="text-lg leading-relaxed text-gray-800">
           The best all-round color for an east-facing room is <Swatch hex="#dbd7cd" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> (OC-27, LRV 65.5): light enough to keep the room bright once the sun moves off the windows, with just enough warmth to offset the cool afternoon light. East-facing rooms are hard to paint because they get two different kinds of light each day. This guide explains what each one does to warm and cool colors, then gives 13 colors that hold up in both, with each one&apos;s LRV and measured warmth from our database and its closest match at <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>.
+        </p>
+
+        <h2 className="mt-10 text-2xl font-bold text-gray-900">Quick answers</h2>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">Which color is best for an east-facing room?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          Benjamin Moore Balboa Mist (OC-27, LRV 65.5): light enough to stay bright in the dimmer afternoon light, with a little yellow (b* 5.4) to offset the cool afternoon cast. Sherwin-Williams Agreeable Gray (SW 7029, LRV 60.1) is a very similar alternative.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What color paint should I use in my east-facing bedroom?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          A bedroom gets most of its daylight use in the morning, when east light is strongest and warmest, so cooler or balanced colors work: Quiet Moments (BM 1563), Sea Salt (SW 6204) or Stonington Gray (BM HC-170), all LRV 59 to 64. For a warmer bedroom, Balboa Mist is the balanced choice.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What color is replacing gray in 2026?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          The brands&apos; picks do not name a new light gray. Six of the seven 2027 Colors of the Year are deep colors at LRV 26 or below, and the seventh, Sherwin-Williams <Link href="/colors/sherwin-williams/celery-6421" className="text-brand-blue hover:underline">Celery</Link> (LRV 71.2), is a pale yellow-green. The two blue-leaning picks, Glidden <Link href="/colors/ppg/artifact-10-16" className="text-brand-blue hover:underline">Artifact</Link> (LRV 20.3) and Valspar <Link href="/colors/valspar/cottage-door-8004-38e" className="text-brand-blue hover:underline">Cottage Door</Link> (LRV 26), are deep blue-leaning colors, not whole-room grays. For an east-facing room that would have been gray, Balboa Mist and Agreeable Gray are the warmer, light alternatives in this guide.
+        </p>
+        <h3 className="mt-6 text-xl font-semibold text-gray-900">What color not to paint your bedroom?</h3>
+        <p className="mt-2 text-gray-700 leading-relaxed">
+          In an east-facing bedroom, the riskiest picks are colors below about LRV 30, which read dim once the sun moves off the windows, and saturated yellows, which get stronger in direct morning sun. The colors-to-approach-with-care section below explains both.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">What the light does in an east-facing room</h2>
@@ -10820,12 +10868,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Warm whites</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Whites have the most light to give back in the afternoon, which makes them the lowest-risk choice here. <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (OC-17, LRV 83.2) and <Swatch hex="#edeae0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (SW 7008, LRV 82.2) are nearly identical to each other, with just enough warmth (b* 4.5 and 5.2) to keep afternoon light from turning them gray. <Swatch hex="#e5e0d0" name="Ballet White" brand="Benjamin Moore" href="/colors/benjamin-moore/ballet-white-oc-9" /> (OC-9, LRV 72.0), one of Benjamin Moore&apos;s own picks for east-facing rooms, is creamier (b* 8.4), so it suits a room used mostly in the afternoon. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> or our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link>.
+          Whites have the most light to give back in the afternoon, which makes them the lowest-risk choice here. <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> (OC-17, LRV 83.2) and <Swatch hex="#edeae0" name="Alabaster" brand="Sherwin-Williams" href="/colors/sherwin-williams/alabaster-7008" /> (SW 7008, LRV 82.2) are nearly identical to each other, with just enough warmth (b* 4.5 and 5.2) to keep afternoon light from turning them gray. <Swatch hex="#e5e0d0" name="Ballet White" brand="Benjamin Moore" href="/colors/benjamin-moore/ballet-white-oc-9" /> (OC-9, LRV 72.0), one of Benjamin Moore&apos;s own picks for east-facing rooms, is creamier (b* 8.4), so it suits a room used mostly in the afternoon. Two more: Benjamin Moore <Swatch hex="#f3f2e7" name="Cloud White" brand="Benjamin Moore" href="/colors/benjamin-moore/cloud-white-oc-130" /> (OC-130, LRV 85.1) is nearly identical to White Dove, and <Link href="/colors/benjamin-moore/simply-white-2143-70" className="text-brand-blue hover:underline">Simply White</Link> (2143-70, LRV 89.5) is the brightest white here. If you want a soft yellow, <Link href="/colors/benjamin-moore/windham-cream-hc-6" className="text-brand-blue hover:underline">Windham Cream</Link> (HC-6, LRV 79) carries much more yellow (b* 18.0), so keep it to rooms used mostly in the afternoon. Explore the <Link href="/colors/family/white" className="text-brand-blue hover:underline">white family</Link> or our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">white paint guide</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Balanced neutrals</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Light greiges with a little yellow handle the swing best. Balboa Mist (OC-27, LRV 65.5, b* 5.4) is the first pick; Behr Ginger Sugar shares its hex value. <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60.1) is very similar and a few points deeper. <Swatch hex="#dad4c5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (HC-173, LRV 63.1) carries more yellow (b* 8.1), the warmest neutral here for a room used late in the day. <Swatch hex="#cbccc6" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> (HC-170, LRV 59.4), another Benjamin Moore east-facing pick, is the cool option: b* 2.9, best in a room you use in the morning. For more, see the <Link href="/blog/best-greige-paint-colors" className="text-brand-blue hover:underline">greige guide</Link> and the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link>.
+          Light greiges with a little yellow handle the swing best. Balboa Mist (OC-27, LRV 65.5, b* 5.4) is the first pick; Behr Ginger Sugar shares its hex value. <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60.1) is very similar and a few points deeper. <Swatch hex="#dad4c5" name="Edgecomb Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /> (HC-173, LRV 63.1) carries more yellow (b* 8.1), the warmest neutral here for a room used late in the day. <Swatch hex="#cbccc6" name="Stonington Gray" brand="Benjamin Moore" href="/colors/benjamin-moore/stonington-gray-hc-170" /> (HC-170, LRV 59.4), another Benjamin Moore east-facing pick, is the cool option: b* 2.9, best in a room you use in the morning. Three more warm neutrals that fit the afternoon rule: Benjamin Moore <Link href="/colors/benjamin-moore/revere-pewter-hc-172" className="text-brand-blue hover:underline">Revere Pewter</Link> (HC-172, LRV 55.1, b* 7.6), <Link href="/colors/benjamin-moore/pale-oak-oc-20" className="text-brand-blue hover:underline">Pale Oak</Link> (OC-20, LRV 68.6, b* 5.9), and Sherwin-Williams <Link href="/colors/sherwin-williams/accessible-beige-7036" className="text-brand-blue hover:underline">Accessible Beige</Link> (SW 7036, LRV 57.9), a little warmer at b* 8.8. For more, see the <Link href="/blog/best-greige-paint-colors" className="text-brand-blue hover:underline">greige guide</Link> and the <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige family</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Soft greens</h2>
