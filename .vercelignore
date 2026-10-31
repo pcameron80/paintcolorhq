@@ -3,6 +3,7 @@ scripts/*
 !scripts/build-match-data.ts
 
 !scripts/build-sitemap-data.ts
+!scripts/build-search-words.ts
 
 # Files under scripts/ that the build needs:
 # - frozen-match.ts, the frozen list and snapshots: build-match-data's helpers
