@@ -9,7 +9,8 @@
  *
  * Exemptions:
  * - A commit whose subject contains "[no-date]" (wording-only edits).
- * - Commits in IGNORE_SHAS below, each with a reason.
+ * - Commits in IGNORE_SHAS below, each with a reason. "sha:slug" exempts a
+ *   commit for one post only.
  * - Commits that only touch metadata lines (modifiedDate, title, author,
  *   excerpt, coverImage, pinImage, tags, noindex). A title numeral fix or a
  *   cover swap is not a content update, and neither is the squash merge that
@@ -29,6 +30,10 @@ const IGNORE_SHAS: readonly string[] = [
   // #218 (2026-10-20): "provided room photograph" became "one of the provided
   // rooms" in 5 posts after the visualizer gained 10 rooms. Wording only.
   "197aceb",
+  // 71aa3fe (2026-10-29) deleted most-popular-paint-colors-2025, the post right
+  // after this one. git log -L counts that deletion's context as a change to
+  // warm-vs-cool, whose own text was untouched.
+  "71aa3fe:warm-vs-cool-paint-colors",
 ];
 
 function git(args: string[]): string {
