@@ -6035,6 +6035,29 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#d1c7b8" name="Accessible Beige" brand="Sherwin-Williams" href="/colors/sherwin-williams/accessible-beige-7036" /> (SW 7036, LRV 57.9): a neutral-undertone beige with moderate warmth that sits between the yellow tans and the gray greiges. This guide ranks ten beiges by how warm they actually measure, gives each one&apos;s LRV and undertone from our database, and lists its closest match at Sherwin-Williams, Benjamin Moore and Behr so you can buy it where you shop. For a light beige, start with <Swatch hex="#ddd9ce" name="Pale Oak" brand="Benjamin Moore" href="/colors/benjamin-moore/pale-oak-oc-20" /> (OC-20, LRV 68.6).
         </p>
 
+        <figure className="mt-8">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-beige-accessible-beige.webp" alt="A living room with walls painted Sherwin-Williams Accessible Beige SW 7036, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Sherwin-Williams Accessible Beige SW 7036</p>
+            </div>
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-beige-pale-oak.webp" alt="A living room with walls painted Benjamin Moore Pale Oak OC-20, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Benjamin Moore Pale Oak OC-20</p>
+            </div>
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-beige-manchester-tan.webp" alt="A living room with walls painted Benjamin Moore Manchester Tan HC-81, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Benjamin Moore Manchester Tan HC-81</p>
+            </div>
+          </div>
+          <figcaption className="mt-2 text-sm text-gray-500">
+            AI-generated room visualizations. The wall color in each was measured against the brand&apos;s published value and corrected to it. Screens and room light change how paint looks, so confirm with a physical sample.
+          </figcaption>
+        </figure>
+
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Quick answers</h2>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">What is the best beige color?</h3>
         <p className="mt-2 text-gray-700 leading-relaxed">
@@ -6346,6 +6369,29 @@ const blogPosts: BlogPost[] = [
           The best sage green for most rooms is{" "}
           <Swatch hex="#b7b9a6" name="October Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/october-mist-1495" /> (1495, LRV 46.5): a neutral-undertone, mid-tone sage that reads green without turning olive or gray, with Sherwin-Williams <Link href="/colors/sherwin-williams/softened-green-6177" className="text-brand-blue hover:underline">Softened Green</Link> as a nearly identical match. &quot;Sage&quot; covers a wide band, from near-charcoal to near-white, so this guide sorts twelve sages from darkest to lightest, with each one&apos;s LRV, undertone and measured greenness from our database, and its closest match at Sherwin-Williams, Benjamin Moore and Behr.
         </p>
+
+        <figure className="mt-8">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-sage-october-mist.webp" alt="A bedroom with walls painted Benjamin Moore October Mist 1495, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Benjamin Moore October Mist 1495</p>
+            </div>
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-sage-evergreen-fog.webp" alt="A bedroom with walls painted Sherwin-Williams Evergreen Fog SW 9130, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Sherwin-Williams Evergreen Fog SW 9130</p>
+            </div>
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-sage-pewter-green.webp" alt="A bedroom with walls painted Sherwin-Williams Pewter Green SW 6208, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Sherwin-Williams Pewter Green SW 6208</p>
+            </div>
+          </div>
+          <figcaption className="mt-2 text-sm text-gray-500">
+            AI-generated room visualizations. The wall color in each was measured against the brand&apos;s published value and corrected to it. Screens and room light change how paint looks, so confirm with a physical sample.
+          </figcaption>
+        </figure>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Quick answers</h2>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">What is the best sage green paint color?</h3>
@@ -6687,6 +6733,29 @@ const blogPosts: BlogPost[] = [
           The best greige for most homes is{" "}
           <Swatch hex="#d1cbc1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (SW 7029, LRV 60.1): light, low in yellow and neutral in undertone, so it shifts less with the light than warmer or cooler picks. Greige is a wide family, though, and the right one depends on how much warmth your room needs and which way you want it to lean. Below are ten greiges with each one&apos;s LRV, undertone and measured warmth from our database, and its closest match at Sherwin-Williams, Benjamin Moore and Behr.
         </p>
+
+        <figure className="mt-8">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-greige-agreeable-gray.webp" alt="A dining room with walls painted Sherwin-Williams Agreeable Gray SW 7029, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Sherwin-Williams Agreeable Gray SW 7029</p>
+            </div>
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-greige-revere-pewter.webp" alt="A dining room with walls painted Benjamin Moore Revere Pewter HC-172, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Benjamin Moore Revere Pewter HC-172</p>
+            </div>
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-greige-edgecomb-gray.webp" alt="A dining room with walls painted Benjamin Moore Edgecomb Gray HC-173, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Benjamin Moore Edgecomb Gray HC-173</p>
+            </div>
+          </div>
+          <figcaption className="mt-2 text-sm text-gray-500">
+            AI-generated room visualizations. The wall color in each was measured against the brand&apos;s published value and corrected to it. Screens and room light change how paint looks, so confirm with a physical sample.
+          </figcaption>
+        </figure>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Quick answers</h2>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">What is the most popular greige color?</h3>
@@ -9279,6 +9348,29 @@ const blogPosts: BlogPost[] = [
           The best nursery paint color for most rooms is <Swatch hex="#b2b8a3" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" /> (HC-114, LRV 45.5): a soft, cool-undertone sage that reads as color without reading as a pink or a blue, and still suits the room when the crib becomes a bed. For parents who want a neutral, <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">Benjamin Moore White Dove</Link> (OC-17, LRV 83.2) is the light, warm-leaning white to start with. This guide covers 13 nursery colors in greens, blues, warm neutrals and muted pinks, with each one&apos;s LRV and undertone from our database and its closest match at <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>, then what to check on the paint itself.
         </p>
 
+        <figure className="mt-8">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-nursery-saybrook-sage.webp" alt="A nursery with walls painted Benjamin Moore Saybrook Sage HC-114, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Benjamin Moore Saybrook Sage HC-114</p>
+            </div>
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-nursery-quiet-moments.webp" alt="A nursery with walls painted Benjamin Moore Quiet Moments 1563, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Benjamin Moore Quiet Moments 1563</p>
+            </div>
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/best-nursery-sleepy-blue.webp" alt="A nursery with walls painted Sherwin-Williams Sleepy Blue SW 6225, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Sherwin-Williams Sleepy Blue SW 6225</p>
+            </div>
+          </div>
+          <figcaption className="mt-2 text-sm text-gray-500">
+            AI-generated room visualizations. The wall color in each was measured against the brand&apos;s published value and corrected to it. Screens and room light change how paint looks, so confirm with a physical sample.
+          </figcaption>
+        </figure>
+
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Quick answers</h2>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">What are the best colors to paint a baby nursery?</h3>
         <p className="mt-2 text-gray-700 leading-relaxed">
@@ -10702,6 +10794,24 @@ const blogPosts: BlogPost[] = [
         <p className="text-lg leading-relaxed text-gray-800">
           The best all-round color for an east-facing room is <Swatch hex="#dbd7cd" name="Balboa Mist" brand="Benjamin Moore" href="/colors/benjamin-moore/balboa-mist-oc-27" /> (OC-27, LRV 65.5): light enough to keep the room bright once the sun moves off the windows, with just enough warmth to offset the cool afternoon light. East-facing rooms are hard to paint because they get two different kinds of light each day. This guide explains what each one does to warm and cool colors, then gives 13 colors that hold up in both, with each one&apos;s LRV and measured warmth from our database and its closest match at <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>, <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> and <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>.
         </p>
+
+        <figure className="mt-8">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/east-facing-balboa-mist.webp" alt="A east-facing sitting room in morning light with walls painted Benjamin Moore Balboa Mist OC-27, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Benjamin Moore Balboa Mist OC-27</p>
+            </div>
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/blog/east-facing-white-dove.webp" alt="A east-facing sitting room in morning light with walls painted Benjamin Moore White Dove OC-17, an AI-generated visualization" width={1200} height={670} loading="lazy" className="w-full rounded-lg border border-gray-200" />
+              <p className="mt-1 text-sm text-gray-700">Benjamin Moore White Dove OC-17</p>
+            </div>
+          </div>
+          <figcaption className="mt-2 text-sm text-gray-500">
+            AI-generated room visualizations. The wall color in each was measured against the brand&apos;s published value and corrected to it. Screens and room light change how paint looks, so confirm with a physical sample.
+          </figcaption>
+        </figure>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Quick answers</h2>
         <h3 className="mt-6 text-xl font-semibold text-gray-900">Which color is best for an east-facing room?</h3>
