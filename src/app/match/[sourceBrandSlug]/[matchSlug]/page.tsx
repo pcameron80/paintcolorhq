@@ -9,6 +9,7 @@ import { TrackPage } from "@/components/track-page";
 import { getColorBySlug, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
 import sitemapSnapshot from "@/generated/sitemap.json";
 import { closenessLabel } from "@/lib/closeness";
+import { formatLrv, lrvGapSentence, lrvLightnessGap, usableLrv } from "@/lib/lrv-gap";
 import { isMatchTitleTestPair, matchTestDescription, matchTestTitle } from "@/lib/match-title-test";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
@@ -110,6 +111,22 @@ export default async function MatchPage({ params }: PageProps) {
 
   if (!bestMatch) notFound();
 
+  // The match-data rows carry no LRV or Lab; the best match's full row does.
+  const bestMatchColor = await getColorBySlug(bestMatch.match_color.brand.slug, bestMatch.match_color.slug);
+  const sourceLrv = usableLrv(sourceColor.lrv);
+  const bestMatchLrv = usableLrv(bestMatchColor?.lrv);
+  const lrvGap =
+    bestMatchColor && sourceColor.lab_a != null && sourceColor.lab_b_val != null && bestMatchColor.lab_a != null && bestMatchColor.lab_b_val != null
+      ? lrvLightnessGap(
+          { lab: { L: Number(sourceColor.lab_l), a: Number(sourceColor.lab_a), b: Number(sourceColor.lab_b_val) }, lrv: sourceColor.lrv },
+          { lab: { L: Number(bestMatchColor.lab_l), a: Number(bestMatchColor.lab_a), b: Number(bestMatchColor.lab_b_val) }, lrv: bestMatchColor.lrv },
+          Number(bestMatch.delta_e_score),
+        )
+      : null;
+  const lrvNote = lrvGap
+    ? lrvGapSentence({ name: sourceColor.name, brandName: sourceColor.brand.name }, { name: bestMatch.match_color.name, brandName: targetBrand.name }, lrvGap)
+    : null;
+
   // allMatches is already ordered best-first, so the first row per brand is that
   // brand's closest color. No extra query needed.
   const otherBrandMatches = new Map<string, { brandName: string; brandSlug: string; color: (typeof allMatches)[number]["match_color"]; deltaE: number }>();
@@ -132,7 +149,7 @@ export default async function MatchPage({ params }: PageProps) {
         { "@type": "Question", name: `What is the ${targetBrand.name} equivalent of ${sourceColor.brand.name} ${sourceColor.name}?`,
           acceptedAnswer: { "@type": "Answer", text: `The closest ${targetBrand.name} equivalent to ${sourceColor.brand.name} ${sourceColor.name} is ${bestMatch.match_color.name} (${bestMatch.match_color.hex.toUpperCase()}) — ${deltaELabel(Number(bestMatch.delta_e_score))}. The match is computed with the CIEDE2000 color-difference formula, which measures how close two colors look to the human eye rather than comparing their hex codes.${targetMatches.length > 1 ? ` If you want a backup, ${targetMatches[1].match_color.name} is the next-closest ${targetBrand.name} option.` : ""} Order a sample before painting — sheen and lighting shift the result.` } },
         { "@type": "Question", name: `Will ${bestMatch.match_color.name} look exactly like ${sourceColor.name}?`,
-          acceptedAnswer: { "@type": "Answer", text: `${bestMatch.match_color.name} is the closest stored digital candidate from ${targetBrand.name}. This is not a physical match or touch-up guarantee. Compare samples in your room and intended finish before substituting paint.` } },
+          acceptedAnswer: { "@type": "Answer", text: `${bestMatch.match_color.name} is the closest stored digital candidate from ${targetBrand.name}. This is not a physical match or touch-up guarantee.${lrvNote ? ` ${lrvNote}` : ""} Compare samples in your room and intended finish before substituting paint.` } },
       ]}} />}
 
       {/* Hero — side by side */}
@@ -180,6 +197,7 @@ export default async function MatchPage({ params }: PageProps) {
             <div className="bg-surface-container-low rounded-xl p-6 mb-12 text-center">
               <p className="font-headline font-bold text-on-surface">{closenessLabel(Number(bestMatch.delta_e_score))}</p>
               <p className="text-sm text-on-surface-variant mt-1">Based on <Link href="/methodology" className="text-primary underline-offset-4 hover:underline">CIEDE2000 color difference analysis</Link></p>
+              {lrvNote && <p className="text-sm text-on-surface mt-3 max-w-2xl mx-auto">{lrvNote}</p>}
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 mb-12">
@@ -189,7 +207,7 @@ export default async function MatchPage({ params }: PageProps) {
                   <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-1">{sourceColor.brand.name}</p>
                   <h2 className="font-headline text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{sourceColor.name}</h2>
                   <div className="h-4" />
-                  <p className="font-mono text-[10px] text-outline">{sourceColor.hex.toUpperCase()}</p>
+                  <p className="font-mono text-[10px] text-outline">{sourceColor.hex.toUpperCase()}{sourceLrv != null && <> &middot; LRV {formatLrv(sourceLrv)}</>}</p>
                 </div>
               </Link>
               <Link href={`/colors/${bestMatch.match_color.brand.slug}/${bestMatch.match_color.slug}`} className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden hover:shadow-lg transition-all">
@@ -198,7 +216,7 @@ export default async function MatchPage({ params }: PageProps) {
                   <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-1">{targetBrand.name}</p>
                   <h2 className="font-headline text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{bestMatch.match_color.name}</h2>
                   <div className="h-4" />
-                  <p className="font-mono text-[10px] text-outline">{bestMatch.match_color.hex.toUpperCase()}</p>
+                  <p className="font-mono text-[10px] text-outline">{bestMatch.match_color.hex.toUpperCase()}{bestMatchLrv != null && <> &middot; LRV {formatLrv(bestMatchLrv)}</>}</p>
                 </div>
               </Link>
             </div>
