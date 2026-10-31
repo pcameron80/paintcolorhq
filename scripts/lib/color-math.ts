@@ -33,8 +33,8 @@ export function rgbToHsl(
   return { h: h * 360, s: s * 100, l: l * 100 };
 }
 
-export function classifyColorFamily(r: number, g: number, b: number): string {
-  return refineColorFamily(classifyColorFamilyHsl(r, g, b), r, g, b);
+export function classifyColorFamily(r: number, g: number, b: number, opts: RefineOptions = {}): string {
+  return refineColorFamily(classifyColorFamilyHsl(r, g, b), r, g, b, opts);
 }
 
 function classifyColorFamilyHsl(r: number, g: number, b: number): string {
@@ -229,6 +229,18 @@ export function refineColorFamily(family: string, r: number, g: number, b: numbe
  */
 export function familyForRow(key: string, family: string, r: number, g: number, b: number): string {
   return FAMILY_OVERRIDES[key] ?? refineColorFamily(family, r, g, b, { brand: key.split('/')[0] });
+}
+
+/**
+ * Family for a row whose family is derived from its hex alone (a hex
+ * correction or a new row from a palette scan): a sourced FAMILY_OVERRIDES
+ * entry, else the HSL classifier refined with the brand's rules. Without the
+ * brand, rule (i) files Sherwin-Williams teals green, and refine-color-families
+ * never moves a green back, so TEALS_STAY_BLUE_BRANDS would erode one hex
+ * correction at a time.
+ */
+export function familyFromHex(key: string, r: number, g: number, b: number): string {
+  return FAMILY_OVERRIDES[key] ?? classifyColorFamily(r, g, b, { brand: key.split('/')[0] });
 }
 
 export function calculateLrv(r: number, g: number, b: number): number {

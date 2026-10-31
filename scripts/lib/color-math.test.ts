@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { classifyColorFamily, refineColorFamily, familyForRow, FAMILY_OVERRIDES, hexToRgb } from "./color-math";
+import { classifyColorFamily, refineColorFamily, familyForRow, familyFromHex, FAMILY_OVERRIDES, hexToRgb } from "./color-math";
 
 // Pinned examples for the family classifier (MP-27, 2026-10-24). `stored` is
 // the family the colors table held before the rewrite, so each case checks
@@ -128,6 +128,18 @@ test("familyForRow applies sourced overrides before refine", () => {
   // The brand is read from the key, so SW teals stay blue.
   const erin = rgb("#01927b");
   assert.equal(familyForRow("sherwin-williams/rivulet-6760", "blue", erin.r, erin.g, erin.b), "blue");
+});
+
+test("familyFromHex (hex corrections, scan imports) keeps SW teals blue and applies overrides", () => {
+  // SW Cooled Blue 6759 as stored: HSL files it blue, rule (i) would make it green.
+  const cooled = rgb("#75b9ae");
+  assert.equal(classifyColorFamily(cooled.r, cooled.g, cooled.b), "green");
+  assert.equal(familyFromHex("sherwin-williams/cooled-blue-6759", cooled.r, cooled.g, cooled.b), "blue");
+  assert.equal(familyFromHex("ppg/some-teal", cooled.r, cooled.g, cooled.b), "green");
+  // Once filed green, refine never moves it back: the exemption has to hold on this path.
+  assert.equal(familyForRow("sherwin-williams/cooled-blue-6759", "green", cooled.r, cooled.g, cooled.b), "green");
+  const beet = rgb("#833337");
+  assert.equal(familyFromHex("sherwin-williams/beetroot-9695", beet.r, beet.g, beet.b), "red");
 });
 
 test("every family override key is brand-slug/color-slug", () => {
