@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { median, sectorOf, bandOf, NAME_WORDS, toCsv } from "../study-palette-stats";
+import { median, sectorOf, bandOf, NAME_WORDS, toCsv, shownLrv } from "../study-palette-stats";
 
 test("median handles odd, even and rounds to one decimal", () => {
   assert.equal(median([3, 1, 2]), 2);
@@ -55,4 +55,9 @@ test("CSV escapes commas and leaves missing values blank", () => {
   const [header, line] = toCsv([row]).trim().split("\n");
   assert.equal(header.split(",")[0], "brand");
   assert.equal(line, `Hirshfield's,10,10,0,14.8,9,25.1,10.6,,,,,"published by the brand, not yet reconciled; left out"`);
+});
+
+test("per-color tables show the LRV on the color's page, falling back to the feed", () => {
+  assert.equal(shownLrv({ lrv: 71.3, storedLrv: 71.2 }), 71.2); // SW Celery: page 71.2, feed 71.3
+  assert.equal(shownLrv({ lrv: 60, storedLrv: null }), 60);
 });

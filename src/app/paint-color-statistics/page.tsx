@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.paintcolorhq.com/paint-color-statistics" },
   openGraph: {
     title: "Paint Color Statistics (2026)",
-    description: `${TOTAL} paint colors across ${BRAND_COUNT} brands, measured: cross-brand duplication, palette originality, how light colors named white and gray really are, Color of the Year LRVs, and where brands crowd the color wheel.`,
+    description: `${TOTAL} paint colors across ${BRAND_COUNT} brands: cross-brand duplication, palette originality, how light colors named white and gray are by their brands' published LRV, Color of the Year LRVs, and where brands crowd the color wheel.`,
     type: "website",
     url: "https://www.paintcolorhq.com/paint-color-statistics",
   },
@@ -111,6 +111,8 @@ const COTY_LAST_YEAR = COTY.byYear[COTY.byYear.length - 1].year;
 const LAST_YEAR_LIGHTEST = COTY.picks.filter((p) => p.year === COTY_LAST_YEAR).reduce((a, b) => (b.lrv > a.lrv ? b : a));
 const possessive = (name: string) => (name.endsWith("s") ? `${name}'` : `${name}'s`);
 const pctText = (n: number) => `${n.toFixed(1)}%`;
+// Per-color tables show the LRV on each color's page; list the few where the brand's feed differs.
+const FEED_DIFFS = [...new Map([...COTY.picks, ...WHITES.darkest].filter((p) => p.lrv !== p.publishedLrv).map((p) => [p.slug, p])).values()];
 
 /** A small color chip; decorative, the name and code carry the meaning. */
 function Chip({ hex }: { hex: string }) {
@@ -141,15 +143,15 @@ export default function PaintColorStatisticsPage() {
     },
     {
       q: "How white are white paint colors?",
-      a: `Less white than the name suggests. As of ${STATS_AS_OF}, ${pctText(WHITES.belowWhiteLrvPct)} of the current colors whose name ends in "White" at ${LRV_BRANDS} (${fmt(WHITES.belowWhiteLrv)} of ${fmt(WHITES.colors)}) have a published LRV below ${WHITE_LRV}. ${WORST_WHITES.name} has the highest share, ${pctText(WORST_WHITES.belowWhiteLrvPct)} (${WORST_WHITES.belowWhiteLrv} of ${WORST_WHITES.whites}), and ${BEST_WHITES.name} the lowest, ${pctText(BEST_WHITES.belowWhiteLrvPct)}. The darkest of them is ${WHITES.darkest[0].brand} ${WHITES.darkest[0].name} at LRV ${WHITES.darkest[0].lrv}.`,
+      a: `As of ${STATS_AS_OF}, ${pctText(WHITES.belowWhiteLrvPct)} of the current colors whose name ends in "White" at ${LRV_BRANDS} (${fmt(WHITES.belowWhiteLrv)} of ${fmt(WHITES.colors)}) have a published LRV below ${WHITE_LRV}, the line we use between a white and an off-white. ${WORST_WHITES.name} has the highest share, ${pctText(WORST_WHITES.belowWhiteLrvPct)} (${WORST_WHITES.belowWhiteLrv} of ${WORST_WHITES.whites}), and ${BEST_WHITES.name} the lowest, ${pctText(BEST_WHITES.belowWhiteLrvPct)}. The darkest of them is ${WHITES.darkest[0].brand} ${WHITES.darkest[0].name} at LRV ${WHITES.darkest[0].lrv}.`,
     },
     {
       q: "How dark is the average gray paint color?",
-      a: `Darker than most people expect. The median current color with "gray" or "grey" in its name has a published LRV of ${GRAY.medianLrv}, and ${pctText(GRAY.under50Pct)} of them (${GRAY.under50} of ${GRAY.colors}) sit below LRV 50, the middle of the 0 to 100 scale. Colors named beige run lighter, at a median of ${BEIGE.medianLrv}. Figures cover ${LRV_BRANDS}, the brands whose published LRV we hold, as of ${STATS_AS_OF}.`,
+      a: `The median current color with "gray" or "grey" in its name has a published LRV of ${GRAY.medianLrv}, and ${pctText(GRAY.under50Pct)} of them (${GRAY.under50} of ${GRAY.colors}) sit below LRV 50, the middle of the 0 to 100 scale. Colors named beige run lighter, at a median of ${BEIGE.medianLrv}. Figures cover ${LRV_BRANDS}, the brands whose published LRV we hold, as of ${STATS_AS_OF}.`,
     },
     {
       q: "Are Colors of the Year getting darker?",
-      a: `For ${COTY_BRANDS}, yes. Their ${COTY.late.picks} picks for ${COTY_LATE_SPAN} average a published LRV of ${COTY.late.meanLrv}, against ${COTY.early.meanLrv} for their ${COTY.early.picks} picks for ${COTY_EARLY_SPAN}, and ${COTY.late.under25} of those ${COTY.late.picks} recent picks sit below LRV 25. It is not a straight line: the ${COTY.byYear[COTY.byYear.length - 1].year} picks average ${COTY.byYear[COTY.byYear.length - 1].meanLrv}, lighter than ${COTY.byYear.reduce((a, b) => (b.meanLrv < a.meanLrv ? b : a)).year}'s ${COTY.byYear.reduce((a, b) => (b.meanLrv < a.meanLrv ? b : a)).meanLrv}.`,
+      a: `For ${COTY_BRANDS}, yes. Their ${COTY.late.picks} picks for ${COTY_LATE_SPAN} average an LRV of ${COTY.late.meanLrv}, against ${COTY.early.meanLrv} for their ${COTY.early.picks} picks for ${COTY_EARLY_SPAN}, and ${COTY.late.under25} of those ${COTY.late.picks} recent picks sit below LRV 25. It is not a straight line: the ${COTY.byYear[COTY.byYear.length - 1].year} picks average ${COTY.byYear[COTY.byYear.length - 1].meanLrv}, lighter than ${COTY.byYear.reduce((a, b) => (b.meanLrv < a.meanLrv ? b : a)).year}'s ${COTY.byYear.reduce((a, b) => (b.meanLrv < a.meanLrv ? b : a)).meanLrv}.`,
     },
     {
       q: "Which paint brand has the darkest palette?",
@@ -168,7 +170,7 @@ export default function PaintColorStatisticsPage() {
     },
     {
       q: "How many paint colors are duplicates of each other?",
-      a: `As of ${AS_OF}, ${twins.twinnedPct}% of the colors we track (${fmt(twins.twinned)} of ${TOTAL}) have a nearly identical twin at a competing brand, meaning the CIEDE2000 difference falls in the tightest half of our Nearly identical band. Separately, ${fmt(exactHex.hexes)} exact hex values are sold under different names by two or more brands, covering ${fmt(exactHex.colors)} colors. The overlap is heaviest between ${TOP_PAIR.first} and ${TOP_PAIR.second}: ${fmt(TOP_PAIR.firstCount)} ${TOP_PAIR.first} colors have a ${TOP_PAIR.second} twin, and ${fmt(TOP_PAIR.secondCount)} ${TOP_PAIR.second} colors have a ${TOP_PAIR.first} twin.`,
+      a: `As of ${AS_OF}, ${twins.twinnedPct}% of the colors we track (${fmt(twins.twinned)} of ${TOTAL}) have a nearly identical twin at a competing brand, meaning the CIEDE2000 difference between the two brands' published swatch values falls in the tightest half of our Nearly identical band. That is a digital match, so confirm any substitute with a physical sample. Separately, ${fmt(exactHex.hexes)} exact hex values are sold under different names by two or more brands, covering ${fmt(exactHex.colors)} colors. The overlap is heaviest between ${TOP_PAIR.first} and ${TOP_PAIR.second}: ${fmt(TOP_PAIR.firstCount)} ${TOP_PAIR.first} colors have a ${TOP_PAIR.second} twin, and ${fmt(TOP_PAIR.secondCount)} ${TOP_PAIR.second} colors have a ${TOP_PAIR.first} twin.`,
     },
   ];
 
@@ -191,7 +193,7 @@ export default function PaintColorStatisticsPage() {
             "Share of colors with a nearly identical twin at another brand",
             "Median published LRV of each brand's current palette",
             "Published LRV of colors by name word (white, gray, beige and others)",
-            "Published LRV of Color of the Year picks",
+            "LRV of Color of the Year picks",
             "Colors per hue sector and lightness band",
           ],
           keywords: ["paint colors", "paint color statistics", "LRV", "light reflectance value", "Color of the Year", "Benjamin Moore", "Sherwin-Williams", "Behr"],
@@ -248,7 +250,7 @@ export default function PaintColorStatisticsPage() {
               Paint color statistics (2026)
             </h1>
             <p className="text-lg text-on-surface-variant leading-relaxed max-w-2xl">
-              How many paint colors exist, how much brands copy each other, which palette is the most original, and how light colors sold as white or gray really are, measured across {TOTAL} named colors from {BRAND_COUNT} brands. Every figure comes from a dated, reproducible run of one of our two studies ({AS_OF === STATS_AS_OF ? `both ${AS_OF}` : `${AS_OF} and ${STATS_AS_OF}`}), and the per-brand table is <a href={CSV_PATH} className="text-primary hover:underline underline-offset-4" download>free to download as a CSV</a>.
+              How many paint colors exist, how much brands copy each other, which palette is the most original, and how light colors named white or gray are by their brands&apos; published LRV. We compiled the figures from {TOTAL} named colors across {BRAND_COUNT} brands. Every figure comes from a dated, reproducible run of one of our two studies ({AS_OF === STATS_AS_OF ? `both ${AS_OF}` : `${AS_OF} and ${STATS_AS_OF}`}), and the per-brand table is <a href={CSV_PATH} className="text-primary hover:underline underline-offset-4" download>free to download as a CSV</a>.
             </p>
           </div>
         </section>
@@ -257,10 +259,10 @@ export default function PaintColorStatisticsPage() {
         <section className="px-6 md:px-12 py-12 bg-surface-container-low">
           <div className="max-w-4xl mx-auto">
             <p className="text-base text-on-surface-variant leading-relaxed">
-              <strong className="text-on-surface">Short version:</strong> Paint Color HQ tracks {TOTAL} named paint colors across {BRAND_COUNT} brands. As of {AS_OF}, {twins.twinnedPct}% of them ({fmt(twins.twinned)} colors) have a nearly identical twin (in the tightest half of our Nearly identical band) at a competing brand, and {fmt(exactHex.hexes)} exact hex values are sold under different names by two or more brands. {MOST_ORIGINAL.name} has the most original palette, with {MOST_ORIGINAL.uniquePct}% of its colors unique to it; {LEAST_ORIGINAL.name} the least, at {LEAST_ORIGINAL.uniquePct}%.
+              <strong className="text-on-surface">Short version:</strong> Paint Color HQ tracks {TOTAL} named paint colors across {BRAND_COUNT} brands. As of {AS_OF}, {twins.twinnedPct}% of them ({fmt(twins.twinned)} colors) have a nearly identical twin (in the tightest half of our Nearly identical band) at a competing brand when published swatch values are compared, and {fmt(exactHex.hexes)} exact hex values are sold under different names by two or more brands. {MOST_ORIGINAL.name} has the most original palette, with {MOST_ORIGINAL.uniquePct}% of its colors unique to it; {LEAST_ORIGINAL.name} the least, at {LEAST_ORIGINAL.uniquePct}%.
             </p>
             <p className="text-base text-on-surface-variant leading-relaxed mt-4">
-              On light and dark, using only manufacturer-published LRV ({STATS_AS_OF}): {pctText(WHITES.belowWhiteLrvPct)} of current colors whose name ends in &ldquo;White&rdquo; reflect less than {WHITE_LRV}% of light, the median color named gray has an LRV of {GRAY.medianLrv}, and the {COTY.late.picks} Color of the Year picks {COTY_BRANDS} made for {COTY_LATE_SPAN} average an LRV of {COTY.late.meanLrv}, down from {COTY.early.meanLrv} for {COTY_EARLY_SPAN}. {ONE_IN_TEXT} colors we could verify is a near-white neutral.
+              On light and dark, using the LRV published by {LRV_BRANDS} ({STATS_AS_OF}): at those four brands, {pctText(WHITES.belowWhiteLrvPct)} of current colors whose name ends in &ldquo;White&rdquo; have an LRV below {WHITE_LRV}, so they reflect less than {WHITE_LRV}% of light, and the median color named gray has an LRV of {GRAY.medianLrv}. The {COTY.late.picks} Color of the Year picks {COTY_BRANDS} made for {COTY_LATE_SPAN} average an LRV of {COTY.late.meanLrv}, down from {COTY.early.meanLrv} for {COTY_EARLY_SPAN}. {ONE_IN_TEXT} of the {fmt(Z.colors)} colors we could check against their brand&apos;s own palette is a near-white neutral.
             </p>
           </div>
         </section>
@@ -435,7 +437,7 @@ export default function PaintColorStatisticsPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">How white are white paint colors?</h2>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              Just over half are off-whites by that measure. Of the {fmt(WHITES.colors)} current colors at {LRV_BRANDS} whose name ends in &ldquo;White&rdquo;, <strong className="text-on-surface">{fmt(WHITES.belowWhiteLrv)} ({pctText(WHITES.belowWhiteLrvPct)}) have a published LRV below {WHITE_LRV}</strong>, meaning they reflect less than {WHITE_LRV}% of the light that hits them. We use LRV {WHITE_LRV} as the line between a white and an off-white; the median &ldquo;White&rdquo; sits at {WHITES.medianLrv}, right on it.
+              Of the {fmt(WHITES.colors)} current colors at {LRV_BRANDS} whose name ends in &ldquo;White&rdquo;, <strong className="text-on-surface">{fmt(WHITES.belowWhiteLrv)} ({pctText(WHITES.belowWhiteLrvPct)}) have a published LRV below {WHITE_LRV}</strong>, meaning they reflect less than {WHITE_LRV}% of the light that hits them. We use LRV {WHITE_LRV} as the line between a white and an off-white, so by that line those {fmt(WHITES.belowWhiteLrv)} are off-whites. The median &ldquo;White&rdquo; sits at {WHITES.medianLrv}, right on the line.
             </p>
             <p className="text-on-surface-variant leading-relaxed mb-8">
               The brands differ. <strong className="text-on-surface">{WORST_WHITES.name}: {WORST_WHITES.belowWhiteLrv} of its {WORST_WHITES.whites} &ldquo;Whites&rdquo; ({pctText(WORST_WHITES.belowWhiteLrvPct)}) fall below LRV {WHITE_LRV}</strong>, against {BEST_WHITES.belowWhiteLrv} of {BEST_WHITES.whites} ({pctText(BEST_WHITES.belowWhiteLrvPct)}) at {BEST_WHITES.name}. Figures are as of {STATS_AS_OF}.
@@ -458,7 +460,7 @@ export default function PaintColorStatisticsPage() {
                   <tr className="border-b border-outline-variant/30">
                     <th className="py-3 pr-4 text-[11px] uppercase tracking-widest text-outline font-bold">Color</th>
                     <th className="py-3 px-4 text-[11px] uppercase tracking-widest text-outline font-bold">Brand</th>
-                    <th className="py-3 pl-4 text-right text-[11px] uppercase tracking-widest text-outline font-bold">Published LRV</th>
+                    <th className="py-3 pl-4 text-right text-[11px] uppercase tracking-widest text-outline font-bold">LRV</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -479,11 +481,11 @@ export default function PaintColorStatisticsPage() {
         </section>
 
         {/* LRV by name word */}
-        <section className="px-6 md:px-12 py-16">
+        <section id="gray" className="px-6 md:px-12 py-16 scroll-mt-24">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">How light is a color called gray?</h2>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              A color&apos;s name says little about how light it is. <strong className="text-on-surface">The median current color with &ldquo;gray&rdquo; or &ldquo;grey&rdquo; in its name has a published LRV of {GRAY.medianLrv}, and {GRAY.under50} of {GRAY.colors} ({pctText(GRAY.under50Pct)}) sit below LRV 50</strong>, the middle of the scale. Colors named beige run lighter, at a median of {BEIGE.medianLrv}, and the middle 80% of grays spans LRV {GRAY.p10} to {GRAY.p90}, from charcoal to light gray.
+              The word &ldquo;gray&rdquo; on its own says little about how light a color is. <strong className="text-on-surface">The median current color with &ldquo;gray&rdquo; or &ldquo;grey&rdquo; in its name has a published LRV of {GRAY.medianLrv}, and {GRAY.under50} of {GRAY.colors} ({pctText(GRAY.under50Pct)}) sit below LRV 50</strong>, the middle of the scale. Colors named beige run lighter, at a median of {BEIGE.medianLrv}, and the middle 80% of grays spans LRV {GRAY.p10} to {GRAY.p90}, from charcoal to light gray.
             </p>
             <p className="text-on-surface-variant leading-relaxed mb-8">
               If you are choosing by name, check the LRV on the color page: two colors called gray can be {Math.round(GRAY.p90 - GRAY.p10)} points apart. Figures cover {LRV_BRANDS}, as of {STATS_AS_OF}.
@@ -502,7 +504,7 @@ export default function PaintColorStatisticsPage() {
         </section>
 
         {/* LRV by brand */}
-        <section className="px-6 md:px-12 py-16 bg-surface-container-low">
+        <section id="brand-lightness" className="px-6 md:px-12 py-16 bg-surface-container-low scroll-mt-24">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Which brands sell the lightest and darkest palettes?</h2>
             <p className="text-on-surface-variant leading-relaxed mb-8">
@@ -550,14 +552,14 @@ export default function PaintColorStatisticsPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Colors of the Year have gotten darker</h2>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              <strong className="text-on-surface">The {COTY.late.picks} Color of the Year picks {COTY_BRANDS} made for {COTY_LATE_SPAN} average a published LRV of {COTY.late.meanLrv}, against {COTY.early.meanLrv} for their {COTY.early.picks} picks for {COTY_EARLY_SPAN}.</strong> Of those {COTY.late.picks} recent picks, {COTY.late.under25} sit below LRV 25. The sharpest drop was Behr&apos;s: Blank Canvas, an off-white at LRV {COTY.picks.find((p) => p.slug === "blank-canvas-dc-003")?.lrv}, for 2023, then Cracked Pepper, a soft black at LRV {COTY.picks.find((p) => p.slug === "cracked-pepper-ppu18-01")?.lrv}, for 2024.
+              <strong className="text-on-surface">The {COTY.late.picks} Color of the Year picks {COTY_BRANDS} made for {COTY_LATE_SPAN} average an LRV of {COTY.late.meanLrv}, against {COTY.early.meanLrv} for their {COTY.early.picks} picks for {COTY_EARLY_SPAN}.</strong> Of those {COTY.late.picks} recent picks, {COTY.late.under25} sit below LRV 25. The sharpest drop was Behr&apos;s: Blank Canvas, a white at LRV {COTY.picks.find((p) => p.slug === "blank-canvas-dc-003")?.lrv}, for 2023, then Cracked Pepper, a soft black at LRV {COTY.picks.find((p) => p.slug === "cracked-pepper-ppu18-01")?.lrv}, for 2024.
             </p>
             <p className="text-on-surface-variant leading-relaxed mb-8">
               It is not a straight line. The {COTY.byYear[COTY.byYear.length - 1].year} picks average {COTY.byYear[COTY.byYear.length - 1].meanLrv}, lighter than the low of {COTY.byYear.reduce((a, b) => (b.meanLrv < a.meanLrv ? b : a)).meanLrv} in {COTY.byYear.reduce((a, b) => (b.meanLrv < a.meanLrv ? b : a)).year}, mostly because of {possessive(LAST_YEAR_LIGHTEST.brand)} {LAST_YEAR_LIGHTEST.name} at LRV {LAST_YEAR_LIGHTEST.lrv}. Sherwin-Williams named a nine-color capsule for 2025 instead of one color, so that year has two picks. The full list of this year&apos;s picks and their cross-brand matches is on our <Link href="/color-of-the-year" className="text-primary hover:underline underline-offset-4">Color of the Year page</Link>.
             </p>
 
             <figure>
-              <figcaption className="text-sm font-bold text-on-surface mb-3">Published LRV of each Color of the Year pick, {COTY.early.from} to {COTY.late.to}</figcaption>
+              <figcaption className="text-sm font-bold text-on-surface mb-3">LRV of each Color of the Year pick, {COTY.early.from} to {COTY.late.to}, as shown on its color page</figcaption>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
@@ -647,11 +649,11 @@ export default function PaintColorStatisticsPage() {
 
         {/* Retired colors */}
         {BEHR_RETIRED && (
-          <section className="px-6 md:px-12 py-16">
+          <section id="retired" className="px-6 md:px-12 py-16 scroll-mt-24">
             <div className="max-w-4xl mx-auto">
-              <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">How many colors are retired but still sold?</h2>
+              <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">How many colors have brands retired?</h2>
               <p className="text-on-surface-variant leading-relaxed mb-4">
-                Brands drop colors from their fan decks without taking them off the mixing machine. <strong className="text-on-surface">Of the {fmt(BEHR_RETIRED.listed)} Behr colors we matched to Behr&apos;s own site, {fmt(BEHR_RETIRED.retired)} ({pctText(BEHR_RETIRED.retiredPct)}) are retired.</strong> When we checked 10 of them in October 2026, Behr&apos;s pages said all 10 could still be bought at The Home Depot. Across all brands we track {fmt(totals.retired)} retired colors, each mapped to its closest current match on our <Link href="/discontinued" className="text-primary hover:underline underline-offset-4">retired colors page</Link>.
+                <strong className="text-on-surface">Of the {fmt(BEHR_RETIRED.listed)} Behr colors we matched to Behr&apos;s own site, {fmt(BEHR_RETIRED.retired)} ({pctText(BEHR_RETIRED.retiredPct)}) are retired.</strong> Retired does not always mean gone: when we checked 10 of those retired Behr colors in October 2026, Behr&apos;s pages said all 10 could still be bought at The Home Depot. Across all brands we track {fmt(totals.retired)} retired colors, each mapped to its closest current match on our <Link href="/discontinued" className="text-primary hover:underline underline-offset-4">retired colors page</Link>.
               </p>
               <p className="text-on-surface-variant leading-relaxed mb-8">
                 What brands retire differs. {RETIRED.map((r) => `${possessive(r.name)} retired colors have a median published LRV of ${r.retiredMedianLrv}, against ${r.currentMedianLrv} for the colors it still promotes`).join("; ")}. Figures are as of {STATS_AS_OF}, counting each code once.
@@ -687,14 +689,14 @@ export default function PaintColorStatisticsPage() {
         {/* Data download and method */}
         <section id="method" className="px-6 md:px-12 py-16 bg-surface-container-low scroll-mt-24">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Download the data and how we measured it</h2>
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Data download and method</h2>
             <p className="text-on-surface-variant leading-relaxed mb-6">
               <a href={CSV_PATH} download className="text-primary font-bold hover:underline underline-offset-4">Download the per-brand table (CSV)</a>: catalog size, current and retired counts, the share of each palette with no nearly identical twin, near-neutral shares, and published-LRV figures for every brand. It is free to use with a link to this page.
             </p>
             <h3 className="font-headline text-lg font-bold text-on-surface mb-2">Method note</h3>
             <ul className="list-disc pl-5 space-y-2 text-on-surface-variant leading-relaxed">
               <li>
-                <strong className="text-on-surface">Which colors count.</strong> The LRV, hue and retirement figures use only colors we could check against the manufacturer&apos;s own current palette (scan of {stats.scanDate}): same code, same name, and a stored swatch within CIEDE2000 2 of the brand&apos;s. Each manufacturer code counts once. That leaves {fmt(COV.verified)} of our {fmt(COV.catalog)} rows. RAL ({COV.ral} rows) is not studied: it is an industrial standard, and most of our RAL swatches are off RAL&apos;s own. {fmt(COV.notInFeed + COV.noLiveSource)} rows have no current manufacturer listing to check against, mostly legacy Kilz, Valspar and Behr rows and every Colorhouse row, {COV.nameMismatch} carry a name the brand no longer uses, and {COV.duplicateCode} repeat a code already counted; all are left out.
+                <strong className="text-on-surface">Which colors count.</strong> The LRV, hue and retirement figures use only colors we could check against the manufacturer&apos;s own current palette (scan of {stats.scanDate}): same code, same name, and a stored swatch within CIEDE2000 2 of the brand&apos;s. Each manufacturer code counts once. That leaves {fmt(COV.verified)} of our {fmt(COV.catalog)} rows. RAL ({COV.ral} rows) is not studied: it is an industrial standard, and most of our RAL swatches are off RAL&apos;s own. {fmt(COV.notInFeed + COV.noLiveSource)} rows have no current manufacturer listing to check against ({fmt(COV.notInFeed)} missing from their brand&apos;s current palette, mostly legacy Kilz, Valspar and Behr rows, plus all {COV.noLiveSource} Colorhouse rows), {COV.nameMismatch} carry a name the brand no longer uses, and {COV.duplicateCode} repeat a code already counted; all are left out.
               </li>
               <li>
                 <strong className="text-on-surface">Rows removed after our {stats.auditDate} data audit.</strong> {fmt(COV.flagged)} rows flagged by that audit are excluded from every figure in these sections (some carry more than one flag): {COV.excluded.map((e) => `${e.title} (${e.rows})`).join("; ")}.
@@ -703,14 +705,17 @@ export default function PaintColorStatisticsPage() {
                 <strong className="text-on-surface">LRV.</strong> Only manufacturer-published LRV is used: {LRV_BRANDS}. {listJoin(COV.lrvPendingBrands)} publish LRV too, but the values we store for them are still computed from the hex and run up to several points high on whites, so those brands are left out of every LRV figure rather than estimated. Valspar, Kilz, Farrow &amp; Ball and Colorhouse publish none in our sources. The lightest-whites table above uses values checked by hand on each brand&apos;s site.
               </li>
               <li>
+                <strong className="text-on-surface">Color of the Year.</strong> The picks are those {COTY_BRANDS} named for {COTY.early.from} to {COTY.late.to}, each checked against the brand&apos;s announcement or archive. Splitting them at {COTY.early.to} and {COTY.late.from} is our choice, so the year averages are printed under the table too. The LRV shown for each pick, and for each of the darkest whites above, is the value on that color&apos;s page here, so it matches what you see when you click through. Each of those colors also has a published LRV in the brand&apos;s {stats.scanDate} feed{FEED_DIFFS.length ? `, which differs slightly for ${listJoin(FEED_DIFFS.map((p) => `${p.name} (${p.lrv} here, ${p.publishedLrv} in the feed)`))}` : ", and the two agree"}.
+              </li>
+              <li>
                 <strong className="text-on-surface">Names, not labels.</strong> &ldquo;Gray&rdquo;, &ldquo;beige&rdquo; and &ldquo;white&rdquo; mean the word in the color&apos;s name. We do not use our stored color-family or undertone labels here, because the audit found both need correcting.
               </li>
               <li>
                 <strong className="text-on-surface">Hue and lightness</strong> come from CIELAB values of each brand&apos;s published swatch hex, which is a screen color, not a measured paint sample.
               </li>
               <li>
-                <strong className="text-on-surface">Duplication and originality</strong> come from the separate {AS_OF} duplication study, which covers every row; the{" "}
-                <Link href={STUDY_URL} className="text-primary hover:underline underline-offset-4">study post</Link> explains that method. Neither study reads match ranks, so it is not affected by the match-order issue the audit found.
+                <strong className="text-on-surface">Duplication and originality</strong> come from the separate {AS_OF} duplication study, which covers every row and compares each brand&apos;s published swatch values, so a twin there is a digital match, not a paint-sample comparison; the{" "}
+                <Link href={STUDY_URL} className="text-primary hover:underline underline-offset-4">study post</Link> explains that method.
               </li>
             </ul>
           </div>

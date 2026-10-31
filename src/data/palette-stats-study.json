@@ -8,7 +8,7 @@
     "lrv": "Manufacturer-published LRV only: Benjamin Moore, Behr, Sherwin-Williams, Dutch Boy. Current colors only unless stated. Dunn-Edwards, Hirshfield's, Vista Paint, PPG publish LRV but our copies are not reconciled yet, so they are left out; the other brands publish none in our sources.",
     "names": "A word in the color's name, matched whole. \"White\" means the last word is White or Whites. Words with fewer than 15 colors are not shown.",
     "zones": "CIELAB from each verified swatch hex. Near-neutral is chroma under 10; hue sectors in degrees: Red and pink 345-30, Orange and tan 30-70, Yellow, cream and gold 70-105, Green 105-165, Teal 165-225, Blue 225-290, Purple 290-345. Lightness bands by L*: Very light 85+, Light 70+, Mid 50+, Dark 30+, Very dark under 30.",
-    "coty": "Published LRV of each Benjamin Moore, Behr, Sherwin-Williams Color of the Year pick, 2022 to 2027. Sherwin-Williams named a nine-color capsule for 2025, so that year has two picks.",
+    "coty": "LRV of each Benjamin Moore, Behr, Sherwin-Williams Color of the Year pick, 2022 to 2027, as shown on its color page; every pick also has a verified published LRV in the brand's feed. Sherwin-Williams named a nine-color capsule for 2025, so that year has two picks.",
     "whiteLrv": "80"
   },
   "coverage": {
@@ -282,7 +282,8 @@
           "code": "MQ3-58",
           "slug": "alice-white-mq3-58",
           "hex": "#bfcbd1",
-          "lrv": 60
+          "lrv": 60,
+          "publishedLrv": 60
         },
         {
           "brand": "Sherwin-Williams",
@@ -291,16 +292,8 @@
           "code": "6008",
           "slug": "individual-white-6008",
           "hex": "#d4cdca",
-          "lrv": 62
-        },
-        {
-          "brand": "Dutch Boy",
-          "brandSlug": "dutch-boy",
-          "name": "Elemental White",
-          "code": "421-1DB",
-          "slug": "elemental-white-421-1db",
-          "hex": "#d8d0bc",
-          "lrv": 63
+          "lrv": 61.9,
+          "publishedLrv": 62
         },
         {
           "brand": "Benjamin Moore",
@@ -309,7 +302,8 @@
           "code": "955",
           "slug": "berber-white-955",
           "hex": "#dcd3bd",
-          "lrv": 63.2
+          "lrv": 63.2,
+          "publishedLrv": 63.2
         },
         {
           "brand": "Benjamin Moore",
@@ -318,7 +312,18 @@
           "code": "CW-710",
           "slug": "bruton-white-cw-710",
           "hex": "#d6d2c8",
-          "lrv": 63.3
+          "lrv": 63.3,
+          "publishedLrv": 63.3
+        },
+        {
+          "brand": "Dutch Boy",
+          "brandSlug": "dutch-boy",
+          "name": "Elemental White",
+          "code": "421-1DB",
+          "slug": "elemental-white-421-1db",
+          "hex": "#d8d0bc",
+          "lrv": 63.3,
+          "publishedLrv": 63
         }
       ]
     },
@@ -358,7 +363,8 @@
         "code": "MQ3-21",
         "slug": "breezeway-mq3-21",
         "hex": "#cad6ce",
-        "lrv": 66
+        "lrv": 66,
+        "publishedLrv": 66
       },
       {
         "year": 2022,
@@ -368,7 +374,8 @@
         "code": "1495",
         "slug": "october-mist-1495",
         "hex": "#b7b9a6",
-        "lrv": 46.5
+        "lrv": 46.5,
+        "publishedLrv": 46.5
       },
       {
         "year": 2022,
@@ -378,7 +385,8 @@
         "code": "SW 9130",
         "slug": "evergreen-fog-9130",
         "hex": "#95978a",
-        "lrv": 30.4
+        "lrv": 30.4,
+        "publishedLrv": 30.4
       },
       {
         "year": 2023,
@@ -388,7 +396,8 @@
         "code": "DC-003",
         "slug": "blank-canvas-dc-003",
         "hex": "#f1ede1",
-        "lrv": 84
+        "lrv": 84,
+        "publishedLrv": 84
       },
       {
         "year": 2023,
@@ -398,7 +407,8 @@
         "code": "2008-30",
         "slug": "raspberry-blush-2008-30",
         "hex": "#d86057",
-        "lrv": 22.7
+        "lrv": 22.7,
+        "publishedLrv": 22.7
       },
       {
         "year": 2023,
@@ -408,7 +418,8 @@
         "code": "SW 9081",
         "slug": "redend-point-9081",
         "hex": "#ae8e7e",
-        "lrv": 29.7
+        "lrv": 29.9,
+        "publishedLrv": 29.7
       },
       {
         "year": 2024,
@@ -418,7 +429,8 @@
         "code": "PPU18-01",
         "slug": "cracked-pepper-ppu18-01",
         "hex": "#4f5152",
-        "lrv": 8
+        "lrv": 8,
+        "publishedLrv": 8
       },
       {
         "year": 2024,
@@ -428,7 +440,8 @@
         "code": "825",
         "slug": "blue-nova-825",
         "hex": "#5c6e93",
-        "lrv": 17
+        "lrv": 17,
+        "publishedLrv": 17
       },
       {
         "year": 2024,
@@ -438,7 +451,8 @@
         "code": "SW 6239",
         "slug": "upward-6239",
         "hex": "#bfc9d0",
-        "lrv": 57.4
+        "lrv": 57.4,
+        "publishedLrv": 57.4
       },
       {
         "year": 2025,
@@ -448,7 +462,8 @@
         "code": "MQ1-15",
         "slug": "rumors-mq1-15",
         "hex": "#744347",
-        "lrv": 8
+        "lrv": 8,
+        "publishedLrv": 8
       },
       {
         "year": 2025,
@@ -458,7 +473,8 @@
         "code": "2113-40",
         "slug": "cinnamon-slate-2113-40",
         "hex": "#8a7576",
-        "lrv": 19.7
+        "lrv": 19.7,
+        "publishedLrv": 19.7
       },
       {
         "year": 2026,
@@ -468,7 +484,8 @@
         "code": "N430-6A",
         "slug": "hidden-gem-n430-6a",
         "hex": "#596d69",
-        "lrv": 14
+        "lrv": 14,
+        "publishedLrv": 14
       },
       {
         "year": 2026,
@@ -478,7 +495,8 @@
         "code": "AF-655",
         "slug": "silhouette-af-655",
         "hex": "#58514d",
-        "lrv": 10.2
+        "lrv": 10.2,
+        "publishedLrv": 10.2
       },
       {
         "year": 2026,
@@ -488,7 +506,8 @@
         "code": "SW 6150",
         "slug": "universal-khaki-6150",
         "hex": "#b8a992",
-        "lrv": 40.5
+        "lrv": 40.6,
+        "publishedLrv": 40.5
       },
       {
         "year": 2027,
@@ -498,7 +517,8 @@
         "code": "T27-01",
         "slug": "grounded-t27-01",
         "hex": "#565344",
-        "lrv": 9
+        "lrv": 9,
+        "publishedLrv": 9
       },
       {
         "year": 2027,
@@ -508,7 +528,8 @@
         "code": "HC-130",
         "slug": "webster-green-hc-130",
         "hex": "#65816d",
-        "lrv": 20.2
+        "lrv": 20.2,
+        "publishedLrv": 20.2
       },
       {
         "year": 2027,
@@ -518,7 +539,8 @@
         "code": "SW 6421",
         "slug": "celery-6421",
         "hex": "#e0ddbd",
-        "lrv": 71.3
+        "lrv": 71.2,
+        "publishedLrv": 71.3
       }
     ],
     "byYear": [

@@ -17,19 +17,26 @@
  *     (scripts/lib/study-exclusions.json),
  * and each manufacturer code counts once. RAL is left out: it is an industrial
  * standard, and 198 of its 213 stored swatches are 2+ off RAL's own.
- * Colorhouse has no live source, and Kilz rows not on kilz.com fail the feed
- * check, so the 2,200 rows that are copies of 2020 colornerd data drop out.
+ * Colorhouse has no live source (coverage.noLiveSource), and rows missing from
+ * their brand's current feed, such as legacy Kilz rows not on kilz.com, fail the
+ * feed check (coverage.notInFeed). Both groups are left out.
  *
  * LRV. Only the manufacturer's published LRV is used, taken from the same feed:
  * Benjamin Moore, Behr, Sherwin-Williams and Dutch Boy. Dunn-Edwards,
  * Hirshfield's, Vista Paint and PPG publish LRV on their sites, but our copies
- * are not reconciled yet (the stored values are computed from the hex and run
- * up to 7 points high on Dunn-Edwards whites), so they are left out of every
- * LRV figure. Valspar, Kilz, Farrow & Ball and Colorhouse publish none here.
+ * are not reconciled yet (the stored values are computed from the hex and can
+ * run several points high on whites), so they are left out of every LRV
+ * figure. Valspar, Kilz, Farrow & Ball and Colorhouse publish none here.
  * A published value more than 10 points from the LRV implied by the brand's
  * own swatch is treated as a feed error and skipped, as apply-published-lrv.ts
  * does. Benjamin Moore PM- premix codes are skipped (their feed LRV disagrees
  * with BM's color pages).
+ *
+ * Per-color tables (Color of the Year picks, darkest whites) show the LRV stored
+ * in colors.lrv, which is the value on that color's page here, so a reader who
+ * clicks through sees the same number. It can sit a few tenths off the feed
+ * (Sherwin-Williams Celery: 71.2 stored, 71.3 in the 2026-10-11 feed); the feed
+ * value is kept as publishedLrv. Aggregate figures use the feed value.
  *
  * Stored labels are not used. color_family and undertone are under review
  * (2026-10-31 audit), so "gray", "beige" and "white" here mean the word in the
@@ -84,6 +91,7 @@ interface Color {
   color_number: string | null;
   alternate_numbers: string[] | null;
   availability: "current" | "retired" | "discontinued";
+  lrv: number | string | null;
 }
 export interface StudyRow {
   id: string;
@@ -98,8 +106,10 @@ export interface StudyRow {
   b: number;
   C: number;
   h: number;
-  /** manufacturer-published LRV, LRV_BRANDS only */
+  /** manufacturer-published LRV from the feed, LRV_BRANDS only */
   lrv: number | null;
+  /** colors.lrv, the value shown on the color's page */
+  storedLrv: number | null;
 }
 
 /** Resolve the scan dir against cwd, this checkout, then the main checkout (data/ is gitignored). */
@@ -155,7 +165,7 @@ export async function load(sb: SupabaseClient, scanRel = DEFAULT_SCAN): Promise<
   if (error) throw new Error(error.message);
   const brands = (brandRows ?? []) as Brand[];
   const colors = await fetchAll<Color>((after) => {
-    let q = sb.from("colors").select("id, brand_id, name, slug, hex, color_number, alternate_numbers, availability").order("id").limit(PAGE);
+    let q = sb.from("colors").select("id, brand_id, name, slug, hex, color_number, alternate_numbers, availability, lrv").order("id").limit(PAGE);
     if (after) q = q.gt("id", after);
     return q;
   });
@@ -210,7 +220,8 @@ export async function load(sb: SupabaseClient, scanRel = DEFAULT_SCAN): Promise<
       }
       const C = Math.hypot(lab.a, lab.b);
       const h = ((Math.atan2(lab.b, lab.a) * 180) / Math.PI + 360) % 360;
-      const row: StudyRow = { id: c.id, brand: brand.slug, name: c.name.trim(), slug: c.slug, code: f.code, hex: c.hex.toLowerCase(), availability: c.availability, L: lab.L, a: lab.a, b: lab.b, C, h, lrv };
+      const storedLrv = c.lrv == null ? null : Number(c.lrv);
+      const row: StudyRow = { id: c.id, brand: brand.slug, name: c.name.trim(), slug: c.slug, code: f.code, hex: c.hex.toLowerCase(), availability: c.availability, L: lab.L, a: lab.a, b: lab.b, C, h, lrv, storedLrv };
       bySlug.set(`${brand.slug}|${c.slug}`, row);
       const k = `${brand.slug}|${hitCode}`;
       const prev = best.get(k);
@@ -279,6 +290,9 @@ const BANDS: { name: string; min: number }[] = [
 export const sectorOf = (h: number) => SECTORS.find((s) => (s.from < s.to ? h >= s.from && h < s.to : h >= s.from || h < s.to))!.name;
 export const bandOf = (L: number) => BANDS.find((b) => L >= b.min)!.name;
 
+/** The LRV a reader sees on the color's page; falls back to the feed value when none is stored. */
+export const shownLrv = (r: Pick<StudyRow, "lrv" | "storedLrv">) => r.storedLrv ?? r.lrv!;
+
 export function computeStudy(loaded: Loaded) {
   const { brands, colors, rows, bySlug, coverage } = loaded;
   const brandName = (slug: string) => brands.find((b) => b.slug === slug)!.name;
@@ -326,10 +340,11 @@ export function computeStudy(loaded: Loaded) {
     const below = own.filter((r) => r.lrv! < WHITE_LRV).length;
     return { name: brandName(slug), slug, whites: own.length, belowWhiteLrv: below, belowWhiteLrvPct: pct(below, own.length), medianLrv: median(own.map((r) => r.lrv!)) };
   }).sort((a, b) => b.belowWhiteLrvPct - a.belowWhiteLrvPct);
-  const darkestWhites = [...whites]
-    .sort((a, b) => a.lrv! - b.lrv! || a.name.localeCompare(b.name))
-    .slice(0, 5)
-    .map((r) => ({ brand: brandName(r.brand), brandSlug: r.brand, name: r.name, code: r.code, slug: r.slug, hex: r.hex, lrv: r.lrv! }));
+  // Shown per color, so ranked and labeled by the value on each color's page.
+  const darkestWhites = whites
+    .map((r) => ({ brand: brandName(r.brand), brandSlug: r.brand, name: r.name, code: r.code, slug: r.slug, hex: r.hex, lrv: shownLrv(r), publishedLrv: r.lrv! }))
+    .sort((a, b) => a.lrv - b.lrv || a.name.localeCompare(b.name))
+    .slice(0, 5);
 
   // 3. Retired versus current, for brands with a retired list of 100+ colors that publish LRV.
   const retired = LRV_BRANDS.map((slug) => {
@@ -339,7 +354,8 @@ export function computeStudy(loaded: Loaded) {
     return { name: brandName(slug), slug, listed: own.length, retired: ret.length, retiredPct: pct(ret.length, own.length), retiredMedianLrv: median(ret), currentMedianLrv: median(cur) };
   }).filter((r) => r.retired >= 100);
 
-  // 4. Color of the Year: published LRV of each Benjamin Moore, Behr and Sherwin-Williams pick.
+  // 4. Color of the Year: LRV of each Benjamin Moore, Behr and Sherwin-Williams pick,
+  //    as shown on its color page (the pick must also have a verified published LRV).
   const COTY_BRANDS = ["benjamin-moore", "behr", "sherwin-williams"];
   const picks = [
     ...COTY_HISTORY,
@@ -351,7 +367,7 @@ export function computeStudy(loaded: Loaded) {
     .map((p) => {
       const row = bySlug.get(`${p.brandSlug}|${p.colorSlug}`);
       if (!row || row.lrv == null) throw new Error(`Color of the Year ${p.year} ${p.name} (${p.brandSlug}/${p.colorSlug}) has no verified published LRV`);
-      return { year: p.year, brand: p.brandName, brandSlug: p.brandSlug, name: p.name, code: p.code, slug: p.colorSlug, hex: row.hex, lrv: row.lrv };
+      return { year: p.year, brand: p.brandName, brandSlug: p.brandSlug, name: p.name, code: p.code, slug: p.colorSlug, hex: row.hex, lrv: shownLrv(row), publishedLrv: row.lrv };
     })
     .sort((a, b) => a.year - b.year || a.brand.localeCompare(b.brand));
   const years = [...new Set(picks.map((p) => p.year))];
@@ -440,7 +456,7 @@ export function computeStudy(loaded: Loaded) {
       lrv: `Manufacturer-published LRV only: ${LRV_BRANDS.map(brandName).join(", ")}. Current colors only unless stated. ${LRV_PENDING.map(brandName).join(", ")} publish LRV but our copies are not reconciled yet, so they are left out; the other brands publish none in our sources.`,
       names: `A word in the color's name, matched whole. "White" means the last word is White or Whites. Words with fewer than ${MIN_WORD_COLORS} colors are not shown.`,
       zones: `CIELAB from each verified swatch hex. Near-neutral is chroma under ${NEUTRAL_CHROMA}; hue sectors in degrees: ${SECTORS.map((s) => `${s.name} ${s.from}-${s.to}`).join(", ")}. Lightness bands by L*: ${BANDS.map((b) => `${b.name} ${b.min === -Infinity ? "under 30" : `${b.min}+`}`).join(", ")}.`,
-      coty: `Published LRV of each ${COTY_BRANDS.map(brandName).join(", ")} Color of the Year pick, ${Math.min(...years)} to ${Math.max(...years)}. Sherwin-Williams named a nine-color capsule for 2025, so that year has two picks.`,
+      coty: `LRV of each ${COTY_BRANDS.map(brandName).join(", ")} Color of the Year pick, ${Math.min(...years)} to ${Math.max(...years)}, as shown on its color page; every pick also has a verified published LRV in the brand's feed. Sherwin-Williams named a nine-color capsule for 2025, so that year has two picks.`,
       whiteLrv: `${WHITE_LRV}`,
     },
     coverage: {
