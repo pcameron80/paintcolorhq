@@ -17,7 +17,7 @@ import type { ColorAvailability } from "@/lib/types";
 // Types
 // ---------------------------------------------------------------------------
 
-type RegionId = "walls" | "accentWall" | "trim" | "windows";
+type RegionId = "walls" | "accentWall" | "trim" | "windows" | "cabinets";
 
 interface PaintMatch {
   id: string;
@@ -45,6 +45,7 @@ const REGIONS: { id: RegionId; label: string; surface: Surface }[] = [
   { id: "accentWall", label: "Accent", surface: "accent" },
   { id: "trim", label: "Trim", surface: "trim" },
   { id: "windows", label: "Windows", surface: "window" },
+  { id: "cabinets", label: "Cabinets", surface: "cabinets" },
 ];
 
 const SURFACE_TO_REGION: Record<Surface, RegionId> = {
@@ -52,6 +53,7 @@ const SURFACE_TO_REGION: Record<Surface, RegionId> = {
   accent: "accentWall",
   trim: "trim",
   window: "windows",
+  cabinets: "cabinets",
 };
 
 const DEFAULT_COLORS: Record<RegionId, string> = {
@@ -59,6 +61,8 @@ const DEFAULT_COLORS: Record<RegionId, string> = {
   accentWall: "#5B7FA5",
   trim: "#FFFFFF",
   windows: "#F4F3EF",
+  // A warm white close to the photos' own cabinets, so kitchens open looking unpainted.
+  cabinets: "#F2F0EB",
 };
 
 /** Quiet period before a picker drag or hex edit counts as one "use". */
@@ -109,7 +113,13 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   // Rooms only offer the surfaces they have (not every room has paintable windows).
   const regions = REGIONS.filter((r) => room.masks[r.surface]);
   const surfaceColors = useMemo(
-    () => ({ main: colors.walls, accent: colors.accentWall, trim: colors.trim, window: colors.windows }),
+    () => ({
+      main: colors.walls,
+      accent: colors.accentWall,
+      trim: colors.trim,
+      window: colors.windows,
+      cabinets: colors.cabinets,
+    }),
     [colors],
   );
 
@@ -229,6 +239,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
       accent: hex(colors.accentWall),
       trim: hex(colors.trim),
       windows: hex(colors.windows),
+      cabinets: hex(colors.cabinets),
       room: room.id,
     });
     if (popColors && popColors.length > 0) params.set("pop", popColors.map(hex).join(","));
@@ -325,7 +336,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
 
         {/* Swatch palette.
             Wall regions (Main + Accent) share one pooled set — Main, Accent,
-            and Pop are all applicable to either wall. Trim and windows keep
+            and Pop are all applicable to either wall. Trim, windows and cabinets keep
             their own colors so wall swatches can't overwrite them. */}
         {(() => {
           const norm = (h: string) => (h.startsWith("#") ? h : `#${h}`);
@@ -349,7 +360,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
             (colorOptions?.walls ?? []).forEach((h) => push(h, "Main"));
             (colorOptions?.accentWall ?? []).forEach((h) => push(h, "Accent"));
           } else {
-            // Trim or windows: only that region's own color(s).
+            // Trim, windows or cabinets: only that region's own color(s).
             const label = REGIONS.find((r) => r.id === selected)?.label ?? "";
             push(merged[selected], label);
             (colorOptions?.[selected] ?? []).forEach((h) => push(h, label));

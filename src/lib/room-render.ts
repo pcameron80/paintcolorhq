@@ -11,7 +11,7 @@ import type { RoomAssets, Surface } from "@/lib/rooms";
 // anti-alias: a linear-light blend turns a dark/light seam pixel pale.
 // scripts/build-room-masks.py renders its previews with the same math.
 
-export const SURFACES: Surface[] = ["main", "accent", "trim", "window"];
+export const SURFACES: Surface[] = ["main", "accent", "trim", "window", "cabinets"];
 
 function srgbToLinear(c: number): number {
   return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
@@ -213,13 +213,14 @@ export async function prepareScene(
 // Painting (every color change)
 // ---------------------------------------------------------------------------
 
-export function renderScene(scene: PreparedScene, colors: Record<Surface, string>, out: ImageData) {
+/** A surface with no color given keeps the photo, so callers that predate a surface render as before. */
+export function renderScene(scene: PreparedScene, colors: Partial<Record<Surface, string>>, out: ImageData) {
   const { base, pixels, lum, cover, shadeScale } = scene;
   const data = out.data;
   data.set(base);
-  const active = SURFACES.filter((s) => cover[s]).map((s) => ({
+  const active = SURFACES.filter((s) => cover[s] && colors[s]).map((s) => ({
     cover: cover[s]!,
-    rgb: hexToLinear(colors[s]),
+    rgb: hexToLinear(colors[s]!),
     scale: shadeScale[s]!,
   }));
   for (let k = 0; k < pixels.length; k++) {

@@ -11,12 +11,13 @@ import { ToolFaq, type Faq } from "@/components/tool-faq";
 
 const TITLE = "Room Color Visualizer - Preview Paint Colors in a Room";
 const DESCRIPTION =
-  "Preview paint colors before you buy. Try wall, accent, trim and window colors in 10 photorealistic rooms, then find digital paint matches across our catalog.";
+  "Preview paint colors before you buy. Try walls, trim, windows and kitchen cabinets in 10 photorealistic rooms, then find digital paint matches.";
 const URL = "https://www.paintcolorhq.com/tools/room-visualizer";
 
 const FAQS: Faq[] = [
-  { q: "What is a room color visualizer?", a: "A room color visualizer is a free online tool that lets you preview paint colors on main walls, an accent wall, trim and window frames in photorealistic rooms before you buy paint. Paint Color HQ's visualizer updates instantly as you pick colors and supports all major paint brands." },
-  { q: "Is the room visualizer free?", a: "Yes. The Paint Color HQ Room Visualizer is free with no sign-up and nothing to download; it runs in your browser on a phone or computer. You can preview unlimited color combinations on walls, accent walls, trim and window frames across 10 rooms." },
+  { q: "What is a room color visualizer?", a: "A room color visualizer is a free online tool that lets you preview paint colors on main walls, an accent wall, trim, window frames and kitchen cabinets in photorealistic rooms before you buy paint. Paint Color HQ's visualizer updates instantly as you pick colors and supports all major paint brands." },
+  { q: "Is the room visualizer free?", a: "Yes. The Paint Color HQ Room Visualizer is free with no sign-up and nothing to download; it runs in your browser on a phone or computer. You can preview unlimited color combinations on walls, accent walls, trim, window frames and kitchen cabinets across 10 rooms." },
+  { q: "Can I preview painted kitchen cabinets?", a: "Yes. Both kitchens have a Cabinets surface that covers the doors, drawer fronts, cabinet boxes and island base, while the handles, pulls and appliances stay as they are. Click a cabinet door or select Cabinets below the image, then pick a color. In a kitchen the cabinets often fill more of the view than the walls, so settle them first and choose the wall color to sit with them, keeping both in the same undertone family. Cabinets take daily handling and cleaning, so painters usually use a satin or semi-gloss enamel on them." },
   { q: "Can I upload a photo of my own room?", a: "Not yet. The visualizer paints 10 sample rooms: two living rooms, two bedrooms, two kitchens, two dining rooms and two bathrooms. To find the paint color in a photo you took, use the Paint Color Identifier: upload the photo, click the wall, and it lists the closest colors across 13 brands." },
   { q: "Can I match visualizer colors to real paint?", a: "Yes. After choosing a color in the visualizer, use the \"Find Paint Match\" feature to see the closest real paints from brands including Sherwin-Williams, Benjamin Moore, Behr, Valspar and PPG. Every suggestion links to its full color detail page." },
   { q: "Why does paint look different on my wall than in the room visualizer?", a: "The preview paints your color over one photo's fixed lighting, while your room has its own. Three things move between screen and wall: your monitor or phone's brightness and calibration, your room's light (warm 2700K bulbs push a color yellower, cool 4000K bulbs push it bluer, and north-facing windows run cooler than south-facing ones), and sheen, since flat, eggshell and semi-gloss all reflect light differently. Use the visualizer to narrow your choices, then confirm the winner with a physical sample on the actual wall, viewed in both morning and evening light." },
@@ -48,6 +49,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
     trim: "trim",
     accent: "accentWall",
     windows: "windows",
+    cabinets: "cabinets",
   };
   const hexRe = /^[0-9a-fA-F]{6}$/;
   const initialColors: Record<string, string> = {};
@@ -83,7 +85,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Room Color Visualizer",
-        description: "Preview paint colors on walls, an accent wall, trim and window frames in 10 photorealistic rooms. Free tool from Paint Color HQ.",
+        description: "Preview paint colors on walls, an accent wall, trim, window frames and kitchen cabinets in 10 photorealistic rooms. Free tool from Paint Color HQ.",
         url: "https://www.paintcolorhq.com/tools/room-visualizer",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -106,8 +108,8 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             Room Color Visualizer
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Preview paint colors on walls, an accent wall, trim and window frames in 10
-            rooms. Click a surface or select it below, then pick a color to see it applied
+            Preview paint colors on walls, an accent wall, trim, window frames and kitchen
+            cabinets in 10 rooms. Click a surface or select it below, then pick a color to see it applied
             instantly. Free, with no sign-up or download.
           </p>
         </div>
@@ -137,17 +139,18 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
           <div className="space-y-10 text-on-surface-variant leading-relaxed">
             <div>
               <h3 className="font-headline text-xl font-bold text-on-surface mb-3">
-                How the preview is built: 10 rooms, up to four paintable surfaces
+                How the preview is built: 10 rooms, up to five paintable surfaces
               </h3>
               <p>
                 Pick one of 10 rooms across five room types: living rooms, bedrooms, kitchens,
-                dining rooms and bathrooms. Each room has up to four paintable surfaces:{" "}
+                dining rooms and bathrooms. Each room has up to five paintable surfaces:{" "}
                 <strong className="text-on-surface">Main</strong>, the walls that fill most of the
                 view; <strong className="text-on-surface">Accent</strong>, one wall picked out for
                 contrast; <strong className="text-on-surface">Trim</strong>, the baseboards, crown
                 molding and door and window casings; and, in rooms where the frames can be painted
                 cleanly, <strong className="text-on-surface">Windows</strong>, the sashes and
-                grilles. Select a surface by clicking it in the room or with the buttons below the
+                grilles. Both kitchens add <strong className="text-on-surface">Cabinets</strong>,
+                the doors, drawer fronts and island base, with the hardware left unpainted. Select a surface by clicking it in the room or with the buttons below the
                 image, then pick a color with the picker or type in a six-digit hex code. The room
                 repaints instantly, so you can try a shade, change your mind, and try another in
                 seconds. Main is the color you would buy the most of, so it is worth settling first.
@@ -320,7 +323,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             <p>
               The Paint Color HQ Room Visualizer lets you preview paint colors on
               every surface in a room before you commit to a single can of paint.
-              Click on any region — main walls, accent wall, or trim —
+              Click on any region (main walls, accent wall, trim or kitchen cabinets)
               to select it, then choose a color from the picker or type in a
               specific hex code. The room updates instantly so you can experiment
               freely without any waiting.
@@ -389,6 +392,12 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
               can anchor a space without overwhelming it. The accent wall region
               lets you test dramatic colors in a contained way before committing
               to an entire room.
+            </p>
+            <p>
+              <strong className="text-on-surface">Try the cabinets before the walls in a kitchen.</strong>{" "}
+              Cabinets usually take up more of a kitchen than its walls do, so a cabinet color
+              sets the tone there. Pick it in one of the two kitchens, then try wall colors
+              against it.
             </p>
             <p>
               <strong className="text-on-surface">Convert custom colors to real paint.</strong> Any color you
