@@ -112,6 +112,8 @@ docs/research/
 /src/generated/sitemap.json.tmp
 /src/generated/match-sitemap-pairs.json
 /src/generated/match-sitemap-pairs.json.tmp
+/src/generated/search-words.json
+/src/generated/search-words.json.tmp
 
 # DB row backups from one-off fix scripts (local only, never commit)
 scripts/backups/
