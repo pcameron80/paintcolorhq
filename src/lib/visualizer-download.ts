@@ -1,6 +1,6 @@
 import type { RoomScene, Surface } from "@/lib/rooms";
 import { cacheScene, cachedScene, prepareScene, renderScene, sceneKey } from "@/lib/room-render";
-import { presetForHex } from "@/lib/visualizer-presets";
+import { paintLabel, type NamedMatch } from "@/lib/visualizer-labels";
 
 /** A painted surface listed in the credit band, e.g. { label: "Walls", hex: "#D6D0C4" }. */
 export interface CreditSurface {
@@ -12,10 +12,16 @@ const FONT_STACK = 'Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", 
 const LEFT_TEXT = "Paint preview: paintcolorhq.com";
 const SEPARATOR = "   |   ";
 
-/** "Pure White (Sherwin-Williams)" for a known preset, else the hex. */
-function paintLabel(hex: string): string {
-  const preset = presetForHex(hex);
-  return preset ? `${preset.name} (${preset.brand})` : hex.toUpperCase();
+/** Catalog matches for a hex, or none if the lookup fails: naming must never break the download. */
+async function catalogMatches(hex: string): Promise<NamedMatch[]> {
+  try {
+    const res = await fetch(`/api/color-match?hex=${hex.replace("#", "")}`);
+    if (!res.ok) return [];
+    const data: { matches?: NamedMatch[] } = await res.json();
+    return data.matches ?? [];
+  } catch {
+    return [];
+  }
 }
 
 /** Renders the room at full size with the credit band and returns it as a JPEG. */
@@ -55,7 +61,8 @@ export async function renderRoomJpeg(
 
   // Right side: as many surfaces as fit on the one line, in order.
   ctx.font = `400 ${fontSize}px ${FONT_STACK}`;
-  const items = surfaces.map((s) => `${s.label}: ${paintLabel(s.hex)}`);
+  const lookups = await Promise.all(surfaces.map((s) => catalogMatches(s.hex)));
+  const items = surfaces.map((s, i) => `${s.label}: ${paintLabel(s.hex, lookups[i])}`);
   const available = scene.width - padX - leftEnd - fontSize * 2;
   while (items.length > 0 && ctx.measureText(items.join(SEPARATOR)).width > available) items.pop();
   if (items.length > 0) {
