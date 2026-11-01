@@ -22,12 +22,9 @@ test("no matches falls back to the uppercase hex", () => {
   assert.equal(paintLabel("cbcec5", []), "#CBCEC5");
 });
 
-test("shared hex picks by brand order, then name, regardless of input order", () => {
+test("a hex several catalog colors share stays a hex", () => {
   const a = m("Zed", "#123456", "Behr");
   const b = m("Alpha", "#123456", "Benjamin Moore");
-  const c = m("Mid", "#123456", "Acme Paint");
-  const d = m("Beta", "#123456", "Acme Paint");
-  assert.equal(paintLabel("#123456", [a, c, b]), "Alpha (Benjamin Moore)");
-  assert.equal(paintLabel("#123456", [b, a, c]), "Alpha (Benjamin Moore)");
-  assert.equal(paintLabel("#123456", [c, d]), "Beta (Acme Paint)");
+  assert.equal(paintLabel("#123456", [a, b]), "#123456");
+  assert.equal(paintLabel("#123456", [a, m("Near", "#123457", "Behr")]), "Zed (Behr)");
 });
