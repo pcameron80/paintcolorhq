@@ -38,6 +38,10 @@ export interface Color {
   // accent/spelling colors recovered from the CJ feed). null = use `<slug>-12x12`.
   samplize_handle?: string | null;
   created_at: string;
+  // Last substantive data change; drives sitemap lastmod and WebPage dateModified.
+  content_updated_at?: string | null;
+  // Other codes the brand prints for this color (Vista pairs, regional codes).
+  alternate_numbers?: string[] | null;
 }
 
 export interface ColorWithBrand extends Color {
