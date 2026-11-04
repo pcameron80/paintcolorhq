@@ -12,6 +12,7 @@ import {
   getStoredConsent,
   setStoredConsent,
 } from "@/lib/consent";
+import { MEDIAVINE_ENABLED, isAdFreePath, waitForMediavineCmp } from "@/lib/mediavine";
 
 // Runs before gtag.js loads. Region-specific defaults come first so gtag can
 // deny regulated visitors on its own geo lookup before ours has returned; a
@@ -92,9 +93,17 @@ export function CookieConsent() {
     if (!tracked) return;
     let active = true;
     // The geo lookup now only decides whether to show the banner.
-    fetchConsentRegion().then((r) => {
+    fetchConsentRegion().then(async (r) => {
       if (!active) return;
-      if (!getStoredConsent() && r === "regulated") setVisible(true);
+      if (getStoredConsent() || r !== "regulated") return;
+      // One prompt per visitor: once Journey is live, Mediavine's consent tool
+      // (window.__tcfapi) handles regulated visitors on ad pages and ours
+      // stays hidden. If it has not appeared within about 2 s, ours shows.
+      if (MEDIAVINE_ENABLED && !isAdFreePath(window.location.pathname)) {
+        const cmp = await waitForMediavineCmp();
+        if (!active || cmp) return;
+      }
+      setVisible(true);
     });
 
     const onOpen = () => setVisible(true);
