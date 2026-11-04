@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { classifyPunctuation, mergePunctuation } from './name-punctuation';
+import { classifyPunctuation, fixApostropheCase, mergePunctuation } from './name-punctuation';
 
 // [db, feed, class, expected written name] from the 2026-11 audit
 // (finding feed-names-punctuation; feeds of 2026-10-31).
@@ -64,4 +64,24 @@ test('punctuation the catalog has and the feed lacks is never written', () => {
   }
   // Curly vs straight is still quote style, not a lost mark.
   assert.equal(classifyPunctuation("Nature's Reflection", 'Nature’s Reflection'), 'quote-only');
+});
+
+test('a lone capital after a mid-word apostrophe is lowercased', () => {
+  for (const [raw, fixed] of [
+    ["Ocean'S Depth", "Ocean's Depth"],
+    ["A Li'L Cheeky", "A Li'l Cheeky"],
+    ["Elf'N Green", "Elf'n Green"],
+    ["Patina'D", "Patina'd"],
+    ["Yes It'S Greige", "Yes It's Greige"],
+    ["Surf'S Up!", "Surf's Up!"],
+    ["Painter’S White", "Painter’s White"],
+  ]) {
+    assert.equal(fixApostropheCase(raw), fixed, raw);
+  }
+});
+
+test('styled apostrophe names keep their capitals', () => {
+  for (const name of ["O'Reilly Green", "O'Brien Orange", "Cote D'Azur", "Rock 'N Roll", "Peaches 'n Cream", "Painter's White"]) {
+    assert.equal(fixApostropheCase(name), name);
+  }
 });
