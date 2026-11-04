@@ -11,6 +11,7 @@ import { ogDefaults } from "@/lib/og";
 import { moreBrands } from "@/lib/site-facts";
 import { getAllBrands } from "@/lib/queries";
 import { CATALOG_BRANDS } from "@/lib/catalog-stats";
+import { ToolFaq, type Faq } from "@/components/tool-faq";
 
 export const revalidate = 86400;
 
@@ -78,6 +79,14 @@ function JsonLd({ data }: { data: object }) {
 
 export default async function PaletteGeneratorPage() {
   const brands = await filterBrands();
+  const faqs: Faq[] = [
+    { q: "What palette types does the palette generator make?", a: HOW_TEMPLATES },
+    { q: "Are the palette colors matched to real paint?", a: `Yes. Every swatch is matched to the closest real paint color from our database of more than 26,000 colors across ${brands.length} brands, including Sherwin-Williams, Benjamin Moore, Behr, Valspar and PPG. You can also hold the results to a single brand with the brand filter.` },
+    { q: "Is the palette generator free?", a: "Yes. It is free with no sign-up and nothing to download, and it runs in your browser on a phone or computer. A free account is only needed if you want to save palettes to a project." },
+    { q: "What are the palette roles?", a: "Each palette assigns colors to four room roles: Walls (the main color covering the most area), Trim (baseboards, crown molding, door frames), Accent (a feature wall or large furniture piece), and Pop (used sparingly on throw pillows, art, or statement pieces for energy)." },
+    { q: "How do I use a generated palette in a real room?", a: "Give each color a job using the 60-30-10 rule: the Walls color covers about 60 percent of the room as the dominant surface, the Trim and Accent colors carry roughly 30 percent on woodwork and a feature wall, and the Pop color appears in about 10 percent on pillows, art, or a single door. Send any scheme to the room visualizer to preview those proportions on a real room photo before you paint." },
+    { q: "What makes the colors in a palette go together?", a: "Two things: a color-wheel relationship (warm, cool, high-contrast complementary, close analogous neighbors, or grounded earth tones) that sets the overall direction, and consistent undertones so the colors don't quietly clash. A palette reads as settled when its colors share an undertone family (warm with warm, cool with cool) or use a contrast you chose on purpose. Confirm the final combination with physical samples in your own light before buying." },
+  ];
   return (
     <div className="min-h-screen bg-surface">
       <JsonLd data={{
@@ -87,16 +96,6 @@ export default async function PaletteGeneratorPage() {
         url: "https://www.paintcolorhq.com/tools/palette-generator",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-      }} />
-      <JsonLd data={{
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "What palette types does the palette generator make?", acceptedAnswer: { "@type": "Answer", text: HOW_TEMPLATES } },
-          { "@type": "Question", name: "Are the palette colors matched to real paint?", acceptedAnswer: { "@type": "Answer", text: `Yes. Every swatch is matched to the closest real paint color from our database of more than 26,000 colors across ${brands.length} brands, including Sherwin-Williams, Benjamin Moore, Behr, Valspar and PPG. You can also hold the results to a single brand with the brand filter.` } },
-          { "@type": "Question", name: "What are the palette roles?", acceptedAnswer: { "@type": "Answer", text: "Each palette assigns colors to four room roles: Walls (the main color covering the most area), Trim (baseboards, crown molding, door frames), Accent (a feature wall or large furniture piece), and Pop (used sparingly on throw pillows, art, or statement pieces for energy)." } },
-          { "@type": "Question", name: "How do I use a generated palette in a real room?", acceptedAnswer: { "@type": "Answer", text: "Give each color a job using the 60-30-10 rule: the Walls color covers about 60 percent of the room as the dominant surface, the Trim and Accent colors carry roughly 30 percent on woodwork and a feature wall, and the Pop color appears in about 10 percent on pillows, art, or a single door. Send any scheme to the room visualizer to preview those proportions on a real room photo before you paint." } },
-          { "@type": "Question", name: "What makes the colors in a palette go together?", acceptedAnswer: { "@type": "Answer", text: "Two things: a color-wheel relationship (warm, cool, high-contrast complementary, close analogous neighbors, or grounded earth tones) that sets the overall direction, and consistent undertones so the colors don't quietly clash. A palette reads as settled when its colors share an undertone family (warm with warm, cool with cool) or use a contrast you chose on purpose. Confirm the final combination with physical samples in your own light before buying." } },
-        ],
       }} />
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -117,7 +116,7 @@ export default async function PaletteGeneratorPage() {
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
             Pick a color and generate coordinated paint palettes matched to real
-            colors.
+            colors. Free, with no sign-up or download.
           </p>
         </div>
       </section>
@@ -287,6 +286,8 @@ export default async function PaletteGeneratorPage() {
           </div>
         </div>
       </section>
+
+      <ToolFaq title="Palette generator FAQ" faqs={faqs} />
 
       <section className="py-20 px-6 md:px-12">
         <div className="max-w-4xl mx-auto">

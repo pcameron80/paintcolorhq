@@ -10,9 +10,11 @@
  *              images to produce per-surface masks.
  *
  * Output goes to --out (default: room-src/<id>/) as base.png and key.png.
+ * Two optional single-surface passes edit the base again: --pass=window writes
+ * key-window.png and --pass=cabinets writes key-cabinets.png (kitchens).
  *
  * Usage:
- *   npx tsx scripts/generate-room.ts --id=bedroom-1 --prompt="..." [--pass=base|key|both|window] [--out=dir]
+ *   npx tsx scripts/generate-room.ts --id=bedroom-1 --prompt="..." [--pass=base|key|both|window|cabinets] [--out=dir]
  */
 import * as path from "path";
 import * as fs from "fs";
@@ -39,7 +41,7 @@ const pass = arg("pass") ?? "both";
 const outDir = path.resolve(arg("out") ?? path.resolve(__dirname, `../room-src/${id}`));
 
 if (!id || ((pass === "base" || pass === "both") && !prompt)) {
-  console.error('Usage: --id=<id> --prompt="<room description>" [--pass=base|key|both|window] [--out=dir]');
+  console.error('Usage: --id=<id> --prompt="<room description>" [--pass=base|key|both|window|cabinets] [--out=dir]');
   process.exit(1);
 }
 
@@ -68,6 +70,15 @@ const WINDOW_INSTRUCTION = [
   "Edit this exact photo. Change nothing except the color of the window sashes, window frames and window grilles, which become flat pure green #00FF00.",
   "Trace them exactly as they are in the photo: same position, same thickness, and exactly the same grilles. If a window has no grilles, add none.",
   "Do not change the glass, the view through the glass, the window casing or trim around the window, blinds, shades, curtains, walls, mirrors or anything else.",
+].join(" ");
+
+const CABINET_INSTRUCTION = [
+  "Edit this exact photo. Change nothing except the color of the painted kitchen cabinetry, which becomes flat pure blue #0000FF:",
+  "cabinet doors, drawer fronts, cabinet boxes and end panels, the base of the island, and cabinet crown or toe-kick pieces that are part of the cabinets.",
+  "Keep every handle, pull and knob exactly as it is in the photo, its original metal color, not tinted blue.",
+  "Stainless steel and other shiny surfaces (range hood, appliances, faucet) keep their exact colors and reflections: no blue reflected in them.",
+  "Do not recolor countertops, the backsplash, appliances, the range, the range hood, the sink, faucets, open shelving, stools, chairs, walls, trim, windows, doors, floors or anything else.",
+  "Trace the cabinets exactly as they are in the photo. Do not add, remove, move or reshape anything.",
 ].join(" ");
 
 async function generate(parts: object[], imageSize = "1K"): Promise<Buffer> {
@@ -129,6 +140,19 @@ async function main() {
     const outPath = path.join(outDir, "key-window.png");
     fs.writeFileSync(outPath, buf);
     console.log(`✅ window key → ${outPath}`);
+  }
+
+  // Cabinets get their own pass for the same reason; build-room-masks.py reads
+  // key-cabinets.png into mask-cabinets.png. Kitchen cabinetry only.
+  if (pass === "cabinets") {
+    if (!fs.existsSync(basePath)) throw new Error(`No base image at ${basePath}`);
+    const buf = await generate([
+      { inlineData: { mimeType: "image/png", data: fs.readFileSync(basePath).toString("base64") } },
+      { text: CABINET_INSTRUCTION },
+    ], "1K");
+    const outPath = path.join(outDir, "key-cabinets.png");
+    fs.writeFileSync(outPath, buf);
+    console.log(`✅ cabinets key → ${outPath}`);
   }
 }
 

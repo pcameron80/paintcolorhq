@@ -28,7 +28,7 @@ export interface ColorOfTheYearCycle {
 
 export const COTY_HUB_DATES = {
   published: "2026-10-05",
-  updated: "2026-10-24",
+  updated: "2026-10-31",
 } as const;
 
 export const COLOR_OF_THE_YEAR: ColorOfTheYearCycle[] = [
@@ -110,6 +110,7 @@ export const COLOR_OF_THE_YEAR: ColorOfTheYearCycle[] = [
       { brandSlug: "behr", brandName: "Behr", name: "Hidden Gem", code: "N430-6A", colorSlug: "hidden-gem-n430-6a", sourceUrl: "https://corporate.behr.com/news/behr-paint-company-announces-2026-color-of-the-year-hidden-gem-a-smoky-jade-that-embodies-understated-elegance-and-timeless-sophistication" },
       { brandSlug: "valspar", brandName: "Valspar", name: "Warm Eucalyptus", code: "8004-28F", colorSlug: "warm-eucalyptus-8004-28f", sourceUrl: "https://www.paint.org/coatingstech-magazine/articles/industry-colors-of-the-year-2026/" },
       { brandSlug: "ppg", brandName: "Glidden / Pittsburgh Paints", name: "Warm Mahogany", code: "PPG1060-7", colorSlug: "warm-mahogany-1060-7", sourceUrl: "https://www.paint.org/coatingstech-magazine/articles/industry-colors-of-the-year-2026/" },
+      { brandSlug: "ppg", brandName: "PPG", name: "Secret Safari", code: "PPG1110-4", colorSlug: "secret-safari-1110-4", sourceUrl: "https://investor.ppg.com/news/news-details/2025/PPG-announces-Secret-Safari-as-2026-Color-of-the-Year/default.aspx" },
       { brandSlug: "dutch-boy", brandName: "Dutch Boy", name: "Melodious Ivory", code: "313-2DB", colorSlug: "melodious-ivory-313-2db", sourceUrl: "https://www.paint.org/coatingstech-magazine/articles/industry-colors-of-the-year-2026/" },
       { brandSlug: "dunn-edwards", brandName: "Dunn-Edwards", name: "Midnight Garden", code: "DE5657", colorSlug: "midnight-garden-de5657", sourceUrl: "https://www.paint.org/coatingstech-magazine/articles/industry-colors-of-the-year-2026/" },
     ],

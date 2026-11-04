@@ -107,6 +107,7 @@ export function SearchResults() {
   const [query, setQuery] = useState(searchParams.get("q") ?? "");
   const [results, setResults] = useState<ColorWithBrand[]>([]);
   const [brandLink, setBrandLink] = useState<{ slug: string; name: string } | null>(null);
+  const [correctedQuery, setCorrectedQuery] = useState<string | null>(null);
   const [brandFilter, setBrandFilter] = useState("");
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
@@ -122,6 +123,7 @@ export function SearchResults() {
     if (q.length < 2) {
       setResults([]);
       setBrandLink(null);
+      setCorrectedQuery(null);
       setHasSearched(false);
       setLoading(false);
       return;
@@ -137,10 +139,12 @@ export function SearchResults() {
       count = found.length;
       setResults(found);
       setBrandLink(data.brand ?? null);
+      setCorrectedQuery(data.correctedQuery ?? null);
     } catch {
       if (id !== requestIdRef.current) return;
       setResults([]);
       setBrandLink(null);
+      setCorrectedQuery(null);
     } finally {
       if (id === requestIdRef.current) setLoading(false);
     }
@@ -194,6 +198,11 @@ export function SearchResults() {
 
       {showResults && (
         <div className="mt-10">
+          {correctedQuery && (
+            <p className="mb-2 text-sm text-on-surface">
+              Showing results for <strong>{correctedQuery}</strong>
+            </p>
+          )}
           <p className="mb-6 text-sm text-on-surface-variant">
             {visibleResults.length} of {results.length} returned colors
             {brandLink && (

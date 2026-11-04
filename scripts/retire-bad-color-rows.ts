@@ -368,7 +368,7 @@ async function retire() {
     if (e) throw new Error(`color delete failed: ${e.message}`);
   }
   await refreshCounts([...new Set(resolved.map((r) => r.row.brand_id))]);
-  console.log(`Retired ${ids.length} rows. Redeploy so the prebuild regenerates match data.`);
+  console.log(`Retired ${ids.length} rows. Redeploy once this finishes: the prebuild rebuilds /match-data and fails if the match count is not colors x (brands - 1) x 5. Pages pick up the new files within 24 h.`);
 }
 
 async function revert(file: string) {

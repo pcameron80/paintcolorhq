@@ -99,3 +99,8 @@ export const MAJOR_MATCH_BRANDS = [
   "dunn-edwards",
   "farrow-ball",
 ];
+
+// Brands whose retail availability we have not verified, so copy that tells a
+// reader a match is something their local store carries must not name them
+// as the pick. They still count in match totals.
+export const UNVERIFIED_BUY_BRANDS: ReadonlySet<string> = new Set(["colorhouse"]);
