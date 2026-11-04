@@ -108,6 +108,8 @@ const NORMALIZE: Partial<Record<string, (c: string) => string>> = { ppg: normali
 
 // Renames never written: the feed itself is misspelled.
 const SKIP_RENAME = new Set(['behr/frosted-pomegranate-140b-7']); // Behr's feed says "Frosted Pomgranate"
+// Accents never written: the feed's accent looks like a typo (2026-11 audit, D3).
+const SKIP_ACCENT = new Set(['behr/parisian-cafe-mq2-33']); // feed: "Parisian Cafè", grave accent
 
 // Feed names written in the catalog's style instead of the feed's.
 const FEED_NAME_STYLE: Record<string, string> = {
@@ -275,7 +277,7 @@ async function main() {
       (CASE && c.group === 'case') ||
       (PUNCTUATION && c.group === 'punctuation') ||
       (WORD_JOINS && c.group === 'word-join') ||
-      (ACCENTS && c.group === 'accent') ||
+      (ACCENTS && c.group === 'accent' && !SKIP_ACCENT.has(`${c.brand}/${c.slug}`)) ||
       (RENAMES && c.group === 'rename' && !SKIP_RENAME.has(`${c.brand}/${c.slug}`)),
   );
   const groups = all.reduce<Record<string, number>>((acc, c) => ({ ...acc, [`${c.brand}/${c.group}`]: (acc[`${c.brand}/${c.group}`] ?? 0) + 1 }), {});
