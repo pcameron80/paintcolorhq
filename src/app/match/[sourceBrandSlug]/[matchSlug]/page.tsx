@@ -1,4 +1,4 @@
-import { isMatchIndexable } from "@/lib/indexing";
+import { extractVariantSuffix, isMatchIndexable } from "@/lib/indexing";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -56,8 +56,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const best = allMatches.find((m) => m.match_color.brand.slug === parsed.targetBrandSlug);
   const note = best ? deltaELabel(Number(best.delta_e_score)) : "Digital match";
   const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/${parsed.colorSlug}-to-${parsed.targetBrandSlug}`;
-  const variantMatch = parsed.colorSlug.match(/-([2-9])$/);
-  const variant = variantMatch && !sourceColor.color_number?.toLowerCase().endsWith(variantMatch[1]) ? ` (variant ${variantMatch[1]})` : "";
+  const variant = extractVariantSuffix(parsed.colorSlug, sourceColor.color_number);
   const colorNum = sourceColor.color_number ? ` ${sourceColor.color_number}` : "";
   // Title pivots to the exact phrasing of the dominant PAA query
   // ("What is the Behr equivalent of Agreeable Gray?") to lift CTR and

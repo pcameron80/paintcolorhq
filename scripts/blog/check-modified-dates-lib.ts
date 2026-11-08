@@ -92,9 +92,17 @@ export function isBodyChange(c: RangeCommit): boolean {
   return c.changed.some((l) => l.trim() !== "" && !METADATA_LINE.test(l));
 }
 
-export function isExempt(c: RangeCommit, ignoreShas: readonly string[]): boolean {
+/**
+ * An ignore entry is a commit sha prefix ("197aceb"), which exempts that commit
+ * for every post, or "sha:slug", which exempts it for one post only.
+ */
+export function isExempt(c: RangeCommit, ignoreShas: readonly string[], slug = ""): boolean {
   if (c.subject.includes("[no-date]")) return true;
-  return ignoreShas.some((s) => c.sha.startsWith(s) || s.startsWith(c.sha));
+  return ignoreShas.some((entry) => {
+    const [s, only] = entry.split(":");
+    if (only && only !== slug) return false;
+    return c.sha.startsWith(s) || s.startsWith(c.sha);
+  });
 }
 
 export interface DateFinding {
@@ -117,7 +125,7 @@ export function checkPost(
 ): DateFinding | null {
   const effective = post.modifiedDate ?? post.date;
   const relevant = commits.filter(
-    (c) => c.date >= since && !isExempt(c, ignoreShas) && isBodyChange(c),
+    (c) => c.date >= since && !isExempt(c, ignoreShas, post.slug) && isBodyChange(c),
   );
   if (relevant.length === 0) return null;
   const newest = relevant.reduce((a, b) => (b.date > a.date ? b : a));

@@ -602,6 +602,12 @@ const content: Record<string, BrandContent> = {
           <strong>RAL Effect</strong> (490 colors including metallics). RAL colors are the go-to
           standard for European architecture, windows, doors, facades, and industrial applications.
         </p>
+        <p>
+          23 RAL Classic colors are effect finishes a screen cannot show: 14 pearl colors such as RAL
+          1036 Pearl gold, the two aluminium metallics RAL 9006 and 9007, and 7 fluorescent luminous
+          colors such as RAL 1026 Luminous yellow. Their swatches here, and the closest flat paints we
+          match them to, show only the base color. Judge these from a physical sample.
+        </p>
       </div>
     ),
     details: (

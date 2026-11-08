@@ -29,7 +29,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-import { classifyColorFamily, refineColorFamily, calculateLrv, rgbToLab, hexToRgb } from './lib/color-math';
+import { familyFromHex, calculateLrv, rgbToLab, hexToRgb } from './lib/color-math';
 import { undertoneLabel } from './lib/undertone';
 import { pool } from './lib/palette-sources';
 import type { HexChange } from './lib/palette-diff';
@@ -59,7 +59,9 @@ interface Row {
 }
 type Patch = Omit<Row, 'id' | 'slug'>;
 
-function corrected(hex: string, liveLrv: number | undefined): Patch {
+// `key` is "<brand-slug>/<color-slug>": family takes FAMILY_OVERRIDES and the
+// brand's rules (Sherwin-Williams teals stay blue), undertone its sourced override.
+function corrected(hex: string, liveLrv: number | undefined, key: string): Patch {
   const rgb = hexToRgb(hex)!;
   const lab = rgbToLab(rgb.r, rgb.g, rgb.b);
   return {
@@ -71,8 +73,8 @@ function corrected(hex: string, liveLrv: number | undefined): Patch {
     lab_a: lab.a,
     lab_b_val: lab.b_val,
     lrv: liveLrv ?? Math.round(calculateLrv(rgb.r, rgb.g, rgb.b) * 10) / 10,
-    color_family: refineColorFamily(classifyColorFamily(rgb.r, rgb.g, rgb.b), rgb.r, rgb.g, rgb.b),
-    undertone: undertoneLabel(hex, lab.a, lab.b_val),
+    color_family: familyFromHex(key, rgb.r, rgb.g, rgb.b),
+    undertone: undertoneLabel(hex, lab.a, lab.b_val, key),
   };
 }
 
@@ -149,7 +151,7 @@ async function main() {
       const current = row.hex.toLowerCase();
       if (current === c.liveHex) { tally.alreadyCorrect++; continue; }
       if (current !== c.dbHex) { tally.editedSinceScan++; console.warn(`  skip ${b.slug}/${c.slug}: hex is ${current}, scan saw ${c.dbHex}`); continue; }
-      const patch = corrected(c.liveHex, c.liveLrv);
+      const patch = corrected(c.liveHex, c.liveLrv, `${b.slug}/${c.slug}`);
       if (patch.color_family !== row.color_family) tally.familyMoves++;
       if (c.liveLrv != null) tally.manufacturerLrv++;
       const { id, slug, ...old } = row;

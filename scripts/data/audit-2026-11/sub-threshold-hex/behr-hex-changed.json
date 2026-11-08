@@ -1,0 +1,560 @@
+[
+ {
+  "slug": "ivory-mist-750c-1",
+  "code": "750C-1",
+  "name": "Ivory Mist",
+  "dbHex": "#f5f5e9",
+  "liveHex": "#f1eee2",
+  "deltaE": 1.95,
+  "liveLrv": 85
+ },
+ {
+  "slug": "quiet-whisper-bwc-05",
+  "code": "BWC-05",
+  "name": "Quiet Whisper",
+  "dbHex": "#f5faef",
+  "liveHex": "#f1f3e8",
+  "deltaE": 1.85,
+  "liveLrv": 89
+ },
+ {
+  "slug": "palais-white-gr-w15",
+  "code": "GR-W15",
+  "name": "Palais White",
+  "dbHex": "#f7f6ed",
+  "liveHex": "#f4f0e5",
+  "deltaE": 1.88,
+  "liveLrv": 87
+ },
+ {
+  "slug": "fresh-popcorn-bwc-11",
+  "code": "BWC-11",
+  "name": "Fresh Popcorn",
+  "dbHex": "#f7f9ef",
+  "liveHex": "#f4f3e9",
+  "deltaE": 1.78,
+  "liveLrv": 89
+ },
+ {
+  "slug": "beach-house-bwc-04",
+  "code": "BWC-04",
+  "name": "Beach House",
+  "dbHex": "#f8f9eb",
+  "liveHex": "#f5f3e6",
+  "deltaE": 1.87,
+  "liveLrv": 89
+ },
+ {
+  "slug": "buckwheat-flour-s280-1",
+  "code": "S280-1",
+  "name": "Buckwheat Flour",
+  "dbHex": "#f3e8d7",
+  "liveHex": "#efe2cf",
+  "deltaE": 1.58,
+  "liveLrv": 77
+ },
+ {
+  "slug": "vermont-cream-w-b-400",
+  "code": "W-B-400",
+  "name": "Vermont Cream",
+  "dbHex": "#fbfbed",
+  "liveHex": "#f8f5e8",
+  "deltaE": 1.89,
+  "liveLrv": 91
+ },
+ {
+  "slug": "powdered-snow-w-d-700",
+  "code": "W-D-700",
+  "name": "Powdered Snow",
+  "dbHex": "#fbf9ef",
+  "liveHex": "#f8f4e6",
+  "deltaE": 1.99,
+  "liveLrv": 90
+ },
+ {
+  "slug": "laser-lemon-p290-7",
+  "code": "P290-7",
+  "name": "Laser Lemon",
+  "dbHex": "#ffb809",
+  "liveHex": "#ffbd1b",
+  "deltaE": 1.55,
+  "liveLrv": 60
+ },
+ {
+  "slug": "resort-white-bxc-01",
+  "code": "BXC-01",
+  "name": "Resort White",
+  "dbHex": "#f7f7ec",
+  "liveHex": "#f4f1e4",
+  "deltaE": 1.87,
+  "liveLrv": 88
+ },
+ {
+  "slug": "parmesan-340e-1",
+  "code": "340E-1",
+  "name": "Parmesan",
+  "dbHex": "#faf7e1",
+  "liveHex": "#f7f1dc",
+  "deltaE": 1.86,
+  "liveLrv": 88
+ },
+ {
+  "slug": "swiss-coffee-12",
+  "code": "12",
+  "name": "Swiss Coffee",
+  "dbHex": "#f3f2e6",
+  "liveHex": "#f1ede0",
+  "deltaE": 1.68,
+  "liveLrv": 84
+ },
+ {
+  "slug": "snow-fall-w-f-600",
+  "code": "W-F-600",
+  "name": "Snow Fall",
+  "dbHex": "#f6f8f3",
+  "liveHex": "#f3f2eb",
+  "deltaE": 1.91,
+  "liveLrv": 89
+ },
+ {
+  "slug": "polar-bear-75",
+  "code": "75",
+  "name": "Polar Bear",
+  "dbHex": "#f8f9f3",
+  "liveHex": "#f5f4ec",
+  "deltaE": 1.52,
+  "liveLrv": 90
+ },
+ {
+  "slug": "mango-tango-p240-4",
+  "code": "P240-4",
+  "name": "Mango Tango",
+  "dbHex": "#ffc17c",
+  "liveHex": "#ffc785",
+  "deltaE": 1.82,
+  "liveLrv": 65
+ },
+ {
+  "slug": "cotton-fluff-w-d-400",
+  "code": "W-D-400",
+  "name": "Cotton Fluff",
+  "dbHex": "#fcfaeb",
+  "liveHex": "#f9f4e5",
+  "deltaE": 1.8,
+  "liveLrv": 91
+ },
+ {
+  "slug": "cascade-beige-n240-1",
+  "code": "N240-1",
+  "name": "Cascade Beige",
+  "dbHex": "#eae1d3",
+  "liveHex": "#e7dbca",
+  "deltaE": 1.96,
+  "liveLrv": 72
+ },
+ {
+  "slug": "macaw-320b-7",
+  "code": "320B-7",
+  "name": "Macaw",
+  "dbHex": "#ffb90f",
+  "liveHex": "#ffbd24",
+  "deltaE": 1.24,
+  "liveLrv": 60
+ },
+ {
+  "slug": "writing-paper-s310-1",
+  "code": "S310-1",
+  "name": "Writing Paper",
+  "dbHex": "#f4ecd4",
+  "liveHex": "#f1e6cf",
+  "deltaE": 1.94,
+  "liveLrv": 80
+ },
+ {
+  "slug": "clay-dust-n250-1",
+  "code": "N250-1",
+  "name": "Clay Dust",
+  "dbHex": "#f3e8dc",
+  "liveHex": "#f0e3d4",
+  "deltaE": 1.65,
+  "liveLrv": 78
+ },
+ {
+  "slug": "cotton-blossom-bwc-07",
+  "code": "BWC-07",
+  "name": "Cotton Blossom",
+  "dbHex": "#f8f6ec",
+  "liveHex": "#f5f1e4",
+  "deltaE": 1.71,
+  "liveLrv": 88
+ },
+ {
+  "slug": "confection-bwc-02",
+  "code": "BWC-02",
+  "name": "Confection",
+  "dbHex": "#f6f1e0",
+  "liveHex": "#f4ecda",
+  "deltaE": 1.66,
+  "liveLrv": 84
+ },
+ {
+  "slug": "swan-wing-w-f-400",
+  "code": "W-F-400",
+  "name": "Swan Wing",
+  "dbHex": "#f7f6ee",
+  "liveHex": "#f5f2e6",
+  "deltaE": 1.96,
+  "liveLrv": 88
+ },
+ {
+  "slug": "coconut-twist-gr-w14",
+  "code": "GR-W14",
+  "name": "Coconut Twist",
+  "dbHex": "#f9f6e7",
+  "liveHex": "#f7f1e1",
+  "deltaE": 1.66,
+  "liveLrv": 88
+ },
+ {
+  "slug": "mirage-white-400e-1",
+  "code": "400E-1",
+  "name": "Mirage White",
+  "dbHex": "#f8f9ed",
+  "liveHex": "#f5f4e6",
+  "deltaE": 1.47,
+  "liveLrv": 90
+ },
+ {
+  "slug": "lemon-pearl-370c-1",
+  "code": "370C-1",
+  "name": "Lemon Pearl",
+  "dbHex": "#fbf6e0",
+  "liveHex": "#f9f1db",
+  "deltaE": 1.66,
+  "liveLrv": 88
+ },
+ {
+  "slug": "crystal-cut-pr-w13",
+  "code": "PR-W13",
+  "name": "Crystal Cut",
+  "dbHex": "#fbf9f4",
+  "liveHex": "#f8f4ed",
+  "deltaE": 1.51,
+  "liveLrv": 91
+ },
+ {
+  "slug": "powder-sand-340c-1",
+  "code": "340C-1",
+  "name": "Powder Sand",
+  "dbHex": "#faf6e2",
+  "liveHex": "#f7f1dd",
+  "deltaE": 1.33,
+  "liveLrv": 88
+ },
+ {
+  "slug": "china-cup-w-d-100",
+  "code": "W-D-100",
+  "name": "China Cup",
+  "dbHex": "#faf5ec",
+  "liveHex": "#f8f0e5",
+  "deltaE": 1.7,
+  "liveLrv": 88
+ },
+ {
+  "slug": "baked-brie-780c-2",
+  "code": "780C-2",
+  "name": "Baked Brie",
+  "dbHex": "#efeedc",
+  "liveHex": "#ede9d7",
+  "deltaE": 1.68,
+  "liveLrv": 81
+ },
+ {
+  "slug": "atlantis-pearl-bwc-09",
+  "code": "BWC-09",
+  "name": "Atlantis Pearl",
+  "dbHex": "#f4edd6",
+  "liveHex": "#f1e8d2",
+  "deltaE": 1.47,
+  "liveLrv": 81
+ },
+ {
+  "slug": "rice-crackers-s240-2",
+  "code": "S240-2",
+  "name": "Rice Crackers",
+  "dbHex": "#e3d1be",
+  "liveHex": "#e0ccb6",
+  "deltaE": 1.62,
+  "liveLrv": 62
+ },
+ {
+  "slug": "cottage-white-13",
+  "code": "13",
+  "name": "Cottage White",
+  "dbHex": "#f5eeda",
+  "liveHex": "#f3e9d6",
+  "deltaE": 1.86,
+  "liveLrv": 82
+ },
+ {
+  "slug": "french-creme-s300-1",
+  "code": "S300-1",
+  "name": "French Creme",
+  "dbHex": "#f5ebd4",
+  "liveHex": "#f2e6cf",
+  "deltaE": 1.36,
+  "liveLrv": 80
+ },
+ {
+  "slug": "social-butterfly-360a-1",
+  "code": "360A-1",
+  "name": "Social Butterfly",
+  "dbHex": "#fcf7df",
+  "liveHex": "#faf2dc",
+  "deltaE": 1.93,
+  "liveLrv": 89
+ },
+ {
+  "slug": "lively-white-bwc-03",
+  "code": "BWC-03",
+  "name": "Lively White",
+  "dbHex": "#faf7e5",
+  "liveHex": "#f7f3e0",
+  "deltaE": 0.95,
+  "liveLrv": 89
+ },
+ {
+  "slug": "simply-white-bwc-01",
+  "code": "BWC-01",
+  "name": "Simply White",
+  "dbHex": "#f9f5ec",
+  "liveHex": "#f5f1e4",
+  "deltaE": 1.98,
+  "liveLrv": 88
+ },
+ {
+  "slug": "mist-yellow-380e-1",
+  "code": "380E-1",
+  "name": "Mist Yellow",
+  "dbHex": "#faf3da",
+  "liveHex": "#f8eed6",
+  "deltaE": 1.78,
+  "liveLrv": 86
+ },
+ {
+  "slug": "night-blooming-jasmine-yl-w10",
+  "code": "YL-W10",
+  "name": "Night Blooming Jasmine",
+  "dbHex": "#fbfcf1",
+  "liveHex": "#f9f7ec",
+  "deltaE": 1.67,
+  "liveLrv": 93
+ },
+ {
+  "slug": "lambskin-bwc-22",
+  "code": "BWC-22",
+  "name": "Lambskin",
+  "dbHex": "#ede1d1",
+  "liveHex": "#ebdcca",
+  "deltaE": 1.64,
+  "liveLrv": 73
+ },
+ {
+  "slug": "marshmallow-whip-m220-1",
+  "code": "M220-1",
+  "name": "Marshmallow Whip",
+  "dbHex": "#fbf3e8",
+  "liveHex": "#f9efe0",
+  "deltaE": 1.84,
+  "liveLrv": 87
+ },
+ {
+  "slug": "moonlight-white-350e-1",
+  "code": "350E-1",
+  "name": "Moonlight White",
+  "dbHex": "#fbf5e4",
+  "liveHex": "#f9f0de",
+  "deltaE": 1.64,
+  "liveLrv": 88
+ },
+ {
+  "slug": "cancun-sand-310e-1",
+  "code": "310E-1",
+  "name": "Cancun Sand",
+  "dbHex": "#fcf2dd",
+  "liveHex": "#fbedd7",
+  "deltaE": 1.97,
+  "liveLrv": 86
+ },
+ {
+  "slug": "scroll-n280-1",
+  "code": "N280-1",
+  "name": "Scroll",
+  "dbHex": "#f1e5d2",
+  "liveHex": "#efe0cb",
+  "deltaE": 1.63,
+  "liveLrv": 76
+ },
+ {
+  "slug": "twinkling-lights-m280-1",
+  "code": "M280-1",
+  "name": "Twinkling Lights",
+  "dbHex": "#fbf9ed",
+  "liveHex": "#f9f4e7",
+  "deltaE": 1.67,
+  "liveLrv": 91
+ },
+ {
+  "slug": "white-veil-or-w14",
+  "code": "OR-W14",
+  "name": "White Veil",
+  "dbHex": "#f9f5e9",
+  "liveHex": "#f7f1e3",
+  "deltaE": 1.32,
+  "liveLrv": 88
+ },
+ {
+  "slug": "writers-parchment-n280-2",
+  "code": "N280-2",
+  "name": "Writers Parchment",
+  "dbHex": "#ebdbc4",
+  "liveHex": "#e9d6bd",
+  "deltaE": 1.6,
+  "liveLrv": 69
+ },
+ {
+  "slug": "moon-rise-w-f-700",
+  "code": "W-F-700",
+  "name": "Moon Rise",
+  "dbHex": "#f5f9ed",
+  "liveHex": "#f4f4e8",
+  "deltaE": 1.99,
+  "liveLrv": 90
+ },
+ {
+  "slug": "beach-grass-s280-2",
+  "code": "S280-2",
+  "name": "Beach Grass",
+  "dbHex": "#e9d6c1",
+  "liveHex": "#e5d2b9",
+  "deltaE": 1.89,
+  "liveLrv": 66
+ },
+ {
+  "slug": "vanilla-frost-bwc-23",
+  "code": "BWC-23",
+  "name": "Vanilla Frost",
+  "dbHex": "#f5edde",
+  "liveHex": "#f3e8d7",
+  "deltaE": 1.67,
+  "liveLrv": 82
+ },
+ {
+  "slug": "creamy-white-w-d-710",
+  "code": "W-D-710",
+  "name": "Creamy White",
+  "dbHex": "#fbf6e8",
+  "liveHex": "#faf2e1",
+  "deltaE": 1.72,
+  "liveLrv": 89
+ },
+ {
+  "slug": "english-daisy-p290-6",
+  "code": "P290-6",
+  "name": "English Daisy",
+  "dbHex": "#ffc82b",
+  "liveHex": "#ffca46",
+  "deltaE": 1.99,
+  "liveLrv": 66
+ },
+ {
+  "slug": "eggnog-320a-1",
+  "code": "320A-1",
+  "name": "Eggnog",
+  "dbHex": "#fcf5dd",
+  "liveHex": "#fbf1d9",
+  "deltaE": 1.55,
+  "liveLrv": 88
+ },
+ {
+  "slug": "frosted-toffee-s270-1",
+  "code": "S270-1",
+  "name": "Frosted Toffee",
+  "dbHex": "#f5dfc4",
+  "liveHex": "#f1dbbf",
+  "deltaE": 0.98,
+  "liveLrv": 73
+ },
+ {
+  "slug": "opal-cream-300a-1",
+  "code": "300A-1",
+  "name": "Opal Cream",
+  "dbHex": "#fef2d0",
+  "liveHex": "#fceece",
+  "deltaE": 1.41,
+  "liveLrv": 86
+ },
+ {
+  "slug": "vanilla-paste-s290-1",
+  "code": "S290-1",
+  "name": "Vanilla Paste",
+  "dbHex": "#f6ebdb",
+  "liveHex": "#f3e7d3",
+  "deltaE": 1.75,
+  "liveLrv": 81
+ },
+ {
+  "slug": "white-flour-or-w10",
+  "code": "OR-W10",
+  "name": "White Flour",
+  "dbHex": "#f7f2e8",
+  "liveHex": "#f5ede0",
+  "deltaE": 1.87,
+  "liveLrv": 86
+ },
+ {
+  "slug": "belgian-cream-w-f-100",
+  "code": "W-F-100",
+  "name": "Belgian Cream",
+  "dbHex": "#fbf4e9",
+  "liveHex": "#f9f1e2",
+  "deltaE": 1.75,
+  "liveLrv": 88
+ },
+ {
+  "slug": "marquee-white-bxc-47",
+  "code": "BXC-47",
+  "name": "Marquee White",
+  "dbHex": "#f7eedc",
+  "liveHex": "#f5ead6",
+  "deltaE": 1.26,
+  "liveLrv": 83
+ },
+ {
+  "slug": "oat-cake-290e-2",
+  "code": "290E-2",
+  "name": "Oat Cake",
+  "dbHex": "#e3ceba",
+  "liveHex": "#e1cab3",
+  "deltaE": 1.45,
+  "liveLrv": 61
+ },
+ {
+  "slug": "elderflower-bxc-86",
+  "code": "BXC-86",
+  "name": "Elderflower",
+  "dbHex": "#fcfdec",
+  "liveHex": "#fbf9e8",
+  "deltaE": 1.51,
+  "liveLrv": 94
+ },
+ {
+  "slug": "linen-white-70",
+  "code": "70",
+  "name": "Linen White",
+  "dbHex": "#f9f0de",
+  "liveHex": "#f7edd8",
+  "deltaE": 1.26,
+  "liveLrv": 85
+ }
+]
