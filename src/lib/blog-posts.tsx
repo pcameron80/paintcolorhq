@@ -1364,7 +1364,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2 pr-4"><Swatch hex="#d1cbc1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" /></td>
                 <td className="py-2 pr-4">60.1</td>
                 <td className="py-2 pr-4">5.7</td>
-                <td className="py-2 pr-4"><Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Toasty Gray</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/behr/toasty-gray-n320-2" className="text-brand-blue hover:underline">Toasty Gray</Link> (nearly identical)</td>
                 <td className="py-2 pr-4"><Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Heritage Gray</Link> (nearly identical)</td>
                 <td className="py-2"><Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (nearly identical)</td>
               </tr>
@@ -4810,7 +4810,7 @@ const blogPosts: BlogPost[] = [
         </p>
         <ul className="mt-4 list-disc space-y-3 pl-6 text-gray-700 leading-relaxed">
           <li>
-            <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" />: the closest <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> color is <Swatch hex="#D0CBC3" name="Wish" brand="AF-680" href="/colors/benjamin-moore/wish-af-680" />, and the closest Behr color is <Swatch hex="#D2CCC3" name="Toasty Gray" brand="N320-2" href="/colors/behr/toasty-gray-n320-2-2" />. Both rate as nearly identical in digital values. The full side-by-side is on the <Link href="/match/sherwin-williams/agreeable-gray-7029-to-benjamin-moore" className="text-brand-blue hover:underline">Agreeable Gray to Benjamin Moore match page</Link>.
+            <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" />: the closest <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> color is <Swatch hex="#D0CBC3" name="Wish" brand="AF-680" href="/colors/benjamin-moore/wish-af-680" />, and the closest Behr color is <Swatch hex="#D2CCC3" name="Toasty Gray" brand="N320-2" href="/colors/behr/toasty-gray-n320-2" />. Both rate as nearly identical in digital values. The full side-by-side is on the <Link href="/match/sherwin-williams/agreeable-gray-7029-to-benjamin-moore" className="text-brand-blue hover:underline">Agreeable Gray to Benjamin Moore match page</Link>.
           </li>
           <li>
             <Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" />: the closest Sherwin-Williams color is <Swatch hex="#EFECE3" name="Cold Foam" brand="SW 9504" href="/colors/sherwin-williams/cold-foam-9504" />, rated nearly identical. Behr <Swatch hex="#EEEDE4" name="Harmonious White" brand="DC-013" href="/colors/behr/harmonious-white-dc-013" /> is closer still. See the <Link href="/match/benjamin-moore/white-dove-oc-17-to-sherwin-williams" className="text-brand-blue hover:underline">White Dove to Sherwin-Williams match page</Link>.
@@ -5161,7 +5161,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Agreeable Gray in Every Brand</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The value of a color like this is knowing what to buy when your store doesn&apos;t carry Sherwin-Williams. Agreeable Gray has unusually tight matches across the board, which tells you the greige recipe is close to universal. The following colors have similar published digital values: <Link href="/colors/dutch-boy/doves-wings-443-1db" className="text-brand-blue hover:underline">Dutch Boy Doves Wings</Link> (#d1cbc1) and <Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Valspar Heritage Gray</Link> (#d1cbc1) share its exact hex value, and <Link href="/colors/ppg/whiskers-1025-3" className="text-brand-blue hover:underline">PPG Whiskers</Link> (#d1ccc2) and <Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link> (#d2ccc3) are nearly identical. Benjamin Moore&apos;s closest is <Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (AF-680, #d0cbc3) — nearly identical and the color to ask for at a BM counter. <Link href="/colors/farrow-ball/cornforth-white-228" className="text-brand-blue hover:underline">Farrow &amp; Ball Cornforth White</Link> (#d1cbc3) is nearly identical if you&apos;re speccing British paint. The loosest match in the set is <Link href="/colors/kilz/starched-linen-lk210" className="text-brand-blue hover:underline">Kilz Starched Linen</Link> (#dad2c7), which sits a shade lighter and warmer. If you&apos;re matching between the two big names specifically, the full <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> match list does this for every SW shade.
+          The value of a color like this is knowing what to buy when your store doesn&apos;t carry Sherwin-Williams. Agreeable Gray has unusually tight matches across the board, which tells you the greige recipe is close to universal. The following colors have similar published digital values: <Link href="/colors/dutch-boy/doves-wings-443-1db" className="text-brand-blue hover:underline">Dutch Boy Doves Wings</Link> (#d1cbc1) and <Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Valspar Heritage Gray</Link> (#d1cbc1) share its exact hex value, and <Link href="/colors/ppg/whiskers-1025-3" className="text-brand-blue hover:underline">PPG Whiskers</Link> (#d1ccc2) and <Link href="/colors/behr/toasty-gray-n320-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link> (#d2ccc3) are nearly identical. Benjamin Moore&apos;s closest is <Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (AF-680, #d0cbc3) — nearly identical and the color to ask for at a BM counter. <Link href="/colors/farrow-ball/cornforth-white-228" className="text-brand-blue hover:underline">Farrow &amp; Ball Cornforth White</Link> (#d1cbc3) is nearly identical if you&apos;re speccing British paint. The loosest match in the set is <Link href="/colors/kilz/starched-linen-lk210" className="text-brand-blue hover:underline">Kilz Starched Linen</Link> (#dad2c7), which sits a shade lighter and warmer. If you&apos;re matching between the two big names specifically, the full <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> match list does this for every SW shade.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors That Coordinate with Agreeable Gray</h2>
@@ -6810,7 +6810,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2 pr-4">5.7</td>
                 <td className="py-2 pr-4">Same brand</td>
                 <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (nearly identical)</td>
-                <td className="py-2"><Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Toasty Gray</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/behr/toasty-gray-n320-2" className="text-brand-blue hover:underline">Toasty Gray</Link> (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#ccc7b9" name="Revere Pewter" brand="BM HC-172" href="/colors/benjamin-moore/revere-pewter-hc-172" /></td>
@@ -6837,7 +6837,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2 pr-4">6.5</td>
                 <td className="py-2 pr-4">Same brand</td>
                 <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/desert-light-1004" className="text-brand-blue hover:underline">Desert Light</Link> (nearly identical)</td>
-                <td className="py-2"><Link href="/colors/behr/wheat-bread-720c-3-2" className="text-brand-blue hover:underline">Wheat Bread</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/behr/wheat-bread-720c-3" className="text-brand-blue hover:underline">Wheat Bread</Link> (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /></td>
@@ -7281,10 +7281,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Warm Neutrals &amp; Greiges</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D1CCC2" name="Whiskers" brand="PPG" href="/colors/ppg/whiskers-1025-3" /> — 1025-3, LRV 61. PPG&apos;s go-to warm greige: soft enough to read neutral, warm enough to play with oak and brass. It is nearly identical to <Link href="/colors/benjamin-moore/collingwood-859" className="text-brand-blue hover:underline">Benjamin Moore Collingwood</Link> and <Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link>.
+          <Swatch hex="#D1CCC2" name="Whiskers" brand="PPG" href="/colors/ppg/whiskers-1025-3" /> — 1025-3, LRV 61. PPG&apos;s go-to warm greige: soft enough to read neutral, warm enough to play with oak and brass. It is nearly identical to <Link href="/colors/benjamin-moore/collingwood-859" className="text-brand-blue hover:underline">Benjamin Moore Collingwood</Link> and <Link href="/colors/behr/toasty-gray-n320-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D0D3D3" name="Elemental" brand="PPG" href="/colors/ppg/elemental-1011-2" /> — 1011-2, LRV 65. A soft, light gray that stays calm and neutral rather than cold. Its closest match is <Link href="/colors/behr/sterling-780e-3-2" className="text-brand-blue hover:underline">Behr Sterling</Link>, with <Link href="/colors/sherwin-williams/misty-6232" className="text-brand-blue hover:underline">Sherwin-Williams Misty</Link> nearby.
+          <Swatch hex="#D0D3D3" name="Elemental" brand="PPG" href="/colors/ppg/elemental-1011-2" /> — 1011-2, LRV 65. A soft, light gray that stays calm and neutral rather than cold. Its closest match is <Link href="/colors/behr/sterling-780e-3" className="text-brand-blue hover:underline">Behr Sterling</Link>, with <Link href="/colors/sherwin-williams/misty-6232" className="text-brand-blue hover:underline">Sherwin-Williams Misty</Link> nearby.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#A79D8D" name="Stonehenge Greige" brand="PPG" href="/colors/ppg/stonehenge-greige-1024-5" /> — 1024-5, LRV 34. A deeper greige-taupe for cozy rooms, accent walls, and exteriors. It is a nearly identical match for <Link href="/colors/behr/ashwood-720d-4" className="text-brand-blue hover:underline">Behr Ashwood</Link>.
@@ -7343,7 +7343,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dunn-edwards-paint-colors",
     title: "14 Best Dunn-Edwards Paint Colors (2026)",
     date: "2026-06-03",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-11-08",
     author: "Philip Cameron",
     excerpt:
       "14 Dunn-Edwards picks, from Swiss Coffee to Midnight Garden, each with its LRV and closest Sherwin-Williams, Benjamin Moore and Behr match.",
@@ -7364,7 +7364,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "Can I get Dunn-Edwards colors in Sherwin-Williams or Behr?",
         answer:
-          "Yes — most Dunn-Edwards colors have a nearly identical match in the national brands. For example, Dunn-Edwards Bay of Hope (DE6331) is a nearly identical match for Sherwin-Williams Upward (SW 6239), and Crisp Muslin (DE6212) is nearly identical to PPG Indian Muslin and also nearly identical to Sherwin-Williams White Heron. Each color in this guide links to its closest cross-brand match.",
+          "Yes — most Dunn-Edwards colors have a nearly identical match in the national brands. For example, Dunn-Edwards Bay of Hope (DE6331) is a nearly identical match for Sherwin-Williams Upward (SW 6239), and Crisp Muslin (DE6212) is nearly identical to PPG Alley Caty and also nearly identical to Sherwin-Williams White Heron. Each color in this guide links to its closest cross-brand match.",
       },
       {
         question: "Is Dunn-Edwards a good paint brand?",
@@ -7400,7 +7400,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Warm Neutrals &amp; Greiges</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E9E2D7" name="Crisp Muslin" brand="Dunn-Edwards" href="/colors/dunn-edwards/crisp-muslin-de6212" /> — DE6212, LRV 71. The brand&apos;s most popular warm neutral: a light, soft off-white with the faintest brown-gray warmth that avoids looking stark. It is nearly identical to <Link href="/colors/ppg/indian-muslin-1075-2" className="text-brand-blue hover:underline">PPG Indian Muslin</Link> and also nearly identical to <Link href="/colors/sherwin-williams/white-heron-7627" className="text-brand-blue hover:underline">Sherwin-Williams White Heron</Link>.
+          <Swatch hex="#E9E2D7" name="Crisp Muslin" brand="Dunn-Edwards" href="/colors/dunn-edwards/crisp-muslin-de6212" /> — DE6212, LRV 71. The brand&apos;s most popular warm neutral: a light, soft off-white with the faintest brown-gray warmth that avoids looking stark. It is nearly identical to <Link href="/colors/ppg/indian-muslin-1075-2" className="text-brand-blue hover:underline">PPG Alley Caty</Link> and also nearly identical to <Link href="/colors/sherwin-williams/white-heron-7627" className="text-brand-blue hover:underline">Sherwin-Williams White Heron</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D8CFC1" name="Fine Grain" brand="Dunn-Edwards" href="/colors/dunn-edwards/fine-grain-de6213" /> — DE6213, LRV 59. A light greige that works in contemporary, farmhouse, and transitional rooms alike. Its closest matches are <Link href="/colors/benjamin-moore/cedar-key-982" className="text-brand-blue hover:underline">Benjamin Moore Cedar Key</Link> and <Link href="/colors/behr/aged-beige-ppu7-09" className="text-brand-blue hover:underline">Behr Aged Beige</Link>.
@@ -7562,7 +7562,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Valspar Colors of the Year</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Valspar&apos;s recent Colors of the Year skew calm and nature-led: <strong>2024</strong> was <Swatch hex="#99B6B3" name="Renew Blue" brand="Valspar" href="/colors/valspar/renew-blue-8003-37d" /> (8003-37D), a grayed sea-green blue; <strong>2025</strong> was <Swatch hex="#0F456E" name="Encore" brand="Valspar" href="/colors/valspar/encore-ci147" />, a deep blue with a hint of violet that works beautifully on trim and built-ins; and <strong>2026</strong> is <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> (8004-28F, sold as Sage Slate at independent retailers), a restorative green-gray.
+          Valspar&apos;s recent Colors of the Year skew calm and nature-led: <strong>2024</strong> was <Swatch hex="#99B6B3" name="Renew Blue" brand="Valspar" href="/colors/valspar/renew-blue-8003-37d" /> (8003-37D), a grayed sea-green blue; <strong>2025</strong> was <Swatch hex="#0F456E" name="Encore" brand="Valspar" href="/colors/valspar/encore-8002-45g" />, a deep blue with a hint of violet that works beautifully on trim and built-ins; and <strong>2026</strong> is <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> (8004-28F, sold as Sage Slate at independent retailers), a restorative green-gray.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           For 2027, Valspar named 
@@ -8207,7 +8207,7 @@ const blogPosts: BlogPost[] = [
           The clearest way to compare brands is to put matched colors side by side. Here are well-known colors from each brand and their closest cross-brand equivalents:
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Warm greige:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> — all warm greiges that rate Nearly identical or Very similar to one another. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+          <strong>Warm greige:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2" /> — all warm greiges that rate Nearly identical or Very similar to one another. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Warm white:</strong> <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#E9E6E1" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
@@ -8421,7 +8421,7 @@ const blogPosts: BlogPost[] = [
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Finding the Behr equivalent of Agreeable Gray.</strong>{" "}
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (LRV 60, hex #D1CBC1) is a light warm greige. The closest Behr equivalent is <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2-2" /> (N320-2) — a warm greige that rates nearly identical, meaning the two colors are hard to tell apart on a wall.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (LRV 60, hex #D1CBC1) is a light warm greige. The closest Behr equivalent is <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2" /> (N320-2) — a warm greige that rates nearly identical, meaning the two colors are hard to tell apart on a wall.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Matching Edgecomb Gray across brands.</strong>{" "}
@@ -9495,7 +9495,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2 pr-4">Neutral</td>
                 <td className="py-2 pr-4">10.1</td>
                 <td className="py-2 pr-4">Same brand</td>
-                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/stone-cc-490" className="text-brand-blue hover:underline">Stone Hearth</Link> (nearly identical)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/stone-hearth-984" className="text-brand-blue hover:underline">Stone Hearth</Link> (nearly identical)</td>
                 <td className="py-2"><Link href="/colors/behr/matrix-t13-8" className="text-brand-blue hover:underline">Matrix</Link> (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
@@ -10158,7 +10158,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2 pr-4"><Swatch hex="#596d69" name="Hidden Gem" brand="Behr" href="/colors/behr/hidden-gem-n430-6a" /><span className="block text-xs text-gray-500">Behr</span></td>
                 <td className="py-2 pr-4">14</td>
                 <td className="py-2 pr-4"><Link href="/colors/sherwin-williams/rocky-river-6215" className="text-brand-blue hover:underline">Rocky River</Link> (Nearly identical)</td>
-                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/jack-cc-660" className="text-brand-blue hover:underline">Jack Pine</Link> (Very similar)</td>
+                <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/jack-pine-692" className="text-brand-blue hover:underline">Jack Pine</Link> (Very similar)</td>
                 <td className="py-2 pr-4">Same brand</td>
                 <td className="py-2"><Link href="/colors/valspar/ocean-abyss-5002-6c" className="text-brand-blue hover:underline">Ocean Abyss</Link> (Very similar)</td>
               </tr>
@@ -10911,7 +10911,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2 pr-4">5.7</td>
                 <td className="py-2 pr-4">Same brand</td>
                 <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (nearly identical)</td>
-                <td className="py-2"><Link href="/colors/behr/toasty-gray-n320-2-2" className="text-brand-blue hover:underline">Toasty Gray</Link> (nearly identical)</td>
+                <td className="py-2"><Link href="/colors/behr/toasty-gray-n320-2" className="text-brand-blue hover:underline">Toasty Gray</Link> (nearly identical)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#dad4c5" name="Edgecomb Gray" brand="BM HC-173" href="/colors/benjamin-moore/edgecomb-gray-hc-173" /></td>
