@@ -6,7 +6,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { BrandColorLibrary } from "@/components/brand-color-library";
-import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getAllBrands, getCrossBrandMatches } from "@/lib/queries";
+import { unstable_cache } from "next/cache";
+import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getAllBrands, getCrossBrandMatches, getBrandColorIndex } from "@/lib/queries";
 import { getCachedColorsByBrandCount, getBrandFamilyCounts, getBrandUndertoneCounts } from "@/lib/brand-count-cache";
 import { RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
 import { PREMIUM_ALTERNATIVES } from "@/lib/premium-alternatives";
@@ -17,6 +18,8 @@ import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
+import { BrandColorIndex } from "@/components/brand-color-index";
+import { matchPairsForBrand, type MatchPair } from "@/lib/match-pairs";
 import { getPostsByBrand } from "@/lib/blog-posts";
 import Image from "next/image";
 
@@ -35,6 +38,14 @@ interface PageProps {
 const BRAND_TITLE_TEST = new Set(["sherwin-williams", "benjamin-moore"]);
 
 const PER_PAGE = 60;
+
+// The A to Z index changes only when a data import runs, and Behr's takes six
+// paged queries, so cache it for a day like the brand counts.
+const getCachedBrandColorIndex = unstable_cache(
+  (brandId: string) => getBrandColorIndex(brandId),
+  ["brand-color-index"],
+  { revalidate: 86400 },
+);
 
 // Family chips. "tan" was removed 2026-10-24: no color in any brand carries
 // that family, so the chip always led to an empty page. Chips with a zero
@@ -155,6 +166,12 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
   if (!unfiltered && filteredCount === 0) notFound();
   if (page > Math.max(1, Math.ceil(filteredCount / perPage))) notFound();
   const totalPages = Math.max(1, Math.ceil(totalCount / perPage));
+
+  // Page 1 unfiltered is the canonical brand page, so the A to Z index and the
+  // match-page links render there only, not on every paginated or filtered copy.
+  const colorIndex = page === 1 && unfiltered ? await getCachedBrandColorIndex(brand.id) : [];
+  const brandMatchPairs = page === 1 && unfiltered ? matchPairsForBrand(brandSlug) : new Map<string, MatchPair[]>();
+  const pairColors = popularColors.filter((c) => brandMatchPairs.has(c.slug));
 
   // Premium brands: each well-known color with its nearest match in the
   // brands most US stores carry. Page 1 only, unfiltered.
@@ -433,7 +450,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
       )}
 
       {/* Crawlable server-rendered color library */}
-
+      <BrandColorIndex brandSlug={brandSlug} brandName={brand.name} colors={colorIndex} />
 
       {/* Popular Colors / Brand Details */}
       {brandContent?.details && (
@@ -466,6 +483,26 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
                   </Link>
                 ))}
               </div>
+              {pairColors.length > 0 && (
+                <div className="mt-12">
+                  <h3 className="font-headline text-xl font-bold text-on-surface">Side-by-side match pages</h3>
+                  <p className="mt-2 text-sm text-on-surface-variant">Each page puts one {brand.name} color next to its closest color in another brand, with hex, LRV and undertone compared.</p>
+                  <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-3 md:grid-cols-2 text-sm">
+                    {pairColors.map((c) => (
+                      <li key={c.slug}>
+                        <span className="font-bold text-on-surface">{c.name}</span>
+                        <span className="text-on-surface-variant"> in </span>
+                        {brandMatchPairs.get(c.slug)!.map((p, i) => (
+                          <span key={p.path}>
+                            {i > 0 && <span className="text-outline"> · </span>}
+                            <Link href={p.path} prefetch={false} className="text-primary hover:underline">{allBrands.find((b) => b.slug === p.targetBrand)?.name ?? p.targetBrand}</Link>
+                          </span>
+                        ))}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </section>
         );

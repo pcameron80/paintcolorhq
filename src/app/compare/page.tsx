@@ -8,6 +8,8 @@ import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
 import { CLOSENESS_LABELS } from "@/lib/closeness";
 import { ogDefaults } from "@/lib/og";
+import { isSitemapMatchPair } from "@/lib/match-pairs";
+import Link from "next/link";
 
 interface PageProps { searchParams: Promise<{ color1?: string; color2?: string }>; }
 
@@ -52,6 +54,28 @@ const POPULAR_PAIRS: [string, string][] = [
   ["sherwin-williams/iron-ore-7069", "sherwin-williams/tricorn-black-6258"],
   ["benjamin-moore/simply-white-2143-70", "sherwin-williams/extra-white-7006"],
   ["benjamin-moore/pale-oak-oc-20", "benjamin-moore/classic-gray-1548"],
+];
+
+// Cross-brand match pages with the most Google impressions, 2026-08-10 to
+// 11-06 (GSC, page dimension), limited to pairs the sitemap lists. A pair
+// that drops out of the sitemap set is skipped, never linked as a noindex page.
+const SEARCHED_MATCHES: [string, string][] = [
+  ["/match/sherwin-williams/agreeable-gray-7029-to-behr", "Sherwin-Williams Agreeable Gray in Behr"],
+  ["/match/benjamin-moore/revere-pewter-hc-172-to-sherwin-williams", "Benjamin Moore Revere Pewter in Sherwin-Williams"],
+  ["/match/benjamin-moore/white-dove-oc-17-to-behr", "Benjamin Moore White Dove in Behr"],
+  ["/match/sherwin-williams/iron-ore-7069-to-behr", "Sherwin-Williams Iron Ore in Behr"],
+  ["/match/sherwin-williams/sea-salt-6204-to-behr", "Sherwin-Williams Sea Salt in Behr"],
+  ["/match/benjamin-moore/edgecomb-gray-hc-173-to-behr", "Benjamin Moore Edgecomb Gray in Behr"],
+  ["/match/sherwin-williams/shoji-white-7042-to-behr", "Sherwin-Williams Shoji White in Behr"],
+  ["/match/sherwin-williams/pure-white-7005-to-behr", "Sherwin-Williams Pure White in Behr"],
+  ["/match/sherwin-williams/alabaster-7008-to-valspar", "Sherwin-Williams Alabaster in Valspar"],
+  ["/match/sherwin-williams/agreeable-gray-7029-to-valspar", "Sherwin-Williams Agreeable Gray in Valspar"],
+  ["/match/sherwin-williams/alabaster-7008-to-benjamin-moore", "Sherwin-Williams Alabaster in Benjamin Moore"],
+  ["/match/sherwin-williams/repose-gray-7015-to-behr", "Sherwin-Williams Repose Gray in Behr"],
+  ["/match/benjamin-moore/white-dove-oc-17-to-valspar", "Benjamin Moore White Dove in Valspar"],
+  ["/match/benjamin-moore/wrought-iron-2124-10-to-sherwin-williams", "Benjamin Moore Wrought Iron in Sherwin-Williams"],
+  ["/match/sherwin-williams/pure-white-7005-to-benjamin-moore", "Sherwin-Williams Pure White in Benjamin Moore"],
+  ["/match/benjamin-moore/hale-navy-hc-154-to-behr", "Benjamin Moore Hale Navy in Behr"],
 ];
 
 // One query per brand instead of one per color: the list now renders under a
@@ -153,6 +177,19 @@ export default async function ComparePage({ searchParams }: PageProps) {
         </div>
       </section>
 
+      <section className="py-16 px-6 md:px-12">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-headline text-3xl font-bold text-on-surface mb-2">Cross-brand matches people search for</h2>
+          <p className="text-on-surface-variant mb-6">Each page puts a well-known color next to its closest color in another brand.</p>
+          <ul className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2 text-sm">
+            {SEARCHED_MATCHES.filter(([path]) => isSitemapMatchPair(path)).map(([path, label]) => (
+              <li key={path}>
+                <Link href={path} prefetch={false} className="text-primary hover:underline">{label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
       <section className="px-6 md:px-12 pb-16">
         <div className="max-w-7xl mx-auto">
           <ToolCrossSell exclude="compare" />
