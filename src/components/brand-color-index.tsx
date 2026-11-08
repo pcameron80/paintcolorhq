@@ -1,11 +1,8 @@
-// Server-rendered A to Z index of every indexable color in one brand, names
-// only, one closed <details> per letter. Its job is crawl depth: the paginated
-// grid puts most colors many pages deep (Behr runs to 96), and a 2026-11-08 URL Inspection
-// sample found 93 of 200 color pages never crawled. Here every color page is
-// one link from its brand page. Each letter's list is one prebuilt HTML string
-// of bare <li><a> tags, styled from the <ul>: with per-link React elements and
-// classes, Behr's page went from 32 KB to 278 KB gzipped on the first preview.
-// Plain <a>, not next/link, so opening a letter does not prefetch hundreds of pages.
+// Server-rendered A to Z list of every indexable color in one brand, names
+// only, for /brands/[brandSlug]/colors-a-z. Each letter's list is one prebuilt
+// HTML string of bare <li><a> tags styled from the <ul>: per-link React
+// elements and classes more than doubled the page weight (Behr has ~5,700
+// colors). Plain <a>, not next/link, so the page does not prefetch thousands.
 
 interface IndexColor {
   name: string;
@@ -21,8 +18,9 @@ function letterOf(name: string): string {
   return /[A-Z]/.test(first) ? first : "#";
 }
 
-export function BrandColorIndex({ brandSlug, brandName, colors }: { brandSlug: string; brandName: string; colors: IndexColor[] }) {
-  if (colors.length === 0) return null;
+const anchorOf = (l: string) => (l === "#" ? "other" : l.toLowerCase());
+
+export function BrandColorIndex({ brandSlug, colors }: { brandSlug: string; colors: IndexColor[] }) {
   // A name shared by two colors gets its number, so each link is distinct.
   const nameCount = new Map<string, number>();
   for (const c of colors) nameCount.set(c.name, (nameCount.get(c.name) ?? 0) + 1);
@@ -36,21 +34,23 @@ export function BrandColorIndex({ brandSlug, brandName, colors }: { brandSlug: s
   const letters = [...groups.keys()].sort((a, b) => (a === "#" ? 1 : b === "#" ? -1 : a.localeCompare(b)));
 
   return (
-    <section id="all-colors-a-z" className="py-16 px-6 md:px-12 bg-surface scroll-mt-20">
+    <section className="px-6 md:px-12 pb-20">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-2">{brandName} Colors A to Z</h2>
-        <p className="text-on-surface-variant mb-8 max-w-2xl">
-          Every {brandName} color by name, {colors.length.toLocaleString()} in all. Open a letter to see its colors.
-        </p>
-        <div className="space-y-2">
+        <nav aria-label="Jump to letter" className="sticky top-16 z-10 -mx-2 mb-8 flex flex-wrap gap-1 bg-surface/95 px-2 py-3 backdrop-blur">
           {letters.map((l) => (
-            <details key={l} className="group rounded-xl border border-outline-variant/10 bg-surface-container-lowest px-5 py-3">
-              <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-headline font-bold text-on-surface">
-                <span>{l === "#" ? "Numbers and symbols" : l} <span className="ml-1 text-sm font-normal text-on-surface-variant">({groups.get(l)!.length})</span></span>
-                <span className="text-outline transition-transform group-open:rotate-180">&#9662;</span>
-              </summary>
+            <a key={l} href={`#${anchorOf(l)}`} className="min-w-9 rounded-lg px-2 py-1.5 text-center text-sm font-headline font-bold text-primary hover:bg-surface-container-low">
+              {l}
+            </a>
+          ))}
+        </nav>
+        <div className="space-y-10">
+          {letters.map((l) => (
+            <div key={l} id={anchorOf(l)} className="scroll-mt-32">
+              <h2 className="font-headline text-2xl font-bold text-on-surface border-b border-outline-variant/20 pb-2">
+                {l === "#" ? "Numbers and symbols" : l} <span className="ml-1 text-sm font-normal text-on-surface-variant">({groups.get(l)!.length})</span>
+              </h2>
               <ul
-                className="mt-3 columns-2 sm:columns-3 lg:columns-4 gap-6 text-sm leading-7 text-on-surface-variant [&>li]:break-inside-avoid [&_a:hover]:text-primary [&_a:hover]:underline"
+                className="mt-4 columns-2 sm:columns-3 lg:columns-4 gap-6 text-sm leading-7 text-on-surface-variant [&>li]:break-inside-avoid [&_a:hover]:text-primary [&_a:hover]:underline"
                 dangerouslySetInnerHTML={{
                   __html: groups.get(l)!.map((c) => {
                     const label = (nameCount.get(c.name) ?? 0) > 1 && c.colorNumber ? `${c.name} ${c.colorNumber}` : c.name;
@@ -58,7 +58,7 @@ export function BrandColorIndex({ brandSlug, brandName, colors }: { brandSlug: s
                   }).join(""),
                 }}
               />
-            </details>
+            </div>
           ))}
         </div>
       </div>

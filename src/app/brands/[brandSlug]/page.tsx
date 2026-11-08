@@ -6,8 +6,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { BrandColorLibrary } from "@/components/brand-color-library";
-import { unstable_cache } from "next/cache";
-import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getAllBrands, getCrossBrandMatches, getBrandColorIndex } from "@/lib/queries";
+import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getAllBrands, getCrossBrandMatches } from "@/lib/queries";
 import { getCachedColorsByBrandCount, getBrandFamilyCounts, getBrandUndertoneCounts } from "@/lib/brand-count-cache";
 import { RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
 import { PREMIUM_ALTERNATIVES } from "@/lib/premium-alternatives";
@@ -18,7 +17,6 @@ import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
-import { BrandColorIndex } from "@/components/brand-color-index";
 import { matchPairsForBrand, type MatchPair } from "@/lib/match-pairs";
 import { getPostsByBrand } from "@/lib/blog-posts";
 import Image from "next/image";
@@ -38,14 +36,6 @@ interface PageProps {
 const BRAND_TITLE_TEST = new Set(["sherwin-williams", "benjamin-moore"]);
 
 const PER_PAGE = 60;
-
-// The A to Z index changes only when a data import runs, and Behr's takes six
-// paged queries, so cache it for a day like the brand counts.
-const getCachedBrandColorIndex = unstable_cache(
-  (brandId: string) => getBrandColorIndex(brandId),
-  ["brand-color-index"],
-  { revalidate: 86400 },
-);
 
 // Family chips. "tan" was removed 2026-10-24: no color in any brand carries
 // that family, so the chip always led to an empty page. Chips with a zero
@@ -167,9 +157,8 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
   if (page > Math.max(1, Math.ceil(filteredCount / perPage))) notFound();
   const totalPages = Math.max(1, Math.ceil(totalCount / perPage));
 
-  // Page 1 unfiltered is the canonical brand page, so the A to Z index and the
-  // match-page links render there only, not on every paginated or filtered copy.
-  const colorIndex = page === 1 && unfiltered ? await getCachedBrandColorIndex(brand.id) : [];
+  // Page 1 unfiltered is the canonical brand page, so the match-page links
+  // render there only, not on every paginated or filtered copy.
   const brandMatchPairs = page === 1 && unfiltered ? matchPairsForBrand(brandSlug) : new Map<string, MatchPair[]>();
   const pairColors = popularColors.filter((c) => brandMatchPairs.has(c.slug));
 
@@ -357,6 +346,11 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             <p className="mt-2 text-on-surface-variant max-w-2xl leading-relaxed">
               The complete {brand.name} color chart — every shade with its hex code, LRV, and undertone. Filter by family or search, and open any color for its cross-brand matches.
             </p>
+            <p className="mt-3">
+              <Link href={`/brands/${brandSlug}/colors-a-z`} className="text-primary font-bold text-sm underline-offset-4 hover:underline">
+                Browse every {brand.name} color name A to Z &rarr;
+              </Link>
+            </p>
           </div>
           <BrandColorLibrary
             brandSlug={brandSlug} brandName={brand.name} families={families} undertones={undertones}
@@ -450,7 +444,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
       )}
 
       {/* Crawlable server-rendered color library */}
-      <BrandColorIndex brandSlug={brandSlug} brandName={brand.name} colors={colorIndex} />
+
 
       {/* Popular Colors / Brand Details */}
       {brandContent?.details && (
