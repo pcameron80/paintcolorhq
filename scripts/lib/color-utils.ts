@@ -3,6 +3,8 @@
  * Includes hex/RGB/Lab conversions, Delta E 2000, and LRV calculation.
  */
 
+import { calculateLrv } from "./color-math";
+
 // ---------------------------------------------------------------------------
 // hexToRgb
 // ---------------------------------------------------------------------------
@@ -174,9 +176,10 @@ export function deltaE2000(lab1: Lab, lab2: Lab): number {
 // calculateLrv  –  Light Reflectance Value (0-100)
 // ---------------------------------------------------------------------------
 
-export function calculateLrv(r: number, g: number, b: number): number {
-  return ((0.2126 * r + 0.7152 * g + 0.0722 * b) / 255) * 100;
-}
+// Re-exported from color-math so there is one LRV formula. The copy that lived
+// here skipped sRGB gamma decoding and put mid gray (128,128,128) at 50.2
+// instead of 21.6, which disagrees with every LRV stored in the colors table.
+export { calculateLrv };
 
 // ---------------------------------------------------------------------------
 // Self-test (runs when file is executed directly: `tsx scripts/lib/color-utils.ts`)
@@ -298,8 +301,8 @@ if (require.main === module) {
   console.log("\nLRV tests:");
   assertClose("LRV white", calculateLrv(255, 255, 255), 100, 0.1);
   assertClose("LRV black", calculateLrv(0, 0, 0), 0, 0.001);
-  // Mid gray (128,128,128) ~= 50.2
-  assertClose("LRV mid gray", calculateLrv(128, 128, 128), 50.196, 0.1);
+  // Mid gray (128,128,128) is ~21.6 once sRGB gamma is decoded (not 50.2).
+  assertClose("LRV mid gray", calculateLrv(128, 128, 128), 21.59, 0.05);
 
   console.log(`\n${passed} passed, ${failed} failed`);
   if (failed > 0) process.exit(1);

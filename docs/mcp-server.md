@@ -18,9 +18,24 @@ https://www.paintcolorhq.com/api/mcp
   — the same function the REST route uses, so there's one source of truth and no
   self-HTTP. DB reads are still cached via the shared Supabase client.
 
-## Tool
+## Tools
 
-`match_paint_color` — find the closest real, purchasable paint colors across 13
+Three tools as of v1.1.0 (2026-10-27). `find_paint_color` and `list_brands` were
+added after Glama scored tool count and completeness 3/5: the match tool takes
+only a hex, so an agent holding a color name or number had no way in.
+
+### `find_paint_color`
+
+Look up a color by name, number or both, optionally with the brand in the query
+(`Agreeable Gray`, `SW 7029`, `HC-154`). Uses the site search (`searchColorsDetailed`,
+or `searchColorsInBrand` when `brand` is set). Args: `query` (required), `brand`,
+`limit` (1–10, default 5). Returns brand, name, number, hex, availability and URL.
+
+### `list_brands`
+
+No args. The 13 brands with slug, name and color count, from `getAllBrands`.
+
+### `match_paint_color` — find the closest real, purchasable paint colors across 13
 brands for any hex value, scored with CIEDE2000.
 
 | Arg | Required | Description |

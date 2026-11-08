@@ -8,19 +8,20 @@ import { MatchHubPicker } from "@/components/match-hub-picker";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { getAllBrands } from "@/lib/queries";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
+import { ogDefaults } from "@/lib/og";
 
 export const revalidate = 2592000;
 
 const TITLE = "Paint Color Match: Find Any Color in Another Brand";
 const DESCRIPTION =
-  "Match a paint color from Sherwin-Williams, Benjamin Moore, Behr and 4 more brands to its closest equivalent. Free CIEDE2000 color matching across 26,000+ colors.";
+  "Match a paint color from Sherwin-Williams, Benjamin Moore, Behr and 4 more brands to its closest equivalent. Free CIEDE2000 matching across 26,000+ colors.";
 const URL = "https://www.paintcolorhq.com/match";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: URL },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: URL },
+  openGraph: { ...ogDefaults, title: TITLE, description: DESCRIPTION, url: URL },
 };
 
 // Most-searched pairs first (both directions), then the remaining pairs in brand order.

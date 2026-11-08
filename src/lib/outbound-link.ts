@@ -41,10 +41,10 @@ function stripWww(host: string): string {
 
 /**
  * Affiliate networks wrap the store URL in a query parameter (CJ uses `url`,
- * Impact uses `u`). Returns the wrapped store URL when there is one.
+ * Impact uses `u`, Awin uses `ued`). Returns the wrapped store URL when there is one.
  */
 function unwrapAffiliate(url: URL): URL | null {
-  for (const key of ["url", "u"]) {
+  for (const key of ["url", "u", "ued"]) {
     const v = url.searchParams.get(key);
     if (v && /^https?:\/\//i.test(v)) {
       try {

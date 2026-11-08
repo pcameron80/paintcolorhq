@@ -3,15 +3,24 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { trackToolEngagement } from "@/lib/analytics";
+import { trackToolEngagement, trackEvent } from "@/lib/analytics";
+import { CopyLinkButton } from "@/components/copy-link-button";
+import { TrackedLink } from "@/components/tracked-link";
 import { ROOMS, type Surface } from "@/lib/rooms";
 import { RoomCanvas } from "@/components/room-canvas";
+import { RetiredChip } from "@/components/retired-chip";
+import { BIG_THREE_BRANDS, bigThreeRows } from "@/lib/best-per-brand";
+import { closenessLabel } from "@/lib/closeness";
+import type { ColorAvailability } from "@/lib/types";
+import { VISUALIZER_PRESETS, presetForHex } from "@/lib/visualizer-presets";
+import { AddPaletteToProject } from "@/components/add-palette-to-project";
+import { renderRoomJpeg } from "@/lib/visualizer-download";
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
-type RegionId = "walls" | "accentWall" | "trim" | "windows";
+type RegionId = "walls" | "accentWall" | "trim" | "windows" | "cabinets";
 
 interface PaintMatch {
   id: string;
@@ -20,8 +29,14 @@ interface PaintMatch {
   brandName: string;
   brandSlug: string;
   colorSlug: string;
-  colorNumber: string;
+  colorNumber: string | null;
   deltaE: number;
+  availability?: ColorAvailability;
+}
+
+interface MatchPayload {
+  matches?: PaintMatch[];
+  bestPerBrand?: PaintMatch[];
 }
 
 // ---------------------------------------------------------------------------
@@ -33,6 +48,7 @@ const REGIONS: { id: RegionId; label: string; surface: Surface }[] = [
   { id: "accentWall", label: "Accent", surface: "accent" },
   { id: "trim", label: "Trim", surface: "trim" },
   { id: "windows", label: "Windows", surface: "window" },
+  { id: "cabinets", label: "Cabinets", surface: "cabinets" },
 ];
 
 const SURFACE_TO_REGION: Record<Surface, RegionId> = {
@@ -40,6 +56,7 @@ const SURFACE_TO_REGION: Record<Surface, RegionId> = {
   accent: "accentWall",
   trim: "trim",
   window: "windows",
+  cabinets: "cabinets",
 };
 
 const DEFAULT_COLORS: Record<RegionId, string> = {
@@ -47,6 +64,8 @@ const DEFAULT_COLORS: Record<RegionId, string> = {
   accentWall: "#5B7FA5",
   trim: "#FFFFFF",
   windows: "#F4F3EF",
+  // A warm white close to the photos' own cabinets, so kitchens open looking unpainted.
+  cabinets: "#F2F0EB",
 };
 
 /** Quiet period before a picker drag or hex edit counts as one "use". */
@@ -54,6 +73,15 @@ const TRACK_SETTLE_MS = 800;
 
 /** Regions where pop colors can be tried */
 const POP_REGIONS: RegionId[] = ["walls", "accentWall"];
+
+/** Project color role each region saves as (the dashboard groups by it and links back with it). */
+const REGION_ROLE: Record<RegionId, string> = {
+  walls: "walls",
+  accentWall: "accent",
+  trim: "trim",
+  windows: "windows",
+  cabinets: "cabinets",
+};
 
 // ---------------------------------------------------------------------------
 // Component
@@ -81,13 +109,31 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   const [roomIdx, setRoomIdx] = useState(() => Math.max(0, ROOMS.findIndex((r) => r.id === initialRoomId)));
   const [hexInput, setHexInput] = useState(merged.walls.replace("#", ""));
   const [matches, setMatches] = useState<PaintMatch[]>([]);
+  const [bestPerBrand, setBestPerBrand] = useState<PaintMatch[]>([]);
   const [loading, setLoading] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+  const [downloadError, setDownloadError] = useState(false);
+
+  const showPayload = (data: MatchPayload) => {
+    setMatches(data.matches ?? []);
+    setBestPerBrand(data.bestPerBrand ?? []);
+  };
+  const clearMatches = () => {
+    setMatches([]);
+    setBestPerBrand([]);
+  };
 
   const room = ROOMS[roomIdx];
   // Rooms only offer the surfaces they have (not every room has paintable windows).
   const regions = REGIONS.filter((r) => room.masks[r.surface]);
   const surfaceColors = useMemo(
-    () => ({ main: colors.walls, accent: colors.accentWall, trim: colors.trim, window: colors.windows }),
+    () => ({
+      main: colors.walls,
+      accent: colors.accentWall,
+      trim: colors.trim,
+      window: colors.windows,
+      cabinets: colors.cabinets,
+    }),
     [colors],
   );
 
@@ -114,7 +160,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   // cleared only when it changes (the effect below refetches for the new one).
   const showHex = (hex: string) => {
     const next = hex.replace("#", "");
-    if (next.toUpperCase() !== hexInput.toUpperCase()) setMatches([]);
+    if (next.toUpperCase() !== hexInput.toUpperCase()) clearMatches();
     setHexInput(next);
   };
 
@@ -161,11 +207,10 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
     setLoading(true);
     trackToolEngagement("room-visualizer", "complete", hexInput);
     try {
-      const res = await fetch(`/api/color-match?hex=${hexInput}`);
-      const data = await res.json();
-      setMatches(data.matches ?? []);
+      const res = await fetch(`/api/color-match?hex=${hexInput}&perBrand=1`);
+      showPayload(await res.json());
     } catch {
-      setMatches([]);
+      clearMatches();
     }
     setLoading(false);
   };
@@ -178,9 +223,10 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
     const controller = new AbortController();
     const timer = setTimeout(async () => {
       try {
-        const res = await fetch(`/api/color-match?hex=${hexInput}`, { signal: controller.signal });
-        const data = await res.json();
+        const res = await fetch(`/api/color-match?hex=${hexInput}&perBrand=1`, { signal: controller.signal });
+        const data: MatchPayload = await res.json();
         setMatches(data.matches ?? []);
+        setBestPerBrand(data.bestPerBrand ?? []);
       } catch {
         // Aborted by a newer color, or offline: keep the current list.
       }
@@ -194,6 +240,82 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   const resetColors = () => {
     setColors(merged);
     showHex(merged[selected]);
+  };
+
+  const brandRows = bigThreeRows(bestPerBrand);
+
+  // Regions a room save includes: every wall, plus trim, windows and cabinets
+  // once they differ from the unpainted default the visualizer opens with.
+  const savedRegions = regions.filter(
+    (r) => POP_REGIONS.includes(r.id) || colors[r.id].toUpperCase() !== DEFAULT_COLORS[r.id].toUpperCase(),
+  );
+
+  /**
+   * The catalog paint for each saved region: a preset is that exact paint, any
+   * other color its closest match. A paint already on an earlier region is
+   * skipped, since a project holds each paint once.
+   */
+  const resolveRoomColors = async () => {
+    const out: { colorId: string; role: string }[] = [];
+    const seen = new Set<string>();
+    for (const r of savedRegions) {
+      let id = presetForHex(colors[r.id])?.id;
+      if (!id) {
+        const res = await fetch(`/api/color-match?hex=${colors[r.id].replace("#", "")}`);
+        const data: MatchPayload = await res.json();
+        id = data.matches?.[0]?.id;
+      }
+      if (id && !seen.has(id)) {
+        seen.add(id);
+        out.push({ colorId: id, role: REGION_ROLE[r.id] });
+      }
+    }
+    trackEvent("cta_click", { cta_label: "visualizer_save_room", room: room.id });
+    return out;
+  };
+
+  // Same params page.tsx reads on load, so the link reopens this room with
+  // these colors. Pop colors came in on the URL and are passed back through.
+  const sharePath = () => {
+    const hex = (h: string) => h.replace("#", "").toUpperCase();
+    const params = new URLSearchParams({
+      walls: hex(colors.walls),
+      accent: hex(colors.accentWall),
+      trim: hex(colors.trim),
+      windows: hex(colors.windows),
+      cabinets: hex(colors.cabinets),
+      room: room.id,
+    });
+    if (popColors && popColors.length > 0) params.set("pop", popColors.map(hex).join(","));
+    return `/tools/room-visualizer?${params}`;
+  };
+  const shareUrl = () => `${window.location.origin}${sharePath()}`;
+
+  // Saves the room as a JPEG with a credit band naming the colors it shows, so a
+  // blogger's readers can find them.
+  const downloadImage = async () => {
+    setDownloading(true);
+    setDownloadError(false);
+    let url: string | undefined;
+    try {
+      // Same surfaces a project save takes: both walls always, the rest once repainted.
+      const painted = savedRegions.map((r) => ({ label: r.id === "walls" ? "Walls" : r.label, hex: colors[r.id] }));
+      const blob = await renderRoomJpeg(room, surfaceColors, painted);
+      url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `paintcolorhq-${room.id}-${colors.walls.replace("#", "").toLowerCase()}.jpg`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      trackEvent("cta_click", { cta_label: "visualizer_download_image", room: room.id });
+    } catch {
+      setDownloadError(true);
+    } finally {
+      // Give the browser a moment to start the download before the URL goes away.
+      if (url) setTimeout(() => URL.revokeObjectURL(url!), 1000);
+      setDownloading(false);
+    }
   };
 
   return (
@@ -235,14 +357,42 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
       {/* ---- Room photo + paint overlay ---- */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-surface-container-low p-4">
         <p aria-live="polite" className="text-sm"><strong>Editing: {REGIONS.find(r => r.id === selected)?.label}</strong><span className="block mt-1">Digital color: {colors[selected].toUpperCase()}</span></p>
+        <div className="flex flex-wrap items-center gap-2">
+        <AddPaletteToProject
+          resolveColors={resolveRoomColors}
+          count={savedRegions.length}
+          label="Save room to project"
+          note="Each surface saves as a paint: presets as themselves, custom colors as their closest match."
+          // Login returns here, so the room and its colors survive signing in.
+          currentPath={sharePath()}
+        />
+        <CopyLinkButton
+          getUrl={shareUrl}
+          label="Copy link to this room"
+          onCopied={() => trackEvent("cta_click", { cta_label: "visualizer_copy_link", room: room.id })}
+          className="rounded-xl border border-outline-variant/30 bg-surface-container-lowest px-4 py-2 text-sm font-semibold text-on-surface hover:border-outline transition-all"
+        />
+        <button
+          type="button"
+          onClick={downloadImage}
+          disabled={downloading}
+          className="rounded-xl border border-outline-variant/30 bg-surface-container-lowest px-4 py-2 text-sm font-semibold text-on-surface hover:border-outline transition-all disabled:cursor-wait disabled:opacity-60"
+        >
+          {downloading ? "Preparing..." : "Download image"}
+        </button>
+        </div>
         <p className="w-full text-xs text-on-surface-variant">Digital room preview only. Lighting, screens, and paint finish affect appearance. Confirm your choice with a physical sample.</p>
+        <p className="w-full text-xs text-on-surface-variant">Downloaded images are free to use on your blog or social posts with a link to paintcolorhq.com.</p>
+        {downloadError && (
+          <p role="alert" className="w-full text-xs text-error">The image couldn&apos;t be prepared. Try again in a moment.</p>
+        )}
       </div>
       <div className="overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container">
         <RoomCanvas
           room={room}
           colors={surfaceColors}
           onSelectSurface={(s) => selectRegion(SURFACE_TO_REGION[s])}
-          priority={roomIdx === 0}
+          preload={roomIdx === 0}
         />
       </div>
 
@@ -280,7 +430,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
 
         {/* Swatch palette.
             Wall regions (Main + Accent) share one pooled set — Main, Accent,
-            and Pop are all applicable to either wall. Trim and windows keep
+            and Pop are all applicable to either wall. Trim, windows and cabinets keep
             their own colors so wall swatches can't overwrite them. */}
         {(() => {
           const norm = (h: string) => (h.startsWith("#") ? h : `#${h}`);
@@ -304,7 +454,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
             (colorOptions?.walls ?? []).forEach((h) => push(h, "Main"));
             (colorOptions?.accentWall ?? []).forEach((h) => push(h, "Accent"));
           } else {
-            // Trim or windows: only that region's own color(s).
+            // Trim, windows or cabinets: only that region's own color(s).
             const label = REGIONS.find((r) => r.id === selected)?.label ?? "";
             push(merged[selected], label);
             (colorOptions?.[selected] ?? []).forEach((h) => push(h, label));
@@ -375,6 +525,59 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
           );
         })()}
 
+        {/* Preset paints for trim, windows and cabinets, which have no colors of
+            their own from the page that opened the visualizer. */}
+        {selected !== "walls" && selected !== "accentWall" && (() => {
+          const presets = VISUALIZER_PRESETS[selected];
+          const active = presetForHex(colors[selected]);
+          return (
+            <div className="mt-4">
+              <p className="mb-2 text-xs font-semibold text-on-surface-variant">
+                {REGIONS.find((r) => r.id === selected)?.label} paints:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {presets.map((p) => {
+                  const isActive = active?.id === p.id;
+                  return (
+                    <button
+                      key={p.id}
+                      type="button"
+                      onClick={() => applyColor(p.hex)}
+                      aria-pressed={isActive}
+                      className={`flex items-center gap-2 rounded-lg border py-1.5 pl-1.5 pr-3 text-left text-xs transition-all ${
+                        isActive
+                          ? "border-primary bg-primary-fixed text-on-primary-fixed"
+                          : "border-outline-variant/30 text-on-surface hover:border-outline"
+                      }`}
+                    >
+                      <span
+                        className="h-7 w-7 shrink-0 rounded-md border border-outline-variant/40"
+                        style={{ backgroundColor: p.hex }}
+                      />
+                      <span>
+                        <span className="block font-semibold">{p.name}</span>
+                        <span className="block text-on-surface-variant">{p.brand} {p.number}</span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+              {active && (
+                <p className="mt-2 text-xs text-on-surface-variant">
+                  <TrackedLink
+                    href={`/colors/${active.brandSlug}/${active.slug}`}
+                    eventName="cta_click"
+                    eventParams={{ cta_label: "visualizer_view_preset", color_name: active.name, brand: active.brandSlug }}
+                    className="font-semibold text-primary hover:underline"
+                  >
+                    View {active.brand} {active.name} {active.number}
+                  </TrackedLink>
+                </p>
+              )}
+            </div>
+          );
+        })()}
+
         {/* Color picker */}
         <div className="mt-6 pt-5 border-t border-outline-variant/15">
           <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
@@ -418,6 +621,60 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
           </div>
         </div>
 
+        {/* Closest in each of the three biggest brands. The overall list
+            below is often one or two catalogs deep, so these rows make sure a
+            Sherwin-Williams, Benjamin Moore or Behr shopper sees their brand. */}
+        {brandRows.length > 0 && (
+          <div className="mt-6 pt-5 border-t border-outline-variant/15">
+            <p className="text-xs font-bold uppercase tracking-widest text-primary mb-4">
+              Closest in Sherwin-Williams, Benjamin Moore and Behr
+            </p>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {brandRows.map((m) => (
+                <div
+                  key={m.brandSlug}
+                  className="flex items-center gap-3 rounded-xl border border-outline-variant/20 bg-surface-container-low p-2.5"
+                >
+                  <button
+                    type="button"
+                    onClick={() => applyColor(m.hex)}
+                    className="h-12 w-12 shrink-0 rounded-lg border border-outline-variant/30"
+                    style={{ backgroundColor: m.hex }}
+                    title={`Apply ${m.name}`}
+                    aria-label={`Apply ${m.name} by ${m.brandName}`}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+                      {BIG_THREE_BRANDS.find((b) => b.slug === m.brandSlug)?.name ?? m.brandName}
+                    </p>
+                    <Link
+                      href={`/colors/${m.brandSlug}/${m.colorSlug}`}
+                      className="block truncate text-sm font-semibold text-on-surface hover:text-primary"
+                    >
+                      {m.name}
+                    </Link>
+                    <p className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-on-surface-variant">
+                      <span>
+                        {m.colorNumber ? `${m.colorNumber} · ` : ""}
+                        {closenessLabel(m.deltaE)}
+                      </span>
+                      <RetiredChip availability={m.availability} />
+                    </p>
+                    <TrackedLink
+                      href={`/colors/${m.brandSlug}/${m.colorSlug}`}
+                      className="mt-1 inline-block text-xs font-semibold text-primary hover:underline"
+                      eventName="cta_click"
+                      eventParams={{ cta_label: "visualizer_view_paint_brand_row", color_name: m.name, brand: m.brandSlug }}
+                    >
+                      View paint
+                    </TrackedLink>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Paint matches */}
         {matches.length > 0 && (
           <div className="mt-6 pt-5 border-t border-outline-variant/15">
@@ -450,9 +707,19 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
                       {m.name}
                     </Link>
                     <p className="text-xs text-on-surface-variant">{m.brandName}</p>
+                    <p className="text-xs text-on-surface-variant">{closenessLabel(m.deltaE)}</p>
                     <p className="text-xs font-mono text-outline">
                       {m.hex.toUpperCase()}
                     </p>
+                    <RetiredChip availability={m.availability} className="mt-1 rounded-full bg-surface-container px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-outline" />
+                    <TrackedLink
+                      href={`/colors/${m.brandSlug}/${m.colorSlug}`}
+                      className="mt-1.5 block text-xs font-semibold text-primary hover:underline"
+                      eventName="cta_click"
+                      eventParams={{ cta_label: "visualizer_view_paint", color_name: m.name, brand: m.brandSlug }}
+                    >
+                      View paint
+                    </TrackedLink>
                   </div>
                 </div>
               ))}

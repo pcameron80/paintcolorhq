@@ -50,14 +50,43 @@ export const SECTORS: readonly { from: number; to: number; undertone: RawUnderto
 
 /**
  * Manufacturer wording that the Lab math cannot see, keyed by
- * "<brand-slug>/<color-slug>". Add a color here only with a source.
+ * "<brand-slug>/<color-slug>". Add a color here only with a manufacturer
+ * source; designer blogs disagree with each other too often to override the
+ * Lab math on their own.
  *
- * SW Repose Gray: Sherwin-Williams describes it as a cool gray. Its Lab
- * (a* -0.56, b* 4.86) lands in the golden sector; the only cool component is
- * the green-side a*, so it is filed as Cool (Green).
+ * Revised in the 2026-11 data audit (docs/data-audit-2026-11.md):
+ * - Removed SW Repose Gray -> green. No source names green: SW's color page
+ *   says "soothing warmth" and its blog "a warm undertone, appears slightly
+ *   cool". It now takes the Lab result, Warm (Golden).
+ * - Not added: BM Revere Pewter -> green and BM Balboa Mist -> violet. BM's
+ *   own pages say "a versatile bridge between warm and cool tones" and "pale
+ *   gray with a slightly warm cast".
+ * - Not added: Farrow & Ball Contemporary Neutrals (lilac, Elephant's
+ *   Breath). F&B says the lilac gives "a modern warmth", so Cool (Violet)
+ *   would contradict the brand's own temperature.
  */
 export const UNDERTONE_OVERRIDES: Readonly<Record<string, RawUndertone>> = {
-  'sherwin-williams/repose-gray-7015': 'green',
+  // SW 7064 color page: "exhibits some depth with its cool blue undertones".
+  // Its Lab (C* 1.6) is below NEUTRAL_CHROMA.
+  'sherwin-williams/passive-7064': 'blue',
+  // Farrow & Ball neutral groups (farrow-ball.com/neutral-groups, checked
+  // 2026-10-31). Warm Neutrals: "a red base".
+  'farrow-ball/pointing-2003': 'pink',
+  'farrow-ball/dimity-2008': 'pink',
+  'farrow-ball/joas-white-226': 'pink',
+  'farrow-ball/oxford-stone-264': 'pink',
+  // Traditional Neutrals: "grey-green tones".
+  'farrow-ball/slipper-satin-2004': 'green',
+  'farrow-ball/lime-white-1': 'green',
+  'farrow-ball/off-white-3': 'green',
+  'farrow-ball/old-white-4': 'green',
+  // Architectural Neutrals: "purposely cool, with a bluer undertone".
+  'farrow-ball/pavilion-gray-242': 'blue',
+  // Timeless Neutrals: "evenly balanced between warm and cool".
+  'farrow-ball/school-house-white-291': 'balanced',
+  'farrow-ball/shadow-white-282': 'balanced',
+  'farrow-ball/shaded-white-201': 'balanced',
+  'farrow-ball/drop-cloth-283': 'balanced',
 };
 
 export function chromaHue(labA: number, labB: number): { chroma: number; hue: number } {

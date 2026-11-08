@@ -26,3 +26,15 @@ export const FOUNDER_PERSON = {
   jobTitle: "Founder, Paint Color HQ",
   sameAs: ["https://www.linkedin.com/in/philip-a-cameron/", "https://github.com/pcameron80"],
 } as const;
+
+/**
+ * Paint Color HQ's own social profiles, for the Organization sameAs. One list
+ * so the homepage and /about Organization nodes cannot drift apart.
+ */
+export const ORG_SAME_AS = [
+  "https://www.pinterest.com/paintcolorhq",
+  "https://www.linkedin.com/company/paint-color-hq",
+  "https://www.instagram.com/paintcolorhq",
+  "https://www.facebook.com/paintcolorhq",
+  "https://www.youtube.com/@PaintColorHQ",
+];

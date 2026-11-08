@@ -2,7 +2,7 @@ type GtagEvent = {
   [key: string]: string | number | boolean | undefined;
 };
 
-type PlausibleFn = ((event: string, options?: { props?: Record<string, string> }) => void) & { q?: unknown[] };
+type PlausibleFn = ((event: string, options?: { props?: Record<string, string>; interactive?: boolean }) => void) & { q?: unknown[] };
 
 declare global {
   interface Window {
@@ -17,7 +17,11 @@ const PLAUSIBLE_GOALS: Record<string, string> = {
   retailer_click: "Retailer Click",
   color_search: "Color Search",
   color_compare: "Compare",
-  web_vitals: "Web Vitals",
+  // web_vitals is GA4 only. Plausible CE 3.2.1 ignores the non-interactive
+  // flag (ClickhouseEventV2.new does not cast interactive?), so every Web
+  // Vitals event cleared the session's bounce flag: bounce fell from ~65% to
+  // 0.6% between 2026-10-24 and this change. Revisit after a CE release that
+  // honors `interactive: false`.
 };
 
 function sendToPlausible(eventName: string, params?: GtagEvent) {
@@ -41,11 +45,6 @@ function sendToPlausible(eventName: string, params?: GtagEvent) {
     if (params?.color_brand) props.brand = String(params.color_brand);
     if (params?.retailer) props.retailer = String(params.retailer);
     if (params?.affiliate) props.affiliate = String(params.affiliate);
-  }
-  if (eventName === "web_vitals") {
-    if (params?.metric_name) props.metric = String(params.metric_name);
-    if (params?.metric_rating) props.rating = String(params.metric_rating);
-    if (params?.page_type) props.page_type = String(params.page_type);
   }
   // Queue until the script loads (it replays window.plausible.q). The script
   // only loads on the production host, so elsewhere this queue is never sent.

@@ -24,10 +24,14 @@
  *             KEEP_STYLED are never touched (O'Reilly Green is BM's own styling).
  *             Also with --case: non-ASCII hyphens (U+2010, U+2011) become "-",
  *             so a search for "Forget-Me-Not" finds SW 6824 ("Forget‐Me‐Not").
- *
- * A feed that drops accents ("Frappe" for Valspar's "Frappé") is never copied:
- * when the only difference is diacritics the DB has and the feed lacks, the
- * row is skipped.
+ *   punctuation  same letters; the feed has punctuation or spaces the DB lost
+ *             ("Strawberryncream" -> "Strawberry 'n Cream"). --punctuation.
+ *   word-join same letters; the feed joins words the DB splits ("Tear Drop"
+ *             -> "Teardrop"). --word-joins.
+ *   accent    same letters; the feed has accents the DB lacks. --accents.
+ *   The last three keep the catalog's casing (scripts/lib/name-punctuation.ts);
+ *   quote-style-only differences, and accents or punctuation the feed drops,
+ *   are skipped.
  *
  * PPG codes are matched through normalizePpgCode (the site writes "PPG1104-2",
  * most rows store "1104-2"); before 2026-10-24 none of PPG's renames matched.
@@ -42,6 +46,7 @@
  *   tsx scripts/apply-published-names.ts --scan-dir=... --apply --renames                        # artifacts + renames
  *   tsx scripts/apply-published-names.ts --scan-dir=... --brand=kilz,ppg,vista-paint --apply --case   # + capitalization and MANUAL rows
  *   tsx scripts/apply-published-names.ts --scan-dir=... --brand=dutch-boy,ppg,dunn-edwards,kilz,sherwin-williams,valspar,behr,vista-paint,benjamin-moore --case --renames   # MP-45 full dry run
+ *   tsx scripts/apply-published-names.ts --scan-dir=... --brand=benjamin-moore,behr,dunn-edwards,ppg --apply --punctuation
  *   tsx scripts/apply-published-names.ts --revert=scripts/data/backups/published-names-<ts>.json
  *
  * MANUAL rows are written for any brand in --brand (default: benjamin-moore,
@@ -56,6 +61,7 @@ import { deltaE2000, hexToRgb, rgbToLab } from '../src/lib/color-utils';
 import { normalizePpgCode } from './lib/palette-sources';
 import { caseFix } from './lib/palette-diff';
 import { APPROVED_RENAMES } from './lib/approved-renames';
+import { classifyPunctuation, mergePunctuation } from './lib/name-punctuation';
 
 // Env, scan dir and backups resolve from the working directory, so the script
 // can be run from the main checkout even when the file lives in a worktree.
@@ -65,6 +71,9 @@ const arg = (name: string) => process.argv.find((a) => a.startsWith(`--${name}=`
 const APPLY = process.argv.includes('--apply');
 const RENAMES = process.argv.includes('--renames');
 const CASE = process.argv.includes('--case');
+const PUNCTUATION = process.argv.includes('--punctuation');
+const WORD_JOINS = process.argv.includes('--word-joins');
+const ACCENTS = process.argv.includes('--accents');
 const scanDir = arg('scan-dir');
 const brandArg = arg('brand');
 const revertFile = arg('revert');
@@ -117,8 +126,8 @@ const NORMALIZE: Partial<Record<string, (c: string) => string>> = { ppg: normali
 // U+2010 HYPHEN and U+2011 NON-BREAKING HYPHEN: they look like "-" but a
 // search for the name typed with "-" does not match them.
 const NON_ASCII_HYPHEN = /[\u2010\u2011]/g;
-// Latin letters with diacritics ("é" in Frappé).
-const ACCENTED = /[\u00c0-\u024f]/;
+// Accents never written: the feed's accent looks like a typo (2026-11 audit, D3).
+const SKIP_ACCENT = new Set(['behr/parisian-cafe-mq2-33']); // feed: "Parisian Cafè", grave accent
 
 // Feed names written in the catalog's style instead of the feed's.
 const FEED_NAME_STYLE: Record<string, string> = {
@@ -127,7 +136,7 @@ const FEED_NAME_STYLE: Record<string, string> = {
 
 interface Row { id: string; slug: string; name: string; color_number: string | null; hex: string }
 interface LiveColor { code: string; name: string; hex: string | null }
-type Group = 'artifact' | 'rename' | 'conflict' | 'case';
+type Group = 'artifact' | 'rename' | 'conflict' | 'case' | 'punctuation' | 'word-join' | 'accent';
 interface Change { id: string; brand: string; slug: string; from: string; to: string; group: Group; note?: string }
 
 const code = (s: string | null | undefined) => (s ?? '').trim().toUpperCase();
@@ -276,21 +285,26 @@ async function main() {
         if (fixed !== r.name) changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to: fixed, group: 'case', note });
         continue;
       }
-      // The feed lost accents we have ("Frappe" for "Frappé"): keep ours.
-      if (letters(feedName) === letters(r.name) && ACCENTED.test(r.name) && !ACCENTED.test(feedName)) {
+      // Same letters, different punctuation, spacing or accents. Until the
+      // 2026-11 audit this whole class was skipped as "straight-vs-curly
+      // punctuation only", which hid 69 import artifacts (Strawberryncream,
+      // Smoke Mirrors). Each kind is now its own gated group; see
+      // scripts/lib/name-punctuation.ts.
+      const pClass = classifyPunctuation(r.name, feedName);
+      // Never written: quote style only, or the catalog has an accent or punctuation the feed lacks.
+      if (pClass === 'quote-only' || pClass === 'accent-kept' || pClass === 'punctuation-kept') {
         hyphenOnly();
         continue;
       }
-      // Straight-vs-curly punctuation only: not worth a write.
-      const asciiClean = !/[^\x20-\x7e]/.test(r.name.replace(/[‐‑’]/g, ''));
-      if (asciiClean && letters(feedName) === letters(r.name)) {
-        hyphenOnly();
+      if (pClass) {
+        const to = mergePunctuation(r.name, feedName);
+        if (to !== r.name) changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to, group: pClass, note });
         continue;
       }
       const group: Group = dE > 5 ? 'conflict' : classify(r.name, feedName, c.code);
       changes.push({ id: r.id, brand: b.slug, slug: r.slug, from: r.name, to: feedName, group, note });
     }
-    for (const g of ['artifact', 'rename', 'case', 'conflict'] as Group[]) {
+    for (const g of ['artifact', 'rename', 'case', 'punctuation', 'word-join', 'accent', 'conflict'] as Group[]) {
       const list = changes.filter((c) => c.group === g);
       if (!list.length) continue;
       console.log(`\n[${b.slug}] ${g}: ${list.length}`);
@@ -306,6 +320,9 @@ async function main() {
     (c) =>
       c.group === 'artifact' ||
       (CASE && c.group === 'case') ||
+      (PUNCTUATION && c.group === 'punctuation') ||
+      (WORD_JOINS && c.group === 'word-join') ||
+      (ACCENTS && c.group === 'accent' && !SKIP_ACCENT.has(`${c.brand}/${c.slug}`)) ||
       (RENAMES && c.group === 'rename' && isApproved(c)),
   );
   const unapproved = all.filter((c) => c.group === 'rename' && !isApproved(c));
@@ -315,8 +332,17 @@ async function main() {
   }
   const groups = all.reduce<Record<string, number>>((acc, c) => ({ ...acc, [`${c.brand}/${c.group}`]: (acc[`${c.brand}/${c.group}`] ?? 0) + 1 }), {});
   console.log('\nTally by brand/group:', groups);
-  const scope = ['artifacts', ...(RENAMES ? ['renames'] : []), ...(CASE ? ['case'] : [])].join(' + ');
-  console.log(`Would write ${toWrite.length} names (${scope}; --renames and --case add the other groups).`);
+  const scope = [
+    'artifacts',
+    ...(RENAMES ? ['renames'] : []),
+    ...(CASE ? ['case'] : []),
+    ...(PUNCTUATION ? ['punctuation'] : []),
+    ...(WORD_JOINS ? ['word-joins'] : []),
+    ...(ACCENTS ? ['accents'] : []),
+  ].join(' + ');
+  console.log(
+    `Would write ${toWrite.length} names (${scope}; --renames, --case, --punctuation, --word-joins and --accents add the other groups).`,
+  );
   if (!APPLY) {
     console.log('Dry run — no DB changes. Re-run with --apply.');
     return;
@@ -327,7 +353,7 @@ async function main() {
   fs.writeFileSync(backupPath, JSON.stringify(toWrite, null, 1));
   console.log(`Backup: ${path.relative(process.cwd(), backupPath)}`);
   const n = await writeAll(supabase, toWrite);
-  console.log(`Updated ${n} names. Redeploy (or revalidate) so pages pick them up.`);
+  console.log(`Updated ${n} names. Redeploy: the prebuild rebuilds /match-data because the content fingerprint changed. Pages pick up the new names within 24 h.`);
 }
 
 main().catch((err) => {

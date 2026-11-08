@@ -2,21 +2,27 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { ORG_REF } from "@/lib/entity-schema";
+import { ogDefaults } from "@/lib/og";
+import { BRAND_COUNT } from "@/lib/site-facts";
 
 // Public RapidAPI listing for the cross-brand color-match API.
 const RAPIDAPI_URL = "https://rapidapi.com/support-weGRmXmTU/api/paint-color-match-api1";
 
+const API_URL = "https://www.paintcolorhq.com/api";
+const API_DESCRIPTION = `Free, CORS-open REST API returning the closest cross-brand paint color equivalents for any hex, scored with CIEDE2000 across 26,000+ colors and ${BRAND_COUNT} brands.`;
+
 export const metadata: Metadata = {
-  title: "Paint Color Match API — Cross-Brand Equivalents by Hex | Paint Color HQ",
-  description:
-    "A free, CORS-open REST API that returns the closest cross-brand paint color equivalents for any hex value, scored with the CIEDE2000 (Delta E) standard across 26,000+ colors and 13 brands.",
-  alternates: { canonical: "https://www.paintcolorhq.com/api" },
+  // The layout template adds " | Paint Color HQ"; the title must not repeat it.
+  title: "Paint Color Match API: Cross-Brand Equivalents by Hex",
+  description: API_DESCRIPTION,
+  alternates: { canonical: API_URL },
   openGraph: {
+    ...ogDefaults,
     title: "Cross-Brand Paint Color Match API",
     description:
-      "Closest paint color equivalents for any hex, across 13 brands, via CIEDE2000. Free tier + RapidAPI paid tier.",
-    type: "website",
-    url: "https://www.paintcolorhq.com/api",
+      `Closest paint color equivalents for any hex, across ${BRAND_COUNT} brands, via CIEDE2000. Free tier + RapidAPI paid tier.`,
+    url: API_URL,
   },
 };
 
@@ -26,10 +32,49 @@ const Code = ({ children }: { children: React.ReactNode }) => (
   </pre>
 );
 
+// JSON-LD helper - server-generated from trusted static values.
+function JsonLd({ data }: { data: object }) {
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+}
+
 export default function ApiDocsPage() {
   return (
     <div className="bg-surface min-h-screen">
       <Header />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "WebAPI",
+        name: "Paint Color Match API",
+        description: API_DESCRIPTION,
+        url: API_URL,
+        documentation: API_URL,
+        termsOfService: "https://www.paintcolorhq.com/terms",
+        provider: ORG_REF,
+        offers: [
+          {
+            "@type": "Offer",
+            name: "Free tier",
+            description: "Up to 10 matches per hex, no key required. Requires a visible link to https://www.paintcolorhq.com.",
+            price: "0",
+            priceCurrency: "USD",
+            url: API_URL,
+          },
+          {
+            "@type": "Offer",
+            name: "Paid tier (RapidAPI)",
+            description: "Up to 50 matches per hex, batch lookups and no attribution requirement. Billed through RapidAPI.",
+            url: RAPIDAPI_URL,
+          },
+        ],
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
+          { "@type": "ListItem", position: 2, name: "Paint Color Match API", item: API_URL },
+        ],
+      }} />
       <main className="max-w-4xl mx-auto px-6 md:px-12 py-16">
         <p className="text-xs font-semibold uppercase tracking-widest text-secondary">Developer API</p>
         <h1 className="mt-2 font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface">

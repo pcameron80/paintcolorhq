@@ -3,17 +3,19 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CopySnippet } from "./copy-snippet";
+import { ogDefaults } from "@/lib/og";
+import { BRAND_COUNT } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title: "Free Cross-Brand Paint Color Match Widget | Embed on Your Site",
   description:
-    "Add a free cross-brand paint color matcher to your blog or site. Visitors pick a color and see the closest match across 13 brands, powered by CIEDE2000. One line of HTML.",
+    `Add a free cross-brand paint color matcher to your site with one line of HTML. Visitors pick a color and see the closest match in ${BRAND_COUNT} brands via CIEDE2000.`,
   alternates: { canonical: "https://www.paintcolorhq.com/embed" },
   openGraph: {
+    ...ogDefaults,
     title: "Free Cross-Brand Paint Color Match Widget",
     description:
-      "Embed a cross-brand paint matcher in one line of HTML. Visitors pick a color and see the closest match across 13 brands.",
-    type: "website",
+      `Embed a cross-brand paint matcher in one line of HTML. Visitors pick a color and see the closest match across ${BRAND_COUNT} brands.`,
     url: "https://www.paintcolorhq.com/embed",
   },
 };

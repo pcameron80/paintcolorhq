@@ -2,6 +2,12 @@ import Link from "next/link";
 
 const tools = [
   {
+    slug: "compare",
+    title: "Compare Colors",
+    href: "/compare",
+    description: "Put two paint colors side by side",
+  },
+  {
     slug: "room-visualizer",
     title: "Room Visualizer",
     href: "/tools/room-visualizer",
@@ -33,7 +39,8 @@ export function ToolCrossSell({ exclude }: { exclude: string }) {
   return (
     <section className="mt-16 max-w-3xl">
       <h2 className="font-headline text-2xl font-bold text-on-surface">More Tools</h2>
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+      {/* Four cards on every tool page: two by two reads better than 3 + 1. */}
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {filtered.map((tool) => (
           <Link
             key={tool.slug}

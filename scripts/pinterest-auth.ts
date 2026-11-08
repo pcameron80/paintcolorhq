@@ -43,7 +43,7 @@ if (!APP_ID || !APP_SECRET) {
 
 /** Upsert a KEY=value line in .env.local, preserving everything else. */
 function upsertEnv(updates: Record<string, string>) {
-  let lines = fs.readFileSync(ENV_PATH, "utf8").split("\n");
+  const lines = fs.readFileSync(ENV_PATH, "utf8").split("\n");
   for (const [key, value] of Object.entries(updates)) {
     const idx = lines.findIndex((l) => l.startsWith(`${key}=`));
     const line = `${key}=${value}`;

@@ -1,91 +1,15 @@
 import type { ColorWithBrand, CrossBrandMatchWithColor } from "./types";
 import { hexToHsl } from "./palettes";
-import { closenessLabelLower } from "@/lib/closeness";
-import { withArticle } from "./text";
+import { closenessLabelLower, closenessTier } from "@/lib/closeness";
+import { codeSuffix, displayColorNumber, withArticle } from "./text";
+import { displayUndertone } from "./undertone-display";
+import { UNVERIFIED_BUY_BRANDS } from "./popular-colors";
 
-// ---------- Derived color properties ----------
-
-type Temperature = "warm" | "cool" | "neutral";
-type LightnessCategory = "very light" | "light" | "medium" | "deep" | "dark";
-type SaturationBand = "muted" | "mid" | "saturated";
-
-interface DerivedProps {
-  temperature: Temperature;
-  lightness: LightnessCategory;
-  saturation: SaturationBand;
-  isAchromatic: boolean;
-  hue: number;
-}
-
-// Color families the brand classified as visually neutral. Honoring these
-// catches famously-warm grays like SW Agreeable Gray (HSL saturation 14%
-// pushes them past the strict s<8 threshold, mis-classifying them as
-// chromatic orange) by trusting the brand's family label.
-const ACHROMATIC_FAMILIES = new Set([
-  "gray",
-  "neutral",
-  "off-white",
-  "white",
-  "beige",
-  "cream",
-  "tan",
-  "brown",
-  "black",
-  "charcoal",
-]);
-
-function deriveProps(color: ColorWithBrand): DerivedProps {
-  const [h, s, l] = hexToHsl(color.hex);
-  const lrv = color.lrv != null ? Number(color.lrv) : null;
-  const labA = color.lab_a != null ? Number(color.lab_a) : null;
-  const labB = color.lab_b_val != null ? Number(color.lab_b_val) : null;
-
-  const familyAchromatic = color.color_family ? ACHROMATIC_FAMILIES.has(color.color_family.toLowerCase()) : false;
-  const isAchromatic = s < 8 || familyAchromatic;
-
-  // Temperature: use LAB a* if available, else hue
-  let temperature: Temperature;
-  if (isAchromatic) {
-    if (labA != null && labB != null) {
-      temperature = labA > 1 || labB > 2 ? "warm" : labA < -1 || labB < -2 ? "cool" : "neutral";
-    } else {
-      temperature = "neutral";
-    }
-  } else if (labA != null) {
-    if (labA > 3) temperature = "warm";
-    else if (labA < -3) temperature = "cool";
-    else if (h >= 15 && h < 75) temperature = "warm";
-    else if (h >= 75 && h < 165) temperature = "cool";
-    else if (h >= 165 && h < 260) temperature = "cool";
-    else temperature = "warm";
-  } else {
-    if (h >= 15 && h < 75) temperature = "warm";
-    else if (h >= 260 || h < 15) temperature = "warm";
-    else temperature = "cool";
-  }
-
-  // Lightness from LRV (preferred) or HSL
-  let lightness: LightnessCategory;
-  const lightnessVal = lrv ?? l;
-  if (lightnessVal >= 82) lightness = "very light";
-  else if (lightnessVal >= 55) lightness = "light";
-  else if (lightnessVal >= 30) lightness = "medium";
-  else if (lightnessVal >= 12) lightness = "deep";
-  else lightness = "dark";
-
-  // Saturation band — second axis on pairing + lighting copy so the same
-  // hue family + LRV bucket can render distinct paragraphs depending on
-  // whether the color is muted (dusty/desaturated), mid (balanced), or
-  // saturated (vivid). Pre-fix, every red shared one pairing sentence
-  // across ~250 pages. Post-fix, hue × saturation × LRV cardinality
-  // multiplies that surface roughly 3x.
-  let saturation: SaturationBand;
-  if (isAchromatic || s < 20) saturation = "muted";
-  else if (s > 55) saturation = "saturated";
-  else saturation = "mid";
-
-  return { temperature, lightness, saturation, isAchromatic, hue: h };
-}
+// Data-derived color-page text only. The templated prose generators that used
+// to live here (generateColorDescription, generateEditorialVerdict and their
+// per-family pairing/lighting/"skip it if" sentence banks) were removed
+// 2026-10-24: none was rendered, and templated prose repeated across 25k pages
+// is what the house rule forbids. Do not reintroduce them.
 
 // ---------- Hue name helper ----------
 
@@ -99,279 +23,6 @@ function getHueName(hue: number): string {
   if (hue < 290) return "purple";
   if (hue < 330) return "magenta";
   return "red";
-}
-
-// ---------- SEO query-targeting sentences ----------
-
-// LRV bucket → room-application sentence. Splits across 4 LRV ranges so the
-// generated copy varies meaningfully across the 25k color pages instead of
-// reading as a templated string repeated thousands of times — that pattern
-// was a known driver of the March 2026 Helpful Content suppression.
-function getLrvApplicationSentence(name: string, lrv: number): string {
-  if (lrv >= 70) {
-    return `With a Light Reflectance Value of ${lrv}, ${name} reflects a generous amount of light, making it well-suited for north-facing rooms or smaller spaces that benefit from extra brightness.`;
-  }
-  if (lrv >= 50) {
-    return `At LRV ${lrv}, ${name} sits in the comfortable mid-light range — bright enough for living areas yet soft enough for bedrooms, and adaptable across most lighting conditions.`;
-  }
-  if (lrv >= 25) {
-    return `Its LRV of ${lrv} gives ${name} depth without going dark, which makes it a strong choice for accent walls, libraries, and rooms with abundant natural light.`;
-  }
-  return `With an LRV of ${lrv}, ${name} creates a dramatic, enveloping mood — best on accent walls, dining rooms, and intimate spaces where atmosphere matters more than reflected light.`;
-}
-
-// Hue-family axis for the pairing + lighting sentences. Keying these on a
-// single binary "temperature" produced only 3 variants per slot, which at
-// 23k color pages meant the same trim/hardware sentence appeared on roughly
-// 7,800 pages verbatim. Switching to hue family expands the surface to 11
-// variants (8 chromatic + 3 achromatic flavors) and cuts the per-variant
-// page count by ~3x. Matters post-HCU because Google's near-duplicate
-// clustering flagged the prior pattern as templated doorway copy.
-type HueFamily =
-  | "red"
-  | "orange"
-  | "yellow"
-  | "green"
-  | "teal"
-  | "blue"
-  | "purple"
-  | "magenta"
-  | "achromatic-warm"
-  | "achromatic-cool"
-  | "achromatic-neutral";
-
-// Map brand-classified families to our HueFamily values. The brand
-// classifier produces 7 chromatic families (red, orange, yellow, green,
-// blue, purple, pink). "pink" maps to magenta in our taxonomy — same
-// pairing/lighting advice serves both. Teal isn't a brand family so
-// teal colors fall through to HSL math (hue 165-200).
-const FAMILY_TO_HUE: Record<string, HueFamily> = {
-  red: "red",
-  orange: "orange",
-  yellow: "yellow",
-  green: "green",
-  blue: "blue",
-  purple: "purple",
-  pink: "magenta",
-};
-
-function getHueFamily(color: ColorWithBrand, props: DerivedProps): HueFamily {
-  if (props.isAchromatic) {
-    if (props.temperature === "warm") return "achromatic-warm";
-    if (props.temperature === "cool") return "achromatic-cool";
-    return "achromatic-neutral";
-  }
-  const family = color.color_family?.toLowerCase();
-  if (family && FAMILY_TO_HUE[family]) return FAMILY_TO_HUE[family];
-  // HSL hue fallback when color_family is unmapped (e.g. teal) or missing.
-  const h = props.hue;
-  if (h < 15) return "red";
-  if (h < 40) return "orange";
-  if (h < 70) return "yellow";
-  if (h < 150) return "green";
-  if (h < 200) return "teal";
-  if (h < 260) return "blue";
-  if (h < 290) return "purple";
-  if (h < 330) return "magenta";
-  return "red";
-}
-
-// Hue-family → trim/hardware pairing sentence. 11 variants instead of 3.
-function getPairingSentence(name: string, family: HueFamily): string {
-  switch (family) {
-    case "red":
-      return `Pair it with creamy off-whites like Alabaster for trim, walnut or cherry hardwoods, and brass hardware — the warmth keeps reds from feeling clinical. Deep forest green or navy work as bold accent walls.`;
-    case "orange":
-      return `Pair it with soft whites like White Dove, white oak floors, and unlacquered brass or copper hardware. Terracotta tile or deep green plants complete an earthy warm palette.`;
-    case "yellow":
-      return `Pair it with crisp whites like Pure White for trim, oak or maple woods, and brass hardware. Navy or deep teal accents balance the brightness without competing for attention.`;
-    case "green":
-      return `Pair it with off-whites like Simply White, walnut or rift-cut oak floors, and mixed metals — brass for warmth, matte black for grounding. Terracotta and rust accents add warm contrast.`;
-    case "teal":
-      return `Pair it with crisp whites like Decorator's White, white oak floors, and brushed nickel or chrome hardware. Aged brass or copper introduces deliberate warm contrast if you want to break up the cool palette.`;
-    case "blue":
-      return `Pair it with crisp whites like Chantilly Lace, walnut or rift-cut oak floors, and brushed nickel or polished chrome hardware. Brass accents add warmth for a layered look.`;
-    case "purple":
-      return `Pair it with cool whites for trim, walnut floors, and either brass or matte black hardware depending on whether you want warm or grounded contrast. Sage green works as a complementary accent.`;
-    case "magenta":
-      return `Pair it with warm whites like Simply White, blonde wood floors, and brass or gold hardware. Deep green or forest accents add contrast that keeps it from feeling too sweet.`;
-    case "achromatic-warm":
-      return `As a warm neutral, ${name} pairs with off-whites for trim, white oak or walnut floors, and brass or warm brushed nickel hardware. Deep green, navy, or terra-cotta all read well as accent colors.`;
-    case "achromatic-cool":
-      return `As a cool neutral, ${name} pairs with cool whites for trim, gray-toned or rift-cut oak floors, and brushed nickel or polished chrome hardware. Black accents and natural greenery add contrast.`;
-    case "achromatic-neutral":
-      return `${name} is a true neutral — pair with any wood, any metal, any trim color. Off-white trim works in most homes; brushed nickel or matte black hardware both read well across spaces.`;
-  }
-}
-
-// Pairing modifier. Two regimes:
-//  - Chromatic: keyed on saturation band (muted / mid / saturated).
-//  - Achromatic: keyed on LRV/lightness band AND interpolates the color name,
-//    because the 3 base achromatic pairing sentences otherwise collapsed across
-//    ~3,000 pages each. Light/mid/deep neutrals genuinely behave differently, so
-//    this adds a real (not cosmetic) third axis on the largest page segment.
-function getPairingSaturationModifier(
-  saturation: SaturationBand,
-  isAchromatic: boolean,
-  lightness: LightnessCategory,
-  name: string
-): string {
-  if (isAchromatic) {
-    if (lightness === "very light" || lightness === "light") {
-      return ` As a lighter neutral, ${name} works as a whole-room or trim color and keeps adjoining colors reading clean — pair it with crisper whites a step brighter than itself so the trim still separates.`;
-    }
-    if (lightness === "medium") {
-      return ` At mid depth, ${name} grounds a space without darkening it — it holds up on lower walls, kitchen islands, and as a wraparound where a lighter neutral would feel washed out.`;
-    }
-    return ` As a deeper neutral, ${name} reads as a confident anchor — strongest on accent walls, cabinetry, and moody whole rooms that get enough natural light to keep it from going flat.`;
-  }
-  if (saturation === "muted") {
-    return ` Because this version is on the desaturated side, it pairs forgivingly with both warm and cool accent palettes — and reads especially calm in north-facing rooms where high-chroma versions can feel intrusive.`;
-  }
-  if (saturation === "saturated") {
-    return ` As a fully saturated example, it reads as a confident statement color — best deployed as a single accent wall or large architectural feature rather than a whole-room dominant.`;
-  }
-  return ` At mid saturation, this color sits at a flexible mid-point — bold enough to anchor a room without dominating, and pairs cleanly with both crisp and creamy whites.`;
-}
-
-// Lighting modifier — same two regimes as the pairing modifier. The achromatic
-// branch interpolates the name + lightness so the lighting guidance no longer
-// repeats verbatim across thousands of neutral pages.
-function getLightingSaturationModifier(
-  saturation: SaturationBand,
-  isAchromatic: boolean,
-  lightness: LightnessCategory,
-  name: string
-): string {
-  if (isAchromatic) {
-    if (lightness === "very light" || lightness === "light") {
-      return ` Lighter neutrals reveal their undertone most, so ${name} can swing warmer under 2700K bulbs and cleaner under 4000K daylight — sample it against your trim before committing.`;
-    }
-    if (lightness === "medium") {
-      return ` At mid depth ${name} holds its character across bulb temperatures, shifting only slightly warm under 2700K and slightly crisper under cool daylight.`;
-    }
-    return ` Deeper neutrals can read close to black in low light, so preview ${name} in the room's actual evening lighting, not just at midday.`;
-  }
-  if (saturation === "muted") {
-    return ` Desaturated versions shift least under different lighting — they hold their character whether the room runs warm or cool.`;
-  }
-  if (saturation === "saturated") {
-    return ` Saturated colors amplify lighting effects more than muted ones: warm bulbs deepen and enrich, cool daylight sharpens and slightly cools the same hex.`;
-  }
-  return ` At mid saturation the lighting shift is moderate but real — sample under both warm-bulb evening light and cool-daylight morning light before committing.`;
-}
-
-// Hue-family → lighting-behavior sentence. Bulb-color guidance is one of the
-// most-asked questions about residential paint. Hue-keyed variants give
-// concrete per-family advice (purples shift mauve under 2700K, blues read
-// grayer, etc.) that pure-temperature copy couldn't deliver.
-function getLightingBehaviorSentence(name: string, family: HueFamily): string {
-  switch (family) {
-    case "red":
-      return `Reds intensify under 2700K-3000K warm bulbs, deepening into wine territory. Under 4000K+ cool LEDs they can read pinker or slightly washed — sample under your actual room lighting before committing.`;
-    case "orange":
-      return `Oranges glow under 2700K warm bulbs, deepening into rich amber. Under 4000K cool light they can lose warmth and shift toward beige — particularly true for muted or dusty oranges.`;
-    case "yellow":
-      return `Under 2700K warm bulbs ${name} reads more golden or buttery. Under 4000K daylight bulbs it stays truer to the chip, though saturated yellows can edge toward green in mixed light.`;
-    case "green":
-      return `Greens shift the most under different light. 2700K warms them toward olive or yellow-green; 4000K daylight reveals their true tone. Bluer greens especially benefit from north-facing daylight.`;
-    case "teal":
-      return `Teals hold their clarity under 4000K LEDs. Under 2700K warm bulbs they can dull toward muted gray-blue or push slightly green — preview in evening light if your bulbs run warm.`;
-    case "blue":
-      return `Blues stay crisp under 4000K+ cool LEDs. Under 2700K warm bulbs they can read grayer or shift slightly purple — particularly true for mid-tone and saturated blues.`;
-    case "purple":
-      return `Purples are the most lighting-sensitive paint family. 2700K bulbs push them toward mauve or pink; 4000K daylight keeps them violet or even slightly blue. Always sample at multiple times of day.`;
-    case "magenta":
-      return `Under 2700K warm bulbs pinks and magentas glow warmly, leaning coral. Under 4000K cool light they read more vibrant — important for nursery and bedroom planning where bulb choice changes the mood.`;
-    case "achromatic-warm":
-      return `Warm neutrals come alive under 2700K bulbs, where their underlying yellow or peach undertones add visible warmth. Under 4000K daylight they read cleaner and slightly cooler.`;
-    case "achromatic-cool":
-      return `Cool neutrals hold their crisp quality under 4000K+ daylight bulbs. Under 2700K warm light they soften considerably — particularly true for any blue or green undertone.`;
-    case "achromatic-neutral":
-      return `True neutrals read consistently across lighting conditions, which is why they're popular base colors. They inherit a faint warm cast under 2700K and a cool cast under 4000K, but never dramatically.`;
-  }
-}
-
-function getQueryTargetingSentences(
-  color: ColorWithBrand,
-  matches: CrossBrandMatchWithColor[],
-  props: DerivedProps
-): string {
-  const family = color.color_family || getHueName(props.hue);
-  const hex = color.hex.toUpperCase();
-  const tempWord = props.temperature === "neutral" ? "neutral" : props.temperature;
-
-  // Guaranteed-unique lead fact: brand + name + number + hex + LRV + undertone.
-  // Every one of these is per-color data, so this sentence can never collapse to
-  // a near-duplicate across pages. Undertone is stated here (not in a separate
-  // generic callout) and is skipped when it would just echo the temperature word
-  // (avoids "a neutral … neutral undertone").
-  const colorNum = color.color_number ? ` (${color.color_number})` : "";
-  const lrvNum = color.lrv != null ? Math.round(Number(color.lrv)) : null;
-  const lrvClause = lrvNum != null ? `, LRV ${lrvNum}` : "";
-  const undertoneLower = color.undertone ? color.undertone.toLowerCase() : "";
-  const undertoneClause =
-    undertoneLower && undertoneLower !== tempWord ? `, ${undertoneLower} undertone` : "";
-  const whatColorIs = `What color is ${color.brand.name} ${color.name}${colorNum}? It's a ${props.lightness} ${tempWord} ${family} — hex ${hex}${lrvClause}${undertoneClause}.`;
-
-  // Nearest cross-brand match — leads with the single closest equivalent (real,
-  // per-color match name) using plain-language closeness, NOT a raw Delta E
-  // number (house rule: Delta E is always shown in words in user-facing copy).
-  const closeMatches = matches.filter((m) => Number(m.delta_e_score) < 3).slice(0, 3);
-  let similarColors = "";
-  if (closeMatches.length >= 1) {
-    const closest = closeMatches[0];
-    const closestName = `${closest.match_color.brand.name} ${closest.match_color.name}`;
-    const closeness =
-      `${closenessLabelLower(Number(closest.delta_e_score))} in our digital data`;
-    if (closeMatches.length >= 2) {
-      const others = closeMatches
-        .slice(1)
-        .map((m) => `${m.match_color.brand.name} ${m.match_color.name}`);
-      similarColors = `The closest cross-brand equivalent to ${color.name} is ${closestName} — ${closeness}, with ${others.join(" and ")} also close.`;
-    } else {
-      similarColors = `The closest cross-brand equivalent to ${color.name} is ${closestName} — ${closeness}.`;
-    }
-  }
-
-  // LRV-driven room application context — adds use-case framing that lifts
-  // the description into the 134-167 word citation window the GEO audit
-  // identified as the optimal range for AI engines (Perplexity, AI Overviews).
-  const lrv = color.lrv != null ? Math.round(Number(color.lrv)) : null;
-  const lrvSentence = lrv != null ? getLrvApplicationSentence(color.name, lrv) : "";
-
-  // Trim/hardware pairing — chromatic: hue family (11) × saturation (3).
-  // Achromatic: hue flavor (3) × LRV band (3), name-interpolated, so neutrals
-  // no longer share a single pairing tail across thousands of pages.
-  const hueFamily = getHueFamily(color, props);
-  const pairingSentence =
-    getPairingSentence(color.name, hueFamily) +
-    getPairingSaturationModifier(props.saturation, props.isAchromatic, props.lightness, color.name);
-
-  // Lighting-behavior guidance — same composition.
-  const lightingSentence =
-    getLightingBehaviorSentence(color.name, hueFamily) +
-    getLightingSaturationModifier(props.saturation, props.isAchromatic, props.lightness, color.name);
-
-  return [
-    whatColorIs,
-    similarColors,
-    lrvSentence,
-    pairingSentence,
-    lightingSentence,
-  ]
-    .filter(Boolean)
-    .join(" ");
-}
-
-// ---------- Public API ----------
-
-export function generateColorDescription(
-  color: ColorWithBrand,
-  matches: CrossBrandMatchWithColor[]
-): string {
-  const props = deriveProps(color);
-  return getQueryTargetingSentences(color, matches, props);
 }
 
 // Plain-language closeness from Delta E 2000 — NEVER expose the raw number
@@ -391,17 +42,57 @@ function joinList(items: string[]): string {
 // family-verdict prose it replaces (two same-family colors shared ~70% of that).
 // No hand-writing, no LLM: pure data composition.
 //
-// `legacy` keeps the old fixed "a" article ("is a orange paint color") for the
-// head-color pages, whose body stays frozen during their push (head-colors.ts).
+// `legacy` keeps the pre-MP-40 text for the head-color pages, whose body stays
+// frozen during their push (head-colors.ts): the fixed "a" article ("is a
+// orange paint color"), the raw undertone label, and the "N more equivalents"
+// count.
 export function generateColorLede(
   color: ColorWithBrand,
   matches: CrossBrandMatchWithColor[],
   { legacy = false }: { legacy?: boolean } = {},
 ): string {
+  if (legacy) return generateLegacyLede(color, matches);
+  const code = codeSuffix(color.name, color.color_number ? displayColorNumber(color.brand.slug, color.color_number) : null);
+  const family = color.color_family ? color.color_family.toLowerCase() : "paint";
+  let lede = `${color.name}${code} is ${withArticle(family)} paint color from ${color.brand.name}.`;
+
+  const specs: string[] = [`a hex value of ${color.hex.toUpperCase()}`];
+  if (color.lrv != null) specs.push(`estimated LRV ${Math.round(Number(color.lrv))}`);
+  const undertone = displayUndertone(color);
+  if (undertone) specs.push(`a ${undertone.toLowerCase()} undertone`);
+  lede += ` It has ${joinList(specs)}.`;
+
+  // Name the nearest match a reader can act on: skip brands whose retail
+  // availability is unverified, unless nothing else matches.
+  const named = matches.filter((m) => !UNVERIFIED_BUY_BRANDS.has(m.match_color.brand.slug));
+  const pool = named.length > 0 ? named : matches;
+  if (pool.length > 0) {
+    const nearest = pool.reduce((a, b) =>
+      Number(b.delta_e_score) < Number(a.delta_e_score) ? b : a,
+    );
+    const nearestScore = Number(nearest.delta_e_score);
+    lede += ` Its closest cross-brand match is ${nearest.match_color.name} from ${nearest.match_color.brand.name} (${closenessPhrase(nearestScore)})`;
+    // Distinct other brands with something better than a visible difference.
+    // This counts brands, not rows: the page carries up to 49 rows per color,
+    // and most of those were never close.
+    const similarBrands = nearestMatchesPerBrand(matches).filter(
+      (m) => closenessTier(Number(m.delta_e_score)) !== "visible-difference",
+    ).length;
+    if (similarBrands > 0) {
+      lede += `, with very similar options from ${similarBrands} other brand${similarBrands === 1 ? "" : "s"}.`;
+    } else if (closenessTier(nearestScore) === "visible-difference") {
+      lede += `. No brand in our data has a very similar match, so compare a physical sample before buying.`;
+    } else {
+      lede += `.`;
+    }
+  }
+  return lede;
+}
+
+function generateLegacyLede(color: ColorWithBrand, matches: CrossBrandMatchWithColor[]): string {
   const code = color.color_number ? ` ${color.color_number}` : "";
   const family = color.color_family ? color.color_family.toLowerCase() : "paint";
-  const familyPhrase = legacy ? `a ${family}` : withArticle(family);
-  let lede = `${color.name}${code} is ${familyPhrase} paint color from ${color.brand.name}.`;
+  let lede = `${color.name}${code} is a ${family} paint color from ${color.brand.name}.`;
 
   const specs: string[] = [`a hex value of ${color.hex.toUpperCase()}`];
   if (color.lrv != null) specs.push(`estimated LRV ${Math.round(Number(color.lrv))}`);
@@ -437,131 +128,20 @@ export function nearestMatchesPerBrand(
   );
 }
 
-// Short editorial-style verdict rendered immediately below the hero on the
-// color detail page. Top SERP competitors (Kylie M Interiors, Daily Splendor)
-// open with a verdict in the first 40-60 words ("Agreeable Gray is the best
-// all-around neutral if you have mixed lighting"). PCHQ historically opened
-// with a spec readout, which is the wrong page-type signal — SERP ranks
-// editorial reviews for branded color queries.
-//
-// The verdict here is composed from the color's derived properties so it
-// reads as opinion-style without requiring per-color hand-writing. It varies
-// across hue family × LRV bucket × saturation band so the page-type pattern
-// holds even without a hand-written verdict per color.
-export function generateEditorialVerdict(color: ColorWithBrand): string {
-  const props = deriveProps(color);
-  const family = getHueFamily(color, props);
-  const lrv = color.lrv != null ? Math.round(Number(color.lrv)) : null;
-  const useCase = getUseCaseFromLrv(lrv, props.lightness);
-  const familyVerdict = getFamilyVerdict(color.name, family);
-  const saturationCaveat = getSaturationCaveat(props.saturation, props.isAchromatic);
-  // "Avoid if" decision line — the one review-style element the color page
-  // lacked. Every ranking color review carries a "skip this if…" caveat;
-  // this gives the verdict that decision framing without duplicating the
-  // pairing/lighting detail already in the description below.
-  const avoidIf = getAvoidIfCaveat(family);
-  return `${familyVerdict} ${useCase}${saturationCaveat}${avoidIf}`;
-}
+const TOP_BRANDS_FOR_COMPARE: Array<{ name: string; slug: string }> = [
+  { name: "Sherwin-Williams", slug: "sherwin-williams" },
+  { name: "Benjamin Moore", slug: "benjamin-moore" },
+  { name: "Behr", slug: "behr" },
+  { name: "PPG", slug: "ppg" },
+];
 
-// Per-family "avoid if / skip it if" caveat. Decision guidance, not spec or
-// pairing detail (those live in the description), so it adds review depth
-// without on-page duplication.
-function getAvoidIfCaveat(family: HueFamily): string {
-  switch (family) {
-    case "red":
-      return ` Skip it where you want a calm, restful feel — red raises visual energy, so it fights bedrooms and small home offices.`;
-    case "orange":
-      return ` Skip it in rooms that already run warm or get strong afternoon sun, where it can tip into an overpowering glow.`;
-    case "yellow":
-      return ` Skip it in north-facing rooms with cool light, where yellows can read acidic or greenish rather than cheerful.`;
-    case "green":
-      return ` Skip it only if your fixed finishes (flooring, stone, tile) already lean hard warm or cool enough to clash — otherwise it's one of the most forgiving families.`;
-    case "teal":
-      return ` Skip it if you want a cozy, enveloping room — teal reads cool and architectural rather than warm.`;
-    case "blue":
-      return ` Skip it in low-light north-facing rooms unless you want a deliberately cool, cocooning effect, since blue can read chilly there.`;
-    case "purple":
-      return ` Skip it unless you can sample in the actual room at several times of day — purple shifts more than any other family under changing light.`;
-    case "magenta":
-      return ` Skip it as a whole-room color in spaces meant to feel neutral or understated — it reads soft and personal, best as an accent.`;
-    case "achromatic-warm":
-      return ` Skip it if you want a crisp, cool-modern look, or in rooms with heavy north light that can pull its warmth slightly muddy.`;
-    case "achromatic-cool":
-      return ` Skip it if you want a cozy, warm room — cool neutrals can feel sterile under warm bulbs or in low light.`;
-    case "achromatic-neutral":
-      return ` Skip it only if you specifically want a clear warm or cool bias — a true neutral stays intentionally undecided, which is the whole point.`;
-  }
-}
-
-function getUseCaseFromLrv(lrv: number | null, lightness: LightnessCategory): string {
-  if (lrv == null) {
-    return `Sample at scale in your room's actual lighting before committing — the on-screen swatch is approximate.`;
-  }
-  if (lrv >= 70) {
-    return `At LRV ${lrv} it reflects plenty of light, which makes it well-suited for north-facing rooms and smaller spaces that benefit from extra brightness.`;
-  }
-  if (lrv >= 50) {
-    return `At LRV ${lrv} it sits in the comfortable mid-light range — bright enough for living areas, soft enough for bedrooms, and adaptable across most lighting conditions.`;
-  }
-  if (lrv >= 25) {
-    return `At LRV ${lrv} it carries real depth without going dark — a good choice for accent walls, libraries, and rooms with abundant natural light.`;
-  }
-  void lightness;
-  return `At LRV ${lrv} it reads as a deep, enveloping shade — best on accent walls, dining rooms, and spaces where atmosphere matters more than reflected light.`;
-}
-
-function getFamilyVerdict(name: string, family: HueFamily): string {
-  switch (family) {
-    case "red":
-      return `${name} works as a confident anchor color — best in rooms that can carry visual weight (dining rooms, libraries, accent walls) rather than as a whole-room palette.`;
-    case "orange":
-      return `${name} reads as warm and grounded — strong in kitchens, family rooms, and any space where warmth is the dominant mood you're after.`;
-    case "yellow":
-      return `${name} adds visible warmth and energy — works well in north-facing rooms that need a lift and in spaces where cheerful is the goal.`;
-    case "green":
-      return `${name} is the most flexible accent family in residential paint — works as both a whole-room neutral when desaturated and a confident statement when saturated.`;
-    case "teal":
-      return `${name} reads as crisp and modern — strong in bathrooms, kitchens, and any space that benefits from a cool, slightly architectural mood.`;
-    case "blue":
-      return `${name} is a calming choice — works as both a whole-house neutral when lightened and a dramatic anchor when deepened to navy.`;
-    case "purple":
-      return `${name} is the most lighting-sensitive family in paint — best chosen in the actual room you'll use it in, sampled at multiple times of day.`;
-    case "magenta":
-      return `${name} reads as warm and personal — works in bedrooms, nurseries, and any space where softness and warmth are the goal.`;
-    case "achromatic-warm":
-      return `${name} works as a warm neutral anchor — pairs cleanly with most existing palettes and reads forgiving across lighting conditions.`;
-    case "achromatic-cool":
-      return `${name} reads as crisp and architectural — strong in modern spaces, with natural fixed elements (chrome, stone, glass), or as a quiet anchor.`;
-    case "achromatic-neutral":
-      return `${name} is a true neutral — the rare paint color that doesn't push warm or cool, which makes it forgiving across mixed-lighting rooms and existing palettes.`;
-  }
-}
-
-function getSaturationCaveat(saturation: SaturationBand, isAchromatic: boolean): string {
-  if (isAchromatic) return "";
-  if (saturation === "saturated") {
-    return ` Because it's a fully saturated example, it lands strongest as a single accent wall or large architectural feature rather than the dominant whole-room color.`;
-  }
-  if (saturation === "muted") {
-    return ` Because it sits on the desaturated side, it pairs forgivingly with both warm and cool accents and reads calm in lower-light rooms.`;
-  }
-  return "";
-}
-
-const TOP_BRANDS_FOR_COMPARE = ["Sherwin-Williams", "Benjamin Moore", "Behr", "PPG"];
-
-export function generateMetaDescription(color: ColorWithBrand): string {
-  const props = deriveProps(color);
-  const family = color.color_family || getHueName(props.hue);
+function generateLegacyMetaDescription(color: ColorWithBrand): string {
+  const family = color.color_family || getHueName(hexToHsl(color.hex)[0]);
   const lrv = color.lrv != null ? Math.round(Number(color.lrv)) : null;
   const colorNum = color.color_number ? ` (${color.color_number})` : "";
   const lrvPart = lrv != null ? `, LRV ${lrv}` : "";
   const undertonePart = color.undertone ? `, ${color.undertone.toLowerCase()} undertone` : "";
-
-  // Pick 3 well-known brands different from the source for the cross-brand
-  // comparison list. With 13 brands total, "and 10 more" is correct whether
-  // the source is one of the top 4 or not.
-  const compareTo = TOP_BRANDS_FOR_COMPARE.filter((b) => b !== color.brand.name).slice(0, 3);
+  const compareTo = TOP_BRANDS_FOR_COMPARE.filter((b) => b.name !== color.brand.name).slice(0, 3).map((b) => b.name);
   const compareList = `${compareTo.join(", ")}, and 10 more`;
 
   const result = `${color.brand.name} ${color.name}${colorNum} — ${family}${lrvPart}${undertonePart}. Compare matches across ${compareList}.`;
@@ -570,4 +150,41 @@ export function generateMetaDescription(color: ColorWithBrand): string {
   const trimmed = result.slice(0, 157);
   const lastSpace = trimmed.lastIndexOf(" ");
   return trimmed.slice(0, lastSpace > 120 ? lastSpace : 157) + "...";
+}
+
+/** Meta description for a color page. `perBrand` is nearestMatchesPerBrand()
+ *  for the color: it decides which brands are named and how many "more" there
+ *  are. The caller applies capMeta() after adding the variant and former-name
+ *  suffixes. `legacy` is the head-color text from before MP-40. */
+export function generateMetaDescription(
+  color: ColorWithBrand,
+  perBrand: CrossBrandMatchWithColor[] = [],
+  { legacy = false }: { legacy?: boolean } = {},
+): string {
+  if (legacy) return generateLegacyMetaDescription(color);
+  const family = color.color_family || getHueName(hexToHsl(color.hex)[0]);
+  const lrv = color.lrv != null ? Math.round(Number(color.lrv)) : null;
+  const code = color.color_number ? displayColorNumber(color.brand.slug, color.color_number) : "";
+  const colorNum = codeSuffix(color.name, code) ? ` (${code})` : "";
+  const lrvPart = lrv != null ? `, LRV ${lrv}` : "";
+  const undertone = displayUndertone(color);
+  const undertonePart = undertone ? `, ${undertone.toLowerCase()} undertone` : "";
+
+  // Name up to 3 well-known brands this color has a match in, then count the
+  // rest. "and N more" is the distinct other brands with a match minus the
+  // ones named, so it is never larger than the list behind it.
+  const available = new Set(perBrand.map((m) => m.match_color.brand.slug));
+  const named = TOP_BRANDS_FOR_COMPARE
+    .filter((b) => b.slug !== color.brand.slug && available.has(b.slug) && !UNVERIFIED_BUY_BRANDS.has(b.slug))
+    .slice(0, 3)
+    .map((b) => b.name);
+  const more = [...available].filter((slug) => slug !== color.brand.slug).length - named.length;
+  let compare = "Compare similar colors from other paint brands.";
+  if (named.length > 0) {
+    const list = more > 0
+      ? `${named.join(", ")}, and ${more} more`
+      : named.length === 1 ? named[0] : `${named.slice(0, -1).join(", ")}, and ${named[named.length - 1]}`;
+    compare = `Compare matches across ${list}.`;
+  }
+  return `${color.brand.name} ${color.name}${colorNum}: ${family}${lrvPart}${undertonePart}. ${compare}`;
 }

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllColorFamilies } from "@/lib/queries";
+import { ogDefaults } from "@/lib/og";
+import { moreBrands } from "@/lib/site-facts";
 
 export const revalidate = 604800; // 7d — static index page
 
@@ -12,6 +14,7 @@ export const metadata: Metadata = {
     "Browse paint colors organized by color family - whites, grays, blues, greens, and more from all major brands.",
   alternates: { canonical: "https://www.paintcolorhq.com/colors" },
   openGraph: {
+    ...ogDefaults,
     title: "Browse Paint Colors by Color Family",
     description: "Browse paint colors organized by color family - whites, grays, blues, greens, and more from all major brands.",
     url: "https://www.paintcolorhq.com/colors",
@@ -112,7 +115,7 @@ export default async function ColorsPage() {
           <div className="md:w-2/3">
             <h2 className="font-headline text-3xl font-bold mb-4 text-on-surface">Prefer to browse by brand?</h2>
             <p className="text-on-surface-variant mb-6">
-              Explore colors from Sherwin-Williams, Benjamin Moore, Behr, and 11 more paint manufacturers.
+              Explore colors from Sherwin-Williams, Benjamin Moore, Behr, and {moreBrands(3)} more paint manufacturers.
             </p>
             <Link
               href="/brands"

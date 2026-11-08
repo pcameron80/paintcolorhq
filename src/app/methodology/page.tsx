@@ -4,19 +4,21 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
+import { ogDefaults } from "@/lib/og";
+import { BRAND_COUNT } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title: "Methodology: How Paint Color HQ Matches Colors Across Brands",
   description:
-    "How Paint Color HQ uses the CIEDE2000 color difference standard to match 26,000+ paint colors across 13 brands. The pipeline, data sources, Delta E thresholds, and known limitations.",
+    `How Paint Color HQ matches 26,000+ paint colors across ${BRAND_COUNT} brands with CIEDE2000: the pipeline, data sources, closeness thresholds and known limitations.`,
   alternates: { canonical: "https://www.paintcolorhq.com/methodology" },
   openGraph: {
+    ...ogDefaults,
     title: "How We Match Paint Colors Across Brands",
     description:
       "The CIEDE2000-based pipeline behind 26,000+ cross-brand paint color matches.",
     type: "article",
     url: "https://www.paintcolorhq.com/methodology",
-    images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
   },
 };
 

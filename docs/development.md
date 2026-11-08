@@ -189,14 +189,14 @@ lsof -i :3000  # Check what's using port 3000
 
 8. **Dark mode CSS**: The default Next.js template includes a `prefers-color-scheme: dark` media query in `globals.css`. This was removed because the site is light-only. If regenerating styles, make sure dark mode CSS is not reintroduced.
 
-9. **generateStaticParams and Supabase**: Do NOT add `generateStaticParams` to pages with thousands of entries (e.g., color detail pages with 25K+ URLs). The concurrent requests overwhelm Supabase during Vercel builds, causing 500 errors. Only use it for small page sets (brands: 14 pages, families: 15 pages, blog posts: 24 pages). ISR handles on-demand generation fine for high-volume routes.
+9. **generateStaticParams and Supabase**: Do NOT add `generateStaticParams` to pages with thousands of entries (e.g., color detail pages with 25K+ URLs). The concurrent requests overwhelm Supabase during Vercel builds, causing 500 errors. Only use it for small page sets (brands: 13 pages, families: 15 pages, blog posts: 24 pages). ISR handles on-demand generation fine for high-volume routes.
 
 10. **Behr duplicate colors**: The source data contained duplicates from zero-padded vs non-padded color numbers (e.g., PPU14-05 vs PPU14-5). These were cleaned via `scripts/fix-behr-dupes.ts`. If re-seeding, duplicates may recur.
 
 ## Project Dependencies
 
 ### Production
-- `next` 16.1.6 - React framework
+- `next` 16.4.2 - React framework (pinned exact; upgrade before adding `"use server"`, `"use cache"` or auth in middleware, see MP-67)
 - `react` / `react-dom` 19.2.3 - UI library
 - `@supabase/supabase-js` 2.95.3 - Database client
 - `@supabase/ssr` - Server-side Supabase with cookie handling

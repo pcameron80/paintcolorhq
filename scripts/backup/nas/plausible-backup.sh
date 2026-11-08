@@ -103,6 +103,8 @@ if [ "$(date +%u)" = "7" ] || [ "${FORCE_RESTORE_TEST:-}" = "1" ]; then
   psql_q postgres "drop database $rdb" >/dev/null
   # ClickHouse: the zip has to be back inside the allowed path to restore from it.
   cp "$dir/$CH_DB.zip" "$CH_DATA/backups/$ch_zip"
+  # cp runs as root; ClickHouse (uid 101 in the container) must be able to read it.
+  chown --reference="$CH_DATA/backups" "$CH_DATA/backups/$ch_zip"
   # Only the two tables the counts read; restoring the whole database would also
   # recreate its dictionaries, which point back at the live tables.
   ch_q "CREATE DATABASE $rdb" >/dev/null

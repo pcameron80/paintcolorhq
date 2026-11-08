@@ -1,0 +1,84 @@
+{
+  "brands": [
+    {
+      "name": "Behr",
+      "slug": "behr"
+    },
+    {
+      "name": "Benjamin Moore",
+      "slug": "benjamin-moore"
+    },
+    {
+      "name": "PPG",
+      "slug": "ppg"
+    },
+    {
+      "name": "Vista Paint",
+      "slug": "vista-paint"
+    },
+    {
+      "name": "Valspar",
+      "slug": "valspar"
+    },
+    {
+      "name": "Dunn-Edwards",
+      "slug": "dunn-edwards"
+    },
+    {
+      "name": "Sherwin-Williams",
+      "slug": "sherwin-williams"
+    },
+    {
+      "name": "Hirshfield's",
+      "slug": "hirshfields"
+    },
+    {
+      "name": "Dutch Boy",
+      "slug": "dutch-boy"
+    },
+    {
+      "name": "Kilz",
+      "slug": "kilz"
+    },
+    {
+      "name": "RAL",
+      "slug": "ral"
+    },
+    {
+      "name": "Farrow & Ball",
+      "slug": "farrow-ball"
+    },
+    {
+      "name": "Colorhouse",
+      "slug": "colorhouse"
+    }
+  ],
+  "colors": [
+    {
+      "brandSlug": "behr",
+      "colorSlug": "100-mph-p170-7",
+      "createdAt": "2026-02-10T00:45:10.510929+00:00",
+      "contentUpdatedAt": "2026-10-11T00:00:00+00:00"
+    },
+    {
+      "brandSlug": "benjamin-moore",
+      "colorSlug": "50s-pink-2086-70",
+      "createdAt": "2026-02-10T00:45:11.398862+00:00",
+      "contentUpdatedAt": "2026-10-11T00:00:00+00:00"
+    },
+    {
+      "brandSlug": "ppg",
+      "colorSlug": "a-fun-little-pink-58rr-45-306",
+      "createdAt": "2026-06-12T01:59:17.121225+00:00",
+      "contentUpdatedAt": "2026-10-11T00:00:00+00:00"
+    }
+  ],
+  "matches": [
+    "/match/behr/dolphin-fin-790c-3-to-benjamin-moore",
+    "/match/behr/dolphin-fin-790c-3-to-dunn-edwards"
+  ],
+  "matchUpdatedAt": {
+    "/match/behr/dolphin-fin-790c-3-to-benjamin-moore": "2026-10-11T00:00:00+00:00",
+    "/match/behr/dolphin-fin-790c-3-to-dunn-edwards": "2026-10-11T00:00:00+00:00"
+  }
+}

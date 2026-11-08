@@ -19,6 +19,9 @@ import { fileURLToPath } from "url";
 import * as dotenv from "dotenv";
 import sharp from "sharp";
 
+/** One part of a Gemini generateContent response: an image or a text reply. */
+type GeminiPart = { inlineData?: { data: string; mimeType?: string }; text?: string };
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
@@ -66,10 +69,10 @@ async function main() {
   });
   const data = await res.json();
   if (!res.ok) throw new Error(`${res.status}: ${JSON.stringify(data).slice(0, 400)}`);
-  const parts = data?.candidates?.[0]?.content?.parts ?? [];
-  const img = parts.find((p: any) => p.inlineData)?.inlineData;
+  const parts: GeminiPart[] = data?.candidates?.[0]?.content?.parts ?? [];
+  const img = parts.find((p) => p.inlineData)?.inlineData;
   if (!img) {
-    const text = parts.find((p: any) => p.text)?.text;
+    const text = parts.find((p) => p.text)?.text;
     throw new Error(`No image returned${text ? ` — model said: ${text.slice(0, 200)}` : ""}`);
   }
 

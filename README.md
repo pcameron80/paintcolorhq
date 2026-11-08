@@ -1,6 +1,6 @@
 # Paint Color HQ
 
-Cross-brand paint color matching and tools. Explore 25,000+ paint colors from 14 brands, match colors across brands, visualize them in a room, identify colors from photos, generate coordinated palettes, and calculate coverage.
+Cross-brand paint color matching and tools. Explore 25,000+ paint colors from 13 brands, match colors across brands, visualize them in a room, identify colors from photos, generate coordinated palettes, and calculate coverage.
 
 **Live:** [www.paintcolorhq.com](https://www.paintcolorhq.com)
 

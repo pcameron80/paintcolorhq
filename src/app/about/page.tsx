@@ -4,7 +4,8 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
-import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
+import { FOUNDER_PERSON, ORG_REF, ORG_SAME_AS } from "@/lib/entity-schema";
+import { ogDefaults } from "@/lib/og";
 
 export const metadata: Metadata = {
   title: "About Paint Color HQ | Our Color Science Methodology",
@@ -12,10 +13,10 @@ export const metadata: Metadata = {
     "Learn how Paint Color HQ uses CIEDE2000 color science to match 26,000+ colors across our paint catalog. Independent, data-driven paint color tools.",
   alternates: { canonical: "https://www.paintcolorhq.com/about" },
   openGraph: {
+    ...ogDefaults,
     title: "About Paint Color HQ | Our Color Science Methodology",
     description:
       "Learn how Paint Color HQ uses CIEDE2000 color science to match 26,000+ colors across our paint catalog. Independent, data-driven paint color tools.",
-    type: "website",
     url: "https://www.paintcolorhq.com/about",
   },
 };
@@ -34,8 +35,8 @@ export default function AboutPage() {
         "@context": "https://schema.org", ...ORG_REF,
         logo: "https://www.paintcolorhq.com/logo.webp",
         description: "Paint Color HQ is an independent paint color discovery and cross-brand matching platform. We use CIEDE2000 color science to help homeowners and professionals choose paint colors with confidence.",
-        contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: "https://www.paintcolorhq.com/contact" },
-        sameAs: ["https://www.pinterest.com/paintcolorhq", "https://www.linkedin.com/company/paint-color-hq"],
+        contactPoint: { "@type": "ContactPoint", contactType: "customer support", url: "https://www.paintcolorhq.com/contact", email: "support@paintcolorhq.com" },
+        sameAs: ORG_SAME_AS,
         founder: FOUNDER_PERSON,
         knowsAbout: ["Paint color matching", "CIEDE2000 color difference", "Cross-brand paint color comparison", "Color science", "Interior paint selection"],
       }} />
@@ -236,6 +237,24 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
+
+            <h3 className="font-headline text-xl font-bold text-on-surface mt-12 mb-4">
+              How Paint Color HQ Makes Money
+            </h3>
+            <div className="space-y-4 text-on-surface-variant leading-relaxed">
+              <p>
+                Some links on color pages and in the paint calculator&apos;s
+                supplies list go to Amazon. Paint Color HQ is an Amazon
+                Associate and earns a commission on qualifying purchases made
+                through those links, at no extra cost to you. Links to paint
+                brands and paint stores are not affiliate links.
+              </p>
+              <p>
+                No paint brand pays for placement. Match rankings come from the
+                color data alone, and a brand cannot buy a higher position or a
+                mention.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -282,7 +301,10 @@ export default function AboutPage() {
               <Link href="/contact" className="text-primary underline hover:text-primary/80">
                 contact page
               </Link>{" "}
-              for general inquiries, corrections, and feedback.
+              for general inquiries, corrections, and feedback, or email{" "}
+              <a href="mailto:support@paintcolorhq.com" className="text-primary underline hover:text-primary/80">
+                support@paintcolorhq.com
+              </a>.
             </p>
           </div>
         </section>

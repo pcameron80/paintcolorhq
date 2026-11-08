@@ -4,15 +4,18 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { getAllBrands, getColorsByBrand } from "@/lib/queries";
+import { ogDefaults } from "@/lib/og";
+import { BRAND_COUNT } from "@/lib/site-facts";
 
 export const revalidate = 604800; // 7d — static index page
 
 export const metadata: Metadata = {
-  title: "Paint Brand Directory — 13 Brands, 26,000+ Colors",
+  title: `Paint Brand Directory — ${BRAND_COUNT} Brands, 26,000+ Colors`,
   description:
-    "Browse all 13 paint brands on Paint Color HQ, including Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar, and Farrow & Ball. Explore 26,000+ colors with cross-brand matches.",
+    `Browse all ${BRAND_COUNT} paint brands on Paint Color HQ, including Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar and Farrow & Ball. 26,000+ colors to match.`,
   alternates: { canonical: "https://www.paintcolorhq.com/brands" },
   openGraph: {
+    ...ogDefaults,
     title: "Paint Brands",
     description: "Browse paint colors from top brands including Sherwin-Williams, Benjamin Moore, Behr, PPG, and more.",
     url: "https://www.paintcolorhq.com/brands",

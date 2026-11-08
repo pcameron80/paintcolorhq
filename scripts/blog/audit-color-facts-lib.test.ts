@@ -1,7 +1,19 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { hexToRgb, rgbToLab, deltaE2000 } from "../../src/lib/color-utils.ts";
-import { Catalog, auditText, normName, type AuditColor } from "./audit-color-facts-lib.ts";
+import {
+  Catalog,
+  auditText,
+  auditBrandCounts,
+  auditBrandTotal,
+  auditCatalogRows,
+  auditLightestWhites,
+  normName,
+  normCode,
+  type AuditColor,
+  type CatalogRules,
+  type WhiteRow,
+} from "./audit-color-facts-lib.ts";
 
 const BRAND_NAMES: Record<string, string> = {
   "benjamin-moore": "Benjamin Moore",
@@ -9,6 +21,8 @@ const BRAND_NAMES: Record<string, string> = {
   behr: "Behr",
   ppg: "PPG",
   valspar: "Valspar",
+  "farrow-ball": "Farrow & Ball",
+  "dutch-boy": "Dutch Boy",
 };
 
 let n = 0;
@@ -210,4 +224,224 @@ test("a label right before a match beats one carried over a ', and' join", () =>
     cat,
   );
   assert.deepEqual(f.filter((x) => x.kind === "closeness-label"), []);
+});
+
+// ---------- MP-35: blind spots the 2026-10 audit missed ----------
+
+// Live DB values on 2026-10-24. Kept apart from C so the match-claim tests above are unaffected.
+const D = [
+  color("sherwin-williams", "alabaster-7008", "Alabaster", "7008", "#edeae0", 82),
+  color("benjamin-moore", "swiss-coffee-oc-45", "Swiss Coffee", "OC-45", "#eeece1", 81.8),
+  color("sherwin-williams", "agreeable-gray-7029", "Agreeable Gray", "7029", "#d1cbc1", 60.1),
+  color("benjamin-moore", "baja-dunes-997", "Baja Dunes", "997", "#bfae97", 41.3),
+  color("farrow-ball", "stiffkey-blue-281", "Stiffkey Blue", "281", "#4d5b6a", 10.1),
+  color("benjamin-moore", "hale-navy-hc-154", "Hale Navy", "HC-154", "#434c56", 8.3),
+  color("benjamin-moore", "edgecomb-gray-hc-173", "Edgecomb Gray", "HC-173", "#d9d3c4", 63.1),
+  color("benjamin-moore", "gray-2121-10", "Gray", "2121-10", "#5d6061", 12),
+  color("behr", "muted-sage-n350-5", "Muted Sage", "N350-5", "#9a9d86", 28),
+  color("sherwin-williams", "ultrawhite-9500", "UltraWhite", "9500", "#f6f7f2", 92.5),
+  color("behr", "ultra-pure-white-upw", "Ultra Pure White", "UPW", "#f8f9f3", 94),
+  color("behr", "ultra-pure-white-w-b-500", "Ultra Pure White", "W-B-500", "#fafdf7", 97.3),
+  color("valspar", "ultra-white-7006-24", "Ultra White", "7006-24", "#f8f8f3", 92.6),
+];
+// Palette-scan stamps: every row but W-B-500 was seen live (Behr, SW and Valspar have scans).
+for (const c of D) c.lastSeenLive = c.slug === "ultra-pure-white-w-b-500" ? null : "2026-10-11";
+const cat2 = new Catalog(D, deltaE2000);
+const kinds = (f: { kind: string; severity: string }[]) => f.map((x) => `${x.severity}:${x.kind}`).sort();
+
+test("normCode folds 'SW 7008', 'No. 281' and leading zeros", () => {
+  assert.equal(normCode("SW 7008"), "7008");
+  assert.equal(normCode("No. 281"), "281");
+  assert.equal(normCode("0852"), "852");
+  assert.equal(normCode("61YY 89/135"), "61YY89/135");
+});
+
+test("Swatch then '— No. 281, LRV n' is checked; 'LRV about n' allows a point either way", () => {
+  const sw = `<Swatch hex="#4D5B6A" name="Stiffkey Blue" brand="Farrow & Ball" href="/colors/farrow-ball/stiffkey-blue-281" />`;
+  const bad = auditText("b.tsx", `<p>${sw} — No. 281, LRV 5. The most dramatic blue.</p>`, cat2);
+  assert.deepEqual(kinds(bad), ["warn:stale-lrv"]);
+  assert.match(bad[0].message, /printed LRV 5, DB has 10/);
+  assert.deepEqual(auditText("b.tsx", `<p>${sw} — No. 281, LRV about 10. The most dramatic blue.</p>`, cat2), []);
+});
+
+test("list form resolved by code: a hex mismatch is an error, an LRV mismatch a warning", () => {
+  const stale = `<li><strong>Alabaster SW 7008 (LRV 82, #F0EAD6)</strong> &#8776; Swiss Coffee OC-45 (BM, LRV 82, #EFE4CE): Nearly identical.</li>`;
+  const f = auditText("b.tsx", `<ul>${stale}</ul>`, cat2);
+  assert.deepEqual(kinds(f), ["error:stale-hex", "error:stale-hex"]);
+  assert.ok(f.some((x) => /Alabaster 7008 printed as #F0EAD6; DB has #edeae0/.test(x.message)));
+  assert.ok(f.some((x) => /Swiss Coffee OC-45 printed as #EFE4CE/.test(x.message)));
+  const current = `<ul><li><strong>Alabaster SW 7008 (LRV 82, #EDEAE0)</strong> &#8776; Swiss Coffee OC-45 (BM, LRV 82, #EEECE1): Nearly identical.</li></ul>`;
+  assert.deepEqual(auditText("b.tsx", current, cat2), []);
+  const lrv = auditText("b.tsx", `<p>Hale Navy (HC-154, LRV 12) is deep.</p>`, cat2);
+  assert.deepEqual(kinds(lrv), ["warn:stale-lrv"]);
+});
+
+test("list form resolved by a name only one brand uses, but not a lowercase or one-word phrase", () => {
+  const meta = `description: "Browse beige paint colors, from Swiss Coffee to Baja Dunes (LRV 42), with hex codes.",`;
+  const f = auditText("page.tsx", meta, cat2);
+  assert.deepEqual(kinds(f), ["warn:stale-lrv"]);
+  assert.match(f[0].message, /Baja Dunes 997: printed LRV 42, DB has 41/);
+  // "Muted sage" describes a palette hex; "Gray (LRV 58)" is a generic word.
+  assert.deepEqual(auditText("p.ts", `<p>Muted sage (LRV around 45) is the only color.</p>`, cat2), []);
+  assert.deepEqual(auditText("p.ts", `<p>A warm Gray (LRV 58) works here.</p>`, cat2), []);
+});
+
+test("a range is not a single LRV: 'Moody Greens (LRV 6–12)'", () => {
+  assert.deepEqual(auditText("b.tsx", `<h2>Moody Greens (LRV 6–12)</h2><p>Hale Navy (HC-154, LRV 6-12) too.</p>`, cat2), []);
+});
+
+test("a fact parenthetical right after a /colors Link describes that color", () => {
+  const link = `<Link href="/colors/sherwin-williams/agreeable-gray-7029" className="x">\n  Agreeable Gray SW 7029\n</Link>{" "}`;
+  const bad = auditText("brand.tsx", `<p>Their best-selling color — ${link}\n(LRV 60, warm undertone, hex #D4CDC3) — has been the top seller.</p>`, cat2);
+  assert.deepEqual(kinds(bad), ["error:stale-hex"]);
+  assert.match(bad[0].message, /Agreeable Gray 7029 printed as #D4CDC3; DB has #d1cbc1/);
+  const ok = auditText("brand.tsx", `<p>Their best-selling color — ${link}\n(LRV 60, warm undertone, hex #D1CBC1) — has been the top seller.</p>`, cat2);
+  assert.deepEqual(ok, []);
+  // A different color named between the link and the parenthetical takes the fact.
+  assert.deepEqual(auditText("brand.tsx", `<p>${link} pairs with Hale Navy (HC-154, LRV 8).</p>`, cat2), []);
+});
+
+test("a published LRV that the hex-computed DB value does not match is info, not a warning", () => {
+  const f = auditText("b.tsx", `<p>Only UltraWhite (SW 9500, published LRV 93.5) reflects more.</p>`, cat2);
+  assert.deepEqual(kinds(f), ["info:stale-lrv"]);
+});
+
+test("keyed editorial: 'at LRV n' in a later sentence is checked unless another color is named first", () => {
+  const entry = (body: string) => `export const E = {
+  "benjamin-moore/hale-navy-hc-154": (
+    <>
+      <p>
+        ${body}
+      </p>
+    </>
+  ),
+};`;
+  const later = auditText("e.tsx", entry(`Hale Navy is the navy of kitchen islands. What sets it apart is a gray-green softness — at\n        LRV 18 it&apos;s deep.`), cat2);
+  assert.deepEqual(kinds(later), ["warn:stale-lrv"]);
+  assert.match(later[0].message, /Hale Navy HC-154: printed LRV 18, DB has 8/);
+  assert.deepEqual(auditText("e.tsx", entry(`Hale Navy is deep — at LRV 8 it reads navy.`), cat2), []);
+  assert.deepEqual(auditText("e.tsx", entry(`It has an LRV of about 9, so it reads navy.`), cat2), []);
+  // the neighbor's LRV, named by code first
+  assert.deepEqual(auditText("e.tsx", entry(`Edgecomb Gray (HC-173) is often suggested, but at LRV 63.1 it is lighter.`), cat2), []);
+});
+
+test("links to a row the brand's palette scan never saw are warned", () => {
+  const f = auditText("b.tsx", `<p>See <Link href="/colors/behr/ultra-pure-white-w-b-500">it</Link>.</p>`, cat2);
+  assert.deepEqual(kinds(f), ["warn:not-live-link"]);
+  // without scan data (the fixtures above), nothing is "not live"
+  assert.deepEqual(auditText("b.tsx", `<p>See <Link href="/colors/behr/night-club-n500-7">it</Link>.</p>`, cat), []);
+});
+
+test("brand-count copy: named brands plus 'N more' must equal the DB count", () => {
+  const layout = `  description:\n    "Match any color across Sherwin-Williams, Benjamin Moore, Behr & 11 more brands. 26,000+ colors.",`;
+  const f = auditBrandCounts("layout.tsx", layout, 13);
+  assert.equal(f.length, 1);
+  assert.match(f[0].message, /after 3 named brands implies 14; the DB has 13/);
+  assert.deepEqual(auditBrandCounts("layout.tsx", layout.replace("11 more", "10 more"), 13), []);
+  // JSX between the names does not hide them; "&amp;" counts as "&"
+  const jsx = `<p>From <Link href="/brands/behr">Behr</Link>, PPG, and 4 more brands.</p>`;
+  assert.match(auditBrandCounts("m.tsx", jsx, 13)[0].message, /after 2 named brands implies 6/);
+  assert.match(auditBrandCounts("m.tsx", `"SW, BM &amp; 12 more brands"`, 13)[0].message, /implies 14/);
+});
+
+test("brand-count copy: 'N other brands' is count - 1; a bare 'N brands' may not exceed the count", () => {
+  assert.deepEqual(auditBrandCounts("b.tsx", `<p>its closest equivalents in 12 other brands</p>`, 13), []);
+  assert.match(auditBrandCounts("b.tsx", `<p>its closest matches in 13 other brands</p>`, 13)[0].message, /implies 14 brands/);
+  assert.match(auditBrandCounts("p.tsx", `"over 26,000 colors across 14 major brands"`, 13)[0].message, /more than the 13/);
+  assert.deepEqual(auditBrandCounts("p.tsx", `"across 13 brands" and "the 7 brands with popular colors"`, 13), []);
+});
+
+test("BRAND_COUNT must equal the brands table", () => {
+  assert.deepEqual(auditBrandTotal(13, 13), []);
+  assert.deepEqual(kinds(auditBrandTotal(14, 13)), ["error:brand-count"]);
+});
+
+const RULES: CatalogRules = {
+  lrvRange: [2, 94.5],
+  lrvAllowlist: new Set(["ral/jet-black-9005"]),
+  nameAllowlist: new Set(["dunn-edwards/maker-styled-x1"]),
+  nullUndertone: "error",
+  nameMechanics: "error",
+};
+
+test("DB pass: implausible LRV, null undertone, entity and mis-cased names", () => {
+  const rows: AuditColor[] = [
+    { ...color("valspar", "bright-1", "Bright", "1", "#ffffff", 100), undertone: "neutral" },
+    { ...color("valspar", "deep-2", "Deep", "2", "#0a0a0a", 0.3), undertone: "neutral" },
+    { ...color("valspar", "ok-3", "Fine", "3", "#808080", 21), undertone: "neutral" },
+    { ...color("ppg", "jet-black-9005", "Jet Black", "9005", "#0a0a0a", 0.3), brandSlug: "ral", undertone: "neutral" },
+    { ...color("ppg", "harper-x27-s-blue", "Harper&#x27;s Blue", "70BG", "#5577aa", 20), undertone: "cool" },
+    { ...color("dutch-boy", "whale-s-tail", "Whale'S Tail", "430", "#556677", 20), undertone: "cool" },
+    { ...color("dutch-boy", "o-brien-orange", "O'Brien Orange", "431", "#cc6633", 20), undertone: "warm" },
+    { ...color("dutch-boy", "maker-styled-x1", "Rock'N Roll", "432", "#cc6633", 20), brandSlug: "dunn-edwards", undertone: "warm" },
+    { ...color("valspar", "no-undertone", "Plain", "4", "#808080", 21), undertone: null },
+    color("valspar", "not-loaded", "Fixture", "5", "#808080", 21), // undertone undefined: not loaded, not flagged
+  ];
+  const f = auditCatalogRows(rows, RULES);
+  assert.deepEqual(kinds(f), ["error:name-mechanics", "error:name-mechanics", "error:null-undertone", "warn:lrv-range", "warn:lrv-range"]);
+  assert.ok(f.some((x) => /HTML entity/.test(x.message) && /Harper/.test(x.message)));
+  assert.ok(f.some((x) => /Whale'S Tail/.test(x.message)));
+  assert.ok(!f.some((x) => /O'Brien|Rock'N|jet-black/.test(x.message)));
+  // The CLI ships these as warnings until the DB backlog is fixed.
+  assert.ok(auditCatalogRows(rows, { ...RULES, nullUndertone: "warn", nameMechanics: "warn" }).every((x) => x.severity === "warn"));
+});
+
+const W = (o: Partial<WhiteRow>): WhiteRow => ({
+  brand: "Behr",
+  brandSlug: "behr",
+  name: "Ultra Pure White",
+  code: "UPW",
+  slug: "ultra-pure-white-upw",
+  lrv: 94,
+  source: "behr.com",
+  estimated: false,
+  checked: "2026-10-23",
+  ...o,
+});
+const valsparWhite = { brand: "Valspar", brandSlug: "valspar", name: "Ultra White", code: "7006-24", slug: "ultra-white-7006-24", source: "estimate from hex", estimated: true };
+
+test("lightest whites: live slug, matching code, published LRV vs the feed, estimated LRV vs the DB", () => {
+  const feeds = new Map([
+    ["behr", [{ code: "UPW", name: "Ultra Pure White", hex: "#F8F9F3", lrv: 94 }]],
+    ["sherwin-williams", [{ code: "9500", name: "UltraWhite", hex: "#f6f7f2", lrv: 93.5 }]],
+  ]);
+  const good = [
+    W({}),
+    W({ brand: "Sherwin-Williams", brandSlug: "sherwin-williams", name: "UltraWhite", code: "SW 9500", slug: "ultrawhite-9500", lrv: 93.5 }),
+    W({ ...valsparWhite, lrv: 92.6 }),
+  ];
+  assert.deepEqual(auditLightestWhites("w.ts", "", good, cat2, feeds), []);
+  assert.deepEqual(auditLightestWhites("w.ts", "", good, cat2), []); // no feeds: DB checks only
+
+  // The July 2026 row: Behr W-B-500 at 97.3, not in Behr's live palette.
+  const july = auditLightestWhites("w.ts", `x\n  { slug: "ultra-pure-white-w-b-500" }`, [W({ code: "W-B-500", slug: "ultra-pure-white-w-b-500", lrv: 97.3 })], cat2, feeds);
+  assert.deepEqual(kinds(july), ["error:whites-data", "warn:whites-data"]);
+  assert.equal(july[0].line, 2);
+  assert.ok(july.some((x) => /not in Behr's last palette scan/.test(x.message)));
+
+  const wrong = auditLightestWhites(
+    "w.ts",
+    "",
+    [
+      W({ lrv: 97.3 }), // feed says 94
+      W({ slug: "no-such-row" }),
+      W({ code: "PR-W15" }), // code does not match the row, and is not in the feed
+      W({ ...valsparWhite, lrv: 95 }),
+      W({ source: "estimate from hex" }), // flag and source disagree
+    ],
+    cat2,
+    feeds,
+  );
+  assert.deepEqual(kinds(wrong), ["error:whites-data", "warn:whites-data", "warn:whites-data", "warn:whites-data", "warn:whites-data", "warn:whites-data"]);
+  assert.ok(wrong.some((x) => /published LRV 97.3, Behr's feed says 94/.test(x.message)));
+  assert.ok(wrong.some((x) => /estimated LRV 95, DB computes 92.6/.test(x.message)));
+});
+
+test("shipped lightest-whites rows are well formed", async () => {
+  const { LIGHTEST_WHITES } = await import("../../src/data/lightest-whites.ts");
+  for (const r of LIGHTEST_WHITES) {
+    assert.match(r.slug, /^[a-z0-9-]+$/);
+    assert.match(r.checked, /^\d{4}-\d{2}-\d{2}$/);
+    assert.equal(r.estimated, /estimate/i.test(r.source), `${r.brand} ${r.name}: estimated flag vs source`);
+  }
 });

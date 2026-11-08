@@ -7,11 +7,17 @@
  * cluster Aug–Oct; see docs/coty-playbook.md for the runbook and the per-brand
  * announcement windows.
  *
- * For the input hex it converts sRGB → CIE LAB (D65), then calls the existing
- * nearest_colors_by_lab RPC (migration 010) once per brand (in_limit 3) and
+ * For the input hex it converts sRGB → CIE LAB (D65), then calls the
+ * nearest_colors_by_lab_v2 RPC (migration 015; v1 from migration 010 when 015 is
+ * not applied yet) once per brand (in_limit 3) and
  * refines each candidate with the exact CIEDE2000 formula — the same two-stage
  * method the live matcher uses (src/lib/color-match.ts) — keeping the closest
  * color per brand.
+ *
+ * Retired winners are flagged (v2 only, since v1 has no availability): the
+ * table marks them, the JSX row carries a RETIRED comment, and the closest
+ * current color in that brand is printed so the post can name a color readers
+ * can still buy off the shelf.
  *
  * Output: (1) a ranked table for the terminal, (2) a ready-to-paste JSX block
  * for a new src/lib/blog-posts.tsx entry, (3) a same-day publish checklist.
@@ -76,6 +82,7 @@ interface CandidateRow {
   lab_b_val: number | string | null;
   brand_name: string;
   brand_slug: string;
+  availability?: string | null; // v2 only
 }
 
 interface BrandMatch {
@@ -86,6 +93,61 @@ interface BrandMatch {
   hex: string;
   slug: string;
   deltaE: number;
+  availability: string; // "current" when unknown (v1 fallback)
+  closestCurrent?: BrandMatch; // set when this winner is retired or discontinued
+}
+
+// v2 adds availability; fall back to v1 (PGRST202 = function not found) until
+// migration 015 is applied. Read-only either way.
+let useV2 = true;
+async function nearest(inputLab: Lab, brandSlug: string, limit: number, currentOnly = false) {
+  const args: Record<string, unknown> = {
+    in_l: inputLab.L,
+    in_a: inputLab.a,
+    in_b: inputLab.b,
+    in_brand: brandSlug,
+    in_limit: limit,
+  };
+  if (useV2) {
+    const v2 = await supabase.rpc("nearest_colors_by_lab_v2", currentOnly ? { ...args, in_current_only: true } : args);
+    if (!v2.error) return (v2.data ?? []) as CandidateRow[];
+    if (v2.error.code !== "PGRST202" && v2.error.code !== "42883") {
+      throw new Error(`RPC nearest_colors_by_lab_v2 failed for ${brandSlug}: ${v2.error.message}`);
+    }
+    useV2 = false;
+    console.error("Note: nearest_colors_by_lab_v2 is not applied yet (migration 015). Retired colors cannot be flagged.");
+  }
+  if (currentOnly) return [];
+  const { data, error } = await supabase.rpc("nearest_colors_by_lab", args);
+  if (error) throw new Error(`RPC nearest_colors_by_lab failed for ${brandSlug}: ${error.message}`);
+  return (data ?? []) as CandidateRow[];
+}
+
+function closestOf(inputLab: Lab, brand: { name: string; slug: string }, rows: CandidateRow[]): BrandMatch | null {
+  let best: BrandMatch | null = null;
+  for (const row of rows) {
+    const labL = num(row.lab_l);
+    const labA = num(row.lab_a);
+    const labB = num(row.lab_b_val);
+    const candidateLab: Lab =
+      labL != null && labA != null && labB != null
+        ? { L: labL, a: labA, b: labB }
+        : rgbToLab(row.rgb_r, row.rgb_g, row.rgb_b);
+    const deltaE = Number(deltaE2000(inputLab, candidateLab).toFixed(2));
+    if (!best || deltaE < best.deltaE) {
+      best = {
+        brandName: brand.name,
+        brandSlug: brand.slug,
+        colorName: row.name,
+        colorNumber: row.color_number,
+        hex: row.hex,
+        slug: row.slug,
+        deltaE,
+        availability: row.availability ?? "current",
+      };
+    }
+  }
+  return best;
 }
 
 async function main() {
@@ -135,37 +197,10 @@ async function main() {
   for (const brand of brands) {
     if (announced && brand.slug === announced.slug) continue;
 
-    const { data, error } = await supabase.rpc("nearest_colors_by_lab", {
-      in_l: inputLab.L,
-      in_a: inputLab.a,
-      in_b: inputLab.b,
-      in_brand: brand.slug,
-      in_limit: 3,
-    });
-    if (error) throw new Error(`RPC nearest_colors_by_lab failed for ${brand.slug}: ${error.message}`);
-
-    const rows = (data ?? []) as CandidateRow[];
-    let best: BrandMatch | null = null;
-    for (const row of rows) {
-      const labL = num(row.lab_l);
-      const labA = num(row.lab_a);
-      const labB = num(row.lab_b_val);
-      const candidateLab: Lab =
-        labL != null && labA != null && labB != null
-          ? { L: labL, a: labA, b: labB }
-          : rgbToLab(row.rgb_r, row.rgb_g, row.rgb_b);
-      const deltaE = Number(deltaE2000(inputLab, candidateLab).toFixed(2));
-      if (!best || deltaE < best.deltaE) {
-        best = {
-          brandName: brand.name,
-          brandSlug: brand.slug,
-          colorName: row.name,
-          colorNumber: row.color_number,
-          hex: row.hex,
-          slug: row.slug,
-          deltaE,
-        };
-      }
+    const best = closestOf(inputLab, brand, await nearest(inputLab, brand.slug, 3));
+    if (best && best.availability !== "current") {
+      const alt = closestOf(inputLab, brand, await nearest(inputLab, brand.slug, 3, true));
+      if (alt) best.closestCurrent = alt;
     }
     if (best) results.push(best);
   }
@@ -190,7 +225,7 @@ function printTable(
   console.log("\n=== Closest match per brand ===");
   console.log(`Reference: ${refLabel} · ${refBrand} · ${hex}\n`);
 
-  const head = ["Brand", "Color", "Number", "Hex", "ΔE", "Closeness"];
+  const head = ["Brand", "Color", "Number", "Hex", "ΔE", "Closeness", "Status"];
   const rows = results.map((m) => [
     m.brandName,
     m.colorName,
@@ -198,6 +233,7 @@ function printTable(
     m.hex.toUpperCase(),
     m.deltaE.toFixed(2),
     closenessLabel(m.deltaE),
+    m.availability === "current" ? "" : m.availability.toUpperCase(),
   ]);
   const widths = head.map((h, i) =>
     Math.max(h.length, ...rows.map((r) => r[i].length)),
@@ -207,6 +243,21 @@ function printTable(
   console.log(line(head));
   console.log(widths.map((w) => "-".repeat(w)).join("  "));
   for (const r of rows) console.log(line(r));
+
+  const retired = results.filter((m) => m.availability !== "current");
+  if (retired.length > 0) {
+    console.log(`
+⚠️  ${retired.length} winner(s) are retired or discontinued. Say so in the post, or swap in the closest current color:`);
+    for (const m of retired) {
+      const alt = m.closestCurrent;
+      console.log(
+        `   - ${m.brandName}: ${m.colorName} is ${m.availability}. ` +
+          (alt
+            ? `Closest current: ${alt.colorName}${alt.colorNumber ? ` (${alt.colorNumber})` : ""} ${alt.hex.toUpperCase()}, ${closenessLabel(alt.deltaE).toLowerCase()}.`
+            : "No current color found in this brand."),
+      );
+    }
+  }
 }
 
 /** (2) Ready-to-paste JSX for a new src/lib/blog-posts.tsx entry. */
@@ -231,7 +282,8 @@ function printJsx(
     const href = `/colors/${m.brandSlug}/${m.slug}`;
     const close = closenessLabel(m.deltaE);
     rowLines.push(
-      `                { brand: ${j(m.brandName)}, swatch: { hex: ${j(m.hex.toUpperCase())}, name: ${j(swatchName)}, href: ${j(href)} }, close: ${j(close)} },`,
+      `                { brand: ${j(m.brandName)}, swatch: { hex: ${j(m.hex.toUpperCase())}, name: ${j(swatchName)}, href: ${j(href)} }, close: ${j(close)} },` +
+        (m.availability === "current" ? "" : ` // ${m.availability.toUpperCase()}: say so in the copy or use the closest current color (see the table output)`),
     );
   }
 

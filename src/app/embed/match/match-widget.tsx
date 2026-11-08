@@ -2,6 +2,9 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { closenessLabel } from "@/lib/closeness";
+import { pickBestPerBrand } from "@/lib/best-per-brand";
+import { RetiredChip } from "@/components/retired-chip";
+import type { ColorAvailability } from "@/lib/types";
 
 const SITE = "https://www.paintcolorhq.com";
 const UTM = "utm_source=embed&utm_medium=widget&utm_campaign=match";
@@ -14,6 +17,7 @@ interface ApiMatch {
   colorSlug: string;
   colorNumber: string | null;
   deltaE: number;
+  availability?: ColorAvailability;
 }
 
 // Plain-language closeness — never expose the raw Delta E number (site convention).
@@ -44,18 +48,14 @@ export function MatchWidget() {
     setLoading(true);
     setError(false);
     try {
-      const res = await fetch(`/api/color-match?hex=${encodeURIComponent(h)}`);
+      const res = await fetch(`/api/color-match?hex=${encodeURIComponent(h)}&perBrand=1`);
       if (!res.ok) throw new Error();
-      const data: { matches: ApiMatch[] } = await res.json();
-      // Dedupe to the single closest match per brand (the cross-brand spread is
-      // the point), then show the top few. API returns sorted by Delta E asc.
-      const seen = new Set<string>();
-      const perBrand = data.matches.filter((m) => {
-        if (seen.has(m.brandSlug)) return false;
-        seen.add(m.brandSlug);
-        return true;
-      });
-      setMatches(perBrand.slice(0, 6));
+      const data: { matches: ApiMatch[]; bestPerBrand?: ApiMatch[] } = await res.json();
+      // The single closest match per brand (the cross-brand spread is the
+      // point), then the top few. bestPerBrand is picked from a 500-color pool,
+      // so brands that miss the overall top 10 still get a row; the dedupe of
+      // `matches` is the fallback for an older cached response without it.
+      setMatches((data.bestPerBrand ?? pickBestPerBrand(data.matches)).slice(0, 6));
     } catch {
       setError(true);
       setMatches([]);
@@ -164,6 +164,10 @@ export function MatchWidget() {
                         {m.brandName}{m.colorNumber ? ` · ${m.colorNumber}` : ""}
                       </span>
                     </span>
+                    <RetiredChip
+                      availability={m.availability}
+                      className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold text-gray-500"
+                    />
                     <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${c.cls}`}>{c.label}</span>
                   </a>
                 </li>

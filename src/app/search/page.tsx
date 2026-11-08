@@ -55,10 +55,10 @@ export default function SearchPage() {
       <section className="py-16 px-6 md:px-12 bg-surface-container-low">
         <div className="max-w-3xl mx-auto text-on-surface-variant leading-relaxed">
           <h2 className="font-headline text-3xl font-bold text-on-surface mb-6">Search tips</h2>
-          <p className="mb-4"><strong>By name</strong> — partial names work. Typing &ldquo;agreeable&rdquo; returns Agreeable Gray; &ldquo;chantilly&rdquo; returns Chantilly Lace. Brand prefixes are ignored, so you don&apos;t need to know who makes the color.</p>
-          <p className="mb-4"><strong>By color number</strong> — brand codes work directly. &ldquo;7029&rdquo; pulls Agreeable Gray (Sherwin-Williams) and any other color ending in 7029 across brands. Dashes are optional: &ldquo;HDC-NT-11&rdquo; and &ldquo;hdcnt11&rdquo; both match.</p>
-          <p className="mb-4"><strong>By hex code</strong> — paste a six-digit hex (with or without the #) to find the closest paint colors across all brands. This is useful when a designer hands you a screen color rather than a paint name, or when you&apos;re matching a fabric or tile.</p>
-          <p>Benjamin Moore colors are indexed under their full name — &ldquo;Nile Green,&rdquo; not &ldquo;Nile&rdquo; — because BM names are frequently truncated in online references. If a search seems to miss a BM color, try the CC or OC number instead.</p>
+          <p className="mb-4"><strong>By name.</strong> Partial names work: &ldquo;agreeable&rdquo; finds Agreeable Gray and &ldquo;chantilly&rdquo; finds Chantilly Lace. &ldquo;Grey&rdquo; and &ldquo;gray&rdquo; are the same search. Add a brand to narrow the results, as in &ldquo;Behr Swiss Coffee&rdquo; or &ldquo;Sherwin Williams Alabaster&rdquo;. If that brand has no match, you see every brand&apos;s matches instead.</p>
+          <p className="mb-4"><strong>By color number.</strong> Type the number the way it appears on the chip or the can. &ldquo;SW 7029&rdquo;, &ldquo;SW7029&rdquo; and &ldquo;7029&rdquo; all find Agreeable Gray. Spaces and dashes are optional, so &ldquo;OC17&rdquo;, &ldquo;OC 17&rdquo; and &ldquo;OC-17&rdquo; all find White Dove, and &ldquo;hdcnt11&rdquo; finds Behr HDC-NT-11. Benjamin Moore&apos;s OC and PM numbers work alongside the four-digit numbers, so &ldquo;OC-117&rdquo; finds Simply White (2143-70).</p>
+          <p className="mb-4"><strong>By hex or RGB.</strong> Paste a six-digit hex code, with or without the #, or an RGB value such as &ldquo;rgb(240, 236, 228)&rdquo;. If no paint is that exact color, you get the closest paint colors across all brands. This helps when a designer hands you a screen color rather than a paint name, or when you are matching a fabric or tile.</p>
+          <p>Search one color at a time. In a list separated by commas, only the first color is searched.</p>
         </div>
       </section>
 

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { checkSlugs, checkUrls, MAX_URLS } from "./indexnow-lib.ts";
 
-const NOW = new Date("2026-10-11T05:19:00Z");
+const NOW = new Date("2026-10-11T09:19:00Z");
 const DATES: Record<string, string> = {
   "how-to-match-paint-color": "2026-10-11",
   "how-to-choose-trim-color": "2026-10-13",
@@ -24,7 +24,7 @@ test("checkSlugs: a future-dated post is held back with its date", () => {
 });
 
 test("checkSlugs: the post becomes live on its date", () => {
-  const r = checkSlugs(["how-to-choose-trim-color"], dateOf, new Date("2026-10-13T00:00:00Z"));
+  const r = checkSlugs(["how-to-choose-trim-color"], dateOf, new Date("2026-10-13T04:00:00Z"));
   assert.deepEqual(r.live, ["how-to-choose-trim-color"]);
 });
 

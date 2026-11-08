@@ -75,7 +75,13 @@ function saveLog(log: IgPublishedLog) {
 }
 
 // ---- Graph API ----
-async function graph(node: string, params: Record<string, string>, method: "GET" | "POST"): Promise<any> {
+/** The Graph API fields this script reads: the id a create call returns, and a container status. */
+interface GraphResponse {
+  id: string;
+  status_code?: string;
+}
+
+async function graph(node: string, params: Record<string, string>, method: "GET" | "POST"): Promise<GraphResponse> {
   const body = new URLSearchParams({ ...params, access_token: TOKEN! });
   const url = method === "GET" ? `${GRAPH}/${node}?${body.toString()}` : `${GRAPH}/${node}`;
   const res = await fetch(url, {
