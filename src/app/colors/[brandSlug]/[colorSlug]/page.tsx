@@ -28,7 +28,7 @@ import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { COTY_BY_COLOR } from "@/lib/color-of-the-year";
-import { FORMER_NAMES } from "@/lib/former-names";
+import { formerNameFor } from "@/lib/former-names";
 import { closenessLabel } from "@/lib/closeness";
 import { availabilityStatus, RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
 import { findHueBand } from "@/lib/hue-bands";
@@ -307,9 +307,9 @@ export default async function ColorPage({ params }: PageProps) {
               <Link href="/discontinued" className="underline underline-offset-4">About retired and discontinued colors</Link>
             </p>
           )}
-          {FORMER_NAMES[`${brandSlug}/${colorSlug}`] && FORMER_NAMES[`${brandSlug}/${colorSlug}`] !== color.name && (
+          {formerNameFor(brandSlug, colorSlug, color.name) && (
             <p className={`-mt-4 mb-8 text-sm ${textMutedClass}`}>
-              Previously listed as {FORMER_NAMES[`${brandSlug}/${colorSlug}`]}
+              Previously listed as {formerNameFor(brandSlug, colorSlug, color.name)}
             </p>
           )}
           {COTY_BY_COLOR[`${brandSlug}/${colorSlug}`] && (
