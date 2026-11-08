@@ -142,3 +142,16 @@ export function mergePunctuation(dbName: string, feedName: string): string {
   }
   return out.replace(/\s+/g, ' ').trim();
 }
+
+/**
+ * Lowercases a lone capital after a mid-word apostrophe: "Ocean'S Depth" ->
+ * "Ocean's Depth", "A Li'L Cheeky" -> "A Li'l Cheeky". The colornerd source
+ * files title-cased every letter after an apostrophe, which put 84 such names
+ * in the catalog (found 2026-11-03). Only a single letter that ends the word
+ * is touched, so styled names with more letters after the apostrophe
+ * (O'Reilly Green, O'Brien Orange, Cote D'Azur) and a leading 'N ("Rock 'N
+ * Roll") keep their capitals.
+ */
+export function fixApostropheCase(name: string): string {
+  return name.replace(/(\p{L})(['’])(\p{Lu})(?!\p{L})/gu, (_, before, mark, letter) => before + mark + letter.toLowerCase());
+}
