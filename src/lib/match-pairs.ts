@@ -1,9 +1,10 @@
-import pairPaths from "@/generated/match-sitemap-pairs.json";
+import sitemapSnapshot from "@/generated/sitemap.json";
 import { MAJOR_MATCH_BRANDS } from "./popular-colors";
 
 // The individual /match/[brand]/[color]-to-[target] pages the sitemap lists,
-// written by scripts/build-sitemap-data.ts before every dev and build. Pages
-// that link match pairs read this set so they only link indexable pairs.
+// from the snapshot scripts/build-sitemap-data.ts writes before every dev and
+// build (CI uses ci/sitemap.fixture.json). Pages that link match pairs read
+// this set so they only link indexable pairs.
 // Added 2026-11-08: a URL Inspection sample found 27 of 41 sitemap match
 // pages never crawled, and no color or brand page linked any of them.
 
@@ -23,7 +24,7 @@ function parse(path: string): MatchPair | null {
   return { path, sourceBrand: m[1], colorSlug: m[2].slice(0, -`-to-${target}`.length), targetBrand: target };
 }
 
-const PAIRS: MatchPair[] = (pairPaths as string[]).map(parse).filter((p): p is MatchPair => p !== null);
+const PAIRS: MatchPair[] = (sitemapSnapshot.matches as string[]).map(parse).filter((p): p is MatchPair => p !== null);
 
 const byColor = new Map<string, MatchPair[]>();
 for (const p of PAIRS) {
