@@ -68,11 +68,15 @@ const GTAG_INIT = `
   // (2026-10-02): Windows Chrome at screen sizes real visitors almost never
   // have, ~4s sessions, ~0% engagement. Tagged so a GA4 data filter on
   // traffic_type 'bot' can drop them; nothing else about the page changes.
+  // Added 2026-11-08: 1280x1600 on any OS (a rendering crawler that reports no
+  // browser or OS, so it cannot be firewalled safely) and Linux at 1536x960.
+  // Windows at 1536x960 stays untagged because real laptops use that size.
   var sr = screen.width + 'x' + screen.height;
   var ua = navigator.userAgent;
   var isBot = navigator.webdriver === true ||
+    sr === '1280x1600' ||
     (/Windows/.test(ua) && ['1280x1200', '800x600', '600x800', '1600x1600'].indexOf(sr) !== -1) ||
-    (/Linux/.test(ua) && !/Android/.test(ua) && sr === '1440x900');
+    (/Linux/.test(ua) && !/Android/.test(ua) && ['1440x900', '1536x960'].indexOf(sr) !== -1);
   var trafficType = isInternal ? 'internal' : isBot ? 'bot' : null;
   gtag('config', 'G-056NR93JLK', trafficType ? { traffic_type: trafficType } : {});
 `;
