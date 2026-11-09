@@ -2,6 +2,7 @@ import { seaSaltFacts } from "./color-facts";
 import { type ReactNode } from "react";
 import Link from "next/link";
 import { isLive, canRender } from "./blog-publish";
+import { getEcosAwinUrl } from "./affiliate";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -9581,7 +9582,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Nursery paint: what to check on the label</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>VOCs.</strong> The EPA lists paints among the household products that release volatile organic compounds (VOCs) indoors. Each of the big three brands sells an interior line it labels zero-VOC: Benjamin Moore Natura, Sherwin-Williams Harmony and Behr Premium Plus Interior. The label usually describes the base paint, and tinting adds colorant, so check the VOC statement for the color and product you actually buy.
+          <strong>VOCs.</strong> The EPA lists paints among the household products that release volatile organic compounds (VOCs) indoors. Each of the big three brands sells an interior line it labels zero-VOC: Benjamin Moore Natura, Sherwin-Williams Harmony and Behr Premium Plus Interior. ECOS Paints sells <a href={getEcosAwinUrl("https://ecospaints.net/browse-all/lullaby-eggshell-paint", "nursery-guide")} target="_blank" rel="sponsored nofollow noopener noreferrer" className="text-brand-blue hover:underline">Lullaby Eggshell</a> for nurseries on its own site and labels it zero-VOC. The label usually describes the base paint, and tinting adds colorant, so check the VOC statement for the color and product you actually buy.
+        </p>
+        <p className="mt-3 text-sm text-gray-500">
+          The ECOS link above is an affiliate link through Awin. Paint Color HQ earns a commission if you buy through it, at no extra cost to you. ECOS recommends ordering a sample or color card, because colors on a screen are not always accurate.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Ventilation and timing.</strong> The EPA&apos;s guidance is to increase ventilation when using products that emit VOCs and to meet or exceed any label precautions. Follow the can&apos;s dry and recoat times, keep windows open while you paint and afterward, and finish well before the baby moves in.

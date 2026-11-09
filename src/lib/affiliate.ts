@@ -28,8 +28,12 @@
 //     Ace Hardware affiliate deep-link prefix, same format. Ace stocks Benjamin
 //     Moore, so BM colors route their buy CTA to an Ace search (BM .com stays as
 //     the "View official color" reference).
+//   NEXT_PUBLIC_AWIN_PUBLISHER_ID
+//     Awin publisher ID. Optional — defaults to PaintColorHQ's own 3135251.
 // Note: Sherwin-Williams has no consumer affiliate program (own stores) — its
 // brand link stays plain and Samplize captures that purchase intent instead.
+
+import { HEAD_COLOR_PUSH } from "./head-colors";
 
 export interface SampleLink {
   label: string;
@@ -38,6 +42,8 @@ export interface SampleLink {
   affiliate: boolean;
   /** render as the prominent primary CTA */
   primary?: boolean;
+  /** set when the page's disclosure has to name this program */
+  program?: "ecos";
 }
 
 interface SampleInfo {
@@ -69,6 +75,11 @@ const SAMPLIZE_PREFIX = process.env.NEXT_PUBLIC_SAMPLIZE_AFFILIATE_PREFIX;
 // Amazon Associates tag. Defaults to PaintColorHQ's paintcolorhq-20 (the
 // tracking ID set in Vercel 2026-07-05), not the sunset GreatPickDeals tag.
 const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_ASSOCIATE_TAG || "paintcolorhq-20";
+// Awin publisher ID. It is public in every Awin link, so like AMAZON_TAG it has
+// a coded fallback and needs no Vercel variable.
+const AWIN_PUBLISHER_ID = process.env.NEXT_PUBLIC_AWIN_PUBLISHER_ID || "3135251";
+// ECOS Paints on Awin (8%, 60-day cookie). ECOS is not a catalog brand.
+const ECOS_AWIN_MERCHANT_ID = "92075";
 const HOMEDEPOT_PREFIX = process.env.NEXT_PUBLIC_HOMEDEPOT_AFFILIATE_PREFIX;
 const LOWES_PREFIX = process.env.NEXT_PUBLIC_LOWES_AFFILIATE_PREFIX;
 const ACE_PREFIX = process.env.NEXT_PUBLIC_ACE_AFFILIATE_PREFIX;
@@ -87,6 +98,16 @@ export const AFFILIATE_ENABLED = Boolean(
  */
 export function getAmazonSearchUrl(query: string): string {
   return `https://www.amazon.com/s?k=${encodeURIComponent(query)}&tag=${AMAZON_TAG}`;
+}
+
+/**
+ * Awin deep link to a page on ecospaints.net. `clickref` names the surface
+ * ("nursery-guide", "color-page") so Awin reports split sales by placement.
+ * ECOS's program terms require a visible FTC disclosure naming ECOS and Awin on
+ * every page that carries one of these links.
+ */
+export function getEcosAwinUrl(destination: string, clickref: string): string {
+  return `https://www.awin1.com/cread.php?awinmid=${ECOS_AWIN_MERCHANT_ID}&awinaffid=${AWIN_PUBLISHER_ID}&ued=${encodeURIComponent(destination)}&clickref=${encodeURIComponent(clickref)}`;
 }
 
 /**
@@ -139,6 +160,20 @@ export function getSampleLinks(info: SampleInfo): SampleLink[] {
     label: "Samples & supplies on Amazon",
     url: amazonUrl,
     affiliate: true,
+  });
+
+  // Head-color page bodies are frozen until 2026-11-27: delete this line after that date.
+  if (HEAD_COLOR_PUSH.includes(`${info.brandSlug}/${info.colorSlug}`)) return links;
+
+  // ECOS Paints free color match (Awin, 8%), added 2026-11-09. Last in the list,
+  // so never the hero CTA. The page can't take a color in its URL, so the reader
+  // enters brand and color on ECOS's form. Kill rule: remove if it draws under
+  // 10 clicks in its first 30 days.
+  links.push({
+    label: `Have ECOS Paints match ${info.colorName}`,
+    url: getEcosAwinUrl("https://ecospaints.net/color-matching", "color-page"),
+    affiliate: true,
+    program: "ecos",
   });
 
   return links;
