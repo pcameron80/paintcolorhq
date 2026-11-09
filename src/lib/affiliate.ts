@@ -34,6 +34,7 @@
 // brand link stays plain and Samplize captures that purchase intent instead.
 
 import { HEAD_COLOR_PUSH } from "./head-colors";
+import { displayColorNumber } from "./text";
 
 export interface SampleLink {
   label: string;
@@ -111,6 +112,21 @@ export function getEcosAwinUrl(destination: string, clickref: string): string {
 }
 
 /**
+ * ECOS's color-match page with its form opened and filled in for one color. Any
+ * cm_ parameter opens the form, and a color with no number leaves that field out.
+ * cm_number is the number as the brand prints it, never a hex value.
+ */
+function getEcosColorMatchUrl(info: SampleInfo): string {
+  const params = new URLSearchParams({ cm_brand: info.brandName, cm_name: info.colorName });
+  const code = info.colorNumber?.trim();
+  if (code) {
+    const printed = displayColorNumber(info.brandSlug, code);
+    params.set("cm_number", info.brandSlug === "sherwin-williams" ? `SW ${printed}` : printed);
+  }
+  return `https://ecospaints.net/color-matching?${params}`;
+}
+
+/**
  * Wrap an existing retailer URL in an affiliate deep-link when a program is
  * configured for that retailer. Returns the plain URL + affiliate:false otherwise,
  * so a missing ID never breaks a link. Used on the "Buy at …" retailer links.
@@ -166,12 +182,11 @@ export function getSampleLinks(info: SampleInfo): SampleLink[] {
   if (HEAD_COLOR_PUSH.includes(`${info.brandSlug}/${info.colorSlug}`)) return links;
 
   // ECOS Paints free color match (Awin, 8%), added 2026-11-09. Last in the list,
-  // so never the hero CTA. The page can't take a color in its URL, so the reader
-  // enters brand and color on ECOS's form. Kill rule: remove if it draws under
-  // 10 clicks in its first 30 days.
+  // so never the hero CTA. The link opens ECOS's form with this color filled in.
+  // Kill rule: remove if it draws under 10 clicks in its first 30 days.
   links.push({
     label: `Have ECOS Paints match ${info.colorName}`,
-    url: getEcosAwinUrl("https://ecospaints.net/color-matching", "color-page"),
+    url: getEcosAwinUrl(getEcosColorMatchUrl(info), "color-page"),
     affiliate: true,
     program: "ecos",
   });
