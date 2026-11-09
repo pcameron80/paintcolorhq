@@ -522,7 +522,7 @@ export default async function ColorPage({ params }: PageProps) {
                   {AFFILIATE_ENABLED && (
                     <p className="mt-4 text-xs text-on-surface-variant">
                       {sampleLinks.some((l) => l.program === "ecos")
-                        ? "Amazon and ECOS Paints links are affiliate links. As an Amazon Associate, Paint Color HQ earns from qualifying purchases, and it earns a commission from ECOS through Awin, at no extra cost to you. Other sample and store links are not affiliate links. ECOS says its matches can vary slightly, so confirm the color with a sample before you paint."
+                        ? "Amazon and ECOS Paints links are affiliate links. As an Amazon Associate, Paint Color HQ earns from qualifying purchases, and it earns a commission from ECOS through Awin, at no extra cost to you. Other sample and store links are not affiliate links. ECOS matches from its library of other brands' color samples, and those can vary slightly, so mail ECOS a sample if you need a specific color. The smallest match it makes is a quart."
                         : "Amazon links are affiliate links. As an Amazon Associate, Paint Color HQ earns from qualifying purchases, at no extra cost to you. Other sample and store links are not affiliate links."}
                     </p>
                   )}

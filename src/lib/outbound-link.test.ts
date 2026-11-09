@@ -63,7 +63,7 @@ test("affiliate-network redirects report the wrapped store as the retailer", () 
 
 test("an ECOS link through Awin records ecospaints.net as the retailer, with affiliate true", () => {
   const r = classifyOutboundLink(
-    getEcosAwinUrl("https://ecospaints.net/color-matching", "color-page"),
+    getEcosAwinUrl("https://ecospaints.net/color-matching?cm_brand=Behr&cm_name=Swiss+Coffee&cm_number=12", "color-page"),
     page("/colors/behr/swiss-coffee", "sponsored nofollow noopener noreferrer"),
   );
   assert.equal(r?.retailer, "ecospaints.net");
