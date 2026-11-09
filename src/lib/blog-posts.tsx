@@ -2,6 +2,7 @@ import { seaSaltFacts } from "./color-facts";
 import { type ReactNode } from "react";
 import Link from "next/link";
 import { isLive, canRender } from "./blog-publish";
+import { getEcosAwinUrl } from "./affiliate";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -4810,7 +4811,7 @@ const blogPosts: BlogPost[] = [
         </p>
         <ul className="mt-4 list-disc space-y-3 pl-6 text-gray-700 leading-relaxed">
           <li>
-            <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" />: the closest <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> color is <Swatch hex="#D0CBC3" name="Wish" brand="AF-680" href="/colors/benjamin-moore/wish-af-680" />, and the closest Behr color is <Swatch hex="#D2CCC3" name="Toasty Gray" brand="N320-2" href="/colors/behr/toasty-gray-n320-2" />. Both rate as nearly identical in digital values. The full side-by-side is on the <Link href="/match/sherwin-williams/agreeable-gray-7029-to-benjamin-moore" className="text-brand-blue hover:underline">Agreeable Gray to Benjamin Moore match page</Link>.
+            <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="SW 7029" href="/colors/sherwin-williams/agreeable-gray-7029" />: the closest <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> color is <Swatch hex="#D0CBC3" name="Wish" brand="AF-680" href="/colors/benjamin-moore/wish-af-680" />, and the closest Behr color is <Swatch hex="#D1CCC0" name="Toasty Gray" brand="N320-2" href="/colors/behr/toasty-gray-n320-2" />. Both rate as nearly identical in digital values. The full side-by-side is on the <Link href="/match/sherwin-williams/agreeable-gray-7029-to-benjamin-moore" className="text-brand-blue hover:underline">Agreeable Gray to Benjamin Moore match page</Link>.
           </li>
           <li>
             <Swatch hex="#EFEEE5" name="White Dove" brand="BM OC-17" href="/colors/benjamin-moore/white-dove-oc-17" />: the closest Sherwin-Williams color is <Swatch hex="#EFECE3" name="Cold Foam" brand="SW 9504" href="/colors/sherwin-williams/cold-foam-9504" />, rated nearly identical. Behr <Swatch hex="#EEEDE4" name="Harmonious White" brand="DC-013" href="/colors/behr/harmonious-white-dc-013" /> is closer still. See the <Link href="/match/benjamin-moore/white-dove-oc-17-to-sherwin-williams" className="text-brand-blue hover:underline">White Dove to Sherwin-Williams match page</Link>.
@@ -5161,7 +5162,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Agreeable Gray in Every Brand</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          The value of a color like this is knowing what to buy when your store doesn&apos;t carry Sherwin-Williams. Agreeable Gray has unusually tight matches across the board, which tells you the greige recipe is close to universal. The following colors have similar published digital values: <Link href="/colors/dutch-boy/doves-wings-443-1db" className="text-brand-blue hover:underline">Dutch Boy Doves Wings</Link> (#d1cbc1) and <Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Valspar Heritage Gray</Link> (#d1cbc1) share its exact hex value, and <Link href="/colors/ppg/whiskers-1025-3" className="text-brand-blue hover:underline">PPG Whiskers</Link> (#d1ccc2) and <Link href="/colors/behr/toasty-gray-n320-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link> (#d2ccc3) are nearly identical. Benjamin Moore&apos;s closest is <Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (AF-680, #d0cbc3) — nearly identical and the color to ask for at a BM counter. <Link href="/colors/farrow-ball/cornforth-white-228" className="text-brand-blue hover:underline">Farrow &amp; Ball Cornforth White</Link> (#d1cbc3) is nearly identical if you&apos;re speccing British paint. The loosest match in the set is <Link href="/colors/kilz/starched-linen-lk210" className="text-brand-blue hover:underline">Kilz Starched Linen</Link> (#dad2c7), which sits a shade lighter and warmer. If you&apos;re matching between the two big names specifically, the full <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> match list does this for every SW shade.
+          The value of a color like this is knowing what to buy when your store doesn&apos;t carry Sherwin-Williams. Agreeable Gray has unusually tight matches across the board, which tells you the greige recipe is close to universal. The following colors have similar published digital values: <Link href="/colors/dutch-boy/doves-wings-443-1db" className="text-brand-blue hover:underline">Dutch Boy Doves Wings</Link> (#d1cbc1) and <Link href="/colors/valspar/heritage-gray-7007-24" className="text-brand-blue hover:underline">Valspar Heritage Gray</Link> (#d1cbc1) share its exact hex value, and <Link href="/colors/ppg/whiskers-1025-3" className="text-brand-blue hover:underline">PPG Whiskers</Link> (#d1ccc2) and <Link href="/colors/behr/toasty-gray-n320-2" className="text-brand-blue hover:underline">Behr Toasty Gray</Link> (#d1ccc0) are nearly identical. Benjamin Moore&apos;s closest is <Link href="/colors/benjamin-moore/wish-af-680" className="text-brand-blue hover:underline">Wish</Link> (AF-680, #d0cbc3) — nearly identical and the color to ask for at a BM counter. <Link href="/colors/farrow-ball/cornforth-white-228" className="text-brand-blue hover:underline">Farrow &amp; Ball Cornforth White</Link> (#d1cbc3) is nearly identical if you&apos;re speccing British paint. The loosest match in the set is <Link href="/colors/kilz/starched-linen-lk210" className="text-brand-blue hover:underline">Kilz Starched Linen</Link> (#dad2c7), which sits a shade lighter and warmer. If you&apos;re matching between the two big names specifically, the full <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">Sherwin-Williams to Benjamin Moore</Link> match list does this for every SW shade.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Colors That Coordinate with Agreeable Gray</h2>
@@ -5275,7 +5276,7 @@ const blogPosts: BlogPost[] = [
             </thead>
             <tbody className="text-gray-800">
               <tr className="border-b border-gray-100">
-                <td className="py-2 pr-4"><Swatch hex="#F3F2E7" name="BM Cloud White" href="/colors/benjamin-moore/cloud-white-oc-130" /> + <Swatch hex="#F3F2E6" name="Behr Swiss Coffee" href="/colors/behr/swiss-coffee-12" /></td>
+                <td className="py-2 pr-4"><Swatch hex="#F3F2E7" name="BM Cloud White" href="/colors/benjamin-moore/cloud-white-oc-130" /> + <Swatch hex="#F1EDE0" name="Behr Swiss Coffee" href="/colors/behr/swiss-coffee-12" /></td>
                 <td className="py-2 pr-4 whitespace-nowrap">Nearly identical</td>
                 <td className="py-2">A premium classic and a big-box staple, effectively one color</td>
               </tr>
@@ -5285,7 +5286,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2">Same brand. If you are agonizing between these two, stop</td>
               </tr>
               <tr className="border-b border-gray-100">
-                <td className="py-2 pr-4"><Swatch hex="#F4F6F1" name="BM Chantilly Lace" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> + <Swatch hex="#F8F9F3" name="Behr Polar Bear" href="/colors/behr/polar-bear-75" /></td>
+                <td className="py-2 pr-4"><Swatch hex="#F4F6F1" name="BM Chantilly Lace" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> + <Swatch hex="#F5F4EC" name="Behr Polar Bear" href="/colors/behr/polar-bear-75" /></td>
                 <td className="py-2 pr-4 whitespace-nowrap">Nearly identical</td>
                 <td className="py-2">Crisp whites across a large price gap</td>
               </tr>
@@ -5303,7 +5304,7 @@ const blogPosts: BlogPost[] = [
           Six of the thirteen brands we track sell a color named &ldquo;Swiss Coffee&rdquo; — and
           they are not the same paint. Benjamin Moore&apos;s{" "}
           <Swatch hex="#EEECE1" name="Swiss Coffee (OC-45)" href="/colors/benjamin-moore/swiss-coffee-oc-45" /> and Behr&apos;s{" "}
-          <Swatch hex="#F3F2E6" name="Swiss Coffee (12)" href="/colors/behr/swiss-coffee-12" /> rate nearly identical, though Behr&apos;s runs lighter. The name is a category, not a
+          <Swatch hex="#F1EDE0" name="Swiss Coffee (12)" href="/colors/behr/swiss-coffee-12" /> rate nearly identical, though Behr&apos;s runs lighter. The name is a category, not a
           formula — the same trap as &ldquo;Antique White,&rdquo; which eight brands sell under
           that exact name. (More of these in our{" "}
           <Link href="/paint-color-statistics" className="text-brand-blue hover:underline">paint color statistics</Link>.)
@@ -5822,7 +5823,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-bathroom-colors",
     title: "The Best Sherwin-Williams Bathroom Paint Colors (2026)",
     date: "2026-08-07",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-11-08",
     author: "Philip Cameron",
     excerpt:
       "The best Sherwin-Williams bathroom paint colors — spa-like greens and blues plus clean neutrals — each with its LRV and its closest cross-brand match.",
@@ -5870,7 +5871,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Cool Blues &amp; Blue-Grays</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For a green-gray with a cooler, more silver cast, <Swatch hex="#b0b8b2" name="Silvermist" brand="Sherwin-Williams" href="/colors/sherwin-williams/silvermist-7621" /> (SW 7621, LRV 47) is the restful mid-tone — its Behr match Verdigris is nearly identical, and Dutch Boy Trout Gray is a nearly identical hex match. Leaning bluer, <Swatch hex="#c2cfcf" name="Tradewind" brand="Sherwin-Williams" href="/colors/sherwin-williams/tradewind-6218" /> (SW 6218, LRV 61) is the soft coastal blue-gray that stays calm rather than going cold — Dutch Boy Rochester Gray matches it exactly, with Behr Silver Bullet close. <Swatch hex="#cad0d2" name="North Star" brand="Sherwin-Williams" href="/colors/sherwin-williams/north-star-6246" /> (SW 6246, LRV 62) is the palest, airiest blue-gray of the set — its closest match is Benjamin Moore Early Frost. For a genuinely deeper bathroom, <Swatch hex="#98a9b7" name="Aleutian" brand="Sherwin-Williams" href="/colors/sherwin-williams/aleutian-6241" /> (SW 6241, LRV 39) is a dusty slate-blue that reads moody in low light — Behr Blue Willow and Farrow &amp; Ball Kittiwake are its closest cross-brand matches. More options in <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue paint colors</Link>.
+          For a green-gray with a cooler, more silver cast, <Swatch hex="#b0b8b2" name="Silvermist" brand="Sherwin-Williams" href="/colors/sherwin-williams/silvermist-7621" /> (SW 7621, LRV 47) is the restful mid-tone — its Behr match Verdigris is nearly identical, and Dutch Boy Trout Gray is a nearly identical hex match. Leaning bluer, <Swatch hex="#c2cfcf" name="Tradewind" brand="Sherwin-Williams" href="/colors/sherwin-williams/tradewind-6218" /> (SW 6218, LRV 61) is the soft coastal blue-gray that stays calm rather than going cold — Dutch Boy Rochester Gray matches it exactly, with Behr Urban Raincoat close. <Swatch hex="#cad0d2" name="North Star" brand="Sherwin-Williams" href="/colors/sherwin-williams/north-star-6246" /> (SW 6246, LRV 62) is the palest, airiest blue-gray of the set — its closest match is Benjamin Moore Early Frost. For a genuinely deeper bathroom, <Swatch hex="#98a9b7" name="Aleutian" brand="Sherwin-Williams" href="/colors/sherwin-williams/aleutian-6241" /> (SW 6241, LRV 39) is a dusty slate-blue that reads moody in low light — Behr Blue Willow and Farrow &amp; Ball Kittiwake are its closest cross-brand matches. More options in <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue paint colors</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Bright &amp; Clean Neutrals</h2>
@@ -6600,7 +6601,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dutch-boy-paint-colors",
     title: "10 Best Dutch Boy Paint Colors (2026)",
     date: "2026-07-03",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-11-09",
     author: "Philip Cameron",
     excerpt:
       "10 Dutch Boy picks, from Swan White to Ocean's Depth, each with its LRV and closest Sherwin-Williams or Behr match. Plus where to buy it (hint: Menards).",
@@ -6616,7 +6617,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is the Sherwin-Williams equivalent of Dutch Boy Doves Wings?",
         answer:
-          "Doves Wings (443-1DB, LRV 60.1) is a nearly identical match for Sherwin-Williams Agreeable Gray (SW 7029) — they share the hex #d1cbc1, so the digital data cannot tell the two apart. Valspar Heritage Gray is also nearly identical. Confirm with a sample, and Doves Wings is the budget route to the most popular greige in the country.",
+          "Doves Wings (443-1DB, LRV 60.1) is a nearly identical match for Sherwin-Williams Agreeable Gray (SW 7029) — they share the hex #d1cbc1, so the digital data cannot tell the two apart. Valspar Heritage Gray is also nearly identical. Confirm with a sample, and Doves Wings is the budget route to that greige.",
       },
       {
         question: "Is Dutch Boy a good paint brand?",
@@ -6633,7 +6634,7 @@ const blogPosts: BlogPost[] = [
       <>
         <p className="text-lg leading-relaxed text-gray-800">
           The best Dutch Boy paint color for most homes is{" "}
-          <Swatch hex="#d1cbc1" name="Doves Wings" brand="Dutch Boy" href="/colors/dutch-boy/doves-wings-443-1db" /> (443-1DB, LRV 60.1) — a warm greige that is a nearly identical, hex-for-hex match for <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Sherwin-Williams Agreeable Gray</Link>, the most popular paint color in the country. That pairing is the whole point of Dutch Boy: it&apos;s a value brand sold at Menards and independent dealers, priced below the premium names, and many of its colors land right on top of a designer-favorite shade. This guide pairs each of these 10 colors with its closest match in Sherwin-Williams, Benjamin Moore, or Behr — so you can buy the cheaper can, or get the same look at a store you already shop. Every LRV and cross-brand match below comes straight from our database.
+          <Swatch hex="#d1cbc1" name="Doves Wings" brand="Dutch Boy" href="/colors/dutch-boy/doves-wings-443-1db" /> (443-1DB, LRV 60.1) — a warm greige that is a nearly identical, hex-for-hex match for <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Sherwin-Williams Agreeable Gray</Link>. That pairing is the whole point of Dutch Boy: it&apos;s a value brand sold at Menards and independent dealers, priced below the premium names, and many of its colors land right on top of a designer-favorite shade. This guide pairs each of these 10 colors with its closest match in Sherwin-Williams, Benjamin Moore, or Behr — so you can buy the cheaper can, or get the same look at a store you already shop. Every LRV and cross-brand match below comes straight from our database.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Where to Find Dutch Boy</h2>
@@ -6643,7 +6644,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Whites</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#edeae0" name="Swan White" brand="Dutch Boy" href="/colors/dutch-boy/swan-white-024w" /> (024W, LRV 82.2) is the soft warm white to reach for first — bright but not stark, with a faint cream warmth that keeps trim and walls from feeling clinical. Its published digital values match those of <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Sherwin-Williams Alabaster</Link>, the most-used white in America, with Benjamin Moore Glacier White a near-twin. For a cooler, cleaner white, <Swatch hex="#eceae3" name="Crisped White" brand="Dutch Boy" href="/colors/dutch-boy/crisped-white-022w" /> (022W, LRV 82.2) drops the cream — its closest matches are Behr First Snow and Sherwin-Williams Pure White, both within a barely-perceptible difference. Use Swan White in north-facing rooms where cool light can turn a stark white gray, and Crisped White in bright, south-facing rooms that can carry a crisper tone. More options in <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link>, and a deeper breakdown in our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">guide to the best white paint colors</Link>.
+          <Swatch hex="#edeae0" name="Swan White" brand="Dutch Boy" href="/colors/dutch-boy/swan-white-024w" /> (024W, LRV 82.2) is the soft warm white to reach for first — bright but not stark, with a faint cream warmth that keeps trim and walls from feeling clinical. Its published digital values match those of <Link href="/colors/sherwin-williams/alabaster-7008" className="text-brand-blue hover:underline">Sherwin-Williams Alabaster</Link>, with Benjamin Moore Glacier White a near-twin. For a cooler, cleaner white, <Swatch hex="#eceae3" name="Crisped White" brand="Dutch Boy" href="/colors/dutch-boy/crisped-white-022w" /> (022W, LRV 82.2) drops the cream — its closest matches are Behr First Snow and Sherwin-Williams Pure White, both within a barely-perceptible difference. Use Swan White in north-facing rooms where cool light can turn a stark white gray, and Crisped White in bright, south-facing rooms that can carry a crisper tone. More options in <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link>, and a deeper breakdown in our <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">guide to the best white paint colors</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Greige: Doves Wings</h2>
@@ -6658,12 +6659,12 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Soft Gray: White Rapids</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#cdd2ca" name="White Rapids" brand="Dutch Boy" href="/colors/dutch-boy/white-rapids-425-1db" /> (425-1DB, LRV 63.3) is the airy green-gray that has quietly become a bathroom and bedroom favorite — it shifts between pale gray and sea-glass green with the light. Its published digital values match those of <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sherwin-Williams Sea Salt</Link>, one of the most-loved colors of the last decade, with Benjamin Moore Gray Cashmere and Behr Silver Setting close behind. See more in <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
+          <Swatch hex="#cdd2ca" name="White Rapids" brand="Dutch Boy" href="/colors/dutch-boy/white-rapids-425-1db" /> (425-1DB, LRV 63.3) is the airy green-gray for bathrooms and bedrooms. It shifts between pale gray and sea-glass green with the light. Its published digital values match those of <Link href="/colors/sherwin-williams/sea-salt-6204" className="text-brand-blue hover:underline">Sherwin-Williams Sea Salt</Link>, with Benjamin Moore Gray Cashmere and Behr Silver Setting close behind. See more in <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray paint colors</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Navy: Ocean&apos;s Depth</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2f3d4c" name="Ocean's Depth" brand="Dutch Boy" href="/colors/dutch-boy/ocean-s-depth-337-7db" /> (337-7DB, LRV 4.5) is the navy for islands, accent walls, and front doors — deep and saturated without going to true black. Its published digital values match those of <Link href="/colors/sherwin-williams/naval-6244" className="text-brand-blue hover:underline">Sherwin-Williams Naval</Link>, a Color of the Year, with Benjamin Moore North Sea a nearly identical alternative. The closest Behr is Midnight Dream, which rates very similar. A navy this dark needs strong daylight or warm artificial light to read as blue rather than near-black, so save it for rooms with good light or commit to the dramatic effect in a powder room.
+          <Swatch hex="#2f3d4c" name="Ocean's Depth" brand="Dutch Boy" href="/colors/dutch-boy/ocean-s-depth-337-7db" /> (337-7DB, LRV 4.5) is the navy for islands, accent walls, and front doors — deep and saturated without going to true black. Its published digital values match those of <Link href="/colors/sherwin-williams/naval-6244" className="text-brand-blue hover:underline">Sherwin-Williams Naval</Link>, Sherwin-Williams&apos; 2020 Color of the Year, with Benjamin Moore North Sea a nearly identical alternative. The closest Behr is Midnight Dream, which rates very similar. A navy this dark needs strong daylight or warm artificial light to read as blue rather than near-black, so save it for rooms with good light or commit to the dramatic effect in a powder room.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Dutch Boy Blacks &amp; Charcoals</h2>
@@ -6937,7 +6938,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-benjamin-moore-paint-colors",
     title: "The Best Benjamin Moore Paint Colors for Every Room (2026)",
     date: "2026-06-17",
-    modifiedDate: "2026-10-29",
+    modifiedDate: "2026-11-08",
     author: "Philip Cameron",
     excerpt:
       "The best Benjamin Moore paint colors — whites, greiges, grays, a blue-green, and a navy — each with its LRV and its closest match at Home Depot or Sherwin-Williams.",
@@ -6980,7 +6981,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Whites</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White Dove (OC-17, LRV 83) leads the whole category — see its closest matches across 13 brands on its <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">color page</Link>. For a crisp, bright white instead of a warm one, <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> (2121-70, LRV 90) is the modern standard — its Behr match Snow Fall is a nearly identical match. <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> (2143-70, LRV 90) is the warmer bright white (a former Color of the Year); Behr Palais White is its closest twin. And <Swatch hex="#F3F2E7" name="Cloud White" brand="Benjamin Moore" href="/colors/benjamin-moore/cloud-white-oc-130" /> (OC-130, LRV 85) is the soft creamy white for trim and millwork — nearly identical to Behr Swiss Coffee. More options in <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link>.
+          White Dove (OC-17, LRV 83) leads the whole category — see its closest matches across 13 brands on its <Link href="/colors/benjamin-moore/white-dove-oc-17" className="text-brand-blue hover:underline">color page</Link>. For a crisp, bright white instead of a warm one, <Swatch hex="#F4F6F1" name="Chantilly Lace" brand="Benjamin Moore" href="/colors/benjamin-moore/chantilly-lace-2121-70" /> (2121-70, LRV 90) is the modern standard — its Behr match Snow Fall is a nearly identical match. <Swatch hex="#F7F7EE" name="Simply White" brand="Benjamin Moore" href="/colors/benjamin-moore/simply-white-2143-70" /> (2143-70, LRV 90) is the warmer bright white (a former Color of the Year); Behr Polar Bear is its closest Behr match, nearly identical in our digital data. And <Swatch hex="#F3F2E7" name="Cloud White" brand="Benjamin Moore" href="/colors/benjamin-moore/cloud-white-oc-130" /> (OC-130, LRV 85) is the soft creamy white for trim and millwork — nearly identical to Behr Swiss Coffee. More options in <Link href="/colors/family/white" className="text-brand-blue hover:underline">white paint colors</Link>.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The Best Benjamin Moore Greiges</h2>
@@ -7112,7 +7113,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-behr-paint-colors",
     title: "13 Best Behr Paint Colors (2026)",
     date: "2026-06-10",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-11-09",
     author: "Philip Cameron",
     excerpt:
       "13 Behr picks, from Swiss Coffee to Hidden Gem, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
@@ -7123,7 +7124,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What are the best Behr paint colors?",
         answer:
-          "Swiss Coffee (12) is Behr's best-selling warm white. Polar Bear (75), Whisper White (HDC-MD-08), and Ultra Pure White (UPW) round out the whites; Sculptor Clay (PPU5-08) is the go-to greige and Silver City (MQ2-59) the reliable light gray. Watery (HDC-CT-26) leads the blues, and Hidden Gem (N430-6A) is the 2026 Color of the Year.",
+          "Swiss Coffee (12) is the warm white to start with. Polar Bear (75), Whisper White (HDC-MD-08), and Ultra Pure White (UPW) round out the whites; Sculptor Clay (PPU5-08) is the go-to greige and Silver City (MQ2-59) the reliable light gray. Watery (HDC-CT-26) leads the blues, and Hidden Gem (N430-6A) is the 2026 Color of the Year.",
       },
       {
         question: "Where can I buy Behr paint?",
@@ -7138,19 +7139,19 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is Behr's best paint line?",
         answer:
-          "Behr Dynasty is the top tier (most stain- and scuff-resistant, one-coat); Marquee is the one-coat-guaranteed line below it; Ultra is the durable mid-tier; Premium Plus is the value option. All carry the same colors — the line affects durability and price, not the color.",
+          "Behr ranks its interior lines Dynasty, Marquee, Ultra and Premium Plus, from the top down. Behr says its one-coat guarantee covers only Dynasty and Marquee, and only in colors from its One-Coat Color Collection. The line you choose does not change the color.",
       },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          Behr is the most widely available premium paint in the country — sold exclusively at The Home Depot — which makes it an easy brand to standardize a whole house on. Its best-selling color is{" "}
-          <Swatch hex="#F1EDE0" name="Swiss Coffee" brand="Behr" href="/colors/behr/swiss-coffee-12" /> (12, LRV 84), a warm creamy white that has stayed popular for decades. Below are 13 of Behr&apos;s best colors by category, each with its exact LRV and its closest Sherwin-Williams and Benjamin Moore match — handy whether you&apos;re buying Behr or matching a Behr chip to another brand.
+          Behr is sold exclusively at The Home Depot, which makes it an easy brand to standardize a whole house on. The warm white to start with is{" "}
+          <Swatch hex="#F1EDE0" name="Swiss Coffee" brand="Behr" href="/colors/behr/swiss-coffee-12" /> (12, LRV 84), a warm creamy white. Below are 13 of Behr&apos;s best colors by category, each with its exact LRV and its closest Sherwin-Williams and Benjamin Moore match — handy whether you&apos;re buying Behr or matching a Behr chip to another brand.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines &amp; Where to Find Behr</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Behr is a <Link href="/brands/behr" className="text-brand-blue hover:underline">Home Depot</Link> exclusive (since 1978) and is owned by Masco. It has a strong value reputation — GREENGUARD Gold certified, low- and zero-VOC lines, and consistently high Consumer Reports ratings. On the can, <strong>Dynasty</strong> is the top tier (most stain- and scuff-resistant), <strong>Marquee</strong> is the one-coat-guaranteed line, <strong>Ultra</strong> is the durable mid-tier, and <strong>Premium Plus</strong> is the value option. The line changes durability and price, not the color.
+          Behr is a <Link href="/brands/behr" className="text-brand-blue hover:underline">Home Depot</Link> exclusive (since 1978) and is owned by Masco. Behr ranks its interior lines <strong>Dynasty</strong>, <strong>Marquee</strong>, <strong>Ultra</strong> and <strong>Premium Plus</strong>, from the top down. Behr says Dynasty and Marquee carry its one-coat guarantee, limited to colors in its One-Coat Color Collection. The line you choose does not change the color.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Behr Whites &amp; Off-Whites</h2>
@@ -7223,7 +7224,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-ppg-paint-colors",
     title: "15 Best PPG Paint Colors (2026)",
     date: "2026-06-07",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-11-09",
     author: "Philip Cameron",
     excerpt:
       "15 PPG picks, from Commercial White to Night Watch, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
@@ -7234,7 +7235,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What are the best PPG paint colors?",
         answer:
-          "PPG's most popular neutral is Whiskers (1025-3), a warm greige. For whites, Commercial White (1025-1) is the clean pick and Antique White (1024-2) the warm cream. Gray Stone (1009-4) leads the true grays, Chinese Porcelain (1160-6) is the signature deep blue, and Secret Safari (1110-4) is PPG's global 2026 Color of the Year.",
+          "PPG's whole-home neutral to start with is Whiskers (1025-3), a warm greige. For whites, Commercial White (1025-1) is the clean pick and Antique White (1024-2) the warm cream. Gray Stone (1009-4) leads the true grays, Chinese Porcelain (1160-6) is the deep blue, and Secret Safari (1110-4) is PPG's global 2026 Color of the Year.",
       },
       {
         question: "Where can I buy PPG paint?",
@@ -7249,13 +7250,13 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is PPG's best paint line?",
         answer:
-          "PPG UltraLast and Manor Hall are the premium interior lines (best durability and hide); Diamond is the washable mid-tier; Timeless is the value step-up. All carry the same colors — the line affects durability and price, not the color.",
+          "PPG sells its colors in several interior lines, including UltraLast, Manor Hall, Diamond and Timeless. The line you choose does not change the color, so check each line's PPG data sheet for coverage and washability.",
       },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          PPG is one of the easiest premium paint brands to actually buy — its colors sit on the shelf at The Home Depot next to Glidden, plus PPG and Pittsburgh Paints stores. The most popular PPG neutral for whole-home use is{" "}
+          PPG is one of the easiest premium paint brands to actually buy — its colors sit on the shelf at The Home Depot next to Glidden, plus PPG and Pittsburgh Paints stores. The PPG neutral to start with for whole-home use is{" "}
           <Swatch hex="#D1CCC2" name="Whiskers" brand="PPG" href="/colors/ppg/whiskers-1025-3" /> (1025-3, LRV 61), a warm greige. Below are 15 of PPG&apos;s best colors by category, each with its exact LRV and its closest Sherwin-Williams, Benjamin Moore, and Behr match — useful whether you&apos;re buying PPG or trying to recreate a PPG color somewhere else.
         </p>
 
@@ -7264,13 +7265,13 @@ const blogPosts: BlogPost[] = [
           PPG colors are sold at <Link href="/brands/ppg" className="text-brand-blue hover:underline">The Home Depot</Link> (along with Glidden, a sister brand under The Pittsburgh Paints Company), at PPG / Pittsburgh Paints stores, and through independent dealers. One naming note: as of late 2024, PPG&apos;s US architectural-paint business operates as The Pittsburgh Paints Company. The PPG color names are unchanged, and the manufacturer now lists the PPG numbers used below as legacy codes beside its new COL numbers.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          On the can, <strong>UltraLast</strong> and <strong>Manor Hall</strong> are the premium interior lines (best hide and durability), <strong>Diamond</strong> is the washable mid-tier, and <strong>Timeless</strong> is the value step-up. The line changes durability and price, not the color, so every shade below is available across the range.
+          PPG sells its colors in several interior lines, including <strong>UltraLast</strong>, <strong>Manor Hall</strong>, <strong>Diamond</strong> and <strong>Timeless</strong>. The line you choose does not change the color, so check each line&apos;s PPG data sheet for coverage and washability.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Whites &amp; Off-Whites</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EDECE6" name="Commercial White" brand="PPG" href="/colors/ppg/commercial-white-1025-1" /> — 1025-1, LRV 84. A clean, balanced white with the faintest warm gray to keep it from feeling clinical. It is a nearly identical match for{" "}
-          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> (SW 7005) — one of the most-specified whites in the country — so this is the PPG route to that look. Also close to <Link href="/colors/behr/gallery-white-ppu12-12" className="text-brand-blue hover:underline">Behr Gallery White</Link>.
+          <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> (SW 7005), so this is the PPG route to that look. Also close to <Link href="/colors/behr/gallery-white-ppu12-12" className="text-brand-blue hover:underline">Behr Gallery White</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F1F2EE" name="Delicate White" brand="PPG" href="/colors/ppg/delicate-white-1001-1" /> — 1001-1, LRV 88. A bright, soft white for trim, ceilings, and modern rooms that want crisp contrast. Closest matches are <Link href="/colors/sherwin-williams/extra-white-7006" className="text-brand-blue hover:underline">Sherwin-Williams Extra White</Link> and <Link href="/colors/benjamin-moore/white-christmas-872" className="text-brand-blue hover:underline">Benjamin Moore White Christmas</Link>. Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more.
@@ -7311,10 +7312,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Blues</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3A5F7D" name="Chinese Porcelain" brand="PPG" href="/colors/ppg/chinese-porcelain-1160-6" /> — 1160-6, LRV 11. PPG&apos;s signature deep blue and a past Color of the Year: a rich, slightly grayed navy-blue for cabinetry, islands, and accent walls. Closest matches are <Link href="/colors/benjamin-moore/prussian-blue-cw-625" className="text-brand-blue hover:underline">Benjamin Moore Prussian Blue</Link> and <Link href="/colors/behr/tidal-m510-6" className="text-brand-blue hover:underline">Behr Tidal</Link>.
+          <Swatch hex="#3A5F7D" name="Chinese Porcelain" brand="PPG" href="/colors/ppg/chinese-porcelain-1160-6" /> — 1160-6, LRV 11. PPG&apos;s 2020 Color of the Year: a rich, slightly grayed navy-blue for cabinetry, islands, and accent walls. Closest matches are <Link href="/colors/benjamin-moore/prussian-blue-cw-625" className="text-brand-blue hover:underline">Benjamin Moore Prussian Blue</Link> and <Link href="/colors/behr/tidal-m510-6" className="text-brand-blue hover:underline">Behr Tidal</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3F4C5A" name="Cavalry" brand="PPG" href="/colors/ppg/cavalry-1041-7" /> — 1041-7, LRV 7. A deep, slightly slate navy for a classic statement. It is close to <Link href="/colors/benjamin-moore/hale-navy-hc-154" className="text-brand-blue hover:underline">Benjamin Moore Hale Navy</Link> — the most-specified navy in the country — and <Link href="/colors/behr/club-navy-qe-56" className="text-brand-blue hover:underline">Behr Club Navy</Link>. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for more.
+          <Swatch hex="#3F4C5A" name="Cavalry" brand="PPG" href="/colors/ppg/cavalry-1041-7" /> — 1041-7, LRV 7. A deep, slightly slate navy for a classic statement. It is close to <Link href="/colors/benjamin-moore/hale-navy-hc-154" className="text-brand-blue hover:underline">Benjamin Moore Hale Navy</Link> and <Link href="/colors/behr/club-navy-qe-56" className="text-brand-blue hover:underline">Behr Club Navy</Link>. Browse the <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue color family</Link> for more.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best PPG Statement Colors</h2>
@@ -7343,7 +7344,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-dunn-edwards-paint-colors",
     title: "14 Best Dunn-Edwards Paint Colors (2026)",
     date: "2026-06-03",
-    modifiedDate: "2026-11-08",
+    modifiedDate: "2026-11-09",
     author: "Philip Cameron",
     excerpt:
       "14 Dunn-Edwards picks, from Swiss Coffee to Midnight Garden, each with its LRV and closest Sherwin-Williams, Benjamin Moore and Behr match.",
@@ -7354,7 +7355,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What are the best Dunn-Edwards paint colors?",
         answer:
-          "Dunn-Edwards' most popular warm neutrals are Crisp Muslin (DE6212) and Fine Grain (DE6213). For whites, Whisper (DEW340) is the bright pick, Milk Glass (DEW358) the designer trim white, and Swiss Coffee (DEW341) the warm creamy classic. Fossil (DE6225) and Foggy Day (DE6226) lead the grays, and Midnight Garden (DE5657) is the 2026 Color of the Year.",
+          "Dunn-Edwards' warm neutrals to start with are Crisp Muslin (DE6212) and Fine Grain (DE6213). For whites, Whisper (DEW340) is the bright pick, Milk Glass (DEW358) the designer trim white, and Swiss Coffee (DEW341) the warm creamy classic. Fossil (DE6225) and Foggy Day (DE6226) lead the grays, and Midnight Garden (DE5657) is the 2026 Color of the Year.",
       },
       {
         question: "Where can I buy Dunn-Edwards paint?",
@@ -7369,22 +7370,22 @@ const blogPosts: BlogPost[] = [
       {
         question: "Is Dunn-Edwards a good paint brand?",
         answer:
-          "Dunn-Edwards is a premium paint maker with a strong zero-VOC reputation — its flagship Everest line is ultra-premium, zero-VOC, and self-priming. It has been the leading paint brand in the Southwestern US since 1925 and is a designer favorite for Spanish-colonial, midcentury, and desert-modern interiors.",
+          "Dunn-Edwards is a premium paint maker founded in 1925 and owned by Nippon Paint since 2017. Dunn-Edwards describes Everest as its top interior line and lists it as zero-VOC. Its earthy palette suits Spanish-colonial, midcentury and desert-modern interiors.",
       },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The most popular Dunn-Edwards color for most homes is{" "}
-          <Swatch hex="#E9E2D7" name="Crisp Muslin" brand="Dunn-Edwards" href="/colors/dunn-edwards/crisp-muslin-de6212" /> (DE6212, LRV 71), the brand&apos;s top-selling warm neutral. But there&apos;s a catch worth knowing up front: Dunn-Edwards is a <strong>Southwest regional brand</strong>, sold mainly across California, Arizona, Nevada, New Mexico, and Texas. So unless you live in its footprint, the practical question isn&apos;t only &ldquo;which Dunn-Edwards color is best&rdquo; — it&apos;s &ldquo;which Sherwin-Williams, Benjamin Moore, or Behr color gets me the same look.&rdquo; This guide answers both: 14 of Dunn-Edwards&apos; best colors by category, each with the LRV Dunn-Edwards publishes and its closest cross-brand match from our database.
+          The best Dunn-Edwards color for most homes is{" "}
+          <Swatch hex="#E9E2D7" name="Crisp Muslin" brand="Dunn-Edwards" href="/colors/dunn-edwards/crisp-muslin-de6212" /> (DE6212, LRV 71), a soft warm neutral. But there&apos;s a catch worth knowing up front: Dunn-Edwards is a <strong>Southwest regional brand</strong>, sold mainly across California, Arizona, Nevada, New Mexico, and Texas. So unless you live in its footprint, the practical question isn&apos;t only &ldquo;which Dunn-Edwards color is best&rdquo; — it&apos;s &ldquo;which Sherwin-Williams, Benjamin Moore, or Behr color gets me the same look.&rdquo; This guide answers both: 14 of Dunn-Edwards&apos; best colors by category, each with the LRV Dunn-Edwards publishes and its closest cross-brand match from our database.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines, Availability &amp; the Regional Catch</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Dunn-Edwards has been the leading paint maker in the Southwestern US since 1925 and has been owned by Nippon Paint since 2017. It&apos;s sold through more than 170 company-owned <Link href="/brands/dunn-edwards" className="text-brand-blue hover:underline">Dunn-Edwards</Link> stores and authorized dealers — heavily concentrated in CA, AZ, NV, NM, and TX — plus online. Outside that footprint it&apos;s far less convenient than Sherwin-Williams or Behr, which is exactly why the cross-brand matches below matter.
+          Dunn-Edwards has made paint in the Southwestern US since 1925 and has been owned by Nippon Paint since 2017. It&apos;s sold through more than 170 company-owned <Link href="/brands/dunn-edwards" className="text-brand-blue hover:underline">Dunn-Edwards</Link> stores and authorized dealers — heavily concentrated in CA, AZ, NV, NM, and TX — plus online. Outside that footprint it&apos;s far less convenient than Sherwin-Williams or Behr, which is exactly why the cross-brand matches below matter.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          On the can, the premium interior line is <strong>Everest</strong> — ultra-premium, zero-VOC, and self-priming, which is the brand&apos;s real calling card. <strong>Suprema</strong> is the ultra-low-VOC step down, and <strong>Aristoshield</strong> is the oil-like enamel for doors, trim, and cabinets. Dunn-Edwards&apos; zero-VOC reputation is genuine and a fair reason to seek it out if air quality matters to you.
+          Dunn-Edwards says its top interior line, <strong>Everest</strong>, is zero-VOC and self-priming. The brand lists <strong>Suprema</strong> as the step below it and <strong>Aristoshield</strong> as its enamel for doors, trim and cabinets. If low VOCs matter to you, check the data sheet for the line you buy.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Whites &amp; Off-Whites</h2>
@@ -7400,7 +7401,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Warm Neutrals &amp; Greiges</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#E9E2D7" name="Crisp Muslin" brand="Dunn-Edwards" href="/colors/dunn-edwards/crisp-muslin-de6212" /> — DE6212, LRV 71. The brand&apos;s most popular warm neutral: a light, soft off-white with the faintest brown-gray warmth that avoids looking stark. It is nearly identical to <Link href="/colors/ppg/indian-muslin-1075-2" className="text-brand-blue hover:underline">PPG Alley Caty</Link> and also nearly identical to <Link href="/colors/sherwin-williams/white-heron-7627" className="text-brand-blue hover:underline">Sherwin-Williams White Heron</Link>.
+          <Swatch hex="#E9E2D7" name="Crisp Muslin" brand="Dunn-Edwards" href="/colors/dunn-edwards/crisp-muslin-de6212" /> — DE6212, LRV 71. A light, soft off-white with the faintest brown-gray warmth that avoids looking stark. It is nearly identical to <Link href="/colors/ppg/indian-muslin-1075-2" className="text-brand-blue hover:underline">PPG Alley Caty</Link> and also nearly identical to <Link href="/colors/sherwin-williams/white-heron-7627" className="text-brand-blue hover:underline">Sherwin-Williams White Heron</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#D8CFC1" name="Fine Grain" brand="Dunn-Edwards" href="/colors/dunn-edwards/fine-grain-de6213" /> — DE6213, LRV 59. A light greige that works in contemporary, farmhouse, and transitional rooms alike. Its closest matches are <Link href="/colors/benjamin-moore/cedar-key-982" className="text-brand-blue hover:underline">Benjamin Moore Cedar Key</Link> and <Link href="/colors/behr/aged-beige-ppu7-09" className="text-brand-blue hover:underline">Behr Aged Beige</Link>.
@@ -7417,7 +7418,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Dunn-Edwards Grays</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F4F1EB" name="Fossil" brand="Dunn-Edwards" href="/colors/dunn-edwards/fossil-de6225" /> — DE6225, LRV 81. The brand&apos;s most popular light, airy neutral — a barely-there gray that works whole-home. Closest matches are <Link href="/colors/benjamin-moore/gardenia-af-10" className="text-brand-blue hover:underline">Benjamin Moore Gardenia</Link> and <Link href="/colors/sherwin-williams/arcade-white-7100" className="text-brand-blue hover:underline">Sherwin-Williams Arcade White</Link>.
+          <Swatch hex="#F4F1EB" name="Fossil" brand="Dunn-Edwards" href="/colors/dunn-edwards/fossil-de6225" /> — DE6225, LRV 81. A light, airy, barely-there gray that works whole-home. Closest matches are <Link href="/colors/benjamin-moore/gardenia-af-10" className="text-brand-blue hover:underline">Benjamin Moore Gardenia</Link> and <Link href="/colors/sherwin-williams/arcade-white-7100" className="text-brand-blue hover:underline">Sherwin-Williams Arcade White</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#E7E3DB" name="Foggy Day" brand="Dunn-Edwards" href="/colors/dunn-edwards/foggy-day-de6226" /> — DE6226, LRV 71. A balanced medium-light gray with no obvious blue or brown cast — the reliable greige-gray for full rooms. It matches <Link href="/colors/sherwin-williams/sanctuary-9583" className="text-brand-blue hover:underline">Sherwin-Williams Sanctuary</Link> and <Link href="/colors/benjamin-moore/classic-gray-1548" className="text-brand-blue hover:underline">Benjamin Moore Classic Gray</Link>.
@@ -7458,7 +7459,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-valspar-paint-colors",
     title: "16 Best Valspar Paint Colors (2026)",
     date: "2026-05-31",
-    modifiedDate: "2026-10-24",
+    modifiedDate: "2026-11-09",
     author: "Philip Cameron",
     excerpt:
       "16 Valspar picks, from Ultra White to Renew Blue, each with its LRV and closest Sherwin-Williams and Benjamin Moore match.",
@@ -7469,7 +7470,7 @@ const blogPosts: BlogPost[] = [
       {
         question: "What are the best Valspar paint colors?",
         answer:
-          "For a whole-house neutral, Valspar Heritage Gray (7007-24, LRV 60) is the standout — it's a nearly identical match for Sherwin-Williams Agreeable Gray, the most popular paint color in the US, at Lowe's prices. For whites, Ultra White (7006-24) is the clean bright pick and Swiss Coffee (7002-16) the warm one. Renew Blue (8003-37D) and Sparkling Sage (5005-3B) lead the colors. All are stocked at Lowe's.",
+          "For a whole-house neutral, Valspar Heritage Gray (7007-24, LRV 60) is the standout — it's a nearly identical match for Sherwin-Williams Agreeable Gray, at Lowe's. For whites, Ultra White (7006-24) is the clean bright pick and Swiss Coffee (7002-16) the warm one. Renew Blue (8003-37D) and Sparkling Sage (5005-3B) lead the colors. All are stocked at Lowe's.",
       },
       {
         question: "What is the Valspar equivalent of Agreeable Gray?",
@@ -7484,14 +7485,14 @@ const blogPosts: BlogPost[] = [
       {
         question: "What is Valspar's best paint line?",
         answer:
-          "Valspar Reserve is the premium interior line (best coverage and fade resistance); Signature is the best-selling mid-tier line with built-in scuff resistance, and the one most homeowners should default to; Ultra is the budget option. All carry the same colors — the line affects durability and price, not the color itself.",
+          "Valspar's three interior lines are Reserve, Signature and Ultra, from the top down. Signature is our default for most rooms; Ultra suits rentals, ceilings and low-traffic spaces. The line you choose does not change the color.",
       },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
           The best Valspar paint color for most homes is{" "}
-          <Swatch hex="#D1CBC1" name="Heritage Gray" brand="Valspar" href="/colors/valspar/heritage-gray-7007-24" /> (7007-24, LRV 60) — a warm greige that happens to be a nearly identical match for <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Sherwin-Williams Agreeable Gray</Link>, the most-specified neutral in the country. That match is the theme of this guide: Valspar is sold almost entirely at Lowe&apos;s, so the practical question isn&apos;t just &ldquo;which Valspar color is good&rdquo; but &ldquo;which Valspar color gets me the look I&apos;ve seen in Sherwin-Williams or Benjamin Moore.&rdquo; Below are 15 of Valspar&apos;s best colors by category, each with its exact LRV and its closest cross-brand match from our database.
+          <Swatch hex="#D1CBC1" name="Heritage Gray" brand="Valspar" href="/colors/valspar/heritage-gray-7007-24" /> (7007-24, LRV 60) — a warm greige that happens to be a nearly identical match for <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">Sherwin-Williams Agreeable Gray</Link>. That match is the theme of this guide: Valspar is sold almost entirely at Lowe&apos;s, so the practical question isn&apos;t just &ldquo;which Valspar color is good&rdquo; but &ldquo;which Valspar color gets me the look I&apos;ve seen in Sherwin-Williams or Benjamin Moore.&rdquo; Below are 15 of Valspar&apos;s best colors by category, each with its exact LRV and its closest cross-brand match from our database.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Before You Buy: Lines, Codes &amp; Where to Find Valspar</h2>
@@ -7499,7 +7500,7 @@ const blogPosts: BlogPost[] = [
           Valspar has been owned by <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link> since 2017, but it remains a distinct brand sold mainly at <Link href="/brands/valspar" className="text-brand-blue hover:underline">Lowe&apos;s</Link> and at independent paint dealers. One quirk to know: Valspar runs two color-code systems — a Lowe&apos;s code (like 7006-24) and a separate independent-retailer code — so the same color can show up under two different numbers. Match by name and chip, not just the number.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          On the can, there are three interior tiers. <strong>Signature</strong> is the best-selling mid-tier line with built-in scuff resistance — the sensible default for most rooms. <strong>Reserve</strong> is the premium line with the best coverage and fade resistance. <strong>Ultra</strong> is the budget option for rentals, ceilings, and low-traffic spaces. The line changes durability and price, not the color, so every shade below is available across all three.
+          Valspar sells three interior lines: <strong>Reserve</strong> at the top, <strong>Signature</strong> in the middle, and <strong>Ultra</strong> as the entry line. Signature is our default for most rooms, and Ultra suits rentals, ceilings and low-traffic spaces. The line you choose does not change the color.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Whites &amp; Off-Whites</h2>
@@ -7507,7 +7508,7 @@ const blogPosts: BlogPost[] = [
           <Swatch hex="#F6F7F4" name="Ultra White" brand="Valspar" href="/colors/valspar/ultra-white-7006-24" /> — 7006-24, LRV 93. Valspar&apos;s clean, bright benchmark white with no obvious undertone. Use it for trim, ceilings, and modern rooms that want crisp contrast. Its closest match across brands is <Link href="/colors/sherwin-williams/ultrawhite-9500" className="text-brand-blue hover:underline">Sherwin-Williams UltraWhite</Link>, with <Link href="/colors/benjamin-moore/distant-gray-2124-70" className="text-brand-blue hover:underline">Benjamin Moore Distant Gray</Link> and <Link href="/colors/behr/ultra-pure-white-upw" className="text-brand-blue hover:underline">Behr Ultra Pure White</Link> nearly as close — so this is an easy color to source anywhere.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F2F0EA" name="Swiss Coffee" brand="Valspar" href="/colors/valspar/swiss-coffee-7002-16" /> — 7002-16, LRV 87. The warm, soft white for walls that should feel inviting rather than stark. It is a nearly identical match for <Link href="/colors/benjamin-moore/alabaster-876" className="text-brand-blue hover:underline">Benjamin Moore Alabaster</Link> (and <Link href="/colors/behr/whisper-white-hdc-md-08" className="text-brand-blue hover:underline">Behr Whisper White</Link>) — useful, because Alabaster is one of the most popular warm whites in the country and this is the Lowe&apos;s route to the same look.
+          <Swatch hex="#F2F0EA" name="Swiss Coffee" brand="Valspar" href="/colors/valspar/swiss-coffee-7002-16" /> — 7002-16, LRV 87. The warm, soft white for walls that should feel inviting rather than stark. It is a nearly identical match for <Link href="/colors/benjamin-moore/alabaster-876" className="text-brand-blue hover:underline">Benjamin Moore Alabaster</Link> (and <Link href="/colors/behr/whisper-white-hdc-md-08" className="text-brand-blue hover:underline">Behr Whisper White</Link>) — this is the Lowe&apos;s route to the same look.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#F1EEE4" name="Dove White" brand="Valspar" href="/colors/valspar/dove-white-7002-7" /> — 7002-7, LRV 86. A soft creamy white that sits between Ultra White and a true off-white. It matches <Link href="/colors/ppg/atrium-white-1020-1" className="text-brand-blue hover:underline">PPG Atrium White</Link> almost exactly and lands close to <Link href="/colors/benjamin-moore/dune-white-968" className="text-brand-blue hover:underline">Benjamin Moore Dune White</Link>. Browse the full <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
@@ -7535,7 +7536,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Valspar Greens</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CBD0C5" name="Sparkling Sage" brand="Valspar" href="/colors/valspar/sparkling-sage-5005-3b" /> — 5005-3B, LRV 62. One of Valspar&apos;s long-running best-sellers: a pale, gentle sage that pairs with reclaimed wood and white trim. It matches <Link href="/colors/behr/shy-green-mq3-48" className="text-brand-blue hover:underline">Behr Shy Green</Link> closely and lands near <Link href="/colors/sherwin-williams/frostwork-59" className="text-brand-blue hover:underline">Sherwin-Williams Frostwork</Link>.
+          <Swatch hex="#CBD0C5" name="Sparkling Sage" brand="Valspar" href="/colors/valspar/sparkling-sage-5005-3b" /> — 5005-3B, LRV 62. A pale, gentle sage that pairs with reclaimed wood and white trim. It matches <Link href="/colors/behr/shy-green-mq3-48" className="text-brand-blue hover:underline">Behr Shy Green</Link> closely and lands near <Link href="/colors/sherwin-williams/frostwork-59" className="text-brand-blue hover:underline">Sherwin-Williams Frostwork</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#7C7F70" name="Warm Eucalyptus" brand="Valspar" href="/colors/valspar/warm-eucalyptus-8004-28f" /> — 8004-28F, LRV 21. Valspar&apos;s 2026 Color of the Year (sold as Sage Slate at independent retailers): a restorative green-gray for a serene, grounded room. Its closest cross-brand match is <Link href="/colors/sherwin-williams/dried-thyme-6186" className="text-brand-blue hover:underline">Sherwin-Williams Dried Thyme</Link>. See how it compares to the rest of the field in our <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">2026 Colors of the Year comparison</Link>.
@@ -8207,7 +8208,7 @@ const blogPosts: BlogPost[] = [
           The clearest way to compare brands is to put matched colors side by side. Here are well-known colors from each brand and their closest cross-brand equivalents:
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Warm greige:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2" /> — all warm greiges that rate Nearly identical or Very similar to one another. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
+          <strong>Warm greige:</strong> <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> vs. <Swatch hex="#CCC7B9" name="Revere Pewter" brand="Benjamin Moore" href="/colors/benjamin-moore/revere-pewter-hc-172" /> vs. <Swatch hex="#D1CCC0" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2" /> — all warm greiges that rate Nearly identical or Very similar to one another. Browse more in the <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Warm white:</strong> <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" /> vs. <Swatch hex="#EFEEE5" name="White Dove" brand="Benjamin Moore" href="/colors/benjamin-moore/white-dove-oc-17" /> vs. <Swatch hex="#E9E6E1" name="Cameo White" brand="Behr" href="/colors/behr/cameo-white-mq3-32" /> — all warm whites that avoid looking sterile. See our <Link href="/colors/family/white" className="text-brand-blue hover:underline">white color family</Link> for more options.
@@ -8421,7 +8422,7 @@ const blogPosts: BlogPost[] = [
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Finding the Behr equivalent of Agreeable Gray.</strong>{" "}
-          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (LRV 60, hex #D1CBC1) is a light warm greige. The closest Behr equivalent is <Swatch hex="#D2CCC3" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2" /> (N320-2) — a warm greige that rates nearly identical, meaning the two colors are hard to tell apart on a wall.
+          <Swatch hex="#D1CBC1" name="Agreeable Gray" brand="Sherwin-Williams" href="/colors/sherwin-williams/agreeable-gray-7029" /> (LRV 60, hex #D1CBC1) is a light warm greige. The closest Behr equivalent is <Swatch hex="#D1CCC0" name="Toasty Gray" brand="Behr" href="/colors/behr/toasty-gray-n320-2" /> (N320-2) — a warm greige that rates nearly identical, meaning the two colors are hard to tell apart on a wall.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Matching Edgecomb Gray across brands.</strong>{" "}
@@ -8537,7 +8538,7 @@ const blogPosts: BlogPost[] = [
 
         <h3 className="mt-8 text-xl font-semibold text-gray-900">4. Swiss Coffee — Behr</h3>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#F3F2E6" name="Swiss Coffee" brand="Behr" href="/colors/behr/swiss-coffee-12" /> is a rich, warm off-white with noticeable cream-yellow undertones. It&apos;s warmer than a stark white, making it an excellent choice when you want walls that feel soft and enveloping rather than bright. Studio McGee helped popularize it as a whole-house neutral.
+          <Swatch hex="#F1EDE0" name="Swiss Coffee" brand="Behr" href="/colors/behr/swiss-coffee-12" /> is a rich, warm off-white with noticeable cream-yellow undertones. It&apos;s warmer than a stark white, making it an excellent choice when you want walls that feel soft and enveloping rather than bright. Studio McGee helped popularize it as a whole-house neutral.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone:</strong> Warm cream-yellow. <strong>LRV:</strong> 84. <strong>Best for:</strong> Living rooms, bedrooms, Mediterranean and California-casual style. <strong>Pair with:</strong> White Dove on trim for a layered warm palette.
@@ -9313,7 +9314,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-nursery-paint-colors",
     title: "13 Best Nursery Paint Colors for 2026 (Gender-Neutral Picks That Last)",
     date: "2026-01-29",
-    modifiedDate: "2026-10-31",
+    modifiedDate: "2026-11-08",
     author: "Philip Cameron",
     excerpt:
       "13 gender-neutral nursery paint colors in soft greens, dusty blues, warm whites and muted pinks, with LRVs, cross-brand matches and what to check on the label.",
@@ -9433,7 +9434,7 @@ const blogPosts: BlogPost[] = [
                 <td className="py-2 pr-4">5.8</td>
                 <td className="py-2 pr-4">Same brand</td>
                 <td className="py-2 pr-4"><Link href="/colors/benjamin-moore/harrisburg-green-hc-132" className="text-brand-blue hover:underline">Harrisburg Green</Link> (nearly identical)</td>
-                <td className="py-2"><Link href="/colors/behr/sage-gray-710f-4" className="text-brand-blue hover:underline">Sage Gray</Link> (very similar)</td>
+                <td className="py-2"><Link href="/colors/behr/copper-patina-s410-4" className="text-brand-blue hover:underline">Copper Patina</Link> (very similar)</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-2 pr-4"><Swatch hex="#c8d0c9" name="Quiet Moments" brand="BM 1563" href="/colors/benjamin-moore/quiet-moments-1563" /></td>
@@ -9581,7 +9582,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Nursery paint: what to check on the label</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>VOCs.</strong> The EPA lists paints among the household products that release volatile organic compounds (VOCs) indoors. Each of the big three brands sells an interior line it labels zero-VOC: Benjamin Moore Natura, Sherwin-Williams Harmony and Behr Premium Plus Interior. The label usually describes the base paint, and tinting adds colorant, so check the VOC statement for the color and product you actually buy.
+          <strong>VOCs.</strong> The EPA lists paints among the household products that release volatile organic compounds (VOCs) indoors. Each of the big three brands sells an interior line it labels zero-VOC: Benjamin Moore Natura, Sherwin-Williams Harmony and Behr Premium Plus Interior. ECOS Paints sells <a href={getEcosAwinUrl("https://ecospaints.net/browse-all/lullaby-eggshell-paint", "nursery-guide")} target="_blank" rel="sponsored nofollow noopener noreferrer" className="text-brand-blue hover:underline">Lullaby Eggshell</a> for nurseries on its own site and labels it zero-VOC. The label usually describes the base paint, and tinting adds colorant, so check the VOC statement for the color and product you actually buy.
+        </p>
+        <p className="mt-3 text-sm text-gray-500">
+          The ECOS link above is an affiliate link through Awin. Paint Color HQ earns a commission if you buy through it, at no extra cost to you. ECOS recommends ordering a sample or color card, because colors on a screen are not always accurate.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Ventilation and timing.</strong> The EPA&apos;s guidance is to increase ventilation when using products that emit VOCs and to meet or exceed any label precautions. Follow the can&apos;s dry and recoat times, keep windows open while you paint and afterward, and finish well before the baby moves in.
@@ -9966,7 +9970,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-behr-colors-for-bedrooms",
     title: "9 Best Behr Paint Colors for Bedrooms (2026 Picks)",
     date: "2026-01-22",
-    modifiedDate: "2026-10-29",
+    modifiedDate: "2026-11-08",
     author: "Philip Cameron",
     excerpt:
       "The best Behr bedroom paint colors for 2026 — calming blues, soft greens, and warm neutrals with LRVs, Behr's paint lines and cross-brand matches.",
@@ -9976,7 +9980,7 @@ const blogPosts: BlogPost[] = [
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
-          The best Behr paint color for most bedrooms is Silver Drop (790C-2, hex #dde3d7, LRV 70) — a soft, barely-warm off-white that works in any lighting condition. Every color below is available at Home Depot, and we used CIEDE2000 Delta E calculations to find the closest cross-brand matches from Sherwin-Williams and Benjamin Moore.
+          The best Behr paint color for most bedrooms is Silver Drop (790C-2, hex #dddacf, LRV 70) — a soft, barely-warm off-white that works in any lighting condition. Every color below is available at Home Depot, and we used CIEDE2000 Delta E calculations to find the closest cross-brand matches from Sherwin-Williams and Benjamin Moore.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Calming Blues</h2>
@@ -10009,10 +10013,10 @@ const blogPosts: BlogPost[] = [
           Warm neutrals are the safe pick that still looks intentional. These greiges and taupes work with virtually any furniture, any lighting, and any style — from mid-century modern to farmhouse.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#dde3d7" name="Silver Drop" brand="Behr" href="/colors/behr/silver-drop-790c-2" /> — A soft, barely-warm off-white. At LRV 70 it stays light enough for rooms with limited natural light while adding a whisper of warmth that pure white can&apos;t deliver.
+          <Swatch hex="#dddacf" name="Silver Drop" brand="Behr" href="/colors/behr/silver-drop-790c-2" /> — A soft, barely-warm off-white. At LRV 70 it stays light enough for rooms with limited natural light while adding a whisper of warmth that pure white can&apos;t deliver.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CCD6CA" name="Dolphin Fin" brand="Behr" href="/colors/behr/dolphin-fin-790c-3" /> (LRV 59) — a pale gray with a soft green cast, the coolest pick in this group, for bedrooms that mix warm and cool elements. Its closest matches are <Link href="/colors/benjamin-moore/crystalline-af-485" className="text-brand-blue hover:underline">Benjamin Moore Crystalline (AF-485)</Link> and <Link href="/colors/sherwin-williams/wavecrest-9672" className="text-brand-blue hover:underline">Sherwin-Williams Wavecrest (SW 9672)</Link>, both nearly identical. Compare it side-by-side with Silver Drop using our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
+          <Swatch hex="#CCCAC1" name="Dolphin Fin" brand="Behr" href="/colors/behr/dolphin-fin-790c-3" /> (LRV 59) is a pale gray with a faint warm cast, a step deeper than Silver Drop, for bedrooms that mix warm and cool elements. Its closest matches are <Link href="/colors/benjamin-moore/apparition-860" className="text-brand-blue hover:underline">Benjamin Moore Apparition (860)</Link> and <Link href="/colors/sherwin-williams/repose-gray-7015" className="text-brand-blue hover:underline">Sherwin-Williams Repose Gray (SW 7015)</Link>, both nearly identical. Compare it side-by-side with Silver Drop using our <Link href="/compare" className="text-brand-blue hover:underline">color comparison tool</Link>.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Browse our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray color family</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color family</Link> for more Behr neutral options.
