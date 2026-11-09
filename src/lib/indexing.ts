@@ -1,25 +1,5 @@
 const codeSlug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-// Behr's "-2-2" slugs (the primary is "...-n260-2", a "-2" copy follows) look
-// like variants under the rule below but are indexable today, and three of them
-// have Bing traffic, so they stay indexable until MP-49 consolidates them
-// (with redirects). Remove this list then.
-const BEHR_DOUBLE_SUFFIX_KEEP: ReadonlySet<string> = new Set([
-  "almond-latte-n260-2-2",
-  "chocolate-froth-720c-2-2",
-  "hazelnut-cream-750c-2-2",
-  "raffia-cream-710c-2-2",
-  "silver-bullet-n520-2-2",
-  "silver-drop-790c-2-2",
-  "toasty-gray-n320-2-2",
-  "writers-parchment-n280-2-2",
-]);
-
-// Names that pass the code-only test but are still fragments, not names. BM
-// AC-39 is "Mt." (a truncated "Mt. ..."); it stays noindexed until A-23
-// consolidates it. Remove this entry then.
-const THIN_NAME_HOLD: ReadonlySet<string> = new Set(["mt-ac-39"]);
-
 // A slug like `sea-salt-6204-2` is a variant of `sea-salt-6204`: the color
 // number sits immediately before the "-N" suffix. A slug that merely ends in
 // "-N" is not: Behr "almond-latte-n260-2" IS the color number N260-2, and Vista
@@ -29,7 +9,6 @@ const THIN_NAME_HOLD: ReadonlySet<string> = new Set(["mt-ac-39"]);
 export function extractVariantSuffix(slug: string, colorNumber: string | null | undefined): string {
   const m = slug.match(/^(.*)-([2-9])$/);
   if (!m) return "";
-  if (BEHR_DOUBLE_SUFFIX_KEEP.has(slug)) return "";
   const num = colorNumber ? codeSlug(colorNumber) : "";
   if (num && !m[1].endsWith(`-${num}`) && m[1] !== num) return "";
   return ` (variant ${m[2]})`;
@@ -75,7 +54,7 @@ export function dataQualityScore(color: { lrv: number | string | null; undertone
 
 
 export function isColorIndexable(color: { slug: string; name: string; color_number?: string | null; lrv: number | string | null; undertone: string | null; color_family: string | null }): boolean {
-  return !isCodeOnlyName(color.name, color.color_number) && dataQualityScore(color) >= 2 && !isVariantSlug(color.slug, color.color_number) && !THIN_NAME_HOLD.has(color.slug);
+  return !isCodeOnlyName(color.name, color.color_number) && dataQualityScore(color) >= 2 && !isVariantSlug(color.slug, color.color_number);
 }
 
 // Individual /match/[a]-to-[b] pages are indexable only below this Delta E.
