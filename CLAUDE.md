@@ -115,7 +115,7 @@ Defined in `.env.local` (not committed). See `.env.local.example` for required k
 - `scroll_depth` - Custom 25/50/90% milestones (not GA4 built-in scroll)
 - `time_on_page` - Dwell time buckets: 30s, 60s, 120s, 300s
 - `color_swatch_click` - Color card clicks via event delegation
-- `color_search` - Search queries with search_term + result_count
+- `color_search` - Search queries with search_term + result_count (+ search_source for the match-listing and 404 boxes). Never name an event parameter `source`, `medium`, `campaign`, `term`, `content` or `campaign_*`: GA4 reads those as the session's traffic source, and `trackEvent` drops them
 - `color_compare` - Compare tool usage (was color_search, renamed March 18)
 - `tool_use` - Tool engagement: open/use/complete with tool_name
 - `retailer_click` - Outbound retailer link clicks
