@@ -1,13 +1,14 @@
 import { extractVariantSuffix, isMatchIndexable } from "@/lib/indexing";
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
-import { getColorBySlug, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
+import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
 import sitemapSnapshot from "@/generated/sitemap.json";
+import colorRedirects from "@/data/color-redirects.json";
 import { closenessLabel } from "@/lib/closeness";
 import { isMatchTitleTestPair, matchTestDescription, matchTestTitle } from "@/lib/match-title-test";
 
@@ -34,6 +35,31 @@ function parseParams(raw: string): { colorSlug: string; targetBrandSlug: string 
   return { colorSlug: match[1], targetBrandSlug: match[2] };
 }
 
+// Renamed or merged source color -> the match page for its canonical slug, the
+// way the color route redirects old slugs. next.config redirects only cover
+// /colors/ paths, so the merged-slug map (key "brand/slug", the target may sit
+// under a different brand) and the color-number lookup are both applied here.
+// The redirect fires only when the destination renders: the canonical color
+// must exist and have a match in the target brand. That also rules out a
+// self-match (a merged color that now belongs to the target brand has no match
+// in its own brand) and a hop into a 404. One hop, canonical URL, no query string.
+async function redirectRenamedSource(sourceBrandSlug: string, colorSlug: string, targetBrandSlug: string): Promise<void> {
+  const merged = (colorRedirects as Record<string, string>)[`${sourceBrandSlug}/${colorSlug}`];
+  let brandSlug = sourceBrandSlug;
+  let newSlug: string | null;
+  if (merged) {
+    [brandSlug, newSlug] = merged.split("/");
+  } else {
+    newSlug = await getColorSlugByNumber(sourceBrandSlug, colorSlug);
+  }
+  if (!newSlug || (brandSlug === sourceBrandSlug && newSlug === colorSlug)) return;
+  const canonical = await getColorBySlug(brandSlug, newSlug);
+  if (!canonical) return;
+  const matches = await getCrossBrandMatches(canonical.id);
+  if (!matches.some((m) => m.match_color.brand.slug === targetBrandSlug)) return;
+  permanentRedirect(`/match/${brandSlug}/${newSlug}-to-${targetBrandSlug}`);
+}
+
 // Sentence built from the shared closeness label, e.g. "Nearly identical in our digital data".
 function deltaELabel(score: number): string {
   return `${closenessLabel(score)} in our digital data`;
@@ -51,6 +77,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const parsed = parseParams(matchSlug);
   if (!parsed) return { title: "Match Not Found" };
   const [sourceColor, targetBrand] = await Promise.all([getColorBySlug(sourceBrandSlug, parsed.colorSlug), getBrandBySlug(parsed.targetBrandSlug)]);
+  // Resolved here, not only in the page body, so Next.js answers with a real
+  // 308 instead of streaming the not-found UI (same reasoning as the color route).
+  if (!sourceColor && targetBrand) await redirectRenamedSource(sourceBrandSlug, parsed.colorSlug, parsed.targetBrandSlug);
   if (!sourceColor || !targetBrand) return { title: "Match Not Found" };
   const allMatches = await getCrossBrandMatches(sourceColor.id);
   const best = allMatches.find((m) => m.match_color.brand.slug === parsed.targetBrandSlug);
@@ -101,6 +130,7 @@ export default async function MatchPage({ params }: PageProps) {
   const parsed = parseParams(matchSlug);
   if (!parsed) notFound();
   const [sourceColor, targetBrand] = await Promise.all([getColorBySlug(sourceBrandSlug, parsed.colorSlug), getBrandBySlug(parsed.targetBrandSlug)]);
+  if (!sourceColor && targetBrand) await redirectRenamedSource(sourceBrandSlug, parsed.colorSlug, parsed.targetBrandSlug);
   if (!sourceColor || !targetBrand) notFound();
 
   const allMatches = await getCrossBrandMatches(sourceColor.id);
