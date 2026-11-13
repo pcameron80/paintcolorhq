@@ -9747,7 +9747,7 @@ const blogPosts: BlogPost[] = [
     slug: "best-sherwin-williams-kitchen-colors",
     title: "15 Best Sherwin-Williams Paint Colors for Kitchens (2026)",
     date: "2026-02-26",
-    modifiedDate: "2026-10-27",
+    modifiedDate: "2026-11-12",
     author: "Philip Cameron",
     excerpt:
       "15 Sherwin-Williams kitchen colors for cabinets, walls and islands, with measured cabinet whites, data-sheet finish figures and lighting advice.",
@@ -9762,7 +9762,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Whites for Kitchen Cabinets</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          White cabinets remain the top choice for kitchens, and the specific white matters enormously. The wrong white clashes with countertops and makes the whole kitchen feel off. Use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to preview any of these whites in a kitchen setting before buying samples.
+          For cabinets, the difference between Sherwin-Williams whites is mostly yellowness, not lightness. Our <Link href="/blog/kitchen-cabinet-paint-colors" className="text-brand-blue hover:underline">kitchen cabinet paint colors</Link> guide ranks cabinet whites by measured yellowness (the b* value of each published color) and shows how to match one to your countertop. The four below are this post&apos;s Sherwin-Williams cabinet whites with their measured values.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#EDECE6" name="Pure White" brand="Sherwin-Williams" href="/colors/sherwin-williams/pure-white-7005" />: LRV 83.7, yellowness 3.0. A clean white with a little yellow, for countertops that look neutral or cool.
