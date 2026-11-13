@@ -1,9 +1,9 @@
-import { test } from "node:test";
+import { test, mock } from "node:test";
 import assert from "node:assert/strict";
-import { detectPageType } from "./analytics";
+import { detectPageType, isTrafficSourceParam, trackEvent, withoutTrafficSourceParams } from "./analytics";
 import { navTypeFor, type NavTypeState } from "./nav-type";
 import { createVitalsGate, vitalsParams, vitalsValue } from "./web-vitals";
-import { createSearchSettler } from "./use-search-tracking";
+import { colorSearchParams, createSearchSettler } from "./use-search-tracking";
 
 test("detectPageType separates the match hub, listings and hue bands", () => {
   assert.equal(detectPageType("/match"), "match_hub");
@@ -127,4 +127,38 @@ test("search waits for in-flight results and reads the count at send time", () =
   count = 0;
   clock.advance(300);
   assert.deepEqual(sent, [["sw 7029", 0]]);
+});
+
+test("color_search names its box search_source, never GA4's reserved source", () => {
+  assert.deepEqual(colorSearchParams("agreeable gray", 12, "match_listing"), {
+    search_term: "agreeable gray",
+    result_count: "12",
+    search_source: "match_listing",
+  });
+  assert.equal("source" in colorSearchParams("sw 7029", 0, "not_found"), false);
+});
+
+test("traffic-source parameter names are caught, look-alike names are not", () => {
+  for (const key of ["source", "medium", "campaign", "term", "content", "campaign_id", "campaign_source", "campaign_name"]) {
+    assert.equal(isTrafficSourceParam(key), true, key);
+  }
+  for (const key of ["search_source", "swatch_source", "source_page", "source_brand", "search_term", "content_category"]) {
+    assert.equal(isTrafficSourceParam(key), false, key);
+  }
+  assert.equal(withoutTrafficSourceParams(undefined), undefined);
+});
+
+test("trackEvent never hands GA4 a traffic-source parameter", () => {
+  const calls: unknown[][] = [];
+  const g = globalThis as unknown as { window?: unknown };
+  g.window = { gtag: (...args: unknown[]) => calls.push(args) };
+  const warn = mock.method(console, "warn", () => {});
+  try {
+    trackEvent("color_search", { search_term: "pale oak", result_count: "3", source: "match_listing", campaign_name: "x" });
+    assert.deepEqual(calls, [["event", "color_search", { search_term: "pale oak", result_count: "3" }]]);
+    assert.equal(warn.mock.callCount(), 2);
+  } finally {
+    warn.mock.restore();
+    delete g.window;
+  }
 });

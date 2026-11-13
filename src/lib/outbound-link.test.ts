@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { classifyOutboundLink, colorFromPagePath } from "./outbound-link";
+import { getEcosAwinUrl } from "./affiliate";
 
 const page = (pagePath: string, rel?: string) => ({ pagePath, pageHost: "www.paintcolorhq.com", rel });
 
@@ -52,6 +53,23 @@ test("affiliate-network redirects report the wrapped store as the retailer", () 
     page("/colors/behr/swiss-coffee"),
   );
   assert.equal(impact?.retailer, "homedepot.com");
+  const awin = classifyOutboundLink(
+    "https://www.awin1.com/cread.php?awinmid=1&awinaffid=2&ued=https%3A%2F%2Fwww.farrow-ball.com%2Fpaint%2Fhague-blue",
+    page("/colors/farrow-ball/hague-blue-30"),
+  );
+  assert.equal(awin?.retailer, "farrow-ball.com");
+  assert.equal(awin?.affiliate, "true");
+});
+
+test("an ECOS link through Awin records ecospaints.net as the retailer, with affiliate true", () => {
+  const r = classifyOutboundLink(
+    getEcosAwinUrl("https://ecospaints.net/color-matching?cm_brand=Behr&cm_name=Swiss+Coffee&cm_number=12", "color-page"),
+    page("/colors/behr/swiss-coffee", "sponsored nofollow noopener noreferrer"),
+  );
+  assert.equal(r?.retailer, "ecospaints.net");
+  assert.equal(r?.affiliate, "true");
+  assert.equal(r?.color_brand, "behr");
+  assert.equal(r?.color_slug, "swiss-coffee");
 });
 
 test("share, social, self, relative and non-http links are not retailer clicks", () => {

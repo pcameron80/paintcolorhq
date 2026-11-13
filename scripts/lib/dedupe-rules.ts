@@ -20,6 +20,10 @@
  *              BM's own site lists them on (data/bm-ac-aliases.json, from
  *              scripts/fetch-bm-aliases.ts). Exact-hex matching maps several
  *              of these to the wrong color, so hex is not used.
+ *   explicit   Pairs listed by hand in scripts/data/explicit-duplicates.json,
+ *              each with a source (2026-11 audit: Behr 18xx / W- stock
+ *              codes, Vista C-/K- book rows, two BM alias pairs one hex step
+ *              apart). The declared canonical is kept; see explicitGroups().
  *
  * One row per group survives as canonical. The rest are retired (see
  * scripts/retire-bad-color-rows.ts) and their codes folded into the
@@ -38,7 +42,7 @@ export interface DedupeCandidate {
   last_seen_live_on?: string | null;
 }
 
-export type GroupReason = 'name+hex' | 'behr-pad' | 'same-code' | 'hisp' | 'norm-code' | 'bm-ac';
+export type GroupReason = 'name+hex' | 'behr-pad' | 'same-code' | 'hisp' | 'norm-code' | 'bm-ac' | 'explicit';
 
 const HISP_RX = /\s*\(HISP\)\s*$/i;
 
@@ -322,12 +326,106 @@ export function findDuplicateGroups<T extends GroupableRow>(
   return { groups, acUnresolved };
 }
 
+/** One hand-listed duplicate (scripts/data/explicit-duplicates.json). */
+export interface ExplicitDuplicate {
+  brand: string;
+  loser: string;
+  /** The code the loser must still hold; guards against running out of order. */
+  loserCode: string;
+  canonical: string;
+  finding?: string;
+  why?: string;
+  /** A step that must run first, e.g. "fix-vista-identities.ts --apply". */
+  requires?: string;
+}
+
+export interface ExplicitGroup<T extends GroupableRow> extends DedupeDecision<T> {
+  brandSlug: string;
+  rows: T[];
+}
+
+/**
+ * Groups for hand-listed pairs, keeping the declared canonical (pickCanonical
+ * would tie on some of them: Behr UL250-10 and PPU16-11 have equal-length
+ * slugs and neither is in the feed). Losers that share a canonical form one
+ * group. A pair is refused, with the reason, when:
+ *   - either row is missing (already retired, or a typo);
+ *   - the loser no longer holds loserCode (a fix that must run first has not,
+ *     or the row was edited: folding the wrong code would corrupt the
+ *     canonical's alternate_numbers);
+ *   - the canonical is not in the live feed while the loser is;
+ *   - a row is also in a rule-based group (`taken`), so it is never planned twice.
+ * A pair whose loser a rule-based group already retires into the same
+ * canonical (`ruleTargets`: loser key -> canonical key) is `covered`, not
+ * refused: after fix-vista-identities.ts the three restored Vista rows share
+ * name and hex with their live rows, so name+hex plans exactly the listed pair.
+ */
+export function explicitGroups<T extends GroupableRow>(
+  rows: T[],
+  brandSlugById: Map<string, string>,
+  pairs: ExplicitDuplicate[],
+  taken: Set<string> = new Set(),
+  ruleTargets: ReadonlyMap<string, string> = new Map(),
+): { groups: ExplicitGroup<T>[]; refused: string[]; covered: string[] } {
+  const byKey = new Map<string, T>();
+  for (const r of rows) byKey.set(`${brandSlugById.get(r.brand_id) ?? '?'}/${r.slug}`, r);
+  const refused: string[] = [];
+  const covered: string[] = [];
+  const losersByCanonical = new Map<string, T[]>();
+  for (const p of pairs) {
+    const label = `${p.brand}/${p.loser} -> ${p.canonical}`;
+    const loser = byKey.get(`${p.brand}/${p.loser}`);
+    const canonical = byKey.get(`${p.brand}/${p.canonical}`);
+    if (!loser || !canonical) {
+      refused.push(`${label}: ${!loser ? 'loser' : 'canonical'} row not found`);
+      continue;
+    }
+    if ((loser.color_number ?? '').trim().toUpperCase() !== p.loserCode.trim().toUpperCase()) {
+      refused.push(`${label}: loser holds "${loser.color_number}", expected "${p.loserCode}"${p.requires ? ` (run ${p.requires} first)` : ''}`);
+      continue;
+    }
+    if (ruleTargets.get(`${p.brand}/${p.loser}`) === `${p.brand}/${p.canonical}`) {
+      covered.push(`${label}: planned by a rule-based group`);
+      continue;
+    }
+    if (taken.has(`${p.brand}/${p.loser}`) || taken.has(`${p.brand}/${p.canonical}`)) {
+      refused.push(`${label}: already in a rule-based group`);
+      continue;
+    }
+    if (!isLive(canonical) && isLive(loser)) {
+      refused.push(`${label}: canonical is not in the live feed but the loser is`);
+      continue;
+    }
+    const k = `${p.brand}/${p.canonical}`;
+    const list = losersByCanonical.get(k) ?? [];
+    if (!list.includes(loser)) list.push(loser);
+    losersByCanonical.set(k, list);
+  }
+  const groups: ExplicitGroup<T>[] = [];
+  for (const [k, dupes] of losersByCanonical) {
+    const canonical = byKey.get(k)!;
+    const canonicalNum = (canonical.color_number ?? '').trim().toUpperCase();
+    const alternates = [
+      ...new Set(dupes.map((d) => stripHisp((d.color_number ?? '').trim())).filter((n) => n && n.toUpperCase() !== canonicalNum)),
+    ];
+    groups.push({
+      brandSlug: k.split('/')[0],
+      rows: [canonical, ...dupes],
+      canonical,
+      dupes,
+      alternates,
+      liveConflict: false,
+    });
+  }
+  return { groups, refused, covered };
+}
+
 /**
  * The primary reason a group is reported under, for the summary tally:
  * the most specific rule that joined it.
  */
 export function primaryReason(reasons: GroupReason[]): GroupReason {
-  const order: GroupReason[] = ['bm-ac', 'hisp', 'behr-pad', 'norm-code', 'same-code', 'name+hex'];
+  const order: GroupReason[] = ['explicit', 'bm-ac', 'hisp', 'behr-pad', 'norm-code', 'same-code', 'name+hex'];
   return order.find((r) => reasons.includes(r)) ?? reasons[0];
 }
 

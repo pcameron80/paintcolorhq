@@ -41,7 +41,7 @@ export default async function ProjectPage({ params }: PageProps) {
     colorsByRole[pc.role].push(pc);
   }
 
-  const roleOrder = ["walls", "trim", "accent", "pop"];
+  const roleOrder = ["walls", "trim", "accent", "cabinets", "windows", "pop"];
   const sortedRoles = Object.keys(colorsByRole).sort((a, b) => {
     const ai = roleOrder.indexOf(a);
     const bi = roleOrder.indexOf(b);
@@ -85,6 +85,8 @@ export default async function ProjectPage({ params }: PageProps) {
             walls: "walls",
             trim: "trim",
             accent: "accent",
+            cabinets: "cabinets",
+            windows: "windows",
           };
           const collected: Record<string, string[]> = {};
           const popHexes: string[] = [];

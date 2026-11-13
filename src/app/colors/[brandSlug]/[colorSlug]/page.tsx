@@ -1,5 +1,4 @@
 import { ColorDecisionGuide } from "@/components/color-decision-guide";
-import { REVIEWED_COLOR_PAGES } from "@/lib/color-review";
 import { extractVariantSuffix, isColorIndexable } from "@/lib/indexing";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -14,7 +13,11 @@ import { ShareButton } from "@/components/share-button";
 import { PinterestSaveButton } from "@/components/pinterest-save-button";
 import { permanentRedirect } from "next/navigation";
 import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, findClosestColor, getSimilarColorsFromSameBrand, getMoreFromFamily } from "@/lib/queries";
-import { generateColorLede, nearestMatchesPerBrand, generateMetaDescription } from "@/lib/color-description";
+import { generateColorLede, nearestMatchesPerBrand } from "@/lib/color-description";
+import { buildColorFaq, buildPinDescription, codeForCopy, colorMetadataText, pageUndertone } from "@/lib/color-page-copy";
+import { withManufacturerFamily } from "@/lib/manufacturer-family";
+import { latestDate, COLOR_TEMPLATE_DATE } from "@/lib/content-dates";
+import { codeSuffix, displayColorNumber } from "@/lib/text";
 import { getColorEditorial } from "@/lib/color-editorial";
 import { SamplizeOffer } from "@/components/samplize-offer";
 import { getUndertoneDotClass } from "@/lib/undertone-utils";
@@ -24,10 +27,10 @@ import { TrackPage } from "@/components/track-page";
 import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
+import { matchPairsForColor } from "@/lib/match-pairs";
 import { COTY_BY_COLOR } from "@/lib/color-of-the-year";
-import { FORMER_NAMES } from "@/lib/former-names";
-import { titleArm, matchesArmTitle, matchesArmDescription } from "@/lib/title-test";
-import { closenessLabel, closenessLabelLower } from "@/lib/closeness";
+import { formerNameFor } from "@/lib/former-names";
+import { closenessLabel } from "@/lib/closeness";
 import { availabilityStatus, RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
 import { findHueBand } from "@/lib/hue-bands";
 import { HEAD_COLOR_PUSH } from "@/lib/head-colors";
@@ -96,14 +99,17 @@ function isLightColor(hex: string): boolean {
   return l > 55;
 }
 
-async function resolveHarmonies(color: Awaited<ReturnType<typeof getColorBySlug>> & {}) {
+// Descriptions use a colon, not an em dash; head-color pages keep the dash
+// during their push.
+async function resolveHarmonies(color: Awaited<ReturnType<typeof getColorBySlug>> & {}, legacy: boolean) {
+  const sep = legacy ? " \u2014 " : ": ";
   const hex = color.hex;
   const [h, s, l] = hexToHsl(hex);
   const rawHarmonies = [
-    { name: "Complementary", description: "Opposite on the color wheel \u2014 creates vibrant contrast", colors: [{ hex, label: "Base" }, { hex: hslToHex(h + 180, s, l), label: "Complement" }] },
-    { name: "Analogous", description: "Adjacent colors \u2014 creates a harmonious, cohesive feel", colors: [{ hex: hslToHex(h - 30, s, l), label: "Adjacent" }, { hex, label: "Base" }, { hex: hslToHex(h + 30, s, l), label: "Adjacent" }] },
-    { name: "Triadic", description: "Evenly spaced \u2014 balanced and colorful", colors: [{ hex, label: "Base" }, { hex: hslToHex(h + 120, s, l), label: "Triad" }, { hex: hslToHex(h + 240, s, l), label: "Triad" }] },
-    { name: "Split Complementary", description: "Softer alternative to complementary \u2014 less tension, still dynamic", colors: [{ hex, label: "Base" }, { hex: hslToHex(h + 150, s, l), label: "Split" }, { hex: hslToHex(h + 210, s, l), label: "Split" }] },
+    { name: "Complementary", description: `Opposite on the color wheel${sep}creates vibrant contrast`, colors: [{ hex, label: "Base" }, { hex: hslToHex(h + 180, s, l), label: "Complement" }] },
+    { name: "Analogous", description: `Adjacent colors${sep}creates a harmonious, cohesive feel`, colors: [{ hex: hslToHex(h - 30, s, l), label: "Adjacent" }, { hex, label: "Base" }, { hex: hslToHex(h + 30, s, l), label: "Adjacent" }] },
+    { name: "Triadic", description: `Evenly spaced${sep}balanced and colorful`, colors: [{ hex, label: "Base" }, { hex: hslToHex(h + 120, s, l), label: "Triad" }, { hex: hslToHex(h + 240, s, l), label: "Triad" }] },
+    { name: "Split Complementary", description: `Softer alternative to complementary${sep}less tension, still dynamic`, colors: [{ hex, label: "Base" }, { hex: hslToHex(h + 150, s, l), label: "Split" }, { hex: hslToHex(h + 210, s, l), label: "Split" }] },
   ];
   const allHexes = new Set<string>();
   for (const harmony of rawHarmonies) for (const c of harmony.colors) allHexes.add(c.hex);
@@ -122,8 +128,8 @@ interface PageProps { params: Promise<{ brandSlug: string; colorSlug: string }>;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { brandSlug, colorSlug } = await params;
-  const color = await getColorBySlug(brandSlug, colorSlug);
-  if (!color) {
+  const rawColor = await getColorBySlug(brandSlug, colorSlug);
+  if (!rawColor) {
     // Slug-renamed redirect: Google still has old slugs like /benjamin-moore/blue-736
     // indexed at decent positions. Resolve via color number -> canonical slug
     // (src/lib/color-number.ts). Doing this in generateMetadata (not just the page
@@ -138,34 +144,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     notFound();
   }
   const url = `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`;
-  const colorNum = color.color_number ? ` ${color.color_number}` : "";
+  const isHeadColor = HEAD_COLOR_PUSH.includes(`${brandSlug}/${colorSlug}`);
+  const color = isHeadColor ? rawColor : withManufacturerFamily(rawColor, brandSlug, colorSlug);
+  const colorNum = codeForCopy(color, isHeadColor);
   const variant = extractVariantSuffix(colorSlug, color.color_number);
-  // Title pivot: replace the hex code (low CTR signal) with LRV + family. LRV
-  // is searched ("LRV 70 paint", "high LRV white"), and the family word
-  // captures family-level intent ("yellow paint color").
-  const lrvForTitle = color.lrv != null ? Math.round(Number(color.lrv)) : null;
-  const familyForTitle = color.color_family
-    ? color.color_family.charAt(0).toUpperCase() + color.color_family.slice(1)
-    : null;
-  const titleSuffix = familyForTitle
-    ? ` | ${lrvForTitle != null ? `LRV ${lrvForTitle} ` : ""}${familyForTitle} Paint Color`
-    : ` | ${color.hex.toUpperCase()}`; // fall back to hex if family unavailable
   const shouldIndex = isColorIndexable(color);
-  const reviewed = Boolean(REVIEWED_COLOR_PAGES[`${brandSlug}/${colorSlug}`]);
-  let title: Metadata["title"] = reviewed
-    ? { absolute: `${color.brand.name} ${color.name}${colorNum}: Color Matches` }
-    : `${color.name}${colorNum} by ${color.brand.name}${variant}${titleSuffix}`;
-  let description = generateMetaDescription(color) + variant;
-  // Split test (src/lib/title-test.ts): half of unreviewed pages lead with
-  // the cross-brand match instead of LRV + family.
-  if (!reviewed && titleArm(brandSlug, colorSlug) === "matches") {
-    title = { absolute: matchesArmTitle(color.name, colorNum, color.brand.name, variant) };
-    const nearest = nearestMatchesPerBrand(await getCrossBrandMatches(color.id));
-    description = matchesArmDescription(color.name, lrvForTitle, nearest) ?? description;
-  }
-  // Renamed colors keep their old name on the page and in the snippet.
-  const formerName = FORMER_NAMES[`${brandSlug}/${colorSlug}`];
-  if (formerName && formerName !== color.name) description = `${description} Previously listed as ${formerName}.`;
+  // Title and description (src/lib/color-page-copy.ts). Every unreviewed,
+  // non-head page uses the title-test winner (src/lib/title-test.ts, rolled out
+  // 2026-11-03), at 60 characters or fewer; REVIEWED_COLOR_PAGES keep their
+  // hand-set titles and head colors keep their pre-rollout strings. The match
+  // list is the same cached fetch the page body uses.
+  const { title, description } = colorMetadataText({ color, brandSlug, colorSlug, matches: await getCrossBrandMatches(color.id), isHead: isHeadColor });
   return {
     title,
     description,
@@ -192,22 +181,26 @@ function JsonLd({ data }: { data: object }) {
 
 export default async function ColorPage({ params }: PageProps) {
   const { brandSlug, colorSlug } = await params;
-  const color = await getColorBySlug(brandSlug, colorSlug);
+  const rawColor = await getColorBySlug(brandSlug, colorSlug);
 
-  if (!color) {
+  if (!rawColor) {
     await redirectRenamedSlug(brandSlug, colorSlug);
     notFound();
   }
+
+  // Head-color pages keep their body fixed during the 2026-10-11 push, so the
+  // hue-band and match-hub links below skip them, and the lede, FAQ, visualizer
+  // link, sample CTA rel, Room Palettes swatch, undertone and em dashes keep
+  // their pre-push output. Everything else shows the manufacturer's family
+  // where it differs from ours (src/lib/manufacturer-family.ts).
+  const isHeadColor = HEAD_COLOR_PUSH.includes(`${brandSlug}/${colorSlug}`);
+  const color = isHeadColor ? rawColor : withManufacturerFamily(rawColor, brandSlug, colorSlug);
 
   const [matches, similarColors, moreFromFamily] = await Promise.all([
     getCrossBrandMatches(color.id),
     getSimilarColorsFromSameBrand(color),
     getMoreFromFamily({ id: color.id, color_family: color.color_family, brand_id: color.brand_id }),
   ]);
-  // Head-color pages keep their body fixed during the 2026-10-11 push, so the
-  // hue-band and match-hub links below skip them, and the lede, FAQ, visualizer
-  // link, sample CTA rel and Room Palettes swatch keep their pre-push output.
-  const isHeadColor = HEAD_COLOR_PUSH.includes(`${brandSlug}/${colorSlug}`);
   const colorLede = generateColorLede(color, matches, { legacy: isHeadColor });
   const brandMatrix = nearestMatchesPerBrand(matches);
   // The strip under the hero leads with brands most stores carry, then fills
@@ -217,6 +210,13 @@ export default async function ColorPage({ params }: PageProps) {
     const i = (MAJOR_MATCH_BRANDS as readonly string[]).indexOf(slug);
     return i === -1 ? 99 : i;
   };
+  // Links to this color's sitemap match pages, which no color page linked
+  // before 2026-11-08. Head colors are left out until their body freeze ends
+  // (2026-11-27, see head-colors.ts).
+  const matchPages = isHeadColor ? [] : matchPairsForColor(brandSlug, color.slug).map((p) => ({
+    path: p.path,
+    brandName: matches.find((m) => m.match_color.brand.slug === p.targetBrand)?.match_color.brand.name ?? p.targetBrand,
+  }));
   const brandStrip = [...brandMatrix].sort((a, b) => majorRank(a.match_color.brand.slug) - majorRank(b.match_color.brand.slug)).slice(0, 6);
   const hueBand = isHeadColor ? undefined : findHueBand({ l: color.lab_l, a: color.lab_a, b: color.lab_b_val });
   const availabilityNote = availabilityStatus(color.brand.slug, color.brand.name, color.color_number, color.availability);
@@ -236,9 +236,13 @@ export default async function ColorPage({ params }: PageProps) {
   // buy button (it leaks the click to a dead end). Brands with no marketplace
   // (SW/BM/Dunn-Edwards/Dutch Boy/specialty) keep every link as a buy button —
   // their own .com IS the buy CTA; Amazon is the monetizable fallback.
+  //
+  // Farrow & Ball has no marketplace, but when Samplize stocks the color the
+  // Samplize link is the buy CTA and F&B's own page is the reference link too.
   const hasAffiliateRetailer = retailerLinks.some((l) => isAffiliateRetailer(l.retailerName));
-  const buyRetailerLinks = hasAffiliateRetailer ? retailerLinks.filter((l) => isAffiliateRetailer(l.retailerName)) : retailerLinks;
-  const officialColorLinks = hasAffiliateRetailer ? retailerLinks.filter((l) => !isAffiliateRetailer(l.retailerName)) : [];
+  const brandLinkIsReference = hasAffiliateRetailer || (samplizeStocked && brandSlug === "farrow-ball");
+  const buyRetailerLinks = hasAffiliateRetailer ? retailerLinks.filter((l) => isAffiliateRetailer(l.retailerName)) : brandLinkIsReference ? [] : retailerLinks;
+  const officialColorLinks = hasAffiliateRetailer ? retailerLinks.filter((l) => !isAffiliateRetailer(l.retailerName)) : brandLinkIsReference ? retailerLinks : [];
   // Shopping CTAs in monetization-priority order: Samplize hero → buy retailer
   // (Home Depot/Lowe's, affiliate once live) → Amazon last. The first one is the
   // filled darker-teal "buy" hero (so every page has a focal point); the rest
@@ -252,55 +256,18 @@ export default async function ColorPage({ params }: PageProps) {
     }),
     ...sampleLinks.filter((l) => !l.primary).map((l) => ({ key: l.label, href: l.url, label: l.label, sponsored: true })),
   ];
-  const harmonies = await resolveHarmonies(color);
+  const harmonies = await resolveHarmonies(color, isHeadColor);
   const light = isLightColor(color.hex);
   const textClass = light ? "text-on-surface" : "text-on-primary";
   const textMutedClass = light ? "text-on-surface-variant" : "text-on-primary/80";
 
-  // Build FAQ items
-  const faqItems: Array<{ question: string; answer: string }> = [];
+  // FAQ items and the Pinterest description (src/lib/color-page-copy.ts), which
+  // also feed the FAQPage JSON-LD. The undertone label goes through
+  // displayUndertone() on every surface; head colors print the stored label.
   const lrv = color.lrv != null ? Number(color.lrv) : null;
-  const undertone = color.undertone ?? "";
-  const undertoneLower = undertone.toLowerCase();
-
-  // FAQ answers lead with per-color DATA (undertone / match list / LRV value) so
-  // each is a citeable standalone passage for AI Overviews / Perplexity / Copilot.
-  // The generic explainer sentences ("Undertone is the subtle cast…", the CIEDE2000
-  // explainer, "LRV is the most reliable guide…") were trimmed — identical across
-  // 26K pages, they added duplication, not citability. Delta E stays plain language.
-  const closenessPhrase = (de: number) => `${closenessLabelLower(de)} in our digital data`;
-  if (color.undertone) {
-    faqItems.push({
-      question: `What undertone does ${color.name} have?`,
-      answer: `${color.name} by ${color.brand.name} has a ${undertoneLower} undertone${color.color_family ? ` and sits in the ${color.color_family} color family` : ""}. This is a digital classification, not a prediction of physical paint under every light. Compare samples in your own space.`,
-    });
-  }
-  if (matches.length > 0) {
-    const top3 = matches.slice(0, 3);
-    const topList = top3.map((m) => `${m.match_color.name} by ${m.match_color.brand.name} (${closenessPhrase(Number(m.delta_e_score))})`).join(", ");
-    faqItems.push({
-      question: `What colors match ${color.name} from other brands?`,
-      answer: isHeadColor
-        ? `The closest cross-brand equivalents to ${color.name} are ${topList} — the best options for getting ${color.name}'s look from a brand your local store carries. Confirm with a physical sample, since sheen and lighting shift the final result.`
-        : `The closest cross-brand equivalents to ${color.name} are ${topList}. These are the best options for getting ${color.name}'s look from a brand your local store carries. Confirm with a physical sample, since sheen and lighting shift the final result.`,
-    });
-  }
-  if (lrv != null) {
-    // Head-color pages keep the frozen pre-push wording (em dashes and the old
-    // "a estimated lightness value" sentence) until their read date.
-    const dash = isHeadColor ? " — " : ", ";
-    const lrvBand =
-      lrv >= 70 ? `a light, reflective color that bounces plenty of light back into a room${dash}well-suited to north-facing spaces, hallways, and smaller rooms that need to feel brighter`
-      : lrv >= 50 ? `a mid-light color${dash}bright enough for living areas yet soft enough for bedrooms, and adaptable across most lighting conditions`
-      : lrv >= 25 ? `a mid-depth color with real presence${dash}strong on accent walls, libraries, and rooms with good natural light`
-      : "a deep, dramatic color best saved for accent walls, dining rooms, and cozy spaces where atmosphere matters more than reflected light";
-    faqItems.push({
-      question: `What is the LRV of ${color.name}?`,
-      answer: isHeadColor
-        ? `${color.name} has a estimated lightness value of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white — that makes it ${lrvBand}.`
-        : `${color.name} has an estimated light reflectance value (LRV) of ${lrv.toFixed(1)}, on a scale where 0 is pure black and 100 is pure white. That makes it ${lrvBand}.`,
-    });
-  }
+  const undertone = pageUndertone(color, isHeadColor);
+  const codeText = codeForCopy(color, isHeadColor);
+  const faqItems = buildColorFaq(color, matches, isHeadColor);
 
   // Pinterest pin metadata — the browser extension and Save button look for
   // data-pin-media + data-pin-description on a hidden element to find a
@@ -314,14 +281,7 @@ export default async function ColorPage({ params }: PageProps) {
   if (color.lrv != null) pinParams.set("lrv", String(Math.round(Number(color.lrv))));
   if (color.color_family) pinParams.set("family", color.color_family);
   const pinImageUrl = `https://www.paintcolorhq.com/api/pin?${pinParams.toString()}`;
-  const pinFamily = color.color_family ? ` ${color.color_family}` : "";
-  const pinLrv = color.lrv != null ? `, LRV ${Math.round(Number(color.lrv))}` : "";
-  const pinUndertone = color.undertone ? `, ${color.undertone.toLowerCase()} undertone` : "";
-  const brandHashtag = `#${color.brand.name.toLowerCase().replace(/[^a-z0-9]/g, "")}`;
-  const familyHashtag = color.color_family
-    ? ` #${color.color_family.toLowerCase().replace(/[^a-z0-9]/g, "")}paint`
-    : "";
-  const pinDescription = `${color.brand.name} ${color.name}${color.color_number ? ` (${color.color_number})` : ""} —${pinFamily} paint color${pinLrv}${pinUndertone}. Cross-brand matches at PaintColorHQ.com #paintcolor ${brandHashtag}${familyHashtag}`;
+  const pinDescription = buildPinDescription(color, isHeadColor);
 
   return (
     <div className="min-h-screen bg-surface">
@@ -355,9 +315,9 @@ export default async function ColorPage({ params }: PageProps) {
               <Link href="/discontinued" className="underline underline-offset-4">About retired and discontinued colors</Link>
             </p>
           )}
-          {FORMER_NAMES[`${brandSlug}/${colorSlug}`] && FORMER_NAMES[`${brandSlug}/${colorSlug}`] !== color.name && (
+          {formerNameFor(brandSlug, colorSlug, color.name) && (
             <p className={`-mt-4 mb-8 text-sm ${textMutedClass}`}>
-              Previously listed as {FORMER_NAMES[`${brandSlug}/${colorSlug}`]}
+              Previously listed as {formerNameFor(brandSlug, colorSlug, color.name)}
             </p>
           )}
           {COTY_BY_COLOR[`${brandSlug}/${colorSlug}`] && (
@@ -378,9 +338,9 @@ export default async function ColorPage({ params }: PageProps) {
                 <div className={`w-px h-12 ${light ? "bg-on-surface/20" : "bg-on-primary/20"}`} />
               </>
             )}
-            {color.undertone && (
+            {undertone && (
               <div className={textClass}>
-                <span className="block font-headline text-2xl md:text-3xl font-bold uppercase">{color.undertone}</span>
+                <span className="block font-headline text-2xl md:text-3xl font-bold uppercase">{undertone}</span>
                 <span className={`text-[10px] uppercase tracking-widest opacity-60 ${textMutedClass}`}>Undertone</span>
               </div>
             )}
@@ -478,7 +438,7 @@ export default async function ColorPage({ params }: PageProps) {
                 { label: "HEX Code", value: color.hex.toUpperCase() },
                 { label: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
                 ...(lrv != null ? [{ label: "Estimated LRV", value: lrv.toFixed(1) }] : []),
-                ...(color.undertone ? [{ label: "Undertone", value: color.undertone, dot: getUndertoneDotClass(color.undertone) }] : []),
+                ...(undertone ? [{ label: "Undertone", value: undertone, dot: getUndertoneDotClass(undertone) }] : []),
               ].map((spec) => (
                 <div key={spec.label} className="flex justify-between items-center py-4 border-b border-outline-variant/15">
                   <span className="text-xs uppercase tracking-widest font-semibold text-outline">{spec.label}</span>
@@ -569,7 +529,9 @@ export default async function ColorPage({ params }: PageProps) {
                   )}
                   {AFFILIATE_ENABLED && (
                     <p className="mt-4 text-xs text-on-surface-variant">
-                      Amazon links are affiliate links. As an Amazon Associate, Paint Color HQ earns from qualifying purchases, at no extra cost to you. Other sample and store links are not affiliate links.
+                      {sampleLinks.some((l) => l.program === "ecos")
+                        ? "Amazon and ECOS Paints links are affiliate links. As an Amazon Associate, Paint Color HQ earns from qualifying purchases, and it earns a commission from ECOS through Awin, at no extra cost to you. Other sample and store links are not affiliate links. ECOS matches from its library of other brands' color samples, and those can vary slightly, so mail ECOS a sample if you need a specific color. The smallest match it makes is a quart."
+                        : "Amazon links are affiliate links. As an Amazon Associate, Paint Color HQ earns from qualifying purchases, at no extra cost to you. Other sample and store links are not affiliate links."}
                     </p>
                   )}
                 </div>
@@ -608,6 +570,18 @@ export default async function ColorPage({ params }: PageProps) {
                     </Link>
                   ))}
                 </div>
+                {matchPages.length > 0 && (
+                  <p className="mt-6 text-sm text-on-surface-variant">
+                    {color.name} side by side with its closest match in{" "}
+                    {matchPages.map((p, i) => (
+                      <span key={p.path}>
+                        {i > 0 && (i < matchPages.length - 1 ? ", " : matchPages.length > 2 ? ", and " : " and ")}
+                        <Link href={p.path} prefetch={false} className="text-primary font-semibold underline-offset-4 hover:underline">{p.brandName}</Link>
+                      </span>
+                    ))}
+                    .
+                  </p>
+                )}
                 <div className="mt-8 pt-6 border-t border-outline-variant/15">
                   {/* When this color is Samplize-stocked, lead with the direct
                       per-color sample link at the moment of highest attention
@@ -686,7 +660,7 @@ export default async function ColorPage({ params }: PageProps) {
       {moreFromFamily.length > 0 && color.color_family && (
         <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
           <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">More {color.color_family} colors from other brands</h2>
-          <p className="mt-2 text-sm text-on-surface-variant">Cross-brand colors in the {color.color_family} family — useful when you want a similar look from a different brand.</p>
+          <p className="mt-2 text-sm text-on-surface-variant">Cross-brand colors in the {color.color_family} family{isHeadColor ? " \u2014 " : ": "}useful when you want a similar look from a different brand.</p>
           <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {moreFromFamily.map((c) => <ColorCard key={c.id} name={c.name} hex={c.hex} brandName={c.brand.name} brandSlug={c.brand.slug} colorSlug={c.slug} colorNumber={c.color_number} />)}
           </div>
@@ -697,7 +671,7 @@ export default async function ColorPage({ params }: PageProps) {
       {faqItems.length > 0 && (
         <section className="bg-surface-container-low py-16 px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">{color.name} — Frequently Asked Questions</h2>
+            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">{color.name}{isHeadColor ? " \u2014 " : ": "}Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqItems.map((item, i) => (
                 <details key={i} className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10">
@@ -743,17 +717,17 @@ export default async function ColorPage({ params }: PageProps) {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
             <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">How to Match Paint Colors Across Brands</p>
-            <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">The science behind Delta E and CIEDE2000 — find a Behr equivalent of any Sherwin-Williams shade, or a Benjamin Moore alternative when your store is out of stock.</p>
+            <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">The science behind Delta E and CIEDE2000{isHeadColor ? " \u2014 " : ": "}find a Behr equivalent of any Sherwin-Williams shade, or a Benjamin Moore alternative when your store is out of stock.</p>
           </Link>
           {color.undertone ? (
             <Link href="/blog/understanding-paint-color-undertones" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
               <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Understanding Paint Color Undertones</p>
-              <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">Why {color.name}&apos;s {color.undertone.toLowerCase()} undertone matters more than its surface color — and how to read undertones in any paint chip.</p>
+              <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">{isHeadColor ? <>Why {color.name}&apos;s {color.undertone.toLowerCase()} undertone matters more than its surface color — and how to read undertones in any paint chip.</> : "How to read undertones in any paint chip, and why they matter more than the surface color."}</p>
             </Link>
           ) : (
             <Link href="/blog/paint-sheen-guide" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
               <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Paint Sheen Guide</p>
-              <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">Flat, eggshell, satin, or semi-gloss — the right finish for {color.name} depends on the room. Here&apos;s how to choose.</p>
+              <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">Flat, eggshell, satin, or semi-gloss{isHeadColor ? " \u2014 the" : ": the"} right finish for {color.name} depends on the room. Here&apos;s how to choose.</p>
             </Link>
           )}
         </div>
@@ -771,8 +745,10 @@ export default async function ColorPage({ params }: PageProps) {
       <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "WebPage",
-        name: `${color.name}${color.color_number ? ` ${color.color_number}` : ""} Paint Color by ${color.brand.name}`,
+        name: `${color.name}${codeText} Paint Color by ${color.brand.name}`,
         url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
+        // Skipped on head colors until their read (their schema is frozen).
+        ...(isHeadColor ? {} : { dateModified: latestDate(color.created_at, color.content_updated_at, COLOR_TEMPLATE_DATE) }),
         description: colorLede,
         primaryImageOfPage: {
           "@type": "ImageObject",
@@ -782,7 +758,7 @@ export default async function ColorPage({ params }: PageProps) {
         },
         mainEntity: {
           "@type": "DefinedTerm",
-          name: `${color.name}${color.color_number ? ` ${color.color_number}` : ""}`,
+          name: `${color.name}${codeText}`,
           ...(color.color_number ? { termCode: color.color_number } : {}),
           description: colorLede,
           url: `https://www.paintcolorhq.com/colors/${brandSlug}/${colorSlug}`,
@@ -797,7 +773,7 @@ export default async function ColorPage({ params }: PageProps) {
             { "@type": "PropertyValue", name: "Hex", value: color.hex.toUpperCase() },
             { "@type": "PropertyValue", name: "RGB", value: `${color.rgb_r}, ${color.rgb_g}, ${color.rgb_b}` },
             ...(lrv != null ? [{ "@type": "PropertyValue", name: "LRV", value: lrv.toFixed(1) }] : []),
-            ...(color.undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: color.undertone }] : []),
+            ...(undertone ? [{ "@type": "PropertyValue", name: "Undertone", value: undertone }] : []),
             ...(color.color_family ? [{ "@type": "PropertyValue", name: "Color Family", value: color.color_family }] : []),
           ],
         },
@@ -809,7 +785,7 @@ export default async function ColorPage({ params }: PageProps) {
             .slice(0, 5)
             .map((m) => ({
               "@type": "DefinedTerm",
-              name: `${m.match_color.name}${m.match_color.color_number ? ` ${m.match_color.color_number}` : ""}`,
+              name: `${m.match_color.name}${isHeadColor ? (m.match_color.color_number ? ` ${m.match_color.color_number}` : "") : codeSuffix(m.match_color.name, m.match_color.color_number ? displayColorNumber(m.match_color.brand.slug, m.match_color.color_number) : null)}`,
               ...(m.match_color.color_number ? { termCode: m.match_color.color_number } : {}),
               url: `https://www.paintcolorhq.com/colors/${m.match_color.brand.slug}/${m.match_color.slug}`,
               inDefinedTermSet: {

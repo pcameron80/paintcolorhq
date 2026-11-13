@@ -12,7 +12,9 @@
  *  3. Write room-src/<id>/meta.json: { "name", "category", "windows" }. Set windows to
  *     true only after checking the window frames against the photo: the edit model
  *     sometimes invents or moves grilles.
- *  4. python3 scripts/build-room-masks.py room-src/<id> --preview   (check preview.jpg)
+ *     Kitchens: npx tsx scripts/generate-room.ts --id=<id> --pass=cabinets   (review it)
+ *  4. python3 scripts/build-room-masks.py room-src/<id> --preview   (check preview.jpg,
+ *     and around cabinet hardware at full size)
  *  5. python3 scripts/export-rooms.py
  *
  * File names carry a content hash (base.<hash>.webp), so /rooms/* is served as
@@ -20,7 +22,7 @@
  */
 import scenes from "./room-scenes.json";
 
-export type Surface = "main" | "accent" | "trim" | "window";
+export type Surface = "main" | "accent" | "trim" | "window" | "cabinets";
 
 export type RoomCategory = "living" | "bedroom" | "kitchen" | "dining" | "bathroom";
 

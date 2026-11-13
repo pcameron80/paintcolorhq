@@ -74,11 +74,21 @@ export function createSearchSettler({
 }
 
 /**
+ * color_search parameters for one settled query. The box is `search_source`,
+ * never `source`: GA4 reads an event parameter named `source` as the session's
+ * traffic source, so "match_listing" replaced Organic Search on 3 to 8
+ * sessions a day (channel Unassigned) until 2026-11-10.
+ */
+export function colorSearchParams(term: string, resultCount: number, searchSource: string) {
+  return { search_term: term, result_count: String(resultCount), search_source: searchSource };
+}
+
+/**
  * Sends one GA4/Plausible color_search per settled query. Pass resultCount as
  * null while results are loading. Replaces the per-fetch event that fired
  * on every 300 ms debounce (63% of /match events came within 1 s of another).
  */
-export function useSearchTracking(query: string, resultCount: number | null, source: string) {
+export function useSearchTracking(query: string, resultCount: number | null, searchSource: string) {
   const countRef = useRef<number | null>(resultCount);
   useEffect(() => {
     countRef.current = resultCount;
@@ -88,19 +98,14 @@ export function useSearchTracking(query: string, resultCount: number | null, sou
   useEffect(() => {
     const settler = createSearchSettler({
       getResultCount: () => countRef.current,
-      send: (term, count) =>
-        trackEvent("color_search", {
-          search_term: term,
-          result_count: String(count),
-          source,
-        }),
+      send: (term, count) => trackEvent("color_search", colorSearchParams(term, count, searchSource)),
     });
     settlerRef.current = settler;
     return () => {
       settler.cancel();
       settlerRef.current = null;
     };
-  }, [source]);
+  }, [searchSource]);
 
   useEffect(() => {
     settlerRef.current?.update(query);

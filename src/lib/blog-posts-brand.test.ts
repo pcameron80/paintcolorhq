@@ -1,6 +1,11 @@
-import { test } from "node:test";
+import { test, mock } from "node:test";
 import assert from "node:assert/strict";
 import { getPostsByBrand } from "./blog-posts";
+
+// The SW and BM lists below were true on 2026-11-09. Each scheduled post that
+// goes live after that changes them (a Sherwin-Williams post did on 11-10), so
+// the clock is pinned to that day.
+mock.timers.enable({ apis: ["Date"], now: new Date("2026-11-09T17:00:00Z") });
 
 test("getPostsByBrand: RAL does not match 'neutral' inside titles or tags", () => {
   assert.deepEqual(getPostsByBrand("RAL"), []);

@@ -82,6 +82,11 @@ const ALLOW: { file: string; text: string; why: string }[] = [
     text: "12 paint brands",
     why: "alt text of the most-duplicated chart, which draws 12 palettes (RAL is compared but not drawn)",
   },
+  {
+    file: "src/lib/blog-posts.tsx",
+    text: "11 brands",
+    why: "weirdest-color-names post: salmon appears in 40 color names across 11 brands, a count of brands using the word, not the catalog total",
+  },
 ];
 
 function walk(dir: string, out: string[]) {

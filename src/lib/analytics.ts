@@ -17,7 +17,11 @@ const PLAUSIBLE_GOALS: Record<string, string> = {
   retailer_click: "Retailer Click",
   color_search: "Color Search",
   color_compare: "Compare",
-  web_vitals: "Web Vitals",
+  // web_vitals is GA4 only. Plausible CE 3.2.1 ignores the non-interactive
+  // flag (ClickhouseEventV2.new does not cast interactive?), so every Web
+  // Vitals event cleared the session's bounce flag: bounce fell from ~65% to
+  // 0.6% between 2026-10-24 and this change. Revisit after a CE release that
+  // honors `interactive: false`.
 };
 
 function sendToPlausible(eventName: string, params?: GtagEvent) {
@@ -42,11 +46,6 @@ function sendToPlausible(eventName: string, params?: GtagEvent) {
     if (params?.retailer) props.retailer = String(params.retailer);
     if (params?.affiliate) props.affiliate = String(params.affiliate);
   }
-  if (eventName === "web_vitals") {
-    if (params?.metric_name) props.metric = String(params.metric_name);
-    if (params?.metric_rating) props.rating = String(params.metric_rating);
-    if (params?.page_type) props.page_type = String(params.page_type);
-  }
   // Queue until the script loads (it replays window.plausible.q). The script
   // only loads on the production host, so elsewhere this queue is never sent.
   const fn: PlausibleFn =
@@ -55,18 +54,38 @@ function sendToPlausible(eventName: string, params?: GtagEvent) {
       (fn.q = fn.q || []).push(args);
     }, {} as { q?: unknown[] });
   window.plausible = fn;
-  // Web Vitals fire on every page load. Sent as interactive events they made
-  // every session count as engaged, so Plausible's bounce rate fell from about
-  // 65% to 1% the day #246 shipped (2026-10-24). Non-interactive events keep
-  // the goal counts without touching bounce rate or visit duration.
-  const options: { props?: Record<string, string>; interactive?: boolean } = {};
-  if (Object.keys(props).length) options.props = props;
-  if (eventName === "web_vitals") options.interactive = false;
-  fn(goal, Object.keys(options).length ? options : undefined);
+  fn(goal, Object.keys(props).length ? { props } : undefined);
 }
 
-export function trackEvent(eventName: string, params?: GtagEvent) {
+// GA4 reads these event parameters as the session's traffic source, wherever
+// they appear, so one on any event relabels the whole visit. color_search's old
+// `source` parameter did exactly that (see colorSearchParams). Names starting
+// with campaign_ are reserved the same way.
+const GA4_TRAFFIC_SOURCE_PARAMS = new Set(["source", "medium", "campaign", "term", "content"]);
+
+export function isTrafficSourceParam(key: string): boolean {
+  return GA4_TRAFFIC_SOURCE_PARAMS.has(key) || key.startsWith("campaign_");
+}
+
+/** Drops any parameter GA4 would read as traffic source; the rest pass through. */
+export function withoutTrafficSourceParams(params?: GtagEvent): GtagEvent | undefined {
+  if (!params) return params;
+  const kept: GtagEvent = {};
+  for (const [key, value] of Object.entries(params)) {
+    if (isTrafficSourceParam(key)) {
+      if (process.env.NODE_ENV !== "production") {
+        console.warn(`trackEvent: dropped "${key}", which GA4 reads as the session's traffic source. Rename it.`);
+      }
+      continue;
+    }
+    kept[key] = value;
+  }
+  return kept;
+}
+
+export function trackEvent(eventName: string, rawParams?: GtagEvent) {
   if (typeof window === "undefined") return;
+  const params = withoutTrafficSourceParams(rawParams);
   sendToPlausible(eventName, params);
   if (window.gtag) {
     window.gtag("event", eventName, params);

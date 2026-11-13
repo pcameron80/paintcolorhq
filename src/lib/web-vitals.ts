@@ -1,5 +1,5 @@
-// Field Core Web Vitals per page type, sent as GA4 `web_vitals` and Plausible
-// "Web Vitals". Taken before the ad tag goes in so its cost can be measured
+// Field Core Web Vitals per page type, sent as GA4 `web_vitals` (GA4 only;
+// see PLAUSIBLE_GOALS in analytics.ts for why not Plausible). Taken before the ad tag goes in so its cost can be measured
 // against a per-template baseline (CrUX only has origin-level data for us).
 // Pure helpers; the hook lives in src/components/web-vitals-reporter.tsx.
 

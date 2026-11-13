@@ -149,10 +149,10 @@ const content: Record<string, FamilyContent> = {
           <Link href="/blog/best-dining-room-paint-colors" className="text-brand-blue hover:underline">
             dining rooms
           </Link>. See our{" "}
-          <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">
-            most popular colors of 2025
+          <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">
+            2026 paint color trends
           </Link>{" "}
-          guide for the full green trend breakdown.
+          post for the four greens brands named as 2026 Colors of the Year.
         </p>
       </div>
     ),
@@ -299,8 +299,8 @@ const content: Record<string, FamilyContent> = {
           <Link href="/colors/family/green" className="text-brand-blue hover:underline">sage greens</Link>{" "}
           for a natural palette, or with warm whites for a southwestern feel. See how orange tones
           fit into{" "}
-          <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">
-            this year&apos;s top trends
+          <Link href="/blog/paint-color-trends-2026" className="text-brand-blue hover:underline">
+            the 2026 Colors of the Year
           </Link>, or use the{" "}
           <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">
             palette generator
@@ -604,10 +604,10 @@ const content: Record<string, FamilyContent> = {
           <Link href="/blog/best-home-office-paint-colors" className="text-brand-blue hover:underline">
             home offices
           </Link>. See our{" "}
-          <Link href="/blog/2025-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">
-            2025 Colors of the Year
+          <Link href="/blog/2026-colors-of-the-year-every-brand-compared" className="text-brand-blue hover:underline">
+            2026 Colors of the Year
           </Link>{" "}
-          guide for a deeper look at why brown is leading the trend. Use the{" "}
+          comparison for the two deep warm darks among this year&apos;s picks. Use the{" "}
           <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">
             palette generator
           </Link>{" "}
@@ -690,10 +690,10 @@ const content: Record<string, FamilyContent> = {
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
           Start with one neutral as your main color, then choose a lighter version for ceilings and
           a brighter white for trim. This creates a cohesive flow throughout your home. Read our{" "}
-          <Link href="/blog/most-popular-paint-colors-2025" className="text-brand-blue hover:underline">
-            most popular colors guide
+          <Link href="/blog/best-greige-paint-colors" className="text-brand-blue hover:underline">
+            best greige paint colors guide
           </Link>{" "}
-          to see which neutrals designers are specifying most, or use the{" "}
+          for measured neutral picks, or use the{" "}
           <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">
             palette generator
           </Link>{" "}

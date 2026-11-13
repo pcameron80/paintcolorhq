@@ -1,0 +1,2054 @@
+{
+  "date": "2026-10-27",
+  "platforms": [
+    "chatgpt",
+    "perplexity",
+    "gemini"
+  ],
+  "questions": [
+    {
+      "id": "eq-agreeable-gray-behr",
+      "category": "cross-brand",
+      "question": "What is the Behr equivalent of Sherwin-Williams Agreeable Gray?",
+      "target": "/match/sherwin-williams/agreeable-gray-7029-to-behr",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.018926,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "matchthatpaint.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005763,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "matchthatpaint.com",
+            "paletadecolores.org",
+            "coloraw.com",
+            "behr.com",
+            "paintcolorproject.com",
+            "hueandkit.com",
+            "engineerfix.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.044216,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "behr.com",
+            "remodelinspo.com",
+            "plan-home.com",
+            "kylieminteriors.ca",
+            "reddit.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-alabaster-bm",
+      "category": "cross-brand",
+      "question": "What Benjamin Moore color matches Sherwin-Williams Alabaster?",
+      "target": "/match/sherwin-williams/alabaster-7008-to-benjamin-moore",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.02878,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "colorandtone.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.00573,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "matchthatpaint.com",
+            "colormatchfinder.com",
+            "compositepaint.com",
+            "modandmood.com",
+            "plan-home.com",
+            "amenityhome.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.044747,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "houzz.com",
+            "kylieminteriors.ca",
+            "acutabovepaintingco.com",
+            "hackrea.net",
+            "youtube.com",
+            "matchmypaintcolor.com",
+            "pamelalynninteriors.com",
+            "nestichomes.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-white-dove-sw",
+      "category": "cross-brand",
+      "question": "What is the Sherwin-Williams equivalent of Benjamin Moore White Dove?",
+      "target": "/match/benjamin-moore/white-dove-oc-17-to-sherwin-williams",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.029907,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005724,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "matchthatpaint.com",
+            "compositepaint.com",
+            "glintera.co",
+            "thecolorconcierge.com",
+            "enthrallinggumption.com",
+            "modandmood.com",
+            "paintersdc.com",
+            "plan-home.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.030729,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "thatpaintgirl.com",
+            "fourgenerationsoneroof.com",
+            "kylieminteriors.ca",
+            "youtube.com",
+            "sherwin-williams.com",
+            "houzz.com",
+            "reddit.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-revere-pewter-sw",
+      "category": "cross-brand",
+      "question": "What Sherwin-Williams color is closest to Benjamin Moore Revere Pewter?",
+      "target": "/match/benjamin-moore/revere-pewter-hc-172-to-sherwin-williams",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.01879525,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "thecolorconcierge.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005729,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "compositepaint.com",
+            "matchthatpaint.com",
+            "matchmypaintcolor.com",
+            "facadecolorizer.com",
+            "paletadecolores.org"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.030138,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "houzz.com",
+            "benjaminmoore.com",
+            "jacobowensdesigns.com",
+            "youtube.com",
+            "thecolorconcierge.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-hale-navy-behr",
+      "category": "cross-brand",
+      "question": "What is the Behr equivalent of Benjamin Moore Hale Navy?",
+      "target": "/match/benjamin-moore/hale-navy-hc-154-to-behr",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.030298,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005717,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "homedepot.com",
+            "compositepaint.com",
+            "facadecolorizer.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.0303,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "plan-home.com",
+            "modandmood.com",
+            "pamelalynninteriors.com",
+            "hextoral.com",
+            "kylieminteriors.ca",
+            "reddit.com",
+            "encycolorpedia.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-sea-salt-behr",
+      "category": "cross-brand",
+      "question": "What Behr paint color matches Sherwin-Williams Sea Salt?",
+      "target": "/match/sherwin-williams/sea-salt-6204-to-behr",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.019532,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "matchthatpaint.com",
+            "colormatchfinder.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005713,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "behr.com",
+            "paintcolorlabs.com",
+            "matchthatpaint.com",
+            "matchmypaintcolor.com",
+            "facadecolorizer.com",
+            "plan-home.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.044897,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "myperfectcolor.com",
+            "themorrismansionblog.com",
+            "fourgenerationsoneroof.com",
+            "modandmood.com",
+            "dreamyhomestyle.com",
+            "housekeepingbay.com",
+            "colorxs.com",
+            "behr.com",
+            "houzz.com",
+            "paintvisualizer.ai"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-iron-ore-behr",
+      "category": "cross-brand",
+      "question": "What is the Behr version of Sherwin-Williams Iron Ore?",
+      "target": "/match/sherwin-williams/iron-ore-7069-to-behr",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.029991,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "sherwin-williams.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005781,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "facadecolorizer.com",
+            "compositepaint.com",
+            "modandmood.com",
+            "matchthatpaint.com",
+            "paletadecolores.org",
+            "homedepot.com",
+            "plan-home.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.072807,
+          "cited": true,
+          "mentioned": false,
+          "ourUrls": [
+            "paintcolorhq.com"
+          ],
+          "domains": [
+            "plan-home.com",
+            "behr.com",
+            "modandmood.com",
+            "paintcolorhq.com",
+            "getfacade.ai",
+            "facadecolorizer.com",
+            "reddit.com",
+            "paintvisualizer.ai"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-accessible-beige-valspar",
+      "category": "cross-brand",
+      "question": "What Valspar color is the same as Sherwin-Williams Accessible Beige?",
+      "target": "/colors/sherwin-williams/accessible-beige-7036",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.01867,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "matchthatpaint.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005724,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "modandmood.com",
+            "plan-home.com",
+            "lowes.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.044133,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "myperfectcolor.com",
+            "hgtvhomebysherwinwilliams.com",
+            "lowes.com",
+            "modandmood.com",
+            "bobvila.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-farrow-ball-cheaper",
+      "category": "cross-brand",
+      "question": "What is a cheaper Sherwin-Williams or Benjamin Moore alternative to Farrow & Ball Hague Blue?",
+      "target": "/colors/farrow-ball/hague-blue-30",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.030192,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "bloglovin.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005865,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "compositepaint.com",
+            "paintdb.com",
+            "paintcolorconsultants.com",
+            "fromhousetohome.com",
+            "sarahkaron.com",
+            "matchthatpaint.com",
+            "samplize.com",
+            "homedit.com",
+            "yourhomeandstyle.com",
+            "marthastewart.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.059914,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "ideal.house",
+            "houzz.com",
+            "kylieminteriors.ca",
+            "colorsbykellyhaller.com",
+            "thecolorconcierge.com",
+            "houzz.co.uk",
+            "reddit.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-pure-white-bm",
+      "category": "cross-brand",
+      "question": "Benjamin Moore equivalent of Sherwin-Williams Pure White",
+      "target": "/colors/sherwin-williams/pure-white-7005",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.02936,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com",
+            "sherwin-williams.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005776,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "facadecolorizer.com",
+            "matchthatpaint.com",
+            "glintera.co",
+            "westmagnoliacharm.com",
+            "compositepaint.com",
+            "kylieminteriors.ca",
+            "thecolorconcierge.com",
+            "paletadecolores.org"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.030767,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "thecolorconcierge.com",
+            "houzz.com",
+            "tribblepainting.com",
+            "reddit.com",
+            "allisajacobs.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-valspar-to-sw-chart",
+      "category": "cross-brand",
+      "question": "Is there a chart that converts Valspar colors to Sherwin-Williams colors?",
+      "target": "/match/valspar/to/sherwin-williams",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.018985,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "sherwin-williams.com",
+            "valspar.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.00581,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "compositepaint.com",
+            "matchthatpaint.com",
+            "colormatchfinder.com",
+            "hues.page",
+            "paintcolorlabs.com",
+            "webutilslab.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.030794,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "encycolorpedia.com",
+            "matchmypaintcolor.com",
+            "myperfectcolor.com",
+            "sherwin-williams.com",
+            "reddit.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eq-match-across-brands",
+      "category": "cross-brand",
+      "question": "How can I match a paint color from one brand to another brand?",
+      "target": "/blog/how-to-match-paint-color",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.007186,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005881,
+          "cited": true,
+          "mentioned": false,
+          "ourUrls": [
+            "https://www.paintcolorhq.com/match"
+          ],
+          "domains": [
+            "matchthatpaint.com",
+            "compositepaint.com",
+            "paintcolorhq.com",
+            "bobvila.com",
+            "thegritandpolish.com",
+            "paintcolorconsultants.com",
+            "thecolorconcierge.com",
+            "kylieminteriors.ca"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.004622,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        }
+      ]
+    },
+    {
+      "id": "attr-agreeable-gray-undertones",
+      "category": "color-facts",
+      "question": "What are the undertones of Sherwin-Williams Agreeable Gray?",
+      "target": "/colors/sherwin-williams/agreeable-gray-7029",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.018603,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "sherwin-williams.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.00579,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "samplize.com",
+            "homesandgardens.com",
+            "paintdb.com",
+            "thecolorconcierge.com",
+            "paintcolorconsultants.com",
+            "roomcrush.com",
+            "kylieminteriors.ca",
+            "plan-home.com",
+            "hackrea.net",
+            "marthastewart.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.016867,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "buildingbluebird.com",
+            "sherwin-williams.com",
+            "hausandhand.com",
+            "kylieminteriors.ca",
+            "youtube.com",
+            "thecolorconcierge.com",
+            "clairejefford.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attr-white-dove-lrv",
+      "category": "color-facts",
+      "question": "What is the LRV of Benjamin Moore White Dove?",
+      "target": "/colors/benjamin-moore/white-dove-oc-17",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.01856575,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.00567,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoorefrance.com",
+            "benjaminmoore.com",
+            "thecolorconcierge.com",
+            "kylieminteriors.ca",
+            "modandmood.com",
+            "paintcolorconsultants.com",
+            "paintdb.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.01556,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com",
+            "kylieminteriors.ca",
+            "youtube.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attr-sea-salt-green-or-gray",
+      "category": "color-facts",
+      "question": "Is Sherwin-Williams Sea Salt green, blue or gray?",
+      "target": "/blog/sea-salt-sw-6204",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.004534,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.00572,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "sherwin-williams.com",
+            "homesandgardens.com",
+            "marthastewart.com",
+            "samplize.com",
+            "thecolordigest.com",
+            "thecolorconcierge.com",
+            "facadecolorizer.com",
+            "kylieminteriors.ca"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.015907,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "kylieminteriors.ca",
+            "theturquoisehome.com",
+            "sherwin-williams.com",
+            "paintonline.ie",
+            "fourgenerationsoneroof.com",
+            "suiteminded.com",
+            "youtube.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attr-accessible-beige-undertone",
+      "category": "color-facts",
+      "question": "Does Accessible Beige have pink or green undertones?",
+      "target": "/blog/accessible-beige-sw-7036",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.0185455,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "paintcolorproject.com",
+            "thecolorconcierge.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005727,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "kylieminteriors.ca",
+            "compositepaint.com",
+            "youtube.com",
+            "nestichomes.com",
+            "julieblanner.com",
+            "roomsgpt.io",
+            "remodelinspo.com",
+            "theturquoisehome.com",
+            "heatherednest.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.030133,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "bydesignandviz.com",
+            "jacobowensdesigns.com",
+            "kylieminteriors.ca",
+            "homelikeyoumeanit.com",
+            "facadecolorizer.com",
+            "houzz.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attr-hale-navy-hex",
+      "category": "color-facts",
+      "question": "What is the hex code for Benjamin Moore Hale Navy?",
+      "target": "/colors/benjamin-moore/hale-navy-hc-154",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.01808,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "colorplan.design"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005643,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "glintera.co",
+            "paintdb.com",
+            "facadecolorizer.com",
+            "housepaint.ai",
+            "coloraw.com",
+            "pontata.com",
+            "matchthatpaint.com",
+            "brightestintheroom.com",
+            "colorxs.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.015418,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "encycolorpedia.com",
+            "matchmypaintcolor.com",
+            "samplize.com",
+            "myperfectcolor.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attr-what-is-lrv",
+      "category": "color-facts",
+      "question": "What does LRV mean in paint and what is a good LRV for a dark room?",
+      "target": "/blog/what-is-lrv-in-paint",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.005299,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.00583,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "homesandgardens.com",
+            "thecolorconcierge.com",
+            "homebuilding.co.uk",
+            "hunterlab.com",
+            "kylieminteriors.ca",
+            "livingetc.com",
+            "homeinspectioninsider.com",
+            "redchairhomeinteriors.com",
+            "cobbbrothersco.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.002833,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        }
+      ]
+    },
+    {
+      "id": "best-greige",
+      "category": "best-of",
+      "question": "What are the best greige paint colors?",
+      "target": "/blog/best-greige-paint-colors",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.006026,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.006111,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com",
+            "thespruce.com",
+            "drivenbydecor.com",
+            "younghouselove.com",
+            "homesandgardens.com",
+            "bobvila.com",
+            "samplize.com",
+            "domino.com",
+            "bhg.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.019485,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "homesandgardens.com",
+            "heatherednest.com",
+            "substack.com",
+            "pamelalynninteriors.com",
+            "ideal.house",
+            "domino.com",
+            "designingvibes.com",
+            "drivenbydecor.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-white",
+      "category": "best-of",
+      "question": "What are the best white paint colors for walls?",
+      "target": "/blog/best-white-paint-colors-guide",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.031096,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com",
+            "media.benjaminmoore.com",
+            "blog.sherwin-williams.com",
+            "sherwin-williams.com",
+            "behr.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.006063,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com",
+            "sherwin-williams.com",
+            "behr.com",
+            "houseandhome.com",
+            "thespruce.com",
+            "elledecor.com",
+            "lowes.com",
+            "veranda.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.018623,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "suzettegebhardt.com",
+            "katiebeckerdesign.com",
+            "reddit.com",
+            "fisherweisman.com",
+            "kristinalynne.ca",
+            "carolineondesign.com",
+            "sherwin-williams.com",
+            "stylebyemilyhenderson.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-beige",
+      "category": "best-of",
+      "question": "What are the best beige paint colors that don't look dated?",
+      "target": "/blog/best-beige-paint-colors",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.021231,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "housebeautiful.com",
+            "sherwin-williams.com",
+            "images.sherwin-williams.com",
+            "benjaminmoore.com",
+            "elledecor.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.006083,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "homesandgardens.com",
+            "thespruce.com",
+            "roomsgpt.io",
+            "kylieminteriors.ca",
+            "marthastewart.com",
+            "clare.com",
+            "southernliving.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.032997,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "ideal.house",
+            "homesandgardens.com",
+            "pamelalynninteriors.com",
+            "houzz.com",
+            "samplize.com",
+            "paintingbythepenny.com",
+            "thecolorconcierge.com",
+            "eye-swoon.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-sage",
+      "category": "best-of",
+      "question": "What are the best sage green paint colors?",
+      "target": "/blog/best-sage-green-paint-colors",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.020782,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com",
+            "behr.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.006054,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "homesandgardens.com",
+            "realsimple.com",
+            "apartmenttherapy.com",
+            "veranda.com",
+            "samplize.com",
+            "livingetc.com",
+            "roomsgpt.io",
+            "bhg.com",
+            "ediblehudsonvalley.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.017921,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com",
+            "atlaneandhigh.com",
+            "youtube.com",
+            "kaitlinmadden.com",
+            "sherwin-williams.com",
+            "thecolorconcierge.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-bm-colors",
+      "category": "best-of",
+      "question": "What are the most popular Benjamin Moore paint colors?",
+      "target": "/blog/best-benjamin-moore-paint-colors",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.030089,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com",
+            "paintdb.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005953,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.0181955,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "luucolorcenter.com",
+            "benjaminmoorepaint.co.uk",
+            "roomcrush.com",
+            "benjaminmoore.com",
+            "kylieminteriors.ca"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-behr-colors",
+      "category": "best-of",
+      "question": "What are the best Behr paint colors?",
+      "target": "/blog/best-behr-paint-colors",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.03059675,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "behr.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.00593,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "behr.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.032806,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "interioramore.com",
+            "behr.com",
+            "styleathome.com",
+            "homesandgardens.com",
+            "ideal.house",
+            "kylieminteriors.ca",
+            "livingetc.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-small-bathroom",
+      "category": "best-of",
+      "question": "What paint colors make a small bathroom look bigger?",
+      "target": "/blog/small-bathroom-paint-colors",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.005293,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005838,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "thespruce.com",
+            "southernliving.com",
+            "housebeautiful.com",
+            "marthastewart.com",
+            "housedigest.com",
+            "realsimple.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.002733,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        }
+      ]
+    },
+    {
+      "id": "best-front-door",
+      "category": "best-of",
+      "question": "What are the best front door paint colors?",
+      "target": "/blog/front-door-paint-colors",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.005895,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.006031,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "southernliving.com",
+            "benjaminmoore.com",
+            "thespruce.com",
+            "goodhousekeeping.com",
+            "realsimple.com",
+            "zillow.com",
+            "apartmenttherapy.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.004071,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        }
+      ]
+    },
+    {
+      "id": "best-bedroom",
+      "category": "best-of",
+      "question": "What are the best paint colors for a bedroom?",
+      "target": "/blog/best-bedroom-paint-colors",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.005963,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005976,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "homedepot.com",
+            "goodhousekeeping.com",
+            "dunnedwards.com",
+            "sherwin-williams.com",
+            "behr.com",
+            "apartmenttherapy.com",
+            "benjaminmoore.com",
+            "veranda.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.00347175,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        }
+      ]
+    },
+    {
+      "id": "best-trim-white",
+      "category": "best-of",
+      "question": "What color should I paint trim with white walls?",
+      "target": "/blog/how-to-choose-trim-color",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.005045,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005792,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "sherwin-williams.com",
+            "benjaminmoore.com",
+            "bhg.com",
+            "elledecor.com",
+            "bobvila.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.003239,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        }
+      ]
+    },
+    {
+      "id": "tool-match-tool",
+      "category": "tools",
+      "question": "What is the best free tool to match paint colors across brands?",
+      "target": "/match",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.029884,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "swatches.page",
+            "paintdb.com",
+            "paintcolorlabs.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005835,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "paintcolorvisualizer.com",
+            "compositepaint.com",
+            "paintcolorconsultants.com",
+            "rockyhillhome.com",
+            "apps.apple.com",
+            "forbes.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.0319615,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "encycolorpedia.com",
+            "google.com",
+            "apple.com",
+            "matchmypaintcolor.com",
+            "facadecolorizer.com",
+            "reddit.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tool-identify-photo",
+      "category": "tools",
+      "question": "How can I identify a paint color from a photo?",
+      "target": "/tools/color-identifier",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.006243,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005913,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "meltflexai.com",
+            "sherwin-williams.com",
+            "play.google.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.003941,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        }
+      ]
+    },
+    {
+      "id": "tool-visualize",
+      "category": "tools",
+      "question": "Is there a free app to see what a paint color looks like on my walls?",
+      "target": "/tools/room-visualizer",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.019018,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "sherwin-williams.com",
+            "s1.q4cdn.com",
+            "paintmyroom.app"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005763,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "apps.apple.com",
+            "paintmyroom.app"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.045188,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "kieserspainting.com",
+            "sherwin-williams.com",
+            "google.com",
+            "updatestar.com",
+            "apple.com",
+            "dulux.co.uk",
+            "thecpia.com",
+            "apartmenttherapy.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tool-calculator",
+      "category": "tools",
+      "question": "How much paint do I need for a 12 by 12 room?",
+      "target": "/tools/paint-calculator",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.004995,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005727,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "dariospainting.com",
+            "calcshed.com",
+            "buildvisionai.com",
+            "clare.com",
+            "thebuildingcode.com",
+            "coolconversion.com",
+            "sherwin-williams.com",
+            "decoratly.com",
+            "housecallpro.com",
+            "inchcalculator.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.016915,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "homepaintcalculator.com",
+            "squarefootagecalculator.cc",
+            "youtube.com",
+            "roddapaint.com",
+            "quora.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tool-palette",
+      "category": "tools",
+      "question": "What colors go with Sherwin-Williams Agreeable Gray?",
+      "target": "/colors/sherwin-williams/agreeable-gray-7029",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.00573075,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005889,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "homesandgardens.com",
+            "paintdb.com",
+            "kylieminteriors.ca",
+            "thecolorconcierge.com",
+            "samplize.com",
+            "colorxs.com",
+            "settingforfour.com",
+            "theflooringgirl.com",
+            "marthastewart.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.032913,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "hamptonredesign.com",
+            "jennakateathome.com",
+            "bydesignandviz.com",
+            "youtube.com",
+            "settingforfour.com",
+            "sherwin-williams.com",
+            "remodelinspo.com",
+            "atlaneandhigh.com",
+            "kylieminteriors.ca"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tool-hex-to-paint",
+      "category": "tools",
+      "question": "How do I convert a hex color code to a real paint color?",
+      "target": "/search",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.006061,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005838,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "glintera.co",
+            "compositepaint.com",
+            "paintcolorconsultants.com",
+            "kitcolorspro.com",
+            "snapdecor.io",
+            "paintcolorcodes.com",
+            "ralcolor.app",
+            "paintcalculators.com",
+            "elementor.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.031321,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "matchmypaintcolor.com",
+            "youtube.com",
+            "easyrgb.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmp-sw-vs-bm",
+      "category": "brands",
+      "question": "Which is better, Benjamin Moore or Sherwin-Williams?",
+      "target": "/brands/benjamin-moore",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.019728,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com",
+            "consumerreports.org"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005864,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "njpaintingco.com",
+            "bobvila.com",
+            "paintdb.com",
+            "facadecolorizer.com",
+            "ringsend.com",
+            "tribblepainting.com",
+            "prudentreviews.com",
+            "homesandgardens.com",
+            "nytimes.com",
+            "jbrownpainting.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.0039195,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        }
+      ]
+    },
+    {
+      "id": "cmp-same-colors",
+      "category": "brands",
+      "question": "Do different paint brands sell the same colors under different names?",
+      "target": "/blog/most-duplicated-paint-color",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.005227,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.00579,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "wildfoxpainting.com",
+            "dlloydmiller.com",
+            "paintvisualizerr.com",
+            "kylieminteriors.ca",
+            "idyllsketching.com",
+            "reddit.com",
+            "paintcolorconsultants.com",
+            "classicoldsmobile.com",
+            "williamsprofessionalpainting.com",
+            "handprint.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.032073,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "swatcher.ie",
+            "plan-home.com",
+            "kylieminteriors.ca",
+            "reddit.com",
+            "matchmypaintcolor.com",
+            "encycolorpedia.com",
+            "easyrgb.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmp-coty-2027",
+      "category": "brands",
+      "question": "What are the 2027 paint colors of the year from each brand?",
+      "target": "/color-of-the-year",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.031588,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "benjaminmoore.com",
+            "hgtvhomebysherwinwilliams.com",
+            "kooihaus.com",
+            "memberofarchitecture.com",
+            "archieinteriors.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005907,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "thespruce.com",
+            "hgtv.com",
+            "marthastewart.com",
+            "homesandgardens.com",
+            "bhg.com",
+            "elledecor.com",
+            "housebeautiful.com",
+            "familyhandyman.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.030442,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "sherwin-williams.com",
+            "familyhandyman.com",
+            "benjaminmoore.com",
+            "youtube.com",
+            "behr.ca",
+            "dulux.co.uk",
+            "akzonobel.com",
+            "younghouselove.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmp-farrow-ball-worth",
+      "category": "brands",
+      "question": "Is Farrow & Ball paint worth the price compared to other brands?",
+      "target": "/brands/farrow-ball",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.030573,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "bobvila.com",
+            "benjaminmoore.com",
+            "housebeautiful.com"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005916,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "paintersdc.com",
+            "gsdecorating.com",
+            "slingo.com",
+            "abc7ny.com",
+            "moregeous.com",
+            "homesandgardens.com",
+            "reddit.com",
+            "prudentreviews.com",
+            "forums.moneysavingexpert.com",
+            "architecturaldigest.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.0333985,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "kluk-construction.co.uk",
+            "primepaint.co.uk",
+            "paintersdc.com",
+            "reddit.com",
+            "houseofbrinson.com",
+            "ksat.com",
+            "thegritandpolish.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmp-coats",
+      "category": "brands",
+      "question": "How many coats of paint do I need when changing wall color?",
+      "target": "/blog/how-many-coats-of-paint",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.004787,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.005796,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "paintcare.org",
+            "bradthepainter.com",
+            "behr.com",
+            "5starpainting.com.sg",
+            "compositepaint.com",
+            "vevor.com",
+            "texasprofessionalpainting.com",
+            "buildvisionai.com",
+            "coatpaints.com",
+            "hunker.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.003451,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": []
+        }
+      ]
+    },
+    {
+      "id": "cmp-color-api",
+      "category": "brands",
+      "question": "Is there an API for matching paint colors by hex code?",
+      "target": "/api",
+      "answers": [
+        {
+          "platform": "chatgpt",
+          "ok": true,
+          "cost": 0.0188,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "docs.trycolors.com",
+            "paintcolorcodes.com",
+            "opencolor.app"
+          ]
+        },
+        {
+          "platform": "perplexity",
+          "ok": true,
+          "cost": 0.00588,
+          "cited": true,
+          "mentioned": true,
+          "ourUrls": [
+            "https://www.paintcolorhq.com/api"
+          ],
+          "domains": [
+            "paintcolorhq.com",
+            "docs.trycolors.com",
+            "paintdb.com",
+            "findcolor.org",
+            "compositepaint.com",
+            "apps.apple.com",
+            "pypi.org",
+            "github.com",
+            "matchmypaintcolor.com"
+          ]
+        },
+        {
+          "platform": "gemini",
+          "ok": true,
+          "cost": 0.04589,
+          "cited": false,
+          "mentioned": false,
+          "ourUrls": [],
+          "domains": [
+            "encycolorpedia.com",
+            "matchmypaintcolor.com",
+            "freeapihub.com",
+            "thecolorapi.com",
+            "github.com",
+            "dev.to",
+            "colorarchive.org"
+          ]
+        }
+      ]
+    }
+  ],
+  "cost": 1.972180750000001
+}
