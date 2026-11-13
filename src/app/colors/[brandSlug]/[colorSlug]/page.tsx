@@ -27,6 +27,7 @@ import { TrackPage } from "@/components/track-page";
 import { TrackedLink } from "@/components/tracked-link";
 import { PairingSelector } from "@/components/pairing-selector";
 import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
+import { matchPairsForColor } from "@/lib/match-pairs";
 import { COTY_BY_COLOR } from "@/lib/color-of-the-year";
 import { formerNameFor } from "@/lib/former-names";
 import { closenessLabel } from "@/lib/closeness";
@@ -209,6 +210,13 @@ export default async function ColorPage({ params }: PageProps) {
     const i = (MAJOR_MATCH_BRANDS as readonly string[]).indexOf(slug);
     return i === -1 ? 99 : i;
   };
+  // Links to this color's sitemap match pages, which no color page linked
+  // before 2026-11-08. Head colors are left out until their body freeze ends
+  // (2026-11-27, see head-colors.ts).
+  const matchPages = isHeadColor ? [] : matchPairsForColor(brandSlug, color.slug).map((p) => ({
+    path: p.path,
+    brandName: matches.find((m) => m.match_color.brand.slug === p.targetBrand)?.match_color.brand.name ?? p.targetBrand,
+  }));
   const brandStrip = [...brandMatrix].sort((a, b) => majorRank(a.match_color.brand.slug) - majorRank(b.match_color.brand.slug)).slice(0, 6);
   const hueBand = isHeadColor ? undefined : findHueBand({ l: color.lab_l, a: color.lab_a, b: color.lab_b_val });
   const availabilityNote = availabilityStatus(color.brand.slug, color.brand.name, color.color_number, color.availability);
@@ -562,6 +570,18 @@ export default async function ColorPage({ params }: PageProps) {
                     </Link>
                   ))}
                 </div>
+                {matchPages.length > 0 && (
+                  <p className="mt-6 text-sm text-on-surface-variant">
+                    {color.name} side by side with its closest match in{" "}
+                    {matchPages.map((p, i) => (
+                      <span key={p.path}>
+                        {i > 0 && (i < matchPages.length - 1 ? ", " : matchPages.length > 2 ? ", and " : " and ")}
+                        <Link href={p.path} prefetch={false} className="text-primary font-semibold underline-offset-4 hover:underline">{p.brandName}</Link>
+                      </span>
+                    ))}
+                    .
+                  </p>
+                )}
                 <div className="mt-8 pt-6 border-t border-outline-variant/15">
                   {/* When this color is Samplize-stocked, lead with the direct
                       per-color sample link at the moment of highest attention
