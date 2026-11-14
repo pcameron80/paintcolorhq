@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import {
+  MEDIAVINE_ENABLED,
+  MEDIAVINE_PRIVACY_EFFECTIVE_DATE,
+  MEDIAVINE_PRIVACY_HTML,
+} from "@/lib/mediavine";
+
+const EFFECTIVE_DATE =
+  MEDIAVINE_ENABLED && MEDIAVINE_PRIVACY_EFFECTIVE_DATE
+    ? MEDIAVINE_PRIVACY_EFFECTIVE_DATE
+    : "October 26, 2026";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -28,7 +38,7 @@ export default function PrivacyPolicyPage() {
             <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
               Privacy Policy
             </h1>
-            <p className="text-sm text-outline">Effective date: October 26, 2026</p>
+            <p className="text-sm text-outline">{`Effective date: ${EFFECTIVE_DATE}`}</p>
           </div>
         </section>
 
@@ -56,10 +66,33 @@ export default function PrivacyPolicyPage() {
               <ul className="mt-3 list-disc space-y-2 pl-5">
                 <li><strong className="text-on-surface">Essential cookies:</strong> Required for authentication and core site functionality.</li>
                 <li><strong className="text-on-surface">Analytics cookies:</strong> Google Analytics uses cookies to collect anonymous usage data. You can opt out using the{" "}<a href="https://tools.google.com/dlpage/gaoptout" className="text-primary underline hover:text-primary/80" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</li>
-                <li><strong className="text-on-surface">Advertising cookies:</strong> We do not currently show third-party ads. If that changes, this section will name the ad partner and explain how to opt out.</li>
+                {MEDIAVINE_ENABLED ? (
+                  <li><strong className="text-on-surface">Advertising cookies:</strong> Ads on Paint Color HQ are served by Mediavine (Journey by Mediavine) and its advertising partners, which use cookies and similar technologies as described in the Mediavine section below.</li>
+                ) : (
+                  <li><strong className="text-on-surface">Advertising cookies:</strong> We do not currently show third-party ads. If that changes, this section will name the ad partner and explain how to opt out.</li>
+                )}
               </ul>
-              <p className="mt-4"><strong className="text-on-surface">Your choices by location:</strong> If you visit from the European Economic Area, the United Kingdom or Switzerland, analytics and advertising cookies stay off until you click Accept on the cookie banner. Everywhere else, they are on by default, and you can turn them off at any time with the &ldquo;Your Privacy Choices&rdquo; link in the site footer. That link is how California and other US-state residents opt out of the sale or sharing of personal information for targeted advertising. We also honor the Global Privacy Control (GPC) browser signal as an opt-out of advertising cookies.</p>
+              {MEDIAVINE_ENABLED ? (
+                <p className="mt-4"><strong className="text-on-surface">Your choices by location:</strong> If you visit from the European Economic Area, the United Kingdom or Switzerland, Mediavine&apos;s consent tool asks for your choice before advertising cookies are set, and you can change it at any time from that tool. California and other US-state residents can opt out of the sale or sharing of personal information for targeted advertising with Mediavine&apos;s link in the site footer. Our own &ldquo;Cookie settings&rdquo; link in the footer turns Google Analytics cookies on or off, and we honor the Global Privacy Control (GPC) browser signal by turning off advertising signals in Google Analytics. Both cover Google Analytics only; ad choices are made through Mediavine&apos;s tools.</p>
+              ) : (
+                <p className="mt-4"><strong className="text-on-surface">Your choices by location:</strong> If you visit from the European Economic Area, the United Kingdom or Switzerland, analytics and advertising cookies stay off until you click Accept on the cookie banner. Everywhere else, they are on by default, and you can turn them off at any time with the &ldquo;Your Privacy Choices&rdquo; link in the site footer. That link is how California and other US-state residents opt out of the sale or sharing of personal information for targeted advertising. We also honor the Global Privacy Control (GPC) browser signal as an opt-out of advertising cookies.</p>
+              )}
             </div>
+
+            {MEDIAVINE_ENABLED && MEDIAVINE_PRIVACY_HTML && (
+              <div>
+                {/* Mediavine's required language, verbatim from
+                    src/lib/mediavine.ts. The Privacy Health Check matches this
+                    heading and text exactly: do not edit either here. */}
+                <h3 className="font-headline text-lg font-bold text-on-surface mb-4">
+                  Mediavine Programmatic Advertising (Ver 1.1)
+                </h3>
+                <div
+                  className="space-y-3 [&_a]:text-primary [&_a]:underline"
+                  dangerouslySetInnerHTML={{ __html: MEDIAVINE_PRIVACY_HTML }}
+                />
+              </div>
+            )}
 
             <div>
               <h2 className="font-headline text-xl font-bold text-on-surface mb-4">
@@ -84,6 +117,9 @@ export default function PrivacyPolicyPage() {
                 <li><strong className="text-on-surface">Google OAuth:</strong> sign-in authentication</li>
                 <li><strong className="text-on-surface">Cloudflare Turnstile:</strong> spam protection on the contact form</li>
                 <li><strong className="text-on-surface">Resend:</strong> delivers contact-form messages</li>
+                {MEDIAVINE_ENABLED && (
+                  <li><strong className="text-on-surface">Mediavine:</strong> serves the ads on the site (Journey by Mediavine)</li>
+                )}
               </ul>
             </div>
 
