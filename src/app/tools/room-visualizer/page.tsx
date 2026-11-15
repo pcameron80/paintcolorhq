@@ -8,6 +8,7 @@ import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
 import { ogDefaults } from "@/lib/og";
 import { ToolFaq, type Faq } from "@/components/tool-faq";
+import { BRAND_COUNT } from "@/lib/site-facts";
 
 const TITLE = "Room Color Visualizer - Preview Paint Colors in a Room";
 const DESCRIPTION =
@@ -19,7 +20,7 @@ const FAQS: Faq[] = [
   { q: "Is the room visualizer free?", a: "Yes. The Paint Color HQ Room Visualizer is free with no sign-up and nothing to download; it runs in your browser on a phone or computer. You can preview unlimited color combinations on walls, accent walls, trim, window frames and kitchen cabinets across 10 rooms." },
   { q: "Can I preview painted kitchen cabinets?", a: "Yes. Both kitchens have a Cabinets surface that covers the doors, drawer fronts, cabinet boxes and island base, while the handles, pulls and appliances stay as they are. Click a cabinet door or select Cabinets below the image, then pick a color. In a kitchen the cabinets often fill more of the view than the walls, so settle them first and choose the wall color to sit with them, keeping both in the same undertone family. Cabinets take daily handling and cleaning, so painters usually use a satin or semi-gloss enamel on them." },
   { q: "Can I upload a photo of my own room?", a: "Not yet. The visualizer paints 10 sample rooms: two living rooms, two bedrooms, two kitchens, two dining rooms and two bathrooms. To find the paint color in a photo you took, use the Paint Color Identifier: upload the photo, click the wall, and it lists the closest colors across 13 brands." },
-  { q: "Can I match visualizer colors to real paint?", a: "Yes. After choosing a color in the visualizer, use the \"Find Paint Match\" feature to see the closest real paints from brands including Sherwin-Williams, Benjamin Moore, Behr, Valspar and PPG. Every suggestion links to its full color detail page." },
+  { q: "Can I match visualizer colors to real paint?", a: `Yes. Every color you pick is compared against 26,000+ paint colors from ${BRAND_COUNT} brands with the CIEDE2000 color-difference formula. The visualizer lists the closest Sherwin-Williams, Benjamin Moore and Behr color, then the 10 closest across all brands, each with a plain-language closeness label and a link to its color page. These are digital matches, so confirm the paint with a physical sample before you buy.` },
   { q: "Why does paint look different on my wall than in the room visualizer?", a: "The preview paints your color over one photo's fixed lighting, while your room has its own. Three things move between screen and wall: your monitor or phone's brightness and calibration, your room's light (warm 2700K bulbs push a color yellower, cool 4000K bulbs push it bluer, and north-facing windows run cooler than south-facing ones), and sheen, since flat, eggshell and semi-gloss all reflect light differently. Use the visualizer to narrow your choices, then confirm the winner with a physical sample on the actual wall, viewed in both morning and evening light." },
   { q: "How do I pick a trim color to go with my wall color?", a: "Trim usually contrasts the wall: a clean white or off-white frames a colored wall and makes molding and window casings stand out. The wider the gap in lightness (LRV) between wall and trim, the crisper the edges look; a narrow gap reads soft and understated. Keep the wall and trim in the same undertone family so they don't clash: two grays can look near-identical yet pull in opposite directions, one warm toward pink and the other cool toward green. Check the undertone tag on each color's page before you buy." },
   { q: "Can I use the room images on my blog?", a: "Yes. Use Download image to save the room in your colors as a JPEG. You are free to use it in blog posts, social media and client presentations with a visible link to https://www.paintcolorhq.com. The image is a digital preview, so tell readers to confirm the color with a physical sample." },
@@ -86,7 +87,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Room Color Visualizer",
-        description: "Preview paint colors on walls, an accent wall, trim, window frames and kitchen cabinets in 10 photorealistic rooms. Free tool from Paint Color HQ.",
+        description: `Preview paint colors on walls, an accent wall, trim, window frames and kitchen cabinets in 10 photorealistic rooms, then match any color to the closest of 26,000+ paint colors from ${BRAND_COUNT} brands using the CIEDE2000 color-difference formula. Free tool from Paint Color HQ.`,
         url: "https://www.paintcolorhq.com/tools/room-visualizer",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -111,7 +112,11 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
             Preview paint colors on walls, an accent wall, trim, window frames and kitchen
             cabinets in 10 rooms. Click a surface or select it below, then pick a color to see it applied
-            instantly. Free, with no sign-up or download.
+            instantly. Each color you try is matched against{" "}
+            <strong className="text-on-surface">26,000+ paint colors from {BRAND_COUNT} brands</strong>{" "}
+            with the CIEDE2000 color-difference formula: you get the closest Sherwin-Williams, Benjamin
+            Moore and Behr color, plus the 10 closest across all brands, each labeled by how close it
+            looks. Free, with no sign-up or download.
           </p>
         </div>
       </section>

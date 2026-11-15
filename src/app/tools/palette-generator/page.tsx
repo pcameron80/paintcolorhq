@@ -81,7 +81,7 @@ export default async function PaletteGeneratorPage() {
   const brands = await filterBrands();
   const faqs: Faq[] = [
     { q: "What palette types does the palette generator make?", a: HOW_TEMPLATES },
-    { q: "Are the palette colors matched to real paint?", a: `Yes. Every swatch is matched to the closest real paint color from our database of more than 26,000 colors across ${brands.length} brands, including Sherwin-Williams, Benjamin Moore, Behr, Valspar and PPG. You can also hold the results to a single brand with the brand filter.` },
+    { q: "Are the palette colors matched to real paint?", a: `Yes. Every swatch is matched to the closest real paint color from our database of more than 26,000 colors across ${brands.length} brands, including Sherwin-Williams, Benjamin Moore, Behr, Valspar and PPG, ranked with the CIEDE2000 color-difference formula. You can also hold the results to a single brand with the brand filter. These are digital matches, so confirm each paint with a physical sample before you buy.` },
     { q: "Is the palette generator free?", a: "Yes. It is free with no sign-up and nothing to download, and it runs in your browser on a phone or computer. A free account is only needed if you want to save palettes to a project." },
     { q: "What are the palette roles?", a: "Each palette assigns colors to four room roles: Walls (the main color covering the most area), Trim (baseboards, crown molding, door frames), Accent (a feature wall or large furniture piece), and Pop (used sparingly on throw pillows, art, or statement pieces for energy)." },
     { q: "How do I use a generated palette in a real room?", a: "Give each color a job using the 60-30-10 rule: the Walls color covers about 60 percent of the room as the dominant surface, the Trim and Accent colors carry roughly 30 percent on woodwork and a feature wall, and the Pop color appears in about 10 percent on pillows, art, or a single door. Send any scheme to the room visualizer to preview those proportions on a real room photo before you paint." },
@@ -92,7 +92,7 @@ export default async function PaletteGeneratorPage() {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Paint Palette Generator",
-        description: "Build coordinated paint palettes from any starting color. Generates five schemes (Warm & Inviting, Cool & Calm, Bold Contrast, Analogous Harmony and Earthy Naturals), each with Walls, Trim, Accent and Pop colors matched to real paint.",
+        description: `Build coordinated paint palettes from any starting color. Generates five schemes (Warm & Inviting, Cool & Calm, Bold Contrast, Analogous Harmony and Earthy Naturals), each with Walls, Trim, Accent and Pop colors matched to the closest of 26,000+ real paint colors from ${brands.length} brands using the CIEDE2000 color-difference formula.`,
         url: "https://www.paintcolorhq.com/tools/palette-generator",
         applicationCategory: "DesignApplication", operatingSystem: "Any",
         offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -115,8 +115,13 @@ export default async function PaletteGeneratorPage() {
             Paint Color Palette Generator
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Pick a color and generate coordinated paint palettes matched to real
-            colors. Free, with no sign-up or download.
+            Pick a starting color from the swatch or type a hex code, and the generator builds five
+            coordinated palettes from it: Warm &amp; Inviting, Cool &amp; Calm, Bold Contrast,
+            Analogous Harmony and Earthy Naturals. Each palette has Walls, Trim, Accent and Pop
+            colors, and every swatch is matched to the closest real paint among{" "}
+            <strong className="text-on-surface">26,000+ colors from {brands.length} brands</strong>{" "}
+            with the CIEDE2000 color-difference formula. A brand filter holds the matches to one
+            brand. Free, with no sign-up or download.
           </p>
         </div>
       </section>
