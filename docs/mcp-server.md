@@ -78,8 +78,7 @@ curl -s https://www.paintcolorhq.com/api/mcp -H 'content-type: application/json'
 
 Once verified on prod:
 
-- **Smithery** (https://smithery.ai) — submit the remote server URL.
-- **MCP registry / directories** — the official registry, `mcp.so`, Glama, PulseMCP.
+- **MCP registry / directories** — the official registry, `mcp.so`, Glama, PulseMCP (paused; ingests the registry).
 - **`awesome-mcp-servers`** — open a PR adding it under a "Design / Color" entry.
 - **ChatGPT connectors / app directory** — if/when eligible for a remote MCP connector.
 
