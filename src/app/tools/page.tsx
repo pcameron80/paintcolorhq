@@ -4,6 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ogDefaults } from "@/lib/og";
+import { BRAND_COUNT } from "@/lib/site-facts";
 
 const TITLE = "Free Paint Color Tools — Visualizer & Calculator";
 const DESCRIPTION =
@@ -42,7 +43,7 @@ const tools = [
   {
     title: "Photo Color Identifier",
     description:
-      "Upload a photo and pick any pixel to find the closest matching paint colors from all major brands.",
+      `Upload a photo and click a spot, or type a hex code, to find the closest paint colors among 26,000+ colors from ${BRAND_COUNT} brands.`,
     href: "/tools/color-identifier",
     icon: (
       <svg
@@ -63,7 +64,7 @@ const tools = [
   {
     title: "Room Color Visualizer",
     description:
-      "Preview paint colors on walls, ceiling, accent wall, trim, and floor in a realistic room scene.",
+      "Preview paint colors on walls, an accent wall, trim, window frames and kitchen cabinets in 10 photorealistic rooms, then see the closest real paints.",
     href: "/tools/room-visualizer",
     icon: (
       <svg
@@ -185,7 +186,12 @@ export default function ToolsPage() {
             Paint Tools
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Free tools to help you plan your next paint project.
+            Five free tools for planning a paint job, plus a match widget for your own site. The
+            photo identifier, room visualizer and palette generator match any color against{" "}
+            <strong className="text-on-surface">26,000+ paint colors from {BRAND_COUNT} brands</strong>{" "}
+            using the CIEDE2000 color-difference formula, and the compare tool rates two colors with
+            the same formula. The paint calculator uses spread rates from manufacturer data sheets.
+            All of them run in your browser with no sign-up.
           </p>
         </div>
       </section>
