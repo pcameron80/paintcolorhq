@@ -162,31 +162,17 @@ const content: Record<string, FamilyContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Beige covers warm, light-to-mid neutrals, plus greige (gray-beige) tones that sit between
-          beige and gray. Many of the beiges people choose today carry a gray or taupe undertone,
-          which reads less yellow than the builder-beige of the 2000s.
+          Beige is back, and it never really left. After a decade of gray dominance, warm beige and
+          greige (gray-beige) tones have reclaimed their place as the go-to neutral for whole-home
+          color. Modern beiges are more sophisticated than the builder-beige of the 2000s: they&apos;re
+          warmer, more nuanced, and often carry subtle gray or taupe undertones that keep them feeling
+          current.
         </p>
         <p>
-          Two widely used neutrals in this family are{" "}
-          <Link href="/colors/sherwin-williams/accessible-beige-7036" className="text-brand-blue hover:underline">
-            Sherwin-Williams Accessible Beige (SW 7036)
-          </Link>
-          , a light beige at LRV 58, and{" "}
-          <Link href="/colors/benjamin-moore/edgecomb-gray-hc-173" className="text-brand-blue hover:underline">
-            Benjamin Moore Edgecomb Gray (HC-173)
-          </Link>
-          , a greige at LRV 63. Both read as neutral undertone in our data. For a deeper
-          mid-tone, try{" "}
-          <Link href="/colors/benjamin-moore/baja-dunes-997" className="text-brand-blue hover:underline">
-            Benjamin Moore Baja Dunes (997)
-          </Link>{" "}
-          at LRV 41, and for a lighter, creamier option,{" "}
-          <Link href="/colors/benjamin-moore/natural-linen-966" className="text-brand-blue hover:underline">
-            Benjamin Moore Natural Linen (966)
-          </Link>{" "}
-          at LRV 60. Browse the full list below, filter by brand or undertone, or put two beiges
-          side by side in the{" "}
-          <Link href="/compare" className="text-brand-blue hover:underline">compare tool</Link>.
+          Sherwin-Williams Accessible Beige and Benjamin Moore Edgecomb Gray (technically a greige)
+          are the two most popular warm neutrals in residential design. They work with virtually any
+          decor style, from farmhouse to modern, and adapt gracefully to different lighting
+          conditions.
         </p>
       </div>
     ),
