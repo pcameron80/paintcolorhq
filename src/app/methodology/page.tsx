@@ -194,7 +194,7 @@ export default function MethodologyPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Independence</h2>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              Paint Color HQ is independent of every paint brand listed on the site. No brand pays for placement, ranking, or favorable mention. Color matches are derived from the color data described above and calculated mathematically. They don&apos;t reflect editorial or commercial judgment.
+              Paint Color HQ is independent of the paint brands in its catalog. None of them pays for placement, ranking, or favorable mention. ECOS Paints, which is not in the catalog, pays a commission through Awin on sales from links to its site. Color matches are derived from the color data described above and calculated mathematically. They don&apos;t reflect editorial or commercial judgment.
             </p>
             <p className="text-on-surface-variant leading-relaxed">
               The site is run by{" "}

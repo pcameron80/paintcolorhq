@@ -533,6 +533,27 @@ export async function getColorsByFamilyCount(
   return count ?? 0;
 }
 
+// Every indexable color of one brand, name and slug only, A to Z. Feeds the
+// brand page's name index so each color page is one link from its brand page.
+// Paged because Supabase caps a request at 1,000 rows (Behr has ~5,700).
+export async function getBrandColorIndex(brandId: string): Promise<{ name: string; slug: string; colorNumber: string | null }[]> {
+  const out: { name: string; slug: string; colorNumber: string | null }[] = [];
+  const batch = 1000;
+  for (let from = 0; ; from += batch) {
+    const { data, error } = await supabase
+      .from("colors")
+      .select("name, slug, color_number, lrv, undertone, color_family")
+      .eq("brand_id", brandId)
+      .order("name").order("id")
+      .range(from, from + batch - 1);
+    if (error) throw error;
+    if (!data?.length) break;
+    for (const c of data) if (isColorIndexable(c)) out.push({ name: c.name, slug: c.slug, colorNumber: c.color_number });
+    if (data.length < batch) break;
+  }
+  return out;
+}
+
 export async function getColorsByBrandCount(
   brandId: string,
   options?: { family?: string; undertone?: string }

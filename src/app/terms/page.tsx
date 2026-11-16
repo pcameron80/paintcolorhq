@@ -46,7 +46,7 @@ export default function TermsOfServicePage() {
                 Service Description
               </h2>
               <p>Paint Color HQ is a free online tool for browsing, comparing, and matching paint colors across multiple brands. We provide color data, cross-brand matching using the Delta E 2000 algorithm, and tools for organizing color palettes and projects.</p>
-              <p className="mt-3">Paint Color HQ is a reference tool only. We do not sell paint or any physical products. We are not affiliated with, endorsed by, or sponsored by any paint manufacturer.</p>
+              <p className="mt-3">Paint Color HQ is a reference tool only. We do not sell paint or any physical products. We are not owned by, endorsed by, or sponsored by any paint manufacturer. Some links are affiliate links, including links to ECOS Paints through Awin, and we earn a commission on purchases made through them.</p>
             </div>
 
             <div>

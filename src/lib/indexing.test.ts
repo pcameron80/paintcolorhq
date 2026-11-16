@@ -36,10 +36,7 @@ test("a variant is a slug whose color number sits right before the -N suffix", (
   assert.equal(extractVariantSuffix("sea-salt-2", null), " (variant 2)");
 });
 
-test("the eight Behr -2-2 slugs stay indexable until MP-49 consolidates them", () => {
-  assert.equal(extractVariantSuffix("almond-latte-n260-2-2", "N260-2"), "");
-  assert.equal(isColorIndexable({ ...color, name: "Almond Latte", slug: "almond-latte-n260-2-2", color_number: "N260-2" }), true);
-  // A -2-2 slug that is not on the list is a variant of its primary.
+test("a -2-2 slug is a variant of its primary", () => {
   assert.equal(extractVariantSuffix("some-name-n100-2-2", "N100-2"), " (variant 2)");
 });
 
@@ -65,8 +62,4 @@ test("the match gate is a named constant, stricter than the Very similar label",
   assert.equal(MATCH_INDEX_MAX_DE, 3);
   assert.equal(isMatchIndexable(color, MATCH_INDEX_MAX_DE - 0.001), true);
   assert.equal(isMatchIndexable(color, MATCH_INDEX_MAX_DE), false);
-});
-
-test("BM 'Mt.' (AC-39) stays noindexed until it is consolidated", () => {
-  assert.equal(isColorIndexable({ ...color, name: "Mt.", slug: "mt-ac-39", color_number: "AC-39" }), false);
 });

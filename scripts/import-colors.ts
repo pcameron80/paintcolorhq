@@ -1,6 +1,7 @@
 // Family classification lives in the lib so every importer and
 // refine-color-families.ts apply the same rules.
 import { classifyColorFamily } from "./lib/color-math";
+import { fixApostropheCase } from "./lib/name-punctuation";
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -249,7 +250,7 @@ function main() {
       const lab = rgbToLab(parsed.r, parsed.g, parsed.b);
 
       allColors.push({
-        name: entry.name.trim(),
+        name: fixApostropheCase(entry.name.trim()),
         slug,
         color_number: entry.label != null ? String(entry.label).trim() || null : null,
         hex: parsed.hex,

@@ -57,8 +57,35 @@ function sendToPlausible(eventName: string, params?: GtagEvent) {
   fn(goal, Object.keys(props).length ? { props } : undefined);
 }
 
-export function trackEvent(eventName: string, params?: GtagEvent) {
+// GA4 reads these event parameters as the session's traffic source, wherever
+// they appear, so one on any event relabels the whole visit. color_search's old
+// `source` parameter did exactly that (see colorSearchParams). Names starting
+// with campaign_ are reserved the same way.
+const GA4_TRAFFIC_SOURCE_PARAMS = new Set(["source", "medium", "campaign", "term", "content"]);
+
+export function isTrafficSourceParam(key: string): boolean {
+  return GA4_TRAFFIC_SOURCE_PARAMS.has(key) || key.startsWith("campaign_");
+}
+
+/** Drops any parameter GA4 would read as traffic source; the rest pass through. */
+export function withoutTrafficSourceParams(params?: GtagEvent): GtagEvent | undefined {
+  if (!params) return params;
+  const kept: GtagEvent = {};
+  for (const [key, value] of Object.entries(params)) {
+    if (isTrafficSourceParam(key)) {
+      if (process.env.NODE_ENV !== "production") {
+        console.warn(`trackEvent: dropped "${key}", which GA4 reads as the session's traffic source. Rename it.`);
+      }
+      continue;
+    }
+    kept[key] = value;
+  }
+  return kept;
+}
+
+export function trackEvent(eventName: string, rawParams?: GtagEvent) {
   if (typeof window === "undefined") return;
+  const params = withoutTrafficSourceParams(rawParams);
   sendToPlausible(eventName, params);
   if (window.gtag) {
     window.gtag("event", eventName, params);

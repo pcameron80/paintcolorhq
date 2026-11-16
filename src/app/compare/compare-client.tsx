@@ -7,6 +7,7 @@ import { trackCompare, trackEvent } from "@/lib/analytics";
 import { TrackedLink } from "@/components/tracked-link";
 import { hexToRgb, rgbToLab, deltaE2000, type Lab } from "@/lib/color-utils";
 import { closenessLabel } from "@/lib/closeness";
+import { lrvGapSentence, lrvLightnessGap } from "@/lib/lrv-gap";
 
 /** The few fields a popular-pair card needs. */
 export interface PairColor {
@@ -459,6 +460,9 @@ function DeltaEVerdict({
   // No verdict beats a wrong one: a NaN would read as "Visible difference".
   if (!Number.isFinite(de)) return null;
   const verdict = getDeltaEVerdict(de);
+  const lab1 = labOf(color1);
+  const lab2 = labOf(color2);
+  const gap = lab1 && lab2 ? lrvLightnessGap({ lab: lab1, lrv: color1.lrv }, { lab: lab2, lrv: color2.lrv }, de) : null;
 
   return (
     <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
@@ -469,6 +473,11 @@ function DeltaEVerdict({
       <p className="text-base font-medium text-gray-900" aria-live="polite">
         {verdict}
         <span className="block text-xs font-normal text-gray-500">Measured with the CIEDE2000 color-difference formula.</span>
+        {gap && (
+          <span className="mt-1 block text-sm font-normal text-gray-700">
+            {lrvGapSentence({ name: color1.name, brandName: color1.brand.name }, { name: color2.name, brandName: color2.brand.name }, gap)}
+          </span>
+        )}
       </p>
     </div>
   );

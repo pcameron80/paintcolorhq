@@ -49,6 +49,8 @@ Excluded: Sherwin-Williams and Dutch Boy (decided 2026-10-11 as within rounding)
 
 **lrv-mp50-preflight: 8 rows.** Published values that pass the 10-point cap but are wrong: Vista 7152, 7329 and 7386 copy a neighbor's value; Vista AC124 is off its strip; Vista H0027 says 36 where Hirshfield's says 27.9 for the same color; PPG 1031-1 copies 1031-2 (the old PPG site said 60). PPG 1235-1 and Vista 8560 are medium and low confidence. All 8 are in `LRV_HOLD_CODES` and keep their computed LRV. Vista 8560 Brownstone's page also contradicts itself on RGB vs hex, so its hex needs a look. Check Vista 7328 City of Atlantis (46 vs Y 39.8) by hand before the Vista write. If PR #263 lands first, move `LRV_HOLD_CODES` into its `LRV_SKIP_CODES`.
 
+**lrv-pair-gap (decided 2026-10-31): the label stays, pages add a note.** When CIEDE2000 with L* from the two LRVs lands in a worse closeness tier than the swatch score, the match page and /compare add one sentence naming the color the LRVs say is lighter (`src/lib/lrv-gap.ts`). Pages compute it from stored LRVs, so every LRV write changes which pairs carry it. `npx tsx scripts/check-lrv-pairs.ts` counts them read-only: 6,585 of 320,640 rank-1 matches (2.1%) on 2026-10-31, 13 of them Nearly identical by swatch and Visible difference by LRV. **For each MP-50 brand write:** run `check-lrv-pairs.ts --lrv-updates=<that write's backup file>` right after it. The "Notes the updates add" section sizes the write, and its Nearly identical to Visible difference list is the review queue: a long list for one brand means bad published LRVs, so revert that write with its backup.
+
 ### Names
 
 **feed-names-punctuation: 69 rows** (audit said 53; the checks found 16 more). Same letters as the manufacturer's name, different punctuation: "Strawberryncream" for Strawberry 'n Cream, "Smoke Mirrors", "Natures Reflection", "St Johns Bay". The names script skipped every such pair as "curly vs straight quotes". Dry run with the new groups:
@@ -125,9 +127,9 @@ Run from the main checkout after this branch merges, in the 2026-11-08 to 2026-1
 npm run scan-palettes -- --brand=behr,benjamin-moore,dunn-edwards,ppg,vista-paint --out-dir=data/brand-scans/2026-11-08
 npx tsx scripts/build-ral-corrections.ts --out=data/brand-scans/ral-2026-11
 
-# 1. Names. Dry run, read the groups, then apply. Add --word-joins / --accents only if decided (D3).
+# 1. Names. Dry run, read the groups, then apply. --word-joins and --accents per D3; SKIP_ACCENT keeps Behr Parisian Cafe.
 npx tsx scripts/apply-published-names.ts --scan-dir=data/brand-scans/2026-11-08 --brand=benjamin-moore,behr,dunn-edwards,ppg
-npx tsx scripts/apply-published-names.ts --scan-dir=data/brand-scans/2026-11-08 --brand=benjamin-moore,behr,dunn-edwards,ppg --apply --punctuation
+npx tsx scripts/apply-published-names.ts --scan-dir=data/brand-scans/2026-11-08 --brand=benjamin-moore,behr,dunn-edwards,ppg --apply --punctuation --word-joins --accents
 
 # 2. Identity and duplicates.
 npx tsx scripts/fix-vista-identities.ts                 # dry run: expect 22 ready, 0 changed
@@ -147,6 +149,10 @@ npx tsx scripts/retire-bad-color-rows.ts --pairs=scripts/data/dedupe-plan-<date>
 #    Then move the src/lib/former-names.ts keys of retired rows to their canonical, or the
 #    "Previously listed as" line disappears: benjamin-moore/white-opulence-879 -> opulence-oc-69,
 #    behr/canyon-ouvert-n300-4 -> open-canyon-n300-4, benjamin-moore/indian-summer-cc-186 -> casabella-102.
+#    D5: retire the 30 Dutch Boy DCP rows into the Hirshfield's rows with the same code (all live
+#    at Hirshfield's, no project refs). Their 301s shipped with the decisions PR.
+npx tsx scripts/retire-bad-color-rows.ts --pairs=scripts/data/audit-2026-11/dutch-boy-dcp-retire.json          # dry run: expect 30, 0 refs
+npx tsx scripts/retire-bad-color-rows.ts --pairs=scripts/data/audit-2026-11/dutch-boy-dcp-retire.json --apply
 
 # 3. Hex. Rescan Behr so its hex-changed list reflects the retired rows (expect the 28 same-code canonicals).
 npm run scan-palettes -- --brand=behr --out-dir=data/brand-scans/2026-11-08b
@@ -157,7 +163,7 @@ npx tsx scripts/apply-hex-corrections.ts --scan-dir=scripts/data/audit-2026-11/s
 npx tsx scripts/apply-hex-corrections.ts --scan-dir=data/brand-scans/ral-2026-11 --brand=ral
 npx tsx scripts/apply-hex-corrections.ts --scan-dir=data/brand-scans/ral-2026-11 --brand=ral --apply
 
-# 4. LRV (no match recompute needed for this step). Hirshfield's only if decided (D1).
+# 4. LRV (no match recompute needed for this step). Hirshfield's stays held (D1); MP-50 (#263) skips it too.
 npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/2026-11-08 --brand=dunn-edwards
 npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/2026-11-08 --brand=dunn-edwards --apply
 npx tsx scripts/apply-published-lrv.ts --scan-dir=data/brand-scans/2026-11-08 --brand=vista-paint,ppg --min-diff=1
@@ -185,7 +191,10 @@ npm run seed-matches
 npm run audit-colors -- --changed=scripts/data/backups/hex-corrections-<ts>.json
 npm run audit-colors -- --changed=scripts/data/backups/published-lrv-<ts>.json
 
-# 8. Undertones, on or after 2026-11-28 (head-color page bodies are frozen until 2026-11-27;
+# 8. Undertones, on or after 2026-11-28. D8: in the greige band (C* 3 to 10, hue 75 to 100) pages must show
+#    the temperature only ("Warm") unless a sourced override exists. Main has no such rule yet: build it
+#    with MP-70 and this step, and do not narrow it to the null and C* 20+ rules.
+#    (Head-color page bodies are frozen until 2026-11-27;
 #    the script refuses before 2026-11-04 and skips the 13 head colors until 2026-11-28).
 npx tsx scripts/populate-undertones.ts                  # dry run: expect about 15,889 changes
 npx tsx scripts/populate-undertones.ts --apply
@@ -202,6 +211,8 @@ Notes:
 - PR #262 (names) and PR #263 (LRV source) touch `apply-published-names.ts` and `apply-published-lrv.ts`. Whichever merges second needs a rebase; keep `LRV_HOLD_CODES` and the punctuation groups.
 
 ## Decisions for Philip
+
+**All 11 accepted by Philip on 2026-10-31, with MP-41's rule-based groups retired in the same pass as the explicit pairs.** Wired in: D3 (step 1 flags, `SKIP_ACCENT`), D5 (`dutch-boy-dcp-retire.json`, step 2), D1 (step 4), D8 (step 8), D4 (RAL brand page note). D6 waits on MP-80's retailer check; D7 is a copy rule.
 
 | # | Decision | Recommendation |
 |---|---|---|

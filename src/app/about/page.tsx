@@ -212,7 +212,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-on-surface-variant leading-relaxed mb-8">
               Paint Color HQ is not a paint store. We don&apos;t sell paint,
-              and we&apos;re not affiliated with any paint manufacturer.
+              and no paint manufacturer owns or runs this site.
               We&apos;re an{" "}
               <strong className="text-on-surface">independent reference tool</strong> built to help you
               make informed decisions about paint colors before you visit the
@@ -246,13 +246,18 @@ export default function AboutPage() {
                 Some links on color pages and in the paint calculator&apos;s
                 supplies list go to Amazon. Paint Color HQ is an Amazon
                 Associate and earns a commission on qualifying purchases made
-                through those links, at no extra cost to you. Links to paint
-                brands and paint stores are not affiliate links.
+                through those links, at no extra cost to you. Links to ECOS
+                Paints, on color pages and in the nursery color guide, are
+                affiliate links through Awin, and Paint Color HQ earns a
+                commission on purchases made through them, also at no extra
+                cost to you. Other links to paint brands and paint stores are
+                not affiliate links.
               </p>
               <p>
-                No paint brand pays for placement. Match rankings come from the
-                color data alone, and a brand cannot buy a higher position or a
-                mention.
+                No paint brand pays for placement in match results. Match
+                rankings come from the color data alone, and a brand cannot buy
+                a higher position. ECOS Paints is not in our color catalog, so
+                it does not appear in those rankings.
               </p>
             </div>
           </div>

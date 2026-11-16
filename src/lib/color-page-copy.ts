@@ -11,7 +11,7 @@
 import { REVIEWED_COLOR_PAGES } from "./color-review";
 import { closenessLabelLower, closenessTier } from "./closeness";
 import { generateMetaDescription, nearestMatchesPerBrand } from "./color-description";
-import { FORMER_NAMES } from "./former-names";
+import { formerNameFor } from "./former-names";
 import { extractVariantSuffix } from "./indexing";
 import { MAJOR_MATCH_BRANDS, UNVERIFIED_BUY_BRANDS } from "./popular-colors";
 import { capMeta, codeSuffix, displayColorNumber } from "./text";
@@ -43,8 +43,8 @@ export function colorMetadataText(opts: {
   const key = `${brandSlug}/${colorSlug}`;
   const variant = extractVariantSuffix(colorSlug, color.color_number);
   const reviewed = Boolean(REVIEWED_COLOR_PAGES[key]);
-  const formerName = FORMER_NAMES[key];
-  const former = formerName && formerName !== color.name ? ` Previously listed as ${formerName}.` : "";
+  const formerName = formerNameFor(brandSlug, colorSlug, color.name);
+  const former = formerName ? ` Previously listed as ${formerName}.` : "";
 
   if (isHead) {
     const colorNum = color.color_number ? ` ${color.color_number}` : "";
