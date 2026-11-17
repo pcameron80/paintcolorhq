@@ -1,6 +1,6 @@
 import { cache } from "react";
 import { unstable_cache } from "next/cache";
-import { getColorsByBrandCount } from "./queries";
+import { getColorsByBrandCount, getBrandLrvRange } from "./queries";
 
 // Cached brand color counts for the brand pages. getColorsByBrandCount is an
 // uncached head/count query, and every brand-page render (metadata, the grid
@@ -45,3 +45,12 @@ export const getBrandUndertoneCounts = cache(
     return Object.fromEntries(undertones.map((undertone, i) => [undertone, counts[i]]));
   },
 );
+
+const lrvRangeCached = unstable_cache(
+  (brandId: string) => getBrandLrvRange(brandId),
+  ["brand-lrv-range"],
+  { revalidate: DAY },
+);
+
+/** Cached lowest and highest LRV for one brand (opening line on page 1). */
+export const getCachedBrandLrvRange = cache((brandId: string) => lrvRangeCached(brandId));

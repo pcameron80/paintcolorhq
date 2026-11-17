@@ -1,0 +1,1126 @@
+{
+ "source": "Plausible, clean traffic",
+ "filter": "Not GNU/Linux; US, CA, GB, IE, AU or NZ; visitor-days over 100 pageviews dropped",
+ "queryStart": "2026-08-18",
+ "windowStart": "2026-10-20",
+ "windowEnd": "2026-11-15",
+ "minViews": 5,
+ "brands": {
+  "behr": [
+   {
+    "slug": "grounded-t27-01",
+    "views": 46,
+    "visits": 29
+   },
+   {
+    "slug": "whitewater-bay-ppu11-10",
+    "views": 14,
+    "visits": 7
+   },
+   {
+    "slug": "arid-landscape-n310-2",
+    "views": 13,
+    "visits": 11
+   },
+   {
+    "slug": "swiss-coffee-12",
+    "views": 12,
+    "visits": 11
+   },
+   {
+    "slug": "whisper-white-hdc-md-08",
+    "views": 12,
+    "visits": 8
+   },
+   {
+    "slug": "crisp-linen-mq3-13",
+    "views": 11,
+    "visits": 9
+   },
+   {
+    "slug": "shipyard-s500-6",
+    "views": 11,
+    "visits": 2
+   },
+   {
+    "slug": "hidden-gem-n430-6a",
+    "views": 10,
+    "visits": 9
+   },
+   {
+    "slug": "spun-cotton-yl-w09",
+    "views": 10,
+    "visits": 7
+   },
+   {
+    "slug": "chalk-dust-hdc-ct-22g",
+    "views": 10,
+    "visits": 4
+   },
+   {
+    "slug": "ocean-front-p490-1",
+    "views": 10,
+    "visits": 2
+   },
+   {
+    "slug": "black-suede-s-h-790",
+    "views": 9,
+    "visits": 8
+   },
+   {
+    "slug": "ginger-sugar-mq3-18",
+    "views": 9,
+    "visits": 4
+   },
+   {
+    "slug": "shoreline-haze-mq6-31",
+    "views": 9,
+    "visits": 4
+   },
+   {
+    "slug": "creme-brulee-360e-1",
+    "views": 9,
+    "visits": 3
+   },
+   {
+    "slug": "burnt-terra-ul130-3",
+    "views": 9,
+    "visits": 2
+   },
+   {
+    "slug": "hidden-forest-ecc-51-3",
+    "views": 8,
+    "visits": 5
+   },
+   {
+    "slug": "infinite-deep-sea-s500-7",
+    "views": 8,
+    "visits": 5
+   },
+   {
+    "slug": "silver-ash-gr-w11",
+    "views": 8,
+    "visits": 4
+   },
+   {
+    "slug": "watery-hdc-ct-26",
+    "views": 8,
+    "visits": 4
+   },
+   {
+    "slug": "half-sea-fog-n470-3",
+    "views": 8,
+    "visits": 3
+   },
+   {
+    "slug": "frost-57",
+    "views": 8,
+    "visits": 2
+   },
+   {
+    "slug": "silver-sateen-ul260-16",
+    "views": 8,
+    "visits": 1
+   },
+   {
+    "slug": "tranquil-sea-ppl-73",
+    "views": 8,
+    "visits": 1
+   },
+   {
+    "slug": "adirondack-blue-n480-5",
+    "views": 7,
+    "visits": 6
+   },
+   {
+    "slug": "arcade-white-gr-w08",
+    "views": 7,
+    "visits": 4
+   },
+   {
+    "slug": "chic-gray-ppu26-10",
+    "views": 7,
+    "visits": 4
+   },
+   {
+    "slug": "shady-willow-ecc-36-1",
+    "views": 7,
+    "visits": 4
+   },
+   {
+    "slug": "smoky-white-bwc-13",
+    "views": 7,
+    "visits": 4
+   },
+   {
+    "slug": "taupe-tease-n210-1",
+    "views": 7,
+    "visits": 4
+   }
+  ],
+  "benjamin-moore": [
+   {
+    "slug": "white-dove-oc-17",
+    "views": 56,
+    "visits": 46
+   },
+   {
+    "slug": "pale-oak-oc-20",
+    "views": 42,
+    "visits": 32
+   },
+   {
+    "slug": "edgecomb-gray-hc-173",
+    "views": 41,
+    "visits": 25
+   },
+   {
+    "slug": "quiet-moments-1563",
+    "views": 29,
+    "visits": 25
+   },
+   {
+    "slug": "revere-pewter-hc-172",
+    "views": 28,
+    "visits": 22
+   },
+   {
+    "slug": "balboa-mist-oc-27",
+    "views": 28,
+    "visits": 20
+   },
+   {
+    "slug": "october-mist-1495",
+    "views": 28,
+    "visits": 20
+   },
+   {
+    "slug": "oyster-2115-70",
+    "views": 24,
+    "visits": 7
+   },
+   {
+    "slug": "cloud-white-oc-130",
+    "views": 23,
+    "visits": 15
+   },
+   {
+    "slug": "chantilly-lace-2121-70",
+    "views": 22,
+    "visits": 18
+   },
+   {
+    "slug": "dakota-woods-green-2139-20",
+    "views": 20,
+    "visits": 10
+   },
+   {
+    "slug": "saybrook-sage-hc-114",
+    "views": 19,
+    "visits": 15
+   },
+   {
+    "slug": "hale-navy-hc-154",
+    "views": 18,
+    "visits": 14
+   },
+   {
+    "slug": "simply-white-2143-70",
+    "views": 17,
+    "visits": 15
+   },
+   {
+    "slug": "gray-owl-2137-60",
+    "views": 16,
+    "visits": 9
+   },
+   {
+    "slug": "deep-mauve-1265",
+    "views": 15,
+    "visits": 3
+   },
+   {
+    "slug": "healing-aloe-1562",
+    "views": 14,
+    "visits": 8
+   },
+   {
+    "slug": "grape-juice-2074-10",
+    "views": 14,
+    "visits": 3
+   },
+   {
+    "slug": "webster-green-hc-130",
+    "views": 12,
+    "visits": 12
+   },
+   {
+    "slug": "palladian-blue-hc-144",
+    "views": 11,
+    "visits": 10
+   },
+   {
+    "slug": "classic-gray-1548",
+    "views": 11,
+    "visits": 9
+   },
+   {
+    "slug": "manchester-tan-hc-81",
+    "views": 11,
+    "visits": 9
+   },
+   {
+    "slug": "sea-star-2123-30",
+    "views": 11,
+    "visits": 5
+   },
+   {
+    "slug": "stonington-gray-hc-170",
+    "views": 10,
+    "visits": 8
+   },
+   {
+    "slug": "hampshire-taupe-990",
+    "views": 10,
+    "visits": 7
+   },
+   {
+    "slug": "aegean-teal-2136-40",
+    "views": 10,
+    "visits": 5
+   },
+   {
+    "slug": "morning-light-183",
+    "views": 10,
+    "visits": 2
+   },
+   {
+    "slug": "essex-green-hc-188",
+    "views": 9,
+    "visits": 6
+   },
+   {
+    "slug": "shaker-beige-hc-45",
+    "views": 9,
+    "visits": 6
+   },
+   {
+    "slug": "wrought-iron-2124-10",
+    "views": 9,
+    "visits": 6
+   }
+  ],
+  "dunn-edwards": [
+   {
+    "slug": "french-press-coffee-debn07",
+    "views": 19,
+    "visits": 13
+   },
+   {
+    "slug": "crisp-muslin-de6212",
+    "views": 16,
+    "visits": 15
+   },
+   {
+    "slug": "milk-glass-dew358",
+    "views": 11,
+    "visits": 7
+   },
+   {
+    "slug": "mauve-a-lish-det402",
+    "views": 11,
+    "visits": 3
+   },
+   {
+    "slug": "whisper-dew340",
+    "views": 8,
+    "visits": 3
+   },
+   {
+    "slug": "black-forest-dea175",
+    "views": 8,
+    "visits": 1
+   },
+   {
+    "slug": "ballerina-de5036",
+    "views": 7,
+    "visits": 3
+   },
+   {
+    "slug": "blowin-in-the-wind-degr52",
+    "views": 7,
+    "visits": 3
+   },
+   {
+    "slug": "spiked-punch-defd15",
+    "views": 7,
+    "visits": 3
+   },
+   {
+    "slug": "primitive-plum-dea195",
+    "views": 7,
+    "visits": 2
+   },
+   {
+    "slug": "foggy-day-de6226",
+    "views": 6,
+    "visits": 4
+   },
+   {
+    "slug": "seagull-wail-det637",
+    "views": 6,
+    "visits": 1
+   },
+   {
+    "slug": "fine-grain-de6213",
+    "views": 5,
+    "visits": 5
+   },
+   {
+    "slug": "swiss-coffee-dew341",
+    "views": 5,
+    "visits": 5
+   },
+   {
+    "slug": "wandering-river-de5850",
+    "views": 5,
+    "visits": 5
+   },
+   {
+    "slug": "amour-de5104",
+    "views": 5,
+    "visits": 4
+   },
+   {
+    "slug": "birchwood-dec752",
+    "views": 5,
+    "visits": 4
+   },
+   {
+    "slug": "bison-beige-dec750",
+    "views": 5,
+    "visits": 4
+   },
+   {
+    "slug": "ash-gray-dec751",
+    "views": 5,
+    "visits": 3
+   },
+   {
+    "slug": "bay-of-hope-de6331",
+    "views": 5,
+    "visits": 3
+   },
+   {
+    "slug": "burmese-tan-de5332",
+    "views": 5,
+    "visits": 3
+   },
+   {
+    "slug": "cool-december-dew383",
+    "views": 5,
+    "visits": 3
+   },
+   {
+    "slug": "steveareno-beige-dec766",
+    "views": 5,
+    "visits": 2
+   },
+   {
+    "slug": "wild-maitake-debn24",
+    "views": 5,
+    "visits": 2
+   },
+   {
+    "slug": "rose-reminder-de5093",
+    "views": 5,
+    "visits": 1
+   },
+   {
+    "slug": "smoky-forest-de6244",
+    "views": 5,
+    "visits": 1
+   }
+  ],
+  "dutch-boy": [
+   {
+    "slug": "doves-wings-443-1db",
+    "views": 11,
+    "visits": 7
+   },
+   {
+    "slug": "swan-white-024w",
+    "views": 8,
+    "visits": 7
+   },
+   {
+    "slug": "grayed-pebble-441-3db",
+    "views": 8,
+    "visits": 6
+   },
+   {
+    "slug": "royal-blue-d-6740",
+    "views": 8,
+    "visits": 6
+   },
+   {
+    "slug": "sandstone-tint-441-2db",
+    "views": 7,
+    "visits": 7
+   },
+   {
+    "slug": "worn-greige-441-4db",
+    "views": 7,
+    "visits": 5
+   },
+   {
+    "slug": "pristine-pearl-021w",
+    "views": 7,
+    "visits": 4
+   },
+   {
+    "slug": "melodious-ivory-313-2db",
+    "views": 6,
+    "visits": 5
+   },
+   {
+    "slug": "white-rapids-425-1db",
+    "views": 6,
+    "visits": 5
+   },
+   {
+    "slug": "dark-chocolate-d-6782",
+    "views": 6,
+    "visits": 2
+   },
+   {
+    "slug": "deep-rooted-311-7db",
+    "views": 5,
+    "visits": 4
+   },
+   {
+    "slug": "anchor-s-away-140-7db",
+    "views": 5,
+    "visits": 3
+   },
+   {
+    "slug": "warmed-silver-440-1db",
+    "views": 5,
+    "visits": 3
+   },
+   {
+    "slug": "oasis-green-232-7db",
+    "views": 5,
+    "visits": 1
+   }
+  ],
+  "farrow-ball": [
+   {
+    "slug": "setting-plaster-231",
+    "views": 21,
+    "visits": 16
+   },
+   {
+    "slug": "oval-room-blue-85",
+    "views": 19,
+    "visits": 14
+   },
+   {
+    "slug": "hague-blue-30",
+    "views": 15,
+    "visits": 11
+   },
+   {
+    "slug": "skimming-stone-241",
+    "views": 15,
+    "visits": 10
+   },
+   {
+    "slug": "wimborne-white-239",
+    "views": 14,
+    "visits": 13
+   },
+   {
+    "slug": "elephants-breath-229",
+    "views": 14,
+    "visits": 10
+   },
+   {
+    "slug": "wevet-273",
+    "views": 13,
+    "visits": 9
+   },
+   {
+    "slug": "farrows-cream-67",
+    "views": 13,
+    "visits": 7
+   },
+   {
+    "slug": "cornforth-white-228",
+    "views": 12,
+    "visits": 9
+   },
+   {
+    "slug": "school-house-white-291",
+    "views": 12,
+    "visits": 9
+   },
+   {
+    "slug": "jitney-293",
+    "views": 12,
+    "visits": 6
+   },
+   {
+    "slug": "green-blue-84",
+    "views": 11,
+    "visits": 9
+   },
+   {
+    "slug": "pigeon-25",
+    "views": 11,
+    "visits": 9
+   },
+   {
+    "slug": "ammonite-274",
+    "views": 11,
+    "visits": 7
+   },
+   {
+    "slug": "teresas-green-236",
+    "views": 11,
+    "visits": 6
+   },
+   {
+    "slug": "drop-cloth-283",
+    "views": 10,
+    "visits": 7
+   },
+   {
+    "slug": "savage-ground-213",
+    "views": 10,
+    "visits": 4
+   },
+   {
+    "slug": "broccoli-brown-198",
+    "views": 10,
+    "visits": 3
+   },
+   {
+    "slug": "sudbury-yellow-51",
+    "views": 9,
+    "visits": 7
+   },
+   {
+    "slug": "lulworth-blue-89",
+    "views": 9,
+    "visits": 6
+   },
+   {
+    "slug": "london-stone-6",
+    "views": 9,
+    "visits": 5
+   },
+   {
+    "slug": "de-nimes-299",
+    "views": 9,
+    "visits": 4
+   },
+   {
+    "slug": "reduced-green-313",
+    "views": 9,
+    "visits": 4
+   },
+   {
+    "slug": "au-lait-cb9",
+    "views": 8,
+    "visits": 8
+   },
+   {
+    "slug": "skylight-205",
+    "views": 8,
+    "visits": 7
+   },
+   {
+    "slug": "selvedge-306",
+    "views": 8,
+    "visits": 6
+   },
+   {
+    "slug": "nancys-blushes-278",
+    "views": 8,
+    "visits": 4
+   },
+   {
+    "slug": "red-earth-64",
+    "views": 8,
+    "visits": 3
+   },
+   {
+    "slug": "peignoir-286",
+    "views": 7,
+    "visits": 7
+   },
+   {
+    "slug": "india-yellow-66",
+    "views": 7,
+    "visits": 6
+   }
+  ],
+  "ppg": [
+   {
+    "slug": "pale-jade-70gy-46-120",
+    "views": 19,
+    "visits": 1
+   },
+   {
+    "slug": "smokey-claret-mauve-90rr-18-139",
+    "views": 17,
+    "visits": 2
+   },
+   {
+    "slug": "silver-band-ppg0995-3",
+    "views": 16,
+    "visits": 5
+   },
+   {
+    "slug": "belgian-waffle-00yy-57-299",
+    "views": 13,
+    "visits": 5
+   },
+   {
+    "slug": "whiskers-1025-3",
+    "views": 12,
+    "visits": 10
+   },
+   {
+    "slug": "wright-cherokee-red-taliesin-west-fllw68",
+    "views": 12,
+    "visits": 10
+   },
+   {
+    "slug": "warm-mahogany-1060-7",
+    "views": 10,
+    "visits": 7
+   },
+   {
+    "slug": "fudge-truffle-1075-7",
+    "views": 10,
+    "visits": 3
+   },
+   {
+    "slug": "scotch-mist-14-07",
+    "views": 9,
+    "visits": 5
+   },
+   {
+    "slug": "undercover-ppg0998-7",
+    "views": 7,
+    "visits": 6
+   },
+   {
+    "slug": "gray-heron-1033-5",
+    "views": 7,
+    "visits": 4
+   },
+   {
+    "slug": "white-clover-10-31",
+    "views": 7,
+    "visits": 3
+   },
+   {
+    "slug": "winter-mood-14-16",
+    "views": 6,
+    "visits": 6
+   },
+   {
+    "slug": "artifact-10-16",
+    "views": 6,
+    "visits": 5
+   },
+   {
+    "slug": "charred-clay-30yr-17-341",
+    "views": 6,
+    "visits": 3
+   },
+   {
+    "slug": "olive-black-50yy-09-101",
+    "views": 6,
+    "visits": 3
+   },
+   {
+    "slug": "splash-of-teal-17bg-36-333",
+    "views": 6,
+    "visits": 2
+   },
+   {
+    "slug": "autumn-gray-1028-5",
+    "views": 6,
+    "visits": 1
+   },
+   {
+    "slug": "antique-white-1024-2",
+    "views": 5,
+    "visits": 4
+   },
+   {
+    "slug": "commercial-white-1025-1",
+    "views": 5,
+    "visits": 4
+   },
+   {
+    "slug": "dark-mossy-trail-50yy-15-089",
+    "views": 5,
+    "visits": 4
+   },
+   {
+    "slug": "dark-stormy-sky-green-50gg-15-099",
+    "views": 5,
+    "visits": 4
+   },
+   {
+    "slug": "olive-sprig-1125-4",
+    "views": 5,
+    "visits": 4
+   },
+   {
+    "slug": "afraid-of-the-dark-ppg0994-1",
+    "views": 5,
+    "visits": 3
+   },
+   {
+    "slug": "annapolis-blue-1164-7",
+    "views": 5,
+    "visits": 3
+   },
+   {
+    "slug": "casual-elegance-1075-3",
+    "views": 5,
+    "visits": 2
+   },
+   {
+    "slug": "enchanted-forest-green-30gy-07-051",
+    "views": 5,
+    "visits": 2
+   },
+   {
+    "slug": "bronzed-ivy-50yy-12-095",
+    "views": 5,
+    "visits": 1
+   },
+   {
+    "slug": "niagara-mist-10-30",
+    "views": 5,
+    "visits": 1
+   },
+   {
+    "slug": "pegasus-1010-1",
+    "views": 5,
+    "visits": 1
+   }
+  ],
+  "sherwin-williams": [
+   {
+    "slug": "accessible-beige-7036",
+    "views": 78,
+    "visits": 52
+   },
+   {
+    "slug": "agreeable-gray-7029",
+    "views": 70,
+    "visits": 50
+   },
+   {
+    "slug": "alabaster-7008",
+    "views": 62,
+    "visits": 48
+   },
+   {
+    "slug": "sea-salt-6204",
+    "views": 61,
+    "visits": 45
+   },
+   {
+    "slug": "indigo-batik-7602",
+    "views": 50,
+    "visits": 44
+   },
+   {
+    "slug": "greek-villa-7551",
+    "views": 33,
+    "visits": 20
+   },
+   {
+    "slug": "shoji-white-7042",
+    "views": 24,
+    "visits": 22
+   },
+   {
+    "slug": "repose-gray-7015",
+    "views": 24,
+    "visits": 17
+   },
+   {
+    "slug": "snowbound-7004",
+    "views": 24,
+    "visits": 17
+   },
+   {
+    "slug": "aleutian-6241",
+    "views": 24,
+    "visits": 16
+   },
+   {
+    "slug": "dumpling-9616",
+    "views": 23,
+    "visits": 12
+   },
+   {
+    "slug": "universal-khaki-6150",
+    "views": 23,
+    "visits": 12
+   },
+   {
+    "slug": "kind-green-6457",
+    "views": 21,
+    "visits": 1
+   },
+   {
+    "slug": "clary-sage-6178",
+    "views": 19,
+    "visits": 15
+   },
+   {
+    "slug": "pure-white-7005",
+    "views": 19,
+    "visits": 14
+   },
+   {
+    "slug": "evergreen-fog-9130",
+    "views": 18,
+    "visits": 15
+   },
+   {
+    "slug": "piedmont-9657",
+    "views": 18,
+    "visits": 9
+   },
+   {
+    "slug": "softened-green-6177",
+    "views": 16,
+    "visits": 11
+   },
+   {
+    "slug": "grounded-6089",
+    "views": 16,
+    "visits": 7
+   },
+   {
+    "slug": "rainwashed-6211",
+    "views": 15,
+    "visits": 11
+   },
+   {
+    "slug": "smokehouse-7040",
+    "views": 14,
+    "visits": 12
+   },
+   {
+    "slug": "cheviot-9503",
+    "views": 14,
+    "visits": 10
+   },
+   {
+    "slug": "oyster-bay-6206",
+    "views": 14,
+    "visits": 7
+   },
+   {
+    "slug": "iron-ore-7069",
+    "views": 13,
+    "visits": 11
+   },
+   {
+    "slug": "north-star-6246",
+    "views": 13,
+    "visits": 10
+   },
+   {
+    "slug": "city-loft-7631",
+    "views": 13,
+    "visits": 9
+   },
+   {
+    "slug": "winter-walk-9628",
+    "views": 13,
+    "visits": 9
+   },
+   {
+    "slug": "first-star-7646",
+    "views": 13,
+    "visits": 8
+   },
+   {
+    "slug": "african-gray-9162",
+    "views": 13,
+    "visits": 7
+   },
+   {
+    "slug": "naval-6244",
+    "views": 12,
+    "visits": 12
+   }
+  ],
+  "valspar": [
+   {
+    "slug": "heritage-gray-7007-24",
+    "views": 19,
+    "visits": 16
+   },
+   {
+    "slug": "cream-in-my-coffee-3003-10c",
+    "views": 15,
+    "visits": 12
+   },
+   {
+    "slug": "milk-chocolate-2007-9b",
+    "views": 14,
+    "visits": 6
+   },
+   {
+    "slug": "blue-fescue-8003-34e",
+    "views": 13,
+    "visits": 7
+   },
+   {
+    "slug": "warm-eucalyptus-8004-28f",
+    "views": 11,
+    "visits": 9
+   },
+   {
+    "slug": "vintage-chartreuse-8001-27g",
+    "views": 10,
+    "visits": 9
+   },
+   {
+    "slug": "moose-mousse-3003-10a",
+    "views": 10,
+    "visits": 6
+   },
+   {
+    "slug": "swiss-coffee-7002-16",
+    "views": 10,
+    "visits": 4
+   },
+   {
+    "slug": "blue-kiss-7004-11",
+    "views": 10,
+    "visits": 3
+   },
+   {
+    "slug": "slush-8005-2a",
+    "views": 9,
+    "visits": 6
+   },
+   {
+    "slug": "amethyst-ice-8001-1g",
+    "views": 8,
+    "visits": 4
+   },
+   {
+    "slug": "simply-seafoam-5008-7c",
+    "views": 8,
+    "visits": 4
+   },
+   {
+    "slug": "timber-dust-2007-10a",
+    "views": 8,
+    "visits": 3
+   },
+   {
+    "slug": "sable-calm-5002-2c",
+    "views": 8,
+    "visits": 2
+   },
+   {
+    "slug": "cottage-door-8004-38e",
+    "views": 7,
+    "visits": 7
+   },
+   {
+    "slug": "favourite-jade-5004-3c",
+    "views": 7,
+    "visits": 7
+   },
+   {
+    "slug": "sparkling-sage-5005-3b",
+    "views": 7,
+    "visits": 6
+   },
+   {
+    "slug": "honey-moon-8003-22a",
+    "views": 7,
+    "visits": 3
+   },
+   {
+    "slug": "mr-kitty-8006-3a",
+    "views": 7,
+    "visits": 2
+   },
+   {
+    "slug": "poetic-purple-1010-8",
+    "views": 7,
+    "visits": 2
+   },
+   {
+    "slug": "sandstone-gray-7004-18",
+    "views": 7,
+    "visits": 2
+   },
+   {
+    "slug": "ultra-white-7006-24",
+    "views": 7,
+    "visits": 2
+   },
+   {
+    "slug": "folkstone-6001-2a",
+    "views": 6,
+    "visits": 6
+   },
+   {
+    "slug": "koala-8005-8d",
+    "views": 6,
+    "visits": 3
+   },
+   {
+    "slug": "noblesse-oblige-8004-2g",
+    "views": 6,
+    "visits": 3
+   },
+   {
+    "slug": "veranda-ivory-7003-20",
+    "views": 6,
+    "visits": 3
+   },
+   {
+    "slug": "perfect-pout-8001-4g",
+    "views": 6,
+    "visits": 2
+   },
+   {
+    "slug": "veranda-blue-4004-6b",
+    "views": 6,
+    "visits": 2
+   },
+   {
+    "slug": "golden-butter-3002-1c",
+    "views": 6,
+    "visits": 1
+   },
+   {
+    "slug": "green-sea-6001-10c",
+    "views": 6,
+    "visits": 1
+   }
+  ]
+ }
+}
