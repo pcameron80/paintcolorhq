@@ -144,3 +144,12 @@ body {
   background-color: var(--primary-fixed-dim);
   color: var(--on-primary-fixed);
 }
+
+/* Brand page "Most viewed" list: all tiles are in the HTML; phones see the first
+   8 until the checkbox is ticked, md and up see every tile. No JavaScript. */
+.mv-toggle:focus-visible ~ label { outline: 2px solid var(--color-primary, #0b3fcc); outline-offset: 2px; }
+.mv-toggle:not(:checked) ~ label .mv-less, .mv-toggle:checked ~ label .mv-more { display: none; }
+@media (max-width: 767px) {
+  .mv-list > li:nth-child(n + 9) { display: none; }
+  .mv-toggle:checked ~ .mv-list > li:nth-child(n + 9) { display: list-item; }
+}

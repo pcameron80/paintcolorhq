@@ -45,7 +45,9 @@ export function BrandEntryPoints({ brandSlug, brandName, mostViewed, mostViewedW
             <p className="mt-1 mb-5 text-sm text-on-surface-variant">
               Ranked by pageviews on this site, {mostViewedWindow}. That is our own traffic, not sales data.
             </p>
-            <ol className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            {/* Phones show the first 8 until "Show all" is ticked (CSS only, see globals.css). */}
+            <input id="mv-all" type="checkbox" className="mv-toggle sr-only" />
+            <ol className="mv-list grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
               {mostViewed.map((c) => (
                 <li key={c.id}>
                   <Link
@@ -64,6 +66,12 @@ export function BrandEntryPoints({ brandSlug, brandName, mostViewed, mostViewedW
                 </li>
               ))}
             </ol>
+            {mostViewed.length > 8 && (
+              <label htmlFor="mv-all" className="mt-4 inline-block cursor-pointer rounded-full border border-outline-variant/40 px-5 py-2 text-sm font-bold text-primary hover:bg-surface-container-low md:hidden">
+                <span className="mv-more">Show all {mostViewed.length}</span>
+                <span className="mv-less">Show fewer</span>
+              </label>
+            )}
           </div>
         )}
 
