@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function EmbedMatchPage() {
   return (
-    <main className="h-screen w-screen overflow-hidden bg-white">
+    <main id="main-content" className="h-screen w-screen overflow-hidden bg-white">
       <MatchWidget />
     </main>
   );

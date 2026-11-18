@@ -174,7 +174,7 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+      <main id="main-content" className="max-w-7xl mx-auto px-6 md:px-12 py-16">
         <nav className="mb-8 text-sm text-on-surface-variant">
           <Link href="/" className="hover:text-primary transition-colors">Home</Link>
           <span className="mx-2 text-outline">/</span>

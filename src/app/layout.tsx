@@ -72,6 +72,12 @@ export default function RootLayout({
         <link rel="help" type="text/plain" href="/llms.txt" />
       </head>
       <body className={`${inter.variable} ${manrope.variable} font-sans antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-on-surface focus:shadow-lg focus:outline focus:outline-[3px] focus:outline-offset-2 focus:outline-[var(--foreground)]"
+        >
+          Skip to main content
+        </a>
         {children}
         <CookieConsent />
         {/* AnalyticsProvider must stay after CookieConsent (the gtag scripts);

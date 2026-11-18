@@ -132,6 +132,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
       }} />
 
       <Header />
+      <main id="main-content">
 
       {/* Tighter on phones than the other tool heroes so the verdict, which
           sits right under the pickers, lands in the first screen at 390x844. */}
@@ -196,6 +197,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
         </div>
       </section>
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>
