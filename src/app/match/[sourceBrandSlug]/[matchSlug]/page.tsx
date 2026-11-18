@@ -236,7 +236,7 @@ export default async function MatchPage({ params }: PageProps) {
         </section>
       ) : <div className="pt-[65px] h-32 bg-surface-container-low" />}
 
-      <main className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+      <main id="main-content" className="max-w-7xl mx-auto px-6 md:px-12 py-16">
         <nav className="mb-8 text-sm text-on-surface-variant">
           <Link href="/" className="hover:text-primary transition-colors">Home</Link>
           <span className="mx-2 text-outline">/</span>
