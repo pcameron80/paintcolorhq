@@ -181,7 +181,7 @@ export default async function MatchPage({ params }: PageProps) {
         sponsored: Boolean(storeAffiliate?.affiliate),
         name: storeRetailer.retailerName,
         quietLabel: buyRetailer ? `Buy at ${storeRetailer.retailerName}` : `View official color on ${storeRetailer.retailerName}`,
-        primaryLabel: buyRetailer ? `Buy at ${storeRetailer.retailerName}` : `View ${matched.name} on ${storeRetailer.retailerName}`,
+        primaryLabel: `Find ${matched.name} at ${storeRetailer.retailerName}`,
       }
     : null;
   // The disclosure names only the affiliate programs whose links are on screen.
@@ -269,12 +269,12 @@ export default async function MatchPage({ params }: PageProps) {
                 <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-6">
                   {sampleAction ? (
                     <a href={sampleAction.url} target="_blank" rel={relFor(sampleAction.affiliate)}
-                      className="inline-flex min-h-12 items-center justify-center rounded-md bg-gradient-to-br from-primary to-primary-container px-6 py-3 font-headline text-sm font-bold text-on-primary transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                      className="inline-flex min-h-12 items-center justify-center rounded-xl bg-secondary px-6 py-3 font-headline text-sm font-bold text-on-secondary shadow-lg shadow-secondary/20 transition-shadow hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">
                       Order a peel-and-stick sample of {matched.name}
                     </a>
                   ) : storeLink && (
                     <a href={storeLink.href} target="_blank" rel={relFor(storeLink.sponsored)}
-                      className="inline-flex min-h-12 items-center justify-center rounded-md bg-gradient-to-br from-primary to-primary-container px-6 py-3 font-headline text-sm font-bold text-on-primary transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                      className="inline-flex min-h-12 items-center justify-center rounded-xl bg-secondary px-6 py-3 font-headline text-sm font-bold text-on-secondary shadow-lg shadow-secondary/20 transition-shadow hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">
                       {storeLink.primaryLabel}
                     </a>
                   )}
@@ -297,7 +297,7 @@ export default async function MatchPage({ params }: PageProps) {
             )}
 
             <div className="mb-12 grid grid-cols-2">
-              <Link href={`/colors/${sourceColor.brand.slug}/${sourceColor.slug}`} className="group relative min-w-0 overflow-hidden rounded-l-xl border border-outline-variant/10 bg-surface-container-lowest transition-all hover:z-10 hover:shadow-lg">
+              <Link href={`/colors/${sourceColor.brand.slug}/${sourceColor.slug}`} className="group relative min-w-0 overflow-hidden rounded-l-xl border border-r-0 border-outline-variant/10 bg-surface-container-lowest transition-all hover:z-10 hover:shadow-lg">
                 <div className="h-40" style={{ backgroundColor: sourceColor.hex }} />
                 <div className="p-4 md:p-6">
                   <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-1">{sourceColor.brand.name}</p>
@@ -308,7 +308,7 @@ export default async function MatchPage({ params }: PageProps) {
               </Link>
               <Link href={`/colors/${bestMatch.match_color.brand.slug}/${bestMatch.match_color.slug}`} className="group relative min-w-0 overflow-hidden rounded-r-xl border border-l-0 border-outline-variant/10 bg-surface-container-lowest transition-all hover:z-10 hover:shadow-lg">
                 <div className="h-40" style={{ backgroundColor: bestMatch.match_color.hex }} />
-                <div className="p-4 md:p-6">
+                <div className="border-l border-outline-variant/10 p-4 md:p-6">
                   <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-1">{targetBrand.name}</p>
                   <h2 className="break-words font-headline text-lg font-bold text-on-surface transition-colors group-hover:text-primary md:text-xl">{bestMatch.match_color.name}</h2>
                   <div className="h-4" />
