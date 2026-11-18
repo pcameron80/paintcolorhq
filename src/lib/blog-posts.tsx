@@ -11048,7 +11048,7 @@ const blogPosts: BlogPost[] = [
     modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "Fourteen designer-favorite blues ranked by undertone, LRV, and room application — from airy sky blues to dramatic naval. Every pick verified against our 26,000+ color database with cross-brand matches.",
+      "Fourteen designer-favorite blues ranked by undertone, LRV, and room application, from airy sky blues to dramatic naval. Every pick verified against our 26,000+ color database with cross-brand matches.",
     coverColor: "#4A6B8F",
     coverImage: "/blog/best-blue-paint-colors.webp",
     tags: ["Guide", "Blue", "Trends"],
@@ -11061,24 +11061,24 @@ const blogPosts: BlogPost[] = [
       {
         question: "What's the best blue paint for a bedroom?",
         answer:
-          "Blues with LRV 45-65 work best for bedrooms — bright enough not to feel cave-like, soft enough to promote rest. Benjamin Moore Quiet Moments (1563, LRV 61) and Sherwin-Williams Rainwashed (6211, LRV 59) are top picks for primary bedrooms. For nurseries and kids' rooms, aim higher LRV (65+) like Benjamin Moore Iceberg (2122-50) for energy without overstimulation.",
+          "Blues with LRV 45-65 work best for bedrooms: bright enough not to feel cave-like, soft enough to promote rest. Benjamin Moore Quiet Moments (1563, LRV 61) and Sherwin-Williams Rainwashed (6211, LRV 59) are top picks for primary bedrooms. For nurseries and kids' rooms, aim higher LRV (65+) like Benjamin Moore Iceberg (2122-50) for energy without overstimulation.",
       },
       {
         question: "What blue paint color goes with everything?",
         answer:
-          "Hale Navy (BM HC-154) is the most versatile dark blue — its near-balanced undertones (slight green) make it work with both warm wood floors and cool gray cabinetry. For a lighter universal blue, Sherwin-Williams Drizzle (SW 6479, LRV 39) has just enough green to ground it without committing to teal territory.",
+          "Hale Navy (BM HC-154) is the most versatile dark blue: its near-balanced undertones (slight green) make it work with both warm wood floors and cool gray cabinetry. For a lighter universal blue, Sherwin-Williams Drizzle (SW 6479, LRV 39) has just enough green to ground it without committing to teal territory.",
       },
       {
         question: "What's the difference between navy and royal blue paint?",
         answer:
-          "Navy blues sit around LRV 5-10 with a near-neutral or slightly green undertone — Hale Navy, Naval (SW 6244), and Newburyport Blue (HC-155) are classic navies. Royal blue is more saturated, with a clear blue undertone. Symphony Blue (BM 2060-10) leans royal while staying nearly as deep as a navy, at LRV 6.2. Navy reads sophisticated and traditional; royal reads bolder and more contemporary.",
+          "Navy blues sit around LRV 5-10 with a near-neutral or slightly green undertone: Hale Navy, Naval (SW 6244), and Newburyport Blue (HC-155) are classic navies. Royal blue is more saturated, with a clear blue undertone. Symphony Blue (BM 2060-10) leans royal while staying nearly as deep as a navy, at LRV 6.2. Navy reads sophisticated and traditional; royal reads bolder and more contemporary.",
       },
     ],
     content: () => (
       <>
         <p className="text-lg leading-relaxed text-gray-800">
           The best blue paint color for most projects is{" "}
-          <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> (HC-154, LRV 8) — a deeply saturated transitional navy that works on cabinetry, accent walls, and front doors without committing to a single design style. But &ldquo;best&rdquo; depends on the room, the lighting, and how dark you can go. This guide ranks 14 designer-favorite blues across navy, mid-tone, and airy LRV ranges — each pick verified against our database with cross-brand matches so your painter&apos;s preferred deck is rarely a constraint.
+          <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> (HC-154, LRV 8), a deeply saturated transitional navy that works on cabinetry, accent walls, and front doors without committing to a single design style. But &ldquo;best&rdquo; depends on the room, the lighting, and how dark you can go. This guide ranks 14 designer-favorite blues across navy, mid-tone, and airy LRV ranges, each pick verified against our database with cross-brand matches so your painter&apos;s preferred deck is rarely a constraint.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Choose a Blue (Don&apos;t Skip This)</h2>
@@ -11086,33 +11086,33 @@ const blogPosts: BlogPost[] = [
           Three variables decide whether a blue works in your specific room: <strong>LRV</strong>, <strong>undertone</strong>, and <strong>natural light direction</strong>. Get any of these wrong and a beautiful chip becomes a wrong color on the wall.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>LRV (Light Reflectance Value).</strong> A blue with LRV under 15 will read almost black in low light and create a dramatic, enveloping room. LRV 15-40 is the &ldquo;mid-blue&rdquo; range — colors like teal and dusty blue that feel substantial but not heavy. LRV 40-65 is the airy mid-tone range, suitable for full-room walls in moderate light. Anything above LRV 65 is a pale wash — great for ceilings or rooms that need maximum brightness, but easy to read as gray on cloudy days.
+          <strong>LRV (Light Reflectance Value).</strong> A blue with LRV under 15 will read almost black in low light and create a dramatic, enveloping room. LRV 15-40 is the &ldquo;mid-blue&rdquo; range: colors like teal and dusty blue that feel substantial but not heavy. LRV 40-65 is the airy mid-tone range, suitable for full-room walls in moderate light. Anything above LRV 65 is a pale wash, great for ceilings or rooms that need maximum brightness, but easy to read as gray on cloudy days.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Undertone.</strong> Pure blue is rare in residential paint. Most &ldquo;blues&rdquo; lean green (teal, ocean), purple (periwinkle, lavender-blue), or gray (steel, slate). Read our <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">undertones guide</Link> for the full method, but the quick test: hold the chip against a piece of pure white printer paper. The contrast reveals which direction the color leans.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Light direction.</strong> North-facing rooms get cool, neutral light that intensifies any blue&apos;s coolness — blues read colder there. South-facing rooms get warm direct sun that softens blues and brings out any warm undertones. East-facing rooms shift dramatically across the day. West-facing rooms warm up in afternoon. Always sample before committing.
+          <strong>Light direction.</strong> North-facing rooms get cool, neutral light that intensifies any blue&apos;s coolness: blues read colder there. South-facing rooms get warm direct sun that softens blues and brings out any warm undertones. East-facing rooms shift dramatically across the day. West-facing rooms warm up in afternoon. Always sample before committing.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The 5 Best Navy Blues</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Navy is the most reliable blue category — these LRV 5-15 colors read as &ldquo;dark blue&rdquo; without flashing purple or green in most lighting. Excellent for accent walls, kitchen islands, cabinetry, front doors, and dining rooms where you want atmosphere.
+          Navy is the most reliable blue category: these LRV 5-15 colors read as &ldquo;dark blue&rdquo; without flashing purple or green in most lighting. Excellent for accent walls, kitchen islands, cabinetry, front doors, and dining rooms where you want atmosphere.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" /> — HC-154, LRV 8. Our first-pick navy. Slightly green-leaning undertone makes it warmer than pure navy, which is why it pairs equally with warm wood floors and cool gray cabinetry. Closest <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams equivalent</Link> is Sea Mariner (SW 9640), rated nearly identical. The better-known Naval (SW 6244) shows a visible difference.
+          <Swatch hex="#444C57" name="Hale Navy" brand="Benjamin Moore" href="/colors/benjamin-moore/hale-navy-hc-154" />: HC-154, LRV 8. Our first-pick navy. Slightly green-leaning undertone makes it warmer than pure navy, which is why it pairs equally with warm wood floors and cool gray cabinetry. Closest <Link href="/match/benjamin-moore/to/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams equivalent</Link> is Sea Mariner (SW 9640), rated nearly identical. The better-known Naval (SW 6244) shows a visible difference.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" /> — SW 6244, LRV 5. Sherwin-Williams&apos; signature deep navy. Slightly more saturated and slightly cooler than Hale Navy. The right pick when you want a navy that reads unambiguously navy — no question whether it&apos;s &ldquo;a dark color&rdquo; or &ldquo;a navy.&rdquo; Excellent on kitchen islands and shutters.
+          <Swatch hex="#2F3D4C" name="Naval" brand="Sherwin-Williams" href="/colors/sherwin-williams/naval-6244" />: SW 6244, LRV 5. Sherwin-Williams&apos; signature deep navy. Slightly more saturated and slightly cooler than Hale Navy. The right pick when you want a navy that reads unambiguously navy, no question whether it&apos;s &ldquo;a dark color&rdquo; or &ldquo;a navy.&rdquo; Excellent on kitchen islands and shutters.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#475667" name="Newburyport Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/newburyport-blue-hc-155" /> — HC-155, LRV 10. A touch lighter and more traditional than Hale Navy. The Historic Colors collection palette places this firmly in the &ldquo;heritage&rdquo; category — front doors on colonial homes, libraries with built-ins, dining rooms with deep crown molding. Pairs especially well with brass hardware and oil-rubbed bronze.
+          <Swatch hex="#475667" name="Newburyport Blue" brand="Benjamin Moore" href="/colors/benjamin-moore/newburyport-blue-hc-155" />: HC-155, LRV 10. A touch lighter and more traditional than Hale Navy. The Historic Colors collection palette places this firmly in the &ldquo;heritage&rdquo; category: front doors on colonial homes, libraries with built-ins, dining rooms with deep crown molding. Pairs especially well with brass hardware and oil-rubbed bronze.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#3E5063" name="Indigo Batik" brand="Sherwin-Williams" href="/colors/sherwin-williams/indigo-batik-7602" /> — SW 7602, LRV 8. A softer, slightly grayer take on navy. Reads more &ldquo;dusty denim&rdquo; than &ldquo;naval uniform.&rdquo; The right pick for primary bedrooms when you want depth without going to a hard navy. Excellent paired with white linen bedding and natural wood headboards.
+          <Swatch hex="#3E5063" name="Indigo Batik" brand="Sherwin-Williams" href="/colors/sherwin-williams/indigo-batik-7602" />: SW 7602, LRV 8. A softer, slightly grayer take on navy. Reads more &ldquo;dusty denim&rdquo; than &ldquo;naval uniform.&rdquo; The right pick for primary bedrooms when you want depth without going to a hard navy. Excellent paired with white linen bedding and natural wood headboards.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#4D5B6A" name="Stiffkey Blue" brand="Farrow & Ball" href="/colors/farrow-ball/stiffkey-blue-281" /> — No. 281, LRV about 10. The most dramatic blue on this list. Reads almost black in low light but reveals deep blue undertones when sunlight hits. The premium option for color-drenched rooms — paint walls, trim, and ceiling all in Stiffkey for the full Farrow &amp; Ball effect. For the look in another brand, start with its closest <Link href="/match/farrow-ball/to/sherwin-williams" className="text-brand-blue hover:underline">SW equivalent</Link> and sample the two side by side.
+          <Swatch hex="#4D5B6A" name="Stiffkey Blue" brand="Farrow & Ball" href="/colors/farrow-ball/stiffkey-blue-281" />: No. 281, LRV about 10. The most dramatic blue on this list. Reads almost black in low light but reveals deep blue undertones when sunlight hits. The premium option for color-drenched rooms: paint walls, trim, and ceiling all in Stiffkey for the full Farrow &amp; Ball effect. For the look in another brand, start with its closest <Link href="/match/farrow-ball/to/sherwin-williams" className="text-brand-blue hover:underline">SW equivalent</Link> and sample the two side by side.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The 5 Best Mid-Tone Blues</h2>
@@ -11120,36 +11120,36 @@ const blogPosts: BlogPost[] = [
           LRV 25-61. These work as full-room wall colors in moderate-to-bright light and pair well with white trim and natural wood floors. Designer-favorite category for primary bedrooms, home offices, and dining rooms that don&apos;t want navy commitment.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#BCCBCE" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" /> — SW 6225, LRV 58. A soft mid-blue with green-gray undertones that prevent it from reading babyish. Works in any direction of natural light. The default mid-blue for bedrooms — bright enough to feel awake, soft enough to feel restful. Pairs naturally with white trim and warm hardwood floors. Browse more <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue paint colors</Link> for the full palette.
+          <Swatch hex="#BCCBCE" name="Sleepy Blue" brand="Sherwin-Williams" href="/colors/sherwin-williams/sleepy-blue-6225" />: SW 6225, LRV 58. A soft mid-blue with green-gray undertones that prevent it from reading babyish. Works in any direction of natural light. The default mid-blue for bedrooms: bright enough to feel awake, soft enough to feel restful. Pairs naturally with white trim and warm hardwood floors. Browse more <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blue paint colors</Link> for the full palette.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C8D0C9" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" /> — 1563, LRV 61. A soft blue-gray with just enough blue to commit to the category. Reads serene rather than chilly. The midpoint between &ldquo;blue&rdquo; and &ldquo;gray&rdquo; — if you can&apos;t decide which family fits your room, this is the answer. See the <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">Behr equivalents</Link> for the closest options.
+          <Swatch hex="#C8D0C9" name="Quiet Moments" brand="Benjamin Moore" href="/colors/benjamin-moore/quiet-moments-1563" />: 1563, LRV 61. A soft blue-gray with just enough blue to commit to the category. Reads serene rather than chilly. The midpoint between &ldquo;blue&rdquo; and &ldquo;gray&rdquo;: if you can&apos;t decide which family fits your room, this is the answer. See the <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">Behr equivalents</Link> for the closest options.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C2CDC5" name="Rainwashed" brand="Sherwin-Williams" href="/colors/sherwin-williams/rainwashed-6211" /> — SW 6211, LRV 59. A subtle blue-green that reads more &ldquo;coastal&rdquo; than the others on this list. Strong green undertone makes it work with sage cabinetry and natural fiber rugs. Excellent for bathrooms and bedrooms in coastal-inspired or organic-modern interiors.
+          <Swatch hex="#C2CDC5" name="Rainwashed" brand="Sherwin-Williams" href="/colors/sherwin-williams/rainwashed-6211" />: SW 6211, LRV 59. A subtle blue-green that reads more &ldquo;coastal&rdquo; than the others on this list. Strong green undertone makes it work with sage cabinetry and natural fiber rugs. Excellent for bathrooms and bedrooms in coastal-inspired or organic-modern interiors.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#708D9E" name="Smoky Azurite" brand="Sherwin-Williams" href="/colors/sherwin-williams/smoky-azurite-9148" /> — SW 9148, LRV 25. A deeper mid-blue with smoky gray undertones. Sits between mid-blue and navy — useful when you want depth but the room can&apos;t handle full navy. Reads especially well in north-facing rooms where cooler light intensifies its smokier qualities.
+          <Swatch hex="#708D9E" name="Smoky Azurite" brand="Sherwin-Williams" href="/colors/sherwin-williams/smoky-azurite-9148" />: SW 9148, LRV 25. A deeper mid-blue with smoky gray undertones. Sits between mid-blue and navy, useful when you want depth but the room can&apos;t handle full navy. Reads especially well in north-facing rooms where cooler light intensifies its smokier qualities.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#8CAEAB" name="Drizzle" brand="Sherwin-Williams" href="/colors/sherwin-williams/drizzle-6479" /> — SW 6479, LRV 39. A clean mid-tone blue with balanced undertones — neither obviously green nor obviously gray. The most &ldquo;just blue&rdquo; pick on this list. Works as a safe-but-not-boring blue when a project needs the color without strong character.
+          <Swatch hex="#8CAEAB" name="Drizzle" brand="Sherwin-Williams" href="/colors/sherwin-williams/drizzle-6479" />: SW 6479, LRV 39. A clean mid-tone blue with balanced undertones, neither obviously green nor obviously gray. The most &ldquo;just blue&rdquo; pick on this list. Works as a safe-but-not-boring blue when a project needs the color without strong character.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">The 4 Best Airy Light Blues</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          LRV 65+. These nearly-white blues are perfect for ceilings, small rooms that need maximum light, and spaces that should feel airy and breathable. They demand attention to undertone — at this LRV range, a faintly warm or cool blue can shift dramatically across the day.
+          LRV 65+. These nearly-white blues are perfect for ceilings, small rooms that need maximum light, and spaces that should feel airy and breathable. They demand attention to undertone: at this LRV range, a faintly warm or cool blue can shift dramatically across the day.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#98A9B7" name="Aleutian" brand="Sherwin-Williams" href="/colors/sherwin-williams/aleutian-6241" /> — SW 6241, LRV 39. The darkest of the four, a mid-blue rather than an airy one. Reads soft and atmospheric in moderate light. Excellent for foyers, hallways, and rooms that connect to whites without harsh transition.
+          <Swatch hex="#98A9B7" name="Aleutian" brand="Sherwin-Williams" href="/colors/sherwin-williams/aleutian-6241" />: SW 6241, LRV 39. The darkest of the four, a mid-blue rather than an airy one. Reads soft and atmospheric in moderate light. Excellent for foyers, hallways, and rooms that connect to whites without harsh transition.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#D7E1E1" name="Iceberg" brand="Benjamin Moore" href="/colors/benjamin-moore/iceberg-2122-50" /> — 2122-50, LRV 71. A pale icy blue. Best for north-facing bathrooms and powder rooms where you want a hint of color without committing to a deep blue. Pairs naturally with white subway tile, polished nickel, and bright white trim.
+          <Swatch hex="#D7E1E1" name="Iceberg" brand="Benjamin Moore" href="/colors/benjamin-moore/iceberg-2122-50" />: 2122-50, LRV 71. A pale icy blue. Best for north-facing bathrooms and powder rooms where you want a hint of color without committing to a deep blue. Pairs naturally with white subway tile, polished nickel, and bright white trim.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#C3DFE8" name="Soar" brand="Sherwin-Williams" href="/colors/sherwin-williams/soar-6799" /> — SW 6799, LRV 70. Nearly white with a subtle blue cast. Reads as &ldquo;white with a hint of blue&rdquo; in most lighting. Ideal for primary bedrooms in south-facing homes, where warm sunlight balances the cool undertone.
+          <Swatch hex="#C3DFE8" name="Soar" brand="Sherwin-Williams" href="/colors/sherwin-williams/soar-6799" />: SW 6799, LRV 70. Nearly white with a subtle blue cast. Reads as &ldquo;white with a hint of blue&rdquo; in most lighting. Ideal for primary bedrooms in south-facing homes, where warm sunlight balances the cool undertone.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <Swatch hex="#CDD2D2" name="Misty" brand="Sherwin-Williams" href="/colors/sherwin-williams/misty-6232" /> — SW 6232, LRV 64. A pale blue-gray that reads more atmospheric than colorful. Works exceptionally well on ceilings — adds dimension without competing with wall colors.
+          <Swatch hex="#CDD2D2" name="Misty" brand="Sherwin-Williams" href="/colors/sherwin-williams/misty-6232" />: SW 6232, LRV 64. A pale blue-gray that reads more atmospheric than colorful. Works exceptionally well on ceilings: adds dimension without competing with wall colors.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Best Blue Paint by Room</h2>
@@ -11160,7 +11160,7 @@ const blogPosts: BlogPost[] = [
           <strong>Kitchens (cabinets).</strong> Navy is the natural choice. Hale Navy is the safe default for islands or lower cabinets, paired with white upper cabinets and brass or polished chrome hardware. For a more contemporary look, Naval (SW) provides slightly more saturation. Use a cabinet enamel such as Benjamin Moore Advance, which Benjamin Moore describes as a waterborne alkyd; read our <Link href="/blog/sherwin-williams-vs-benjamin-moore" className="text-brand-blue hover:underline">SW vs BM brand comparison</Link> for the cabinet paint specifics.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Bathrooms.</strong> Mid-tone blues (Quiet Moments, Sleepy Blue) work for primary bathrooms with good natural light. For powder rooms, go bolder — Stiffkey Blue or Hale Navy create the &ldquo;jewel box&rdquo; effect on a small footprint. For coastal/beachy bathrooms, Rainwashed (SW 6211) with its green-blue undertone is the go-to.
+          <strong>Bathrooms.</strong> Mid-tone blues (Quiet Moments, Sleepy Blue) work for primary bathrooms with good natural light. For powder rooms, go bolder: Stiffkey Blue or Hale Navy create the &ldquo;jewel box&rdquo; effect on a small footprint. For coastal/beachy bathrooms, Rainwashed (SW 6211) with its green-blue undertone is the go-to.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Exteriors.</strong> Hale Navy and Naval suit shutters, doors, and accent siding. For full-house blue siding, check the fade resistance on the data sheet for the exterior line you buy, since deep colors fade fastest in strong sun. Read our <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">best exterior paint colors guide</Link> for sheen and durability requirements.
@@ -11177,7 +11177,7 @@ const blogPosts: BlogPost[] = [
           <strong>Ignoring the green-blue/purple-blue split.</strong> Most blue mistakes come from picking a blue with the wrong undertone for the room&apos;s existing materials. Green-leaning blues (Hale Navy, Rainwashed) work with warm wood floors and natural fiber rugs. Purple-leaning blues (Symphony Blue, some royals) work with cool gray cabinets and chrome fixtures. Mixing the two creates a visual clash.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          <strong>Going too dark in a small dark room.</strong> Stiffkey Blue is gorgeous in a windowed dining room with afternoon sun. The same color in a windowless powder room reads cave-like. Always sample LRV-below-15 blues in the actual room before committing — and never pick a navy from a chip alone.
+          <strong>Going too dark in a small dark room.</strong> Stiffkey Blue is gorgeous in a windowed dining room with afternoon sun. The same color in a windowless powder room reads cave-like. Always sample LRV-below-15 blues in the actual room before committing, and never pick a navy from a chip alone.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <strong>Skipping the cross-brand check.</strong> If your contractor stocks Behr and your designer specified Hale Navy, the close <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">Benjamin Moore to Behr conversion</Link> equivalent may be the more practical buy. Sample it next to Hale Navy first. Read our <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">cross-brand matching guide</Link> for the Delta E methodology.
@@ -11185,10 +11185,10 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">How to Find a Blue Match Across Brands</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Every color on Paint Color HQ shows cross-brand matches ranked from closest to farthest. Click any of the colors above and scroll to the cross-brand matches section — you&apos;ll see the closest equivalents from all 13 brands ranked by perceptual color difference. A Nearly identical or Very similar label indicates a close digital approximation, not a physical-match guarantee.
+          Every color on Paint Color HQ shows cross-brand matches ranked from closest to farthest. Click any of the colors above and scroll to the cross-brand matches section: you&apos;ll see the closest equivalents from all 13 brands ranked by perceptual color difference. A Nearly identical or Very similar label indicates a close digital approximation, not a physical-match guarantee.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          For systematic brand-to-brand conversions, see the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM</Link>, <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">BM to Behr</Link>, and <Link href="/match/sherwin-williams/to/behr" className="text-brand-blue hover:underline">SW to Behr</Link> conversion charts — each shows the 50 closest cross-brand pairs across all color families.
+          For systematic brand-to-brand conversions, see the <Link href="/match/sherwin-williams/to/benjamin-moore" className="text-brand-blue hover:underline">SW to BM</Link>, <Link href="/match/benjamin-moore/to/behr" className="text-brand-blue hover:underline">BM to Behr</Link>, and <Link href="/match/sherwin-williams/to/behr" className="text-brand-blue hover:underline">SW to Behr</Link> conversion charts, each shows the 50 closest cross-brand pairs across all color families.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           To preview any of these blues in your specific room before committing to samples, use our <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>. To build a complete palette around a blue (walls, trim, accent, pop), try the <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">palette generator</Link> with any of the blues above as the base color.
