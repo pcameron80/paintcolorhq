@@ -191,7 +191,7 @@ export default async function ColorOfTheYearPage() {
         }}
       />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="px-6 pt-24 pb-12 md:px-12">
           <div className="mx-auto max-w-5xl">
             <nav className="mb-6 text-sm text-on-surface-variant">

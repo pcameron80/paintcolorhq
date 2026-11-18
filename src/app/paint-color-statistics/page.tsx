@@ -236,7 +236,7 @@ export default function PaintColorStatisticsPage() {
         }}
       />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Hero */}
         <section className="relative pt-24 px-6 md:px-12 py-16">
           <div className="max-w-4xl mx-auto">

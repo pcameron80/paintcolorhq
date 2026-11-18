@@ -73,6 +73,7 @@ export default async function BrandColorsAtoZPage({ params }: PageProps) {
         ],
       }) }} />
       <Header />
+      <main id="main-content">
       <section className="pt-24 px-6 md:px-12 pb-6">
         <div className="max-w-7xl mx-auto">
           <nav className="text-sm text-on-surface-variant mb-6" aria-label="Breadcrumb">
@@ -91,6 +92,7 @@ export default async function BrandColorsAtoZPage({ params }: PageProps) {
         </div>
       </section>
       <BrandColorIndex brandSlug={brandSlug} colors={colors} />
+      </main>
       <Footer />
     </div>
   );

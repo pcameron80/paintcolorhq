@@ -46,6 +46,7 @@ export default async function InspirationPage() {
   return (
     <div className="min-h-screen bg-surface">
       <Header />
+      <main id="main-content">
 
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "CollectionPage",
@@ -116,6 +117,7 @@ export default async function InspirationPage() {
         </div>
       </section>
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>
