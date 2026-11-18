@@ -357,7 +357,7 @@ export default async function ColorPage({ params }: PageProps) {
       <section id="color-preview" className={`scroll-mt-24 relative w-full ${isHeadColor ? "min-h-[500px]" : "min-h-[400px]"} md:min-h-[600px] flex flex-col items-center justify-center overflow-x-clip pt-20`} style={{ backgroundColor: color.hex }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
         <div className={`relative z-10 w-full max-w-5xl text-center px-6 ${isHeadColor ? "pt-16" : "pt-6 md:pt-16"} pb-8`}>
-          <p className={`font-headline uppercase text-xs mb-4 ${compactMobile ? "tracking-[0.06em] md:tracking-[0.4em] md:opacity-80" : "tracking-[0.4em] opacity-80"} ${textMutedClass}`}>
+          <p className={`font-headline uppercase text-xs mb-4 ${compactMobile ? "tracking-[0.06em] md:tracking-[0.4em]" : "tracking-[0.4em] opacity-80"} ${textMutedClass}`}>
             {color.brand.name} · {color.hex.toUpperCase()}{color.color_number ? ` \u00B7 ${color.color_number}` : ""}
           </p>
           <h1 className={`font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-8 drop-shadow-2xl ${textClass}`}>
