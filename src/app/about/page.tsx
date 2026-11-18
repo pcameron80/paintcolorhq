@@ -97,7 +97,12 @@ export default function AboutPage() {
                 <Link href="/authors/paint-color-hq-staff" className="text-primary underline hover:text-primary/80">
                   author page
                 </Link>{" "}
-                has the full story.
+                has the full story. He also builds websites for local
+                businesses through{" "}
+                <a href="https://clinchriverweb.com/" className="text-primary underline hover:text-primary/80">
+                  Clinch River Web
+                </a>
+                .
               </p>
             </div>
 
