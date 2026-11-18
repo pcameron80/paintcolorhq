@@ -7,6 +7,7 @@ import { trackCompare, trackEvent } from "@/lib/analytics";
 import { TrackedLink } from "@/components/tracked-link";
 import { hexToRgb, rgbToLab, deltaE2000, type Lab } from "@/lib/color-utils";
 import { closenessLabel } from "@/lib/closeness";
+import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { lrvGapSentence, lrvLightnessGap } from "@/lib/lrv-gap";
 
 /** The few fields a popular-pair card needs. */
@@ -31,14 +32,24 @@ interface MatchDataRow {
   match_color: { id: string; brand: { slug: string } };
 }
 
-/** Exact name matches first, otherwise the order the search endpoint gave. */
+/**
+ * Exact name matches first. Among them, brands follow the site's fixed
+ * major-brand display order (MAJOR_MATCH_BRANDS, the same list the color page's
+ * brand strip uses), then any other brand. This is a fixed display order, not
+ * popularity or sales; the site has no such data. Rows outside the exact group
+ * keep the order the search endpoint gave.
+ */
 function exactNameFirst(rows: ColorWithBrand[], query: string): ColorWithBrand[] {
   const q = query.trim().toLowerCase();
   if (!q) return rows;
-  return [
-    ...rows.filter((c) => c.name.toLowerCase() === q),
-    ...rows.filter((c) => c.name.toLowerCase() !== q),
-  ];
+  const rank = (slug: string) => {
+    const i = (MAJOR_MATCH_BRANDS as readonly string[]).indexOf(slug);
+    return i === -1 ? 99 : i;
+  };
+  const exact = rows
+    .filter((c) => c.name.toLowerCase() === q)
+    .sort((x, y) => rank(x.brand.slug) - rank(y.brand.slug)); // stable: ties keep endpoint order
+  return [...exact, ...rows.filter((c) => c.name.toLowerCase() !== q)];
 }
 
 function ColorSearchInput({
