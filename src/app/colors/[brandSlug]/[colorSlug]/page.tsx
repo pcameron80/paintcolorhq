@@ -206,6 +206,23 @@ export default async function ColorPage({ params }: PageProps) {
   // grid alone was ~5 screens of 144px swatch cards (Plausible, 7 days to
   // 2026-10-27). Head-color page bodies stay frozen until 2026-11-27.
   const compactMobile = !isHeadColor;
+  // Phone rhythm (below md only; md and up keep the desktop values): sections
+  // sit 40px apart, the profile section 48px. Head colors keep every old class.
+  const secPad = compactMobile ? "py-10 md:py-16" : "py-16";
+  // Swatch grids become one-row scroll-snap rails on phones. Every card stays
+  // in the DOM with the same link; md and up are the same 3 and 6 column grids.
+  const railClass = compactMobile
+    ? "mt-6 -mx-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-8 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-6"
+    : "mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6";
+  // Bottom card stacks: tight tonal rows on phones, the old bordered cards at md and up.
+  const exploreCardClass = compactMobile
+    ? "group block rounded-xl bg-surface-container-low px-4 py-3 transition-all duration-500 md:bg-surface-container-lowest md:p-8 md:border md:border-outline-variant/10 md:text-center md:hover:shadow-lg"
+    : "group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500";
+  const readCardClass = compactMobile
+    ? "group block rounded-xl bg-surface-container-low px-4 py-3 transition-all duration-500 md:bg-surface-container-lowest md:p-8 md:border md:border-outline-variant/10 md:hover:shadow-lg"
+    : "group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500";
+  const descClass = compactMobile ? "mt-0.5 text-sm text-on-surface-variant md:mt-2" : "mt-2 text-sm text-on-surface-variant";
+  const railItemClass = compactMobile ? "w-[42%] max-w-[11rem] shrink-0 snap-start md:contents" : "";
   const colorLede = generateColorLede(color, matches, { legacy: isHeadColor });
   const brandMatrix = nearestMatchesPerBrand(matches);
   // The strip under the hero leads with brands most stores carry, then fills
@@ -261,6 +278,17 @@ export default async function ColorPage({ params }: PageProps) {
     }),
     ...sampleLinks.filter((l) => !l.primary).map((l) => ({ key: l.label, href: l.url, label: l.label, sponsored: true })),
   ];
+  // Phone sample action under the brand strip: the same first CTA that leads
+  // "Get this color". A Samplize primary gets its own SID so CJ Insights can
+  // tell this placement from the lower one; retailer links have no SID.
+  const phoneCta = compactMobile && shoppingCtas.length > 0
+    ? (() => {
+        const first = shoppingCtas[0];
+        const isSamplize = sampleLinks[0]?.primary && first.key === sampleLinks[0].label;
+        const href = isSamplize ? getSamplizeProductLink(color.slug, color.samplize_handle, "phone-top").url : first.href;
+        return { ...first, href };
+      })()
+    : null;
   const harmonies = await resolveHarmonies(color, isHeadColor);
   const light = isLightColor(color.hex);
   const textClass = light ? "text-on-surface" : "text-on-primary";
@@ -397,6 +425,26 @@ export default async function ColorPage({ params }: PageProps) {
       </nav>
       )}
 
+      {/* Phones only: the page's first shopping CTA, one tap from the match
+          strip. On a phone the first buy link used to sit four screens down.
+          The full disclosure stays in "Get this color". */}
+      {phoneCta && (
+        <div className="px-6 pb-6 md:hidden">
+          <a
+            href={phoneCta.href}
+            target="_blank"
+            rel={`${phoneCta.sponsored ? "sponsored " : ""}nofollow noopener noreferrer`}
+            className="block w-full rounded-xl bg-secondary px-6 py-3 text-center font-headline text-sm font-bold text-on-secondary shadow-lg shadow-secondary/20"
+          >
+            {phoneCta.label}
+          </a>
+          <p className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-xs text-on-surface-variant">
+            <a href="#sample-options" className="py-2 text-sm font-semibold text-primary underline underline-offset-4">More ways to buy</a>
+            {phoneCta.sponsored && <span>Affiliate link. We may earn a commission at no cost to you.</span>}
+          </p>
+        </div>
+      )}
+
       {/* Data-derived lede — rendered immediately after the hero. Composed from
           the color's own values (hex/LRV/undertone/family) plus its single
           nearest cross-brand match, so it's genuinely unique per color instead
@@ -422,9 +470,9 @@ export default async function ColorPage({ params }: PageProps) {
       )}
 
       {/* Technical Profile + Matches */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
-          <div className="lg:col-span-5 space-y-12 order-2 lg:order-1">
+      <section className={`max-w-7xl mx-auto px-6 md:px-12 ${compactMobile ? "py-10 md:py-24" : "py-24"}`}>
+        <div className={`grid grid-cols-1 lg:grid-cols-12 ${compactMobile ? "gap-8 md:gap-16" : "gap-16"} lg:gap-20`}>
+          <div className={`lg:col-span-5 ${compactMobile ? "space-y-8 md:space-y-12" : "space-y-12"} order-2 lg:order-1`}>
             <div>
               <nav className="mb-8 text-sm text-on-surface-variant">
                 <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -636,27 +684,27 @@ export default async function ColorPage({ params }: PageProps) {
       </div>
 
       {/* Recommended Pairings — Room Preview */}
-      <PairingSelector colorHex={color.hex} colorName={color.name} />
+      <PairingSelector colorHex={color.hex} colorName={color.name} compact={compactMobile} />
 
       {/* Complementary Colors */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+      <section className={`max-w-7xl mx-auto px-6 md:px-12 ${secPad}`}>
         <ComplementaryColors hex={color.hex} harmonies={harmonies} colorName={color.name} />
       </section>
 
       {/* Curated Palettes */}
-      <section className="bg-tertiary-fixed py-16 px-6 md:px-12">
+      <section className={`bg-tertiary-fixed ${secPad} px-6 md:px-12`}>
         <div className="max-w-7xl mx-auto">
-          <CuratedPalettes hex={color.hex} brandId={color.brand_id} currentPath={`/colors/${brandSlug}/${colorSlug}`} colorName={color.name} viewedColor={isHeadColor ? undefined : color} />
+          <CuratedPalettes hex={color.hex} brandId={color.brand_id} currentPath={`/colors/${brandSlug}/${colorSlug}`} colorName={color.name} viewedColor={isHeadColor ? undefined : color} compact={compactMobile} />
         </div>
       </section>
 
       {/* Similar Colors */}
       {similarColors.length > 0 && (
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+        <section className={`max-w-7xl mx-auto px-6 md:px-12 ${secPad}`}>
           <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">Similar {color.brand.name} Colors</h2>
           <p className="mt-2 text-sm text-on-surface-variant">Other {color.brand.name} colors close to {color.name}.</p>
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {similarColors.map((s) => <ColorCard key={s.id} name={s.name} hex={s.hex} brandName={color.brand.name} brandSlug={brandSlug} colorSlug={s.slug} colorNumber={s.color_number} />)}
+          <div className={railClass}>
+            {similarColors.map((s) => <div key={s.id} className={railItemClass}><ColorCard name={s.name} hex={s.hex} brandName={color.brand.name} brandSlug={brandSlug} colorSlug={s.slug} colorNumber={s.color_number} /></div>)}
           </div>
         </section>
       )}
@@ -664,18 +712,18 @@ export default async function ColorPage({ params }: PageProps) {
       {/* More from family — cross-brand colors in the same family. Spreads
           internal link equity into the long tail (H2 from the SEO audit). */}
       {moreFromFamily.length > 0 && color.color_family && (
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+        <section className={`max-w-7xl mx-auto px-6 md:px-12 ${secPad}`}>
           <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">More {color.color_family} colors from other brands</h2>
           <p className="mt-2 text-sm text-on-surface-variant">Cross-brand colors in the {color.color_family} family{isHeadColor ? " \u2014 " : ": "}useful when you want a similar look from a different brand.</p>
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {moreFromFamily.map((c) => <ColorCard key={c.id} name={c.name} hex={c.hex} brandName={c.brand.name} brandSlug={c.brand.slug} colorSlug={c.slug} colorNumber={c.color_number} />)}
+          <div className={railClass}>
+            {moreFromFamily.map((c) => <div key={c.id} className={railItemClass}><ColorCard name={c.name} hex={c.hex} brandName={c.brand.name} brandSlug={c.brand.slug} colorSlug={c.slug} colorNumber={c.color_number} /></div>)}
           </div>
         </section>
       )}
 
       {/* FAQ */}
       {faqItems.length > 0 && (
-        <section className="bg-surface-container-low py-16 px-6 md:px-12">
+        <section className={`bg-surface-container-low ${secPad} px-6 md:px-12`}>
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">{color.name}{isHeadColor ? " \u2014 " : ": "}Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -694,23 +742,23 @@ export default async function ColorPage({ params }: PageProps) {
       )}
 
       {/* Keep Exploring */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-16">
-        <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">Explore More with {color.name}</h2>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+      <section className={`max-w-7xl mx-auto px-6 md:px-12 ${secPad}`}>
+        <h2 className={`font-headline text-2xl font-bold text-on-surface tracking-tight ${compactMobile ? "mb-4 md:mb-8" : "mb-8"}`}>Explore More with {color.name}</h2>
+        <div className={`grid grid-cols-1 sm:grid-cols-3 ${compactMobile ? "gap-1 md:gap-6" : "gap-6"}`}>
           {/* The visualizer reads ?walls=; head-color pages keep the ?hex= link,
               which the visualizer now also accepts. */}
-          <TrackedLink href={isHeadColor ? `/tools/room-visualizer?hex=${encodeURIComponent(color.hex)}` : `/tools/room-visualizer?walls=${color.hex.replace(/^#/, "")}`} className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500" eventName="cta_click" eventParams={{ cta_label: "room_visualizer", color_name: color.name }}>
+          <TrackedLink href={isHeadColor ? `/tools/room-visualizer?hex=${encodeURIComponent(color.hex)}` : `/tools/room-visualizer?walls=${color.hex.replace(/^#/, "")}`} className={exploreCardClass} eventName="cta_click" eventParams={{ cta_label: "room_visualizer", color_name: color.name }}>
             <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">See It on a Wall</p>
-            <p className="mt-2 text-sm text-on-surface-variant">Preview this color in a real room</p>
+            <p className={descClass}>Preview this color in a real room</p>
           </TrackedLink>
-          <Link href="/tools/paint-calculator" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500">
+          <Link href="/tools/paint-calculator" className={exploreCardClass}>
             <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">How Much Paint?</p>
-            <p className="mt-2 text-sm text-on-surface-variant">Calculate gallons for your project</p>
+            <p className={descClass}>Calculate gallons for your project</p>
           </Link>
           {color.color_family && (
-            <Link href={`/colors/family/${color.color_family}`} className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center hover:shadow-lg transition-all duration-500">
+            <Link href={`/colors/family/${color.color_family}`} className={exploreCardClass}>
               <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Browse {color.color_family} Colors</p>
-              <p className="mt-2 text-sm text-on-surface-variant">Explore more shades in this family</p>
+              <p className={descClass}>Explore more shades in this family</p>
             </Link>
           )}
         </div>
@@ -718,22 +766,22 @@ export default async function ColorPage({ params }: PageProps) {
 
       {/* Related Reading — closes the color -> blog cluster gap the audit
           flagged. Universal links to high-relevance editorial guides. */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-16">
-        <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-8">Related Reading</h2>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
+      <section className={`max-w-7xl mx-auto px-6 md:px-12 ${compactMobile ? "pb-10 md:pb-16" : "pb-16"}`}>
+        <h2 className={`font-headline text-2xl font-bold text-on-surface tracking-tight ${compactMobile ? "mb-4 md:mb-8" : "mb-8"}`}>Related Reading</h2>
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${compactMobile ? "gap-1 md:gap-6" : "gap-6"}`}>
+          <Link href="/blog/how-to-find-perfect-color-match-across-brands" className={readCardClass}>
             <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">How to Match Paint Colors Across Brands</p>
-            <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">The science behind Delta E and CIEDE2000{isHeadColor ? " \u2014 " : ": "}find a Behr equivalent of any Sherwin-Williams shade, or a Benjamin Moore alternative when your store is out of stock.</p>
+            <p className={descClass + " leading-relaxed"}>The science behind Delta E and CIEDE2000{isHeadColor ? " \u2014 " : ": "}find a Behr equivalent of any Sherwin-Williams shade, or a Benjamin Moore alternative when your store is out of stock.</p>
           </Link>
           {color.undertone ? (
-            <Link href="/blog/understanding-paint-color-undertones" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
+            <Link href="/blog/understanding-paint-color-undertones" className={readCardClass}>
               <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Understanding Paint Color Undertones</p>
-              <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">{isHeadColor ? <>Why {color.name}&apos;s {color.undertone.toLowerCase()} undertone matters more than its surface color — and how to read undertones in any paint chip.</> : "How to read undertones in any paint chip, and why they matter more than the surface color."}</p>
+              <p className={descClass + " leading-relaxed"}>{isHeadColor ? <>Why {color.name}&apos;s {color.undertone.toLowerCase()} undertone matters more than its surface color — and how to read undertones in any paint chip.</> : "How to read undertones in any paint chip, and why they matter more than the surface color."}</p>
             </Link>
           ) : (
-            <Link href="/blog/paint-sheen-guide" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
+            <Link href="/blog/paint-sheen-guide" className={readCardClass}>
               <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Paint Sheen Guide</p>
-              <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">Flat, eggshell, satin, or semi-gloss{isHeadColor ? " \u2014 the" : ": the"} right finish for {color.name} depends on the room. Here&apos;s how to choose.</p>
+              <p className={descClass + " leading-relaxed"}>Flat, eggshell, satin, or semi-gloss{isHeadColor ? " \u2014 the" : ": the"} right finish for {color.name} depends on the room. Here&apos;s how to choose.</p>
             </Link>
           )}
         </div>
