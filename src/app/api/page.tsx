@@ -75,7 +75,7 @@ export default function ApiDocsPage() {
           { "@type": "ListItem", position: 2, name: "Paint Color Match API", item: API_URL },
         ],
       }} />
-      <main className="max-w-4xl mx-auto px-6 md:px-12 py-16">
+      <main id="main-content" className="max-w-4xl mx-auto px-6 md:px-12 py-16">
         <p className="text-xs font-semibold uppercase tracking-widest text-secondary">Developer API</p>
         <h1 className="mt-2 font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface">
           Cross-Brand Paint Color Match API

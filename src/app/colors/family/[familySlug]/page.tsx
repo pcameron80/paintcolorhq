@@ -154,6 +154,7 @@ export default async function ColorFamilyPage({ params }: PageProps) {
       }} />
       <TrackPage eventName="page_view_enriched" params={{ page_type: "family", color_family: familySlug, result_count: totalCount }} />
       <Header />
+      <main id="main-content">
 
       {/* Hero */}
       <section className="relative pt-24 px-6 md:px-12 py-20 overflow-hidden">
@@ -408,6 +409,7 @@ export default async function ColorFamilyPage({ params }: PageProps) {
         );
       })()}
 
+      </main>
       <Footer />
     </div>
   );

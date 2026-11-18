@@ -67,6 +67,7 @@ export default async function BlogIndex({ searchParams }: BlogPageProps) {
   return (
     <div className="min-h-screen bg-surface">
       <Header />
+      <main id="main-content">
 
       {/* Hero */}
       <section className="relative pt-24 px-6 md:px-12 py-20">
@@ -231,6 +232,7 @@ export default async function BlogIndex({ searchParams }: BlogPageProps) {
         ],
       }} />
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>

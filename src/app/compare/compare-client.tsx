@@ -7,6 +7,7 @@ import { trackCompare, trackEvent } from "@/lib/analytics";
 import { TrackedLink } from "@/components/tracked-link";
 import { hexToRgb, rgbToLab, deltaE2000, type Lab } from "@/lib/color-utils";
 import { closenessLabel } from "@/lib/closeness";
+import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { lrvGapSentence, lrvLightnessGap } from "@/lib/lrv-gap";
 
 /** The few fields a popular-pair card needs. */
@@ -31,6 +32,26 @@ interface MatchDataRow {
   match_color: { id: string; brand: { slug: string } };
 }
 
+/**
+ * Exact name matches first. Among them, brands follow the site's fixed
+ * major-brand display order (MAJOR_MATCH_BRANDS, the same list the color page's
+ * brand strip uses), then any other brand. This is a fixed display order, not
+ * popularity or sales; the site has no such data. Rows outside the exact group
+ * keep the order the search endpoint gave.
+ */
+function exactNameFirst(rows: ColorWithBrand[], query: string): ColorWithBrand[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return rows;
+  const rank = (slug: string) => {
+    const i = (MAJOR_MATCH_BRANDS as readonly string[]).indexOf(slug);
+    return i === -1 ? 99 : i;
+  };
+  const exact = rows
+    .filter((c) => c.name.toLowerCase() === q)
+    .sort((x, y) => rank(x.brand.slug) - rank(y.brand.slug)); // stable: ties keep endpoint order
+  return [...exact, ...rows.filter((c) => c.name.toLowerCase() !== q)];
+}
+
 function ColorSearchInput({
   label,
   selected,
@@ -46,8 +67,18 @@ function ColorSearchInput({
   const [results, setResults] = useState<ColorWithBrand[]>([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  // Key of the result set whose count has been announced; see `announcement`.
+  const [announcedKey, setAnnouncedKey] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const clearRef = useRef<HTMLButtonElement>(null);
+  // Keyboard picks and clears unmount the control that had focus; this hands
+  // focus to the control that replaces it so it is not dropped to <body>.
+  const pendingFocus = useRef<"clear" | "input" | null>(null);
   const inputId = useId();
+  const listId = `${inputId}-list`;
+  const optionId = (i: number) => `${inputId}-opt-${i}`;
   const trimmed = query.trim();
 
   const search = useCallback(async (q: string) => {
@@ -59,9 +90,11 @@ function ColorSearchInput({
     try {
       const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
       const data = await res.json();
-      setResults(data.results ?? []);
+      setResults(exactNameFirst(data.results ?? [], q));
+      setActiveIndex(-1);
     } catch {
       setResults([]);
+      setActiveIndex(-1);
     } finally {
       setLoading(false);
     }
@@ -82,6 +115,92 @@ function ColorSearchInput({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Keep the active option in view inside the scrolling list.
+  useEffect(() => {
+    if (activeIndex < 0) return;
+    document.getElementById(`${inputId}-opt-${activeIndex}`)?.scrollIntoView({ block: "nearest" });
+  }, [activeIndex, inputId]);
+
+  // Announce the result count once typing pauses, not on every keystroke.
+  // The text is derived below; the timer only marks which result set is ready.
+  const resultKey = `${trimmed}|${results.length}`;
+  useEffect(() => {
+    if (trimmed.length < 2 || loading) return;
+    const timer = setTimeout(() => setAnnouncedKey(resultKey), 500);
+    return () => clearTimeout(timer);
+  }, [trimmed, loading, resultKey]);
+  const announcement =
+    trimmed.length >= 2 && !loading && announcedKey === resultKey
+      ? results.length === 0
+        ? "No colors found"
+        : `${results.length} ${results.length === 1 ? "color" : "colors"} found`
+      : "";
+
+  useEffect(() => {
+    if (pendingFocus.current === "clear") clearRef.current?.focus();
+    if (pendingFocus.current === "input") inputRef.current?.focus();
+    pendingFocus.current = null;
+  }, [selected]);
+
+  function pick(color: ColorWithBrand) {
+    onSelect(color);
+    setQuery("");
+    setResults([]);
+    setOpen(false);
+    setActiveIndex(-1);
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    const listShown = open && !loading && results.length > 0 && trimmed.length >= 2;
+    const last = results.length - 1;
+    switch (e.key) {
+      case "ArrowDown":
+        if (results.length === 0 || trimmed.length < 2) return;
+        e.preventDefault();
+        if (!listShown) {
+          setOpen(true);
+          setActiveIndex(0);
+        } else {
+          setActiveIndex((i) => (i >= last ? 0 : i + 1));
+        }
+        break;
+      case "ArrowUp":
+        if (!listShown) return;
+        e.preventDefault();
+        setActiveIndex((i) => (i <= 0 ? last : i - 1));
+        break;
+      case "Home":
+        if (!listShown) return;
+        e.preventDefault();
+        setActiveIndex(0);
+        break;
+      case "End":
+        if (!listShown) return;
+        e.preventDefault();
+        setActiveIndex(last);
+        break;
+      case "Enter":
+        if (listShown && activeIndex >= 0) {
+          e.preventDefault();
+          pendingFocus.current = "clear";
+          pick(results[activeIndex]);
+        }
+        break;
+      case "Escape":
+        if (open) {
+          e.preventDefault();
+          setOpen(false);
+          setActiveIndex(-1);
+        }
+        break;
+      case "Tab":
+        // Close without selecting; focus moves on normally.
+        setOpen(false);
+        setActiveIndex(-1);
+        break;
+    }
+  }
+
   if (selected) {
     return (
       <div>
@@ -100,11 +219,15 @@ function ColorSearchInput({
               </p>
             </div>
             <button
-              onClick={onClear}
+              ref={clearRef}
+              onClick={() => {
+                pendingFocus.current = "input";
+                onClear();
+              }}
               className="rounded-md p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
-              aria-label="Clear selection"
+              aria-label={`Clear ${label}`}
             >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
             </button>
@@ -114,59 +237,84 @@ function ColorSearchInput({
     );
   }
 
+  const popupShown = open && trimmed.length >= 2;
+  const listShown = popupShown && !loading && results.length > 0;
+
   return (
     <div ref={containerRef} className="relative">
       <label htmlFor={inputId} className="mb-2 block text-sm font-medium text-gray-700">
         {label}
       </label>
       <input
+        ref={inputRef}
         id={inputId}
         type="text"
+        role="combobox"
+        aria-expanded={listShown}
+        aria-controls={listShown ? listId : undefined}
+        aria-autocomplete="list"
+        aria-activedescendant={listShown && activeIndex >= 0 ? optionId(activeIndex) : undefined}
+        autoComplete="off"
         value={query}
         onChange={(e) => {
           setQuery(e.target.value);
           setOpen(true);
+          setActiveIndex(-1);
         }}
+        onKeyDown={handleKeyDown}
         onFocus={() => { if (results.length > 0) setOpen(true); }}
         placeholder="Search by name, number, or hex..."
         className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
       />
+      <div role="status" aria-live="polite" className="sr-only">{announcement}</div>
 
-      {open && (trimmed.length >= 2) && (
+      {popupShown && (
         <div className="absolute z-10 mt-1 max-h-72 w-full overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg">
           {loading && (
             <p className="px-4 py-3 text-sm text-gray-500">Searching...</p>
           )}
           {!loading && results.length === 0 && (
-            <p className="px-4 py-3 text-sm text-gray-500">
-              No colors found for &quot;{trimmed}&quot;
-            </p>
+            <div className="px-4 py-3 text-sm text-gray-500">
+              <p>No colors found for &quot;{trimmed}&quot;</p>
+              <Link
+                href={`/search?q=${encodeURIComponent(trimmed)}`}
+                className="mt-1 inline-block font-medium text-brand-blue hover:underline"
+              >
+                Search all colors for &quot;{trimmed}&quot;
+              </Link>
+            </div>
           )}
-          {!loading && results.map((color) => (
-            <button
-              key={color.id}
-              onClick={() => {
-                onSelect(color);
-                setQuery("");
-                setResults([]);
-                setOpen(false);
-              }}
-              className="flex w-full items-center gap-3 px-4 py-2.5 text-left hover:bg-gray-50"
-            >
-              <div
-                className="h-8 w-8 shrink-0 rounded border border-gray-200"
-                style={{ backgroundColor: color.hex }}
-              />
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-medium text-gray-900">{color.name}</p>
-                <p className="text-xs text-gray-500">
-                  {color.brand.name}
-                  {color.color_number && ` - ${color.color_number}`}
-                  {" "}&middot; {color.hex.toUpperCase()}
-                </p>
-              </div>
-            </button>
-          ))}
+          {listShown && (
+            <div role="listbox" id={listId} aria-label={`${label} suggestions`}>
+              {results.map((color, i) => (
+                <div
+                  key={color.id}
+                  id={optionId(i)}
+                  role="option"
+                  aria-selected={i === activeIndex}
+                  // Keep focus in the input so the keyboard flow survives a click.
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => pick(color)}
+                  className={`flex w-full cursor-pointer items-center gap-3 px-4 py-2.5 text-left hover:bg-gray-50 ${
+                    i === activeIndex ? "bg-brand-blue/10 ring-2 ring-inset ring-brand-blue" : ""
+                  }`}
+                >
+                  <div
+                    className="h-8 w-8 shrink-0 rounded border border-gray-200"
+                    style={{ backgroundColor: color.hex }}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-medium text-gray-900">{color.name}</p>
+                    <p className="text-xs text-gray-500">
+                      {color.brand.name}
+                      {color.color_number && ` - ${color.color_number}`}
+                      {" "}&middot; {color.hex.toUpperCase()}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -198,7 +346,7 @@ async function findPairPage(
 }
 
 const NEXT_STEP_CLASS =
-  "rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue";
+  "focus-ring-swatch rounded-lg border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-gray-900 shadow-sm transition hover:border-brand-blue hover:text-brand-blue";
 
 export function CompareClient({ initialColor1, initialColor2, popularPairs }: CompareClientProps) {
   const [color1, setColor1] = useState<ColorWithBrand | null>(initialColor1);
@@ -392,7 +540,7 @@ export function CompareClient({ initialColor1, initialColor2, popularPairs }: Co
               <li key={`${a.id}-${b.id}`}>
                 <TrackedLink
                   href={`/compare?color1=${a.id}&color2=${b.id}`}
-                  className="flex items-center gap-3 rounded-xl border border-outline-variant/30 p-3 hover:shadow-md transition-all"
+                  className="focus-ring-swatch flex items-center gap-3 rounded-xl border border-outline-variant/30 p-3 hover:shadow-md transition-all"
                   eventName="cta_click"
                   eventParams={{ cta_label: color1 && color2 ? "compare_popular_pair_after_result" : "compare_popular_pair", color_1: a.name, color_2: b.name }}
                 >
@@ -494,7 +642,7 @@ function ColorDetail({ color }: { color: ColorWithBrand }) {
       <div className="mt-4">
         <Link
           href={`/colors/${color.brand.slug}/${color.slug}`}
-          className="text-base sm:text-xl font-semibold text-gray-900 break-words hover:text-brand-blue"
+          className="focus-ring-swatch rounded-sm text-base sm:text-xl font-semibold text-gray-900 break-words hover:text-brand-blue"
         >
           {color.name}
         </Link>

@@ -102,6 +102,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       }} />
 
       <Header />
+      <main id="main-content">
 
       <section className="relative pt-24 px-6 md:px-12 py-16">
         <div className="max-w-7xl mx-auto">
@@ -444,6 +445,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
         </div>
       </section>
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>
