@@ -156,7 +156,7 @@ export default function AboutPage() {
               </p>
               <p>
                 For every color in our database, we compute the perceptual
-                distance — called <strong className="text-on-surface">Delta E</strong> — to every color from
+                distance (called <strong className="text-on-surface">Delta E</strong>) to every color from
                 every other brand. We turn that distance into one of three
                 labels that describe how close two colors look to the human eye:
               </p>
@@ -201,7 +201,7 @@ export default function AboutPage() {
                 ].map((item) => (
                   <li key={item.bold} className="flex items-start gap-3">
                     <span className="mt-2 h-2 w-2 rounded-full bg-primary shrink-0" />
-                    <span><strong className="text-on-surface">{item.bold}</strong> — {item.text}</span>
+                    <span><strong className="text-on-surface">{item.bold}</strong>: {item.text}</span>
                   </li>
                 ))}
               </ul>

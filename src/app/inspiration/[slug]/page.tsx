@@ -100,7 +100,7 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
     colors: pinSwatchPairs,
   });
   const palettePinImageUrl = `https://www.paintcolorhq.com/api/pin/palette?${pinPaletteParams.toString()}`;
-  const palettePinDescription = `${palette.name} — ${palette.description} 5-color paint palette with cross-brand matches at PaintColorHQ.com #paintpalette #colorpalette #${palette.slug.replace(/-/g, "")}`;
+  const palettePinDescription = `${palette.name}: ${palette.description} 5-color paint palette with cross-brand matches at PaintColorHQ.com #paintpalette #colorpalette #${palette.slug.replace(/-/g, "")}`;
 
   const vizUrl = (() => {
     const roleToParam: Record<string, string> = { walls: "walls", trim: "trim", accent: "accent" };
@@ -146,7 +146,7 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
           name: s.match!.name,
           inDefinedTermSet: s.match!.brand.name,
           ...(s.match!.color_number ? { termCode: s.match!.color_number } : {}),
-          description: `${s.role} color — ${s.match!.name} by ${s.match!.brand.name} (${s.match!.hex.toUpperCase()})`,
+          description: `${s.role} color, ${s.match!.name} by ${s.match!.brand.name} (${s.match!.hex.toUpperCase()})`,
         })),
       }} />
       <JsonLd data={{
