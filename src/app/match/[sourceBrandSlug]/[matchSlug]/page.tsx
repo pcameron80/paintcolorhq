@@ -10,6 +10,8 @@ import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, getBrandByS
 import sitemapSnapshot from "@/generated/sitemap.json";
 import colorRedirects from "@/data/color-redirects.json";
 import { closenessLabel } from "@/lib/closeness";
+import { affiliatizeRetailer, getSampleLinks, getSamplizeProductLink } from "@/lib/affiliate";
+import { getRetailerLinks, isAffiliateRetailer } from "@/lib/retailer-links";
 import { formatLrv, lrvGapSentence, lrvLightnessGap, usableLrv } from "@/lib/lrv-gap";
 import { isMatchTitleTestPair, matchTestDescription, matchTestTitle } from "@/lib/match-title-test";
 
@@ -156,6 +158,39 @@ export default async function MatchPage({ params }: PageProps) {
     ? lrvGapSentence({ name: sourceColor.name, brandName: sourceColor.brand.name }, { name: bestMatch.match_color.name, brandName: targetBrand.name }, lrvGap)
     : null;
 
+  // Next step for the MATCHED color, built with the same helpers and ordering as
+  // the color page's shoppingCtas: Samplize sample first (only when a live product
+  // page is confirmed), then the brand's affiliate big-box if it has one, else its
+  // own color page. Each placement gets its own Samplize sid so CJ Insights can
+  // tell these clicks from color-page ones. Amazon and ECOS links are not used here.
+  const matched = bestMatch.match_color;
+  const sampleLinks = getSampleLinks({
+    brandSlug: matched.brand.slug, colorSlug: matched.slug, brandName: targetBrand.name, colorName: matched.name,
+    colorNumber: bestMatchColor?.color_number, samplizeAvailable: bestMatchColor?.samplize_available, samplizeHandle: bestMatchColor?.samplize_handle,
+  });
+  const samplizeStocked = sampleLinks.some((l) => l.primary);
+  const sampleAction = samplizeStocked ? getSamplizeProductLink(matched.slug, bestMatchColor?.samplize_handle, "match-action") : null;
+  const sampleInline = samplizeStocked ? getSamplizeProductLink(matched.slug, bestMatchColor?.samplize_handle, "match-text") : null;
+  const retailerLinks = getRetailerLinks(matched.brand.slug, targetBrand.name, matched.name, bestMatchColor?.color_number ?? undefined, bestMatchColor?.color_family ?? undefined);
+  const buyRetailer = retailerLinks.find((l) => isAffiliateRetailer(l.retailerName));
+  const storeRetailer = buyRetailer ?? retailerLinks[0];
+  const storeAffiliate = buyRetailer ? affiliatizeRetailer(buyRetailer.url) : null;
+  const storeLink = storeRetailer
+    ? {
+        href: storeAffiliate ? storeAffiliate.url : storeRetailer.url,
+        sponsored: Boolean(storeAffiliate?.affiliate),
+        name: storeRetailer.retailerName,
+        quietLabel: buyRetailer ? `Buy at ${storeRetailer.retailerName}` : `View official color on ${storeRetailer.retailerName}`,
+        primaryLabel: buyRetailer ? `Buy at ${storeRetailer.retailerName}` : `View ${matched.name} on ${storeRetailer.retailerName}`,
+      }
+    : null;
+  // The disclosure names only the affiliate programs whose links are on screen.
+  const affiliateNames = [
+    sampleAction?.affiliate ? "Samplize" : null,
+    storeLink?.sponsored ? storeLink.name : null,
+  ].filter((n): n is string => Boolean(n));
+  const relFor = (sponsored: boolean) => `${sponsored ? "sponsored " : ""}nofollow noopener noreferrer`;
+
   // allMatches is already ordered best-first, so the first row per brand is that
   // brand's closest color. No extra query needed.
   const otherBrandMatches = new Map<string, { brandName: string; brandSlug: string; color: (typeof allMatches)[number]["match_color"]; deltaE: number }>();
@@ -223,27 +258,59 @@ export default async function MatchPage({ params }: PageProps) {
               The closest {targetBrand.name} equivalent to {sourceColor.brand.name} {sourceColor.name} ({sourceColor.hex.toUpperCase()}) is {bestMatch.match_color.name} ({bestMatch.match_color.hex.toUpperCase()}) — {deltaELabel(Number(bestMatch.delta_e_score))}. Always verify with physical paint samples.
             </p>
 
-            <div className="bg-surface-container-low rounded-xl p-6 mb-12 text-center">
+            <div className={`bg-surface-container-low rounded-xl p-6 text-center ${sampleAction || storeLink ? "mb-6" : "mb-12"}`}>
               <p className="font-headline font-bold text-on-surface">{closenessLabel(Number(bestMatch.delta_e_score))}</p>
               <p className="text-sm text-on-surface-variant mt-1">Based on <Link href="/methodology" className="text-primary underline-offset-4 hover:underline">CIEDE2000 color difference analysis</Link></p>
               {lrvNote && <p className="text-sm text-on-surface mt-3 max-w-2xl mx-auto">{lrvNote}</p>}
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 mb-12">
-              <Link href={`/colors/${sourceColor.brand.slug}/${sourceColor.slug}`} className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden hover:shadow-lg transition-all">
+            {(sampleAction || storeLink) && (
+              <div className="mb-12 text-center">
+                <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-6">
+                  {sampleAction ? (
+                    <a href={sampleAction.url} target="_blank" rel={relFor(sampleAction.affiliate)}
+                      className="inline-flex min-h-12 items-center justify-center rounded-md bg-gradient-to-br from-primary to-primary-container px-6 py-3 font-headline text-sm font-bold text-on-primary transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                      Order a peel-and-stick sample of {matched.name}
+                    </a>
+                  ) : storeLink && (
+                    <a href={storeLink.href} target="_blank" rel={relFor(storeLink.sponsored)}
+                      className="inline-flex min-h-12 items-center justify-center rounded-md bg-gradient-to-br from-primary to-primary-container px-6 py-3 font-headline text-sm font-bold text-on-primary transition-shadow hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                      {storeLink.primaryLabel}
+                    </a>
+                  )}
+                  {sampleAction && storeLink && (
+                    <a href={storeLink.href} target="_blank" rel={relFor(storeLink.sponsored)}
+                      className="inline-flex min-h-12 items-center justify-center text-sm text-on-surface-variant underline underline-offset-4 transition-colors hover:text-on-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                      {storeLink.quietLabel}
+                    </a>
+                  )}
+                </div>
+                <p className="mx-auto mt-3 max-w-xl text-sm text-on-surface-variant">
+                  Digital match, confirm with a physical sample before you paint.
+                </p>
+                {affiliateNames.length > 0 && (
+                  <p className="mx-auto mt-1 max-w-xl text-xs text-on-surface-variant">
+                    {affiliateNames.join(" and ")} {affiliateNames.length > 1 ? "links are" : "link is an"} affiliate {affiliateNames.length > 1 ? "links" : "link"}. Paint Color HQ may earn a commission on a purchase, at no extra cost to you.
+                  </p>
+                )}
+              </div>
+            )}
+
+            <div className="mb-12 grid grid-cols-2">
+              <Link href={`/colors/${sourceColor.brand.slug}/${sourceColor.slug}`} className="group relative min-w-0 overflow-hidden rounded-l-xl border border-outline-variant/10 bg-surface-container-lowest transition-all hover:z-10 hover:shadow-lg">
                 <div className="h-40" style={{ backgroundColor: sourceColor.hex }} />
-                <div className="p-6">
+                <div className="p-4 md:p-6">
                   <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-1">{sourceColor.brand.name}</p>
-                  <h2 className="font-headline text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{sourceColor.name}</h2>
+                  <h2 className="break-words font-headline text-lg font-bold text-on-surface transition-colors group-hover:text-primary md:text-xl">{sourceColor.name}</h2>
                   <div className="h-4" />
                   <p className="font-mono text-[10px] text-outline">{sourceColor.hex.toUpperCase()}{sourceLrv != null && <> &middot; LRV {formatLrv(sourceLrv)}</>}</p>
                 </div>
               </Link>
-              <Link href={`/colors/${bestMatch.match_color.brand.slug}/${bestMatch.match_color.slug}`} className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden hover:shadow-lg transition-all">
+              <Link href={`/colors/${bestMatch.match_color.brand.slug}/${bestMatch.match_color.slug}`} className="group relative min-w-0 overflow-hidden rounded-r-xl border border-l-0 border-outline-variant/10 bg-surface-container-lowest transition-all hover:z-10 hover:shadow-lg">
                 <div className="h-40" style={{ backgroundColor: bestMatch.match_color.hex }} />
-                <div className="p-6">
+                <div className="p-4 md:p-6">
                   <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-1">{targetBrand.name}</p>
-                  <h2 className="font-headline text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{bestMatch.match_color.name}</h2>
+                  <h2 className="break-words font-headline text-lg font-bold text-on-surface transition-colors group-hover:text-primary md:text-xl">{bestMatch.match_color.name}</h2>
                   <div className="h-4" />
                   <p className="font-mono text-[10px] text-outline">{bestMatch.match_color.hex.toUpperCase()}{bestMatchLrv != null && <> &middot; LRV {formatLrv(bestMatchLrv)}</>}</p>
                 </div>
@@ -260,7 +327,9 @@ export default async function MatchPage({ params }: PageProps) {
               <p>
                 {bestMatch.match_color.name} ranks as the closest {targetBrand.name} equivalent to {sourceColor.name} because it sits nearest in that perceptual space.{" "}
                 This ranking compares stored digital values, not measured paint samples. It is not a physical match or touch-up guarantee.{" "}
-                Sheen, lighting, and the existing wall color all shift perceived color, so order a sample of {bestMatch.match_color.name} and check it in your actual room before committing.
+                Sheen, lighting, and the existing wall color all shift perceived color, so {sampleInline ? (
+                  <a href={sampleInline.url} target="_blank" rel={relFor(sampleInline.affiliate)} className="text-primary underline underline-offset-4 hover:text-primary-container">order a sample</a>
+                ) : "order a sample"} of {bestMatch.match_color.name} and check it in your actual room before committing.
               </p>
             </article>
 
