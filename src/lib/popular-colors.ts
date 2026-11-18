@@ -5,8 +5,9 @@
 //   (page 1, unfiltered) and the first three names in the brand FAQ.
 // - src/app/colors/[brandSlug]/[colorSlug]/page.tsx: generateStaticParams,
 //   so these slugs are pre-rendered at build time.
-// - scripts/build-sitemap-data.ts: the match-individual shard, so the
-//   cross-brand match pages for these colors are in the sitemap.
+// - scripts/build-sitemap-data.ts: the match-individual shard (together with
+//   MATCH_ONLY_COLOR_SLUGS below), so the cross-brand match pages for these
+//   colors are in the sitemap.
 //
 // A slug that does not resolve is dropped silently by every consumer, which
 // is how three Behr entries went dead unnoticed. `npm run check:sitemap`
@@ -83,6 +84,36 @@ export const POPULAR_COLOR_SLUGS: Array<{
   { brandSlug: "valspar", colorSlug: "safari-beige-6006-2b" },
   { brandSlug: "valspar", colorSlug: "warm-eucalyptus-8004-28f" },
 ];
+
+// Colors that get cross-brand match pages in the match-individual sitemap
+// shard (and so the match links on their color pages) but are NOT editorial
+// "popular" picks. Source: keyword review 2026-11-16, search demand for
+// "<color> equivalent / match / dupe" terms, about 1,400 searches a month
+// across these ten. It is a demand list, not a popularity or sales ranking.
+//
+// Read ONLY by scripts/build-sitemap-data.ts and scripts/check-sitemap-data.ts.
+// Do not import it into brand pages, brand FAQs or generateStaticParams: those
+// read POPULAR_COLOR_SLUGS, and brand pages are in a live title test.
+// A pair still enters the shard only if isMatchIndexable passes, so adding a
+// color here never forces a thin page into the sitemap.
+export const MATCH_ONLY_COLOR_SLUGS: Array<{
+  brandSlug: string;
+  colorSlug: string;
+}> = [
+  { brandSlug: "sherwin-williams", colorSlug: "evergreen-fog-9130" }, // ~400/mo
+  { brandSlug: "behr", colorSlug: "hidden-gem-n430-6a" }, // ~150
+  { brandSlug: "benjamin-moore", colorSlug: "natural-cream-oc-14" }, // ~140
+  { brandSlug: "benjamin-moore", colorSlug: "october-mist-1495" }, // ~140 (Kilz also has an October Mist; the searches mean Benjamin Moore)
+  { brandSlug: "farrow-ball", colorSlug: "pointing-2003" }, // ~130
+  { brandSlug: "sherwin-williams", colorSlug: "snowbound-7004" }, // ~120 (Behr also has a Snowbound; SW 7004 is the one searched)
+  { brandSlug: "sherwin-williams", colorSlug: "city-loft-7631" }, // ~100 (PPG has a City Loft Grey, a different color)
+  { brandSlug: "benjamin-moore", colorSlug: "saybrook-sage-hc-114" }, // ~100
+  { brandSlug: "farrow-ball", colorSlug: "london-clay-244" }, // ~80
+  { brandSlug: "sherwin-williams", colorSlug: "dried-thyme-6186" }, // ~70 (Behr also has a Dried Thyme)
+];
+
+// Every color whose match pages the match-individual shard lists.
+export const MATCH_SHARD_SOURCE_COLORS = [...POPULAR_COLOR_SLUGS, ...MATCH_ONLY_COLOR_SLUGS];
 
 // Major brands used as target brands when generating cross-brand match
 // URLs for the sitemap, and as the source/target set for the static
