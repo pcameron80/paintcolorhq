@@ -57,7 +57,8 @@ function ColorSearchInput({
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
-  const [announcement, setAnnouncement] = useState("");
+  // Key of the result set whose count has been announced; see `announcement`.
+  const [announcedKey, setAnnouncedKey] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const clearRef = useRef<HTMLButtonElement>(null);
@@ -79,8 +80,10 @@ function ColorSearchInput({
       const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
       const data = await res.json();
       setResults(exactNameFirst(data.results ?? [], q));
+      setActiveIndex(-1);
     } catch {
       setResults([]);
+      setActiveIndex(-1);
     } finally {
       setLoading(false);
     }
@@ -101,11 +104,6 @@ function ColorSearchInput({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Fresh results start with no active option.
-  useEffect(() => {
-    setActiveIndex(-1);
-  }, [results]);
-
   // Keep the active option in view inside the scrolling list.
   useEffect(() => {
     if (activeIndex < 0) return;
@@ -113,20 +111,19 @@ function ColorSearchInput({
   }, [activeIndex, inputId]);
 
   // Announce the result count once typing pauses, not on every keystroke.
+  // The text is derived below; the timer only marks which result set is ready.
+  const resultKey = `${trimmed}|${results.length}`;
   useEffect(() => {
-    if (trimmed.length < 2 || loading) {
-      setAnnouncement("");
-      return;
-    }
-    const timer = setTimeout(() => {
-      setAnnouncement(
-        results.length === 0
-          ? "No colors found"
-          : `${results.length} ${results.length === 1 ? "color" : "colors"} found`,
-      );
-    }, 500);
+    if (trimmed.length < 2 || loading) return;
+    const timer = setTimeout(() => setAnnouncedKey(resultKey), 500);
     return () => clearTimeout(timer);
-  }, [trimmed, loading, results]);
+  }, [trimmed, loading, resultKey]);
+  const announcement =
+    trimmed.length >= 2 && !loading && announcedKey === resultKey
+      ? results.length === 0
+        ? "No colors found"
+        : `${results.length} ${results.length === 1 ? "color" : "colors"} found`
+      : "";
 
   useEffect(() => {
     if (pendingFocus.current === "clear") clearRef.current?.focus();
@@ -251,6 +248,7 @@ function ColorSearchInput({
         onChange={(e) => {
           setQuery(e.target.value);
           setOpen(true);
+          setActiveIndex(-1);
         }}
         onKeyDown={handleKeyDown}
         onFocus={() => { if (results.length > 0) setOpen(true); }}
