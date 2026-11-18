@@ -94,6 +94,24 @@ function hslToHex(h: number, s: number, l: number): string {
   return `#${f(0)}${f(8)}${f(4)}`;
 }
 
+function relLuminance(hex: string): number {
+  const ch = (i: number) => {
+    const v = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  };
+  return 0.2126 * ch(1) + 0.7152 * ch(3) + 0.0722 * ch(5);
+}
+
+// Hero text on ordinary pages: whichever of the page's dark text (#161935,
+// on-surface) or white (on-primary) has the higher WCAG contrast against the
+// swatch. One of the two always reaches 4.5:1. Head colors keep isLightColor.
+function prefersDarkText(hex: string): boolean {
+  const l = relLuminance(hex);
+  const dark = (l + 0.05) / (relLuminance("#161935") + 0.05);
+  const white = 1.05 / (l + 0.05);
+  return dark >= white;
+}
+
 function isLightColor(hex: string): boolean {
   const [, , l] = hexToHsl(hex);
   return l > 55;
@@ -290,9 +308,11 @@ export default async function ColorPage({ params }: PageProps) {
       })()
     : null;
   const harmonies = await resolveHarmonies(color, isHeadColor);
-  const light = isLightColor(color.hex);
+  const light = compactMobile ? prefersDarkText(color.hex) : isLightColor(color.hex);
   const textClass = light ? "text-on-surface" : "text-on-primary";
-  const textMutedClass = light ? "text-on-surface-variant" : "text-on-primary/80";
+  // Ordinary pages drop the muted tint and opacity: both failed 4.5:1 on mid-tones.
+  const textMutedClass = compactMobile ? textClass : light ? "text-on-surface-variant" : "text-on-primary/80";
+  const heroFocus = compactMobile ? " focus-ring-swatch" : "";
 
   // FAQ items and the Pinterest description (src/lib/color-page-copy.ts), which
   // also feed the FAQPage JSON-LD. The undertone label goes through
@@ -331,12 +351,13 @@ export default async function ColorPage({ params }: PageProps) {
         style={{ position: "absolute", left: "-99999px", width: 1, height: 1, opacity: 0 }}
       />
       <Header />
+      <main id="main-content">
 
       {/* Immersive Color Hero */}
       <section id="color-preview" className={`scroll-mt-24 relative w-full ${isHeadColor ? "min-h-[500px]" : "min-h-[400px]"} md:min-h-[600px] flex flex-col items-center justify-center overflow-x-clip pt-20`} style={{ backgroundColor: color.hex }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
         <div className={`relative z-10 w-full max-w-5xl text-center px-6 ${isHeadColor ? "pt-16" : "pt-6 md:pt-16"} pb-8`}>
-          <p className={`font-headline uppercase tracking-[0.4em] text-xs mb-4 opacity-80 ${textMutedClass}`}>
+          <p className={`font-headline uppercase text-xs mb-4 ${compactMobile ? "tracking-[0.06em] md:tracking-[0.4em] md:opacity-80" : "tracking-[0.4em] opacity-80"} ${textMutedClass}`}>
             {color.brand.name} · {color.hex.toUpperCase()}{color.color_number ? ` \u00B7 ${color.color_number}` : ""}
           </p>
           <h1 className={`font-headline text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-8 drop-shadow-2xl ${textClass}`}>
@@ -345,7 +366,7 @@ export default async function ColorPage({ params }: PageProps) {
           {availabilityNote && (
             <p className={`-mt-4 mb-8 mx-auto max-w-xl text-sm ${textMutedClass}`}>
               {availabilityNote}{" "}
-              <Link href="/discontinued" className="underline underline-offset-4">About retired and discontinued colors</Link>
+              <Link href="/discontinued" className={`underline underline-offset-4${heroFocus}`}>About retired and discontinued colors</Link>
             </p>
           )}
           {formerNameFor(brandSlug, colorSlug, color.name) && (
@@ -356,7 +377,7 @@ export default async function ColorPage({ params }: PageProps) {
           {COTY_BY_COLOR[`${brandSlug}/${colorSlug}`] && (
             <Link
               href="/color-of-the-year"
-              className={`mb-8 -mt-4 inline-block rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest ring-1 hover:underline ${light ? "ring-on-surface/30" : "ring-on-primary/40"} ${textClass}`}
+              className={`mb-8 -mt-4 inline-block rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest ring-1 hover:underline${heroFocus} ${light ? "ring-on-surface/30" : "ring-on-primary/40"} ${textClass}`}
             >
               {COTY_BY_COLOR[`${brandSlug}/${colorSlug}`].brandName} {COTY_BY_COLOR[`${brandSlug}/${colorSlug}`].year} Color of the Year · See every brand&apos;s pick
             </Link>
@@ -366,7 +387,7 @@ export default async function ColorPage({ params }: PageProps) {
               <>
                 <div className={textClass}>
                   <span className="block font-headline text-2xl md:text-3xl font-bold">{lrv.toFixed(0)}%</span>
-                  <span className={`text-[10px] uppercase tracking-widest opacity-60 ${textMutedClass}`}>Estimated LRV</span>
+                  <span className={`${compactMobile ? "text-xs" : "text-[10px] opacity-60"} uppercase tracking-widest ${textMutedClass}`}>Estimated LRV</span>
                 </div>
                 <div className={`w-px h-12 ${light ? "bg-on-surface/20" : "bg-on-primary/20"}`} />
               </>
@@ -374,15 +395,15 @@ export default async function ColorPage({ params }: PageProps) {
             {undertone && (
               <div className={textClass}>
                 <span className="block font-headline text-2xl md:text-3xl font-bold uppercase">{undertone}</span>
-                <span className={`text-[10px] uppercase tracking-widest opacity-60 ${textMutedClass}`}>Undertone</span>
+                <span className={`${compactMobile ? "text-xs" : "text-[10px] opacity-60"} uppercase tracking-widest ${textMutedClass}`}>Undertone</span>
               </div>
             )}
           </div>
         </div>
         <div className={`relative z-10 mb-8 mx-4 w-[calc(100%_-_2rem)] max-w-3xl flex flex-wrap justify-center items-center gap-3 ${light ? "bg-on-surface/10" : "bg-white/10"} backdrop-blur-xl px-4 py-3 rounded-2xl border ${light ? "border-on-surface/10" : "border-white/10"}`}>
-          <Link href="#color-matches" className="bg-white text-slate-900 rounded-xl px-5 py-3 text-sm font-bold">Compare alternatives</Link>
-          <Link href="#sample-options" className={`px-3 py-3 text-sm font-bold underline underline-offset-4 ${textClass}`}>Test a sample</Link>
-          <SaveToProject colorId={color.id} currentPath={`/colors/${brandSlug}/${colorSlug}`} />
+          <Link href="#color-matches" className={`bg-white text-slate-900 rounded-xl px-5 py-3 text-sm font-bold${heroFocus}`}>Compare alternatives</Link>
+          <Link href="#sample-options" className={`px-3 py-3 text-sm font-bold underline underline-offset-4${heroFocus} ${textClass}`}>Test a sample</Link>
+          <SaveToProject colorId={color.id} currentPath={`/colors/${brandSlug}/${colorSlug}`} buttonClassName={heroFocus.trim()} />
 
         </div>
       </section>
@@ -609,7 +630,7 @@ export default async function ColorPage({ params }: PageProps) {
                           <h3 className="font-headline font-bold text-on-surface break-words">
                             {match.match_color.name}
                             {match.match_color.availability === "retired" && (
-                              <span title={RETIRED_MATCH_TOOLTIP} className="ml-2 align-middle rounded-full bg-surface-container px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-outline">Retired</span>
+                              <span title={RETIRED_MATCH_TOOLTIP} className={`ml-2 align-middle rounded-full bg-surface-container px-2 py-0.5 ${compactMobile ? "text-[11px] text-on-surface-variant" : "text-[10px] text-outline"} font-bold uppercase tracking-widest`}>Retired</span>
                             )}
                           </h3>
                           <p className="text-xs text-on-surface-variant mt-1">{match.match_color.brand.name}</p>
@@ -864,6 +885,7 @@ export default async function ColorPage({ params }: PageProps) {
         mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })),
       }} />}
 
+      </main>
       <Footer />
     </div>
   );

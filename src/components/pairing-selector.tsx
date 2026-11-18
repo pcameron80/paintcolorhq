@@ -127,6 +127,8 @@ interface PairingSelectorProps {
 }
 
 export function PairingSelector({ colorHex, colorName, compact = false }: PairingSelectorProps) {
+  // Ordinary pages: 12px minimum for content text. Head colors keep 10px.
+  const tiny = compact ? "text-xs" : "text-[10px]";
   const pairings = useMemo(() => generatePairings(colorHex), [colorHex]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [roomIndex, setRoomIndex] = useState(0);
@@ -142,7 +144,7 @@ export function PairingSelector({ colorHex, colorName, compact = false }: Pairin
     <section className={`bg-tertiary-fixed ${compact ? "py-10 md:py-24" : "py-24"} px-6 md:px-12`}>
       <div className="max-w-7xl mx-auto">
         <div className={compact ? "mb-6 md:mb-12" : "mb-12"}>
-          <span className="inline-block px-4 py-1 bg-on-secondary-container/10 text-on-surface text-[10px] font-bold uppercase tracking-widest rounded-full mb-6">
+          <span className={`inline-block px-4 py-1 bg-on-secondary-container/10 text-on-surface ${tiny} font-bold uppercase tracking-widest rounded-full mb-6`}>
             Generated palette previews
           </span>
           <h2 className="font-headline text-4xl font-extrabold text-on-surface tracking-tight leading-tight">
@@ -208,35 +210,35 @@ export function PairingSelector({ colorHex, colorName, compact = false }: Pairin
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-14 h-14 rounded-lg shrink-0 border border-outline-variant/10" style={{ backgroundColor: colorHex }} />
                 <div>
-                  <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Main Walls</p>
+                  <p className={`${tiny} uppercase text-outline font-bold tracking-widest`}>Main Walls</p>
                   <h4 className="font-headline font-bold text-on-surface">{colorName}</h4>
                 </div>
               </div>
-              <p className="text-[10px] text-outline">{colorHex.toUpperCase()}</p>
+              <p className={`${tiny} text-outline`}>{colorHex.toUpperCase()}</p>
             </div>
 
             <div className={`bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10 ${compact ? "w-[78%] shrink-0 snap-start md:w-auto md:shrink" : ""}`}>
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-14 h-14 rounded-lg shrink-0 border border-outline-variant/10" style={{ backgroundColor: active.accent.hex }} />
                 <div>
-                  <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Accent Wall</p>
+                  <p className={`${tiny} uppercase text-outline font-bold tracking-widest`}>Accent Wall</p>
                   <h4 className="font-headline font-bold text-on-surface">{active.accent.label}</h4>
                 </div>
               </div>
               <p className="text-sm text-on-surface-variant">{active.accent.desc}</p>
-              <p className="text-[10px] text-outline mt-1">{active.accent.hex.toUpperCase()}</p>
+              <p className={`${tiny} text-outline mt-1`}>{active.accent.hex.toUpperCase()}</p>
             </div>
 
             <div className={`bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10 ${compact ? "w-[78%] shrink-0 snap-start md:w-auto md:shrink" : ""}`}>
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-14 h-14 rounded-lg shrink-0 border border-outline-variant/10" style={{ backgroundColor: active.trim.hex }} />
                 <div>
-                  <p className="text-[10px] uppercase text-outline font-bold tracking-widest">Trim &amp; Molding</p>
+                  <p className={`${tiny} uppercase text-outline font-bold tracking-widest`}>Trim &amp; Molding</p>
                   <h4 className="font-headline font-bold text-on-surface">{active.trim.label}</h4>
                 </div>
               </div>
               <p className="text-sm text-on-surface-variant">{active.trim.desc}</p>
-              <p className="text-[10px] text-outline mt-1">{active.trim.hex.toUpperCase()}</p>
+              <p className={`${tiny} text-outline mt-1`}>{active.trim.hex.toUpperCase()}</p>
             </div>
 
             <div className={`flex flex-col gap-3 pt-2 ${compact ? "w-[78%] shrink-0 snap-start md:w-auto md:shrink" : ""}`}>

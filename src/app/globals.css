@@ -144,3 +144,10 @@ body {
   background-color: var(--primary-fixed-dim);
   color: var(--on-primary-fixed);
 }
+
+/* Focus ring that stays visible on any paint swatch (dark outline plus a white halo). */
+.focus-ring-swatch:focus-visible {
+  outline: 3px solid var(--foreground);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
+}
