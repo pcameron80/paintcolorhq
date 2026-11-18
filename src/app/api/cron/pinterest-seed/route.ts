@@ -132,7 +132,7 @@ async function buildColorSpec(brandSlug: string, colorSlug: string): Promise<Pin
   return {
     board_id: PINTEREST_BOARDS.paintColors,
     title: `${color.brand.name} ${color.name}${codeBit}`.slice(0, 100),
-    description: `${color.brand.name} ${color.name}${codeBit} —${familyBit} paint color${lrvBit}${undertoneBit}. Cross-brand matches at PaintColorHQ.com #paintcolor ${brandHashtag}${familyHashtag}`.slice(0, 500),
+    description: `${color.brand.name} ${color.name}${codeBit},${familyBit} paint color${lrvBit}${undertoneBit}. Cross-brand matches at PaintColorHQ.com #paintcolor ${brandHashtag}${familyHashtag}`.slice(0, 500),
     alt_text: `${color.name} by ${color.brand.name} paint color swatch`.slice(0, 500),
     media_source: { source_type: "image_url", url: `${SITE}/api/pin?${params.toString()}` },
     link: `${SITE}/colors/${brandSlug}/${colorSlug}`,
@@ -155,8 +155,8 @@ function buildPaletteSpec(slug: string): PinterestPinSpec | null {
 
   return {
     board_id: PINTEREST_BOARDS.colorPalettes,
-    title: `${palette.name} — 5-Color Paint Palette`.slice(0, 100),
-    description: `${palette.name} — ${palette.description} 5-color paint palette with cross-brand matches at PaintColorHQ.com #paintpalette #colorpalette #${palette.slug.replace(/-/g, "")}`.slice(0, 500),
+    title: `${palette.name}: 5-Color Paint Palette`.slice(0, 100),
+    description: `${palette.name}: ${palette.description} 5-color paint palette with cross-brand matches at PaintColorHQ.com #paintpalette #colorpalette #${palette.slug.replace(/-/g, "")}`.slice(0, 500),
     alt_text: `${palette.name} 5-color paint palette`.slice(0, 500),
     media_source: { source_type: "image_url", url: `${SITE}/api/pin/palette?${params.toString()}` },
     link: `${SITE}/inspiration/${slug}`,
