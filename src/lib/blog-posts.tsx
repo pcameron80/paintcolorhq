@@ -8175,7 +8175,7 @@ const blogPosts: BlogPost[] = [
     modifiedDate: "2026-10-29",
     author: "Philip Cameron",
     excerpt:
-      "An honest comparison of the three biggest paint brands in America: covering quality, price, color selection, availability, and who each brand is best for.",
+      "An honest comparison of the three biggest paint brands in America, covering quality, price, color selection, availability, and who each brand is best for.",
     coverColor: "#5B7A6E",
     coverImage: "/blog/behr-vs-sherwin-williams-vs-benjamin-moore.webp",
     tags: ["Brands", "Comparison", "Buying Guide"],
@@ -8393,7 +8393,7 @@ const blogPosts: BlogPost[] = [
           <strong>Visible difference.</strong> Most people would say these are different colors. Not recommended as a match.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Our database shows that the vast majority of popular colors from major brands have at least one cross-brand match rated Nearly identical: meaning you can almost always find an excellent equivalent. Browse our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color families</Link> to see how closely the top neutrals from different brands align.
+          Our database shows that the vast majority of popular colors from major brands have at least one cross-brand match rated Nearly identical, meaning you can almost always find an excellent equivalent. Browse our <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige color families</Link> to see how closely the top neutrals from different brands align.
         </p>
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Step-by-Step: How to Match Paint Colors on Paint Color HQ</h2>
@@ -8876,7 +8876,7 @@ const blogPosts: BlogPost[] = [
 
         <h2 className="mt-10 text-2xl font-bold text-gray-900">Sage &amp; Muted Greens</h2>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          Soft sage greens give a bathroom an organic, nature-inspired feel. They pair exceptionally well with wood vanities, stone countertops, and brass hardware: bringing the outside in without overwhelming a small space.
+          Soft sage greens give a bathroom an organic, nature-inspired feel. They pair exceptionally well with wood vanities, stone countertops, and brass hardware, bringing the outside in without overwhelming a small space.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
           <Swatch hex="#B2B8A3" name="Saybrook Sage" brand="Benjamin Moore" href="/colors/benjamin-moore/saybrook-sage-hc-114" />: a dusty, warm sage that reads as neutral in bathroom lighting. Sophisticated without trying too hard, and it complements both warm and cool-toned tile.

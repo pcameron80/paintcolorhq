@@ -201,7 +201,7 @@ The natural material complement is extensive: terracotta tile, rough-hewn wood, 
     slug: "woodland-cabin",
     description: "Forest greens and warm browns, cozy and rustic.",
     colors: ["#5c6b4e", "#e8dfd0", "#8b6b4a", "#3c4a32", "#c4b090"],
-    editorial: `Woodland and cabin palettes lean on green more aggressively than most residential color schemes. The two greens in this palette (a medium forest green (LRV around 20–25) and a near-black deep forest (LRV under 10)) work together because they're closely related on the color spectrum, sharing the same green-brown family but at different depths.
+    editorial: `Woodland and cabin palettes lean on green more aggressively than most residential color schemes. The two greens in this palette, a medium forest green (LRV around 20–25) and a near-black deep forest (LRV under 10), work together because they're closely related on the color spectrum, sharing the same green-brown family but at different depths.
 
 The medium forest green is the primary working color. As a wall color, it creates the enclosed, sheltered quality of interior forest light: enough color to feel intentional, dark enough to read cozy rather than merely painted. It works best in rooms with adequate window coverage and warm artificial lighting; a forest green room with insufficient light becomes oppressive rather than cozy.
 
