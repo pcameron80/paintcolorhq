@@ -141,7 +141,7 @@ export function MatchWidget() {
       {/* Results */}
       <div className="flex-1 overflow-y-auto">
         {loading && <p className="py-6 text-center text-xs text-gray-400">Matching…</p>}
-        {error && !loading && <p className="py-6 text-center text-xs text-rose-500">Couldn&apos;t load matches: try another color.</p>}
+        {error && !loading && <p className="py-6 text-center text-xs text-rose-500">Couldn&apos;t load matches — try another color.</p>}
         {!loading && !error && matches.length === 0 && (
           <p className="py-6 text-center text-xs text-gray-400">No close matches found for that color.</p>
         )}

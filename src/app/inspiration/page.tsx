@@ -80,7 +80,7 @@ export default async function InspirationPage() {
             Color Palettes &amp;<br />Inspiration
           </h1>
           <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            {palettes.length} curated palettes to spark your next project: each mapped to real paint colors you can buy.
+            {palettes.length} curated palettes to spark your next project — each mapped to real paint colors you can buy.
           </p>
         </div>
       </section>

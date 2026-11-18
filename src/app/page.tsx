@@ -53,13 +53,13 @@ const HUE_SWATCH: Record<string, string> = {
 const tools = [
   {
     name: "Photo Color Identifier",
-    description: "Snap a photo of any color you love (a pillow, a sunset, a Pinterest pin) and find the closest paint match.",
+    description: "Snap a photo of any color you love — a pillow, a sunset, a Pinterest pin — and find the closest paint match.",
     href: "/tools/color-identifier",
     cta: "Upload a photo",
   },
   {
     name: "Palette Generator",
-    description: "Pick one color you love and get a designer-quality palette, all mapped to real paints you can buy at the store.",
+    description: "Pick one color you love and get a designer-quality palette — all mapped to real paints you can buy at the store.",
     href: "/tools/palette-generator",
     cta: "Build a palette",
   },
@@ -71,7 +71,7 @@ const tools = [
   },
   {
     name: "Undertone Analysis",
-    description: "Every color tagged warm, cool, or neutral, so your new paint won't clash with your trim or cabinets.",
+    description: "Every color tagged warm, cool, or neutral — so your new paint won't clash with your trim or cabinets.",
     href: "/colors",
     cta: "Browse colors",
   },
@@ -105,7 +105,7 @@ const faqItems = [
   {
     question: "What are paint color undertones?",
     answer:
-      "Every color has a hidden tint, warm (yellow/pink), cool (blue/gray), or neutral, that shows up under different lighting. All 26,000+ colors in our database are tagged so you can filter by undertone and avoid clashing with your existing trim, flooring, or cabinets.",
+      "Every color has a hidden tint — warm (yellow/pink), cool (blue/gray), or neutral — that shows up under different lighting. All 26,000+ colors in our database are tagged so you can filter by undertone and avoid clashing with your existing trim, flooring, or cabinets.",
   },
 ];
 
@@ -371,7 +371,7 @@ export default async function Home() {
         "@type": "WebSite",
         name: "Paint Color HQ",
         url: "https://www.paintcolorhq.com",
-        description: "Discover, preview, and compare 26,000+ paint colors across our paint catalog, find a color you love, see it on a wall, and get it in the brand you can buy. Cross-brand matches use CIEDE2000 Delta E. Free, no signup.",
+        description: "Discover, preview, and compare 26,000+ paint colors across our paint catalog — find a color you love, see it on a wall, and get it in the brand you can buy. Cross-brand matches use CIEDE2000 Delta E. Free, no signup.",
         potentialAction: {
           "@type": "SearchAction",
           // Plain URL string is the current Sitelinks Searchbox spec — the

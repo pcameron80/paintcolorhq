@@ -16,7 +16,7 @@ export function SuppliesList(props: SupplyListInput) {
       </h2>
       <p className="mt-1 text-sm text-gray-500">
         The supply list for your {props.lengthFt}&prime; &times; {props.widthFt}
-        &prime; room: quantities sized from your dimensions, not a generic kit.
+        &prime; room — quantities sized from your dimensions, not a generic kit.
       </p>
 
       <ul className="mt-5 divide-y divide-gray-100">

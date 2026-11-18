@@ -103,7 +103,7 @@ export default function ColorIdentifierPage() {
       <section className="py-16 px-6 md:px-12 bg-surface-container-low/40">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">
-            How Photo Paint Matching Works, and How to Get an Accurate Match
+            How Photo Paint Matching Works — and How to Get an Accurate Match
           </h2>
           <div className="space-y-10 text-on-surface-variant leading-relaxed">
             <div>
@@ -127,7 +127,7 @@ export default function ColorIdentifierPage() {
                 <strong className="text-on-surface">CIELAB color space</strong>, a model built
                 to mirror how people see color differences, and then compares it
                 against all 26,000+ paint colors in our database using the{" "}
-                <strong className="text-on-surface">CIEDE2000 (Delta E) formula</strong>: the
+                <strong className="text-on-surface">CIEDE2000 (Delta E) formula</strong> — the
                 same standard paint manufacturers use on the factory line to decide whether a
                 batch matches the master formula.
               </p>
@@ -135,8 +135,8 @@ export default function ColorIdentifierPage() {
                 Every result you see is ranked by that perceptual distance. &ldquo;Nearly identical&rdquo;
                 means the difference would be hard to spot even with the two colors side by
                 side; &ldquo;very similar&rdquo; means close, though you may notice the difference side by
-                side; &ldquo;visible difference&rdquo; means you&apos;d notice. The full pipeline (
-                conversion math, thresholds, and its limits) is documented on our{" "}
+                side; &ldquo;visible difference&rdquo; means you&apos;d notice. The full pipeline —
+                conversion math, thresholds, and its limits — is documented on our{" "}
                 <Link href="/methodology" className="text-primary underline hover:text-primary/80">
                   methodology page
                 </Link>.
@@ -145,7 +145,7 @@ export default function ColorIdentifierPage() {
 
             <div>
               <h3 className="font-headline text-xl font-bold text-on-surface mb-3">
-                Why photos lie about color, and how to outsmart yours
+                Why photos lie about color — and how to outsmart yours
               </h3>
               <p>
                 The math is exact. The photo usually isn&apos;t. Your camera makes judgment calls
@@ -158,13 +158,13 @@ export default function ColorIdentifierPage() {
               <p className="mt-3">A few habits fix most of it:</p>
               <ul className="mt-3 list-disc list-inside space-y-2 pl-2">
                 <li>
-                  <strong className="text-on-surface">Shoot in indirect daylight</strong>:
+                  <strong className="text-on-surface">Shoot in indirect daylight</strong> —
                   midday light from a window, not direct sun and not evening bulbs. Skip the
                   flash; it flattens color and adds a blue cast.
                 </li>
                 <li>
                   <strong className="text-on-surface">Face the surface square-on</strong> and
-                  avoid shiny hot spots: sample a spot with even, diffuse light.
+                  avoid shiny hot spots — sample a spot with even, diffuse light.
                 </li>
                 <li>
                   <strong className="text-on-surface">Stay out of shadow edges.</strong> A
@@ -178,7 +178,7 @@ export default function ColorIdentifierPage() {
                   dark or too bright.
                 </li>
                 <li>
-                  <strong className="text-on-surface">Click several spots</strong>: use
+                  <strong className="text-on-surface">Click several spots</strong> — use
                   &ldquo;Pick another spot&rdquo; and sample three or four places on the same surface. If
                   the same paint colors keep coming up top, trust the shortlist. If every spot
                   returns something different, the lighting is uneven; reshoot.
@@ -192,7 +192,7 @@ export default function ColorIdentifierPage() {
               </h3>
               <p>
                 Treat the results as a ranked shortlist, not a verdict. Closeness measures the
-                overall color distance. It can&apos;t tell you about{" "}
+                overall color distance — it can&apos;t tell you about{" "}
                 <strong className="text-on-surface">undertones</strong>, which is how two grays
                 that measure nearly identical can still pull in different directions on your wall:
                 one leans pink next to oak floors, the other leans green next to cool light.
@@ -210,7 +210,7 @@ export default function ColorIdentifierPage() {
                 From screen to wall: always sample before you buy
               </h3>
               <p>
-                No screen (phone, laptop, or the paint brand&apos;s own website) shows you what a
+                No screen — phone, laptop, or the paint brand&apos;s own website — shows you what a
                 gallon of paint will look like in your room. Paint changes with bulb temperature,
                 window direction, sheen, and the colors around it; a match that&apos;s perfect in the
                 photo can read differently at 7&nbsp;a.m. than at 7&nbsp;p.m. on the same wall.
@@ -246,7 +246,7 @@ export default function ColorIdentifierPage() {
             </p>
             <ol className="list-inside list-decimal space-y-3 pl-2">
               <li>
-                <strong className="text-on-surface">Preview it on walls</strong>: open the{" "}
+                <strong className="text-on-surface">Preview it on walls</strong> — open the{" "}
                 <Link href="/tools/room-visualizer" className="text-primary underline hover:text-primary/80">
                   Room Visualizer
                 </Link>{" "}
@@ -254,7 +254,7 @@ export default function ColorIdentifierPage() {
                 color on walls, trim, and accents in a realistic room scene.
               </li>
               <li>
-                <strong className="text-on-surface">Compare cross-brand matches</strong>: the{" "}
+                <strong className="text-on-surface">Compare cross-brand matches</strong> — the{" "}
                 <Link href="/compare" className="text-primary underline hover:text-primary/80">
                   Color Comparison tool
                 </Link>{" "}
@@ -263,7 +263,7 @@ export default function ColorIdentifierPage() {
                 how far apart two colors are before you order samples.
               </li>
               <li>
-                <strong className="text-on-surface">Calculate how much paint to buy</strong>: enter your
+                <strong className="text-on-surface">Calculate how much paint to buy</strong> — enter your
                 room dimensions in the{" "}
                 <Link href="/tools/paint-calculator" className="text-primary underline hover:text-primary/80">
                   Paint Calculator
@@ -282,7 +282,7 @@ export default function ColorIdentifierPage() {
                 south-facing light and how to test with physical swatches.
               </li>
               <li>
-                <strong className="text-on-surface">Build a full palette</strong>: use the{" "}
+                <strong className="text-on-surface">Build a full palette</strong> — use the{" "}
                 <Link href="/tools/palette-generator" className="text-primary underline hover:text-primary/80">
                   Palette Generator
                 </Link>{" "}

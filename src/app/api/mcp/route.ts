@@ -223,7 +223,7 @@ async function callMatchTool(args: Record<string, unknown>, request: Request) {
     : `Closest cross-brand paint matches for #${cleanHex.toUpperCase()}:`;
   const lines = matches.map(
     (m, i) =>
-      `${i + 1}. ${m.name}, ${m.brand}${m.colorNumber ? ` ${m.colorNumber}` : ""} (${m.hex}): ${m.closeness} [ΔE ${m.deltaE}]${m.availability === "current" ? "" : ` (${m.availability} by the brand)`}`,
+      `${i + 1}. ${m.name} — ${m.brand}${m.colorNumber ? ` ${m.colorNumber}` : ""} (${m.hex}) — ${m.closeness} [ΔE ${m.deltaE}]${m.availability === "current" ? "" : ` (${m.availability} by the brand)`}`,
   );
   const text = [
     header,
@@ -286,7 +286,7 @@ async function callFindTool(args: Record<string, unknown>, request: Request) {
 
   const lines = colors.map(
     (c, i) =>
-      `${i + 1}. ${c.name}, ${c.brand}${c.colorNumber ? ` ${c.colorNumber}` : ""} (${c.hex})${c.availability === "current" ? "" : ` (${c.availability} by the brand)`}`,
+      `${i + 1}. ${c.name} — ${c.brand}${c.colorNumber ? ` ${c.colorNumber}` : ""} (${c.hex})${c.availability === "current" ? "" : ` (${c.availability} by the brand)`}`,
   );
   const text = [
     `Paint colors matching "${query}"${brand ? ` in ${brand}` : ""}:`,

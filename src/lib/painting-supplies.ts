@@ -53,14 +53,14 @@ export function getSupplyList(input: SupplyListInput): SupplyItem[] {
     {
       name: "Roller frame and covers",
       detail:
-        "9-inch frame with woven covers: 3/8-inch nap for smooth drywall, 1/2-inch if your walls have texture",
+        "9-inch frame with woven covers — 3/8-inch nap for smooth drywall, 1/2-inch if your walls have texture",
       quantity: "1 frame, 2 covers",
       url: getAmazonSearchUrl("9 inch paint roller frame woven cover 3/8 nap"),
     },
     {
       name: "Angled sash brush",
       detail:
-        "2.5-inch angled: this one brush does the cutting in at ceilings, corners, and trim",
+        "2.5-inch angled — this one brush does the cutting in at ceilings, corners, and trim",
       quantity: "1",
       url: getAmazonSearchUrl("2.5 inch angled sash paint brush"),
     },
@@ -73,28 +73,28 @@ export function getSupplyList(input: SupplyListInput): SupplyItem[] {
     {
       name: "Painter's tape",
       detail:
-        "1.88-inch wide for baseboards, ceiling line, and casings: sized from your room's edges",
+        "1.88-inch wide for baseboards, ceiling line, and casings — sized from your room's edges",
       quantity: `${tapeRolls} ${tapeRolls === 1 ? "roll" : "rolls"} (60 yd)`,
       url: getAmazonSearchUrl("painters tape 1.88 inch 60 yard"),
     },
     {
       name: "Canvas drop cloth",
       detail:
-        "9x12 canvas: it stays put and lasts years; plastic slides underfoot and tears",
+        "9x12 canvas — it stays put and lasts years; plastic slides underfoot and tears",
       quantity: `${dropCloths}`,
       url: getAmazonSearchUrl("canvas drop cloth 9x12"),
     },
     {
       name: "Roller extension pole",
       detail:
-        "2-to-4-foot twist-lock pole: reaches the ceiling line without a ladder and saves your back on full walls",
+        "2-to-4-foot twist-lock pole — reaches the ceiling line without a ladder and saves your back on full walls",
       quantity: "1",
       url: getAmazonSearchUrl("paint roller extension pole twist lock"),
     },
     {
       name: "Spackle and sanding sponge",
       detail:
-        "Fill nail holes and dings, sand flush once dry: prep is what makes the finish look sprayed-on",
+        "Fill nail holes and dings, sand flush once dry — prep is what makes the finish look sprayed-on",
       quantity: "1 each",
       url: getAmazonSearchUrl("lightweight spackle wall repair sanding sponge"),
     },

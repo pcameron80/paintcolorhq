@@ -94,7 +94,7 @@ export default function EmbedPage() {
               <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-4">Copy the embed code</h2>
               <CopySnippet code={EMBED_SNIPPET} />
               <p className="mt-3 text-sm text-on-surface-variant">
-                Paste it anywhere in your page&apos;s HTML: a blog post, a sidebar, a resources page. Keep the credit line so your readers (and you) can find the full tool. That&apos;s the only condition: the widget is free.
+                Paste it anywhere in your page&apos;s HTML — a blog post, a sidebar, a resources page. Keep the credit line so your readers (and you) can find the full tool. That&apos;s the only condition: the widget is free.
               </p>
               <p className="mt-3 text-sm text-on-surface-variant">
                 If your site sets a Content-Security-Policy, allow <code className="break-words">frame-src https://www.paintcolorhq.com</code>.
@@ -105,7 +105,7 @@ export default function EmbedPage() {
               <ul className="mt-6 space-y-3 text-sm text-on-surface">
                 <li className="flex gap-3"><span className="font-bold text-primary">1.</span> Copy the snippet above.</li>
                 <li className="flex gap-3"><span className="font-bold text-primary">2.</span> Paste it into your site&apos;s HTML where you want the matcher to appear.</li>
-                <li className="flex gap-3"><span className="font-bold text-primary">3.</span> Done: it loads on demand and updates itself as our color data grows.</li>
+                <li className="flex gap-3"><span className="font-bold text-primary">3.</span> Done — it loads on demand and updates itself as our color data grows.</li>
               </ul>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function EmbedPage() {
               <Link href="/methodology" className="text-primary underline-offset-4 hover:underline">methodology page</Link>.
             </p>
             <p className="mt-4 text-sm text-on-surface-variant">
-              A perfect on-screen match can still read differently on a wall under your lighting: always confirm with a physical sample. Prefer to match by hand? Try the{" "}
+              A perfect on-screen match can still read differently on a wall under your lighting — always confirm with a physical sample. Prefer to match by hand? Try the{" "}
               <Link href="/compare" className="text-primary underline-offset-4 hover:underline">Compare tool</Link> or the{" "}
               <Link href="/tools/color-identifier" className="text-primary underline-offset-4 hover:underline">photo color identifier</Link>.
             </p>

@@ -141,7 +141,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       <section className="py-16 px-6 md:px-12 bg-surface-container-low/40">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">
-            How the Room Visualizer Works, and How to Choose Wall Colors That Hold Up in Real Light
+            How the Room Visualizer Works — and How to Choose Wall Colors That Hold Up in Real Light
           </h2>
           <div className="space-y-10 text-on-surface-variant leading-relaxed">
             <div>
@@ -181,19 +181,19 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
               <p>
                 LRV, or Light Reflectance Value, is a 0-to-100 measure of how much light a color
                 bounces back into the room. Black sits near 0, pure white near 100, and most wall
-                colors fall somewhere between: a soft greige around 55 to 65, a mid-tone blue
+                colors fall somewhere between — a soft greige around 55 to 65, a mid-tone blue
                 closer to 30. Every color page on Paint Color HQ lists the LRV, which is the
                 fastest way to judge whether a shade will lift a room or weigh it down. Once the
                 visualizer hands you a match, open its page and check that number before you commit.
                 A mid-range LRV, roughly 45 to 60, is the most forgiving starting point if
-                you are unsure: it holds its color in shade without darkening the room, which is
+                you are unsure — it holds its color in shade without darkening the room, which is
                 why so many popular greiges and soft sages land there.
               </p>
               <p className="mt-3">
                 A dark or north-facing room gets cool, indirect light for most of the day, so it
                 usually wants a wall color with a higher LRV to keep it from reading gloomy; a
                 brighter wall also makes a small room feel larger. A bright, south-facing room can
-                carry a lower-LRV color (a deep green, a charcoal, a saturated navy) without
+                carry a lower-LRV color — a deep green, a charcoal, a saturated navy — without
                 feeling closed in, because there is more daylight for the color to work with. The
                 Main wall drives the room&apos;s overall brightness because it covers the most
                 surface, so choose it first by LRV, then build the accent and trim around it. Grays
@@ -227,7 +227,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
                 </li>
                 <li>
                   <strong className="text-on-surface">Your room&apos;s light.</strong> The preview
-                  uses one photo&apos;s fixed lighting, while your room has its own: warm 2700K
+                  uses one photo&apos;s fixed lighting, while your room has its own — warm 2700K
                   bulbs push a color yellower, cool 4000K bulbs push it bluer, a north-facing
                   window runs cool and a south-facing window runs warm.
                 </li>
@@ -241,8 +241,8 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
                 The fix is physical. Get samples of your top one or two colors, paint a patch on
                 the actual wall, and look at it in both morning and evening light before you buy
                 gallons. Peel-and-stick samples made from real paint or a small sample pot both do
-                the job. The visualizer&apos;s value is speed (it narrows a wall of options down
-                to a short list in minutes) but a sample on your own wall is what confirms the
+                the job. The visualizer&apos;s value is speed — it narrows a wall of options down
+                to a short list in minutes — but a sample on your own wall is what confirms the
                 winner.
               </p>
             </div>
@@ -252,7 +252,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
                 Build a wall, trim, and accent scheme that works together
               </h3>
               <p>
-                Main, Accent, and Trim are not just three color slots: they are the structure of a
+                Main, Accent, and Trim are not just three color slots — they are the structure of a
                 real scheme. Trim usually contrasts the wall: a clean white or off-white frames a
                 colored wall and makes molding and window casings stand out. The wider the gap in
                 lightness between wall and trim, the crisper and more defined those edges look; a
@@ -261,8 +261,8 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
               </p>
               <p className="mt-3">
                 What holds a scheme together is undertone, not raw hue. Two grays can read as
-                nearly identical and still pull in opposite directions once they are on the wall (
-                one warm toward pink, the other cool toward green), which is how a wall and its trim
+                nearly identical and still pull in opposite directions once they are on the wall —
+                one warm toward pink, the other cool toward green — which is how a wall and its trim
                 end up clashing even when both are called &ldquo;gray.&rdquo; Keep the main wall,
                 accent, and trim in the same undertone family, and check the undertone tag on each
                 color page before you buy. Our guide to{" "}
@@ -338,8 +338,8 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             <p>
               Once you find a color you love, use the &quot;Find Paint
               Match&quot; feature to see which real-world paints from catalogued
-              brands (including Sherwin-Williams, Benjamin Moore, Behr, Valspar,
-              PPG, Dunn-Edwards, and Farrow &amp; Ball) are the closest match.
+              brands — including Sherwin-Williams, Benjamin Moore, Behr, Valspar,
+              PPG, Dunn-Edwards, and Farrow &amp; Ball — are the closest match.
               Every suggestion links to its full color detail page so you can
               explore undertones, coordinating colors, and cross-brand
               alternatives.
@@ -369,7 +369,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
               four sample pots at $5 to $8 each, you can narrow your choices down
               to a single front-runner in minutes. This is especially valuable
               when you are planning a whole-room color scheme with coordinated
-              walls, trim, and an accent wall, getting that balance right on
+              walls, trim, and an accent wall — getting that balance right on
               screen first means fewer trips back to the paint counter.
             </p>
           </div>
@@ -408,7 +408,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             </p>
             <p>
               <strong className="text-on-surface">Convert custom colors to real paint.</strong> Any color you
-              pick (even a custom hex) can be matched to a real product from
+              pick — even a custom hex — can be matched to a real product from
               major brands using the &quot;Find Paint Match&quot; button. This
               bridges the gap between inspiration and a trip to the store.
             </p>

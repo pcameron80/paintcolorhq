@@ -156,11 +156,11 @@ export default async function PaletteGeneratorPage() {
           <div className="space-y-10 text-on-surface-variant leading-relaxed">
             <div>
               <h3 className="font-headline text-xl font-bold text-on-surface mb-3">
-                What the generator hands you, and how to read it
+                What the generator hands you — and how to read it
               </h3>
               <p>
                 You start with one color. Pick it from the swatch, type a hex code, or arrive
-                here from any color page with that color already loaded: the tool reads a
+                here from any color page with that color already loaded — the tool reads a
                 starting color straight from the address bar. From that single point, the
                 generator builds several coordinated schemes at once: some warmer, some cooler,
                 one built on high-contrast opposite colors, one on close neighbors, one on
@@ -168,14 +168,14 @@ export default async function PaletteGeneratorPage() {
                 one your room wants.
               </p>
               <p className="mt-3">
-                Each scheme splits into four room roles (Walls, Trim, Accent, and Pop) and
+                Each scheme splits into four room roles — Walls, Trim, Accent, and Pop — and
                 those roles aren&apos;t arbitrary. Each role is mixed to its own target: Trim
                 comes out near-white, Walls light and muted, Accent deeper and richer, and Pop
                 the most saturated of the four. Then every swatch is matched to the nearest
                 real paint you can buy, drawn from more than 26,000 colors across 13 brands
                 including Sherwin-Williams, Benjamin Moore, and Behr. That match is ranked by
-                perceptual color distance (the same color-difference method the rest of the
-                site uses) so the paint named under each swatch is the closest buyable version
+                perceptual color distance — the same color-difference method the rest of the
+                site uses — so the paint named under each swatch is the closest buyable version
                 of the color the math produced, not a rough guess. Hold results to a single
                 brand with the brand filter, or leave it open across all of them. Found a scheme
                 worth keeping? Save it to a project so your top options stay in one place while
@@ -203,17 +203,17 @@ export default async function PaletteGeneratorPage() {
                 The generator&apos;s four roles map onto that split.
               </p>
               <p className="mt-3">
-                Walls is your 60: the largest surface and the color you see most, usually the
+                Walls is your 60 — the largest surface and the color you see most, usually the
                 lightest or most neutral of the set so the room doesn&apos;t feel closed in. Trim
                 carries part of the secondary weight on baseboards, crown molding, and door
                 casings, where a crisp near-white keeps edges clean. Accent takes the rest of
-                that middle band (a feature wall, built-ins, or a run of cabinets) where a
+                that middle band — a feature wall, built-ins, or a run of cabinets — where a
                 deeper color adds depth without taking over. Pop is the 10: the most saturated
                 color, used in small doses on pillows, art, a lampshade, or a single door, where
                 a stronger note earns its place because there is so little of it.
               </p>
               <p className="mt-3">
-                Reversing those amounts is the quickest way to make a good palette feel wrong:
+                Reversing those amounts is the quickest way to make a good palette feel wrong —
                 the Pop color on all four walls overwhelms a room that the same color flatters on
                 a chair. To judge the split before you paint, send any scheme to the{" "}
                 <Link href="/tools/room-visualizer" className="text-primary underline hover:text-primary/80">
@@ -231,7 +231,7 @@ export default async function PaletteGeneratorPage() {
               <p>
                 Two colors can sit at a pleasing distance on the wheel and still fight on the
                 wall, because color-wheel math doesn&apos;t account for{" "}
-                <strong className="text-on-surface">undertones</strong>: the quiet secondary
+                <strong className="text-on-surface">undertones</strong> — the quiet secondary
                 cast underneath a color. A greige with a green undertone and a greige with a pink
                 undertone can read as the same tan on screen, then clash the moment they share a
                 room. Undertones are what separate a palette that feels settled from one that
@@ -239,7 +239,7 @@ export default async function PaletteGeneratorPage() {
               </p>
               <p className="mt-3">
                 When you weigh a generated scheme, open each color&apos;s page and check its undertone
-                tag and its LRV: the measure of how much light it reflects, which tells you how
+                tag and its LRV — the measure of how much light it reflects, which tells you how
                 a color reads on a full wall versus a small chip. Aim for undertones that agree:
                 warm with warm, cool with cool, or a contrast you chose on purpose. A palette
                 built from colors that all lean warm feels coherent even when the hues differ;
@@ -264,8 +264,8 @@ export default async function PaletteGeneratorPage() {
                 Every swatch on this page is a screen color, and no screen shows you what a
                 gallon looks like on your wall. Monitor calibration, the brightness you&apos;re
                 reading at, and your room&apos;s own light all shift what you see here. The generated
-                palette narrows thousands of options down to a handful worth testing (that is
-                its job) but the last step happens off the screen.
+                palette narrows thousands of options down to a handful worth testing — that is
+                its job — but the last step happens off the screen.
               </p>
               <p className="mt-3">
                 Get physical samples of your top one or two schemes and live with them for a
