@@ -55,7 +55,7 @@ export default function AboutPage() {
         ],
       }} />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Hero */}
         <section className="relative pt-24 px-6 md:px-12 py-16">
           <div className="max-w-4xl mx-auto">
@@ -97,7 +97,12 @@ export default function AboutPage() {
                 <Link href="/authors/paint-color-hq-staff" className="text-primary underline hover:text-primary/80">
                   author page
                 </Link>{" "}
-                has the full story.
+                has the full story. He also builds websites for local
+                businesses through{" "}
+                <a href="https://clinchriverweb.com/" className="text-primary underline hover:text-primary/80">
+                  Clinch River Web
+                </a>
+                .
               </p>
             </div>
 

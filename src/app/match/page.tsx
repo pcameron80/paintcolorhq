@@ -110,6 +110,7 @@ export default async function MatchHubPage() {
       }} />
 
       <Header />
+      <main id="main-content">
 
       <section className="relative pt-24 px-6 md:px-12 py-16">
         <div className="max-w-7xl mx-auto">
@@ -203,6 +204,7 @@ export default async function MatchHubPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
       <AdSenseScript />
     </div>

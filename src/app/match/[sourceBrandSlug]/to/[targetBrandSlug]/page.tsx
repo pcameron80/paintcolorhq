@@ -107,6 +107,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
     <div className="min-h-screen bg-surface">
       <TrackPage eventName="page_view_enriched" params={{ page_type: "match_listing", source_brand: sourceBrandSlug, target_brand: targetBrandSlug }} />
       <Header />
+      <main id="main-content">
 
       {/* Hero */}
       <section className="relative pt-24 px-6 md:px-12 py-20">
@@ -347,6 +348,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
         })),
       }} />
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>

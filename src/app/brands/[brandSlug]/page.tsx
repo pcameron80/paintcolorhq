@@ -258,6 +258,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
     <div className="min-h-screen bg-surface">
       <TrackPage eventName="page_view_enriched" params={{ page_type: "brand", color_brand: brandSlug }} />
       <Header />
+      <main id="main-content">
 
       {/* Brand Hero */}
       <section className="relative pt-24 px-6 md:px-12 pb-12 overflow-hidden">
@@ -590,6 +591,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         })),
       }} />}
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>

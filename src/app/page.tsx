@@ -122,6 +122,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen bg-surface">
       <Header />
+      <main id="main-content">
 
       {/* Hero — Intentional Asymmetry */}
       <section className="relative pt-24 px-6 md:px-12 py-20 flex flex-col lg:flex-row gap-12 items-center max-w-7xl mx-auto overflow-hidden">
@@ -411,6 +412,7 @@ export default async function Home() {
         { "@context": "https://schema.org", "@type": "WebApplication", name: "Paint Calculator", url: "https://www.paintcolorhq.com/tools/paint-calculator", applicationCategory: "UtilityApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Calculate how many gallons of paint you need based on room dimensions." },
       ]} />
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>

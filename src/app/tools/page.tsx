@@ -178,6 +178,7 @@ export default function ToolsPage() {
       }} />
 
       <Header />
+      <main id="main-content">
 
       <section className="relative pt-24 px-6 md:px-12 py-16">
         <div className="max-w-7xl mx-auto">
@@ -226,6 +227,7 @@ export default function ToolsPage() {
         </div>
       </section>
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>

@@ -153,3 +153,12 @@ body {
   .mv-list > li:nth-child(n + 9) { display: none; }
   .mv-toggle:checked ~ .mv-list > li:nth-child(n + 9) { display: list-item; }
 }
+
+/* Focus ring for links and buttons that sit on or around a color swatch.
+   A light band under a dark ring stays visible on any swatch color, light or
+   dark. Defined once; add the class to the focusable element. */
+.focus-ring-swatch:focus-visible {
+  outline: 3px solid var(--foreground);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
+}
