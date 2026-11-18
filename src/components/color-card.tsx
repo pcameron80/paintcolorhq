@@ -20,7 +20,7 @@ export function ColorCard({
   return (
     <Link
       href={`/colors/${brandSlug}/${colorSlug}`}
-      className="group block overflow-hidden rounded-xl bg-surface-container-lowest hover:shadow-md transition-all duration-500"
+      className="focus-ring-swatch group block overflow-hidden rounded-xl bg-surface-container-lowest hover:shadow-md transition-all duration-500"
     >
       <div
         className="h-36 sm:h-44 w-full rounded-t-xl border-b border-black/10"

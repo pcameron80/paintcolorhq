@@ -155,7 +155,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="h-32 sm:h-40 mt-[65px]" style={{ backgroundColor: post.coverColor }} />
       )}
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <div className="mx-auto max-w-3xl px-6 md:px-12 py-12">
           {/* Breadcrumb */}
           <nav className="mb-8 text-sm text-on-surface-variant">

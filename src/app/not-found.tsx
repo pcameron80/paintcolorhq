@@ -43,7 +43,7 @@ export default async function NotFound() {
     <div className="min-h-screen bg-surface">
       <Header />
 
-      <main className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <main id="main-content" className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="flex flex-col items-center text-center">
           <div className="flex items-end gap-2 sm:gap-3" aria-hidden="true">
             {CHIPS.map((chip) => (

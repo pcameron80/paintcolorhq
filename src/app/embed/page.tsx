@@ -59,7 +59,7 @@ export default function EmbedPage() {
         ],
       }} />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <section className="px-6 md:px-12 pt-24 pb-12">
           <div className="mx-auto max-w-5xl">
             <span className="text-primary font-bold text-xs uppercase tracking-widest">Free widget</span>

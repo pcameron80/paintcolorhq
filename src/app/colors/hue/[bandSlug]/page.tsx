@@ -167,6 +167,7 @@ export default async function HueBandPage({ params, searchParams }: PageProps) {
       }} />
       <TrackPage eventName="page_view_enriched" params={{ page_type: "hue_band", color_family: bandSlug, result_count: total }} />
       <Header />
+      <main id="main-content">
 
       <section className="relative pt-24 px-6 md:px-12 py-16 overflow-hidden">
         <div className="max-w-7xl mx-auto flex items-center gap-8">
@@ -272,6 +273,7 @@ export default async function HueBandPage({ params, searchParams }: PageProps) {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );
