@@ -9,7 +9,7 @@ import { ogDefaults } from "@/lib/og";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions About Paint Colors",
   description:
-    "Answers to common questions about paint colors — cross-brand matching, undertones, paint quantities, and Paint Color HQ tools.",
+    "Answers to common questions about paint colors: cross-brand matching, undertones, paint quantities, and Paint Color HQ tools.",
   alternates: { canonical: "https://www.paintcolorhq.com/faq" },
   openGraph: {
     ...ogDefaults,
@@ -49,12 +49,12 @@ const faqs = [
   {
     question: "What's the difference between paint sheen levels?",
     answer:
-      "Paint sheen refers to how glossy or matte the finish is. From least to most shiny: Flat/Matte has no shine and hides imperfections well — good for ceilings and low-traffic walls. Eggshell has a slight soft sheen and is the most popular for living rooms and bedrooms. Satin has a noticeable sheen, cleans easily, and works well for kitchens, bathrooms, and kids' rooms. Semi-Gloss is shiny and very durable — ideal for trim, doors, and cabinets. High-Gloss is the shiniest and most durable — used for accent pieces and doors.",
+      "Paint sheen refers to how glossy or matte the finish is. From least to most shiny: Flat/Matte has no shine and hides imperfections well: good for ceilings and low-traffic walls. Eggshell has a slight soft sheen and is the most popular for living rooms and bedrooms. Satin has a noticeable sheen, cleans easily, and works well for kitchens, bathrooms, and kids' rooms. Semi-Gloss is shiny and very durable: ideal for trim, doors, and cabinets. High-Gloss is the shiniest and most durable: used for accent pieces and doors.",
   },
   {
     question: "How do I identify a paint color from a photo?",
     answer:
-      "Use our Photo Color Identifier tool. Upload any photo — a room you love on Pinterest, a picture of your neighbor's house, or a swatch from a magazine. Click any spot on the image and we'll find the closest matching paint colors from all 13 brands in our database. The tool extracts the exact color value at that pixel and runs it through our CIEDE2000 matching algorithm.",
+      "Use our Photo Color Identifier tool. Upload any photo: a room you love on Pinterest, a picture of your neighbor's house, or a swatch from a magazine. Click any spot on the image and we'll find the closest matching paint colors from all 13 brands in our database. The tool extracts the exact color value at that pixel and runs it through our CIEDE2000 matching algorithm.",
   },
   {
     question: "Are the colors on screen accurate to real paint?",
@@ -69,7 +69,7 @@ const faqs = [
   {
     question: "How do I choose a paint color for my room?",
     answer:
-      "Start by looking at what's already in the room that you can't change — flooring, countertops, large furniture. Pick up on the undertones in those fixed elements and choose paint that has a complementary undertone. Next, consider the room's natural light: north-facing rooms benefit from warmer colors, while south-facing rooms can handle cooler tones. Use our Room Visualizer to preview colors on walls before buying, and our Palette Generator to build a coordinated scheme with wall color, trim, and accents.",
+      "Start by looking at what's already in the room that you can't change, flooring, countertops, large furniture. Pick up on the undertones in those fixed elements and choose paint that has a complementary undertone. Next, consider the room's natural light: north-facing rooms benefit from warmer colors, while south-facing rooms can handle cooler tones. Use our Room Visualizer to preview colors on walls before buying, and our Palette Generator to build a coordinated scheme with wall color, trim, and accents.",
   },
   {
     question: "What is the most popular paint color?",
@@ -79,7 +79,7 @@ const faqs = [
   {
     question: "Is Paint Color HQ free to use?",
     answer:
-      "Yes. All of our tools — color search, cross-brand matching, room visualizer, photo color identifier, palette generator, and paint calculator — are completely free. You can optionally create a free account to save colors to projects and organize them by room, but no account is required to use any tool.",
+      "Yes. All of our tools (color search, cross-brand matching, room visualizer, photo color identifier, palette generator, and paint calculator) are completely free. You can optionally create a free account to save colors to projects and organize them by room, but no account is required to use any tool.",
   },
 ];
 

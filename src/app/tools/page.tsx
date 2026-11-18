@@ -6,7 +6,7 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { ogDefaults } from "@/lib/og";
 import { BRAND_COUNT } from "@/lib/site-facts";
 
-const TITLE = "Free Paint Color Tools — Visualizer & Calculator";
+const TITLE = "Free Paint Color Tools: Visualizer & Calculator";
 const DESCRIPTION =
   "Free paint tools: palette generator, room visualizer, photo color identifier and paint calculator. Preview colors, match photos, estimate how much to buy.";
 const URL = "https://www.paintcolorhq.com/tools";
