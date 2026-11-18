@@ -140,7 +140,7 @@ export default async function Home() {
           <form action="/search" role="search" className="max-w-xl">
             <label htmlFor="home-color-search" className="block text-sm font-semibold mb-3">Enter a paint name, number, or hex code</label>
             <div className="flex flex-col sm:flex-row gap-3">
-              <input id="home-color-search" name="q" type="search" required maxLength={120} placeholder="Try Sea Salt or SW 6204" className="min-w-0 flex-1 bg-white border border-outline-variant rounded-xl px-4 py-4 text-base text-on-surface focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2" />
+              <input id="home-color-search" name="q" type="search" required maxLength={120} placeholder="Try Sea Salt or SW 6204" className="min-w-0 flex-1 bg-white placeholder:text-outline border border-outline-variant rounded-xl px-4 py-4 text-base text-on-surface focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2" />
               <button type="submit" className="bg-primary text-on-primary px-6 py-4 rounded-xl font-bold focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">Find colors</button>
             </div>
             <p className="mt-4 text-sm text-on-surface-variant">Just exploring? <Link href="/brands" className="text-primary underline underline-offset-4">Browse by brand</Link> or <Link href="/colors" className="text-primary underline underline-offset-4">explore color families</Link>.</p>

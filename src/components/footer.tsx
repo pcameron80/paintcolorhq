@@ -110,14 +110,14 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-outline-variant/10 py-8 text-center">
-        <p className="text-xs text-outline">
+      <div className="border-t border-outline-variant/10 px-6 md:px-12 py-8 text-center">
+        <p className="text-xs text-on-surface-variant">
           &copy; {new Date().getFullYear()} Paint Color HQ. Color data is approximate. Always verify with physical samples before purchasing.
         </p>
-        <p className="text-xs text-outline mt-2">
+        <p className="text-xs text-on-surface-variant mt-2">
           As an Amazon Associate, Paint Color HQ earns from qualifying purchases.
         </p>
-        <p className="text-xs text-outline mt-2">
+        <p className="text-xs text-on-surface-variant mt-2">
           Built by{" "}
           <a href="https://pcameron.co/" className="hover:text-primary underline-offset-4 hover:underline transition-all">
             Philip Cameron
