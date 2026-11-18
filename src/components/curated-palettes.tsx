@@ -70,7 +70,7 @@ interface PaletteTemplate {
 const templates: PaletteTemplate[] = [
   {
     name: "Warm & Inviting",
-    description: "Warm tones with cozy appeal — welcoming and comfortable",
+    description: "Warm tones with cozy appeal, welcoming and comfortable",
     generate: (h, s, _l, role) => {
       const warmHue = h + (((30 - h + 540) % 360) - 180) * 0.4;
       switch (role) {
@@ -87,7 +87,7 @@ const templates: PaletteTemplate[] = [
   },
   {
     name: "Cool & Calm",
-    description: "Cool hues with soft contrast — serene and restful",
+    description: "Cool hues with soft contrast, serene and restful",
     generate: (h, s, _l, role) => {
       const coolHue = h + (((210 - h + 540) % 360) - 180) * 0.4;
       switch (role) {
@@ -104,7 +104,7 @@ const templates: PaletteTemplate[] = [
   },
   {
     name: "Bold Contrast",
-    description: "Complementary hues with punch — dynamic and striking",
+    description: "Complementary hues with punch, dynamic and striking",
     generate: (h, s, _l, role) => {
       const compHue = h + 180;
       switch (role) {
@@ -188,7 +188,7 @@ export async function CuratedPalettes({
     <section>
       <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight">{colorName ? `${colorName} Room Palettes` : "Room Palettes"}</h2>
       <p className="mt-2 text-sm text-on-surface-variant">
-        Color schemes built around this color — each swatch links to the closest matching paint.
+        Color schemes built around this color: each swatch links to the closest matching paint.
       </p>
 
       <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -115,7 +115,7 @@ export function MatchColorSearch({ sourceBrandSlug, targetBrandSlug, sourceBrand
           )}
           {!loading && results.length === 0 && (
             <p className="px-4 py-3 text-sm text-on-surface-variant">
-              No {sourceBrandName} colors found for &quot;{term}&quot; — try a different name or number.
+              No {sourceBrandName} colors found for &quot;{term}&quot;: try a different name or number.
             </p>
           )}
         </div>

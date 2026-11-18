@@ -728,7 +728,7 @@ export default async function ColorPage({ params }: PageProps) {
           {color.undertone ? (
             <Link href="/blog/understanding-paint-color-undertones" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
               <p className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Understanding Paint Color Undertones</p>
-              <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">{isHeadColor ? <>Why {color.name}&apos;s {color.undertone.toLowerCase()} undertone matters more than its surface color — and how to read undertones in any paint chip.</> : "How to read undertones in any paint chip, and why they matter more than the surface color."}</p>
+              <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">{isHeadColor ? <>Why {color.name}&apos;s {color.undertone.toLowerCase()} undertone matters more than its surface color, and how to read undertones in any paint chip.</> : "How to read undertones in any paint chip, and why they matter more than the surface color."}</p>
             </Link>
           ) : (
             <Link href="/blog/paint-sheen-guide" className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500">

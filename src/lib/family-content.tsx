@@ -11,14 +11,14 @@ const content: Record<string, FamilyContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          White is the most popular paint color category — and the hardest to get right. Every white
+          White is the most popular paint color category, and the hardest to get right. Every white
           has an undertone: warm whites lean cream or yellow, cool whites lean blue or gray, and true
           whites sit in between. The wrong white against your trim, tile, or countertops creates a
           jarring clash that&apos;s hard to pinpoint but easy to feel.
         </p>
         <p>
           Designer favorites like Benjamin Moore White Dove (soft, slightly warm), Sherwin-Williams Pure White (warm),
-          and Benjamin Moore Chantilly Lace (crisp, close to neutral) dominate for good reason — they&apos;re
+          and Benjamin Moore Chantilly Lace (crisp, close to neutral) dominate for good reason: they&apos;re
           versatile across lighting conditions. Use the undertone filter below to narrow your search
           to warm, cool, or neutral whites.
         </p>
@@ -30,7 +30,7 @@ const content: Record<string, FamilyContent> = {
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
           Match your white to your fixed elements: warm floors and countertops call for warm whites,
           cool tile and fixtures call for cool whites. Always sample at least three whites on your
-          actual walls — colors that look identical on a chip diverge dramatically at scale. Read our{" "}
+          actual walls: colors that look identical on a chip diverge dramatically at scale. Read our{" "}
           <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">
             definitive white paint guide
           </Link>{" "}
@@ -53,7 +53,7 @@ const content: Record<string, FamilyContent> = {
           beige).
         </p>
         <p>
-          The most popular grays today are warm — Sherwin-Williams Agreeable Gray and Benjamin Moore
+          The most popular grays today are warm: Sherwin-Williams Agreeable Gray and Benjamin Moore
           Edgecomb Gray lead the pack because their brown undertones prevent the cold, sterile
           feeling that pure grays can create. Filter by undertone below to find grays that match your
           room&apos;s lighting and style.
@@ -121,7 +121,7 @@ const content: Record<string, FamilyContent> = {
         <p>
           Green has moved from accent color to main event in a lot of homes. From soft sage kitchens to deep forest
           accent walls, every shade of green is surging in popularity. The movement is driven by
-          biophilic design — the idea that incorporating nature into interiors improves well-being.
+          biophilic design: the idea that incorporating nature into interiors improves well-being.
           Green connects a room to the outdoors without requiring a single plant.
         </p>
         <p>
@@ -181,7 +181,7 @@ const content: Record<string, FamilyContent> = {
         <h2 className="text-lg font-semibold text-gray-900">Beige vs Greige</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
           True beiges have yellow or gold undertones. Greiges add a gray component that modernizes the
-          color. If you&apos;re transitioning from gray walls, greige is the easiest bridge — read our{" "}
+          color. If you&apos;re transitioning from gray walls, greige is the easiest bridge: read our{" "}
           <Link href="/blog/warm-vs-cool-paint-colors" className="text-brand-blue hover:underline">
             warm vs cool guide
           </Link>{" "}
@@ -197,7 +197,7 @@ const content: Record<string, FamilyContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Red is the boldest choice on a paint fan deck — and one of the most rewarding when used
+          Red is the boldest choice on a paint fan deck, and one of the most rewarding when used
           intentionally. A deep, warm red transforms a dining room into a space that feels intimate
           and elegant. On a front door, red is a timeless statement that adds curb appeal to
           virtually any home style. The trick is picking the right red: warm reds with orange or
@@ -218,7 +218,7 @@ const content: Record<string, FamilyContent> = {
             Behr Red Pepper
           </Link>{" "}
           (a spicy, earthy red that works beautifully on accent walls). For a softer approach, muted
-          reds and burgundies create warmth without overwhelming a room — explore the{" "}
+          reds and burgundies create warmth without overwhelming a room: explore the{" "}
           <Link href="/colors/family/orange" className="text-brand-blue hover:underline">
             orange family
           </Link>{" "}
@@ -230,11 +230,11 @@ const content: Record<string, FamilyContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Using Red Effectively</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Red works best in contained spaces — a{" "}
+          Red works best in contained spaces: a{" "}
           <Link href="/blog/best-dining-room-paint-colors" className="text-brand-blue hover:underline">
             dining room
           </Link>, powder room, or front door. Full-room red can overwhelm, so consider a single
-          accent wall paired with warm neutrals. Test your red in evening light too — reds deepen
+          accent wall paired with warm neutrals. Test your red in evening light too: reds deepen
           dramatically under warm artificial lighting. Use the{" "}
           <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link> to
           preview reds on your walls, or explore our{" "}
@@ -252,8 +252,8 @@ const content: Record<string, FamilyContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Orange might be the most underrated color family in home design. While bright, saturated
-          oranges are rarely used on walls, muted and earthy oranges — terracotta, burnt sienna,
-          clay, and rust — have become some of the most sought-after tones in modern interiors.
+          oranges are rarely used on walls, muted and earthy oranges (terracotta, burnt sienna,
+          clay, and rust) have become some of the most sought-after tones in modern interiors.
           The terracotta trend connects back to natural materials: think adobe walls, clay pots, and
           sun-baked earth. These colors bring warmth and texture to a room without feeling loud.
         </p>
@@ -268,7 +268,7 @@ const content: Record<string, FamilyContent> = {
           </Link>{" "}
           (rich and warm), and Behr Canyon Dusk (a muted clay that reads as a warm neutral in the
           right light). These muted oranges pair beautifully with cream, sage green, and warm wood
-          tones — bridging the{" "}
+          tones, bridging the{" "}
           <Link href="/colors/family/red" className="text-brand-blue hover:underline">red</Link> and{" "}
           <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown</Link>{" "}
           families with effortless warmth.
@@ -279,8 +279,8 @@ const content: Record<string, FamilyContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Terracotta and Beyond</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          The key to orange is staying muted. Bright oranges are energizing in small doses — a front
-          door, a bookshelf interior — but terracotta and rust tones work as genuine wall colors.
+          The key to orange is staying muted. Bright oranges are energizing in small doses (a front
+          door, a bookshelf interior) but terracotta and rust tones work as genuine wall colors.
           Pair them with{" "}
           <Link href="/colors/family/green" className="text-brand-blue hover:underline">sage greens</Link>{" "}
           for a natural palette, or with warm whites for a southwestern feel. See how orange tones
@@ -301,10 +301,10 @@ const content: Record<string, FamilyContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Yellow is sunshine on your walls — cheerful, optimistic, and surprisingly tricky to get
+          Yellow is sunshine on your walls: cheerful, optimistic, and surprisingly tricky to get
           right. The most common mistake is choosing a yellow that looks perfect on a small chip
           but turns neon at wall scale. Saturated yellows amplify dramatically in large quantities,
-          which is why the most successful yellows for walls are soft, buttery, or golden — never
+          which is why the most successful yellows for walls are soft, buttery, or golden: never
           bright or lemony.
         </p>
         <p>
@@ -326,7 +326,7 @@ const content: Record<string, FamilyContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Avoiding Yellow Pitfalls</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Always sample yellow in a large swatch — at least two feet square — because it intensifies
+          Always sample yellow in a large swatch (at least two feet square) because it intensifies
           more than any other color at scale. North-facing rooms make yellows look greenish, so lean
           warmer in those spaces. Read our{" "}
           <Link href="/blog/best-paint-colors-north-facing-rooms" className="text-brand-blue hover:underline">
@@ -348,7 +348,7 @@ const content: Record<string, FamilyContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Purple occupies a unique space in home design — it can be soothing, dramatic, or playful
+          Purple occupies a unique space in home design: it can be soothing, dramatic, or playful
           depending on the shade. Light lavenders create dreamy, restful bedrooms. Deep plums and
           eggplant tones add theatrical richness to dining rooms and libraries. And the increasingly
           popular purple-grays serve as sophisticated alternatives to standard gray, adding depth
@@ -358,7 +358,7 @@ const content: Record<string, FamilyContent> = {
           Benjamin Moore Shadow (a moody, near-black plum) makes a stunning accent wall.
           Sherwin-Williams Potentially Purple is a soft lavender-gray that reads as a refined neutral
           in most lighting. The biggest purple pitfall? Undertones. Many grays and off-whites carry
-          hidden purple undertones that only reveal themselves on the wall — check our{" "}
+          hidden purple undertones that only reveal themselves on the wall: check our{" "}
           <Link href="/blog/understanding-paint-color-undertones" className="text-brand-blue hover:underline">
             undertones guide
           </Link>{" "}
@@ -386,7 +386,7 @@ const content: Record<string, FamilyContent> = {
             dining rooms
           </Link>{" "}
           that feel intimate. If you&apos;re nervous about committing to purple, start with a
-          purple-gray — it adds complexity without risk. Use the{" "}
+          purple-gray: it adds complexity without risk. Use the{" "}
           <Link href="/tools/palette-generator" className="text-brand-blue hover:underline">
             palette generator
           </Link>{" "}
@@ -401,7 +401,7 @@ const content: Record<string, FamilyContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Pink has undergone a complete transformation in interior design. Forget the bubblegum
-          associations — today&apos;s pinks are sophisticated neutrals. Blush pink, dusty rose, and
+          associations: today&apos;s pinks are sophisticated neutrals. Blush pink, dusty rose, and
           mauve have become serious contenders for living rooms, bedrooms, and even kitchens. These
           muted, grayed-down pinks read as warm neutrals on the wall while adding a softness that
           beige and gray simply can&apos;t achieve.
@@ -451,7 +451,7 @@ const content: Record<string, FamilyContent> = {
         <p>
           Off-white is the answer to the most common paint question: &ldquo;I want white, but not
           too white.&rdquo; Pure white can feel sterile and cold, especially in living spaces.
-          Off-whites soften that edge with a whisper of warmth — cream, yellow, pink, or gray — that
+          Off-whites soften that edge with a whisper of warmth (cream, yellow, pink, or gray) that
           makes a room feel lived-in rather than clinical. The challenge is that off-whites vary
           enormously: some lean warm and creamy, others cool and icy, and the wrong choice clashes
           with your trim, cabinetry, or fixed finishes.
@@ -472,7 +472,7 @@ const content: Record<string, FamilyContent> = {
           (the barely-there warm white). Off-whites sit between the{" "}
           <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link> and{" "}
           <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link>{" "}
-          families — warmer than a true white, cooler than a true beige, and endlessly versatile.
+          families: warmer than a true white, cooler than a true beige, and endlessly versatile.
         </p>
       </div>
     ),
@@ -481,7 +481,7 @@ const content: Record<string, FamilyContent> = {
         <h2 className="text-lg font-semibold text-gray-900">Finding Your Perfect Off-White</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
           The difference between off-whites is subtle on a chip but obvious on a wall. Always compare
-          against your trim color — if your trim is a true white, a warm off-white on walls creates
+          against your trim color, if your trim is a true white, a warm off-white on walls creates
           pleasing contrast. Read our{" "}
           <Link href="/blog/best-white-paint-colors-guide" className="text-brand-blue hover:underline">
             white paint guide
@@ -503,7 +503,7 @@ const content: Record<string, FamilyContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Black paint is no longer reserved for edgy lofts. Black accent walls, black-painted trim,
-          black kitchen cabinetry, and black front doors have gone fully mainstream — and the results
+          black kitchen cabinetry, and black front doors have gone fully mainstream, and the results
           are stunning when done right. The key is understanding that not all blacks are the same:
           some lean warm with brown or red undertones, others lean cool with blue or green
           undertones, and the LRV (light reflectance value) determines how much light the surface
@@ -513,13 +513,13 @@ const content: Record<string, FamilyContent> = {
           <Link href="/colors/sherwin-williams/tricorn-black-6258" className="text-brand-blue hover:underline">
             Sherwin-Williams Tricorn Black
           </Link>{" "}
-          is a true, neutral black — the industry standard for doors and trim. Benjamin Moore Black
+          is a true, neutral black: the industry standard for doors and trim. Benjamin Moore Black
           is the deepest option in their line. For a softer approach,{" "}
           <Link href="/colors/benjamin-moore/wrought-iron-2124-10" className="text-brand-blue hover:underline">
             Benjamin Moore Wrought Iron
           </Link>{" "}
           is an extremely popular off-black with subtle charcoal warmth that&apos;s more forgiving
-          than a jet black. Black pairs with everything — it&apos;s the ultimate anchor for{" "}
+          than a jet black. Black pairs with everything: it&apos;s the ultimate anchor for{" "}
           <Link href="/colors/family/white" className="text-brand-blue hover:underline">white</Link>,{" "}
           <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link>, and
           any accent color.
@@ -530,13 +530,13 @@ const content: Record<string, FamilyContent> = {
       <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-5">
         <h2 className="text-lg font-semibold text-gray-900">Black Paint Strategy</h2>
         <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-          Black on trim is the biggest design trend of the last few years — it adds definition and
+          Black on trim is the biggest design trend of the last few years: it adds definition and
           makes white walls pop. For{" "}
           <Link href="/blog/best-exterior-paint-colors" className="text-brand-blue hover:underline">
             front doors and exteriors
           </Link>, choose a true black with minimal undertone. For accent walls, an off-black like
           Wrought Iron is more forgiving. Keep in mind that flat or matte sheens on black show every
-          imperfection — satin or semi-gloss is usually the safer finish. Read our{" "}
+          imperfection: satin or semi-gloss is usually the safer finish. Read our{" "}
           <Link href="/blog/paint-sheen-guide" className="text-brand-blue hover:underline">
             sheen guide
           </Link>{" "}
@@ -555,7 +555,7 @@ const content: Record<string, FamilyContent> = {
           Brown is having a moment. After years of gray dominance, designers and homeowners are
           turning to rich chocolate browns, warm taupes, and earthy umber tones for a cozier,
           more grounded aesthetic. Brown creates the warmth people wanted from gray but never
-          quite achieved — it feels like a wool blanket on a cold day, wrapping a room in comfort
+          quite achieved: it feels like a wool blanket on a cold day, wrapping a room in comfort
           without sacrificing sophistication.
         </p>
         <p>
@@ -609,7 +609,7 @@ const content: Record<string, FamilyContent> = {
         <p>
           Tan sits in the warm space between{" "}
           <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beige</Link> and{" "}
-          <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown</Link> —
+          <Link href="/colors/family/brown" className="text-brand-blue hover:underline">brown</Link>:
           yellower and warmer than beige, lighter and sandier than brown. Think sun-bleached leather,
           desert sand, and golden wheat. Tan is the quintessential warm neutral for homeowners who
           want color that feels natural and effortless, with enough pigment to avoid the washed-out
@@ -620,7 +620,7 @@ const content: Record<string, FamilyContent> = {
           Bridgewater Tan offers a sandy, approachable neutral that works throughout an entire home.
           Behr Sculptor Clay bridges tan and terracotta for a southwestern-inspired palette. Tan
           colors pair beautifully with turquoise accents, warm wood floors, iron hardware, and
-          natural stone — making them ideal for rustic, southwestern, and transitional interiors.
+          natural stone, making them ideal for rustic, southwestern, and transitional interiors.
         </p>
       </div>
     ),
@@ -650,7 +650,7 @@ const content: Record<string, FamilyContent> = {
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Neutrals are the backbone of interior design — the colors that let everything else in a
+          Neutrals are the backbone of interior design: the colors that let everything else in a
           room shine. In our database, the neutral family captures colors that don&apos;t fit neatly
           into a single color family: complex greiges that are equal parts{" "}
           <Link href="/colors/family/gray" className="text-brand-blue hover:underline">gray</Link> and{" "}
@@ -662,7 +662,7 @@ const content: Record<string, FamilyContent> = {
         <p>
           These in-between colors are often the most versatile in your home. Sherwin-Williams
           Agreeable Gray (the single most popular paint color in America) lives in this neutral
-          territory — it&apos;s a greige that shifts between gray and beige depending on the light.
+          territory: it&apos;s a greige that shifts between gray and beige depending on the light.
           Benjamin Moore Revere Pewter offers similar chameleon-like flexibility. When you&apos;re
           painting an open floor plan, a whole-home neutral from this family keeps rooms connected
           while allowing individual spaces to express personality through accent colors, textiles,
@@ -732,7 +732,7 @@ export function getFamilyContent(slug: string): FamilyContent | undefined {
 // apostrophes render correctly through React; do not HTML-escape.
 const FAMILY_ANCHORS: Record<string, string> = {
   white:
-    "As reference points: Chantilly Lace sits at LRV 90 (the crispest bright white), while White Dove (LRV 83) and Pure White (LRV 84) read softer and warmer — proof that two whites can share a brightness yet feel completely different on the wall.",
+    "As reference points: Chantilly Lace sits at LRV 90 (the crispest bright white), while White Dove (LRV 83) and Pure White (LRV 84) read softer and warmer: proof that two whites can share a brightness yet feel completely different on the wall.",
   gray:
     "Repose Gray (LRV 58) is the light, true-gray benchmark and Gray Owl (LRV 65) the cooler, airier option; drop to a mid-tone like Mindful Gray (LRV 48) when a room needs real contrast rather than a wash.",
   blue:
@@ -740,27 +740,27 @@ const FAMILY_ANCHORS: Record<string, string> = {
   green:
     "Soft, low-chroma greens like Sea Salt (LRV 63) work as whole-room neutrals, while a saturated jewel-tone such as PPG Vining Ivy (LRV 15) is best reserved for an accent wall or a powder room.",
   beige:
-    "Accessible Beige (LRV 58) is the warm-greige benchmark here — light enough to brighten a room, warm enough to avoid the cold, steely look of a true gray.",
+    "Accessible Beige (LRV 58) is the warm-greige benchmark here: light enough to brighten a room, warm enough to avoid the cold, steely look of a true gray.",
   red:
     "Reds run deep and high-energy: a dramatic anchor like Behr Caliente (LRV 14) carries a dining room or a front door far better than it would a whole bright space.",
   orange:
-    "The most livable oranges are earthy and muted rather than vivid — a terracotta-leaning tone like Behr Cavern Clay (LRV 34) is the kind people actually paint a room.",
+    "The most livable oranges are earthy and muted rather than vivid: a terracotta-leaning tone like Behr Cavern Clay (LRV 34) is the kind people actually paint a room.",
   yellow:
     "Soft, sunny yellows like Benjamin Moore Hawthorne Yellow (LRV 71) lift north-facing rooms; the higher the LRV, the more cheerful and the less acidic the result.",
   purple:
-    "Purples range from pale lilacs to deep amethysts like Benjamin Moore Shadow (LRV 9) — and because they shift more than any other family under changing light, sampling is non-negotiable.",
+    "Purples range from pale lilacs to deep amethysts like Benjamin Moore Shadow (LRV 9), and because they shift more than any other family under changing light, sampling is non-negotiable.",
   pink:
     "Today's pinks lean soft and grown-up: a barely-there blush like Benjamin Moore First Light (LRV 76) reads almost neutral rather than sweet.",
   "off-white":
-    "Off-whites carry a faint greige that keeps them from reading stark — Snowbound (LRV 83) and the softer Classic Gray (LRV 74) are the go-to's when a pure white feels too clinical.",
+    "Off-whites carry a faint greige that keeps them from reading stark: Snowbound (LRV 83) and the softer Classic Gray (LRV 74) are the go-to's when a pure white feels too clinical.",
   black:
     "Tricorn Black (LRV 3) is the true, neutral black for crisp trim and doors; a softer near-black like Behr Cracked Pepper (LRV 8) gives the same drama with a touch of warmth.",
   brown:
-    "Browns work best with real depth — a sophisticated dark brown like Sherwin-Williams Pier (LRV 9) reads rich and modern rather than dated.",
+    "Browns work best with real depth: a sophisticated dark brown like Sherwin-Williams Pier (LRV 9) reads rich and modern rather than dated.",
   tan:
     "A warm, classic tan like Benjamin Moore Manchester Tan (LRV 63) is the safe, light earth-tone that pairs with almost any wood or stone.",
   neutral:
-    "Agreeable Gray (LRV 60) is the most popular true-neutral greige in the US for a reason — it holds steady across north, south, and lamplight without committing to warm or cool.",
+    "Agreeable Gray (LRV 60) is the most popular true-neutral greige in the US for a reason: it holds steady across north, south, and lamplight without committing to warm or cool.",
 };
 
 export function getFamilyAnchor(slug: string): string | null {

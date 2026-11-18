@@ -15,11 +15,11 @@ const content: Record<string, BrandContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Sherwin-Williams is America&apos;s largest paint company, operating over 4,000 company-owned
-          retail stores and offering a palette of 1,700+ colors. Their best-selling color —{" "}
+          retail stores and offering a palette of 1,700+ colors. Their best-selling color:{" "}
           <Link href="/colors/sherwin-williams/agreeable-gray-7029" className="text-brand-blue hover:underline">
             Agreeable Gray SW 7029
           </Link>{" "}
-          (LRV 60, warm undertone, hex #D1CBC1) — has been the top-selling paint color in the United
+          (LRV 60, warm undertone, hex #D1CBC1): has been the top-selling paint color in the United
           States for five consecutive years. Founded in 1866 in Cleveland, Ohio, Sherwin-Williams is
           trusted by contractors, architects, and homeowners for its professional-grade formulas and
           frequent 30&ndash;40% off sales events.
@@ -67,7 +67,7 @@ const content: Record<string, BrandContent> = {
   },
 
   "benjamin-moore": {
-    subtitle: "Explore Benjamin Moore's 3,500+ colors — with closest matches from Sherwin-Williams, Behr, and more",
+    subtitle: "Explore Benjamin Moore's 3,500+ colors, with closest matches from Sherwin-Williams, Behr, and more",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -76,7 +76,7 @@ const content: Record<string, BrandContent> = {
           rich, true-to-swatch color over more than 140 years. Their proprietary Gennex color system
           produces exceptionally accurate, consistent color with every can, and their 3,500+ color
           palette is the largest among major paint brands. Benjamin Moore is sold exclusively through
-          independent paint stores and hardware stores — you won&apos;t find it at Home Depot or
+          independent paint stores and hardware stores: you won&apos;t find it at Home Depot or
           Lowe&apos;s.
         </p>
         <p>
@@ -90,7 +90,7 @@ const content: Record<string, BrandContent> = {
           These colors have become staples in both residential and commercial design projects.
         </p>
         <p>
-          Top product lines include <strong>Aura</strong> (the premium flagship — true one-coat
+          Top product lines include <strong>Aura</strong> (the premium flagship: true one-coat
           coverage with Color Lock technology), <strong>Regal Select</strong> (excellent all-around
           performance for any room), <strong>Ben</strong> (budget-friendly entry point), and{" "}
           <strong>Natura</strong> (zero-VOC for nurseries and bedrooms). Price range: $60–$85+ per
@@ -125,11 +125,11 @@ const content: Record<string, BrandContent> = {
   },
 
   behr: {
-    subtitle: "Shop all Behr colors from Home Depot — with side-by-side matches to other brands",
+    subtitle: "Shop all Behr colors from Home Depot, with side-by-side matches to other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
-          Behr is sold exclusively at Home Depot — the only place to buy it — and offers a palette
+          Behr is sold exclusively at Home Depot (the only place to buy it) and offers a palette
           of 3,000+ current colors, second to Benjamin Moore among the &quot;big three&quot;
           consumer paint brands. Consumer Reports has consistently ranked <strong>Behr Marquee</strong>{" "}
           at or near the top in blind coverage and durability tests, and Behr&apos;s thick, one-coat
@@ -149,10 +149,10 @@ const content: Record<string, BrandContent> = {
           for any Behr color, with plain-language closeness labels.
         </p>
         <p>
-          Top product lines include <strong>Dynasty</strong> (premium, one-coat, scuff-resistant —
+          Top product lines include <strong>Dynasty</strong> (premium, one-coat, scuff-resistant,
           $50&ndash;$55/gallon), <strong>Marquee</strong> (excellent coverage with stain-blocking
-          technology — $45&ndash;$50/gallon), <strong>Ultra</strong> (solid mid-range —
-          $38&ndash;$42/gallon), and <strong>Premium Plus</strong> (budget-friendly —
+          technology, $45&ndash;$50/gallon), <strong>Ultra</strong> (solid mid-range,
+          $38&ndash;$42/gallon), and <strong>Premium Plus</strong> (budget-friendly,
           $35&ndash;$38/gallon). All Behr paints are available in-store at Home Depot&apos;s
           more than 2,000 US stores or online at homedepot.com with free delivery on qualifying orders.
         </p>
@@ -180,12 +180,12 @@ const content: Record<string, BrandContent> = {
   },
 
   ppg: {
-    subtitle: "Browse PPG's full color palette — find matches from Sherwin-Williams, Benjamin Moore, and more",
+    subtitle: "Browse PPG's full color palette: find matches from Sherwin-Williams, Benjamin Moore, and more",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           PPG paints are sold at Home Depot (under the PPG Timeless and PPG Diamond labels), through
-          Pittsburgh Paints Co. stores, and at independent dealers nationwide — making PPG one of the most widely
+          Pittsburgh Paints Co. stores, and at independent dealers nationwide, making PPG one of the most widely
           distributed paint brands in the country. Founded in 1883 as Pittsburgh Plate Glass Company, PPG
           now operates in more than 70 countries and is one of the world&apos;s largest coatings
           manufacturers. Since December 2024, PPG&apos;s US and Canadian architectural paint business,
@@ -226,7 +226,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link>.
           PPG&apos;s palette covers over 2,000 colors across every family, from soft neutrals to bold
           accents. Click any PPG color below to see the closest matches from Sherwin-Williams, Benjamin
-          Moore, and all other brands in our database — ranked by{" "}
+          Moore, and all other brands in our database: ranked by{" "}
           <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
             Delta E accuracy
           </Link>. Use our{" "}
@@ -239,7 +239,7 @@ const content: Record<string, BrandContent> = {
   },
 
   valspar: {
-    subtitle: "Browse Valspar colors from Lowe's — with cross-brand matches to Sherwin-Williams, Behr, and more",
+    subtitle: "Browse Valspar colors from Lowe's, with cross-brand matches to Sherwin-Williams, Behr, and more",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -247,7 +247,7 @@ const content: Record<string, BrandContent> = {
           Lowe&apos;s stores nationwide. Now owned by Sherwin-Williams (acquired in 2017), Valspar
           benefits from the parent company&apos;s color science while maintaining its own distinct
           palette of 2,000+ colors and competitive pricing. Valspar is a go-to choice for
-          budget-conscious DIYers who want broad color selection without the premium price tag — and
+          budget-conscious DIYers who want broad color selection without the premium price tag, and
           the convenience of picking up paint at any Lowe&apos;s location.
         </p>
         <p>
@@ -258,7 +258,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/valspar/notre-dame-5006-1b" className="text-brand-blue hover:underline">Notre Dame 5006-1B</Link>,{" "}
           <Link href="/colors/valspar/gray-silt-6002-1c" className="text-brand-blue hover:underline">Gray Silt 6002-1C</Link>, and{" "}
           <Link href="/colors/valspar/gravity-4005-1b" className="text-brand-blue hover:underline">Gravity 4005-1B</Link>.
-          These well-known picks lean heavily toward warm neutrals, earthy tones, and calming greens —
+          These well-known picks lean heavily toward warm neutrals, earthy tones, and calming greens:
           reflecting current design trends.
         </p>
         <p>
@@ -266,7 +266,7 @@ const content: Record<string, BrandContent> = {
           ScuffShield technology for high-traffic areas), <strong>Valspar Reserve</strong> (the
           ultra-premium line with stain- and scuff-resistant finishes), and <strong>Valspar Ultra</strong>{" "}
           (a solid mid-range paint-and-primer-in-one). All Valspar paints are available in a full range
-          of sheens from flat to high-gloss. Price range: $30&ndash;$55 per gallon — making Valspar one
+          of sheens from flat to high-gloss. Price range: $30&ndash;$55 per gallon, making Valspar one
           of the most affordable quality options on the market. Preview any Valspar color with our{" "}
           <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
           or use the{" "}
@@ -282,7 +282,7 @@ const content: Record<string, BrandContent> = {
           Explore Valspar&apos;s trending{" "}
           <Link href="/colors/family/green" className="text-brand-blue hover:underline">greens</Link>,{" "}
           <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>, and{" "}
-          <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link> —
+          <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link>:
           their most popular color families. Found a color from another brand you love? Click any Valspar
           color below to see the closest equivalents from all 13 brands, ranked by{" "}
           <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
@@ -297,7 +297,7 @@ const content: Record<string, BrandContent> = {
   },
 
   "dunn-edwards": {
-    subtitle: "Explore Dunn-Edwards colors — with nationally available matches from other brands",
+    subtitle: "Explore Dunn-Edwards colors, with nationally available matches from other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -305,7 +305,7 @@ const content: Record<string, BrandContent> = {
           With over 170 company-owned stores across California, Arizona, Nevada, New Mexico, and Texas,
           Dunn-Edwards has built a loyal following among contractors, architects, and designers who
           demand exceptional quality. The brand is particularly known for its zero-VOC and low-VOC
-          formulas — their <strong>SUPREMA</strong> line earned GreenWise certification — making them an
+          formulas (their <strong>SUPREMA</strong> line earned GreenWise certification) making them an
           excellent choice for environmentally conscious homeowners and projects where air quality matters.
         </p>
         <p>
@@ -343,7 +343,7 @@ const content: Record<string, BrandContent> = {
           Dunn-Edwards&apos;{" "}
           <Link href="/colors/family/white" className="text-brand-blue hover:underline">whites</Link>,{" "}
           <Link href="/colors/family/beige" className="text-brand-blue hover:underline">beiges</Link>, and{" "}
-          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link> —
+          <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>:
           their most popular families. Use our{" "}
           <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>{" "}
           to preview any shade in your space.
@@ -353,14 +353,14 @@ const content: Record<string, BrandContent> = {
   },
 
   "farrow-ball": {
-    subtitle: "Browse Farrow & Ball's curated palette — find budget-friendly matches from other brands",
+    subtitle: "Browse Farrow & Ball's curated palette: find budget-friendly matches from other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           Farrow &amp; Ball is a British luxury paint brand founded in 1946 in Dorset, England, renowned
           for its deeply pigmented, richly textured finishes. Each color is handcrafted using
           exceptionally high concentrations of pigment that create an extraordinary depth and complexity
-          of color — especially visible as natural light changes throughout the day. The brand has a
+          of color, especially visible as natural light changes throughout the day. The brand has a
           cult following among interior designers, architects, and homeowners who want paint that looks
           and feels fundamentally different from mass-market alternatives. Farrow &amp; Ball paints are
           available through their own showrooms, select design retailers, and online.
@@ -372,17 +372,17 @@ const content: Record<string, BrandContent> = {
           <Link href="/colors/farrow-ball/cornforth-white-228" className="text-brand-blue hover:underline">Cornforth White No.228</Link>,{" "}
           <Link href="/colors/farrow-ball/ammonite-274" className="text-brand-blue hover:underline">Ammonite No.274</Link>, and{" "}
           <Link href="/colors/farrow-ball/stiffkey-blue-281" className="text-brand-blue hover:underline">Stiffkey Blue No.281</Link>.
-          These colors have become design world staples — Elephant&apos;s Breath is one of the most
+          These colors have become design world staples: Elephant&apos;s Breath is one of the most
           searched paint colors in the world, and Hague Blue has defined the moody blue trend for a decade.
         </p>
         <p>
-          Their palette is deliberately curated at approximately 150 colors rather than thousands — each
+          Their palette is deliberately curated at approximately 150 colors rather than thousands: each
           one carefully developed and given an evocative name drawn from British history and landscape.
           Farrow &amp; Ball is known for unique finish names: <strong>Modern Emulsion</strong> (a durable,
           wipeable matte for most rooms), <strong>Estate Emulsion</strong> (a chalky, ultra-matte finish
           for ceilings and low-traffic rooms), <strong>Full Gloss</strong> (for woodwork and trim), and{" "}
           <strong>Modern Eggshell</strong> (a mid-sheen for kitchens and bathrooms). Price range:
-          $100&ndash;$120 per gallon — the most expensive major brand, reflecting artisanal manufacturing,
+          $100&ndash;$120 per gallon: the most expensive major brand, reflecting artisanal manufacturing,
           premium pigment concentration, and water-based formulas. Preview any Farrow &amp; Ball color with
           our{" "}
           <Link href="/tools/room-visualizer" className="text-brand-blue hover:underline">room visualizer</Link>,
@@ -402,7 +402,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>,{" "}
           <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,
           and{" "}
-          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link> — often at
+          <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>, often at
           a third of the price per gallon. Explore Farrow &amp; Ball&apos;s most loved{" "}
           <Link href="/colors/family/blue" className="text-brand-blue hover:underline">blues</Link>,{" "}
           <Link href="/colors/family/gray" className="text-brand-blue hover:underline">grays</Link>, and{" "}
@@ -416,7 +416,7 @@ const content: Record<string, BrandContent> = {
   },
 
   kilz: {
-    subtitle: "Browse Kilz paint colors — with cross-brand matches to Behr, Sherwin-Williams, and more",
+    subtitle: "Browse Kilz paint colors, with cross-brand matches to Behr, Sherwin-Williams, and more",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -426,7 +426,7 @@ const content: Record<string, BrandContent> = {
           formulas. Kilz products are sold at Home Depot and Walmart.
         </p>
         <p>
-          Their flagship paint line is <strong>Kilz Tribute</strong> — a premium interior paint +
+          Their flagship paint line is <strong>Kilz Tribute</strong>: a premium interior paint +
           primer with excellent stain-blocking and coverage (up to 400 sq ft per gallon), available in
           Matte, Eggshell, Satin, and Semi-Gloss. They also make specialty paints including{" "}
           <strong>Porch & Patio</strong> floor paint and <strong>Cabinet & Trim</strong>. Price
@@ -442,7 +442,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>,{" "}
           <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
           <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>,
-          and all other brands in our database — ranked by{" "}
+          and all other brands in our database: ranked by{" "}
           <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
             Delta E accuracy
           </Link>.
@@ -452,7 +452,7 @@ const content: Record<string, BrandContent> = {
   },
 
   "vista-paint": {
-    subtitle: "Browse Vista Paint colors — find nationally available matches from other brands",
+    subtitle: "Browse Vista Paint colors: find nationally available matches from other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -484,7 +484,7 @@ const content: Record<string, BrandContent> = {
   },
 
   hirshfields: {
-    subtitle: "Browse Hirshfield's colors — with cross-brand matches to nationally available brands",
+    subtitle: "Browse Hirshfield's colors, with cross-brand matches to nationally available brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -551,7 +551,7 @@ const content: Record<string, BrandContent> = {
   },
 
   "dutch-boy": {
-    subtitle: "Browse Dutch Boy colors from Menards — find matches from nationally available brands",
+    subtitle: "Browse Dutch Boy colors from Menards: find matches from nationally available brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -576,7 +576,7 @@ const content: Record<string, BrandContent> = {
           from nationally available brands like{" "}
           <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
           <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>, and{" "}
-          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link> —
+          <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>:
           ranked by{" "}
           <Link href="/blog/how-to-find-perfect-color-match-across-brands" className="text-brand-blue hover:underline">
             Delta E accuracy
@@ -592,7 +592,7 @@ const content: Record<string, BrandContent> = {
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
           RAL is the European standard color matching system, originating in Germany in 1927. Unlike
-          paint brands, RAL defines standardized color codes used globally across industries —
+          paint brands, RAL defines standardized color codes used globally across industries:
           architecture, automotive, industrial coatings, powder coating, and manufacturing. When you
           specify a RAL color, any manufacturer can produce an exact match.
         </p>
@@ -619,7 +619,7 @@ const content: Record<string, BrandContent> = {
           <Link href="/brands/sherwin-williams" className="text-brand-blue hover:underline">Sherwin-Williams</Link>,{" "}
           <Link href="/brands/benjamin-moore" className="text-brand-blue hover:underline">Benjamin Moore</Link>,{" "}
           <Link href="/brands/behr" className="text-brand-blue hover:underline">Behr</Link>, and 9 other
-          brands — ranked by Delta E accuracy.
+          brands: ranked by Delta E accuracy.
         </p>
       </div>
     ),
