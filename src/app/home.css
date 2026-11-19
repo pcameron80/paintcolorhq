@@ -87,12 +87,15 @@
 @media (min-width: 1024px) and (min-height: 700px) {
   .pch-home > .pch-sec, .pch-home > .pch-hero { height: calc(var(--h, 1) * 100svh); }
 }
+/* tablet and phone: each section is as tall as its content plus normal padding (a deliberate skip of the
+   skill's exact-screens rule, which left empty bands under short sections); only the hero fills a screen */
 @media (min-width: 640px) and (max-width: 1023px) {
-  .pch-home > .pch-sec, .pch-home > .pch-hero { min-height: calc(var(--h, 1) * 100svh); }
+  .pch-home > .pch-hero { min-height: 100svh; }
+  main.pch-home > section.pch-sec[data-moment]:not(.is-live) { min-height: 0; }
 }
 @media (max-width: 639px) {
-  .pch-home > .pch-sec, main.pch-home > section.pch-sec[data-moment]:not(.is-live) { min-height: calc(var(--hm, 1) * 100lvh); }
   .pch-home > .pch-hero { min-height: 100svh; }
+  main.pch-home > section.pch-sec[data-moment]:not(.is-live) { min-height: 0; }
 }
 .pch-head { display: grid; gap: var(--s-3); margin-bottom: var(--s-7); }
 .pch-head p { font-size: var(--t-lead); line-height: 1.5; max-width: 52ch; }
