@@ -4,6 +4,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ColorIdentifier } from "./identifier";
 import { AdSenseScript } from "@/components/adsense-script";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
 import { ogDefaults } from "@/lib/og";
@@ -49,7 +51,7 @@ function JsonLd({ data }: { data: object }) {
 
 export default function ColorIdentifierPage() {
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Paint Color Identifier",
@@ -68,15 +70,31 @@ export default function ColorIdentifierPage() {
       }} />
 
       <Header />
-      <main id="main-content">
+      <main id="main-content" className="pch-page pch-tool">
 
-      <section className="relative pt-24 px-6 md:px-12 py-16">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">Tool</span>
-          <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
+      <section className="pch-toolhead">
+        <div className="wrap pch-wrap">
+          <span className="pch-eyebrow">Tool</span>
+          <h1>
             Paint Color Identifier: <span className="text-primary">Match Paint From a Photo</span>
           </h1>
-          <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+        </div>
+      </section>
+
+      <section className="pch-toolbody">
+        <div className="wrap pch-wrap">
+          <ColorIdentifier />
+          <SamplizeOffer
+            sid="color-identifier"
+            intro="Found your match?"
+            className="mt-10 max-w-2xl"
+          />
+        </div>
+      </section>
+
+      <section className="pch-toolintro">
+        <div className="wrap pch-wrap">
+          <p>
             Upload any photo and click a spot, or type a hex code, to find the
             closest paint colors from <strong className="text-on-surface">26,000+ colors across 13 brands</strong>,
             including Sherwin-Williams, Benjamin Moore, Behr, Valspar, PPG,
@@ -85,17 +103,6 @@ export default function ColorIdentifierPage() {
             every brand, ranked by how close each one looks to the human eye.
             Free, with no sign-up or download.
           </p>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 pb-16">
-        <div className="max-w-7xl mx-auto">
-          <ColorIdentifier />
-          <SamplizeOffer
-            sid="color-identifier"
-            intro="Found your match?"
-            className="mt-10 max-w-2xl"
-          />
         </div>
       </section>
 
