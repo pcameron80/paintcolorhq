@@ -320,7 +320,7 @@ a.pch-card:hover .pch-tool__art--room img { transform: scale(1.03); }
 .pch-post:hover .pch-post__img img { transform: scale(1.03); }
 .pch-post h3 { font-size: 22px; transition: color 160ms ease; }
 .pch-post:hover h3 { color: var(--accent); }
-.pch-post p { color: var(--muted); font-size: 16px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.pch-post p { color: var(--muted); font-size: 16px; line-height: 1.5; }
 @media (max-width: 1023px) { .pch-posts { grid-template-columns: 1fr; } .pch-post { grid-template-columns: 1fr 1fr; align-items: start; column-gap: var(--s-5); } }
 @media (max-width: 639px) { .pch-post { grid-template-columns: 1fr; } }
 
