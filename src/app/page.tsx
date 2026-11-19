@@ -16,6 +16,7 @@ import { NAV_BRANDS, NAV_HUES } from "@/lib/site-nav";
 import { HOME_MATCH_SETS } from "@/lib/home-matches";
 import { HeroCollage } from "@/components/home/hero-collage";
 import { MomentsLoader } from "@/components/home/moments-loader";
+import "./redesign.css";
 import "./home.css";
 
 const urbanist = Urbanist({ subsets: ["latin"], variable: "--font-urbanist", display: "swap" });
