@@ -11,6 +11,8 @@ import { getPaletteBySlug, assignPaletteRoles, inspirationPalettes } from "@/lib
 import { getAllBrands, findClosestColor, getBrandBySlug } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
 import { AdSenseScript } from "@/components/adsense-script";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -122,7 +124,7 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
   })();
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       {/* Pinterest pin trigger — hidden, picked up by the Save extension */}
       <img
         src={palettePinImageUrl}
@@ -158,23 +160,8 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
         ],
       }} />
 
-      {/* Hero — full-bleed palette strip */}
-      <div className="pt-[65px]">
-        <div className="h-48 md:h-64" style={{ display: "grid", gridTemplateColumns: `repeat(${swatches.length}, 1fr)` }}>
-          {swatches.map((swatch, i) => (
-            <div key={i} className="relative" style={{ backgroundColor: swatch.match?.hex ?? swatch.paletteHex }}>
-              <span
-                className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap"
-                style={{ color: textColor(swatch.match?.hex ?? swatch.paletteHex), backgroundColor: textColor(swatch.match?.hex ?? swatch.paletteHex) === "#ffffff" ? "rgba(0,0,0,0.2)" : "rgba(255,255,255,0.5)" }}
-              >
-                {swatch.role}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <main id="main-content" className="max-w-7xl mx-auto px-6 md:px-12 py-16">
+      <main id="main-content" className="pch-page pch-tool">
+      <section className="pch-toolhead"><div className="wrap pch-wrap">
         <nav className="mb-8 text-sm text-on-surface-variant">
           <Link href="/" className="hover:text-primary transition-colors">Home</Link>
           <span className="mx-2 text-outline">/</span>
@@ -209,6 +196,24 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
             )}
           </div>
         </div>
+      </div></section>
+
+      <section className="pch-toolbody"><div className="wrap pch-wrap">
+      <div className="hidden md:block" style={{ marginBottom: "var(--s-6)" }}>
+        <div className="h-48 md:h-64 rounded-xl overflow-hidden" style={{ display: "grid", gridTemplateColumns: `repeat(${swatches.length}, 1fr)` }}>
+          {swatches.map((swatch, i) => (
+            <div key={i} className="relative" style={{ backgroundColor: swatch.match?.hex ?? swatch.paletteHex }}>
+              <span
+                className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap"
+                style={{ color: textColor(swatch.match?.hex ?? swatch.paletteHex), backgroundColor: textColor(swatch.match?.hex ?? swatch.paletteHex) === "#ffffff" ? "rgba(0,0,0,0.2)" : "rgba(255,255,255,0.5)" }}
+              >
+                {swatch.role}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
 
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-5">
           {swatches.map((swatch, i) => {
@@ -243,7 +248,7 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
         <div className="mt-12 max-w-2xl">
           <SamplizeOffer sid="inspiration" intro="Love this palette?" />
         </div>
-      </main>
+      </div></section>
 
       {/* Editorial content */}
       {palette.editorial && (
@@ -300,6 +305,7 @@ export default async function InspirationDetailPage({ params, searchParams }: Pa
         </div>
       </section>
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>

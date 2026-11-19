@@ -52,9 +52,9 @@
 @media (max-width: 639px) { :is(.pch-home, .pch-page) { --gut: 24px; --padt: 96px; --padb: 48px; --t-h1: 40px; --t-h2: 30px; --t-h3: 24px; --t-lead: 18px; --gutter: 12px; } }
 
 :is(.pch-home, .pch-page) *, :is(.pch-home, .pch-page) *::before, :is(.pch-home, .pch-page) *::after { box-sizing: border-box; }
-:is(.pch-home, .pch-page) :where(h1, h2, h3, h4, p, ul, ol, figure) { margin: 0; padding: 0; }
-:is(.pch-home, .pch-page) :where(ul, ol) { list-style: none; }
-:is(.pch-home, .pch-page) a { color: inherit; text-decoration: none; }
+:is(.pch-home, .pch-page):not(.pch-tool) :where(h1, h2, h3, h4, p, ul, ol, figure) { margin: 0; padding: 0; }
+:is(.pch-home, .pch-page):not(.pch-tool) :where(ul, ol) { list-style: none; }
+:is(.pch-home, .pch-page):not(.pch-tool) a { color: inherit; text-decoration: none; }
 :is(.pch-home, .pch-page) :where(a, button, input):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 :is(.pch-home, .pch-page) .muted { color: var(--muted); }
 
@@ -258,3 +258,95 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
 .pch-post p { color: var(--muted); font-size: 16px; line-height: 1.5; }
 .pch-readable > * { max-width: 860px; }
 .pch-readable > .pch-prose { max-width: 70ch; }
+
+/* ================================================================ working pages (.pch-tool): compare, tool apps,
+   palette pages. The existing tool components keep their markup and behavior; this layer re-skins them into the
+   same system (same face, ink, accent, radius) and lines their sections up on the shared wrap. */
+.pch-tool, .pch-tool :is(button, input, select, textarea, a, p, span, li, td, th, label, summary, h1, h2, h3, h4, dt, dd, div) { font-family: var(--font-text); }
+.pch-tool :is(h1, h2, h3, h4) { font-weight: 500; letter-spacing: -0.02em; color: var(--ink); }
+.pch-tool .font-mono, .pch-tool .mono, .pch-tool code { font-family: var(--font-mono); }
+.pch-tool .font-bold, .pch-tool .font-extrabold, .pch-tool .font-semibold { font-weight: 500; }
+.pch-tool { color: var(--ink); background: var(--bg); padding-top: 0; }
+/* sections: same edges as the wrap, content height */
+.pch-tool > section, .pch-tool > div > section { padding-left: 0; padding-right: 0; }
+.pch-tool section > div[class*="max-w-"] { width: min(100% - 2 * var(--gut), 1280px); max-width: none; margin-inline: auto; }
+.pch-tool section > div[class*="max-w-4xl"] > *, .pch-tool section > div[class*="max-w-3xl"] > * { max-width: 56rem; }
+.pch-tool section[class*="py-"] { padding-top: var(--s-8); padding-bottom: var(--s-8); }
+.pch-tool section[class*="bg-surface-container-low"] { background: var(--surface); }
+.pch-tool section[class*="bg-tertiary-fixed"] { background: var(--surface); }
+.pch-tool section[class*="border-t"] { border-top: 0; }
+@media (max-width: 639px) { .pch-tool section[class*="py-"] { padding-top: var(--s-7); padding-bottom: var(--s-7); } }
+.pch-tool h2 { font-size: var(--t-h2-page); max-width: 28ch; }
+.pch-tool h3 { font-size: 22px; }
+.pch-tool :is(.text-3xl, .text-2xl) { font-size: var(--t-h2-page); }
+.pch-tool .text-xl { font-size: 20px; }
+/* text colors: the gray scale and brand blue map to the system's ink, muted and accent */
+.pch-tool :is(.text-gray-900, .text-on-surface) { color: var(--ink); }
+.pch-tool :is(.text-gray-700, .text-gray-600, .text-gray-500, .text-on-surface-variant, .text-outline) { color: var(--muted); }
+.pch-tool :is(.text-gray-400) { color: #5e616e; }
+.pch-tool :is(.text-primary, .text-brand-blue) { color: var(--accent); }
+.pch-tool :is(.border-gray-200, .border-gray-300, .border-outline-variant\/30, .border-outline-variant\/20, .border-outline-variant\/10, .border-outline-variant\/15) { border-color: rgb(22 25 53 / 0.18); }
+.pch-tool :is(.bg-gray-50, .bg-gray-100, .bg-surface-container-low, .bg-surface-container-lowest) { background-color: var(--surface); }
+.pch-tool section :is(.bg-gray-50, .bg-surface-container-lowest) { background-color: var(--surface); }
+.pch-tool :is(.hover\:bg-gray-50:hover, .hover\:bg-gray-100:hover) { background-color: var(--accent-tint); }
+.pch-tool :is(.hover\:text-primary:hover, .hover\:text-brand-blue:hover, .group:hover .group-hover\:text-primary) { color: var(--accent); }
+.pch-tool :is(.rounded-xl, .rounded-2xl) { border-radius: var(--r-lg); }
+.pch-tool :is(.rounded-lg, .rounded-md) { border-radius: var(--r-md); }
+.pch-tool :is(.shadow-lg, .shadow-md, .shadow-sm, .shadow-xl, .shadow-2xl) { box-shadow: 0 1px 2px rgb(22 25 53 / 0.08), 0 14px 32px -20px rgb(22 25 53 / 0.35); }
+.pch-tool :is(.shadow-primary\/20) { box-shadow: none; }
+/* controls */
+.pch-tool :is(input[type="text"], input[type="search"], input[type="number"], input[type="email"], input:not([type]), select, textarea):not(.border-0):not([class*="border-none"]):not(.bg-transparent) {
+  min-height: 48px; border-radius: var(--r-md); border: 1px solid rgb(22 25 53 / 0.3); background: #fff; color: var(--ink); font-size: 16px; }
+.pch-tool :is(input, select, textarea):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pch-tool :is(button.bg-primary, a.bg-primary, button[class*="bg-gradient"], a[class*="bg-gradient"], button.bg-brand-blue, a.bg-brand-blue) {
+  background: var(--accent); color: var(--accent-ink); border-radius: var(--r-btn); min-height: 44px; font-weight: 500;
+  display: inline-flex; align-items: center; justify-content: center; transition: background-color 160ms ease, transform 120ms ease; }
+.pch-tool :is(button.bg-primary, a.bg-primary, button[class*="bg-gradient"], a[class*="bg-gradient"], button.bg-brand-blue, a.bg-brand-blue):hover { background: color-mix(in srgb, var(--accent) 86%, black); }
+.pch-tool :is(button.bg-primary, a.bg-primary, button[class*="bg-gradient"], a[class*="bg-gradient"]):active { transform: translateY(1px); }
+.pch-tool :is(button, a)[class*="border"][class*="rounded"] { min-height: 44px; }
+.pch-tool table { border-collapse: collapse; }
+.pch-tool thead { background: var(--surface); }
+.pch-tool a:not([class]) , .pch-tool .space-y-4 a, .pch-tool .space-y-10 a, .pch-tool .space-y-5 a { color: var(--accent); }
+.pch-tool .prose, .pch-tool .space-y-10 p, .pch-tool .space-y-4 p { line-height: 1.65; font-size: 17px; }
+.pch-tool .text-sm { font-size: 15px; }
+.pch-tool .text-xs { font-size: 13px; }
+.pch-tool [class*="text-[10px]"] { font-size: 13px; letter-spacing: 0; text-transform: none; }
+.pch-tool .uppercase { text-transform: none; letter-spacing: 0; }
+.pch-tool .tracking-widest, .pch-tool .tracking-wider { letter-spacing: 0; }
+/* page head for working pages: label, h1, nothing else above the tool */
+.pch-toolhead { padding: calc(var(--nav) + var(--s-6)) 0 var(--s-5); }
+.pch-toolhead h1 { font-size: var(--t-h1-page); line-height: 1.05; letter-spacing: var(--display-tracking-xl); max-width: none; text-wrap: balance; }
+.pch-toolhead h1 span { color: var(--accent); }
+@media (max-width: 639px) { .pch-toolhead { padding: calc(var(--nav) + var(--s-4)) 0 var(--s-3); } .pch-page.pch-tool { --t-h1-page: 32px; } }
+.pch-toolbody { padding: 0 0 var(--s-8); }
+.pch-toolintro { padding: 0 0 var(--s-7); }
+.pch-toolintro p { max-width: 70ch; font-size: 18px; line-height: 1.6; }
+.pch-toolintro strong { font-weight: 500; }
+.pch-crossblock { padding: 0 0 var(--s-8); }
+
+/* names and brands are shown whole: no one-line clamps or ellipses, words wrap on word boundaries */
+.pch-tool :is(.line-clamp-1, .line-clamp-2, .line-clamp-3) { display: block; -webkit-line-clamp: unset; overflow: visible; }
+.pch-tool .truncate { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: break-word; }
+.pch-tool .break-words { overflow-wrap: break-word; word-break: normal; hyphens: manual; }
+/* palette generator: four roles become two by two on phones so each name has room */
+@media (max-width: 639px) {
+  .pch-tool div:has(> .min-w-0.flex-1) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px; }
+}
+/* tables that scroll sideways say so: a soft edge shadow shows on the side with more to see */
+.pch-tool .overflow-x-auto {
+  background:
+    linear-gradient(90deg, #fff 30%, rgb(255 255 255 / 0)) 0 0 / 40px 100% no-repeat local,
+    linear-gradient(270deg, #fff 30%, rgb(255 255 255 / 0)) 100% 0 / 40px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgb(22 25 53 / 0.22), rgb(22 25 53 / 0)) 0 0 / 14px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgb(22 25 53 / 0.22), rgb(22 25 53 / 0)) 100% 0 / 14px 100% no-repeat scroll;
+  background-color: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+/* room visualizer on phones: the room picture comes before the editing panel */
+@media (max-width: 767px) {
+  .pch-viz { display: flex; flex-direction: column; }
+  .pch-viz > * { order: 3; }
+  .pch-viz > :first-child { order: 0; }
+  .pch-viz > .pch-viz__canvas { order: 1; margin-bottom: 16px; }
+  .pch-viz > .pch-viz__panel { order: 2; }
+}

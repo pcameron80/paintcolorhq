@@ -5,6 +5,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PaletteGenerator } from "./generator";
 import { AdSenseScript } from "@/components/adsense-script";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
 import { ogDefaults } from "@/lib/og";
@@ -88,7 +90,7 @@ export default async function PaletteGeneratorPage() {
     { q: "What makes the colors in a palette go together?", a: "Two things: a color-wheel relationship (warm, cool, high-contrast complementary, close analogous neighbors, or grounded earth tones) that sets the overall direction, and consistent undertones so the colors don't quietly clash. A palette reads as settled when its colors share an undertone family (warm with warm, cool with cool) or use a contrast you chose on purpose. Confirm the final combination with physical samples in your own light before buying." },
   ];
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Paint Palette Generator",
@@ -107,15 +109,28 @@ export default async function PaletteGeneratorPage() {
       }} />
 
       <Header />
-      <main id="main-content">
+      <main id="main-content" className="pch-page pch-tool">
 
-      <section className="relative pt-24 px-6 md:px-12 py-16">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">Tool</span>
-          <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
+      <section className="pch-toolhead">
+        <div className="wrap pch-wrap">
+          <span className="pch-eyebrow">Tool</span>
+          <h1>
             Paint Color Palette Generator
           </h1>
-          <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+        </div>
+      </section>
+
+      <section className="pch-toolbody">
+        <div className="wrap pch-wrap">
+          <Suspense>
+            <PaletteGenerator brands={brands} />
+          </Suspense>
+        </div>
+      </section>
+
+      <section className="pch-toolintro">
+        <div className="wrap pch-wrap">
+          <p>
             Pick a starting color from the swatch or type a hex code, and the generator builds five
             coordinated palettes from it: Warm &amp; Inviting, Cool &amp; Calm, Bold Contrast,
             Analogous Harmony and Earthy Naturals. Each palette has Walls, Trim, Accent and Pop
@@ -124,14 +139,6 @@ export default async function PaletteGeneratorPage() {
             with the CIEDE2000 color-difference formula. A brand filter holds the matches to one
             brand. Free, with no sign-up or download.
           </p>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 pb-16">
-        <div className="max-w-7xl mx-auto">
-          <Suspense>
-            <PaletteGenerator brands={brands} />
-          </Suspense>
         </div>
       </section>
 
