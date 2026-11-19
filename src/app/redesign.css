@@ -135,8 +135,9 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
 }
 .pch-ui__bar { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
 .pch-ui__field { display: flex; align-items: center; gap: var(--s-3); margin: var(--s-4); padding: 0 var(--s-4); min-height: 48px; border: 1px solid rgb(22 25 53 / 0.3); border-radius: var(--r-md); font-weight: 500; }
-.pch-ui__row { display: grid; grid-template-columns: auto 1fr auto; gap: var(--s-3); align-items: center; padding: var(--s-3) var(--s-4); border-top: 1px solid var(--line); }
-.pch-ui__row .pch-dot { width: 32px; height: 32px; }
+.pch-ui__row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px var(--s-3); align-items: start; padding: var(--s-3) var(--s-4); border-top: 1px solid var(--line); }
+.pch-ui__row .pch-chip { grid-column: 2; justify-self: start; margin-top: 4px; }
+.pch-ui__row .pch-dot { width: 32px; height: 32px; grid-row: span 3; }
 .pch-ui__row b { font-weight: 500; display: block; }
 .pch-ui__row small { color: var(--muted); font-size: 13px; }
 .pch-ui__split { display: grid; grid-template-columns: 1fr 1fr; min-height: 180px; }
