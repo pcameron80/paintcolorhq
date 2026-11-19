@@ -155,6 +155,7 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
 .pch-pagehead__text { grid-column: 1 / span 7; display: grid; gap: var(--s-4); align-content: start; }
 .pch-pagehead__text--wide { grid-column: 1 / -1; }
 .pch-pagehead__art { grid-column: 9 / span 4; }
+.pch-pagehead__art--wide { grid-column: 8 / span 5; }
 .pch-pagehead h1 { font-size: var(--t-h1-page); line-height: 1.04; letter-spacing: var(--display-tracking-xl); text-wrap: balance; }
 .pch-pagehead__lead { font-size: var(--t-lead); line-height: 1.55; max-width: 62ch; }
 .pch-page { --t-h1-page: 56px; --t-h2-page: 36px; }
@@ -166,7 +167,7 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
 .pch-block > .pch-wrap > h2 { margin-bottom: var(--s-6); }
 .pch-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .pch-cards--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (max-width: 1023px) { .pch-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pch-pagehead__text { grid-column: 1 / -1; } .pch-pagehead__art { grid-column: 1 / -1; } }
+@media (max-width: 1023px) { .pch-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pch-pagehead__text { grid-column: 1 / -1; } .pch-pagehead__art, .pch-pagehead__art--wide { grid-column: 1 / -1; } }
 @media (max-width: 639px) { .pch-cards, .pch-cards--2 { grid-template-columns: 1fr; gap: 12px; } .pch-block { padding: var(--s-7) 0; } }
 .pch-cardlink { color: inherit; }
 .pch-card h2, .pch-card h3 { font-size: 20px; }
@@ -254,6 +255,6 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
 .pch-post:hover .pch-post__img img { transform: scale(1.03); }
 .pch-post h3 { font-size: 22px; transition: color 160ms ease; }
 .pch-post:hover h3 { color: var(--accent); }
-.pch-post p { color: var(--muted); font-size: 16px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.pch-post p { color: var(--muted); font-size: 16px; line-height: 1.5; }
 .pch-readable > * { max-width: 860px; }
 .pch-readable > .pch-prose { max-width: 70ch; }

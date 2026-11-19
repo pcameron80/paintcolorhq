@@ -80,7 +80,7 @@ export default function AboutPage() {
               <span className="pch-eyebrow">About</span>
               <h1 style={{ maxWidth: "none" }}>About Paint Color HQ</h1>
             </div>
-            <div className="pch-pagehead__art" style={{ gridColumn: "8 / span 5" }}>
+            <div className="pch-pagehead__art pch-pagehead__art--wide">
               <div className="pch-ui" role="img" aria-label="The three closeness labels, each shown with a real pair of paint colors">
                 {EXAMPLES.map((e) => (
                   <div className="pch-ui__row" key={e.label} style={{ gridTemplateColumns: "auto 1fr" }}>
