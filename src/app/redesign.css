@@ -52,9 +52,9 @@
 @media (max-width: 639px) { :is(.pch-home, .pch-page) { --gut: 24px; --padt: 96px; --padb: 48px; --t-h1: 40px; --t-h2: 30px; --t-h3: 24px; --t-lead: 18px; --gutter: 12px; } }
 
 :is(.pch-home, .pch-page) *, :is(.pch-home, .pch-page) *::before, :is(.pch-home, .pch-page) *::after { box-sizing: border-box; }
-:is(.pch-home, .pch-page) :where(h1, h2, h3, h4, p, ul, ol, figure) { margin: 0; padding: 0; }
-:is(.pch-home, .pch-page) :where(ul, ol) { list-style: none; }
-:is(.pch-home, .pch-page) a { color: inherit; text-decoration: none; }
+:is(.pch-home, .pch-page):not(.pch-tool) :where(h1, h2, h3, h4, p, ul, ol, figure) { margin: 0; padding: 0; }
+:is(.pch-home, .pch-page):not(.pch-tool) :where(ul, ol) { list-style: none; }
+:is(.pch-home, .pch-page):not(.pch-tool) a { color: inherit; text-decoration: none; }
 :is(.pch-home, .pch-page) :where(a, button, input):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 :is(.pch-home, .pch-page) .muted { color: var(--muted); }
 
@@ -261,7 +261,7 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
 
 /* ================================================================ blog post template (.pch-article) */
 .pch-article { padding-top: calc(var(--nav) + var(--s-6)); }
-.pch-reading { width: min(100% - 2 * var(--gut), 760px); margin-inline: auto; padding-bottom: var(--s-8); }
+.pch-reading { width: min(100% - 2 * var(--gut), 680px); margin-inline: auto; padding-bottom: var(--s-8); }
 .pch-article nav[class*="mb-8"] { margin-bottom: var(--s-5); font-size: 15px; }
 .pch-article nav[class*="mb-8"] a { display: inline-flex; align-items: center; min-height: 32px; }
 .pch-article h1 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.08; letter-spacing: -0.03em; margin-top: var(--s-4); text-wrap: balance; }
@@ -312,3 +312,15 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
   .pch-article #blog-content table { font-size: 15px; }
   .pch-article #blog-content :is(th, td) { padding: var(--s-2) 6px; overflow-wrap: anywhere; }
 }
+
+/* paragraph rhythm in the post body: about one line between blocks, more above headings than below */
+.pch-article .prose :where(p, ul, ol, dl, blockquote, figure, pre) { margin-top: 1.15em; margin-bottom: 0; }
+.pch-article .prose :where(h2, h3, h4) + * { margin-top: 0; }
+.pch-article .prose :where(h2) { margin-top: 2.4em; margin-bottom: 0.6em; }
+.pch-article .prose :where(h3, h4) { margin-top: 1.9em; margin-bottom: 0.5em; }
+.pch-article .prose > :where(h2, h3):first-child { margin-top: 0; }
+.pch-article .prose :where(li > p) { margin-top: 0.4em; }
+.pch-article .prose :where(ul, ol) + :where(p, ul, ol, table) { margin-top: 1.25em; }
+.pch-article .prose :where(p) + :where(ul, ol) { margin-top: 1em; }
+.pch-article .prose :where(table, figure) { margin-top: 1.5em; margin-bottom: 1.5em; }
+.pch-article .prose :where(table) + :where(p, ul, ol, h2, h3) { margin-top: 1.5em; }
