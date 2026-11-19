@@ -1,4 +1,4 @@
-// Real cross-brand matches shown on the home page (hero and "How a match works").
+// Real cross-brand matches shown on the home page (hero and "How a match works"). None of these colors is on the head-colors list (src/lib/head-colors.ts), which is frozen in a search test.
 // Source: the live match lists on each color page, read 2026-11-18. Names, brands,
 // hex values and URLs are the site's own data. The closeness wording is computed
 // here with the same CIEDE2000 function and closenessLabel() the color pages use,
@@ -37,11 +37,11 @@ function build(source: HomeColor, matches: HomeColor[]): HomeMatchSet {
 
 export const HOME_MATCH_SETS: HomeMatchSet[] = [
   build(
-    { name: "Sea Salt", brand: "Sherwin-Williams", code: "SW 6204", hex: "#CDD2CA", href: "/colors/sherwin-williams/sea-salt-6204" },
+    { name: "Rainwashed", brand: "Sherwin-Williams", code: "SW 6211", hex: "#C2CDC5", href: "/colors/sherwin-williams/rainwashed-6211" },
     [
-      { name: "Gray Cashmere", brand: "Benjamin Moore", code: "2138-60", hex: "#D0D6CE", href: "/colors/benjamin-moore/gray-cashmere-2138-60" },
-      { name: "Silver Setting", brand: "Behr", code: "PWL-89", hex: "#CACEC7", href: "/colors/behr/silver-setting-pwl-89" },
-      { name: "Bay Of Fundy", brand: "PPG", code: "10-07", hex: "#CDD2C9", href: "/colors/ppg/bay-of-fundy-10-07" },
+      { name: "Silver Marlin", brand: "Benjamin Moore", code: "2139-50", hex: "#C1C9C2", href: "/colors/benjamin-moore/silver-marlin-2139-50" },
+      { name: "Mountain Falls", brand: "Behr", code: "N420-2", hex: "#BDCAC0", href: "/colors/behr/mountain-falls-n420-2" },
+      { name: "White Clover", brand: "PPG", code: "10-31", hex: "#C4D1C6", href: "/colors/ppg/white-clover-10-31" },
     ],
   ),
   build(
@@ -53,11 +53,11 @@ export const HOME_MATCH_SETS: HomeMatchSet[] = [
     ],
   ),
   build(
-    { name: "Accessible Beige", brand: "Sherwin-Williams", code: "SW 7036", hex: "#D1C7B8", href: "/colors/sherwin-williams/accessible-beige-7036" },
+    { name: "Revere Pewter", brand: "Benjamin Moore", code: "HC-172", hex: "#CCC7B9", href: "/colors/benjamin-moore/revere-pewter-hc-172" },
     [
-      { name: "Shoreline Haze", brand: "Behr", code: "MQ6-31", hex: "#D0C7B8", href: "/colors/behr/shoreline-haze-mq6-31" },
-      { name: "Smokey Taupe", brand: "Benjamin Moore", code: "983", hex: "#CEC5B6", href: "/colors/benjamin-moore/smokey-taupe-983" },
-      { name: "Synchronicity", brand: "PPG", code: "1021-2", hex: "#CFC5B6", href: "/colors/ppg/synchronicity-1021-2" },
+      { name: "Simple Stone", brand: "Sherwin-Williams", code: "SW 9521", hex: "#CDC7B7", href: "/colors/sherwin-williams/simple-stone-9521" },
+      { name: "Coliseum Marble", brand: "Behr", code: "PPU8-16", hex: "#CEC7B8", href: "/colors/behr/coliseum-marble-ppu8-16" },
+      { name: "Ostrich Feather", brand: "PPG", code: "14-32", hex: "#CEC7B8", href: "/colors/ppg/ostrich-feather-14-32" },
     ],
   ),
 ];

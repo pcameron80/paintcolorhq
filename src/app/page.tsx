@@ -208,15 +208,14 @@ export default async function Home() {
       <section className="hero pch-hero" data-enter aria-labelledby="home-hero-h" style={{ ["--h" as string]: 1 }}>
         <div className="wrap pch-wrap pch-grid pch-hero__grid">
           <div className="pch-hero__text">
-            <h1 id="home-hero-h">Find a paint color in any brand</h1>
+            <h1 id="home-hero-h">Find a paint color you love in any brand</h1>
             <p className="pch-hero__lead">
               Search 26,000+ colors from {BRAND_COUNT} brands, then get the nearest match in the brand you can buy. Free, no signup.
             </p>
           </div>
 
-          <HeroCollage label="Three real cross-brand matches from the site">
-            {HOME_MATCH_SETS.map((s, i) => (
-              <div key={s.source.name} className={`pch-set${i === 0 ? " is-on" : ""}`} data-set aria-hidden={undefined}>
+          <HeroCollage label="Three real cross-brand matches from the site" sets={HOME_MATCH_SETS.map((s, i) => (
+              <div key={s.source.name} className={`pch-set${i === 0 ? " is-on" : ""}`} data-set>
                 <Link href={s.source.href} className="pch-piece pch-piece--a" tabIndex={i === 0 ? undefined : -1}>
                   <div className="pch-src__swatch" style={{ backgroundColor: s.source.hex }} />
                   <div className="pch-src__body">
@@ -247,8 +246,7 @@ export default async function Home() {
                   </div>
                 </div>
               </div>
-            ))}
-          </HeroCollage>
+          ))} />
 
           <div className="pch-hero__form">
             <form action="/search" role="search">
@@ -268,11 +266,11 @@ export default async function Home() {
             <ol className="mo-pc__steps">
               <li className="mo-pc__step">
                 <h3>Search any color</h3>
-                <p>Type a name, a number or a hex code. Sea Salt, SW 6204 and #CDD2CA all find the same paint.</p>
+                <p>Type a name, a number or a hex code. {set.source.name}, {set.source.code} and {set.source.hex} all find the same paint.</p>
                 <figure className="mo-pc__visual mo-pc__visual--lit">
-                  <div className="pch-ui" role="img" aria-label="A search for Sea Salt with the Sherwin-Williams result, SW 6204">
+                  <div className="pch-ui" role="img" aria-label={`A search for ${set.source.name} with the ${set.source.brand} result, ${set.source.code}`}>
                     <div className="pch-ui__bar">Search colors</div>
-                    <div className="pch-ui__field">Sea Salt</div>
+                    <div className="pch-ui__field">{set.source.name}</div>
                     <div className="pch-ui__row">
                       <b className="pch-dot" style={{ backgroundColor: set.source.hex }} />
                       <span><b>{set.source.name}</b><small>{set.source.brand} · {set.source.code}</small></span>
@@ -285,7 +283,7 @@ export default async function Home() {
                 <h3>Compare it across {BRAND_COUNT} brands</h3>
                 <p>CIEDE2000 scores how far apart two colors look on screen, against 26,000+ colors.</p>
                 <figure className="mo-pc__visual mo-pc__visual--lit">
-                  <div className="pch-ui" role="img" aria-label="Matches for Sea Salt in Benjamin Moore, Behr and PPG, each labeled nearly identical">
+                  <div className="pch-ui" role="img" aria-label={`Matches for ${set.source.name} in ${set.matches.map((m) => m.brand).join(", ")}, each labeled ${set.matches[0].label.toLowerCase()}`}>
                     <div className="pch-ui__bar">Compare alternatives to {set.source.name}</div>
                     {set.matches.map((m) => (
                       <div className="pch-ui__row" key={m.name}>
@@ -301,7 +299,7 @@ export default async function Home() {
                 <h3>Choose a match in your brand</h3>
                 <p>Each match says how close it is in plain words. Order a sample before you buy a gallon.</p>
                 <figure className="mo-pc__visual mo-pc__visual--lit">
-                  <div className="pch-ui" role="img" aria-label="Sea Salt beside Gray Cashmere, labeled nearly identical, with a note to confirm with a physical sample">
+                  <div className="pch-ui" role="img" aria-label={`${set.source.name} beside ${best.name}, labeled ${best.label.toLowerCase()}, with a note to confirm with a physical sample`}>
                     <div className="pch-ui__split">
                       <div style={{ backgroundColor: set.source.hex }} />
                       <div style={{ backgroundColor: best.hex }} />

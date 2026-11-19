@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-// Rotates the hero's server-rendered match sets every 2.8 s. Set one is the
-// first paint and the no-script state. The rotation rests under reduced motion
-// and on phones, and a pause button stops it (WCAG 2.2.2: moves past 5 s).
-export function HeroCollage({ children, label, className = "" }: { children: ReactNode; label: string; className?: string }) {
+// Rotates the hero's match sets every 2.8 s. Only set one is in the server HTML, and it is
+// visible in plain CSS: without script, under reduced motion and on phones the hero shows
+// that one set and nothing is hidden. The other sets are added, and hidden under
+// .is-rotating, only once the script knows motion is allowed. A pause button stops it.
+export function HeroCollage({ sets, label }: { sets: ReactNode[]; label: string }) {
   const root = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
   const [canMove, setCanMove] = useState(false);
@@ -27,10 +28,10 @@ export function HeroCollage({ children, label, className = "" }: { children: Rea
   useEffect(() => {
     const el = root.current;
     if (!el) return;
-    const sets = Array.from(el.querySelectorAll<HTMLElement>("[data-set]"));
+    const all = Array.from(el.querySelectorAll<HTMLElement>("[data-set]"));
     const show = (n: number) => {
       index.current = n;
-      sets.forEach((s, i) => {
+      all.forEach((s, i) => {
         s.classList.toggle("is-on", i === n);
         if (i === n) s.removeAttribute("inert");
         else s.setAttribute("inert", "");
@@ -40,14 +41,16 @@ export function HeroCollage({ children, label, className = "" }: { children: Rea
       show(0);
       return;
     }
+    show(index.current % all.length);
     if (paused) return;
-    const id = window.setInterval(() => show((index.current + 1) % sets.length), 2800);
+    const id = window.setInterval(() => show((index.current + 1) % all.length), 2800);
     return () => window.clearInterval(id);
   }, [canMove, paused]);
 
   return (
-    <div className={`ly-collage pch-collage ${className}`} ref={root} role="group" aria-label={label}>
-      {children}
+    <div className={`ly-collage pch-collage${canMove ? " is-rotating" : ""}`} ref={root} role="group" aria-label={label}>
+      {sets[0]}
+      {canMove && sets.slice(1)}
       {canMove && (
         <button
           type="button"
