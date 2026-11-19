@@ -49,9 +49,12 @@ export function HeroCollage({ sets, label }: { sets: ReactNode[]; label: string 
 
   return (
     <div className={`ly-collage pch-collage${canMove ? " is-rotating" : ""}`} ref={root} role="group" aria-label={label}>
-      {sets[0]}
-      {canMove && sets.slice(1)}
+      <div className="pch-stage">
+        {sets[0]}
+        {canMove && sets.slice(1)}
+      </div>
       {canMove && (
+        <div className="pch-collage__bar">
         <button
           type="button"
           className="pch-collage__pause"
@@ -63,6 +66,7 @@ export function HeroCollage({ sets, label }: { sets: ReactNode[]; label: string 
             {paused ? <path d="M3 1.5v11l9-5.5z" fill="currentColor" /> : <path d="M3 1.5h3v11H3zM8 1.5h3v11H8z" fill="currentColor" />}
           </svg>
         </button>
+        </div>
       )}
     </div>
   );

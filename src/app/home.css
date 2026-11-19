@@ -85,7 +85,8 @@
 .pch-sec--surface { background: var(--surface); }
 .pch-sec--inverse { background: var(--inv-bg); color: var(--inv-ink); --muted: var(--inv-muted); --line: rgb(255 255 255 / 0.18); }
 @media (min-width: 1024px) and (min-height: 700px) {
-  .pch-home > .pch-sec, .pch-home > .pch-hero { height: calc(var(--h, 1) * 100svh); }
+  .pch-home > .pch-sec { height: calc(var(--h, 1) * 100svh); }
+  .pch-home > .pch-hero { min-height: 100svh; }
 }
 /* tablet and phone: each section is as tall as its content plus normal padding (a deliberate skip of the
    skill's exact-screens rule, which left empty bands under short sections); only the hero fills a screen */
@@ -158,48 +159,55 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
 .pch-hero__form input::placeholder { color: #5e616e; }
 .pch-hero__form .pch-btn { width: 100%; }
 
-.pch-collage { position: relative; container-type: inline-size; aspect-ratio: 628 / 620; width: 100%; }
-.pch-set { position: absolute; inset: 0; }
-.pch-collage.is-rotating .pch-set { opacity: 0; visibility: hidden; transition: opacity 700ms ease, visibility 0s linear 700ms; }
-.pch-collage.is-rotating .pch-set.is-on { opacity: 1; visibility: visible; transition: opacity 700ms ease; }
-.pch-piece {
-  position: absolute; background: #fff; border-radius: 2.2cqw; overflow: hidden;
-  box-shadow: 0 1px 2px rgb(22 25 53 / 0.1), 0 22px 48px -24px rgb(22 25 53 / 0.45);
-  font: 400 max(13px, 2.2cqw)/1.3 var(--font-text); color: var(--ink);
-}
-.pch-piece--a { left: 0; top: 2%; width: 46%; }
-.pch-piece--b { left: 51%; top: 2%; width: 49%; }
-.pch-piece--c { left: 0; top: 60%; width: 100%; }
-.pch-src__swatch { aspect-ratio: 1 / 0.72; }
-.pch-src__body { padding: 2.4cqw 3cqw 3cqw; display: grid; gap: 0.4cqw; }
-.pch-src__body .k { font: 500 max(13px, 1.9cqw)/1.3 var(--font-text); color: var(--muted); }
-.pch-src__body b { font: 500 max(16px, 3.4cqw)/1.1 var(--font-display); letter-spacing: -0.02em; }
+/* The collage: whole cards in a plain grid, never cropped or layered. Sets share one cell and crossfade one at a
+   time (the outgoing set is gone before the incoming one shows), so only one set's text is ever readable. */
+.pch-collage { container-type: inline-size; display: grid; gap: var(--s-3); align-content: start; width: 100%; }
+.pch-stage { display: grid; }
+.pch-set { grid-area: 1 / 1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-4); align-self: start; align-items: start; }
+.pch-collage.is-rotating .pch-set { opacity: 0; visibility: hidden; transition: opacity 250ms ease, visibility 0s linear 250ms; }
+.pch-collage.is-rotating .pch-set.is-on { opacity: 1; visibility: visible; transition: opacity 250ms ease 250ms; }
+.pch-piece { display: block; background: #fff; border-radius: 16px; overflow: hidden; color: var(--ink); font: 400 15px/1.35 var(--font-text); box-shadow: 0 1px 2px rgb(22 25 53 / 0.1), 0 18px 40px -22px rgb(22 25 53 / 0.45); }
+.pch-piece--a { grid-column: 1; }
+.pch-piece--b { grid-column: 2; }
+.pch-piece--c { grid-column: 1 / -1; }
+.pch-src__swatch { height: 148px; }
+.pch-src__body { padding: var(--s-3) var(--s-4) var(--s-4); display: grid; gap: 2px; }
+.pch-src__body .k { font: 500 13px/1.3 var(--font-text); color: var(--muted); }
+.pch-src__body b { font: 500 22px/1.15 var(--font-display); letter-spacing: -0.02em; }
+.pch-src__body .mono { margin-top: 2px; overflow-wrap: anywhere; }
 .pch-list { display: grid; }
-.pch-list__head { padding: 2.2cqw 2.6cqw 1.2cqw; font: 500 max(13px, 1.9cqw)/1.3 var(--font-text); color: var(--muted); }
-.pch-list a { display: grid; grid-template-columns: auto 1fr; gap: 0.6cqw 2cqw; align-items: center; padding: 1.7cqw 2.6cqw; border-top: 1px solid var(--line); }
+.pch-list__head { padding: var(--s-3) var(--s-4); font: 500 14px/1.35 var(--font-text); color: var(--muted); }
+.pch-list a { display: grid; grid-template-columns: auto 1fr; gap: 2px var(--s-3); align-items: start; padding: var(--s-3) var(--s-4); border-top: 1px solid var(--line); }
 .pch-list a:hover { background: var(--surface); }
 a.pch-piece { transition: transform 200ms ease, box-shadow 200ms ease; }
-a.pch-piece:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgb(22 25 53 / 0.1), 0 26px 52px -24px rgb(22 25 53 / 0.5); }
-.pch-list .pch-dot { width: 5.4cqw; height: 5.4cqw; grid-row: span 2; }
-.pch-list b { font-weight: 500; font-size: max(14px, 2.4cqw); line-height: 1.15; }
-.pch-list small { font-size: max(13px, 1.9cqw); color: var(--muted); line-height: 1.2; }
-.pch-list .pch-chip { grid-column: 2; justify-self: start; margin-top: 0.4cqw; font-size: max(13px, 1.9cqw); }
+a.pch-piece:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgb(22 25 53 / 0.1), 0 22px 44px -22px rgb(22 25 53 / 0.5); }
+.pch-list .pch-dot { width: 28px; height: 28px; grid-row: span 3; margin-top: 2px; }
+.pch-list b { font-weight: 500; font-size: 16px; line-height: 1.2; }
+.pch-list small { font-size: 14px; color: var(--muted); line-height: 1.3; }
+.pch-list .pch-chip { grid-column: 2; justify-self: start; margin-top: 4px; }
 .pch-vs { display: grid; grid-template-columns: 1fr 1fr; }
-.pch-vs > div { min-height: 24cqw; }
-.pch-vs__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1cqw 2cqw; padding: 2.2cqw 2.8cqw; font-size: max(13px, 2cqw); }
+.pch-vs > div { height: 72px; }
+.pch-vs__foot { display: grid; gap: 2px; padding: var(--s-3) var(--s-4); font-size: 14px; line-height: 1.4; }
 .pch-vs__foot span:last-child { color: var(--muted); }
+.pch-collage__bar { display: flex; justify-content: flex-end; }
 .pch-collage__pause {
-  position: absolute; right: 0; bottom: 0; z-index: 2; width: 44px; height: 44px; border-radius: 999px;
-  display: grid; place-items: center; border: 0; background: #fff; color: var(--ink); cursor: pointer;
+  width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center; border: 0; background: #fff; color: var(--ink); cursor: pointer;
   box-shadow: 0 0 0 1px rgb(22 25 53 / 0.18), 0 6px 18px -8px rgb(22 25 53 / 0.4);
   transition: transform 120ms ease, background-color 160ms ease;
 }
 .pch-collage__pause:hover { background: var(--accent-tint); }
 .pch-collage__pause:active { transform: scale(0.96); }
+@container (max-width: 520px) {
+  .pch-set { grid-template-columns: minmax(0, 1fr); }
+  .pch-piece--a, .pch-piece--b, .pch-piece--c { grid-column: 1; }
+  .pch-piece--a { display: grid; grid-template-columns: 112px minmax(0, 1fr); }
+  .pch-src__swatch { height: auto; min-height: 112px; }
+}
 
 @media (max-width: 1279px) and (min-width: 1024px) {
   .pch-hero { --t-h1: 40px; }
   .pch-hero__lead { font-size: 17px; }
+  .pch-hero__form input { font-size: 15px; padding: 0 var(--s-3); }
   .pch-hero__text { grid-column: 1 / span 4; }
   .pch-collage { grid-column: 5 / span 5; }
 }
@@ -209,7 +217,7 @@ a.pch-piece:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgb(22 25
   .pch-hero__text { grid-column: 1 / span 6; }
   .pch-hero__form { grid-column: 7 / span 6; }
   .pch-hero__form { order: 2; }
-  .pch-collage { order: 3; grid-column: 1 / -1; width: auto; max-width: 100%; height: clamp(300px, calc(100svh - 740px), 640px); justify-self: start; }
+  .pch-collage { order: 3; grid-column: 1 / -1; }
   .pch-hero__lead { max-width: 40ch; }
 }
 @media (max-width: 639px) {
@@ -219,10 +227,6 @@ a.pch-piece:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgb(22 25
   .pch-hero { --t-h1: 34px; }
   .pch-hero__lead { font-size: 16px; line-height: 1.45; }
   .pch-hero__form label { font-size: 15px; }
-  /* a phone holds one set: the list of matches, its swatches in the rows */
-  .pch-collage { width: 100%; height: auto; aspect-ratio: 342 / 262; }
-  .pch-piece--a, .pch-piece--c { display: none; }
-  .pch-piece--b { left: 0; top: 0; width: 100%; }
 }
 
 /* the hero enters once on load: a short rise, no fade (the h1 stays the first paint) */
@@ -250,8 +254,9 @@ a.pch-piece:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgb(22 25
 }
 .pch-ui__bar { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
 .pch-ui__field { display: flex; align-items: center; gap: var(--s-3); margin: var(--s-4); padding: 0 var(--s-4); min-height: 48px; border: 1px solid rgb(22 25 53 / 0.3); border-radius: var(--r-md); font-weight: 500; }
-.pch-ui__row { display: grid; grid-template-columns: auto 1fr auto; gap: var(--s-3); align-items: center; padding: var(--s-3) var(--s-4); border-top: 1px solid var(--line); }
-.pch-ui__row .pch-dot { width: 32px; height: 32px; }
+.pch-ui__row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px var(--s-3); align-items: start; padding: var(--s-3) var(--s-4); border-top: 1px solid var(--line); }
+.pch-ui__row .pch-chip { grid-column: 2; justify-self: start; margin-top: 4px; }
+.pch-ui__row .pch-dot { width: 32px; height: 32px; grid-row: span 3; }
 .pch-ui__row b { font-weight: 500; display: block; }
 .pch-ui__row small { color: var(--muted); font-size: 13px; }
 .pch-ui__split { display: grid; grid-template-columns: 1fr 1fr; min-height: 180px; }
@@ -355,3 +360,8 @@ a.pch-card:hover .pch-tool__art--room img { transform: scale(1.03); }
   .pch-families { margin-top: var(--s-5); }
   .pch-tool__art { aspect-ratio: 16 / 4; }
 }
+
+/* Nothing in a picture is cropped: the frames of the "how" steps grow to their content. */
+.pch-home [data-moment="pinned-chapters"] .mo-pc__visual.mo-pc__visual--lit { aspect-ratio: auto; overflow: visible; }
+.pch-home [data-moment="pinned-chapters"].is-live .mo-pc__visuals { display: grid; aspect-ratio: auto; max-height: none; align-items: center; }
+.pch-home [data-moment="pinned-chapters"].is-live .mo-pc__visual { position: relative; inset: auto; grid-area: 1 / 1; }
