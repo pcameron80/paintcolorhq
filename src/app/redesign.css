@@ -416,3 +416,45 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
 .pch-article .prose :where(p) + :where(ul, ol) { margin-top: 1em; }
 .pch-article .prose :where(table, figure) { margin-top: 1.5em; margin-bottom: 1.5em; }
 .pch-article .prose :where(table) + :where(p, ul, ol, h2, h3) { margin-top: 1.5em; }
+
+/* ================================================================ color detail page (.pch-color)
+   A skin only: type, ink, accent, radius, buttons and borders move onto the system. Nothing here changes a size,
+   a margin, a padding, a display or an order, so every position #291 set on phones (short hero, compact match rows,
+   strip right under the hero) is the layout the page already has. It wraps everything between the shared header and
+   footer, which keep their own look. Hero text colors still come from the page (light or dark swatch). */
+.pch-color {
+  --ink: #161935; --muted: #434655; --accent: #004ac6; --accent-ink: #ffffff; --accent-tint: #e4ebff;
+  --surface: #f3f2f8; --line: rgb(22 25 53 / 0.14);
+  --r-md: 12px; --r-lg: 20px; --r-btn: 12px;
+  --font-text: var(--font-urbanist), "Urbanist", system-ui, sans-serif;
+  background: #fff; color: var(--ink); font-family: var(--font-text);
+}
+.pch-color *, .pch-color *::before, .pch-color *::after { font-family: var(--font-text); }
+.pch-color :is(.font-mono, code, pre, pre *) { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.pch-color :is(h1, h2, h3, h4) { font-weight: 500; letter-spacing: -0.02em; }
+.pch-color h1 { letter-spacing: -0.04em; }
+.pch-color :is(.font-bold, .font-extrabold, .font-semibold) { font-weight: 500; }
+.pch-color :is(.uppercase) { text-transform: none; }
+.pch-color :is(.tracking-widest, .tracking-wider, [class*="tracking-["]) { letter-spacing: 0; }
+.pch-color :is(.text-on-surface) { color: var(--ink); }
+.pch-color :is(.text-on-surface-variant, .text-outline) { color: var(--muted); }
+.pch-color :is(.text-primary, .text-secondary) { color: var(--accent); }
+.pch-color :is(.hover\:text-primary:hover, .group:hover .group-hover\:text-primary) { color: var(--accent); }
+.pch-color :is(.bg-surface-container-low, .bg-tertiary-fixed) { background-color: var(--surface); }
+.pch-color :is(.bg-surface-container-lowest) { background-color: #fff; }
+.pch-color :is(.bg-surface-container, .bg-surface-container-high, .bg-surface-container-highest) { background-color: var(--accent-tint); }
+.pch-color :is(.bg-surface) { background-color: #fff; }
+.pch-color a.bg-secondary { background-color: var(--accent); color: var(--accent-ink); box-shadow: none; }
+.pch-color a.bg-secondary:hover { background-color: color-mix(in srgb, var(--accent) 86%, black); }
+.pch-color :is(.bg-primary) { background-color: var(--accent); color: var(--accent-ink); }
+.pch-color :is(.border-outline-variant\/10, .border-outline-variant\/15, .border-outline-variant\/20, .border-outline-variant\/25, .border-outline-variant\/30) { border-color: var(--line); }
+.pch-color :is(.border-secondary\/25, .border-primary\/20) { border-color: rgb(0 74 198 / 0.25); }
+.pch-color :is(.divide-outline-variant\/30 > * + *) { border-color: var(--line); }
+.pch-color :is(.rounded-xl, .rounded-2xl) { border-radius: var(--r-lg); }
+.pch-color :is(a, button).rounded-xl { border-radius: var(--r-btn); }
+.pch-color :is(.rounded-lg) { border-radius: var(--r-md); }
+.pch-color :is(.shadow-lg, .shadow-xl, .shadow-md, .shadow-secondary\/20) { box-shadow: 0 1px 2px rgb(22 25 53 / 0.08), 0 14px 32px -20px rgb(22 25 53 / 0.35); }
+.pch-color :where(a, button, summary):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.pch-color a[href^="/colors/"].group:hover, .pch-color a.hover\:shadow-md:hover { box-shadow: 0 10px 28px -16px rgb(22 25 53 / 0.35); }
+/* the hero panel and swatch labels keep the colors the page gives them */
+.pch-color #color-preview a.bg-white { color: #0f172a; }
