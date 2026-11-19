@@ -462,7 +462,8 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
    a 32px swatch, 6px padding and an 8px gap give the text more width, and 11px/1.1 lets four lines fit the old height. */
 .pch-color :is(.truncate) { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: break-word; }
 .pch-color :is(.line-clamp-1, .line-clamp-2, .line-clamp-3) { display: block; -webkit-line-clamp: unset; overflow: visible; }
-.pch-color nav[aria-label$="in other brands"] a { padding: 6px; gap: 8px; }
+.pch-color nav[aria-label$="in other brands"] a { padding: 4px 6px; gap: 8px; }
+.pch-color nav[aria-label$="in other brands"] > div { margin-bottom: 8px; }
 .pch-color nav[aria-label$="in other brands"] a > span:first-child { width: 32px; height: 32px; }
-.pch-color nav[aria-label$="in other brands"] a > span:last-child { font-size: 11px; line-height: 1.1; }
-.pch-color a.group span.line-clamp-2 { font-size: 11.5px; line-height: 1.15; }
+.pch-color nav[aria-label$="in other brands"] a > span:last-child { font-size: 12px; line-height: 1.2; }
+.pch-color a.group span.line-clamp-2 { font-size: 12px; line-height: 1.25; }
