@@ -6,6 +6,11 @@ import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { FOUNDER_PERSON, ORG_REF, ORG_SAME_AS } from "@/lib/entity-schema";
 import { ogDefaults } from "@/lib/og";
+import { urbanist } from "@/lib/redesign-font";
+import { HOME_MATCH_SETS } from "@/lib/home-matches";
+import { closenessLabel } from "@/lib/closeness";
+import { deltaE2000, hexToRgb, rgbToLab } from "@/lib/color-utils";
+import "../redesign.css";
 
 export const metadata: Metadata = {
   title: "About Paint Color HQ | Our Color Science Methodology",
@@ -26,9 +31,22 @@ function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
+function labFor(hex: string) {
+  const { r, g, b } = hexToRgb(hex);
+  return rgbToLab(r, g, b);
+}
+
+// One real pair per closeness label, labeled by the same function every color page uses.
+const EXAMPLES = (() => {
+  const near = { a: HOME_MATCH_SETS[0].source, b: HOME_MATCH_SETS[0].matches[0] };
+  const similar = { a: HOME_MATCH_SETS[1].source, b: HOME_MATCH_SETS[1].matches[2] };
+  const far = { a: HOME_MATCH_SETS[1].source, b: HOME_MATCH_SETS[0].source };
+  return [near, similar, far].map((pair) => ({ ...pair, label: closenessLabel(deltaE2000(labFor(pair.a.hex), labFor(pair.b.hex))) }));
+})();
+
 export default function AboutPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-surface">
+    <div className={`flex min-h-screen flex-col bg-surface ${urbanist.variable}`}>
       <Header />
 
       <JsonLd data={{
@@ -55,28 +73,40 @@ export default function AboutPage() {
         ],
       }} />
 
-      <main id="main-content" className="flex-1">
-        {/* Hero */}
-        <section className="relative pt-24 px-6 md:px-12 py-16">
-          <div className="max-w-4xl mx-auto">
-            <span className="text-primary font-bold text-xs uppercase tracking-widest">About</span>
-            <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
-              About Paint Color HQ
-            </h1>
+      <main id="main-content" className="flex-1 pch-page">
+        <section className="pch-pagehead">
+          <div className="wrap pch-wrap pch-grid pch-pagehead__grid">
+            <div className="pch-pagehead__text">
+              <span className="pch-eyebrow">About</span>
+              <h1 style={{ maxWidth: "none" }}>About Paint Color HQ</h1>
+            </div>
+            <div className="pch-pagehead__art pch-pagehead__art--wide">
+              <div className="pch-ui" role="img" aria-label="The three closeness labels, each shown with a real pair of paint colors">
+                {EXAMPLES.map((e) => (
+                  <div className="pch-ui__row" key={e.label} style={{ gridTemplateColumns: "auto 1fr" }}>
+                    <span style={{ display: "flex" }}>
+                      <b className="pch-dot" style={{ backgroundColor: e.a.hex, width: 32, height: 32 }} />
+                      <b className="pch-dot" style={{ backgroundColor: e.b.hex, width: 32, height: 32, marginLeft: -8 }} />
+                    </span>
+                    <span><b>{e.label}</b><small>{e.a.name} and {e.b.name}</small></span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
         {/* What is Paint Color HQ? */}
-        <section className="py-20 px-6 md:px-12 bg-surface-container-low">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">
+        <section className="pch-block pch-block--surface">
+          <div className="wrap pch-wrap pch-readable">
+            <h2>
               What is Paint Color HQ?
             </h2>
-            <div className="space-y-4 text-on-surface-variant leading-relaxed">
+            <div className="pch-prose">
               <p>
                 Paint Color HQ is a paint color discovery and cross-brand
                 matching platform. We catalog{" "}
-                <strong className="text-on-surface">over 26,000 colors across {BRAND_COUNT} paint brands</strong>{" "}
+                <strong>over 26,000 colors across {BRAND_COUNT} paint brands</strong>{" "}
                 and provide free tools that help homeowners, interior designers,
                 and painting professionals choose paint colors with confidence.
               </p>
@@ -89,31 +119,31 @@ export default function AboutPage() {
               </p>
               <p>
                 Built by{" "}
-                <a href="https://pcameron.co/" className="text-primary underline hover:text-primary/80">
+                <a href="https://pcameron.co/" className="pch-text-link">
                   Philip Cameron
                 </a>
                 , who started the site after a renovation ran into the
                 cross-brand matching problem. His{" "}
-                <Link href="/authors/paint-color-hq-staff" className="text-primary underline hover:text-primary/80">
+                <Link href="/authors/paint-color-hq-staff" className="pch-text-link">
                   author page
                 </Link>{" "}
                 has the full story. He also builds websites for local
                 businesses through{" "}
-                <a href="https://clinchriverweb.com/" className="text-primary underline hover:text-primary/80">
+                <a href="https://clinchriverweb.com/" className="pch-text-link">
                   Clinch River Web
                 </a>
                 .
               </p>
             </div>
 
-            <div className="mt-10">
-              <h3 className="font-headline text-xl font-bold text-on-surface mb-2">
+            <div style={{ marginTop: "var(--s-7)", display: "grid", gap: "var(--s-3)" }}>
+              <h3>
                 Free Tools
               </h3>
-              <p className="text-sm text-on-surface-variant mb-4">
+              <p className="pch-note" style={{ marginBottom: "var(--s-4)" }}>
                 Every tool on Paint Color HQ is free to use, with no account required.
               </p>
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="pch-cards pch-cards--2" style={{ gap: 12 }}>
                 {[
                   { href: "/tools/room-visualizer", name: "Room Visualizer", desc: "Preview colors on walls, trim and window frames in 10 photorealistic rooms." },
                   { href: "/tools/color-identifier", name: "Color Identifier", desc: "Upload a photo, click any spot, and find matching paint colors." },
@@ -125,12 +155,12 @@ export default function AboutPage() {
                   <Link
                     key={tool.href}
                     href={tool.href}
-                    className="group rounded-xl border border-outline-variant/20 bg-surface-container-lowest p-4 transition hover:border-primary/30 hover:shadow-sm"
+                    className="pch-card pch-cardlink" style={{ padding: "var(--s-4)", background: "var(--bg)", gap: 4 }}
                   >
-                    <span className="font-semibold text-on-surface group-hover:text-primary">
+                    <span style={{ fontWeight: 500 }}>
                       {tool.name}
                     </span>
-                    <p className="mt-1 text-sm text-on-surface-variant">{tool.desc}</p>
+                    <p>{tool.desc}</p>
                   </Link>
                 ))}
               </div>
@@ -139,15 +169,15 @@ export default function AboutPage() {
         </section>
 
         {/* Color Science Methodology */}
-        <section className="py-20 px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">
+        <section className="pch-block">
+          <div className="wrap pch-wrap pch-readable">
+            <h2>
               Our Color Science Methodology
             </h2>
-            <div className="space-y-4 text-on-surface-variant leading-relaxed">
+            <div className="pch-prose">
               <p>
                 Color matching on Paint Color HQ is powered by{" "}
-                <strong className="text-on-surface">CIEDE2000</strong>, the latest international standard for
+                <strong>CIEDE2000</strong>, the latest international standard for
                 measuring perceptual color difference. Unlike older formulas
                 (CIE76, CIE94), CIEDE2000 accounts for how the human eye
                 actually perceives differences in lightness, chroma, and hue,
@@ -156,52 +186,52 @@ export default function AboutPage() {
               </p>
               <p>
                 For every color in our database, we compute the perceptual
-                distance (called <strong className="text-on-surface">Delta E</strong>) to every color from
+                distance (called <strong>Delta E</strong>) to every color from
                 every other brand. We turn that distance into one of three
                 labels that describe how close two colors look to the human eye:
               </p>
             </div>
 
-            <div className="mt-6 overflow-x-auto bg-surface-container-lowest rounded-xl border border-outline-variant/10 p-6">
-              <table className="w-full text-sm">
+            <div style={{ marginTop: "var(--s-5)", overflowX: "auto" }}>
+              <table className="pch-table">
                 <thead>
-                  <tr className="border-b border-outline-variant/20">
-                    <th className="px-4 py-3 text-left font-semibold text-on-surface">Label</th>
-                    <th className="px-4 py-3 text-left font-semibold text-on-surface">What It Means</th>
+                  <tr>
+                    <th>Label</th>
+                    <th>What It Means</th>
                   </tr>
                 </thead>
-                <tbody className="text-on-surface-variant">
-                  <tr className="border-b border-outline-variant/10">
-                    <td className="px-4 py-3 font-semibold text-on-surface">Nearly identical</td>
-                    <td className="px-4 py-3">The difference is hard to spot, even side by side</td>
-                  </tr>
-                  <tr className="border-b border-outline-variant/10">
-                    <td className="px-4 py-3 font-semibold text-on-surface">Very similar</td>
-                    <td className="px-4 py-3">Close, but you may notice a slight difference side by side</td>
+                <tbody>
+                  <tr>
+                    <td>Nearly identical</td>
+                    <td>The difference is hard to spot, even side by side</td>
                   </tr>
                   <tr>
-                    <td className="px-4 py-3 font-semibold text-on-surface">Visible difference</td>
-                    <td className="px-4 py-3">Clearly distinguishable to most observers</td>
+                    <td>Very similar</td>
+                    <td>Close, but you may notice a slight difference side by side</td>
+                  </tr>
+                  <tr>
+                    <td>Visible difference</td>
+                    <td>Clearly distinguishable to most observers</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div className="mt-10">
-              <h3 className="font-headline text-xl font-bold text-on-surface mb-4">
+            <div style={{ marginTop: "var(--s-7)", display: "grid", gap: "var(--s-3)" }}>
+              <h3>
                 Color Data We Provide
               </h3>
-              <p className="text-on-surface-variant leading-relaxed">Every color page on Paint Color HQ includes:</p>
-              <ul className="mt-3 space-y-2 text-sm text-on-surface-variant">
+              <p className="pch-prose">Every color page on Paint Color HQ includes:</p>
+              <ul className="pch-prose" style={{ marginTop: "var(--s-3)", fontSize: 16 }}>
                 {[
                   { bold: "Hex and RGB values", text: "the exact digital color representation" },
                   { bold: "LRV (Light Reflectance Value)", text: "how much light a color reflects, useful for choosing colors for different room sizes and lighting conditions" },
                   { bold: "Undertone classification", text: "whether a color reads warm, cool, or neutral, which affects how it pairs with other elements in your space" },
                   { bold: "Cross-brand matches", text: "the closest equivalent colors from every other brand, ranked from closest to farthest" },
                 ].map((item) => (
-                  <li key={item.bold} className="flex items-start gap-3">
-                    <span className="mt-2 h-2 w-2 rounded-full bg-primary shrink-0" />
-                    <span><strong className="text-on-surface">{item.bold}</strong>: {item.text}</span>
+                  <li key={item.bold} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <span className="pch-dot" style={{ width: 8, height: 8, marginTop: 10, background: "var(--accent)" }} />
+                    <span><strong>{item.bold}</strong>: {item.text}</span>
                   </li>
                 ))}
               </ul>
@@ -210,43 +240,41 @@ export default function AboutPage() {
         </section>
 
         {/* How We're Different */}
-        <section className="py-20 px-6 md:px-12 bg-surface-container-low">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">
+        <section className="pch-block pch-block--surface">
+          <div className="wrap pch-wrap pch-readable">
+            <h2>
               How We&apos;re Different
             </h2>
-            <p className="text-on-surface-variant leading-relaxed mb-8">
+            <p className="pch-prose" style={{ marginBottom: "var(--s-6)" }}>
               Paint Color HQ is not a paint store. We don&apos;t sell paint,
               and no paint manufacturer owns or runs this site.
               We&apos;re an{" "}
-              <strong className="text-on-surface">independent reference tool</strong> built to help you
+              <strong>independent reference tool</strong> built to help you
               make informed decisions about paint colors before you visit the
               store.
             </p>
 
-            <div className="space-y-5">
+            <div className="pch-steps">
               {[
                 { num: "1", title: "Cross-Brand Matching", desc: "Paint brands don't publish cross-references to each other's colors. We compute matches across the catalogued brands using CIEDE2000, so you can find an equivalent color no matter which brand your local store carries." },
                 { num: "2", title: "Data-Driven, Not Opinion-Based", desc: "Every color recommendation on this site is backed by color science. When we say two colors are close, we label how close it is: nearly identical, very similar, or a visible difference. No subjective \"these look similar\" guesses." },
                 { num: "3", title: "Completely Free", desc: "All tools, color data, and matching results are free to use with no account or sign-up required. We believe paint color information should be accessible to everyone." },
                 { num: "4", title: "Accuracy Transparency", desc: "All color data is based on digital hex and RGB values published by each manufacturer. We update our database regularly and always recommend verifying with physical paint samples, because real paint looks different depending on finish, lighting, coats, and primer." },
               ].map((item) => (
-                <div key={item.num} className="flex items-start gap-4">
-                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-primary-fixed text-sm font-bold text-primary">
-                    {item.num}
-                  </div>
+                <div key={item.num}>
+                  <div className="n">{item.num}</div>
                   <div>
-                    <h3 className="font-headline font-semibold text-on-surface">{item.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-on-surface-variant">{item.desc}</p>
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <h3 className="font-headline text-xl font-bold text-on-surface mt-12 mb-4">
+            <h3 style={{ marginTop: "var(--s-7)", marginBottom: "var(--s-3)" }}>
               How Paint Color HQ Makes Money
             </h3>
-            <div className="space-y-4 text-on-surface-variant leading-relaxed">
+            <div className="pch-prose">
               <p>
                 Some links on color pages and in the paint calculator&apos;s
                 supplies list go to Amazon. Paint Color HQ is an Amazon
@@ -269,27 +297,27 @@ export default function AboutPage() {
         </section>
 
         {/* Brands We Cover */}
-        <section className="py-20 px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">
+        <section className="pch-block">
+          <div className="wrap pch-wrap pch-readable">
+            <h2>
               Brands We Cover
             </h2>
-            <p className="text-on-surface-variant leading-relaxed">
+            <p className="pch-prose">
               Our database includes colors from {BRAND_COUNT} paint brands
               available in North America and internationally:
             </p>
-            <ul className="mt-4 grid grid-cols-2 gap-2 text-sm text-on-surface-variant sm:grid-cols-3">
+            <ul className="pch-dots" style={{ marginTop: "var(--s-4)" }}>
               {CATALOG_BRANDS.map((item) => item.name).map((brand) => (
-                <li key={brand} className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-primary" />
+                <li key={brand}>
+                  <span className="pch-dot" />
                   {brand}
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-sm text-on-surface-variant">
+            <p className="pch-note" style={{ marginTop: "var(--s-4)" }}>
               We add new brands and update existing color data regularly. If
               you notice a missing color or incorrect data, please{" "}
-              <Link href="/contact" className="text-primary underline hover:text-primary/80">
+              <Link href="/contact" className="pch-text-link">
                 let us know
               </Link>.
             </p>
@@ -297,22 +325,22 @@ export default function AboutPage() {
         </section>
 
         {/* Contact */}
-        <section className="py-20 px-6 md:px-12 bg-surface-container-low">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-4">
+        <section className="pch-block pch-block--surface">
+          <div className="wrap pch-wrap pch-readable">
+            <h2>
               Contact Us
             </h2>
-            <p className="text-on-surface-variant leading-relaxed">
+            <p className="pch-prose">
               Have a question, found inaccurate data, or want to suggest a
               feature? We&apos;d like to hear from you.
             </p>
-            <p className="mt-3 text-on-surface-variant leading-relaxed">
+            <p className="pch-prose" style={{ marginTop: "var(--s-3)" }}>
               Visit our{" "}
-              <Link href="/contact" className="text-primary underline hover:text-primary/80">
+              <Link href="/contact" className="pch-text-link">
                 contact page
               </Link>{" "}
               for general inquiries, corrections, and feedback, or email{" "}
-              <a href="mailto:support@paintcolorhq.com" className="text-primary underline hover:text-primary/80">
+              <a href="mailto:support@paintcolorhq.com" className="pch-text-link">
                 support@paintcolorhq.com
               </a>.
             </p>
