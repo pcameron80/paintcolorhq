@@ -4,6 +4,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PaintCalculator } from "./calculator";
 import { AdSenseScript } from "@/components/adsense-script";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { getAmazonSearchUrl } from "@/lib/affiliate";
 import { ogDefaults } from "@/lib/og";
@@ -91,7 +93,7 @@ const linkClass = "text-primary underline hover:text-primary/80";
 
 export default function PaintCalculatorPage() {
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Paint Calculator",
@@ -117,15 +119,26 @@ export default function PaintCalculatorPage() {
       }} />
 
       <Header />
-      <main id="main-content">
+      <main id="main-content" className="pch-page pch-tool">
 
-      <section className="relative pt-24 px-6 md:px-12 py-16">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">Tool</span>
-          <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
+      <section className="pch-toolhead">
+        <div className="wrap pch-wrap">
+          <span className="pch-eyebrow">Tool</span>
+          <h1>
             Paint Calculator
           </h1>
-          <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+        </div>
+      </section>
+
+      <section className="pch-toolbody">
+        <div className="wrap pch-wrap">
+          <PaintCalculator />
+        </div>
+      </section>
+
+      <section className="pch-toolintro">
+        <div className="wrap pch-wrap">
+          <p>
             Work out how many gallons of paint you need for a room, a ceiling,
             doors, cabinets or the outside of a house. Enter the dimensions,
             subtract doors and windows, and pick your paint to use the spread
@@ -134,12 +147,6 @@ export default function PaintCalculatorPage() {
             you haven&apos;t chosen one yet. Room estimates include a supplies
             checklist sized to your room.
           </p>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 pb-16">
-        <div className="max-w-7xl mx-auto">
-          <PaintCalculator />
         </div>
       </section>
 

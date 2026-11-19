@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 import { getColorById, getColorsBySlugList } from "@/lib/queries";
 import { CompareClient, type PairColor } from "./compare-client";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
@@ -113,7 +115,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
   const popularPairs = await loadPopularPairs();
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Paint Color Comparison Tool",
@@ -132,24 +134,21 @@ export default async function ComparePage({ searchParams }: PageProps) {
       }} />
 
       <Header />
-      <main id="main-content">
+      <main id="main-content" className="pch-page pch-tool">
 
       {/* Tighter on phones than the other tool heroes so the verdict, which
           sits right under the pickers, lands in the first screen at 390x844. */}
-      <section className="relative px-6 pt-20 pb-2 md:px-12 md:pt-24 md:pb-8">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">Tool</span>
-          <h1 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.95] mt-2 mb-3 md:mb-4">
+      <section className="pch-toolhead">
+        <div className="wrap pch-wrap">
+          <span className="pch-eyebrow">Tool</span>
+          <h1>
             Compare Paint Colors Side by Side
           </h1>
-          <p className="text-base md:text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            {INTRO}
-          </p>
         </div>
       </section>
 
-      <section className="px-6 md:px-12 pb-16">
-        <div className="max-w-7xl mx-auto">
+      <section className="pch-toolbody">
+        <div className="wrap pch-wrap">
           {/* Keyed on the pair so a popular-pair click (same route, new params)
               remounts the client with the new colors instead of keeping its
               old useState values. */}
@@ -159,6 +158,14 @@ export default async function ComparePage({ searchParams }: PageProps) {
             initialColor2={color2}
             popularPairs={popularPairs}
           />
+        </div>
+      </section>
+
+      <section className="pch-toolintro">
+        <div className="wrap pch-wrap">
+          <p>
+            {INTRO}
+          </p>
         </div>
       </section>
 
