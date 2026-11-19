@@ -12,6 +12,8 @@ import colorRedirects from "@/data/color-redirects.json";
 import { closenessLabel } from "@/lib/closeness";
 import { formatLrv, lrvGapSentence, lrvLightnessGap, usableLrv } from "@/lib/lrv-gap";
 import { isMatchTitleTestPair, matchTestDescription, matchTestTitle } from "@/lib/match-title-test";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -169,6 +171,7 @@ export default async function MatchPage({ params }: PageProps) {
   return (
     <div className="min-h-screen bg-surface">
       <Header />
+      <div className={`pch-color ${urbanist.variable}`}>
       <JsonLd data={{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
         { "@type": "ListItem", position: 2, name: sourceColor.name, item: `https://www.paintcolorhq.com/colors/${sourceColor.brand.slug}/${sourceColor.slug}` },
@@ -328,6 +331,7 @@ export default async function MatchPage({ params }: PageProps) {
       </main>
 
       <TrackPage eventName="page_view_enriched" params={{ page_type: "match", source_brand: sourceColor.brand.name, target_brand: targetBrand.name }} />
+      </div>
       <AdSenseScript />
       <Footer />
     </div>
