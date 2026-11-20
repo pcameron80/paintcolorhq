@@ -292,36 +292,39 @@ export default async function ColorOfTheYearPage() {
             {summaryRows.length > 0 && (
               <div className="pt-4">
                 <h2 className="mb-3 font-headline text-xl font-bold text-on-surface">Each {YEAR} pick and its closest match at another brand</h2>
-                <div className="overflow-x-auto rounded-xl bg-surface-container-lowest">
-                  <table className="w-full min-w-[40rem] border-collapse text-left text-sm">
-                    <thead>
+                <div className="rounded-xl bg-surface-container-lowest sm:overflow-x-auto">
+                  <table className="block w-full border-collapse text-left text-sm sm:table">
+                    <thead className="hidden sm:table-header-group">
                       <tr className="border-b border-outline-variant/30 text-xs uppercase tracking-wider text-on-surface-variant">
                         <th scope="col" className="px-4 py-3 font-bold">{YEAR} pick</th>
                         <th scope="col" className="px-4 py-3 font-bold">Closest match at another brand</th>
                         <th scope="col" className="px-4 py-3 font-bold">How close</th>
-                        <th scope="col" className="px-4 py-3 font-bold">Other brands with a Nearly identical match</th>
+                        <th scope="col" className="px-4 py-3 font-bold">Brands with a Nearly identical match</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-outline-variant/30">
+                    <tbody className="block divide-y divide-outline-variant/30 sm:table-row-group">
                       {summaryRows.map(({ p, best, nearlyCount, sameValues }) => (
-                        <tr key={p.pick.brandSlug} className="align-top">
-                          <th scope="row" className="px-4 py-3 font-medium">
+                        <tr key={p.pick.brandSlug} className="block px-4 py-3 align-top sm:table-row sm:p-0">
+                          <th scope="row" className="block py-1 font-medium sm:table-cell sm:px-4 sm:py-3">
                             <Link href={`/colors/${p.pick.brandSlug}/${p.pick.colorSlug}`} className="inline-flex items-center gap-2 text-primary underline-offset-4 hover:underline">
                               <span className="h-5 w-5 shrink-0 rounded border border-outline-variant/25" style={{ backgroundColor: p.color.hex }} aria-hidden="true" />
                               <span>{p.pick.brandName} {p.pick.name}</span>
                             </Link>
                           </th>
-                          <td className="px-4 py-3">
+                          <td className="block py-1 sm:table-cell sm:px-4 sm:py-3">
+                            <span className="text-on-surface-variant sm:hidden">Closest: </span>
                             <Link href={`/colors/${best.match_color.brand.slug}/${best.match_color.slug}`} className="inline-flex items-center gap-2 text-primary underline-offset-4 hover:underline">
                               <span className="h-5 w-5 shrink-0 rounded border border-outline-variant/25" style={{ backgroundColor: best.match_color.hex }} aria-hidden="true" />
                               <span>{best.match_color.brand.name} {best.match_color.name}</span>
                             </Link>
                           </td>
-                          <td className="px-4 py-3 text-on-surface">
+                          <td className="block py-1 text-on-surface sm:table-cell sm:px-4 sm:py-3">
                             {closenessLabel(Number(best.delta_e_score))}
                             {sameValues && <span className="block text-xs text-on-surface-variant">same published color values</span>}
                           </td>
-                          <td className="px-4 py-3 font-medium text-on-surface">{nearlyCount}</td>
+                          <td className="block py-1 font-medium text-on-surface sm:table-cell sm:px-4 sm:py-3">
+                            <span className="font-normal text-on-surface-variant sm:hidden">Brands with a Nearly identical match: </span>{nearlyCount}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
