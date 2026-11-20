@@ -7,6 +7,8 @@ import { inspirationPalettes } from "@/lib/palettes";
 import { findClosestColor } from "@/lib/queries";
 import type { ColorWithBrand } from "@/lib/types";
 import { ogDefaults } from "@/lib/og";
+import { urbanist } from "@/lib/redesign-font";
+import "../redesign.css";
 
 export const revalidate = 604800; // 7d — static index page
 
@@ -44,9 +46,9 @@ export default async function InspirationPage() {
   const palettes = await resolveAll();
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <Header />
-      <main id="main-content">
+      <main id="main-content" className="pch-page">
 
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "CollectionPage",
@@ -67,49 +69,48 @@ export default async function InspirationPage() {
         ],
       }} />
 
-      {/* Hero */}
-      <section className="relative pt-24 px-6 md:px-12 py-20">
-        <div className="max-w-7xl mx-auto">
-          <nav className="mb-8 text-sm text-on-surface-variant">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-            <span className="mx-2 text-outline">/</span>
-            <span className="text-on-surface">Inspiration</span>
-          </nav>
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">The Studio Lookbook</span>
-          <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-6">
-            Color Palettes &amp;<br />Inspiration
-          </h1>
-          <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            {palettes.length} curated palettes to spark your next project — each mapped to real paint colors you can buy.
-          </p>
+      <section className="pch-pagehead">
+        <div className="wrap pch-wrap pch-grid pch-pagehead__grid">
+          <div className="pch-pagehead__text">
+            <nav className="pch-crumbs" aria-label="Breadcrumb" style={{ marginBottom: 0 }}>
+              <Link href="/">Home</Link>
+              <span aria-hidden="true">/</span>
+              <span>Inspiration</span>
+            </nav>
+            <span className="pch-eyebrow">The Studio Lookbook</span>
+            <h1 style={{ maxWidth: "none" }}>
+              Color Palettes &amp;<br />Inspiration
+            </h1>
+            <p className="pch-pagehead__lead">
+              {palettes.length} curated palettes to spark your next project: each mapped to real paint colors you can buy.
+            </p>
+          </div>
+          <div className="pch-pagehead__art" aria-hidden="true" style={{ display: "grid", gap: 8 }}>
+            {palettes.slice(0, 3).map((palette) => (
+              <div key={palette.slug} style={{ display: "grid", gridTemplateColumns: `repeat(${palette.swatches.length}, 1fr)`, height: 56, borderRadius: 12, overflow: "hidden" }}>
+                {palette.swatches.map((swatch, i) => (
+                  <div key={i} style={{ backgroundColor: swatch.match?.hex ?? swatch.paletteHex }} />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Palette Grid */}
-      <section className="px-6 md:px-12 py-24 bg-tertiary-fixed">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="pch-block pch-block--surface">
+        <div className="wrap pch-wrap">
+          <div className="pch-cards">
             {palettes.map((palette) => (
-              <Link
-                key={palette.slug}
-                href={`/inspiration/${palette.slug}`}
-                className="bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden hover:shadow-lg transition-all duration-500 group"
-              >
-                <div className="h-48" style={{ display: "grid", gridTemplateColumns: `repeat(${palette.swatches.length}, 1fr)` }}>
+              <Link key={palette.slug} href={`/inspiration/${palette.slug}`} className="pch-card pch-cardlink" style={{ padding: "var(--s-3)", gap: "var(--s-3)" }}>
+                <div className="pch-art" style={{ display: "grid", gridTemplateColumns: `repeat(${palette.swatches.length}, 1fr)`, height: 144 }}>
                   {palette.swatches.map((swatch, i) => (
                     <div key={i} style={{ backgroundColor: swatch.match?.hex ?? swatch.paletteHex }} />
                   ))}
                 </div>
-                <div className="p-6">
-                  <h2 className="font-headline font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">
-                    {palette.name}
-                  </h2>
-                  <p className="text-xs text-outline tracking-wider uppercase mb-3">
-                    {palette.swatches.length} Swatches
-                  </p>
-                  <p className="text-sm text-on-surface-variant leading-relaxed">
-                    {palette.description}
-                  </p>
+                <div style={{ display: "grid", gap: "var(--s-1)", padding: "0 var(--s-2) var(--s-2)" }}>
+                  <h2>{palette.name}</h2>
+                  <p className="pch-note">{palette.swatches.length} Swatches</p>
+                  <p>{palette.description}</p>
                 </div>
               </Link>
             ))}

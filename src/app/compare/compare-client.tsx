@@ -264,7 +264,7 @@ function ColorSearchInput({
         onKeyDown={handleKeyDown}
         onFocus={() => { if (results.length > 0) setOpen(true); }}
         placeholder="Search by name, number, or hex..."
-        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder:text-outline focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
       />
       <div role="status" aria-live="polite" className="sr-only">{announcement}</div>
 
