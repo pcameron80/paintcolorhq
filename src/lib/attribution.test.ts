@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { isIgnoredHost, normalizeReferrer, referrerFromHeaders, MAX_REFERRER_URL_LENGTH } from "./attribution";
+import { ATTRIBUTION, ATTRIBUTION_HTML, isIgnoredHost, normalizeReferrer, referrerFromHeaders, MAX_REFERRER_URL_LENGTH } from "./attribution";
 
 test("strips query, fragment and credentials, lowercases the host", () => {
   assert.deepEqual(normalizeReferrer("https://User:pw@Blog.Example.COM/paint/match?utm=x#top"), {
@@ -76,4 +76,14 @@ test("Referer wins, Origin is the fallback", () => {
 
 test("a Referer from our own site never falls back to Origin", () => {
   assert.equal(referrerFromHeaders("https://www.paintcolorhq.com/embed/match", "https://b.example.com"), null);
+});
+
+test("attribution object carries the copy-paste credit html and keeps existing fields", () => {
+  assert.equal(
+    ATTRIBUTION.html,
+    '<p>Paint color matches powered by <a href="https://www.paintcolorhq.com">PaintColorHQ</a></p>',
+  );
+  assert.equal(ATTRIBUTION.html, ATTRIBUTION_HTML);
+  assert.ok(!ATTRIBUTION.html.includes("rel="));
+  assert.ok(ATTRIBUTION.text && ATTRIBUTION.url && ATTRIBUTION.required);
 });

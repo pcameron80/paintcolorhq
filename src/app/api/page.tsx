@@ -101,6 +101,12 @@ export default function ApiDocsPage() {
             free response includes an <code className="font-mono">attribution</code> field with the text and URL. The paid
             tier has no attribution requirement.
           </p>
+          <p className="mt-3 text-sm text-on-surface">Copy-paste credit line (also returned as <code className="font-mono">attribution.html</code>). Leave the link followed, with no <code className="font-mono">rel=&quot;nofollow&quot;</code>:</p>
+          <Code>{`<p>Paint color matches powered by <a href="https://www.paintcolorhq.com">PaintColorHQ</a></p>`}</Code>
+          <p className="mt-3 text-sm text-on-surface-variant">
+            Internal tools behind a login need no credit. Full conditions are in the{" "}
+            <Link href="/terms#api-terms" className="text-secondary underline underline-offset-2 hover:no-underline">free API terms</Link>.
+          </p>
         </section>
 
         <section className="mt-10">
@@ -153,6 +159,7 @@ export default function ApiDocsPage() {
   "attribution": {
     "text": "Cross-brand paint matching by PaintColorHQ",
     "url": "https://www.paintcolorhq.com",
+    "html": "<p>Paint color matches powered by <a href=\\"https://www.paintcolorhq.com\\">PaintColorHQ</a></p>",
     "required": "Free use requires a visible link to https://www.paintcolorhq.com on the page that shows these results."
   }
 }`}</Code>
