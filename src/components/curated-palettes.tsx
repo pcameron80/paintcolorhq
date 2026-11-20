@@ -200,7 +200,7 @@ export async function CuratedPalettes({
         {resolved.map((palette) => (
           <div
             key={palette.name}
-            className={`rounded-xl bg-surface-container-lowest border border-outline-variant/10 ${compact ? "p-3 w-[92%] shrink-0 snap-start md:w-auto md:shrink md:p-5" : "p-5"}`}
+            className={`rounded-xl bg-surface-container-lowest border border-outline-variant/10 ${compact ? "px-2 py-3 w-[94%] shrink-0 snap-start md:w-auto md:shrink md:p-5" : "p-5"}`}
           >
             <div className={compact ? "flex gap-1 md:gap-2" : "flex gap-2"}>
               {palette.colors.map((color, i) => {
