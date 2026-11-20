@@ -15,9 +15,19 @@ interface PaletteColor {
 
 export function AddPaletteToProject({
   colors,
+  resolveColors,
+  count,
+  label = "Add to Project",
+  note,
   currentPath,
 }: {
-  colors: PaletteColor[];
+  colors?: PaletteColor[];
+  /** Builds the color list at save time, for callers whose colors need a lookup first. */
+  resolveColors?: () => Promise<PaletteColor[]>;
+  /** Shown as the number of colors when they are resolved at save time. */
+  count?: number;
+  label?: string;
+  note?: string;
   currentPath: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -61,10 +71,12 @@ export function AddPaletteToProject({
   }
 
   async function handleAddToProject(project: Project) {
+    const list = resolveColors ? await resolveColors() : (colors ?? []);
+    if (list.length === 0) return;
     const res = await fetch(`/api/projects/${project.id}/colors/batch`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ colors }),
+      body: JSON.stringify({ colors: list }),
     });
     if (res.ok) {
       setAddedTo((prev) => new Set(prev).add(project.id));
@@ -103,14 +115,15 @@ export function AddPaletteToProject({
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
         </svg>
-        Add to Project
+        {label}
       </button>
 
       {open && (
         <div className="absolute right-0 z-50 mt-2 w-72 rounded-xl border border-gray-200 bg-white p-4 shadow-xl">
           <p className="text-sm font-semibold text-gray-900">
-            Add all {colors.length} colors to project
+            Add all {count ?? colors?.length ?? 0} colors to project
           </p>
+          {note && <p className="mt-1 text-xs text-gray-500">{note}</p>}
 
           {loading ? (
             <p className="mt-3 text-sm text-gray-500">Loading...</p>

@@ -3,7 +3,10 @@
  * fixes stored families it disagrees with. Written for the 2026-10-05 family
  * audit (creamy whites under yellow/orange, purples under blue, saturated
  * colors under neutral) and extended for the 2026-10-24 rewrite (MP-27:
- * near-blacks under gray, tans under orange, muted greens under gray).
+ * near-blacks under gray, tans under orange, muted greens under gray) and
+ * the 2026-11 data audit (colored grays/neutrals, light reds to pink, teal
+ * greens out of blue, a peach carve-out from the tan rule, and the sourced
+ * FAMILY_OVERRIDES via familyForRow). See docs/data-audit-2026-11.md.
  *
  *   npx tsx scripts/refine-color-families.ts            # dry run, prints the report
  *   npx tsx scripts/refine-color-families.ts --apply    # writes, saves a backup first
@@ -23,7 +26,7 @@
 import { createClient } from "@supabase/supabase-js";
 import * as dotenv from "dotenv";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { refineColorFamily, hexToRgb } from "./lib/color-math";
+import { familyForRow, hexToRgb } from "./lib/color-math";
 import { HEAD_COLOR_PUSH } from "../src/lib/head-colors";
 
 dotenv.config({ path: ".env.local" });
@@ -138,7 +141,7 @@ async function main() {
     const rgb = hexToRgb(r.hex);
     if (!rgb || !r.color_family) continue;
     const key = `${r.brand.slug}/${r.slug}`;
-    const next = refineColorFamily(r.color_family, rgb.r, rgb.g, rgb.b);
+    const next = familyForRow(key, r.color_family, rgb.r, rgb.g, rgb.b);
     if (head.has(key)) headRows.push({ key, old: r.color_family, next });
     if (next !== r.color_family) all.push({ id: r.id, key, brand: r.brand.slug, name: r.name, hex: r.hex, old: r.color_family, next });
   }

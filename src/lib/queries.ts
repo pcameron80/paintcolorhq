@@ -23,7 +23,7 @@ const COLOR_CARD_FIELDS_WITH_BRAND =
 // Fields the color detail page + color-description.ts utilities consume.
 // rgb_* and lab_* are used by the description generator + nearest-color logic.
 const COLOR_DETAIL_FIELDS =
-  "id, brand_id, name, slug, color_number, hex, rgb_r, rgb_g, rgb_b, lab_l, lab_a, lab_b_val, lrv, color_family, undertone, samplize_available, samplize_handle, availability";
+  "id, brand_id, name, slug, color_number, hex, rgb_r, rgb_g, rgb_b, lab_l, lab_a, lab_b_val, lrv, color_family, undertone, samplize_available, samplize_handle, availability, created_at, content_updated_at, alternate_numbers";
 const COLOR_DETAIL_FIELDS_WITH_BRAND =
   COLOR_DETAIL_FIELDS + ", brand:brand_id (id, name, slug)";
 
@@ -531,6 +531,27 @@ export async function getColorsByFamilyCount(
   const { count, error } = await query;
   if (error) throw error;
   return count ?? 0;
+}
+
+// Every indexable color of one brand, name and slug only, A to Z. Feeds the
+// brand page's name index so each color page is one link from its brand page.
+// Paged because Supabase caps a request at 1,000 rows (Behr has ~5,700).
+export async function getBrandColorIndex(brandId: string): Promise<{ name: string; slug: string; colorNumber: string | null }[]> {
+  const out: { name: string; slug: string; colorNumber: string | null }[] = [];
+  const batch = 1000;
+  for (let from = 0; ; from += batch) {
+    const { data, error } = await supabase
+      .from("colors")
+      .select("name, slug, color_number, lrv, undertone, color_family")
+      .eq("brand_id", brandId)
+      .order("name").order("id")
+      .range(from, from + batch - 1);
+    if (error) throw error;
+    if (!data?.length) break;
+    for (const c of data) if (isColorIndexable(c)) out.push({ name: c.name, slug: c.slug, colorNumber: c.color_number });
+    if (data.length < batch) break;
+  }
+  return out;
 }
 
 export async function getColorsByBrandCount(

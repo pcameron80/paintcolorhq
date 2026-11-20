@@ -67,7 +67,7 @@ const OUT_DIR = path.resolve(__dirname, "../public/match-data");
 // regeneration.
 const CACHE_DIR = path.resolve(__dirname, "../.next/cache/match-data");
 const CACHE_MARKER = path.join(CACHE_DIR, ".hash");
-const HASH_VERSION = "v3";
+const HASH_VERSION = "v4";
 const TOP_N_PER_COLOR = 50;
 const MATCHES_PER_TARGET_BRAND = 5; // compute-matches.ts TOP_N
 const PAGE_SIZE = 1000; // PostgREST max rows per request
@@ -204,16 +204,34 @@ async function maxContentUpdatedAt(): Promise<string> {
 }
 
 /**
+ * First and last cross_brand_matches id. seed-matches inserts without an id,
+ * so Postgres mints new UUIDs on every TRUNCATE + reseed and this pair
+ * changes even when the row count and every color stay the same (a tie-order
+ * fix, a compute-matches logic change, a Lab-only correction). Two ordered
+ * limit-1 reads on the primary key.
+ */
+async function matchIdRange(): Promise<string> {
+  const edge = async (ascending: boolean) => {
+    const { data, error } = await supabase.from("cross_brand_matches").select("id").order("id", { ascending }).limit(1);
+    if (error) fail(`cross_brand_matches id range: ${error.message}`);
+    return String(data?.[0]?.id ?? "none");
+  };
+  return `${await edge(true)}..${await edge(false)}`;
+}
+
+/**
  * Content fingerprint of everything the generated files depend on. Any hex,
  * name, slug, number, availability or brand edit changes it, as does any
- * change to this script. The v2 key was row counts only, so every in-place
- * correction shipped stale files.
+ * reseed of cross_brand_matches (matchIdRange) and any change to this
+ * script. The v2 key was row counts only, so every in-place correction
+ * shipped stale files; v3 missed reseeds that kept the row count (found in
+ * the 2026-11 data audit).
  *
  * The frozen list and snapshots are deliberately not part of it: they are
  * applied after the cache (applyFrozen), so editing them never forces a
  * regeneration and an expired freeze never needs one.
  */
-function fingerprint(colors: ColorRow[], brands: BrandRow[], matchCount: number, maxUpdated: string): string {
+function fingerprint(colors: ColorRow[], brands: BrandRow[], matchCount: number, maxUpdated: string, matchIds: string): string {
   const colorText = colors
     .map((c) => [c.id, c.name, c.slug, c.hex, c.color_number ?? "", c.availability ?? "", c.brand_id].join("|"))
     .join("\n");
@@ -228,6 +246,7 @@ function fingerprint(colors: ColorRow[], brands: BrandRow[], matchCount: number,
     `colorsmd5:${md5(colorText)}`,
     `brandsmd5:${md5(brandText)}`,
     `matches:${matchCount}`,
+    `matchids:${md5(matchIds)}`,
     `script:${md5(scriptText)}`,
   ].join("|");
 }
@@ -284,7 +303,7 @@ async function main() {
   if (countProblem) fail(countProblem);
 
   console.log("\n[2/4] Checking build cache...");
-  const currentHash = fingerprint(colors, brands, matchCount, await maxContentUpdatedAt());
+  const currentHash = fingerprint(colors, brands, matchCount, await maxContentUpdatedAt(), await matchIdRange());
   if (!force && fs.existsSync(CACHE_MARKER)) {
     const savedHash = fs.readFileSync(CACHE_MARKER, "utf-8").trim();
     const cached = jsonFiles(CACHE_DIR).length;

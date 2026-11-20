@@ -5,11 +5,13 @@ import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { CATALOG_BRANDS, BRAND_COUNT } from "@/lib/catalog-stats";
 import { ogDefaults } from "@/lib/og";
+import { urbanist } from "@/lib/redesign-font";
+import "../redesign.css";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions About Paint Colors",
   description:
-    "Answers to common questions about paint colors — cross-brand matching, undertones, paint quantities, and Paint Color HQ tools.",
+    "Answers to common questions about paint colors: cross-brand matching, undertones, paint quantities, and Paint Color HQ tools.",
   alternates: { canonical: "https://www.paintcolorhq.com/faq" },
   openGraph: {
     ...ogDefaults,
@@ -49,12 +51,12 @@ const faqs = [
   {
     question: "What's the difference between paint sheen levels?",
     answer:
-      "Paint sheen refers to how glossy or matte the finish is. From least to most shiny: Flat/Matte has no shine and hides imperfections well — good for ceilings and low-traffic walls. Eggshell has a slight soft sheen and is the most popular for living rooms and bedrooms. Satin has a noticeable sheen, cleans easily, and works well for kitchens, bathrooms, and kids' rooms. Semi-Gloss is shiny and very durable — ideal for trim, doors, and cabinets. High-Gloss is the shiniest and most durable — used for accent pieces and doors.",
+      "Paint sheen refers to how glossy or matte the finish is. From least to most shiny: Flat/Matte has no shine and hides imperfections well: good for ceilings and low-traffic walls. Eggshell has a slight soft sheen and is the most popular for living rooms and bedrooms. Satin has a noticeable sheen, cleans easily, and works well for kitchens, bathrooms, and kids' rooms. Semi-Gloss is shiny and very durable: ideal for trim, doors, and cabinets. High-Gloss is the shiniest and most durable: used for accent pieces and doors.",
   },
   {
     question: "How do I identify a paint color from a photo?",
     answer:
-      "Use our Photo Color Identifier tool. Upload any photo — a room you love on Pinterest, a picture of your neighbor's house, or a swatch from a magazine. Click any spot on the image and we'll find the closest matching paint colors from all 13 brands in our database. The tool extracts the exact color value at that pixel and runs it through our CIEDE2000 matching algorithm.",
+      "Use our Photo Color Identifier tool. Upload any photo: a room you love on Pinterest, a picture of your neighbor's house, or a swatch from a magazine. Click any spot on the image and we'll find the closest matching paint colors from all 13 brands in our database. The tool extracts the exact color value at that pixel and runs it through our CIEDE2000 matching algorithm.",
   },
   {
     question: "Are the colors on screen accurate to real paint?",
@@ -69,7 +71,7 @@ const faqs = [
   {
     question: "How do I choose a paint color for my room?",
     answer:
-      "Start by looking at what's already in the room that you can't change — flooring, countertops, large furniture. Pick up on the undertones in those fixed elements and choose paint that has a complementary undertone. Next, consider the room's natural light: north-facing rooms benefit from warmer colors, while south-facing rooms can handle cooler tones. Use our Room Visualizer to preview colors on walls before buying, and our Palette Generator to build a coordinated scheme with wall color, trim, and accents.",
+      "Start by looking at what's already in the room that you can't change, flooring, countertops, large furniture. Pick up on the undertones in those fixed elements and choose paint that has a complementary undertone. Next, consider the room's natural light: north-facing rooms benefit from warmer colors, while south-facing rooms can handle cooler tones. Use our Room Visualizer to preview colors on walls before buying, and our Palette Generator to build a coordinated scheme with wall color, trim, and accents.",
   },
   {
     question: "What is the most popular paint color?",
@@ -79,7 +81,7 @@ const faqs = [
   {
     question: "Is Paint Color HQ free to use?",
     answer:
-      "Yes. All of our tools — color search, cross-brand matching, room visualizer, photo color identifier, palette generator, and paint calculator — are completely free. You can optionally create a free account to save colors to projects and organize them by room, but no account is required to use any tool.",
+      "Yes. All of our tools (color search, cross-brand matching, room visualizer, photo color identifier, palette generator, and paint calculator) are completely free. You can optionally create a free account to save colors to projects and organize them by room, but no account is required to use any tool.",
   },
 ];
 
@@ -90,7 +92,7 @@ function JsonLd({ data }: { data: object }) {
 
 export default function FAQPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-surface">
+    <div className={`flex min-h-screen flex-col bg-surface ${urbanist.variable}`}>
       <Header />
 
       <JsonLd data={{
@@ -108,63 +110,47 @@ export default function FAQPage() {
         ],
       }} />
 
-      <main className="flex-1">
-        {/* Hero */}
-        <section className="relative pt-24 px-6 md:px-12 py-16">
-          <div className="max-w-4xl mx-auto">
-            <span className="text-primary font-bold text-xs uppercase tracking-widest">FAQ</span>
-            <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
-              Frequently Asked Questions
-            </h1>
-            <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+      <main id="main-content" className="flex-1 pch-page">
+        <section className="pch-pagehead">
+          <div className="wrap pch-wrap">
+            <span className="pch-eyebrow">FAQ</span>
+            <h1 style={{ maxWidth: "none" }}>Frequently Asked Questions</h1>
+            <p className="pch-pagehead__lead" style={{ marginTop: "var(--s-4)" }}>
               Common questions about paint colors, matching across brands, and
               using our tools.
             </p>
           </div>
         </section>
 
-        <section className="px-6 md:px-12 pb-20">
-          <div className="max-w-4xl mx-auto">
-            <div className="divide-y divide-outline-variant/20">
+        <section className="pch-block pch-block--surface" style={{ paddingTop: "var(--s-7)" }}>
+          <div className="wrap pch-wrap">
+            <div className="pch-faqlist" style={{ maxWidth: 860 }}>
               {faqs.map((faq, i) => (
-                <details key={i} className="group py-6" open={i === 0}>
-                  <summary className="flex cursor-pointer list-none items-center justify-between text-lg font-semibold text-on-surface hover:text-primary">
-                    {faq.question}
-                    <svg
-                      className="h-5 w-5 shrink-0 text-outline transition-transform group-open:rotate-180"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={2}
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                      />
+                <details key={i} open={i === 0}>
+                  <summary>
+                    <h2 style={{ font: "inherit", letterSpacing: "inherit", margin: 0 }}>{faq.question}</h2>
+                    <svg fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   </summary>
-                  <p className="mt-4 leading-relaxed text-on-surface-variant">
-                    {faq.answer}
-                  </p>
+                  <p>{faq.answer}</p>
                 </details>
               ))}
             </div>
+          </div>
+        </section>
 
-            <div className="mt-12 rounded-2xl border border-outline-variant/20 bg-surface-container-low p-8">
-              <h2 className="font-headline text-lg font-bold text-on-surface">
-                Still have questions?
-              </h2>
-              <p className="mt-2 text-on-surface-variant">
+        <section className="pch-block">
+          <div className="wrap pch-wrap">
+            <div className="pch-card" style={{ maxWidth: 860, padding: "var(--s-6)" }}>
+              <h2 style={{ fontSize: 24 }}>Still have questions?</h2>
+              <p>
                 Can&apos;t find what you&apos;re looking for? Reach out and
                 we&apos;ll get back to you within 1–2 business days.
               </p>
-              <Link
-                href="/contact"
-                className="mt-4 inline-block rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary hover:bg-primary/90 transition-colors shadow-sm"
-              >
-                Contact Us
-              </Link>
+              <div>
+                <Link href="/contact" className="btn pch-btn pch-btn--solid">Contact Us</Link>
+              </div>
             </div>
           </div>
         </section>

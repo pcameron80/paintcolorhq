@@ -1135,7 +1135,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its gentle, grayed quality keeps it from reading juvenile, though it can lean cooler in north
-        light. It pairs with crisp whites and pale wood. Behr Silver Bullet is a nearly identical match,
+        light. It pairs with crisp whites and pale wood. Behr Urban Raincoat is a nearly identical match,
         with Benjamin Moore Brittany Blue close behind.
       </p>
     </>
@@ -1409,7 +1409,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         That cool blue base reads more strongly in north light, so it&apos;s happiest with warm or balanced
         light, or where you want the crispness on purpose. It pairs with cool whites and stone. It&apos;s a
-        nearly identical match for Benjamin Moore Smoke, and nearly identical to Behr Gull Gray.
+        nearly identical match for Benjamin Moore Smoke Embers, and nearly identical to Behr Gull Gray.
       </p>
     </>
   ),
@@ -1966,7 +1966,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its subtle warmth means it can look faintly creamy beside a true cool white, so keep the whites
-        consistent. It&apos;s a versatile all-rounder for bright rooms. Behr Spun Cotton is its nearly identical
+        consistent. It&apos;s a versatile all-rounder for bright rooms. Behr Elderflower is its nearly identical
         cross-brand match.
       </p>
     </>
@@ -2301,7 +2301,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Its subtle warmth means it can look faintly soft beside a stark cool white, so keep the whites
-        consistent. It&apos;s lovely in bright, airy rooms. Behr Resort White is its nearly identical cross-brand
+        consistent. It&apos;s lovely in bright, airy rooms. Behr Moon Rise is its nearly identical cross-brand
         match.
       </p>
     </>

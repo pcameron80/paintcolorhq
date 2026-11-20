@@ -6,6 +6,8 @@ import { getAllPosts } from "@/lib/blog-posts";
 import { AdSenseScript } from "@/components/adsense-script";
 import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
 import { ogDefaults } from "@/lib/og";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const metadata: Metadata = {
   title: "Philip Cameron | Founder of Paint Color HQ",
@@ -39,7 +41,7 @@ export default function PhilipCameronPage() {
   const authorPosts = getAllPosts().filter((p) => p.author === "Philip Cameron");
 
   return (
-    <div className="flex min-h-screen flex-col bg-surface">
+    <div className={`flex min-h-screen flex-col bg-surface ${urbanist.variable}`}>
       <Header />
 
       <JsonLd data={{
@@ -68,9 +70,9 @@ export default function PhilipCameronPage() {
         ],
       }} />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1 pch-page pch-tool pch-doc pch-doc--mid">
         {/* Hero */}
-        <section className="relative pt-24 px-6 md:px-12 py-16">
+        <section className="pch-dochead">
           <div className="max-w-4xl mx-auto">
             <nav className="mb-8 text-sm text-on-surface-variant">
               <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -107,10 +109,10 @@ export default function PhilipCameronPage() {
                 I&apos;m Philip Cameron, the founder of Paint Color HQ. I built this site after a personal renovation hit the same problem most homeowners run into: a designer specified a Sherwin-Williams color, the contractor only stocked Behr, and the cross-reference resources online were either incomplete, paywalled, or wrong. Paint Color HQ is the tool I wish had existed.
               </p>
               <p>
-                I&apos;m not an interior designer or paint industry insider. I&apos;m a homeowner and software builder who got obsessed with the specific problem of matching paint colors accurately across brands. Every color recommendation on the site is grounded in the <strong className="text-on-surface">CIEDE2000 Delta E formula</strong> — the same color-science standard used by paint manufacturers&apos; quality-control labs — not personal opinion alone.
+                I&apos;m not an interior designer or paint industry insider. I&apos;m a homeowner and software builder who got obsessed with the specific problem of matching paint colors accurately across brands. Every color recommendation on the site is grounded in the <strong className="text-on-surface">CIEDE2000 Delta E formula</strong> (the same color-science standard used by paint manufacturers&apos; quality-control labs) not personal opinion alone.
               </p>
               <p>
-                Paint Color HQ is an independent project. It has no paid relationships with paint manufacturers and earns through standard display advertising. The site catalogs over 26,000 paint colors across 13 brands, cross-references each one with the closest matches from every other brand, and tags every color with hex, RGB, LRV, undertone, and family data. If you spot a match that looks off or a brand you&apos;d like to see added, the <Link href="/contact" className="text-primary hover:underline">contact page</Link> goes straight to me.
+                Paint Color HQ is an independent project. It earns commissions through Amazon and ECOS Paints affiliate links, and no paint brand pays for its match rankings. The site catalogs over 26,000 paint colors across 13 brands, cross-references each one with the closest matches from every other brand, and tags every color with hex, RGB, LRV, undertone, and family data. If you spot a match that looks off or a brand you&apos;d like to see added, the <Link href="/contact" className="text-primary hover:underline">contact page</Link> goes straight to me.
               </p>
             </div>
           </div>

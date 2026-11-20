@@ -1,14 +1,16 @@
-import { isMatchIndexable } from "@/lib/indexing";
+import { extractVariantSuffix, isMatchIndexable } from "@/lib/indexing";
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
-import { getColorBySlug, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
+import { getColorBySlug, getColorSlugByNumber, getCrossBrandMatches, getBrandBySlug } from "@/lib/queries";
 import sitemapSnapshot from "@/generated/sitemap.json";
+import colorRedirects from "@/data/color-redirects.json";
 import { closenessLabel } from "@/lib/closeness";
+import { formatLrv, lrvGapSentence, lrvLightnessGap, usableLrv } from "@/lib/lrv-gap";
 import { isMatchTitleTestPair, matchTestDescription, matchTestTitle } from "@/lib/match-title-test";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
@@ -34,6 +36,31 @@ function parseParams(raw: string): { colorSlug: string; targetBrandSlug: string 
   return { colorSlug: match[1], targetBrandSlug: match[2] };
 }
 
+// Renamed or merged source color -> the match page for its canonical slug, the
+// way the color route redirects old slugs. next.config redirects only cover
+// /colors/ paths, so the merged-slug map (key "brand/slug", the target may sit
+// under a different brand) and the color-number lookup are both applied here.
+// The redirect fires only when the destination renders: the canonical color
+// must exist and have a match in the target brand. That also rules out a
+// self-match (a merged color that now belongs to the target brand has no match
+// in its own brand) and a hop into a 404. One hop, canonical URL, no query string.
+async function redirectRenamedSource(sourceBrandSlug: string, colorSlug: string, targetBrandSlug: string): Promise<void> {
+  const merged = (colorRedirects as Record<string, string>)[`${sourceBrandSlug}/${colorSlug}`];
+  let brandSlug = sourceBrandSlug;
+  let newSlug: string | null;
+  if (merged) {
+    [brandSlug, newSlug] = merged.split("/");
+  } else {
+    newSlug = await getColorSlugByNumber(sourceBrandSlug, colorSlug);
+  }
+  if (!newSlug || (brandSlug === sourceBrandSlug && newSlug === colorSlug)) return;
+  const canonical = await getColorBySlug(brandSlug, newSlug);
+  if (!canonical) return;
+  const matches = await getCrossBrandMatches(canonical.id);
+  if (!matches.some((m) => m.match_color.brand.slug === targetBrandSlug)) return;
+  permanentRedirect(`/match/${brandSlug}/${newSlug}-to-${targetBrandSlug}`);
+}
+
 // Sentence built from the shared closeness label, e.g. "Nearly identical in our digital data".
 function deltaELabel(score: number): string {
   return `${closenessLabel(score)} in our digital data`;
@@ -51,13 +78,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const parsed = parseParams(matchSlug);
   if (!parsed) return { title: "Match Not Found" };
   const [sourceColor, targetBrand] = await Promise.all([getColorBySlug(sourceBrandSlug, parsed.colorSlug), getBrandBySlug(parsed.targetBrandSlug)]);
+  // Resolved here, not only in the page body, so Next.js answers with a real
+  // 308 instead of streaming the not-found UI (same reasoning as the color route).
+  if (!sourceColor && targetBrand) await redirectRenamedSource(sourceBrandSlug, parsed.colorSlug, parsed.targetBrandSlug);
   if (!sourceColor || !targetBrand) return { title: "Match Not Found" };
   const allMatches = await getCrossBrandMatches(sourceColor.id);
   const best = allMatches.find((m) => m.match_color.brand.slug === parsed.targetBrandSlug);
   const note = best ? deltaELabel(Number(best.delta_e_score)) : "Digital match";
   const url = `https://www.paintcolorhq.com/match/${sourceBrandSlug}/${parsed.colorSlug}-to-${parsed.targetBrandSlug}`;
-  const variantMatch = parsed.colorSlug.match(/-([2-9])$/);
-  const variant = variantMatch && !sourceColor.color_number?.toLowerCase().endsWith(variantMatch[1]) ? ` (variant ${variantMatch[1]})` : "";
+  const variant = extractVariantSuffix(parsed.colorSlug, sourceColor.color_number);
   const colorNum = sourceColor.color_number ? ` ${sourceColor.color_number}` : "";
   // Title pivots to the exact phrasing of the dominant PAA query
   // ("What is the Behr equivalent of Agreeable Gray?") to lift CTR and
@@ -102,6 +131,7 @@ export default async function MatchPage({ params }: PageProps) {
   const parsed = parseParams(matchSlug);
   if (!parsed) notFound();
   const [sourceColor, targetBrand] = await Promise.all([getColorBySlug(sourceBrandSlug, parsed.colorSlug), getBrandBySlug(parsed.targetBrandSlug)]);
+  if (!sourceColor && targetBrand) await redirectRenamedSource(sourceBrandSlug, parsed.colorSlug, parsed.targetBrandSlug);
   if (!sourceColor || !targetBrand) notFound();
 
   const allMatches = await getCrossBrandMatches(sourceColor.id);
@@ -109,6 +139,22 @@ export default async function MatchPage({ params }: PageProps) {
   const bestMatch = targetMatches[0];
 
   if (!bestMatch) notFound();
+
+  // The match-data rows carry no LRV or Lab; the best match's full row does.
+  const bestMatchColor = await getColorBySlug(bestMatch.match_color.brand.slug, bestMatch.match_color.slug);
+  const sourceLrv = usableLrv(sourceColor.lrv);
+  const bestMatchLrv = usableLrv(bestMatchColor?.lrv);
+  const lrvGap =
+    bestMatchColor && sourceColor.lab_a != null && sourceColor.lab_b_val != null && bestMatchColor.lab_a != null && bestMatchColor.lab_b_val != null
+      ? lrvLightnessGap(
+          { lab: { L: Number(sourceColor.lab_l), a: Number(sourceColor.lab_a), b: Number(sourceColor.lab_b_val) }, lrv: sourceColor.lrv },
+          { lab: { L: Number(bestMatchColor.lab_l), a: Number(bestMatchColor.lab_a), b: Number(bestMatchColor.lab_b_val) }, lrv: bestMatchColor.lrv },
+          Number(bestMatch.delta_e_score),
+        )
+      : null;
+  const lrvNote = lrvGap
+    ? lrvGapSentence({ name: sourceColor.name, brandName: sourceColor.brand.name }, { name: bestMatch.match_color.name, brandName: targetBrand.name }, lrvGap)
+    : null;
 
   // allMatches is already ordered best-first, so the first row per brand is that
   // brand's closest color. No extra query needed.
@@ -132,7 +178,7 @@ export default async function MatchPage({ params }: PageProps) {
         { "@type": "Question", name: `What is the ${targetBrand.name} equivalent of ${sourceColor.brand.name} ${sourceColor.name}?`,
           acceptedAnswer: { "@type": "Answer", text: `The closest ${targetBrand.name} equivalent to ${sourceColor.brand.name} ${sourceColor.name} is ${bestMatch.match_color.name} (${bestMatch.match_color.hex.toUpperCase()}) — ${deltaELabel(Number(bestMatch.delta_e_score))}. The match is computed with the CIEDE2000 color-difference formula, which measures how close two colors look to the human eye rather than comparing their hex codes.${targetMatches.length > 1 ? ` If you want a backup, ${targetMatches[1].match_color.name} is the next-closest ${targetBrand.name} option.` : ""} Order a sample before painting — sheen and lighting shift the result.` } },
         { "@type": "Question", name: `Will ${bestMatch.match_color.name} look exactly like ${sourceColor.name}?`,
-          acceptedAnswer: { "@type": "Answer", text: `${bestMatch.match_color.name} is the closest stored digital candidate from ${targetBrand.name}. This is not a physical match or touch-up guarantee. Compare samples in your room and intended finish before substituting paint.` } },
+          acceptedAnswer: { "@type": "Answer", text: `${bestMatch.match_color.name} is the closest stored digital candidate from ${targetBrand.name}. This is not a physical match or touch-up guarantee.${lrvNote ? ` ${lrvNote}` : ""} Compare samples in your room and intended finish before substituting paint.` } },
       ]}} />}
 
       {/* Hero — side by side */}
@@ -180,6 +226,7 @@ export default async function MatchPage({ params }: PageProps) {
             <div className="bg-surface-container-low rounded-xl p-6 mb-12 text-center">
               <p className="font-headline font-bold text-on-surface">{closenessLabel(Number(bestMatch.delta_e_score))}</p>
               <p className="text-sm text-on-surface-variant mt-1">Based on <Link href="/methodology" className="text-primary underline-offset-4 hover:underline">CIEDE2000 color difference analysis</Link></p>
+              {lrvNote && <p className="text-sm text-on-surface mt-3 max-w-2xl mx-auto">{lrvNote}</p>}
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 mb-12">
@@ -189,7 +236,7 @@ export default async function MatchPage({ params }: PageProps) {
                   <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-1">{sourceColor.brand.name}</p>
                   <h2 className="font-headline text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{sourceColor.name}</h2>
                   <div className="h-4" />
-                  <p className="font-mono text-[10px] text-outline">{sourceColor.hex.toUpperCase()}</p>
+                  <p className="font-mono text-[10px] text-outline">{sourceColor.hex.toUpperCase()}{sourceLrv != null && <> &middot; LRV {formatLrv(sourceLrv)}</>}</p>
                 </div>
               </Link>
               <Link href={`/colors/${bestMatch.match_color.brand.slug}/${bestMatch.match_color.slug}`} className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden hover:shadow-lg transition-all">
@@ -198,7 +245,7 @@ export default async function MatchPage({ params }: PageProps) {
                   <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-1">{targetBrand.name}</p>
                   <h2 className="font-headline text-xl font-bold text-on-surface group-hover:text-primary transition-colors">{bestMatch.match_color.name}</h2>
                   <div className="h-4" />
-                  <p className="font-mono text-[10px] text-outline">{bestMatch.match_color.hex.toUpperCase()}</p>
+                  <p className="font-mono text-[10px] text-outline">{bestMatch.match_color.hex.toUpperCase()}{bestMatchLrv != null && <> &middot; LRV {formatLrv(bestMatchLrv)}</>}</p>
                 </div>
               </Link>
             </div>

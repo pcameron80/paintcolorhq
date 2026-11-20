@@ -2,12 +2,16 @@ import { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 import { getColorById, getColorsBySlugList } from "@/lib/queries";
 import { CompareClient, type PairColor } from "./compare-client";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
 import { CLOSENESS_LABELS } from "@/lib/closeness";
 import { ogDefaults } from "@/lib/og";
+import { isSitemapMatchPair } from "@/lib/match-pairs";
+import Link from "next/link";
 
 interface PageProps { searchParams: Promise<{ color1?: string; color2?: string }>; }
 
@@ -54,6 +58,28 @@ const POPULAR_PAIRS: [string, string][] = [
   ["benjamin-moore/pale-oak-oc-20", "benjamin-moore/classic-gray-1548"],
 ];
 
+// Cross-brand match pages with the most Google impressions, 2026-08-10 to
+// 11-06 (GSC, page dimension), limited to pairs the sitemap lists. A pair
+// that drops out of the sitemap set is skipped, never linked as a noindex page.
+const SEARCHED_MATCHES: [string, string][] = [
+  ["/match/sherwin-williams/agreeable-gray-7029-to-behr", "Sherwin-Williams Agreeable Gray in Behr"],
+  ["/match/benjamin-moore/revere-pewter-hc-172-to-sherwin-williams", "Benjamin Moore Revere Pewter in Sherwin-Williams"],
+  ["/match/benjamin-moore/white-dove-oc-17-to-behr", "Benjamin Moore White Dove in Behr"],
+  ["/match/sherwin-williams/iron-ore-7069-to-behr", "Sherwin-Williams Iron Ore in Behr"],
+  ["/match/sherwin-williams/sea-salt-6204-to-behr", "Sherwin-Williams Sea Salt in Behr"],
+  ["/match/benjamin-moore/edgecomb-gray-hc-173-to-behr", "Benjamin Moore Edgecomb Gray in Behr"],
+  ["/match/sherwin-williams/shoji-white-7042-to-behr", "Sherwin-Williams Shoji White in Behr"],
+  ["/match/sherwin-williams/pure-white-7005-to-behr", "Sherwin-Williams Pure White in Behr"],
+  ["/match/sherwin-williams/alabaster-7008-to-valspar", "Sherwin-Williams Alabaster in Valspar"],
+  ["/match/sherwin-williams/agreeable-gray-7029-to-valspar", "Sherwin-Williams Agreeable Gray in Valspar"],
+  ["/match/sherwin-williams/alabaster-7008-to-benjamin-moore", "Sherwin-Williams Alabaster in Benjamin Moore"],
+  ["/match/sherwin-williams/repose-gray-7015-to-behr", "Sherwin-Williams Repose Gray in Behr"],
+  ["/match/benjamin-moore/white-dove-oc-17-to-valspar", "Benjamin Moore White Dove in Valspar"],
+  ["/match/benjamin-moore/wrought-iron-2124-10-to-sherwin-williams", "Benjamin Moore Wrought Iron in Sherwin-Williams"],
+  ["/match/sherwin-williams/pure-white-7005-to-benjamin-moore", "Sherwin-Williams Pure White in Benjamin Moore"],
+  ["/match/benjamin-moore/hale-navy-hc-154-to-behr", "Benjamin Moore Hale Navy in Behr"],
+];
+
 // One query per brand instead of one per color: the list now renders under a
 // result too, so it loads on every visit, not only on the empty tool.
 async function loadPopularPairs(): Promise<[PairColor, PairColor][]> {
@@ -89,7 +115,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
   const popularPairs = await loadPopularPairs();
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Paint Color Comparison Tool",
@@ -108,23 +134,21 @@ export default async function ComparePage({ searchParams }: PageProps) {
       }} />
 
       <Header />
+      <main id="main-content" className="pch-page pch-tool">
 
       {/* Tighter on phones than the other tool heroes so the verdict, which
           sits right under the pickers, lands in the first screen at 390x844. */}
-      <section className="relative px-6 pt-20 pb-2 md:px-12 md:pt-24 md:pb-8">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">Tool</span>
-          <h1 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.95] mt-2 mb-3 md:mb-4">
+      <section className="pch-toolhead">
+        <div className="wrap pch-wrap">
+          <span className="pch-eyebrow">Tool</span>
+          <h1>
             Compare Paint Colors Side by Side
           </h1>
-          <p className="text-base md:text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            {INTRO}
-          </p>
         </div>
       </section>
 
-      <section className="px-6 md:px-12 pb-16">
-        <div className="max-w-7xl mx-auto">
+      <section className="pch-toolbody">
+        <div className="wrap pch-wrap">
           {/* Keyed on the pair so a popular-pair click (same route, new params)
               remounts the client with the new colors instead of keeping its
               old useState values. */}
@@ -134,6 +158,14 @@ export default async function ComparePage({ searchParams }: PageProps) {
             initialColor2={color2}
             popularPairs={popularPairs}
           />
+        </div>
+      </section>
+
+      <section className="pch-toolintro">
+        <div className="wrap pch-wrap">
+          <p>
+            {INTRO}
+          </p>
         </div>
       </section>
 
@@ -153,12 +185,26 @@ export default async function ComparePage({ searchParams }: PageProps) {
         </div>
       </section>
 
+      <section className="py-16 px-6 md:px-12">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-headline text-3xl font-bold text-on-surface mb-2">Cross-brand matches people search for</h2>
+          <p className="text-on-surface-variant mb-6">Each page puts a well-known color next to its closest color in another brand.</p>
+          <ul className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2 text-sm">
+            {SEARCHED_MATCHES.filter(([path]) => isSitemapMatchPair(path)).map(([path, label]) => (
+              <li key={path}>
+                <Link href={path} prefetch={false} className="text-primary hover:underline">{label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
       <section className="px-6 md:px-12 pb-16">
         <div className="max-w-7xl mx-auto">
           <ToolCrossSell exclude="compare" />
         </div>
       </section>
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>

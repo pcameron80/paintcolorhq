@@ -4,8 +4,13 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { ogDefaults } from "@/lib/og";
+import { BRAND_COUNT } from "@/lib/site-facts";
+import { HOME_MATCH_SETS } from "@/lib/home-matches";
+import { inspirationPalettes } from "@/lib/palettes";
+import { urbanist } from "@/lib/redesign-font";
+import "../redesign.css";
 
-const TITLE = "Free Paint Color Tools — Visualizer & Calculator";
+const TITLE = "Free Paint Color Tools: Visualizer & Calculator";
 const DESCRIPTION =
   "Free paint tools: palette generator, room visualizer, photo color identifier and paint calculator. Preview colors, match photos, estimate how much to buy.";
 const URL = "https://www.paintcolorhq.com/tools";
@@ -20,129 +25,45 @@ export const metadata: Metadata = {
 const tools = [
   {
     title: "Paint Calculator",
+    art: "calc",
     description:
       "Find out exactly how many gallons of paint you need for your room. Enter dimensions, doors, and windows for an instant estimate.",
     href: "/tools/paint-calculator",
-    icon: (
-      <svg
-        className="h-8 w-8 text-primary"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25v-.008Zm2.25-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H12.75v-.008Zm0 2.25h.008v.008H12.75v-.008Zm2.25-2.25h.008v.008H15v-.008Zm0 2.25h.008v.008H15v-.008ZM5.25 6.75h13.5a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75H5.25a.75.75 0 0 1-.75-.75V7.5a.75.75 0 0 1 .75-.75ZM6 3v3.75M18 3v3.75"
-        />
-      </svg>
-    ),
   },
   {
     title: "Photo Color Identifier",
+    art: "identifier",
     description:
-      "Upload a photo and pick any pixel to find the closest matching paint colors from all major brands.",
+      `Upload a photo and click a spot, or type a hex code, to find the closest paint colors among 26,000+ colors from ${BRAND_COUNT} brands.`,
     href: "/tools/color-identifier",
-    icon: (
-      <svg
-        className="h-8 w-8 text-primary"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z"
-        />
-      </svg>
-    ),
   },
   {
     title: "Room Color Visualizer",
+    art: "room",
     description:
-      "Preview paint colors on walls, ceiling, accent wall, trim, and floor in a realistic room scene.",
+      "Preview paint colors on walls, an accent wall, trim, window frames and kitchen cabinets in 10 photorealistic rooms, then see the closest real paints.",
     href: "/tools/room-visualizer",
-    icon: (
-      <svg
-        className="h-8 w-8 text-primary"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819"
-        />
-      </svg>
-    ),
   },
   {
     title: "Palette Generator",
+    art: "palette",
     description:
       "Pick a starting color and generate coordinated paint palettes with walls, trim, accent, and pop roles.",
     href: "/tools/palette-generator",
-    icon: (
-      <svg
-        className="h-8 w-8 text-primary"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z"
-        />
-      </svg>
-    ),
   },
   {
     title: "Compare Paint Colors",
+    art: "compare",
     description:
       "Put any two paint colors side by side with hex, RGB and LRV, plus a plain-language verdict on how close they are. Works across brands.",
     href: "/compare",
-    icon: (
-      <svg
-        className="h-8 w-8 text-primary"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
-        />
-      </svg>
-    ),
   },
   {
     title: "Embed the Match Widget",
+    art: "embed",
     description:
       "Run a site or blog? Drop our free cross-brand paint matcher into your page with one line of HTML, and your readers can match any color across 13 brands.",
     href: "/embed",
-    icon: (
-      <svg
-        className="h-8 w-8 text-primary"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
-        />
-      </svg>
-    ),
   },
 ];
 
@@ -151,9 +72,77 @@ function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
-export default function ToolsPage() {
+
+function ToolArt({ kind }: { kind: string }) {
+  const set = HOME_MATCH_SETS[0];
+  const pair = HOME_MATCH_SETS[1];
+  const farm = inspirationPalettes[0].colors;
+  if (kind === "calc") {
+    return (
+      <div className="pch-art" role="img" aria-label="The paint calculator inputs: room size, doors and windows, coats" style={{ display: "flex", gap: 8, padding: 12, minHeight: 112 }}>
+        {["Room size", "Doors and windows", "Coats"].map((l) => (
+          <span key={l} style={{ flex: 1, display: "grid", alignContent: "center", padding: "0 8px", border: "1px solid rgb(22 25 53 / 0.22)", borderRadius: 8, fontSize: 14, lineHeight: 1.25, color: "var(--muted)" }}>{l}</span>
+        ))}
+      </div>
+    );
+  }
+  if (kind === "identifier") {
+    return (
+      <div className="pch-art" role="img" aria-label={`A color picked from a photo, matched to ${set.source.name} and ${set.matches[0].name}`} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 112 }}>
+        <div style={{ backgroundColor: set.source.hex }} />
+        <div style={{ display: "grid", alignContent: "center", gap: 2, padding: 12, fontSize: 14, lineHeight: 1.3 }}>
+          <b style={{ fontWeight: 500 }}>{set.source.name}</b>
+          <span style={{ color: "var(--muted)" }}>{set.source.brand}</span>
+          <span className="mono">{set.source.hex}</span>
+        </div>
+      </div>
+    );
+  }
+  if (kind === "room") {
+    return (
+      <div className="pch-art" aria-hidden="true" style={{ aspectRatio: "16 / 7", display: "flex" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/rooms/living-1/base-800.6f903c9beb.webp" alt="" width={800} height={450} loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      </div>
+    );
+  }
+  if (kind === "palette") {
+    return (
+      <div className="pch-art" role="img" aria-label="Palette roles: walls, trim, accent and pop" style={{ minHeight: 112, display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+        {["Walls", "Trim", "Accent", "Pop"].map((role, i) => (
+          <div key={role} style={{ backgroundColor: farm[i], display: "grid", alignContent: "end", padding: 8, fontSize: 13, color: i === 2 ? "#fff" : "#161935" }}>{role}</div>
+        ))}
+      </div>
+    );
+  }
+  if (kind === "compare") {
+    return (
+      <div className="pch-art" role="img" aria-label={`${pair.source.name} beside ${pair.matches[2].name}, ${pair.matches[2].label.toLowerCase()}`}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 80 }}>
+          <div style={{ backgroundColor: pair.source.hex }} />
+          <div style={{ backgroundColor: pair.matches[2].hex }} />
+        </div>
+        <div style={{ padding: "8px 12px", fontSize: 14 }}><span className="pch-chip">{pair.matches[2].label}</span></div>
+      </div>
+    );
+  }
   return (
-    <div className="min-h-screen bg-surface">
+    <div className="pch-art" role="img" aria-label="A match widget listing nearest colors in other brands" style={{ display: "grid" }}>
+      {set.matches.slice(0, 2).map((m) => (
+        <div className="pch-ui__row" key={m.name} style={{ borderTop: 0 }}>
+          <b className="pch-dot" style={{ backgroundColor: m.hex }} />
+          <span><b>{m.name}</b><small>{m.brand}</small></span>
+          <span className="pch-chip">{m.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function ToolsPage() {
+  const set = HOME_MATCH_SETS[0];
+  return (
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "ItemList",
         name: "Paint Tools",
@@ -177,49 +166,70 @@ export default function ToolsPage() {
       }} />
 
       <Header />
+      <main id="main-content" className="pch-page">
 
-      <section className="relative pt-24 px-6 md:px-12 py-16">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">Tools</span>
-          <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
-            Paint Tools
-          </h1>
-          <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Free tools to help you plan your next paint project.
-          </p>
+      <section className="pch-pagehead">
+        <div className="wrap pch-wrap pch-grid pch-pagehead__grid">
+          <div className="pch-pagehead__text">
+            <span className="pch-eyebrow">Tools</span>
+            <h1 style={{ maxWidth: "none" }}>Paint Tools</h1>
+            <p className="pch-pagehead__lead">
+              Five free tools for planning a paint job, plus a match widget for your own site. The
+              photo identifier, room visualizer and palette generator match any color against{" "}
+              <strong style={{ fontWeight: 500 }}>26,000+ paint colors from {BRAND_COUNT} brands</strong>{" "}
+              using the CIEDE2000 color-difference formula, and the compare tool rates two colors with
+              the same formula. The paint calculator uses spread rates from manufacturer data sheets.
+              All of them run in your browser with no sign-up.
+            </p>
+          </div>
+          <div className="pch-pagehead__art">
+            <div className="pch-ui" role="img" aria-label={`${set.source.name} from ${set.source.brand} with its nearest matches in other brands`}>
+              <div className="pch-ui__bar">Compare alternatives to {set.source.name}</div>
+              {set.matches.map((m) => (
+                <div className="pch-ui__row" key={m.name}>
+                  <b className="pch-dot" style={{ backgroundColor: m.hex }} />
+                  <span><b>{m.name}</b><small>{m.brand}</small></span>
+                  <span className="pch-chip">{m.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="px-6 md:px-12 pb-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {tools.map((tool) => (
-            <Link
-              key={tool.href}
-              href={tool.href}
-              className="group rounded-xl border border-outline-variant/20 bg-surface-container-lowest p-8 transition-shadow hover:shadow-lg"
-            >
-              <div className="mb-4">{tool.icon}</div>
-              <h2 className="font-headline text-xl font-bold text-on-surface group-hover:text-primary">
-                {tool.title}
-              </h2>
-              <p className="mt-2 text-sm text-on-surface-variant">{tool.description}</p>
-            </Link>
-          ))}
+      <section className="pch-block pch-block--surface">
+        <div className="wrap pch-wrap">
+          <div className="pch-cards">
+            {tools.map((tool) => (
+              <Link key={tool.href} href={tool.href} className="pch-card pch-cardlink" style={{ padding: "var(--s-4)", gap: "var(--s-4)" }}>
+                <ToolArt kind={tool.art} />
+                <div style={{ display: "grid", gap: "var(--s-2)", padding: "0 var(--s-2) var(--s-2)" }}>
+                  <h2>{tool.title}</h2>
+                  <p>{tool.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="py-16 px-6 md:px-12 bg-surface-container-low">
-        <div className="max-w-3xl mx-auto text-on-surface-variant leading-relaxed">
-          <h2 className="font-headline text-3xl font-bold text-on-surface mb-6">When to use each tool</h2>
-          <p className="mb-4"><strong>Paint Calculator</strong>: before ordering. A gallon of interior wall paint covers about 350 to 450 sq ft per coat on primed drywall, depending on the product&apos;s data sheet. Two coats is standard for a color change, and darker colors often need a tinted primer plus two topcoats. The calculator subtracts doors and windows and also handles ceilings, doors, cabinets and exteriors.</p>
-          <p className="mb-4"><strong>Photo Color Identifier</strong>: when you already have a color you love but don&apos;t know its name. Works best on interior walls photographed in natural light. Results are ranked by Delta E distance, so the top match is the closest, not necessarily the one you expected.</p>
-          <p className="mb-4"><strong>Room Color Visualizer</strong>: for testing combinations before buying samples. Tests walls, an accent wall, trim and window frames in 10 reference rooms. Useful for catching clashes before committing to a $60 quart you won&apos;t end up using.</p>
-          <p className="mb-4"><strong>Palette Generator</strong>: when you&apos;re starting from a single color you already like. Builds five palettes (warm, cool, complementary contrast, analogous and earthy), each with Walls, Trim, Accent and Pop colors matched to real paint, not abstract hex values.</p>
-          <p className="mb-4"><strong>Compare Paint Colors</strong>: when you are down to two candidates, or want to know whether a cheaper brand&apos;s color is a stand-in for the one you picked. It shows both swatches with hex, RGB and LRV and gives one verdict (nearly identical, very similar or visible difference), then links to a room preview of the pair.</p>
-          <p>None of these replace physical samples. Paint chips under store lighting read differently than they will on your wall, and any screen preview is limited by your monitor&apos;s calibration. Use these to narrow options, then order actual sample pots before deciding.</p>
+      <section className="pch-block">
+        <div className="wrap pch-wrap pch-split">
+          <div>
+            <h2>When to use each tool</h2>
+          </div>
+          <div className="pch-prose">
+            <p><strong>Paint Calculator</strong>: before ordering. A gallon of interior wall paint covers about 350 to 450 sq ft per coat on primed drywall, depending on the product&apos;s data sheet. Two coats is standard for a color change, and darker colors often need a tinted primer plus two topcoats. The calculator subtracts doors and windows and also handles ceilings, doors, cabinets and exteriors.</p>
+            <p><strong>Photo Color Identifier</strong>: when you already have a color you love but don&apos;t know its name. Works best on interior walls photographed in natural light. Results are ranked by Delta E distance, so the top match is the closest, not necessarily the one you expected.</p>
+            <p><strong>Room Color Visualizer</strong>: for testing combinations before buying samples. Tests walls, an accent wall, trim and window frames in 10 reference rooms. Useful for catching clashes before committing to a $60 quart you won&apos;t end up using.</p>
+            <p><strong>Palette Generator</strong>: when you&apos;re starting from a single color you already like. Builds five palettes (warm, cool, complementary contrast, analogous and earthy), each with Walls, Trim, Accent and Pop colors matched to real paint, not abstract hex values.</p>
+            <p><strong>Compare Paint Colors</strong>: when you are down to two candidates, or want to know whether a cheaper brand&apos;s color is a stand-in for the one you picked. It shows both swatches with hex, RGB and LRV and gives one verdict (nearly identical, very similar or visible difference), then links to a room preview of the pair.</p>
+            <p>None of these replace physical samples. Paint chips under store lighting read differently than they will on your wall, and any screen preview is limited by your monitor&apos;s calibration. Use these to narrow options, then order actual sample pots before deciding.</p>
+          </div>
         </div>
       </section>
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>

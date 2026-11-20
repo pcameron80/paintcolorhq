@@ -30,7 +30,8 @@ const SMALL_MEDIA = "(max-width: 480px)";
 
 interface RoomCanvasProps {
   room: RoomScene;
-  colors: Record<Surface, string>;
+  /** Paint per surface; a surface left out keeps the photo */
+  colors: Partial<Record<Surface, string>>;
   /** Called with the surface under the pointer; omit for a view-only preview */
   onSelectSurface?: (surface: Surface) => void;
   /** Preload the room photo at high priority (it is the page's main image) */

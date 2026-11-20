@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PrivacyChoicesLink } from "@/components/privacy-choices-link";
+import { NAV_BRANDS, NAV_HUES } from "@/lib/site-nav";
 
 export function Footer() {
   return (
@@ -28,15 +29,7 @@ export function Footer() {
         <div>
           <h4 className="font-headline text-[10px] uppercase font-bold text-on-surface mb-6 tracking-widest">Directory</h4>
           <ul className="space-y-3 text-xs text-on-surface-variant">
-            {[
-              { name: "Sherwin-Williams", slug: "sherwin-williams" },
-              { name: "Benjamin Moore", slug: "benjamin-moore" },
-              { name: "Behr", slug: "behr" },
-              { name: "PPG", slug: "ppg" },
-              { name: "Valspar", slug: "valspar" },
-              { name: "Dunn-Edwards", slug: "dunn-edwards" },
-              { name: "Farrow & Ball", slug: "farrow-ball" },
-            ].map((brand) => (
+            {NAV_BRANDS.map((brand) => (
               <li key={brand.slug}>
                 <Link
                   href={`/brands/${brand.slug}`}
@@ -91,7 +84,7 @@ export function Footer() {
           </ul>
 
           <h4 className="font-headline text-[10px] uppercase font-bold text-on-surface mb-4 mt-8 tracking-widest">Color Families</h4>
-          <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+          <div className="flex flex-wrap gap-x-4 gap-y-3">
             {[
               "White", "Off-White", "Gray", "Beige", "Neutral", "Brown", "Tan",
               "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Black",
@@ -99,23 +92,32 @@ export function Footer() {
               <Link
                 key={family}
                 href={`/colors/family/${family.toLowerCase()}`}
-                className="text-[10px] text-on-surface-variant hover:text-primary transition-colors"
+                className="text-xs text-on-surface-variant hover:text-primary transition-colors"
               >
                 {family}
+              </Link>
+            ))}
+            {NAV_HUES.map((hue) => (
+              <Link
+                key={hue.href}
+                href={hue.href}
+                className="text-xs text-on-surface-variant hover:text-primary transition-colors"
+              >
+                {hue.name}
               </Link>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="border-t border-outline-variant/10 py-8 text-center">
-        <p className="text-xs text-outline">
+      <div className="border-t border-outline-variant/10 px-6 md:px-12 py-8 text-center">
+        <p className="text-xs text-on-surface-variant">
           &copy; {new Date().getFullYear()} Paint Color HQ. Color data is approximate. Always verify with physical samples before purchasing.
         </p>
-        <p className="text-xs text-outline mt-2">
+        <p className="text-xs text-on-surface-variant mt-2">
           As an Amazon Associate, Paint Color HQ earns from qualifying purchases.
         </p>
-        <p className="text-xs text-outline mt-2">
+        <p className="text-xs text-on-surface-variant mt-2">
           Built by{" "}
           <a href="https://pcameron.co/" className="hover:text-primary underline-offset-4 hover:underline transition-all">
             Philip Cameron

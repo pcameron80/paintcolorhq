@@ -10,6 +10,8 @@ import { hexToRgb, rgbToLab, deltaE2000 } from "@/lib/color-utils";
 import { COLOR_OF_THE_YEAR, COTY_HUB_DATES, CURRENT_COTY, sharedParentCompany, type ColorOfTheYearPick } from "@/lib/color-of-the-year";
 import type { ColorWithBrand, CrossBrandMatchWithColor } from "@/lib/types";
 import { closenessLabel, closenessLabelLower } from "@/lib/closeness";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 604800; // 7d — picks change once a year; redeploy on a new announcement
 
@@ -146,7 +148,7 @@ export default async function ColorOfTheYearPage() {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col bg-surface">
+    <div className={`flex min-h-screen flex-col bg-surface ${urbanist.variable}`}>
       <Header />
 
       <JsonLd
@@ -191,8 +193,8 @@ export default async function ColorOfTheYearPage() {
         }}
       />
 
-      <main className="flex-1">
-        <section className="px-6 pt-24 pb-12 md:px-12">
+      <main id="main-content" className="flex-1 pch-page pch-tool pch-doc">
+        <section className="pch-dochead">
           <div className="mx-auto max-w-5xl">
             <nav className="mb-6 text-sm text-on-surface-variant">
               <Link href="/" className="transition-colors hover:text-primary">Home</Link>
@@ -276,7 +278,7 @@ export default async function ColorOfTheYearPage() {
             <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
               <div>
                 <div
-                  className={`flex aspect-[4/3] flex-col justify-end rounded-2xl p-6 ${color ? (isLight(color.hex) ? "text-on-surface" : "text-white") : "bg-surface-container text-on-surface"}`}
+                  className={`pch-pickcard flex aspect-[4/3] flex-col justify-end rounded-2xl p-6 ${color ? (isLight(color.hex) ? "text-on-surface" : "text-white") : "bg-surface-container text-on-surface"}`}
                   style={color ? { backgroundColor: color.hex } : undefined}
                 >
                   <span className="text-xs font-bold uppercase tracking-widest opacity-80">{pick.brandName} · {YEAR}</span>
@@ -367,9 +369,9 @@ export default async function ColorOfTheYearPage() {
                     </>
                   );
                   return color ? (
-                    <Link key={pick.brandSlug} href={`/colors/${pick.brandSlug}/${pick.colorSlug}`} className="rounded-xl bg-surface-container-lowest transition-shadow hover:shadow-md">{body}</Link>
+                    <Link key={`${pick.brandSlug}-${pick.code}`} href={`/colors/${pick.brandSlug}/${pick.colorSlug}`} className="rounded-xl bg-surface-container-lowest transition-shadow hover:shadow-md">{body}</Link>
                   ) : (
-                    <div key={pick.brandSlug} className="rounded-xl bg-surface-container-lowest">{body}</div>
+                    <div key={`${pick.brandSlug}-${pick.code}`} className="rounded-xl bg-surface-container-lowest">{body}</div>
                   );
                 })}
               </div>

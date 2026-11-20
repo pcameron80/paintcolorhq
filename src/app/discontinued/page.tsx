@@ -6,6 +6,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { supabase } from "@/lib/supabase";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 604800; // 7d — availability set changes rarely (data-pipeline runs only)
 
@@ -206,7 +208,7 @@ export default async function DiscontinuedPage({ searchParams }: { searchParams:
   const pageTitle = brandName ? `${brandName} retired and discontinued colors` : "Retired and discontinued paint colors";
 
   return (
-    <div className="flex min-h-screen flex-col bg-surface">
+    <div className={`flex min-h-screen flex-col bg-surface ${urbanist.variable}`}>
       <Header />
 
       <JsonLd
@@ -251,9 +253,9 @@ export default async function DiscontinuedPage({ searchParams }: { searchParams:
         }}
       />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1 pch-page pch-tool pch-doc pch-doc--mid">
         {/* Hero */}
-        <section className="relative pt-24 px-6 md:px-12 py-16">
+        <section className="pch-dochead">
           <div className="max-w-4xl mx-auto">
             <nav className="mb-6 text-sm text-on-surface-variant">
               <Link href="/" className="hover:text-primary transition-colors">Home</Link>

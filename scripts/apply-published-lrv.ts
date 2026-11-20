@@ -24,6 +24,9 @@
  * larger than --max-delta (default 10 points) is listed as an outlier for
  * review and not written: a jump that size usually means the code points at
  * a different color, not a corrected LRV.
+ * Codes in scripts/lib/published-lrv-holds.ts (LRV_HOLD_CODES) are never
+ * written: their published value passes the cap but is wrong (a neighbor's
+ * value copied, or contradicted by the brand's own hex).
  * Each write is conditional on the row's lrv still holding the value read,
  * so a concurrent edit is skipped rather than overwritten.
  *
@@ -40,6 +43,7 @@ import * as path from 'path';
 import * as dotenv from 'dotenv';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { SOURCES } from './lib/palette-sources';
+import { isLrvHeld } from './lib/published-lrv-holds';
 
 // Env, scan dir and backups resolve from the working directory, so the script
 // can be run from the main checkout even when the file lives in a worktree.
@@ -184,10 +188,14 @@ async function main() {
     const byCode = new Map<string, LiveColor>();
     // Some feeds encode a missing LRV as 0 (Sherwin-Williams 6995 Superwhite); no paint has a published LRV of 0.
     const skipCode = SKIP_CODES[b.slug];
+    const held: string[] = [];
     for (const c of live) {
       if (c.lrv == null || c.lrv <= 0 || skipCode?.test(code(c.code)) || byCode.has(key(c.code))) continue;
+      // Published values the 2026-11 audit found wrong (scripts/lib/published-lrv-holds.ts).
+      if (isLrvHeld(b.slug, code(c.code))) { held.push(`${c.code} "${c.name}" (${c.lrv})`); continue; }
       byCode.set(key(c.code), c);
     }
+    if (held.length) console.log(`  [${b.slug}] held by LRV_HOLD_CODES (computed LRV kept): ${held.join(', ')}`);
     const hexFile = path.join(dir, `${b.slug}-hex-changed.json`);
     const hexOwned = new Set(
       fs.existsSync(hexFile) ? (JSON.parse(fs.readFileSync(hexFile, 'utf8')) as { slug?: string }[]).map((h) => h.slug) : [],

@@ -146,7 +146,7 @@ Then:
 
 5. **Do not deploy while seed-matches runs.** `build-match-data` fails the build when the table is mid-reseed (see below), so the previous deployment stays live, but a merge to main during the window is a wasted build.
 6. Verify the table: `cross_brand_matches` must equal colors x (brands - 1) x 5, which is colors x 60 with 13 brands (26,720 x 60 = 1,603,200).
-7. Redeploy. The prebuild regenerates `/match-data` (about 20 seconds on a cache miss, measured 2026-10-24).
+7. Redeploy. The prebuild regenerates `/match-data` (about 20 seconds on a cache miss, measured 2026-10-24). Since cache key v4 a reseed always misses the cache. On a deploy built before v4, redeploy with Vercel's build cache unchecked or run `npm run build-match-data -- --force`.
 8. Allow 24 h for `/match-data` to reach rendered pages: `getCrossBrandMatches` fetches the files with `revalidate: 86400`.
 9. Run `npm run audit-colors`.
 
@@ -156,7 +156,7 @@ All scripts use `dotenv` to load `.env.local` for Supabase credentials.
 
 Runs as the `prebuild` hook and writes `public/match-data/<colorId>.json` (top 50 matches by Delta E) for every color.
 
-- **Cache key.** A content fingerprint (v3): color count, max `content_updated_at`, an md5 over every color's id, name, slug, hex, number, availability and brand, an md5 of the brands, the match count and an md5 of the script. Any in-place correction misses the cache and regenerates. The files and the key live in `.next/cache/match-data/` only. The key is never copied to `public/`.
+- **Cache key.** A content fingerprint (v4): color count, max `content_updated_at`, an md5 over every color's id, name, slug, hex, number, availability and brand, an md5 of the brands, the match count, the first and last `cross_brand_matches` id, and an md5 of the script. A color or brand edit misses the cache, and so does every TRUNCATE + reseed: seed-matches inserts without ids, so Postgres mints new UUIDs and the id range changes even when the row count and colors do not (a tie-order fix, a compute-matches change, a Lab-only correction). v3 lacked the id range, so a reseed that kept 1,603,200 rows would have re-served the old files (2026-11 data audit). An in-place UPDATE of match rows is still not detected; the pipeline never does one. The files and the key live in `.next/cache/match-data/` only. The key is never copied to `public/`.
 - **Integrity gate.** Before generating: `cross_brand_matches` must equal colors x (brands - 1) x 5. After generating: one file per color, each with at least 50 matches, and every row read. On any failure the build exits 1 before writing the cache key.
 - **Paging.** Matches are fetched 16 source colors per request (`.in()`, ordered by source, Delta E, rank and match id), 8 requests at a time. Delta E is rounded to 2 decimals, so ties are common; rank breaks them the way compute-matches ranked the unrounded score, and the order is deterministic from build to build. No OFFSET paging.
 - **Frozen sources.** `scripts/data/frozen-match-sources.json` lists colors whose match file must not change while a test runs (`{id, key, until, reason}`). Until `until` (exclusive, UTC), the build serves the committed snapshot in `scripts/data/frozen-match/<id>.json` instead of the regenerated file. The snapshot is applied after the cache, so editing the list never forces a regeneration. Capture snapshots with `npx tsx scripts/snapshot-frozen-match.ts` (reads production, keeps existing snapshots unless `--force`; `--check` compares). A frozen entry without a snapshot fails the build.

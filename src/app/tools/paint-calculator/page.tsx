@@ -4,6 +4,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PaintCalculator } from "./calculator";
 import { AdSenseScript } from "@/components/adsense-script";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { getAmazonSearchUrl } from "@/lib/affiliate";
 import { ogDefaults } from "@/lib/og";
@@ -91,7 +93,7 @@ const linkClass = "text-primary underline hover:text-primary/80";
 
 export default function PaintCalculatorPage() {
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Paint Calculator",
@@ -117,14 +119,26 @@ export default function PaintCalculatorPage() {
       }} />
 
       <Header />
+      <main id="main-content" className="pch-page pch-tool">
 
-      <section className="relative pt-24 px-6 md:px-12 py-16">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">Tool</span>
-          <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
+      <section className="pch-toolhead">
+        <div className="wrap pch-wrap">
+          <span className="pch-eyebrow">Tool</span>
+          <h1>
             Paint Calculator
           </h1>
-          <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+        </div>
+      </section>
+
+      <section className="pch-toolbody">
+        <div className="wrap pch-wrap">
+          <PaintCalculator />
+        </div>
+      </section>
+
+      <section className="pch-toolintro">
+        <div className="wrap pch-wrap">
+          <p>
             Work out how many gallons of paint you need for a room, a ceiling,
             doors, cabinets or the outside of a house. Enter the dimensions,
             subtract doors and windows, and pick your paint to use the spread
@@ -133,12 +147,6 @@ export default function PaintCalculatorPage() {
             you haven&apos;t chosen one yet. Room estimates include a supplies
             checklist sized to your room.
           </p>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-12 pb-16">
-        <div className="max-w-7xl mx-auto">
-          <PaintCalculator />
         </div>
       </section>
 
@@ -230,12 +238,12 @@ export default function PaintCalculatorPage() {
       <section className="py-16 px-6 md:px-12 bg-surface-container-low/40">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">
-            What You Actually Need to Paint a Room — Supplies, Specs, and Where the 350 Rule Bends
+            What You Actually Need to Paint a Room: Supplies, Specs, and Where the 350 Rule Bends
           </h2>
           <div className="space-y-10 text-on-surface-variant leading-relaxed">
             <div>
               <h3 className="font-headline text-xl font-bold text-on-surface mb-3">
-                The seven supplies that earn their place — and the boxed kits that don&apos;t
+                The seven supplies that earn their place, and the boxed kits that don&apos;t
               </h3>
               <p>
                 The checklist the calculator builds has seven items on it, and each one does a
@@ -244,8 +252,8 @@ export default function PaintCalculatorPage() {
                 tray holds the working paint, tape protects baseboards and casings, a drop
                 cloth catches what falls, an extension pole reaches the ceiling line, and
                 spackle with a sanding sponge fixes the wall before any of that starts. Nothing
-                on the list is padding, and two of the quantities — tape rolls and drop cloths
-                — are computed from your room&apos;s dimensions rather than guessed.
+                on the list is padding, and two of the quantities (tape rolls and drop cloths)
+               are computed from your room&apos;s dimensions rather than guessed.
               </p>
               <p className="mt-3">
                 What&apos;s deliberately not on the list is the shrink-wrapped &ldquo;room
@@ -258,24 +266,24 @@ export default function PaintCalculatorPage() {
                 </AmazonLink>{" "}
                 holds its fibers, a metal tray outlives the project, and the frame, brush,
                 pole, and canvas cloth are one-time buys that survive years of repaints. The
-                per-room consumables come down to tape, tray liners, and roller covers —
+                per-room consumables come down to tape, tray liners, and roller covers:
                 everything else amortizes to almost nothing by your second room.
               </p>
             </div>
 
             <div>
               <h3 className="font-headline text-xl font-bold text-on-surface mb-3">
-                Roller nap, brush angle, tape width — the three specs that decide the finish
+                Roller nap, brush angle, tape width: the three specs that decide the finish
               </h3>
               <p>
                 Nap is the fiber length on the roller cover, and it should match the surface.
-                Use 3/8-inch on smooth drywall and plaster — the standard interior wall — where
+                Use 3/8-inch on smooth drywall and plaster (the standard interior wall) where
                 it holds enough paint to cover without stippling the finish. Move up to
                 1/2-inch on light texture like orange peel, and 3/4-inch on heavy texture like
                 knockdown or masonry, where the longer fibers push paint into the low spots a
                 short nap skips over. Going the other way, a 1/4-inch nap or a foam roller
                 gives the flattest finish on doors, cabinets, and trim. Longer nap always
-                carries more paint, but it leaves more texture behind — pick by surface, not by
+                carries more paint, but it leaves more texture behind: pick by surface, not by
                 &ldquo;more is better.&rdquo;
               </p>
               <p className="mt-3">
@@ -306,13 +314,13 @@ export default function PaintCalculatorPage() {
                 the printed number. Texture
                 is the first: the same orange peel that wants a longer nap also has more
                 surface area, so plan on 280 to 300 sq ft per gallon. New or unprimed drywall
-                is the second — the paper face and joint compound drink the first coat, and
+                is the second: the paper face and joint compound drink the first coat, and
                 since primer costs less than paint, priming first and then applying two
                 topcoats is cheaper than three coats of the good stuff. A drastic color change
                 is the third: covering a deep color with a light one, or painting a saturated
                 red, orange, or bright yellow, routinely takes a third coat, because deep and
                 clear bases carry less of the titanium dioxide that does the hiding. A
-                gray-tinted primer under a deep color is the trade secret there — it kills the
+                gray-tinted primer under a deep color is the trade secret there: it kills the
                 old color in one coat so the finish coats only have to build depth.
               </p>
               <p className="mt-3">
@@ -320,7 +328,7 @@ export default function PaintCalculatorPage() {
                 you&apos;re repainting a sound, previously painted wall in a similar color, and
                 it is not a substitute for real primer on bare drywall, patches, or stains. If
                 any of these caveats apply to your room, the coats selector above is the honest
-                fix — set it to 3 and let the math absorb the extra coat.
+                fix: set it to 3 and let the math absorb the extra coat.
               </p>
             </div>
 
@@ -330,7 +338,7 @@ export default function PaintCalculatorPage() {
               </h3>
               <p>
                 Tint is mixed per can, and two gallons of the same color mixed on different
-                machines — or the same machine on different days — can land a visible shade
+                machines (or the same machine on different days) can land a visible shade
                 apart. The fix is old and free: buy all your gallons in one batch, then
                 &ldquo;box&rdquo; them by pouring every can into one larger bucket and stirring
                 before you start. One uniform color, no mid-wall shift where can two took over
@@ -344,7 +352,7 @@ export default function PaintCalculatorPage() {
                 picture-frame effect, where brushed edges dry darker than the rolled field.
                 Roll in a loose W and fill it in without lifting the roller. When the room is
                 done, seal the leftover paint in its can, label it with the room and date, and
-                keep it — touch-ups from the original batch disappear; touch-ups from a new can
+                keep it: touch-ups from the original batch disappear; touch-ups from a new can
                 often don&apos;t. Before any of this, the finish decision is worth five
                 minutes: our{" "}
                 <Link href="/blog/paint-sheen-guide" className="text-primary underline hover:text-primary/80">
@@ -396,14 +404,14 @@ export default function PaintCalculatorPage() {
             </p>
             <ol className="list-inside list-decimal space-y-3 pl-2">
               <li>
-                <strong className="text-on-surface">Preview your color</strong> — open the{" "}
+                <strong className="text-on-surface">Preview your color</strong>: open the{" "}
                 <Link href="/tools/room-visualizer" className="text-primary underline hover:text-primary/80">
                   Room Visualizer
                 </Link>{" "}
                 to see your chosen shade on walls before purchasing.
               </li>
               <li>
-                <strong className="text-on-surface">Compare shades side by side</strong> — the{" "}
+                <strong className="text-on-surface">Compare shades side by side</strong>: the{" "}
                 <Link href="/compare" className="text-primary underline hover:text-primary/80">
                   Color Comparison tool
                 </Link>{" "}
@@ -412,15 +420,15 @@ export default function PaintCalculatorPage() {
                 other with a plain-language verdict on how close they are.
               </li>
               <li>
-                <strong className="text-on-surface">Choose the right finish</strong> — read our{" "}
+                <strong className="text-on-surface">Choose the right finish</strong>: read our{" "}
                 <Link href="/blog/paint-sheen-guide" className="text-primary underline hover:text-primary/80">
                   paint sheen guide
                 </Link>{" "}
-                covering flat, eggshell, satin, semi-gloss, and high-gloss —
+                covering flat, eggshell, satin, semi-gloss, and high-gloss:
                 with recommendations by room type.
               </li>
               <li>
-                <strong className="text-on-surface">Build a full palette</strong> — use the{" "}
+                <strong className="text-on-surface">Build a full palette</strong>: use the{" "}
                 <Link href="/tools/palette-generator" className="text-primary underline hover:text-primary/80">
                   Palette Generator
                 </Link>{" "}
@@ -435,6 +443,7 @@ export default function PaintCalculatorPage() {
         </div>
       </section>
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>

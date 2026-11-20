@@ -17,6 +17,7 @@ import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { AdSenseScript } from "@/components/adsense-script";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
+import { matchPairsForBrand, type MatchPair } from "@/lib/match-pairs";
 import { getPostsByBrand } from "@/lib/blog-posts";
 import Image from "next/image";
 
@@ -155,6 +156,11 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
   if (!unfiltered && filteredCount === 0) notFound();
   if (page > Math.max(1, Math.ceil(filteredCount / perPage))) notFound();
   const totalPages = Math.max(1, Math.ceil(totalCount / perPage));
+
+  // Page 1 unfiltered is the canonical brand page, so the match-page links
+  // render there only, not on every paginated or filtered copy.
+  const brandMatchPairs = page === 1 && unfiltered ? matchPairsForBrand(brandSlug) : new Map<string, MatchPair[]>();
+  const pairColors = popularColors.filter((c) => brandMatchPairs.has(c.slug));
 
   // Premium brands: each well-known color with its nearest match in the
   // brands most US stores carry. Page 1 only, unfiltered.
@@ -340,6 +346,11 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
             <p className="mt-2 text-on-surface-variant max-w-2xl leading-relaxed">
               The complete {brand.name} color chart — every shade with its hex code, LRV, and undertone. Filter by family or search, and open any color for its cross-brand matches.
             </p>
+            <p className="mt-3">
+              <Link href={`/brands/${brandSlug}/colors-a-z`} className="text-primary font-bold text-sm underline-offset-4 hover:underline">
+                Browse every {brand.name} color name A to Z &rarr;
+              </Link>
+            </p>
           </div>
           <BrandColorLibrary
             brandSlug={brandSlug} brandName={brand.name} families={families} undertones={undertones}
@@ -466,6 +477,26 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
                   </Link>
                 ))}
               </div>
+              {pairColors.length > 0 && (
+                <div className="mt-12">
+                  <h3 className="font-headline text-xl font-bold text-on-surface">Side-by-side match pages</h3>
+                  <p className="mt-2 text-sm text-on-surface-variant">Each page puts one {brand.name} color next to its closest color in another brand, with hex, LRV and undertone compared.</p>
+                  <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-3 md:grid-cols-2 text-sm">
+                    {pairColors.map((c) => (
+                      <li key={c.slug}>
+                        <span className="font-bold text-on-surface">{c.name}</span>
+                        <span className="text-on-surface-variant"> in </span>
+                        {brandMatchPairs.get(c.slug)!.map((p, i) => (
+                          <span key={p.path}>
+                            {i > 0 && <span className="text-outline"> · </span>}
+                            <Link href={p.path} prefetch={false} className="text-primary hover:underline">{allBrands.find((b) => b.slug === p.targetBrand)?.name ?? p.targetBrand}</Link>
+                          </span>
+                        ))}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </section>
         );

@@ -81,12 +81,13 @@ export async function GET(
       ];
     } else if (id === "brands") {
       const [brands, latestByBrand] = await Promise.all([getAllBrands(), getLatestColorDateByBrand()]);
-      entries = brands.filter((b) => getBrandContent(b.slug)).map((b) => ({
-        url: `/brands/${b.slug}`,
+      entries = brands.filter((b) => getBrandContent(b.slug)).flatMap((b) => {
         // Brand lastmod = newest color insertion date for this brand.
         // Real "latest activity" signal per brand instead of a uniform build date.
-        lastmod: latestByBrand.get(b.slug) ?? NO_LASTMOD,
-      }));
+        const lastmod = latestByBrand.get(b.slug) ?? NO_LASTMOD;
+        // The A to Z name list changes exactly when the brand's colors do.
+        return [{ url: `/brands/${b.slug}`, lastmod }, { url: `/brands/${b.slug}/colors-a-z`, lastmod }];
+      });
     } else if (id.startsWith("colors-")) {
       const pageNum = Number(id.slice("colors-".length));
       if (!/^colors-\d+$/.test(id) || !Number.isSafeInteger(pageNum) || pageNum < 0) {

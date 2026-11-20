@@ -103,19 +103,21 @@
     "height": 768,
     "image": "/rooms/kitchen-1/base.98f5836bcc.webp",
     "masks": {
-      "main": "/rooms/kitchen-1/mask-main.b95d65471e.png",
-      "accent": "/rooms/kitchen-1/mask-accent.610e9cea74.png",
-      "trim": "/rooms/kitchen-1/mask-trim.43d967f726.png",
-      "window": "/rooms/kitchen-1/mask-window.390536fa70.png"
+      "main": "/rooms/kitchen-1/mask-main.8ccbb32fa3.png",
+      "accent": "/rooms/kitchen-1/mask-accent.9b432755a2.png",
+      "trim": "/rooms/kitchen-1/mask-trim.b6990705af.png",
+      "window": "/rooms/kitchen-1/mask-window.390536fa70.png",
+      "cabinets": "/rooms/kitchen-1/mask-cabinets.ec3cb29f23.png"
     },
     "small": {
       "width": 800,
       "height": 447,
       "masks": {
-        "main": "/rooms/kitchen-1/mask-main-800.a4dae22b7c.png",
-        "accent": "/rooms/kitchen-1/mask-accent-800.c7e822a85b.png",
-        "trim": "/rooms/kitchen-1/mask-trim-800.a79d7fd700.png",
-        "window": "/rooms/kitchen-1/mask-window-800.9346483832.png"
+        "main": "/rooms/kitchen-1/mask-main-800.cbcd1191ba.png",
+        "accent": "/rooms/kitchen-1/mask-accent-800.97c8040ff6.png",
+        "trim": "/rooms/kitchen-1/mask-trim-800.68ad6400ba.png",
+        "window": "/rooms/kitchen-1/mask-window-800.9346483832.png",
+        "cabinets": "/rooms/kitchen-1/mask-cabinets-800.55467242c5.png"
       },
       "image": "/rooms/kitchen-1/base-800.36e4f5068b.webp"
     }
@@ -130,7 +132,8 @@
     "masks": {
       "main": "/rooms/kitchen-2/mask-main.d468b58daf.png",
       "accent": "/rooms/kitchen-2/mask-accent.671596510a.png",
-      "trim": "/rooms/kitchen-2/mask-trim.65f6d9d414.png"
+      "trim": "/rooms/kitchen-2/mask-trim.65f6d9d414.png",
+      "cabinets": "/rooms/kitchen-2/mask-cabinets.45762e2edc.png"
     },
     "small": {
       "width": 800,
@@ -138,7 +141,8 @@
       "masks": {
         "main": "/rooms/kitchen-2/mask-main-800.a066e527cf.png",
         "accent": "/rooms/kitchen-2/mask-accent-800.51fde29dc7.png",
-        "trim": "/rooms/kitchen-2/mask-trim-800.f4201e3dd4.png"
+        "trim": "/rooms/kitchen-2/mask-trim-800.f4201e3dd4.png",
+        "cabinets": "/rooms/kitchen-2/mask-cabinets-800.6817f315cd.png"
       },
       "image": "/rooms/kitchen-2/base-800.5e48c6b502.webp"
     }

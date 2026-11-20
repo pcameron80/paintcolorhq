@@ -187,7 +187,7 @@ async function main() {
       lab_a: labA,
       lab_b_val: labB,
       lrv: Math.round(lrv * 100) / 100,
-      color_family: refineColorFamily(mapColorFamily(c.colorFamilyNames), c.red, c.green, c.blue),
+      color_family: refineColorFamily(mapColorFamily(c.colorFamilyNames), c.red, c.green, c.blue, { brand: "sherwin-williams" }),
       undertone: undertoneLabel(hex, labA, labB, `sherwin-williams/${finalSlug}`),
     };
   });

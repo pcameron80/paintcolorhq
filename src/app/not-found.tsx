@@ -5,6 +5,8 @@ import { Footer } from "@/components/footer";
 import { HeroSearch } from "@/components/hero-search";
 import { getAllBrands } from "@/lib/queries";
 import type { Brand } from "@/lib/types";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
@@ -40,10 +42,10 @@ export default async function NotFound() {
   const brands = await loadBrands();
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-white ${urbanist.variable}`}>
       <Header />
 
-      <main className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <main id="main-content" className="pch-page pch-tool pch-doc pch-notfound mx-auto max-w-5xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
         <div className="flex flex-col items-center text-center">
           <div className="flex items-end gap-2 sm:gap-3" aria-hidden="true">
             {CHIPS.map((chip) => (

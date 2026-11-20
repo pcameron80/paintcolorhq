@@ -1,0 +1,410 @@
+{
+ "about": "Vista identity repair from the 2026-11 data audit (finding identity-vista-reconcile-mispaired). Applied by scripts/fix-vista-identities.ts. assign: the same-name row takes the live code, name, hex and LRV from vistapaint.com. restore: the row the June reconcile re-pointed gets its own identity back. lrv null means compute from hex. Availability of restored rows is left as is (product decision, see the audit doc).",
+ "brand": "vista-paint",
+ "ops": [
+  {
+   "op": "assign",
+   "slug": "under-the-sun-k-464",
+   "expect": {
+    "color_number": "K-464",
+    "hex": "#ffd704"
+   },
+   "set": {
+    "color_number": "7861",
+    "alternate_numbers": [
+     "K-464"
+    ],
+    "name": "Under the Sun",
+    "hex": "#ffcf2e",
+    "lrv": 66,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 7861 Under the Sun #FFCF2E (scan 2026-10-31); taken from goldfinch-k-545"
+  },
+  {
+   "op": "assign",
+   "slug": "golden-ray-k-472",
+   "expect": {
+    "color_number": "K-472",
+    "hex": "#ffcc00"
+   },
+   "set": {
+    "color_number": "7869",
+    "alternate_numbers": [
+     "K-472"
+    ],
+    "name": "Golden Ray",
+    "hex": "#ffc923",
+    "lrv": 61,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 7869 Golden Ray #FFC923 (scan 2026-10-31); taken from sporty-yellow-k-1203"
+  },
+  {
+   "op": "assign",
+   "slug": "cute-pixie-c-710",
+   "expect": {
+    "color_number": "C-710",
+    "hex": "#105241"
+   },
+   "set": {
+    "color_number": "0711",
+    "alternate_numbers": [
+     "C-710"
+    ],
+    "name": "Cute Pixie",
+    "hex": "#2d5c4f",
+    "lrv": 9,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 0711 Cute Pixie #2D5C4F (scan 2026-10-31); taken from woodland-fern-k-272"
+  },
+  {
+   "op": "assign",
+   "slug": "wendy-way-k-1128",
+   "expect": {
+    "color_number": "K-1128",
+    "hex": "#682f34"
+   },
+   "set": {
+    "color_number": "8685",
+    "alternate_numbers": [
+     "K-1128"
+    ],
+    "name": "Wendy Way",
+    "hex": "#6c4848",
+    "lrv": 7,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 8685 Wendy Way #6C4848 (scan 2026-10-31); taken from evoultion-c-129"
+  },
+  {
+   "op": "assign",
+   "slug": "evoultion-c-129",
+   "expect": {
+    "color_number": "8685",
+    "hex": "#6c4848"
+   },
+   "set": {
+    "color_number": "0130",
+    "alternate_numbers": [
+     "C-129"
+    ],
+    "name": "Evolution",
+    "hex": "#76554a",
+    "lrv": 11,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 0130 Evolution #76554A (scan 2026-10-31); taken from madder-c-1321"
+  },
+  {
+   "op": "assign",
+   "slug": "country-meadow-k-256",
+   "expect": {
+    "color_number": "K-256",
+    "hex": "#174e46"
+   },
+   "set": {
+    "color_number": "7541",
+    "alternate_numbers": [
+     "K-256"
+    ],
+    "name": "Country Meadow",
+    "hex": "#385b53",
+    "lrv": 8,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 7541 Country Meadow #385B53 (scan 2026-10-31); taken from amish-green-c-1410"
+  },
+  {
+   "op": "assign",
+   "slug": "caribbean-dream-k-200",
+   "expect": {
+    "color_number": "K-200",
+    "hex": "#006067"
+   },
+   "set": {
+    "color_number": "7453",
+    "alternate_numbers": [
+     "K-200"
+    ],
+    "name": "Caribbean Dream",
+    "hex": "#246e71",
+    "lrv": 12,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 7453 Caribbean Dream #246E71 (scan 2026-10-31); taken from bold-bolection-c-1374"
+  },
+  {
+   "op": "assign",
+   "slug": "majestic-ridge-k-1088",
+   "expect": {
+    "color_number": "K-1088",
+    "hex": "#8b3c2a"
+   },
+   "set": {
+    "color_number": "8629",
+    "alternate_numbers": [
+     "K-1088"
+    ],
+    "name": "Majestic Ridge",
+    "hex": "#915044",
+    "lrv": 11,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 8629 Majestic Ridge #915044 (scan 2026-10-31); taken from redrock-canyon-c-1330"
+  },
+  {
+   "op": "assign",
+   "slug": "shamrock-green-k-264",
+   "expect": {
+    "color_number": "K-264",
+    "hex": "#007057"
+   },
+   "set": {
+    "color_number": "7549",
+    "alternate_numbers": [
+     "K-264"
+    ],
+    "name": "Shamrock Green",
+    "hex": "#307962",
+    "lrv": 14,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 7549 Shamrock Green #307962 (scan 2026-10-31); taken from grassy-meadow-c-1403"
+  },
+  {
+   "op": "assign",
+   "slug": "green-mountain-falls-k-208",
+   "expect": {
+    "color_number": "K-208",
+    "hex": "#254b50"
+   },
+   "set": {
+    "color_number": "7469",
+    "alternate_numbers": [
+     "K-208"
+    ],
+    "name": "Green Mountain Falls",
+    "hex": "#3f5c5f",
+    "lrv": 9,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 7469 Green Mountain Falls #3F5C5F (scan 2026-10-31); taken from asher-benjamin-c-1380"
+  },
+  {
+   "op": "assign",
+   "slug": "silent-sea-c-514",
+   "expect": {
+    "color_number": "C-514",
+    "hex": "#262627"
+   },
+   "set": {
+    "color_number": "0515",
+    "alternate_numbers": [
+     "C-514"
+    ],
+    "name": "Silent Sea",
+    "hex": "#3e3f40",
+    "lrv": 5,
+    "last_seen_live_on": "2026-10-11",
+    "availability": "current"
+   },
+   "source": "vistapaint.com 0515 Silent Sea #3E3F40 (scan 2026-10-31); taken from winter-balsam-c-1415"
+  },
+  {
+   "op": "restore",
+   "slug": "amish-green-c-1410",
+   "expect": {
+    "color_number": "7541",
+    "hex": "#385b53"
+   },
+   "set": {
+    "color_number": "C-1410",
+    "alternate_numbers": null,
+    "name": "Amish Green",
+    "hex": "#3a5f4e",
+    "lrv": null,
+    "last_seen_live_on": null
+   },
+   "source": "original identity from colornerd vista.json (C-1410 Amish Green); hex from Hirshfield's H0094 Amish Green (scan 2026-10-31); Vista no longer lists it"
+  },
+  {
+   "op": "restore",
+   "slug": "bold-bolection-c-1374",
+   "expect": {
+    "color_number": "7453",
+    "hex": "#246e71"
+   },
+   "set": {
+    "color_number": "C-1374",
+    "alternate_numbers": null,
+    "name": "Bold Bolection",
+    "hex": "#1d6575",
+    "lrv": null,
+    "last_seen_live_on": null
+   },
+   "source": "original identity from colornerd vista.json (C-1374 Bold Bolection); hex from Hirshfield's H0057 Bold Bolection (scan 2026-10-31); Vista no longer lists it"
+  },
+  {
+   "op": "restore",
+   "slug": "redrock-canyon-c-1330",
+   "expect": {
+    "color_number": "8629",
+    "hex": "#915044"
+   },
+   "set": {
+    "color_number": "C-1330",
+    "alternate_numbers": null,
+    "name": "Redrock Canyon",
+    "hex": "#a24d47",
+    "lrv": null,
+    "last_seen_live_on": null
+   },
+   "source": "original identity from colornerd vista.json (C-1330 Redrock Canyon); hex from Hirshfield's H0011 Redrock Canyon (scan 2026-10-31); Vista no longer lists it"
+  },
+  {
+   "op": "restore",
+   "slug": "sporty-yellow-k-1203",
+   "expect": {
+    "color_number": "7869",
+    "hex": "#ffc923"
+   },
+   "set": {
+    "color_number": "K-1203",
+    "alternate_numbers": null,
+    "name": "Sporty Yellow",
+    "hex": "#ffc836",
+    "lrv": null,
+    "last_seen_live_on": null
+   },
+   "source": "original identity from colornerd vista.json (K-1203 Sporty Yellow); hex from vistapaint.com AC104 Sporty Yellow (the same color's live row)"
+  },
+  {
+   "op": "restore",
+   "slug": "madder-c-1321",
+   "expect": {
+    "color_number": "0130",
+    "hex": "#76554a"
+   },
+   "set": {
+    "color_number": "C-1321",
+    "alternate_numbers": null,
+    "name": "Madder",
+    "hex": "#754c50",
+    "lrv": null,
+    "last_seen_live_on": null
+   },
+   "source": "original identity from colornerd vista.json (C-1321 Madder); hex from Hirshfield's H0002 Madder (scan 2026-10-31); Vista no longer lists it"
+  },
+  {
+   "op": "restore",
+   "slug": "goldfinch-k-545",
+   "expect": {
+    "color_number": "7861",
+    "hex": "#ffcf2e"
+   },
+   "set": {
+    "color_number": "K-545",
+    "alternate_numbers": null,
+    "name": "Goldfinch",
+    "hex": "#ffbe3c",
+    "lrv": null,
+    "last_seen_live_on": null
+   },
+   "source": "original identity from colornerd vista.json (K-545 Goldfinch); hex from vistapaint.com 7942 Goldfinch (the same color's live row)"
+  },
+  {
+   "op": "restore",
+   "slug": "grassy-meadow-c-1403",
+   "expect": {
+    "color_number": "7549",
+    "hex": "#307962"
+   },
+   "set": {
+    "color_number": "C-1403",
+    "alternate_numbers": null,
+    "name": "Grassy Meadow",
+    "hex": "#328267",
+    "lrv": null,
+    "last_seen_live_on": null
+   },
+   "source": "original identity from colornerd vista.json (C-1403 Grassy Meadow); hex from Hirshfield's H0087 Grassy Meadow (scan 2026-10-31); Vista no longer lists it"
+  },
+  {
+   "op": "restore",
+   "slug": "asher-benjamin-c-1380",
+   "expect": {
+    "color_number": "7469",
+    "hex": "#3f5c5f"
+   },
+   "set": {
+    "color_number": "C-1380",
+    "alternate_numbers": null,
+    "name": "Asher Benjamin",
+    "hex": "#45575e",
+    "lrv": null,
+    "last_seen_live_on": null
+   },
+   "source": "original identity from colornerd vista.json (C-1380 Asher Benjamin); hex from Hirshfield's H0063 Asher Benjamin (scan 2026-10-31); Vista no longer lists it"
+  },
+  {
+   "op": "restore",
+   "slug": "winter-balsam-c-1415",
+   "expect": {
+    "color_number": "0515",
+    "hex": "#3e3f40"
+   },
+   "set": {
+    "color_number": "C-1415",
+    "alternate_numbers": null,
+    "name": "Winter Balsam",
+    "hex": "#314747",
+    "lrv": null,
+    "last_seen_live_on": null
+   },
+   "source": "original identity from colornerd vista.json (C-1415 Winter Balsam); hex from Hirshfield's H0099 Winter Balsam (scan 2026-10-31); Vista no longer lists it"
+  },
+  {
+   "op": "restore",
+   "slug": "woodland-fern-k-272",
+   "expect": {
+    "color_number": "0711",
+    "hex": "#2a574c"
+   },
+   "set": {
+    "color_number": "K-272",
+    "alternate_numbers": null,
+    "name": "Woodland Fern",
+    "hex": "#446158",
+    "lrv": null,
+    "last_seen_live_on": null
+   },
+   "source": "original identity from colornerd vista.json (K-272 Woodland Fern); hex from vistapaint.com 7557 Woodland Fern (the same color's live row)"
+  },
+  {
+   "op": "alternates",
+   "slug": "plum-cake-1232",
+   "expect": {
+    "color_number": "1233",
+    "hex": "#cfbdda"
+   },
+   "set": {
+    "alternate_numbers": [
+     "C-1232"
+    ]
+   },
+   "source": "colornerd label '1232' lost its C- prefix; 1232 is Flowers of May's live code"
+  }
+ ]
+}

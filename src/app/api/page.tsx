@@ -5,6 +5,8 @@ import { Footer } from "@/components/footer";
 import { ORG_REF } from "@/lib/entity-schema";
 import { ogDefaults } from "@/lib/og";
 import { BRAND_COUNT } from "@/lib/site-facts";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 // Public RapidAPI listing for the cross-brand color-match API.
 const RAPIDAPI_URL = "https://rapidapi.com/support-weGRmXmTU/api/paint-color-match-api1";
@@ -39,7 +41,7 @@ function JsonLd({ data }: { data: object }) {
 
 export default function ApiDocsPage() {
   return (
-    <div className="bg-surface min-h-screen">
+    <div className={`bg-surface min-h-screen ${urbanist.variable}`}>
       <Header />
       <JsonLd data={{
         "@context": "https://schema.org",
@@ -75,7 +77,7 @@ export default function ApiDocsPage() {
           { "@type": "ListItem", position: 2, name: "Paint Color Match API", item: API_URL },
         ],
       }} />
-      <main className="max-w-4xl mx-auto px-6 md:px-12 py-16">
+      <main id="main-content" className="pch-page pch-tool pch-doc pch-apidoc">
         <p className="text-xs font-semibold uppercase tracking-widest text-secondary">Developer API</p>
         <h1 className="mt-2 font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface">
           Cross-Brand Paint Color Match API
@@ -160,7 +162,7 @@ export default function ApiDocsPage() {
           <h2 className="font-headline text-2xl font-bold text-on-surface">Paid tier (RapidAPI)</h2>
           <p className="mt-2 text-sm text-on-surface-variant">
             The paid tier adds up to 50 results, batch lookups (comma-separated <code className="font-mono">hex</code>), and per-match
-            color-science fields — LAB, RGB, undertone, LRV, and color family — for design tools and palette engines.
+            color-science fields (LAB, RGB, undertone, LRV, and color family) for design tools and palette engines.
             Authentication, rate limits, and billing are handled by RapidAPI.
           </p>
           <Code>{`{
@@ -191,11 +193,11 @@ export default function ApiDocsPage() {
             The same cross-brand matcher is exposed as a{" "}
             <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" className="text-secondary underline underline-offset-2 hover:no-underline">Model Context Protocol</a>{" "}
             (MCP) tool, so AI assistants and agents can call it directly. Point any MCP client at the
-            stateless Streamable HTTP endpoint — no key required:
+            stateless Streamable HTTP endpoint, no key required:
           </p>
           <Code>https://www.paintcolorhq.com/api/mcp</Code>
           <p className="mt-3 text-sm text-on-surface-variant">
-            Tool <code className="font-mono">match_paint_color</code> — pass a <code className="font-mono">hex</code> value and
+            Tool <code className="font-mono">match_paint_color</code>: pass a <code className="font-mono">hex</code> value and
             get the closest real, purchasable paint colors across 13 brands, scored with CIEDE2000. Optional
             <code className="font-mono"> brand</code> and <code className="font-mono">limit</code> arguments.
           </p>
@@ -208,7 +210,7 @@ export default function ApiDocsPage() {
         <section className="mt-10">
           <h2 className="font-headline text-2xl font-bold text-on-surface">Notes</h2>
           <ul className="mt-3 space-y-2 text-sm text-on-surface-variant list-disc pl-5">
-            <li>Match accuracy uses CIEDE2000 — see our <Link href="/methodology" className="text-secondary underline underline-offset-2 hover:no-underline">methodology</Link>. Always confirm a final choice with a physical sample.</li>
+            <li>Match accuracy uses CIEDE2000: see our <Link href="/methodology" className="text-secondary underline underline-offset-2 hover:no-underline">methodology</Link>. Always confirm a final choice with a physical sample.</li>
             <li>Color data spans 26,000+ colors across 13 brands and is updated as brand palettes change.</li>
             <li>Prefer no code? The same matcher is available as a free <Link href="/embed" className="text-secondary underline underline-offset-2 hover:no-underline">embeddable widget</Link>.</li>
           </ul>

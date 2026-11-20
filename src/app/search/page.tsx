@@ -4,6 +4,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { SearchResults } from "./search-results";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 type Props = {
   searchParams: Promise<{ q?: string }>;
@@ -29,10 +31,11 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
 export default function SearchPage() {
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <Header />
+      <main id="main-content" className="pch-page pch-tool pch-doc">
 
-      <section className="relative pt-24 px-6 md:px-12 py-16">
+      <section className="pch-dochead">
         <div className="max-w-7xl mx-auto">
           <span className="text-primary font-bold text-xs uppercase tracking-widest">Search</span>
           <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
@@ -62,6 +65,7 @@ export default function SearchPage() {
         </div>
       </section>
 
+      </main>
       <AdSenseScript />
       <Footer />
     </div>

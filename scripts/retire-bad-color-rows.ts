@@ -43,7 +43,9 @@
  *   npx tsx scripts/retire-bad-color-rows.ts --revert=<backup>         # dry run of the revert
  *   npx tsx scripts/retire-bad-color-rows.ts --revert=<backup> --apply # put everything back
  * <file> is a dedupe plan (its `pairs`) or a JSON array of
- * { brand, slug, redirectTo, foldCode? }.
+ * { brand, slug, redirectTo, redirectToBrand?, foldCode? }. redirectToBrand
+ * retires a row into another brand's row (the 2026-11 audit's Dutch Boy DCP
+ * rows are Hirshfield's colors); such a pair never folds its code.
  */
 
 import * as dotenv from 'dotenv';
@@ -67,8 +69,15 @@ export interface RetirePair {
   brand: string;
   slug: string;
   redirectTo: string;
+  /** the target's brand, when it is not `brand` */
+  redirectToBrand?: string;
   /** fold the retired row's code into the target's alternate_numbers */
   foldCode?: boolean;
+}
+
+/** "brand/slug" of the row a pair redirects to, as src/data/color-redirects.json writes it. */
+function targetKey(p: RetirePair): string {
+  return `${p.redirectToBrand ?? p.brand}/${p.redirectTo}`;
 }
 
 /** Applied 2026-10-11; kept as the default so a bare run is a no-op report. */
@@ -185,9 +194,12 @@ async function retire() {
   for (const p of pairs) {
     const bid = brandId.get(p.brand);
     if (!bid) { problems.push(`${p.brand}: unknown brand`); continue; }
+    const tbid = brandId.get(p.redirectToBrand ?? p.brand);
+    if (!tbid) { problems.push(`${p.redirectToBrand}: unknown brand`); continue; }
+    if (tbid !== bid && p.foldCode) { problems.push(`${p.brand}/${p.slug}: cannot fold a code into another brand's row`); continue; }
     const row = byKey.get(`${bid}/${p.slug}`);
-    const target = byKey.get(`${bid}/${p.redirectTo}`);
-    if (!target) { problems.push(`${p.brand}/${p.slug}: redirect target ${p.redirectTo} missing`); continue; }
+    const target = byKey.get(`${tbid}/${p.redirectTo}`);
+    if (!target) { problems.push(`${p.brand}/${p.slug}: redirect target ${targetKey(p)} missing`); continue; }
     if (!row) { gone++; continue; }
     if (row.id === target.id) { problems.push(`${p.brand}/${p.slug}: redirects to itself`); continue; }
     if (row.last_seen_live_on && !target.last_seen_live_on) {
@@ -211,7 +223,7 @@ async function retire() {
   }
 
   const redirects = JSON.parse(fs.readFileSync(REDIRECTS_FILE, 'utf8')) as Record<string, string>;
-  const missingRedirects = resolved.filter((r) => redirects[`${r.brand}/${r.slug}`] !== `${r.brand}/${r.redirectTo}`);
+  const missingRedirects = resolved.filter((r) => redirects[`${r.brand}/${r.slug}`] !== targetKey(r));
   console.log(`Redirects present in src/data/color-redirects.json: ${resolved.length - missingRedirects.length}/${resolved.length}`);
 
   // --- Matches -----------------------------------------------------------------
@@ -266,7 +278,7 @@ async function retire() {
 
   // --- Report ------------------------------------------------------------------
   for (const r of resolved.slice(0, 15)) {
-    console.log(`  ${r.brand}/${r.slug} ("${r.row.name}") -> ${r.redirectTo} ("${r.target.name}")${r.foldCode ? ` fold ${r.row.color_number}` : ''}`);
+    console.log(`  ${r.brand}/${r.slug} ("${r.row.name}") -> ${r.redirectToBrand ? targetKey(r) : r.redirectTo} ("${r.target.name}")${r.foldCode ? ` fold ${r.row.color_number}` : ''}`);
   }
   if (resolved.length > 15) console.log(`  ... and ${resolved.length - 15} more`);
   console.log(`\nColors to delete: ${resolved.length}`);
@@ -302,7 +314,7 @@ async function retire() {
   const fullRows = await selectIn<Record<string, unknown>>('colors', '*', 'id', ids);
   const backup: Backup = {
     created_at: new Date().toISOString(),
-    pairs: resolved.map(({ brand, slug, redirectTo, foldCode }) => ({ brand, slug, redirectTo, foldCode })),
+    pairs: resolved.map(({ brand, slug, redirectTo, redirectToBrand, foldCode }) => ({ brand, slug, redirectTo, redirectToBrand, foldCode })),
     colors: fullRows,
     deletedMatches,
     insertedMatchIds: [],

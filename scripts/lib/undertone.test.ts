@@ -1,8 +1,22 @@
 /**
  * Calibration fixtures for scripts/lib/undertone.ts. Lab values are the stored
- * DB values (data/colors-processed.json, exported 2026-10-11). Expected labels
- * follow the manufacturer's own description or the consensus designers use for
- * the best-known colors. Run: npm run test:undertone
+ * DB values (data/colors-processed.json, exported 2026-10-11).
+ *
+ * The fixtures are of two kinds, and the 2026-11 audit found the old header
+ * overstated the first:
+ * - Sourced: the label matches the manufacturer's own wording where it names
+ *   a temperature or hue (SW Agreeable Gray "beige undertone", Mindful Gray
+ *   "warm", Passive "cool blue undertones", Hale Navy and Naval as blues).
+ *   Where the manufacturer is silent (Revere Pewter, Stonington Gray, Extra
+ *   White, Kendall Charcoal) the pin follows the Lab math, not reviewers.
+ * - Colorimetric guards: the red, violet, navy and C*-cutoff boundary cases
+ *   (Burgundy vs Georgian Brick, the lilacs, Pure White). These are checked
+ *   from CIELAB alone and keep the sector boundaries from drifting.
+ *
+ * The audit's v2 classifier (scratchpad labels/undertone-v2.ts) was NOT
+ * adopted: its held-out gain was 2 of 35 colors and its warm/cool/neutral
+ * agreement averaged -1.1 points over 300 splits. Only sourced overrides
+ * carried over. Run: npm run test:undertone
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -54,7 +68,6 @@ const FIXTURES: Fixture[] = [
   ['sherwin-williams/iron-ore-7069', '#434341', -0.44, 1.21, 'Neutral'],
   ['benjamin-moore/kendall-charcoal-hc-166', '#686763', -0.42, 2.39, 'Neutral'],
   ['sherwin-williams/extra-white-7006', '#eeefea', -1.21, 2.3, 'Neutral'],
-  ['sherwin-williams/passive-7064', '#cbccc9', -0.89, 1.37, 'Neutral'],
   ['benjamin-moore/pure-white-oc-64', '#e5e7e4', -1.2, 1.22, 'Neutral'],
 
   // Pinks and blue-leaning reds (h under 30).
@@ -74,8 +87,18 @@ const FIXTURES: Fixture[] = [
   ['benjamin-moore/spring-lilac-1388', '#ddcede', 8.03, -6.02, 'Cool (Violet)'],
   ['benjamin-moore/dark-lilac-2070-30', '#554e6e', 10.38, -17.37, 'Cool (Violet)'],
 
-  // Override: SW calls Repose Gray cool; its Lab alone lands golden.
-  ['sherwin-williams/repose-gray-7015', '#ccc9c0', -0.56, 4.86, 'Cool (Green)'],
+  // SW's color page: "Tranquil tones and soothing warmth". No source names
+  // green, so the old green override is gone and the Lab result stands.
+  ['sherwin-williams/repose-gray-7015', '#ccc9c0', -0.56, 4.86, 'Warm (Golden)'],
+
+  // Sourced overrides (manufacturer wording the Lab math cannot see).
+  // SW: "cool blue undertones"; C* 1.6 alone would read Neutral.
+  ['sherwin-williams/passive-7064', '#cbccc9', -0.89, 1.37, 'Cool (Blue)'],
+  // Farrow & Ball neutral groups.
+  ['farrow-ball/pavilion-gray-242', '#c8c3bc', 0.5, 4.13, 'Cool (Blue)'],
+  ['farrow-ball/old-white-4', '#c7bfab', -0.59, 11.1, 'Cool (Green)'],
+  ['farrow-ball/dimity-2008', '#eee3d3', 1.08, 9.15, 'Warm (Pink)'],
+  ['farrow-ball/school-house-white-291', '#e6dfd1', 0, 7.7, 'Neutral'],
 ];
 
 for (const [key, hex, a, b, expected] of FIXTURES) {
@@ -101,8 +124,19 @@ test('every override key is brand-slug/color-slug and maps to a known undertone'
   }
 });
 
-test('without a key the override does not apply (Repose Gray by Lab alone)', () => {
-  assert.equal(undertoneLabel('#ccc9c0', -0.56, 4.86), 'Warm (Golden)');
+test('without a key the override does not apply (Passive by Lab alone)', () => {
+  assert.equal(undertoneLabel('#cbccc9', -0.89, 1.37), 'Neutral');
+});
+
+test('overrides the manufacturer contradicts stay out (2026-11 audit)', () => {
+  for (const key of [
+    'sherwin-williams/repose-gray-7015', // SW: "soothing warmth"
+    'benjamin-moore/revere-pewter-hc-172', // BM: "bridge between warm and cool tones"
+    'benjamin-moore/balboa-mist-oc-27', // BM: "pale gray with a slightly warm cast"
+    'farrow-ball/elephants-breath-229', // F&B: lilac with "a modern warmth"
+  ]) {
+    assert.equal(UNDERTONE_OVERRIDES[key], undefined, key);
+  }
 });
 
 test('chroma just under and at the neutral threshold', () => {

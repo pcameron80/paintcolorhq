@@ -6,6 +6,8 @@ import { AdSenseScript } from "@/components/adsense-script";
 import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
 import { ogDefaults } from "@/lib/og";
 import { BRAND_COUNT } from "@/lib/site-facts";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const metadata: Metadata = {
   title: "Methodology: How Paint Color HQ Matches Colors Across Brands",
@@ -63,14 +65,14 @@ const breadcrumbJsonLd = {
 
 export default function MethodologyPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-surface">
+    <div className={`flex min-h-screen flex-col bg-surface ${urbanist.variable}`}>
       <Header />
 
       <script type="application/ld+json">{JSON.stringify(techArticleJsonLd)}</script>
       <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
 
-      <main className="flex-1">
-        <section className="relative pt-24 px-6 md:px-12 py-16">
+      <main id="main-content" className="flex-1 pch-page pch-tool pch-doc">
+        <section className="pch-dochead">
           <div className="max-w-4xl mx-auto">
             <nav className="mb-6 text-sm text-on-surface-variant">
               <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -137,8 +139,8 @@ export default function MethodologyPage() {
             <p className="text-on-surface-variant leading-relaxed mb-8">
               The plain-language verdict labels you see on color and match pages come from this table. These are shortlist labels for digital values, not certified paint tolerances.
             </p>
-            <div className="overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/10">
-              <table className="w-full text-sm">
+            <div className="overflow-x-auto rounded-xl bg-surface-container-lowest border border-outline-variant/10">
+              <table className="w-full min-w-[34rem] text-sm">
                 <thead className="bg-surface-container-low text-[10px] font-bold uppercase tracking-widest text-outline">
                   <tr>
                     <th className="text-left px-6 py-4 w-32">Delta E</th>
@@ -194,7 +196,7 @@ export default function MethodologyPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-6">Independence</h2>
             <p className="text-on-surface-variant leading-relaxed mb-4">
-              Paint Color HQ is independent of every paint brand listed on the site. No brand pays for placement, ranking, or favorable mention. Color matches are derived from the color data described above and calculated mathematically. They don&apos;t reflect editorial or commercial judgment.
+              Paint Color HQ is independent of the paint brands in its catalog. None of them pays for placement, ranking, or favorable mention. ECOS Paints, which is not in the catalog, pays a commission through Awin on sales from links to its site. Color matches are derived from the color data described above and calculated mathematically. They don&apos;t reflect editorial or commercial judgment.
             </p>
             <p className="text-on-surface-variant leading-relaxed">
               The site is run by{" "}
