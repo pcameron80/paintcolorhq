@@ -416,3 +416,59 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
 .pch-article .prose :where(p) + :where(ul, ol) { margin-top: 1em; }
 .pch-article .prose :where(table, figure) { margin-top: 1.5em; margin-bottom: 1.5em; }
 .pch-article .prose :where(table) + :where(p, ul, ol, h2, h3) { margin-top: 1.5em; }
+
+/* ================================================================ document and data pages (.pch-doc), batch 4:
+   search, methodology, privacy, terms, authors, API, embed explainer, statistics, discontinued, color of the year, 404.
+   Every rule starts with .pch-doc, a class only these pages carry, so no earlier page can be affected.
+   They ride on the .pch-tool skin (existing markup, remapped to the system); this layer sets the head, the
+   reading column, tables that scroll in their own box and the few Tailwind colors .pch-tool does not map. */
+.pch-page.pch-doc { --t-h1-doc: clamp(32px, 4.6vw, 52px); }
+.pch-doc .pch-dochead { padding: calc(var(--nav) + var(--s-7)) 0 var(--s-6); }
+.pch-doc .pch-dochead nav { font-size: 15px; }
+.pch-doc .pch-dochead nav a { display: inline-flex; align-items: center; min-height: 32px; }
+.pch-page.pch-doc h1 { font-size: var(--t-h1-doc); line-height: 1.06; letter-spacing: -0.03em; margin: var(--s-2) 0 var(--s-4); max-width: none; text-wrap: balance; }
+.pch-page.pch-doc .pch-dochead p:not(.text-sm):not(.text-xs) { font-size: 19px; line-height: 1.55; }
+.pch-page.pch-doc h2 { font-size: 30px; line-height: 1.15; max-width: none; text-wrap: balance; }
+.pch-page.pch-doc h3 { font-size: 21px; line-height: 1.25; }
+@media (max-width: 639px) { .pch-page.pch-doc h2 { font-size: 26px; } .pch-page.pch-doc h3 { font-size: 19px; } .pch-page.pch-doc .pch-dochead p:not(.text-sm):not(.text-xs) { font-size: 18px; } }
+.pch-page.pch-doc section :is(p, li, dd):not(.text-sm):not(.text-xs) { font-size: 18px; line-height: 1.7; }
+@media (max-width: 639px) { .pch-page.pch-doc section :is(p, li, dd):not(.text-sm):not(.text-xs) { font-size: 17px; } }
+.pch-doc section :is(p, li, dd) { overflow-wrap: break-word; }
+/* column widths: reading column 680px (as blog posts), mid 860px, everything else on the 1280 wrap */
+.pch-page.pch-doc section > div[class*="max-w-4xl"] { width: min(100% - 2 * var(--gut), 680px); }
+.pch-page.pch-doc--mid section > div[class*="max-w-4xl"] { width: min(100% - 2 * var(--gut), 860px); }
+.pch-page.pch-doc section > div[class*="max-w-4xl"] > * { max-width: none; }
+.pch-doc main, .pch-doc .pch-dochead { background: var(--bg); }
+/* links inside the text, and Tailwind colors the shared skin does not map */
+.pch-doc :is(.text-secondary) { color: var(--accent); }
+.pch-doc :is(a.text-primary, a.text-secondary, .prose a) { text-decoration: underline; text-underline-offset: 4px; }
+.pch-doc a.text-primary:hover { text-decoration: none; }
+.pch-doc a.bg-secondary { background: var(--accent); color: var(--accent-ink); border-radius: var(--r-btn); min-height: 48px; display: inline-flex; align-items: center; box-shadow: none; text-decoration: none; }
+.pch-doc button.bg-secondary { background: var(--accent); color: var(--accent-ink); border-radius: var(--r-sm); min-height: 40px; box-shadow: none; }
+.pch-doc :is(.bg-surface-container-highest, .bg-surface-container, .bg-surface-container-lowest) { background-color: var(--surface); }
+.pch-doc section[class*="bg-surface-container-low"] :is(.bg-surface-container-lowest) { background-color: var(--bg); }
+.pch-doc pre { font-family: var(--font-mono); font-size: 14px; line-height: 1.6; max-width: 100%; border-radius: var(--r-md); overflow-x: auto; }
+.pch-doc pre code { font-family: var(--font-mono); font-size: inherit; }
+.pch-doc :where(code):not(pre code) { font-family: var(--font-mono); font-size: 0.92em; overflow-wrap: anywhere; }
+/* tables scroll in their own box with the first column pinned on phones */
+.pch-doc .overflow-x-auto { border-radius: var(--r-md); }
+.pch-doc .overflow-x-auto table { min-width: 100%; }
+.pch-doc .overflow-x-auto :is(th, td) { font-size: 15px; }
+.pch-doc .overflow-x-auto th { font-size: 14px; }
+.pch-doc .overflow-x-auto :is(th, td):first-child { padding-left: var(--s-4); }
+.pch-doc .overflow-x-auto :is(th, td):last-child { padding-right: var(--s-4); }
+.pch-doc table thead th { text-transform: none; letter-spacing: 0; }
+@media (max-width: 767px) {
+  .pch-doc .overflow-x-auto :is(th, td):first-child { position: sticky; left: 0; z-index: 1; background: #fff; box-shadow: 1px 0 0 var(--line); }
+  .pch-doc .overflow-x-auto thead th:first-child { background: var(--surface); }
+}
+/* color of the year: the pick card keeps its own text color on the swatch */
+.pch-doc .pch-pickcard :is(h2, span, dl, p) { color: inherit; }
+/* 404 */
+.pch-doc.pch-notfound { padding-top: calc(var(--nav) + var(--s-6)); }
+.pch-doc.pch-notfound h1 { margin-top: var(--s-3); }
+/* API page: the whole page is one 860px column (its sections sit directly in <main>) */
+.pch-page.pch-apidoc { padding: calc(var(--nav) + var(--s-7)) max(var(--gut), calc((100% - 860px) / 2)) var(--s-8); }
+.pch-page.pch-apidoc h2 { margin-bottom: 0; }
+.pch-page.pch-doc section .text-sm :is(li, p, dd) { font-size: 15px; line-height: 1.6; }
+.pch-page.pch-apidoc :is(ul.text-sm, ul.text-sm li) { font-size: 15px; line-height: 1.6; }

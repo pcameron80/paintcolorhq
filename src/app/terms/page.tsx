@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -18,11 +20,11 @@ export const metadata: Metadata = {
 
 export default function TermsOfServicePage() {
   return (
-    <div className="flex min-h-screen flex-col bg-surface">
+    <div className={`flex min-h-screen flex-col bg-surface ${urbanist.variable}`}>
       <Header />
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 pch-page pch-tool pch-doc">
         {/* Hero */}
-        <section className="relative pt-24 px-6 md:px-12 py-16">
+        <section className="pch-dochead">
           <div className="max-w-4xl mx-auto">
             <span className="text-primary font-bold text-xs uppercase tracking-widest">Legal</span>
             <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">

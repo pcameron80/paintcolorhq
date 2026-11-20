@@ -5,6 +5,8 @@ import { Footer } from "@/components/footer";
 import { ORG_REF } from "@/lib/entity-schema";
 import { ogDefaults } from "@/lib/og";
 import { BRAND_COUNT } from "@/lib/site-facts";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 // Public RapidAPI listing for the cross-brand color-match API.
 const RAPIDAPI_URL = "https://rapidapi.com/support-weGRmXmTU/api/paint-color-match-api1";
@@ -39,7 +41,7 @@ function JsonLd({ data }: { data: object }) {
 
 export default function ApiDocsPage() {
   return (
-    <div className="bg-surface min-h-screen">
+    <div className={`bg-surface min-h-screen ${urbanist.variable}`}>
       <Header />
       <JsonLd data={{
         "@context": "https://schema.org",
@@ -75,7 +77,7 @@ export default function ApiDocsPage() {
           { "@type": "ListItem", position: 2, name: "Paint Color Match API", item: API_URL },
         ],
       }} />
-      <main id="main-content" className="max-w-4xl mx-auto px-6 md:px-12 py-16">
+      <main id="main-content" className="pch-page pch-tool pch-doc pch-apidoc">
         <p className="text-xs font-semibold uppercase tracking-widest text-secondary">Developer API</p>
         <h1 className="mt-2 font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface">
           Cross-Brand Paint Color Match API
