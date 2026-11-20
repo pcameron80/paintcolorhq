@@ -10,7 +10,7 @@ export interface BrandContent {
 
 const content: Record<string, BrandContent> = {
   "sherwin-williams": {
-    subtitle: "Find Sherwin-Williams colors with instant matches to Benjamin Moore, Behr, and 10 other brands",
+    subtitle: "Find Sherwin-Williams colors with instant matches to Benjamin Moore, Behr and other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -67,7 +67,7 @@ const content: Record<string, BrandContent> = {
   },
 
   "benjamin-moore": {
-    subtitle: "Explore Benjamin Moore's 3,500+ colors — with closest matches from Sherwin-Williams, Behr, and more",
+    subtitle: "Explore Benjamin Moore colors, with closest matches from Sherwin-Williams, Behr, and more",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -125,7 +125,7 @@ const content: Record<string, BrandContent> = {
   },
 
   behr: {
-    subtitle: "Shop all Behr colors from Home Depot — with side-by-side matches to other brands",
+    subtitle: "Shop all Behr colors from Home Depot, with side-by-side matches to other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -180,7 +180,7 @@ const content: Record<string, BrandContent> = {
   },
 
   ppg: {
-    subtitle: "Browse PPG's full color palette — find matches from Sherwin-Williams, Benjamin Moore, and more",
+    subtitle: "Browse PPG's full color palette, find matches from Sherwin-Williams, Benjamin Moore, and more",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -239,7 +239,7 @@ const content: Record<string, BrandContent> = {
   },
 
   valspar: {
-    subtitle: "Browse Valspar colors from Lowe's — with cross-brand matches to Sherwin-Williams, Behr, and more",
+    subtitle: "Browse Valspar colors from Lowe's, with cross-brand matches to Sherwin-Williams, Behr, and more",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -297,7 +297,7 @@ const content: Record<string, BrandContent> = {
   },
 
   "dunn-edwards": {
-    subtitle: "Explore Dunn-Edwards colors — with nationally available matches from other brands",
+    subtitle: "Explore Dunn-Edwards colors, with nationally available matches from other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -353,7 +353,7 @@ const content: Record<string, BrandContent> = {
   },
 
   "farrow-ball": {
-    subtitle: "Browse Farrow & Ball's curated palette — find budget-friendly matches from other brands",
+    subtitle: "Browse Farrow & Ball's curated palette, find budget-friendly matches from other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -416,7 +416,7 @@ const content: Record<string, BrandContent> = {
   },
 
   kilz: {
-    subtitle: "Browse Kilz paint colors — with cross-brand matches to Behr, Sherwin-Williams, and more",
+    subtitle: "Browse Kilz paint colors, with cross-brand matches to Behr, Sherwin-Williams, and more",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -452,7 +452,7 @@ const content: Record<string, BrandContent> = {
   },
 
   "vista-paint": {
-    subtitle: "Browse Vista Paint colors — find nationally available matches from other brands",
+    subtitle: "Browse Vista Paint colors, find nationally available matches from other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -484,7 +484,7 @@ const content: Record<string, BrandContent> = {
   },
 
   hirshfields: {
-    subtitle: "Browse Hirshfield's colors — with cross-brand matches to nationally available brands",
+    subtitle: "Browse Hirshfield's colors, with cross-brand matches to nationally available brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -519,7 +519,7 @@ const content: Record<string, BrandContent> = {
   },
 
   colorhouse: {
-    subtitle: "Explore the Colorhouse palette, with matches from 12 other brands",
+    subtitle: "Explore the Colorhouse palette, with matches from other brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>
@@ -551,7 +551,7 @@ const content: Record<string, BrandContent> = {
   },
 
   "dutch-boy": {
-    subtitle: "Browse Dutch Boy colors from Menards — find matches from nationally available brands",
+    subtitle: "Browse Dutch Boy colors from Menards, find matches from nationally available brands",
     intro: (
       <div className="mt-4 space-y-3 text-gray-700 leading-relaxed">
         <p>

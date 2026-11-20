@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer";
 import { ColorCard } from "@/components/color-card";
 import { BrandColorLibrary } from "@/components/brand-color-library";
 import { getBrandBySlug, getColorsBySlugList, getColorsByBrand, getAllBrands, getCrossBrandMatches } from "@/lib/queries";
-import { getCachedColorsByBrandCount, getBrandFamilyCounts, getBrandUndertoneCounts } from "@/lib/brand-count-cache";
+import { getCachedColorsByBrandCount, getBrandFamilyCounts, getBrandUndertoneCounts, getCachedBrandLrvRange } from "@/lib/brand-count-cache";
 import { RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
 import { PREMIUM_ALTERNATIVES } from "@/lib/premium-alternatives";
 import { closenessLabel } from "@/lib/closeness";
@@ -19,6 +19,8 @@ import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 import { matchPairsForBrand, type MatchPair } from "@/lib/match-pairs";
 import { getPostsByBrand } from "@/lib/blog-posts";
+import { BrandEntryPoints } from "@/components/brand-entry-points";
+import { brandLede, rankFamilies, mostViewedCandidates, mostViewedWindowLabel, pickMostViewed, brandCotyPicks } from "@/lib/brand-entry";
 import Image from "next/image";
 import { urbanist } from "@/lib/redesign-font";
 import "@/app/redesign.css";
@@ -141,7 +143,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
 
   const unfiltered = !family && !undertone;
   const [colors, filteredCount, totalCount, popularColors, allBrands, familyCounts, undertoneCounts] = await Promise.all([
-    getColorsByBrand(brand.id, { limit: perPage, offset: (page - 1) * perPage, family, undertone }),
+    getColorsByBrand(brand.id, { limit: perPage, offset: (page - 1) * perPage, family, undertone, chart: true }),
     getCachedColorsByBrandCount(brand.id, { family, undertone }),
     getCachedColorsByBrandCount(brand.id),
     // Single batched query replaces N parallel getColorBySlug round-trips
@@ -195,6 +197,32 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
     .filter((b): b is NonNullable<typeof b> => Boolean(b))
     .map((b) => ({ slug: b.slug, name: b.name }));
 
+  // Entry points above the library: page 1 unfiltered only, so the ~439
+  // paginated and filtered copies do not repeat them. Everything here is our
+  // own data (family counts, LRV range, Plausible views, the verified Color of
+  // the Year list); named collections are not in our data and are left out.
+  const entry = page === 1 && unfiltered;
+  const cotyPicks = entry ? brandCotyPicks(brandSlug) : [];
+  const [lrvRange, viewedCandidates, cotyColors] = entry
+    ? await Promise.all([
+        getCachedBrandLrvRange(brand.id),
+        getColorsBySlugList(brandSlug, mostViewedCandidates(brandSlug)),
+        getColorsBySlugList(brandSlug, cotyPicks.flatMap((c) => (c.pick.colorSlug ? [c.pick.colorSlug] : []))),
+      ])
+    : [null, [], []];
+  const mostViewed = entry ? pickMostViewed(mostViewedCandidates(brandSlug), viewedCandidates) : [];
+  const cotyTiles = cotyPicks.map(({ year, pick }) => ({
+    year,
+    name: pick.name,
+    code: pick.code,
+    colorSlug: pick.colorSlug,
+    hex: cotyColors.find((c) => c.slug === pick.colorSlug)?.hex ?? null,
+  }));
+  const familyTiles = entry
+    ? rankFamilies(familyCounts).map((f) => ({ ...f, hex: FAMILIES.find((x) => x.name === f.name)!.hex, border: FAMILIES.find((x) => x.name === f.name)!.border }))
+    : [];
+  const lede = entry ? brandLede({ brandName: brand.name, total: totalCount, lrv: lrvRange, families: rankFamilies(familyCounts) }) : "";
+
   // Hide chips that would lead to an empty listing; keep the active one so
   // its selected state still shows.
   const families = FAMILIES.filter((f) => f.name === family || (familyCounts[f.name] ?? 0) > 0);
@@ -233,9 +261,10 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
       <TrackPage eventName="page_view_enriched" params={{ page_type: "brand", color_brand: brandSlug }} />
       <Header />
       <div className={`pch-color ${urbanist.variable}`}>
+      <main id="main-content">
 
       {/* Brand Hero */}
-      <section className="relative pt-24 px-6 md:px-12 py-20 overflow-hidden">
+      <section className="relative pt-24 px-6 md:px-12 pb-12 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <nav className="mb-8 text-sm text-on-surface-variant">
             <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -258,7 +287,8 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
               </span>
             )}
           </h1>
-          <p className="text-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">{subtitle}</p>
+          <p className={`text-lg text-on-surface-variant max-w-xl leading-relaxed ${lede ? "mb-4" : "mb-10"}`}>{subtitle}</p>
+          {lede && <p className="text-base text-on-surface-variant max-w-xl mb-10 leading-relaxed">{lede}</p>}
           <div className="flex flex-wrap gap-4">
             <Link href="#colors" className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-headline font-bold text-base shadow-lg shadow-primary/20">
               Explore Colors
@@ -281,6 +311,17 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
           )}
         </div>
       </section>
+
+      {entry && (
+        <BrandEntryPoints
+          brandSlug={brandSlug}
+          brandName={brand.name}
+          mostViewed={mostViewed}
+          mostViewedWindow={mostViewedWindowLabel()}
+          coty={cotyTiles}
+          families={familyTiles}
+        />
+      )}
 
       {alternatives.length > 0 && (
         <section id="alternatives" className="pb-20 px-6 md:px-12 scroll-mt-20">
@@ -553,6 +594,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         })),
       }} />}
 
+      </main>
       </div>
       <AdSenseScript />
       <Footer />

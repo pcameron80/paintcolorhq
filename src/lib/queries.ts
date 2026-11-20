@@ -17,6 +17,9 @@ import { getHueBand, inHueBand, labPrefilter } from "./hue-bands";
 // Fields the ColorCard component renders (brand/family grid + search results).
 const COLOR_CARD_FIELDS =
   "id, name, slug, hex, color_number";
+// Brand-page chart mode also shows LRV and undertone for the 60 colors on the page.
+const COLOR_CHART_FIELDS =
+  "id, name, slug, hex, color_number, lrv, undertone";
 const COLOR_CARD_FIELDS_WITH_BRAND =
   "id, name, slug, hex, color_number, brand:brand_id (id, name, slug)";
 
@@ -56,12 +59,12 @@ export async function getBrandBySlug(slug: string): Promise<Brand | null> {
 
 export async function getColorsByBrand(
   brandId: string,
-  options?: { family?: string; undertone?: string; limit?: number; offset?: number }
+  options?: { family?: string; undertone?: string; limit?: number; offset?: number; chart?: boolean }
 ): Promise<Color[]> {
-  // Brand grid renders ColorCard, which uses 5 fields per color.
+  // Brand grid renders ColorCard, which uses 5 fields per color; chart mode adds LRV and undertone.
   let query = supabase
     .from("colors")
-    .select(COLOR_CARD_FIELDS)
+    .select(options?.chart ? COLOR_CHART_FIELDS : COLOR_CARD_FIELDS)
     .eq("brand_id", brandId)
     .order("name").order("id");
 
@@ -552,6 +555,23 @@ export async function getBrandColorIndex(brandId: string): Promise<{ name: strin
     if (data.length < batch) break;
   }
   return out;
+}
+
+/** Lowest and highest published LRV for a brand, or null when none is recorded. */
+export async function getBrandLrvRange(brandId: string): Promise<{ min: number; max: number } | null> {
+  const edge = async (ascending: boolean) => {
+    const { data, error } = await supabase
+      .from("colors")
+      .select("lrv")
+      .eq("brand_id", brandId)
+      .not("lrv", "is", null)
+      .order("lrv", { ascending })
+      .limit(1);
+    if (error) throw error;
+    return data?.[0]?.lrv == null ? null : Number(data[0].lrv);
+  };
+  const [min, max] = await Promise.all([edge(true), edge(false)]);
+  return min === null || max === null ? null : { min, max };
 }
 
 export async function getColorsByBrandCount(

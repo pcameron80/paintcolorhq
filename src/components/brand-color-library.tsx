@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ColorCard } from "./color-card";
+import { BrandColorView, type ChartRow } from "./brand-color-view";
 
 interface BrandColor {
   id: string;
@@ -7,6 +7,8 @@ interface BrandColor {
   slug: string;
   hex: string;
   color_number?: string | null;
+  lrv?: number | string | null;
+  undertone?: string | null;
 }
 
 interface FamilyOption {
@@ -47,6 +49,12 @@ export function BrandColorLibrary({
   const colors = initialColors;
   const totalCount = initialTotalCount;
   const totalPages = Math.max(1, Math.ceil(totalCount / PER_PAGE));
+  const rows: ChartRow[] = colors.map((c) => ({
+    id: c.id, name: c.name, slug: c.slug, hex: c.hex,
+    code: c.color_number ?? null,
+    lrv: c.lrv === null || c.lrv === undefined ? null : Number(c.lrv),
+    undertone: c.undertone ?? null,
+  }));
 
   function makeHref(opts: {
     family?: string | null;
@@ -148,22 +156,8 @@ export function BrandColorLibrary({
         ))}
       </div>
 
-      {/* Color grid */}
-      <div
-        className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
-      >
-        {colors.map((color) => (
-          <ColorCard
-            key={color.id}
-            name={color.name}
-            hex={color.hex}
-            brandName={brandName}
-            brandSlug={brandSlug}
-            colorSlug={color.slug}
-            colorNumber={color.color_number}
-          />
-        ))}
-      </div>
+      {/* Swatch grid or chart (client toggle, same URL) */}
+      <BrandColorView brandSlug={brandSlug} brandName={brandName} rows={rows} />
 
       {colors.length === 0 && (
         <p className="mt-12 text-center text-on-surface-variant">
