@@ -309,7 +309,7 @@ export default async function ColorFamilyPage({ params }: PageProps) {
       <section className="py-20 px-6 md:px-12 bg-surface">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">
-            {familyName} Paint Colors — Frequently Asked Questions
+            {familyName} Paint Colors: Frequently Asked Questions
           </h2>
           <div className="space-y-4">
             <details className="group bg-surface-container-lowest rounded-xl border border-outline-variant/10">
@@ -377,7 +377,7 @@ export default async function ColorFamilyPage({ params }: PageProps) {
                 Inspiration Featuring {familyName}
               </h2>
               <p className="text-on-surface-variant mb-8 max-w-2xl">
-                Curated palettes where {familyName.toLowerCase()} plays a leading role — see how designers pair these colors in real rooms.
+                Curated palettes where {familyName.toLowerCase()} plays a leading role: see how designers pair these colors in real rooms.
               </p>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {relatedPalettes.map((p) => (

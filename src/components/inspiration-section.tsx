@@ -43,7 +43,7 @@ export async function InspirationSection() {
     <>
       <div className="flex items-center justify-between mb-8">
         <p className="text-sm text-on-surface-variant">
-          Curated palettes to spark your next project — click any palette to explore.
+          Curated palettes to spark your next project: click any palette to explore.
         </p>
         <Link
           href="/inspiration"

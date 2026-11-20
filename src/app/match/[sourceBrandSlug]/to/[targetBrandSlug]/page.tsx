@@ -316,7 +316,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
                 <Link href="/blog/understanding-paint-color-undertones" className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all">
                   <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-2">Color Theory</p>
                   <p className="font-headline text-lg font-bold text-on-surface group-hover:text-primary transition-colors">Understanding paint color undertones</p>
-                  <p className="mt-2 text-sm text-on-surface-variant">Why a perfect Delta E match can still look wrong on the wall — and how to read undertones before you commit.</p>
+                  <p className="mt-2 text-sm text-on-surface-variant">Why a perfect Delta E match can still look wrong on the wall, and how to read undertones before you commit.</p>
                 </Link>
               );
             })()}

@@ -179,7 +179,7 @@ export default async function MatchPage({ params }: PageProps) {
       ]}} />
       {bestMatch && <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: [
         { "@type": "Question", name: `What is the ${targetBrand.name} equivalent of ${sourceColor.brand.name} ${sourceColor.name}?`,
-          acceptedAnswer: { "@type": "Answer", text: `The closest ${targetBrand.name} equivalent to ${sourceColor.brand.name} ${sourceColor.name} is ${bestMatch.match_color.name} (${bestMatch.match_color.hex.toUpperCase()}) — ${deltaELabel(Number(bestMatch.delta_e_score))}. The match is computed with the CIEDE2000 color-difference formula, which measures how close two colors look to the human eye rather than comparing their hex codes.${targetMatches.length > 1 ? ` If you want a backup, ${targetMatches[1].match_color.name} is the next-closest ${targetBrand.name} option.` : ""} Order a sample before painting — sheen and lighting shift the result.` } },
+          acceptedAnswer: { "@type": "Answer", text: `The closest ${targetBrand.name} equivalent to ${sourceColor.brand.name} ${sourceColor.name} is ${bestMatch.match_color.name} (${bestMatch.match_color.hex.toUpperCase()}): ${deltaELabel(Number(bestMatch.delta_e_score))}. The match is computed with the CIEDE2000 color-difference formula, which measures how close two colors look to the human eye rather than comparing their hex codes.${targetMatches.length > 1 ? ` If you want a backup, ${targetMatches[1].match_color.name} is the next-closest ${targetBrand.name} option.` : ""} Order a sample before painting. Sheen and lighting shift the result.` } },
         { "@type": "Question", name: `Will ${bestMatch.match_color.name} look exactly like ${sourceColor.name}?`,
           acceptedAnswer: { "@type": "Answer", text: `${bestMatch.match_color.name} is the closest stored digital candidate from ${targetBrand.name}. This is not a physical match or touch-up guarantee.${lrvNote ? ` ${lrvNote}` : ""} Compare samples in your room and intended finish before substituting paint.` } },
       ]}} />}
@@ -223,7 +223,7 @@ export default async function MatchPage({ params }: PageProps) {
         {bestMatch ? (
           <>
             <p className="text-on-surface-variant leading-relaxed max-w-3xl mb-10">
-              The closest {targetBrand.name} equivalent to {sourceColor.brand.name} {sourceColor.name} ({sourceColor.hex.toUpperCase()}) is {bestMatch.match_color.name} ({bestMatch.match_color.hex.toUpperCase()}) — {deltaELabel(Number(bestMatch.delta_e_score))}. Always verify with physical paint samples.
+              The closest {targetBrand.name} equivalent to {sourceColor.brand.name} {sourceColor.name} ({sourceColor.hex.toUpperCase()}) is {bestMatch.match_color.name} ({bestMatch.match_color.hex.toUpperCase()}): {deltaELabel(Number(bestMatch.delta_e_score))}. Always verify with physical paint samples.
             </p>
 
             <div className="bg-surface-container-low rounded-xl p-6 mb-12 text-center">
@@ -258,7 +258,7 @@ export default async function MatchPage({ params }: PageProps) {
             <article id="match-methodology" className="max-w-3xl mb-12 text-on-surface-variant leading-relaxed">
               <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-4">How this match is calculated</h2>
               <p className="mb-4">
-                Every {sourceColor.brand.name} and {targetBrand.name} color in our database is converted to CIELAB coordinates, then scored with the CIEDE2000 formula — the current ISO standard for how different two colors look to the human eye. It corrects for the fact that the eye notices small shifts in some hue ranges far more than others, so it compares digital colors in perceptual space instead of treating RGB channel differences equally.
+                Every {sourceColor.brand.name} and {targetBrand.name} color in our database is converted to CIELAB coordinates, then scored with the CIEDE2000 formula: the current ISO standard for how different two colors look to the human eye. It corrects for the fact that the eye notices small shifts in some hue ranges far more than others, so it compares digital colors in perceptual space instead of treating RGB channel differences equally.
               </p>
               <p>
                 {bestMatch.match_color.name} ranks as the closest {targetBrand.name} equivalent to {sourceColor.name} because it sits nearest in that perceptual space.{" "}

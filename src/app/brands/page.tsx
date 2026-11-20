@@ -12,7 +12,7 @@ import "@/app/redesign.css";
 export const revalidate = 604800; // 7d — static index page
 
 export const metadata: Metadata = {
-  title: `Paint Brand Directory — ${BRAND_COUNT} Brands, 26,000+ Colors`,
+  title: `Paint Brand Directory: ${BRAND_COUNT} Brands, 26,000+ Colors`,
   description:
     `Browse all ${BRAND_COUNT} paint brands on Paint Color HQ, including Sherwin-Williams, Benjamin Moore, Behr, PPG, Valspar and Farrow & Ball. 26,000+ colors to match.`,
   alternates: { canonical: "https://www.paintcolorhq.com/brands" },
@@ -173,7 +173,7 @@ export default async function BrandsPage() {
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-headline text-3xl font-bold text-on-surface mb-4">Prefer to browse by color?</h2>
           <p className="text-on-surface-variant mb-8 max-w-lg mx-auto">
-            Explore colors organized by family — whites, grays, blues, greens, and more across all brands.
+            Explore colors organized by family: whites, grays, blues, greens, and more across all brands.
           </p>
           <Link
             href="/colors"

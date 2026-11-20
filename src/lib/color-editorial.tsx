@@ -28,7 +28,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         samples, so test in your room before switching brands.
       </p>
       <p>
-        Agreeable Gray is the color that made &ldquo;greige&rdquo; a household word — a gray with
+        Agreeable Gray is the color that made &ldquo;greige&rdquo; a household word: a gray with
         just enough warm beige in it to avoid the cold, steely look that dated the all-gray era. At
         LRV 60 it sits right in the middle of the light scale, which is the practical reason it works
         almost everywhere: bright enough to keep a north-facing room from going gloomy, soft enough
@@ -38,7 +38,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         The honest caveat: that same middle-of-the-road quality means Agreeable Gray reads slightly
         different in every house. In strong warm light it leans taupe; under cool LED or heavy north
         light its faint green-violet base can surface. Pair it with a crisp white trim like Pure White
-        rather than a creamy one — a too-warm trim makes the walls look dingy by comparison. If you
+        rather than a creamy one: a too-warm trim makes the walls look dingy by comparison. If you
         want the same look without a Sherwin-Williams store, Behr Toasty Gray and Benjamin Moore
         Wish are nearly identical, and Valspar Heritage Gray is a nearly identical match at Lowe&apos;s.
       </p>
@@ -55,7 +55,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         Watch the purple. In low or north light, Repose Gray&apos;s violet undertone can show, especially
-        next to colors with a green base — so sample it on the actual wall before committing a whole
+        next to colors with a green base, so sample it on the actual wall before committing a whole
         floor. It pairs cleanly with both cool and warm whites, which is part of why it&apos;s such a safe
         whole-house pick. The closest cross-brand matches are Benjamin Moore Apparition and PPG
         Swirling Smoke, both nearly identical on the wall.
@@ -79,13 +79,13 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         Accessible Beige is the greige for people who actually want to see the beige. At LRV 58 it&apos;s
         the same brightness as Agreeable Gray, but with noticeably more warmth and a faint gray that
         keeps it from going yellow or &ldquo;builder beige.&rdquo; It&apos;s the right call for rooms that run
-        cool — north-facing spaces, rooms with a lot of cool-toned stone or tile — where a true gray
+        cool (north-facing spaces, rooms with a lot of cool-toned stone or tile) where a true gray
         would feel clinical.
       </p>
       <p>
         In very warm afternoon light it can push toward tan, so if you want it to stay neutral, keep the
         trim a clean white and avoid pairing it with strongly yellow woods. It anchors a warm,
-        earthy palette beautifully — terracotta, olive, aged brass. The nearest matches in other
+        earthy palette beautifully: terracotta, olive, aged brass. The nearest matches in other
         brands are Behr Shoreline Haze and PPG Synchronicity, both nearly identical.
       </p>
     </>
@@ -107,7 +107,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Alabaster is the warm white that quietly took over from the cooler grays. At LRV 82 it&apos;s soft
         and creamy without reading yellow, which is the hard balance most warm whites miss. It works
-        three ways at once — walls, trim, and cabinets — which is why whole-house painters reach for
+        three ways at once (walls, trim, and cabinets), which is why whole-house painters reach for
         it: using one white everywhere removes the trim-vs-wall guessing game.
       </p>
       <p>
@@ -143,14 +143,14 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Hale Navy is the navy that launched a thousand kitchen islands. What sets it apart from a true
-        royal navy is a slight gray-green softness — at LRV 8 it&apos;s deep and dramatic, but it never
+        royal navy is a slight gray-green softness: at LRV 8 it&apos;s deep and dramatic, but it never
         reads as a primary-crayon blue, which is exactly why it works on cabinetry, front doors, and
         moody accent walls without feeling juvenile.
       </p>
       <p>
         It needs light to look its best: in a dark north room it can collapse to near-black, so it&apos;s
         strongest where there&apos;s good daylight or where you lean into the drama deliberately. It pairs
-        with warm brass, white oak, and creamy whites — high-contrast crisp white can make it look
+        with warm brass, white oak, and creamy whites: high-contrast crisp white can make it look
         harsh. The closest cross-brand equivalent is Sherwin-Williams Sea Mariner, with Behr Starless Night
         also nearly identical, so the look is easy to get on either side of the BM/SW divide.
       </p>
@@ -161,7 +161,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Pure White is the trim-and-ceiling default for a reason: at LRV 84 it&apos;s bright and clean
         without the blue-white glare of a stark white, and without enough warmth to clash with either
-        cool or warm wall colors. That neutrality is the whole point — it&apos;s the white you reach for
+        cool or warm wall colors. That neutrality is the whole point: it&apos;s the white you reach for
         when you don&apos;t want the trim to make a statement, just frame the room.
       </p>
       <p>
@@ -177,14 +177,14 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Naval is the deep, classic navy behind a huge share of the internet&apos;s moody dining rooms,
-        front doors, and kitchen islands. At LRV 5 it&apos;s genuinely dark, but it&apos;s a true navy — not a
-        black-blue and not a bright royal — which is what keeps it timeless rather than trendy.
+        front doors, and kitchen islands. At LRV 5 it&apos;s genuinely dark, but it&apos;s a true navy (not a
+        black-blue and not a bright royal), which is what keeps it timeless rather than trendy.
       </p>
       <p>
         Like any very dark color it eats light, so it&apos;s best where there&apos;s daylight to give it depth,
         or used deliberately for drama on cabinetry and built-ins. It looks expensive with brass,
         natural wood, and warm whites; against a stark white it can feel a bit harsh. The closest
-        cross-brand equivalent is Benjamin Moore North Sea — nearly identical — so the look crosses the
+        cross-brand equivalent is Benjamin Moore North Sea, nearly identical, so the look crosses the
         BM/SW line easily.
       </p>
     </>
@@ -192,7 +192,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/tricorn-black-6258": (
     <>
       <p>
-        Tricorn Black is a true, neutral black — no blue, no brown, no green cast — which is exactly why
+        Tricorn Black is a true, neutral black (no blue, no brown, no green cast), which is exactly why
         it&apos;s the go-to for trim, doors, window sashes, and cabinetry. At LRV 3 it&apos;s about as dark as
         architectural paint gets, and its neutrality means it won&apos;t fight whatever undertone your walls
         carry.
@@ -219,7 +219,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         Digital values cannot show sheen, so sample it first.
       </p>
       <p>
-        Iron Ore is the warm charcoal that reads almost-black indoors and softer outside — the
+        Iron Ore is the warm charcoal that reads almost-black indoors and softer outside: the
         in-between people choose when true black feels too severe. At LRV 6 it has real depth, but its
         warm gray base keeps it from the hard edge of a pure black, which is why it&apos;s a favorite for
         exterior bodies, front doors, and moody cabinetry.
@@ -289,12 +289,12 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/revere-pewter-hc-172": (
     <>
       <p>
-        Revere Pewter is the greige that launched the entire category — the color most people picture
+        Revere Pewter is the greige that launched the entire category: the color most people picture
         when they say &ldquo;warm gray.&rdquo; At LRV 55 it&apos;s a mid-light greige with a gentle green-gray
         base that makes it read grounded and organic rather than cold.
       </p>
       <p>
-        It&apos;s a touch deeper than the Sherwin-Williams greiges, so it gives a room a bit more presence —
+        It&apos;s a touch deeper than the Sherwin-Williams greiges, so it gives a room a bit more presence:
         excellent in open-plan main floors and rooms with good light. In dim or very warm light its
         green undertone can surface, which is the main thing to sample for. Its closest Behr match is
         Coliseum Marble and its Sherwin-Williams match is Simple Stone, both
@@ -316,7 +316,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         digital values, not wet paint.
       </p>
       <p>
-        Chantilly Lace is the modern bright white — at LRV 90 it&apos;s about as clean and crisp as paint
+        Chantilly Lace is the modern bright white: at LRV 90 it&apos;s about as clean and crisp as paint
         gets, with no obvious warm or cool cast. It&apos;s the white behind the contemporary, gallery-clean
         look: white walls, white trim, lots of light.
       </p>
@@ -331,7 +331,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/simply-white-2143-70": (
     <>
       <p>
-        Simply White is the warm counterpart to Chantilly Lace — nearly as bright (LRV 90) but with a
+        Simply White is the warm counterpart to Chantilly Lace: nearly as bright (LRV 90) but with a
         soft warm tint that keeps it from feeling stark. Benjamin Moore named it a Color of the Year for
         good reason: it&apos;s a crowd-pleaser that reads clean in most rooms without the chill of a true
         cool white.
@@ -346,7 +346,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/edgecomb-gray-hc-173": (
     <>
       <p>
-        Edgecomb Gray is the easygoing greige — lighter and softer than Revere Pewter (LRV 55), with
+        Edgecomb Gray is the easygoing greige: lighter and softer than Revere Pewter (LRV 55), with
         enough warmth to feel cozy but enough gray to stay current. It&apos;s the &ldquo;can&apos;t go wrong&rdquo;
         neutral for people who find Revere Pewter a touch dark or Agreeable Gray a touch flat.
       </p>
@@ -388,11 +388,11 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Palladian Blue is the soft, restful blue-green that became a designer staple for bathrooms,
         bedrooms, and powder rooms. At LRV 60 it&apos;s light and calm, and like the best blue-greens it
-        shifts with the room — more blue in cool light, more sea-glass green in warm light.
+        shifts with the room: more blue in cool light, more sea-glass green in warm light.
       </p>
       <p>
         It reads almost like a tinted neutral, which is why it works on whole rooms rather than just
-        accents. Because it moves with the light, sample it where it&apos;s going — a north bath and a
+        accents. Because it moves with the light, sample it where it&apos;s going: a north bath and a
         sunny bedroom will look like two different colors. It pairs beautifully with crisp whites and
         warm wood. Behr Frosted Jade is its closest match, with Sherwin-Williams Waterscape close behind.
       </p>
@@ -401,7 +401,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/gray-owl-2137-60": (
     <>
       <p>
-        Gray Owl is the cool, airy gray for people who want an actual gray — not a greige. At LRV 65
+        Gray Owl is the cool, airy gray for people who want an actual gray, not a greige. At LRV 65
         it&apos;s light and open, with a faint green-blue base that keeps it fresh rather than steely. It&apos;s
         a favorite for modern, calm rooms and for making small spaces feel larger.
       </p>
@@ -418,7 +418,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Snowbound is the off-white for people who find Pure White a touch too plain and Alabaster a
         touch too creamy. At LRV 83 it&apos;s bright, but a faint greige in the base gives it a soft,
-        slightly sophisticated edge — it reads as a &ldquo;designed&rdquo; white rather than a builder white.
+        slightly sophisticated edge: it reads as a &ldquo;designed&rdquo; white rather than a builder white.
       </p>
       <p>
         That subtle gray is the thing to watch: against a stark white it can look faintly dirty, and in
@@ -442,7 +442,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         7048) for high contrast. Confirm any match with a physical sample.
       </p>
       <p>
-        Greek Villa is the warmest of Sherwin-Williams&apos; popular whites — a soft, creamy white at LRV 84
+        Greek Villa is the warmest of Sherwin-Williams&apos; popular whites: a soft, creamy white at LRV 84
         that&apos;s a half-step warmer than Alabaster without tipping into yellow. It&apos;s the right call when
         you want a white that feels cozy and a little old-world rather than crisp and modern.
       </p>
@@ -456,7 +456,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/extra-white-7006": (
     <>
       <p>
-        Extra White is Sherwin-Williams&apos; crisp, bright white with a slight cool edge — at LRV 86 it&apos;s
+        Extra White is Sherwin-Williams&apos; crisp, bright white with a slight cool edge: at LRV 86 it&apos;s
         about as clean as their whites get. It&apos;s the pick for contemporary spaces and for trim where you
         want a sharp, modern line rather than a soft, creamy one.
       </p>
@@ -471,7 +471,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/cloud-white-oc-130": (
     <>
       <p>
-        Cloud White is Benjamin Moore&apos;s soft, creamy white for trim, millwork, and cabinetry — warmer
+        Cloud White is Benjamin Moore&apos;s soft, creamy white for trim, millwork, and cabinetry: warmer
         than Chantilly Lace, a classic that predates the current bright-white era. At LRV 85 it&apos;s bright
         but gentle, the kind of white that reads timeless on detailed trim and traditional cabinets.
       </p>
@@ -485,7 +485,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/classic-gray-1548": (
     <>
       <p>
-        Classic Gray is barely a gray at all — a light, warm almost-white at LRV 74 that reads as the
+        Classic Gray is barely a gray at all: a light, warm almost-white at LRV 74 that reads as the
         softest possible neutral. People reach for it when even a light greige like Edgecomb Gray feels
         too committal: it gives walls a faint warmth and depth without looking like a color at all.
       </p>
@@ -499,7 +499,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/stonington-gray-hc-170": (
     <>
       <p>
-        Stonington Gray is the classic mid-light gray with a cool blue base — at LRV 59 it&apos;s the
+        Stonington Gray is the classic mid-light gray with a cool blue base: at LRV 59 it&apos;s the
         even-keeled, slightly architectural gray that anchored the gray era and still works for clean,
         calm rooms. It&apos;s a true gray, not a greige, so it won&apos;t bring warmth to a room.
       </p>
@@ -514,7 +514,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/balboa-mist-oc-27": (
     <>
       <p>
-        Balboa Mist is the cooler, grayer member of Benjamin Moore&apos;s greige family — at LRV 66 it&apos;s a
+        Balboa Mist is the cooler, grayer member of Benjamin Moore&apos;s greige family: at LRV 66 it&apos;s a
         light, soft greige that leans gray rather than beige, which makes it the pick when Revere Pewter
         feels too warm or too deep. It&apos;s a quiet, elegant neutral that reads almost like a warm gray.
       </p>
@@ -529,7 +529,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/wrought-iron-2124-10": (
     <>
       <p>
-        Wrought Iron is the soft near-black designers reach for instead of a true black — a deep charcoal
+        Wrought Iron is the soft near-black designers reach for instead of a true black: a deep charcoal
         at LRV 8 with a gentle warmth that keeps it from feeling stark. It&apos;s the choice for doors, trim,
         and cabinetry when you want depth and drama without the hard edge of a pure black.
       </p>
@@ -543,7 +543,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "behr/swiss-coffee-12": (
     <>
       <p>
-        Swiss Coffee is Behr&apos;s warm, creamy white and one of the most-bought whites at Home Depot — a
+        Swiss Coffee is Behr&apos;s warm, creamy white and one of the most-bought whites at Home Depot: a
         soft white at LRV 84 with a gentle cream cast that flatters trim, walls, and cabinets without
         reading yellow. It&apos;s the warm-white default for people who find bright whites cold.
       </p>
@@ -572,7 +572,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "behr/silver-drop-790c-2": (
     <>
       <p>
-        Silver Drop is one of Behr&apos;s most popular light neutrals — a soft greige-white at LRV 70 that
+        Silver Drop is one of Behr&apos;s most popular light neutrals: a soft greige-white at LRV 70 that
         sits between a warm white and a light greige. It&apos;s bright enough to keep a room open but warm
         enough to feel soft, which makes it a low-risk whole-house pick for Home Depot shoppers.
       </p>
@@ -602,12 +602,12 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "ppg/vining-ivy-1148-6": (
     <>
       <p>
-        Vining Ivy is PPG&apos;s 2023 Color of the Year — a rich blue-green teal at LRV 15 that lands between
+        Vining Ivy is PPG&apos;s 2023 Color of the Year: a rich blue-green teal at LRV 15 that lands between
         deep teal and emerald depending on the light. It&apos;s a confident, saturated color, best used as a
         statement: an accent wall, a vanity, built-ins, or a powder room you want to feel jewel-box rich.
       </p>
       <p>
-        As a saturated mid-dark color it amplifies lighting — warmer bulbs deepen it, cool daylight
+        As a saturated mid-dark color it amplifies lighting: warmer bulbs deepen it, cool daylight
         sharpens its green, so sample it where it&apos;s going. It pairs beautifully with brass, warm wood,
         and creamy whites. Benjamin Moore Fair Isle Blue and Behr River Rapids are its closest cross-brand matches.
       </p>
@@ -624,7 +624,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Everything true of Agreeable Gray applies: a warm greige that holds steady across mixed light,
         pairs with a crisp white trim, and can show a faint green-violet base in cool north light. The
-        practical win is purely about where you shop — same look, Valspar can. Behr Toasty Gray and
+        practical win is purely about where you shop: same look, Valspar can. Behr Toasty Gray and
         Benjamin Moore Wish are the equivalents at their stores.
       </p>
     </>
@@ -632,13 +632,13 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/evergreen-fog-9130": (
     <>
       <p>
-        Evergreen Fog is the color that signaled the shift away from gray — a soft, complex
+        Evergreen Fog is the color that signaled the shift away from gray: a soft, complex
         sage that sits between green, gray, and blue, which is exactly why Sherwin-Williams named it a
         Color of the Year. At LRV 30 it&apos;s a true mid-tone with real presence: enough depth to feel
         intentional on cabinetry, an accent wall, or a whole moody room, without going dark.
       </p>
       <p>
-        Its complexity is the thing to respect — it reads greener in some light and grayer in others,
+        Its complexity is the thing to respect: it reads greener in some light and grayer in others,
         so sample it where it&apos;s going. It pairs beautifully with warm whites, brass, and natural wood.
         Behr Hunters Hollow is a nearly identical cross-brand match, with Benjamin Moore Storm Cloud Gray
         close behind.
@@ -648,7 +648,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/october-mist-1495": (
     <>
       <p>
-        October Mist is Benjamin Moore&apos;s gently grayed sage — a 2022 Color of the Year that reads as a
+        October Mist is Benjamin Moore&apos;s gently grayed sage: a 2022 Color of the Year that reads as a
         calm, dusty green at LRV 47. It&apos;s soft enough to use across a whole room yet has enough body to
         feel like a real color rather than a tinted neutral, which is the balance that made it a
         designer favorite for bedrooms and quiet living spaces.
@@ -663,7 +663,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/saybrook-sage-hc-114": (
     <>
       <p>
-        Saybrook Sage is the classic, slightly deeper sage — a mid-tone muted green at LRV 46 with a
+        Saybrook Sage is the classic, slightly deeper sage: a mid-tone muted green at LRV 46 with a
         timeless, almost colonial quality. Where October Mist is misty and soft, Saybrook Sage is a
         touch richer and more grounded, which makes it a strong exterior color as well as an interior
         one.
@@ -678,13 +678,13 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/quiet-moments-1563": (
     <>
       <p>
-        Quiet Moments is one of the great chameleons — a soft blue-green-gray at LRV 61 that reads more
+        Quiet Moments is one of the great chameleons: a soft blue-green-gray at LRV 61 that reads more
         blue in some rooms, more green in others, and almost gray in low light. That shape-shifting
         quality is the whole appeal: it brings color to a space while staying calm and livable, which is
         why it&apos;s a perennial favorite for bathrooms and bedrooms.
       </p>
       <p>
-        Because it moves so much with light, it&apos;s a color you genuinely cannot judge from the chip —
+        Because it moves so much with light, it&apos;s a color you genuinely cannot judge from the chip:
         sample it where it&apos;s going. It pairs with crisp whites and warm wood. Its nearly identical
         Sherwin-Williams match is Sea Spray, and Behr Shy Green is close.
       </p>
@@ -693,7 +693,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/oyster-bay-6206": (
     <>
       <p>
-        Oyster Bay is Sea Salt&apos;s deeper, more saturated sibling — a green-gray at LRV 44 with more body
+        Oyster Bay is Sea Salt&apos;s deeper, more saturated sibling: a green-gray at LRV 44 with more body
         and a slightly bluer cast. It&apos;s the choice when Sea Salt feels too pale to register, giving a
         room a soft, sea-glass color that still behaves like a sophisticated neutral.
       </p>
@@ -707,7 +707,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "ppg/olive-sprig-1125-4": (
     <>
       <p>
-        Olive Sprig is PPG&apos;s soft sage Color of the Year — a gentle, grayed green at LRV 42 in the same
+        Olive Sprig is PPG&apos;s soft sage Color of the Year: a gentle, grayed green at LRV 42 in the same
         family as Evergreen Fog and October Mist. It rode the sage-green wave for good reason: it&apos;s
         restful and organic, equally at home in a bedroom, a kitchen island, or a built-in.
       </p>
@@ -722,7 +722,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Gauntlet Gray is the deep, confident gray people reach for when a light gray feels like nothing.
-        At LRV 17 it&apos;s a true mid-dark — a warm-leaning charcoal-gray with enough depth for exteriors,
+        At LRV 17 it&apos;s a true mid-dark: a warm-leaning charcoal-gray with enough depth for exteriors,
         cabinetry, and dramatic accent walls, but not so dark it reads black.
       </p>
       <p>
@@ -735,7 +735,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/dorian-gray-7017": (
     <>
       <p>
-        Dorian Gray is the mid-tone greige in Sherwin-Williams&apos; gray family — at LRV 39 it&apos;s
+        Dorian Gray is the mid-tone greige in Sherwin-Williams&apos; gray family: at LRV 39 it&apos;s
         noticeably deeper than Repose or Agreeable, with a warm griege base that keeps it from feeling
         cold. It&apos;s the choice for rooms that want real contrast and a grounded, slightly dramatic
         neutral rather than a pale wash.
@@ -750,7 +750,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/drift-of-mist-9166": (
     <>
       <p>
-        Drift of Mist is a light, soft greige at LRV 69 — brighter and airier than Agreeable Gray, with
+        Drift of Mist is a light, soft greige at LRV 69: brighter and airier than Agreeable Gray, with
         a gentle warmth that keeps it from going cold. It&apos;s the pick for people who want a barely-there
         neutral that still has a little color to it, especially in rooms that need to feel open.
       </p>
@@ -764,7 +764,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/eider-white-7014": (
     <>
       <p>
-        Eider White straddles the line between a light greige and an off-white — at LRV 73 it&apos;s soft
+        Eider White straddles the line between a light greige and an off-white: at LRV 73 it&apos;s soft
         and pale, reading nearly white in bright light and showing a gentle greige warmth in shadow.
         It&apos;s the choice when a true white feels too clinical but a greige feels too committal.
       </p>
@@ -792,7 +792,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/coventry-gray-hc-169": (
     <>
       <p>
-        Coventry Gray is a classic mid-tone gray with a soft blue base — at LRV 48 it&apos;s a clean,
+        Coventry Gray is a classic mid-tone gray with a soft blue base: at LRV 48 it&apos;s a clean,
         even-handed gray that gives a room definition without the warmth of a greige. It&apos;s the choice
         for a crisp, traditional gray that still feels current.
       </p>
@@ -806,7 +806,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/collingwood-859": (
     <>
       <p>
-        Collingwood is one of Benjamin Moore&apos;s most popular soft greiges — a light, gentle gray-beige
+        Collingwood is one of Benjamin Moore&apos;s most popular soft greiges: a light, gentle gray-beige
         at LRV 62 with a barely-there violet warmth that keeps it soft and livable. It&apos;s the easygoing,
         can&apos;t-go-wrong neutral for people who find Revere Pewter too deep or too green.
       </p>
@@ -820,7 +820,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "behr/toasty-gray-n320-2": (
     <>
       <p>
-        Toasty Gray is Behr&apos;s warm greige — and the color most people land on when they want Sherwin-Williams
+        Toasty Gray is Behr&apos;s warm greige, and the color most people land on when they want Sherwin-Williams
         Agreeable Gray at Home Depot. At LRV 61 it&apos;s a nearly identical stand-in for Agreeable Gray
         (a barely-perceptible difference on the wall), which makes it the practical pick if Behr is the
         brand your store carries.
@@ -846,7 +846,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
         room. Sample before you switch brands.
       </p>
       <p>
-        Shoji White is one of Sherwin-Williams&apos; most-used warm off-whites — at LRV 74 it&apos;s the
+        Shoji White is one of Sherwin-Williams&apos; most-used warm off-whites: at LRV 74 it&apos;s the
         in-between people reach for when a true white feels too cold and a greige feels too gray. It has
         a soft, warm linen quality that flatters cabinetry, trim, and whole rooms, and it&apos;s a natural
         partner for the warm-greige walls that replaced the gray era.
@@ -861,12 +861,12 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/modern-gray-7632": (
     <>
       <p>
-        Modern Gray is a light, warm greige at LRV 62 with a subtle taupe-mauve base — the warmest of
+        Modern Gray is a light, warm greige at LRV 62 with a subtle taupe-mauve base: the warmest of
         Sherwin-Williams&apos; popular light neutrals. It&apos;s the choice when Agreeable Gray feels too cool
         or too gray; it brings genuine warmth to a room without going full beige.
       </p>
       <p>
-        That faint violet-taupe undertone is the thing to sample for — in some light it can lean
+        That faint violet-taupe undertone is the thing to sample for: in some light it can lean
         slightly pink, so keep its companions warm. It&apos;s lovely in bedrooms and living rooms with soft
         light. Behr Mineral is a nearly identical match, with Benjamin Moore Rocking Chair close behind.
       </p>
@@ -875,7 +875,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/useful-gray-7050": (
     <>
       <p>
-        Useful Gray lives up to its name — a flexible warm greige at LRV 59 that sits comfortably between
+        Useful Gray lives up to its name: a flexible warm greige at LRV 59 that sits comfortably between
         gray and beige. It&apos;s a close cousin of Benjamin Moore Revere Pewter (a nearly identical match),
         which makes it the SW pick for that same grounded, organic greige look.
       </p>
@@ -889,7 +889,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/anew-gray-7030": (
     <>
       <p>
-        Anew Gray is a mid-tone greige at LRV 47 — deeper and warmer than Agreeable Gray, with enough
+        Anew Gray is a mid-tone greige at LRV 47: deeper and warmer than Agreeable Gray, with enough
         body to give a room real definition. It&apos;s the choice when you want a greige that reads as an
         actual color rather than a pale backdrop, especially in well-lit rooms.
       </p>
@@ -905,7 +905,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Amazing Gray is a mid-tone greige at LRV 47 in the same depth range as Anew Gray, with a warm,
         slightly earthy base. It&apos;s a strong choice for open-plan spaces that want a grounded neutral
-        with presence — deep enough to anchor a room, warm enough to stay welcoming.
+        with presence: deep enough to anchor a room, warm enough to stay welcoming.
       </p>
       <p>
         As with any mid-tone greige, it darkens in low light and shows its warmth in bright light, so
@@ -917,7 +917,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/natural-linen-966": (
     <>
       <p>
-        Natural Linen is a warm, soft greige-tan at LRV 60 — the kind of light earth-tone that reads
+        Natural Linen is a warm, soft greige-tan at LRV 60: the kind of light earth-tone that reads
         cozy and organic without going yellow. It&apos;s a versatile whole-house neutral for people who
         lean warm, sitting a touch more beige than the popular gray-greiges.
       </p>
@@ -931,7 +931,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/white-heron-7627": (
     <>
       <p>
-        White Heron is a soft, clean white at LRV 76 with just a whisper of warmth — crisp enough to feel
+        White Heron is a soft, clean white at LRV 76 with just a whisper of warmth: crisp enough to feel
         fresh, soft enough to avoid the chill of a true cool white. It&apos;s a flexible choice for trim,
         walls, and cabinets, especially in rooms that get good light.
       </p>
@@ -945,7 +945,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/sleepy-blue-6225": (
     <>
       <p>
-        Sleepy Blue is the soft, calming powder blue-gray its name promises — at LRV 58 it&apos;s light and
+        Sleepy Blue is the soft, calming powder blue-gray its name promises: at LRV 58 it&apos;s light and
         restful, the kind of gentle blue that works beautifully in bedrooms, nurseries, and bathrooms
         without feeling juvenile. It&apos;s a muted, grayed blue rather than a bright one.
       </p>
@@ -959,13 +959,13 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/rainwashed-6211": (
     <>
       <p>
-        Rainwashed is Sherwin-Williams&apos; soft spa blue-green — a cousin of Sea Salt, a touch bluer and
+        Rainwashed is Sherwin-Williams&apos; soft spa blue-green: a cousin of Sea Salt, a touch bluer and
         at a similar LRV 59. It has the same chameleon quality, shifting between pale aqua, soft green,
         and gray depending on the light, which is why it&apos;s a perennial favorite for bathrooms and
         coastal-feeling rooms.
       </p>
       <p>
-        That shape-shifting means you can&apos;t judge it from the chip — sample it where it&apos;s going. It
+        That shape-shifting means you can&apos;t judge it from the chip: sample it where it&apos;s going. It
         pairs with crisp whites and warm wood and fights cool grays. Benjamin Moore Silver Marlin and
         Behr Frosted Jade are its closest cross-brand matches.
       </p>
@@ -974,7 +974,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/van-deusen-blue-hc-156": (
     <>
       <p>
-        Van Deusen Blue is a deep, historic navy with a slate-gray softness — at LRV 12 it&apos;s dark and
+        Van Deusen Blue is a deep, historic navy with a slate-gray softness: at LRV 12 it&apos;s dark and
         dramatic, but its grayed base keeps it from reading as a bright or primary blue. It&apos;s a
         sophisticated choice for cabinetry, libraries, and statement walls in traditional homes.
       </p>
@@ -989,7 +989,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Newburyport Blue is the navy that sits right beside Hale Navy in Benjamin Moore&apos;s Historical
-        Collection — at LRV 10 it&apos;s a rich, classic navy with a slightly cooler, bluer character than
+        Collection: at LRV 10 it&apos;s a rich, classic navy with a slightly cooler, bluer character than
         Hale Navy&apos;s gray-green softness. It&apos;s the pick when you want a navy that reads a little more
         true-blue.
       </p>
@@ -1003,12 +1003,12 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/distance-6243": (
     <>
       <p>
-        Distance is a deep, moody blue-gray slate at LRV 15 — darker and grayer than a true navy, which
+        Distance is a deep, moody blue-gray slate at LRV 15: darker and grayer than a true navy, which
         gives it a sophisticated, almost stormy quality. It&apos;s a strong choice for an accent wall,
         cabinetry, or a study you want to feel enveloping and a little dramatic.
       </p>
       <p>
-        At this depth it shifts noticeably with light — bluer in daylight, grayer and darker in shadow —
+        At this depth it shifts noticeably with light (bluer in daylight, grayer and darker in shadow)
         so sample it in place. It pairs with warm metals and crisp whites. Behr Hypnotic is a very similar
         cross-brand match, with Benjamin Moore Thousand Oceans very similar.
       </p>
@@ -1017,7 +1017,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/sea-serpent-7615": (
     <>
       <p>
-        Sea Serpent is a deep, complex teal that lives between blue and green — at LRV 7 it&apos;s rich and
+        Sea Serpent is a deep, complex teal that lives between blue and green: at LRV 7 it&apos;s rich and
         saturated, the kind of jewel tone that turns a powder room, a built-in, or an accent wall into a
         focal point. It reads more blue in some light, more green in others.
       </p>
@@ -1031,7 +1031,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/rosemary-6187": (
     <>
       <p>
-        Rosemary is a deep, earthy green at LRV 14 — a grayed, herbal green with real depth that brings
+        Rosemary is a deep, earthy green at LRV 14: a grayed, herbal green with real depth that brings
         a grounded, natural drama to a room. It&apos;s the choice for a moody green on cabinetry, a library,
         or an accent wall, in the family of the deep-sage trend but darker and more saturated.
       </p>
@@ -1057,8 +1057,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       </p>
       <p>
         A 2021 Color of the Year, Urbane Bronze is the warm, earthy near-black that anchored the move
-        toward cozy-dark interiors. At LRV 8 it&apos;s deep, but it&apos;s a bronze-charcoal — a gray with real
-        brown warmth — rather than a flat black, which is why it feels enveloping instead of severe on
+        toward cozy-dark interiors. At LRV 8 it&apos;s deep, but it&apos;s a bronze-charcoal (a gray with real
+        brown warmth) rather than a flat black, which is why it feels enveloping instead of severe on
         accent walls, fireplaces, cabinetry, and front doors.
       </p>
       <p>
@@ -1071,7 +1071,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/redend-point-9081": (
     <>
       <p>
-        Redend Point — a 2023 Color of the Year — captured the shift toward warm, earthy color. At LRV 30
+        Redend Point (a 2023 Color of the Year) captured the shift toward warm, earthy color. At LRV 30
         it&apos;s a soft clay-rose: a blush-beige with terracotta warmth that reads sophisticated rather than
         pink, and brings a grounded, organic glow to a room without the weight of a true terracotta.
       </p>
@@ -1086,7 +1086,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Benjamin Moore&apos;s 2021 Color of the Year, Aegean Teal is a mid-tone blue-green with a grayed,
-        earthy quality — at LRV 25 it has enough depth to feel immersive without going dark. It&apos;s the
+        earthy quality: at LRV 25 it has enough depth to feel immersive without going dark. It&apos;s the
         teal that works as a whole-room color rather than just an accent, which is what set it apart from
         brighter teals.
       </p>
@@ -1100,7 +1100,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/metropolitan-af-690": (
     <>
       <p>
-        Metropolitan, Benjamin Moore&apos;s 2019 Color of the Year, is a calm, balanced mid gray at LRV 50 —
+        Metropolitan, Benjamin Moore&apos;s 2019 Color of the Year, is a calm, balanced mid gray at LRV 50:
         a true gray with a soft, slightly warm steadiness that never reads cold or stark. It&apos;s the
         &ldquo;perfect neutral gray&rdquo; the gray era was always chasing: enough presence to feel intentional,
         enough restraint to disappear behind your furnishings.
@@ -1115,7 +1115,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/watery-6478": (
     <>
       <p>
-        Watery is exactly what the name suggests — a soft, airy blue with a green whisper, like sea glass
+        Watery is exactly what the name suggests: a soft, airy blue with a green whisper, like sea glass
         at LRV 57. It&apos;s light enough to feel calm and spacious, which made it a staple for bathrooms,
         bedrooms, and laundry rooms where you want a touch of color without commitment.
       </p>
@@ -1129,7 +1129,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/tradewind-6218": (
     <>
       <p>
-        Tradewind is a serene, light blue-gray at LRV 61 — barely-there blue with enough gray to behave
+        Tradewind is a serene, light blue-gray at LRV 61: barely-there blue with enough gray to behave
         like a soft neutral. It&apos;s the choice for a tranquil, coastal-leaning room that still feels
         grown-up, popular in bedrooms and bathrooms for its spa-like calm.
       </p>
@@ -1143,7 +1143,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/wythe-blue-hc-143": (
     <>
       <p>
-        Wythe Blue is a historic mid-tone blue-green at LRV 48 — a muted, slightly dusty aqua with a
+        Wythe Blue is a historic mid-tone blue-green at LRV 48: a muted, slightly dusty aqua with a
         vintage character that reads more sophisticated than a bright aqua. It has enough body to make a
         statement on cabinetry, a kitchen, or a whole room without going dark.
       </p>
@@ -1157,7 +1157,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/passive-7064": (
     <>
       <p>
-        Passive is the cool counterpart to the warm greiges — a light, true gray at LRV 60 with a clean
+        Passive is the cool counterpart to the warm greiges: a light, true gray at LRV 60 with a clean
         blue base and none of the beige that defines Agreeable or Repose. It&apos;s the pick for a crisp,
         modern, cool-gray room, especially where you want gray to read as gray rather than greige.
       </p>
@@ -1171,7 +1171,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/network-gray-7073": (
     <>
       <p>
-        Network Gray is a mid-tone gray with a warm, slightly green-brown base at LRV 37 — deep enough to
+        Network Gray is a mid-tone gray with a warm, slightly green-brown base at LRV 37: deep enough to
         give a room contrast and definition, warm enough to avoid feeling cold. It&apos;s a popular exterior
         body color and a strong interior choice for accent walls and rooms with good light.
       </p>
@@ -1187,7 +1187,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
       <p>
         Abalone is a soft, warm greige-taupe at LRV 62 with a faint violet-gray shimmer that gives it a
         quiet elegance. It&apos;s a light, livable neutral for people who want something a little more
-        nuanced than a plain greige — gentle enough for bedrooms, refined enough for a whole house.
+        nuanced than a plain greige: gentle enough for bedrooms, refined enough for a whole house.
       </p>
       <p>
         Its subtle violet base can surface in cool light, so it&apos;s worth sampling against your trim. It
@@ -1199,7 +1199,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/aesthetic-white-7035": (
     <>
       <p>
-        Aesthetic White is a soft, warm off-white at LRV 73 — gentler than a true white, with a subtle
+        Aesthetic White is a soft, warm off-white at LRV 73: gentler than a true white, with a subtle
         greige warmth that keeps it from feeling stark. It&apos;s a flexible whole-house choice for people
         who want a barely-there warm neutral on walls and a soft white on trim.
       </p>
@@ -1213,7 +1213,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/wickham-gray-hc-171": (
     <>
       <p>
-        Wickham Gray is a light, cool gray with a faint green base at LRV 68 — airy and fresh, the kind
+        Wickham Gray is a light, cool gray with a faint green base at LRV 68: airy and fresh, the kind
         of pale gray that keeps a room feeling open and crisp. It&apos;s a favorite for modern spaces and for
         making small or low-light rooms feel larger and cleaner.
       </p>
@@ -1227,7 +1227,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/cyberspace-7076": (
     <>
       <p>
-        Cyberspace is a deep blue-black at LRV 6 — a near-black with a distinct cool, slate-blue
+        Cyberspace is a deep blue-black at LRV 6: a near-black with a distinct cool, slate-blue
         character that separates it from a true neutral black. It&apos;s the dramatic choice for cabinetry,
         accent walls, and exteriors when you want depth with a hint of blue rather than warm or pure
         black.
@@ -1242,7 +1242,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/chelsea-gray-hc-168": (
     <>
       <p>
-        Chelsea Gray is a deep, confident mid-dark gray at LRV 23 — a true gray with enough depth to read
+        Chelsea Gray is a deep, confident mid-dark gray at LRV 23: a true gray with enough depth to read
         almost charcoal, which made it a defining color of the modern gray-cabinet and gray-exterior
         look. It gives a kitchen island or a built-in real weight without going to black.
       </p>
@@ -1257,8 +1257,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Sherwin-Williams&apos; 2019 Color of the Year, Cavern Clay is the warm terracotta that helped bring
-        earthy, sun-baked color back into style. At LRV 20 it&apos;s a rich, grounded clay — orange-brown
-        with a weathered, Southwestern warmth — that feels organic rather than loud, especially on an
+        earthy, sun-baked color back into style. At LRV 20 it&apos;s a rich, grounded clay (orange-brown
+        with a weathered, Southwestern warmth) that feels organic rather than loud, especially on an
         accent wall, a powder room, or built-ins.
       </p>
       <p>
@@ -1271,7 +1271,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/caliente-af-290": (
     <>
       <p>
-        Caliente, Benjamin Moore&apos;s 2018 Color of the Year, is a bold, vibrant red with real depth — at
+        Caliente, Benjamin Moore&apos;s 2018 Color of the Year, is a bold, vibrant red with real depth: at
         LRV 8.8 it&apos;s saturated and dramatic without tipping orange or pink. It&apos;s a statement color: a
         front door, a dining room, an accent wall, or cabinetry where you want energy and confidence.
       </p>
@@ -1286,8 +1286,8 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Hawthorne Yellow is the soft, golden yellow people reach for when they want warmth and cheer
-        without a high-energy primary. At LRV 71 it&apos;s light and buttery — sunny in a north-facing room
-        but never acidic — which is why it&apos;s a long-running favorite for kitchens, entries, and
+        without a high-energy primary. At LRV 71 it&apos;s light and buttery (sunny in a north-facing room
+        but never acidic), which is why it&apos;s a long-running favorite for kitchens, entries, and
         traditional spaces.
       </p>
       <p>
@@ -1300,7 +1300,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/shadow-2117-30": (
     <>
       <p>
-        Shadow, Benjamin Moore&apos;s 2017 Color of the Year, is a deep, smoky amethyst — a purple with so
+        Shadow, Benjamin Moore&apos;s 2017 Color of the Year, is a deep, smoky amethyst: a purple with so
         much gray and depth (LRV 9) that it reads as a sophisticated near-neutral rather than a bold
         violet. It brings drama and a velvety quality to bedrooms, dining rooms, and accent walls.
       </p>
@@ -1315,7 +1315,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/first-light-2102-70": (
     <>
       <p>
-        First Light, Benjamin Moore&apos;s 2020 Color of the Year, is a soft, barely-there blush — a pink so
+        First Light, Benjamin Moore&apos;s 2020 Color of the Year, is a soft, barely-there blush: a pink so
         gentle (LRV 76) that it reads almost as a warm neutral. It signaled the move toward warmer,
         softer palettes and works as a whole-room color in bedrooms and nurseries without reading sweet
         or childish.
@@ -1330,7 +1330,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/pier-7545": (
     <>
       <p>
-        Pier is a deep, sophisticated brown at LRV 9 — a rich, slightly cool-leaning chocolate that
+        Pier is a deep, sophisticated brown at LRV 9: a rich, slightly cool-leaning chocolate that
         reads modern rather than dated, which is the trick most dark browns miss. It&apos;s a confident
         choice for cabinetry, an accent wall, or an exterior body where you want warmth and depth without
         going to black.
@@ -1345,7 +1345,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/manchester-tan-hc-81": (
     <>
       <p>
-        Manchester Tan is the classic warm tan — a soft, light beige at LRV 63 with a gentle greige
+        Manchester Tan is the classic warm tan: a soft, light beige at LRV 63 with a gentle greige
         balance that keeps it from going yellow. It&apos;s the timeless &ldquo;warm neutral&rdquo; for traditional
         homes, the tan equivalent of a safe, can&apos;t-go-wrong greige.
       </p>
@@ -1360,7 +1360,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
     <>
       <p>
         Pewter Green is the deep, muted green that became a go-to for moody kitchen cabinets and
-        built-ins. At LRV 12 it&apos;s a rich gray-green with real depth — saturated enough to feel like a
+        built-ins. At LRV 12 it&apos;s a rich gray-green with real depth: saturated enough to feel like a
         statement, grayed enough to behave like a sophisticated neutral rather than a bold green.
       </p>
       <p>
@@ -1373,7 +1373,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/clary-sage-6178": (
     <>
       <p>
-        Clary Sage is a muted, mid-tone sage green at LRV 41 — a soft, grayed herbal green that sits in
+        Clary Sage is a muted, mid-tone sage green at LRV 41: a soft, grayed herbal green that sits in
         the same color family as the popular sages but with a touch more gray, which keeps it calm and
         livable. It works as a whole-room color in bedrooms, kitchens, and studies.
       </p>
@@ -1387,7 +1387,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/dried-thyme-6186": (
     <>
       <p>
-        Dried Thyme is a deep, earthy herb-green at LRV 21 — richer and darker than the soft sages, with
+        Dried Thyme is a deep, earthy herb-green at LRV 21: richer and darker than the soft sages, with
         a grounded, slightly olive character. It&apos;s the choice for a moody but natural green on
         cabinetry, an accent wall, or an exterior, in the deep-green family with Pewter Green but warmer
         and more olive.
@@ -1402,7 +1402,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/light-french-gray-55": (
     <>
       <p>
-        Light French Gray is a cool, sophisticated mid-light gray at LRV 53 — a true gray with a soft
+        Light French Gray is a cool, sophisticated mid-light gray at LRV 53: a true gray with a soft
         blue base and none of the greige warmth, which gives it a crisp, slightly European elegance. It&apos;s
         the choice for a clean, cool gray that still has enough depth to register on a wall.
       </p>
@@ -1416,7 +1416,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/kilim-beige-6106": (
     <>
       <p>
-        Kilim Beige is a warm, classic tan-beige at LRV 57 — a soft earth tone with a gentle pink-tan
+        Kilim Beige is a warm, classic tan-beige at LRV 57: a soft earth tone with a gentle pink-tan
         warmth that defined the warm-neutral look before the greige era. It&apos;s making a comeback as warm
         tones return, working as a cozy whole-house color in traditional and transitional homes.
       </p>
@@ -1430,7 +1430,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/shaker-beige-hc-45": (
     <>
       <p>
-        Shaker Beige is a warm, classic beige at LRV 54 — a soft, slightly golden tan with a timeless,
+        Shaker Beige is a warm, classic beige at LRV 54: a soft, slightly golden tan with a timeless,
         traditional quality. It&apos;s the kind of warm neutral that anchored countless living rooms before
         gray took over, and it&apos;s a reliable choice for homes that lean warm and classic.
       </p>
@@ -1444,7 +1444,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/roycroft-copper-red-2839": (
     <>
       <p>
-        Roycroft Copper Red is a deep, brick-toned red with an Arts &amp; Crafts heritage — at LRV 7 it&apos;s a
+        Roycroft Copper Red is a deep, brick-toned red with an Arts &amp; Crafts heritage: at LRV 7 it&apos;s a
         rich, earthy red-brown rather than a bright red, which gives it a warm, grounded, almost leather
         quality. It&apos;s a sophisticated statement color for dining rooms, studies, and front doors.
       </p>
@@ -1458,7 +1458,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/creamy-7012": (
     <>
       <p>
-        Creamy is exactly what it sounds like — a soft, warm white at LRV 81 with a gentle cream tone
+        Creamy is exactly what it sounds like: a soft, warm white at LRV 81 with a gentle cream tone
         that reads cozy and inviting rather than stark. It&apos;s a go-to for trim, cabinets, and whole rooms
         in homes that lean warm and traditional, the antidote to the cool, gallery-clean whites.
       </p>
@@ -1472,7 +1472,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/origami-white-7636": (
     <>
       <p>
-        Origami White is a soft, light off-white at LRV 76 with a barely-there greige warmth — clean
+        Origami White is a soft, light off-white at LRV 76 with a barely-there greige warmth: clean
         enough to feel fresh, soft enough to avoid the chill of a true white. It&apos;s a flexible whole-house
         choice that works on walls and trim alike, especially in rooms with good light.
       </p>
@@ -1487,7 +1487,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/nuance-7049": (
     <>
       <p>
-        Nuance is a soft, warm light greige-white at LRV 74 — the subtle in-between for people who find a
+        Nuance is a soft, warm light greige-white at LRV 74: the subtle in-between for people who find a
         true white too plain and a greige too gray. It reads as a gentle, barely-there warm neutral that
         keeps a room feeling soft and open.
       </p>
@@ -1501,7 +1501,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/perfect-greige-6073": (
     <>
       <p>
-        Perfect Greige is a mid-tone greige at LRV 42 with a distinct taupe base — deeper and a touch
+        Perfect Greige is a mid-tone greige at LRV 42 with a distinct taupe base: deeper and a touch
         more purple-brown than the lighter greiges, which gives a room real warmth and grounding. It&apos;s
         the choice when you want a greige with genuine presence rather than a pale wash.
       </p>
@@ -1515,7 +1515,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/colonnade-gray-7641": (
     <>
       <p>
-        Colonnade Gray is a warm, mid-light greige at LRV 53 — a balanced gray-beige with a soft, neutral
+        Colonnade Gray is a warm, mid-light greige at LRV 53: a balanced gray-beige with a soft, neutral
         warmth that makes it a reliable whole-house color. It sits comfortably between the lighter
         greiges and the deeper ones, giving a room gentle definition without going dark.
       </p>
@@ -1529,7 +1529,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/big-chill-7648": (
     <>
       <p>
-        Big Chill is a light, cool gray at LRV 62 — a clean true gray with a soft blue base and none of
+        Big Chill is a light, cool gray at LRV 62: a clean true gray with a soft blue base and none of
         the greige warmth, ideal for a crisp, contemporary room. It&apos;s the choice when you want gray to
         read as a fresh, airy gray rather than a warm greige.
       </p>
@@ -1557,7 +1557,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/caviar-6990": (
     <>
       <p>
-        Caviar is a true, deep black at LRV 3 — a clean, neutral black without an obvious blue or brown
+        Caviar is a true, deep black at LRV 3: a clean, neutral black without an obvious blue or brown
         cast, which makes it the choice for sharp, graphic trim, doors, and cabinetry. Where Inkwell
         leans cool, Caviar is about as dark and pure as Sherwin-Williams&apos; line goes.
       </p>
@@ -1570,7 +1570,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/indigo-batik-7602": (
     <>
       <p>
-        Indigo Batik is a deep, denim-toned blue at LRV 8 — a rich indigo with a slightly grayed,
+        Indigo Batik is a deep, denim-toned blue at LRV 8: a rich indigo with a slightly grayed,
         washed-denim quality that feels more relaxed than a formal navy. It&apos;s a strong choice for
         cabinetry, islands, and accent walls where you want depth with a softer, lived-in character.
       </p>
@@ -1583,7 +1583,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/retreat-6207": (
     <>
       <p>
-        Retreat is a deep, muted green-gray at LRV 21 — a grayed forest green with real depth that&apos;s
+        Retreat is a deep, muted green-gray at LRV 21: a grayed forest green with real depth that&apos;s
         become popular for moody cabinetry, libraries, and accent walls. It&apos;s in the deep-green family
         with Pewter Green but reads a touch cooler and grayer.
       </p>
@@ -1597,7 +1597,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/softened-green-6177": (
     <>
       <p>
-        Softened Green is a gentle, mid-tone sage at LRV 49 — a calm, grayed green that reads as a restful
+        Softened Green is a gentle, mid-tone sage at LRV 49: a calm, grayed green that reads as a restful
         near-neutral rather than a vivid color. It&apos;s a close cousin of the popular Benjamin Moore October
         Mist, making it the SW pick for that soft, dusty-sage look.
       </p>
@@ -1610,7 +1610,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/black-fox-7020": (
     <>
       <p>
-        Black Fox is a warm, deep charcoal-brown at LRV 7 — a near-black with a distinct brown warmth
+        Black Fox is a warm, deep charcoal-brown at LRV 7: a near-black with a distinct brown warmth
         that sits between a true charcoal and Urbane Bronze. It&apos;s a sophisticated choice for exteriors,
         cabinetry, and accent walls where you want depth with an earthy, warm character.
       </p>
@@ -1624,7 +1624,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/peppercorn-7674": (
     <>
       <p>
-        Peppercorn is a deep, true charcoal-gray at LRV 10 — a clean, slightly soft dark gray that reads
+        Peppercorn is a deep, true charcoal-gray at LRV 10: a clean, slightly soft dark gray that reads
         as a sophisticated dark charcoal without a strong blue or brown cast. It&apos;s a versatile choice for
         trim, doors, cabinetry, and exterior accents when you want charcoal rather than full black.
       </p>
@@ -1638,7 +1638,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/boothbay-gray-hc-165": (
     <>
       <p>
-        Boothbay Gray is a mid-tone blue-gray at LRV 43 — a soft, coastal gray with a clear blue cast
+        Boothbay Gray is a mid-tone blue-gray at LRV 43: a soft, coastal gray with a clear blue cast
         that gives a room a calm, nautical character. It has enough depth to register as a color while
         still behaving like a serene neutral, popular for exteriors, shutters, and tranquil interiors.
       </p>
@@ -1652,7 +1652,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/smoky-blue-7604": (
     <>
       <p>
-        Smoky Blue is a rich, smoldering slate-blue at LRV 15 — deep and a little dusky, with enough gray
+        Smoky Blue is a rich, smoldering slate-blue at LRV 15: deep and a little dusky, with enough gray
         to feel sophisticated rather than bright. It&apos;s a strong mid-dark blue for cabinetry, a front
         door, or an accent wall when you want moody color without going all the way to navy.
       </p>
@@ -1666,7 +1666,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/moody-blue-6221": (
     <>
       <p>
-        Moody Blue lives up to the name — a deep, dusky mid-tone blue at LRV 27 with a slightly grayed,
+        Moody Blue lives up to the name: a deep, dusky mid-tone blue at LRV 27 with a slightly grayed,
         teal-leaning character. It&apos;s lighter than a navy but darker than a soft powder blue, which makes
         it a flexible statement color for a bedroom, a study, or cabinetry.
       </p>
@@ -1680,7 +1680,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/stardew-9138": (
     <>
       <p>
-        Stardew is a soft, light blue-gray at LRV 43 — a gentle, grayed blue that behaves more like a
+        Stardew is a soft, light blue-gray at LRV 43: a gentle, grayed blue that behaves more like a
         cool neutral than a color. It brings a quiet, airy calm to bedrooms and bathrooms and reads as a
         sophisticated gray with just a whisper of blue.
       </p>
@@ -1694,7 +1694,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/underseas-6214": (
     <>
       <p>
-        Underseas is a deep, complex blue-green at LRV 25 — a grayed teal with real depth that reads
+        Underseas is a deep, complex blue-green at LRV 25: a grayed teal with real depth that reads
         between blue and green depending on the light. It&apos;s a sophisticated choice for cabinetry, a
         powder room, or an accent wall where you want immersive, watery color.
       </p>
@@ -1708,7 +1708,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/acacia-haze-9132": (
     <>
       <p>
-        Acacia Haze is a muted, mid-tone green-gray at LRV 32 — a soft, dusty sage with enough gray to
+        Acacia Haze is a muted, mid-tone green-gray at LRV 32: a soft, dusty sage with enough gray to
         feel grounded and enough depth to register as a color. It&apos;s in the same restful sage family as
         Evergreen Fog but lighter and grayer, a calm choice for bedrooms, studies, and cabinetry.
       </p>
@@ -1722,7 +1722,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/garden-gate-6167": (
     <>
       <p>
-        Garden Gate is a deep, earthy forest green at LRV 10 — a rich, slightly olive green with real
+        Garden Gate is a deep, earthy forest green at LRV 10: a rich, slightly olive green with real
         depth that anchors a room with drama. It&apos;s the choice for moody cabinetry, a library, or an
         exterior, in the deep-green family with Pewter Green but warmer and more olive.
       </p>
@@ -1736,7 +1736,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/mega-greige-7031": (
     <>
       <p>
-        Mega Greige is a deeper, mid-tone greige at LRV 37 — a warm gray-beige with genuine presence,
+        Mega Greige is a deeper, mid-tone greige at LRV 37: a warm gray-beige with genuine presence,
         darker than the popular light greiges. It&apos;s the choice when you want a greige that grounds a
         room and gives it definition rather than a pale, recede-into-the-background neutral.
       </p>
@@ -1750,7 +1750,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/natural-tan-7567": (
     <>
       <p>
-        Natural Tan is a soft, light tan-beige at LRV 65 — a warm, easygoing neutral with a gentle
+        Natural Tan is a soft, light tan-beige at LRV 65: a warm, easygoing neutral with a gentle
         earthiness that reads cozy without going yellow. It&apos;s a flexible whole-house color for homes
         that lean warm, sitting a touch more tan than the gray-greiges.
       </p>
@@ -1764,7 +1764,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/tony-taupe-7038": (
     <>
       <p>
-        Tony Taupe is a warm, mid-tone taupe-greige at LRV 37 — a deeper, browner neutral with a soft,
+        Tony Taupe is a warm, mid-tone taupe-greige at LRV 37: a deeper, browner neutral with a soft,
         sophisticated warmth. It&apos;s the choice when you want a greige with real depth and a taupe lean
         rather than a pale, cool one, grounding a room with cozy warmth.
       </p>
@@ -1778,7 +1778,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/north-star-6246": (
     <>
       <p>
-        North Star is a light, cool blue-gray at LRV 62 — a soft gray with a clear blue whisper that
+        North Star is a light, cool blue-gray at LRV 62: a soft gray with a clear blue whisper that
         keeps a room feeling fresh and serene. It&apos;s a gentle, airy choice for bedrooms and bathrooms
         where you want a hint of blue without committing to a real blue.
       </p>
@@ -1792,7 +1792,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/latte-6108": (
     <>
       <p>
-        Latte is a warm, mid-tone tan at LRV 38 — a soft mocha-beige with genuine warmth and depth, like
+        Latte is a warm, mid-tone tan at LRV 38: a soft mocha-beige with genuine warmth and depth, like
         its namesake. It&apos;s the choice for a cozy, grounded neutral that brings real warmth to a room,
         deeper than the light tans and greiges.
       </p>
@@ -1806,7 +1806,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/healing-aloe-1562": (
     <>
       <p>
-        Healing Aloe is a pale, soft green at LRV 68 — a gentle, barely-there sage-gray that reads almost
+        Healing Aloe is a pale, soft green at LRV 68: a gentle, barely-there sage-gray that reads almost
         like a tinted neutral. Its restful, healing quality (the name fits) made it a favorite for
         bedrooms, bathrooms, and nurseries where you want the calm of green without much color.
       </p>
@@ -1820,7 +1820,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/wedgewood-gray-hc-146": (
     <>
       <p>
-        Wedgewood Gray is a soft, historic blue-gray at LRV 50 — a gentle mid-tone with a clear blue cast
+        Wedgewood Gray is a soft, historic blue-gray at LRV 50: a gentle mid-tone with a clear blue cast
         that has a timeless, slightly coastal character. It has enough color to feel intentional while
         still behaving like a calm, livable neutral, popular for bedrooms, bathrooms, and trim accents.
       </p>
@@ -1834,7 +1834,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/incredible-white-7028": (
     <>
       <p>
-        Incredible White is a soft, warm white-greige at LRV 74 — light enough to read as a white in
+        Incredible White is a soft, warm white-greige at LRV 74: light enough to read as a white in
         bright rooms, warm enough to show a gentle greige in softer light. It&apos;s a flexible whole-house
         color for people who want a barely-there warm neutral on walls and a soft white on trim.
       </p>
@@ -1848,7 +1848,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/spare-white-6203": (
     <>
       <p>
-        Spare White is a soft, light off-white at LRV 77 with a subtle warmth — clean and gentle, the
+        Spare White is a soft, light off-white at LRV 77 with a subtle warmth: clean and gentle, the
         kind of white that frames a room without drawing attention. It works on walls and trim alike and
         suits homes that want a soft, livable white over a crisp, cool one.
       </p>
@@ -1862,7 +1862,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/functional-gray-7024": (
     <>
       <p>
-        Functional Gray is a mid-tone greige at LRV 37 with a soft violet-taupe base — a deeper, moodier
+        Functional Gray is a mid-tone greige at LRV 37 with a soft violet-taupe base: a deeper, moodier
         neutral than the light greiges, with real warmth and presence. It&apos;s the choice when you want a
         greige that grounds a room and reads as an intentional color rather than a pale backdrop.
       </p>
@@ -1876,7 +1876,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/versatile-gray-6072": (
     <>
       <p>
-        Versatile Gray is a warm, mid-tone greige-taupe at LRV 48 — a balanced gray-brown that lives up to
+        Versatile Gray is a warm, mid-tone greige-taupe at LRV 48: a balanced gray-brown that lives up to
         its name, working across a wide range of rooms and lighting. It has enough warmth to feel cozy
         and enough depth to give a room definition.
       </p>
@@ -1890,7 +1890,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/argos-7065": (
     <>
       <p>
-        Argos is a clean, cool mid-gray at LRV 51 — a true gray with a soft, balanced character that
+        Argos is a clean, cool mid-gray at LRV 51: a true gray with a soft, balanced character that
         avoids both the warmth of a greige and the chill of a steely blue-gray. It&apos;s the choice for a
         no-nonsense, modern gray that gives a room gentle definition.
       </p>
@@ -1904,7 +1904,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/web-gray-7075": (
     <>
       <p>
-        Web Gray is a deep, cool charcoal-gray at LRV 13 with a subtle blue-green base — a mid-dark gray
+        Web Gray is a deep, cool charcoal-gray at LRV 13 with a subtle blue-green base: a mid-dark gray
         with real depth that reads sophisticated rather than flat. It&apos;s a strong choice for exteriors,
         cabinetry, and accent walls when you want charcoal with a hint of cool character.
       </p>
@@ -1918,7 +1918,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/krypton-6247": (
     <>
       <p>
-        Krypton is a light, cool blue-gray at LRV 52 — a soft gray with a clear blue base that gives a
+        Krypton is a light, cool blue-gray at LRV 52: a soft gray with a clear blue base that gives a
         room a calm, slightly architectural feel. It&apos;s the choice for a cool gray with a touch of blue,
         a step toward color without committing to a real blue.
       </p>
@@ -1932,7 +1932,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/jasper-6216": (
     <>
       <p>
-        Jasper is a very deep, earthy forest green at LRV 4 — a near-black green with rich, dramatic depth
+        Jasper is a very deep, earthy forest green at LRV 4: a near-black green with rich, dramatic depth
         that anchors a room. It&apos;s the choice for the moodiest green cabinetry, a library, or an
         exterior, deeper and darker than Pewter Green or Garden Gate.
       </p>
@@ -1946,7 +1946,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/honest-blue-6520": (
     <>
       <p>
-        Honest Blue is a soft, mid-tone blue at LRV 55 — a gentle, slightly grayed blue that&apos;s clearly a
+        Honest Blue is a soft, mid-tone blue at LRV 55: a gentle, slightly grayed blue that&apos;s clearly a
         blue without being bright or saturated. It brings a calm, classic color to bedrooms, bathrooms,
         and studies while staying easy to live with.
       </p>
@@ -1960,7 +1960,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/mascarpone-af-20": (
     <>
       <p>
-        Mascarpone is a soft, creamy white at LRV 89 — bright and clean, but with a gentle warmth that
+        Mascarpone is a soft, creamy white at LRV 89: bright and clean, but with a gentle warmth that
         keeps it from the chill of a stark white. It&apos;s a bright white you can live with, working on walls,
         trim, and cabinets without reading cold or clinical.
       </p>
@@ -1974,7 +1974,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/grant-beige-hc-83": (
     <>
       <p>
-        Grant Beige is a warm, classic greige-beige at LRV 56 — a soft, balanced neutral that helped
+        Grant Beige is a warm, classic greige-beige at LRV 56: a soft, balanced neutral that helped
         bridge the beige and greige eras. It has enough gray to feel current and enough warmth to feel
         inviting, a reliable whole-house color for warm and transitional homes.
       </p>
@@ -1989,7 +1989,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/nimbus-1465": (
     <>
       <p>
-        Nimbus is a soft, light gray at LRV 59 — a gentle, balanced gray with a faint warm-green
+        Nimbus is a soft, light gray at LRV 59: a gentle, balanced gray with a faint warm-green
         steadiness that keeps it from reading cold. It&apos;s an easygoing, livable gray for whole rooms, the
         kind that stays quietly in the background.
       </p>
@@ -2003,7 +2003,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/cushing-green-hc-125": (
     <>
       <p>
-        Cushing Green is a deep, historic green at LRV 18 — a rich, slightly grayed forest green with a
+        Cushing Green is a deep, historic green at LRV 18: a rich, slightly grayed forest green with a
         timeless, colonial character. It has real depth for moody cabinetry, a study, or an exterior,
         reading as a sophisticated dark green rather than a bright or olive one.
       </p>
@@ -2017,7 +2017,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/buxton-blue-hc-149": (
     <>
       <p>
-        Buxton Blue is a soft, historic blue with a green whisper at LRV 45 — a gentle, slightly grayed
+        Buxton Blue is a soft, historic blue with a green whisper at LRV 45: a gentle, slightly grayed
         blue-green with a vintage, coastal character. It has enough color to feel intentional while
         staying calm and livable, popular for bedrooms, bathrooms, and exteriors.
       </p>
@@ -2031,7 +2031,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/dovetail-7018": (
     <>
       <p>
-        Dovetail is a deep, sophisticated greige-gray at LRV 26 — a warm-leaning mid-dark neutral that
+        Dovetail is a deep, sophisticated greige-gray at LRV 26: a warm-leaning mid-dark neutral that
         became a favorite for exteriors, islands, and accent walls. It&apos;s in the same color family as the light
         greiges but with real depth, giving a room contrast and a grounded, modern weight.
       </p>
@@ -2045,7 +2045,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/gray-matters-7066": (
     <>
       <p>
-        Gray Matters is a balanced mid-tone gray at LRV 39 — a true gray with a soft, even character that
+        Gray Matters is a balanced mid-tone gray at LRV 39: a true gray with a soft, even character that
         avoids leaning too warm or too cool. It gives a room real definition and a modern, grounded feel
         without the warmth of a greige or the chill of a blue-gray.
       </p>
@@ -2058,7 +2058,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/online-7072": (
     <>
       <p>
-        Online is a clean, true mid-gray at LRV 46 — a balanced, no-nonsense gray with a soft warm-green
+        Online is a clean, true mid-gray at LRV 46: a balanced, no-nonsense gray with a soft warm-green
         steadiness that keeps it from reading cold. It&apos;s a versatile choice for a modern gray that gives
         a room gentle definition and pairs easily with most finishes.
       </p>
@@ -2072,7 +2072,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/sands-of-time-6101": (
     <>
       <p>
-        Sands of Time is a warm, mid-tone tan-greige at LRV 39 — a soft, earthy neutral with a gentle
+        Sands of Time is a warm, mid-tone tan-greige at LRV 39: a soft, earthy neutral with a gentle
         depth that reads cozy and grounded. It&apos;s the choice for a warm whole-house color with a touch
         more presence than a pale tan, suited to homes that lean warm and traditional.
       </p>
@@ -2086,7 +2086,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/macadamia-6142": (
     <>
       <p>
-        Macadamia is a soft, warm mid-tan at LRV 49 — a creamy, nutty beige with a gentle warmth that
+        Macadamia is a soft, warm mid-tan at LRV 49: a creamy, nutty beige with a gentle warmth that
         reads inviting without going yellow. It&apos;s a comfortable whole-house neutral for warm and
         transitional homes, a tan with enough depth to feel like a color.
       </p>
@@ -2100,7 +2100,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/sealskin-7675": (
     <>
       <p>
-        Sealskin is a deep, rich brown-black at LRV 6 — a dark, sophisticated chocolate-charcoal with a
+        Sealskin is a deep, rich brown-black at LRV 6: a dark, sophisticated chocolate-charcoal with a
         warm undertone that reads expensive rather than heavy. It&apos;s a dramatic choice for cabinetry, an
         accent wall, or an exterior where you want depth with an earthy, warm character.
       </p>
@@ -2114,7 +2114,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/anonymous-7046": (
     <>
       <p>
-        Anonymous is a deep, warm greige-brown at LRV 20 — a grounded, mid-dark neutral with a soft taupe
+        Anonymous is a deep, warm greige-brown at LRV 20: a grounded, mid-dark neutral with a soft taupe
         depth. It&apos;s the choice when you want a greige with real weight and warmth for an accent wall,
         cabinetry, or an exterior, rather than a light, recede-into-the-wall neutral.
       </p>
@@ -2127,7 +2127,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/magnetic-gray-7058": (
     <>
       <p>
-        Magnetic Gray is a mid-tone gray at LRV 46 with a soft warm-green base — a balanced gray that
+        Magnetic Gray is a mid-tone gray at LRV 46 with a soft warm-green base: a balanced gray that
         gives a room definition while staying easy to live with. It&apos;s a versatile choice for a gray with
         a hint of warmth, popular for both interiors and exteriors.
       </p>
@@ -2141,7 +2141,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/rest-assured-9061": (
     <>
       <p>
-        Rest Assured is a soft, mid-tone blue-gray at LRV 48 — a gentle, grayed blue that brings a calm,
+        Rest Assured is a soft, mid-tone blue-gray at LRV 48: a gentle, grayed blue that brings a calm,
         restful color to a room without going bold. It&apos;s a flexible choice for bedrooms and bathrooms
         where you want a soothing blue that still reads as a sophisticated near-neutral.
       </p>
@@ -2155,7 +2155,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/slow-green-6456": (
     <>
       <p>
-        Slow Green is a soft, light blue-green at LRV 64 — a gentle aqua-sage that reads cool and calm,
+        Slow Green is a soft, light blue-green at LRV 64: a gentle aqua-sage that reads cool and calm,
         shifting between green and blue with the light. It&apos;s a restful choice for bathrooms, bedrooms,
         and kitchens where you want a watery, spa-like color that stays light and airy.
       </p>
@@ -2169,7 +2169,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/pashmina-af-100": (
     <>
       <p>
-        Pashmina is a warm, mid-tone taupe-greige at LRV 44 — a soft, sophisticated neutral with a gentle
+        Pashmina is a warm, mid-tone taupe-greige at LRV 44: a soft, sophisticated neutral with a gentle
         gray-brown depth that reads cozy and refined. It&apos;s the choice for a greige with real warmth and
         body, grounding a room without going dark or cold.
       </p>
@@ -2183,7 +2183,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/bennington-gray-hc-82": (
     <>
       <p>
-        Bennington Gray is a warm, mid-tone tan-greige at LRV 47 — a soft, historic neutral with a gentle
+        Bennington Gray is a warm, mid-tone tan-greige at LRV 47: a soft, historic neutral with a gentle
         golden-beige warmth that bridges the beige and greige looks. It&apos;s a classic whole-house color for
         traditional and transitional homes, warm and easy to live with.
       </p>
@@ -2197,12 +2197,12 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/beach-glass-1564": (
     <>
       <p>
-        Beach Glass is a soft, light sea-glass color at LRV 50 — a gentle blue-green-gray that reads more
+        Beach Glass is a soft, light sea-glass color at LRV 50: a gentle blue-green-gray that reads more
         green, blue, or gray depending on the light, exactly like its namesake. It&apos;s a perennial favorite
         for bathrooms and bedrooms for that calm, coastal quality.
       </p>
       <p>
-        Its chameleon nature means a sample is essential — it can look quite different across rooms and
+        Its chameleon nature means a sample is essential: it can look quite different across rooms and
         bulbs. It pairs with crisp whites and natural wood. Behr Dew is its nearly identical cross-brand
         match.
       </p>
@@ -2211,7 +2211,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/yarmouth-blue-hc-150": (
     <>
       <p>
-        Yarmouth Blue is a soft, historic powder blue at LRV 56 — a gentle, slightly grayed light blue
+        Yarmouth Blue is a soft, historic powder blue at LRV 56: a gentle, slightly grayed light blue
         with a timeless, coastal charm. It&apos;s clearly a blue but soft enough to behave like a serene
         near-neutral, popular for bedrooms, bathrooms, and traditional exteriors.
       </p>
@@ -2225,7 +2225,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/comfort-gray-6205": (
     <>
       <p>
-        Comfort Gray (since renamed Quietude) is a soft, spa-like green-gray at LRV 54 — a gentle, grayed
+        Comfort Gray (since renamed Quietude) is a soft, spa-like green-gray at LRV 54: a gentle, grayed
         sage-blue that reads more green or more gray depending on the light. It&apos;s a close relative of Sea
         Salt, a touch grayer and more muted, beloved for calm bedrooms and bathrooms.
       </p>
@@ -2239,7 +2239,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/earl-grey-7660": (
     <>
       <p>
-        Earl Grey is a deeper, cool mid-gray at LRV 32 with a soft blue base — a mid-tone gray with real
+        Earl Grey is a deeper, cool mid-gray at LRV 32 with a soft blue base: a mid-tone gray with real
         depth and a slightly moody, sophisticated character. It&apos;s the choice for a cool gray with genuine
         presence on an accent wall, cabinetry, or an exterior.
       </p>
@@ -2253,7 +2253,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/gray-screen-7071": (
     <>
       <p>
-        Gray Screen is a light, cool gray at LRV 59 — a soft true gray with a gentle blue base that keeps
+        Gray Screen is a light, cool gray at LRV 59: a soft true gray with a gentle blue base that keeps
         a room feeling fresh and modern. It&apos;s a clean, low-commitment gray for people who want gray to
         read as gray, not greige, without going dark.
       </p>
@@ -2267,7 +2267,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/rookwood-dark-green-2816": (
     <>
       <p>
-        Rookwood Dark Green is a deep, classic forest green at LRV 10 — a rich, slightly grayed green with
+        Rookwood Dark Green is a deep, classic forest green at LRV 10: a rich, slightly grayed green with
         an Arts &amp; Crafts heritage and real historic depth. It&apos;s a sophisticated choice for moody
         cabinetry, a library, or a traditional exterior, reading as a deep, timeless green.
       </p>
@@ -2281,7 +2281,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "sherwin-williams/toque-white-7003": (
     <>
       <p>
-        Toque White is a soft, warm off-white at LRV 76 with a faint greige cast — light enough to read
+        Toque White is a soft, warm off-white at LRV 76 with a faint greige cast: light enough to read
         as a white in bright rooms, soft enough to avoid the chill of a true white. It&apos;s a flexible
         whole-house color that suits walls and trim alike in warm-leaning homes.
       </p>
@@ -2295,7 +2295,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/cotton-balls-2145-70": (
     <>
       <p>
-        Cotton Balls is a soft, clean white at LRV 89 — bright and fresh, with just enough warmth to keep
+        Cotton Balls is a soft, clean white at LRV 89: bright and fresh, with just enough warmth to keep
         it from feeling stark or icy. It&apos;s a versatile bright white for walls, trim, and ceilings,
         reading crisp without the cool edge of a true blue-white.
       </p>
@@ -2309,7 +2309,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/steam-af-15": (
     <>
       <p>
-        Steam is a soft, airy white at LRV 84 with the faintest warm-gray whisper — a gentle, misty white
+        Steam is a soft, airy white at LRV 84 with the faintest warm-gray whisper: a gentle, misty white
         that reads clean and calm rather than stark. It&apos;s a flexible choice for walls and trim in rooms
         that want a soft, restful white over a crisp, bright one.
       </p>
@@ -2323,7 +2323,7 @@ export const COLOR_EDITORIAL: Record<string, ReactNode> = {
   "benjamin-moore/stratton-blue-hc-142": (
     <>
       <p>
-        Stratton Blue is a mid-tone historic blue-green at LRV 38 — a soft, slightly grayed teal with a
+        Stratton Blue is a mid-tone historic blue-green at LRV 38: a soft, slightly grayed teal with a
         vintage, refined character. It has enough depth to make a statement on cabinetry or a whole room
         while staying calm and collected rather than bold.
       </p>

@@ -40,7 +40,7 @@ export function ComplementaryColors({
         {colorName ? `Color Palettes for ${colorName}` : "Suggested Color Palettes"}
       </h2>
       <p className="mt-2 text-sm text-on-surface-variant">
-        Color harmonies based on color theory — each swatch links to the closest matching paint.
+        Color harmonies based on color theory: each swatch links to the closest matching paint.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-2">

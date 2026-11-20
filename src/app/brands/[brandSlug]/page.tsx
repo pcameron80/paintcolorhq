@@ -107,7 +107,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const colorsWord = brandHasPaintWord ? "colors" : "paint colors";
   const baseDescription = inTitleTest
     ? `Every ${brand.name} color on one page, A to Z, with hex code, LRV and undertone. Open any color for its closest ${compareTo.join(", ").replace(/, ([^,]*)$/, " and $1")} match.`
-    : `The complete ${brand.name} color chart — all ${count} ${colorsWord} with hex codes, LRV & undertones, plus matches to ${compareTo.join(", ")} & more.`;
+    : `The complete ${brand.name} color chart: all ${count} ${colorsWord} with hex codes, LRV & undertones, plus matches to ${compareTo.join(", ")} & more.`;
   const description = pageSuffix ? `${pageSuffix}: ${baseDescription}` : baseDescription;
   const brandContent = getBrandContent(brandSlug);
   const shouldNoindex = !brandContent;
@@ -211,7 +211,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
   const brandFaqs: { q: string; a: string }[] = [
     {
       q: `How many ${brand.name} paint colors are there?`,
-      a: `${brand.name} has ${totalCount.toLocaleString()} paint colors catalogued on Paint Color HQ, each with its exact hex code, RGB values, LRV (light reflectance value), and undertone. You can filter the full ${brand.name} color chart by color family or undertone, and open any color to see its closest cross-brand matches — the equivalent shade in Sherwin-Williams, Benjamin Moore, Behr, and other catalogued brands.`,
+      a: `${brand.name} has ${totalCount.toLocaleString()} paint colors catalogued on Paint Color HQ, each with its exact hex code, RGB values, LRV (light reflectance value), and undertone. You can filter the full ${brand.name} color chart by color family or undertone, and open any color to see its closest cross-brand matches: the equivalent shade in Sherwin-Williams, Benjamin Moore, Behr, and other catalogued brands.`,
     },
     ...(popularColors.length >= 3
       ? [{
@@ -222,7 +222,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
     ...(matchTargetNames.length >= 2
       ? [{
           q: `Can I match ${brand.name} colors to other brands?`,
-          a: `Yes — every ${brand.name} color has its closest equivalents in ${matchTargetNames.join(", ")}, and ${allBrands.length} brands in total, computed with the CIEDE2000 color-difference formula. That's the ISO standard for how similar two colors look to the human eye, rather than matching by name or code, so it's the reliable way to get a ${brand.name} look in whatever brand your local store carries.`,
+          a: `Yes: every ${brand.name} color has its closest equivalents in ${matchTargetNames.join(", ")}, and ${allBrands.length} brands in total, computed with the CIEDE2000 color-difference formula. That's the ISO standard for how similar two colors look to the human eye, rather than matching by name or code, so it's the reliable way to get a ${brand.name} look in whatever brand your local store carries.`,
         }]
       : []),
   ];
@@ -347,7 +347,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
               All {totalCount.toLocaleString()} {brand.name} Colors
             </h2>
             <p className="mt-2 text-on-surface-variant max-w-2xl leading-relaxed">
-              The complete {brand.name} color chart — every shade with its hex code, LRV, and undertone. Filter by family or search, and open any color for its cross-brand matches.
+              The complete {brand.name} color chart: every shade with its hex code, LRV, and undertone. Filter by family or search, and open any color for its cross-brand matches.
             </p>
             <p className="mt-3">
               <Link href={`/brands/${brandSlug}/colors-a-z`} className="text-primary font-bold text-sm underline-offset-4 hover:underline">
@@ -508,7 +508,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
       {/* FAQ — rendered visibly (JSON-LD-only FAQ gets ignored) + FAQPage schema below */}
       {brandFaqs.length > 0 && (
         <section className="max-w-4xl mx-auto px-6 md:px-12 py-16">
-          <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">{brand.name} colors — frequently asked</h2>
+          <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-8">{brand.name} colors, frequently asked</h2>
           <div className="space-y-3">
             {brandFaqs.map((f) => (
               <details key={f.q} className="group rounded-xl border border-outline-variant/10 bg-surface-container-lowest p-5">
@@ -527,7 +527,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "CollectionPage",
         name: `${brand.name} Color Chart`,
-        description: `The complete ${brand.name} color chart — all ${totalCount.toLocaleString()} ${brand.name} colors with hex codes, RGB values, LRV, and cross-brand matches.`,
+        description: `The complete ${brand.name} color chart, all ${totalCount.toLocaleString()} ${brand.name} colors with hex codes, RGB values, LRV, and cross-brand matches.`,
         url: `https://www.paintcolorhq.com/brands/${brand.slug}`,
         breadcrumb: { "@type": "BreadcrumbList", itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: "https://www.paintcolorhq.com" },
