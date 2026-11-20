@@ -34,6 +34,8 @@ import { closenessLabel } from "@/lib/closeness";
 import { availabilityStatus, RETIRED_MATCH_TOOLTIP } from "@/lib/availability";
 import { findHueBand } from "@/lib/hue-bands";
 import { HEAD_COLOR_PUSH } from "@/lib/head-colors";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -304,6 +306,7 @@ export default async function ColorPage({ params }: PageProps) {
       />
       <Header />
 
+      <div className={`pch-color ${urbanist.variable}`}>
       {/* Immersive Color Hero */}
       <section id="color-preview" className={`scroll-mt-24 relative w-full ${isHeadColor ? "min-h-[500px]" : "min-h-[400px]"} md:min-h-[600px] flex flex-col items-center justify-center overflow-x-clip pt-20`} style={{ backgroundColor: color.hex }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
@@ -815,6 +818,8 @@ export default async function ColorPage({ params }: PageProps) {
         "@context": "https://schema.org", "@type": "FAQPage",
         mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })),
       }} />}
+
+      </div>
 
       <Footer />
     </div>
