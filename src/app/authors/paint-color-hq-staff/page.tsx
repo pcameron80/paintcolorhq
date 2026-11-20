@@ -6,6 +6,8 @@ import { getAllPosts } from "@/lib/blog-posts";
 import { AdSenseScript } from "@/components/adsense-script";
 import { FOUNDER_PERSON, ORG_REF } from "@/lib/entity-schema";
 import { ogDefaults } from "@/lib/og";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const metadata: Metadata = {
   title: "Philip Cameron | Founder of Paint Color HQ",
@@ -39,7 +41,7 @@ export default function PhilipCameronPage() {
   const authorPosts = getAllPosts().filter((p) => p.author === "Philip Cameron");
 
   return (
-    <div className="flex min-h-screen flex-col bg-surface">
+    <div className={`flex min-h-screen flex-col bg-surface ${urbanist.variable}`}>
       <Header />
 
       <JsonLd data={{
@@ -68,9 +70,9 @@ export default function PhilipCameronPage() {
         ],
       }} />
 
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 pch-page pch-tool pch-doc pch-doc--mid">
         {/* Hero */}
-        <section className="relative pt-24 px-6 md:px-12 py-16">
+        <section className="pch-dochead">
           <div className="max-w-4xl mx-auto">
             <nav className="mb-8 text-sm text-on-surface-variant">
               <Link href="/" className="hover:text-primary transition-colors">Home</Link>
