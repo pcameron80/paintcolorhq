@@ -5,6 +5,7 @@ import { closenessLabel } from "@/lib/closeness";
 import { pickBestPerBrand } from "@/lib/best-per-brand";
 import { RetiredChip } from "@/components/retired-chip";
 import type { ColorAvailability } from "@/lib/types";
+import { brandCreditText, brandFirst, type EmbedBrand } from "@/lib/embed-brand";
 
 const SITE = "https://www.paintcolorhq.com";
 const UTM = "utm_source=embed&utm_medium=widget&utm_campaign=match";
@@ -37,12 +38,14 @@ function normalizeHex(input: string): string | null {
   return /^[0-9a-fA-F]{6}$/.test(v) ? `#${v.toLowerCase()}` : null;
 }
 
-export function MatchWidget() {
+export function MatchWidget({ brand = null }: { brand?: EmbedBrand | null }) {
   const [hex, setHex] = useState("#a8a29a");
   const [text, setText] = useState("A8A29A");
   const [matches, setMatches] = useState<ApiMatch[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const brandSlug = brand?.slug ?? null;
 
   const lookup = useCallback(async (h: string) => {
     setLoading(true);
@@ -55,14 +58,30 @@ export function MatchWidget() {
       // point), then the top few. bestPerBrand is picked from a 500-color pool,
       // so brands that miss the overall top 10 still get a row; the dedupe of
       // `matches` is the fallback for an older cached response without it.
-      setMatches((data.bestPerBrand ?? pickBestPerBrand(data.matches)).slice(0, 6));
+      const perBrand = data.bestPerBrand ?? pickBestPerBrand(data.matches);
+      if (!brandSlug) {
+        setMatches(perBrand.slice(0, 6));
+        return;
+      }
+      // Brand preset: that brand's closest color goes first. Small brands can
+      // miss the per-brand pool, so ask for the brand-filtered match directly.
+      let first = perBrand.find((m) => m.brandSlug === brandSlug);
+      if (!first) {
+        try {
+          const r = await fetch(`/api/color-match?hex=${encodeURIComponent(h)}&brand=${encodeURIComponent(brandSlug)}`);
+          if (r.ok) first = ((await r.json()) as { matches: ApiMatch[] }).matches?.[0];
+        } catch {
+          // fall through to the unfiltered list
+        }
+      }
+      setMatches(brandFirst(perBrand, brandSlug, first).slice(0, 6));
     } catch {
       setError(true);
       setMatches([]);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [brandSlug]);
 
   // Initial lookup + whenever the chosen hex changes. Debounced: the native color
   // picker fires continuously while dragging, so wait until the user settles —
@@ -110,8 +129,14 @@ export function MatchWidget() {
   return (
     <div className="mx-auto flex h-full max-w-xl flex-col bg-white p-4 font-sans text-gray-900">
       <div className="mb-3">
-        <p className="text-sm font-bold tracking-tight text-gray-900">Find this paint color in another brand</p>
-        <p className="text-xs text-gray-500">Pick a color to see the closest matches from 13 brands&apos; catalogs.</p>
+        <p className="text-sm font-bold tracking-tight text-gray-900">
+          {brand ? `Find this paint color in ${brand.name}` : "Find this paint color in another brand"}
+        </p>
+        <p className="text-xs text-gray-500">
+          {brand
+            ? `Pick a color to see the closest ${brand.name} match first, then other brands.`
+            : "Pick a color to see the closest matches from 13 brands' catalogs."}
+        </p>
       </div>
 
       {/* Input row */}
@@ -180,12 +205,16 @@ export function MatchWidget() {
       {/* Attribution — drives the click back to the full site */}
       <div className="mt-3 border-t border-gray-100 pt-2 text-center">
         <a
-          href={`${SITE}/?${UTM}`}
+          href={brand ? `${SITE}/brands/${brand.slug}?${UTM}` : `${SITE}/?${UTM}`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-[11px] font-medium text-gray-400 transition-colors hover:text-gray-700"
         >
-          Cross-brand matching by <span className="font-bold text-gray-600">PaintColorHQ</span> →
+          {brand ? (
+            <>{brandCreditText(brand.name)} →</>
+          ) : (
+            <>Cross-brand matching by <span className="font-bold text-gray-600">PaintColorHQ</span> →</>
+          )}
         </a>
       </div>
     </div>
