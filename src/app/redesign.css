@@ -512,6 +512,8 @@ a.pch-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rg
 .pch-color :is(.shadow-lg, .shadow-xl, .shadow-md, .shadow-secondary\/20) { box-shadow: 0 1px 2px rgb(22 25 53 / 0.08), 0 14px 32px -20px rgb(22 25 53 / 0.35); }
 .pch-color :where(a, button, summary):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .pch-color a[href^="/colors/"].group:hover, .pch-color a.hover\:shadow-md:hover { box-shadow: 0 10px 28px -16px rgb(22 25 53 / 0.35); }
+/* hero links sit on any swatch color: the accent ring above can vanish on a blue swatch, so the swatch ring wins here */
+.pch-color #color-preview .focus-ring-swatch:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; box-shadow: 0 0 0 2px #fff; }
 /* the hero panel and swatch labels keep the colors the page gives them */
 .pch-color #color-preview a.bg-white { color: #0f172a; }
 /* names are shown whole (no ellipsis, no two-line clamp). The "in other brands" strip stays no taller than before:
