@@ -200,9 +200,9 @@ export async function CuratedPalettes({
         {resolved.map((palette) => (
           <div
             key={palette.name}
-            className={`rounded-xl bg-surface-container-lowest border border-outline-variant/10 ${compact ? "p-4 w-[92%] shrink-0 snap-start md:w-auto md:shrink md:p-5" : "p-5"}`}
+            className={`rounded-xl bg-surface-container-lowest border border-outline-variant/10 ${compact ? "p-3 w-[92%] shrink-0 snap-start md:w-auto md:shrink md:p-5" : "p-5"}`}
           >
-            <div className="flex gap-2">
+            <div className={compact ? "flex gap-1 md:gap-2" : "flex gap-2"}>
               {palette.colors.map((color, i) => {
                 if (color.isViewedColor) {
                   return (
@@ -238,7 +238,7 @@ export async function CuratedPalettes({
                           className={compact ? "hidden h-2 w-2 rounded-full shrink-0 md:inline-block" : "inline-block h-2 w-2 rounded-full shrink-0"}
                           style={{ backgroundColor: color.match.hex }}
                         />
-                        <span className={`min-w-0 line-clamp-2 ${compact ? "text-xs leading-tight [overflow-wrap:normal] [hyphens:auto] md:leading-4 md:[overflow-wrap:break-word] md:[hyphens:manual]" : "break-words"}`}>{color.match.name}</span>
+                        <span className={`min-w-0 line-clamp-2 ${compact ? "text-xs leading-tight [overflow-wrap:anywhere] [hyphens:auto] md:leading-4 md:[overflow-wrap:break-word] md:[hyphens:manual]" : "break-words"}`}>{color.match.name}</span>
                       </p>
                     )}
                   </Link>
