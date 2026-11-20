@@ -532,9 +532,9 @@ export function CompareClient({ initialColor1, initialColor2, popularPairs }: Co
       {otherPairs.length > 0 && (
         <div className="mt-12">
           <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface">
-            {color1 && color2 ? "Other popular comparisons" : "Popular comparisons"}
+            {color1 && color2 ? "More comparisons to try" : "Comparisons to try"}
           </h2>
-          <p className="mt-2 mb-6 text-sm text-on-surface-variant">Colors people often decide between. Open one to see the side-by-side verdict.</p>
+          <p className="mt-2 mb-6 text-sm text-on-surface-variant">Open one to see the side-by-side verdict.</p>
           <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {otherPairs.map(([a, b]) => (
               <li key={`${a.id}-${b.id}`}>
