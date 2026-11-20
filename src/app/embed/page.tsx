@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CopySnippet } from "./copy-snippet";
+import { BrandSnippet } from "./brand-snippet";
+import { getAllBrands } from "@/lib/queries";
 import { ogDefaults } from "@/lib/og";
 import { BRAND_COUNT } from "@/lib/site-facts";
 import { urbanist } from "@/lib/redesign-font";
@@ -34,7 +36,12 @@ const EMBED_SNIPPET = `<iframe src="https://www.paintcolorhq.com/embed/match"
 <p style="font:13px/1.4 sans-serif;color:#666">Cross-brand paint matching by
   <a href="https://www.paintcolorhq.com">PaintColorHQ</a></p>`;
 
-export default function EmbedPage() {
+export default async function EmbedPage() {
+  // Brand picker list. A lookup failure only hides the brand section.
+  const brands = await getAllBrands()
+    .then((rows) => rows.map((b) => ({ slug: b.slug, name: b.name })).sort((a, b) => a.name.localeCompare(b.name)))
+    .catch(() => []);
+
   return (
     <div className={`flex min-h-screen flex-col bg-surface ${urbanist.variable}`}>
       <Header />
@@ -112,6 +119,20 @@ export default function EmbedPage() {
             </div>
           </div>
         </section>
+
+        {brands.length > 0 && (
+          <section className="px-6 md:px-12 pb-16">
+            <div className="mx-auto max-w-5xl">
+              <h2 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-2">For paint brands and dealers</h2>
+              <p className="mb-4 max-w-3xl text-sm text-on-surface-variant">
+                Pick your brand and the widget shows your closest match first, with other brands after it. The credit line under the widget links to your brand page on PaintColorHQ. Keep it outside the iframe, as in the snippet.
+              </p>
+              <div className="max-w-2xl min-w-0">
+                <BrandSnippet brands={brands} />
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="px-6 md:px-12 pb-20">
           <div className="mx-auto max-w-5xl rounded-2xl bg-surface-container-low p-8 md:p-10">
