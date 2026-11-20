@@ -9,7 +9,7 @@ import { nearestMatchesPerBrand } from "@/lib/color-description";
 import { hexToRgb, rgbToLab, deltaE2000 } from "@/lib/color-utils";
 import { COLOR_OF_THE_YEAR, COTY_HUB_DATES, CURRENT_COTY, sharedParentCompany, type ColorOfTheYearPick } from "@/lib/color-of-the-year";
 import type { ColorWithBrand, CrossBrandMatchWithColor } from "@/lib/types";
-import { closenessLabel, closenessLabelLower } from "@/lib/closeness";
+import { closenessLabel, closenessLabelLower, closenessTier } from "@/lib/closeness";
 import { urbanist } from "@/lib/redesign-font";
 import "@/app/redesign.css";
 
@@ -128,6 +128,25 @@ export default async function ColorOfTheYearPage() {
     }))
     .sort((a, b) => Number(a.parent !== null) - Number(b.parent !== null) || Number(a.best.delta_e_score) - Number(b.best.delta_e_score));
 
+  // Summary table: every pick with data, its closest match at another brand,
+  // and how many other brands have a Nearly identical match. Built from the
+  // same per-brand matches as the sections below, so a pick added to
+  // COLOR_OF_THE_YEAR with a colorSlug appears here automatically.
+  const summaryRows = inData
+    .filter((p) => p.matches.length > 0)
+    .map((p) => {
+      const best = p.matches[0];
+      return {
+        p,
+        best,
+        nearlyCount: p.matches.filter((m) => closenessTier(Number(m.delta_e_score)) === "nearly-identical").length,
+        sameValues: p.color.hex.toLowerCase() === best.match_color.hex.toLowerCase(),
+      };
+    })
+    .sort((a, b) => b.nearlyCount - a.nearlyCount || Number(a.best.delta_e_score) - Number(b.best.delta_e_score));
+  const allHaveTwin = summaryRows.length === current.picks.length && summaryRows.every((r) => r.nearlyCount > 0);
+  const anySameValues = summaryRows.some((r) => r.sameValues);
+
   const pickNames = current.picks.map((p) => `${p.brandName} ${p.name}`);
   const pendingSentence = current.pending.length > 0
     ? ` ${current.pending.map((p) => `${p.brandName} is expected ${p.expected}`).join(". ")}.`
@@ -238,6 +257,11 @@ export default async function ColorOfTheYearPage() {
               {lrvs.length > 0 && <> {darkCount} of the {lrvs.length} picks in our data have an estimated LRV under 30, so this year leans toward deeper, muted shades.</>}
               {current.pending.length > 0 && <> Still to come: {current.pending.map((p) => `${p.brandName}, expected ${p.expected}`).join("; ")}.</>}
             </p>
+            {allHaveTwin && (
+              <p>
+                All {summaryRows.length} announced {YEAR} picks have a Nearly identical match at another brand.
+              </p>
+            )}
             {closest && closest.d < 10 && (
               <p>
                 <strong className="text-on-surface">Two brands landed close together.</strong> {closest.a.pick.brandName} {closest.a.pick.name} and {closest.b.pick.brandName} {closest.b.pick.name} are the
@@ -265,6 +289,51 @@ export default async function ColorOfTheYearPage() {
                 </p>
               );
             })}
+            {summaryRows.length > 0 && (
+              <div className="pt-4">
+                <h2 className="mb-3 font-headline text-xl font-bold text-on-surface">Each {YEAR} pick and its closest match at another brand</h2>
+                <div className="overflow-x-auto rounded-xl bg-surface-container-lowest">
+                  <table className="w-full min-w-[40rem] border-collapse text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-outline-variant/30 text-xs uppercase tracking-wider text-on-surface-variant">
+                        <th scope="col" className="px-4 py-3 font-bold">{YEAR} pick</th>
+                        <th scope="col" className="px-4 py-3 font-bold">Closest match at another brand</th>
+                        <th scope="col" className="px-4 py-3 font-bold">How close</th>
+                        <th scope="col" className="px-4 py-3 font-bold">Other brands with a Nearly identical match</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-outline-variant/30">
+                      {summaryRows.map(({ p, best, nearlyCount, sameValues }) => (
+                        <tr key={p.pick.brandSlug} className="align-top">
+                          <th scope="row" className="px-4 py-3 font-medium">
+                            <Link href={`/colors/${p.pick.brandSlug}/${p.pick.colorSlug}`} className="inline-flex items-center gap-2 text-primary underline-offset-4 hover:underline">
+                              <span className="h-5 w-5 shrink-0 rounded border border-outline-variant/25" style={{ backgroundColor: p.color.hex }} aria-hidden="true" />
+                              <span>{p.pick.brandName} {p.pick.name}</span>
+                            </Link>
+                          </th>
+                          <td className="px-4 py-3">
+                            <Link href={`/colors/${best.match_color.brand.slug}/${best.match_color.slug}`} className="inline-flex items-center gap-2 text-primary underline-offset-4 hover:underline">
+                              <span className="h-5 w-5 shrink-0 rounded border border-outline-variant/25" style={{ backgroundColor: best.match_color.hex }} aria-hidden="true" />
+                              <span>{best.match_color.brand.name} {best.match_color.name}</span>
+                            </Link>
+                          </td>
+                          <td className="px-4 py-3 text-on-surface">
+                            {closenessLabel(Number(best.delta_e_score))}
+                            {sameValues && <span className="block text-xs text-on-surface-variant">same published color values</span>}
+                          </td>
+                          <td className="px-4 py-3 font-medium text-on-surface">{nearlyCount}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {anySameValues && (
+                  <p className="mt-2 text-sm">
+                    &ldquo;Same published color values&rdquo; means the digital values in our data are identical. It does not mean the paint formulas are the same.
+                  </p>
+                )}
+              </div>
+            )}
             {twins.length > 0 && (
               <p className="text-sm">
                 These are digital matches. Formulas, bases and sheens differ between brands, so compare physical samples before you buy.
