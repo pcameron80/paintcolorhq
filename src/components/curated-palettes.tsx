@@ -235,7 +235,7 @@ export async function CuratedPalettes({
                     {color.match && (
                       <p className="text-center text-xs text-on-surface-variant group-hover:text-primary flex items-center justify-center gap-1">
                         <span
-                          className="inline-block h-2 w-2 rounded-full shrink-0"
+                          className={compact ? "hidden h-2 w-2 rounded-full shrink-0 md:inline-block" : "inline-block h-2 w-2 rounded-full shrink-0"}
                           style={{ backgroundColor: color.match.hex }}
                         />
                         <span className={`min-w-0 line-clamp-2 ${compact ? "text-xs leading-tight [overflow-wrap:normal] [hyphens:auto] md:leading-4 md:[overflow-wrap:break-word] md:[hyphens:manual]" : "break-words"}`}>{color.match.name}</span>
