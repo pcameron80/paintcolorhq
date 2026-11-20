@@ -6,12 +6,17 @@
 
 export const ATTRIBUTION_URL = "https://www.paintcolorhq.com";
 export const ATTRIBUTION_TEXT = "Cross-brand paint matching by PaintColorHQ";
+// Copy-paste credit line for free users (terms clause 1). Shown on /api and
+// returned as attribution.html in free JSON responses.
+export const ATTRIBUTION_HTML =
+  '<p>Paint color matches powered by <a href="https://www.paintcolorhq.com">PaintColorHQ</a></p>';
 
 // Added to free JSON responses as a new top-level field. Existing fields are
 // untouched, so current consumers keep working.
 export const ATTRIBUTION = {
   text: ATTRIBUTION_TEXT,
   url: ATTRIBUTION_URL,
+  html: ATTRIBUTION_HTML,
   required:
     "Free use requires a visible link to https://www.paintcolorhq.com on the page that shows these results.",
 } as const;

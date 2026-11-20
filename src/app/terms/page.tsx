@@ -75,6 +75,20 @@ export default function TermsOfServicePage() {
               <p className="mt-3">You may not scrape, reproduce, or redistribute the site&apos;s content or data in bulk without prior written permission.</p>
             </div>
 
+            <div id="api-terms">
+              <h2 className="font-headline text-xl font-bold text-on-surface mb-4">
+                Free API, MCP server and embed widget
+              </h2>
+              <p>You may use the free PaintColorHQ API, MCP server and embed widget at no cost under these conditions.</p>
+              <ol className="mt-3 list-decimal pl-5 space-y-2">
+                <li>Public use requires credit. If results from PaintColorHQ appear on a page or screen that the public can see, that page must show the text &ldquo;Paint color matches powered by PaintColorHQ&rdquo; as a visible link to https://www.paintcolorhq.com, near the results. Do not add rel=&quot;nofollow&quot; to that link.</li>
+                <li>Internal use is allowed without credit. Tools used only by you or your staff, behind a login, need no credit link. Please tell us at <a href="mailto:support@paintcolorhq.com" className="text-primary underline hover:text-primary/80">support@paintcolorhq.com</a> what you are building so we can contact you about changes.</li>
+                <li>Keep the embed code unmodified, including its credit line.</li>
+                <li>Results are digital matches. Confirm any color with a physical sample before buying paint.</li>
+                <li>Heavy or commercial use belongs on the paid tier through RapidAPI, which has no credit requirement. We may rate-limit or block free use that ignores these terms.</li>
+              </ol>
+            </div>
+
             <div>
               <h2 className="font-headline text-xl font-bold text-on-surface mb-4">
                 Limitation of Liability
