@@ -8,7 +8,7 @@ import { SamplizeOffer } from "@/components/samplize-offer";
 import type { ColorWithBrand } from "@/lib/types";
 import { trackColorSearch } from "@/lib/analytics";
 
-const POPULAR_SEARCHES = [
+const EXAMPLE_SEARCHES = [
   "Agreeable Gray",
   "Simply White",
   "Hale Navy",
@@ -82,12 +82,12 @@ function BrowseSection() {
   );
 }
 
-function PopularSearches({ onSelect }: { onSelect: (term: string) => void }) {
+function ExampleSearches({ onSelect }: { onSelect: (term: string) => void }) {
   return (
     <div>
-      <h3 className="font-headline font-bold text-on-surface mb-4">Popular Searches</h3>
+      <h3 className="font-headline font-bold text-on-surface mb-4">Try a search</h3>
       <div className="flex flex-wrap gap-2">
-        {POPULAR_SEARCHES.map((term) => (
+        {EXAMPLE_SEARCHES.map((term) => (
           <button
             key={term}
             type="button"
@@ -244,7 +244,7 @@ export function SearchResults() {
 
       {showEmptyState && (
         <div className="mt-12 space-y-10">
-          <PopularSearches onSelect={handlePopularSearchSelect} />
+          <ExampleSearches onSelect={handlePopularSearchSelect} />
           <BrowseSection />
         </div>
       )}
@@ -259,7 +259,7 @@ export function SearchResults() {
               Check the spelling, or search by color number, such as &quot;SW 7029&quot; or &quot;OC-17&quot;, or by a hex code such as &quot;#D6D0C4&quot;. Search one color at a time.
             </p>
           </div>
-          <PopularSearches onSelect={handlePopularSearchSelect} />
+          <ExampleSearches onSelect={handlePopularSearchSelect} />
           <BrowseSection />
         </div>
       )}
