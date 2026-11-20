@@ -4,6 +4,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { RoomVisualizer } from "./visualizer";
 import { AdSenseScript } from "@/components/adsense-script";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { SamplizeOffer } from "@/components/samplize-offer";
 import { ogDefaults } from "@/lib/og";
@@ -83,7 +85,7 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       : [];
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <JsonLd data={{
         "@context": "https://schema.org", "@type": "WebApplication",
         name: "Room Color Visualizer",
@@ -102,28 +104,19 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
       }} />
 
       <Header />
-      <main id="main-content">
+      <main id="main-content" className="pch-page pch-tool">
 
-      <section className="relative pt-24 px-6 md:px-12 py-16">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">Tool</span>
-          <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-4">
+      <section className="pch-toolhead">
+        <div className="wrap pch-wrap">
+          <span className="pch-eyebrow">Tool</span>
+          <h1>
             Room Color Visualizer
           </h1>
-          <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-            Preview paint colors on walls, an accent wall, trim, window frames and kitchen
-            cabinets in 10 rooms. Click a surface or select it below, then pick a color to see it applied
-            instantly. Each color you try is matched against{" "}
-            <strong className="text-on-surface">26,000+ paint colors from {BRAND_COUNT} brands</strong>{" "}
-            with the CIEDE2000 color-difference formula: you get the closest Sherwin-Williams, Benjamin
-            Moore and Behr color, plus the 10 closest across all brands, each labeled by how close it
-            looks. Free, with no sign-up or download.
-          </p>
         </div>
       </section>
 
-      <section className="px-6 md:px-12 pb-16">
-        <div className="max-w-7xl mx-auto">
+      <section className="pch-toolbody">
+        <div className="wrap pch-wrap">
           <RoomVisualizer
             initialColors={
               Object.keys(initialColors).length > 0 ? initialColors : undefined
@@ -134,6 +127,20 @@ export default async function RoomVisualizerPage({ searchParams }: PageProps) {
             popColors={popColors.length > 0 ? popColors : undefined}
             initialRoomId={initialRoomId}
           />
+        </div>
+      </section>
+
+      <section className="pch-toolintro">
+        <div className="wrap pch-wrap">
+          <p>
+            Preview paint colors on walls, an accent wall, trim, window frames and kitchen
+            cabinets in 10 rooms. Click a surface or select it below, then pick a color to see it applied
+            instantly. Each color you try is matched against{" "}
+            <strong className="text-on-surface">26,000+ paint colors from {BRAND_COUNT} brands</strong>{" "}
+            with the CIEDE2000 color-difference formula: you get the closest Sherwin-Williams, Benjamin
+            Moore and Behr color, plus the 10 closest across all brands, each labeled by how close it
+            looks. Free, with no sign-up or download.
+          </p>
         </div>
       </section>
 

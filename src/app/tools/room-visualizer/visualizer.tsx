@@ -319,7 +319,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
   };
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 pch-viz">
       {/* ---- Room picker ---- */}
       {ROOMS.length > 1 && (
         <div className="mb-4">
@@ -355,7 +355,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
       )}
 
       {/* ---- Room photo + paint overlay ---- */}
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-surface-container-low p-4">
+      <div className="pch-viz__panel mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-surface-container-low p-4">
         <p aria-live="polite" className="text-sm"><strong>Editing: {REGIONS.find(r => r.id === selected)?.label}</strong><span className="block mt-1">Digital color: {colors[selected].toUpperCase()}</span></p>
         <div className="flex flex-wrap items-center gap-2">
         <AddPaletteToProject
@@ -387,7 +387,7 @@ export function RoomVisualizer({ initialColors, colorOptions, popColors, initial
           <p role="alert" className="w-full text-xs text-error">The image couldn&apos;t be prepared. Try again in a moment.</p>
         )}
       </div>
-      <div className="overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container">
+      <div className="pch-viz__canvas overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container">
         <RoomCanvas
           room={room}
           colors={surfaceColors}

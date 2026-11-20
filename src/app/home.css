@@ -1,0 +1,218 @@
+/* Home page only. Scoped under .pch-home. The shared system (tokens, wrap, buttons, cards) lives in redesign.css. */
+@media (min-width: 1024px) and (min-height: 700px) {
+  .pch-home > .pch-sec { height: calc(var(--h, 1) * 100svh); }
+  .pch-home > .pch-hero { min-height: 100svh; }
+}
+/* tablet and phone: each section is as tall as its content plus normal padding (a deliberate skip of the
+   skill's exact-screens rule, which left empty bands under short sections); only the hero fills a screen */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .pch-home > .pch-hero { min-height: 100svh; }
+  main.pch-home > section.pch-sec[data-moment]:not(.is-live) { min-height: 0; }
+}
+@media (max-width: 639px) {
+  .pch-home > .pch-hero { min-height: 100svh; }
+  main.pch-home > section.pch-sec[data-moment]:not(.is-live) { min-height: 0; }
+}
+/* ---------------------------------------------------------------- hero (triptych) */
+.pch-hero { position: relative; padding: calc(var(--nav) + var(--s-7)) 0 var(--s-8); background: var(--bg); overflow: clip; }
+.pch-hero__grid { align-items: start; }
+.pch-hero__text { grid-column: 1 / span 3; }
+.pch-collage { grid-column: 4 / span 6; }
+.pch-hero__form { grid-column: 10 / span 3; }
+.pch-hero__text { display: grid; gap: var(--s-5); align-content: start; }
+.pch-hero h1 { font-size: var(--t-h1); line-height: 1.04; letter-spacing: var(--display-tracking-xl); text-wrap: balance; }
+.pch-hero__lead { font-size: 18px; line-height: 1.55; max-width: 34ch; }
+.pch-hero__form { display: grid; gap: var(--s-4); align-content: start; }
+.pch-hero__form form { display: grid; gap: var(--s-3); }
+.pch-hero__form label { font-weight: 500; font-size: 16px; line-height: 1.35; }
+.pch-hero__form input {
+  width: 100%; min-height: 52px; padding: 0 var(--s-4); border: 1px solid rgb(22 25 53 / 0.3);
+  border-radius: var(--r-md); background: #fff; color: var(--ink); font: 400 16px/1.2 var(--font-text);
+}
+.pch-hero__form input::placeholder { color: #5e616e; }
+.pch-hero__form .pch-btn { width: 100%; }
+
+/* The collage: whole cards in a plain grid, never cropped or layered. Sets share one cell and crossfade one at a
+   time (the outgoing set is gone before the incoming one shows), so only one set's text is ever readable. */
+.pch-collage { container-type: inline-size; display: grid; gap: var(--s-3); align-content: start; width: 100%; }
+.pch-stage { display: grid; }
+.pch-set { grid-area: 1 / 1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-4); align-self: start; align-items: start; }
+.pch-collage.is-rotating .pch-set { opacity: 0; visibility: hidden; transition: opacity 250ms ease, visibility 0s linear 250ms; }
+.pch-collage.is-rotating .pch-set.is-on { opacity: 1; visibility: visible; transition: opacity 250ms ease 250ms; }
+.pch-piece { display: block; background: #fff; border-radius: 16px; overflow: hidden; color: var(--ink); font: 400 15px/1.35 var(--font-text); box-shadow: 0 1px 2px rgb(22 25 53 / 0.1), 0 18px 40px -22px rgb(22 25 53 / 0.45); }
+.pch-piece--a { grid-column: 1; }
+.pch-piece--b { grid-column: 2; }
+.pch-piece--c { grid-column: 1 / -1; }
+.pch-src__swatch { height: 148px; }
+.pch-src__body { padding: var(--s-3) var(--s-4) var(--s-4); display: grid; gap: 2px; }
+.pch-src__body .k { font: 500 13px/1.3 var(--font-text); color: var(--muted); }
+.pch-src__body b { font: 500 22px/1.15 var(--font-display); letter-spacing: -0.02em; }
+.pch-src__body .mono { margin-top: 2px; overflow-wrap: anywhere; }
+.pch-list { display: grid; }
+.pch-list__head { padding: var(--s-3) var(--s-4); font: 500 14px/1.35 var(--font-text); color: var(--muted); }
+.pch-list a { display: grid; grid-template-columns: auto 1fr; gap: 2px var(--s-3); align-items: start; padding: var(--s-3) var(--s-4); border-top: 1px solid var(--line); }
+.pch-list a:hover { background: var(--surface); }
+a.pch-piece { transition: transform 200ms ease, box-shadow 200ms ease; }
+a.pch-piece:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgb(22 25 53 / 0.1), 0 22px 44px -22px rgb(22 25 53 / 0.5); }
+.pch-list .pch-dot { width: 28px; height: 28px; grid-row: span 3; margin-top: 2px; }
+.pch-list b { font-weight: 500; font-size: 16px; line-height: 1.2; }
+.pch-list small { font-size: 14px; color: var(--muted); line-height: 1.3; }
+.pch-list .pch-chip { grid-column: 2; justify-self: start; margin-top: 4px; }
+.pch-vs { display: grid; grid-template-columns: 1fr 1fr; }
+.pch-vs > div { height: 72px; }
+.pch-vs__foot { display: grid; gap: 2px; padding: var(--s-3) var(--s-4); font-size: 14px; line-height: 1.4; }
+.pch-vs__foot span:last-child { color: var(--muted); }
+.pch-collage__bar { display: flex; justify-content: flex-end; }
+.pch-collage__pause {
+  width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center; border: 0; background: #fff; color: var(--ink); cursor: pointer;
+  box-shadow: 0 0 0 1px rgb(22 25 53 / 0.18), 0 6px 18px -8px rgb(22 25 53 / 0.4);
+  transition: transform 120ms ease, background-color 160ms ease;
+}
+.pch-collage__pause:hover { background: var(--accent-tint); }
+.pch-collage__pause:active { transform: scale(0.96); }
+@container (max-width: 520px) {
+  .pch-set { grid-template-columns: minmax(0, 1fr); }
+  .pch-piece--a, .pch-piece--b, .pch-piece--c { grid-column: 1; }
+  .pch-piece--a { display: grid; grid-template-columns: 112px minmax(0, 1fr); }
+  .pch-src__swatch { height: auto; min-height: 112px; }
+}
+
+@media (max-width: 1279px) and (min-width: 1024px) {
+  .pch-hero { --t-h1: 40px; }
+  .pch-hero__lead { font-size: 17px; }
+  .pch-hero__form input { font-size: 15px; padding: 0 var(--s-3); }
+  .pch-hero__text { grid-column: 1 / span 4; }
+  .pch-collage { grid-column: 5 / span 5; }
+}
+/* below 1024: the words and the search side by side, the collage under them in what is left of the screen */
+@media (max-width: 1023px) {
+  .pch-hero__grid { row-gap: var(--s-6); }
+  .pch-hero__text { grid-column: 1 / span 6; }
+  .pch-hero__form { grid-column: 7 / span 6; }
+  .pch-hero__form { order: 2; }
+  .pch-collage { order: 3; grid-column: 1 / -1; }
+  .pch-hero__lead { max-width: 40ch; }
+}
+@media (max-width: 639px) {
+  .pch-hero__grid { row-gap: var(--s-5); }
+  .pch-hero__text, .pch-hero__form, .pch-collage { grid-column: 1 / -1; }
+  .pch-hero__text { gap: var(--s-3); }
+  .pch-hero { --t-h1: 34px; }
+  .pch-hero__lead { font-size: 16px; line-height: 1.45; }
+  .pch-hero__form label { font-size: 15px; }
+}
+
+/* the hero enters once on load: a short rise, no fade (the h1 stays the first paint) */
+@media (prefers-reduced-motion: no-preference) {
+  [data-enter] .pch-hero__text > *, [data-enter] .pch-hero__form, [data-enter] .pch-collage {
+    animation: pch-rise 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  [data-enter] .pch-hero__text > :nth-child(2) { animation-delay: 60ms; }
+  [data-enter] .pch-hero__text > :nth-child(3) { animation-delay: 120ms; }
+  [data-enter] .pch-collage { animation-delay: 90ms; }
+  [data-enter] .pch-hero__form { animation-delay: 150ms; }
+}
+@keyframes pch-rise { from { transform: translateY(14px); } to { transform: none; } }
+
+/* ---------------------------------------------------------------- how a match works (pinned chapters moment) */
+.pch-home > [data-moment="pinned-chapters"] { background: var(--surface); }
+.pch-home .mo-pc__grid { width: min(100% - 2 * var(--gut), 1280px); margin-inline: auto; }
+.pch-home [data-moment="pinned-chapters"] .mo-pc__text h2 { max-width: 14ch; }
+.pch-home [data-moment="pinned-chapters"] .mo-pc__step h3 { font-size: var(--t-lead); }
+.pch-home [data-moment="pinned-chapters"] .mo-pc__links { display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-5); align-items: center; margin-top: var(--s-2); }
+
+/* ---------------------------------------------------------------- tools */
+.pch-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.pch-tool { padding: var(--s-4); gap: var(--s-3); }
+.pch-tool__art { border-radius: var(--r-md); overflow: hidden; aspect-ratio: 16 / 4.6; background: #fff; display: flex; }
+.pch-tool__art > i { flex: 1; display: block; }
+.pch-tool__art--rows { display: flex; flex-wrap: wrap; align-content: center; align-items: center; gap: 8px 16px; padding: var(--s-3); }
+.pch-tool__art--rows span { display: flex; align-items: center; gap: var(--s-2); font-size: 13px; line-height: 1.2; }
+.pch-tool__art--rows .pch-dot { width: 14px; height: 14px; }
+.pch-tool__art--room { position: relative; }
+.pch-tool__art--room img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms ease; }
+a.pch-card:hover .pch-tool__art--room img { transform: scale(1.03); }
+.pch-tool__art--fields { align-items: stretch; gap: var(--s-2); padding: var(--s-3); }
+.pch-tool__art--fields span { flex: 1; display: grid; align-content: center; padding: 0 var(--s-2); border: 1px solid rgb(22 25 53 / 0.22); border-radius: 8px; font-size: 13px; line-height: 1.2; color: var(--muted); }
+.pch-tool__body { display: grid; gap: var(--s-1); padding: 0 var(--s-2) var(--s-2); }
+.pch-tool__body p { color: var(--muted); font-size: 16px; line-height: 1.5; }
+.pch-tool__cta { font-weight: 500; color: var(--accent); }
+@media (max-width: 1023px) { .pch-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) {
+  .pch-tools { grid-template-columns: 1fr; gap: 12px; }
+  .pch-tool { padding: var(--s-3); gap: var(--s-2); }
+  .pch-tool__art { aspect-ratio: 16 / 2.6; }
+  .pch-tool__art--rows, .pch-tool__art--fields { display: none; }
+  .pch-tool__body p { font-size: 15px; line-height: 1.4; }
+}
+
+/* ---------------------------------------------------------------- brands and families */
+.pch-brands { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px; }
+.pch-brand { display: grid; place-items: center; min-height: 112px; padding: var(--s-4); text-align: center; background: var(--surface); border-radius: var(--r-lg); font: 500 18px/1.2 var(--font-display); letter-spacing: -0.015em; transition: transform 200ms ease, box-shadow 200ms ease; }
+.pch-brand:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -14px rgb(22 25 53 / 0.35); }
+.pch-families { margin-top: var(--s-7); display: grid; gap: var(--s-4); }
+.pch-families__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s-2) var(--s-5); }
+.pch-families h3 { font-size: var(--t-lead); }
+.pch-families ul { display: flex; flex-wrap: wrap; gap: 12px; }
+.pch-family { display: flex; align-items: center; gap: var(--s-2); min-height: 44px; padding: 0 var(--s-4) 0 var(--s-3); border-radius: 999px; background: var(--surface); font-weight: 500; transition: transform 200ms ease, box-shadow 200ms ease, color 160ms ease; }
+.pch-family:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -12px rgb(22 25 53 / 0.4); color: var(--accent); }
+.pch-family .pch-dot { width: 20px; height: 20px; }
+@media (max-width: 1023px) { .pch-brands { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .pch-brands { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .pch-brand { min-height: 64px; } }
+
+/* ---------------------------------------------------------------- inspiration (component kept as is; layout restyled here) */
+.pch-inspo > div:first-child { margin-bottom: var(--s-5); }
+.pch-inspo .grid { gap: 24px; }
+.pch-inspo a.group { background: transparent; border: 0; border-radius: var(--r-lg); padding: 0; box-shadow: none; transition: transform 200ms ease; }
+.pch-inspo .h-48 { height: 112px; margin-bottom: var(--s-3); border-radius: var(--r-md); }
+.pch-inspo h3 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.015em; }
+.pch-inspo p { text-transform: none; letter-spacing: 0; font-size: 14px; }
+.pch-inspo .tracking-wider { text-transform: none; letter-spacing: 0; }
+.pch-inspo a:hover { transform: translateY(-2px); }
+
+/* ---------------------------------------------------------------- blog */
+.pch-posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+@media (max-width: 1023px) { .pch-posts { grid-template-columns: 1fr; } .pch-posts .pch-post { grid-template-columns: 1fr 1fr; align-items: start; column-gap: var(--s-5); } }
+@media (max-width: 639px) { .pch-posts .pch-post { grid-template-columns: 1fr; } }
+
+/* ---------------------------------------------------------------- compare (the dark band) */
+.pch-compare { align-items: center; row-gap: var(--s-6); }
+.pch-compare__text { display: grid; gap: var(--s-5); align-content: start; }
+.pch-compare__text p { font-size: var(--t-lead); line-height: 1.5; max-width: 46ch; }
+.pch-compare__art { --muted: #434655; --line: rgb(22 25 53 / 0.14); background: #fff; color: var(--ink); border-radius: var(--r-lg); overflow: hidden; }
+.pch-compare__swatches { display: grid; grid-template-columns: 1fr 1fr; min-height: 400px; }
+.pch-compare__meta { display: grid; grid-template-columns: 1fr 1fr; }
+.pch-compare__meta > div { padding: var(--s-4) var(--s-5); display: grid; gap: 2px; }
+.pch-compare__meta small { color: var(--muted); font-size: 14px; }
+.pch-compare__meta b { font-weight: 500; }
+.pch-compare__foot { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); justify-content: space-between; align-items: center; padding: var(--s-4) var(--s-5); border-top: 1px solid var(--line); font-size: 14px; }
+.pch-compare__foot span:last-child { color: var(--muted); }
+@media (max-width: 1023px) { .pch-compare { grid-template-columns: 1fr; } .pch-compare > * { grid-column: 1 / -1; } .pch-compare__swatches { min-height: 200px; } }
+
+/* ---------------------------------------------------------------- faq */
+.pch-faq h2 { max-width: 12ch; }
+.pch-faq__list { display: grid; gap: var(--s-5); }
+.pch-faq__item { display: grid; gap: var(--s-2); padding-top: var(--s-5); border-top: 1px solid var(--line); }
+.pch-faq__item:first-child { padding-top: 0; border-top: 0; }
+.pch-faq__item p { font-size: 17px; line-height: 1.6; max-width: 62ch; }
+.pch-faq__note { margin-top: var(--s-5); font-size: 14px; line-height: 1.5; color: var(--muted); max-width: 62ch; }
+.pch-faq__side { display: grid; gap: var(--s-5); align-content: start; }
+@media (max-width: 1023px) { .pch-faq .pch-grid { grid-template-columns: 1fr; row-gap: var(--s-6); } .pch-faq .pch-grid > * { grid-column: 1 / -1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pch-home * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* short desktop screens (1024x768): a little less air so each section still fits its one screen */
+@media (min-width: 1024px) and (max-height: 800px) {
+  .pch-home { --padt: 104px; --padb: 48px; }
+  .pch-head { margin-bottom: var(--s-6); }
+  .pch-brand { min-height: 72px; }
+  .pch-families { margin-top: var(--s-5); }
+  .pch-tool__art { aspect-ratio: 16 / 4; }
+}
+
+/* Nothing in a picture is cropped: the frames of the "how" steps grow to their content. */
+.pch-home [data-moment="pinned-chapters"] .mo-pc__visual.mo-pc__visual--lit { aspect-ratio: auto; overflow: visible; }
+.pch-home [data-moment="pinned-chapters"].is-live .mo-pc__visuals { display: grid; aspect-ratio: auto; max-height: none; align-items: center; }
+.pch-home [data-moment="pinned-chapters"].is-live .mo-pc__visual { position: relative; inset: auto; grid-area: 1 / 1; }

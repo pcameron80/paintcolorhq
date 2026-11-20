@@ -20,6 +20,8 @@ import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 import { matchPairsForBrand, type MatchPair } from "@/lib/match-pairs";
 import { getPostsByBrand } from "@/lib/blog-posts";
 import Image from "next/image";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -230,6 +232,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
     <div className="min-h-screen bg-surface">
       <TrackPage eventName="page_view_enriched" params={{ page_type: "brand", color_brand: brandSlug }} />
       <Header />
+      <div className={`pch-color ${urbanist.variable}`}>
 
       {/* Brand Hero */}
       <section className="relative pt-24 px-6 md:px-12 py-20 overflow-hidden">
@@ -550,6 +553,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
         })),
       }} />}
 
+      </div>
       <AdSenseScript />
       <Footer />
     </div>

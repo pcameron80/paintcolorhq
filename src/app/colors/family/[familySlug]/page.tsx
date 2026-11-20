@@ -17,6 +17,8 @@ import { HUE_BANDS_BY_FAMILY, getHueBand } from "@/lib/hue-bands";
 import { TrackPage } from "@/components/track-page";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
 import { indefiniteArticle, withArticle } from "@/lib/text";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -154,6 +156,7 @@ export default async function ColorFamilyPage({ params }: PageProps) {
       }} />
       <TrackPage eventName="page_view_enriched" params={{ page_type: "family", color_family: familySlug, result_count: totalCount }} />
       <Header />
+      <div className={`pch-color ${urbanist.variable}`}>
       <main id="main-content">
 
       {/* Hero */}
@@ -410,6 +413,7 @@ export default async function ColorFamilyPage({ params }: PageProps) {
       })()}
 
       </main>
+      </div>
       <Footer />
     </div>
   );

@@ -10,6 +10,8 @@ import { getBrandBySlug, getBrandPairChart } from "@/lib/queries";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { closenessLabel } from "@/lib/closeness";
 import { getBrandPairIntro } from "@/lib/brand-pair-intros";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -107,6 +109,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
     <div className="min-h-screen bg-surface">
       <TrackPage eventName="page_view_enriched" params={{ page_type: "match_listing", source_brand: sourceBrandSlug, target_brand: targetBrandSlug }} />
       <Header />
+      <div className={`pch-color ${urbanist.variable}`}>
       <main id="main-content">
 
       {/* Hero */}
@@ -349,6 +352,7 @@ export default async function BrandToBrandMatchPage({ params }: PageProps) {
       }} />
 
       </main>
+      </div>
       <AdSenseScript />
       <Footer />
     </div>

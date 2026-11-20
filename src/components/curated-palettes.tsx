@@ -142,6 +142,7 @@ export async function CuratedPalettes({
   currentPath,
   colorName,
   viewedColor,
+  compact = false,
 }: {
   hex: string;
   brandId: string;
@@ -151,6 +152,8 @@ export async function CuratedPalettes({
    *  the closest same-brand match by RGB box, which picked a different paint
    *  on about a quarter of color pages and saved the wrong id as Walls. */
   viewedColor?: ColorWithBrand;
+  /** Phones: the three palette cards become one scroll-snap rail. md and up unchanged. */
+  compact?: boolean;
 }) {
   const palettes = generatePalettes(hex);
 
@@ -191,13 +194,15 @@ export async function CuratedPalettes({
         Color schemes built around this color: each swatch links to the closest matching paint.
       </p>
 
-      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className={compact
+        ? "mt-6 -mx-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3"
+        : "mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"}>
         {resolved.map((palette) => (
           <div
             key={palette.name}
-            className="rounded-xl bg-surface-container-lowest border border-outline-variant/10 p-5"
+            className={`rounded-xl bg-surface-container-lowest border border-outline-variant/10 ${compact ? "px-2 py-3 w-[94%] shrink-0 snap-start md:w-auto md:shrink md:p-5" : "p-5"}`}
           >
-            <div className="flex gap-2">
+            <div className={compact ? "flex gap-1 md:gap-2" : "flex gap-2"}>
               {palette.colors.map((color, i) => {
                 if (color.isViewedColor) {
                   return (
@@ -230,10 +235,10 @@ export async function CuratedPalettes({
                     {color.match && (
                       <p className="text-center text-xs text-on-surface-variant group-hover:text-primary flex items-center justify-center gap-1">
                         <span
-                          className="inline-block h-2 w-2 rounded-full shrink-0"
+                          className={compact ? "hidden h-2 w-2 rounded-full shrink-0 md:inline-block" : "inline-block h-2 w-2 rounded-full shrink-0"}
                           style={{ backgroundColor: color.match.hex }}
                         />
-                        <span className="min-w-0 line-clamp-2 break-words">{color.match.name}</span>
+                        <span className={`min-w-0 line-clamp-2 ${compact ? "text-xs leading-tight [overflow-wrap:anywhere] [hyphens:auto] md:leading-4 md:[overflow-wrap:break-word] md:[hyphens:manual]" : "break-words"}`}>{color.match.name}</span>
                       </p>
                     )}
                   </Link>

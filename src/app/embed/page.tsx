@@ -5,6 +5,8 @@ import { Footer } from "@/components/footer";
 import { CopySnippet } from "./copy-snippet";
 import { ogDefaults } from "@/lib/og";
 import { BRAND_COUNT } from "@/lib/site-facts";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const metadata: Metadata = {
   title: "Free Cross-Brand Paint Color Match Widget | Embed on Your Site",
@@ -34,7 +36,7 @@ const EMBED_SNIPPET = `<iframe src="https://www.paintcolorhq.com/embed/match"
 
 export default function EmbedPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-surface">
+    <div className={`flex min-h-screen flex-col bg-surface ${urbanist.variable}`}>
       <Header />
 
       <JsonLd data={{
@@ -59,8 +61,8 @@ export default function EmbedPage() {
         ],
       }} />
 
-      <main id="main-content" className="flex-1">
-        <section className="px-6 md:px-12 pt-24 pb-12">
+      <main id="main-content" className="flex-1 pch-page pch-tool pch-doc">
+        <section className="pch-dochead">
           <div className="mx-auto max-w-5xl">
             <span className="text-primary font-bold text-xs uppercase tracking-widest">Free widget</span>
             <h1 className="font-headline text-4xl md:text-5xl font-extrabold tracking-tighter text-on-surface leading-[0.95] mt-2 mb-4">
