@@ -5,6 +5,8 @@ import { Footer } from "@/components/footer";
 import { getAllColorFamilies } from "@/lib/queries";
 import { ogDefaults } from "@/lib/og";
 import { moreBrands } from "@/lib/site-facts";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 604800; // 7d — static index page
 
@@ -43,6 +45,7 @@ export default async function ColorsPage() {
   return (
     <div className="min-h-screen bg-surface">
       <Header />
+      <div className={`pch-color ${urbanist.variable}`}>
       <main id="main-content">
 
       {/* Hero */}
@@ -134,6 +137,7 @@ export default async function ColorsPage() {
       </section>
 
       </main>
+      </div>
       <Footer />
     </div>
   );

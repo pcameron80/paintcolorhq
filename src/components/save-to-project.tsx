@@ -20,9 +20,12 @@ interface SavedIn {
 export function SaveToProject({
   colorId,
   currentPath,
+  buttonClassName = "",
 }: {
   colorId: string;
   currentPath: string;
+  /** Extra classes for the trigger button (the color-page hero adds a focus ring). */
+  buttonClassName?: string;
 }) {
   const [open, setOpen] = useState(false);
   const { user, ready } = useAuthUser();
@@ -122,7 +125,7 @@ export function SaveToProject({
     <div className="relative" ref={menuRef}>
       <button
         onClick={handleClick}
-        className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold shadow-sm transition-colors ${
+        className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold shadow-sm transition-colors ${buttonClassName} ${
           isSaved
             ? "bg-brand-blue text-white hover:bg-brand-blue-dark"
             : "bg-brand-blue text-white hover:bg-brand-blue-dark"

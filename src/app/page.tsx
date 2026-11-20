@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Urbanist } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/header";
@@ -12,6 +13,13 @@ import { ogDefaults } from "@/lib/og";
 import { BRAND_COUNT } from "@/lib/site-facts";
 import { CURRENT_COTY } from "@/lib/color-of-the-year";
 import { NAV_BRANDS, NAV_HUES } from "@/lib/site-nav";
+import { HOME_MATCH_SETS } from "@/lib/home-matches";
+import { HeroCollage } from "@/components/home/hero-collage";
+import { MomentsLoader } from "@/components/home/moments-loader";
+import "./redesign.css";
+import "./home.css";
+
+const urbanist = Urbanist({ subsets: ["latin"], variable: "--font-urbanist", display: "swap" });
 
 const HOME_URL = "https://www.paintcolorhq.com/";
 const HOME_TITLE = `Find & Compare Paint Colors Across ${BRAND_COUNT} Brands | Paint Color HQ`;
@@ -48,44 +56,50 @@ const HUE_SWATCH: Record<string, string> = {
   "/colors/hue/rust": "#A4532F",
 };
 
-// Ordered discover-first: find a color → expand it → see it on a wall →
-// refine → find it in a buyable brand (the closer) → calculate how much.
+// Ordered discover-first: find a color, expand it, see it on a wall, refine,
+// find it in a buyable brand (the closer), then calculate how much.
 const tools = [
   {
     name: "Photo Color Identifier",
-    description: "Snap a photo of any color you love — a pillow, a sunset, a Pinterest pin — and find the closest paint match.",
+    description: "Upload a photo of a color you like and get the closest paints.",
     href: "/tools/color-identifier",
     cta: "Upload a photo",
+    art: "identifier",
   },
   {
     name: "Palette Generator",
-    description: "Pick one color you love and get a designer-quality palette — all mapped to real paints you can buy at the store.",
+    description: "Start from one color and get a palette mapped to paints you can buy.",
     href: "/tools/palette-generator",
     cta: "Build a palette",
+    art: "palette",
   },
   {
     name: "Room Visualizer",
-    description: "Preview any color on main walls, accent walls, and trim in a realistic room scene before you buy a single sample pot.",
+    description: "Preview a color on walls, an accent wall and trim before you buy a sample.",
     href: "/tools/room-visualizer",
     cta: "Try it free",
+    art: "room",
   },
   {
     name: "Undertone Analysis",
-    description: "Every color tagged warm, cool, or neutral — so your new paint won't clash with your trim or cabinets.",
+    description: "Every color is tagged warm, cool or neutral, so it will not clash with your trim.",
     href: "/colors",
     cta: "Browse colors",
+    art: "undertone",
   },
   {
     name: "Cross-Brand Matching",
-    description: "Found the one but it's the wrong brand for your store? Find the closest Sherwin-Williams, Behr, PPG, or Benjamin Moore match in seconds.",
+    description: "Find the closest Sherwin-Williams, Behr, PPG or Benjamin Moore color to the one you love.",
     href: "/search",
     cta: "Find a match",
+    art: "match",
   },
   {
     name: "Paint Calculator",
-    description: "Enter your room dimensions and get an estimate of the gallons you need. Accounts for doors, windows, and coats.",
+    description: "Enter your room size and get the gallons you need, with doors, windows and coats.",
     href: "/tools/paint-calculator",
     cta: "Calculate now",
+    art: "calc",
   },
 ];
 
@@ -105,7 +119,7 @@ const faqItems = [
   {
     question: "What are paint color undertones?",
     answer:
-      "Every color has a hidden tint — warm (yellow/pink), cool (blue/gray), or neutral — that shows up under different lighting. All 26,000+ colors in our database are tagged so you can filter by undertone and avoid clashing with your existing trim, flooring, or cabinets.",
+      "Every color has a hidden tint, warm (yellow/pink), cool (blue/gray), or neutral, that shows up under different lighting. All 26,000+ colors in our database are tagged so you can filter by undertone and avoid clashing with your existing trim, flooring, or cabinets.",
   },
 ];
 
@@ -118,249 +132,354 @@ function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unkno
   );
 }
 
-export default async function Home() {
-  return (
-    <div className="min-h-screen bg-surface">
-      <Header />
-      <main id="main-content">
 
-      {/* Hero — Intentional Asymmetry */}
-      <section className="relative pt-24 px-6 md:px-12 py-20 flex flex-col lg:flex-row gap-12 items-center max-w-7xl mx-auto overflow-hidden">
-        <div className="lg:w-1/2 z-10">
-          <span className="inline-block px-3 py-1 bg-surface-container-highest text-primary text-[10px] uppercase tracking-[0.2em] font-bold mb-6 rounded">
-            26,000+ colors &middot; multiple brands &middot; 100% free
+const FARMHOUSE = ["#d6d0c4", "#f0ece2", "#4a4a48", "#7a8c6e", "#b8a99a"];
+
+function ToolArt({ kind }: { kind: string }) {
+  const set = HOME_MATCH_SETS[0];
+  if (kind === "identifier") {
+    return (
+      <div className="pch-tool__art" aria-hidden="true">
+        {FARMHOUSE.map((hex) => (
+          <i key={hex} style={{ backgroundColor: hex }} />
+        ))}
+      </div>
+    );
+  }
+  if (kind === "palette") {
+    return (
+      <div className="pch-tool__art" aria-hidden="true">
+        {["#cdd2ca", "#d1c7b8", "#444c57", "#d0d6ce", "#cac6bd"].map((hex) => (
+          <i key={hex} style={{ backgroundColor: hex }} />
+        ))}
+      </div>
+    );
+  }
+  if (kind === "room") {
+    return (
+      <div className="pch-tool__art pch-tool__art--room" aria-hidden="true">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/rooms/living-1/base-800.6f903c9beb.webp" alt="" width={800} height={450} loading="lazy" decoding="async" />
+      </div>
+    );
+  }
+  if (kind === "undertone") {
+    return (
+      <div className="pch-tool__art pch-tool__art--rows" aria-hidden="true">
+        {[["Warm", "#e8d5b7"], ["Cool", "#c9d6e3"], ["Neutral", "#d9d9d6"]].map(([label, hex]) => (
+          <span key={label}>
+            <b className="pch-dot" style={{ backgroundColor: hex }} />
+            {label}
           </span>
-          <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-8">
-            Find a Paint Color You Love<br />
-            <span className="text-primary italic">in Any Brand.</span>
-          </h1>
-          <p className="text-lg text-on-surface-variant max-w-md mb-10 leading-relaxed">
-            Browse 26,000+ shades across our paint catalog, explore digital room previews, then find the nearest color in the brand you can actually buy.
-          </p>
-          <form action="/search" role="search" className="max-w-xl">
-            <label htmlFor="home-color-search" className="block text-sm font-semibold mb-3">Enter a paint name, number, or hex code</label>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input id="home-color-search" name="q" type="search" required maxLength={120} placeholder="Try Sea Salt or SW 6204" className="min-w-0 flex-1 bg-white border border-outline-variant rounded-xl px-4 py-4 text-base text-on-surface focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2" />
-              <button type="submit" className="bg-primary text-on-primary px-6 py-4 rounded-xl font-bold focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2">Find colors</button>
-            </div>
-            <p className="mt-4 text-sm text-on-surface-variant">Just exploring? <Link href="/brands" className="text-primary underline underline-offset-4">Browse by brand</Link> or <Link href="/colors" className="text-primary underline underline-offset-4">explore color families</Link>.</p>
-          </form>
-          <p className="mt-3 text-sm">
-            <Link href="/color-of-the-year" className="font-semibold text-primary underline underline-offset-4">See the {CURRENT_COTY.year} Colors of the Year, matched across brands</Link>
-          </p>
-        </div>
+        ))}
+      </div>
+    );
+  }
+  if (kind === "match") {
+    return (
+      <div className="pch-tool__art pch-tool__art--rows" aria-hidden="true">
+        {[set.source, set.matches[0]].map((c) => (
+          <span key={c.name}>
+            <b className="pch-dot" style={{ backgroundColor: c.hex }} />
+            {c.name}, {c.brand}
+          </span>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div className="pch-tool__art pch-tool__art--fields" aria-hidden="true">
+      <span>Room size</span>
+      <span>Coats</span>
+      <span>Doors and windows</span>
+    </div>
+  );
+}
 
-        <div className="lg:w-1/2 relative h-[400px] sm:h-[500px] lg:h-[600px] w-full">
-          <div className="absolute top-0 right-0 w-4/5 h-4/5 rounded-xl overflow-hidden shadow-2xl z-0">
-            <Image
-              src="/hero.webp"
-              alt="Modern interior with architectural paint"
-              fill
-              priority
-              fetchPriority="high"
-              sizes="(max-width: 1024px) 80vw, 40vw"
-              className="object-cover"
-            />
+export default async function Home() {
+  const set = HOME_MATCH_SETS[0];
+  const best = set.matches[0];
+  const posts = getAllPosts().slice(0, 3);
+  return (
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
+      <Header />
+      <main id="main-content" className="pch-home">
+
+      {/* Hero: triptych. Words and search on the sides, real cross-brand matches in the middle. */}
+      <section className="hero pch-hero" data-enter aria-labelledby="home-hero-h" style={{ ["--h" as string]: 1 }}>
+        <div className="wrap pch-wrap pch-grid pch-hero__grid">
+          <div className="pch-hero__text">
+            <h1 id="home-hero-h">Find a paint color you love in any brand</h1>
+            <p className="pch-hero__lead">
+              Search 26,000+ colors from {BRAND_COUNT} brands, then get the nearest match in the brand you can buy. Free, no signup.
+            </p>
           </div>
-          <div className="absolute bottom-0 left-0 w-2/5 h-1/2 rounded-xl overflow-hidden shadow-2xl z-20 border-8 border-surface">
-            <Image
-              src="/hero-brush.webp"
-              alt="Close up of a paint brush with blue paint"
-              fill
-              sizes="(max-width: 1024px) 60vw, 25vw"
-              className="object-cover"
-            />
+
+          <HeroCollage label="Three real cross-brand matches from the site" sets={HOME_MATCH_SETS.map((s, i) => (
+              <div key={s.source.name} className={`pch-set${i === 0 ? " is-on" : ""}`} data-set>
+                <Link href={s.source.href} className="pch-piece pch-piece--a" tabIndex={i === 0 ? undefined : -1}>
+                  <div className="pch-src__swatch" style={{ backgroundColor: s.source.hex }} />
+                  <div className="pch-src__body">
+                    <span className="k">Your color</span>
+                    <b>{s.source.name}</b>
+                    <span>{s.source.brand}</span>
+                    <span className="mono">{s.source.code} · {s.source.hex}</span>
+                  </div>
+                </Link>
+                <div className="pch-piece pch-piece--b pch-list">
+                  <div className="pch-list__head">Nearest to {s.source.name} in other brands</div>
+                  {s.matches.map((m) => (
+                    <Link key={m.name} href={m.href} tabIndex={i === 0 ? undefined : -1}>
+                      <b className="pch-dot" style={{ backgroundColor: m.hex }} />
+                      <span><b>{m.name}</b><br /><small>{m.brand}</small></span>
+                      <span className="pch-chip">{m.label}</span>
+                    </Link>
+                  ))}
+                </div>
+                <div className="pch-piece pch-piece--c">
+                  <div className="pch-vs">
+                    <div style={{ backgroundColor: s.source.hex }} />
+                    <div style={{ backgroundColor: s.matches[0].hex }} />
+                  </div>
+                  <div className="pch-vs__foot">
+                    <span>{s.source.name} and {s.matches[0].name}: {s.matches[0].label.toLowerCase()}</span>
+                    <span>Digital match. Confirm with a physical sample.</span>
+                  </div>
+                </div>
+              </div>
+          ))} />
+
+          <div className="pch-hero__form">
+            <form action="/search" role="search">
+              <label htmlFor="home-color-search">Enter a paint name, number, or hex code</label>
+              <input id="home-color-search" name="q" type="search" required maxLength={120} placeholder="Try Sea Salt or SW 6204" />
+              <button type="submit" className="btn pch-btn pch-btn--solid">Find colors</button>
+            </form>
           </div>
-          <p className="absolute bottom-0 right-0 max-w-[55%] text-right text-xs text-on-surface-variant">Room inspiration. Paint colors in these photos are not identified.</p>
         </div>
       </section>
 
-      {/* Tools — Bento Grid */}
-      <section className="py-24 px-6 md:px-12 bg-surface-container-low">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
-            <h2 className="font-headline text-4xl font-bold tracking-tighter text-on-surface">
-              Everything You Need to<br />Choose the Right Color
-            </h2>
+      {/* How a match works: the one dealt moment (pinned chapters). Static rows without script or on small screens. */}
+      <section className="section pch-sec" id="how" data-moment="pinned-chapters" style={{ ["--h" as string]: 2, ["--hm" as string]: 2 }} aria-labelledby="home-how-h">
+        <div className="wrap mo-pc__grid">
+          <div className="mo-pc__text">
+            <h2 id="home-how-h">How a color match works</h2>
+            <ol className="mo-pc__steps">
+              <li className="mo-pc__step">
+                <h3>Search any color</h3>
+                <p>Type a name, a number or a hex code. {set.source.name}, {set.source.code} and {set.source.hex} all find the same paint.</p>
+                <figure className="mo-pc__visual mo-pc__visual--lit">
+                  <div className="pch-ui" role="img" aria-label={`A search for ${set.source.name} with the ${set.source.brand} result, ${set.source.code}`}>
+                    <div className="pch-ui__bar">Search colors</div>
+                    <div className="pch-ui__field">{set.source.name}</div>
+                    <div className="pch-ui__row">
+                      <b className="pch-dot" style={{ backgroundColor: set.source.hex }} />
+                      <span><b>{set.source.name}</b><small>{set.source.brand} · {set.source.code}</small></span>
+                      <span className="mono">{set.source.hex}</span>
+                    </div>
+                  </div>
+                </figure>
+              </li>
+              <li className="mo-pc__step">
+                <h3>Compare it across {BRAND_COUNT} brands</h3>
+                <p>CIEDE2000 scores how far apart two colors look on screen, against 26,000+ colors.</p>
+                <figure className="mo-pc__visual mo-pc__visual--lit">
+                  <div className="pch-ui" role="img" aria-label={`Matches for ${set.source.name} in ${set.matches.map((m) => m.brand).join(", ")}, each labeled ${set.matches[0].label.toLowerCase()}`}>
+                    <div className="pch-ui__bar">Compare alternatives to {set.source.name}</div>
+                    {set.matches.map((m) => (
+                      <div className="pch-ui__row" key={m.name}>
+                        <b className="pch-dot" style={{ backgroundColor: m.hex }} />
+                        <span><b>{m.name}</b><small>{m.brand}</small></span>
+                        <span className="pch-chip">{m.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </figure>
+              </li>
+              <li className="mo-pc__step">
+                <h3>Choose a match in your brand</h3>
+                <p>Each match says how close it is in plain words. Order a sample before you buy a gallon.</p>
+                <figure className="mo-pc__visual mo-pc__visual--lit">
+                  <div className="pch-ui" role="img" aria-label={`${set.source.name} beside ${best.name}, labeled ${best.label.toLowerCase()}, with a note to confirm with a physical sample`}>
+                    <div className="pch-ui__split">
+                      <div style={{ backgroundColor: set.source.hex }} />
+                      <div style={{ backgroundColor: best.hex }} />
+                    </div>
+                    <div className="pch-ui__foot">
+                      <span>{set.source.name} and {best.name}: {best.label.toLowerCase()}</span>
+                      <span>Digital match. Confirm with a physical sample.</span>
+                    </div>
+                  </div>
+                </figure>
+              </li>
+            </ol>
+            <div className="mo-pc__links">
+              <Link href="/match" className="btn pch-btn">Find a match</Link>
+              <Link href="/methodology" className="pch-link">How we calculate</Link>
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mo-pc__visuals frame"></div>
+        </div>
+      </section>
+
+      {/* Tools */}
+      <section className="section pch-sec" id="tools" aria-labelledby="home-tools-h" style={{ ["--hm" as string]: 2 }}>
+        <div className="wrap pch-wrap">
+          <div className="pch-head">
+            <h2 id="home-tools-h" style={{ maxWidth: "none" }}>Six free tools for choosing a paint color</h2>
+          </div>
+          <div className="pch-tools">
             {tools.map((tool) => (
-              <Link
-                key={tool.href}
-                href={tool.href}
-                className="group bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 hover:shadow-lg transition-all duration-500"
-              >
-                <h3 className="font-headline font-bold text-lg text-on-surface mb-3 group-hover:text-primary transition-colors">
-                  {tool.name}
-                </h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
-                  {tool.description}
-                </p>
-                <span className="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                  {tool.cta} <span>&rarr;</span>
-                </span>
+              <Link key={tool.href + tool.name} href={tool.href} className="pch-card pch-tool">
+                <ToolArt kind={tool.art} />
+                <div className="pch-tool__body">
+                  <h3>{tool.name}</h3>
+                  <p>{tool.description}</p>
+                  <span className="pch-tool__cta">{tool.cta} &rarr;</span>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Curated Brands — Tonal Transition */}
-      <section className="bg-surface py-20 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12 flex justify-between items-end">
+      {/* Brands and color families */}
+      <section className="section pch-sec pch-sec--surface" id="brands" aria-labelledby="home-brands-h" style={{ ["--hm" as string]: 2 }}>
+        <div className="wrap pch-wrap">
+          <div className="pch-head pch-head--row">
             <div>
-              <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface">Browse by Brand</h2>
-              <p className="text-on-surface-variant mt-2">Explore colors from trusted paint manufacturers.</p>
+              <h2 id="home-brands-h">Browse by brand</h2>
             </div>
-            <Link href="/brands" className="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
-              All brands <span>&rarr;</span>
-            </Link>
+            <Link href="/brands" className="pch-link">All brands &rarr;</Link>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+          <div className="pch-brands">
             {NAV_BRANDS.map((brand) => (
-              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="flex items-center justify-center p-4 md:p-5 min-h-16 md:min-h-24 bg-surface-container-lowest rounded-xl hover:shadow-md transition-shadow">
-                <span className="font-headline font-bold text-base text-on-surface text-center">{brand.name}</span>
+              <Link key={brand.slug} href={`/brands/${brand.slug}`} className="pch-brand">
+                {brand.name}
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Color Families */}
-      <section className="py-16 px-6 md:px-12 bg-surface">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-8">Browse by Color Family</h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {colorFamilies.map((family) => (
-              <Link
-                key={family.slug}
-                href={`/colors/family/${family.slug}`}
-                className="flex items-center gap-2 rounded-full bg-surface-container-lowest px-5 py-2.5 text-sm font-medium text-on-surface-variant transition-all hover:shadow-md hover:text-primary group"
-              >
-                <span
-                  className={`inline-block h-5 w-5 rounded-full ${family.border ? "border border-outline-variant/30" : ""}`}
-                  style={{ backgroundColor: family.color }}
-                />
-                {family.name}
-              </Link>
-            ))}
-            {NAV_HUES.map((hue) => (
-              <Link
-                key={hue.href}
-                href={hue.href}
-                className="flex items-center gap-2 rounded-full bg-surface-container-lowest px-5 py-2.5 text-sm font-medium text-on-surface-variant transition-all hover:shadow-md hover:text-primary group"
-              >
-                <span
-                  className="inline-block h-5 w-5 rounded-full"
-                  style={{ backgroundColor: HUE_SWATCH[hue.href] ?? "#9CA3AF" }}
-                />
-                {hue.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Inspiration — Tonal Canvas */}
-      <section className="bg-tertiary-fixed py-24 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
-            <span className="text-primary font-bold text-xs uppercase tracking-widest">Inspiration</span>
-            <h2 className="font-headline text-4xl font-bold mt-2 text-on-surface">Color Palettes to Spark Your Next Project</h2>
-          </div>
-          <InspirationSection />
-        </div>
-      </section>
-
-      {/* Blog — The Architectural Journal */}
-      <section className="py-24 px-6 md:px-12 bg-surface">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16 flex justify-between items-end">
-            <div>
-              <span className="text-primary font-bold text-xs uppercase tracking-widest">Insights</span>
-              <h2 className="font-headline text-4xl font-bold mt-2 text-on-surface">The Color Journal</h2>
+          <div className="pch-families">
+            <div className="pch-families__head">
+              <h3>Browse by color family</h3>
+              <Link href="/colors" className="pch-link">Explore color families &rarr;</Link>
             </div>
-            <Link href="/blog" className="text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
-              All articles <span>&rarr;</span>
-            </Link>
+            <ul>
+              {colorFamilies.map((family) => (
+                <li key={family.slug}>
+                  <Link href={`/colors/family/${family.slug}`} className="pch-family">
+                    <span className="pch-dot" style={{ backgroundColor: family.color }} />
+                    {family.name}
+                  </Link>
+                </li>
+              ))}
+              {NAV_HUES.map((hue) => (
+                <li key={hue.href}>
+                  <Link href={hue.href} className="pch-family">
+                    <span className="pch-dot" style={{ backgroundColor: HUE_SWATCH[hue.href] ?? "#9CA3AF" }} />
+                    {hue.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p>
+              <Link href="/color-of-the-year" className="pch-link">See the {CURRENT_COTY.year} Colors of the Year, matched across brands</Link>
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {getAllPosts().slice(0, 3).map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="group cursor-pointer">
-                <div className="aspect-[16/10] overflow-hidden rounded-lg mb-6">
+        </div>
+      </section>
+
+      {/* Inspiration (copy unchanged; edited in PR #362) */}
+      <section className="section pch-sec" id="inspiration" aria-labelledby="home-inspo-h" style={{ ["--h" as string]: 1, ["--hm" as string]: 2 }}>
+        <div className="wrap pch-wrap">
+          <div className="pch-head">
+            <span className="pch-text-link" style={{ textDecoration: "none", fontWeight: 500 }}>Inspiration</span>
+            <h2 id="home-inspo-h" style={{ maxWidth: "none" }}>Color Palettes to Spark Your Next Project</h2>
+          </div>
+          <div className="pch-inspo">
+            <InspirationSection />
+          </div>
+        </div>
+      </section>
+
+      {/* Blog */}
+      <section className="section pch-sec pch-sec--surface" id="journal" aria-labelledby="home-blog-h" style={{ ["--hm" as string]: 2 }}>
+        <div className="wrap pch-wrap">
+          <div className="pch-head pch-head--row">
+            <div>
+              <h2 id="home-blog-h">The Color Journal</h2>
+            </div>
+            <Link href="/blog" className="pch-link">All articles &rarr;</Link>
+          </div>
+          <div className="pch-posts">
+            {posts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="pch-post">
+                <div className="pch-post__img">
                   {post.coverImage ? (
-                    <Image
-                      src={post.coverImage}
-                      alt={post.title}
-                      width={600}
-                      height={375}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+                    <Image src={post.coverImage} alt={post.title} width={600} height={400} sizes="(max-width: 1023px) 90vw, 400px" />
                   ) : (
-                    <div
-                      className="w-full h-full"
-                      style={{ backgroundColor: post.coverColor }}
-                    />
+                    <div style={{ backgroundColor: post.coverColor, width: "100%", height: "100%" }} />
                   )}
                 </div>
-                <h3 className="font-headline font-bold text-xl mb-3 leading-tight group-hover:text-primary transition-colors text-on-surface">
-                  {post.title}
-                </h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">
-                  {post.excerpt}
-                </p>
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Compare Tool Teaser */}
-      <section className="py-24 px-6 md:px-12 bg-surface overflow-hidden">
-        <div className="max-w-5xl mx-auto bg-surface-container-low rounded-[2rem] p-8 md:p-12 relative flex flex-col md:flex-row items-center gap-12 border border-outline-variant/15">
-          <div className="md:w-1/2">
-            <h2 className="font-headline text-3xl font-bold mb-6 text-on-surface">Side-by-Side Color Comparison</h2>
-            <p className="text-on-surface-variant mb-8">
-              See how any two colors look next to each other. Compare their digital values, then test physical samples in your own lighting.
-            </p>
-            <Link
-              href="/compare"
-              className="inline-block bg-primary text-on-primary px-8 py-3 rounded-full font-headline font-bold text-sm tracking-tight shadow-lg shadow-primary/20 hover:shadow-xl transition-all"
-            >
-              Try the Compare Tool
-            </Link>
+      {/* Compare: the dark band */}
+      <section className="section pch-sec pch-sec--inverse" id="compare" aria-labelledby="home-compare-h">
+        <div className="wrap pch-wrap pch-grid pch-compare">
+          <div className="pch-compare__text pch-span-6">
+            <h2 id="home-compare-h" style={{ maxWidth: "14ch" }}>Side-by-side color comparison</h2>
+            <p>See how any two colors look next to each other. Compare their digital values, then test physical samples in your own lighting.</p>
+            <div>
+              <Link href="/compare" className="btn pch-btn">Try the Compare Tool</Link>
+            </div>
           </div>
-          <div className="md:w-1/2 relative h-64 w-full flex items-center justify-center">
-            <div className="w-36 h-52 bg-primary rounded-xl rotate-[-6deg] absolute z-10 shadow-xl border-4 border-white" />
-            <div className="w-36 h-52 bg-secondary rounded-xl rotate-[6deg] absolute z-20 shadow-xl border-4 border-white backdrop-blur-md opacity-80" />
+          <div className="pch-compare__art pch-span-6" role="img" aria-label={`${set.source.name} from ${set.source.brand} beside ${best.name} from ${best.brand}, labeled ${best.label.toLowerCase()}`}>
+            <div className="pch-compare__swatches">
+              <div style={{ backgroundColor: set.source.hex }} />
+              <div style={{ backgroundColor: best.hex }} />
+            </div>
+            <div className="pch-compare__meta">
+              <div><b>{set.source.name}</b><small>{set.source.brand} · {set.source.code}</small></div>
+              <div><b>{best.name}</b><small>{best.brand} · {best.code}</small></div>
+            </div>
+            <div className="pch-compare__foot">
+              <span className="pch-chip">{best.label}</span>
+              <span>Digital match. Confirm with a physical sample.</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-20 px-6 md:px-12 bg-surface-container-low">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="font-headline text-3xl font-bold text-on-surface tracking-tight mb-10">
-            Common Questions
-          </h2>
-          <div className="space-y-6">
-            {faqItems.map((item) => (
-              <div key={item.question} className="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10">
-                <h3 className="font-headline text-lg font-bold text-on-surface">
-                  {item.question}
-                </h3>
-                <p className="mt-3 leading-relaxed text-on-surface-variant">
-                  {item.answer}
-                </p>
-              </div>
-            ))}
+      <section className="section pch-sec pch-faq" id="faq" aria-labelledby="home-faq-h" style={{ ["--hm" as string]: 2 }}>
+        <div className="wrap pch-wrap pch-grid">
+          <div className="pch-faq__side pch-span-4">
+            <h2 id="home-faq-h">Common questions</h2>
+            <div>
+              <Link href="/match" className="btn pch-btn">Find a match</Link>
+            </div>
           </div>
-          <p className="mt-8 text-xs text-outline">
-            Color data is based on manufacturer-published digital values (hex, RGB). Actual
-            pigments, finishes, and lighting conditions vary. Always verify with a physical
-            paint sample before purchasing.
-          </p>
+          <div className="pch-span-6 pch-start-7">
+            <div className="pch-faq__list">
+              {faqItems.map((item) => (
+                <div key={item.question} className="pch-faq__item">
+                  <h3>{item.question}</h3>
+                  <p>{item.answer}</p>
+                </div>
+              ))}
+            </div>
+            <p className="pch-faq__note">
+              Color data is based on manufacturer-published digital values (hex, RGB). Actual
+              pigments, finishes, and lighting conditions vary. Always verify with a physical
+              paint sample before purchasing.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -371,7 +490,7 @@ export default async function Home() {
         "@type": "WebSite",
         name: "Paint Color HQ",
         url: "https://www.paintcolorhq.com",
-        description: "Discover, preview, and compare 26,000+ paint colors across our paint catalog — find a color you love, see it on a wall, and get it in the brand you can buy. Cross-brand matches use CIEDE2000 Delta E. Free, no signup.",
+        description: "Discover, preview, and compare 26,000+ paint colors across our paint catalog, find a color you love, see it on a wall, and get it in the brand you can buy. Cross-brand matches use CIEDE2000 Delta E. Free, no signup.",
         potentialAction: {
           "@type": "SearchAction",
           // Plain URL string is the current Sitelinks Searchbox spec — the
@@ -412,6 +531,7 @@ export default async function Home() {
         { "@context": "https://schema.org", "@type": "WebApplication", name: "Paint Calculator", url: "https://www.paintcolorhq.com/tools/paint-calculator", applicationCategory: "UtilityApplication", operatingSystem: "Web browser", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Calculate how many gallons of paint you need based on room dimensions." },
       ]} />
 
+      <MomentsLoader />
       </main>
       <AdSenseScript />
       <Footer />

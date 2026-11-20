@@ -7,6 +7,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getAllPosts, getPostBySlug, getAllBlogSlugs, getRelatedPosts } from "@/lib/blog-posts";
 import { AdSenseScript } from "@/components/adsense-script";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 import { TrackPage } from "@/components/track-page";
 import { TableOfContents } from "@/components/table-of-contents";
 import { ColorLinkEnhancer } from "@/components/color-link-enhancer";
@@ -131,7 +133,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const blogPinDescription = `${post.excerpt} Read at PaintColorHQ.com ${tagHashtags}`;
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       {/* Pinterest pin trigger — hidden, picked up by the Save extension */}
       <img
         src={blogPinImageUrl}
@@ -145,18 +147,8 @@ export default async function BlogPostPage({ params }: PageProps) {
       />
       <Header />
 
-      {/* Hero image or color bar */}
-      {post.coverImage ? (
-        <div className="relative h-64 sm:h-80 md:h-96 mt-[65px]">
-          <Image src={post.coverImage} alt={post.title} fill preload fetchPriority="high" className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent" />
-        </div>
-      ) : (
-        <div className="h-32 sm:h-40 mt-[65px]" style={{ backgroundColor: post.coverColor }} />
-      )}
-
-      <main id="main-content" className="flex-1">
-        <div className="mx-auto max-w-3xl px-6 md:px-12 py-12">
+      <main id="main-content" className="flex-1 pch-page pch-tool pch-article">
+        <div className="pch-reading">
           {/* Breadcrumb */}
           <nav className="mb-8 text-sm text-on-surface-variant">
             <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -195,12 +187,20 @@ export default async function BlogPostPage({ params }: PageProps) {
               />
             </div>
 
-            {swatches.length > 0 && <section aria-label="Colors in this guide" className="mt-8 rounded-xl border border-outline-variant/30 p-4">
-              <h2 className="font-headline text-xl font-bold">Explore colors in this guide</h2>
-              <p className="mt-2 text-sm text-on-surface-variant">Open a color for its details and cross-brand alternatives. Read on for the context behind each choice.</p>
-              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">{swatches.map(c => <Link key={c.href} href={c.href} className="rounded-lg overflow-hidden border border-outline-variant/20">
-                <div className="h-24 border-b border-black/10" style={{backgroundColor:c.hex}} />
-                <div className="p-3"><p className="font-semibold text-sm">{c.name}</p>{c.brand && <p className="text-xs mt-1">{c.brand}</p>}</div>
+            {post.coverImage ? (
+              <div className="pch-cover">
+                <Image src={post.coverImage} alt={post.title} width={1200} height={600} preload fetchPriority="high" sizes="(max-width: 800px) 100vw, 760px" />
+              </div>
+            ) : (
+              <div className="pch-cover pch-cover--bar" style={{ backgroundColor: post.coverColor }} />
+            )}
+
+            {swatches.length > 0 && <section aria-label="Colors in this guide" className="pch-guidecolors">
+              <h2>Explore colors in this guide</h2>
+              <p>Open a color for its details and cross-brand alternatives. Read on for the context behind each choice.</p>
+              <div className="pch-chiprow">{swatches.map(c => <Link key={c.href} href={c.href} className="pch-colorchip">
+                <span className="pch-dot" style={{backgroundColor:c.hex}} aria-hidden="true" />
+                <span><b>{c.name}</b>{c.brand && <small>{c.brand}</small>}</span>
               </Link>)}</div>
             </section>}
 
@@ -260,6 +260,9 @@ export default async function BlogPostPage({ params }: PageProps) {
             </aside>
           )}
 
+        </div>
+
+        <div className="wrap pch-wrap pch-after">
           {/* Related Posts */}
           {relatedPosts.length > 0 && (
             <section className="mt-16 pt-10">

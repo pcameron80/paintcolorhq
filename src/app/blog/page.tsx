@@ -6,13 +6,15 @@ import { Footer } from "@/components/footer";
 import { AdSenseScript } from "@/components/adsense-script";
 import { getAllPosts } from "@/lib/blog-posts";
 import { TagFilter } from "@/components/tag-filter";
+import { urbanist } from "@/lib/redesign-font";
+import "../redesign.css";
 
 // ISR: re-render hourly so scheduled (future-dated) posts appear on their date
 // without a redeploy. See src/lib/blog-publish.ts.
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Paint Color Blog — Guides, Trends & Color Theory",
+  title: "Paint Color Blog: Guides, Trends & Color Theory",
   description:
     "Expert guides on paint colors, cross-brand matching, color trends, and interior design tips. Learn how to choose the perfect paint color for every room.",
   alternates: { canonical: "https://www.paintcolorhq.com/blog" },
@@ -65,64 +67,46 @@ export default async function BlogIndex({ searchParams }: BlogPageProps) {
   const gridPosts = featured ? posts.slice(1) : posts;
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className={`min-h-screen bg-surface ${urbanist.variable}`}>
       <Header />
-      <main id="main-content">
-
-      {/* Hero */}
-      <section className="relative pt-24 px-6 md:px-12 py-20">
-        <div className="max-w-7xl mx-auto">
-          <nav className="mb-8 text-sm text-on-surface-variant">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-            <span className="mx-2 text-outline">/</span>
-            <span className="text-on-surface">Blog</span>
+      <main id="main-content" className="pch-page">
+      <section className="pch-pagehead" style={{ paddingBottom: "var(--s-6)" }}>
+        <div className="wrap pch-wrap">
+          <nav className="pch-crumbs" aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span aria-hidden="true">/</span>
+            <span>Blog</span>
           </nav>
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">Insights</span>
-          <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mt-2 mb-6">
-            The Color Journal
-          </h1>
-          <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+          <span className="pch-eyebrow">Insights</span>
+          <h1 style={{ maxWidth: "none" }}>The Color Journal</h1>
+          <p className="pch-pagehead__lead" style={{ marginTop: "var(--s-4)" }}>
             Expert guides on paint colors, cross-brand matching, color trends, and interior design tips.
           </p>
-
         </div>
       </section>
 
-      {/* Featured Post */}
       {featured && (
-        <section className="px-6 md:px-12 pb-16">
-          <div className="max-w-7xl mx-auto">
-            <Link href={`/blog/${featured.slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-0 bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/10 hover:shadow-lg transition-all duration-500">
-              <div className="aspect-[16/10] lg:aspect-auto overflow-hidden">
+        <section className="pch-block" style={{ paddingTop: 0, paddingBottom: "var(--s-6)" }}>
+          <div className="wrap pch-wrap">
+            <Link href={`/blog/${featured.slug}`} className="pch-featured">
+              <div className="pch-featured__img">
                 {featured.coverImage ? (
-                  <Image
-                    src={featured.coverImage}
-                    alt={featured.title}
-                    width={800}
-                    height={500}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
+                  <Image src={featured.coverImage} alt={featured.title} width={800} height={500} sizes="(max-width: 1023px) 100vw, 640px" priority />
                 ) : (
-                  <div className="w-full h-full min-h-[300px]" style={{ backgroundColor: featured.coverColor }} />
+                  <div style={{ backgroundColor: featured.coverColor, width: "100%", height: "100%", minHeight: 300 }} />
                 )}
               </div>
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <div className="flex flex-wrap gap-2 mb-4">
+              <div className="pch-featured__body">
+                <div className="pch-tags">
                   {featured.tags.map((tag) => (
-                    <span key={tag} className="rounded-full bg-surface-container-high px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
-                      {tag}
-                    </span>
+                    <span key={tag} className="pch-tag">{tag}</span>
                   ))}
                 </div>
-                <h2 className="font-headline text-3xl font-extrabold tracking-tight text-on-surface leading-tight group-hover:text-primary transition-colors mb-4">
-                  {featured.title}
-                </h2>
-                <p className="text-on-surface-variant leading-relaxed mb-6">{featured.excerpt}</p>
-                <div className="flex items-center justify-between">
-                  <time dateTime={featured.date} className="text-xs text-outline">{formatDate(featured.date)}</time>
-                  <span className="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Read article <span>&rarr;</span>
-                  </span>
+                <h2>{featured.title}</h2>
+                <p style={{ color: "var(--muted)", fontSize: 17, lineHeight: 1.6 }}>{featured.excerpt}</p>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "var(--s-3)" }}>
+                  <time dateTime={featured.date} className="pch-post-meta">{formatDate(featured.date)}</time>
+                  <span className="pch-cta" style={{ color: "var(--accent)", fontWeight: 500 }}>Read article &rarr;</span>
                 </div>
               </div>
             </Link>
@@ -130,85 +114,36 @@ export default async function BlogIndex({ searchParams }: BlogPageProps) {
         </section>
       )}
 
-      {/* Tag Filter */}
-      <section className="px-6 md:px-12 py-10 bg-surface">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-[10px] uppercase tracking-widest font-bold text-outline mb-4 block">Filter by topic</span>
+      <section className="pch-block" style={{ paddingTop: "var(--s-5)", paddingBottom: "var(--s-5)" }}>
+        <div className="wrap pch-wrap pch-filter">
+          <span className="pch-note" style={{ display: "block", marginBottom: "var(--s-3)" }}>Filter by topic</span>
           <TagFilter tags={allTags} activeTag={activeTag} initialCount={5} />
         </div>
       </section>
 
-      {/* Post Grid — alternating bento layout */}
-      <section className="px-6 md:px-12 py-24 bg-surface-container-low">
-        <div className="max-w-7xl mx-auto">
-          {(() => {
-            // Pattern: [wide-left + 1] [3] [1 + wide-right] [3] repeat
-            // Each "wide" row uses 2 posts, each "normal" row uses 3 posts
-            // Cycle: 2, 3, 2, 3 = 10 posts per full cycle
-            const rows: { posts: typeof gridPosts; wideIndex: number | null; wideRight: boolean }[] = [];
-            let i = 0;
-            let cycle = 0;
-
-            while (i < gridPosts.length) {
-              const step = cycle % 4;
-              if (step === 0) {
-                // Wide left: first post is wide, second is normal
-                rows.push({ posts: gridPosts.slice(i, i + 2), wideIndex: 0, wideRight: false });
-                i += 2;
-              } else if (step === 1) {
-                // 3 normal
-                rows.push({ posts: gridPosts.slice(i, i + 3), wideIndex: null, wideRight: false });
-                i += 3;
-              } else if (step === 2) {
-                // Wide right: first is normal, second is wide
-                rows.push({ posts: gridPosts.slice(i, i + 2), wideIndex: 1, wideRight: true });
-                i += 2;
-              } else {
-                // 3 normal
-                rows.push({ posts: gridPosts.slice(i, i + 3), wideIndex: null, wideRight: false });
-                i += 3;
-              }
-              cycle++;
-            }
-
-            return (
-              <div className="space-y-12">
-                {rows.map((row, rowIdx) => (
-                  <div key={rowIdx} className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    {row.posts.map((post, postIdx) => {
-                      const isWide = row.wideIndex === postIdx;
-                      return (
-                        <Link
-                          key={post.slug}
-                          href={`/blog/${post.slug}`}
-                          className={`group cursor-pointer ${isWide ? "lg:col-span-2" : ""}`}
-                        >
-                          <div className={`overflow-hidden rounded-lg mb-6 ${isWide ? "aspect-[2/1]" : "aspect-[16/10]"}`}>
-                            {post.coverImage ? (
-                              <Image src={post.coverImage} alt={post.title} width={isWide ? 900 : 600} height={isWide ? 450 : 375}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                            ) : (
-                              <div className="w-full h-full" style={{ backgroundColor: post.coverColor }} />
-                            )}
-                          </div>
-                          <div className="flex flex-wrap gap-1.5 mb-3">
-                            {post.tags.slice(0, 2).map((tag) => (
-                              <span key={tag} className="rounded-full bg-surface-container-highest px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">{tag}</span>
-                            ))}
-                          </div>
-                          <h3 className={`font-headline font-bold mb-3 leading-tight group-hover:text-primary transition-colors text-on-surface ${isWide ? "text-2xl" : "text-xl"}`}>
-                            {post.title}
-                          </h3>
-                          <p className="text-sm text-on-surface-variant leading-relaxed mb-3">{post.excerpt}</p>
-                          <time dateTime={post.date} className="text-xs text-outline">{formatDate(post.date)}</time>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                ))}
-              </div>
-            );
-          })()}
+      <section className="pch-block pch-block--surface">
+        <div className="wrap pch-wrap">
+          <div className="pch-posts-grid">
+            {gridPosts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="pch-post">
+                <div className="pch-post__img">
+                  {post.coverImage ? (
+                    <Image src={post.coverImage} alt={post.title} width={600} height={375} sizes="(max-width: 639px) 90vw, (max-width: 1023px) 45vw, 400px" />
+                  ) : (
+                    <div style={{ backgroundColor: post.coverColor, width: "100%", height: "100%" }} />
+                  )}
+                </div>
+                <div className="pch-tags">
+                  {post.tags.slice(0, 2).map((tag) => (
+                    <span key={tag} className="pch-tag">{tag}</span>
+                  ))}
+                </div>
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
+                <time dateTime={post.date} className="pch-post-meta">{formatDate(post.date)}</time>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

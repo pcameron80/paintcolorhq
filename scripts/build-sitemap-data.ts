@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import { mkdir, writeFile, rename, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { POPULAR_COLOR_SLUGS, MAJOR_MATCH_BRANDS } from "../src/lib/popular-colors";
+import { MATCH_SHARD_SOURCE_COLORS, MAJOR_MATCH_BRANDS } from "../src/lib/popular-colors";
 import { isMatchIndexable } from "../src/lib/indexing";
 import { diffPairs, sitemapPaths, type PairExclusion } from "../src/lib/sitemap-pairs";
 
@@ -38,7 +38,7 @@ async function main() {
   const exclusions = new Map<string, PairExclusion>();
   // Sequential sources bound database load. Use the same match resolver and
   // eligibility as the actual page, including missing-target handling.
-  for (const { brandSlug, colorSlug } of POPULAR_COLOR_SLUGS) {
+  for (const { brandSlug, colorSlug } of MATCH_SHARD_SOURCE_COLORS) {
     const source = await getColorBySlug(brandSlug, colorSlug);
     if (!source) {
       for (const target of MAJOR_MATCH_BRANDS) if (target !== brandSlug) exclusions.set(`/match/${brandSlug}/${colorSlug}-to-${target}`, "removed");

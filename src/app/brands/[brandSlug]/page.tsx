@@ -22,6 +22,8 @@ import { getPostsByBrand } from "@/lib/blog-posts";
 import { BrandEntryPoints } from "@/components/brand-entry-points";
 import { brandLede, rankFamilies, mostViewedCandidates, mostViewedWindowLabel, pickMostViewed, brandCotyPicks } from "@/lib/brand-entry";
 import Image from "next/image";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 2592000; // 30d — static color/match/brand data; redeploys pick up data changes
 
@@ -258,6 +260,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
     <div className="min-h-screen bg-surface">
       <TrackPage eventName="page_view_enriched" params={{ page_type: "brand", color_brand: brandSlug }} />
       <Header />
+      <div className={`pch-color ${urbanist.variable}`}>
       <main id="main-content">
 
       {/* Brand Hero */}
@@ -592,6 +595,7 @@ export default async function BrandPage({ params, searchParams }: PageProps) {
       }} />}
 
       </main>
+      </div>
       <AdSenseScript />
       <Footer />
     </div>

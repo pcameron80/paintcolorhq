@@ -9,6 +9,8 @@ import { ToolCrossSell } from "@/components/tool-cross-sell";
 import { getAllBrands } from "@/lib/queries";
 import { MAJOR_MATCH_BRANDS } from "@/lib/popular-colors";
 import { ogDefaults } from "@/lib/og";
+import { urbanist } from "@/lib/redesign-font";
+import "@/app/redesign.css";
 
 export const revalidate = 2592000;
 
@@ -110,6 +112,7 @@ export default async function MatchHubPage() {
       }} />
 
       <Header />
+      <div className={`pch-color ${urbanist.variable}`}>
       <main id="main-content">
 
       <section className="relative pt-24 px-6 md:px-12 py-16">
@@ -205,6 +208,7 @@ export default async function MatchHubPage() {
       </section>
 
       </main>
+      </div>
       <Footer />
       <AdSenseScript />
     </div>
