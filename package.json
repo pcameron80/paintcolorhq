@@ -61,13 +61,13 @@
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
-    "@supabase/supabase-js": "^2.119.0",
+    "@supabase/supabase-js": "^2.119.2",
     "d3-geo": "^3.1.2",
     "google-auth-library": "^11.3.4",
     "next": "16.4.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "resend": "^6.38.0",
+    "resend": "^6.39.0",
     "server-only": "^0.0.1",
     "topojson-client": "^3.1.0",
     "world-atlas": "^2.0.2"
